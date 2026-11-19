@@ -1,0 +1,112 @@
+Occultist:
+  Description: >-
+    The occultist is the archetype of the seeker of secrets. Someone inclined to spot loopholes, shortcuts, subversion, or weakness. They are the hedge-mages, witches, warlocks, 
+    outlaw-mages, and necromancer grave robbers of the world, pursuing aspects of magic that the either the oaths forsake, or the arcane schools find too dangerous or uncontrollable 
+    to acknowledge. 
+  Proficiencies: >-
+    Hit dice: 1d4
+    Armor: Light armor
+    Weapons: 1 simple weapon group
+    Tools: None
+    Saving throws: Charisma, Intelligence
+    Skills: Choose 3 from: Arcana, History, Religion, Deception, Insight, Intimidation
+  Equipment: >-
+    You start with the following equipment, in addition to the equipment granted by your background:
+      * (a) A dagger or (b) a quarterstaff
+      * (a) 4 throwing daggers or (b) 3 vials of acid
+      * A dungeoneer's pack
+  lvl 1:
+    Spellcasting: >-
+      You gain access to occult spells.
+
+      You start with two known occultist spells at lvl 1, and learn a new spell every occultist level. The max level of a spell you can learn is equal to 1/2 your occultist level (rounded up.)
+      You can use either Intelligence or Charisma as your casting modifier. 
+
+      You have 2 occult slots which are restored every long rest. You can use occult slots to cast spells. The level of an occult slot is equal to 1/2 your character level, rounded up.
+      Your maximum number of occult slots increases by 1 every other occultist level (lvl 3, 5, 7, 9, 11).
+    
+    Cantrips: >-
+      You start with 1 occult cantrip and learn another at 5th and 9th level(every 4 levels after 1st.)
+
+    Mark & reward: 
+      desc: At 1st level, choose a mark ugrade and reward downgrade from the lists below.
+      Mark:
+        - Heal 1 HP less(min. 1)
+        - -5ft movement speed
+        - -1 to weapon attack rolls
+        - -1 to spell attack rolls
+        - -1 to AC
+        - -1 to physical saves
+        - -1 to mental saves
+        - -1 to social skill checks(Subject to GM.)
+        - -1 to physical skill checks(Subject to GM.)
+        - -1 to mental skill checks(Subject to GM.)
+      Reward:
+        - Resistance to two types of damage of choice.
+        - +2 max occult slots.
+        - All your damage dealing effects and attacks deal an extra 1d4 of a damage type of your choice. The type chosen cannot be changed.
+        - Your rest dice maximum is increased by 2.
+        - Expertise with a skill that you are proficient with.
+        - Gain a feat that does not grant an increase to ability scores.
+
+  lvl 2:
+    Dark ritual: >-
+      At 2nd level, you can perform a ritual during a rest at the cost of 2 rest dice. When doing so, you must make a DC 17 arcana check. A natural 1 is always a failure. 
+      
+      If successful, choose two effects from below:
+        * Regain 1d4 ooccult slots. Cannot bring you above maximum.
+        * Replace a spell from your list of spells known with another occult spell that you do not know.
+        * Roll a 1d4 chance dice. On a 3 or higher, succeed, healing yourself for 1d12 + intelligence bonus health and regaining 1 rest dice. On a 2 or lower, lose 1d4 health.
+
+    Dark art: 
+      desc: >-
+        At 2nd level, choose one dark art upgrade from below:
+      Dark arts:
+        - Occult blade - your melee and thrown weapon attacks are treated as magical and deal 1 bonus necrotic damage.
+        - Nullify - You can spend 2 rest dice as a reaction to cast counterspell against a spell targeting you or a point within a 20ft area around you.
+        - Life theft - Whenever you damage a small or larger creature, regain 1 hp.
+        - Faceless - You can shift appearance as a bonus action by spending 1 rest dice or 1 occult slot, altering your face, clothes, or voice. This effect can be dispelled.
+          The process becomes free of RD or Occult Slot at lvl 4.
+        - Power aura - You can spend 1 occult slot as a free action to gain 1d3 temporary block, which last for 3 rounds.
+        - Spiritual vampirism - Whenever a small or larger humanoid, beast, or fae creature dies within 20ft of you, or takes more than 20 psychic damage, you may spend a reaction 
+          or bonus action to roll a 1d6 chance dice, regaining 1 occult slot on a 6.
+        - Chaos magic - Upgrade two cantrips or a cantrip and a spell you know, causing its damaging effect to also deal an extra 1d4 damage, the type of which is determined by 
+          1d4(fire, cold, lightning, necrotic)"
+        - Hex casting - You may downcast an occult spell, causing its effect to trigger at a lower level than the maximum available(if possible.) When doing so, make a DC 17 arcana
+          check. The DC is reduced by 1 per difference in level past 1.
+
+  lvl 3:
+    Ability Score Improvement: >-
+      At 3rd, 7th, and 11th level, you gain an ability score improvement, allowing you to permanently increase one ability score by 2, or two ability scores by 1. 
+      Alternatively, gain a feat.
+
+      Additionally, whenever you have the option of taking an ability score improvement, you can choose to also take an extra mark(1st level ability) to gain an extra reward. 
+      You can choose the same mark multiple times and the same reward multiple times.
+
+  lvl 4:
+    Improved Dark Ritual:
+      desc: At 4th level, choose three dark ritual upgrades from below.
+      dark ritual upgrades:
+        seek knowledge: As one of the ritual success options, you may pick a skill you are proficient with, granting it a +1d3 bonus until next rest.
+        sky scry: As one of the ritual success options, gain a birds-eye view from above with aura-sight, allowing you to see at a range of roughly a mile.
+        ritual art: Reduce the ritual DC by 1. If you roll a nat 20 on the arcana check, you may pick 3 results instead.
+        blood scry: As one of the ritual success options, you may sacrifice a vial of blood, obtaining knowledge of what land and what state the bloods owner is in.
+        hone power: As one of the ritual success options, you may bestow a weapon with a +1 bonus which lasts for 5 days.
+        ritual casting: As one of the ritual success options, you may cast an occult spell you know, without expending an occult slot, at its level.
+        blood ritual: When performing the ritual, you may pay 1d6 HP, granting yourself a +1 bonus to all ability scores for 1 day.
+        invoke power: As one of the ritual success options, you may restore 1d4 points of charge to a wand or similar charged item.
+        black page: As one of the ritual success options, you may produce a black page, which is a magical consumable, which can be used to either boost the level of a spell being cast
+          by 1, or can be consumed to temporarily upgrade a cantrip for 1d20 minutes.
+        cryptic cyphers: As one of the ritual success options, you may gain a cypher insight from a magical tome or spell book. Once you have obtained 3 cypher insights, you may learn a 
+          new occult cantrip. This cantrip does not upgrade with your levels, but instead is upgraded every 3 other cypher insights you gain, up to a max of 5.
+        burrow power: As one of the ritual success options, you may temporarily boost a cantrip you know, granting it 1 temporary upgrade until next rest. Only one such upgrade may be active
+          at a time.
+        
+  lvl 5: 
+    1st archetype: >-
+      At 5th level, pick your first occultist archetype.
+
+  lvl 9:
+    2nd archetype: >-
+      At 9th level, pick your second occultist archetype.
+        
