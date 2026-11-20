@@ -120,8 +120,8 @@
     source.restDice = pool(source.restDice, "Rest dice");
     source.restDice.die = text(source.restDice.die, "Rest die size", "d6");
     source.deathSaves = record(source.deathSaves, "Death saves");
-    source.deathSaves.successes = integer(source.deathSaves.successes, "Successful death saves", 0, 0, 3);
-    source.deathSaves.failures = integer(source.deathSaves.failures, "Failed death saves", 0, 0, 3);
+    source.deathSaves.successes = integer(source.deathSaves.successes, "Successful death saves", 0, 0, source.build?.enabled ? 100 : 3);
+    source.deathSaves.failures = integer(source.deathSaves.failures, "Failed death saves", 0, 0, source.build?.enabled ? 100 : 3);
     source.proficiencies = record(source.proficiencies, "Other proficiencies and languages");
     for (const key of ["weapons", "armor", "tools", "languages"]) {
       source.proficiencies[key] = text(source.proficiencies[key], key + " proficiencies");
@@ -173,6 +173,53 @@
     source.conditions = array(source.conditions, "Conditions").map((item, i) => text(item, "Condition " + (i + 1)));
     source.coins = record(source.coins, "Coins");
     for (const key of ["gold", "silver", "copper"]) source.coins[key] = integer(source.coins[key], key + " coins");
+    if (source.build !== undefined) {
+      const build = source.build = record(source.build, "Character builder");
+      build.enabled = boolean(build.enabled, "Builder enabled");
+      build.combatActive = boolean(build.combatActive, "Combat active");
+      build.combatFloor = integer(build.combatFloor, "Combat Block grant");
+      for (const key of ["raceId", "classId"]) build[key] = text(build[key], key);
+      for (const key of ["archetypes", "skills", "raceSkills", "weaponGroups"]) {
+        build[key] = array(build[key], key).map(value => text(value, key));
+      }
+      build.choices = record(build.choices, "Feature choices");
+      for (const key of Object.keys(build.choices)) build.choices[key] = array(build.choices[key], key).map(value => text(value, key));
+      build.abilityChoices = record(build.abilityChoices, "Ability choices");
+      for (const key of Object.keys(build.abilityChoices)) {
+        const choice = build.abilityChoices[key] = record(build.abilityChoices[key], key);
+        choice.mode = integer(choice.mode, "Ability allocation mode", 0, 0, 20);
+        choice.values = array(choice.values, "Ability allocation").map(value => {
+          if (!abilities.includes(value) && value !== "") throw new Error("Invalid ability allocation.");
+          return value;
+        });
+      }
+      build.adjustments = record(build.adjustments, "Builder adjustments");
+      for (const key of ["ac", "speed", "block", "blockCheck"]) build.adjustments[key] = integer(build.adjustments[key], key + " adjustment", 0, -limit);
+      build.health = record(build.health, "Health settings");
+      const health = build.health;
+      health.baseHP = integer(health.baseHP, "Base maximum HP", source.resources.hp.max);
+      health.baseRestDice = integer(health.baseRestDice, "Base rest dice maximum", source.restDice.max);
+      health.progression = boolean(health.progression, "Configured HP progression");
+      health.hpMode = text(health.hpMode, "HP mode", "average");
+      if (!["average", "rolled", "manual"].includes(health.hpMode)) throw new Error("Invalid HP mode.");
+      health.rolls = array(health.rolls, "Level HP rolls").map(value => value === null || value === "" ? null : integer(value, "Level HP roll", 1, 1, 1000));
+      health.firstLevelHP = integer(health.firstLevelHP, "First-level HP", health.baseHP);
+      health.perLevelHP = integer(health.perLevelHP, "HP per added level");
+      health.conPerLevel = boolean(health.conPerLevel, "CON per level");
+      health.fatigue = integer(health.fatigue, "Fatigue", 0, 0, 10);
+      health.poolOrder = array(health.poolOrder, "Damage pool order").map(value => {
+        if (!["tempHP", "arcaneHealth", "hp"].includes(value)) throw new Error("Invalid damage pool order.");
+        return value;
+      });
+      if (new Set(health.poolOrder).size !== health.poolOrder.length) throw new Error("Duplicate damage pools.");
+      for (const key of ["weaponTraining", "attackAbility", "damageAbility"]) {
+        for (const item of source.inventory) if (item[key] !== undefined) item[key] = text(item[key], key);
+      }
+      for (const item of source.inventory) {
+        if (item.magicBonus !== undefined) item.magicBonus = integer(item.magicBonus, "Item magic bonus", 0, -100, 100);
+        for (const key of ["twoHanded", "offHand"]) if (item[key] !== undefined) item[key] = boolean(item[key], key);
+      }
+    }
     return source;
   }
 

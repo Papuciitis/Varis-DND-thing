@@ -342,6 +342,34 @@ button.pill { min-height: 44px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0s !important; }
 }
+.modal:has(.builder-flow) { width: min(64rem, calc(100% - 1.3rem)); }
+.builder-flow { min-width: 0; display: grid; gap: 1rem; }
+.builder-steps button, .modal:has(.builder-flow) .modal-footer button { min-height: 44px; padding: .5rem .8rem; border: 1px solid var(--strong-line); border-radius: 4px; background: var(--sheet); color: var(--ink); font: 650 .9rem/1.25 var(--sans); }
+.modal:has(.builder-flow) .modal-footer button:last-child { background: var(--red); border-color: var(--red); color: white; }
+.builder-flow progress { width: 100%; height: .5rem; accent-color: var(--red); }
+.builder-steps { display: flex; gap: .4rem; overflow-x: auto; padding: .15rem .15rem .65rem; border-bottom: 1px solid var(--line); }
+.builder-steps button, .builder-steps li, .builder-steps span { flex: 0 0 auto; }
+.builder-steps [aria-current="step"] { background: var(--red-tint); color: var(--red-dark); font-weight: 700; }
+.builder-preview { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; padding: .8rem; border: 1px solid var(--line); border-radius: 4px; background: var(--paper-shade); }
+.builder-preview > * { min-width: 0; }
+.builder-preview > .builder-grid { width: 100%; flex: 1 1 100%; }
+.builder-options, .builder-rule, .builder-rule .rule-body { min-width: 0; }
+.builder-options { display: grid; gap: .8rem; }
+.builder-rule { margin-top: .6rem; }
+.builder-rule summary { cursor: pointer; min-height: 44px; padding-block: .5rem; font-weight: 650; }
+.builder-rule p, .builder-rule li { overflow-wrap: anywhere; }
+.builder-rule ul { padding-inline-start: 1.25rem; }
+.builder-flow select, .builder-flow input { width: 100%; }
+.builder-flow input[type="checkbox"] { width: 1.15rem; flex: 0 0 auto; }
+.builder-flow .list-card + .list-card { margin-top: .6rem; }
+.builder-flow h3 { margin-bottom: .6rem; }
+body:has(dialog[open]) { overflow: hidden; }
+@media (max-width: 440px) {
+  .modal:has(.builder-flow) { width: 100%; max-height: 96dvh; border-radius: 6px 6px 0 0; }
+  .modal:has(.builder-flow) .modal-body { padding: .8rem; }
+  .modal:has(.builder-flow) .modal-footer { gap: .4rem; padding: .6rem; }
+  .builder-preview { gap: .5rem .8rem; }
+}
 @media print {
   @page { margin: 1.2cm; }
   :root { font-size: 10pt; }

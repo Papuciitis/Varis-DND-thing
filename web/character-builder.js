@@ -1,0 +1,234 @@
+"use strict";
+
+(() => {
+  const steps = ["Ancestry", "Class", "Abilities", "Features", "Equipment", "Review"];
+  const names = {str:"Strength",dex:"Dexterity",con:"Constitution",int:"Intelligence",wis:"Wisdom",cha:"Charisma"};
+  const escape = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+  const copy = value => JSON.parse(JSON.stringify(value));
+  const signed = value => Number(value) >= 0 ? "+" + value : String(value);
+  const uid = () => globalThis.crypto?.randomUUID?.() || Date.now().toString(36)+Math.random().toString(36).slice(2);
+  const option = (value, label, selected, disabled = false) => `<option value="${escape(value)}"${selected ? " selected" : ""}${disabled ? " disabled" : ""}>${escape(label)}</option>`;
+  const field = (label, content, note = "") => `<label class="field"><span>${escape(label)}</span>${content}${note ? `<small class="muted">${escape(note)}</small>` : ""}</label>`;
+  const grid = body => `<div class="form-grid builder-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:1rem">${body}</div>`;
+  const setSlot = (values, index, value, empty = "") => {
+    while (values.length <= index) values.push(empty);
+    values[index] = value;
+  };
+
+  function create({rules, show, onFinish, onCancel = () => {}, renderRule = value => `<p>${escape(typeof value === "string" ? value : JSON.stringify(value))}</p>`}) {
+    let draft = null, step = 0, open = false, isNew = false, itemToAdd = "";
+    const metadata = rules.metadata || {};
+    const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
+    const items = (rules.catalog || []).flatMap(section => section.key === "items" ? (section.entries || []).map(entry => ({...entry,entryId:JSON.stringify([section.key,entry.group || "",entry.name])})) : []);
+    const weaponGroups = [...new Set(items.filter(entry => entry.details?.damage && entry.details?.type).map(entry => entry.group))].sort();
+    const allSkills = Object.keys(globalThis.CharacterRules?.skillAbilities || {});
+    const details = (title, value) => value ? `<details class="builder-rule"><summary>${escape(title)}</summary><div class="rule-body">${renderRule(value)}</div></details>` : "";
+    const select = (path, values, current, placeholder = "Choose…") => `<select data-builder-path="${escape(path)}">${option("",placeholder,!current)}${values.map(item => option(item.id,item.name,item.id === current)).join("")}</select>`;
+    const textInput = (path, value, type = "text", extra = "") => `<input type="${type}" data-builder-path="${escape(path)}" value="${escape(value)}" ${extra}>`;
+    const selectedClass = () => classes.find(item => item.id === draft.build.classId);
+    const selectedRace = () => races.find(item => item.id === draft.build.raceId);
+
+    function ancestry() {
+      const race = selectedRace();
+      return `<p>Start with your character's identity and ancestry. You can return to any step before saving.</p>${grid(
+        field("Character name",textInput("name",draft.name,'text','autocomplete="off"'))+
+        field("Player",textInput("player",draft.player,'text','autocomplete="off"'))+
+        field("Character level",textInput("level",draft.level,"number",'min="1" max="100" inputmode="numeric"'))+
+        field("Ancestry",select("build.raceId",races,draft.build.raceId,"Choose an ancestry"))
+      )}${race ? `<div class="list-card"><h3>${escape(race.name)}</h3><p>${escape(race.size)} · ${escape(race.speed ?? "Unspecified")} ft speed</p>${details("About this ancestry",race.description)}${details("Ancestry training",race.proficiencies)}${race.notes ? `<p class="muted">${escape(race.notes)}</p>` : ""}</div>` : ""}`;
+    }
+
+    function classStep() {
+      const cls = selectedClass();
+      let html = `<p>Choose your class, then an archetype for each slot your current level has unlocked.</p>${field("Class",select("build.classId",classes,draft.build.classId,"Choose a class"))}`;
+      if (!cls) return html;
+      html += `<div class="list-card"><h3>${escape(cls.name)}</h3><p>Hit die ${escape(cls.hitDie || "unspecified")} · Saves: ${escape((cls.saves || []).map(code => names[code] || code).join(", "))}</p>${details("Class description",cls.description)}${details("Class training",cls.proficiencies)}${cls.notes ? `<p class="muted">${escape(cls.notes)}</p>` : ""}</div>`;
+      const slots = (cls.archetypeLevels || []).filter(level => level <= draft.level);
+      if (!slots.length) html += `<p class="muted">${cls.archetypeLevels?.length ? `Your first archetype slot opens at level ${escape(cls.archetypeLevels[0])}.` : "This source has no specified archetype slots."}</p>`;
+      html += grid(slots.map((level,index) => {
+        const current = draft.build.archetypes[index] || "";
+        const eligible = archetypes.filter(item => item.className.toLowerCase() === cls.name.toLowerCase() && item.minLevel <= level);
+        const selected = archetypes.find(item => item.id === current);
+        const choices = eligible.map(item => option(item.id,item.name+(item.status ? ` (${item.status})` : ""),item.id === current,draft.build.archetypes.some((id,slot) => slot !== index && id === item.id))).join("");
+        return `<div>${field(`Level ${level} archetype`,`<select data-builder-path="build.archetypes.${index}">${option("","Choose an archetype",!current)}${selected && !eligible.includes(selected) ? option(current,selected.name+" — review eligibility",true,true) : ""}${choices}</select>`)}${selected ? details(`${selected.name}: source details`,selected.description || selected.status || selected.features?.map(feature => ({name:feature.name,details:feature.details}))) : ""}${selected?.minLevelSource === "parent fallback" ? '<p class="muted">Starting level is provisional; review the unfinished source.</p>' : ""}</div>`;
+      }).join(""));
+      return html;
+    }
+
+    function abilitiesStep(derived) {
+      const race = selectedRace();
+      let html = `<p>Enter your base scores before ancestry and feature bonuses. The total preview includes the bonuses selected below.</p>${grid(Object.keys(names).map(code => field(names[code],textInput(`abilities.${code}`,draft.abilities[code],"number",'min="0" max="1000000" inputmode="numeric"'),`Total ${derived.abilities[code]} (${signed(derived.abilityBonuses[code] || 0)} from rules)`)).join(""))}`;
+      if (race) {
+        const fixed = Object.entries(race.abilityBonuses || {}).map(([code,value]) => `${names[code] || code} ${signed(value)}`);
+        if (fixed.length) html += `<p><strong>Fixed ancestry bonuses:</strong> ${escape(fixed.join(", "))}</p>`;
+        for (const choice of race.abilityChoices || []) {
+          const saved = draft.build.abilityChoices[choice.id] || {mode:0,values:[]};
+          const modes = [choice,...choice.alternatives || []], mode = modes[saved.mode] || choice;
+          html += `<fieldset><legend>${escape(choice.label)}</legend>`;
+          if (modes.length > 1) html += field("Bonus allocation",`<select data-builder-mode="${escape(choice.id)}">${modes.map((item,index) => option(index,item.label,index === saved.mode)).join("")}</select>`);
+          html += grid(Array.from({length:mode.count},(_,index) => field(`Bonus ${index + 1} (${signed(mode.amount)})`,`<select data-builder-ability="${escape(choice.id)}" data-builder-choice-index="${index}">${option("","Choose an ability",!saved.values?.[index])}${mode.options.map(code => option(code,names[code] || code,saved.values?.[index] === code,!mode.repeat && saved.values?.some((value,other) => value === code && other !== index))).join("")}</select>`)).join(""))+`</fieldset>`;
+        }
+      }
+      return html;
+    }
+
+    function skillChoices(key, count, options) {
+      const values = draft.build[key] || [];
+      return grid(Array.from({length:count},(_,index) => field(`${key === "skills" ? "Class" : "Ancestry"} skill ${index+1}`,`<select data-builder-skills="${key}" data-builder-choice-index="${index}">${option("","Choose a skill",!values[index])}${options.map(name => option(name,name,name === values[index],values.some((value,other) => name === value && other !== index))).join("")}</select>`)).join(""));
+    }
+
+    function featuresStep(derived) {
+      let html = `<p>Choose the skills and feature options granted by your current ancestry, class and archetypes. Expand each rule to read its costs, conditions and prerequisites.</p>`;
+      if (derived.cls?.skillChoice) html += `<fieldset><legend>Class skills</legend>${skillChoices("skills",derived.cls.skillChoice.count,derived.cls.skillChoice.options)}</fieldset>`;
+      if (derived.raceSkillCount) {
+        const raw = (derived.race?.proficiencies || []).find(text => /skills?\b.*\bfrom\b/i.test(text));
+        const restricted = raw ? allSkills.filter(skill => raw.toLowerCase().includes(skill.toLowerCase()) || (skill === "Animal Handling" && /handle[- ]animal/i.test(raw))) : [];
+        const options = derived.raceSkillOptions || (restricted.length ? restricted : allSkills);
+        html += `<fieldset><legend>Ancestry skills</legend>${skillChoices("raceSkills",derived.raceSkillCount,options)}</fieldset>`;
+      }
+      html += derived.features.map(feature => {
+        const groups = derived.choices.filter(group => group.featureId === feature.id || (feature.choices || []).some(own => own.id === group.id));
+        return `<section class="list-card"><h3>${escape(feature.name)}</h3><p class="muted">${escape(feature.parent)} · Level ${escape(feature.level || 1)}</p>${details("Read feature rules",feature.details)}${groups.map(group => {
+          const selected = draft.build.choices[group.id] || [];
+          return `<fieldset><legend>${escape(group.label === "minitrait_list" ? "Traits" : group.label)} — choose ${group.count}</legend>${grid(Array.from({length:group.count},(_,index) => field(`Selection ${index+1}`,`<select data-builder-choice="${escape(group.id)}" data-builder-choice-index="${index}">${option("","Choose an option",!selected[index])}${group.options.map(item => option(item.id,item.name,item.id === selected[index],selected.some((id,other) => id === item.id && other !== index))).join("")}</select>`)).join(""))}${group.options.filter(item => selected.includes(item.id)).map(item => details(item.name,item.details)).join("")}</fieldset>`;
+        }).join("")}</section>`;
+      }).join("");
+      if (!derived.features.length) html += `<p class="muted">Choose an ancestry and class to see their features here.</p>`;
+      return html;
+    }
+
+    function equipmentStep() {
+      let html = `<p>Add your starting equipment from the Vara catalog. Equip the items you use; armor, shields and weapons contribute to the final preview.</p><div class="row">${field("Catalog equipment",`<select data-builder-item><option value="">Choose equipment…</option>${items.map(item => option(item.entryId,`${item.name} · ${item.group}`,item.entryId === itemToAdd)).join("")}</select>`)}<button type="button" data-action="builder-add-item">Add equipment</button></div>`;
+      html += draft.inventory.map((row,index) => {
+        const entry = items.find(item => item.entryId === row.entryId), weapon = entry?.details?.damage || entry?.details?.["AC bonus"];
+        return `<section class="list-card"><div class="row"><h3>${escape(row.name)}</h3><button type="button" data-action="builder-remove-item" data-builder-index="${index}" aria-label="Remove ${escape(row.name)}">Remove</button></div>${grid(
+          field("Equipped",`<input type="checkbox" data-builder-gear="equipped" data-builder-index="${index}"${row.equipped ? " checked" : ""}>`)+
+          field("Quantity",`<input type="number" min="0" value="${escape(row.quantity)}" data-builder-gear="quantity" data-builder-index="${index}">`)+
+          field("Magic bonus",`<input type="number" min="-100" max="100" value="${escape(row.magicBonus || 0)}" data-builder-gear="magicBonus" data-builder-index="${index}">`)+
+          (weapon ? field("Weapon or shield training",`<select data-builder-gear="weaponTraining" data-builder-index="${index}">${option("","Use class and chosen groups",!row.weaponTraining)}${option("proficient","Proficient",row.weaponTraining === "proficient")}${option("untrained","Untrained",row.weaponTraining === "untrained")}</select>`)+field("Two-handed grip",`<input type="checkbox" data-builder-gear="twoHanded" data-builder-index="${index}"${row.twoHanded ? " checked" : ""}>`,"Changes Versatile damage where the weapon has that property.")+field("Off-hand weapon",`<input type="checkbox" data-builder-gear="offHand" data-builder-index="${index}"${row.offHand ? " checked" : ""}>`) : "")
+        )}${entry ? details("Equipment rules",entry.details) : '<p class="muted">Custom item: review its effects on the sheet.</p>'}</section>`;
+      }).join("");
+      if (weaponGroups.length) html += `<details><summary>Chosen weapon group proficiencies</summary><p class="muted">Select only the groups your class, ancestry or features grant. Fixed proficiencies already apply.</p>${grid(weaponGroups.map(group => `<label class="row"><input type="checkbox" data-builder-group="${escape(group)}"${draft.build.weaponGroups.includes(group) ? " checked" : ""}>${escape(group)}</label>`).join(""))}</details>`;
+      return html;
+    }
+
+    function review(derived) {
+      const health = draft.build.health, sides = Number(derived.cls?.hitDie?.match(/d(\d+)/i)?.[1]) || 1000;
+      let html = `<p>Review ${escape(draft.name || "your character")} before saving. Unfinished selections can be saved and completed later.</p><div class="builder-preview">${grid([
+        ["Maximum HP",derived.hpMaximum],["Armor Class",derived.armorClass],["Speed",`${derived.speed} ft`],["Maximum Block",derived.blockMaximum],["Block check",signed(derived.blockCheck)],["Proficiency",signed(derived.proficiency)]
+      ].map(([label,value]) => `<div class="list-card"><span class="muted">${escape(label)}</span><p><strong>${escape(value)}</strong></p></div>`).join(""))}</div><p>${escape(derived.hpExplanation)}</p>`;
+      html += grid(field("HP after level 1",`<select data-builder-path="build.health.hpMode">${option("average","Fixed average",health.hpMode === "average")}${option("rolled","Recorded hit-die rolls",health.hpMode === "rolled")}${option("manual","Manual base HP",health.hpMode === "manual")}</select>`)+
+        (health.hpMode === "manual" ? field("Base maximum HP",textInput("build.health.baseHP",health.baseHP,"number",'min="1"'),"Ancestry and feature HP bonuses are added to this base.") : "")+
+        field("Base rest dice pool",textInput("build.health.baseRestDice",health.baseRestDice,"number",'min="0"'),"Enter the pool granted by your table; selected bonuses are added."));
+      if (health.hpMode === "rolled" && draft.level > 1) html += `<fieldset><legend>Recorded ${escape(derived.cls?.hitDie || "hit die")} rolls</legend><p class="muted">Enter the die result before Constitution. Missing rolls use the fixed average in this preview.</p>${grid(Array.from({length:draft.level-1},(_,index) => field(`Level ${index+2}`,textInput(`build.health.rolls.${index}`,health.rolls?.[index] ?? "","number",`min="1" max="${sides}" inputmode="numeric"`))).join(""))}</fieldset>`;
+      html += `<h3>Equipped attacks</h3>${derived.attacks.length ? derived.attacks.map(attack => `<div class="list-card"><strong>${escape(attack.name)}</strong><p>${escape(signed(attack.bonus))} to hit · ${escape(attack.damage)} · Block DC ${escape(attack.blockDC)}</p>${attack.notes ? `<p class="muted">${escape(attack.notes)}</p>` : ""}</div>`).join("") : '<p class="muted">No equipped weapon attacks yet.</p>'}`;
+      const raceSkills = new Set((draft.build.raceSkills || []).filter(skill => (derived.raceSkillOptions || allSkills).includes(skill)));
+      const warnings = [...new Set([!derived.race ? "Choose an ancestry." : "",!derived.cls ? "Choose a class." : "",
+        raceSkills.size < derived.raceSkillCount ? `${derived.race.name}: choose ${derived.raceSkillCount} ancestry skill${derived.raceSkillCount === 1 ? "" : "s"}.` : "",...derived.warnings].filter(Boolean))];
+      html += `<section class="list-card builder-review-warnings"><h3>${warnings.length ? "Selections to review" : "Before saving"}</h3>${warnings.length ? `<ul>${warnings.map(warning => `<li>${escape(warning)}</li>`).join("")}</ul>` : '<p>No incomplete selections were detected for the currently supported choices.</p>'}<p class="muted">Conditional abilities, active powers, prerequisites and spell costs still follow their rule descriptions. Apply effects that require a manual ruling on the sheet.</p></section>`;
+      return html;
+    }
+
+    function render() {
+      if (!open) return;
+      const derived = rules.derive(draft);
+      const body = [ancestry,classStep,abilitiesStep,featuresStep,equipmentStep,review][step](derived);
+      const nav = `<nav class="builder-steps row" aria-label="Character creation steps">${steps.map((name,index) => `<button type="button" data-action="builder-step" data-builder-step="${index}"${index === step ? ' aria-current="step"' : ""}>${index+1}. ${escape(name)}</button>`).join("")}</nav>`;
+      show(`${step+1} of ${steps.length} · ${steps[step]}`,`<div class="builder-flow" style="display:grid;gap:1rem">${nav}<progress value="${step+1}" max="6" aria-label="Character creation progress" style="width:100%">${step+1} of 6</progress>${body}<p class="muted">Vara house rules · Source descriptions retain draft and unresolved mechanics.</p></div>`,
+        `<button type="button" data-action="builder-cancel">Cancel</button><button type="button" data-action="builder-back"${step === 0 ? " disabled" : ""}>Back</button>${step < steps.length-1 ? '<button type="button" class="primary" data-action="builder-next">Next</button>' : '<button type="button" class="primary" data-action="builder-finish">Save character</button>'}`);
+    }
+
+    function setPath(path, target) {
+      const numeric = /^(?:level|abilities\.(?:str|dex|con|int|wis|cha)|build\.health\.(?:baseHP|baseRestDice|rolls\.\d+))$/;
+      if (!/^(?:name|player|level|abilities\.(?:str|dex|con|int|wis|cha)|build\.(?:raceId|classId|archetypes\.\d+|health\.(?:hpMode|baseHP|baseRestDice|rolls\.\d+)))$/.test(path)) return false;
+      let value = numeric.test(path) ? Number(target.value) : String(target.value ?? "");
+      if (numeric.test(path) && (!Number.isInteger(value) || value < (path === "level" ? 1 : 0))) return true;
+      if (/health\.rolls\./.test(path) && target.value === "") value = null;
+      if (path === "level") value = Math.min(100,value);
+      const parts = path.split("."); let parent = draft;
+      for (let index=0;index<parts.length-1;index++) {
+        const key = parts[index];
+        if (parent[key] === undefined) parent[key] = /^\d+$/.test(parts[index+1]) ? [] : {};
+        parent = parent[key];
+      }
+      if (path === "build.classId" && draft.build.classId !== value) { draft.build.archetypes = []; draft.build.skills = []; }
+      if (Array.isArray(parent)) setSlot(parent,Number(parts.at(-1)),value,/health\.rolls\./.test(path) ? null : "");
+      else parent[parts.at(-1)] = value;
+      if (path === "build.classId") draft.className = selectedClass()?.name || "";
+      if (path === "build.raceId") draft.ancestry = selectedRace()?.name || "";
+      return true;
+    }
+
+    function update(target) {
+      if (!open || !target?.dataset) return false;
+      const data = target.dataset, index = Number(data.builderChoiceIndex);
+      if (data.builderPath !== undefined) return setPath(data.builderPath,target);
+      if (data.builderItem !== undefined) { itemToAdd = items.some(item => item.entryId === target.value) ? target.value : ""; return true; }
+      if (data.builderMode !== undefined || data.builderAbility !== undefined) {
+        const id = data.builderMode ?? data.builderAbility, choice = selectedRace()?.abilityChoices?.find(item => item.id === id);
+        if (!choice) return true;
+        const saved = draft.build.abilityChoices[id] ||= {mode:0,values:[]};
+        if (data.builderMode !== undefined) {
+          const mode = Number(target.value);
+          if (Number.isInteger(mode) && mode >= 0 && mode < [choice,...choice.alternatives || []].length) { saved.mode = mode; saved.values = []; }
+        } else if (Number.isInteger(index) && index >= 0) {
+          const mode = [choice,...choice.alternatives || []][saved.mode] || choice;
+          if (index < mode.count && (!target.value || mode.options.includes(target.value))) setSlot(saved.values,index,target.value);
+        }
+        return true;
+      }
+      if (data.builderChoice !== undefined) {
+        const choice = rules.derive(draft).choices.find(item => item.id === data.builderChoice);
+        if (choice && Number.isInteger(index) && index >= 0 && index < choice.count && (!target.value || choice.options.some(item => item.id === target.value))) {
+          const values = draft.build.choices[choice.id] ||= []; setSlot(values,index,target.value);
+        }
+        return true;
+      }
+      if (data.builderSkills !== undefined) {
+        if (["skills","raceSkills"].includes(data.builderSkills) && Number.isInteger(index) && index >= 0 && index < 100) setSlot(draft.build[data.builderSkills],index,target.value);
+        return true;
+      }
+      if (data.builderGroup !== undefined) {
+        if (weaponGroups.includes(data.builderGroup)) draft.build.weaponGroups = [...new Set([...draft.build.weaponGroups.filter(group => group !== data.builderGroup),...target.checked ? [data.builderGroup] : []])];
+        return true;
+      }
+      if (data.builderGear !== undefined) {
+        const row = draft.inventory[Number(data.builderIndex)], key = data.builderGear;
+        if (!row) return true;
+        if (key === "equipped") draft = globalThis.CharacterEquipment?.equip ? globalThis.CharacterEquipment.equip(draft,Number(data.builderIndex),target.checked) : draft;
+        else if (["twoHanded","offHand"].includes(key)) row[key] = !!target.checked;
+        else if (["quantity","magicBonus"].includes(key) && Number.isInteger(Number(target.value))) row[key] = Number(target.value);
+        else if (key === "weaponTraining" && ["","proficient","untrained"].includes(target.value)) row[key] = target.value;
+        return true;
+      }
+      return false;
+    }
+
+    function start(character, fresh = false) {
+      draft = rules.enable(copy(character)); step = 0; open = true; isNew = !!fresh; itemToAdd = ""; render(); return true;
+    }
+    function cancel() { if (!open) return false; open = false; draft = null; onCancel(); return true; }
+    function handleInput(target) { return update(target); }
+    function handleChange(target) { const handled = update(target); if (handled && target.dataset.builderItem === undefined) render(); return handled; }
+    function handleAction(action, target) {
+      if (!open || !action?.startsWith("builder-")) return false;
+      if (action === "builder-cancel") return cancel();
+      if (action === "builder-next") step = Math.min(steps.length-1,step+1);
+      else if (action === "builder-back") step = Math.max(0,step-1);
+      else if (action === "builder-step") {
+        const value = Number(target?.dataset?.builderStep); if (Number.isInteger(value) && value >= 0 && value < steps.length) step = value;
+      } else if (action === "builder-add-item") {
+        const entry = items.find(item => item.entryId === itemToAdd);
+        if (entry) draft.inventory.push({id:uid(),name:entry.name,entryId:entry.entryId,quantity:1,equipped:false,notes:""});
+      } else if (action === "builder-remove-item") {
+        const index = Number(target?.dataset?.builderIndex); if (Number.isInteger(index) && index >= 0 && index < draft.inventory.length) draft.inventory.splice(index,1);
+      } else if (action === "builder-finish") {
+        if (step !== steps.length-1) return true;
+        const result = rules.reconcile(copy(draft)); open = false; draft = null; onFinish(result,isNew); return true;
+      } else return false;
+      render(); return true;
+    }
+    return Object.freeze({start,handleInput,handleChange,handleAction,isOpen:() => open,cancel});
+  }
+  globalThis.CharacterBuilder = Object.freeze({create});
+})();
