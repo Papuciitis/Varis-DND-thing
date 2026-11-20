@@ -1,0 +1,278 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/oath-magic/lvl-6-oath-spells
+section: spells
+entries:
+- name: Avatar
+  group: Oath spells
+  lvl: '6'
+  types: Transmutation, Oath 6
+  casting: action
+  components: verbal, somatic
+  range: self
+  duration: instant
+  effect: |-
+    As an action, manifest a halo of the runes of your oaths pinnacle forces for 3d4 rounds. For the duration, you gain a +3 bonus to all d20 rolls, have true sight, ethereal sight, and aura detection, +3 AC, and you can levitate with a float speed of 30 ft.
+
+    For the duration, you have advantage on concentration checks, all your spell ranges are doubles, and you heal 1d10 health at the start of your turn.
+- name: Consecrate
+  group: Oath spells
+  lvl: '6'
+  types: Evocation, Conjuration, Oath 6
+  casting: action
+  components: verbal, action
+  range: area or structure, up to 200 ft
+  duration: 1d8 hours
+  effect: |-
+    As an action, enchant the surrounding area or structure out to a range of 200 ft and consecrate it. Undead and eldritch creatures cannot enter without permission, or by succeeding a wisdom save at disadvantage. A valid undead or eldritch creature can only make this save once, and are expelled for the duration of the spell, taking 3d8 radiant damage from the attempt. This damage cannot be healed for the duration of the spell.
+
+    Allies within the area heal 1 extra HP from healing, have a +1 bonus to saves and death saves, have advantages on saves vs diseases, and revive spells cast on allies that die within the area have their time periods extended by 1 time category for the purposes of determining if a creature can be revived (rounds -> minutes -> 10 minutes -> hours -> days)
+
+    Undead cannot be raised in the consecrated area.
+- name: Divine smite
+  group: Oath spells
+  lvl: '6'
+  types: Evocation, Oath 6
+  casting: action
+  components: verbal, somatic, material ( 1 weapon )
+  range: touch
+  duration: 1d4 rounds
+  effect: |-
+    As an action, invoke divine might into a melee weapon you wield. Your next attack with it for the duration of the spell has a +10 bonus to hit, cannot be blocked, and deals 7d8 extra radiant damage.
+
+    The damage is cursed, becoming unhealable until after a long rest, and the damage negates reconstitution, regeneration, revive, and undead fortitude effects.
+- name: Forsake to outer darkness
+  group: Oath spells
+  lvl: '6'
+  types: Conjuration, Divination, Oath 6
+  casting: action
+  components: verbal, somatic
+  range: 40 ft
+  duration: special
+  effect: |-
+    As an action, curse a creature within range, forcing it to make a wisdom save. On a failure, the target takes 1d12 psychic, 1d12 necrotic, 1d12 radiant, 1d12 cold, and 1d12 force damage and is cursed. A cursed creature is clearly visible to undead, eldritch, aberrant, and psychic entities within 500 ft.
+
+    If any of the dice roll a 12, the target can be transported to the ethereal plane.
+
+    If cast on a target in the ethereal plane, they must make another wisdom save. On a failure, the caster can choose to banish the target to its origin realm.
+
+    On a critical failure, the target is banished to an outer or lost domain.
+- name: Greater bless
+  group: Oath spells
+  lvl: '6'
+  types: Transmutation, Divination, Oath 6
+  casting: action
+  components: verbal, somatic
+  range: touch
+  duration: 1 rest
+  effect: As an action, bless a creature within range, granting them a +4 bonus to an ability score of
+    choice, and 6 rerolls until rest. Negates a greater curse.
+- name: Greater Curse
+  group: Oath spells
+  lvl: '6'
+  types: Necromancy, Oath 6
+  casting: action
+  components: verbal, somatic
+  range: touch
+  duration: 1 rest
+  effect: As an action, curse a creature within range, forcing them to make a wisdom save. On a failure,
+    they take a -2d4 penalty to an ability score of choice. Negates a greater blessing.
+- name: Intervention
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Oath 6
+  casting: action
+  components: verbal, somatic
+  range: 15 ft
+  duration: until rest
+  effect: As an action, grant a creature 1d100 temporary health that lasts until rest.
+- name: Last stand
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Oath 6
+  casting: bonus action
+  components: verbal, somatic, special (potentially death)
+  range: self
+  duration: 3 rounds
+  effect: |-
+    As a bonus action, take on a final stand. For the next 3 rounds, you cannot be reduced below 1 HP as a death defiance effect.
+
+    All damage you would otherwise take must be recorded.
+
+    For the duration of the spell, you can spend 2 rest dice to scream defiantly as a bonus action and extend the duration by 1 round.
+
+    It is dealt all at once at the end of the spell's duration.
+- name: Negate
+  group: Oath spells
+  lvl: '6'
+  types: Transmutation, Abjuration, Oath 6
+  casting: reaction
+  components: verbal, somatic
+  range: self
+  duration: instant
+  effect: As a reaction, reduce an incoming instance of damage by 10d8 + casting bonus.
+- name: 'Power word: Audience'
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Illusion, Oath 6
+  casting: action
+  components: verbal, somatic, 1 rest die.
+  range: 150 feet
+  duration: 1d8 rounds, concentration
+  effect: |-
+    As an action, spend 1 rest die to silence an area within 150 ft of you for 1d8 rounds and concentrate. Creatures automatically fail verbal spell components, and all sonic damage is negated.
+
+    For the duration you can speak and address all creatures within clearly.
+
+    You can end the spell prematurely and spend 1 extra rest dice to cast a 4th or lower level spell of choice on all creatures that can hear within the area, applying its effect to all creatures within the area, or to extend to the entire 150 radius area.
+
+    Losing concentration abruptly deals 3d8 sonic damage to all creatures and deafens for 1d4 rounds.
+- name: 'Power word: Banish'
+  group: Oath spells
+  lvl: '6'
+  types: Enchantment, Illusion, Oath 6
+  casting: action
+  components: verbal, somatic
+  range: 20 feet
+  duration: 4d4 rounds
+  effect: |-
+    As an action, force an undead, demonic, fiendish, infernal, eldritch, or cosmic creature to make a wisdom or charisma save and take 6d6 force damage. On a failure, it is banished to either the ethereal plane or is discorporated to its domain of origin.
+
+    On a critical failure, the entity is forbidden from entering the point location of casting in this plane or realm at a range of 5d20 miles (subject to the GM). for a year.
+- name: 'Power word: Dream'
+  group: Oath spells
+  lvl: '6'
+  types: Enchantment, Illusion, Oath 6
+  casting: action
+  components: verbal, somatic
+  range: 20 feet
+  duration: 4d4 rounds
+  effect: |-
+    As an action, force a creature to make a wisdom save. On a failure, they are enchanted into a magical undisturbable slumber for 4d4 rounds, during which time the caster can interact and fashion their dream to their liking, allowing it to last up to an hour of experience from the perspective of the target.
+
+    On a critical failure, the caster can choose the duration of the sleep, and the sleep does not exhaust, malnourish, or age the target.
+- name: 'Power word: Fear'
+  group: Oath spells
+  lvl: '6'
+  types: Illusion, Necromancy, Oath 6
+  casting: action
+  components: verbal, somatic, 1 rest die.
+  range: 50 ft
+  duration: 1 minute
+  effect: |-
+    As an action, unleash a ring of necrotic power and induce fear. All enemies within 50 ft must make a wisdom or charisma save, becoming afraid on a success, and terrified on a critical failure.
+
+    For the duration, you have true sight of every creature within 50 ft of you, and deal an extra 1d12 psychic damage on all attacks, spells, and abilities for the duration.
+
+    Slaying a creature while under this spell repeats the ring of necrotic fear.
+  draft_note: The draft assigns Afraid on a successful save and Terrified on a critical failure. It omits
+    the result of an ordinary failed save.
+- name: 'Power word: Force'
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Transmutation, Oath 6
+  casting: action
+  components: verbal, somatic, 1 rest die.
+  range: 30 feet
+  duration: instant
+  effect: |-
+    As an action, spend 1 rest die to force creatures in a cone to make a strength or constitution save. On a failure they take 4d8 force damage and are pushed up to 50 ft away from the caster.
+
+    On a success, targets resist and are pushed only 10 ft back.
+
+    Targets are deafened for 1d8 rounds and knocked prone on a critical failure or collision. Targets that collide take an extra 2d8 force damage.
+
+    When cast, roll a 1d4 chance dice. On a 1, the spell slot is not expended.
+- name: 'Power word: Heal'
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Transmutation, Oath 6
+  casting: action
+  components: verbal, somatic, 1 rest die.
+  range: 30 feet
+  duration: instant
+  effect: |-
+    As an action, heal a creature for 8d10 + casting bonus health, restore any missing limbs to it, and remove negative conditions and mundane diseases from it.
+
+    If the target character has died within the past round, you may bring it back to life at one death save left.
+- name: 'Power word: Ignite'
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Illusion, Oath 6
+  casting: action
+  components: verbal, somatic, 1 rest die.
+  range: 40 ft
+  duration: instant
+  effect: |-
+    As an action, force a creature, structure, or object within range to take 6d6 fire and 6d6 radiant damage. The target takes half damage on a successful dexterity or charisma save, and gains three stacks of Burning on a failure. Until extinguished, the spell also deals 1d6 radiant damage at the start of the target’s turn.
+
+    If this slays a creature, they are incinerated to ash, and mundane items and consumables are burned to dust, and all creatures within 10 ft of the incinerated creature must make a dexterity save to avoid taking 3d6 fire damage.
+
+    Deals double damage to objects and structures.
+- name: 'Power word: Order'
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Evocation, Oath 6
+  casting: reaction
+  components: verbal, somatic
+  range: 30 ft
+  duration: 1 round, special
+  effect: |-
+    As a reaction, command a creature and force a creature to make a charisma save. On a failure, they must comply. The command cannot be suicidal or an order to attack an ally. Every round, the creature must remake a charisma save to attempt to break free.
+
+    On a critical failure, the target is cursed to be bound to the command until dispelled by the caster or freed by means of other magic (subject to the GM).
+
+    Alternatively, target a magical artifact, mechanism, or structure and will it into function or order, rolling a 1d4 and ending on a 1 on each subsequent turn.
+  draft_note: The draft specifies a reaction without naming the event that triggers it.
+- name: 'Power word: Perish'
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Oath 6
+  casting: action
+  components: verbal, somatic, 1 rest die.
+  range: 30 feet
+  duration: 1 hour or combat, special
+  effect: |-
+    As an action, spend 1 rest die and speak a word of power to attack a creatures soul directly, dealing 7d10 necrotic damage, and half as much on a successful wisdom save.
+
+    If this kills the target, the spell slot is refunded, and your lifespan is extended by 1 year if the target is a small or larger sentient humanoid that is not undead.
+- name: Resurrect
+  group: Oath spells
+  lvl: '6'
+  types: Necromancy, Divination, Oath 6
+  casting: Full-round action
+  components: verbal, somatic, 2 rest dice
+  duration: full round action
+  range: touch
+  effect: |-
+    As a full round action, attempt to revive and fully heal and cleanse a creature that has died within the last 1d6 hours (determined when casting spell, automatically failing if the duration is exceeded,) so long as most of their remains are intact.
+
+    If target is valid and spell proceeds, caster and target must make either an insight or religion check. If the result exceeds 30, the target is returned to life at 1/2 hp, their limbs and body is restored, and they are freed from curses and negative spells and conditions.
+
+    Reaching beyond the veil is perilous and requires appeasing the spirits by spending 2 rest dice. To do so otherwise can invoke misfortune (subject to the GM).
+- name: Today you ascend!
+  group: Oath spells
+  lvl: '6'
+  types: Abjuration, Oath 6
+  casting: special
+  components: verbal
+  range: 30 feet
+  duration: instant, special
+  effect: |-
+    As an action, or reaction to the death of an ally that has saved your life before, target yourself and up to as many other allies as your casting modifier -3 (min 1.) making a death save for each targeted creature, either returning them to life if they have died within the past 3 turns, or healing them for 3d20 health and restoring 2 rest dice to them.
+
+    All targeted creatures are dispelled of curses, afflictions, or binding magic regardless of the death save result.
+
+    Any creature below the highest level among the targeted creatures immediately levels up. This cannot level up the caster.
+
+    This cannot be cast more than once per rest.
+- name: Wrath
+  group: Oath spells
+  lvl: '6'
+  types: Evocation, Conjuration, Oath 6
+  casting: Full-round action
+  components: verbal, action
+  range: sight, 1000 feet.
+  duration: 1 hour or combat, special
+  effect: |-
+    As a full round action during a troubled sky, invoke vengeful oaths and runes to bring wrath to a visible exposed creature within sight. The target must make a wisdom or charisma save. On a failure, it takes 10d10 lightning damage. If a creature is slain by wrath, all its allies, masters, minions, and companions are cursed by a -1 penalty to d20 rolls until rest.
+
+    Can be cast as 4 full round actions to darken the sky when it is clear.

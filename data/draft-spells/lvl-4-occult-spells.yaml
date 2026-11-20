@@ -1,0 +1,125 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/occult-magic/lvl-4-occult-spells
+section: spells
+entries:
+- name: Command lesser being
+  group: Occult spells
+  lvl: '4'
+  types: Enchantment, Occult 4
+  casting: reaction
+  components: verbal, somatic, 1 rest die
+  range: 30 ft
+  duration: 8 hours.
+  effect: |-
+    As a reaction, force a creature with 5 or less int to do your bidding for up to 8 hours. It must make an intelligence save vs the effect to resist. A creature with 3 intelligence or lower that critically fails the int check has the duration instead increased to 24 hours.
+
+    Cats and owls are immune to this effect.
+  higher_levels: If cast at 5th level, can affect up to 2 targets within range. If cast at 6th, can affect
+    up to 3 targets within range.
+  draft_note: The draft specifies a reaction without naming the event that triggers it.
+- name: Overwhelming recollection
+  group: Occult spells
+  lvl: '4'
+  types: Enchantment, Divination, Occult 4
+  casting: action
+  components: Somatic
+  duration: 1d3 + 1 rounds
+  range: touch
+  effect: |-
+    As an action, touch a creature. Target creature must make a wisdom save. On a success, the spell is negated. On a failure, the events of their life are recalled all at once, and time is compressed from the perspective of the target, and for the next 1d3 + 1 rounds the target is compromised and unaware of their surroundings as images bombard their psyche. Every round and when the spell is first cast, the target takes 3d6 + casting bonus psychic damage and must make a constitution save or remain stunned until their next turn. If the character succeeds the constitution save, it only allows them to act, and does not end the recall effect.
+
+    This effect will recall events and moments that may be erased or magically obscured from the target, or which they may have forgotten.
+- name: 'Dragon aspect: Great claw'
+  group: Occult spells
+  lvl: '4'
+  types: Enchantment, Divination, Occult 4
+  casting: action
+  components: Somatic, Verbal
+  duration: 1d3 + 1 rounds
+  range: touch
+  effect: |-
+    As an action, manifest a spectral claw and crush all creatures in a 15 ft cone originating from any point within 15 ft of the caster. Creatures in the target area must make a dexterity save, taking 6d8 + your charisma bonus force damage and are knocked pro. Creatures that succeed must relocate outside the area or instead choose to fail the save.
+
+    After casting, roll a 1d4 chance dice. On a 4 or higher, the spell point or spell slots spent are not expended. If you cast the same spell again next turn, you may also spend a move action to achieve one of the following effects:
+
+    * Increase damage by 2d8 and DC by 1
+    * Increase damage by 1d8 and sweep an area with the claw instead, targeting all tiles in a wide cone that are at the same distance, which must be at least 10 ft away, but no further than 20 ft away. (This is a semi-circular ray effect.)
+
+    This is a dragon aspect spell, and requires that it be invoked when casting draconic sacrifice ritual (occult 2) or Draconic blood communion ritual (Occult 4) and sacrificing a dragonborn heart or better in order to be able to cast this spell. Alternatively, the caster may sacrifice a true dragon heart during a rest and make a DC 17 arcana check. On a success, the spell is fully learned and castable.
+  higher_levels: Per slot above 4th, increase the chance dice by 1 size category.
+- name: Occult Harvest
+  group: Occult spells
+  lvl: '4'
+  types: Necromancy, Abjuration, Occult 4
+  casting: action
+  components: Somatic
+  duration: concentration
+  range: 5 ft
+  effect: |-
+    As an action, tap the soul of dead, once-sentient, small or larger creature within range which has died within 6 rounds, or who's soul still lingers here. Doing so requires access to the creatures remains, and requires the creature make a charisma save vs the spells DC + 1. On a failure, you can grasp their spirit in your hand and hold on to it for as long as you maintain concentration.
+
+    Innately, for as long as you maintain concentration on the spell, you can choose to end the spell and do one of the following:
+
+    * Release the soul
+    * Speak to the soul
+    * Emplace it in a container you own and have access to, leaving it there.
+    * Burn the soul, restoring 1 rest die to yourself.
+    * Burn the soul, granting a creature within 5 ft a vision of an answer they seek (subject to the GM).
+    * Burn the soul, healing an undead within 10 ft or yourself for 3d10 health.
+    * Sacrifice the soul to chaos. A sacrificed soul rolls a 1d4 if any attempt to revive it is made. On anything other than a 1, it cannot be restored (subject to the GM).
+  higher_levels: Per slot above 4th, increase the DC by 1.
+- name: 'Dragon aspect: Jaws of death'
+  group: Occult spells
+  lvl: '4'
+  types: Enchantment, Divination, Occult 4
+  casting: action
+  components: Somatic, Verbal
+  duration: 1d3 + 1 rounds
+  range: 25 ft
+  effect: |-
+    As an action, manifest a spectral draconic head to perform a bite attack from above on all creatures within a 10 ft square area within range. Creatures affected must make a dexterity save, taking 5d10 + casting bonus slashing damage on a failure, and gain 1d4 instances of the bleed condition.
+
+    If any small or larger creature is slain in this manner, the caster is healed for 1d4 health, gains 1d4 temporary health, and 1d4 arcane health.
+
+    This is a dragon aspect spell, and requires that it be invoked when casting draconic sacrifice ritual (occult 2) or Draconic blood communion ritual (Occult 4) in order to be able to cast this spell. Alternatively, the caster may sacrifice a true dragon heart or better during a rest and make a DC 17 arcana check. On a success, the spell is fully learned and castable.
+  higher_levels: Increase damage by 1d10 and apply an extra instance of bleed per level above 4th.
+- name: Eldritch infestation
+  group: Occult spells
+  lvl: '4'
+  types: Transmutation, Conjuration, Occult 4
+  casting: action and bonus action
+  components: Somatic, Verbal
+  duration: 1 minute.
+  range: 60 ft
+  effect: |-
+    As an action and bonus action, infest target 5 ft tile within range with eldritch rot.
+
+    Eldritch rot is a difficult terrain that requires 10 ft of movement to move through, and which requires a strength or dexterity save to avoid being grappled and held in place if creatures occupying it either cast magic, invoke arcane items or powers, or use supernatural abilities. Grappled creatures take 1d10 force damage when first grappled and when failing to escape by failing another strength save vs the ongoing grapple effect.
+
+    Immediately after casting this spell, and at the start of every next turn, the infestation spreads by up to as many tiles as your intelligence bonus, in any connected surface of the caster's choosing.
+
+    If a small or larger creature dies within the infested area, the infestation expands another 5 ft tile per size category above tiny on its own (subject to the GM).
+
+    After the spell's duration ends, the infested area loses one 5 ft tile per round as the infestation recedes. If an infestation has more than 1000 tiles, it breaks free from the casters control and reduces the recession rate to one 5 ft tile per hour.
+- name: Draconic blood communion ritual
+  group: Occult spells
+  lvl: '4'
+  types: transmutation, necromancy, occult 4
+  casting: full round action
+  components: Somatic, Verbal, item (Draconic heart, which is consumed)
+  duration: special.
+  range: self
+  effect: |-
+    As a full round action, sacrifice a draconic heart. Draconic hearts have 6 tiers for the purposes of this spell: Kobold, animalistic draconids, dragonborn, a drake or similar lesser dragon, a true dragon, and a greater dragon.
+
+    * Kobold - Gain 1d6 arcane health.
+    * Animalistic - Gain 1d8 arcane health. Restore 1 fatigue.
+    * Dragonborn - Gain 1d10 arcane health. Restore 1 fatigue and 1 rest die.
+    * Lesser dragon - Gain 1d12 arcane health. Restore 1 fatigue, 1 rest die, and either 1 spell point, or regain a spell slot of 3rd or lower level.
+    * True dragon - Gain 3d6 arcane health. Increase max HP by 1 (max 10.) Restore either a spell point, 2d3 levels worth of spell slots, 1d4 rest dice, or regain use of a per-rest or per-long-rest ability.
+    * Greater dragon - Gain all benefits of a true dragon heart. Gain a permanent +1 bonus to a save, skill, or use-limit for a per-rest or per-long-rest ability you have. You can have a maximum of 3 such increases from this spell.
+
+    When you first consume a kobold heart, you learn kobold.
+
+    When you first consume a dragonborn heart or higher, you learn to speak Draconic.
+
+    When you first consumed a greater dragon heart with this spell, you must choose: Oath or Mystic. You can treat power word spells from these classes of magic as occult spells for the purposes of future spells known.

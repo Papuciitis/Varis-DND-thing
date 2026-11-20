@@ -1,0 +1,190 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/occult-magic/lvl-6-occult-spells
+section: spells
+entries:
+- name: Beacon
+  group: Occult spells
+  lvl: '6'
+  types: Necromancy, Divination, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic, material (1 scroll or black page, a wand, 100 gold worth crystals or arcane
+    dust)
+  duration: 6d10 minutes
+  range: touch
+  effect: |-
+    As an action, light an arcane violet flame by sacrificing a spell, a wand, and 100 gold worth of arcane components. The beacon is visible in the ethereal plane, disrupts divination magic and conjuration magic within 1 mile ( subject to the GM, ) and can be held in a torch or lantern for 6d10 minutes.
+
+    While wielding the flame, necromancy and transmutation spells cast within 10 ft of the fame are treated as 1 level higher.
+- name: Bind wraith
+  group: Occult spells
+  lvl: '6'
+  types: Necromancy, Divination, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic, material (Corpse or remains)
+  duration: special.
+  effect: As an action, bind a recently slain creatures soul to this plane as a wraith under your command.
+    Grant the wraith a purpose that it must execute in order to be released from servitude (subject to
+    the GM). The wraith can be recalled as an action.
+  Bound wraith: |-
+    Type: medium, undead, ethereal
+
+    Base stats:
+    HP: 5d12 + casting attribute total
+    BLOCK: +6 / 3
+    AC: 19
+    Physical saves: +3
+    Mental saves: +6
+
+    Move speed 40, regeneration 10
+
+    reconstitute 1d4 - When reduced to 0 health, roll 1d4. On a 1, the creature is recorporated at 1/2 hp and regains 1 block.
+
+    Hated by the light - When exposed to direct open sunlight, make a constitution save. On a failure, the wraith burns, It cannot willingly enter the light unless commanded.
+
+    Skills: +5 to insight and intimidation.
+
+    Attacks & actions:
+
+    * Wraith touch attack +8 - unblockable, 3d8 cold damage. Paralyze for 1d3 rounds on crit.
+    * Suppress - target in range makes wisdom save. on failure they have disadvantage on d20 rolls for 1d4 rounds.
+    * Seek - Immediately know the path to your target.
+    * Fade - Become invisible until dispelled or making an attack.
+    * Apparate - Teleport 100 ft. Increases to 300 ft when invisible.
+- name: Chaos flame
+  group: Occult spells
+  lvl: '6'
+  types: Evocation, Necromancy, Transmutation, Occult 6
+  casting: action
+  components: Verbal, Somatic, 1d6 HP worth of blood
+  duration: instant
+  range: 40 ft
+  effect: |-
+    As an action, make a spell attack against a target creature, dealing 7d6 fire damage. For every dice roll that lands in a 6, roll an extra d6 damage dice and repeat the process. For every additional damage dice, deal diminishing damage spreading out in a sphere around the target, which can be reduced by half with a dexterity save.
+
+    Example: If you have 3 extra damage dice, the target takes 3d6, creatures at 5 ft take 2d6, and creatures at 10 ft take 1d6, and this extra damage can be reduced by a dex save.
+
+    Creatures slain by a chaos flame have their soul incinerated (subject to the GM) and leave behind null embers, which have a powerful necrotic, evocation, and transmutation affinity, and have all their items incinerated or melted ( subject to the GM. )
+
+    Sacrifice to the gods of chaos is the most costly
+- name: Chaos mutation
+  group: Occult spells
+  lvl: '6'
+  types: Evocation, Necromancy, Transmutation, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic, 1d4 HP worth of blood
+  duration: special
+  range: 20 ft
+  effect: |-
+    As an action, cause a creature to violently mutate by magical means. An unwilling creature can make a constitution or wisdom save to resist.
+
+    On mutation, the target must roll 8d6, granting a +1 bonus to the attribute (str, dex, con, int, wis, cha) for the duration. And the target gains 4 of the following traits at random (roll 1d6):
+
+    * Claws - Gain or increase claw attack damage by 2d8 damage. Claw attack damage is cursed and cannot be healed, and ignore damage resistance.
+    * Eldritch eyes - Gain 50 ft of darkvision, tremorsense. Can stare as an action, forcing an intelligence or dexterity save from a target within sight, taking 3d6 radiant damage on a failure.
+    * Draconic scales - Gain a +1 bonus to AC and resistance to one of: fire, cold, acid, necrotic, or lightning damage.
+    * Bioplasticity - Gain a climb, glide, and swim speed of 40 ft and gain waterbreathing. Gain a +5 bonus to movement speed.
+    * Psionic horns - Gain a psionic strike, which can deal 4d10 psychic damage to a creature within 40 ft as a bonus action, allowing for half damage with a successful intelligence save. Gain aura-detection. If taken multiple times, for each time, increase damage by 2d10 and range by 40 ft.
+    * Fiendish fangs - Gain an unarmed proficient bite attack that scales with constitution and gains a +3 bonus. It deals for 3d12 necrotic damage and heals for 2d10 for each upgrade of fiendish fangs. If it kills a medium or larger creature, you can consume one of its feats, granting it for yourself. The feat is lost when the spell ends, and you cannot have more than one.
+
+    The mutation lasts 10 minutes, at the end of which you must roll a 1d10, resetting the duration on a 6 or below. Once the effect ends, take 1d3 points of fatigue damage for each 10 minutes spent transformed.
+- name: 'Power word: Nightmare'
+  group: Occult spells
+  lvl: '6'
+  types: Necromancy, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic
+  duration: instant.
+  range: special, 30 ft
+  effect: |-
+    As an action, force creatures within a 50 ft area within range to make a wisdom or charisma save. On a failed save they take 6d6 + casting bonus psychic damage.
+
+    Creatures must then take another wisdom save. On a failure, they are cursed for 3d6 minutes. For the duration, they are blinded and distracted, and take 1d6 + casting bonus psychic damage at the start of their turn. Creatures that attempt and fail to remove the curse must make a wisdom save to not contract it for another 3d6 minutes.
+- name: 'Power word: Reap'
+  group: Occult spells
+  lvl: '6'
+  types: Necromancy, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic
+  duration: instant.
+  range: special, 30 ft
+  effect: |-
+    As an action, appear next to a target and make a melee spell attack against the target. On a success, deal 7d12 necrotic or psychic damage (your choice) to the target. If this kills the target, gain a +1 bonus to max HP (max +7)
+
+    If cast while having slain 7 victims already, the spell is altered in the following ways:
+
+    * You gain a +1d12 to damage per victim slain by the spell. Resets to 0 every long rest.
+    * Slaying a creature heals you or an undead of choice within range for 3d10 HP.
+- name: 'Power word: Rot'
+  group: Occult spells
+  lvl: '6'
+  types: Necromancy, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic, 1 death save
+  duration: 3d4 * 10 minutes.
+  range: 30 ft
+  effect: |-
+    As an action, curse a creature within 30 ft. The target must make a constitution and wisdom save.
+
+    If either save is a failure, they take 13d6 poison damage.
+
+    If both saves are failures, the target and all creatures within 25 ft of it, and within 25 ft of the target when it dies, are afflicted by eldritch rot.
+
+    Eldritch rot - deals 1d4 nonlethal poison damage at start of round, all saves reduced by 1, all healing reduced by 1, death feeds nearby undead and eldritch entities (subject to the GM). Is both a curse and disease. Cannot be healed naturally. Disadvantage on dispel checks. Target cannot heal above 1/2 max HP.
+- name: 'Power word: Undeath'
+  group: Occult spells
+  lvl: '6'
+  types: Necromancy, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic
+  duration: permanent.
+  range: 30 ft
+  effect: |-
+    As an action, reanimate a creature as a true undead, retaining its soul but poisoning it. A true undead cannot heal from spells that do not specifically heal undead, has a +10 bonus to max HP, and can no longer cast abjuration spells.
+
+    A true undead must be willing to return, otherwise it must make a wisdom save to resist.
+
+    A true undead has all cold, acid, and poison damage reduced by 1d8.
+
+    It has undead fortitude 5, making a constitution save vs 5 + the damage taken in order to be reduced to 5 hp instead of 0.
+
+    A true undead cannot be raised by other means than another power word: undeath spell, and their soul is permanently lost if they are completely destroyed (disintegrated, ground to dust, incinerated, discorporated, shattered into a million pieces, etc.)
+- name: 'Power word: Charm'
+  group: Occult spells
+  lvl: '6'
+  types: Enchantment, Occult 6
+  casting: action
+  components: Verbal, Somatic
+  duration: 1d12 minutes.
+  range: self
+  effect: |-
+    As an action, grant yourself a +6 bonus to charisma for 1d12 minutes.
+
+    For the duration of the spell, you can reroll any social check you make up to 3 times, and magic that would determine if you are telling the truth will detect you as truthful.
+
+    Casting a damage dealing spell will end this effect.
+- name: Remember me when you ascend
+  group: Occult spells
+  lvl: '6'
+  types: Necromancy, Divination, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic, 2 death saves
+  duration: special.
+  effect: |-
+    As an action when below 4 HP or about to die, or as a reaction when being reduced to 0 HP, bless an ally within 30 ft, at the cost of losing 2 death save slots.
+
+    The affected ally is granted a temporary extra level (subject to the GM). and feat, which lasts until long rest.
+- name: Vermin-form
+  group: Occult spells
+  lvl: '6'
+  types: Transmutation, Occult 6
+  casting: action or reaction
+  components: Verbal, Somatic, 1 death save
+  duration: 3d4 * 10 minutes.
+  range: self
+  effect: |-
+    As an action or reaction, undergo a transformation. Make 1 death save. For the next 3d4 * 10 minutes, you can become a swarm of vermin of your choice as an action, and return back as an action. For the duration, you have swarm movement 60 ft.
+
+    As a swarm, you can choose to be burrowing, flying, or crawling, gaining the associated type of movement at 50 ft. Once chosen, it remains the same for the duration of the spell.
+
+    During swarm form, you cannot cast, cannot make regular attacks or access and use your items, can make a 4d4 + casting bonus slashing damage swarm attack.
+
+    The swarm has darkvision, echolocation, tremorsense, keen scent, 5d8 health which is reset every time upon entering the form, and +6 to physical saves.

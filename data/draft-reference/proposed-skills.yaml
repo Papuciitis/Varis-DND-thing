@@ -1,0 +1,22 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/skills
+section: design-notes
+entries:
+  - name: Proposed skill list
+    group: Proposals
+    skills:
+      columns:
+        - Ability
+        - Skills
+      rows:
+        - - Strength
+          - Athletics; Stamina
+        - - Dexterity
+          - Acrobatics; Sleight of hand; Stealth
+        - - Constitution
+          - Instinct
+        - - Intelligence
+          - Arcana; History; Investigation; Nature; Religion; Mechanism
+        - - Wisdom
+          - Animal handling; Insight; Medicine; Perception; Survival
+        - - Charisma
+          - Deception; Intimidation; Performance; Persuasion

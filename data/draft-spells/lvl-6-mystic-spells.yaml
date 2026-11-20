@@ -1,0 +1,234 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/mystic-magic/lvl-6-mystic-spells
+section: spells
+entries:
+- name: Bestow primordial spark
+  group: Mystic spells
+  lvl: '6'
+  types: Evocation, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 rest die.
+  duration: instant
+  range: 15 ft
+  effect: |-
+    As an action, grant another ally a spark from your own magic, costing you 1 rest die in the process. Revive them if they have died within the last 2d4 minutes, heal them for 3d10 HP, and grant them 3d10 temporary HP. Restore 2 rest dice to them.
+
+    If cast on a lesser elemental (subject to the GM). allow them to become a first-generation Ginasi.
+- name: Elder rune of binding
+  group: Mystic spells
+  lvl: '6'
+  types: Abjuration, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 rest die.
+  duration: instant
+  range: 15 ft
+  effect: |-
+    As an action, invoke a binding rune in your palm that persists for 3d8 minutes. While wielding the rune you can do the following:
+
+    * As an action, directly deal 2d10 + casting bonus psychic damage to an elemental, undead, fae, or monstrosity type creature.
+    * As a bonus action, place a marker rune on a surface beneath your feet.
+    * As an action, force a creature between three or more marker runes to make a wisdom save, being banished to the ethereal plane on a failure.
+    * As an action, concentrate and force a creature between three or more marker runes to make a constitution save, being paralyzed for as long as you maintain concentration
+    * As an action, manifest a wall of force up to 40 ft high between two marker runes until the start of your next round.
+    * As a bonus action, make a marker rune glow until the start of your next turn, granting creatures standing on it disadvantage on saves vs your spells.
+    * As a bonus action, make a marker rune shatter, forcing creatures on top of it to make a dexterity save, becoming snared and dispelled for 1 minute on a failure.
+
+    The caster may sacrifice the rune in his palm to seal an object covered in 5 or more marker runes, making it obscure to divination and sealing its contents in stasis for the ages, but doing so costs 1d8 rest dice, or death saves when out of rest dice.
+- name: Go unseen
+  group: Mystic spells
+  lvl: '6'
+  types: Abjuration, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 rest die.
+  duration: instant
+  range: self
+  effect: |-
+    As an action, spend 1 rest die and become invisible for 1 hour. For the duration of the spell, detection, divination, and location sensitive magic does not perceive you (subject to the GM).
+
+    Making an attack or casting a damaging spell ends this effect.
+- name: 'Power word: Freeze'
+  group: Mystic spells
+  lvl: '6'
+  types: Evocation, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 fatigue
+  duration: instant
+  range: 60 ft
+  effect: |-
+    As an action, target takes 10d10 cold damage. Damage is halved on a successful constitution save. On a critical failure, the target is encased in stasis in direfrost that does not melt except by means of great magical fire (subject to the GM.)
+
+    Uttering the spell itself freezes your breath, causing 1 damage to fatigue.
+- name: 'Power word: Grow'
+  group: Mystic spells
+  lvl: '6'
+  types: Transmutation, Mystic 6
+  casting: action
+  components: Somatic, verbal
+  duration: 1 hour
+  range: 40 ft
+  effect: As an action, cause a tree, growth, or bush of choice to grow to your liking, building structures
+    from its roots, enveloping nearby structures, carving tunnels or walls, bear fruit, or create platforms
+    or thorny traps to your liking within a 60 ft radius of the casting point.
+- name: 'Power word: Rust'
+  group: Mystic spells
+  lvl: '6'
+  types: Transmutation, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 rest die.
+  duration: instant
+  range: 15 ft
+  effect: |-
+    As an action, speak the word of power and cause all non-magical metal equipment in a 15 radius of a target point gain a -1d3 penalty and take 3d10 acid damage. Magical equipment gets a wisdom save (either innate or the wielders.) and takes a -1 penalty instead on a failure.
+
+    Creatures caught in the area must make a constitution save to avoid taking 3d10 acid damage.
+
+    metallic and stone structures, metal and stone creatures, and metal and stone constructs take double damage.
+- name: Channel the cosmos
+  group: Mystic spells
+  lvl: '6'
+  types: Divination, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 rest die.
+  duration: 3 rounds, special
+  range: self
+  effect: |-
+    As an action, spend 1 rest die to make yourself take on an ascended form. For the next 3 rounds, you have a +1 bonus to all saves and you can spend an action to speak a name of a school of magic to record. After the 3 rounds, you manifest 3 spells of 3rd level or lower of any class of magic that is of the recorded schools and cast them using the modifier cast for the spell.
+
+    You can end the effect with only 1 or 2 words, allowing you to trigger 1 or 2 spells accordingly.
+- name: Primordial strength
+  group: Mystic spells
+  lvl: '6'
+  types: Transmutation, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 rest die.
+  duration: instant
+  range: 20 ft
+  effect: |-
+    As an action, spend 1 rest die and make you or a target creature within range make 2 death saves. Afterwards, they are healed for 1d20 HP and are enchanted for the next 3d4 minutes.
+
+    They gain the following benefits for the duration:
+
+    * +20 movement speed
+    * +20 jump distance
+    * +4 strength
+    * +4 dexterity
+    * +20 max HP
+    * Regain 1 use of per-long-rest abilities
+    * +2 temporary block
+    * All physical damage dealt is increased by 1 dice size category
+
+    After the spell ends, make another death save.
+- name: Sever fate
+  group: Mystic spells
+  lvl: '6'
+  types: Divination, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1 rest die.
+  duration: instant
+  range: self, allies, GM
+  effect: As an action, spend 1 rest die to gain divine sight for 1 round. Until the start of your next
+    turn, you can make the GM or any ally reroll any dice once.
+- name: Soulrip
+  group: Mystic spells
+  lvl: '6'
+  types: Necromancy, Mystic 6
+  casting: action
+  components: Somatic, verbal, 1d6 HP
+  duration: instant
+  range: 60 ft
+  effect: |-
+    As an action, sacrifice 1d6 HP worth of your own power and make a ranged spell attack against a target creature within range.
+
+    The attack deals 3d12 psychic damage to a creature. If hit, the creature must then make a wisdom or charisma save, taking 3d10 necrotic damage on a failure. The creature must then make a constitution or strength save, taking 3d8 slashing damage on a failure.
+
+    From here on out, spells you cast at the target gain a +1 bonus to DC, permanently ( Cannot stack. )
+- name: The great mist
+  group: Mystic spells
+  lvl: '6'
+  types: Transmutation, Mystic 6
+  casting: action
+  components: Somatic, verbal
+  duration: 1 hour
+  range: 3 mile radius
+  effect: |-
+    As 3 full round actions, cause the surrounding area to be enveloped in a fog that deeply obscures for the next hour. This causes rain to become fine and misty, or snow to thaw and steam.
+
+    Creatures cannot be found by magical means while in the mist.
+
+    You are allowed to see clearly in the fog. You can grant this benefit to up to as many allies as your casting bonus.
+
+    Cannot be cast during high sun.
+- name: Fae circle
+  group: Mystic spells
+  lvl: '6'
+  types: Conjuration, Mystic 6
+  casting: 1 hour
+  components: Somatic, verbal, material (3d4 HP worth of blood, 1000 silver worth of dust, 1 gold worth
+    of salt)
+  duration: special
+  range: special
+  effect: |-
+    As a 1 hour long ritual, create a fae circle in the ground around you by expending phials of 3d4 HP worth of blood, 1000 silver worth of silver dust, and 1 gold worth of salt. The circle can have a radius of 5 to 30 ft.
+
+    Once created, the fae circle becomes engraved in the land after being undisturbed for 1d100 days, leaving behind a circle of mushrooms.
+
+    A fae circle can be invoked by spending 4 rest dice, allowing those within to all make a DC 20 arcana check. If the majority fail, or if anyone has a critical failure, they are ejected into the ethereal plane. Otherwise, the circle extends to act as a gateway into the faewild at a corresponding circle. The corresponding circle is of the same size and once linked, cannot be unlinked.
+
+    Those who can cast this spell can invoke a fae circle to bring them to another circle that they are aware of that is of the same size within the same plane.
+
+    Those who can cast this spell can invoke a fae circle by being only within 30 ft of one.
+- name: Ironwood ceremony
+  group: Mystic spells
+  lvl: '6'
+  types: Transmutation, Abjuration, Mystic 6
+  casting: full round action
+  components: Somatic, Verbal, material (carving implement)
+  duration: permanent
+  range: touch
+  effect: |-
+    As a full round action, inscribe a tree with a rune of the great worldtree. You become its grovetender, and the tree slowly takes on the aspects of an ironwood tree.
+
+    A 100 ft radius area around the tree becomes enchanted so long as it remains standing. Allies within the area are untargetable by spells, powers, and non-mundane abilities originating from outside the area.
+
+    As grovetender, you can choose one when engraving the rune:
+
+    * Beseech the roots - the trees roots twist and grow to fortify whatever structure, ecosystem, or fortifications exist either beneath it, or around it within the enchanted zone (subject to the GM).
+    * Bless the earth - the earth, soil, and water within the enchanted area becomes purified, removing contaminants, poisons, and disease. Magical diseases are muted while within its presence.
+    * Praise the skies - The tree grows to extreme heights, reaching up to 5 times higher than its siblings would. All lightning, sun, and moon limitation spells cast in its presence are treated as being valid (as though the moon was out, the sun was visible, or that thunder and lightning was storming) and allow for the spells casting.
+    * Ward the forest - Hostile creatures, or creatures of a type decided by the caster when marking the tree must succeed a wisdom save to enter the area, being barred as though by impassable force for the next day on a failure.
+
+    You may pass over the title of grovetender to another by spending 1 rest die during a rest, allowing you to cast this spell again without the need to destroy the tree created.
+- name: Rile dark spirits
+  group: Mystic spells
+  lvl: '6'
+  types: Transmutation, Mystic 6
+  casting: action
+  components: Somatic, verbal, material (corpse of eldritch, greater undead, or large or larger monstrosity)
+  duration: 3 hours
+  range: 3 mile radius
+  effect: |-
+    As 3 full round actions, conjure the disturbed spirits out of an eldritch, greater undead, or large or larger monstrosity corpse. At the end, you conjure 1d4+1 dark spirits to do your bidding. They follow your commands.
+
+    If a caster falls below 10 HP, the dark spirits break free of their control and turn on them.
+  Dark spirit: |-
+    Type: small, undead, ethereal
+
+    Base stats:
+    HP: 3d8 + casting attribute bonus * 3
+    BLOCK: +6 / 3
+    AC: 18
+    Physical saves: +2
+    Mental saves: +5
+
+    Fly speed 60, ethereal walk, true-sight
+
+    Regards - If slain by a spell or weapon, the creature that slays a dark spirit takes 1d10 + casting bonus cold damage.
+
+    Hated by the light - When exposed to direct open sunlight, make a constitution save. On a failure, the dark spirit burns and takes 2d10 radiant damage, It cannot willingly enter the light unless commanded.
+
+    Skills: + casting bonus to stealth and intimidation.
+
+    Attacks & actions:
+
+    * Cold touch attack +5 - DC 16 block, 2d4 + casting bonus cold damage. Paralyze for 1 round on crit.
+    * Beguile - Cause an unaware medium or smaller creature within 30 ft to make a DC 18 wisdom save. On a failure, the creature is convinced of a fact of the dark spirits or caster's choice.
+    * Haunt - As a reaction to a spell, wand, or scroll being cast or a rest dice being used, lose 1d6 HP to force the target to make a DC 18 concentration check. On a failure, it loses the action.

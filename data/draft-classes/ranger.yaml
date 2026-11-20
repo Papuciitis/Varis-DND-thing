@@ -1,0 +1,498 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/ranger-x
+- name: Ranger
+  group: Base class
+  description: The ranger is the survivalist, someone who seeks mastery over himself and his surroundings, and who hones
+    his instincts to serve him. A ranger seeks to be the hunter, the one who strikes first, and the one who aims true. In
+    order to achieve this, the ranger not only equips themself with various skills and tools for the task, but also the
+    focus and dedication needed to overcome whatever problem may come their way.
+  draft_note: Prep and Ability score improvement both begin at level 2. The draft lists a proficiency bonus of 8 at level
+    9, between bonuses of 4 at level 8 and 5 at level 10. The level 9 value needs confirmation.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      rows:
+      - - '1'
+        - '2'
+        - Sense danger, focus
+      - - '2'
+        - '2'
+        - prep, triage, ability score improvement
+      - - '3'
+        - '2'
+        - Ranger training
+      - - '4'
+        - '3'
+        - 1st archetype
+      - - '5'
+        - '3'
+        - ability score improvement
+      - - '6'
+        - '3'
+        - '-'
+      - - '7'
+        - '4'
+        - 2nd archetype
+      - - '8'
+        - '4'
+        - ability score improvement
+      - - '9'
+        - '8'
+        - '-'
+      - - '10'
+        - '5'
+        - 3rd archetype
+      - - '11'
+        - '5'
+        - ability score improvement
+      - - '12'
+        - '5'
+        - '-'
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d8
+
+      Armor: Light armor, light shields
+      Weapons: Simple weapons, 1 martial weapon group of choice.
+      Tools: Choose 1 from: Herbalism kit, Climber's kit, Cook's utensils, Leatherworker's tools, Cartographer's tools
+      Saving throws: Dexterity, Wisdom
+      Skills: Choose three from: Animal Handling, Athletics, Insight, Investigation, Medicine, Nature, Perception, Stealth, and Survival
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) Leather armor or (b) Padded armor and a light shield
+      * (a) Two simple melee weapons or (b) Longbow and a quiver with 20 arrows
+      * (a) two daggers or (b) a simple one-handed weapon.
+      * (a) a dungeoneer’s pack or (b) an explorer’s pack
+  - heading: Sense danger
+    body: At 1st level, you can act in the surprise round.
+  - heading: Focus
+    body: |-
+      At 1st level, you can spend 1 rest die as a free action to gain 1d4 rounds of focus. While under the effects of focus you gain the following effects:
+
+      * Attack rolls have a +1d4 bonus to hit.
+      * Your dexterity and wisdom checks have advantage.
+  - heading: Ability score improvement
+    body: |-
+      When you reach 2nd level, and again at 5th, 8th, and 11th level, increase one ability score by 2, or two ability scores by 1. Alternatively, gain a feat.
+
+      Also, whenever you would gain an ability score increase, also gain one of the following:
+
+      * Gain proficiency with a martial weapon group of choice.
+      * Gain proficiency with medium armor
+      * Gain proficiency with heavy armor if already proficient with medium armor
+      * Gain proficiency with heavy shields.
+      * Gain a +1 bonus to a save of your choice.
+      * Gain a +1 bonus to a skill of your choice.
+  - heading: Prep
+    body: |-
+      At 2nd level, during a short rest you can spend 1 rest die to use one of the following abilities:
+
+      * Ready arms — With appropriate supplies approved by the GM, choose from the following options 1d3 times.
+        * Prepare ammunition — Prepare 2d3 pieces of ammunition against one GM-approved target type, such as armored creatures, undead, goblinoids, or beasts. Against the chosen type, attacks deal an extra 1d12 damage of an appropriate type and gain crit range+.
+        * Prepare weapon — Choose one weapon and one target type as for Prepare ammunition. Until your next rest, the weapon deals an extra 1d4 damage to that type. Choose one of its maneuvers to perform without spending an extra bonus action. A weapon can have only one such modification at a time.
+      * Plan - Gain a +1d4 bonus to a skill you are proficient with until your next rest. Can only plan one skill at a time.
+      * Ranger alchemy - if you have access to adequate materials and either a set of alchemist’s tools, herbalists tools, or brewers tools (same reasoning as the "prepare ammunition" option.) you gain 1d3 alchemy points (AP), which can be used to make one of the following:
+        * Healing elixir(2AP) - Can be consumed to heal 1d10 + wisdom bonus points of health and when administered to a dying creature, it heals 1 failed death save.
+        * Venom extraction(1 AP) - Extract a venomous or poisonous substance from an item in your possession into a flask, allowing you to apply it as an action to a weapon, lasting for 1d4 attacks, or to apply it to 1d4 pieces of ammunition. The extracted flask deals 1d3 to 1d12 poison (or acid) damage based on the potency of its source, but may also apply additional conditions based on what kind of toxin is being extracted (Subject to GM.)
+  - heading: Ranger training
+    body: |-
+      At 3rd level, choose 3 upgrades from the list below:
+
+      * Beast lore - You gain a +3 bonus to all checks made to detect, identify, track, train, and communicate with beasts and animals.
+      * Enhanced focus - The duration of your focus is increased by 1 turn. Can be taken twice.
+      * Folklore knowledge - Gain proficiency with history. When using prep for an intelligence or wisdom skill, make a DC 18 wisdom check. On a success, the prep rest dice are refunded.
+      * Keen will - Gain a +1 bonus to wisdom saves. Gain proficiency with insight. If already proficient, gain expertise. If already expert, Increase your maximum rest dice by 1.
+      * Loadbearing - Ignore 1 bulk. This increases to 2 bulk at 7th ranger level.
+      * Monster lore - You gain a +3 bonus to all checks made to detect, identify, or inspect the lairs of beasts and monsters (Subject to GM.)
+      * Novice alchemy - you use ranger alchemy, you may also make the following:
+        * Cats eye potion(1 AP) - Potion that grants darkvision at a range of 90 feet and a +1 bonus to dexterity saves for 3 hours.
+        * Ranger bomb(1 AP) - A flammable potion that can be thrown at a target at a range of 30/60 ft, dealing 1d6 + your ranger level + your wisdom bonus fire damage to the target. It cannot be blocked.
+        * Warding stone(2AP) - A tool that can be thrown. If it is exposed to a magical area or aura, it begins to shimmer and fizzle harmlessly until it slowly dissolves away. This process lasts an hour.
+      * Occult hunter - Learn an occult cantrip. You can use wisdom or dexterity as the casting modifier. The cantrip costs 1d3-1 health to cast (Same as having a 1d3 HP component cost) if it does not already have an associated HP cost.
+      * Quick hands - Gain the dual wielding feat if you do not have it, but do not gain the ability score increase from it. Swapping and drawing weapons can be done as a free action. Gain advantage on saves vs disarm abilities.
+      * Quick step - When moving, your first 5 feet of movement do not provoke attacks of opportunity.
+      * Sudden focus - If you roll a nat 1 on your focus duration die, you regain 1 rest die.
+      * Sure step - You can ignore 5 feet of difficult terrain up to as many times as your wisdom bonus per turn. Can be taken twice, and if done so, applies to the first 15 ft and increases movement speed by 5 ft.
+      * Tactical step - On a successful block attempt, you can spend a reaction to move 5 feet per dexterity bonus (min 1.) This movement does not provoke attacks of opportunity.
+      * Tactician - When you choose to plan during prep, you may plan up to as many skills as your intelligence bonus. The bonus to skills is increased to 1d6.
+      * Thinking fast - You have an extra reaction. Gain a +1 bonus to initiative.
+      * Warding signs - Learn a mystic or oath cantrip. Use wisdom or dexterity as the casting modifier.
+      * Weapon maintenance - When using prep to ready arms, the ammunition amount is increased to 2d4 and the weapon bonus damage is increased by 1. When applying toxins from extracted venom or poison from ranger alchemy, the amount of ammunition and the number of attacks that it applies to are increased by 2.
+  - heading: 1st ranger archetype
+    body: |-
+      At 4th level, choose your 1st ranger archetype:
+
+      * Huntsman
+      * Wanderer
+      * Bounty hunter
+  - heading: 2nd ranger archetype
+    body: At 7th level, choose your 2nd ranger archetype
+  - heading: 3rd ranger archetype
+    body: At 10th level, choose your 3rd ranger archetype
+# https://sites.google.com/view/dnd5plus/home/classes/ranger-x/huntsman
+- name: Huntsman
+  group: Ranger archetypes
+  sections:
+  - heading: Target
+    body: |-
+      At 4th ranger level, when you enter focus, you can designate one creature within sight range as a target. For the duration of focus, the target has disadvantage on block attempts against your attacks.
+
+      If the target is slain or knocked unconscious, you can reenter and reset focus as a free action, choosing a new valid target.
+  - heading: Prepare for the hunt
+    body: |-
+      At 4th ranger level, when you prep (ranger 2) you can also do one of the following:
+
+      * Gather supplies - Create 2 alchemical points (AP.) You can have a maximum equal to your wisdom or intelligence bonus, whichever is higher.
+      * Poison preparation - Do any of the following:
+        * Ochre venom - create 1d3 vials of ochre venom by spending 1 AP. A single dose can be applied to a weapon or piece of ammunition, or consumed, and deals 2d6 necrotic damage. For an hour after injury, if the target reaches 0 health, they become stabilized and paralyzed for 1 hour instead of dying.
+        * Poison enhancement - Alter a poison, poison damage dealing consumable, or acid damage dealing consumable you possess by spending 1 AP. Increase its damage dice by 1 size category, durations by 1 unit (turn, round, minute, hour), DCs by 1, and area size by 5 ft, if applicable, and allow it to bypass poison resistance. This can be done to an item only once.
+        * Huntsman's elixir - Create 1 tincture of huntsman's elixir for 2AP. It grants the benefit of your focus (at the time of crafting) feature when consumed. It deals 1d4 poison damage and 1 damage to fatigue afterwards.
+      * Dust preparation - Do any of the following:
+        * Silver blade dust - create 1 vial of silver blade dust for ap. When applied to a weapon, for the next 2d4 attacks, any damage it deals cannot be healed until after the wounded creature takes a short rest. When applied to a bolt or arrow, grant it the cursed damage effect and cause it to deal 3d8 extra necrotic damage.
+        * Crystal powder - create 2d3 pouches of crystal powder for 1 AP. They can be thrown either as a flare into the air, or struck at the ground within 30 feet, creating a 15 ft sphere of dust at the point of impact, revealing invisible creatures. Once thrown they sparkle for 2d3 rounds. If fired from a launcher weapon, blinds targets on a critical hit for 2d3 rounds.
+      * Tool preparation - do any of the following:
+        * Potion of the cat - create 1 potion of the cat for 1 AP. When consumed it grants the following effects for 3 hours: 60 feet of darkvision and gain 4 dice of the cat. A dice of the cat is a 1d4 that can be used to grant a bonus to an attack, a dexterity save, or a charisma save.
+        * Barbed ammunition - Modify 2d3 +wisdom bonus pieces of ammunition to deal an extra 1d6 damage, apply bleed on a critical, and have a 1d10<3 chance to apply bleed on other unblocked hits. A bolt cannot be modified by this more than once.
+        * Exotic ammunition - modify 1d3 + wisdom bonus pieces of special ammunition, either arrows, bullets, or bolts for 1 AP. The ammunition ignores resistance, and deals 1d8 extra damage of your choice: fire, lightning, acid, or sonic. A piece of ammunition cannot be modified in this way more than once.
+        * Specialized bolt - modify 1 piece of ammunition for 1 AP to expand its critical range by 3.
+
+      The DC of your ranger creations is (8 + your proficiency, plus either your wisdom bonus or your intelligence bonus, whichever is highest.) unless otherwise stated.
+  - heading: Picking things up
+    body: "At 5th ranger level, choose 4 upgrades from the tree below:\n\nHunting - your focus lasts 1 turn longer.\n\n\
+      \  * Aim for the heart - You can treat the aim weapon property as though it granted twice the bonus to damage instead\
+      \ of to hit.\n  * Eye the target - You can spend a reaction during your turn to grant your next attack a +1 bonus\
+      \ to hit and damage.\n  * Focused reload - You can reduce focus by 1 turn while it is active to reduce the reload\
+      \ property of 1 weapon that you are wielding by 1 for 1 turn.\n  * Hobbling strike - While focused, you can spend\
+      \ 1 turn of focus when making an attack to cause the target to become hobbled for 1d3 turns if it is not blocked.\
+      \ A hobbled target loses half their movement speed.\n  * Rushed-shot - You can spend a move action to make an attack\
+      \ with a crossbow immediately, but the effective range of the attack is reduced by half.\n  * Spotting - You can spend\
+      \ an action to grant an ally within 10 feet a 1d4 bonus to hit against the target.\n\nEquipment - The tool weapon\
+      \ property bonus is increased by 1. You gain a +1 bonus to checks made to repair, fix, or create tools or weapons.\n\
+      \n  * Ammunition crafting - When creating or modifying ammunition or thrown weapons of any kind, create or modify\
+      \ up to 1 extra.\n  * Exotic crossbow tinkering - You can modify one crossbow during a long rest that has the Capacity\
+      \ property to increase its capacity by 2. This cannot be applied to more than 2 weapons at a time, and is lost on\
+      \ a jam in the hands of another creature.\n  * Extract glands - You can butcher a monstrous or bestial cadaver (Subject\
+      \ to GM.) during prep to extract one kind of bodily fluid that it possesses and turning it into one of the following\
+      \ without requiring any base check (Subject to GM.): \n - 1 adrenaline tincture ( grants 1d2 turns of focus.)\n -\
+      \ 1 venom toxin ( can be used during poison enhancement, allowing poison enhancement to be used on the same poison\
+      \ an extra time.)\n - 1d3 exotic chitin ( can be used in place of 1 AP.)\n - 1 eldritch bile phial ( can be burned as\
+      \ part of casting an occult or mystic spell or scroll, increasing its level by 1)\n  * Gleamed bowstring oil - You\
+      \ learn a new tool preparation option, allowing you to create gleamed bowstring oil, which can be applied to a bow\
+      \ or crossbow, allowing its next 2d8 attacks to benefit from your strength bonus.\n  * Just to be safe - A number\
+      \ of times per long rest equal to your intelligence bonus -1 (min 1) when you create consumable items by spending\
+      \ rest dice or AP (Subject to GM.) you can create 1 additional item.\n  * Minor weapon modifications - When you use\
+      \ prep, you can grant a weapon a 1d3 minor mod points. A minor mod point can be used to reroll an attack with the\
+      \ weapon up to once per turn, or to reroll a block check while wielding the weapon up to once per turn. A weapon cannot\
+      \ have more minor mod points than your int bonus +1.\n  * Poison distillation - When you use poison preparation ->\
+      \ poison enhancement, poisons can now be modified up to twice by it.\n  * Magic item use - You gain a +1 bonus to\
+      \ checks made to interact with magical objects. Gain a +2 bonus to saves vs magical traps.\n  * Standard claw-trap\
+      \ - You can create 1d3 clawtraps for 1 AP whenever you use prep. A clawtrap is a placeable trap that can be thrown\
+      \ on the ground, dealing 1d8 piercing damage, applying bleed, and hobbling (halved movement speed) creatures that\
+      \ enter the tile it is thrown into, unless they succeed on a dexterity save.\n\nSurvival - Gain proficiency with survival.\
+      \ If already proficient, gain expertise. If already expert, you can predict the weather 1 day in advance.\n\n  * Diligent\
+      \ preparation - When you use prepare for the hunt, you can trigger two of the top level effects at once.\n  * Evasive\
+      \ dash - You can spend 2 turns of focus to disengage up to 10 feet, and restore 1 block.\n  * Healing salves - When\
+      \ using triage, also grant the target you are healing 1d4 arcane health.\n  * Rationing - Once per long rest you can\
+      \ spend a rest die to double a food item or consumable, and either eat one or give it away to an ally.\n  * Trap spotting\
+      \ - Gain a +1 bonus to all checks made to spot or disarm traps. Gain a +1 bonus to all saves vs traps.\n  * Warning\
+      \ bells - When you use any rest dice during a short rest, you can set up warning traps. If the party is ambushed during\
+      \ the rest, they gain advantage on their initiative rolls. Gain a +1 bonus to checks and saves made to guard or fulfill\
+      \ the duties of a lookout.\n  * Guidance - When you lead the party, everyone can ignore the effects of minor difficult\
+      \ terrain when traveling.\n\nAlso, At 6th level choose three more upgrades.\n\nWhenever you would gain an ability\
+      \ score increase, you can choose to instead gain one upgrade from this list and a feat instead."
+  - heading: Vigilance
+    body: At 6th ranger level, gain proficiency with insight, investigation, or perception. If you are already proficient
+      with any of these, you can choose to gain expertise in one that you are proficient with instead. If you are already
+      expert in any of these, you can choose to gain a feat instead.
+  - heading: The Hunt
+    body: |-
+      At 6th ranger level, the target chosen during focus remains a target even once focus ends. If your designated target manages to escape or evade combat, you gain advantage on all checks made to track, detect, and pursue them.
+
+      If you hunt down a target that has escaped initial encounter and subdue or kill them, you regain 1 rest die.
+# https://sites.google.com/view/dnd5plus/home/classes/ranger-x/wanderer
+- name: Wanderer
+  group: Ranger archetypes
+  sections:
+  - heading: Brisk
+    body: at 4th ranger level, your movement speed is increased by 10 feet.
+  - heading: Make it count
+    body: At 4th ranger level, while focused, you can reduce the duration of focus by 1 turn to gain advantage on your next
+      attack. The critical range of this attack is also increased by 1.
+  - heading: Rune-bearer
+    body: |-
+      At 4th ranger level you have a personal rune of power that you bear upon yourself. Choose the runes effect:
+
+      * Rune of death - Your make it count attacks crit range is further increased by 1. When you slay a small or larger creature during focus, you gain 1 arcane health.
+      * Rune of magic - Choose a school of magic from arcane, occult, or mystic. At 4th level you gain a cantrip, at 5th a level 1 spell, and at 6th a level 2 spell of the chosen school of magic. Use wisdom or dexterity as the casting modifier. You can spend 2 rest dice to cast the spells at a level equal to half your total character level, rounded up.
+      * Rune of the anvil - Your rest dice maximum is increased by 1. You gain a +2 bonus to skill checks made during focus.
+      * Rune of the moon - You gain 60 ft of darkvision. Choose strength or dexterity. At night or when deep underground, you gain a +1 bonus to wisdom and a +2 bonus to the chosen attribute.
+      * Rune of the hunt - Your thrown and ranged weapon attacks deal 1d6 bonus damage of their original type, and all your ranged attacks have a 1d8<3 chance dice to apply bleed.
+      * Rune of the raven - You gain a +2 bonus to stealth checks. You can speak with ravens and similar corvids (Subject to GM.) and you can spend 1 rest die to say a sentence of your choice in a language of choice that you do not speak (Subject to GM.) This does not allow understanding the spoken language back.
+      * Rune of the wolf - You gain have an extra attack when making an attack action during focus.
+      * Rune of the worldtree - You gain 1 point of Ki which can be exchanged for 2 rest dice. It is regained at the end of every rest so long as you rest away from deep sprawl. You can spend 1 Ki to either:
+        * triple a jump distance.
+        * make a push maneuver check + wisdom bonus vs creatures in a 20 ft cone.
+        * attempt to counterspell a spell targeting you, by making a wisdom save vs the spell, negating it on a success.
+  - heading: Experience
+    body: |-
+      At 5th ranger level, choose 3 upgrades from the following list:
+
+      * Animal soul - Gain proficiency with handle animal. If already proficient, gain expertise. If already expert, you can spend a rest die while outside combat to speak with an animal you can interact with (Subject to GM.)
+      * Apply leeches - When using triage, also grant the target creature poison resistance until the next rest, and allow it to ignore the effects of one ongoing disease or similar affliction (Subject to GM.)
+      * Hex training - Learn a minor and major hex. Can be taken again to learn a greater hex. Can be taken a third time to learn a minor hex and gain 3 hex upgrades in any combination of your choice.
+      * Archery training - Ignore the disadvantage of attacking within a ranged weapons 2nd range increment. Reduce the reload property of your weapons by 1.
+      * Armor training - Gain proficiency with chain coats, scale coats, and ring coats. Reduce bulk from them by 1.
+      * Battle-rune secrets - You can spend 1 rest die to grant a weapon a +1 bonus. This bonus does not apply if used against you and lasts for 1 hour.
+      * Blade training - Gain proficiency with martial blade weapons (light, medium, and heavy) and deal an extra 1d4 points of damage with them. You can do one maneuver per round at no bonus action cost with these weapons.
+      * Inspire - Every short rest, you can inspire one ally, granting them an instance of temporary block until the next rest for free. This also applies to creatures that are subject to your triage ability.
+      * Live off the land - When using prep, you also create 2 portions of Hobbsbread. Hobbsbread can be consumed as an action, granting 1 temporary rest dice for 1 hour.
+      * Lookout - Gain proficiency with perception. If already proficient, gain expertise. If already expert, you gain a +3 bonus to initiative.
+      * Magical rune training - You can spend 1 rest die to grant a check made to interact with magical items or runes a 1d10 bonus.
+      * Staying low - Gain proficiency with stealth. If already proficient, gain expertise. If already expert, your movement speed is not hindered while prone.
+      * Weapon specialization - Choose three specific weapon groups, gain a +1 bonus to damage made with weapons that belong to that group. Swapping between any such weapons is a free action.
+      * Weathered - You gain advantage on checks made to withstanding weather or anticipating travel conditions (Subject to GM.) and a +1 bonus to nature checks.
+  - heading: Just a weary traveler...
+    body: |-
+      at 6th ranger level, gain a +1 to deception checks.
+
+      Choose three upgrades:
+
+      * Bearing runes - Your rune-bearer item has 2 more max points of power. Gain a +1 bonus to checks made to enchant, create, dispel, or identify items.
+      * Collecting tales and baubles - The dice amount of your 2nd level alchemical and single use items created during prep is doubled. Gain an extra ring slot.
+      * Collecting rumors - You gain a +3 bonus to checks made to overhear, listen in on, or perceive hints in conversations.
+      * Seeking wisdom - Learn an oath cantrip. Use constitution as the casting modifier. Gain a +1 bonus to wisdom.
+      * With a sharp look - Your rest dice maximum is increased by 1. You can spend 1 rest die to reroll a wisdom save once per rest.
+      * With two swords - You can add the dexterity modifier to your offhand weapon damage, and you treat all one-handed weapons as light.
+      * With mystical eyes - Learn two 1st level mystic spells and a single 2nd level mystic spell. Use wisdom as the casting attribute for them and gain 4 mystic points that can be used to cast mystic spells that you know. Casting a mystic spell with them requires spending a number of points equal to the spell level. You regain 1 mystic point after a short rest, and regain all mystic points after a long rest.
+      * With a bit of protection - Your max HP is increased by 7. Gain 1 extra block at the start of combat while wielding a shield.
+      * With strange markings - Learn an occult cantrip. Use wisdom as the casting attribute, but if it has only a somatic component, you can use dexterity or strength.
+      * With my walking stick - gain a +2 bonus to attacks with polearms, and always have the brace property while wielding a polearm.
+  - heading: Strike true
+    body: |-
+      at 6th ranger level, once per rest, when you critically strike a creature, you can increase the crit multiplier by 2. If this kills the creature, you regain 2 rest dice.
+
+      This must be declared before the target makes the block check.
+# https://sites.google.com/view/dnd5plus/home/classes/ranger-x/bounty-hunter
+- name: Bounty hunter
+  group: Ranger archetypes
+  sections:
+  - heading: Experience
+    body: |-
+      At 4th ranger level, you gain 3 upgrades from the list below (you may take the same one multiple times):
+
+      * proficiency with skill of choice and 1 language of choice.
+      * proficiency progression with medium armor > heavy armor and/or heavy shields > +1 temporary block at the start of combat.
+      * proficiency with 1 weapon group of choice.
+      * proficiency with 1 tool of choice and a +1 bonus to that tools checks.
+      * learn a cantrip of a class of magic that you know the least cantrips from. Use wisdom as the casting attribute. If you know equal amounts of cantrips from all classes, you may learn a major hex instead.
+  - heading: Prepare for the worst
+    body: |-
+      At 4th ranger level, you have access to prepared moves. You can have a maximum of your wisdom bonus +1 prepared moves that you can make. You reset all uses every rest. A prepared move is a maneuver that can be done as a free action at any time, if it is appropriate. A prepared move does not have to be specified when prepared. The following prepared moves are available:
+
+      * Dash - immediately move 10 feet, without provoking reactions. Can only be done once per turn.
+      * Emergency potion - immediately regain 1d8 health. Can only be cone once per turn.
+      * Hidden blade - Immediately swap to a light piercing weapon and make a basic melee attack with it, and leave the blade in the target on a successful unblocked hit. Can only be done once per turn.
+      * Interrupt - Cause a spell caster within 15 ft to make a concentration check. Can only be done once per round.
+      * Resist - Gain advantage on a block check.
+      * Smoke bomb - Make a stealth check, allowing you to become hidden in plain sight for 1 turn, and cause a smoke cloud that blinds for the next 1d4 turns in a 15 ft sphere.
+      * Take cover - all ranged attacks against you until the next turn have disadvantage. Fall prone if necessary and move up to 5 ft to do so. Can only be done once per round.
+
+      You cannot use more than two prepared maneuvers in one turn, and you cannot use the same maneuver more than once per turn.
+  - heading: Trap sense
+    body: At 5th ranger level you are proficient with all saves vs traps, and if a trap would have an effect on a successful
+      save, you ignore it.
+  - heading: Bounty hunter traits
+    body: |-
+      At 5th ranger level, pick 2 upgrades from the list below:
+
+      * Barrier-breaker - You gain advantage on checks made to break open or dismantle chains, restraints, doors, and portals. You gain a +2 bonus to saves made while in crumbling or breaking structures or environments.
+      * Armor prep - While wearing armor, you gain 1 extra block at the start of combat.
+      * Always ready - Your maximum amount of prepared maneuvers is increased by 3.
+      * Contract experience - You gain a +3 bonus to checks made to examine or construct contracts or documents of negotiation.
+      * Countermeasures - Gain a prep option: bounty hunter toxins - prepare 1d3 special bounty hunter toxin consumables, or enhance an existing poison, weapon oil, or similar substance, to cause it to deal 2d6 extra damage to one of: Beasts, Undead, Eldritch, Fiendish, Fae, Elementals, specific groups of monsters, or specific groups humanoids (your choice when creating) The baseline consumable lasts for 1d6 turns when applied to a non-light weapon or two light weapons, and can be applied to 1d4 pieces of ammunition. The damage is increased to 3d8 at 9th character level.
+      * Fire cask - You learn 2 new prep options:
+        * fireflask - create a 25/50 throwing weapon that deals 4d6 fire damage on hit, ignite on crit, and afterwards also requires a dex save from creatures in a cone outwards from the target hit, or the area hit, taking half damage on a success.
+        * Enhance oils - you can enhance a fire damage dealing consumable, or 1d3 bolts that deal fire damage, granting it an extra die of fire damage. This can be done to an item up to twice.
+      * For gold - If you are contractually obliged to capture or find a target, your attacks and attempts to track them gain a +1 bonus. You gain a +1 bonus to significant (subject to GM.) checks made to fulfill bets or deals.
+      * Grit - You can grit damage received as a prepared maneuver, reducing it by half. If you are reduced to 0 HP while using this maneuver, you are instead reduced to 1 and lose an extra prepared maneuver.
+      * Immediate reload - You can do an immediate reload of your weapon once per turn as one of your prepared maneuvers.
+      * Rapid maneuvers - You can use up to three prepared maneuvers per turn. Your maximum amount of prepared maneuvers is increased by 1.
+      * Suckerpunch - If you have at least one hand free, you may immediately perform an unarmed melee attack against the target as a prepared maneuver. The damage is doubled, and if unblocked, the target must make a constitution save. On a failure the target is stunned for 1 turn. Can only be done once per round.
+      * Tactician - Your max prepared maneuvers are increased by 1. If you act first in combat, you grant all allies a +1d4 bonus to initiative. Otherwise, if you are above an ally in the initiative order, you can grant one ally a 1d3 bonus to initiative. You can bring one ally to act in the surprise round if you act in the surprise round.
+      * Weapon specialist - You can add a +1d3 to hit when failing an attack as a prepared maneuver. Choose a weapon group you are proficient with, you can now perform weapon maneuvers without expending a bonus action by spending a prepared maneuver instead. Gain 1 extra bonus depending on the weapon properties of that group, chosen per weapon: For ranged weapons, bows gain a +1 to block DC and crossbows reduce reload property by 1. For melee weapons, one-handed weapons grant a +1 to AC, versatile melee weapons gain a +1 to hit, and two-handed weapons gain a +1 to damage.
+  - heading: Extra bounty hunter upgrade
+    body: At 6th ranger level, gain an extra bounty hunter trait from the level 5 list.
+  - heading: Loose ends, rumors, and connections
+    body: |-
+      At 6th ranger level, you can spend 1 rest die during a rest while in a large, relatively diverse, or populous enough settlement, establishment, or outpost (Subject to GM) for guaranteed leads to a target that you know of and have a good description of.
+
+      Gain a +1 bonus to insight, perception, and investigation checks.
+
+      Gain a +1 bonus to checks made to examine maps, charts, and diagrams.
+# https://sites.google.com/view/dnd5plus/home/classes/ranger-x/monster-slayer
+- name: Monster slayer
+  group: Ranger archetypes
+  sections:
+  - heading: Enemy of choice
+    body: |-
+      At 7th ranger level, choose one enemy of choice:
+
+      * Undead
+      * Moonkin (Werewolves, wendigos, and creatures with a strong association with the moon or night)
+      * Aberrations
+      * Dragonids (Dragons, pseudodragons, kobolds, and dragonborn)
+      * Insectoids
+      * Elementals (elementals and Ginasi)
+      * Constructs (golems, clankers, crystal creatures)
+
+      You deal 1d4 extra damage and a +1 bonus to DCs vs creatures of the chosen kind (Subject to GM.)
+
+      You don't need to spend a bonus action when making maneuvers vs your enemy of choice.
+  - heading: Monster slayer lodge
+    body: |-
+      At 7th ranger level, choose one monster slayer lodge to belong to (Subject to GM):
+
+      * Axe-brothers - You can spend 2 rest dice while under focus to increase a melee attacks damage dealt by 3d6 damage, and boost all it's damage dice by 1 dice size category. This is increased by 1d6 and a further size boost if it is against an enemy of choice.
+      * Cult of steel - You can wield weapons 1 size category larger than your normal wielding limit, but while doing so you have 1 less reaction per round. Gain medium armor proficiency, or heavy if already proficient. Reduce bulk by 1.
+      * Owlseye - You gain 120 ft of darkvision, and a +1 bonus to perception and arcana checks. While under the effects of focus, you have echosight at 90 ft range. Learn 1 minor and 1 major hex of choice. Upgrade one hex you know once. You can use wisdom as the casting modifier for hexes. Gain +1 max rest dice.
+      * Snakescale - Gain a +1 bonus to dexterity, +1 bonus to ac, +5 movement speed, and +1 to block checks. Choose one:
+        * Two fang method - You can perform the same maneuver with two light weapons you wield by spending a bonus action and an action.
+        * Hydra style - You can choose to allow your off-hand weapon attacks to scale with wisdom, and to add your wisdom bonus to your off-hand weapon damage.
+        * Lying in wait - You have a +1 bonus to d20 rolls while hidden, or when having stood still for at least a round.
+      * Thunder servants - You gain a +1 bonus to arcana and religion checks. You can spend 2 rest dice as an action to invoke the the aspect of storm and make a weapon attack. The attack requires 2 extra instance of block to negate, and deals 3d8 extra lightning damage. The lightning damage is halved on a block. On a critical strike, the target is stunned for 2d3 rounds. This ability has a 1d4<2 cooldown chance dice when used. The damage is increased to 6d8 when exposed to the elements during a storm (Subject to GM.)
+      * Wolfsfang - You gain 60 ft of darkvision, keen scent, and a +2 bonus to insight and survival checks. You have an extra attack.
+  - heading: Target dissection
+    body: |-
+      At 8th ranger level you can butcher a monster or creature to get AP (alchemy points) when you use prep. You can have a maximum amount of AP equal to your wisdom bonus.
+
+      You can spend 1 rest die to convert a creature that is your enemy of choice, or 2 rest dice for creatures in the other categories, and obtain between 1,2,1d3, 3, and 1d4+1 alchemy points, depending on the creatures rarity, utility, and quality (Subject to GM.)
+
+      You can use 1 alchemy point during a rest to use prep or triage without spending a rest die. Can be done up to 3 times per rest.
+  - heading: 'Monster slayer traits:'
+    body: |-
+      At 8th ranger level, choose 2 upgrades:
+
+      * Greater monster dissection - Using target dissection now costs 1 less rest dice. Your AP maximum is increased by 1. You can spend 1 AP to grant an item you create (during prep or otherwise) a +2 bonus anywhere in the item description.
+      * Monster lore - Choose a second enemy of choice. Gain a +1 bonus to wisdom. Gain a +2 bonus to intelligence checks made vs your enemy of choice creatures. Can be taken multiple times.
+      * Exterminator - Your enemy of choice damage bonus is increased by 1 dice size. You do not suffer disadvantage from maneuvers vs your enemy of choice.
+      * Forced adaptation - You gain a +3 bonus to saves vs poisons, and resistance to poison damage. Choose 2 other types alongside your enemy of choice. Gain a +2 bonus to saves vs natural or innate abilities of such creatures and your enemy of choice. Gain an extra feat.
+      * Mentorship - When you use triage, you can grant another creature your enemy of choice benefits until rest. Gain a +1 bonus to history, religion, arcana, and nature checks.
+      * Big game hunter - Your enemy of choice damage and DC bonuses are doubled against creatures that are larger than you.
+  - heading: Extra ranger training
+    body: At 8th ranger level, gain an extra ranger training (ranger 3) upgrade.
+  - heading: Monster slayer speciality
+    body: |-
+      At 9th ranger level, choose one:
+
+      * Special preservation method - Gain the following:
+        * You can lock 1 rest die when performing target dissection, allowing you to extract the eye, head, gland, or organ (Subject to GM) of a slain creature of choice, granting you a preserved trophy, which retains a single breath, ray, sight-based, spit, or glob attack from the slain creature, if applicable (Subject to GM,) and allows the wielder to invoke it in the direction of their choice as a bonus action while wielding it. The retained ability/attack cannot deal more dice of damage vs any creature than your ranger level, and it has either 20 ft or half its original range (whichever is higher.) A baseline trophy has a 1d6>5 cooldown chance once used. Large trophies incur 1 bulk.
+        * Gain a +3 bonus to medicine checks.
+      * Veteran monster slayer - Gain the following:
+        * Choose an extra monster slayer lodge.
+        * Choose an extra monster slayer trait.
+        * Choose an extra enemy of choice.
+      * Rare materials expert - Gain the following:
+        * Whenever you create an item, any damage dice, healing, and temporary health is increased by 1 dice of the highest value, if has any. The duration is increased by 2 unit (turns, rounds, minutes, or hours.)
+        * Your max AP is increased by 1.
+        * Your rest dice maximum is increased by 1.
+        * Gain a +1 bonus to nature checks.
+# https://sites.google.com/view/dnd5plus/home/classes/ranger-x/outrider
+- name: Outrider
+  group: Ranger archetypes
+  sections:
+  - heading: Outrider animal training
+    body: At 7th ranger level, gain proficiency with handle animal. If already proficient, gain expertise. If already expert,
+      gain a +3 bonus to checks made to tame, hold on-to, steer, or ride animals.
+  - heading: Outrider skill training
+    body: 'At 7th ranger level, choose one: handle animal, acrobatics, athletics, intimidation, stealth. Your focus bonus
+      applies to the chosen skills rolls.'
+  - heading: Skirmish
+    body: |-
+      At 7th ranger level, choose an upgrade to your focus (ranger 1) ability:
+
+      * Bow barrage - While wielding a bow, you gain 1 extra attack. Is negated for the turn if you make any melee attacks.
+      * Daring swordsman - You can make 1 extra attack with a dagger, light blade, or medium blade while wielding one. Your movement speed is increased by 5 ft.
+      * Forceful draw - You can powerdraw a crossbow after shooting it, loading another bolt instantly after a ranged attack on a successful chance dice. The chance dice corresponds to reload (reload I - 1d4 < 3, reload 2 - 1d6 <3, reload 3 - 1d8 <3, reload 4 - 1d10<4, reload 5 - 1d12<4).
+      * Sweeping slice - You can reduce your remaining focus by 1 turn to make a sweeping cleave with a weapon with the cleave property, or a slashing damage polearm weapon, dealing its damage to all creatures in a cone at a range equal to the weapons reach. This attack deals an extra 1d6 damage of the weapons type. Your focus still applies to the attacks if this ends focus.
+      * Axe raider - Your attacks with axes of any kind have their critical strike range increased by 1. You can spend 2 turns of focus to gain an extra attack with an axe if wielding it two-handed, or 2 attacks if wielding two axes or wielding an axe one handed. Your focus still applies to the attacks if this ends focus, but you take 1 damage to fatigue if this consumes more rounds than you have remaining.
+      * Earth scorcher - Whenever you deal fire damage while under focus, deal 1 dice extra of the largest size of damage dice used in the weapons attack. This is not multiplied on a critical hit. You can spend 1 rest die or 1 turn of focus to blow fire in a 15 ft cone while wielding a flaming weapon or torch, forcing creatures in hit to make a dexterity save (DC 12 + proficiency + wis/con/dex bonus, whichever is highest,) taking 4d6 + wis/con/dex (whichever is highest) fire damage on a failure, and half on a success.
+  - heading: Moonfern cultivation
+    body: |-
+      At 8th ranger level choose one skill:
+
+      * Outrider fernbrew - Gain a fernbrew flask, which can be replaced by spending 3 rest dice during a long rest. The flask itself is the secret to fernbrew. You refill your flask with 2 doses of outrider fernbrew every time you use prep. You can take a sip as a bonus action to gain the following for 1 minute: +1 to saves, +1 to wis and cha skill checks. You can take a sip once per focus to extend the duration of focus by 1 round.
+      * Outrider Moonfern pipe - Every time you use prep, you can prepare a dose of moonfern. You can consume a dose of moonfern over a minute, gaining the following for 1 hour: Focus or similar beneficial emotional conditions last 2 rounds longer, you gain a +2 bonus to charisma based skill checks but a -1 to intelligence checks.
+  - heading: Battle focus
+    body: At 9th ranger level, your focus lasts 1d3 rounds longer.
+  - heading: Outrider experience
+    body: |-
+      At 9th ranger level, choose one:
+
+      * Skirmish+ - Gain an extra skirmish upgrade to focus
+      * Personal training - Gain an extra feat, gain an extra ranger training (range 3) upgrade.
+  - heading: Seize the moment
+    body: At 9th ranger level, you can spend 3 turns of focus to immediately take an action while outside your turn.
+# https://sites.google.com/view/dnd5plus/home/classes/ranger-x/seeker
+- name: Seeker
+  group: Ranger archetypes
+  sections:
+  - heading: Legendary focus
+    body: At 7th ranger level, your focus bonus also applies to arcana checks.
+  - heading: Special method
+    body: |-
+      At 7th ranger level, choose one:
+
+      * Ki awareness - Gain 2 maximum points of Ki. You regain them every rest. You can spend a Ki point during focus to cast a spell you know at 4th level.
+      * Spell point awareness - Gain 1 maximum spell point. It is restored every long rest. You can spend 1 spell point during focus to cast a spell you know at 1/2 your character level (rounded up.) You can use dexterity as the casting modifier. You gain a new base choice of effect when using prep: regain 1 spell point.
+      * Mana-tincture - You gain a maximum amount of Alchemy points equal to half your spell level. You regain 1d4 alchemy points every rest. You can spend an alchemy point up to 3 times per rest to use prep without spending a rest die, or to pick an extra base option when using prep. You gain a new prep option: mana tincture - create 1 mana tincture potion, allowing you to cast a spell you know at its lowest level, but requires a DC 15 constitution save, taking 1 damage to fatigue on a failure.
+  - heading: Minor focus magic
+    body: |-
+      At 7th ranger level, choose one:
+
+      * Ki focus - If you have Ki, learn a mystic or arcane cantrip that can only be cast while you have at least 1 Ki. Grant it 2 extra upgrade.
+      * Occult focus - If you have spell points, learn an occult cantrip that can only be cast while in focus. Grant it 3 extra upgrades.
+      * Hex focus - Learn a greater hex that can only be cast while in focus. Upgrade it twice.
+  - heading: Focus magic
+    body: |-
+      At 7th ranger level, choose one:
+
+      * Occult insight - Learn a 1st, 2nd, and 3rd level occult spell.
+      * Mystical insight - Learn a 3rd or 4th level mystic spell. It is made special, as whenever it is cast, its casting modifier gets a +1 bonus.
+      * Fundamental insight - Learn 2 spells that are any of: arcane, mystic, or occult. They must be of 3rd or lower level. Gain a +1 bonus to arcana checks.
+      * Hex insight - Learn 2 major hexes. Upgrade every hex and cantrip you know once. You can spend either Ki, Spell points, or consume a mana tincture to upgrade a hex or cantrip you know once for 1 hour.
+
+      For any spells learned in this manner, use wisdom as the casting modifier.
+  - heading: Special training
+    body: |-
+      At 8th ranger level, choose 1 upgrade based from the list below:
+
+      * Deeper hex focus - Learn one of the following hexes that you can cast only when in focus: 1 greater hex, 3 minor hexes.
+      * Extra spell points - If you have at least one spell point, increase your maximum by 1.
+      * Extra ki - If you have Ki, increase your maximum Ki by 1.
+      * Extra minor focus - choose an extra minor focus magic upgrade.
+      * Focus channeling - if you have Ki, you can spend 2 ki instead, or 1 ki and and 3 rest dice to cast a spell you know, casting it at 5th level.
+      * General skill - Gain proficiency with 2 languages, 1 tool, 1 weapon group, 1 skill of choice, medium armor, and heavy shields.
+      * Greater hex - Learn 1 major hex. Upgrade a hex. Upgrade a hex again.
+      * Mana refinement - Gain +2 max AP. You can spend up to 3 AP when using mana tincture. When you do so, produce 1d4+1 mana tinctures instead.
+      * New tricks - Choose an extra ranger training (ranger 3) upgrade, or an extra upgrade option from a list in a previous archetype (like Picking things up from Huntsman at ranger level 5, or Experience from Wanderer at ranger level 5)
+      * Occult manipulation - Learn a 4th level occult spell that can be cast during focus for 1 round of focus and 3 rest dice. Use wisdom or dexterity for the casting modifier.
+      * Pathfinder - Gain a +2 bonus to checks made to find secret passages, hidden rooms and hideaways, and checks made to find exits.
+      * Secret talent - Gain 2 feats that are only active during your focus.
+      * Vast focus - Increase the duration of focus by 1 round. Gain a +1 bonus to wisdom.
+  - heading: Extra special training
+    body: At 9th level, choose an extra special training upgrade.
+  - heading: Secret art
+    body: |-
+      At 9th nomad level, either choose an extra wandering art mastery upgrade, or gain the following based on your wandering art choice:
+
+      * Hex mysteries - Learn a greater hex. upgrade every hex you know once. +1 to initiative.
+      * Occult focus - Learn a level 5 occult spell. You can cast it once per long rest while in focus. Uses wisdom or dexterity as the casting modifier, and the casting modifier is increased by 1. The spell is cast at 1/2 your character level (rounded up.)
+      * Ki mysticism - +1 max Ki. Learn either an arcane, occult, or mystic cantrip and upgrade it twice. It can be cast while you have at least 1 Ki.
+      * Expanded magic awareness - Learn a level 1, level 2, level 3, and level 4 spell. Each spell must be of a different class of magic. Gain a +1 bonus to arcana checks.

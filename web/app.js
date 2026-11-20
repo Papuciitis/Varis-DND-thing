@@ -1,348 +1,570 @@
 "use strict";
 
 (() => {
-  const byId = (id) => document.getElementById(id);
-  const sectionNav = byId("sections");
-  const entryNav = byId("entries");
+  const byId = id => document.getElementById(id);
   const reader = byId("reader");
+  const trail = byId("trail");
   const search = byId("search");
-  const groupSelect = byId("group");
-  const browser = byId("browse");
-  const browseToggle = byId("browse-toggle");
-  const sections = globalThis.DND_CATALOG;
+  const picker = byId("section-picker");
+  const sections = globalThis.DND_CATALOG || [];
+  const sectionByKey = new Map(sections.map(s => [s.key, s]));
+  const perPage = 24;
+  const collate = new Intl.Collator("en", {numeric: true, sensitivity: "base"});
+  const families = [
+    ["Characters", ["classes", "races", "backgrounds", "feats"]],
+    ["Magic & equipment", ["spells", "items", "weapon-rules"]],
+    ["At the table", ["rules", "conditions", "design-notes"]]
+  ];
+  const assigned = new Set(families.flatMap(([, keys]) => keys));
+  const other = sections.filter(s => !assigned.has(s.key));
+  if (other.length) families.push(["More sections", other.map(s => s.key)]);
 
-  function element(tag, className, text) {
+  function el(tag, className, content) {
     const node = document.createElement(tag);
     if (className) node.className = className;
-    if (text !== undefined) node.textContent = String(text);
+    if (content !== undefined) node.textContent = String(content);
     return node;
   }
-
+  const cap = text => String(text).charAt(0).toUpperCase() + String(text).slice(1);
+  const countText = n => n.toLocaleString("en") + (n === 1 ? " entry" : " entries");
+  const plain = value => value === null || typeof value !== "object";
+  const fragment = () => document.createDocumentFragment();
   const fieldLabels = {
-    desc: "Description", lvl: "Level", minitrait_list: "Trait options",
-    attribute_bonuses: "Ability bonuses", casting: "Casting time"
+    desc: "Description", lvl: "Level", minitrait_list: "Trait options", attribute_bonuses: "Ability bonuses",
+    casting: "Casting time", higher_levels: "At higher levels"
   };
   function label(key) {
-    if (Object.hasOwn(fieldLabels, key)) return fieldLabels[key];
-    const words = String(key).replace(/_/g, " ").replace(/^lvl\s+/i, "Level ");
-    return words.charAt(0).toUpperCase() + words.slice(1);
+    return Object.hasOwn(fieldLabels, key) ? fieldLabels[key] : cap(String(key).replace(/_/g, " ").replace(/^lvl\s+/i, "Level "));
   }
-  function title(text) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
+  function link(text, params, className) {
+    const a = el("a", className, text);
+    a.href = href(params);
+    return a;
   }
-  function plain(value) {
-    return value === null || typeof value !== "object";
+  function href(params = {}) {
+    const query = new URLSearchParams();
+    for (const [key, value] of Object.entries(params)) {
+      if (value !== "" && value != null) query.set(key, value);
+    }
+    return "#" + query.toString();
+  }
+  const entryRoute = (section, entry) => ({section: section.key, entry: entry.name, group: entry.group});
+  const norm = value => String(value).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’‘]/g, "'").trim();
+  function spellLevel(entry) {
+    const value = String(entry.details?.lvl ?? entry.details?.level ?? "").trim();
+    return value || (/\bcantrips?\b/i.test(entry.group) ? "0" : "");
+  }
+  const levelLabel = value => "Level " + value;
+  const all = sections.flatMap(section => section.entries.map(entry => {
+    const name = norm(entry.name);
+    const lead = norm([entry.name, entry.group, section.title].join(" "));
+    const body = norm(JSON.stringify(entry.details) ?? "").replace(/\\n/g, " ");
+    return {section, entry, name, lead, text: lead + " " + body};
+  }));
+  const dataBySection = new Map(sections.map(s => [s.key, all.filter(item => item.section === s)]));
+  function browseGroup(section, name) {
+    return section.key === "classes" ? name.replace(/ archetype$/i, " archetypes") : name;
+  }
+  const groupsBySection = new Map();
+  for (const section of sections) {
+    const groups = new Map();
+    for (const entry of section.entries) {
+      const group = browseGroup(section, entry.group);
+      groups.set(group, (groups.get(group) || 0) + 1);
+    }
+    groupsBySection.set(section.key, [...groups].sort(([a], [b]) =>
+      Number(b === "Base class") - Number(a === "Base class") || collate.compare(a, b)));
+  }
+  function matching(items, query) {
+    const q = norm(query);
+    const words = q.split(/\s+/).filter(Boolean);
+    const rank = row => row.name === q ? 0 : row.name.startsWith(q) ? 1 : row.name.includes(q) ? 2 :
+      words.every(w => row.lead.includes(w)) ? 3 : 4;
+    return items.filter(row => words.every(w => row.text.includes(w))).sort((a, b) =>
+      (q ? rank(a) - rank(b) : 0) || collate.compare(a.entry.name, b.entry.name) ||
+      collate.compare(a.entry.group, b.entry.group) || collate.compare(a.section.title, b.section.title));
+  }
+  function heading(name) {
+    const h = el("h1", "", name);
+    h.id = "entry-title";
+    document.title = name + " · Open D&D";
+    return h;
+  }
+  function crumbs(parts) {
+    trail.replaceChildren();
+    trail.hidden = !parts.length;
+    if (!parts.length) return;
+    const list = el("ol");
+    for (const [name, params] of [["Compendium", {}], ...parts]) {
+      const item = el("li");
+      const child = params ? link(name, params) : el("span", "", name);
+      if (!params) child.setAttribute("aria-current", "page");
+      item.append(child);
+      list.append(item);
+    }
+    trail.append(list);
+  }
+  function panelLink(name, n, params) {
+    const a = link("", params, "panel-link");
+    a.append(el("span", "panel-name", name), el("span", "panel-count", countText(n)));
+    return a;
+  }
+  function home() {
+    crumbs([]);
+    const header = el("header", "index-heading");
+    header.append(heading("Rules compendium"));
+    const grid = el("div", "shelves");
+    for (const [family, keys] of families) {
+      const members = keys.map(k => sectionByKey.get(k)).filter(Boolean);
+      if (!members.length) continue;
+      const shelf = el("section", "shelf");
+      shelf.append(el("h2", "", family));
+      for (const s of members) shelf.append(panelLink(s.title, s.entries.length, {section: s.key}));
+      grid.append(shelf);
+    }
+    reader.append(header, grid);
+  }
+  function labelledSelect(text, id) {
+    const wrapper = el("label", "select-field");
+    wrapper.append(el("span", "", text));
+    const select = el("select");
+    select.id = id;
+    wrapper.append(select);
+    return [wrapper, select];
+  }
+  function resultList(rows, params) {
+    const wrap = el("div", "result-set");
+    const nPages = Math.max(1, Math.ceil(rows.length / perPage));
+    const page = Math.max(1, Math.min(nPages, parseInt(params.page, 10) || 1));
+    const first = (page - 1) * perPage;
+    const count = rows.length > perPage
+      ? (first + 1).toLocaleString("en") + "–" + Math.min(first + perPage, rows.length).toLocaleString("en") + " of " + countText(rows.length)
+      : countText(rows.length);
+    byId("announcement").textContent = count;
+    wrap.append(el("p", "result-count", count));
+    if (!rows.length) {
+      wrap.append(el("h2", "empty-title", "No matching entries"));
+      const reset = params.q ? {} : {section: params.section};
+      wrap.append(link("Clear filters", reset, "text-link"));
+      return wrap;
+    }
+    const list = el("ul", "results");
+    for (const {section, entry} of rows.slice(first, first + perPage)) {
+      const li = el("li");
+      const a = link("", entryRoute(section, entry), "result");
+      a.append(el("span", "result-name", cap(entry.name)));
+      const info = [!params.section ? section.title : "", params.group === entry.group ? "" : entry.group];
+      const level = section.key === "spells" ? spellLevel(entry) : "";
+      if (level && !info.some(s => /cantrip/i.test(s) && level === "0")) info.push(levelLabel(level));
+      a.append(el("span", "result-meta", info.filter(Boolean).map(cap).join(" · ")));
+      li.append(a);
+      list.append(li);
+    }
+    wrap.append(list);
+    if (nPages > 1) {
+      const nav = el("nav", "pagination");
+      nav.setAttribute("aria-label", "Result pages");
+      if (page > 1) nav.append(link("← Previous", {...params, page: page - 1}, "button-link"));
+      nav.append(el("span", "", "Page " + page + " of " + nPages));
+      if (page < nPages) nav.append(link("Next →", {...params, page: page + 1}, "button-link"));
+      wrap.append(nav);
+    }
+    return wrap;
+  }
+  function openFilters(params, replace = false) {
+    const next = href(params);
+    if (location.hash === next) return;
+    if (replace) {
+      history.replaceState(null, "", next);
+      draw();
+    } else {
+      location.hash = next;
+    }
+  }
+  function directory(section, params) {
+    const base = {section: section.key};
+    const groups = groupsBySection.get(section.key);
+    const group = browseGroup(section, params.group || "");
+    const level = params.level || "";
+    const filter = params.filter || "";
+    const grouped = groups.filter(([name]) => name);
+    const groupedView = grouped.length > 1 && !group && !level && !filter && !params.browse;
+    const parts = [[section.title, group ? base : null]];
+    if (group) parts.push([cap(group), null]);
+    crumbs(parts);
+    const head = el("header", "index-heading");
+    head.append(heading(group ? cap(group) : section.title));
+    reader.append(head);
+    const form = el("form", "filters");
+    form.setAttribute("role", "search");
+    form.setAttribute("aria-label", "Filter " + section.title);
+    const box = el("label", "local-search");
+    box.append(el("span", "", "Find in " + section.title.toLowerCase()));
+    const input = el("input");
+    input.type = "search";
+    input.id = "section-search";
+    input.placeholder = "Name or rule text";
+    input.value = filter;
+    box.append(input);
+    form.append(box);
+    function setFilter(value, typed) {
+      openFilters({...params, filter: value, page: "", browse: value ? "all" : params.browse}, typed);
+    }
+    input.addEventListener("input", () => setFilter(input.value, true));
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      setFilter(input.value, true);
+    });
+    if (grouped.length > 1) {
+      const [field, select] = labelledSelect("Group", "group");
+      select.append(new Option("All groups", ""));
+      for (const [title] of grouped) select.append(new Option(cap(title), title));
+      select.value = group;
+      select.addEventListener("change", () => openFilters({...params, group: select.value, browse: "all", page: ""}));
+      form.append(field);
+    }
+    if (section.key === "spells") {
+      const levels = [...new Set(section.entries.map(spellLevel).filter(Boolean))].sort(collate.compare);
+      if (levels.length) {
+        const [field, select] = labelledSelect("Spell level", "spell-level");
+        select.append(new Option("All levels", ""));
+        for (const l of levels) select.append(new Option(levelLabel(l), l));
+        select.value = level;
+        select.addEventListener("change", () => openFilters({...params, level: select.value, browse: "all", page: ""}));
+        form.append(field);
+      }
+    }
+    reader.append(form);
+    if (!section.entries.length) {
+      reader.append(el("p", "state-message", "This section has no entries yet."));
+      return;
+    }
+    if (groupedView) {
+      const groupsHead = el("div", "subhead");
+      groupsHead.append(el("h2", "", "Browse by group"), link("Browse all " + countText(section.entries.length) + " →", {...base, browse: "all"}, "text-link"));
+      reader.append(groupsHead);
+      const grid = el("div", "groups");
+      for (const [title, n] of grouped) grid.append(panelLink(cap(title), n, {...base, group: title}));
+      reader.append(grid);
+      const ungrouped = dataBySection.get(section.key).filter(row => !row.entry.group);
+      if (ungrouped.length) {
+        reader.append(el("h2", "general-heading", "General entries"), resultList(matching(ungrouped, ""), {...base, page: params.page}));
+      }
+    } else {
+      const rows = dataBySection.get(section.key).filter(({entry}) =>
+        (!group || browseGroup(section, entry.group) === group) && (!level || spellLevel(entry) === level));
+      reader.append(resultList(matching(rows, filter), params));
+    }
+  }
+  function globalResults(params) {
+    crumbs([["Search", null]]);
+    const head = el("header", "index-heading");
+    head.append(heading("Search results"));
+    reader.append(head);
+    const [field, select] = labelledSelect("Search within", "search-scope");
+    select.append(new Option("All sections", ""));
+    for (const s of sections) select.append(new Option(s.title, s.key));
+    select.value = params.scope || "";
+    select.addEventListener("change", () => openFilters({...params, scope: select.value, page: ""}));
+    const toolbar = el("div", "filters search-scope");
+    toolbar.append(field);
+    reader.append(toolbar, resultList(matching(dataBySection.get(params.scope) || all, params.q), params));
   }
 
-  // Only the emphasis and line-break markers used by the source are formatted.
-  // All other markup and all attribute values stay plain text.
   function inline(text) {
-    const fragment = document.createDocumentFragment();
-    const parents = [fragment];
-    const tokens = text.split(/(<\/?(?:i|b|em|strong)>|<br\s*\/?>)/gi);
-    for (const token of tokens) {
-      if (!token) continue;
-      if (/^<br\s*\/?>$/i.test(token)) {
-        parents.at(-1).append(element("br"));
-      } else if (/^<(?:i|b|em|strong)>$/i.test(token)) {
-        const emphasis = element(token.slice(1, -1).toLowerCase());
-        parents.at(-1).append(emphasis);
-        parents.push(emphasis);
-      } else if (/^<\/(?:i|b|em|strong)>$/i.test(token)) {
-        if (parents.length > 1 && parents.at(-1).localName === token.slice(2, -1).toLowerCase()) {
-          parents.pop();
-        }
-      } else {
-        parents.at(-1).append(document.createTextNode(token));
-      }
+    const result = fragment();
+    const parents = [result];
+    for (const part of String(text).split(/(<\/?(?:i|b|em|strong)>|<br\s*\/?>)/gi)) {
+      if (!part) continue;
+      if (/^<br\s*\/?>$/i.test(part)) parents.at(-1).append(el("br"));
+      else if (/^<(?:i|b|em|strong)>$/i.test(part)) {
+        const marker = el(part.slice(1, -1).toLowerCase());
+        parents.at(-1).append(marker);
+        parents.push(marker);
+      } else if (/^<\/(?:i|b|em|strong)>$/i.test(part)) {
+        if (parents.at(-1).localName === part.slice(2, -1).toLowerCase()) parents.pop();
+      } else parents.at(-1).append(document.createTextNode(part));
     }
-    return fragment;
+    return result;
   }
-
   function prose(value) {
-    const fragment = document.createDocumentFragment();
-    const text = value == null ? "—" : String(value).trim();
-    const segments = text.replace(/\|(?=<i>|<b>|<em>|<strong>)/gi, "\n\n").split(/\n\s*\n/);
-    for (const segment of segments) {
-      let paragraphLines = [];
-      let list = null;
-      function finishParagraph() {
-        if (!paragraphLines.length) return;
-        const p = element("p", "rule-paragraph");
-        p.append(inline(paragraphLines.join("\n")));
-        fragment.append(p);
-        paragraphLines = [];
+    const result = fragment();
+    const text = String(value ?? "—").trim().replace(/\|(?=<(?:i|b|em|strong)>)/gi, "\n\n");
+    for (const para of text.split(/\n\s*\n/)) {
+      const levels = [];
+      let lines = [];
+      function flush() {
+        if (!lines.length) return;
+        const p = el("p", "rule-paragraph");
+        p.append(inline(lines.join("\n")));
+        result.append(p);
+        lines = [];
       }
-      for (const line of segment.split("\n")) {
-        const bullet = line.match(/^\s*[*•]\s+(.+)/);
+      for (const line of para.split("\n")) {
+        const bullet = line.match(/^(\s*)[*•]\s+(.+)/);
         if (bullet) {
-          finishParagraph();
-          if (!list) {
-            list = element("ul", "rule-list");
-            fragment.append(list);
+          flush();
+          const indent = bullet[1].replace(/\t/g, "    ").length;
+          while (levels.length && levels.at(-1).indent > indent) levels.pop();
+          if (!levels.length || levels.at(-1).indent < indent) {
+            const list = el("ul", "rule-list");
+            (levels.at(-1)?.last || result).append(list);
+            levels.push({indent, list});
           }
-          const li = element("li");
-          li.append(inline(bullet[1]));
-          list.append(li);
+          const li = el("li");
+          li.append(inline(bullet[2]));
+          levels.at(-1).list.append(li);
+          levels.at(-1).last = li;
+        } else if (levels.length && /^\s+\S/.test(line)) {
+          levels.at(-1).last.append(el("br"), inline(line.trimStart()));
         } else {
-          list = null;
-          paragraphLines.push(line);
+          levels.length = 0;
+          lines.push(line);
         }
       }
-      finishParagraph();
+      flush();
     }
-    return fragment;
+    return result;
   }
-
-  function heading(text, depth) {
-    return element("h" + Math.min(depth, 6), "", text);
+  const isTable = v => v && Array.isArray(v.columns) && Array.isArray(v.rows) && v.rows.every(Array.isArray);
+  function table(data, depth, title) {
+    const wrap = el("div", "table-scroll");
+    wrap.tabIndex = 0;
+    wrap.setAttribute("role", "region");
+    wrap.setAttribute("aria-label", title || "Rules table");
+    const grid = el("table");
+    if (data.caption) grid.append(el("caption", "", data.caption));
+    const head = el("thead");
+    const headings = el("tr");
+    for (const col of data.columns) {
+      const cell = el("th");
+      cell.scope = "col";
+      cell.append(inline(col));
+      headings.append(cell);
+    }
+    head.append(headings);
+    const body = el("tbody");
+    for (const row of data.rows) {
+      const tr = el("tr");
+      for (const value of row) {
+        const td = el("td");
+        td.append(renderValue(value, depth + 1));
+        tr.append(td);
+      }
+      body.append(tr);
+    }
+    grid.append(head, body);
+    wrap.append(grid);
+    return wrap;
   }
-  function field(key, value, depth) {
-    const block = element("section", "field");
-    const name = label(key);
-    const h = heading(name, depth);
-    if (/^Level \d+$/i.test(name)) h.classList.add("level-title");
-    block.append(h, renderValue(value, depth + 1));
+  function isSections(value) {
+    return Array.isArray(value) && value.length && value.every(x => x && typeof x.heading === "string" &&
+      Object.hasOwn(x, "body") && Object.keys(x).every(k => ["heading", "body"].includes(k)));
+  }
+  function textField(key, value, depth) {
+    const block = el("section", "field");
+    block.append(el("h" + Math.min(6, depth), "", label(key)), renderValue(value, depth + 1, label(key)));
     return block;
   }
-  function renderValue(value, depth) {
+  function renderValue(value, depth, title = "") {
     if (plain(value)) return prose(value);
+    if (isTable(value)) return table(value, depth, title);
+    if (isSections(value)) {
+      const output = fragment();
+      for (const s of value) output.append(textField(s.heading, s.body, depth));
+      return output;
+    }
     if (Array.isArray(value)) {
-      if (!value.length) return prose("—");
-      if (value.every(plain)) {
-        const list = element("ul", "rule-list");
-        for (const item of value) {
-          const li = element("li");
-          li.append(prose(item));
-          list.append(li);
-        }
-        return list;
-      }
-      const records = element("div", "records");
+      const output = el(value.every(plain) ? "ul" : "div", value.every(plain) ? "rule-list" : "records");
       for (const item of value) {
-        const record = element("div", "record");
-        record.append(renderValue(item, depth));
-        records.append(record);
+        const child = el(output.localName === "ul" ? "li" : "div", output.localName === "ul" ? "" : "record");
+        child.append(renderValue(item, depth, title));
+        output.append(child);
       }
-      return records;
+      return output;
     }
-    const fragment = document.createDocumentFragment();
-    if (typeof value.name === "string") {
-      const h = heading(title(value.name), depth);
-      h.className = "trait-title";
-      fragment.append(h);
+    const output = fragment();
+    if (typeof value.name === "string") output.append(el("h" + Math.min(depth, 6), "trait-name", cap(value.name)));
+    for (const [key, item] of Object.entries(value)) {
+      if (key === "name" && typeof item === "string") continue;
+      if (/^(?:desc|description)$/i.test(key) && plain(item)) output.append(prose(item));
+      else if (key === "sections" && isSections(item)) output.append(renderValue(item, depth));
+      else output.append(textField(key, item, depth));
     }
-    for (const [key, child] of Object.entries(value)) {
-      if (key === "name" && typeof child === "string") continue;
-      if (/^(desc|description)$/i.test(key) && plain(child)) {
-        fragment.append(prose(child));
-      } else {
-        fragment.append(field(key, child, depth));
-      }
-    }
-    return fragment;
+    return output;
   }
-
-  const statKeys = new Set(["damage", "type", "types", "size", "speed", "lvl", "level", "casting",
-    "range", "duration", "components", "weight", "cost", "attribute_bonuses",
-    "status", "source", "current_rules"]);
-  function buildDetails(entry, header) {
-    const details = entry.details;
-    if (!details || plain(details) || Array.isArray(details)) {
-      reader.append(renderValue(details, 2));
+  const statKeys = new Set(["damage", "type", "types", "size", "speed", "lvl", "level", "casting", "casting_time",
+    "range", "duration", "components", "cooldown", "target", "weight", "cost", "attribute_bonuses", "tradition", "school", "status",
+    "prerequisite", "prerequisites", "requirements", "save", "base ac", "ac bonus", "current_rules"]);
+  function details(entry) {
+    const value = entry.details;
+    if (plain(value) || Array.isArray(value) || isTable(value)) {
+      reader.append(renderValue(value, 2, entry.name));
       return;
     }
-    const stats = element("dl", "stats");
-    const body = element("div", "entry-body");
-    const levels = [];
-    for (const [key, value] of Object.entries(details)) {
-      if (key === "name" && value === entry.name) continue;
-      if (key === "group" && value === entry.group) continue;
-      if (key === "sections" && Array.isArray(value) && value.length && value.every(
-        (section) => section && typeof section.heading === "string" && Object.hasOwn(section, "body")
-          && Object.keys(section).every((name) => name === "heading" || name === "body")
-      )) {
-        for (const section of value) body.append(field(section.heading, section.body, 2));
+    const stats = el("dl", "stats");
+    const intro = fragment();
+    const chapters = [];
+    for (const [key, item] of Object.entries(value)) {
+      if ((key === "name" && item === entry.name) || (key === "group" && item === entry.group)) continue;
+      if (key === "sections" && isSections(item)) { chapters.push(...item); continue; }
+      if (key === "draft_note" && plain(item)) {
+        const note = el("aside", "draft-note");
+        note.append(el("strong", "", "Draft note"), prose(item));
+        intro.append(note);
         continue;
       }
-      const compact = plain(value) || (Array.isArray(value) && value.every(plain));
-      if (statKeys.has(key.toLowerCase()) && compact) {
-        const pair = element("div");
-        const data = Array.isArray(value) ? value.join(", ") : value;
-        pair.append(element("dt", "", label(key)), element("dd", "", data ?? "—"));
-        stats.append(pair);
-      } else {
-        const block = field(key, value, 2);
-        body.append(block);
-        if (/^(?:lvl|level)\s+\d+$/i.test(key)) levels.push([label(key), block.firstChild]);
-      }
-    }
-    if (levels.length > 1) {
-      const jump = element("select");
-      jump.setAttribute("aria-label", "Jump to level");
-      jump.append(new Option("Jump to level…", ""));
-      levels.forEach(([name], index) => jump.append(new Option(name, String(index))));
-      jump.addEventListener("change", () => {
-        if (!jump.value) return;
-        const target = levels[Number(jump.value)][1];
-        target.tabIndex = -1;
-        target.focus();
-        target.scrollIntoView({ block: "start" });
-        jump.value = "";
-      });
-      header.append(jump);
+      if (/^(?:desc|description)$/i.test(key) && plain(item)) { intro.append(prose(item)); continue; }
+      if (statKeys.has(key.toLowerCase()) && (plain(item) || Array.isArray(item) && item.every(plain))) {
+        const stat = el("div");
+        const val = el("dd");
+        val.append(inline(Array.isArray(item) ? item.join(", ") : item ?? "—"));
+        stat.append(el("dt", "", label(key)), val);
+        stats.append(stat);
+      } else chapters.push({heading: label(key), body: item});
     }
     if (stats.childElementCount) reader.append(stats);
-    reader.append(body);
-  }
-
-  function message(name, description) {
-    const h = element("h1", "", name);
-    h.id = "entry-title";
-    reader.replaceChildren(h, element("p", "state-message", description));
-    document.title = name + " · Open D&D";
-  }
-  if (!Array.isArray(sections) || !sections.length) {
-    message("Catalog unavailable", "Open the index.html from the built site to read the compendium.");
-    browser.hidden = true;
-    return;
-  }
-  const firstSection = sections.find((s) => s.key === "classes" && s.entries.length)
-    || sections.find((s) => s.entries.length) || sections[0];
-  const searchText = new Map();
-  for (const section of sections) {
-    for (const entry of section.entries) {
-      searchText.set(entry, (entry.name + " " + entry.group + " " + JSON.stringify(entry.details)).toLowerCase());
-    }
-  }
-  function route(section, entry) {
-    const params = new URLSearchParams({ section: section.key });
-    if (entry) {
-      params.set("entry", entry.name);
-      if (entry.group) params.set("group", entry.group);
-    }
-    return "#" + params.toString();
-  }
-
-  let current = null;
-  let requested = null;
-  function setExpanded(expanded) {
-    browser.classList.toggle("expanded", expanded);
-    browseToggle.setAttribute("aria-expanded", String(expanded));
-    browseToggle.textContent = expanded ? "Hide entries" : "Browse entries";
-  }
-  browseToggle.addEventListener("click", () => setExpanded(!browser.classList.contains("expanded")));
-  byId("skip").addEventListener("click", (event) => {
-    event.preventDefault();
-    reader.focus();
-  });
-  byId("search-form").addEventListener("submit", (event) => event.preventDefault());
-
-  function configureSection(section) {
-    current = section;
-    search.value = "";
-    byId("section-name").textContent = section.title;
-    search.placeholder = "Search " + section.title.toLowerCase();
-    const groups = [...new Set(section.entries.map((entry) => entry.group).filter(Boolean))].sort();
-    groupSelect.replaceChildren(new Option("All groups", ""));
-    for (const group of groups) groupSelect.append(new Option(title(group), group));
-    groupSelect.hidden = groups.length < 2;
-    search.disabled = section.entries.length === 0;
-    for (const link of sectionNav.children) {
-      if (link.dataset.key === section.key) link.setAttribute("aria-current", "page");
-      else link.removeAttribute("aria-current");
-    }
-    setExpanded(false);
-  }
-  function matches(entry) {
-    if (groupSelect.value && entry.group !== groupSelect.value) return false;
-    return search.value.toLowerCase().trim().split(/\s+/).every((word) => searchText.get(entry).includes(word));
-  }
-  function draw() {
-    const matchesFilter = current.entries.filter(matches);
-    if (current.key === "classes") {
-      matchesFilter.sort((left, right) =>
-        Number(right.group === "Base class") - Number(left.group === "Base class"));
-    }
-    const active = matchesFilter.includes(requested) ? requested : matchesFilter[0];
-    const names = new Set();
-    const duplicates = new Set();
-    for (const entry of matchesFilter) {
-      if (names.has(entry.name)) duplicates.add(entry.name);
-      names.add(entry.name);
-    }
-    const fragment = document.createDocumentFragment();
-    for (const entry of matchesFilter) {
-      const link = element("a", "entry-link", title(entry.name));
-      link.href = route(current, entry);
-      if (entry === active) link.setAttribute("aria-current", "page");
-      if (duplicates.has(entry.name)) link.append(element("span", "entry-group", entry.group));
-      fragment.append(link);
-    }
-    entryNav.replaceChildren(fragment);
-    const n = matchesFilter.length;
-    byId("entry-count").textContent = (n === current.entries.length ? n : n + " of " + current.entries.length)
-      + (current.entries.length === 1 ? " entry" : " entries");
-    if (!active) {
-      if (!current.entries.length) {
-        message(current.title, "This section currently has no entries in the repository.");
-      } else {
-        message("No matching entries", "Try a different search or group in " + current.title + ".");
-        const clear = element("button", "clear-filters", "Clear filters");
-        clear.type = "button";
-        clear.addEventListener("click", () => {
-          search.value = "";
-          groupSelect.value = "";
-          draw();
-          if (window.matchMedia("(max-width: 740px)").matches) setExpanded(true);
-          search.focus();
-        });
-        reader.append(clear);
-      }
+    reader.append(intro);
+    const long = chapters.length > 4 || (chapters.length > 1 && JSON.stringify(chapters).length > 4200);
+    if (!long) {
+      for (const item of chapters) reader.append(textField(item.heading, item.body, 2));
       return;
     }
-    const header = element("header", "entry-header");
-    const context = [...new Set([current.title, active.group].filter(Boolean).map(title))].join("  /  ");
-    const h = element("h1", "", title(active.name));
-    h.id = "entry-title";
-    header.append(element("p", "entry-context", context), h);
-    reader.replaceChildren(header);
-    buildDetails(active, header);
-    if (active.source) {
-      const footer = element("footer", "source-file");
-      footer.append("Source file ", element("code", "", "data/" + active.source));
-      reader.append(footer);
+    const [jumpField, jump] = labelledSelect("Jump to a feature", "chapter-picker");
+    jump.append(new Option("Choose a section", ""));
+    jumpField.classList.add("chapter-jump");
+    reader.append(jumpField);
+    const blocks = chapters.map(({heading: title, body}, index) => {
+      const block = el("details", "chapter");
+      const summary = el("summary", "", title);
+      block.append(summary, renderValue(body, 3, title));
+      block.open = index === 0;
+      jump.append(new Option(title, String(index)));
+      reader.append(block);
+      return block;
+    });
+    jump.addEventListener("change", () => {
+      if (!jump.value) return;
+      const target = blocks[Number(jump.value)];
+      target.open = true;
+      target.firstElementChild.focus({preventScroll: true});
+      target.scrollIntoView({block: "start"});
+      jump.value = "";
+    });
+  }
+  const classSupplements = new Map([
+    ["Occultist", "Occultist ritual options"],
+    ["Spellblade", "Spellblade art and exploit options"]
+  ]);
+  function classLinks(section, entry) {
+    const nav = el("nav", "related");
+    nav.setAttribute("aria-label", "Related class entries");
+    if (entry.group === "Base class") {
+      const groupName = entry.name + " archetypes";
+      const group = groupsBySection.get(section.key).find(([name]) => norm(name) === norm(groupName));
+      if (group) nav.append(link("Browse " + groupName, {section: section.key, group: group[0]}, "related-link"));
+    } else {
+      const parent = section.entries.find(e => e.group === "Base class" &&
+        norm(browseGroup(section, entry.group)) === norm(e.name + " archetypes"));
+      if (parent) nav.append(link("Base class · " + cap(parent.name), entryRoute(section, parent), "related-link"));
     }
-    document.title = title(active.name) + " · " + current.title + " · Open D&D";
-  }
-
-  for (const section of sections) {
-    const link = element("a", "section-link", section.title);
-    link.href = route(section);
-    link.dataset.key = section.key;
-    sectionNav.append(link);
-  }
-  function readRoute() {
-    const params = new URLSearchParams(location.hash.slice(1));
-    const section = sections.find((s) => s.key === params.get("section")) || firstSection;
-    if (section !== current || !params.has("entry")) configureSection(section);
-    requested = section.entries.find((entry) => entry.name === params.get("entry")
-      && (!params.has("group") || entry.group === params.get("group")));
-    if (requested && !matches(requested)) {
-      groupSelect.value = "";
-      search.value = "";
+    for (const [owner, supplement] of classSupplements) {
+      const target = entry.name === owner ? supplement : entry.name === supplement ? owner : null;
+      if (!target) continue;
+      const other = section.entries.find(e => e.name === target);
+      if (other) nav.append(link(cap(other.name), entryRoute(section, other), "related-link"));
     }
-    draw();
+    return nav;
   }
-  search.addEventListener("input", draw);
-  groupSelect.addEventListener("change", draw);
-  entryNav.addEventListener("click", (event) => {
-    const link = event.target.closest("a");
-    if (!link || event.button || event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) return;
-    setExpanded(false);
-    reader.focus({ preventScroll: true });
-    reader.scrollIntoView({ block: "start" });
+  function showEntry(section, entry) {
+    const base = {section: section.key};
+    const parts = [[section.title, base]];
+    if (entry.group) parts.push([cap(entry.group), {...base, group: entry.group}]);
+    parts.push([cap(entry.name), null]);
+    crumbs(parts);
+    const header = el("header", "entry-heading");
+    header.append(heading(cap(entry.name)));
+    if (section.key === "classes") {
+      const links = classLinks(section, entry);
+      if (links.childElementCount) header.append(links);
+    }
+    reader.append(header);
+    details(entry);
+    const footer = el("footer", "entry-footer");
+    if (entry.source) {
+      const source = el("p", "source-file", "Source file ");
+      source.append(el("code", "", "data/" + entry.source));
+      footer.append(source);
+    }
+    if (footer.childElementCount) reader.append(footer);
+  }
+  function draw() {
+    const oldInput = document.activeElement?.id;
+    const selection = oldInput === "section-search" ? [document.activeElement.selectionStart, document.activeElement.selectionEnd] : null;
+    const params = Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
+    const section = sectionByKey.get(params.section);
+    reader.replaceChildren();
+    reader.className = "";
+    byId("announcement").textContent = "";
+    picker.value = section?.key || "";
+    if (search.value.trim() !== (params.q || "")) search.value = params.q || "";
+    if (params.q) {
+      globalResults(params);
+    } else if (section && params.entry) {
+      const entry = section.entries.find(e => e.name === params.entry && (!params.group || e.group === params.group));
+      if (entry) {
+        reader.className = "article";
+        showEntry(section, entry);
+      } else {
+        crumbs([[section.title, {section: section.key}], ["Entry unavailable", null]]);
+        reader.append(heading("Entry unavailable"), link("Browse " + section.title, {section: section.key}, "text-link"));
+      }
+    } else if (section) directory(section, params);
+    else if (params.section) {
+      crumbs([["Section unavailable", null]]);
+      reader.append(heading("Section unavailable"), link("Open the compendium index", {}, "text-link"));
+    } else home();
+    if (selection && byId(oldInput)) {
+      byId(oldInput).focus({preventScroll: true});
+      byId(oldInput).setSelectionRange(...selection);
+    }
+  }
+  for (const [family, keys] of families) {
+    const group = el("optgroup");
+    group.label = family;
+    for (const key of keys) {
+      const section = sectionByKey.get(key);
+      if (section) group.append(new Option(section.title, section.key));
+    }
+    if (group.childElementCount) picker.append(group);
+  }
+  picker.addEventListener("change", () => openFilters({section: picker.value}));
+  function searchAll() {
+    const query = search.value.trim();
+    const current = Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
+    if (!query && !current.q) return;
+    openFilters(query ? {q: query, scope: current.scope} : {}, Object.hasOwn(current, "q"));
+  }
+  search.addEventListener("input", searchAll);
+  byId("search-form").addEventListener("submit", e => { e.preventDefault(); searchAll(); });
+  byId("skip").addEventListener("click", e => { e.preventDefault(); reader.focus(); });
+  document.addEventListener("keydown", e => {
+    const editing = e.target.closest("input,select,textarea,[contenteditable=true]");
+    if (e.key === "/" && !editing && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      e.preventDefault(); search.focus(); search.select();
+    }
   });
-  window.addEventListener("hashchange", readRoute);
-  readRoute();
+  window.addEventListener("hashchange", () => {
+    const keepFocus = document.activeElement === search;
+    draw();
+    if (!keepFocus) reader.focus({preventScroll: true});
+    window.scrollTo(0, 0);
+  });
+  let closedForPrint = [];
+  window.addEventListener("beforeprint", () => {
+    closedForPrint = [...reader.querySelectorAll("details:not([open])")];
+    closedForPrint.forEach(d => { d.open = true; });
+  });
+  window.addEventListener("afterprint", () => closedForPrint.forEach(d => { d.open = false; }));
+  draw();
 })();

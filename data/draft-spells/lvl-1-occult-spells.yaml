@@ -1,0 +1,218 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/occult-magic/lvl-1-occult-spells
+section: spells
+entries:
+- name: Black speck
+  group: Occult spells
+  lvl: '1'
+  types: transmutation
+  casting: 1 action
+  components: Verbal, Material(1 vial of acid or corrosive powder)
+  range: special
+  effect: |-
+    As an action, launch a speck of black ichor as a spell attack with a range of 40/80 feet. If the creature is hit it must make a constitution save. On a failure, they take 2d6 + casting bonus necrotic damage and become shaken for 1d6 + 1 turns.
+
+    If the target is within 15 feet, you can instead simply crush the vial and blow it at them, forcing them to immediately make a constitution save against the effect.
+  higher_levels: For every spell slot level above 1st, increase the damage dealt by 1d6, and increase
+    range by 20/40 feet.
+- name: Breath of death
+  group: Occult spells
+  lvl: '1'
+  types: necromancy, transmutation
+  casting: 1 action
+  components: Verbal, Somatic, Material(1 flask of acid, alcohol, or similar toxic or harmful substance,
+    which is consumed)
+  range: 15 feet
+  effect: |-
+    As an action, consume a flask of noxious content, such as a vial of acid, a flask of distilled alcohol, or similar, and blow a 15 ft cone of miasma in a direction of choice. Creatures caught in the cone take 1d12 poison damage, and can attempt to make a dexterity save as a reaction to halve all incoming damage.
+
+    Creatures within the cone that either fail or do not make the dexterity save as a reaction must also make a constitution save. On a failure, they become sickened and poisoned (disadvantage on physical ability checks and disadvantage on all saves) for 1d4 rounds.
+  higher_levels: For every spell slot level above 1st, increase the range by 5 feet and the duration by
+    1d4 rounds.
+- name: Decay
+  group: Occult spells
+  lvl: '1'
+  types: abjuration, necromancy
+  casting: 1 action
+  components: Verbal, Somatic
+  range: 15 feet
+  effect: |-
+    As an action, cause a creature to make three constitution saves. Depending on how many saves succeed, the spell applies additional effects:
+
+    * no failed saves - target resists spell
+    * 1st failed save - target takes 1d4 + casting bonus necrotic damage.
+    * 2nd failed saves - target takes 1d4 + casting bonus radiant damage, and becomes weakened for 1 hour.
+    * 3rd failed saves - target takes 2d4 points of damage to fatigue.
+  higher_levels: If cast as a 2nd level spell, add another save check, and the first save has disadvantage.
+    If the creature ends up with 4 failed saves, they fall prone and have disadvantage on saves against
+    spells you cast until they take a long rest. All other of the spells effect durations are increased
+    to last until a long rest.
+- name: Fire speck
+  group: Occult spells
+  lvl: '1'
+  types: abjuration, necromancy, occult 1
+  casting: 1 action
+  components: Verbal, Somatic
+  range: 15 feet
+  effect: |-
+    As an action, either conjure a flaming spark of flame in your palm and throw it at a target within range as a spell attack, dealing 2d8 + casting bonus fire damage. This spell attack benefits from bonuses to thrown weapon attacks the caster may have.
+
+    Targets hit by the spell must make a constitution save, becoming ignited on a failure.
+  higher_levels: Per spell level above 1st, increase damage by 1d8. Per odd spell level above 1st, target
+    must make extra con save to not be ignited again.
+- name: Foul rage
+  group: Occult spells
+  lvl: '1'
+  types: transmutation, enchantment
+  casting: 1 action
+  components: Verbal, Material(1 vial of acid)
+  range: '30'
+  effect: |-
+    As an action, cause a creature within 30 feet to become angered. If the creature is unwilling, it must make a wisdom save to ignore the effect.
+
+    For 2d6 + casting bonus rounds, the target becomes enraged, gaining the following effects:
+
+    * The target deals 1d4 extra damage with their melee attacks
+    * The target must make a constitution save at the start of their turn. On a failure, they take 1d4-2 psychic damage (min 0.)
+    * The target gains a +1 bonus to strength and constitution checks and saves.
+    * The target cannot maintain concentration, and has a miscast chance of 1d8.
+
+    Once the effect ends, the target must make a constitution save. On a failure, they take 1 damage to fatigue.
+- name: Evil hex
+  group: Occult spells
+  lvl: '1'
+  types: enchantment, necromancy
+  casting: 1 action
+  components: Verbal, Somatic
+  range: 15 feet
+  effect: |-
+    As an action, force a creature within range to make a charisma save. On a failure, they become hexed for 1 hour. On a critical failure, they are hexed against you permanently until dispelled.
+
+    Your attacks against a hexed creature gain a +1d4 bonus to hit, and have their block dc increased by 3.
+- name: Mud servant
+  group: Occult spells
+  lvl: '1'
+  types: transmutation, conjuration, enchantment, concentration
+  casting: 2 full round actions.
+  components: Verbal, Somatic, Material(1 drop of blood, or 1 flask of acid and 1 gold coin, as well as
+    a small pile of mud or soft clay. All are consumed.)
+  range: 5 feet
+  effect: |-
+    As an action, cause a pile of mud to turn into a small mud golem. The golem has the following stats: Once the golem takes at least 1 fire damage, it becomes able to speak common. Before that, it cannot speak, but can understand any language the caster speaks (subject to the GM)
+
+    Mud servant
+
+    Small humanoid elemental, construct
+
+    HP: 3d4 + casting bonus
+    Block: casting modifier - 2 (min 1)
+    AC: 9 + casting bonus.
+
+    Speed: 25 feet
+
+    Attacks:
+
+    * Slam + [spell attack bonus]: deal 1d6 + casting bonus damage. Block DC: 10 + casting bonus.
+
+    Proficiency bonus: 1
+
+    Skills:
+
+    * athletics & insight: 2 + casting bonus
+    * all other: -1
+
+    Saves & checks:
+
+    * Strength & constitution: 1 + casting bonus
+    * All other: -1
+
+    Properties:
+
+    * Immunity to poison
+    * Damage resistance to cold, slashing, necrotic
+    * Vulnerable to fire damage
+
+    The golem can be dispelled as an action, in which case it will crumble. If concentration is lost, the golem will break free of the casters command, and will have a will of its own, and can no longer be dispelled.
+- name: Shiva's scythes
+  group: Occult spells
+  lvl: '1'
+  types: conjuration, evocation
+  casting: 1 action
+  components: Somatic, Material(2 gold coins)
+  range: self
+  effect: |-
+    As an action, conjure up to two eldritch ethereal blades for 1 hour. They can be dispelled, and will dispel if misplaced or disarmed. You are proficient with them. They have the following stats:
+
+    melee weapon, sickle, 1d6 + casting bonus. Block DC is equal to 9 + proficiency + casting bonus. Properties:
+
+    * light
+    * versatile 1d8
+    * can use strength, dex, or casting attribute for attack rolls.
+    * reach 1
+    * trip, swap, hook, disarm, slash.
+    * if target is not wearing heavy armor, deal 1d4 necrotic damage. This damage cannot be blocked.
+    * You may expend 1 HP, temporary health, or arcane health in order to perform a maneuver without expending an extra bonus action.
+    * All damage dealt is magical.
+- name: Subjugate
+  group: Occult spells
+  lvl: '1'
+  types: enchantment, necromancy
+  casting: 1 action
+  components: Verbal, Somatic, Material(1 healing potion)
+  range: 15 feet
+  effect: |-
+    As an action, cause a nearby dying creature to make a charisma save. On a failure, the creature is instead stabilized and healed for 1d4 + casting bonus health, but also becomes subject to your will for the duration, obeying these rules:
+
+    * The creature must obey your commands with at least average efficiency, but cannot be forced to tell the truth, or end their own life.
+    * The creature cannot directly attack the caster.
+    * The creature can make a wisdom save when landing a killing blow. On a success, the creature is no longer subject to the spell.
+
+    Every long rest, the creature can make a wisdom save to attempt to break free of the spell. After 3 failed attempts. The effect becomes permanent, but can still be dispelled. Even if the effect is permanent, managing to somehow attack the caster will allow another save attempt to end the spell.
+
+    If cast on a creature that died within the last round, they are returned to life, and the creature has disadvantage on their save, but the spell will incur 1d4 points of damage to fatigue on the caster. As a consequence of such a revive, the creature is cursed with 1 permanent failed death save.
+- name: Zaaam
+  group: Occult spells
+  lvl: '1'
+  types: transmutation, necromancy, evocation, enchantment
+  casting: 1 action + 1 bonus action + 1 move action
+  components: Verbal, Somatic, Material (flame within 10 feet)
+  range: 10 feet
+  effect: |-
+    As an action, move action, and bonus action perform the lesser killing word of power against a target creature within range, forcing them to make a charisma save.
+
+    The target can spend a reaction to do one of the following during the casting of the spell, if possible:
+
+    * Attack you, automatically failing the save, but forcing you to make a concentration check to not miscast the spell.
+    * Gain a 1d4 bonus to the save against this spell.
+
+    You can spend your reaction to make a performance check if the target succeeds the save, forcing them to reroll if your check exceeds their save result.
+
+    If the creature fails the save or check, it takes 1d4 + casting bonus damage of any types of the caster's choice 4 times.
+  higher_levels: For every spell slot above 1st, grant an additional instance of damage.
+- name: Infuse flesh
+  group: Occult spells
+  lvl: '1'
+  types: transmutation, abjuration, conjuration
+  casting: 1 action
+  components: Somatic
+  range: 10 feet
+  effect: |-
+    As an action, restore 1d4 + casting bonus health to a living creature and or restore 1 point of fatigue, or reduce the duration of one of the following conditions afflicting the creature by half, rounded down:
+
+    * Shaken
+    * Exhausted
+    * Sickened
+  higher_levels: |-
+    When cast from a 2nd level spell slot or higher, the spell can target a creature that has died within the last 1 rounds, instead allowing it to make another death save. On a success, it is returned to life at 0 hp, stabilized, and with 1 failed death save. A creature revived in this way permanently loses 1 max HP.
+
+    When cast from a 3rd level spell slot or higher, the healing is increased to 3d4 + casting bonus, revived creatures are returned with no failed death saves, and the spell can target allies that have died within 2 rounds.
+- name: Shadow warp
+  group: Occult spells
+  lvl: '1'
+  types: Occult 1, Teleportation
+  casting: 1 action
+  components: Somatic
+  range: conditional, 60 ft.
+  effect: Channel the spell, spending your action, and any number of move and bonus actions. Afterwards,
+    for the next 1d6 rounds you gain the ability to shadow warp. The duration increases per move and bonus
+    action spent. For the duration, you can blink between two shadows or dark areas as a free action,
+    once per turn. The distance between the two can be up to 60 feet.

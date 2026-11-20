@@ -1,0 +1,203 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/oath-magic/lvl-3-oath-spells
+section: spells
+entries:
+- name: Binding
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, evocation, abjuration, transmutation
+  casting: free action
+  components: verbal,
+  range: 15 feet
+  duration: special
+  effect: |-
+    As a free action when landing a killing blow on a supernatural, elemental, arcane, eldritch, or similar (subject to the GM) creature, or a creature under an enchantment spell, you may bind their will to yours instead, reducing them to 1 HP instead of letting them perish. The target may make a will save to try and resist this effect. On a success, the spell slot used to cast this spell is locked until the creature is dismissed, or slain.
+
+    A bound creature is under the following effects:
+
+    * It cannot attack you or attempt to cause injury to you.
+    * It can request one task to do so that it can be freed. If so, the caster must name the conditions under which the creature can be freed (subject to the GM.)
+    * The caster can cause the bound target to be still as a free action, or suffer any number of nonlethal damage.
+    * The caster can dismiss the target, in which case they resume the death that was prevented by this spell.
+- name: Blessing of fire
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, evocation, abjuration, transmutation
+  casting: full round action
+  components: somatic, material (1d4 health)
+  range: self
+  duration: 1 hour or combat, special
+  effect: |-
+    As a full-round action, bless a piercing or slashing weapon in your possession by losing 1d4 health. For the next hour, the weapon deals an extra 1d8 fire damage, which is multiplied on a critical hit. The weapon burns on its own while not sheathed or stowed away, but does not harm the wielder, and sheds a light in a 30 ft area.
+
+    If a critical hit with the blessed weapon kills a creature, the wielder heals 1 fatigue.
+- name: Brimstone projectile
+  group: Oath spells
+  lvl: '3'
+  types: Evocation, Oath 3
+  casting: action
+  components: verbal, somatic
+  range: special
+  duration: instant
+  effect: |-
+    As an action, enchant and fire/throw a bolt, potion, stone, or projectile at a target within its original range. All bludgeoning, piercing, fire, force, sonic, and acid damage it deals to be increased by 1 dice, any ongoing effects increased by 1 instance (turn or minute) and has its crit range increased by 1, and ignites the target on a critical hit.
+
+    The projectile also creates a 10 ft radius cloud of smoke on impact that lasts 1 minute and obscures vision.
+  higher_levels: Per level above 3rd, increase damage bonus and contact damage by 1 extra dice, increase
+    smoke cloud radius by 10 ft.
+- name: Channel power
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, abjuration, evocation
+  casting: action
+  components: verbal, somatic.
+  range: self
+  duration: 1 hour
+  effect: |-
+    As an action, gain 4 temporary block, and resistance to three damage types of choice for the duration of the spell.
+
+    For the duration of the spell, you can expend 1 block, 1 fatigue, or 1 rest die to gain advantage on a strength or dex based skill, save, or block check.
+
+    If you cast this spell while at 15 health or less, you also heal 2d8 health.
+- name: I forsake you
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, necromancy
+  casting: full round action
+  components: somatic, verbal, concentration.
+  range: 30 feet.
+  duration: instant.
+  effect: As a full-round action, force a target to take an extra 1d12 damage from all your attacks. This
+    lasts so long as you maintain concentration. You have advantage on concentration checks for this spell.
+- name: Invoke elder magic
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, evocation, transmutation, abjuration, divination, teleportation
+  casting: action
+  components: verbal, somatic
+  range: self
+  duration: 1 hour
+  effect: As action, cause a rune/script based magical effect to double in effect for an hour, or cause
+    a gateway, portal, or surface-based incantation to become invoked and stabilized for an hour (subject
+    to the GM.)
+- name: Favor the gods
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, evocation, transmutation, abjuration, divination
+  casting: Pending author ruling
+  components: verbal, somatic
+  range: self
+  duration: 1 hour
+  effect: |-
+    Invoke the favor of a divine aspect. Upon first learning the spell, choose 3 aspect affinity upgrades which can be evoked as a bonus action:
+
+    * The Hunter - Double the range of all your ranged attacks. +2 bonus to checks made to follow tracks.
+    * The Thunderer - When learning this,, pick either weapon, spell, or unarmed (includes bites, claws, and breath attacks.) When cast, when you use the chosen category to deal damage, it deals an extra 1d6 lightning damage.
+    * The Sage - Your spells have a 1d8 chance dice when cast. On a 1, their spell slots are not expended.
+    * The Smith - Choose one when invoking: The next check involved in creating, enchanting, or repairing an item structure or construct gains a +2d3 bonus, OR double the amount of consumables or generic items being created.
+    * The Fisher - Gain a +1d6 bonus to checks made to take care, maintain, and feed yourself and your allies during a rest.
+    * The Shepherd - For the duration, you can either restore 1 rest die to a creature as an action, or two three creatures within 20 ft as a full round action. This can be done twice. If you die while under this effect, restore 3 rest dice to all allies that witnessed your death.
+    * The Scribe - Scrolls you cast have a 1d4=1 chance dice to not be consumed. Wands you carry restore 1 charge when cast.
+    * The Raven - You gain a +2 bonus to intelligence checks, and can speak up to 4 languages of choice spoken by creatures that have encountered ravens in this plane.
+    * The Lion - Gain a +1 bonus to strength, dexterity, and charisma, and gain advantage on saves vs enchantment and fear effects. Restore 1 block when casting.
+    * The Serpent - Gain a +2 bonus to deception and sleight of hand checks. Creatures you meaningfully deceive (subject to the GM). while under this effect do not perceive you casting illusion and enchantment spells for the duration of this effect.
+    * The Eternal Flame - When reduced to 0 HP, stay conscious for 1 additional round. Fire damage you deal is increased by 2, and you gain resistance to fire damage.
+    * The Champion - You gain a +1 to AC, block checks, and physical saves for the duration. You can reroll a d20 roll you make on your turn, up to a number of total times equal to your casting modifier.
+    * The Owl - Gain a +2 bonus to wisdom for the duration. Gain 100 ft of darkvision, echosight, and tremorsense for the duration.
+    * The Silent Watcher - Gain a +2 bonus to investigation and stealth checks. Ignore the verbal requirements of your spells.
+    * The Denyer - Choose 4 schools of magic when invoking this aspect. For the duration, you gain a +1d3 bonus to saves vs spells of that school.
+    * The Saint - Healing you provide is increased by 1d6 for the duration.
+    * The Horned One - Choose up to 2 spells that you can cast directly or from a scroll and that restrict how you cast them (such as not allowing to cast during the day, or requiring only a piercing weapon instead of a bludgeoning weapon) and choose said limitation. For the duration, you may ignore such limitations, allowing you to push them by one iteration (subject to the GM).
+  draft_note: The casting line specifies bonus action, but the effect specifies full round action. The
+    action cost needs an author ruling.
+- name: Ritual of healing
+  group: Oath spells
+  lvl: '3'
+  types: Transmutation, Abjuration, Oath 3
+  casting: full round action
+  components: somatic, verbal
+  range: touch
+  duration: instant
+  effect: |-
+    As a full round action, heal a creature for 4d10 health, restore 1d3 fatigue, and allow them to remake a save vs an ongoing disease, curse, or condition.
+
+    In addition, do one of the following:
+
+    * Restore vision to the target if blinded.
+    * Restore hearing to the target if deafened.
+    * Restore missing digits and teeth.
+- name: Sojourn
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, transmutation
+  casting: action
+  components: verbal
+  range: self
+  duration: until rest
+  effect: As an action bless yourself. Gain a +3 bonus to checks and saves made to traverse difficult
+    terrains, gain passage, or navigate lands and territories, to avoid traps and misdirection, and checks
+    made to notice thieves.
+- name: Soulpyre
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, abjuration, evocation
+  casting: action
+  components: verbal, somatic, 1 rest die
+  range: self
+  duration: 1 hour
+  effect: |-
+    As an action, tap within by spending a rest dice, roll a 1d4 per 4 wisdom, gaining that many soul dice for the next hour. You can spend up to as many dice as your wisdom bonus (min 1) as a free action to gain one of the following effects a number of times equal to the soul dice spent:
+
+    * Increase weapon damage by 1d6.
+    * Increase a skill check by 1d4.
+    * Increase a save by 1d4.
+    * Increase a block check by 1d6.
+    * Increase healing bestowed by 1d6.
+    * Increase death save by 1d8.
+
+    While you have soul dice, you can release up to as many soul dice as your wisdom bonus (min 1) as an action at a range of touch on a target to deal 1d10 radiant damage per soul dice spent.
+
+    The damage type may change depending on the targets alignment (subject to the GM).
+- name: Spirit bombard
+  group: Oath spells
+  lvl: '3'
+  types: transmutation, evocation, oath 3
+  casting: action and bonus action.
+  components: verbal, somatic, material (Gemstone or precious metal ingot worth at least 20 gold,) person
+  range: 120 ft
+  duration: instant
+  effect: |-
+    As an action and a bonus action, enchant and crush a gemstone or chunk of precious metal worth 20 gold or more. Its dust reforms and melts into a translucent shroud-like material to approximate the shape of a 4 ft cannon in your hands. Its weight requires either a successful DC 21 athletics checks to wield, or an adjacent ally in the direction you wish to aim that has not acted this turn yet and who is willing to sacrifice a move action or bonus action on their next turn to help you aim. Failure to properly aim can only result in targeting a tile directly next to you. The cannon shatters into shards of light on use.
+
+    The cannon can be used to launch a projectile of amber light at a target point within range. All creatures within 20 ft of the target point must make a dexterity save, taking 3d10 force damage and 3d10 fire damage on a failure, and half on a successful save.
+  higher_levels: Per spell level above 3rd, increase both force and fire damage by 1d10. If cast at 5th,
+    allows creating a great spirit bombard instead, which deals the damage in 60 ft narrow cone instead.
+- name: 6th sense invocation
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, abjuration, evocation
+  casting: action
+  components: verbal, somatic, concentration
+  range: self
+  duration: 1 hour
+  effect: |-
+    As an action, awaken your 6th sense, which remains active for up to 1 hour, or until concentration ends. You can perceive which creatures and items are enchanted, and see their auras as colors (subject to the GM).
+
+    While active, your perception, investigation, and insight checks gain advantage, and you can perceive invisible enemies, and see through illusions of 3rd level or lower.
+
+    While active, your wisdom saves gain advantage.
+- name: Warding rune
+  group: Oath spells
+  lvl: '3'
+  types: oath 3, abjuration
+  casting: action
+  components: verbal, somatic, locked spell slot
+  range: 15 feet
+  duration: binding
+  effect: |-
+    As an action, inscribe a creature, large stone, pillar, or adult tree with a rune of warding.
+
+    If placed on a creature, the creature gains 4d10 temporary health upon receiving the rune, and a +1 bonus to saves and AC while affected by the rune.
+
+    If placed on a valid object, the rune provides a +1 bonus to AC and all saves to all creatures that are friendly or aligned with the caster, including the caster, within a range of 100 ft of the rune.
+
+    The rune can be dismissed as an action.

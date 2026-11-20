@@ -1,0 +1,501 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/hex-magic
+section: spells
+entries:
+- name: Disruption
+  group: Minor hexes
+  lvl: '0'
+  types: Necromancy, Hex 1
+  casting: bonus action
+  duration: 1 round
+  cost: 1 rest die or 1 fatigue
+  target: creature or magical
+  range: 15 ft
+  effect: As a bonus action, force a creature maintaining concentration within 15 ft to make a concentration
+    check. Alternatively, make an arcana check vs an ongoing tile, creature, or object affecting spells
+    DC. On a success, it is dissipated for 1 round, after which it returns to full effect.
+  upgrades: |-
+    * Double range, geometrically. Repeatable.
+    * Increase dissipation duration by 1 round.
+- name: Frenzy
+  group: Minor hexes
+  lvl: '0'
+  types: Necromancy, Hex 1
+  casting: bonus action
+  duration: 1 round
+  cost: 1 rest die or 1 fatigue
+  target: self
+  range: self
+  effect: As a bonus action, cast a hex of frenzy by spending 1 rest die or 1 fatigue, gaining a 1d3 bonus
+    to your next attack and its damage. Per point of fatigue lost at time of casting, the bonus is increased
+    by 1 dice size category, granting an extra 1d3 and 1d4 dice at 7 and 8 fatigue, respectively.
+  upgrades: |-
+    * Can be cast for free when at 0 rest dice and 0 fatigue.
+    * You can choose to cast lesser frenzy, ignoring the rest dice or fatigue cost to 0 but also reducing the bonus by 1 size category (in which case 1d3 can become 1d2)
+    * Duration is increased by 1 round.
+- name: Hex of distraction
+  group: Minor hexes
+  lvl: '0'
+  types: Enchantment, Hex 1
+  casting: bonus action
+  cooldown: 1d3 >2
+  duration: 1 hour
+  target: creature
+  range: 15 ft
+  effect: |-
+    As a bonus action force a creature within range to make a wisdom save. On a failure, it is hexed for 1 hour to take a 1d3 penalty to attacks and skill checks.
+
+    A creature cannot be hexed in such a way more than once. And you cannot hex more than one creature at a time in this way.
+  upgrades: '* Double range, geometrically. repeatable.'
+- name: Hex of negation
+  group: Minor hexes
+  lvl: '0'
+  types: Abjuration, Hex 1
+  casting: bonus action
+  cooldown: 1d3 >3
+  duration: 1d10 minutes
+  target: creature
+  range: 15 ft
+  effect: |-
+    As a bonus action, force a creature within range to make a wisdom save. On a failure, it is hexed for 1d10 minutes and has a -1d3 penalty to saves vs spells for the duration.
+
+    A creature cannot be hexed in such a way more than once. And you cannot hex more than one creature at a time in this way.
+  upgrades: '* Increase limit of creatures that can be doomed by 1. Repeatable.'
+- name: Hex of Noth
+  group: Minor hexes
+  lvl: '0'
+  types: Abjuration, Necromancy, Hex 1
+  casting: bonus action
+  cooldown: 1d3 >3
+  duration: 1d12 rounds
+  target: creature
+  range: 15 ft
+  effect: |-
+    As a bonus action, force a creature within range to make a charisma save. On a failure, it is hexed for 1d12 rounds, having a 1d3 penalty to their spell, ability, maneuver, or block DC.
+
+    A creature cannot be hexed in such a way more than once. And you cannot hex more than one creature at a time in this way.
+  upgrades: |-
+    * Increase range to 60 ft.
+    * Increase penalty to 1d4.
+- name: Hex of Syndr
+  group: Minor hexes
+  lvl: '0'
+  types: Evocation, Hex 1
+  casting: bonus action
+  cooldown: 1d2 >1
+  duration: instant
+  target: special
+  range: 15 ft cone or touch
+  effect: As a bonus action, spark a flame, dealing 1d4 fire damage to creatures in a 10 ft cone, or in
+    a controlled manner in your palm, allowing you ignite an object at will.
+  upgrades: |-
+    * Increase damage dice by 1 size category. Can be taken twice.
+    * Increase range by 5 ft. Repeatable.
+    * Allow invoking the hex in reverse: either extinguishing a target tile where you would ignite instead, or dealing cold damage when you would deal fire damage with the spell. Doing so deals double damage to fire elementals.
+    * Allows applying the hex as bonus damage and bonus effect, alongside its upgrades, to other fire or ignite spells or abilities you cast.
+- name: Hex of Wotan
+  group: Minor hexes
+  lvl: '0'
+  types: Evocation, Hex 1
+  casting: bonus action
+  cooldown: 1d3 <2
+  duration: 1 turn
+  target: self
+  range: self
+  effect: As a bonus action, empower your next melee or thrown attack to deal 1d10 extra lightning damage.
+    The bonus is lost if you do not attack by the end of your turn, and you suffer 1d4 lightning damage
+    instead.
+  upgrades: '* You can increase lightning damage by 1d10, but increase the next cooldown chance dice by
+    1 size category. Repeatable, up to a maximum cooldown dice of 1d12.'
+- name: Light
+  group: Minor hexes
+  lvl: '0'
+  types: Evocation, Hex 1
+  casting: bonus action
+  duration: 1 minute
+  target: object
+  range: touch
+  effect: As a bonus action, imbue an object with light for 1 minute. It sheds a light of choice in a
+    30 ft radius for the duration. If cast on a projectile, it deals +1d3 radiant damage.
+  upgrades: |-
+    * Increase radiant damage dealt by 1 dice size category and increase duration by 1 minute. Repeatable.
+    * You can instead make a melee spell attack, dealing 1d3 radiant damage. The damage cannot be blocked.
+- name: Sanguine blade
+  group: Minor hexes
+  lvl: '0'
+  types: Transmutation, Hex 1
+  casting: bonus action
+  cooldown: 1d4 >3
+  duration: 1 round
+  target: self
+  range: self
+  effect: 'As a bonus action, grant your next melee slashing weapon attack an extra feature for 1 round:
+    If unblocked, creatures hit take and extra 1d4 force damage and must make a constitution save or receive
+    the bleed condition. On a critical constitution failure, the attack critically strikes instead.'
+  upgrades: '* Increase bonus damage by 1d4 and effect DC by 1.'
+- name: Shielding rune
+  group: Minor hexes
+  lvl: '0'
+  types: Abjuration, Hex 1
+  casting: bonus action
+  duration: 1 round
+  target: self
+  range: self
+  effect: As a bonus action, invoke a rune of shielding, granting you a +1d4 bonus to your next block
+    checks until the start of your next turn.
+  upgrades: |-
+    * Increase strength bonus dice by 1 size category. Repeatable (1d8 max.)
+    * Can be cast while raising a shield for temporary block, combining the actions as one bonus action. This makes raising the block a hex.
+    * Increase duration to 2 rounds instead.
+- name: Strength rune
+  group: Minor hexes
+  lvl: '0'
+  types: Transmutation, Hex 1
+  casting: bonus action
+  cooldown: 1d3 <2
+  duration: 1 round
+  target: self
+  range: self
+  effect: As a bonus action, invoke a hex of strength. Until the start of your next turn, you have a +2
+    bonus to strength.
+  upgrades: '* Increase strength bonus by +1'
+- name: Vanish
+  group: Minor hexes
+  lvl: '0'
+  types: Illusion, Hex 1
+  casting: bonus action
+  duration: 1d3 turns
+  target: self
+  range: self
+  effect: |-
+    As a bonus action, shroud yourself and become invisible for 1d3 rounds. Attacking, casting other spells, or using objects from your person or inventory (such as potions, wands, scrolls, or similar) will end the effect. Disturbing objects, smells, noise, and leaving tracks may still attract attention ( subject to the GM).
+
+    Repeating the hex still briefly makes you visible.
+  upgrades: '* +1 rounds to duration. Repeatable.'
+- name: Hex of doom
+  group: Major hexes
+  lvl: '0'
+  types: Necromancy, Evocation, Hex 2
+  casting: bonus action
+  duration: instant
+  target: 5 ft surface tile
+  range: 30 ft
+  effect: |-
+    as a bonus action, force a creature within range to make a wisdom save. On a failure, they are hexed for 1 minute, taking an extra 1d6 necrotic damage from all your attacks for the next hour.
+
+    Only the last target of this spell is hexed, dispelling previous targets.
+  upgrades: |-
+    * Increase damage by 1d6. Repeatable.
+    * Increase range by 30 ft. Repeatable.
+- name: Hex of force
+  group: Major hexes
+  lvl: '0'
+  types: Evocation, Hex 2
+  casting: bonus action
+  duration: instant
+  cooldown: 1d4 >3
+  target: self
+  range: 15 ft cone
+  effect: |-
+    As a bonus action, force creatures and objects in a cone to make a constitution or strength save. On a failure they are pushed 10 ft back, on a success the distance is halved, and on a critical failure they are knocked prone.
+
+    Creatures that collide take 1d4 force damage. Can be cast in such a way as to put out mundane fires.
+  upgrades: |-
+    * Increase range by 10 ft. Repeatable.
+    * Range can be Increased from cone to wide cone ( half circle )
+- name: Lifesight
+  group: Major hexes
+  lvl: '0'
+  types: Divination, Hex 2
+  casting: bonus action
+  duration: 1 round
+  cooldown: 1d12 >11
+  target: self
+  range: self
+  effect: |-
+    As a bonus action, blink with enchanted eyes until the end of your turn, gaining darkvision and perceiving which creatures have heartbeats and which do not and extending the critical range of melee attacks against such creatures by 1 for the duration.
+
+    If you slay a creature while under this effect, you gain a permanent +1 bonus to max HP, up to a total maximum of +2.
+  upgrades: |-
+    * Increase duration by 1 round (till the end of your next turn.) repeatable.
+    * Increase total max HP that can be gained by 3. Repeatable.
+    * Gain permanent darkvision at 60 ft, repeatable.
+- name: Momentum force
+  group: Major hexes
+  lvl: '0'
+  types: Evocation, Hex 2
+  casting: bonus action
+  duration: instant
+  cooldown: 1d8 <3
+  target: self
+  range: touch
+  effect: |-
+    As a bonus action, empower your next ranged attack until the start of your next turn. The duration is extended for up to 1 extra turn if you do not move.
+
+    The empowered ranged attack has double the range, has its block DC increased by 1d4, and counts as magical.
+
+    On a critical strike, it deals an extra 2d6 damage of the caster's choice from either: fire, force, lightning, sonic, piercing, bludgeoning, or radiant.
+  upgrades: |-
+    * Increase extra critical damage by 1d6 and block DC bonus by 1 dice size category. Repeatable.
+    * If you have another windup/aim/mark bonus action effect, you can merge this hex into it, applying its bonuses, and using the longer duration of the two (permitting for the turns extended by standing still by 1)
+    * Make the damage dealt by the attack cursed, meaning it cannot be healed until the creature passes a rest.
+- name: Rune of dispelling
+  group: Major hexes
+  lvl: '0'
+  types: Abjuration, Hex 1, Concentration
+  casting: bonus action
+  cooldown: 1d8 >7
+  duration: special
+  target: special
+  range: special
+  effect: |-
+    As a bonus action, spend 1 rest die to cast a lesser rune of protection in the air. Choose a target:
+
+    * Self
+    * Target object you hold
+    * Target creature you touch
+
+    Then choose a specific magical effect or ongoing spell that they are subject to.
+
+    Afterwards, you must remain in place an maintain concentration, breaking the runes effect otherwise. While maintaining concentration, you may spend an action, or a move and bonus action to attempt to dispel the target effect or spell by making an arcana check vs its DC. On a failure, you take 1d4 psychic and force damage per equivalent spell level of the effect (subject to the GM).
+  upgrades: |-
+    * You can add the following to the list of valid targets: Target 5 ft area within 15 ft of range.
+    * You are no longer required to move in order to maintain the runes effect. The runes effect is however lost if you move further than 60 ft from the target.
+    * When casting the hex, make an initial arcana check. If it is a success, the effect is suppressed (negated) for as long as you maintain concentration.
+    * You can take 1d2 damage to fatigue to cast the rune instead of a rest dice.
+    * You can cast it on a caster or creature originating a spell or magical effect. When doing so, you can instead spend an action, or bonus and move action to try and end the spell or effect. The target can make an arcana check vs your arcana check to try and negate it.
+- name: Rune of Njorn
+  group: Major hexes
+  lvl: '0'
+  types: Necromancy, Evocation, Hex 2
+  casting: bonus action
+  duration: instant
+  target: 5 ft surface tile
+  range: 30 ft
+  effect: |-
+    as a bonus action, mark an area within range with a rune that affects up to a 10 ft square area. Creatures that enter or start their turn in the area marked by the rune take 1d8 cold damage and have disadvantage on dexterity saves while in the area. You can break the rune as a bonus action or reaction to force creatures within the marked area to make a dexterity save. On a failure, they take 2d10 cold damage and are hexed to have disadvantage to saves vs spells for the next 1d10 rounds.
+
+    Only one rune can be placed at a time.
+  upgrades: |-
+    * Increase both instances of damage by 1 dice. Repeatable
+    * Increase cast range by 15 ft and max rune area size by 5 ft. repeatable.
+    * Increase number of runes/areas you can mark to 2.
+    * Allows you to split the rune into smaller 5 ft tiles within range, equivalent to the area covered, but doing so reduces the damage dice used by 1 size category.
+- name: Rune of the snare
+  group: Major hexes
+  lvl: '0'
+  types: Transmutation, Hex 2
+  casting: bonus action
+  duration: instant
+  cooldown: 1d4 >2
+  target: 5 ft surface tile
+  range: 5 ft
+  effect: |-
+    As a bonus action, mark a magical rune on a surface within 5 ft of you which quickly fades. You can only create one such rune at a time. You can activate it as a reaction, forcing any creature standing on it to make a dexterity save. On a failure, they are snared until they spend a bonus action or action to make a strength save to escape.
+
+    You are alerted when a creature enters a runed area.
+  upgrades: |-
+    * Increase area that a rune can cover to become a 2x2 tile area. Can be taken again to make it be 3x3.
+    * Increase number of simultaneous runes you can create by 1. Repeatable.
+    * Increase range at which you can create a rune to 30 ft.
+    * Cause enemies that fail the save to become blinded for 1d4 rounds.
+    * Cause enemies that fail the save to take 1d10 poison damage. Can be taken multiple times to increase poison damage by 1d10.
+- name: Rune of Yjs
+  group: Major hexes
+  lvl: '0'
+  types: Abjuration, Hex 2
+  casting: bonus action
+  duration: instant
+  cooldown: 1d10 <2
+  target: self
+  range: self
+  effect: As a bonus action, grant yourself 1d8 temporary health which lasts 1d10 rounds, and grant yourself
+    a +1 bonus vs necromancy spells and spells cast by undead or eldritch creatures.
+  upgrades: |-
+    * Increase temporary health by 1d8. Repeatable.
+    * Increase the bonus by 1. Repeatable.
+    * Increase duration by 1d10 rounds
+- name: Warping circle
+  group: Major hexes
+  lvl: '0'
+  types: Abjuration, Hex 2
+  casting: bonus action
+  duration: instant
+  cooldown: 1d10 <3
+  target: 10 ft surface area
+  range: touch
+  effect: |-
+    As a bonus action, mark a 10 ft diameter circle surface adjacent or overlapping you. While standing within it, all hexes cast are upgraded an additional time.
+
+    Ethereal creatures lose physical damage immunity or resistance and lose cold, acid, and lightning resistances while in the area.
+  upgrades: |-
+    * Increase diameter by 5 ft, repeatable.
+    * Undead creatures within the circle lose poison and acid resistances or immunities.
+    * Eldritch creatures within the circle either have their psychic immunity downgraded to a resistance, or lose resistance.
+- name: Blink hex
+  group: Greater hexes
+  lvl: '0'
+  types: Conjuration, Hex 3
+  casting: bonus action
+  duration: instant
+  cooldown: 1d10 >9
+  target: self/area
+  range: 30 ft
+  effect: As a bonus action, blink to a target area within range that you can see.
+  upgrades: |-
+    * Increase range by 20 ft. Repeatable.
+    * Either increase cooldown chance dice by 1 size category or reduce success requirement by 2.
+- name: Bullet hex
+  group: Greater hexes
+  lvl: '0'
+  types: Conjuration, Hex 3
+  casting: bonus action
+  cost: 1 rest die or 1 fatigue
+  duration: instant
+  cooldown: 1d10 >8
+  target: self/area
+  range: 30 ft
+  effect: 'As a bonus action, mark hex your ranged weapon for the next 2d3 rounds. For the duration, you
+    have a +1 bonus to block and perception checks while wielding it. The next attack you make with it
+    ends the effect and has the following benefits: +2d8 force damage, +2 block DC, and +1 to crit range.'
+  upgrades: |-
+    * Increase duration by 2d3 rounds. Repeatable.
+    * Increase damage bonus damage by 1d8 and block DC by 1. Repeatable.
+    * Applies to an extra attack for the duration. Repeatable.
+- name: Decoy hex
+  group: Greater hexes
+  lvl: '0'
+  types: Illusion, Hex 3
+  casting: Pending author ruling
+  cost: 1 rest die
+  duration: instant
+  cooldown: 1d12 >11
+  target: special
+  range: 25 ft
+  effect: Spend 1 rest die, and create a semi-illusory decoy of yourself at the target tile within range.
+    It lasts for 2d6 rounds, has a -3 to skill checks and saves, and deals 1/2 damage, cannot cast spells
+    or hexes that are higher than lvl 2, has 0 rest dice, takes x3 damage, and behaves as you choose on
+    your turn, but does not share vision or perception with the you.
+  upgrades: |-
+    * Grant the decoy +20 max HP. Repeatable.
+    * Increase duration by 2d6 rounds. Repeatable.
+    * The decoy shares vision and perception, and has 1 rest die. Repeatable to grant an extra rest dice.
+  draft_note: The casting line specifies bonus action and action, but the effect specifies bonus action.
+    The action cost needs an author ruling.
+- name: Hex of death
+  group: Greater hexes
+  lvl: '0'
+  types: Necromancy, Hex 3
+  casting: bonus action
+  cost: 1 rest die
+  duration: instant
+  cooldown: 1d10 >8
+  target: creature
+  range: 30 ft
+  effect: As a bonus action, spend 1 rest die force a creature within range to make a constitution save.
+    On a failure, they take 1d10 poison damage and 1d10 necrotic damage. On a critical failure, they must
+    make a death save and take 1 damage to fatigue.
+  upgrades: |-
+    * Increase poison and necrotic damage by 1d6. Repeatable.
+    * Increase range by 15 ft. Repeatable.
+    * Increase fatigue damage to 1d3.
+    * Creatures slain by this hex immediately refresh its cooldown.
+    * All poison and necrotic damage you deal is increased by 1.
+- name: Greater rune of Yjs
+  group: Greater hexes
+  lvl: '0'
+  types: Abjuration, Hex 3
+  casting: bonus action
+  cost: 1 rest die
+  duration: instant
+  cooldown: 1d12 >10
+  target: 10 ft surface tile
+  range: 30 ft
+  effect: As a bonus action, spend a rest dice and sign a greater rune of Yjs at a target 10 ft square
+    area within range. Creatures within the area that died within 1 round are revived to 0hp. All creatures
+    within the area are healed for 2d10 health and are allowed to remake another save vs an ongoing effect.
+  upgrades: '* Increase healing by 1d10, and increase duration within which a target can be revived by
+    1 turn. Repeatable.'
+- name: Greater rune of Wotan
+  group: Greater hexes
+  lvl: '0'
+  types: Abjuration, Hex 3
+  casting: bonus action
+  cost: 1 rest die
+  duration: instant
+  cooldown: 1d12 >10
+  target: 10 ft surface tile
+  range: 30 ft
+  effect: As a bonus action, spend a rest dice and sign a greater rune of Wotan to channel at a target
+    10 ft square area within range. Creatures within the area must make a dexterity save, taking a full
+    4d10 + casting bonus lightning damage on a failure and half on a success.
+  upgrades: |-
+    * Increase damage by 1d10. Repeatable.
+    * Critical failure doubles damage.
+    * Increase range by 30 ft and affected square area by 5 ft. Repeatable.
+    * You can invoke the rune when casting a lightning damage dealing spell, adding its damage to it instead of manifesting the effect.
+- name: Greater rune of Chaos
+  group: Greater hexes
+  lvl: '0'
+  types: Evocation, Necromancy, Hex 3
+  casting: bonus action and action
+  cost: 1 rest die
+  duration: instant
+  cooldown: 1d12 >11
+  target: special
+  range: 25 ft
+  effect: As a bonus action and action, spend 1 rest die, invoke a great rune of chaos. For any number
+    of different tiles of choice within range, roll a 1d10 chance dice. On a 7 or higher, deal 1d8 radiant
+    and 1d8 necrotic damage to creatures and objects on the chosen tile. Repeat the chance dice effect
+    for every tile.
+  upgrades: |-
+    * Increase range by 25 ft. Repeatable.
+    * Add 1d8 fire damage to the damage dealt.
+    * Add 1d8 psychic damage to the damage dealt.
+- name: Hex of paralysis
+  group: Greater hexes
+  lvl: '0'
+  types: Necromancy, Hex 3
+  casting: bonus action and action
+  duration: instant
+  cooldown: 1d12 >101
+  target: creature
+  range: 25 ft
+  effect: As a bonus action and action, force a creature within range to make a constitution or wisdom
+    save. On a failure, they are paralyzed while you maintain concentration. Every round, they can remake
+    the save at the start of their turn.
+- name: Rune of Savat
+  group: Greater hexes
+  lvl: '0'
+  types: Evocation, Necromancy, Hex 3
+  casting: Pending author ruling
+  cost: 1 death save
+  duration: instant
+  cooldown: 1d10 >8
+  target: special
+  range: 25 ft
+  effect: |-
+    Make a death save, locking the slot on a failure. You restore 2d20 hp, remake a save vs all ongoing negative effects and conditions, and gain 5 power dice, which are 1d4 each.
+
+    Every time you use the power dice, you lose one. When you use them, you roll them all and add the total.
+
+    You can use power dice to add them as damage to a melee or thrown weapon attack, damage of a spell, duration of a spell, or affected areas or range of a spell or ability, or an athletics check.
+  upgrades: '* Add 1 dice. Repeatable.'
+  draft_note: The casting line specifies bonus action and action, but the effect specifies bonus action.
+    The action cost needs an author ruling.
+- name: Ward hex
+  group: Greater hexes
+  lvl: '0'
+  types: Abjuration, Hex 3
+  casting: Pending author ruling
+  cost: 1 rest die
+  duration: Instant
+  cooldown: 1d12 > 11
+  target: Special
+  range: 25 ft
+  effect: Spend a rest die. The next time you would take damage within 2d4 rounds, you can block it automatically
+    without spending block.
+  upgrades: |-
+    * Lower the cooldown threshold by 2 and extend the duration by 1d4 rounds. You can choose this upgrade multiple times.
+    * While the ward lasts, you may use a reaction to block projectiles without spending block. You also gain +1 on saves against spells.
+  draft_note: The casting line specifies bonus action and action, but the effect specifies bonus action.
+    The action cost needs an author ruling.

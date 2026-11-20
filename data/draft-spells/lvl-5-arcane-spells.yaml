@@ -1,0 +1,444 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/arcane-magic/lvl-5-arcane-spells
+section: spells
+entries:
+- name: Arcane bombardment
+  group: Arcane spells
+  lvl: '5'
+  types: Evocation, transmutation, Arcane 5
+  casting: 1 full round action.
+  components: verbal, somatic
+  duration: instant
+  range: 300 ft
+  effect: |-
+    As an full round action, conjure a great arcane projectile. Launch it at a target area within range upon completing, causing all creatures within a 40 ft radius area to take 6d10 damage of your choice: Fire, sonic, cold, necrotic, acid, or poison. Creatures take half damage on a successful dexterity save.
+
+    Creatures that critically fail the save take double damage.
+
+    Deals double damage to structures and objects.
+  higher_levels: 'At 6th level, increase damage by 6d10 of a chosen type: Psychic, Force, or Radiant.
+    Increase range by 200 ft.'
+- name: Arcane chains
+  group: Arcane spells
+  lvl: '5'
+  types: Conjuration, Abjuration, Illusion, Arcane 5
+  casting: 1 action, material (mana potion, or 1d4 HP worth of blood)
+  components: verbal, somatic
+  duration: 40 minutes
+  range: 60 ft
+  effect: |-
+    As an action, force a creature within range to make a charisma save. On a failure, you manifest runed chains that bind the creature in place, and tether to 1d4 + 1 surfaces within 50 ft of the target as an action. For the duration, the creature is in stasis and cannot take or deal damage, cannot be harmed, and cannot teleport or be subject to teleport effect, but can attempt to remake the save as an action, breaking 1 chain on a success.
+
+    Other creatures can also attempt to break or dispel the chains.
+  higher_levels: At 6th level, the chains can reach 100 ft, are increased to 2d4 chains, and the range
+    is extended to 100 ft.
+- name: Arcane crown
+  group: Arcane spells
+  lvl: '5'
+  types: Abjuration, Transmutation, Conjuration, Arcane 5
+  casting: 1 action.
+  components: verbal, somatic
+  duration: 10 minutes
+  range: self
+  effect: |-
+    As an action, conjure an enchanted halo of runes to envelop your temple. For the duration of the spell, you have the following benefits:
+
+    * You can spend an action and move action to fire beam from 10 ft above you at the ground in a 60 ft half circle area in front of you. The beam deals 5d10 + casting bonus radiant damage to all creatures it passes through, allowing them to halve the damage with a successful dexterity save.
+    * You have a +2 bonus to wisdom saves.
+    * You have echolocation and aura sight.
+    * You can zoom in to view objects up to 2000 ft away as though up close, though this may require an action to focus (subject to the GM).
+    * You can spend a reaction to force a creature within 40 ft to make a strength save. On a failure, it ends its movement speed and cannot move.
+  higher_levels: At 6th level, this can be cast on a helmet or other metallic head slot item, allowing
+    the enchantment to lasts 2d6 days.
+- name: Arcane reconstruction
+  group: Arcane spells
+  lvl: '5'
+  types: Abjuration, Transmutation, Arcane 5
+  casting: 1 action.
+  components: verbal, somatic
+  duration: Permanent
+  range: touch
+  effect: |-
+    As an action, do one of the following:
+
+    * Conjure enchanted material to rebuild a willing living creatures damaged, crippled, or missing limb with arcana, granting them a +1 bonus to an ability score of choice, and reducing their max death save slots by 1.
+    * Heal a construct or elemental creature for 7d6 health.
+- name: Decentralize karma
+  group: Arcane spells
+  lvl: '5'
+  types: Divination, Arcane 5
+  casting: 1 reaction.
+  components: verbal, somatic
+  duration: Permanent
+  range: touch
+  effect: As a reaction to taking damage, distribute it among all creatures within range. For up to as
+    many times as your casting attribute total, reduce the incoming damage by 1d4 and deal 1 damage to
+    a random creature within 40 ft of you (subject to the GM). This can reduce the incoming damage to
+    half.
+  higher_levels: When cast at 6th level, reduce all incoming damage.
+- name: Doomcharge
+  group: Arcane spells
+  lvl: '5'
+  types: Evocation, Arcane 5
+  casting: 1 action
+  components: verbal, somatic,
+  duration: special
+  range: touch
+  effect: |-
+    As an action, harness a magical force in a rune between your fingers. While the rune persists, you can spend a bonus action to make a spell attack against a creature. On a success, the target takes 3d12 fire damage and 3d12 radiant damage. On a failed attack, the rune persists.
+
+    At the start of your turn, roll a 1d4. On a 1, the rune detonates, dealing 2d6 fire and 2d6 radiant damage to you.
+
+    All damage of the rune is increased by 1 dice per damage type for every turn that the rune has been active.
+- name: 'Enchant: Fear'
+  group: Arcane spells
+  lvl: '5'
+  types: Enchantment, Illusion, Arcane 5
+  casting: 1 action
+  components: verbal, somatic
+  duration: 1 minutes.
+  range: 30 ft
+  effect: |-
+    As an action, force a creature to make an intelligence save. On a failure, it becomes Afraid of you or a target you choose within range. Apply the Afraid condition’s movement rules.
+
+    On a critical failure, the target becomes Terrified instead, and the duration increases to 10 minutes.
+
+    If the target is tackled/intercepted, they can be allowed another save vs the spell (subject to the GM).
+  higher_levels: At 6th level, can target creatures within a 30 ft sphere, within a range of 60 ft.
+- name: 'Enchant: Madness'
+  group: Arcane spells
+  lvl: '5'
+  types: Enchantment, Arcane 5
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes.
+  range: 30 ft
+  effect: |-
+    As an action, force a creature to make an intelligence and constitution save.
+
+    On a failure, the target is distracted and under a madness effect, requiring them to spend a bonus action or move action to giggle for the duration of the spell. If they fail both saves, they must do so twice.
+
+    On a critical failure in either, the creature takes 2d8 psychic damage and you can issue it a command or question that it must answer truthfully.
+  higher_levels: At 6th level, can target creatures within a 30 ft diameter sphere, within a range of
+    60 ft.
+- name: 'Enchant: Rage'
+  group: Arcane spells
+  lvl: '5'
+  types: Enchantment, Illusion, Arcane 5
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes.
+  range: 30 ft
+  effect: As an action, force a creature to make an intelligence save. On a failure, choose another creature
+    within range. The target is immediately charmed to attack the target and treat it as hostile. Other
+    creatures can attempt to make them retry the save (subject to the GM).
+  higher_levels: At 6th level, both targets are affected by the charm and the range is doubled.
+- name: Ethereal gate
+  group: Arcane spells
+  lvl: '5'
+  types: Conjuration, Arcane 5
+  casting: 1 hour
+  components: verbal, somatic, material(3 arcane components, gemstones worth 100 gold, mana potion, all
+    consumed.)
+  duration: permanent
+  range: 15 ft
+  effect: |-
+    As an hour long ritual, create an arcane circle of runes on a stone floor or wall, up to a radius of 10 ft. The runes can be invoked by spending a 2nd level spell slot or equivalent scroll to open a gate to this locations equivalent location in the ethereal realm ( subject to the GM). The portal remains open for 6d10 turns.
+
+    An equivalent portal is inscribed on the ethereal plane, but it requires a DC 20 arcana check to realize, in addition to the resource cost, and lasts only 1d10 turns (subject to the GM).
+
+    Portals that are placed too close to one another may disrupt one another ( subject to the GM. )
+- name: Elder direfrost
+  group: Arcane spells
+  lvl: '5'
+  types: Transmutation, Conjuration, Arcane 5
+  casting: 1 action
+  components: verbal, somatic
+  duration: permanent
+  range: 50 ft
+  effect: |-
+    As an action, conjure a single snowflake of primordial direfrost from a deep source at the target location. The snowflake immediately destabilizes and collapses into itself, falling to the ground and forcing all creatures and objects within 50 ft of it to take 5d12 + casting bonus cold damage and 1d4 damage to fatigue, half on a constitution save.
+
+    Creatures that fail the save are affected by direfrost, becoming exhausted until the effect is dispelled by magical means.
+
+    Creatures slain or reduced to 0hp by the spell become petrified in ice until dispelled.
+
+    Causes all exposed liquids to freeze solid, encasing creatures submerged in direfrost.
+  higher_levels: At 6th level, the damage is increased by 1d12, the range by 10 ft, the area by 5t, and
+    cause creatures to take a -1d4 penalty to constitution as part of the direfrost effect.
+- name: Greater geomancy
+  group: Arcane spells
+  lvl: '5'
+  types: Divination, Arcane 5
+  casting: 1 action
+  components: verbal, somatic, material ( A large crystal ball or an equivalent conduit, subject to the
+    GM)
+  duration: Special
+  range: 60 ft
+  effect: |-
+    As an action, cause a segment of stone up to 30 ft in size within range of the spell to do any of the following:
+
+    * Move up to 60 ft
+    * Cause a rough structure to emerge from stone within the area to your liking
+    * Cause stone to break or reorganize to provide a path
+    * Ensnare all creatures within a 30 ft radius area on a surface connected to the stone, requiring a strength save to break free as an action.
+
+    You can attempt an arcana check after the casting the spell to attempt to maintain it, allowing you to repeat the effect next turn.
+- name: Greater windbinding
+  group: Arcane spells
+  lvl: '5'
+  types: Divination, Arcane 5
+  casting: 1 action
+  components: verbal, somatic
+  duration: 2 rounds
+  range: 60 ft
+  effect: |-
+    As an action, conjure one of the following:
+
+    * Wind wall - Prevent up to 20 tiles as a wall, or any part of a 20 ft sphere around you to repel all projectiles, preventing attacks.
+    * Dense air - Prevent fall damage for you and adjacent ally creatures for the next 2 rounds, and reduce all incoming physical damage within range by 1d10 for the duration, applies to everyone.
+    * Storm push - Force creatures in a 20 ft sphere to make a strength save, moving 20 ft in a direction of the caster's choosing on a failure and falling prone and becoming disarmed on a critical failure.
+    * Sky leap - You gain a jump distance equal to the spells range, and take no fall damage for the duration.
+    * Bind winds - Accelerate a sail driven craft by twice its normal speed.
+    * Suffocate - Force a creature within range to take 1d4 damage to fatigue and 2d12 necrotic damage, become winded, and become deafened. On a successful constitution save, the target takes half damage. On a critical failure, the target is exhausted for the duration.
+  higher_levels: At 5th level, sky leap can affect all allies within 10 ft of you, suffocate deals 2d12
+    extra damage, and wind walls area is doubled. At 6th level, you can choose to attempt to calm a storm
+    instead, making a DC 22 arcana check (subject to the GM). to attempt to reduce the severity of weather.
+- name: Hemomancy touch
+  group: Arcane spells
+  lvl: '5'
+  types: Necromancy, Enchantment, Transmutation, Arcane 5
+  casting: 1 action
+  components: verbal, somatic, material (1d3 HP worth of blood)
+  duration: Permanent
+  range: touch
+  effect: |-
+    As an action, make a melee spell attack vs a target. On a success, the target can either block or make an int save vs the DC.
+
+    On a failure, the target takes 2d12 necrotic damage, 2d10 psychic damage, and 2d8 cold damage.
+
+    Targets affected by this spell must sacrifice one class resource (Rest dice, Metamagic points, Alchemy points, inspiration dice, battle dice, etc. subject to the GM) that you can use and retain.
+
+    If the target critically fails the block check or save, you deal an extra 2d6 lightning damage and gain 1 extra resource.
+
+    If this slays the target, you gain 2d10 temporary health and 1 extra resource.
+- name: Spectral blade array
+  group: Arcane spells
+  lvl: '5'
+  types: Illusion, Arcane 5
+  casting: 1 action
+  components: verbal, somatic, material(1 gemstone or runestone, which is consumed.)
+  duration: 3d4 rounds
+  range: self
+  effect: |-
+    As an action, conjure 3d4 + 2 spectral blades which hover above you for the next 3d4 rounds. You can spend an action to cause a number of blades equal to your casting bonus to fly at a target creature within 50/100 ft. Make a spell attack per blade launched, dealing 1d12 + casting bonus psychic damage to the target, which cannot be blocked.
+
+    While any blade persist, you gain a +4 bonus to block checks and can use your casting modifier to block at all times, and can sacrifice 1d3 rounds of duration from the spell to make a block check.
+
+    You can end the spell prematurely by making a sweep with all blades, dealing 1d10 psychic damage per remaining blade to all creatures within 10 ft, halved on a successful dexterity save.
+  higher_levels: If cast at 6th level, increase amount of blades by an extra 1d4 + 1 and allows you to
+    change damage type to force.
+- name: Mage knight armor
+  group: Arcane spells
+  lvl: '5'
+  types: Abjuration, Transmutation, Arcane 5
+  casting: 1 full round action.
+  components: verbal, somatic
+  duration: 10 minutes
+  range: self
+  effect: |-
+    As a full-round action, enchant a set of armor, granting its wearer the following benefits for the duration of the spell:
+
+    * +3 bonus to physical saves.
+    * Ignore 1 critical hit per combat.
+    * +4 bonus to strength.
+    * 2 block at the start of combat.
+    * Levitate speed of 30 ft.
+    * Can block in place of making saves vs spells.
+- name: Metamancy arcana
+  group: Arcane spells
+  lvl: '5'
+  types: Divination, Conjuration, Arcane 5
+  casting: 1 full round actions.
+  components: verbal, somatic
+  duration: special
+  range: special
+  effect: As a full round action, manifest a 2nd level or lower spell effect of your choice from any class
+    of magic, which you then cast at the start of your next turn. Gain a +1 bonus to its casting modifier.
+- name: Necromantic plague
+  group: Arcane spells
+  lvl: '5'
+  types: Necromancy, Arcane 5
+  casting: 1 action
+  components: verbal, somatic, material (2 phials of 1d4 HP worth of blood)
+  duration: 1 hour.
+  range: 80 ft
+  effect: |-
+    As an action, target a 30 ft diameter sphere within range. Creatures within must make a constitution save, becoming infected by necromantic plague on a failure, which lasts up to 1 hour. This is a magical disease effect.
+
+    An infected creature takes 1d10 + casting bonus necrotic damage at the start of their, or half on a successful constitution save.
+
+    Creatures slain while under the effect of this spell remain contaminated for up to 1 day. Creatures that come within melee range of a contaminated corpse contract the Necromantic plague unless they save a constitution save.
+
+    Necromantic plague can transferred by bite, and claw attacks, requiring a constitution save.
+
+    Can be dispelled by the caster at will, thereby ending the plague effect. Requires a successful DC 20 arcana check to dispel the effect from corpses when doing so.
+  higher_levels: At 6th level, add 1d12 acid damage and cause contaminated corpses to rise as a lesser
+    mindless, uncontrolled undead (subject to the GM).
+- name: Polarize
+  group: Arcane spells
+  lvl: '5'
+  types: Evocation, Arcane 5
+  casting: 1 hour
+  components: verbal, somatic, material(3 arcane components, gemstones worth 100 gold, mana potion, all
+    consumed.)
+  duration: 1d6 turns.
+  range: 80 ft
+  effect: |-
+    As an action, curse target object within range or force a creature within range to make an intelligence save. On a failure, the target becomes cursed by the spell. For the duration of the curse, lightning damage dealing attacks have a +1 to hit, and the target has a -1d4 penalty to saves vs lightning damage.
+
+    The first lightning damage dealing spell, ability, or attack it receives since receiving the curse deals an extra 5d6 lightning damage.
+
+    If cast in a storm or under strange cosmic weather ( subject to the GM. ) the range is increased to sight. Cursed targets naturally attract lightning strikes (Subject to gm.)
+  higher_levels: At 6th level, double the damage and penalties.
+- name: Scry
+  group: Arcane spells
+  lvl: '5'
+  types: Divination, Arcane 5
+  casting: 3 full round actions.
+  components: verbal, somatic, material ( A large crystal ball or an equivalent conduit, subject to the
+    GM)
+  duration: Permanent
+  range: touch
+  effect: As 3 full round actions, make 3 arcana checks and gain 3 insights on a creature, location, or
+    object you are aware of, of a quality corresponding to your arcana checks. Results below 20 are unreliable.
+    (subject to the GM).
+- name: Siege golem
+  group: Arcane spells
+  lvl: '5'
+  types: Transmutation, Evocation, Arcane 5
+  casting: 3 full round actions.
+  components: verbal, somatic, material ( 1 mana potion which is consumed, 1 vehicle chariot or siege
+    engine, which is transformed)
+  duration: 1d4 hours
+  range: touch
+  effect: |-
+    As a full round action, sacrifice 1 mana potion and have it animate a large or medium siege engine, cannon, chariot, wheeled battering ram, or similar complex enough mechanism of war (subject to the GM).
+
+    The siege mechanism is transformed into a large (2x2 tile) legged platform that retains the siege engines original attack, and provides ammunition, reloads and winds up or charges, and manifests fuel, while powered if necessary. It can be piloted by the caster, or by a creature that succeeds a DC 25 arcana check, and has the following properties:
+
+    * Has construct immunities and is resistant to physical damage.
+    * HP 200, AC [ casters AC - 5 ], 8 block, block bonus of [ arcana bonus +1 ]
+    * CON +10, STR +10, automatically fails dex saves. Immune to mental saves.
+    * Has a +15 athletics bonus.
+    * Movement speed of 40 ft.
+    * Pilot has partial cover and advantage on physical saves while in the siege golem.
+    * Pilot can spend any action to make the golem perform it instead.
+
+    Also, choose one upgrade to grant it from below:
+
+    * Spider legs - Climb speed of 40 ft
+    * Golem hands - The siege golem has 2 crude arms and hands that can be used to either interact, or make a +10 3d8 + casting bonus bludgeoning damage. Can throw medium and smaller creatures up to 20 ft.
+    * Shielding dome - The siege golem grants its pilot full cover.
+    * Arcane turret - You can sacrifice a crossbow you can use to cause it to meld with the golem, allowing it to make a +6 crossbow attack once per turn and reload automatically.
+    * Furnace engine - You can sacrifice a flammable material, a flask of oil or similar substance, or a fire affinity item (subject to the GM). when casting the spell to increase the siege golems STR bonus to +12 and give it a 40 ft jump distance.
+    * Shielded aura - You can sacrifice a magical artifact (A wand, soulgem, black page) to grant the golem charges equal to the quality or quantity of charges in the item (min 1. max 6.) Can spend 1 charge as a reaction to grant all creatures within 10 ft +5 to saves and 1d10 temporary health for 1 turn (for only the turn which the reaction interrupted)
+
+    After the spell's duration, it becomes inert and inoperable except by arcane means.
+- name: Shadow apparition
+  group: Arcane spells
+  lvl: '5'
+  types: Necromancy, Illusion, Arcane 5
+  casting: 1 full round actions.
+  components: verbal, somatic
+  duration: 1 minute.
+  range: 10 ft
+  effect: |-
+    As a full round action, summon an arcane ethereal apparition. The apparition can be ordered to act by the caster, and may choose to do as it pleases when it kills a creature. It has the following stats. A shadow apparition consumes the lifeforce of its surroundings and rapidly decays otherwise.
+
+    Shadow apparitions consume magic and light and are native to the outer dark. Their specific arcane signature means that invoking them is surprisingly easy.
+  Shadow apparition stat block: |-
+    Type: Medium, Elemental, Undead
+
+    Base stats:
+    HP: 6d10 + casting bonus
+    BLOCK: +7 / 3
+    AC: 20
+    All saves +5.
+
+    Move speed 100, immune to non-magical attacks. Takes 1d6 damage when exposed to sunlight or intense light. Vulnerable to radiant damage.
+
+    Shadowwalk - Can move between two points within 400 ft that are in darkness as a move action.
+
+    Feed - Slaying a small or larger creature expends the spell's duration by 1d10 rounds.
+
+    Skills: +10 to stealth.
+
+    Attacks:
+
+    * 2 Claws +6 - 2d8 + 5 slashing + 2d8 psychic.
+    * Haunt - Target within 10 ft must make a con or wisdom save. On a failure, they are blinded and afraid for 1d4 rounds.
+    * Curse - Target within 30 ft must make an intelligence save. On a failure, any time they cast a spell or cantrip, they take 1d10 psychic damage, and the shadow apparition can blink to a tile adjacent to the creature as a reaction.
+    * Consume power -As a bonus action, mute a magical item within 15 ft for 1d4 rounds. Extends the duration of the spell by 1 round.
+    * Consume light - Target fire, light, engine, or energy crystal is extinguished, and the shadow apparition heals 2d10 HP, and the spell's duration is increased by 1d12 rounds.
+    * Possess - Target item or object is possessed for 1d4 rounds, pausing the duration of the spell and becoming hidden and untargetable for the duration.
+    * Shriek - Deal 4d8 +3 sonic damage to creatures within 30 ft and force them to make a constitution save. On a success, the damage is halved. On a failure, creature are deafened, distracted, and shaken for 1d3 rounds.
+- name: Skeletal servant
+  group: Arcane spells
+  lvl: '5'
+  types: Necromancy, Arcane 5
+  casting: 1 full round action.
+  components: verbal, somatic
+  duration: special
+  range: self
+  effect: |-
+    As a full-round action, enchant a humanoid skeleton, summoning arcane equipment for it and making it become a skeletal servant of your choice. It obeys your commands. A skeletal servant can be psychically messaged at will by the caster. A caster may dismiss a skeletal servant from their service, in which case the caster is treated as neutral by the servant.
+
+    A skeletal servant must make a 1d20 roll when exposed to the dawn or the full moon. On a 20, they may choose to become dispelled (subject to the GM).
+  Skeletal servant stat block: |-
+    Type: Medium, Undead
+
+    Base stats:
+    HP: 5d12 +20
+    BLOCK: +5 / 2
+    AC: 16
+    All saves +4
+
+    Move speed 30 ft, physical damage resistance, undead resistances and immunities.
+
+    Reconstitution 1d4: When destroyed, roll 1d4. On a 1, reassemble at 1/2 HP and restore 1 block.
+
+    Skills: +4 to arcana, religion, and perception.
+
+    Feat: A skeletal servant starts with 1 feat of the caster's choice (ability scores treated as 16 baseline)
+
+    Attacks:
+
+    * +4 baseline to weapon attacks and damage.
+    * Has 2 attacks.
+
+    Skeletal servant type - Choose a type when created:
+
+    * Skeletal archer - Proficiencies with bows or crossbows, +1 AC, conjures a skeletal crossbow or longbow with spectral ammunition, has +4 bonus to investigation checks.
+    * Skeletal mage - Gains a cantrip you can cast, has +4 as the casting modifier for it. Gains a +2 bonus to arcana and religion checks. Gains 3 lvl 1 slots, 2 lvl 2 slots, and 1 lvl 3 slots per rest, and knows 3 spells.
+    * Skeletal spearman - Gains proficiency with spears, conjures a skeletal polearm of choice, has crit range increased by 1, and has the reconstitution dice size changed to 1d3.
+    * Skeletal assassin - Gains two light skeletal weapons of choice that it is proficient with. Gains a +4 bonus to stealth, has +10 movement speed, and has crit range increased by 1.
+    * Skeletal swordsman - Gains an arcane martial medium or heavy blade that it is proficient with. Gains 1 block at the start of combat and has a +1 to block checks. +3d12 max HP
+    * Skeletal priest - Conjures a horn that the skeletal servant can use as an action to either deal 1d12 psychic damage to a creature within 40 ft, or grant an ally within 40 ft 1d12 temporary health, or heal an undead within range for 1d12 health. Grant it a cantrip that you can cast. It has a +3 as the casting modifier.
+- name: Yterpolate
+  group: Arcane spells
+  lvl: '5'
+  types: Conjuration, Arcane 5
+  casting: 1 action and bonus action
+  components: verbal, somatic
+  duration: Instant
+  range: touch
+  effect: |-
+    As an action and bonus action, force an eldritch, fiendish, cosmic, or summoned creature within range to make an intelligence save. On a failure, they are transported into the ethereal plane. Requires line of sight.
+
+    Roll 1d10:
+
+    * 1, 2, 3, 4 - nothing additional happens.
+    * 5, 6 - Damage structures and objects, but not creatures, around yourself and the targets location in a 10 ft radius.
+    * 7, 8 - Blink, conjuration, and teleportation effects in a 100 ft area flicker and fail (subject to the GM). for 2d4 rounds.
+    * 9 - You lose 1 rest die, or 1d4 fatigue if at 0 rest dice.
+    * 10 - The creature is blinked in time for a duration up to a year ( subject to the GM. ) If the target succeeds the save, you become the new target of the spell.

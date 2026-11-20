@@ -1,0 +1,363 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/arcane-magic/lvl-4-arcane-spells
+section: spells
+entries:
+- name: Accelerate
+  group: Arcane spells
+  lvl: '4'
+  types: Evocation, Conjuration, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 1 minute
+  range: Object 10 ft
+  effect: |-
+    As an action, accelerate a creature or object within range. Doing so violates various magical principles and costs 1 rest die to stabilize (subject to the GM).
+
+    If the target is a creature, it has their movement speed increased by 10 ft, a +1 bonus to AC and block checks, and an extra attack.
+
+    If the target is an object, it has its reload property reduced by 2, an extra attack, double the range if it has range, and a +1 bonus to hit and damage for the duration.
+- name: Animate item
+  group: Arcane spells
+  lvl: '4'
+  types: Enchantment, Conjuration, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 1 hour
+  range: Object within 10 ft
+  effect: As an action, animate a wand, tool or tool-set, or weapon to come to life for 1 hour. It has
+    18 AC, 10 HP, no block, +1 to all saves, and a +2 item (prof) bonus. It can be told to patrol, guard,
+    capture, subdue, attack, retain, obstruct or intercept, or to halt, and it can do so within a range
+    of 500 ft of its creation, or to fulfill its function if it is a tool (subject to the GM). If the
+    enchanted object exits this range, it is dispelled.
+  higher_levels: At 5th level the duration is permanent, until the item exits the range. Per level above
+    4th, +1 to AC, saves, and item bonus.
+- name: Arcane enervation
+  group: Arcane spells
+  lvl: '4'
+  types: Transmutation, Divination, Arcane 4
+  casting: 1 full round action.
+  components: verbal, somatic, material (1 mana potion or gemstone, which is consumed)
+  duration: 10 minutes.
+  range: special.
+  effect: |-
+    As a full-round action, enhance your own abilities. For the duration, gain a +4 bonus to intelligence and initiative checks, gain 300 ft darkvision, gain echolocation, and a +1 bonus to saves.
+
+    At higher levels: Per level above 4th, increase the intelligence and initiative bonus by 1.
+- name: Arcane gauntlet
+  group: Arcane spells
+  lvl: '4'
+  types: Abjuration, Arcane 4
+  casting: 1 action.
+  components: verbal, somatic
+  duration: 10 minutes.
+  range: self
+  effect: |-
+    As an action, enchant a ring, glove, bracer, or gauntlet you wield to have it manifest an arcane interface and shield. Either for the duration, or permanently if you lock 3 rest dice which can only be unlocked by disenchanting the item during a rest. Choose up to as many benefits from the list below as your casting modifier -4 (min 1) when creating the gauntlet and add them as enchantments:
+
+    * You gave a +2 bonus to saves vs spells and magical effects.
+    * You have a +2 bonus to block checks and a +1 bonus to AC.
+    * You can spend 1 rest die as a bonus action or reaction to force a golem or construct to make an intelligence save. On a failure, you can issue a command to them. You can expend a spell slot instead, granting its level as a bonus to the save DC.5
+    * You can use any spell granted ability that would require you to use an action, move action, or bonus action as a free action instead once per round.
+    * You can cast 1 extra cantrip as a free action once per round. Has a 1d3=1 cooldown chance.
+    * You gain a +4 bonus to checks made to interact with magical artifacts or energies.
+    * You can spend a rest dice to detect magic in a 15 ft cone, highlighting schools of magic used. This cone can be moved and lasts up to 1 minute.
+    * You gain a +2 bonus to strength while wielding it.
+  higher_levels: Per slot level used above 4th, grant an extra upgrade.
+- name: Arcfire
+  group: Arcane spells
+  lvl: '4'
+  types: Evocation, Abjuration, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes.
+  range: special
+  effect: |-
+    As an action, conjure an arcfire flame in your palm, a burning blue fire that originates from the aspect of abjuration that consumes other magic. It can be levitated in your palm for up to 10 minutes, at which point it expires. It starts with 1d4 charges, having a maximum of 4.
+
+    For the duration of the spell, as an action, you can throw the flame either as a 30/60 single target ranged spell attack, a 10 ft cone attack, or a 20 ft ray. Doing so deals 2d6 fire damage, consumes a charge after use, and in case of cones and rays it has a dexterity save to halve the damage.
+
+    It deals an extra 1d6 lightning damage per charge.
+
+    You can invoke the flame as a bonus action, restoring one charge.
+
+    Creatures hit are dispelled of magical effects whose remaining duration is less than 4 rounds.
+  higher_levels: Per level above 4th, the base damage and all range increments are increased by 10 ft.
+- name: Artifate
+  group: Arcane spells
+  lvl: '4'
+  types: Transmutation, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes
+  range: special
+  effect: |-
+    As an action, cause target artifact, construct, mechanism, or mechanical structure within range to do one of the following:
+
+    * target mechanism or war device automatically perform action (reload, fire, aim, relocate, unload, lock, unlock, power, etc) so long as you maintain concentration.
+    * target a mechanism, construct, or golem or mechanical structure is either healed for 4d12 hp, has a vital part or mechanical limb restored, or is repaired to basic function or revived with 1 unchecked death save if it was destroyed/slain within the last round.
+    * target item or artifact has a -1 penalty removed from it, or a penalty reduced by 1(-3 to -2)
+- name: Cloak of masks
+  group: Arcane spells
+  lvl: '4'
+  types: Illusion, Enchantment, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes, concentration.
+  range: self
+  effect: As an action, alter your appearance to fit an illusory creature of your choice that manages
+    to mask you, so long as you maintain concentration. You can choose to alter the image that each creature
+    perceives and choose what observers you are not aware of see. Creatures can make an initial wisdom
+    save to perceive that it is illusory.
+  higher_levels: At 5th level the duration is increased to 1 hour, and at 6th level you can maintain the
+    image for allies within 10 ft of you casting the spell.
+- name: Concealment rune
+  group: Arcane spells
+  lvl: '4'
+  types: Illusion, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes, concentration.
+  range: 30 ft
+  effect: As an action weave illusory runes around the target creature, object, or location, projecting
+    an illusory bubble of obfuscation up to a range of 30 ft. Creatures and objects of the caster's choice
+    within the area of effect are made invisible. Such Invisible creatures have aurasight to detect one
+    another. Detection or scry abilities will not show the chosen targets for the duration of the spell.
+  higher_levels: At 5th level the duration is increased to 1 hour, and at 6th level, duration is increased
+    to 1 day.
+- name: Conjure arcane capture circle
+  group: Arcane spells
+  lvl: '4'
+  types: Conjuration, Enchantment, Arcane 4
+  casting: 1 action
+  components: verbal, somatic, material(1 crystal, gemstone, or pearl that is consumed on cast)
+  duration: 10 minutes
+  range: 15 ft sphere within 40 ft.
+  effect: |-
+    As an action, conjure an arcane circle on a surface within range. Creatures caught within must make a wisdom save. Creatures in the circle as it is being summoned make a dexterity save instead. On a failure, they are trapped so long as you maintain concentration and cannot cross a sphere encompassed by the circle.
+
+    The caster can perform the following actions while maintaining the circle:
+
+    * Syphon - Trapped targets must make a wisdom save. On a failure they take 2d6 force damage and you gain 1d4 arcane health.
+    * Transfer - You gain use of a cantrip, or spell that the target can cast. You can expend your class spell slots or points to cast it for the duration. You can only transfer one such thing at a time. For the duration, the target loses this ability.
+    * Force dispel - Trapped targets must make a wisdom save vs their highest DC spell effects, going from highest to lowest, dispelling the effect on a success (or suppressing permanent effects) and ending the save checks.
+    * Interrogate - Trapped target must make a wisdom save. On a failure they either take 3d6 psychic damage or answer a question from the caster truthfully.
+- name: Crush
+  group: Arcane spells
+  lvl: '4'
+  types: Evocation, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: Instant
+  range: 70 ft
+  effect: As an action, force a 10 ft sphere within range to experience a crushing arcane force. Creatures
+    and objects caught must make a dexterity save. On a failure, they take 8d6 force damage.
+  higher_levels: Per level above 4th, deal an extra 2d6 damage.
+- name: Dagger swarm
+  group: Arcane spells
+  lvl: '4'
+  types: Conjuration, Arcane 4
+  casting: 1 action
+  components: verbal, somatic, material (8 daggers
+  duration: Instant
+  range: 30 ft
+  effect: |-
+    As an action, cause 8 daggers to levitate around you, granting them a +1 bonus and making them scale with your casting bonus. You can order the daggers to either attack or surround a target within range. When attacking, make a ranged spell attack for each dagger. A dagger that hits the target is dispelled.
+
+    When ordered to surround, the target can make a dexterity save to try and avoid being encircled.
+
+    The daggers have advantage to hit against an encircled target, and an encircled target cannot move.
+  higher_levels: Per level above 4th, increase weapon bonus by +1 and allow an extra dagger to be enchantable.
+- name: Direfrost
+  group: Arcane spells
+  lvl: '4'
+  types: Conjuration, Enchantment, Arcane 4
+  casting: 1 action
+  components: verbal, somatic, material(1 crystal, gemstone, or pearl that is consumed on cast)
+  duration: permanent, special
+  range: 30 ft
+  effect: |-
+    As an action, conjure arcane crystalline ice at a point within the target tile. It immediately spreads to cover additional connected tiles equal to 1d4 per casting bonus (min 1.)
+
+    Direfrost is difficult terrain, creatures must make a strength save to not become snared, requiring a strength save as an action to break free. Characters that enter or start their turn on direfrost take 1d10 + your casting bonus cold damage. The DC and damage increases by 1 per turn spent in direfrost (maximum 10.)
+
+    Direfrost melts under sunlight or when exposed to arcane fires or potent magical lights, but is very resistant to fire and warmth otherwise (subject to the GM).
+  higher_levels: Per level above 4th, increase the number of tiles per casting bonus by 1d4 (1d4 -> 2d4
+    - > 3d4)
+- name: Electrify
+  group: Arcane spells
+  lvl: '4'
+  types: Evocation, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: Instant
+  range: touch or 45 ft cone.
+  effect: |-
+    As an action, summon a spark of lightning and release it into either a creature or object that you can touch, or in front of you in a cone.
+
+    If targeting a creature, make a melee spell attack. On a success the target is electrified, taking 4d6 lightning damage at the start of their turn which is reduced by 1d6 per turn. If they make a successful constitution save they take half damage.
+
+    If cast in a cone, lightning arcs from your palm across the surfaces in the cone area, at a height of up to 10 ft, dealing 4d6 damage to creatures hit, reduced to half damage on a successful dexterity save.
+
+    Targets that critically fail the save are stunned for 1 round.
+  higher_levels: Per level above 4th, increase damage by 1d6.
+- name: Levitate
+  group: Arcane spells
+  lvl: '4'
+  types: Conjuration, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes.
+  range: self
+  effect: As an action, gain a flight speed equal to your land speed.
+  higher_levels: At 5th level the duration is increased to 1 hour, and at 6th its increased to 6 hours.
+- name: Lull
+  group: Arcane spells
+  lvl: '4'
+  types: Enchantment, Illusion, Arcane 4
+  casting: 1 action
+  components: verbal, somatic.
+  duration: instant.
+  range: 40 ft
+  effect: |-
+    As an action, force a creature within range to make a wisdom or constitution save. On a failure, the target is entranced and remains still for 1 minute. Flying targets fall. For the duration, attacks against the target have advantage and it automatically fails dexterity and wisdom saves. While under this effect, the target is immune to psychic damage damage and other enchantment spells and effects.
+
+    If the target is attacked, the effect ends, and the target is shaken for 1 round.
+
+    If the target is lulled for the full duration, it forgets the last 1d4 minutes it experienced before being targeted by the spell.
+  higher_levels: At 5th level, the max duration is increased to 10 minutes. At 6th level, can instead
+    target a creatures in a cone.
+- name: Fascination
+  group: Arcane spells
+  lvl: '4'
+  types: Enchantment, Arcane 4
+  casting: 1 action
+  components: somatic
+  duration: 2d4 rounds
+  range: 30 ft
+  effect: |-
+    As an action, force a creature within 30 ft to make a Wisdom save. On a failure, they are in awe of some attribute of yours for 2d4 rounds and become charmed for the duration. While charmed, they cannot attack or cast harmful effects against you, or target creatures or objects you wish to include into the spell, and must use their reaction to defend you (if able) if you’re attacked.
+
+    Alternatively, cast this spell on an object or artifact within range, forcing other non-ally creatures that notice it to become fascinated by it for the duration of the spell if they fail a wisdom check when first seeing it.
+- name: Necrotic pulse
+  group: Arcane spells
+  lvl: '4'
+  types: Necromancy, Arcane 4
+  casting: 1 action
+  components: verbal, somatic.
+  duration: instant.
+  range: 50 ft sphere around caster
+  effect: As an action, project a wave of energy out up to 50 ft around the caster. Enemy creatures struck
+    take 1d6 + casting bonus necrotic damage and the caster gains 1d3 arcane health per creature hit.
+    The effect restores 1d20 health to the caster if it slays at least a small or larger creature, and
+    that creatures remains are considered as touch range of the caster for the purposes of spells and
+    abilities until the end of their next round.
+  higher_levels: Per level above 4th, increase dice by 1 size category and range by 15 ft.
+- name: Shielding rune
+  group: Arcane spells
+  lvl: '4'
+  types: Abjuration, Arcane 4
+  casting: 1 action
+  components: verbal, somatic.
+  duration: 1 hour.
+  range: 30 ft
+  effect: As an action, enchant a creature with an arcane rune on their forehead. The target gains 1 temporary
+    block and 1d6 temporary health at the start of their turn, which lasts 1 round. The target has a +1
+    bonus to saves and block checks.
+- name: Siphon
+  group: Arcane spells
+  lvl: '4'
+  types: Necromancy, Arcane 4
+  casting: 1 action
+  components: verbal, somatic.
+  duration: instant.
+  range: 20 ft
+  effect: As an action, cause a creature within range to take 6d6 + casting bonus necrotic damage. Damage
+    is reduced by half on a successful wisdom save. You are healed for an amount equal to the damage dealt.
+  higher_levels: Per level above 4th, increase damage by 2d6
+- name: Supercharge projectile
+  group: Arcane spells
+  lvl: '4'
+  types: Necromancy, Arcane 4
+  casting: 1 bonus
+  components: verbal, somatic.
+  duration: instant.
+  range: 20 ft
+  effect: |-
+    As a bonus action, cause a bolt, arrow, or similar projectile that you or an ally within 20 feet just fired (or if somehow cast as a prepared action, one that intersects a 20 ft sphere centered on you during casting) to gain the following:
+
+    * +4 bonus to hit and block DC
+    * Deal 3d8 + casting bonus extra damage even if blocked( of a type of your choosing)
+    * Crit range of the attack is extended by 1.
+    * The attacks range is doubled, and any special ammunition conditions it applies are extended by 2 (turns, rounds, or minutes, whichever is applicable)
+  higher_levels: Per level above 4th, increase damage by 2d8, and attack and block DC bonus by +2.
+- name: Transpose
+  group: Arcane spells
+  lvl: '4'
+  types: Conjuration, Arcane 4
+  casting: Full-round action
+  components: verbal, somatic.
+  duration: instant.
+  range: self, 400 ft.
+  effect: As a full round action, teleport to an area within the structure you are in (subject to the
+    GM). up to a range of 500 ft. You can grab a creature or object to try and pull it with you, if it
+    is not attached to a far larger structure.
+  higher_levels: At 5th level, range is increased to 2000 ft. At 6th level, you can transpose an object
+    that is large or smaller( that you are aware of) to an adjacent location instead. Fails if the object
+    is disturbed.
+- name: Undead Ghoul
+  group: Arcane spells
+  lvl: '4'
+  types: Necromancy, Arcane 4
+  casting: 1 action
+  components: verbal, somatic, material (corpse)
+  duration: special
+  range: 15 ft.
+  effect: As an action, reanimate a nearby dead creature that has died within a day. Make an arcana check
+    vs 8 + the level of the creature. On a success, a ghoul of it is raised in its stead with the deceased
+    creatures stats, and it gains undead fortitude. It takes a -1d3 penalty to all mental attributes however.
+    Its attacks gain a +1d6 bonus to damage. It gains 1 block at the start of combat, and must be fed
+    every day to avoid risking it becoming disloyal. It obeys your commands while loyal but is quick to
+    become agitated (subject to the GM).
+  higher_levels: At 5th and 6th level, grant the ghoul an extra level and feat.
+- name: Weaken
+  group: Arcane spells
+  lvl: '4'
+  types: Necromancy, Transmutation, Arcane 4
+  casting: 1 action
+  components: verbal, somatic
+  duration: 1 hour
+  range: 30 ft.
+  effect: As an action, curse a creature within range. Choose three ability scores. The target must make
+    a save for each ability score. On a failure, the target has a -1d3 penalty to the affected ability
+    score for 1 hour.
+  higher_levels: At 5th and 6th level, choose an extra ability score.
+- name: Raise zombies
+  group: Arcane spells
+  lvl: '4'
+  types: Necromancy, Transmutation, Enchantment, Arcane 4
+  casting: 1 full round action.
+  components: verbal, somatic, material (corpses, 2d4 HP worth of blood)
+  duration: 1d8 days
+  range: 60 ft.
+  effect: |-
+    As a full-round action, raise corpses in a 15 ft radius as shambling undead, which decay in 1d8 days.
+
+    You can choose to lose 1d4 health to upgrade the range and radius by 5 ft. You can do so a number of times up to your casting bonus.
+
+    The shambling undead is commanded upon creation, and those that know this spell can command shambling undead as an action. The caster takes precedence.
+  Shambling undead: |-
+    Type: Medium, Elemental, Undead 4
+
+    Base stats:
+    HP: 1d12 + casting bonus
+    BLOCK: -
+    AC: 10
+    All saves, all skills +0
+
+    Move speed 20 ft, undead immunities and resistances, keen scent, no skills
+
+    Cannibalism - Can eat a corpse to restore 1d8 HP and extend its lifetime by 1 day.
+
+    Attacks:
+
+    * Melee claw attack +4 - 1d6 + 3 piercing damage, DC 15 to block. grapple if not blocked.
+    * Bite grappled target +6 - 1d6 + 3 piercing, DC 16 to block, inflicts bleed if not blocked.

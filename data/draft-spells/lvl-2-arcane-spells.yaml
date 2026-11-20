@@ -1,0 +1,368 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/arcane-magic/lvl-2-arcane-spells
+section: spells
+entries:
+- name: Arcane familiar
+  group: Arcane spells
+  lvl: '2'
+  types: Arcane 2, enchantment, illusion, teleportation
+  casting: Full-round action
+  components: somatic, verbal, locked rest dice
+  duration: bond
+  range: touch
+  effect: |-
+    As a full round action, make an associated arcana or handle-animal check (of choice, subject to the GM) to transform a willing and friendly small or tiny animal creature into an arcane familiar, at the cost of 1 rest die. The rest dice remains locked for the duration.
+
+    The arcane animal companion gains the following properties and changes:
+
+    * +2d6 health, +1 AC, +1 rest die.
+    * The familiars speed is increased by 10 ft.
+    * The caster can cast self or touch range spells from the source of the familiar.
+    * The familiar gains a +1 bonus to intelligence and can understand the caster.
+    * The caster can dismiss the familiar as a bonus action, thereby breaking the bond.
+  higher_levels: 'If cast using a 3rd level spell slot, the familiar gains the following effect: +2 intelligence
+    instead, the caster can now communicate telepathically, and the caster can recall the familiar to
+    a point next to them as a bonus action.'
+- name: Arcane boost
+  group: Arcane spells
+  lvl: '2'
+  types: Transmutation, Evocation, Arcane 2,
+  casting: action
+  components: somatic, verbal
+  duration: 1d4 minutes
+  range: self
+  effect: As an action, choose a cantrip you can cast and upgrade it once. Roll 2d4 chance dice. For every
+    3 or higher, gain an extra upgrade to the cantrip for the duration.
+  higher_levels: At 3rd, 4th, and 5th level, roll an extra chance dice.
+- name: Lesser weapon enchantment
+  group: Arcane spells
+  lvl: '2'
+  types: transmutation, arcane 2
+  casting: action
+  components: somatic, verbal
+  duration: 8 hours.
+  range: touch
+  effect: As an action, enchant a weapon with a +1 bonus. This does not apply to already enchanted weapons.
+- name: Burning palm
+  group: Arcane spells
+  lvl: '2'
+  types: Evocation, Arcane 2
+  casting: action
+  components: somatic
+  range: melee
+  effect: As an action, make a melee spell attack, dealing 4d6 + casting bonus fire damage. You have advantage
+    if you are grappling the target creature, or the target creature is grappling you. On a successful
+    hit, even if the initial damage is blocked, the target must make a constitution save. On a failure,
+    they catch fire and take 1d6 fire damage at the start of their turn until they put out the flame as
+    an action.
+  higher_levels: Per spell slot level above 2nd, increase the impact and burn damage by 1d6.
+- name: Create undead
+  group: Arcane spells
+  lvl: '2'
+  types: Necromancy, Arcane 2
+  casting: action
+  components: verbal, somatic, material (Humanoid corpse, 1 drop of blood worth 1 hp.)
+  range: touch
+  effect: |-
+    As an action, create an undead creature from a small, medium, or large humanoid corpse. The creature has the following stats:
+
+    HP: 1d8 + con bonus
+    Unarmored AC: 12 + dex
+
+    STR: 12 + 1d6
+    DEX: 8 + 1d6
+    CON: 12 + 1d4
+    INT: 6 + 1d4
+    WIS: 6 + 1d4
+    CHA: 6 + 1d4
+
+    SAVES: none
+
+    PROFICIENCY BONUS: 3
+
+    Proficiencies: Up to as many proficiencies of the original creature as INT (your intelligence bonus. min 1.) In case the original creature did not have any proficiencies, up to as many proficiencies as 1/2 INT, that you also have. Creature is always proficient with any armor it is wearing, and any weapon the original creature was proficient with, as well as any weapon you are proficient with.
+
+    Undead fortitude: When reduced to 0 health, make a constitution save vs the damage taken +10. On a success, remain at 1 hp.
+
+    The undead creature is subservient to its creator.
+  higher_levels: Per spell slot level above 2nd, increase the HP of the undead by 1d8, and give it a +2
+    to any ability score (after they are rolled). The ability scores cannot be raised above 22.
+- name: Cryomancy
+  group: Arcane spells
+  lvl: '2'
+  types: Evocation, Conjuration, Arcane 2
+  casting: action
+  components: verbal, somatic
+  range: 25 ft
+  duration: special
+  effect: |-
+    As an action, invoke one effect of the aspects of arcane cold. When you learn this spell, you may learn up to as many effects of it as your casting modifier -2 (min 1.):
+
+    * Frost spike - Make a ranged spell attack, dealing 5d6 + casting bonus cold damage. The target must make a strength save, becoming snared on a failure, requiring a strength check as an action to break free.
+    * Crawling cold - Make a crack of ice travel down a path of your choice up to as long as twice the range of the spell. Creatures that cross the path of ice at least once take 2d6 + casting bonus cold damage, halved on a strength save. On a failed strength save, creatures affected are hobbled for 1d4 rounds. Tiles along the path of the ice become difficult terrain.
+    * Frost-mail - Conjure an enchanted armor of ice on a target creature which lasts 1d4 minutes. The armor requires medium or heavy armor proficiency. It can overlap their existing armor. The target takes 1d6 cold damage and 2 temporary block, as they are enchanted. For the duration of the armor, the target gains cold and fire damage resistance, and grants them a +4 bonus to checks and saves made to retain their footing, avoid being moved, avoid being knocked prone. Per spell level above 2nd, the frost-mail also grants a +1 bonus to AC.
+    * Nullpoint - Cause heat collapse at a point within twice the range of the spell. Creatures take 1d6 cold damage per your casting modifier at the target point, and 1d6 less per 5 ft of distance from the point. Affected creatures can make a constitution save to halve the damage. If a large or smaller creature at the tile directly on top of the target point critically fails the save, it is frozen solid.
+    * Cryomancy crystal - Conjure a cryomancy crystal at target area within range, which lasts until melted or destroyed. Cryomancy spells and ice magic spells (subject to the GM). cast within 10 ft of the crystal are increased by 1 spell level. Sigils, runes, and arcane script based magic within 20 ft of the cryomancy crystal gains a +1 bonus to their effect DC. A cryomancy crystal occupies the middle of a 5 ft tile and counts as a small ice object with 20 hp.
+    * Rip energy - Cause creatures in a cone to make a wisdom save. Creatures that fail the save take 2d6 cold damage and 2d6 necrotic damage, and have the ongoing durations of their spells or spell effects reduced by 1 unit (rounds, turns, minutes, etc) for 1 minute.
+  higher_levels: Per level above 2nd, increase damage dealt by 1d6, durations by 1 instance (rounds or
+    minutes,) and range increased by 10 ft.
+- name: Pyromancy
+  group: Arcane spells
+  lvl: '2'
+  types: Abjuration, Conjuration, Arcane 2
+  casting: special
+  components: verbal, somatic
+  range: special
+  duration: special
+  effect: |-
+    Invoke aspects of arcane fire. This is typically done as an action unless otherwise stated. When you learn this spell, you may learn up to as many effects of it as your casting modifier -2 (min 1.):
+
+    * Flame aura - Enchant target creature within reach. For the next minute, creatures that enter within 5 ft of the enchanted creature or start their turn within 5 ft must make a constitution save, taking 2d6 fire damage on a failed and half on a success. For the duration, the target reduces fire and cold damage taken by 2d4.
+    * Fireweave - As a reaction, either redirect a fire damage dealing effect (ray, spell attack, or projectile) targeting you or a creature within 5 ft of you by attempting to contest it with an arcana check. On a successful check, you can retarget the spell to your liking (subject to the GM. Should typically not allow more than 180 degree change in trajectory.)
+    * Chaotic fire wisps - Remain stationary and project flaming wisps from your palm in a 25 ft cone, blasting 1d4 + 1 chaotic fire wisps, each dealing 1d8 + casting bonus damage. roll 1d3 for each wisp, on a 2 or 3 you can control where it lands, but on a 1 it is chaotic (Subject to gm.) You may make a concentration check to attempt to maintain this spell, repeating it again on the next turn so long as you now do not move and maintain concentration.
+    * Pyromantic flame - Conjure a chaotic arcane fire rune in your palm. For the next 1d4+2 rounds, you can retain the rune and while holding it, launch flame in a 15 ft ray, forcing creatures to take 2d6 + casting bonus fire damage, making a dex save to try and halve it, but taking double damage on a critical failure.
+    * Emberscar- Cause a 4d4 + casting bonus worth of 5 ft tiles to ignite in a drawn line of your choice, starting from a tile within 5 ft of you. The path cannot overlap itself. Creatures on the path take 1d6 fire when it is cast, and the surfaces become difficult terrain that deals 1 fire damage to creatures walking through it.
+    * Molten projectile - Make a 40/80 ft spell attack vs a target creature, dealing 3d6 + casting bonus fire damage to it. On a critical strike, it explodes, splashing all creatures within 10 ft with 3d6 fire damage, and half on a successful dexterity save.
+  higher_levels: |-
+    Per level above 2nd, increase all damage, amount, and duration dice by 1 dice size category and increase targeting ranges by 10 ft.
+
+    At 7th character level, learn an extra effect that you can invoke.
+- name: Geomancy
+  group: Arcane spells
+  lvl: '2'
+  types: Transmutation, Conjuration, Arcane 2
+  casting: special
+  components: verbal, somatic, special
+  range: special
+  duration: special
+  effect: |-
+    Invoke aspects of arcane geomancy. This is typically done as an action unless otherwise stated. When you learn this spell, you may learn up to as many effects of it as your casting modifier -2 (min 1.):
+
+    * Pillar resonance - Assume a resonance with earth for 2d4 rounds, gaining the following:
+    * You can stomp the ground as a bonus action, or as part of casting the spell to force a 5 ft pillar of earth within 15 ft to ascend from the ground, providing full cover in a ray behind it.
+    * You may make a melee attack against a pillar, launching it 10 ft per 5 in the attack roll result (rounded up) + 5 ft per 5 in the damage roll result. The pillar deals 1d8 + the attack damage dealt to it to the first creature it collides with. Creatures can spend a reaction to make a dexterity save, allowing them to relocate 5 ft to avoid the pillar.
+    * Pillars deal double damage to structures.
+    * Crystal resonance - Cause a small quartz pillar to crystallize in an unoccupied space, or enchant a medium/5 ft pillar of stone or crystal. The crystal pillar subtly hums and provides an aura in a 30 ft space so long as you maintain concentration, which grants the following:
+    * Castings of the minor geomancy cantrip gain 1 extra upgrade for the duration of the crystal hum.
+    * Allies gain a +1 bonus to AC, physical saves, and a +1 bonus to arcana checks.
+    * Allies within the aura are undetectable by echosight, aurasight (ability to see the auras and the forms of magical creatures), or darksight (ability to see anything in darkness within range.)
+    * Earthshatter - Cause the ground in a narrow 40 ft cone to become difficult terrain and launch it forwards, up to 40 ft further. All creatures in the combined 80 ft narrow cone must make a dexterity save, taking 1d8 + casting bonus damage. Creatures can attempt to either make a save or block check vs the spells DC, taking half damage instead. The last 40 ft of the narrow 80 ft cone become covered in a dust cloud for 1d4 rounds, obscuring vision.
+    * Geomantic shaping - As a full round action, hum concentrate and charge the ground in a 60 ft cone. At the start of your next turn, finish the hum and cause up to 4d8 + casting bonus tiles of 5 ft surface to become altered in any of the following ways:
+    * Move it or elevate it 5 ft. Allows extending a 5 ft pillar further. Cannot push higher than 5 ft per your casting bonus.
+    * Harden or soften it by 1 tier.
+    * Make it assume a simple (subject to the GM) shape of choice.
+    * Make it become difficult terrain, either slowing movement, or dealing 1d3 contact damage.
+    * Stonemail - Cause the earth from beneath you to surround you, granting 4d10 temporary health but losing the ability to fly or jump while engulfed in the stone armor. The armor lasts while the temporary health remains, and for the duration, all your melee attacks have heft (can spend 1 bonus action after attack to force a block reroll) and gain +1 bonus to damage per 5 ft traveled since the start of your turn/last attack, whichever was last. Also grants a +1 bonus to AC and extra 1d10 temp HP per ground hardness beyond solid ground.
+    * Cragblade - Strike the earth with a melee weapon (or fist) and cause the ground to meld around it for the next 2d4 rounds, changing its base damage type to bludgeoning, granting it an extra dice of its base damage, and granting it a +5 to block DC checks.
+
+    Ground and material has the following hardness categories for this spell: Soft ground > solid ground > earthwork/stony ground > solid stone/brickwork. Geomancy requires solid ground or softer to function.
+  higher_levels: |-
+    Per level above 2nd, increase hardness allowed by 1 category.
+
+    At 7th character level, learn an extra effect that you can invoke.
+- name: Ethermancy
+  group: Arcane spells
+  lvl: '2'
+  types: Evocation, Transmutation, Arcane 2
+  casting: special
+  components: verbal, somatic, special
+  range: special
+  duration: special
+  effect: |-
+    Invoke aspects of arcane ambient energy in the atmosphere. This is typically done as an action unless otherwise stated. When you learn this spell, you may learn up to as many effects of it as your casting modifier -2 (min 1.):
+
+    * Whirlburst – Create a 10 ft diameter and height cylinder gust centered on a point within 30 ft. Maintain it so long as you maintain concentration. Creatures coming into contact with it must make a strength save, being pushed 10 ft as an action and taking 1d6 bludgeoning damage on collision or impact. You can move the whirlburst up to 5 ft per casting modifier (min 1) as a move action or bonus action. Creatures cannot attack through the whirlburst. A creature falling into a whirlburst has its fall negated and automatically fails the contact save of the spell.
+    * Draft-jump - As a bonus action, reaction, or move action, launch yourself up to 15 + 5 ft per casting bonus (min 1.) When doing so, roll a 1d3 chance dice. On a result larger than 1, the spell slot or resources used to cast this spell are refunded.
+    * Charged Air – Enchant an ally with an aura of static wind for 1d4 minutes. Ranged metal projectile attacks against them have disadvantage, and the first creature to melee attack them takes 1d6 + casting bonus lightning damage and is shocked. Reduce lightning damage they take by 1d4.
+    * Arcana focusing technique- Enchant a gemstone worth 50g or more, or a mundane copper or iron ring to transfer concentration from a spell into it, causing the item to either be destroyed when the spell ends, in case of a gem, or the equipped ring to heat up, dealing 1 point of fire damage to the wielder. This cannot be done to an already enchanted ring or crystal, and still requires the caster to hold or wield the item. Two resonant crystals or rings cause interference and adverse effects (subject to the GM).
+    * Crushing Field – Choose a 10 ft-radius sphere within 30 ft. Creatures inside must make a strength save or become restrained for 1 round, and are moved to the center. On a fail, they take 2d6 force damage; half on a success.
+    * Aural harmony - Touch a spell-manifested object, artifact, or scroll that has an area of effect or number of tiles affected. Double either the area of effect or tiles affected by the spell for the next 1d6 hours, or as long as the spell lasts.
+  higher_levels: |-
+    Per level above 2nd, increase targeting distances by 15 ft.
+
+    At 7th character level, learn an extra effect that you can invoke.
+- name: Detonate undead
+  group: Arcane spells
+  lvl: '2'
+  types: Evocation, Necromancy, Arcane 2
+  casting: 1 reaction
+  components: verbal
+  duration: instant
+  range: 60 ft
+  effect: |-
+    As a reaction, detonate an undead creature of your creation or under your control. The target undead and creatures within 5 ft of it take 1d10 acid damage and 2d10 poison damage. Creatures besides the target can make a dexterity save to halve the damage. This damage ignores the target undead creatures resistances and immunities.
+
+    If it kills the undead, or the creatures critically fails the check, they become poisoned for 1d10 minutes.
+  higher_levels: Per spell slot level above 2nd, increase instances of damage and potential poison duration
+    by 1d10, and affected area around undead range by 5 ft.
+- name: Enchant
+  group: Arcane spells
+  lvl: '2'
+  types: Enchantment
+  casting: action
+  components: verbal
+  duration: 1 hour
+  range: 15 feet
+  effect: |-
+    As an action, make a statement to a creature, and cause a creature to make a wisdom saving throw. Unless this statement goes against the creatures fundamental beliefs or understanding, the creature will believe it. Once the duration is over, if the creature still remembers your statement, it will be given another save. On a success, it will know that it was deceived. On a failure, it will forget the encounter.
+
+    Every time the creature is made aware of an inconsistency, it gains another save to end the effect.
+
+    If you attack the target, the effect ends.
+  higher_levels: Per spell slot level above 2nd, increase the range by 10 feet and the number of targets
+    it can affect by 1.
+- name: Lesser arcane curse
+  group: Arcane spells
+  lvl: '2'
+  types: Illusion, Arcane 2
+  casting: action
+  components: somatic, verbal
+  duration: special
+  range: 30 feet
+  effect: 'As an action, cause a creature within 30 feet to be cursed. The creature must make a wisdom
+    save. On a failure, they are made either: blind, mute, or deaf. The effect lasts for for 1 hour. On
+    a critical failure, the effect becomes permanent, and it can no longer be dismissed, but can still
+    be dispelled by other magic.'
+- name: Lesser skeleton
+  group: Arcane spells
+  lvl: '2'
+  types: Transmutation, Arcane 2
+  casting: action
+  components: somatic, verbal
+  duration: 1d8 hours.
+  range: 15 ft
+  effect: As an action, animate skeletal remains to become a minion. It is under your control and can
+    be commanded, but destabilizes after 1d8 hours.
+  higher_levels: If cast as a 4th level spell, the skeletons duration is made permanent.
+  Lesser skeleton stat block: |-
+    HP: 1d8 + casting bonus
+    AC: 15
+    Block: +4 / 2
+    Physical saves: +3
+    Mental saves: +1
+
+    Movement speed 30 ft, immune to poison damage.
+
+    Proficiencies: 1 weapon group of choice, shields.
+
+    Skills: +1 to all, proficiency of +3 to one tool of choice.
+
+    Reconstitute: When reduced to 0 health, roll 1d4. On a 1, the creature reassembles at 1/2 HP and restores 1 block.
+
+    Lesser necromancy: When reconstituted after taking necrotic, lightning, or fire damage, it is freed from the casters will.
+
+    Attack: has 1 attack at +4 bonus with 1d4 +2 slashing claws or weapons it wields.
+- name: Lock and chain
+  group: Arcane spells
+  lvl: '2'
+  types: Conjuration, Abjuration, Arcane 2
+  casting: action
+  components: verbal, somatic, material (key)
+  duration: 1 hour
+  range: 15 feet
+  effect: |-
+    As an action, conjure restraints to do one of:
+
+    * seal a door, window, portal, or similar opening.
+    * restrain a subdued or unconscious creature.
+    * lock and secure a container.
+    * restrict a creature to a location or object with a 30 to 60 ft chain
+
+    The dc to escape or break these restraints or barriers is equal to 10 + your arcana bonus
+
+    Creatures that fail strength based checks made to break the conjured restraints take a level of fatigue.
+
+    A metal key is required to cast this spell. Once cast, the key will can be used to unlock any restraints or barriers created by the spell. A single turn of the key will completely undo them all. The restraints cannot be dismissed, but they can be dispelled.
+- name: Moonsickness
+  group: Arcane spells
+  lvl: '2'
+  types: Transmutation, Arcane 2
+  casting: action
+  components: somatic, verbal
+  duration: 1d6 days
+  range: 40 feet
+  effect: 'As an action, cause a creature within 40 feet to make a wisdom save. On a failure, they are
+    afflicted by moonsickness: At night or in dark conditions, creature gives off light and inbound attacks
+    have advantage. The disease lasts 1d6 days.'
+- name: Point lightning
+  group: Arcane spells
+  lvl: '2'
+  types: Evocation, Transmutation, Arcane 2
+  casting: action
+  components: somatic, material (key)
+  duration: special
+  range: special
+  effect: |-
+    As an action, target an area within 40 feet. On your next turn, you can make a spell attack against a creature within 60 feet of the targeted point as a bonus action, dealing 4d6 + casting bonus lightning damage. the damage cannot be blocked.
+
+    if you do not make the attack, you must make a concentration check. On a failure, you take 2d6 lightning damage.
+
+    If the casting of the spell is interrupted, you must make a charisma save against your own spell. On a failure, you take 2d6 lightning damage.
+- name: Prismatic shards
+  group: Arcane spells
+  lvl: '2'
+  types: Transmutation, Arcane 2
+  casting: action
+  components: somatic, verbal, material (1 gold coin, which is consumed)
+  duration: instant
+  range: 20 feet + 5 feet per casting bonus
+  effect: |-
+    As an action, propel a cone of bright shards in a cone. Creatures hit must make either a block check or dexterity save. On a failure they take 4d6 force damage. Creatures that fail also become blinded for 1 round, and creatures that critically fail are blinded for 1d4 rounds instead.
+
+    Illuminates concealed and invisible creatures.
+  higher_levels: Per spell slot level above 2nd, increase starting damage by 1d6 and range by 5 feet.
+- name: Slow
+  group: Arcane spells
+  lvl: '2'
+  types: Abjuration, Arcane 2
+  casting: action
+  components: somatic, material (key)
+  duration: special
+  range: special
+  effect: |-
+    As an action, slow target creature. Reducing its movement speed by 10 feet. If it
+
+    if you do not make the attack, you must make a concentration check. On a failure, you take 2d6 lightning damage.
+
+    If the casting of the spell is interrupted, you must make a charisma save against your own spell. On a failure, you take 2d6 lightning damage.
+- name: Weigh down
+  group: Arcane spells
+  lvl: '2'
+  types: Abjuration, Concentration, Arcane 2
+  casting: action
+  components: somatic, material (a pound of lead, or similar metal)
+  duration: concentration
+  range: 30 feet
+  effect: |-
+    As an action, cause a solid object to become far heavier (subject to the GM), requiring a strength check to move it without wasting the action if the moving creature is large or smaller (subject to the GM.)
+
+    If it is a weapon, the attacker must make a strength check to not waste the action, but its blocks have their block DC increased by your casting bonus.
+
+    if it is a falling object, its fall damage is doubled.
+- name: Winter's breath
+  group: Arcane spells
+  lvl: '2'
+  types: Evocation, Arcane 2
+  casting: action
+  components: somatic, verbal
+  range: 30 foot cone
+  effect: As an action, spray cold and ice in a cone, dealing decreasing ice damage to creatures caught
+    in the cone. The damage dealt is 3d8, and decreases by 1d8 per every 10 feet away from the caster,
+    down to a minimum of 1d8. Creatures effected must make a dexterity save. On a success, they take half
+    the damage instead. On a critical failure, they become entangled, and can attempt to remove the condition
+    by making a strength check as an action.
+  higher_levels: Per spell slot level above 2nd, increase the damage by 1d8 and the maximum range by 10
+    feet.
+- name: Wither
+  group: Arcane spells
+  lvl: '2'
+  types: Necromancy, Arcane 2
+  casting: action
+  components: somatic, verbal
+  duration: instant
+  range: 60 feet
+  effect: As an action, deal 4d6 + casting bonus necrotic damage to a creature within 60 feet. The creature
+    must make a constitution save. On a success, the damage dealt is halved. On a failure, they also take
+    1d2 points of fatigue damage. On a critical failure, the creature takes an extra 1d6 points of necrotic
+    damage and an extra 1d2 points of fatigue damage.
+  higher_levels: Per spell slot level above 2nd, increase the range by 10 feet, and the all damage by
+    1d6.

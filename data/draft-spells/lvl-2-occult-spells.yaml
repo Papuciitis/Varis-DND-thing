@@ -1,0 +1,283 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/occult-magic/lvl-2-occult-spells
+section: spells
+entries:
+- name: Adder's kiss
+  group: Occult spells
+  lvl: '2'
+  types: transmutation, illusion
+  casting: 1 action
+  components: Verbal, Somatic, Material (corpse)
+  duration: concentration
+  range: melee spell attack
+  effect: |-
+    As an action, make a melee spell attack against a creature. On a successful hit, they take 1d8 poison damage and 1d8 acid damage and must make the following saves:
+
+    * Constitution. target becomes poisoned on failure
+    * Constitution. target becomes shaken on failure
+    * Constitution. target becomes shaken on failure
+
+    All detrimental effects last 1d4 + casting bonus rounds
+- name: Aspect of the jackal
+  group: Occult spells
+  lvl: '2'
+  types: divination, transmutation
+  casting: 1 action
+  components: Verbal, Somatic, Material (corpse)
+  duration: concentration
+  range: self
+  effect: |-
+    As an action, take on the aspect of the jackal for 2d4 hours. The spell can be dismissed as a free action. While under this aspect, you gain the following benefits:
+
+    * You can make a spectral bite attack as a bonus action, 1d6 + casting bonus. on a critical hit, restore 1d8 health.
+    * You can howl at a target within 15 feet as a bonus action. the target must make a wisdom save or become shaken until either the next time it is hit or the start of your next turn.
+    * You gain tremorsense at a range of 60 feet, and blindsight at a range of 180 feet, but lose regular color vision.
+    * You gain vulnerability to sonic damage, but gain advantage on checks that utilize hearing, such as perception or investigation, as well as checks involving smell.
+    * Gain a +2 bonus to AC while under the effect of this spell.
+    * You must make concentration checks when casting spells with verbal components.
+- name: Bestow insight
+  group: Occult spells
+  lvl: '2'
+  types: transmutation, enchantment, concentration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: 8 hours
+  range: 15 feet
+  effect: Bestow a critter, pest or similar creature of beastly low intelligence, with +1 intelligence
+    and request it to do your bidding. The creature can reject the gift of knowledge and thereby not carry
+    out your request. A creature with an intelligence of 4 or more is immune to this spell. For the duration
+    of the spell, you can communicate with it telepathically.
+- name: Call order
+  group: Occult spells
+  lvl: '2'
+  types: divination, transmutation, concentration
+  casting: 1 round
+  components: Verbal, Somatic, Focus (gemstone)
+  duration: concentration
+  range: self, special
+  effect: |-
+    As an action, begin chanting a cryptic charm that affects either the room you are in, if inside a structure, or a 40 foot radius around you, if outside.
+
+    At the start of the chant, the affected area can be returned to an ordered state. This can clean up or reorganize items.
+
+    For the duration of the chant, the caster can spend a bonus action to do one of the following:
+
+    * Restore 1d4 health to a visible living creature within range
+    * Restore 1d8 health to a visible construct within range
+    * Deal 1d8 + casting bonus damage to an undead creature within range
+
+    At the end of every turn, you must make a concentration check to maintain the chant. The DC starts at 8, and increases by 1 after every turn.
+  upgrades: |-
+    At 3rd spell level, you can also use the bonus action to restore a destroyed structure within range to a pristine state, but also increase the concentration DC further by 1
+
+    At 4th spell level, add your casting bonus to any amount of health restored by this spell
+
+    At 5th spell level, extra damage dice set for all benefits.
+
+    At 6th spell level, extra damage dice set for all benefits.
+- name: Cursed bolt
+  group: Occult spells
+  lvl: '2'
+  types: enchantment, abjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: 40 feet
+  effect: |-
+    Enchant one piece of ammunition to gain the following effects:
+
+    * advantage on attack.
+    * deal 1d10 + casting bonus extra damage of its base type.
+    * If the target is slain with the ammunition, it is returned to the caster.
+  higher_levels: If cast at 4th level, the damage increases by 1d6 for every enemy slain with it, up to
+    a maximum of 7d6.
+- name: Disrupt magic
+  group: Occult spells
+  lvl: '2'
+  types: abjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: instant
+  range: 30 feet
+  effect: |-
+    As an action, attempt an arcana check against a spell or arcane effects DC. On a success, you can alter the spell's duration, diminish its harmful effects (subject to the GM), cause it to be negated for a duration up to 1 day, or causing it to improperly trigger, as though some condition had been met.
+
+    On a critical success, you can dispel it entirely.
+- name: Essence leech
+  group: Occult spells
+  lvl: '2'
+  types: Necromancy
+  casting: 1 action
+  components: Verbal, Somatic
+  range: 5 feet
+  effect: As an action, cause a creature within 30 feet to make a charisma save. On a failure, they take
+    4d6 necrotic damage and you are healed for 1d10 health. On a success, they take 1d6 necrotic damage
+    and one damage to fatigue. If the creature is slain by this ability, the spell slot is not lost.
+- name: Fire flask
+  group: Occult spells
+  lvl: '2'
+  types: evocation, enchantment
+  casting: 1 action
+  components: Somatic, material(1 flask of oil)
+  duration: concentration
+  range: 40 feet
+  effect: |-
+    Throw an enchanted flask of oil at a 10-foot square within 40 feet. Each creature in the square or within 5 feet of it makes a Dexterity save. On a failure, it takes 2d8 + casting bonus fire damage. On a success, it takes half.
+
+    Creatures in the square have disadvantage on this save and must also make a Constitution save. On a failed Constitution save, they gain Burning. The enchanted oil sets the ongoing damage from this spell to 1d6 fire damage at the start of each affected creature’s turn.
+  higher_levels: Each slot level above 2nd adds 1d8 impact damage. The oil’s ongoing damage becomes 1d8
+    at 3rd level, 1d10 at 4th, 1d12 at 5th, and 1d20 at 6th.
+- name: Hellfire
+  group: Occult spells
+  lvl: '2'
+  types: evocation, enchantment
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: cone or special
+  effect: |-
+    Choose a 15-foot cone or one creature within 15 feet.
+
+    * Cone. Each creature in the cone makes a Dexterity save. On a failure, it takes 2d6 fire damage and gains Burning. Use its size to determine the ongoing damage. On a success, it takes half the initial damage.
+    * Single target. The creature makes one Constitution save per +2 of your casting bonus (minimum one save). For each failed save, it takes 1d8 + casting bonus fire damage and gains Burning. This mode sets a minimum of 1d6 ongoing fire damage. Use the higher ongoing damage if its normal Burning damage or current burn is greater. On each successful save, it takes half the initial damage.
+- name: Raise occult ghoul
+  group: Occult spells
+  lvl: '2'
+  types: transmutation, enchantment, concentration
+  casting: 1 action
+  components: Verbal, Somatic, Material (corpse)
+  duration: concentration
+  range: 15 feet
+  effect: As an action, raise an undead humanoid creature as an occult ghoul, or grant an occult ghoul
+    more power. The occult ghoul obeys your commands until you lose concentration on the spell. if you
+    willingly dismiss the spell, the occult ghoul must make a death saving throw vs your spell DC and
+    die on a failure.
+- name: Sangrila
+  group: Occult spells
+  lvl: '2'
+  types: evocation, enchantment
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: 40 feet
+  effect: |-
+    As an action, make a melee spell attack from stealth, or against a target that has not acted in combat yet. If successful, the block DC is equal to 13 + your proficiency bonus + your casting bonus. Deal 4d8 + casting bonus radiant damage.
+
+    If this kills the creature, gain 1d3 black pages.
+
+    for every level above 2nd, increase damage by 1d8, and gain a +1 bonus on the spell attack.
+- name: Shadow dance
+  group: Occult spells
+  lvl: '2'
+  types: illusion
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: 1 hour
+  range: 1 creature within reach
+  effect: |-
+    As an action, enchant a creature within reach. For an hour, the creature gains the following benefits while in dim light or darkness:
+
+    * Creature can hide as a bonus action.
+    * +1d6 bonus to stealth checks
+    * +1d6 bonus acrobatics checks
+    * 1 temporary block at start of the turn, which lasts until start of next turn.
+    * +10 movement speed
+- name: Shield of pain
+  group: Occult spells
+  lvl: '2'
+  types: abjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: 1 hour
+  range: self, 30 ft aura
+  effect: |-
+    As an action, engulf yourself in an aura. For the next 6d6 turns, any time you would take damage, deal 1 damage to up to 2 * your casting bonus creatures within 30 feet.
+
+    At higher levels, increase the maximum target multiplier by 1 at every new odd level.
+- name: Steal breath
+  group: Occult spells
+  lvl: '2'
+  types: evocation, enchantment
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: 40 feet
+  effect: |-
+    As an action, force a creature that breathes within 40 feet to make a strength save. On a failure, they are made winded and shocked (no use of rest dice, bonus actions, or reactions) and made mute for 1 round.
+
+    While concentration lasts, at the start of each of your rounds, you must make an opposed concentration check vs the targets strength save. On a failure, the spells concentration and effect ends. On a success, the target takes 1 point of fatigue damage and takes 1d6 + casting bonus necrotic damage and is winded and mute for 1 more round.
+
+    At higher levels, gain a +1 bonus to concentration checks on this spell for every spell level above 2nd.
+- name: Twisted charm
+  group: Occult spells
+  lvl: '2'
+  types: illusion, enchantment
+  casting: 1 action
+  components: Verbal, Somatic, Material (corpse)
+  duration: 4 hours
+  range: reach
+  effect: as an action, enchant a creature, granting it a +1d6 bonus to social checks, but granting it
+    a -1d6 penalty to all checks made to interact with beasts and animals. For the duration of the spell,
+    animals are displeased at the sight of the enchanted creature and become nervous.
+- name: Water shaping
+  group: Occult spells
+  lvl: '2'
+  types: evocation, transmutation
+  casting: 1 action
+  components: Verbal, Somatic, Material(1 vial of liquid, specified in spell)
+  duration: 2d4 + casting bonus rounds
+  range: special
+  effect: |-
+    As an action, cause a vial of liquid to spill and shape freely at your fingertips without touching you. For the next 2d4 + casting bonus rounds it follows you as a levitating orb. For the duration, depending on the nature of the flask used, you can do some of the following effects:
+
+    * acid flask - You can make a spell attack at a range of 20 feet as a bonus action, dealing 1d10 + casting bonus acid damage that cannot be blocked.
+    * healing potion - You can heal an ally within 20 feet or yourself for 1 hp as a bonus action, or heal yourself for 2 hp as a bonus action.
+    * flask of water - You can make a spell attack at a range of 20 feet as a bonus action, dealing 1d8 + casting bonus bludgeoning damage, and moving the target 5 feet in a desired direction on a successful hit
+    * flask of oil - You can make a spell attack at a range of 15 feet as a bonus action, dealing 1d6 + casting bonus bludgeoning damage. You can spend a reaction to force a moving creature within 15 feet to make a dexterity save. On a failure, their movement is stopped and they are restrained until the start of their turn.
+    * flask of poison - You can force a creature within 15 feet to make a dexterity save as a bonus action. On a failure, they are blinded until the start of their turn.
+
+    At higher levels, increase the range by 10 feet and damage dice by 1 for every level above 2nd.
+- name: Ritual Blade
+  group: Occult spells
+  lvl: '2'
+  types: conjuration, evocation
+  casting: 1 action
+  components: Verbal, Somatic, Material(1 vial of liquid, specified in spell)
+  duration: 2d4 + casting bonus rounds
+  range: special
+  effect: As an action, summon a magical longsword, spear, or scimitar. The weapon crumbles to dust after
+    2d4 rounds. The weapon is +1, has the returning property, uses charisma as the attack and damage attribute,
+    and deals an extra 1d6 force damage. If the weapon is used to slay a creature, extend its duration
+    by 1 round.
+  higher_levels: At 3rd and 5th level, increase extra damage dealt by 1d6. At 4th level, treat the weapon
+    as being a +2 weapon. At 6th, treat the weapon as being a +3 weapon and give it critical 1.
+- name: Dream warp
+  group: Occult spells
+  lvl: '2'
+  types: illusion, enchantment, concentration
+  casting: 1 action
+  components: Somatic, Verbal
+  duration: up to 8 hours. Conditionally dispellable
+  range: 25 feet
+  effect: |-
+    As an action, attempt to intrude into the dreams of a nearby sleeping creature within range. The creature must make a charisma or wisdom save. If you yourself consume a sleeping potion as part of casting this spell, the target has disadvantage.
+
+    On a failure, you may invade the dreams of the target creature. You remain asleep for the duration of this spell and the target cannot awake by its own means for the duration of the spell.
+
+    In all other regards, this is like another world, where you may cast spells as usual, though none of your items traverse with you, unless otherwise stated. The targets ability to control the dreamscape is subject to the GM, but the caster may expend a rest dice to cause any change in the dream realm equivalent to the casters highest possible spell level + 2 (subject to the GM).
+
+    The target can make a wisdom save in the spell to recognize the caster as an outsider the first time they are encountered. If either the target or the caster is reduced to 0 HP in the dream, they remain in a nightmarish limbo for the remainder of the spells maximum possible duration, and the other may awake, if possible.
+- name: Draconic sacrifice ritual
+  group: Occult spells
+  lvl: '2'
+  types: transmutation, necromancy, occult 2
+  casting: full round action
+  components: Somatic, Verbal, item (Draconic heart, which is consumed)
+  duration: special.
+  range: self
+  effect: |-
+    As a full round action, sacrifice a draconic heart. Draconic hearts have 4 tiers: Animalistic draconids, dragonborn, a drake or similar lesser dragon, a true dragon. (subject to the GM). Gain benefits based on the value of the heart sacrificed:
+
+    * Animalistic - Heal yourself for 2d8 HP or grant yourself 2d8 temporary HP which lasts until rest.
+    * Dragonborn - Previous effect triggers. Gain a +2 bonus to strength or dexterity for 1 hour..
+    * Lesser dragon - Previous effects triggers. Gain 2 temporary rest dice. Gain a +2 bonus to strength and dexterity for 1 hour.
+    * True dragon - Previous effects trigger. Durations are increased to 8 hours. The next spell you cast in that time period is elevated by 1 level.

@@ -1,0 +1,52 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/combat-changes/armor-and-shields
+section: rules
+entries:
+  - name: Base AC
+    group: Armor properties
+    description: The base AC of armor. Calculate armor AC as base AC + max (0, Dexterity bonus − bulk).
+  - name: Block X
+    group: Armor properties
+    description: Provides X extra block at the start of combat, which lasts until the end of combat.
+  - name: Bulk X
+    group: Armor properties
+    description: Reduce AC by (X - Strength bonus, minimum 0), down to a minimum of 8.
+  - name: Protection X
+    group: Armor properties
+    description: Gain X bonus to block checks.
+  - name: Reduction X
+    group: Armor properties
+    description: 'Reduce incoming damage of some given type by X. Examples: Physical reduction 2, Fire reduction
+      1.'
+  - name: Resistance
+    group: Armor properties
+    description: 'Provides resistance to a given type of damage. Examples: piercing resistance, cold resistance.'
+  - name: Slow X
+    group: Armor properties
+    description: Reduce movement speed by 5 * (x - Strength bonus, minimum of 0).
+  - name: Bash
+    group: Shield properties
+    description: The shield can be used to bash a creature as a reaction, if a melee attack has just been blocked
+      or misses you. The damage dice and properties are listed alongside.
+  - name: Block X
+    group: Shield properties
+    description: Provides X block at the start of combat, which lasts until the end of combat.
+  - name: Bolster X
+    group: Shield properties
+    description: The wielder can spend an action to gain X temporary block until the start of their next turn.
+  - name: Slam
+    group: Shield properties
+    description: The wielder can spend a bonus action when approaching a creature to slam it with the shield,
+      making a bash attack, and adding total bulk to the damage dealt.
+  - name: Spar
+    group: Shield properties
+    description: The wielder can spend a bonus action to use their acrobatics or athletics bonus for block
+      checks until the start of their next turn.
+  - name: Versatile
+    group: Shield properties
+    description: Can be wielded alongside versatile weapons, even while the versatile weapon is wielded in
+      both hands, or alongside a light weapon that is being wielded in both hands, but it cannot be used to
+      bash while doing so.
+  - name: Armor and shield categories
+    group: Equipment
+    description: 'Armor comes in three categories: light, medium, and heavy. An unarmored character has a base
+      AC of 10. Shields can be light or heavy.'

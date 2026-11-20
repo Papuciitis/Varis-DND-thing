@@ -1,0 +1,204 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/mystic-magic/lvl-1-mystic-spells
+section: spells
+entries:
+- name: Animal companion
+  group: Mystic spells
+  lvl: '1'
+  types: mystic 1, enchantment, abjuration
+  casting: 1 action
+  components: Verbal, Somatic, Spell slot binding
+  duration: Instantaneous
+  range: 30 feet
+  effect: |-
+    As an action attempt to tame a woodland creature. This requires a handle-animal check subject to the GM. On a success, you can link the animal to you as your animal companion.
+
+    The companion gains the following benefits:
+
+    * An animal companion has their hp increased by 1d10.
+    * Allows the caster to speak with the animal companion while in sight of one another
+    * The caster can cast other spells with a range of self or touch, as though the animal companion was the caster.
+    * The caster may dismiss the animal companion during a rest by spending a rest dice.
+
+    While the companion remains linked to the caster, the spell slot used is locked, and cannot be regained until the companion is either dismissed, or slain.
+  higher_levels: If cast with a 2nd level spell slot, the animal companion can also take a feat (subject
+    to the GM) or become <>
+- name: Begone
+  group: Mystic spells
+  lvl: '1'
+  types: mystic 1, evocation, abjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: Instantaneous
+  range: 5-20 ft cone
+  effect: As an action, cause all creatures in a cone emanating from your outstretched palm to make a
+    strength save. On a failure, they are sent back up to 10 ft. Creatures colliding with objects or other
+    creatures take 1d6 points of bludgeoning damage. They must also make a dexterity save to not be knocked
+    prone upon landing. The size of the cone is up to the caster and can be between 5 to 20 ft in range.
+  higher_levels: If cast using a 2nd level slot, the area is changed to all creatures in a radius around
+    the caster.
+- name: Be unseen
+  group: Mystic spells
+  lvl: '1'
+  types: mystic 1, illusion, abjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: Instantaneous
+  range: self, special
+  effect: Cause yourself to blend into the environment as an action, granting any check attempting to
+    find you disadvantage. Moving or attacking causes the spell to break. For every wisdom bonus above
+    +2, you can target an additional creature within 20 feet.
+  higher_levels: For every spell slot level above 1st, you can target an additional creature within 20
+    feet.
+- name: Blessing of the moon
+  group: Mystic spells
+  lvl: '1'
+  types: mystic 1, transmutation
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: instantaneous
+  range: 30 feet
+  effect: |-
+    Cannot be cast in sunlight.
+
+    As an action, enchant a melee weapon, shield, or crossbow, granting bonuses for 4d4 rounds based on the item type:
+
+    * Melee weapon - Deal an additional 1d4 radiant damage. The weapon can scale with wisdom for the duration.
+    * Crossbow - Attacks ignore partial cover and gain a +1 bonus to hit.
+    * Shield - Gain a +1 bonus to block checks, and attackers take 1d12 radiant damage whenever you block a melee attack with it.
+- name: Command nature
+  group: Mystic spells
+  lvl: '1'
+  types: transmutation
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: instantaneous
+  range: 30 feet
+  effect: |-
+    As an action, cause nearby vegetation to alter in one of the following ways:
+
+    * Entangle: Target grounded creature must make a dexterity save. On a failure they become snared (cannot move.) The creature can attempt a strength check to untangle themselves as an action.
+    * Grow: Target vegetation (Such as roots, vines, wood, or even fungus) grows to occupy target area, up to a 5 ft cube within 5 feet of the vegetation. You can choose to concentrate on this spell and continue this effect on a nearby 5 ft cube area. The exact nature of the growth is up to you. It can be difficult terrain or solid.
+    * Wither: Cause up to a 5 ft cube of vegetation to recede and wither, or deal 3d8 damage to all plant or fungus based creatures within the area.
+  higher_levels: For every spell slot level above 1st, increase number of targets this spell can effect
+    by 1, and increase the DC by 1.
+- name: Druidic spark
+  group: Mystic spells
+  lvl: '1'
+  types: transmutation
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: Permanent
+  range: touch
+  effect: As an action, place a druidic spark into a quarterstaff or spear. It deals an extra 1d3 radiant
+    damage and can be used to direct and offset the origins of rays, cone, or touch spells you cast by
+    5 feet. The spark remains in the staff until a new spark is placed, or until dispelled.
+  higher_levels: When cast as a 2nd lvl spell, It can be summoned as an action while the spark remains.
+- name: Faefire
+  group: Mystic spells
+  lvl: '1'
+  types: transmutation, illusion
+  casting: 1 action
+  components: Verbal, Somatic
+  range: cone
+  effect: As an action, cause a bolt of light to spring from your palm to a point within 40 feet and ignite
+    in a 10 ft sphere. All creatures caught in the sphere take 1d4 + casting bonus psychic damage and
+    must make a dexterity save. On a failure, they become ignited by faefire for 3d4 rounds or until dispelled,
+    which deals 1 psychic damage to the affected targets at the start of their turn, and increases the
+    critical range of all attacks made against the target by 1.
+  higher_levels: For every spell slot level above 1st, increase the duration by 1d4 and Increase the diameter
+    of the sphere by 5 feet.
+- name: Feast
+  group: Mystic spells
+  lvl: '1'
+  types: transmutation, necromancy
+  casting: 1 action
+  components: Verbal, Somatic, Material (food that is consumed upon casting)
+  range: special
+  effect: As an action, consume or administer a small meal or piece of food to yourself or a creature
+    within 5 feet (such as a biscuit, apple, or a bowl of berries) and either restore 1 fatigue or heal
+    1d4 health. The consumed food provides sustenance for 1 day.
+  higher_levels: |-
+    For every spell slot level above 1st, allow the food to be administered to an additional creature. If using a 2nd or higher level slot, you may even use food that has turned or gone sour, restoring it to an edible state.
+
+    When cast at 3rd level, and the heart of a medium creature with an intelligence of 5 or more is consumed by the caster, the casters maximum HP is increased by 1. Health can only be increased up to a maximum of +10 in this way.
+- name: Healing wish
+  group: Mystic spells
+  lvl: '1'
+  types: evocation
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: Unspecified in the draft
+  range: 30 feet
+  effect: As an action, heal a creature within 30 feet for 1d4 + casting bonus health, and restore 1 point
+    of fatigue.
+  higher_levels: For every spell slot level above 1st, increase healing by 1d4 or number of targets by
+    1.
+- name: Heal nature
+  group: Mystic spells
+  lvl: '1'
+  types: Abjuration, transmutation
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: instant
+  range: touch
+  effect: |-
+    As an action do one of the following:
+
+    * Stabilize a dying medium or smaller sized animal, beast, or other critter (subject to the GM) or heal it for 2d6 + casting bonus health, and removing up to one of the following conditions: sickened, poisoned, diseased, shaken, or terrified.
+    * Gain advantage on the next check made to befriend, influence, or handle an animal, beast or other critter (subject to the GM) for the next 1 hour.
+- name: Moonbeam
+  group: Mystic spells
+  lvl: '1'
+  types: transmutation
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: instantaneous
+  range: 60 feet
+  effect: |-
+    Can only be cast at night or in significant enough darkness (subject to the GM).
+
+    Cause a streak of light to beam from your fingertips to the target as an action. The target must make a wisdom saving throw. On a failure, they take 2d8 radiant damage and are stunned for 1 round. On a success, they take half damage.
+  higher_levels: For every spell slot level above 1st, increase damage by 1d8. For every spell slot level
+    above 3rd, you can target an additional creature.
+- name: Hunter's prayer
+  group: Mystic spells
+  lvl: '1'
+  types: mystic 1, divination, evocation
+  casting: 1 action
+  components: Verbal, Material (Bow and arrow)
+  duration: instantaneous
+  range: special
+  effect: As part of casting this spell, fire an arrow from a bow as a single attack attack. The shot
+    suffers no range penalty, gains a +1 bonus to hit, deals an extra 1d6 damage, and the target has disadvantage
+    on any block check against it. If this kills or knocks the target unconscious, the spell slot is not
+    spent.
+  higher_levels: For every spell slot level above 1st, increase damage by 1d6.
+- name: Spore cloud
+  group: Mystic spells
+  lvl: '1'
+  types: mystic 1, conjuration, necromancy
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: Instantaneous
+  range: 30 feet
+  effect: As an action conjure a 5 ft sphere of spores and propel it up to 30 feet in a direction. Any
+    creature caught in its path must make a dexterity or constitution spell, taking 1d6 poison damage
+    on a failure. Creatures that breathe and roll a natural 1 or 2 on their save take double damage and
+    take 1 point of damage to fatigue.
+  higher_levels: For every spell slot level above 1st, increase damage by 1d6.
+- name: Illumination
+  group: Mystic spells
+  lvl: '1'
+  types: mystic 1, evocation, abjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: 2d6 minutes
+  range: 30 feet
+  effect: As an action, cause a ghostly light to shine from above your head, that illuminates the surrounding
+    60 ft area in a soft dim light. Perception, insight, and investigation checks made are at targets
+    within the illuminated area. The caster can at will choose to cause one object or are to give off
+    an identifiable faint glow, so as to indicate focus.
+  higher_levels: When cast at 2nd level, the duration is increased to 1 hour, and the caster can spend
+    an action to push an object, or apply force to a creature within the light, forcing them to make a
+    wisdom save, being pushed back or down by 10 ft, and if the caster chooses, taking 1d10 + casting
+    bonus damage.

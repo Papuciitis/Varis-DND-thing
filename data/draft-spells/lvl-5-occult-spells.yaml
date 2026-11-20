@@ -1,0 +1,115 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/occult-magic/lvl-5-occult-spells
+section: spells
+entries:
+- name: Burn karmic aura
+  group: Occult spells
+  lvl: '5'
+  types: Enchantment, Occult 5
+  casting: reaction
+  components: verbal, somatic, special.
+  range: self
+  duration: 1 minute.
+  effect: |-
+    As a reaction, sacrifice magical power directly, taking 1d4 psychic damage and gaining the following benefits:
+
+    * boost to the next 2 spells cast within the duration of the spell, at which point the effect ends. For the next minute, the next 2 spells cast have their level raised by 1 and their damage and effect dice increased by 1 size category, as well as their range doubled if they have a range greater than touch, and their area by half (a 10 ft sphere becomes a 15 ft sphere)
+    * Restore 1 use of a per-rest ability.
+
+    Afterwards, take 1 damage to fatigue and lose the ability to cast spells for the next 1d4+1 rounds.
+  draft_note: The draft specifies a reaction without naming the event that triggers it.
+- name: Outer dark invocation
+  group: Occult spells
+  lvl: '5'
+  types: Enchantment, Occult 5
+  casting: Pending author ruling
+  components: verbal, somatic, special.
+  range: target 100 ft area within sight or structure
+  duration: permanent
+  effect: |-
+    Diminish the borders between target 100 ft radius area within sight, or within the territory of the target structure within sight and the lost planes of the outer darkness.
+
+    When you cast this spell make a DC 20 arcana and DC 20 constitution check. On a failed arcana check, you must spend 1 rest die and suffer 1d20 psychic damage if you cannot. On a failed constitution check, you take 1d20 necrotic damage.
+
+    The affected area benefits from 2 of the following effects of your choice, chosen when casting, gaining an extra choice per successful arcana or constitution check:
+
+    * All teleportation spells and abilities within the affected area require 1 less of any rest dice or fatigue to cast/use.
+    * All spell slots used for teleportation or conjuration spells or abilities are treated as 1 level higher, and can be cast with slot 1 level beneath them for the normal effect.
+    * The damage dice of all cold and psychic damage within the area are increased by 1 size category and the durations of spells, effects, and alchemy that deals such damage are doubled.
+    * Light is significantly diminished within the area, causing it to count as either dim darkness when illuminated, or magically dark when not.
+
+    Additionally, the area may now be accessible to other entities that may reside there, though the veil is not fully pierced (subject to the GM).
+  draft_note: The casting line specifies reaction, but the effect specifies full round action. The action
+    cost needs an author ruling.
+- name: Pseudolycanthropy
+  group: Occult spells
+  lvl: '5'
+  types: Transmutation, Necromancy, Occult 5
+  casting: action or reaction
+  components: Verbal, Somatic
+  duration: 1 hour or special
+  range: self
+  effect: |-
+    As a full round action, undergo a bestial transformation, which lasts 1 hour and grants the following benefits:
+
+    * Abandoned by the light - You have disadvantage on d20 rolls during the day.
+    * Bestial claws - Your unarmed attacks deal an extra 2d6 slashing damage and can be used to climb and clink to surfaces. +1 to unarmed attacks.
+    * Bestial strength - You gain a +2 bonus to strength and constitution, you gain 1d6 temporary health at the start of each of your turns.
+    * Cats eyes - Gain darkvision at a range of 300 ft and gain advantage on dexterity saves.
+    * Great leap - You gain a jump distance of 90 ft and take no fall damage. Gain a +10 bonus to movement speed.
+    * Unnatural instincts - You gain a +4 bonus to instinct, nature, and perception checks, as well as initiative rolls.
+    * Whispers - You have disadvantage on concentration checks.
+
+    Lasts 1 hour by default, but when cast on a full moon night or under an aurora, it lasts for 1d12 hours instead.
+  higher_levels: At 6th level, bestial strength grants a +3 bonus to all physical attributes instead of
+    the +2 to strength and dex. Gain 10 ft extra movement speed, double jump distance, double unnatural
+    instincts bonus per spell level above 5th.
+- name: 'Power word: Contract'
+  group: Occult spells
+  lvl: '5'
+  types: Enchantment, Occult 5
+  casting: reaction
+  components: verbal, somatic, 1 rest die
+  range: 30 ft
+  duration: permanent
+  effect: |-
+    As a reaction to a creature making a promise or deal, force it to make two wisdom saves by spending a rest dice.
+
+    If it fails either, it is bound to execute the promise. If the promise is completed, you and the target both gain 3d10 arcane health.
+
+    If it fails both, you can curse it as a reaction at any point, forcing it to make a death save.
+  higher_levels: At 6th level, the arcane health is increased by 1d10 and the target must make another
+    wisdom save. If it fails three, you can command the characters actions directly at will.
+- name: Shadowwarp
+  group: Occult spells
+  lvl: '5'
+  types: Conjuration, Occult 5
+  casting: full round action
+  components: Somatic
+  duration: instant
+  range: self, 1000 ft
+  effect: |-
+    As a full round action, warp between here and a point of darkness within 1000 ft. You must be aware of the target location.
+
+    When not observed by other creatures, can be done as a reaction.
+
+    You can lock 1 rest die during a rest to create a warp sigil in a darkened area of choice. You can blink to it instead regardless of range.
+
+    When cast, roll 1d4. On a 1, spell points or spell slots spent casting this are refunded.
+  higher_levels: At 6th, range is extended to 5 miles.
+- name: Hemomancy
+  group: Occult spells
+  lvl: '5'
+  types: Conjuration, Occult 5
+  casting: full round action
+  components: Somatic, Verbal
+  duration: 1 minute
+  range: self
+  effect: |-
+    As a full round action, sacrifice either 1d4 HP, a phial of blood worth 1d4 hp, or a small or medium creatures remains with blood in them, to conjure an orb of hemomantic blood that levitates in your palm for up to a minute, or as long as there are charges remaining. It contains 2d4 + casting bonus charges. Charges can be used to trigger any of the following effects while wielding the hemomantic blood sphere:
+
+    * Blood spike - at the cost of one charge, make a ranged spell attack as a bonus action or action, dealing 3d6 + casting bonus piercing damage.
+    * Frozen veins- at the cost of one charge, as an action or bonus action you can force a creature within 30 ft to make a constitution save. On a failure, the target is stunned for 1 round. On a critical failure it is stunned for 1d3 rounds and takes 1d4 + casting bonus cold damage, and on a save the creature is shaken and weakened for 1 round instead.
+    * Blood talons - at the cost of 2 charges, make a melee spell attack vs every creature within a 10 ft cone as an action, dealing 3d12 + casting bonus necrotic damage. On a critical strike it applies bleed to all creatures affected. The spell attack is treated as and modified by abilities and features that affect unarmed attacks.
+    * Lifesteal - At the cost of 2 charges, force a creature within 10 ft to make a constitution save, taking 1d6 acid damage on a successful save, and 4d10 + casting bonus necrotic damage on a failed save, healing yourself for half the amount.
+    * Bloodmute - At the cost of 3 charges, force a creature within 30 ft to make a constitution save. On a failure, it cannot heal for the next 1d3 rounds.
+    * Bloodboil - At the cost of 3 charges, force a creature within 30 ft to make a constitution save, taking 4d12 + casting bonus fire damage on a failed save, and half on a success.

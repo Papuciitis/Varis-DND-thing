@@ -1,0 +1,13 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/design-page
+section: rules
+entries:
+  - name: Leveling and archetypes
+    group: Character creation
+    description: The level cap is 12. Classes award features and customization choices throughout progression.
+      Archetypes come in tiers, allowing characters to combine specialties when multiclassing. An early archetype
+      and a later one can have different strengths.
+  - name: Rest, long rest, and rest dice
+    group: Rest and recovery
+    description: By default, a short rest takes one day and a long rest takes one week. The GM can adjust these
+      durations. Each class has its own ways to spend rest dice during an adventure, in combat, or during a
+      rest. Use the current Fatigue condition for rest-based recovery.

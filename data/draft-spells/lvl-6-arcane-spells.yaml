@@ -1,0 +1,474 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/arcane-magic/lvl-6-arcane-spells
+section: spells
+entries:
+- name: Afterimage
+  group: Arcane spells
+  lvl: '6'
+  types: Illusion, Evocation, Arcane 6
+  casting: 1 action.
+  components: verbal, somatic, material (arcane dust or mana potion, which is consumed)
+  duration: 2d4 turns
+  range: special
+  effect: |-
+    As an action, cause yourself or a target creature to gain a semi-real afterimage which repeats their actions after them. For the duration of the effect, the target has +20 movement speed, +2 AC, +3 to dexterity saves, and any action, attack, ability, or trick they perform is done twice.
+
+    After the spell ends, the target must make a constitution save. On a failure, they are exhausted for 1d3 turns.
+- name: Arcane copy
+  group: Arcane spells
+  lvl: '6'
+  types: Illusion, Arcane 6
+  casting: 1 action.
+  components: verbal, somatic
+  duration: 1 hour, concentration
+  range: special
+  effect: As an action, conjure a solid illusory copy of yourself, who can use your spell slots and rest
+    dice. It has all your stats, but has 1/4 the amount of health, and otherwise behaves like a whole
+    new character under your control. This cannot duplicate items. Your perceptions are shared, but your
+    mind and soul cannot be accessed by targeting the illusion.
+- name: Arcane jar
+  group: Arcane spells
+  lvl: '6'
+  types: Necromancy, Abjuration, Arcane 6
+  casting: 1 action.
+  components: verbal, somatic, material (special)
+  duration: 10 minutes.
+  range: self
+  effect: |-
+    As a 1 hour ritual during a rest, enchant a jar, clay pot, or similar sealed vessel filled with blood mixed with 1 potion of mana and 1d6 HP worth of your own blood. The enchanted vessel is inscribed with your own personal arcane rune, which breaks and shatters the vessel if you die, birthing a copy of yourself that your mind is pulled into.
+
+    When this occurs, roll 1d10:
+    1, 2, 3 - nothing happens,
+    4, 5 - you lose 2 max HP,
+    6, 7 - you shift an ability score, granting a -1 penalty to one and a +1 bonus to another,
+    8 - you permanently lose 1 death save slot. This cannot reduce you below 1 death save slot.
+    9 - you gain a random minor mutation (subject to the GM.)
+    10 - it is no longer you (subject to the GM.)
+- name: Archstone rune
+  group: Arcane spells
+  lvl: '6'
+  types: Transmutation, Abjuration, Arcane 6
+  casting: 1 action.
+  components: verbal, somatic, material (diamond or arcane pearl worth 1000 gold)
+  duration: 1d8 hours
+  range: 10 ft
+  effect: |-
+    As an action, or a bonus action after slaying a spellcaster or magical creature to cause a runed stone pillar to emerge from the ground, brick, or stone within range. Choose a spell or cantrip you know when doing so. The stone applies the effect/rune of the chosen spell or cantrip when doing so in a 80 ft range of the runed pillar.
+
+    When cast after slaying an appropriate creature, the duration is instead 1d8 days.
+
+    You can choose to silence or re-enable to archstones effect at will, to make it conditional, or to trigger it at will, up to once per turn.
+- name: Balefire
+  group: Arcane spells
+  lvl: '6'
+  types: Evocation, Arcane 6
+  casting: 1 full round action
+  components: verbal, somatic, 1 death save
+  duration: 1 hour, concentration
+  range: special
+  effect: |-
+    As a full round action, draw primordial fire from arcane threads and aim it at a target within 100 ft. Make a ranged spell attack, dealing 10d10 + casting bonus radiant damage. The damage ignores resistance and reduces immunity to resistance. The damage is tripled against structures or objects. If this slays a creature, then the creature must make a wisdom save.
+
+    On a failure, they are burned out of the tapestry, leave behind no remains, and have disadvantage on any effects made to resurrect, return, reach out to, or remember the target.
+
+    If you are interrupted, roll 1d4. On a 1 rogue balefire sparks target you, on other rolls, the interrupting enemy (if valid) is targeted. Rogue balefire sparks deal 4d6 radiant damage.
+
+    Drawing on such arcane threads immediately alerts all other creatures as the entire area within 1 mile will experience a low harmonic shrieking sound.
+- name: Create greater undead
+  group: Arcane spells
+  lvl: '6'
+  types: Necromancy, Arcane 6
+  casting: 1 full round action
+  components: verbal, somatic, 1d8 HP worth of a spellcasters blood.
+  duration: 1 hour, concentration
+  range: special
+  effect: |-
+    As a full round action, cause a creature to rise as a greater undead, retaining their original stats and abilities (as applicable, subject to the GM.) and gain a +2 bonus to all attributes. They have undead fortitude, and a +2 bonus to all saves.
+
+    Depending on the state of the body, the target gets additional upgrades:
+
+    * Skeleton -> Skeletal lord - Gains a resistance to all physical damage and immunity to non-magical attacks. Gains proficiency with all armor, shields, and weapons.
+    * Destroyed remains -> Wraith lord - Gains ethereal movement, immunity to non-magical attacks, and deals an extra 2d6 psychic damage with all attacks.
+    * Rotting corpse -> Plague lord - Is healed by poison damage, deals 1d6 poison damage to adjacent creatures at the start of their turn and when entering melee range.
+    * Frozen remains -> Draugr lord - Has advantage on saves vs spells, is immune to cold damage, and deals an extra 1d6 cold damage with their attacks.
+    * Broken remains -> Ghoul knight - Gains proficiency with a weapon group of choice and all armors and shields. Gains an extra feat.
+    * Fresh corpse -> Death knight - Gains a +1d20 max HP. Gains proficiency with all weapons and armors. Gains +1 maximum rest dice.
+    * Burned ash or charred corpse -> Flame wraith - Gains fire immunity and immunity to non-magical attacks. Gains a +10 bonus to movement speed and deals 1d6 fire damage extra with all its attacks. The fire damage dealt ignores resistance.
+    * Hanged corpse -> Gallows knight - Gains +3 block at the start of combat. Gains proficiency with all shields and weapons.
+    * Crucified, Skewered, staked, or speared corpse -> Penitent ghoul - Has +2 max rest dice. Can spend 1 rest die to grant it to an ally or other undead.
+    * Headless corpse -> Aspect ghoul - Choose an element. A spark of it occupies the targets head, granting it true sight at a range of 80 ft. Spells the target casts that deal the chosen kind of elemental damage, or are associated with that element have their level increased by 1.
+- name: Crystallize
+  group: Arcane spells
+  lvl: '6'
+  types: Transmutation, Arcane 6
+  casting: 1 action
+  components: verbal, somatic
+  duration: instance
+  range: 30 ft
+  effect: As an action, deal 12d6 acid damage to a creature within range. It takes half damage on a successful
+    constitution save. The target must also make a strength save. On a failure, they are snared, dazed,
+    and exhausted for 4d6 rounds. On a critical failure, they are petrified into enchanted stone and permanently
+    paralyzed until dispelled. In case such a creature is dispelled, a DC 22 arcana check must be made
+    to not liquify the encased creature.
+- name: Greater divination
+  group: Arcane spells
+  lvl: '6'
+  types: Divination, Arcane 6
+  casting: 1 action
+  components: verbal, somatic, 1 death save.
+  duration: 1 minute, concentration
+  range: 30 ft
+  effect: As an action, invoke the secrets of arcane divination, granting you true sight, aura sight,
+    echolocation, and aethereal-vision for the duration, and granting you 2 rerolls per round to use for
+    any dice roll you make. For the duration, the GM must truthfully reveal to the caster if other creatures
+    are approaching or pursuing them, or if they are being watched (subject to the GM).
+- name: Summon greater elemental
+  group: Arcane spells
+  lvl: '6'
+  types: Divination, Arcane 6
+  casting: 1 full round action
+  components: verbal, somatic, 1 rest die lock
+  duration: special
+  range: 30 ft
+  effect: |-
+    As a full round action, conjure a greater elemental. Upon conjuration, make an arcana check vs its AC. On a success, it is your ally and recognizes you as having given it the gift of life. On a failure, it is impulsive, but will still take your orders for the next 3d4 turns.
+
+    Doing so requires you to lock a rest dice, preventing it from further use. The rest dice is restored once the elemental is dispelled or destroyed.
+  Greater elemental: |-
+    Type: Large, Elemental, Golem
+
+    Base stats:
+    HP: 6d10 + casting attribute total, BLOCK +6, 6 block.
+    AC: 18
+    All saves +6.
+
+    Move speed 40, Regeneration 10, Immune to non-magical attacks.
+
+    Skills: +5 to athletics and arcana.
+
+    Attacks:
+
+    * +7 slam attack, dealing 3d6 + 7 damage of its elemental type.
+    * 30/60 ft +8 ranged attack, dealing 2d8 + 7 damage of its elemental type.
+
+    Heals from the elemental damage of its own type.
+
+    Choose an elemental type:
+
+    * Fire - Attacks ignite. +10 speed. Increases all ally evocation spells within 30 ft by 1 level.
+    * Cold - Attacks ensnare, requiring a strength save to escape as either a bonus or move action. Reduce fire and radiant damage dealt by enemies within 30 ft by 1d10.
+    * Lightning - Attacks apply shocking, has an extra attack. Can blink 60 ft as an action. Has +5 to AC. Spells cast by allies within 30 ft have their range doubled.
+    * Force - Attacks target an entire 10 ft square area, and deal 2 extra dice of damage. Can levitate and move an ally or large object up to 60 ft as an action.
+    * Poison - Immune all physical damage. Attack apply poisoned. Enemies within 30 ft lose regeneration, and have all healing reduced by 10.
+    * Sonic - Speed is increased by 40 ft. Immune to all physical damage. Attacks deafen for a round and cannot be blocked. Can spend a whole turn to make 4 ranged attacks in a cone.
+    * Acid - Immune to necrotic damage. Resistance to physical damage. Attacks apply sickened, poisoned, distracted, and shaken (Disadvantage on skill checks, saves, and block checks.) Creatures within 10 ft take an extra 1d8 damage from all sources.
+
+    A greater elemental has 2 death save slots and a +2 bonus to death saves.
+- name: Illusory realm
+  group: Arcane spells
+  lvl: '6'
+  types: Illusion, Conjuration, Arcane 6
+  casting: 1 action.
+  components: verbal, somatic
+  duration: 1 hour
+  range: 100 ft
+  effect: |-
+    As an action, cause a structure or area you are in up to the range of the spell to be hidden from the mundane world. Its doors, entrances, and passages become hidden doors to the outside world and the area becomes shielded from the spells of the outside world so long as their casters are have not found the realm. Unwanted sound and light does not emit out from the spells affected structure or area to the outside world.
+
+    You can expend 4 rest dice when casting the spell to make it last for 1d8 days.
+- name: Lesser chronomancy
+  group: Arcane spells
+  lvl: '6'
+  types: Chronomancy, Divination, Arcane 6
+  casting: Bonus action
+  components: verbal, somatic, 1 death save.
+  duration: instance
+  range: 30 ft
+  effect: As a bonus action, undo the current turn, retaining memories of it, and making one death save
+    immediately.
+- name: Mana-prion
+  group: Arcane spells
+  lvl: '6'
+  types: Necromancy, Transmutation, Arcane 6
+  casting: 1 action
+  components: verbal, somatic.
+  duration: instant
+  range: 50 ft
+  effect: |-
+    As an action, cause a creature to take 12d12 poison damage. They can make a constitution save to halve the damage. This damage ignores resistances and reduces immunity to resistance.
+
+    If this kills the target creature, they immediately rot and liquify down to the bone, and the tiles they occupy and all adjacent tiles become subject to mana-rot, making them difficult terrain.
+
+    Mana-rot can be harvested by those who know this spell to obtain a mana potion. Requires a flask and 1 minute of time to harvest.
+- name: Master weapon enchantment
+  group: Arcane spells
+  lvl: '6'
+  types: Transmutation, Arcane 6
+  casting: 6 full round actions.
+  components: verbal, somatic
+  duration: 1 hour
+  range: duration
+  effect: |-
+    During a rest, you can lock 2 rest dice to grant a weapon a +3 enchantment and increase its damage dice by 1 size category. You can unlock and dispel enchantments during a rest.
+
+    Weapons with this enchantment ignore regeneration and physical damage resistance or immunity.
+
+    You can also spend 2 extra rest dice during the item enchantment to grant all its attacks an extra 1d8 damage of your choosing.
+- name: Mind override
+  group: Arcane spells
+  lvl: '6'
+  types: Enchantment, Arcane 6
+  casting: 1 full round action
+  components: verbal, somatic.
+  duration: instant
+  range: 60 ft
+  effect: |-
+    As a full-round action, enter a mental battle within the target in order to charm and twist their mind. At the start of the targets turns, until the spell ends, the target must make a wisdom save. On your turn, you must make a wisdom save at the start of your turn, forcing the target to reattempt the save on their next round, and extending the charms duration for 1 round.
+
+    If at any time the target fails, they are subject to one of the following effects:
+
+    * The target takes 7d8 psychic damage. If this reduces a target to 0 HP, they are cursed beset by a permanent reality illusion of your choice (subject to the GM).
+    * The target acts and behaves as you desire for the next 1d6 turns. On critical failure, this becomes minutes.
+    * The target spends 6 hours in a mental realm of your making with you, in which you can choose to interact with the target as you wish (subject to the GM). and can result in applying the confused, shocked, sickened, weakened, and afraid condition for 1d4 hours afterwards. The entire experience lasts 1 turn in the real world.
+- name: Necrofex
+  group: Arcane spells
+  lvl: '6'
+  types: Necromancy, Arcane 6
+  casting: 1 action
+  components: verbal, somatic.
+  duration: instant
+  range: 40 ft
+  effect: |-
+    As an action, force a creature within range to make a wisdom save. On a failure, they take 8d10 + casting bonus necrotic damage. If this kills a creature, you regain 2 rest dice, gain 1d20 arcane health, restore 2 block, restore 1d4 fatigue, and allow you to remake saves vs ongoing effects and conditions.
+
+    Creatures slain by this spell gain an extra feat when brought back as undead.
+
+    You can choose to make a death save to increase the damage by 3d10.
+- name: Obliviate
+  group: Arcane spells
+  lvl: '6'
+  types: Enchantment, Abjuration, Arcane 6
+  casting: 1 action
+  components: verbal, somatic, 1 fatigue
+  duration: instant
+  range: 60 ft
+  effect: As an action, cause a creature to make a wisdom or intelligence save. It has disadvantage if
+    it has not detected you. On a failure, the creatures memories of a creature or event of your choice
+    are submerged and abandoned. They forget them entirely. The target can be reintroduced to knowledge
+    of the chosen creature or event and can even learn that they have been made to forget, in which case
+    they may recall only vague memories or dreams.
+- name: Psychomancy
+  group: Arcane spells
+  lvl: '6'
+  types: Divination, Enchantment, Arcane 6
+  casting: 1 action
+  components: somatic
+  duration: Permanent
+  range: sight
+  effect: As an action, cause a creature within range to make a wisdom or charisma save. On a failure,
+    the GM must truthfully grant three insights into the creature of the caster's choosing, and the caster
+    gains the exact stats of the target and the spells, abilities, and feats it knows. A creature that
+    succeeds from the save is made aware of your observation of it, and will be drawn to your gaze.
+- name: Psychometry
+  group: Arcane spells
+  lvl: '6'
+  types: Divination, Arcane 6
+  casting: 1 action
+  components: somatic
+  duration: Permanent
+  range: touch
+  effect: |-
+    touch an object as an action, gaining immediate knowledge about any of the following:
+
+    * Who made it
+    * Who has owned it
+    * Where it has been
+    * What it has done
+    * What it is meant for
+    * What properties it has
+- name: Rune of reflection
+  group: Arcane spells
+  lvl: '6'
+  types: Abjuration, Arcane 6
+  casting: 1 action
+  components: verbal, somatic
+  duration: 10 minutes, concentration
+  range: 10 ft
+  effect: As an action, bestow yourself or a creature within range a rune of reflection. Spell attack
+    or direct target spells (spells that specifically target the wearer of the rune) are reflected, being
+    cast back from the wearer of the rune or having a copy of the effect returned from the wearer of the
+    rune to the original caster.
+- name: Soulbeam arcana
+  group: Arcane spells
+  lvl: '6'
+  types: Evocation, Arcane 6
+  casting: special
+  components: verbal, somatic, 1d6 HP
+  duration: 1 hour, concentration
+  range: 200 ft
+  effect: |-
+    Either cast immediately as an action, or charge up as a full round action and then an action on your next turn.
+
+    Sacrifice your own arcana reserves in a damaging fashion, losing 1d6 HP and firing a beam of arcane power. Fire a beam at a range of 200 ft, dealing 2d10 radiant, 2d10 force, and 2d10 fire damage to creatures struck, and half as much on a successful dexterity save. Objects and structures take double damage, and slain creatures are incinerated.
+
+    If charged as a full round action, increase range to 600 ft and cause the beam to deal 2d10 extra lightning damage.
+
+    Creatures that critically fail the save become ignited, stunned, and winded for 1 round.
+
+    Each persons inner arcana reserves cause the soulcharge to have a different effect. Choose one when learning the spell:
+
+    * Range is increased by 10 ft and charged range by 300 ft.
+    * Fire damage is changed to cold damage and change critical failure effect to instead stun creatures for 1d3 rounds.
+    * Fire damage is changed to acid damage and change critical failure effect to remove resistances and reduce immunities to resistances for 1d3 minutes.
+    * Can concentrate for an extra round, adding an extra 2d10 necrotic damage.
+    * When charged, you can move the beam, targeting a flat cone segment of the world and the creatures that intersect it.
+- name: Structure
+  group: Arcane spells
+  lvl: '6'
+  types: Evocation, Arcane 6
+  casting: 1 action
+  components: verbal, somatic, 1d8 HP
+  duration: 1 hour, concentration
+  range: 100 ft
+  effect: As an action, cause the surrounding 100 ft area within range to alter to your liking. You can
+    reconstruct stone, wood, or metal to make shapes, forms, or even simple/medium complexity mechanisms
+    and fortifications to your liking. This can be cast to repair a broken mechanism, structure, or fortification
+    that fits within the target area, or to make mechanisms or structures that are clogged or unpowered
+    in such an area to free up and function properly for the duration.
+- name: Subdomain
+  group: Arcane spells
+  lvl: '6'
+  types: Conjuration, Transmutation, Illusion, Evocation, Arcane 6
+  casting: 1 action
+  components: verbal, somatic, 1 death save
+  duration: 10 minutes, concentration
+  range: special
+  effect: |-
+    As an action, cause the area within 100 ft per casting bonus of the caster to be overlay and cloak an arcane realm invoked by the caster, altering the nature of the plane there. This process is extreme and requires a death save, losing the slot on a failure. Choose as many modifiers from the list below as your casting bonus -3 (min 1.) once chosen, they apply to all future castings of the spell:
+
+    * Diminishment - Creatures of the caster's choosing within the zone have a -2 penalty to all d20 rolls, and have their damage dice reduced by 1 size category.
+    * Elemental shift - Choose up to two damage types. All damage of that type is shifted to a type of the caster's choice.
+    * Hostile terrain - The area makes an attack against any creature within it at the start of the round. The attack is +8, has a block DC of 13 + casting bonus, and deals 1d12 + casting bonus damage to the creature. The damage type is of the caster's choosing.
+    * Illusory realm - semi-real illusions of creatures and structures of the caster's choice can obscure the realms true nature. The caster can manifest a new illusion or disguise or subvert an object or creature within the area as an action or bonus action.
+    * Imbue with substance - You can choose a flask in your possession, causing the area to quickly flood and saturate with the chosen substance, consuming the item in the process, and quickly turning the place into ankle-deep swamp-like difficult terrain.
+    * Inferno - Ignite any tile of choice in the area.
+    * Labyrinthine - You can alter the terrain, causing it to weave, fold, and reform to create a maze of the caster's choosing.
+    * Obscurity - The area is obscured by a fog, smoke, or mist of the caster's choice, obscuring vision beyond 10 ft. The caster can choose to swap two creatures that are lost in the obscured area places, or to transpose a creature from one place to another( so long as they are isolated in the mist ) as an action.
+    * Overgrowth - The flora and plant life of the domain grow rapidly and crackle with light.The area becomes difficult terrain for all creatures that are not the casters allies. The caster can spend an action or bonus action to cause all creatures within a 30 ft area of the zone to become snared, requiring a strength save as an action to break free, and taking 3d6 + casting bonus force damage if already snared within the target area.
+    * Reforming landscape - The caster can spend a full round action to reform the layout and inanimate structure of a 50 ft area within the affected area.
+    * Rune scape - The area is completely transfected by arcane runes that twist and weave. All conjuration, illusion, enchantment, or divination spells that are cast within the area are increased by 1 level, and creatures hostile to the caster have a -2 penalty to saves vs spells.
+    * Shielded domain - The realm is enveloped in a bubble of force, preventing the outside world from reaching in or vice versa. This does not apply to living creatures or their attire and belongings. This can prevent cave-ins, exposure to the vacuum, flooding, or similar events.
+    * Storm - The area causes an aurora above, a storm to quickly gather, and 4d8 damage lightning bolts to strike randomly within the affected zone at the start of every round (subject to the GM). and a great wind reduces movement speed by half for all creatures within. The caster can spend an action to force a creature to be struck by a lightning bolt, taking half damage on a successful save.
+    * Unstable domain - All teleportation and blink effects within the area automatically fail or misfire. Portals created within the area are wildly off (subject to the GM). and the area itself becomes a teleportation anchor, pulling in objects from elsewhere, depending on nearby conjuration magic peculiarities (subject to the GM). The caster can pull an object or from one area to another within the area as an action. This causes no damage.
+    * Wrinkled time - Time passes faster within the area. For every turn outside, three turns occur within.
+- name: Summon cosmic trigon
+  group: Arcane spells
+  lvl: '6'
+  types: Conjuration, Evocation, Arcane 6
+  casting: Full-round action
+  components: verbal, somatic, 1 death save
+  duration: 1 hour, concentration
+  range: special
+  effect: As a full round action, summon a cosmic trigon in an area within range. It ignores you and your
+    allies so long as you maintain concentration, and you can suggest it what to attack as an action (subject
+    to the GM). A caster may spend a full round action to dispel and banish the trigon so long as they
+    maintain concentration.
+  Cosmic trigon: |-
+    Type: Large, Elemental, Eldritch
+    HP: 88, BLOCK +8, 8 block.
+    AC: 18
+    All saves +8.
+
+    Fly speed 80 ft, levitates
+
+    Energy beam - As an action, deal 8d8 radiant damage in a 100 ft line.
+    Overloading resonance - As an action, cause an 20 ft sphere area within 200 ft to detonate, dealing 8d8 sonic damage to all creatures within range.
+    Stasis - Cause all moving small or large objects to stop in a 20 ft area around the cosmic trigon as a reaction, creatures movements are interrupted, ranged attacks are interrupted, and collapsing structures are dampened. Deals 2d8 cold damage to creatures caught in the effect.
+    Drain magic - Cause a magical object or item within 80 ft to acquire a -1 penalty as an action and take 2d8 radiant damage. Heal 4d10 health.
+
+    Immune to psychic, necrotic, and fire damage.
+
+    Does not make skill checks. A cosmic trigon is an arcane elemental that can be invoked. They exist to destroy and consume magic, but can be tempted by casters to cross vast distances across the cosmos to obtain new nourishment in exchange for not attacking the caster. It is generally considered insane to seek one out.
+- name: Teleportation circle
+  group: Arcane spells
+  lvl: '6'
+  types: Abjuration, Arcane 6
+  casting: 6 full round actions
+  components: verbal, somatic, 1 rest die, arcane marking material (chalk, crystal dust, arcane chisel,
+    etc. subject to the GM.)
+  duration: Permanent
+  range: 15 ft
+  effect: |-
+    As a, create a teleportation circle, up to 15 ft in diameter.
+
+    You can link a teleportation circle of your creation with another teleportation circle that you create or encounter by expending either a 1 level spell slot or 1 rest die over a 10 minute ritual.
+
+    A creature within the circle can sacrifice the equivalent of a 3rd level spell slot or higher to use a teleportation circle, swapping the content of the circle with a linked circle. This may require arcana checks for creatures other than the original caster (subject to the GM).
+
+    A caster can choose to disregard arcane intuition to misfire a teleportation circle, though this is almost never a good idea (subject to the GM).
+
+    An teleportation circle linked to another circle must be of the same size.
+- name: Tap the All-Mind
+  group: Arcane spells
+  lvl: '6'
+  types: Enchantment, Divination, Concentration, Arcane 6
+  casting: action
+  components: verbal, somatic
+  duration: special
+  range: self
+  effect: |-
+    As an action, become entwined with the passive background-intelligence entwined in arcane radiation.
+
+    The first time you do so, you become blinded and deafened to the outside world for 1d4 rounds and must make an intelligence check to avoid also being distracted 1d4 rounds by information overload.
+
+    When cast, make an DC 25 intelligence check. On a success, gain all-mind exposure, on a failure, gain D-consciousness exposure.
+
+    All-mind exposure: You can choose one of three benefits listed below. At the start of every next turn, make a DC 20 wisdom check, gaining d-consciousness exposure on a failure.
+
+    * A-wherness - You have the ability to gain a 100 ft birds-eye view, or a map layout view of any area where arcana is allowed to permeate, within a range of 1000 feet. You can choose any of the following: To see through material up to 15 feet, examine the concentration of any school or class of magic, examine the concentration of life, heat, kinds of material, or movement. When maintained, you can move the perspective by the spells range. You can also do this at a 1000 ft view with a mile range, or a mile high view at a 10 mile range.
+    * B-ond - You can request to speak with a representative of any group that also has access to the all-mind (subject to the GM.) or to request to know how to reach them, which the all-mind provides (subject to the GM).
+    * C-now - You may ask a question that echoes in the vast chaos of the all-mind, and have it be answered as best as possible by another entity that has tapped it (subject to the GM). but in exchange for another answer request by that entity. Not answering properly throws you into d-consciousness exposure.
+    * N-runes - You may perceive and read arcane notes left behind by other entities that have access to the all-mind, or you can attempt to delete a note (subject to the GM). A note can be attached to a location, creature, object, or can be timed by the author. The caster may choose to describe a magical items properties automatically in a note when doing so, and can make any note they create have structured rules-based behavior in terms of content and appearance (subject to the GM). They cannot exceed in size more than a 2 ft square.
+
+    D-consciousness exposure: Lose the all-mind exposure condition, make a concentration check. Roll a d8 and gain the corresponding condition, and double its duration on a failed roll:
+
+    1. Blinded for 1d4 rounds.
+
+    2. Deafened for 1d4 rounds.
+
+    3. Distracted for 1d6 rounds.
+
+    4. Disoriented for 1d4 rounds.
+
+    5. Afraid for 1d8 rounds.
+
+    6. Shocked for 1d6 rounds.
+
+    7. stunned for 1d3 rounds.
+
+    8. Fatigued for 1 round, but lose d-consciousness exposure and regain all-mind exposure condition.
+- name: True blink
+  group: Arcane spells
+  lvl: '6'
+  types: Conjuration, Arcane 6
+  casting: 1 bonus action or reaction
+  components: somatic
+  duration: instant
+  range: sight, up to 2000 ft
+  effect: As a bonus action or reaction, immediately blink to a point within sight that you have a clear
+    line to. This movement does not provoke attacks of opportunity.
+- name: Unravel arcane threads
+  group: Arcane spells
+  lvl: '6'
+  types: Abjuration, Arcane 6
+  casting: 1 full-round action
+  components: Verbal, somatic
+  duration: Instant
+  range: 50 ft
+  effect: |-
+    As a full-round action, choose one effect.
+
+    * Dispel every Arcane spell of level 3 or lower in a 30 ft area.
+    * Choose a creature in range. If it fails an Intelligence save, it cannot cast spells or use magical abilities for 1d4 rounds.
+    * Choose a creature and roll a separate Arcana check against each ongoing spell or effect on it. Dispel each one whose difficulty you exceed.
+    * Deal 8d8 force damage to one demon, construct, elemental, eldritch creature, fiend, or undead creature.
+    * Burn out one wand, staff, or scroll.

@@ -4,8 +4,8 @@
   list:
     - "Agile": "The weapon scales with DEX instead of STR"
     - "Balanced": "The weapon can scale with either STR or DEX"
-    - "Light": "The weapon can be used for off-hand attacks without incuring disadvantage on its attacks."
-    - "Effort": "The weapon applies the wielders CON bonus to damage and block DC."
+    - "Light": "The weapon can be used for off-hand attacks without incurring disadvantage on its attacks."
+    - "Effort": "The weapon applies the wielder's CON bonus to damage and block DC."
     - "Glove": >-
         The weapon leaves the hand free to grasp, but cannot be used while wielding or holding another
         object or creature.
@@ -14,11 +14,11 @@
         if one-handed. An ignited weapon provides mild light and applies extra fire damage to attacks,
         as indicated next to the ability. Each attack reduces the duration the weapon remains ignited
         by 1 minute.
-    - "Inaccurate": "The weapons attacks incur disadvantage if the wielder has moved since the start of their turn."
+    - "Inaccurate": "The weapon's attacks incur disadvantage if the wielder has moved since the start of their turn."
     - "Very Inaccurate": >-
-        The weapons attacks incur disadvantage if the wielder has moved since the start of their previous
+        The weapon's attacks incur disadvantage if the wielder has moved since the start of their previous
         turn.
-    - "Reach I/II/III": "The weapons melee range is increased by 5/10/15ft, respectively."
+    - "Reach I/II/III": "The weapon's melee range is increased by 5/10/15 ft, respectively."
     - "Swift": >-
         You can perform a single attack with this weapon as a bonus action. For versatile weapons, requires
         wielding the weapon in both hands.
@@ -27,47 +27,47 @@
         attacks, a thrown weapon attack does not incur disadvantage in melee range.
     - "Tool": >-
         The weapon provides a +1 bonus to non-combat checks made that include using the weapon appropriately
-        for its purpose(Subject to GM.)
+        for its purpose (Subject to GM.)
     - "Two-handed": >-
-        The weapon requires 2 hands to wield. Most 2 handed weapons can be set aside while still holding
+        The weapon requires 2 hands to wield. Most 2-handed weapons can be set aside while still holding
         them in order to interact with nearby objects with 1 hand.
     - "Unwieldy": >-
         This weapon treats a natural 2 as a critical failure. Follows mono '+' notation, indicating a
         further critical failure range increase by 1 per '+'.
     - "Versatile": "This weapon has a two-handed version."
     - "Breach": >-
-        Requires an extra instance of block to negate this weapons attacks (or more, if + or ++ are present
+        Requires an extra instance of block to negate this weapon's attacks (or more, if + or ++ are present
         afterwards.)
     - "Cleave": >-
-        This weapons attack can be made to target two adjacent creatures within range. In such cases,
-        the attack targets both characters AC, and permits both to block. This is treated as a single
+        This weapon's attack can be made to target two adjacent creatures within range. In such cases,
+        the attack targets both characters' AC, and permits both to block. This is treated as a single
         attack.
     - "Impale": >-
-        This weapons attacks, like cleave, can be made to two adjacent targets, up to the weapons reach.
+        This weapon's attacks, like cleave, can be made to two adjacent targets, up to the weapon's reach.
         The targets must be in a straight outgoing line.
     - "DC": >-
-        This weapons block DC is altered. Follows "+"/"-" notation, increasing/decreasing the block DC
+        This weapon's block DC is altered. Follows "+"/"-" notation, increasing/decreasing the block DC
         of the weapon.
 
 "ranged properties":
-  "Arc": "This weapons attacks can ignore half-cover."
+  "Arc": "This weapon's attacks can ignore half-cover."
   "Reload": >-
     Once this weapon is fired, it must be reloaded. The amount it takes depends on the severity of the
-    reload: I   - any action(bonus, move, or action.) II  - action, OR bonus + move action. III - action.
-    IV  - 2 of any action(action, bonus action, or move action.) V   - full round action.
+    reload: I   - any action (bonus, move, or action.) II  - action, OR bonus + move action. III - action.
+    IV  - 2 of any action (action, bonus action, or move action.) V   - full round action.
   "Capacity": >-
     Indicates that the weapon uses a capacity ammo system. The weapon has a maximum ammo, as indicated
-    after the keyword(ex: 'capacity 3') and each ammunition is loaded individually. May be preceded by
-    cartridge (ex: 'cartridge capacity') meaning that the weapons ammo is reloaded all at once instead,
-    but thus requires a prepared cartridge(or similar) item for it.
+    after the keyword (ex: 'capacity 3') and each piece of ammunition is loaded individually. May be preceded by
+    cartridge (ex: 'cartridge capacity') meaning that the weapon's ammo is reloaded all at once instead,
+    but thus requires a prepared cartridge (or similar) item for it.
   "Bolt DC": >-
     Reloading the weapon requires making a STR check vs a given DC. +1 weapons and higher reduce the DC
     by their bonus. Failing the bolt DC check results in wasting the reload actions.
   "Launcher": >-
     The weapon can be used to fire potions and minor objects, roughly equivalent to a potion or slingstone,
-    instead of standard ammunition. If a range is given, then it overrides the ranged weapons range for
+    instead of standard ammunition. If a range is given, then it overrides the ranged weapon's range for
     this action.
-  "Overdraw": "The weapons attacks apply STR to the damage dealt."
+  "Overdraw": "The weapon's attacks apply STR to the damage dealt."
 
 # CORE WORDS
 "core words:":
@@ -75,7 +75,7 @@
     A core word describes the core `Attack` used as a maneuver, and is the 'bound attack' that the following
     conditional sequences, properties, and modifiers apply to. If by some means, a property is applied
     before a bound attack, that property is stored and applies to the next core word in the maneuver.
-    Core words that are chained by a preceeding '>' means that they must target the same target as the
+    Core words that are chained by a preceding '>' must target the same creature as the
     previous core word.
   list:
     - "Attack": >-
@@ -83,13 +83,13 @@
         indicating advantage/disadvantage on the attack roll. If followed by "other" ("attack other")
         then that means that the attack must target another creature.
     - "Throw": >-
-        Make a thrown attack with the weapon. Otherwises treated the same as any other attack If followed
-        by range indicator then it overrides previous throw property. (ex: "throw 15ft" for single range,
-        or "throw 20/40ft" for a range indicator with a disadvantage range.) Also overrides not having
+        Make a thrown attack with the weapon. Otherwise, treat this as any other attack. If followed
+        by range indicator then it overrides previous throw property. (ex: "throw 15 ft" for single range,
+        or "throw 20/40 ft" for a range indicator with a disadvantage range.) Also overrides not having
         a throw property, meaning that if a weapon does not have a default throw range, then it can only
         feasibly be thrown with the given maneuver.
     - "Maneuver": >-
-        Make an attack which does not deal damage or requires a block check, only includes an attack roll(Ignores
+        Make an attack which requires only an attack roll and does not deal damage or require a block check (Ignores
         "if block", "exploit", "if land", etc.) May be followed by modifiers and properties. Follows "+"/"-"
         notation, indicating advantage/disadvantage on the attack roll.
 
@@ -110,38 +110,38 @@
     indicate that the following is executed per conditional that completes. These trigger whenever the conditional does.
   list:
     - "miss": 'Completes when the bound attack misses.'
-    - "hit": 'Completes when the bound attack succeeds(attack roll exceeds AC, regardless of block.)'
+    - "hit": 'Completes when the bound attack succeeds (attack roll exceeds AC, regardless of block.)'
     - "blocked": 'Completes when the bound attack is blocked.'
     - "strike": >-
-        Completes when the bound attack deals damage to a target(even if somehow 0 damage is dealt. This
+        Completes when the bound attack deals damage to a target (even if somehow 0 damage is dealt. This
         means when the block check either fails or is foregone).
     - "crit": 'Completes when the bound attack critically strikes.'
     - "clutch": 'Completes when the bound attack roll results in a nat 1.'
     - "lucky": >-
-        Completes when the bound attack has either advantage or disadvantage, and at least one dice results
+        Completes when the bound attack has either advantage or disadvantage, and at least one die results
         in a natural 20.
     - "unlucky": >-
-        Completes when the bound attack has either advantage or disadvantage, and at least one dice results
+        Completes when the bound attack has either advantage or disadvantage, and at least one die results
         in a natural 1.
     - "exploit": 'Completes if the target of the bound attack rolls a natural 1 on their block check.'
     - "near": >-
-        Completes if the target is within 5ft. Obeys mono "+" notation, increasing distance by 5ft per
+        Completes if the target is within 5 ft. Obeys mono "+" notation, increasing distance by 5 ft per
         stack.
     - "far": >-
-        Completes if the target is beyond 5ft but still within range/reach. Obeys mono "+" notation, increasing
-        distance by 5ft per stack.
-    - "space": 'Completes if there is at least 5ft of clear empty space between wielder and target.'
+        Completes if the target is beyond 5 ft but still within range/reach. Obeys mono "+" notation, increasing
+        distance by 5 ft per stack.
+    - "space": 'Completes if there is at least 5 ft of clear empty space between wielder and target.'
     - "heft": >-
-        Completes if the target of the maneuver does not choose to spend a reaction to move 5ft in a direction
+        Completes if the target of the maneuver does not choose to spend a reaction to move 5 ft in a direction
         of their choice.
     - "unshielded": 'Completes if the target does not possess a shield'
     - "two-handed": 'Completes if the weapon is wielded two-handed.'
     - "one-handed": 'Completes if the weapon is wielded one-handed.'
     - "save": >-
-        Completes if the target fails on an associated save(given after the keyword, example: "save DEX")
-        vs the weapons block DC. The associated save precedes the save
+        Completes if the target fails on an associated save (given after the keyword, example: "save DEX")
+        vs the weapon's block DC. The associated save precedes the save
     - "vs DMG": >-
-        Completes if the target fails on an associated save vs the weapons damage dealt. Only triggers
+        Completes if the target fails on an associated save vs the weapon's damage dealt. Only triggers
         if "strike" would trigger.
     - "prone": 'Completes if the target is prone.'
     - "advantaged": 'Completes if the attack has advantage.'
@@ -162,7 +162,7 @@
   list:
     - "move": >-
         move self in direction. Directions are [Back, Up, Any] meaning, away from target, towards target,
-        in direction of choice. follows mono "+" notation, gaining 5ft of distance per stack.
+        in direction of choice. follows mono "+" notation, gaining 5 ft of distance per stack.
     - "dash": 'same as move, but no attacks of opportunity.'
     - "push": >-
         same, but move target in outward direction. Requires target size to be equal or smaller to wielder
@@ -174,29 +174,29 @@
     # conditions that can be applied are: bleed, dazed, stun, prone, disarm, exposed, on-fire, off-balance, hobbled.
     # (<i><b>Bleed</b>: Stacks up to 6 times, the creature takes 1d3 bleed damage. Amount is increased by 1 dice size category per stack of bleed, up to a max of 1d12</i>)",
     - "dmg": >-
-        apply x amount(2s, 1d4b, etc) damage if written with no "+". If written as "dmg +1d6" then it
+        apply x amount (2s, 1d4b, etc) damage if written with no "+". If written as "dmg +1d6" then it
         increases the damage of the bound attack by the amount, but its delivery still relies on the bound
-        attacks seqence (attack roll > block check > dmg.) Damage added or applied by this is not multiplied
+        attack's sequence (attack roll > block check > dmg.) Damage added or applied by this is not multiplied
         on a critical hit.
     - "miss": 'automatically fail the attack and end the maneuver.'
-    - "force-hit": 'set the outcome of the bound attack to be a hit, but not yet blocked(if applicable.)'
+    - "force-hit": 'set the outcome of the bound attack to be a hit, but not yet blocked (if applicable.)'
     - "force-strike": 'set the outcome of the last attack to hit and not be blocked.'
     - "force-crit": 'set the outcome of the last attack to hit, not be blocked, and be a crit.'
     - "force-reload": 'automatically reload the weapon.'
 
 # MODIFIERS
 "modifiers":
-  description: ""
+  description: "Modifiers change how the bound attack resolves, including its damage, critical range, and block check."
   list:
     - "crit range/multi": >-
-        The crit range/multiplier of the bound attack is increased by 1(or more, as it follows mono "+"
+        The crit range/multiplier of the bound attack is increased by 1 (or more, as it follows mono "+"
         notation.)
     - "dice": >-
-        The bound attacks damage dice are increased/decreased by 1 dice size category or more. Obeys "+"/"-"
+        The bound attacks damage dice are increased/decreased by 1 die size category or more. Obeys "+"/"-"
         notation.
     - "ram": >-
-        The bound attack gains a +1 bonus to damage and block DC per 5ft traveled since the start of turn
-        or last attack(shortest.)
+        The bound attack gains a +1 bonus to damage and block DC per 5 ft traveled since the start of turn
+        or last attack (shortest.)
     - "no X": 'negates a property'
     - "block+": 'The bound attacks target has advantage on the block check.'
     - "block-": 'The bound attacks target has disadvantage on the block check.'
@@ -204,7 +204,7 @@
     - "nonlethal": 'The bound attacks damage is nonlethal.'
     - "no-reload": 'For ranged attacks. Means the attack has no reload.'
     - "bludgeoning": 'Damage is changed to bludgeoning.'
-    - "slashing": 'Damage is changed slashing.'
+    - "slashing": 'Damage is changed to slashing.'
     - "piercing": 'Damage is changed to piercing.'
 
 #SPECIAL MANEUVERS
@@ -218,15 +218,15 @@
     to special constructions such as "Self save STR > heft > attack with block-X"
   "May": 'Indicates that the following segment is optional.'
   "Else": >-
-    If it starts a statement(Is the first word) it indicates that it completes the following sentence
+    If it starts a statement (Is the first word) it indicates that it completes the following sentence
     IF the first conditional in the last sentence did not complete. Ex: "attack > If heft > block-. Else
     > block+"
   "OR": >-
     if OR appears at the beginning of a sentence, it indicates that the previous modifier, action, or
-    weapon property chain can with the following chain. Ex: "attack > If strike > hook OR disarm"
+    weapon property chain can be used as an alternative to the following chain. Ex: "attack > If strike > hook OR disarm"
   "Other": >-
-    Only used for starting conditional, meaning that it only triggers when the -other- hand weapons attack
-    would complete the conditional. ex: 'If other crIt > attack' means that when the other hands weapon
+    Only used for starting conditional, meaning that it only triggers when the -other- hand weapon's attack
+    would complete the conditional. ex: 'If other crIt > attack' means that when the other hand's weapon
     crits, this can trigger.
   "Per": >-
     Indicates that the following segment is completed PER conditional. 
@@ -412,6 +412,7 @@
           type: "simple"
           group: "light arms"
           damage: "1d3b"
+          illumination: "A lit torch illuminates a 20 ft radius. Use the one-handed Ignite duration of 10 minutes. Each attack reduces the remaining duration by 1 minute."
           properties:
             - "tool"
             - "light"
@@ -559,7 +560,7 @@
           maneuvers:
             - "stab": "Attack with reach I > If unshielded > crit range+."
             - "poke": "Attack with reach I > If miss > Attack-."
-            - "spear throw": "move 10ft > throw 30/60 with block-."
+            - "spear throw": "move 10 ft > throw 30/60 with block-."
             - "heavy stab": "If two-handed > attack with dice+ and reach > if unshielded > DC++."
 
       - "Quarterstaff":
@@ -813,7 +814,7 @@
           maneuvers:
             - "mad swings": 'if twinned > Attack > attack > attack > To all > unwieldy and very inaccurate.'
             - "chop": 'Attack with block-.'
-            - "overhead throw": 'If two-handed > throw 20/40ft with unwieldy and inaccurate.'
+            - "overhead throw": 'If two-handed > throw 20/40 ft with unwieldy and inaccurate.'
 
       - "Serrated axe":
           type: "martial"
@@ -914,7 +915,7 @@
             - "unwieldy"
           maneuvers:
             - "anvil slam": "If heft > attack with DC+++ and dice++. On crit > STR-/CON- save > apply stun+."
-            - "innertia": "On strike > STR save > push."
+            - "inertia": "On strike > STR save > push."
             - "firm strike": "Attack with no unwieldy and dice+."
 
       - "war pick":
@@ -964,7 +965,7 @@
           maneuvers:
             - "windup slam": "Attack- with block+ and unwieldy+ > If heft > block-x and dice+++ and crit range+."
             - "crush": "Self STR save > Attack with block-X and dice+. If crit or clutch > If heft > apply prone."
-            - "innertia": "On crit > STR save > push."
+            - "inertia": "On crit > STR save > push."
 
       - "Dwarven war hammer":
           type: "martial"
@@ -1089,10 +1090,10 @@
           damage: 1d6s
           properties:
             - "versatile 2d4"
-            - "throw 30/60ft"
+            - "throw 30/60 ft"
           maneuvers:
             - "lunge": "Dash > Attack with dice+ and breach."
-            - "harpoon throw": "If self STR save > throw 50/100ft. Else throw with block+."
+            - "harpoon throw": "If self STR save > throw 50/100 ft. Else throw with block+."
 
       - "hook-spear staff":
           type: "martial"
@@ -1173,7 +1174,7 @@
             - "slash": "Attack with block+. If strike or exploit > apply bleed."
             - "cleave": "Attack with cleave"
             - "double slash": "Attack > Attack."
-            - "tripple slash": "If twinned > Attack > Attack > attack > To all > block+."
+            - "triple slash": "If twinned > Attack > Attack > attack > To all > block+."
 
       - "Needle sword":
           type: "martial"
@@ -1352,7 +1353,7 @@
           maneuvers:
             - "thrust": "Attack with breach and reach I."
             - "swing": "Attack with block+ and crit range+."
-            - "flatsided pummel": "Attack with dice-, bludgeoning, and block+ > If strike and two-handed > attack."
+            - "flat-sided pummel": "Attack with dice-, bludgeoning, and block+ > If strike and two-handed > attack."
 
       - "Broadsword":
           type: "martial"
@@ -1880,7 +1881,7 @@
           maneuvers:
             - "lash": "Attack with block+. If crit > may apply prone."
             - "far strike": "If two-handed > Attack with reach III. Else > Attack with reach II."
-            - "hook critical": "On crit or exploit > pull or dash up 10ft."
+            - "hook critical": "On crit or exploit > pull or dash up 10 ft."
 
       - "meteor hammer":
           type: "martial"

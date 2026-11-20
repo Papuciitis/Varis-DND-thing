@@ -1,0 +1,120 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/combat-changes/armor-and-shields
+section: items
+entries:
+  - name: Woven armor
+    group: Light armor
+    Base AC: '11'
+  - name: Silk armor
+    group: Light armor
+    Base AC: '10'
+    properties: Block 1.
+  - name: Padded armor
+    group: Light armor
+    Base AC: '12'
+  - name: Leather armor
+    group: Light armor
+    Base AC: '13'
+  - name: Padded coat
+    group: Light armor
+    Base AC: '12'
+    properties: Slow 1, protection 1, bludgeoning reduction 1.
+  - name: Layered coat
+    group: Light armor
+    Base AC: '13'
+    properties: Bulk 1, piercing reduction 1, slashing reduction 1.
+  - name: Studded leather armor
+    group: Light armor
+    Base AC: '13'
+    properties: Bulk 1, protection 2.
+  - name: Threaded leather armor
+    group: Light armor
+    Base AC: '13'
+    properties: Protection 1.
+  - name: Chain shirt
+    group: Medium armor
+    Base AC: '13'
+    properties: Bulk 1, block 1, slow 1.
+  - name: Padded leather coat
+    group: Medium armor
+    Base AC: '13'
+    properties: Bulk 3, block 1, slow 1, cold resistance, physical reduction 1.
+  - name: Ring shirt
+    group: Medium armor
+    Base AC: '14'
+    properties: Block 1, bulk 2, slow 1.
+  - name: Plated leather breastplate
+    group: Medium armor
+    Base AC: '14'
+    properties: Bulk 3, block 1, slow 1, protection 1.
+  - name: Scale shirt
+    group: Medium armor
+    Base AC: '15'
+    properties: Bulk 4, block 1, slow 1.
+  - name: Metal breastplate
+    group: Medium armor
+    Base AC: '15'
+    properties: Bulk 4, block 1, slow 2, protection 2.
+  - name: Plated leather armor
+    group: Medium armor
+    Base AC: '15'
+    properties: Bulk 5, block 1, slow 1, protection 1.
+  - name: Chain coat
+    group: Heavy armor
+    Base AC: '16'
+    properties: Bulk 6, block 1, slow 1, protection 1.
+  - name: Scale coat
+    group: Heavy armor
+    Base AC: '16'
+    properties: Bulk 7, block 2, slow 2, protection 3.
+  - name: Ring coat
+    group: Heavy armor
+    Base AC: '17'
+    properties: Bulk 7, block 2, slow 3, protection 5.
+  - name: Lamellar armor suit
+    group: Heavy armor
+    Base AC: '17'
+    properties: Bulk 7, block 1, slow 4, physical reduction 2, protection 2.
+  - name: Splint armor suit
+    group: Heavy armor
+    Base AC: '18'
+    properties: Bulk 8, block 1, slow 3, physical reduction 1, protection 3.
+  - name: Plated armor suit
+    group: Heavy armor
+    Base AC: '18'
+    properties: Bulk 9, block 2, slow 4, physical reduction 2, protection 3.
+  - name: Mountain-pattern armor suit
+    group: Heavy armor
+    Base AC: '18'
+    properties: Bulk 10, block 3, slow 5, protection 3, slashing resistance, bludgeoning resistance.
+  - name: Barrel shield
+    group: Light shields
+    AC bonus: '+1'
+    properties: Spar, brace 3, bash 1d4.
+  - name: Buckler
+    group: Light shields
+    AC bonus: '+1'
+    properties: Spar, versatile, bash 1d4.
+  - name: Heater shield
+    group: Light shields
+    AC bonus: '+2'
+    properties: Bolster 1, bash 1d6 + repel 1.
+  - name: Round shield
+    group: Light shields
+    AC bonus: '+2'
+    properties: Bolster 1, brace 2, bash 1d6.
+  - name: Arm-pauldron
+    group: Heavy shields
+    AC bonus: '+1'
+    properties: Block 1, versatile, spar, brace 1, bash 1d4.
+  - name: Kite shield
+    group: Heavy shields
+    AC bonus: '+2'
+    properties: Block 1, bolster 1, brace 2, bash 1d8.
+  - name: Mirror shield
+    group: Heavy shields
+    AC bonus: '+2'
+    properties: Block 1, bolster 1, brace 4, bash 1d6.
+  - name: Tower shield
+    group: Heavy shields
+    AC bonus: '+3'
+    properties: Block 1, bolster 2, bash 1d4.

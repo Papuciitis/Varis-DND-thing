@@ -1,0 +1,20 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home
+# Draft source: https://sites.google.com/view/dnd5plus/home/design-page
+section: design-notes
+entries:
+  - name: About D&D 5e+
+    group: Design principles
+    description: D&D 5e+ is an unofficial reworking of Dungeons & Dragons, fifth edition. It builds on the
+      familiar concepts of health, AC, classes, races, feats, ability scores, skills, saving throws, spells,
+      spell slots, and death saves. Its class progression, archetypes, rest rules, and block checks use the
+      mechanics in this compendium.
+  - name: Subject to the GM
+    group: Design principles
+    description: When a rule says “subject to the GM,” the player and GM agree on an outcome that follows the
+      intent of the ability in the situation at hand.
+  - name: Blocking attacks
+    group: Design principles
+    description: Block is a limited defensive resource. After an attack hits, the defender can commit block
+      and roll against the attack’s block DC. See Making a block check for the timing, outcome, and weapon
+      modifiers. Armor, shields, spells, and abilities can grant extra block; benefits limited to the current
+      combat expire when it ends.

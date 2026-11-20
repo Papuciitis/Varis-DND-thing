@@ -1,0 +1,72 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/combat-changes/weapons-properties
+section: weapon-rules
+entries:
+  - name: All-in
+    group: Weapon properties
+    description: Once on your turn, you can make one attack with this weapon as a free action against a target
+      you are grappling.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Dueling
+    group: Weapon properties
+    description: If you have not moved since the start of your turn, you can make one attack with this weapon
+      as a bonus action.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Serrated 1dX
+    group: Weapon properties
+    description: If the attack strikes, roll the listed chance die. On a success, apply one stack of Bleeding.
+      Use the Bleeding condition for damage, stacking, and recovery.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Overpower
+    group: Attack maneuvers
+    description: Attack with the damage bonus specified by the feature or weapon that grants this maneuver.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Daze
+    group: Attack maneuvers
+    description: Attack. If the attack strikes, apply Dazed for 1 round. On an unblocked critical hit, the
+      duration is 1d3 rounds instead.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Stun
+    group: Attack maneuvers
+    description: Attack with disadvantage. If the attack strikes, the target makes a Constitution save against
+      the higher of the weapon’s block DC and the damage dealt. On a failed save, apply Stunned for 1 round.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Expose
+    group: Tactical maneuvers
+    description: On a hit, forgo damage and the block check. Choose the weapon’s damage, its block DC, or your
+      Athletics check total as the DC. The target makes a Strength or Dexterity save. On a failure, apply Exposed
+      until the end of your next turn. Use the current Exposed condition for its effect and other ways it can
+      end.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Shove
+    group: Tactical maneuvers
+    description: On a hit, forgo damage and the block check. Contest your Athletics against the target’s Athletics
+      or Acrobatics. If you win, use Push to move the target 5 feet away; the target must be your size or smaller.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Trip
+    group: Tactical maneuvers
+    description: On a hit, forgo damage and the block check. The target makes a Strength or Dexterity save
+      against the weapon’s block DC. On a failure, apply Prone.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Double-strike
+    group: Tactical maneuvers
+    description: If the attack strikes, attack the same target once more with the same weapon. The additional
+      attack cannot trigger another maneuver.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Diversion
+    group: Tactical maneuvers
+    description: When an attack hits, forgo its damage and attack a different target within reach. If the new
+      target rolls a natural 1 on its block check, the new attack is a critical strike.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Pressure
+    group: Tactical maneuvers
+    description: If the target blocks your attack, you can attack that target again with disadvantage.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Windup
+    group: Tactical maneuvers
+    description: Before attacking, let each adjacent creature make an opportunity attack or move 5 feet. If
+      your target does not attempt to move out of reach, roll both your attack and its damage with advantage.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.
+  - name: Stun
+    group: Critical hit properties
+    description: On an unblocked critical hit, apply Stunned for 1 round.
+    availability: Use only when the weapon or a feature explicitly grants this property or maneuver.

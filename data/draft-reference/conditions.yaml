@@ -1,0 +1,14 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/combat-changes/conditions
+section: conditions
+entries:
+  - name: Psychosis
+    group: Madness effects
+    description: At the start of your turn, roll a d3 chance die. On a success, skip your turn. A creature
+      with Constitution, Intelligence, or Wisdom below 10 must also make a death save.
+  - name: Acid exposure
+    group: Extra conditions
+    description: At the start of its turn, an affected creature takes 1d6 acid damage per stack. The creature
+      loses one stack per round.
+  - name: Chilled
+    group: Extra conditions
+    description: Reduce your movement speed by 5 feet. Subtract 1d4 from skill checks for physical interactions.

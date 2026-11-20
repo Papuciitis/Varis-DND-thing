@@ -1,0 +1,142 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/oath-magic/lvl-5-oath-spells
+section: spells
+entries:
+- name: Earthshatter
+  group: Oath spells
+  lvl: '5'
+  types: Evocation, Oath 5
+  casting: full round action
+  components: verbal, somatic
+  range: 50 ft cone
+  duration: instant
+  effect: |-
+    As a full-round action, either stomp the earth or strike it with a staff. This shatters surfaces in a 50 ft cone area, creating difficult terrain and dealing 5d8 + casting bonus force damage to all creatures in the area, which can be reduced to half by a successful dexterity save.
+
+    On a failed dexterity save, creatures are pushed back 5 ft and knocked prone. Collisions cause 1d8 + casting bonus damage.
+
+    Deals double damage to structures.
+  higher_levels: At 6th level, the range is either extended to 90 ft, or a 40 ft area around the caster.
+- name: Frostsworn oath
+  group: Oath spells
+  lvl: '5'
+  types: Evocation, Oath 5
+  casting: full round action
+  components: verbal, somatic
+  range: 50 ft cone
+  duration: 3d4 rounds
+  effect: |-
+    As a full-round action, promise a creature to the frozen gods, forcing you to make a constitution save. On a failure, you take 3d4 cold damage. On a success, the frozen gods gaze turns to your target, and they must make the save to not take the cold damage, and taking an extra 1d8 cold damage from your attacks so long as this spell lasts.
+
+    Afterwards, you are blessed by the frozen titans. Your melee attacks deal an extra 2d8 cold damage. Slaying the promised creature grants you 1 favor of ice.
+
+    Once you have 5 direfrost favor, you become resistant to cold damage, or immune if already resistant. If you cast a fire damage dealing spell, the gods remove 1 favor of ice.
+- name: Deathlessness
+  group: Oath spells
+  lvl: '5'
+  types: Necromancy, Oath 5
+  casting: reaction, 1 rest die, 1 death save slot
+  components: verbal
+  range: self
+  duration: instant
+  effect: As a reaction to being reduced to 0hp, be restored to 1d6 HP instead, lose 1 rest die, and lock
+    1 death save slot until you finish a long rest.
+- name: Stormcloak
+  group: Oath spells
+  lvl: '5'
+  types: Evocation, Oath 5
+  casting: action
+  components: verbal, somatic
+  range: self, range 40
+  duration: 1d4 minutes
+  effect: |-
+    As an action, invoke the winds to cloak you and an area of 40 ft around you for 1d4 minutes. For the duration, you have a levitate speed of 30 ft, take no fall damage, and gain an extra attack.
+
+    You can do the following while under the spell:
+
+    * Lift - As an action, cause yourself and creatures, structures attached to, or objects within the area of effect to break their fall or lift upwards by 30 ft.
+    * Thunder throw - As an action, make a thrown or ranged weapon attack and quadruple its range.
+    * Wind push - As a reaction or bonus action, push an unattended object or creature within 40 ft up to 10 ft in a direction of choice. Creatures must make a strength save to resist.
+    * Whirlwind - As a reaction, disrupt all attacks whose trajectories intercept an area within 5 ft of yourself, granting them disadvantage.
+    * Invoke thunder father - In place of an attack or as an action, enchant your held weapon with lightning, causing its next attack within 3 rounds to deal 3d10 extra lightning damage.
+
+    Cannot be cast in an unexposed area, tight subterranean area, or with no atmosphere.
+- name: Summon infernal flame
+  group: Oath spells
+  lvl: '5'
+  types: Evocation, Oath 5
+  casting: action
+  components: verbal, somatic
+  range: 60 ft
+  duration: special
+  effect: |-
+    As an action, invoke the forbidden fire at a location within range. Creatures within 10 ft of it take 6d10 fire damage and must make a wisdom or dexterity save to halve the damage taken. Creatures that fail the save are set on fire.
+
+    For every necromancy spell or curse that a creature hit by the spell is under, it takes an extra 1d8 necrotic damage.
+
+    When doing so, make a DC 20 religion check, as the infernal flame is extremely cruel and fickle. On a failure, you take 1d10 fire and 1d10 necrotic damage, and the spell cannot be cast again until you finish a rest.
+
+    This deals double damage to temporary and arcane health, and double damage to fiendish, demonic, and celestial creatures.
+- name: 'Power word: might'
+  group: Oath spells
+  lvl: '5'
+  types: Transmutation, Oath 5
+  casting: action
+  components: verbal, somatic
+  range: self
+  duration: 3d4 rounds
+  effect: As an action, gain a +10 bonus to athletics checks and block checks for the next 3d4 rounds.
+- name: 'Power word: shield'
+  group: Oath spells
+  lvl: '5'
+  types: Abjuration, Oath 5
+  casting: action
+  components: verbal, somatic
+  range: 30 ft
+  duration: until rest
+  effect: As an action, grant a creature with a shield 4 temporary block which lasts until rest or until
+    the shield is discarded.
+- name: Prayer of life
+  group: Oath spells
+  lvl: '5'
+  types: Abjuration, Oath 5
+  casting: full round action
+  components: verbal, somatic
+  range: 10 ft
+  duration: until rest
+  effect: |-
+    As a full round action, attempt to revive a creature that has died in the past 2d10 minutes. You and the target creature make an insight check. On a success, the creature can be revived at 0HP, and any grievous wounds or missing digits, nose, eyes, ears, or teeth are restored.
+
+    Not all scars are healed and very old scars are not restored (subject to the GM)
+- name: Prayer of restoration
+  group: Oath spells
+  lvl: '5'
+  types: Abjuration, Oath 5
+  casting: full round action
+  components: verbal, somatic
+  range: 30 ft
+  duration: until rest
+  effect: |-
+    As a full round action, make a wisdom save vs every condition, disease, or curse the creature has, even supernatural or magical ones. On a success, the effect is removed/dispelled.
+
+    This can be used to force a creature out of a transformation, or to attempt to make a save in place of a creature to dispel an enchantment or illusion effect.
+- name: Wield sunray
+  group: Oath spells
+  lvl: '5'
+  types: Abjuration, Oath 5
+  casting: full round action
+  components: verbal, somatic
+  range: 100 ft
+  duration: until rest
+  effect: |-
+    As a full-round action, extend both hands and reach for the sky. A sunbeam accumulates into a blazing sphere, levitating in your palms. You can charge the beam for 1 turn, requiring you to maintain concentration until you release it.
+
+    You can release the sphere of light as a bonus action to do one of the following:
+
+    * Sunray - Fire the light in a 100 ft beam in a direction of choice, dealing 5d8 radiant damage, halved on a dexterity save. If charged, deal 1d8 extra, and deal 3d8 force damage in a 20 ft sphere at the rays endpoint, requiring another dexterity save to halve.
+    * Hard light - Project a wall of light to cover up to 5 * your casting bonus tiles within range in directions of your choice for 1d6 rounds. If charged, double area covered and lasts minutes instead.
+    * Blinding nova - All enemies within range take 1d8 radiant damage, taking half on successful constitution safe, and becoming blinded for 1d4 turns on a failure. If charged, blind becomes permanent.
+    * Pillar of light - The sunbeam becomes stationary, is visible for miles and illuminates the entire nearby area for 3d10 minutes. If charged, lasts for 1d3 hours instead.
+
+    If you lose concentration on the spell, the blazing sphere collapses, forcing all creatures within range to make a constitution save, becoming blinded for 1d3 minutes on a failure.
+
+    Can only be cast when the sun is visible.
