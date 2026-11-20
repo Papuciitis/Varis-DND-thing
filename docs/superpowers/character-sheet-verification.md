@@ -23,3 +23,5 @@
 Keep the existing build and manual rule handling. The canonical folder is retained rather than introducing another checkout or framework. Refresh only the header after a conflict save, preserving text selection. This avoids rerendering the sheet during typing.
 
 Phone layout was checked in Chrome's responsive mode, not on a physical phone. Cross-device sync, progression, equipment bonuses, spell costs and automatic rests remain outside this implementation; the README explains player-managed effects and portable backups. Publishing a feature branch does not deploy the GitHub Pages main site.
+
+Fresh Git archive verification also passed all 40 tests and rebuilt both pages, proving no dependency on the old checkout. The source branch is pushed and draft pull request #2 is open for review; main remains unchanged.

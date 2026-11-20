@@ -30,27 +30,27 @@
 
 Files: `build.py`, `web/character*.{html,css,js}`, `web/index.html`, `tests/test_build.py`.
 
-- [ ] Add a build regression checking both pages, self-contained assets, shared rules version and relative navigation.
-- [ ] Run `python -m unittest discover -s tests` and observe the missing character-page failure.
-- [ ] Port the four audited character assets and the two-page build; add the compendium navigation link.
-- [ ] Run the build regression and build the local `site/`.
+- [x] Add a build regression checking both pages, self-contained assets, shared rules version and relative navigation.
+- [x] Run `python -m unittest discover -s tests` and observe the missing character-page failure.
+- [x] Port the four audited character assets and the two-page build; add the compendium navigation link.
+- [x] Run the build regression and build the local `site/`.
 
 ## Task 2: Check character data and UI behavior
 
 Files: `tests/character-state.test.cjs`, `tests/character-events.test.cjs`.
 Interface: `globalThis.CharacterState` exposes create/normalize/import/export, ability/proficiency calculation and resourceDelta; `character.js` reads `DND_CATALOG` and `DND_RULES_VERSION`.
 
-- [ ] Add portable tests for JSON round trips, malformed versions, resource bounds, temporary Block precedence and extension preservation.
-- [ ] Adapt the existing event harness to repository-relative paths; run every optional regression unconditionally.
-- [ ] Run `node --test tests/*.test.cjs`.
-- [ ] Exercise the built page in a real browser, including phone-width layout, save/reload, catalogs and backup controls.
+- [x] Add portable tests for JSON round trips, malformed versions, resource bounds, temporary Block precedence and extension preservation.
+- [x] Adapt the existing event harness to repository-relative paths; run every optional regression unconditionally.
+- [x] Run `node --test tests/*.test.cjs`.
+- [x] Exercise the built page in a real browser, including phone-width layout, save/reload, catalogs and backup controls.
 
 ## Task 3: Make local and GitHub use repeatable
 
 Files: `Open-Vara-DnD.cmd`, `scripts/open-local.ps1`, `.github/workflows/pages.yml`, `README.md`.
 
-- [ ] Add a launcher that resolves the repository from its own path, builds using a local virtual environment, and opens the sheet. Include `-NoBrowser` for validation.
-- [ ] Run both test suites before the Pages build; upload the built site for download.
-- [ ] Document the canonical folder, source/output distinction, local launch, phone URL, backups and manual rules.
-- [ ] Verify launcher, fresh-checkout build, Git whitespace checks and independent code review.
-- [ ] Commit changes, push the feature branch and create a reviewable PR if the connected account permits it.
+- [x] Add a launcher that resolves the repository from its own path, builds using a local virtual environment, and opens the sheet. Include `-NoBrowser` for validation.
+- [x] Run both test suites before the Pages build; upload the built site for download.
+- [x] Document the canonical folder, source/output distinction, local launch, phone URL, backups and manual rules.
+- [x] Verify launcher, fresh-checkout build, Git whitespace checks and independent code review.
+- [x] Commit changes, push the feature branch and create a reviewable PR if the connected account permits it.
