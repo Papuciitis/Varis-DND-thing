@@ -15,6 +15,7 @@
   background: var(--page);
 }
 * { box-sizing: border-box; }
+.sheet-link { color: inherit; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; padding: .4rem .6rem; font-weight: 600; }
 body { margin: 0; min-height: 100vh; }
 a { color: var(--teal); }
 button, input, select { font: inherit; }
