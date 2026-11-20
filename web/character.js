@@ -2,6 +2,7 @@
 
 (() => {
   const State = globalThis.CharacterState;
+  const Rules = globalThis.CharacterRules.create(globalThis.DND_CHARACTER_RULES || {}, globalThis.DND_CATALOG || []);
   const storageKey = "vara.character-sheets.v1";
   const currentRules = globalThis.DND_RULES_VERSION || "vara-rules-prototype";
   const abilityNames = {str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma"};
@@ -34,6 +35,15 @@
   const healthAdjustment = {pool: "hp", amount: 1};
   const expanded = new Set();
   const baselines = new Map();
+  let computed;
+  const values = () => computed ||= Rules.derive(character);
+  const Wizard = globalThis.CharacterBuilder?.create({rules:Rules,show:openDialog,renderRule:ruleContent,
+    onCancel:() => { byId("editor-dialog").close(); },
+    onFinish:(draft,isNew) => {
+      character=Rules.reconcile(draft);computed=null;
+      if(isNew)library.push(character);
+      healthAdjustment.pool="auto";commit();byId("editor-dialog").close();render();
+    }});
 
   function notify(message) {
     byId("toast").textContent = message;
@@ -75,6 +85,7 @@
   function persist() {
     clearTimeout(saveTimer);
     if (!dirty) return;
+    character=Rules.reconcile(character);computed=null;
     character.updatedAt = new Date().toISOString();
     const index = library.findIndex(item => item.id === character.id);
     if (index < 0) library.push(character);
@@ -154,6 +165,7 @@
   }
 
   function setPath(path, value) {
+    computed=null;
     const keys = path.split(".");
     const last = keys.pop();
     let target = character;
@@ -200,13 +212,13 @@
   }
 
   function proficiency() {
-    return character.combat.proficiencyOverride ?? State.proficiencyBonus(character.level);
+    return values().proficiency;
   }
 
   function passivePerception() {
-    const rank = character.training.skills.Perception || 0;
-    const adjustment = character.training.skillBonuses.Perception || 0;
-    return character.combat.passivePerceptionOverride ?? 10 + State.abilityModifier(character.abilities.wis) + rank * proficiency() + adjustment;
+    const d=values(),rank = d.skillRanks.Perception || 0;
+    const adjustment = d.skillBonuses.Perception || 0;
+    return character.combat.passivePerceptionOverride ?? 10 + State.abilityModifier(d.abilities.wis) + rank * proficiency() + adjustment;
   }
 
   function renderHeader() {
@@ -218,18 +230,21 @@
   }
 
   function refreshCalculations() {
+    const d=values();
     const setRoll = (node, bonus) => { node.textContent = signed(bonus); node.dataset.bonus = String(bonus); };
-    document.querySelectorAll("[data-ability-roll]").forEach(node => setRoll(node, State.abilityModifier(character.abilities[node.dataset.abilityRoll])));
+    document.querySelectorAll("[data-ability-roll]").forEach(node => setRoll(node, State.abilityModifier(d.abilities[node.dataset.abilityRoll])));
     document.querySelectorAll("[data-save-roll]").forEach(node => {
       const key = node.dataset.saveRoll;
-      setRoll(node, State.abilityModifier(character.abilities[key]) + (character.training.saves[key] ? proficiency() : 0) + (character.training.saveBonuses[key] || 0));
+      setRoll(node, State.abilityModifier(d.abilities[key]) + (d.saves[key] ? proficiency() : 0) + (d.saveBonuses[key] || 0));
     });
     document.querySelectorAll("[data-skill-roll]").forEach(node => {
       const name = node.dataset.skillRoll;
-      setRoll(node, State.abilityModifier(character.abilities[skills[name]]) + (character.training.skills[name] || 0) * proficiency() + (character.training.skillBonuses[name] || 0));
+      setRoll(node, State.abilityModifier(d.abilities[skills[name]]) + (d.skillRanks[name] || 0) * proficiency() + (d.skillBonuses[name] || 0));
     });
-    const values = {armorClass: character.combat.armorClass, initiative: signed(State.abilityModifier(character.abilities.dex) + character.combat.initiativeBonus), speed: character.combat.speed + " ft", proficiency: signed(proficiency()), passivePerception: passivePerception()};
-    document.querySelectorAll("[data-combat-value]").forEach(node => { node.textContent = values[node.dataset.combatValue]; });
+    const totals = {armorClass:d.armorClass, initiative:signed(d.initiative), speed:d.speed + " ft", proficiency:signed(proficiency()),passivePerception:passivePerception()};
+    document.querySelectorAll("[data-combat-value]").forEach(node => { node.textContent = totals[node.dataset.combatValue]; });
+    document.querySelectorAll("[data-effective-score]").forEach(node=>{node.textContent=d.abilities[node.dataset.effectiveScore];});
+    const attacks=byId("derived-attacks");if(attacks)attacks.innerHTML=derivedAttacks();
     document.querySelectorAll("[data-resource-meter]").forEach(node => {
       const pool = character.resources[node.dataset.resourceMeter];
       node.style.width = (pool.max ? Math.min(100, pool.current / pool.max * 100) : 0) + "%";
@@ -257,25 +272,31 @@
       <div class="resource-controls">${button("−", "resource", `data-key="${key}" data-delta="-1" aria-label="Decrease ${resourceNames[key]}"`, "counter-button")}
       <label class="resource-value"><span class="sr-only">Current ${resourceNames[key]}</span><input type="number" inputmode="numeric" min="0" max="1000000" data-path="resources.${key}.current" value="${resource.current}"></label>
       ${button("+", "resource", `data-key="${key}" data-delta="1" aria-label="Increase ${resourceNames[key]}"`, "counter-button")}</div>
-      <label class="resource-max">Maximum <input type="number" inputmode="numeric" min="0" max="1000000" data-path="resources.${key}.max" value="${resource.max}" aria-label="Maximum ${resourceNames[key]}"></label>
+      <label class="resource-max">Maximum <input type="number" inputmode="numeric" min="0" max="1000000" data-path="resources.${key}.max" value="${resource.max}" aria-label="Maximum ${resourceNames[key]}" ${values().enabled && ["hp","block"].includes(key)?'readonly':''}></label>
       <div class="meter" aria-hidden="true"><span class="meter-fill" data-resource-meter="${key}" style="width:${percentage}%"></span></div>${note ? `<p class="resource-note">${note}</p>` : ""}</section>`;
   }
 
   function abilityPanel() {
-    const abilities = `<div class="abilities-grid">${Object.entries(abilityNames).map(([key, name]) => `<div class="ability"><label class="ability-label" for="ability-${key}">${escape(name)}</label><input id="ability-${key}" class="ability-score" type="number" inputmode="numeric" min="0" max="100" data-path="abilities.${key}" value="${character.abilities[key]}">${button(signed(State.abilityModifier(character.abilities[key])), "roll", `data-ability-roll="${key}" data-label="${escape(name)} check" data-bonus="${State.abilityModifier(character.abilities[key])}" aria-label="Roll ${escape(name)} check"`, "ability-mod")}</div>`).join("")}</div>`;
+    const d=values();
+    const abilities = `<div class="abilities-grid">${Object.entries(abilityNames).map(([key, name]) => `<div class="ability"><label class="ability-label" for="ability-${key}">${escape(name)}${d.enabled?' base':''}</label><input id="ability-${key}" class="ability-score" type="number" inputmode="numeric" min="0" max="100" data-path="abilities.${key}" value="${character.abilities[key]}">${d.enabled?`<span class="muted">Total <strong data-effective-score="${key}">${d.abilities[key]}</strong></span>`:''}${button(signed(State.abilityModifier(d.abilities[key])), "roll", `data-ability-roll="${key}" data-label="${escape(name)} check" data-bonus="${State.abilityModifier(d.abilities[key])}" aria-label="Roll ${escape(name)} check"`, "ability-mod")}</div>`).join("")}</div>`;
     const saves = Object.entries(abilityNames).map(([key, name]) => {
-      const bonus = State.abilityModifier(character.abilities[key]) + (character.training.saves[key] ? proficiency() : 0) + (character.training.saveBonuses?.[key] || 0);
-      return `<div class="save-row"><label class="check-label"><input type="checkbox" data-path="training.saves.${key}" ${character.training.saves[key] ? "checked" : ""}>${name}</label><input class="bonus-input" type="number" inputmode="numeric" data-path="training.saveBonuses.${key}" value="${character.training.saveBonuses?.[key] || 0}" aria-label="Additional ${name} save bonus" min="-1000" max="1000">${button(signed(bonus), "roll", `data-save-roll="${key}" data-label="${name} saving throw" data-bonus="${bonus}" aria-label="Roll ${name} saving throw"`, "skill-bonus")}</div>`;
+      const bonus = State.abilityModifier(d.abilities[key]) + (d.saves[key] ? proficiency() : 0) + (d.saveBonuses[key] || 0);
+      return `<div class="save-row"><label class="check-label"><input type="checkbox" data-path="training.saves.${key}" ${d.saves[key] ? "checked" : ""} ${d.saves[key]&&!character.training.saves[key]?'disabled':''}>${name}</label><input class="bonus-input" type="number" inputmode="numeric" data-path="training.saveBonuses.${key}" value="${character.training.saveBonuses?.[key] || 0}" aria-label="Additional ${name} save bonus" min="-1000" max="1000">${button(signed(bonus), "roll", `data-save-roll="${key}" data-label="${name} saving throw" data-bonus="${bonus}" aria-label="Roll ${name} saving throw"`, "skill-bonus")}</div>`;
     }).join("");
     const skillRows = Object.entries(skills).map(([name, ability]) => {
-      const rank = character.training.skills[name] || 0;
-      const bonus = State.abilityModifier(character.abilities[ability]) + rank * proficiency() + (character.training.skillBonuses?.[name] || 0);
+      const rank = d.skillRanks[name] || 0;
+      const bonus = State.abilityModifier(d.abilities[ability]) + rank * proficiency() + (d.skillBonuses[name] || 0);
       return `<div class="skill-row"><span class="skill-name">${escape(name)}<small class="skill-ability">${ability.toUpperCase()}</small></span><select class="training-select" data-path="training.skills.${escape(name)}" data-number="true" aria-label="${escape(name)} training"><option value="0" ${rank === 0 ? "selected" : ""}>Untrained</option><option value="1" ${rank === 1 ? "selected" : ""}>Proficient</option><option value="2" ${rank === 2 ? "selected" : ""}>Expertise</option></select><input class="bonus-input" type="number" inputmode="numeric" min="-1000" max="1000" data-path="training.skillBonuses.${escape(name)}" value="${character.training.skillBonuses?.[name] || 0}" aria-label="Additional ${escape(name)} bonus">${button(signed(bonus), "roll", `data-skill-roll="${escape(name)}" data-label="${escape(name)}" data-bonus="${bonus}" aria-label="Roll ${escape(name)}"`, "skill-bonus")}</div>`;
     }).join("");
     return `<aside class="ability-panel">${panel("Ability scores", abilities)}<details class="panel disclosure" data-expanded="saves" ${expanded.has("saves") ? "open" : ""}><summary>Saving throws</summary><p class="section-note">Select proficient saves. The adjustment field adds feature or situational bonuses.</p>${saves}</details><details class="panel disclosure" data-expanded="skills" ${expanded.has("skills") ? "open" : ""}><summary>Skills</summary><p class="section-note">Includes the draft's proposed Stamina, Instinct, and Mechanism skills. Set training and any additional bonus.</p><div class="skill-list">${skillRows}</div></details></aside>`;
   }
 
+  function derivedAttacks() {
+    return values().attacks.map(attack=>`<article class="list-card"><div class="attack-row"><div><h3 class="attack-name">${escape(attack.name)}</h3><p class="attack-damage">${escape(attack.damage)}</p></div>${button(signed(attack.bonus),"roll",`data-label="${escape(attack.name)} attack" data-bonus="${attack.bonus}" aria-label="Roll ${escape(attack.name)} attack"`)}</div><p class="list-card-meta">From equipped gear · ${escape(attack.ability?.toUpperCase() || '')} · ${attack.trained?'Proficient':'Untrained'} · Block DC ${attack.blockDC}</p><p>${escape(attack.properties)}</p>${attack.notes?`<p class="section-note">${escape(attack.notes)}</p>`:''}${attack.maneuvers?`<details class="detail-section"><summary>Weapon manoeuvres</summary>${ruleContent(attack.maneuvers)}</details>`:''}</article>`).join('');
+  }
+
   function renderAttacks() {
+    if(values().attacks.length && !character.attacks.length)return `<p class="section-note">Equipped attacks update with your abilities and training.</p>${button('Add custom attack','add-attack')}`;
     return character.attacks.length ? `<div class="list">${character.attacks.map((attack, index) => `<article class="list-card"><div class="attack-row"><div><h3 class="attack-name">${escape(attack.name)}</h3><p class="attack-damage">${escape(attack.damage || "Set damage in Edit")}</p></div>${button(signed(attack.bonus), "roll", `data-label="${escape(attack.name)} attack" data-bonus="${attack.bonus}" aria-label="Roll ${escape(attack.name)} attack"`)}${button("Edit", "edit-attack", `data-index="${index}"`, "button-quiet")}</div>${attack.maneuver ? `<p class="preserve-lines"><strong>Manoeuvre</strong> · ${escape(attack.maneuver)}</p>` : ""}${attack.notes ? `<p class="preserve-lines">${escape(attack.notes)}</p>` : ""}</article>`).join("")}</div>` : empty("Ready your first attack", "Add the attack bonus and damage from your weapon, spell, or feature.", button("Add attack", "add-attack", "", "button-primary"));
   }
 
@@ -284,18 +305,20 @@
   }
 
   function renderSheet() {
+    const d=values();
     const combat = character.combat;
-    const initiative = State.abilityModifier(character.abilities.dex) + combat.initiativeBonus;
-    const stats = [["armorClass", combat.armorClass, "Armour class"], ["initiative", signed(initiative), "Initiative"], ["speed", combat.speed + " ft", "Speed"], ["proficiency", signed(proficiency()), "Proficiency"], ["passivePerception", passivePerception(), "Passive Perception"]];
+    const initiative = d.initiative;
+    const stats = [["armorClass", d.armorClass, "Armour class"], ["initiative", signed(initiative), "Initiative"], ["speed", d.speed + " ft", "Speed"], ["proficiency", signed(proficiency()), "Proficiency"], ["passivePerception", passivePerception(), "Passive Perception"]];
     const combatStrip = `<div class="combat-strip">${stats.map(([key, value, label]) => `<div class="combat-stat"><span class="combat-value" data-combat-value="${key}">${escape(value)}</span><span class="combat-label">${label}</span></div>`).join("")}<label class="combat-stat check-label inspiration-toggle"><input type="checkbox" data-path="inspiration" ${character.inspiration ? "checked" : ""}>Inspiration</label></div>`;
     const resources = `<div class="resources-grid">${Object.keys(resourceNames).map(resourceCard).join("")}</div>`;
-    const quickHealth = `<div class="quick-health"><label class="field"><span>Health pool</span><select id="health-pool">${["hp", "arcaneHealth", "tempHP"].map(key => `<option value="${key}" ${healthAdjustment.pool === key ? "selected" : ""}>${resourceNames[key]}</option>`).join("")}</select></label><label class="field"><span>Amount</span><input id="health-amount" type="number" inputmode="numeric" min="1" max="1000000" value="${healthAdjustment.amount}"></label>${button("Damage", "health", 'data-sign="-1"', "button-danger")}${button("Heal", "health", 'data-sign="1"', "button-primary")}</div>`;
+    const pools=d.enabled?["auto","hp","arcaneHealth","tempHP"]:["hp","arcaneHealth","tempHP"];
+    const quickHealth = `<div class="quick-health"><label class="field"><span>Health pool</span><select id="health-pool">${pools.map(key=>`<option value="${key}" ${healthAdjustment.pool===key?'selected':''}>${key==='auto'?'Automatic damage order':resourceNames[key]}</option>`).join('')}</select></label><label class="field"><span>Amount</span><input id="health-amount" type="number" inputmode="numeric" min="1" max="1000000" value="${healthAdjustment.amount}"></label>${button("Damage","health",'data-sign="-1"','button-danger')}${button("Heal","health",'data-sign="1"','button-primary')}</div>${d.enabled?`<p class="section-note">Damage uses Arcane Health, then Temporary HP, then HP. For healing, choose the pool to restore.</p><div class="form-grid"><label class="field"><span>Damage type (for reduction)</span><select id="damage-type"><option value="">Untyped / already adjusted</option>${['bludgeoning','piercing','slashing','fire','cold','acid','lightning','sonic','poison','necrotic','radiant','psychic','force'].map(t=>`<option>${t}</option>`).join('')}</select></label><label class="check-label"><input id="damage-half" type="checkbox">Apply half damage (resistance)</label></div>`:''}`;
     const blocks = `<div class="entry-actions">${button("Use 1 Block", "resource", 'data-key="block" data-delta="-1"', "button-primary")}${button("Use 2 Blocks", "resource", 'data-key="block" data-delta="-2"')}${button("Grant Temp Block", "grant-temp")}</div>`;
-    const rest = `<div class="form-grid">${field("Rest die size", "restDice.die", "text", {placeholder: "d6"})}${numberField("Rest dice available", "restDice.current")}${numberField("Rest dice maximum", "restDice.max")}</div><div class="entry-actions">${button("Spend 1 rest die", "resource", 'data-key="restDice" data-delta="-1"')}${button("Recover 1 rest die", "resource", 'data-key="restDice" data-delta="1"')}</div>`;
-    const marks = [0, 1, 2, 3].map(n => [n, String(n)]);
+    const rest = `<div class="form-grid">${field("Rest die size", "restDice.die", "text", {placeholder: "d6"})}${numberField("Rest dice available", "restDice.current")}${d.enabled?numberField("Base rest dice maximum", "build.health.baseRestDice"):numberField("Rest dice maximum", "restDice.max")}</div><div class="entry-actions">${button("Spend 1 rest die", "resource", 'data-key="restDice" data-delta="-1"')}${button("Recover 1 rest die", "resource", 'data-key="restDice" data-delta="1"')}</div>`;
+    const marks = Array.from({length:d.deathSaveSlots+1},(_,n)=>[n,String(n)]);
     const deathSaves = `<div class="form-grid">${selectField("Successes", "deathSaves.successes", marks, "", true)}${selectField("Failures", "deathSaves.failures", marks, "", true)}</div>`;
     const conditionChips = character.conditions.length ? `<div class="condition-chips">${character.conditions.map((condition, index) => `<span class="pill">${escape(condition)}${button("×", "remove-condition", `data-index="${index}" aria-label="Remove ${escape(condition)}"`, "button-quiet button-small")}</span>`).join("")}</div>` : `<p class="section-note">No conditions recorded.</p>`;
-    byId("pane-sheet").innerHTML = `<div class="sheet-layout"><div class="main-panel">${combatStrip}${panel("Health & defence", resources + quickHealth + blocks, button("Edit combat", "combat", "", "button-quiet button-small"))}${panel("Death saves", deathSaves)}${panel("Rest dice", rest)}${panel("Attacks & actions", renderAttacks() + textArea("Known manoeuvres", "maneuvers"), character.attacks.length ? button("Add attack", "add-attack", "", "button-small") : "")}${panel("Class resources", renderCustomResources(), button("Add resource", "add-resource", "", "button-small"))}${panel("Conditions", conditionChips, button("Add condition", "condition", "", "button-small"))}</div>${abilityPanel()}</div>`;
+    byId("pane-sheet").innerHTML = `<div class="sheet-layout"><div class="main-panel">${combatStrip}${panel("Health & defence", resources + quickHealth + blocks + (d.enabled?`<div class="entry-actions">${button("Roll initiative / start combat","start-combat")}${button("End combat","end-combat")}${button("Short rest","short-rest")}${button("Long rest","long-rest")}</div><p class="section-note">Block check ${signed(d.blockCheck)} · ${escape(d.gear.blockCheckAbility?.toUpperCase())} · ${escape(d.hpExplanation)}. Rests recover Block and Fatigue; apply other recovery from the relevant feature.</p>${numberField("Fatigue", "build.health.fatigue", {max:10})}`:""), button("Edit combat", "combat", "", "button-quiet button-small"))}${panel("Death saves", deathSaves)}${panel("Rest dice", rest)}${panel("Attacks & actions", `<div class="list" id="derived-attacks">${derivedAttacks()}</div>` + renderAttacks() + textArea("Known manoeuvres", "maneuvers"), character.attacks.length ? button("Add attack", "add-attack", "", "button-small") : "")}${panel("Class resources", renderCustomResources(), button("Add resource", "add-resource", "", "button-small"))}${panel("Conditions", conditionChips, button("Add condition", "condition", "", "button-small"))}</div>${abilityPanel()}</div>`;
   }
 
   function referenceActions(item, list, index) {
@@ -321,11 +344,12 @@
 
   function renderSpells() {
     const combat = character.combat;
-    const modifier = combat.spellAbility ? State.abilityModifier(character.abilities[combat.spellAbility]) : 0;
+    const castingAbility=values().castingAbility;
+    const modifier = castingAbility ? State.abilityModifier(values().abilities[castingAbility]) : 0;
     const saveModifier = character.className.toLowerCase() === "wizard" ? Math.max(0, modifier) : modifier;
     const spellAttack = combat.spellAttackOverride ?? proficiency() + modifier + combat.spellAttackBonus;
     const spellSave = combat.spellSaveOverride ?? 8 + proficiency() + saveModifier + combat.spellSaveBonus;
-    const casting = `<div class="combat-strip"><div class="combat-stat"><span class="combat-value">${combat.spellAbility ? combat.spellAbility.toUpperCase() : "—"}</span><span class="combat-label">Casting ability</span></div><div class="combat-stat"><span class="combat-value">${combat.spellAbility || combat.spellAttackOverride != null ? signed(spellAttack) : "—"}</span><span class="combat-label">Spell attack</span></div><div class="combat-stat"><span class="combat-value">${combat.spellAbility || combat.spellSaveOverride != null ? spellSave : "—"}</span><span class="combat-label">Save DC</span></div></div>`;
+    const casting = `<div class="combat-strip"><div class="combat-stat"><span class="combat-value">${castingAbility ? castingAbility.toUpperCase() : "—"}</span><span class="combat-label">Casting ability</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellAttackOverride != null ? signed(spellAttack) : "—"}</span><span class="combat-label">Spell attack</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellSaveOverride != null ? spellSave : "—"}</span><span class="combat-label">Save DC</span></div></div>`;
     const slots = character.spellSlots.length ? `<div class="list">${character.spellSlots.map((slot, index) => `<div class="slot-row" data-slot-index="${index}">${numberField("Level", `spellSlots.${index}.level`, {min: 0, max: 20})}${numberField("Available", `spellSlots.${index}.current`)}${numberField("Maximum", `spellSlots.${index}.max`)}${button("−1", "resource", `data-key="slot:${slot.level}" data-delta="-1" aria-label="Spend a level ${slot.level} slot"`)}${button("Remove", "remove", `data-list="spellSlots" data-index="${index}"`, "button-quiet button-small")}</div>`).join("")}</div>` : `<p class="section-note">Add slots by level where your class uses them. Use named Class resources for occult slots, individual partial slots, or other spell costs.</p>`;
     byId("pane-spells").innerHTML = panel("Spellcasting", casting, button("Edit spellcasting", "casting", "", "button-small")) + panel("Spell slots", slots, button("Add slot level", "add-slot", "", "button-small")) + renderCollection("spells", "Spells", "Select spells from the rules. Record preparations and apply each spell's listed costs using your resource trackers.", "spells");
   }
@@ -333,11 +357,13 @@
   function renderGear() {
     const money = `<div class="currency-grid">${numberField("Gold", "coins.gold")}${numberField("Silver", "coins.silver")}${numberField("Copper", "coins.copper")}</div>`;
     const training = `<div class="form-grid">${[["Weapons", "weapons"], ["Armour", "armor"], ["Tools", "tools"], ["Languages", "languages"]].map(([label, key]) => textArea(label, "proficiencies." + key, 2)).join("")}</div>`;
-    byId("pane-gear").innerHTML = renderCollection("inventory", "Equipment", "Keep equipment, quantities, and item notes here. Apply equipment bonuses to the relevant sheet fields.", "inventory") + panel("Coin purse", money) + panel("Proficiencies & languages", training);
+    byId("pane-gear").innerHTML = renderCollection("inventory", "Equipment", values().enabled?"Equip armor, a shield and weapons to update your defences and attacks. Custom effects can use manual adjustments.":"Use Build character to enable equipment calculations, or keep tracking this manual sheet.", "inventory") + panel("Coin purse", money) + panel("Proficiencies & languages", training);
   }
 
   function renderFeatures() {
-    byId("pane-features").innerHTML = renderCollection("features", "Features", "Keep class features, feats, ancestry traits, and background rules within reach.", "features");
+    const d=values();
+    const automatic=d.enabled?panel("Your ancestry & class features",`<p class="section-note">Features unlock at your level. Open the builder to choose options or level up.</p><div class="list">${d.features.map(feature=>`<details class="list-card"><summary>${escape(feature.name)} <span class="muted">· ${escape(feature.parent)} · level ${feature.level || 1}</span></summary>${ruleContent(feature.details)}${d.choices.filter(c=>c.featureId===feature.id).map(c=>`<p><strong>${escape(c.label)}</strong>: ${c.selected.map(id=>escape(c.options.find(o=>o.id===id)?.name || '')).join(', ') || 'Not chosen yet'}</p>`).join('')}</details>`).join('')}</div>${d.warnings.length?`<details class="source-warning"><summary>${d.warnings.length} choices or rules to check</summary><ul>${d.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`:''}`,button("Choices & level up","builder")):'';
+    byId("pane-features").innerHTML = automatic+renderCollection("features", "Additional features", "Keep extra feats, background rules and custom features within reach.", "features");
   }
 
   function renderNotes() {
@@ -345,6 +371,7 @@
   }
 
   function render() {
+    computed=null;
     renderHeader();
     renderSheet();
     renderSpells();
@@ -374,6 +401,7 @@
   }
 
   function closeDialog() {
+    if(Wizard?.isOpen()){Wizard.cancel();return;}
     byId("editor-dialog").close();
   }
 
@@ -383,6 +411,9 @@
   }
 
   function combatDialog() {
+    if(values().enabled){
+      openDialog("Combat adjustments",`<p class="section-note">Armour class ${values().armorClass}, speed ${values().speed} ft and Block ${values().blockMaximum} come from your choices and equipped gear. Add situational or custom bonuses here.</p><div class="form-grid">${numberField("Additional armour class","build.adjustments.ac",{min:-1000})}${numberField("Additional speed (ft)","build.adjustments.speed",{min:-1000})}${numberField("Additional Block maximum","build.adjustments.block",{min:-1000})}${numberField("Additional Block check","build.adjustments.blockCheck",{min:-1000})}${numberField("Additional initiative bonus","combat.initiativeBonus",{min:-1000})}${numberField("Proficiency total override","combat.proficiencyOverride",{min:-1000})}${numberField("Passive Perception override","combat.passivePerceptionOverride",{min:-1000})}</div>`,button("Done","done","","button-primary"));return;
+    }
     openDialog("Combat values", `<div class="form-grid">${numberField("Armour class", "combat.armorClass")}${numberField("Speed (ft)", "combat.speed")}${numberField("Additional initiative bonus", "combat.initiativeBonus", {min: -1000, max: 1000})}${numberField("Proficiency total override", "combat.proficiencyOverride", {min: -1000, max: 1000, placeholder: State.proficiencyBonus(character.level)})}${numberField("Passive Perception override", "combat.passivePerceptionOverride", {min: -1000, max: 1000})}</div><p class="section-note">Initiative includes your Dexterity modifier. Vara proficiency normally rises every three levels. Passive Perception is 10 plus your Perception check bonus. Clear either override to use its calculated value.</p>`, button("Done", "done", "", "button-primary"));
   }
 
@@ -427,7 +458,8 @@
 
   function itemEditor(list, index) {
     const item = character[list][index];
-    openDialog("Edit " + item.name, `<div class="form-grid">${field("Name", `${list}.${index}.name`)}${list === "inventory" ? numberField("Quantity", `${list}.${index}.quantity`) : ""}${textArea("Notes and custom effects", `${list}.${index}.notes`, 6)}</div>`, button("Done", "done", "", "button-primary") + button("Remove", "remove", `data-list="${list}" data-index="${index}" data-close="true"`, "button-danger"));
+    const gear = list==='inventory' && values().enabled ? `<div class="form-grid">${selectField("Weapon training",`inventory.${index}.weaponTraining`,[["auto","Use character proficiencies"],["proficient","Proficient"],["untrained","Untrained"]])}${selectField("Attack ability",`inventory.${index}.attackAbility`,[["auto","Automatic"],...Object.entries(abilityNames)])}${selectField("Damage ability",`inventory.${index}.damageAbility`,[["auto","Automatic"],...Object.entries(abilityNames)])}${numberField("Magic bonus",`inventory.${index}.magicBonus`,{min:-100,max:100})}<label class="check-label"><input type="checkbox" data-path="inventory.${index}.twoHanded" ${item.twoHanded?'checked':''}>Wield two-handed</label><label class="check-label"><input type="checkbox" data-path="inventory.${index}.offHand" ${item.offHand?'checked':''}>Off-hand weapon</label></div>`:'';
+    openDialog("Edit " + item.name, `<div class="form-grid">${field("Name", `${list}.${index}.name`)}${list === "inventory" ? numberField("Quantity", `${list}.${index}.quantity`) : ""}${textArea("Notes and custom effects", `${list}.${index}.notes`, 6)}</div>${gear}`, button("Done", "done", "", "button-primary") + button("Remove", "remove", `data-list="${list}" data-index="${index}" data-close="true"`, "button-danger"));
   }
 
   function addItem(list) {
@@ -486,7 +518,8 @@
       do { crypto.getRandomValues(random); } while (random[0] >= 4294967280);
       face = random[0] % 20 + 1;
     } else face = Math.floor(Math.random() * 20) + 1;
-    notify(`${label} · d20 ${face} ${bonus < 0 ? "− " + Math.abs(bonus) : "+ " + bonus} = ${face + bonus}`);
+    const fatigue=Rules.fatiguePenalty(character);
+    notify(`${label} · d20 ${face} ${bonus < 0 ? "− " + Math.abs(bonus) : "+ " + bonus}${fatigue.amount?' − '+fatigue.amount+' Fatigue':''} = ${face + bonus-fatigue.amount}${fatigue.unresolved?' · Fatigue level 6/7 penalty needs a GM ruling.':''}`);
   }
 
   function changeResource(key, delta) {
@@ -500,7 +533,8 @@
   }
 
   const actions = {
-    identity: identityDialog,
+    builder() { if(Wizard)Wizard.start(character,false); },
+    identity() {if(character.build?.enabled && Wizard)Wizard.start(character,false);else identityDialog();},
     combat: combatDialog,
     casting: castingDialog,
     "close-dialog": closeDialog,
@@ -508,19 +542,26 @@
     export: exportBackup,
     import() { byId("backup-input").click(); },
     print() { window.print(); },
-    new() { persist(); character = State.createCharacter(); library.push(character); commit(); activeTab = "sheet"; render(); identityDialog(); },
+    new() { persist(); if(Wizard && Rules.metadata.classes?.length){Wizard.start(State.createCharacter(),true);return;} character = State.createCharacter(); library.push(character); commit(); activeTab = "sheet"; render(); identityDialog(); },
     resource(target) { changeResource(target.dataset.key, Number(target.dataset.delta)); },
     health(target) {
       const amount = Number(byId("health-amount").value);
       if (!Number.isSafeInteger(amount) || amount < 1 || amount > 1000000) return notify("Enter a whole amount between 1 and 1,000,000.");
       const key = byId("health-pool").value;
       const delta = amount * Number(target.dataset.sign);
-      const before = character.resources[key].current;
-      character = State.resourceDelta(character, key, delta);
-      const actual = Math.abs(character.resources[key].current - before);
+      if(delta>0 && key==='auto')return notify('Choose the pool you want to heal.');
+      const before = key==='auto'?0:character.resources[key].current;
+      let damageResult;
+      if(delta<0){damageResult=Rules.damage(character,amount,{pool:key,type:byId('damage-type')?.value || '',half:byId('damage-half')?.checked || false});character=damageResult.character;}
+      else character=Rules.heal(character,amount,key);
+      const actual = key==='auto'?damageResult.changes.reduce((sum,c)=>sum+c.amount,0):Math.abs(character.resources[key].current-before);
       commit(); render();
-      notify(resourceNames[key] + (delta < 0 ? " reduced by " : " healed by ") + actual + ".");
+      notify(key==='auto'?`Damage: ${damageResult.changes.map(c=>`${resourceNames[c.pool]} −${c.amount}`).join(', ') || 'no health lost'}.${damageResult.unabsorbed?` ${damageResult.unabsorbed} damage remains after reaching 0 HP; resolve its effects.`:''}`:resourceNames[key] + (delta < 0 ? " reduced by " : " healed by ") + actual + ".");
     },
+    "start-combat"(){character=Rules.startCombat(character);commit();render();roll('Initiative',values().initiative);},
+    "end-combat"(){character=Rules.endCombat(character);commit();render();notify('Combat-only Block removed. Check temporary effects for their own expiry.');},
+    "short-rest"(){character=Rules.rest(character,'short');commit();render();notify('Short rest: Block recovered and Fatigue reduced. Apply feature-specific healing and recovery.');},
+    "long-rest"(){character=Rules.rest(character,'long');commit();render();notify('Long rest: Block recovered and Fatigue cleared. Apply feature-specific healing and recovery.');},
     "grant-temp"() { openDialog("Grant Temporary Block", `<label class="field"><span>New grant</span><input id="temp-grant" type="number" inputmode="numeric" min="0" max="1000000" value="1"></label><p class="section-note">A new grant keeps the higher pool. Record its expiry in Notes.</p>`, button("Apply grant", "apply-temp", "", "button-primary")); },
     "apply-temp"() {
       const amount = Number(byId("temp-grant").value);
@@ -590,6 +631,8 @@
     const previous = getPath(path);
     if (previous === value || (previous == null && value === 0 && path.startsWith("training.skillBonuses."))) return;
     setPath(path, value);
+    if(character.build?.enabled && /^inventory\.\d+\.equipped$/.test(path))character=globalThis.CharacterEquipment.equip(character,Number(path.split('.')[1]),value);
+    if(character.build?.enabled){character=Rules.reconcile(character);computed=null;}
     scheduleSave();
     refreshCalculations();
   }
@@ -601,24 +644,28 @@
   }
 
   document.addEventListener("input", event => {
+    if(Wizard?.handleInput(event.target))return;
     if (event.target.id === "catalog-query") { catalogLimit = 30; renderCatalogResults(); return; }
     if (event.target.id === "health-amount") { healthAdjustment.amount = event.target.value; return; }
     applyInput(event.target);
   });
   document.addEventListener("change", event => {
     const target = event.target;
+    if(Wizard?.handleChange(target))return;
     if (target.id === "backup-input") { importBackup(target.files[0]); return; }
     if (target.id === "catalog-group") { catalogLimit = 30; renderCatalogResults(); return; }
     if (target.id === "health-pool") { healthAdjustment.pool = target.value; return; }
     if (target.id === "character-picker") { selectCharacter(target.value); return; }
     if (target.dataset.path) {
       applyInput(target, true);
+      if(character.build?.enabled && (target.dataset.path.startsWith('inventory.') || target.dataset.path==='level')) {persist();render();}
     }
   });
   document.addEventListener("click", event => {
     const tab = event.target.closest("[data-tab]");
     if (tab) { switchTab(tab.dataset.tab, false); return; }
     const action = event.target.closest("[data-action]");
+    if(action && Wizard?.handleAction(action.dataset.action,action))return;
     if (action) actions[action.dataset.action]?.(action);
   });
   document.addEventListener("toggle", event => {
@@ -631,7 +678,7 @@
     const keys = {ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1};
     if (Object.hasOwn(keys, event.key)) { event.preventDefault(); switchTab(tabs[keys[event.key]].dataset.tab, true); }
   });
-  byId("editor-dialog").addEventListener("cancel", flushAndPersist);
+  byId("editor-dialog").addEventListener("cancel", () => {if(Wizard?.isOpen())Wizard.cancel();else flushAndPersist();});
   byId("editor-dialog").addEventListener("close", () => { flushAndPersist(); render(); });
   let printDetails = [];
   window.addEventListener("beforeprint", () => {
@@ -645,6 +692,7 @@
   window.addEventListener("pagehide", flushAndPersist);
   document.addEventListener("visibilitychange", () => { if (document.hidden) flushAndPersist(); });
   load();
+  if(character.build?.enabled)healthAdjustment.pool='auto';
   render();
   persist();
 })();

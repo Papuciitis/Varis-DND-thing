@@ -9,6 +9,7 @@ import re
 import tempfile
 
 from compiler import compile_data
+from character_rules import compile_character_rules
 
 
 ROOT = Path(__file__).resolve().parent
@@ -57,13 +58,17 @@ def build(output_dir):
     # Escape '<' so text in a rule can never close its containing script.
     payload = json.dumps(sections, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
     payload = payload.replace("<", r"\u003c").replace("\u2028", r"\u2028").replace("\u2029", r"\u2029")
-    rules_version = "catalog-" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:12]
+    mechanics = json.dumps(compile_character_rules(sections), ensure_ascii=False, allow_nan=False, separators=(",", ":"))
+    mechanics = mechanics.replace("<", r"\u003c").replace("\u2028", r"\u2028").replace("\u2029", r"\u2029")
+    effects = (ROOT / "web" / "character-effects.js").read_text(encoding="utf-8")
+    rules_version = "catalog-" + hashlib.sha256((payload + mechanics + effects).encode("utf-8")).hexdigest()[:12]
     catalog_script = (
         f"<script>globalThis.DND_CATALOG={payload};\n"
-        f"globalThis.DND_RULES_VERSION='{rules_version}';</script>"
+        f"globalThis.DND_RULES_VERSION='{rules_version}';\n"
+        f"globalThis.DND_CHARACTER_RULES={mechanics};</script>"
     )
     index = render_page("index.html", "styles.css", ("app.js",), catalog_script)
-    sheet = render_page("character.html", "character.css", ("character-state.js", "character.js"), catalog_script)
+    sheet = render_page("character.html", "character.css", ("character-state.js", "character-effects.js", "character-equipment.js", "character-rules.js", "character-builder.js", "character.js"), catalog_script)
     output_dir.mkdir(parents=True, exist_ok=True)
     write_page(output_dir / "index.html", index)
     write_page(output_dir / "character.html", sheet)

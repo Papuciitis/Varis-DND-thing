@@ -18,15 +18,30 @@ To validate a build without opening a browser, run from PowerShell:
 
 On this machine, **Documents\Vara-DnD** is the canonical Git repository. The Codex app folder **Documents\ChatGPT\Vara DnD** is a Windows directory junction pointing to that same repository. Editing either path edits the same files. The junction is a machine-local arrangement; Git does not store it, and another computer only needs an ordinary clone.
 
-The tracked sources are `data/` for the rules, `web/` for the interface, and `build.py` / `compiler.py` for the build. Generated `site/`, local `.venv/`, and Python caches are ignored by Git. Edit the sources rather than `site/`, because rebuilding replaces the generated pages. Character saves live in the browser, outside this repository.
+The tracked sources are `data/` for the rules, `web/` for the interface, and `build.py` / `compiler.py` / `character_rules.py` for the build and character metadata. Generated `site/`, local `.venv/`, and Python caches are ignored by Git. Edit the sources rather than `site/`, because rebuilding replaces the generated pages. Character saves live in the browser, outside this repository.
 
 ## Use and back up characters
 
-Use **New character** and the character picker for multiple characters. Changes autosave in the current browser on the current device. Local files, the published website, different browser profiles and other devices can have separate save storage; there is no account or automatic cross-device sync. Clearing browser data can remove saves.
+Use **New character** to open the six-step builder:
+
+1. **Ancestry:** enter the character's details and level, then choose a race.
+2. **Class:** choose a class and the archetypes available at that level.
+3. **Abilities:** enter base ability scores and allocate the race's ability bonuses.
+4. **Features:** read trait and feature rules, choose available options, and select skills.
+5. **Equipment:** add items and equip armor, a shield and weapons for the preview.
+6. **Review:** check the resulting sheet, choose an HP method, review incomplete selections, and use **Save character**.
+
+The builder works on a separate draft. **Cancel** discards its changes; nothing is applied to the saved character before **Save character**. Reopen **Build character** to change choices or raise the level and select newly available features. Existing manual characters remain manual until you open the builder and save its changes.
+
+Use the character picker to keep multiple characters. Saved-sheet edits autosave in the current browser on the current device. Local files, the published website, different browser profiles and other devices can have separate save storage; there is no account or automatic cross-device sync. Clearing browser data can remove saves.
 
 Use **Save backup** to download the selected character as JSON, and keep backups outside the repository. Use **Load backup** to bring a character into another browser or device. Backups include a format version and rules fingerprint. Invalid or unsupported backups leave the current character intact; a different rules fingerprint prompts a rules review. If the browser cannot save, keep the page open and use **Save backup** to preserve your work.
 
-The sheet calculates ability modifiers and derived bonuses, but class, equipment, spell and rest effects are entered by the player. Damage and healing change the selected health pool. Spending Block uses Temp Block first. Adjust costs, healing, recovered resources and expiring effects according to the rules; choosing a class or adding a spell does not apply all of its effects automatically.
+Builder-enabled characters automatically apply supported fixed passive modifiers from their race, class and selected features. Equipped armor and shields calculate AC, movement and Block values; equipped weapons supply attacks from the character's abilities, training and Vara weapon properties. Base scores and manual extra bonuses remain editable, and manual attacks can accompany generated attacks. Conditional abilities, active powers, spell costs, unresolved rules and nested upgrades with unimplemented prerequisites remain readable rules to apply manually.
+
+Automatic HP starts with the maximum class hit die plus the Constitution modifier and other applicable modifiers at level 1. Later levels add a recorded hit-die roll or the fixed average, plus the Constitution modifier and applicable modifiers. Missing recorded rolls use the average with a warning. **Manual HP** remains available. Changes to maximum health preserve existing wounds rather than healing the character.
+
+Automatic damage passes through **Arcane Health → Temp HP → HP**; manual pool targeting is also available. Healing uses the selected pool and applies the Diseased healing reduction. Spending Block uses Temp Block first. Combat start raises remaining Block to the armor, shield and supported feature floor; rest restores Block and applies the established Fatigue recovery. Unspecified HP recovery during rest, generic rest-dice recovery, ability costs and expiring effects still need the player to apply the relevant rule.
 
 ## Use the compendium
 
@@ -72,7 +87,7 @@ git branch --show-current
 git pull --ff-only
 ```
 
-Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The character sheet integration lives on `codex/character-sheet` until reviewed and merged, so `main` will not include it before then.
+Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The original character sheet integration was merged in PR #2 at `d7090bc`. Character automation work is on `codex/character-automation` and has not yet been opened as a pull request.
 
 For a new source change, create a branch from the version you want to change, edit the relevant `data/` or `web/` files, run the launcher and inspect the result:
 
@@ -89,6 +104,6 @@ The JavaScript checks use Node 24 and read the built catalog, so build before ru
 
 ## GitHub Pages
 
-The intended phone address is [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html), with the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). The character page will become available there after this integration is merged into `main` and its Pages deployment succeeds. Creating or updating the feature branch does not publish it to that address.
+The phone addresses are [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html) and the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). Pages updates after changes reach `main` and its deployment succeeds. The new builder described above is feature-branch work; creating or updating that branch does not publish it to those addresses.
 
-Select **GitHub Actions** under the repository's Pages settings. The workflow installs Python 3.12 and Node 24, runs the Python checks, builds the site, and runs the character state and event checks against that build. Every successful run includes a downloadable **vara-dnd-site** artifact: unzip it and open `character.html` or `index.html`. Pages deployment is limited to `main`; pull requests are validated without deployment. The same pages work from disk and from a repository-scoped Pages address.
+Select **GitHub Actions** under the repository's Pages settings. The workflow installs Python 3.12 and Node 24, runs the Python checks, builds the site, and runs the JavaScript character checks against that build. Every successful run includes a downloadable **vara-dnd-site** artifact: unzip it and open `character.html` or `index.html`. Pages deployment is limited to `main`; pull requests are validated without deployment. The same pages work from disk and from a repository-scoped Pages address.

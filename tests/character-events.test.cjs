@@ -48,7 +48,7 @@ function boot(){
  }
  function parse(src,root){const stack=[root];for(const match of src.matchAll(/<[^>]+>|[^<]+/gs)){const v=match[0];if(v.startsWith('<!'))continue;if(v.startsWith('</')){stack.pop();continue;}if(v[0]!=='<'){stack.at(-1)._text=(stack.at(-1)._text||'')+decode(v);continue;}const tag=v.match(/^<([\w-]+)/)[1].toLowerCase(),attrs={};for(const m of v.slice(tag.length+1,-1).matchAll(/([-\w:]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s]+)))?/g)){attrs[m[1]]=decode(m[2]??m[3]??m[4]??'');}const n=new E(tag,attrs);stack.at(-1).append(n);if(!voids.has(tag)&&!v.endsWith('/>'))stack.push(n);}}
  document=new E('document');parse(source,document);document.body=document.querySelector('body');document.createElement=t=>new E(t);document.activeElement=document.body;context.document=document;context.window=new E('window');context.window.print=()=>{};
- const g=vm.createContext(context);for(const name of ['character-state.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
+ const g=vm.createContext(context);for(const name of ['character-state.js','character-effects.js','character-equipment.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
  const q=(selector)=>{const n=document.querySelector(selector);assert(n,'missing control '+selector);return n;};
  const field=p=>q('[data-path="'+p+'"]');const action=(act,extra='')=>q('[data-action="'+act+'"]'+extra);
  function set(n,v,change=true){if(n.type==='checkbox')n.checked=v;else n.value=v;fire(n,'input');if(change)fire(n,'change');}
