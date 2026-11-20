@@ -1,0 +1,353 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/arcane-magic/lvl-1-arcane-spells
+section: spells
+entries:
+- name: Chaos arcana
+  group: Arcane spells
+  lvl: '1'
+  types: Evocation, Transmutation, Arcane 1
+  casting: 1 action
+  components: verbal, somatic
+  duration: 1d4 rounds
+  range: 20/40 ft spell attack.
+  target: creature
+  effect: |-
+    As an action, conjure a blue sphere of energy in your palm, it remains stable in your palm for 1d4 rounds and can be discharged as a free action to deal 1d4 * 1d4 + casting bonus damage to a target within range as a ranged spell attack. If you exceed the duration, the target is you and it automatically hits. Roll 1d4 to determine the outcome:
+
+    * 1 - Damage is fire, target is ignited.
+    * 2 - Damage is cold, target is slowed by half for 1d4 rounds.
+    * 3 - Damage is bleeding, target gains an instance of bleed if unblocked and has disadvantage on block checks..
+    * 4 - Damage is lightning, cannot be blocked, target is shocked for 1d4 rounds, and if exposed to water or metal, also deals the attacks damage to creatures within 15 ft who are also in contact with the material.
+
+    Once used, roll a 1d4 chance dice. On a 4 or higher, any spell slots or resources used to cast it are not expended.
+  higher_levels: |-
+    Per level above 1st, increase all dice used by 1 size category, adding the following new outcomes when reachable:
+
+    * 5 - Damage is piercing, crit range of the spell attack is increased by 1. Targets are pinned for 1d4 rounds on a critical strike.
+    * 6 - Damage is force, target is stunned for 1d4 rounds on a critical hit.
+    * 7 - Damage is sonic, target is distracted for 1d4 rounds.
+    * 8 - Damage is poison, target must make a constitution save and becomes sickened and poisoned for 1d4 minutes on a failure.
+    * 9 - Damage is psychic, target has a -1d4 penalty vs saves you cast for next 1d4 rounds.
+    * 10 - Damage is acid, target is weakened and takes 1d4 acid damage at the start of their round for 1d4 rounds on a failed constitution save if hit, or a -1 to ac and block checks for 1d4 rounds if blocked.
+    * 11 - Damage is necrotic, grants 2d4 arcane health if it slays the target.
+    * 12 - Damage is radiant, causes target to become blinded and deafened for 1d4 rounds if unblocked.
+
+    If cast at 6th level, instead of granting further bonuses, roll 1d4 (unaltered) when casting the spell, and deal that much extra damage dice to the target.
+- name: Enchanted edge
+  group: Arcane spells
+  lvl: '1'
+  types: transmutation, abjuration, arcane 1
+  casting: 1 action
+  components: somatic
+  range: melee weapon attack
+  effect: As an action, invoke arcane power in a melee slashing or piercing weapon you wield, allowing
+    you to make one attack with it as a free action until the start of your next round. This attack deals
+    an extra 1d6 force damage, and allows you to apply a weapon maneuver to it without expending a bonus
+    action.
+  higher_levels: Per spell slot level above 1st, increase force damage by 1d6.
+- name: Arcane darts
+  group: Arcane spells
+  lvl: '1'
+  types: arcane 1, conjuration, evocation
+  casting: 1 action
+  components: verbal, somatic
+  duration: 4 rounds
+  range: 40 ft.
+  effect: |-
+    As an action, conjure 1d4+1 arcane darts that hover above your person for up to 4 rounds before vanishing. At any time for the duration of the spell, you can launch any number of bolts as a bonus action. Each bolt can target a separate creature or object within range and deals 1d4 + 1 force damage.
+
+    If a targeted creature has a reaction, they can spend it to make a dexterity save against all incoming bolts and negate the damage on a success.
+  higher_levels: Per spell slot level above 1st, increase number of bolts by 1 and increase the duration
+    of the spell by 1 round.
+- name: Blur
+  group: Arcane spells
+  lvl: '1'
+  types: arcane 1, illusion
+  casting: 1 action
+  components: somatic, concentration
+  duration: 1d4 rounds
+  range: 30 feet
+  effect: As an action, shroud yourself or an ally within 30 feet and blur their image for 1d4 rounds.
+    So long as the target has moved, cast a spell, or attacked since the beginning of their last turn,
+    all attacks against them have disadvantage.
+  higher_levels: For every spell slot level above 1st, increase the duration by 1d4 rounds.
+- name: Cone of fire
+  group: Arcane spells
+  lvl: '1'
+  types: arcane 1, evocation
+  casting: 1 action
+  components: verbal, somatic
+  range: 15 ft cone
+  effect: |-
+    As an action, conjure an arcane gesture with one or both hands to manifest a cone of fire from it at a range of 15 ft, dealing 2d6 damage to all creatures caught in the flames. Creatures hit must make a dexterity save to halve the damage. Creatures that fail this save are set on fire.
+
+    If both hands are used (free) during the casting of this spell, the damage is increased by 1d6 and the range is increased by 5 feet.
+  higher_levels: Per spell slot level above 1st, you can increase the damage by 1d6, and the max range
+    by 5 ft.
+- name: Shield
+  group: Arcane spells
+  lvl: '1'
+  types: arcane 1, abjuration
+  casting: action or reaction
+  components: verbal, somatic
+  range: self
+  effect: As an action, grant yourself 2 temporary block for 1d4 turns. This spell can be cast as a reaction
+    to an incoming attack, reducing the amount of temporary block to 1 and the duration to 1 turn.
+  higher_levels: If cast using a 3rd level spell slot, increase the amount of block gained in either case
+    by 1.
+- name: Shocking grasp
+  group: Arcane spells
+  lvl: '1'
+  types: arcane 1, evocation
+  casting: 1 action
+  components: verbal, somatic
+  duration: instant
+  range: melee
+  effect: As an action, make a melee spell attack against a creature. On a successful hit, the target
+    takes 3d6 lightning damage and must make a constitution save, becoming stunned for 1 round on a failure.
+- name: Telekinesis
+  group: Arcane spells
+  lvl: '1'
+  types: arcane 1, abjuration, evocation
+  casting: 1 action
+  components: somatic, concentration
+  duration: special
+  range: 60 feet
+  effect: |-
+    As an action, cause one of the following effects:
+
+    * Stop a falling characters descent, taking 1d4 psychic damage per every 10 feet fallen past 40.
+    * Create a barrier around a target creature or object, stopping all attacks and projectiles until the start of your next turn, but taking half the damage they would otherwise take as psychic damage.
+    * Propel a small or smaller object, such as a stone or tool at a creature within range as a spell attack, dealing 4d4 damage of whatever kind that the object would deal (subject to the GM).
+    * Leap to a target destination within range. If you need to make acrobatics checks for this, add your intelligence modifier as a bonus to the roll.
+    * Lift a large or smaller object up to 10 feet in the air, being able to move it 5 ft as a move action so long as you retain concentration. If the object is heavier than you, you take 1d4 psychic damage at the start of every turn that you maintain concentration on this spell.
+- name: Acid bolt
+  group: Arcane spells
+  lvl: '1'
+  types: transmutation, Arcane 1
+  casting: 1 action
+  components: verbal, somatic, material(1 phial of salt worth 1 gold)
+  range: ranged 40/80 foot spell attack
+  effect: As an action, launch a bolt of acid at a target within range as a spell attack, dealing 2d8
+    + casting bonus acid damage. A hit creature continues to take 1d4 acid damage at the start of their
+    turn for the next 1d4 turns even if they block the attack.
+  higher_levels: Per spell slot level above 1st, you can increase the damage dealt by 1d8 and increase
+    the acid duration by 1 turn.
+- name: Animate skull
+  group: Arcane spells
+  lvl: '1'
+  types: Necromancy, Arcane 1
+  casting: action
+  components: verbal, somatic, material(1 skull, a drop of blood worth 1 hp)
+  range: touch
+  effect: |-
+    As an action, touch a dead medium or small creature's skull, and animate it as a sentient floating servant.
+
+    A skull servant lasts until destroyed, dispelled, or dismissed. It understands the casters commands, and is loyal to them. It cannot speak, but it can spend a bonus action to mentally message the caster. You are limited to as many skull servants as your casting bonus. A skull servant has the following stats (MOD represents the casting modifier. min 1):
+
+    Type: small undead
+
+    HP: 1d4+1
+    AC: 12, no block
+    Speed: 30 feet, float up to 10 feet.
+
+    PROFICIENCY BONUS: 2
+
+    SAVES: charisma
+
+    STR: 7, DEX: 12, CON: 10, INT: 12, WIS: 10, CHA: 10
+
+    Skills: 1 skill of choice, using the casters arcana bonus for it.
+
+    Perks: Darkvision(60 feet)
+
+    Attacks:
+
+    * Bite (dex) +3 : 1d4 + 3 piercing damage
+  higher_levels: Per spell slot level above 1st, grant the skull the ability to cast 1 cantrip you know.
+- name: Arc lightning
+  group: Arcane spells
+  lvl: '1'
+  types: Evocation, Arcane 1
+  casting: action
+  components: verbal, somatic
+  range: 20/40
+  effect: |-
+    As an action, make a ranged spell attack against a target creature within range. Dealing 1d6 + casting bonus lightning damage to the target. The damage cannot be blocked. On a successful hit, make the attack again against the closest enemy creature within range of the previously hit target, repeating the spell effect up to as many times as your casting bonus. You cannot retarget an already hit creature.
+
+    If the target is wearing metal armor, the spell attack has advantage.
+  higher_levels: Per spell slot level above 1st, increase the damage by 1d6.
+- name: Assume Image
+  group: Arcane spells
+  lvl: '1'
+  types: Enchantment, Arcane 1
+  casting: reaction
+  components: none
+  range: self
+  effect: |-
+    As a reaction, alter your appearance, or the appearance of an item you are holding in one of several ways.
+
+    * Dangerous - Creatures that see the effect must make an intelligence save. On a failure, they are shaken for 1d6 turns, and may make a check to exit combat and run away, or hide. The effect is instantaneous.
+    * Foul - Creatures that see the effect must make an intelligence save. On a failure, they are sickened for 1d6 rounds, and may take an action to throw up and end the effect early. The effect is instantaneous
+    * Unimportant - Creatures that see the effect must make an intelligence save. On a failure, they will believe ignore you. Lasts for 1d12 rounds, or until you move more than 5 feet while they observe you, or until you make an attack. Once the duration is over, they will have the urge to check up on where they last saw you. If the creature was not keenly aware of you, and they do not find you, they will forget about you. If you are in a crowd, all creatures have disadvantage.
+    * Friendly - Creatures that see the effect must make an intelligence save. On a failure, they will believe you to be friendly. The effect ends once you attack or damage them or their allies, or make hostile demands of them. Lasts 1 hour
+  draft_note: The draft specifies a reaction without naming the event that triggers it.
+- name: Call of the banshee
+  draft_note: The draft specifies a reaction without naming the event that triggers it.
+  group: Arcane spells
+  lvl: '1'
+  types: Enchantment, concentration, Arcane 1
+  casting: reaction
+  components: verbal
+  duration: 1d6 rounds.
+  range: 30 feet
+  effect: |-
+    As a reaction, assume the voice of the banshee. For the duration of the spell, you can speak as a bonus action and deal 1d6 + casting modifier sonic damage to a creature within range. The creature must make a constitution save. On a success, the damage is halved.
+
+    For the duration of the spell, whenever you deal sonic damage, you deal an additional 1d4 unblockable sonic damage.
+  higher_levels: Per spell slot level above 1st, increase the unblockable damage by 1d4.
+- name: Conjure minor wisp
+  group: Arcane spells
+  lvl: '1'
+  types: conjuration, Arcane 1
+  casting: action
+  components: verbal, somatic
+  range: 15 feet
+  duration: special
+  effect: |-
+    As an action, conjure a tiny flying elemental wisp. It can be immediately told to either:
+
+    * Follow a creature - if you can see the creature, or are keenly aware of them, the wisp will pursue it at a speed of 25 feet per round for 1d12 minutes.
+    * Bother a creature - If you can see the creature, or are keenly aware of them, the wisp will pursue the creature at a speed of 60 feet per round for 1 minute, and once it reaches it, the creature must make a dexterity save every round, for the next 1d6 rounds. On a failure, the creature is distracted for that round, and must remake any concentration concentration check.
+    * Protect a creature - If you can see the creature, or are keenly aware of them. the wisp will pursue the creature at a speed of 60 feet per round. Once it is reached, they can grant disadvantage to one incoming attack per turn.
+
+    A wisp cannot make any other actions. A creature can attempt to target the wisp with an attack. The wisp is always aware of its target, has an AC of 20, and an HP of 4. The wisp automatically fails all saves.
+  higher_levels: When cast from a 2nd level spell slot, when told to bother a creature, the wisp will
+    also deal 1d4 lightning damage, and when told to protect, the protected creature can choose to grant
+    advantage to one of their saving throws instead.
+- name: Create skeleton
+  group: Arcane spells
+  lvl: '1'
+  types: necromancy, Arcane 1
+  casting: 1 action
+  components: verbal, somatic, material (medium skeleton or decaying corpse)
+  range: '15'
+  effect: |-
+    As an action, animate an medium undead skeleton. The skeleton is subservient to you and can understand your commands, but cannot speak. The skeleton has the following stats:
+
+    Type: medium undead, humanoid
+
+    HP: 1d8 + 1
+    AC: 10 + dex
+    Speed: 30 feet.
+
+    PROFICIENCY BONUS: 3
+
+    SAVES: none
+
+    STR: 16, DEX: 14, CON: 10, INT: 8, WIS: 8, CHA: 5
+
+    Skills: Skeletons are proficient with simple weapons, light armor, light shields, and perception.
+
+    Perks: Darkvision(120), cold resistance, piercing resistance
+
+    Attacks:
+
+    * Bony claws (dex) +5 1d4+3
+  higher_levels: |-
+    Per spell slot level above 1st, create an additional skeleton (requires an extra corpse or skeleton.)
+
+    Scaling: Skeletons are upgraded depending on your casting bonus:
+
+    1. no upgrades
+
+    2. Skeletons health increased by your intelligence bonus.
+
+    3. Skeletons are now proficient with martial weapons
+
+    4. Skeletons are now proficient with medium armor
+
+    5. Skeletons are now proficient with heavy armor
+
+    6. Skeletons gain a +4 bonus to one attribute of choice.
+- name: Foretell
+  group: Arcane spells
+  lvl: '1'
+  types: Divination, Arcane 1
+  casting: reaction
+  components: verbal, somatic
+  range: self/special
+  effect: 'As a reaction to a roll made by a character within 60 feet, make a prediction: The roll will
+    either succeed, will fail, and what specific number the rolls result will be. On a successful guess,
+    you may, as a bonus action, bestow an ally within 60 feet advantage on their next d20 roll. If you
+    guess the exact number correctly, you may immediately replace the outcome of the roll with whatever
+    roll you wish (so long as they are possible. Someone with a +5 in athletics cannot roll a 26 or above
+    even with a nat 20. subject to the GM) and restore 1 rest die to yourself.'
+  higher_levels: When you cast this spell using a 2nd level spell slot, the spell is not wasted if the
+    prediction is true, and you regain 1 rest die if you guess the number exactly.
+- name: Flash freeze
+  group: Arcane spells
+  lvl: '1'
+  types: Evocation, Arcane 1
+  casting: action
+  components: verbal, somatic
+  range: 60 feet
+  effect: |-
+    Target a point within range. All creatures within 10 feet of the point must make a constitution save. On a failure, they take 1 damage to fatigue and take 2d6 cold damage. On a success, they take only half damage instead. If a creature is submerged, they gain disadvantage on the save, and it bypasses resistance.
+
+    If this reduces the creature to 0 hp, it is frozen solid instead.
+  higher_levels: Per spell slot level above 1st, increase the damage by 1d6.
+- name: Mind spike
+  group: Arcane spells
+  lvl: '1'
+  types: Enchantment, Arcane 1
+  casting: reaction
+  components: verbal, somatic
+  range: 60 feet
+  effect: |-
+    As a reaction, cause a creature within range to make an intelligence save. On a failure, they take 2d6 unblockable psychic damage and 1 damage to fatigue.
+
+    On a critical failure, the target takes an extra 1d8 bleed damage.
+  higher_levels: Per spell slot level above 1st, increase the damage by 1d6.
+  draft_note: The draft specifies a reaction without naming the event that triggers it.
+- name: Minor invisibility
+  group: Arcane spells
+  lvl: '1'
+  types: Illusion, Arcane 1
+  casting: action
+  components: semantic
+  duration: 2d4 rounds
+  range: self
+  effect: As an action, cause yourself to become invisible. So long as you stand still, or move slowly
+    (min 15 feet per turn) you will remain invisible. The moment you move quickly (cast another spell
+    that requires a verbal component, deal damage to a creature, collide with something significant, or
+    make an attack) you become visible until you end your movement at some location.
+  higher_levels: Per spell slot level above 1st, either target an additional creature within touch range
+    to also benefit from the effect, or increase the duration by 2d4 rounds.
+- name: Mute
+  group: Arcane spells
+  lvl: '1'
+  types: Enchantment, Arcane 1
+  casting: action
+  components: somatic
+  range: 60 feet
+  effect: As an action, target a creature within 60 feet. The creature must make a wisdom save. On a failure,
+    the target becomes mute for 1d4 + your casting bonus rounds, and is shaken for 1 round. On a success,
+    the duration is halved, and the target is not shaken.
+  higher_levels: Per spell slot level above 1st, you can either increase the duration by 1d4 rounds, or
+    affect an additional target within range.
+- name: Sleep
+  group: Arcane spells
+  lvl: '1'
+  types: Enchantment, Arcane 1
+  casting: reaction
+  components: verbal, somatic
+  range: special
+  effect: As a reaction, target a 15 ft radius sphere area within 80 feet. All creatures within the target
+    area, starting with the highest health creature, must make a constitution save. On a failure, the
+    creature falls asleep. Once a number of creatures equal to your casting bonus (min 1) have fallen
+    asleep, the spell no longer targets additional creatures, and you must make a wisdom save against
+    the spell DC yourself. On a failure, you can either fall asleep yourself, or take 1 point of damage
+    to fatigue.
+  higher_levels: Per spell slot level above 1st, you can either increase the creature limit by 1, or increase
+    the radius by 10 feet.
+  draft_note: The draft specifies a reaction without naming the event that triggers it.

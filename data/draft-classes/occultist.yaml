@@ -1,0 +1,455 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/occultist-x
+- name: Occultist ritual options
+  group: Additional class features
+  description: 'These are additional outcomes for Improved Dark Ritual. Use the Occultist class rules to perform the ritual:
+    spend 2 rest dice and pass a DC 17 Arcana check.'
+  sections:
+  - heading: Improved ritual (level 4)
+    body: |-
+      At 4th level, choose 3 ritual option upgrades from the list below:
+
+      * Gain a +1 bonus to AC until next rest. Can stack up to 3 times.
+      * Gain 1 reroll that can be used on your own d20, damage, duration, and chance dice until the next rest.
+      * Prepare 1 dose of dark ichor: When consumed, the creature gains a +1d4 bonus to an attribute of their choice for 1 hour. After that, the creature must make a DC 15 constitution save. On a failure, they take 1d12 necrotic damage. Consuming more than 1 dark ichor deals 1d20 psychic damage.
+      * Prepare 1d6 + 1 cursed daggers. Each is Light, has Throw 30/60, and deals 1d6 piercing + 1d8 necrotic damage. A dagger disappears when it wounds a creature. All remaining daggers expire at the end of your next long rest. The draft’s Finesse, Flurry and “critical 2” adjustments have no current rule for these daggers and are pending.
+      * Learn a minor hex, or swap out a known hex for another. Taking this upgrade grants you 1 minor hex of choice.
+      * Gain a ferryman coin.
+
+      When using dark ritual, you can choose any of the newly chosen upgrades as alternative outcomes from its list of choices.
+  - heading: Essence drain (level 2, pending)
+    body: Essence drain triggers when a spell or your fire or lightning damage reduces at least one creature to 0 HP, up
+      to once per turn. Its slot recovery is undefined, so this dark art is pending.
+# https://sites.google.com/view/dnd5plus/home/classes/occultist-x/1-spell-blade
+- name: Spellblade art and exploit options
+  group: Additional class features
+  description: Choose these options at the indicated levels using the Spellblade archetype’s normal art and exploit allowances.
+    Its attunement, charged soul gems and level 8 mastery rules apply.
+  sections:
+  - heading: Shadow blades (level 5)
+    body: |-
+      * Shadow blades - gain proficiency with either light blades, fist weapons, or daggers & knives.
+        * You can invoke the weapons by spending 1 rest die as a free action to gain an extra attack for the next 2d4 turns.
+        * When striking with the weapons, roll a 1d6 chance die. On a 5 or higher, gain an extra attack. Extra attacks do not have this chance applied to them.
+  - heading: Exploits (level 6)
+    body: |-
+      * Blood-ritual - You can perform a ritual by cutting yourself, taking 1d6 HP worth of damage and spending 1 rest die as an action, to cast up to 3 spells simultaneously. The spell targets cannot overlap if they deal damage, and each spell still requires its normal occult slot.
+      * Enchanted shell - Gain proficiency with either medium or heavy armor. You can attune to the chosen type of armor, similar to how your spell-blade attuning works. While wearing it, you gain a +1 bonus to saves vs spells.
+  - heading: Exploits (level 7)
+    body: |-
+      * Blade-weaving — Expend a soul gem to change your attuned weapon. Choose one effect, replacing the previous one: Reach I, Cleave, Breach, +1d10 attack damage, or Swing (attack with block+ and crit range+). You can also choose a bleeding edge: on an unblocked hit, roll a 1d4 chance die and apply Bleeding on a success. Stun and Expose need an attack sequence; Clutch and Heft are triggers and still need an effect. Those four choices are pending.
+      * Soul-shield - Gain proficiency with light or heavy shields and the ability to attune to the chosen group similar to the spell-blade process. You can immediately choose to expend 1 soul-gem to gain a +6 bonus to a physical save vs a spell or magical effect, or project a bubble of force around you in a 10 ft radius, granting protection from projectiles, the environment, and debris while the shield remains raised (you do not move or lower your casting hand)
+      * Spell-thread creation - During a dark ritual you can choose to create 1d3 spell-threads instead as one of the outcomes. A spell-thread is an 80 ft string of enchanted metallic fabric, which can be thrown as a 40/80 thrown weapon, and allows anyone touching it to target all other creatures or tiles it touches with a touch or selective tile spell, burning up the thread in the process.
+      * Soul-hex - You can spend 1 rest die to create a hex gem instead, imbuing it with a greater hex. You can only attune one such gem at a time. A hex gem can be used by the wielder to imbue the greater hex placed within it.
+# https://sites.google.com/view/dnd5plus/home/classes/occultist-x/1-incanter
+- name: Incanter
+  group: Occultist archetypes
+  sections:
+  - heading: Extra occult cantrip
+    body: At 5th occultist level, learn an extra occultist cantrip. Use your occultist spellcasting attribute for it.
+  - heading: Occult insight
+    body: |-
+      At 5th occultist level, gain an upgrade from the list below:
+
+      * expanded cantrips - grant a cantrip you know one extra permanent upgrade from its list, if applicable.
+      * source casting - you may cast a spell as 1 level higher, even if it exceeds the maximum level you could cast, a number of times per long rest equal to your wisdom bonus (min 1) + 2.
+      * Spell power — Pending. The extra occult slot capacity for this upgrade is unspecified.
+      * ritual insight - Learn the following extra dark ritual outcome options:
+        * You conjure a minor, nearly invisible wisp that follows you until you conjure another wisp, or it dispels. If you become unconscious or trapped, it will rush towards your nearest ally at a range of 100 miles, alert them, and then vanish.
+        * You create an Incanter candle, which can be lit for up to 4 hours. While in the presence of its light, creatures gain advantage on wisdom saving throws, and saving throws against the suggestion, control, or illusion effects of eldritch, cosmic, and demonic entities. An incanter candle cannot be put out by a cantrip or spell of 3rd level or lower.
+  - heading: Practitioner of the arts
+    body: At 6th occultist level, you can know one additional occult spell. Short-rest slot recovery for this feature is
+      pending.
+  - heading: Lost arts
+    body: |-
+      At 6th occultist level choose one ability from the list below:
+
+      * Projecting the will — Pending slot cost. Intended effect: Use a bonus action to directly deal 1d8 force damage to a creature within 80 feet and to move it 5 feet. A creature can spend a reaction to attempt a strength save to not be moved 5 feet.
+      * Bestowing the essence — Pending slot cost. Intended effect: Use an action to grant an ally an occult spell and a single level 1 spell slot to use it with.
+      * Shedding the aura — Pending slot cost. Intended effect: Take 1 damage to fatigue and use a bonus action or reaction to gain 3d4 arcane health. While this arcane health remains, you gain advantage on saves against detection spells.
+      * Hearing the whispers — Pending slot cost. Intended effect: Use a move action to gain a +3 bonus to a skill check.
+      * Invoke the tools - You can spend 1 rest die while using a scroll or wand to roll a 1d3. On a 3, the scroll is not used, or in the case of a wand or similar item, do not consume a charge. You can also do so when attacking with a magical weapon attack, increasing the damage by 1d6
+  - heading: Extra occult capacity
+    body: Pending. The extra occult slot capacity at 7th level is unspecified.
+  - heading: Master occultist
+    body: |-
+      At 8th occultist level, Master occultist grants extra casting capacity that refreshes on a long rest. The size of this reserve in occult slots is pending.
+
+      At 8th occultist level, you can cast any spell you know with an occult slot, including spells from other traditions. The slot cost for using scrolls in place of rest dice is pending.
+# https://sites.google.com/view/dnd5plus/home/classes/occultist-x/1-schemer
+- name: Schemer
+  group: Occultist archetypes
+  sections:
+  - heading: Moving people
+    body: |-
+      At 5th occultist level, choose one:
+
+      * Gain proficiency with persuasion. If already proficient, gain expertise. If already expert, learn an arcane cantrip.
+      * Gain proficiency with intimidation. If already proficient, gain expertise. If already expert, learn an occult cantrip.
+      * Gain proficiency with deception. If already proficient, gain expertise. If already expert, learn a mystic cantrip.
+  - heading: Dark Schemes
+    body: |-
+      At 5th occultist level, gain an upgrade from the list below:
+
+      * Cold calculation - You gain a +1 bonus to intelligence. You can use int for persuasion and intimidation checks.
+      * Flesh-manipulation - You can spend 3 rest dice as an action, move action, and bonus action to manipulate a nearby creatures limb as an action by means of magic, doing one of the following effects:
+        * Healing target for 3d12 + your INT bonus.
+        * Target must make a constitution save (8 + your level + int bonus) and take 4d12 + INT bonus bleed damage on failure.
+        * Regenerate a lost or damaged limb.
+        * Remove poison from a living target, or extract essence or vitals from a dead target.
+      * Grim aura - You gain a +1 bonus to intimidation checks. You can learn necromancy spells of any class of magic. Gain resistance to necrotic damage.
+      * Hex invocations - Learn 1 minor hex and 1 major hex. At 6th occultist level learn a greater hex. Can be taken again to learn an extra minor and major hex, and another greater hex at 8th character level.
+      * Incite chaos - You can spend 1 rest die to enchant a creature within range to make a wisdom save vs a DC of 8 + your level + your charisma modifier. On a failure, the creature is compelled to either attack another as possible, or to do a harmful, disorderly, or unruly action.
+      * Invoke eldritch power - Expand your level 4 dark ritual upgrade to offer the following extra option: Gain an eldritch charge. It can be used to cast a spell you know, but has a chance to fail that scales with the number of eldritch charges you have: 3 - 1d4, 2 - 1d6, 1 - 1d4. On a failure, eldritch magic happens (Subject to GM.)
+      * Magic manipulation - Upgrade 2 cantrips you know once. You gain a +1 bonus to saves vs spells.
+      * Shadow walking - You gain a +1 bonus to stealth. While in darkness, you can shadow walk by spending a rest die as an action. When doing so, you become aware of all unilluminated areas, within a 200 ft range. You can blink to any such area immediately afterwards.
+      * Silver tongue - You gain a +3 bonus to persuasion with people who wield power or command over others. Gain a +6 bonus to checks made to mimic other voices that you have heard.
+      * Smoke and mirrors — You can learn illusion spells from any class and gain +1 to Deception. The size of the illusion-only casting reserve that refreshes each rest is pending.
+      * Steel and Sorcery - Learn a martial weapon group of choice. Gain proficiency with it and your attacks with that class of weapon gain a +1 bonus to hit and damage, and can have their attacks used as part of the touch component of spells. Gain a +1 to arcana checks made to interact with enchanted weapons.
+      * Underling master - Expand your level 4 dark ritual upgrade to offer the following extra option: Increase the max HP of a summon, elemental, construct, or undead by 1d4 and mark it. Can only be done a maximum of 4 times per target, and can only be done once per rest per target. This increases to 1d10 at level 9. When a marked creature dies, you regain 1 rest die.
+
+      At 7th level, gain an extra upgrade.
+  - heading: Prepare for trouble
+    body: |-
+      At 6th occultist level, dark ritual is upgraded to have the following extra options:
+
+      * Lightning wand - Gain a wand with 1d4+1 charges, can be used as a bonus action for a 30/60 ft spell attack that deals 1d12 + int bonus lightning damage and cannot be blocked.
+      * Artificers wand - Gain a wand with 1d4+1 charges, can be used as a bonus action to heal an undead, elemental, or construct for 1d12 + int bonus health.
+      * Warping stone - Gain a warping stone that can be consumed as a reaction to retarget a spell that is targeting you to a creature within 10 ft.
+      * Invisibility dust - Gain a pouch of invisibility dust that can be sprinkled on yourself or a nearby creature to grant them invisibility. Lasts for up to 1d8 turns, and does not reduce in duration if the target does not move or perform an action.
+
+      All such items expire upon long rest.
+  - heading: Somewhat unhinged
+    body: At 7th occultist level, you are immune to charm, fear, and terror effects.
+  - heading: Greater scheme
+    body: |-
+      At 8th occultist level, choose an ability from the list below:
+
+      * Many schemes - Learn an extra dark scheme. Gain an extra feat.
+      * Weave lies - You can spend 2 rest dice when making a lie. On a success, the target is charmed to believe you as best as possible. Targets are dispelled of their charm upon realizing a clear contradiction or absurdity. Gain a +1 bonus on deception and persuasion checks.
+      * Mind-reap - You can spend 4 rest dice to deal 8d8 + int bonus psychic damage to a creature under the effect of your charm spells or cantrips.
+      * Syphon magic - You can spend 1 rest die when a magical creature or spellcaster dies within 20 ft to regain 1d10 HP, and restore 1 block. The number of occult slots restored is pending.
+      * Communion - Your max HP is increased by 1 per follower, charmed creature, or subject that you have (max 20.)
+# https://sites.google.com/view/dnd5plus/home/classes/occultist-x/2-warlock
+- name: Devotee
+  group: Occultist archetypes
+  also_known_as: Warlock
+  description: Even in the occult, actual communion with outer forces or the sources of occult magic is a rare occasion.
+    There are some, however, who in their pursuits of forbidden knowledge have learned the nature of the flawed platonic
+    archetypes of this reality. Among those that learn this and survive the dark revelation, you can find devotees of what
+    most commoners would refer to as lesser dark gods.
+  sections:
+  - heading: Occult patronage
+    body: |-
+      at 9th occultist level, choose an Occult patron.
+
+      Each patron requires you to offer up a sacrifice as a ritual during rest, after which you gain the benefits associated with them.
+  - heading: The First Lich
+    body: |-
+      The true father of undeath is not known, but a remnant of his remnant has been permanently etched into the threads of magic in almost all necromancy. It simply takes a keen eye to read them.
+
+      Ritual: Kill a sentient living creature.
+
+      Changes:
+
+      * Command lesser undead - You can spend 1 rest die to command any number of non-sentient undead around you within 40 ft, commanding them perfectly.
+      * Override undeath - You can spend 3 rest dice to command an undead sentient creature within 20 ft, compelling it to make a wisdom save vs your spell DC. On a failure, they are now loyal to you permanently, or until uncursed.
+      * Soul farming - When you slay a small or larger sentient creature, you gain a soul point. You can spend soul points interchangeably with rest dice. Your maximum soul points is equal to your wisdom or charisma bonus, whichever is higher. Trading soul points for occult slots is pending.
+  - heading: The Flesh
+    body: |-
+      An unknown vast stillborn entity, sealed in a secret realm, who has been robbed of its soul. It lies in eternal coma, but it's form still dreams and reaches out to those who understand it.
+
+      Ritual: You must remove or be missing a body part.
+
+      Changes:
+
+      * The shared pain - You gain regeneration 1 while below 1/3 health (rounded down)
+      * Tainted blood - If you spend a HP on casting spells, the level of that spell is boosted by 1.
+      * Sudden mutation - You can spend 1 rest die as a bonus action to shift between any of the following benefits, losing 1d3 HP in the process:
+        * +2 to an ability score.
+        * +20 movement, burrow, fly, wall climb, jump distance, or swim speed.
+        * fire resistance, cold resistance, or acid resistance.
+  - heading: The Hunger
+    body: |-
+      It is speculated to be an elder god of entropy whose spirit was blinded in the deep past. The Devourer is poorly understood. It both loves its children and also feeds on them.
+
+      Ritual: You must consume the heart of a spellcaster.
+
+      Changes:
+
+      * Soul-cannibal - You can spend 1 rest die when consuming a creatures heart, either gaining their background feature, a +1 bonus to max HP up to a total maximum of +10, a mode of perception available to them, or gaining a +3 bonus to the skill which was the creatures best skill, or replacing a spell known with a spell the target knew that is of an appropriate level that you can cast (using your casting modifier.) Only one such bonus may take effect at a time. A creature whose heart you consume in such a fashion has disadvantage on checks made to raise them from the dead or reconjure their spirit.
+      * Dark guts - You gain immunity to poison damage and resistance to acid damage. You are immune to adverse effects from consuming potions.
+      * The hunger - You gain lifesight, you can perceive living creatures and lifeforce as a slightly colored aura.
+  - heading: The Moth God
+    body: |-
+      In the in-between spaces that lie at the foundations of the archetypal realm exists an entity that gladly accepts the flame over and over again. Among it's sparse followers claim it is not native to creation itself.
+
+      Ritual: Burn a sacred text or book, 10 black pages or a black scroll, or an arcane spellbook with at least 10 spell levels worth of spells.
+
+      Changes:
+
+      * Hear intent - You can understand all sentient languages. You cannot speak or read them.
+      * Surrender self - You can surrender yourself to the moths, losing all but one of your rest dice, and dematerializing into a swarm of spectral moths. You rematerialize somewhere nearby within 1d10 miles after 12 hours, and your max HP is permanently reduced by 2.
+      * Misaligned - You have a +2 bonus to saves vs teleportation or conjuration spells affecting you. When you critically succeed such an effect, you may redirect as though you were the caster of only that part of the spell/effect (Subject to GM.)
+  - heading: The Slayer
+    body: |-
+      There is a "god" of justice that was not present for and is indifferent towards the lives of mortals, one who has been waging war against unseen things in the abyss since eons ago. The old elven seers divined his name to be "Nuald", only to be irrevocably cursed for their arrogance.
+
+      Ritual: You must sacrifice an eldritch, demonic, infernal, or fiendish creature, or you must consume a special potion that forces you to make 4 death saves in order to prove trustworthiness.
+
+      Changes:
+
+      * The mark of Nuald - Your face and eye becomes marked. You gain a -2 penalty to disguise checks. When an effect checks how long you’ve been dead to determine if it can restore you (“dead no longer than X”), treat X as tripled for you.
+      * Prove your worth - You may sacrifice a demonic, eldritch, infernal, fiendish, or aberration creature during a rest and beseech your patron, requesting a gift. You may or may not be rewarded with a spell known from any class of magic ( Offerings must only increase in quality. Subject to GM. )
+      * The slayers call - Your spell DCs gain a +1 bonus and your attack rolls have their crit range extended by 1 so long as the target is an eldritch, fiendish, infernal, or demonic creature.
+  - heading: The Deep One
+    body: |-
+      To those that are aware, it is clear that something immense sleeps beneath the depths of this world, but cannot mature or hatch, or perhaps awake. Its followers are split between three: those that seek to awaken it, and those that feed off its energies.
+
+      Ritual: You must drown or bury yourself during the ritual, dying in the process. You will be revived and gain a permanent -1 penalty to death saves.
+
+      Changes:
+
+      * The deep power — Your maximum number of occult slots increases by 2.
+      * Deep trance - You can choose to spend a rest die to gain a +3 bonus to intelligence checks, as well as checks made to interact with magical or alchemical items. This lasts for as long as you maintain concentration. For the duration, your eyes go blank and you are hobbled. During this state, you have disadvantage on saves vs spells and abilities from abyssal and aberrant creatures (Subject to GM.)
+      * Deep-source mutations - Choose one: waterbreathing, burrow speed of 10 ft, 20 ft swim speed, or tremorsense 30 ft.
+      * Unnatural influence - Your rest dice maximum is increased by 1. Your natural lifespan is increased by half.
+  - heading: Broken Archon
+    body: |-
+      There was once a transcendental order, whose fragments now exist as beings of pure intellect and magic. The sages advise not to reach out, as one might become an unwitting servant of a rogue archon, whose morality is far too sophisticated for mortals.
+
+      Ritual: You must sacrifice an item enchanted with divination magic and accept an oath which forbids you from casting domination and compulsion effects. If you have domination or compulsion spells, you may swap them for oath spells of equivalent levels.
+
+      Changes:
+
+      * Cosmic protection - you ignore the partial results suffered from successful saves of any kind so long as their source is an eldritch, undead, or demonic creature.
+      * Intervention - You may spend 7 rest dice to beseech your patron for an intervention, stopping time for everyone except yourself and up to as many allies as your wisdom bonus (min 1.) granting all of you an additional 1d3 rounds. During this time, no interaction can be made with living things that are stopped and from the perspective of the creatures that can act, they are in stasis.
+      * Ancient knowledge - You gain a +3 bonus to history and religion checks.
+  - heading: Infernal Contract
+    body: |-
+      There still exist infernal ancestors whose influence reaches far and wide even while imprisoned in their hellish realm. Most official contract scrolls have been destroyed by holy orders, but there are ways...
+
+      Ritual: You must be able to speak and read infernal. You must sacrifice a black page, a scroll with a conjuration spell of at least 3rd level, the head of an animal that symbolizes fertility or innocence, and 1d10 HP worth of blood from yourself.
+
+      Changes:
+
+      * You can no longer judge - You gain a -3 penalty to insight checks.
+      * An evil gift - Choose one:
+        * Life-taking - slaying a sentient small or larger creature restores 1 rest die.
+        * Great influence - Your compulsion and charm spell DCs are increased by 3.
+        * Raw power - Your attacks, damage dealing abilities, and spell deal an extra 1d6 damage.
+      * The fine print - When you die, you cannot be revived unless the creature making the revival ability psychically negotiates with your patron (subject to GM.)
+  - heading: The Draconic Principle
+    body: |-
+      The dragon cults great teachings do not concern themselves with the origin of the world, merely the origin of the draconic soul and how it pierced the world. The true form of what draconic creatures are is still said to be obscured.
+
+      Ritual: You must consume part of a draconic creature.
+
+      Changes:
+
+      * Ascended form - You are now considered draconic by spells and abilities, choose one:
+        * Wings - Gain wings and a fly speed of 30 ft.
+        * Breath - Your breath attacks deal 1d6 extra damage of your chosen kind (non-physical,) and you can spend 2 rest dice to breathe the chosen damage in a ray, dealing 3d6(+1d6) damage of the chosen kind to creatures that fail a DC 20 dexterity save.
+        * Scales - You gain a +1 bonus to AC and intimidation checks.
+      * Draconic casting - You may spend 1 rest die when casting an evocation, abjuration, or transmutation spell, shouting its draconic verse as a verbal component and doing the following:
+        * Increase its range by half if applicable.
+        * Increase its duration by 1 unit size (rounds > minutes > hours > days)
+        * Increase its DCs by 1, if applicable.
+        * Increase its damage dealt by 1 dice, if applicable.
+  - heading: The Abyss
+    body: |-
+      What is called the abyss is more comparable to the elephant graveyard of the archetypal realm that has collapsed in on itself. It is said that one can hear its whisper as they descend into it.
+
+      Ritual: You must sacrifice a human, half-orc, or elf. This must be done underground. Must be able to speak abyssal.
+
+      Changes:
+
+      * Abyssal change - You gain a -1 penalty to charisma. You gain a +1 bonus to a different ability score of choice. Choose one:
+        * Void power - You can spend 3 rest dice as a free action to attempt to counter a spell that is targeting you, or a spells whose effect intersects any point within 15 ft of you. Make an arcana check vs spell DC to negate it.
+        * Abyssal fortitude - You gain an extra death save slot. If you are slain, you must roll a 1d4 chance die. On a 2 or lower, you are returned to 8 HP and lose 2 rest dice.
+        * Translatable form - You can spend 4 rest dice or take 1d6 damage to fatigue to blink to any point you can see. Gain a -1 penalty to saves vs conjuration and teleportation spells.
+      * Dark power — Pending slot cost. Intended effect: Spend 2 rest dice and take 1 damage to fatigue to immediately gain an extra turn after the current one. You can only do so once per round during your turn.
+      * Marked one - You have a -1 penalty to saves vs divination and abjuration spells.
+  - heading: The Coven
+    body: |-
+      There is an old tradition of magic and ritual that can be found scattered throughout the entire world. It is fractured now and no longer has a true patron, favoring instead the aspects of black magic that remain.
+
+      Ritual: You must brew and consume a potion that includes 1d6 HP worth of your own blood and sacrifice a medium, small, or tiny animal.
+
+      Changes:
+
+      * Choose one:
+        * Witch Tongue - all spells with verbal components that you cast can now deal extra 1d6 necrotic damage. Curse spells you cast, which have verbal components, have their duration increased by 1 category size.
+        * Familiar form - using 1 rest die as an action, you can transform into a familiar form for up to 1 hour ( for 1d10 hours if done at midnight. Exiting the form follows wildshaper rules - druid 5 ) chosen the first time you transform:
+          * feline - 4d6 HP, 18 AC, +10 ft speed, +1 dex, +4 stealth.
+          * raven - 2d6 HP, 18 AC, fly speed 50 ft, +2 int.
+          * owl - 3d6 HP, 16 AC, fly speed 60 ft, +2 perception.
+        * Cauldron use - during a rest, you can spend 1d4 HP or 1 rest die to create 3 basic alchemist items (Alchemist 1.) Any consumable item you create that applies your intelligence modifier also applies your charisma modifier, and any healing or damage from alchemical items you create has their dice increased by 1 dice size category.
+      * Hex tradition - Learn 4 hexes.
+  - heading: Arcane Sentience
+    body: |-
+      It is in fact the most common path, that one who truly delves into the secrets of arcana will encounter a disembodied arcane sentience that speaks across the threads. It is not known if they are truly what they say they are, but proficient occultists agree that it is possible to attune oneself to such information and even commune with them, but they seldom mention how to leave them.
+
+      Ritual: You must deal at least 16 psychic damage to yourself.
+
+      Changes:
+
+      * Arcane handshake - Choose two cantrips you know, upgrade each once.
+      * Repurpose magic - You can exchange your occult spells for arcane spells when using your dark ritual ability to swap occultist spells. You may use your occultist casting modifier when casting them.
+      * Mana-adaptation - So long as you have consumed a mana potion within the last 2 days, you gain permanent aurasight at a range of 30 ft, a +1 bonus to constitution, +1 to max rest dice, and a +4 bonus to arcana checks. But, So long as you have not consumed a mana potion in the past 2 days, you gain a -2 penalty to constitution.
+      * Consume magic - You can spend 4 rest dice to attempt to dispel a spell, making an arcana check with advantage vs the DC. If the attempt is successful, you regain 2 rest dice.
+  - heading: Occult providence
+    body: At 10th occultist level, learn an extra occult cantrip from the list below
+  - heading: Eldritch tendrils
+    body: |-
+      Type: occultist, devotee, conjuration, evocation, cantrip
+      Casting time: action
+      Components: somatic, verbal
+      Range: 20 ft
+
+      Effect: As an action, conjure eldritch or arcane tendrils from your tile, pertaining in theme to your occult patronage. Has a 1d3 cooldown dice.
+
+      Conjure a number of tendrils equal to your charisma modifier (min 1.) to do one of the following, each:
+
+      * 2d10 + casting modifier bludgeoning damage, strength save to not be hooked, pushed, tripped, or disarmed.
+      * Grapple a target to the ground, remaining conjured for as long as you maintain concentration.
+      * Help a grapple check within range, granting it a +3 bonus.
+
+      At 11th level and 12th character level choose 1 upgrade:
+
+      * +10 ft reach. +5 ft to hook and push distances. +1 to spell attacks.
+      * +1d4 to number of tendrils. Repeatable.
+      * +1d10 damage. Change damage type to any spell damage you can deal.
+  - heading: Power spike
+    body: |-
+      Type: occultist, devotee, transmutation, necromancy, cantrip
+      Casting time: action
+      Components: verbal, material, 1d6 worth of HP
+      Range: self
+
+      Effect: As an action, superinfuse your form with magical energies, sacrificing 1d6 points of HP, and gaining the following benefits for 1d3 + 1 rounds:
+
+      * You have a -1 penalty to saves vs divination spells.
+      * You regain 1 block at the start of your turn.
+      * You have an extra attack.
+      * You have an extra reaction.
+
+      At 11th level and 12th character level choose 1 upgrade:
+
+      * Change casting time to 1 bonus action.
+      * Also gain an extra bonus action.
+      * Reduce HP cost by 1 dice size category. Repeatable.
+  - heading: Mind trick
+    body: "Type: occultist, devotee, enchantment, illusion, cantrip\nCasting time: action\nComponents: somatic, verbal\n\
+      Duration: 1 minute. \nRange: 15 ft.\n\nEffect: As an action, force an uninjured or resting sentient creature to make\
+      \ a wisdom save. On a failure, you may compel them to do one action, they are hobbled and distracted for the duration.\
+      \ If their actions cause them harm or shock, they may retry the save to break free.\n\nAt 11th level and 12th character\
+      \ level choose 1 upgrade:\n\n* Increase duration to 1d4 minutes.\n* Allow targeting creatures in a cone by also spending\
+      \ an extra bonus action to cast.\n* Can target allies to instead make a wisdom or charisma save in place of them."
+  - heading: Psychic projection
+    body: |-
+      Type: occultist, devotee, divination, abjuration, cantrip
+      Casting time: action
+      Components: verbal
+      Duration: 1 hour
+      Range: self
+
+      Effect: As an action, cause your body to enter a sleep state for 1 hour. For the duration of your sleep, you have a projected form (stats but no items) in a plane of choice: Ethereal, shadow, abyssal, or the Material but in ghostly form.
+  - heading: Cult tradition
+    body: |-
+      At 11th occultist level, choose one upgrade from the list below:
+
+      * Cult leader - You may induct willing followers as an hour long process. The slot-capacity bonus from the size of the following is pending. Followers may undergo the ritual to gain 1 of the beneficial changes granted by your occult patronage (must always be the same.)
+      * Enlightened one - Your rest dice maximum and your occult slot maximum each increase by 2. You are immune to charm and illusion effects. Either learn an extra occult providence cantrip or learn an extra occult spell.
+      * Secretive order - You may create an order with up to as many creatures as your charisma bonus (min 1) granting each member knowledge of one occult spell of level 4 or lower. Creatures cast the spell either at the highest level they can cast, or 1/2 the highest level you can cast (rounded down, whichever is highest) and the spell can be unique to each creature. You can target all allies with spells that have a range of self or touch so long as they are within 50 ft of you, but they are allowed a save if they oppose the spell. The size of the casting reserve each member gains per rest is pending.
+  - heading: Occult ascension magic
+    body: 'At 12th occultist level, you learn the following spell:'
+  - heading: Occult ascension
+    body: "Type: occultist 6, devotee, transmutation\nCasting time: full round action\nComponents: somatic, verbal, material\
+      \ (1000 gold worth of gold dust, 5 mana potions, 1 gemstone worth 1000 gold.)\nDuration: 1 minute. \nRange: self\n\
+      \nEffect: As an action, force yourself to make 5 death saves. If you survive, you gain a permanent transformation\
+      \ associated with your patron, and you become untargetable by the spell afterwards.\n\nChoose 4 upgrades from the\
+      \ list below:\n\n* Your rest dice maximum is increased by 3.\n* You permanently lose 1 death save are now considered\
+      \ undead. You can ignore the HP cost of spells you cast.\n* You gain regeneration 2 and are now considered a moonkin.\n\
+      * You gain a levitation and flight speed of 40 ft.\n* You gain perfect blindsight and simply see all space in an outward\
+      \ sphere from your head as though you had perfect 360 vision.\n* You gain a permanent extra attack.\n* You can resist\
+      \ anything that requires a save as a reaction, granting yourself a +5 bonus to the save.\n* You gain an extra reaction\
+      \ and a +5 bonus to initiative checks.\n* You learn 4 spells that are either arcane, mystic, or oath spells. You can\
+      \ now cast them as occult spells using occult slots."
+# https://sites.google.com/view/dnd5plus/home/classes/occultist-x/2-shadow-mage
+- name: Shadow mage
+  group: Occultist archetypes
+  description: Shadow no jutsu
+  sections:
+  - heading: Shadow magic points
+    body: |-
+      At 9th occultist level, you gain a number of shadow magic points equal to either your intelligence or wisdom modifier, whichever is highest.
+
+      You regain 1 SMP during short rests, and all SMP during a long rest.
+
+      You can spend shadow magic points in place of rest dice for abilities. A shadow magic point can fuel a spell only if its name contains “shadow” or “dark”, or a feature explicitly allows it. The shadow-point cost of casting a spell or replacing an occult slot is pending.
+
+      When an ability or effect restores rest dice, you may take any amount as shadow magic points instead. A conversion for restored occult slots is pending.
+  - heading: Shadow magic
+    body: |-
+      At 9th occultist level, you gain the following abilities:
+
+      * Shadow clone - spend 2 rest dice as an action to create a tangible illusory double of yourself, which is identical in all ways except it only has 1 rest die, only 1 block, and it only has 3d4 + 3 times your constitution bonus HP. Illusory items that are created along with it do not transfer any real magical properties but can appear to radiate them to creatures with aurasight. The illusory double can be dispelled at will, or after 1 minute. You share the perception of the double. When an illusory double casts a spell, it is instead cast at the spell’s own level unlike a typical occultist whose spells are always cast at max level. All healing that shadow clones apply is reduced to 1/2 (rounded down,) and their death is not treated as a real sentient creature. Shadow clones cannot create more shadow clones. The clone’s initial occult casting capacity is pending.
+      * Darksight - you permanently have perfect darksight (can see even in magical darkness)
+      * Shadow cloak - spend 2 rest dice as an action to envelop yourself and the surrounding 70 ft area in magical darkness and illusory smoke. This obscures aurasight, darkvision, and regular perception.
+      * Darkwarp - you can spend 3 rest dice as an action to teleport to the plane of shadow, or to blink from the plane of shadows into the material plane. The plane of shadows is a projection of the material world which overlaps it.
+  - heading: Shadow mage upgrade tree
+    body: |-
+      At 9th occultist level, you gain access to the shadow mage upgrade tree, choosing 2 upgrades. You gain 1 extra upgrade on every following level-up.
+
+      Shadow mage upgrade tree
+
+      * Shadow illusion magic - Your SMP maximum is increased by 1. You can use SMP to cast illusion spells. When doing so, you can increase the spells duration by 1 unit size category and double the spells affected area size or number of targets.
+        * Forced blind - You can spend 1 rest die dice to force a creature within range to make a wisdom save. On a failure, they are blinded for 2d4+1 rounds, as well as making them visible from the plane of shadow for the duration, remaining visible for the duration even if the blinded effect is dispelled.
+        * Consume light - You
+      * Shadow clone mastery - The rest dice cost of creating a shadow clone is reduced by 1. The duration of shadow clones is increased to 5 minutes and they have 1d4 more HP.
+        * Shadow clone gambit - You can spend 3 additional rest dice to create two additional shadow clones.
+        * Shadow clone swap - You can spend 3 rest dice to swap places with a shadow clone as a bonus action. This is a blink and teleportation effect.
+        * Rapid clone trick - You can now use your shadow clone ability as a bonus action.
+      * Darkseer magic - Your SMP maximum is increased by 1. You can spend SMP to cast divination spells, but only so long as the target is not illuminated by the sun or an equivalent radiant cosmic source of light.
+        * Shadow-haunt - If you are within 1 mile of a creature that is revealed by a divination spell you cast, you can spend 4 rest dice as an action until the end of your next turn to blink to a non-observed area within 30 ft of the target.
+          * Perfected shadow-haunt - You can now shadow-haunt as a movement action, and the range is increased to 3 miles.
+        * Counter-shade - You can spend 5 rest dice as a reaction to counter any divination or teleportation spell targeting you, granting you an intelligence save with advantage before the spell is resolved. If the save exceeds the spells DC, the spell is retargeted to any valid tile within 20 ft of your choice, and the target is afflicted with dark-flame, taking 1d8 necrotic damage at the start of their round until dispelled.
+      * Shadow cloak mastery - The range of shadow cloak is increased to 140 ft, and all creatures affected must also make a wisdom save at the start of their round to not become distracted by whisps of darkness.
+        * Shielded by shadow - while in magical darkness or while in the plane of shadow your AC, block checks, and saves gain a +1 bonus.
+        * Eavesdrop - While in the shadow cloak area, you can attempt to listen in on the surface thoughts of any creature within the area, and are made aware of all other creatures within the area of effect.
+        * True nocturnal - You can function normally with a mere 1 hour of sleep. You recover one extra rest dice and SMP during a short rest.
+      * Darkwarp mastery - The rest dice cost of darkwarp is reduced by 1, and can be performed as either a bonus action or move action.
+        * Shadow flight - While in darkness, you can spend 2 rest dice as an action to launch yourself as a shadowy whisp at the target location within 400 ft. You must merely be aware of the location and do not require a direct line of sight, as the whisp form can maneuver with perfect precision. While in magical darkness or in the plane of shadow, the cost is reduced by 1 rest die.
+        * Anti-photosynthesis - While in magical darkness or the plane of shadow, you have regeneration 1.
+        * Forced transfer - You can spend 4 rest dice as an action to force a creature in the material or shadow plane to make an intelligence save. On a failure, they are transported to the other plane.
+      * Dark-flame magic - You gain +1 max SMP. You can use SMP to cast evocation spells that deal fire or necrotic damage. Fire damage dealt these spells is changed to necrotic damage, and the Burning condition is changed to dark-flame, which deals 1d8 necrotic damage until dispelled or until they take radiant damage.
+        * Dark-flame mastery - The dark-flame condition you apply now deals 1d10 necrotic damage at the start of creatures rounds.
+          * Dire dark-flame - The dark-flame condition you apply now deals 1d12 necrotic damage. and can no longer be dispelled with radiant damage if it is less than 20.
+        * Weave dark-flame - You may spend 1 rest die to imbue dark-flame into a weapon, granting it an extra 1d8 necrotic damage on hit, and causing it to apply the dark-flame condition on a critical hit.
+  - heading: Secret shadow mage art
+    body: |-
+      At 10th occultist level, you can learn one of the following abilities:
+
+      * Enhanced shadow clone - You can spend 4 rest dice and 2d8 HP to create a single enhanced shadow clone, which has 1/2 your max HP, 1/2 your total occult slots, 1/2 your shadow magic points, and 1/2 your total rest dice. It cannot create further improved shadow clones, but it can use all your shadow mage abilities. The enhanced shadow clone has its duration extended to permanent. You cannot have more than 1 enhanced shadow clone at a time.
+      * Shadow cage — Pending slot cost. Intended effect: Force any number of creatures (up to your int bonus, min 1) within 30 ft to make a dexterity save. The DC is increased by 2. Creatures that fail the save are restrained for as long as you maintain concentration, and creatures that succeed suffer the following partial effect: must make another dexterity save, becoming restrained on a failure. If you and a target are in darkness, then the range of the spell is extended to the range of your shadow cloak ability. If they critically fail either save, the effect is maintained by semi-real shadowy chains and does not require a concentration check and becomes permanent.
+      * Darkspeed - So long as you are inside magical darkness, you gain an extra reaction, an extra attack, and 1 temporary block at the start of your turn which lasts until the next round.
+  - heading: Become shadow
+    body: |-
+      At 11th occultist level, you can assume a non-material shadowy form as a bonus action, melding your carried items with you, remaining in it for up to 1d10 minutes, and you can leave it as a free action.
+
+      While in the form, you have a fly speed of 100 ft, can pass through loose particulate matter (such as rocks or sand) at half speed, and cannot be targeted by ranged spells, are immune to non-magical weapon attack, are immune to poison damage, and are immune to acid damage.
+
+      In this state, you are treated as being in magical darkness, and you have vulnerability from radiant damage.
+  - heading: Eclipse of the soul
+    body: |-
+      At 12th occultist level, you can must choose; to remain a master of shadow magic or become a permanent wraith.
+
+      * Remain corporeal - Your rest dice maximum is increased by 1. All your shadow mage abilities are reduced in cost by 1 rest die, down to a minimum of 0, during night, and you gain 3 occultist spells known. You age at 1/2 your natural rate.
+      * Assume permanent wraith form - You are permanently under the effect of become shadow. Your rest dice maximum is increased by 6 and you become immune to cold and necrotic damage. You no longer age.
+# https://sites.google.com/view/dnd5plus/home/classes/occultist-x/2-soulsealer
+- name: Soulsealer
+  group: Occultist archetypes
+  status: Unfinished draft
+  description: The draft lists a feature called Soul gem creation without its rules.

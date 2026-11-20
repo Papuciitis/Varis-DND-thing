@@ -1,0 +1,435 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x
+- name: Rogue
+  group: Base class
+  description: The rogue is someone who does not pretend to ignore the more unfair and exploitative aspects of life. You
+    prefer to win the fight, get the gold, or have the last laugh, plain and simple. Life's short and one best not worry
+    about adhering to rugged paths when cunning and speed can serve them better in the here and now.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Sneak attack
+      - Features
+      rows:
+      - - '1'
+        - '2'
+        - 1d6
+        - Sneak attack, Expertise, Dodge
+      - - '2'
+        - '2'
+        - 2d6
+        - Ability score improvement
+      - - '3'
+        - '2'
+        - 2d6
+        - Cunning, Extra bonus action
+      - - '4'
+        - '3'
+        - 3d6
+        - 1st Archetype
+      - - '5'
+        - '3'
+        - 3d6
+        - Ability score improvement
+      - - '6'
+        - '3'
+        - 4d6
+        - —
+      - - '7'
+        - '4'
+        - 4d6
+        - 2nd Archetype
+      - - '8'
+        - '4'
+        - 5d6
+        - Ability score improvement
+      - - '9'
+        - '4'
+        - 5d6
+        - —
+      - - '10'
+        - '5'
+        - 6d6
+        - 3rd Archetype
+      - - '11'
+        - '5'
+        - 6d6
+        - Ability score improvement
+      - - '12'
+        - '5'
+        - 7d6
+        - —
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d6
+
+      Armor: Light armor and light shields
+      Weapons: simple light weapons, 1 martial weapon group, and 1 of either simple crossbows or simple bows
+      Tools: choose one from thieves' tools, forgery kit, disguise kit
+      Saving throws: Dexterity, Intelligence
+      Skills: choose three from Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of hand, Stealth
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) 2 simple weapons of choice, or (b) a blowgun and 5 poison darts
+      * (a) a rapier, (b) a shortsword, or (b) four daggers
+      * (a) a burglar’s pack, or (b) a dungeoneer’s pack
+      * Leather armor
+  - heading: Sneak attack
+    body: At 1st level, whenever you make an attack with advantage, you deal an additional 1d6 damage. This damage increases
+      by 1d6 every other level, as indicated in the class chart.
+  - heading: Expertise
+    body: At 1st level, you gain expertise with a skill or tool that you are proficient with. Whenever you critically succeed
+      at this skill, regain a rest die. At 7th level, gain expertise with another skill or tool that you are proficient
+      with. This effect also applies to that skill.
+  - heading: Dodge
+    body: Starting at 1st level, you can spend a reaction when attacked to gain advantage on a block check and move 5 feet
+      without provoking a reaction afterwards.
+  - heading: Ability score improvement
+    body: At 2nd, 5th, 8th, and 11th level, you gain an ability score improvement, allowing you to permanently increase
+      one ability score by 2, or two ability scores by 1. Alternatively, choose a feat.
+  - heading: Extra bonus action
+    body: At 3rd rogue level, you gain an extra bonus action to use on your turn. This does not allow you to consume more
+      than one consumable per turn.
+  - heading: Cunning
+    body: |-
+      At 3rd rogue level, choose three upgrades from the list below:
+
+      * Burglar - You gain a +2 bonus on checks made to unlock doors, gates, and passages into vaults, businesses, castles, and wealthy residences (Subject to GM. Emphasis on "into".) Gain a +1 bonus to investigation checks when inside a structure linked with nobility, government, or mercantile.
+      * Chug - You can use your bonus action to consume a potion twice per turn.
+      * Daring fool - Take a -1 penalty to wisdom. You can spend a rest die to gain a +2 bonus to charisma and dexterity for 2d4 rounds.
+      * Defenestration - Creatures that take fall damage or take damage by being shoved or pushed into a trap as a result of your actions take an extra 2d6 damage.
+      * Emergency supply - Once per long rest, you can consume an emergency potion as a reaction or bonus action, restoring 2 rest dice, healing bleed and acid exposure effects, and allowing you to remake saves vs an ongoing disease or curse effect.
+      * Evasion - When you succeed at a dexterity save against a spell or ability that still applies a partial negative effect afterwards, ignore it.
+      * Expanded repertoire - Either gain proficiency with a skill or tool of your choice or gain expertise with a skill or tool you are proficient with.
+      * Hold on for life - Gain a +3 bonus to checks made to hold on to items creatures or objects, to avoid falling tripping or being pushed, and to catch falling allies and thrown objects. Gain a +1 bonus to death saves.
+      * Improved sneak attack - Increase your sneak attack damage by 1d6.
+      * Kick and shove - You can make a kick attack as a free action once per turn, up to 8 times per rest. It's an unarmed 1d4 + strength bonus bludgeoning damage attack, and pushes a target 5 ft away if they fail a DC 10 + athletics bonus strength save. You can make the kick and shove maneuver as two bonus actions otherwise. Gain a +1 bonus to checks and saves made to escape grapples.
+      * Play dumb - You can spend a rest die to gain advantage on a deception, performance, insight, intimidation, or perception check made to lie or obscure information. Gain a +1 bonus to intelligence.
+      * Quick reflexes - You can spend a rest die to immediately gain a reaction. This can only be done once per turn.
+      * Rapid dash - You can spend two bonus actions to dash or disengage.
+      * Rogue toolkit - Gain proficiency with tinkers tools. You can spend a rest die during a rest to create 2 rogue tools, which can be used as a bonus action:
+      - Caltrops ( 1d4 contact damage, 1d4 tiles, 25 ft throw range )
+      - 2 Smoke pellets ( 10 ft radius, blinds and obscures, 60 ft throw range )
+      - Fire cocktail ( 30 ft throw range, 3d6 + dex bonus fire damage, block DC 10 + prof + dex bonus, ignite on hit )
+      - Bola sling ( 25 ft throw range, entangle if not blocked. Can be fired via launcher property weapons)
+      * Scavenger - You gain advantage on checks made to detect hidden items, compartments, or passages.
+      * Skulk - You gain a +1 bonus to stealth and deception check. You can spend 1 rest die to gain advantage on a stealth check.
+      * Spool key use - You know how to create a spool key if you have thieves' tools and at least 1 copper coin's worth of metal. You can create 1 per rest. A spool key lets anyone using it to attempt a thieves' tools check on a lock or similar mechanism, but using your bonuses at the time of creation + 3 for the check.
+      * Swift on your feet - Increase your base movement speed by 5 feet and increase your dodge movement distance to 5 feet.
+      * Takes one to know one - Gain a +2 bonus to social checks with and to detect other rogues, or hidden/skulking creatures.
+      * The devils advocate - Gain a +3 bonus to social checks made to defend, justify, or encourage crime or questionable decisions (Subject to GM.) or to feign innocence in such situations. Gain a +1 bonus to saves vs the abilities and spells originating from infernal, fiendish, and demonic creatures.
+      * Two weapon combat - Gain the two weapon fighting feat. If you already have it, gain a +1 bonus to block checks and AC while wielding two weapons.
+      * Venom alchemy - You can spend a rest die during a short rest to create 1d4 vials of venom, which can be applied to weapons and ammunition, dealing an extra 1d8 poison damage. You can apply venom and poison to a weapon as a bonus action. If you have the remains of a venomous or noxious creature, you can also prepare 1d4 vials of deadly toxin, which deals 1d8 poison and 1d8 acid damage. You can enhance one poison or poison damage dealing consumable once per rest, increasing its damage by 1 dice size category. A consumable can only be enhanced in this way twice.
+  - heading: 1st Archetype
+    body: |-
+      At 4th level, choose your first rogue archetype:
+
+      * Assassin
+      * Thief
+      * Scoundrel
+      * Shadow
+  - heading: 2nd Archetype
+    body: |-
+      At 7th level, choose your second rogue archetype:
+
+      * Brigand
+      * Hexer
+  - heading: 3rd Archetype
+    body: At 10th level, choose your third archetype
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x/assassin
+- name: Assassin
+  group: Rogue archetypes
+  sections:
+  - heading: Assassinate
+    body: At 4th rogue level you can spend a rest die as two bonus actions to grant advantage to your next attack this turn.
+  - heading: Assassin skills
+    body: |-
+      At 4th rogue level choose 2 upgrades:
+
+      * Proper assassination - The rest rest dice cost of assassinate is refunded if your next attack reduces the target to 0 health.
+      * Essence eater - If you slay a creature with your assassinate attack, you gain 1d8 arcane health.
+      * Reflexes - You can spend a bonus action to grant yourself a +1 bonus to AC and dexterity saves until the start of your next turn.
+      * Stalker - Attacking out of stealth deals an additional 1d6 damage. You gain a +1 bonus to stealth checks. You gain darkvision.
+      * Lethal edge - Assassinate also causes the next attack to have its critical range increased by 1.
+      * Versatility - Gain 2 extra cunning upgrades (rogue 3)
+      * Bloodseeker - Whenever you deal piercing, force, or slashing damage, roll a 1d4<2 chance dice and inflict bleeding on the target on a success. Gain a +1 bonus to constitution.
+  - heading: Odd habits
+    body: |-
+      At 5th rogue level, choose one of the following abilities:
+
+      * Jittery nature - Swapping between weapons is a free action. Drawing a weapon is a free action. You have advantage on initiative checks. If you are the first character to act in the encounter, you have an extra action on the first turn.
+      * Sadism — Increase the damage die of Cruel or Regards by one size category when the effect supplies a die. A weapon’s Skewer uses its listed sequence. Improving Skewer when it supplies no separate damage die, and increasing the tier of Rend, are pending.
+      * Minor necromancy - Learn a necromancy cantrip. Use intelligence as the casting attribute. If it has only a somatic component, you can use dexterity as the casting attribute. Gain a +1d4 bonus to all checks made to investigate or examine corpses.
+      * Dependency - After rolling a natural 1 on a save or skill check, you become afflicted, taking a -1 penalty to all d20 rolls until you take a long rest. This effect can stack, down to a -3. You procure 1d6+1 curative pills during a long rest, and can procure 1d2 pills at the cost of a rest die during a short rest. Consuming the curative pill restores 1 fatigue, ends the affliction, and requires the consumer to make a DC 18 constitution save. On a success, they regain 1 rest die.
+      * The list - You have a list of characters, up to your charisma bonus + 1 (min 1.) Your attacks gain a +1 bonus to hit and damage against targets on the list. You can gain advantage on a d20 roll associated with a target on the list once per target as a free action. You can place a creature on the list during a rest by spending a rest die. A target is only removed from the list once slain, or by spending 4 rest dice during a rest. Killing a target restores 1d6 health.
+      * Formality - If you deny yourself or your opponent a surprise round, you regain 2 rest dice at the start of combat.
+      * Thorough - You have a +1d4 bonus to investigation, insight, or perception checks made to find or identify items and passageways. You gain a +1 bonus to all checks made to read and comprehend documents or texts. You can spend 2 rounds and 3 acid vials (or similar items) to completely remove a medium or smaller corpse and leave behind no recognizable remains.
+      * Workaholism - Gain proficiency with a skill and tool of choice. Gain +1 bonus to checks made to do a job or long-term physical task.
+      * Night person - Gain a +1 bonus to skill checks with skills you are proficient with during the night. You gain a temporary rest dice to use at dusk, which is lost at dawn if not used.
+  - heading: Death dance
+    body: At 6th rogue level, when you kill an enemy, you can spend 1 rest die to immediately gain another action.
+  - heading: Master assassin
+    body: |-
+      At 6th rogue level, choose 2 upgrades:
+
+      * Exerted Assassination - You can choose to take 1 point of damage to fatigue to use assassinate instead of spending a rest die.
+      * Combat training - Gain proficiency with two other weapon groups of your choice and increase the block DC of all your attacks by 2.
+      * Greater sneak attack - Gain +1 sneak attack dice.
+      * Arcane insight - Learn an arcane cantrip.
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x/scoundrel
+- name: Scoundrel
+  group: Rogue archetypes
+  sections:
+  - heading: Scoundrel maneuvers
+    body: |-
+      At 4th rogue level, you learn three of the following maneuvers or properties:
+
+      * Coup-de-grace - The crit range of your light one-handed slashing or piercing weapons is increased by 1.
+      * Dirty strike - You can make a special attack either unarmed, with a knife/dagger, a light bludgeoning weapon, or with a fist weapon as a bonus action once per round. On a success, if unblocked, the target must make a constitution save (DC 10 + your rogue level) to not gain one of the following negative conditions: blinded, deafened, shaken, shocked, winded, or sickened for 1 turn.
+      * Dive strike - You do not suffer fall damage when landing on a creature and attacking them. The recipient of a such an attack has disadvantage on their block check and the attack benefits from your sneak attack damage.
+      * Draw-shot - You can make a crossbow, wand, or thrown weapon attack as you swap to them or equip them. this cannot be done more than once per turn.
+      * Driven edge - After a successful unblocked attack with a two-handed or versatile weapon, you can spend 2 bonus actions to make it deal its damage again.
+      * Engarde - After a successful block or disarm, you may make an attack as either a reaction or bonus action.
+      * Feinting leap - Once per turn you can make a feinting leap, dash up to 10 feet. This provokes attacks of opportunity, and if it misses you may respond with a melee attack as a free action.
+      * Quick leap - As a bonus action, leap, roll, or slide 15 ft. This movement does not provoke attacks of opportunity or reactions.
+      * Regards - After a successful unblocked dagger attack, you can leave (equip) the blade in the target, applying bleed and dealing an extra 1d6 piercing damage.
+
+      The following maneuvers become available for later selection at level 5:
+
+      * Improved dodge - The distance of dodge (rogue 1) is increased by 5 feet.
+      * Overtake - When using dodge (rogue 1) you can move over/under/through the attacker as part of the movement.
+      * Pincushion - You can spend an action, a bonus action, and a move action to make 4 attacks while wielding 2 light piercing weapons.
+      * Thorn leap - While using dodge, fainting leap, or any other dash-like movement ability, you can make a thrown weapon attack at disadvantage as a free action. This can only be done once per round.
+  - heading: Street smarts
+    body: At 4th rogue level, gain a +2 bonus to checks made to deceive, con, investigate, appease, evade, or intercept
+      members of the lower classes, commoners, or members of underworld organizations.
+  - heading: 'Improved maneuvers:'
+    body: |-
+      At 5th rogue level, you have 3 new Scoundrel maneuvers, or upgraded maneuvers if you have the prerequisite maneuver:
+
+      Upgraded maneuvers:
+
+      * Coup-de-grace+ - When you make a critical strike, roll 1d6. On a 1 or 2, the critical strike also deals your sneak attack as extra damage.
+      * Dirty strike+ - The duration is no longer 1 turn, and instead lasts until removed. The target remakes the check at the start of every round to end the effect. The DC is reduced by 2 every turn.
+      * Dive strike+ - Your falling dive strike attacks have advantage.
+      * Draw-shot+ - Can be done up to 2 times per turn.
+      * Driven edge+ - The bonus damage also benefits from your sneak attack damage.
+      * Engarde+ - This attack benefits from your sneak attack damage.
+      * Fainting leap+ - You can do so twice per turn, and can counter attack two targets if wielding two weapons, or a cleave weapon.
+      * Quick leap+ - Distance is increased by 5 ft. Gain a +2 bonus to acrobatics checks.
+      * Regards+ - Regards applies an extra stack of bleed and deals sneak attack damage.
+      * Improved dodge+ - You can also dodge when subject to a dexterity based save effect but still requires a block check and incurs loss of 1 block on a failure. On a critical success, the block is refunded.
+      * Overtake+ - You can spend a reaction to immediately attack the target you overtake.
+      * Pincushion+ - The amount of attacks is increased by 1, and can be done with just one piercing weapon to make 3 attacks.
+      * Thorn leap+ - The attack is no longer made with disadvantage and it can be a ranged weapon attack.
+  - heading: Extra maneuvers
+    body: At 6th rogue level, learn or upgrade 1 extra scoundrel maneuver.
+  - heading: Specialty
+    body: |-
+      At 6th rogue level, choose 2 upgrades:
+
+      * Bruiser - Gain proficiency with medium armor. If already proficient gain proficiency with heavy armor instead. If already proficient with heavy armor, gain 1 temporary block at the start of combat instead.
+      * Generalist - Gain proficiency with a skill, tool, and weapon group of choice.
+      * Night owl - Your street smart bonus is doubled at night.
+      * Professional brawler - You have 2 more maneuvers to either learn or upgrade.
+      * Smooth talking - Street smarts can apply to interactions with nobility.
+      * Superstitious markings - You gain a +3 bonus to saves vs a school of magic of your choice.
+      * Tattoo markings - Your street smarts bonus is increased by +1.
+      * Trap-savvy - You gain a +1 bonus to saves vs traps and advantages to all saves vs your own traps and difficult terrain/tools such as caltrops.
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x/shadow
+- name: Shadow
+  group: Rogue archetypes
+  sections:
+  - heading: Hex practice
+    body: At 4th rogue level, learn 3 minor hexes.
+  - heading: Shadow casting
+    body: |-
+      At 4th rogue level choose an upgrade:
+
+      * Many hexes - Learn an extra minor hex at 4th, 5th, and 6th rogue level.
+      * Specialized hexes - Gain an extra hex upgrade at 4th, 5th, and 6th rogue level.
+      * Adopted methods - Learn 2 illusion or enchantment cantrips, use dexterity as the casting modifier.
+  - heading: Hex expertise
+    body: At 5th rogue level, learn 1 minor hex and 2 major hexes.
+  - heading: Shadow step
+    body: At 5th rogue level, double your jump range, gain +5 ft of movement speed, and you can blink when moving while
+      in shadow or darkness, allowing you to do so within your movement speed.
+  - heading: Hex expertise
+    body: At 6th rogue level, learn 1 major hex and 1 greater hex.
+  - heading: Special hex secrets
+    body: |-
+      At 6th rogue level, choose 2 upgrades:
+
+      * Greater hex - Learn an extra greater hex.
+      * Special darkness - Gain 2 extra hex upgrades. Can be applied to the same hex.
+      * Personal hex - Gain a necromancy or illusion cantrip, or a cantrip that creates darkness or obscures. Use dexterity as the casting modifier. Gain a +1 bonus to dexterity. Upgrade the cantrip once.
+      * Signature greater hex - Choose an arcane, oath, or occult level 1 spell. Reduce its range, if it has any, by half, reduce all damage dealt by by 1 dice, and grant it a 1d10 > 8 cooldown chance dice. Use dexterity or wisdom as the casting attribute, but reduce DC or block DC by 1. This counts as a hex and the spell is upcast by 1 per hex upgrade applied.
+      * Sneak attack hex - You can apply sneak attack to hex or cantrip damage, so long as it involves spell attacks that have advantage, or if the effect has a save and the targets have disadvantage. In case of multiple targets, each takes 1 dice of sneak attack damage. Can only trigger once per turn.
+      * Rapid hex - When you cast a cooldown hex, immediately roll the cooldown cast once upon casting.
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x/thief
+- name: Thief
+  group: Rogue archetypes
+  sections:
+  - heading: Thief skills
+    body: |-
+      At 4th rogue level, choose two of the following skills and gain proficiency with them, or expertise if already proficient, or gain a permanent +1d3 bonus if already expert:
+
+      * stealth
+      * deception
+      * sleight of hand
+      * performance
+      * persuasion
+      * acrobatics
+  - heading: Knack
+    body: |-
+      At 4th rogue level, you gain a +1 bonus to all of the following checks:
+
+      * checks made to open locks
+      * checks made to find hidden markings or messages
+      * checks made to search for entrances into forbidden or locked up places.
+      * checks made to find or identify secret compartments, traps, hidden doors, or hidden mechanisms.
+      * checks made to set up traps.
+      * checks made to identify traps and defenses.
+  - heading: Run for it
+    body: At 5th rogue level you can spend a rest die or take 1 damage to fatigue to make a move action without provoking
+      any reactions. This can only be done once per turn and not while restrained, snared, or immobilized
+  - heading: Light step
+    body: At 5th rogue level you gain advantage on all saves against traps and do not suffer any adverse effects in case
+      of a successful save vs a trap or similar hazard, and you can move at full speed while sneaking or hiding.
+  - heading: Work experience
+    body: |-
+      At 6th rogue level gain the following upgrades:
+
+      * Creatures gain disadvantage on all saves against spells, traps, and effects that you cause, trigger, or place while hidden
+      * Traps you place benefit from your sneak attack damage
+      * -1d2 max HP
+      * +1 AC while wearing light or medium armor.
+      * Knack bonus is increased to +2
+      * Choose 2:
+        * Gain darkvision at a range of 120 feet
+        * Gain tremorsense at a range of 30 feet
+        * Gain an extra feat
+        * Learn an occult or arcane cantrip with only a somatic component. Use dexterity as the casting attribute.
+        * Learn a level 1 ritual spell. You can ritual cast it, or you can spend a rest die to cast it immediately.
+        * Your knack bonus is doubled during the night.
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x/hexer
+- name: Hexer
+  group: Rogue archetypes
+  sections:
+  - heading: Hex magic
+    body: |-
+      At 7th rogue level, learn a major and greater hex.
+
+      Afterwards, upgrade a hex you know once.
+  - heading: Hex dice
+    body: |-
+      At 7th rogue level, you have a number of hex dice equal to your dexterity modifier (min 1.)
+
+      A hex dice is a 1d8
+
+      hex dice can be spent as a free action to do one of the following:
+
+      * Used in place of rest dice when casting a hex that requires a rest die.
+      * Cause a sneak attack to deal extra necrotic, fire, or cold damage equal to the hex dice.
+      * Reroll a hexes cooldown dice.
+
+      All hex dice are restored each rest.
+
+      Future abilities may require the use of hex dice, and unless otherwise stated, their expenditure is done as a free action.
+  - heading: Hexer traits
+    body: |-
+      At 8th rogue level, choose one upgrade:
+
+      * Warrior of shadow - Gain an extra attack. You can spend 1 hex dice to gain it as a bonus to AC as a reaction.
+      * Hexer knowledge - Learn a minor, major, and greater hex. Upgrade every hex you know once. You gain +1 max hex dice.
+      * Hex power - Learn one hex of choice. Then upgrade a hex you know three times. Your hex dice are increased by 1 dice size category (1d10)
+      * Hexmage - Learn one major hex. Learn an occult or arcane cantrip, and use dexterity as the casting modifier. Then upgrade a cantrip or hex you know once. Learn a level 3 arcane or occult spell which can be cast by spending 1 hex dice, and which uses your dexterity as the casting modifier.
+      * Duskstep - You can spend 1 hex dice to grant yourself duskstep for a number of rounds equal to the hex dice roll / 2 (rounded up. min 1.) While under the effects of duskstep, your movement speed is increased by 30 ft, you can traverse through the air so long as the movement ends on a solid surface and so long as the path is not illuminated (resulting in falling otherwise,) and have a +1 bonus to AC.
+      * Facestealer - You can spend 1 hex dice to steal a characters appearance when you either land the killing blow, or have a full round of access to them. Afterwards you can spend 1 hex to appear as a stolen appearance. This is an illusion effect that requires a DC 20 wisdom save to perceive. You cannot have more stolen appearances available than your wisdom bonus (min 1.)
+      * Mojo lore - You can spend 1 hex dice to gain a bonus to medicine, nature, religion, arcana, alchemy tools, thieves tools, or tinkers tools checks.
+  - heading: Extra trait.
+    body: At 9th rogue level, gain an extra Hexer traits upgrade
+  - heading: For the hex of it
+    body: At 9th rogue level, your hex dice maximum is increased by 1.
+  - heading: Hidden art
+    body: |-
+      At 9th rogue level, choose one:
+
+      * Shadow ward - while in shadow, you can spend a hex dice to gain its roll as a bonus to a save vs a spell or magical effect.
+      * Feed - when you slay a creature in darkness, you restore 1 hex dice.
+      * True shadowling - you can spend 1 rest die or 1 hex dice to become ethereal for 1d3 rounds. Your movement speed is doubled while ethereal, and you have an extra attack while ethereal or while in the ethereal plane.
+      * Hex master - you learn a minor, major, and greater hex. Upgrade every hex you know twice. Your maximum amount of hex dice is increased by 1.
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x/briggand
+- name: Brigand
+  group: Rogue archetypes
+  sections:
+  - heading: Wild criminality
+    body: At 7th rogue level, gain a +2 bonus to intimidation, sleight of hand, athletics, and stealth checks.
+  - heading: Brigand traits
+    body: |-
+      At 7th rogue level, choose two upgrades:
+
+      * Clobbering time - All melee weapons you are proficient with have follow-up and double-strike.
+      * Cruel strikes - All weapons you wield gain +1 to their critical damage multiplier.
+      * Fascination with fire - All weapons you wield have a 1d6 ignite property, or have it increased by 1 dice category if possible. Fire damage tools, bombs, traps, and spells you cast have their damage increased by 1 dice size category.
+      * Good aim - You can spend 1 rest die to grant a ranged attack advantage. Ranged weapons you wield gain +20/+40 range. Gain a +1 bonus to perception and investigation checks.
+      * Hardened criminal - Gain 2 extra cunning (rogue 3) upgrades. Gain an extra feat.
+      * Intense brawl — You can use Wild Swings and Double-down with proficient melee weapons, following the weapon’s listed sequences. For a weapon without a listed version, the new maneuver sequence is pending.
+      * Tough bastard - Max HP +10. +1 to strength and constitution saves. +1 to death saves.
+  - heading: Looter
+    body: At 8th rogue level, your bulk is reduced by 2 and gain a +1 bonus to investigation checks.
+  - heading: Nasty tactics
+    body: At 8th rogue level, all deafened, blinded, stunned, dazed, shocked, and shaken conditions you apply are extended
+      by 1 round. Fear and terror effects you apply last 1 round longer as well.
+  - heading: Brigand traits II
+    body: At 9th rogue level, you gain an extra brigand traits upgrade.
+  - heading: Notoriety
+    body: At 9th rogue level, you gain a -1 penalty to deception checks, but increase your wild criminality bonus by 1.
+  - heading: Outlaw
+    body: At 9th rogue level, you gain a +2 bonus to all ability scores while in a settlement or location where you are
+      wanted (there is a reward, order, decree, or blood feud against you by the residents or group in charge)
+# https://sites.google.com/view/dnd5plus/home/classes/rogue-x/swashbuckler
+- name: Swashbuckler
+  group: Rogue archetypes
+  sections:
+  - heading: Merry blade wielder
+    body: |-
+      At 7th rogue level, light blades, dagger & knives, medium blades, and other piercing damage weapons you wield have the following benefits:
+
+      * The range of slash, lunge, and sidestep maneuvers is increased by 5 ft.
+      * duel-strike can be made so long as you have not moved more than half your movement speed during this round.
+      * All weapons have the trip property.
+  - heading: Go to sleep
+    body: |-
+      At 7th rogue level, when dealing sneak attack damage in melee, you can instead choose to do the following:
+
+      * Go to sleep - Roll sneak attack damage and multiply it by 3/2. If it would exceed the targets remaining health, the target must make a DC 18 constitution save, becoming unconscious for at least a 5 minutes (subject to GM.) on a failure, or stunned for 1 round and dazed for 3 rounds on a success. On a critical failure, target is unconscious for 5 hours instead and must make a death save.
+  - heading: Swashbuckler traits
+    body: |-
+      At 7th rogue level, choose 2 upgrades:
+
+      * Bravado - Gain a +1 bonus to strength. Gain a +1 bonus to performance checks.
+      * Cunning - Gain a +1 bonus to intelligence. Gain a +1 bonus to intimidation and insight checks.
+      * Daring - Gain a +1 bonus to wisdom. Gain a +1 bonus to acrobatics and athletics checks.
+      * Dashing - Gain a +1 bonus to charisma. Gain a +1 bonus to persuasion and deception checks.
+      * Moxy - Your rest dice maximum is increased by 1. Gain a +1 bonus to disguise and sleight of hand checks.
+      * Panache - Gain a +1 bonus to dexterity. Gain a +1 bonus to a save of choice.
+      * Savvy - You gain 1 block at the start of combat. Gain a +1 bonus to medicine, nature, and survival checks.
+      * Slyness - Your sneak attack damage is increased by 1 dice. Gain a +1 bonus to stealth checks.
+  - heading: Extra trait
+    body: At 8th rogue level, either choose an extra swashbuckler traits upgrade, or gain 2 extra upgrades from the cunning
+      (rogue 3) list.
+  - heading: Go to sleep +
+    body: At 8th rogue level, multiply the go to sleep damage x2 instead of 3/2 and add your dexterity or strength bonus
+      (whichever is highest).
+  - heading: Swashbucklers skill
+    body: |-
+      At 8th rogue level, choose 4 specific weapons that are any of the following: light blades, daggers & knives, medium blades, or a piercing damage weapon you are proficient with. You can perform one maneuver per round at no bonus action cost with said weapons.
+
+      You have an extra attack while wielding one of the chosen weapons.

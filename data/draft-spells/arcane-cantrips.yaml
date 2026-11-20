@@ -1,0 +1,46 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/arcane-magic/arcane-cantrips
+section: spells
+entries:
+- name: Minor telekinesis
+  group: Arcane cantrips
+  lvl: '0'
+  types: conjuration, cantrip
+  casting: action
+  components: somatic
+  range: special
+  effect: |-
+    As an action, do one of the following effects:
+
+    * Force strike - Make a spell attack against a creature within 30 feet, dealing 2d4 + casting bonus force damage.
+    * Levitate - Cause an object or creature within 30 feet to be levitated into the air, allowing it to be moved up to 30 feet, or be held suspended in the air. You can sustain this effect so long as you concentrate on it and do not use other effects of this spell. The maximum weight you can move is determined as though your casting bonus was the total strength score used.
+    * Force shield - As a reaction to a ranged or melee attack, cause the attack to gain disadvantage. for ranged attacks, the trajectory of the attack must intersect an area within 10 feet of you.
+  upgrades: |-
+    At 2nd, 5th, 8th, and 11th level, increase the range of all effects by 10 feet.
+    Also at those levels, choose one upgrade:
+
+    * Increase the damage dice of force strike by 1 size category, and the spell attack gains the critical property, allowing it to crit on a natural 19. This upgrade can be taken twice.
+    * Increase the number of damage dice for force strike by 2.
+    * Increase the distance you can move an object with levitate by 20 feet, and gain a +3 bonus to the calculated strength score for it. Can be taken twice.
+    * Once per round, the reaction is not spent on force shield, if the reduced attack does not hit. This upgrade can be taken twice to increase this to twice per round.
+    * Learn Force choke - target large or smaller creature within 30 range must make a strength save. On a failure, it takes 1 damage to fatigue and is hobbled.
+- name: Minor telepathy
+  group: Arcane cantrips
+  lvl: '0'
+  types: enchantment, concentration, cantrip
+  casting: special
+  components: none
+  range: 80 feet
+  effect: |-
+    You have unlocked the secrets of the mind, gaining the ability to perform the following effects:
+
+    * Telepathy: communicate a message telepathically to another creature within range. The message is only as complicated as a voice. If the creature wants, it can respond with a simple thought. Interrupts concentration spells.
+    * Mind spike: cause a creature within range to make a wisdom save. On a failure, they take 1d6 + casting bonus psychic damage. Interrupts concentration spells.
+  upgrades: |-
+    At 2nd, 6th, and 10th level choose an upgrade:
+
+    * Telepathy can communicate a more complicated message, such as any sound or voice, or still images of your choice. Can be taken twice to allow sending moving images, scenes and even experiences, and to be able to receive more complicated thoughts as a response.
+    * Telepathy has 4 times the range.
+    * Mind spike damage is increased by 1d6. Can be taken multiple times.
+    * Telepathy and mind spike no longer interrupt concentration.
+    * Learn sense presence: Retain concentration and remain still. Any creature moving within or entering spell range must make a wisdom save, or their presence (but not location) will become known.
+    * Increase range by 120 feet.

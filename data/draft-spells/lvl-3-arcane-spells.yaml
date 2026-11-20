@@ -1,0 +1,409 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/arcane-magic/lvl-3-arcane-spells
+section: spells
+entries:
+- name: Aegis
+  group: Arcane spells
+  lvl: '3'
+  types: Abjuration, Arcane 3
+  casting: action
+  components: verbal, somatic
+  duration: 1d4 hours, concentration.
+  range: self
+  effect: As an action, gain an instance of temporary block and gain a +1d4 bonus to block checks for
+    as long as you retain the temporary instance of block. This temporary block is not lost if the block
+    check is successful. The temporary block lasts a maximum of 1d4 hours.
+  higher_levels: For every level above 3rd, increase bonus by 1d4.
+- name: Animate arcane golem
+  group: Arcane spells
+  lvl: '3'
+  types: Transmutation, Enchantment, Arcane 3
+  casting: action
+  components: verbal, somatic, material (A preexisting artificial form to animate)
+  duration: special
+  range: touch
+  effect: As 4 full round actions, inscribe arcane runes on a small, medium, or large golem-like creature,
+    puppet, or scarecrow of choice, granting it additional bonuses based on its properties before enchanting.
+    It can understand you and will do its best to obey.
+  Arcane golem: |-
+    HP: 3d8 + 3 + 1d6 per casting bonus
+    Block: +1 / 3
+    AC: 14
+    Movement: 20 feet
+
+    Resistances: non-magical physical damage.
+    Immunities: poison, sleep, sickened, poisoned
+    Saves: con and wis +2
+
+    STR: 14
+    DEX: 14
+    CON: 14
+    INT: 9
+    WIS: 8
+    CHA: 7
+
+    Proficiency: +3
+
+    Skills:
+
+    * Athletics +4
+    * Perception +1
+
+    Actions:
+
+    * Slam +5, 1d8 + 4 bludgeoning damage. DC 15.
+
+    Special:
+
+    * Counts as golem and construct.
+
+    Depending on the golem’s properties at creation, grant it the following:
+
+    * Made of stone - Grant 3 extra block at the start of combat. Make it immune to cold and fire damage, as well as immune to non-magical physical weapon attacks.
+    * Made of wood - Grant it regeneration 2. It treats fire damage as cursed damage.
+    * Made of clay - Grant a +2 bonus to wis and a +3 bonus to charisma. Allow it to speak in basic monotone.
+    * Made of metal - Grant it an extra attack. All damage taken is reduced by 3. Make it immune to cold and fire damage.
+    * Made wielding a weapon - Grant it proficiency with weapons it wields.
+    * Made with tools or items integrated into form - Will utilize and gain proficiency with items and tools granted,
+    * Made with purpose - Gains a +5 bonus to a skill of choice when in its dedicated environment (example: a scarecrow gains a deception bonus in fields, subject to the GM).
+    * Small - Gain +10 ft of movement speed. Gain a 10 ft jump distance.
+    * Medium - Gain 5 ft of movement speed. +4 max HP.
+    * Large - +4d8 max HP. +2 to damage and block DC.
+    * Attached weapons, claws, or integrated traps - Golems should be permitted to use their parts (subject to the GM).
+  higher_levels: For every level above 3rd, increase all ability scores by 1 and HP by 1d10.
+- name: Arcane runes
+  group: Arcane spells
+  lvl: '3'
+  types: Transmutation, Arcane 3
+  casting: action
+  components: somatic, material (ink or chalk or similar such substance)
+  duration: special
+  range: special
+  effect: |-
+    As an action, inscribe arcane runes on a weapon, object, up to a 5 ft square surface, or creature within touch. The runes write themself on command and merely require a medium. Has a different effect for each target type:
+
+    * On weapon - The weapon deals an extra 1d8 force damage and is considered magical. Lasts 1d4 hours.
+    * On object - The object gains fire immunity. Lasts 1d6 days.
+    * On area - Any creature that steps on the runes must make an intelligence save. On a failure, they take 3d6 force damage, and are thrown 20 feet into the air, typically taking another 2d6 damage from falling or collisions. On a success, they only take the force damage.
+    * On creature - The creature takes 1d4 force damage and must make an intelligence save. On a failure, they become susceptible to your spells, gaining disadvantage on saves against them, but gain advantage on saves against spells from other creatures.
+- name: Blank
+  group: Arcane spells
+  lvl: '3'
+  types: Enchantment, Arcane 3
+  casting: action
+  components: somatic, verbal
+  duration: concentration, up to 10 minute.
+  range: 40 ft, special
+  effect: |-
+    As an action, force a creature within 40 feet to make an intelligence save. On a failure, they become stunned for as long as you retain concentration on the spell. When the spell ends, they have no memory of events right before the casting of the spell or what happened during its duration. If the target creature becomes damaged or injured, the spell ends.
+
+    If cast at a target within touch range, the save has disadvantage.
+- name: Charm
+  group: Arcane spells
+  lvl: '3'
+  types: Enchantment, Arcane 3
+  casting: action
+  components: somatic, verbal
+  duration: concentration, up to 10 minute.
+  range: 20 feet
+  effect: As an action, cause a creature to make a charisma check. On a failure, you have a +10 bonus
+    to persuasion and deception checks made to influence the creature for the duration. Creatures that
+    critically fail the save are ensnared in your charm and the bonus is permanent, requires no concentration.
+    In either case, the effect is dispelled if you harm the target.
+- name: Conjuration circle
+  group: Arcane spells
+  lvl: '3'
+  types: Conjuration, Arcane 3
+  casting: full round action
+  components: somatic, verbal
+  duration: instant.
+  range: 5 ft.
+  effect: |-
+    As a full round action, draw an arcane circle of conjuration on a surface and parameterize it to cast it:
+
+    1. Select target: Choose a generic inanimate item to attempt to summon. Forbids conjuring precious metals, magical objects or items, and complex alchemical materials (such as healing potions or mana potions.) It must be small or smaller.
+
+    2. Get DC: Determine the DC of the circle.
+
+    * The DC is 11 + target complexity DC (simple vs complex) + target rarity DC (common vs rare) + target naturality DC (natural vs manmade). All DCs are subject to the GM, and can range from 0 to 3.
+
+    3. Activation check: Make an arcana check vs the DC of the circle, altering its outcomes in the following way based on the arcana check:
+
+    * Critical failure - spell fizzles
+    * Failure - Spell fizzles if range fails, or is miscast (subject to the GM).
+    * Success - Spell succeeds, guaranteeing at least a mistargeted conjured object.
+    * Critical success - Spell succeeds, you gain the ability to reroll one future arcana check made as part of this spell.
+
+    4. Range check: Make a second arcana checks vs the DC of the circle, determining the range that the conjuration can reach to search for the target object:
+
+    * Critical failure - Spell fizzles unless previous check was at least a success.Otherwise treat as failure.
+    * Failure - Spells range is limited to a maximum of 1 mile.
+    * Success - Spells range can be global.
+    * Critical success - Spells range can be planar.
+
+    5. Accuracy check: Make a third arcana check vs the DC of the circle, determining the accuracy of spell and what object it summons:
+
+    * Critical failure - Total mismatch (subject to the GM).
+    * Failure - Match in 1 of: function, purpose, or type of object.
+    * Success - Match in 2 of: function, purpose, or type of object.
+    * Critical success - Perfect match (if possible. subject to the GM)
+  higher_levels: If cast at 4th level, allows targeting an animal with 3 or less intelligence, but doing
+    so increases the dc of the circle by 4. Cannot target creatures that possess or have equipped magical
+    items. At 5th level, allows conjuring medium or large targets creatures, increasing the DC by 3 or
+    6 respectively.
+- name: Create undead warrior
+  group: Arcane spells
+  lvl: '3'
+  types: Necromancy, Arcane 3
+  casting: action
+  components: somatic, verbal, material ( 1 silver coin )
+  duration: special
+  range: 20 feet
+  effect: |-
+    As an action, create an undead warrior from a medium humanoid corpse within 5 feet. An undead warrior must be anointed by the caster when created, being given a purpose of the casters description. It continues to follow this purpose for the rest of its existence.
+
+    On creation, roll 4d4 to determine the undead warriors intelligence.
+  Undead warrior: |-
+    HP: 2d8 + 1d6 * casting bonus
+    Block: +3 / casting bonus
+    Movement: 30 feet
+
+    Resistances: cold, fire
+    Immunities: poison, charm, sleep, sickened, poisoned
+    Saves: con and wis +2
+
+    STR: +3
+    DEX: +3
+    CON: +3
+    INT: 4d4 total
+    WIS: -1
+    CHA: +2
+
+    Skills:
+
+    * Athletics +6
+    * Survival +2
+    * Perception +4
+    * Other +1
+
+    Actions:
+
+    * 2 Attacks, +5, uses any weapon wielded, or claw
+    * 1d4 + 3 slashing claw
+
+    Special:
+
+    * Has 2 reactions
+    * has 2 feats of caster's choice
+- name: disregardment
+  group: Arcane spells
+  lvl: '3'
+  types: Enchantment, Arcane 3
+  casting: action
+  components: verbal, somatic
+  duration: 1d4 + casting bonus hours
+  range: 60 feet
+  effect: As an action, cause a creature preoccupied with an ongoing task (such as working, cleaning,
+    reading, eating, standing guard, or sleeping) to make a wisdom save. On a failure, they disregard
+    things beyond their immediate surroundings and enter a day-dream like state. In this state they have
+    a -10 penalty to perception and insight checks. Being directly interacted with or rudely disturbed
+    will dispel the effect.
+- name: Dispel magic
+  group: Arcane spells
+  lvl: '3'
+  types: Abjuration, Arcane 3
+  casting: action
+  components: somatic, verbal
+  duration: special
+  range: 20 feet
+  effect: |-
+    As an action, cause a creature or object to be dispelled. Make an arcana check against its most prominent magical effect. It is calculated as follows: The level of the effect + 10. The DC is further increased by 1 per half the targets level if it is unwilling to be dispelled, and by 2 per level if the target is an item or object. On a success, the magical effect is ended.
+
+    On a failure, continue onwards down the list of effects, ordered by DC from greatest to least.
+
+    Permanent effects or permanent enchantments may only flicker and be disabled for 1d8 turns.
+- name: Energy beam
+  group: Arcane spells
+  lvl: '3'
+  types: Evocation, Arcane 3
+  casting: action
+  components: verbal, somatic
+  duration: special
+  range: self
+  effect: As an action, project a beam of bright light in a 60 ft ray from your palm. Creatures within
+    the beam must make a dexterity save. On a failure they take 3d6 fire and 3d6 lightning damage. On
+    a success, they take only lightning damage. The beam can be reflected on crystal, mirror, and metallic
+    surfaces.
+  higher_levels: For every level above 3rd, increase lightning and fire damage by 1d6.
+- name: Fireball
+  group: Arcane spells
+  lvl: '3'
+  types: Evocation, Arcane 3
+  casting: action
+  components: somatic
+  duration: instant
+  range: 20 foot radius sphere within 80 ft
+  effect: As an action, cause all creatures and objects in a 20 foot radius sphere within 80 feet to make
+    a dexterity or constitution save, respectively. On a failure, they take 6d8 fire damage. On a success
+    they take half. Any potentially affected area must have line of sight (with permittance for slight
+    corners) to the center of the sphere in order to be affected.
+  higher_levels: For every level above 3rd, increase damage dealt by 1d8.
+- name: Force field
+  group: Arcane spells
+  lvl: '3'
+  types: Abjuration, Conjuration, Arcane 3
+  casting: action or reaction
+  components: somatic
+  duration: concentration, up to 1 minute
+  range: 30 ft, self
+  effect: |-
+    As an action or reaction, begin concentrating. For the duration, you can project a barrier to block off an area within range of you, cause any number of falling or collapsing objects within range to be maintained and levitated, cause all ranged attacks entering the area to fail, and cause all force, fire, cold, radiant, necrotic, sonic, or physical damage dealt within range to be reduced by 1d4.
+
+    Every time the created barrier is damaged, or a great force is exerted on it, create a concentration check. The DC is equal to the 1/3 the damage dealt.
+- name: Geomancer's totem
+  group: Arcane spells
+  lvl: '3'
+  types: Conjuration, Transmutation, Abjuration, Arcane 3
+  casting: action
+  components: somatic, verbal
+  duration: 1 hour
+  range: 20 feet
+  effect: |-
+    As an action, force a path of earth or stone to sprout a runed 3 ft stone pillar. The totem has an enchanted aura that grants allies within 20 ft of the totem a +2 bonus to saves and block checks.
+
+    You can choose to cause the totem to also have one of the following added effects:
+
+    * The totem projects a bubble of enchanted air, providing safety from being submerged that can be traversed by creatures at will, but prevents falling objects, water, and weather from affecting its auras area.
+    * The totem permits the caster to alter the material ground surfaces around the totem at will as an action, allowing you to alter the stone makeup, layout, composition, or to alter the terrain so long as it is stone, mortar, brick, ground, or sand.
+    * The totem has a protective barrier on the edge of the aura. All projectile attacks that pass inside the area through the barrier can no longer crit and have a penalty to hit equal to the totems aura bonus.
+    * The totem creates an illusion of the caster's choice that obscures the area within.
+  higher_levels: Per level above 3rd, increase the totems aura bonus by 1 and radius by 5 ft. At 4th duration
+    is 8 hours, at 5th its 1 day, at 6th its 1 year.
+- name: Illusory decoy
+  group: Arcane spells
+  lvl: '3'
+  types: Illusion, Arcane 3
+  casting: action
+  components: somatic, verbal
+  duration: '1'
+  range: special
+  effect: As an action, meld into a semi-real illusion. It quickly destabilizes, appears to do as you
+    would wish, and can only last 1d4 turns, while you become invisible for 1d4+1 turns. The effect is
+    ended if you make an attack against a creature or the decoy is interacted with.
+  higher_levels: Grants an extra turn for each level above 3rd.
+- name: Miasma cloud
+  group: Arcane spells
+  lvl: '3'
+  types: Transmutation, Arcane 3
+  casting: action
+  components: verbal, somatic, material(1 flask of acid, poison, or similar foul substance)
+  duration: 1d4 + casting bonus hours
+  range: 50 feet
+  effect: As an action, conjure a cloud of miasma from a flask of acid centered within 50 feet. The cloud
+    occupies a 20 foot sphere and can move over . You can spend a bonus action to move the cloud. Any
+    creature that begins their turn in the cloud takes 1d8 poison damage, and must make a constitution
+    save. On a failure, they take 1d6 necrotic damage and are sickened for 1 round.
+  higher_levels: For every level above 3rd, the cloud area increases by 5 ft(25 ft cube, 30 ft cube, etc)
+    the necrotic damage increases by 1d6, and the sickened duration is increased by 1 round.
+- name: Override undead
+  group: Arcane spells
+  lvl: '3'
+  types: Necromancy, Enchantment, Arcane 3
+  casting: action
+  components: verbal, somatic
+  duration: special
+  range: 50 feet
+  effect: As an action, force an undead
+  higher_levels: For every level above 3rd, the cloud area increases by 5 ft(25 ft cube, 30 ft cube, etc)
+    the necrotic damage increases by 1d6, and the sickened duration is increased by 1 round.
+- name: Summon elemental
+  group: Arcane spells
+  lvl: '3'
+  types: conjuration, transmutation, arcane 3
+  casting: special
+  components: somatic, verbal, material (gemstone worth 50 gold or more)
+  duration: instant
+  range: 20 feet
+  effect: |-
+    As an action, begin a ritual to summon an elemental that serves you for a day, or until it is destroyed or dispelled. The spell requires a gemstone which is consumed by the spell and becomes the center of the elemental. The gemstone must have a clear line from your person to the target summoning location.
+
+    During the ritual, you must invoke (spend slots/points/scroll, but not gain the effect of it) another spell or cantrip that contains or manipulates the appropriate element( subject to the GM ) on the gemstone. This determines the kind of elemental you summon. If no such spell or cantrip is cast, the ritual fails and this spell fizzles. An elemental of multiple elements can be summoned, if such magic is used (subject to the GM).
+
+    HP: 4d8
+    Block: 3 ( +5)
+    Movement: 40 feet
+
+    Resistances: physical, mundane
+    Immunities: poison, sickened, sleep, prone
+    Properties: regeneration 3
+
+    STR: +3
+    DEX: +3
+    CON: +3
+    INT: +2
+    WIS: +2
+    CHA: +2
+
+    Skills:
+
+    * Arcana +5
+    * Athletics +5
+    * Nature +5
+    * Perception +5
+
+    Attacks: +6 melee, 1d4 per native element of its kind of damage, DC 16
+
+    Fire elementals
+
+    * Base melee attack damage is increased by 1d6 fire.
+    * Has 1d6 fire contact damage.
+    * Gains ranged attack: fire bolt +7, 1d12 fire, DC 14
+    * Fire immunity
+
+    Earth elemental
+
+    * +2d6 max HP
+    * +2 strength
+    * +2 wisdom
+    * +3 to melee attack block DC
+
+    Lightning elemental
+
+    * Can make a melee attack as a bonus action.
+    * Can zap a creature within 30 feet as an action:
+    DC 16 dexterity save, 3d6 lightning damage.
+    * Heals from receiving lightning damage.
+
+    Water elemental
+
+    * Melee attacks have reach II
+    * +2 Block
+    * +2 athletics checks
+    * Can block attacks for allies within melee range
+
+    Air elemental
+
+    * +10 movement speed.
+    * Can carry an item and cast a given scroll, uses own arcana.
+    * Mundane physical damage immunity
+    * +2 dexterity
+
+    Blight elemental (acid/poison)
+
+    * Gains 1d8 acid contact damage.
+    * Critical hits cause targets to become poisoned until cured.
+    * Immune to necrotic damage4d8
+    * Explode on death, dealing 3d8 poison damage to all creatures in melee range. DC 16 dexterity save halves.
+
+    Note: An elemental created in this manner must roll a d100 if they are not dispelled or destroyed for a full day. On a 100, they remain alive in the current realm/plane, but are no longer bound to the caster or their will. On all other rolls they destabilize. Survivor elementals tend to undergo some form of arcane devolution for the sake of stabilization (subject to the GM).
+- name: Waypoint
+  group: Arcane spells
+  lvl: '3'
+  types: Conjuration, Arcane 3
+  casting: action
+  components: somatic, verbal
+  duration: instant
+  range: 20 feet
+  effect: As an action, create a magical waypoint that you can return to as a reaction. You must mark
+    the area or object with a symbol. The waypoint location is anchored to either an object, structure,
+    or world location, and lasts 1 hour.
+  higher_levels: increase the duration to 8 hours at 4th level, 1 day at 5th, and 7 days at 6th.

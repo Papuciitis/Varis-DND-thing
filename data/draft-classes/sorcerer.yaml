@@ -1,0 +1,865 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/sorcerer-x
+- name: Sorcerer
+  group: Base class
+  description: A sorcerer is someone who has become themselves infused with arcane magic, bypassing the need for arcane
+    runes as they themselves have become the imprinted arcana with a will of its own. Some are born with such a gift, while
+    others have it inflicted on them, either willingly or otherwise. For some this grants great power, allowing them to
+    will the arcane, while for others it manifests in negative side-effects.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Spells known
+      - Metamagics
+      - Features
+      rows:
+      - - '1'
+        - '+2'
+        - '2'
+        - '-'
+        - Cantrips, spells, overcharge
+      - - '2'
+        - '+2'
+        - '4'
+        - '-'
+        - Innate magic
+      - - '3'
+        - '+2'
+        - '6'
+        - '-'
+        - Ability score improvement
+      - - '4'
+        - '+3'
+        - '8'
+        - '5'
+        - Metamagic
+      - - '5'
+        - '+3'
+        - '10'
+        - '7'
+        - 1st archetype
+      - - '6'
+        - '+3'
+        - '12'
+        - '9'
+        - —
+      - - '7'
+        - '+4'
+        - '14'
+        - '11'
+        - Ability score improvement
+      - - '8'
+        - '+4'
+        - '16'
+        - '13'
+        - —
+      - - '9'
+        - '+4'
+        - '18'
+        - '15'
+        - 2nd archetype
+      - - '10'
+        - '+5'
+        - '20'
+        - '17'
+        - —
+      - - '11'
+        - '+5'
+        - '22'
+        - '19'
+        - Ability score improvement
+      - - '12'
+        - '+5'
+        - '24'
+        - '21'
+        - —
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d4
+
+      Armor: shields, light armor
+      Weapons: two simple polearms, 2 crossbows, daggers, and 1 martial melee weapon of choice
+      Tools: none
+      Saving throws: Constitution, Charisma
+      Skills: choose two from Arcana, History, Religion, Insight, Deception, Intimidation, Persuasion, or Performance
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) a simple polearm, (b) two daggers, or (c) a simple crossbow and a quiver of 10 bolts
+      * (a) a dungeoneer's pack or (b) an explorer's pack
+  - heading: Spellcasting
+    body: |-
+      Gain access to spellcasting.
+
+      Use the arcane spell list.
+
+      You have a number of spells known, as indicated in the chart. You can learn only a spell of the highest level you could cast, or lower. You can swap out one earlier spell known for another when leveling up.
+
+      Casting ability score is charisma. Spell slots are given in the chart below.
+
+      You can spend rest dice to regain a spell slot as a bonus action. The rest dice cost is equal to the level of the spell slot.
+  - heading: Spell slots by level
+    body:
+      columns:
+      - Sorcerer level
+      - Level 1
+      - Level 2
+      - Level 3
+      - Level 4
+      - Level 5
+      - Level 6
+      - Spells known
+      rows:
+      - - '1'
+        - '2'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+        - '2'
+      - - '2'
+        - '3'
+        - '1'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+        - '4'
+      - - '3'
+        - '3'
+        - '2'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+        - '6'
+      - - '4'
+        - '3'
+        - '3'
+        - '1'
+        - '0'
+        - '0'
+        - '0'
+        - '8'
+      - - '5'
+        - '3'
+        - '3'
+        - '2'
+        - '0'
+        - '0'
+        - '0'
+        - '10'
+      - - '6'
+        - '3'
+        - '3'
+        - '3'
+        - '1'
+        - '0'
+        - '0'
+        - '12'
+      - - '7'
+        - '3'
+        - '3'
+        - '3'
+        - '2'
+        - '0'
+        - '0'
+        - '14'
+      - - '8'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '1'
+        - '0'
+        - '16'
+      - - '9'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '2'
+        - '0'
+        - '18'
+      - - '10'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '1'
+        - '20'
+      - - '11'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '2'
+        - '22'
+      - - '12'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '3'
+        - '24'
+  - heading: Cantrips
+    body: At 1st level you know 2 arcane cantrips. You use charisma as the casting attribute.
+  - heading: Overcharge
+    body: At 1st level, you gain the ability to overcharge your spells. You can spend a rest die as a free action when casting
+      a spell to increase the level at which the spell is cast by 1. Make a DC 15 constitution check when doing so. On a
+      success the rest dice is refunded.
+  - heading: Innate magic
+    body: "At 2nd level, your innate magic manifests, which grants both new abilities, and downsides. Choose two of the\
+      \ following:\n\n* Arcane dreams - You have strange lucid dreams. You gain a dream spell slot. It can be occupied by\
+      \ any arcane spell. You can swap it for another arcane spell during a long rest, or spend 1 rest die to swap it during\
+      \ a short rest. This does not need to be a spell known. You can cast your dream spell once per long rest, at the highest\
+      \ spell level you could cast from any class or source. \nDownside: Your maximum number of spells known is reduced\
+      \ by 1.\n* Arcane intuition - It all seems to just make sense. +1 to arcana checks. Learn the use of an extra arcane\
+      \ cantrip. Learn another cantrip at 6th level.\nDownside: You gain a -1 penalty to strength.\n* Blood-infused - Your\
+      \ blood is tainted from an arcane source. Gain a +1 bonus to constitution, and a +1 bonus to medicine and initiative\
+      \ checks. You always heal 1d4 health when entering a rest. At 6th level, you gain a +1 bonus to either dexterity or\
+      \ strength (your choice.)\nDownside: you heal 1 HP less from all other sources.\n* Determination - The arcane chose\
+      \ you. You can use overcharge and spell recovery even when at 0 rest dice, instead taking 1d3 damage to fatigue.\n\
+      Downside: You have 2 less max HP.\n* Elder blood - You are oddly pale and distant. Any spell you cast that requires\
+      \ any HP or death save cost as a component has it's duration doubled. Your rest dice maximum is increased by 1. At\
+      \ 7th level, your rest dice maximum further increases by 1.\nDownside: You gain a -2 penalty to saves vs divination\
+      \ spells.\n* Elemental soul - Your eyes shimmer. You reduce all fire, cold, lightning, acid, and sonic damage that\
+      \ you take by 1, and deal 1 more damage of those types with your spells, cantrips, abilities, and attacks. Increases\
+      \ to 2 at 6th level, and 3 at 10th level.\nDownside: You take a -1 penalty to wisdom.\n* Mana-symbiosis - You have\
+      \ survived mana-exposure, and gotten stronger. You have a number of mana points equal to half your rest dice (rounded\
+      \ up.) You can spend 1 mana point as a bonus action to regain 1 fatigue, or you can spend 2 mana points to use overcharge\
+      \ without paying any rest dice cost. \nDownside: You have a -1 penalty to death saves.\n* Odd aura - Detection spells\
+      \ never quite read you right. You gain a +1 bonus to saves vs spells. Once per long rest, you can ignore the effect\
+      \ of a hostile or negative spell.\nDownside: You have a -3 penalty to handle animal checks.\n* Serpentine blood -\
+      \ You gain scaled flesh. Your dexterity increases by 1. At 5th level you gain resistance to poison. At 9th level gain\
+      \ immunity to poison.\nDownside: Gain a -1 penalty to persuasion checks.\n* Arcane ascension - You made yourself become\
+      \ a vessel of arcane powers. Upgrade a cantrip you know by 2 steps. At 4th level, your MP maximum is increased by\
+      \ 1. At 8th level, your MP maximum is further increased by 3.\nDownside: You take a -1 penalty to constitution."
+  - heading: Ability score improvement
+    body: |-
+      At 3rd, 7th, and 11th level, gain +2 to ability scores in any distribution, or a feat.
+
+      Also at these levels, learn an extra cantrip of any class of magic, using charisma as the casting attribute.
+  - heading: Metamagic
+    body: |-
+      At 4th level, you learn to weave spells to your will. You gain a maximum number of metamagic points (MP) equal to your charisma bonus + your proficiency bonus. You regain 1d4+1 spent MP each rest. All your spent MP is regained every long rest. You can spend MP when casting a spell to modify it, applying a metamagic effect to it. The MP cost of effects can vary and be modified.
+
+      At 4th level, learn to apply 5 metamagic effects from the list below, and learn 2 extra every subsequent sorcerer level.
+
+      * Abjuration
+        * (1) - If the spell has a concentration check, gain a +1 bonus to AC while retaining concentration.
+        * (2) Increase AC granted by a spell by 1.
+        * (1) Increase block restored or granted by 1.
+        * (1) Increase all temporary or arcane health granted by 1d6.
+        * (3) Gain advantage on concentration checks for the spell.
+        * (3) Increase the HP of a conjured structure or entity of the spell by 2d12
+        * (4) Any counterspell or dispel attempts against the spell have disadvantage.
+      * Conjuration
+        * (2) The origin of the spell (caster) can be treated as being anywhere within 20 ft. This allows you to move the origins of cones, rays, ranged spell attacks, and melee spell attacks, as well as touch spells.
+        * (2) Increase number of creatures summoned by 1
+        * (4) Increase a bestowed attribute from the spell by 2
+        * (2) Alter range of spell from personal to a creature within 30 feet
+        * (3) Double range of spell
+        * (3) Cause the spell to target all creatures within 20 feet instead of the original range.
+        * (3) If the spell creates or enchants objects, it can target twice the amount of ammunition or 1 extra item/object.
+      * Evocation
+        * (2) The speed of any moving object or effect created by the spell is doubled.
+        * (3) Increase all forms of damage dealt by the spell by 1d4
+        * (2) Increase number of targets for multi target spell by 1
+        * (1) Increase the DC of a spell by 1
+        * (2) Cause a melee/touch range spell to have a range of 20 feet.
+        * (3) Cause all targeted creatures to take 1d6 lightning damage.
+        * (5) Focus an area spell into a single tile, dealing twice the damage, increasing DCs by 2, Increasing durations by half, and granting a +4 bonus to any associated spell attacks or checks.
+      * Divination
+        * (3) The effective target tiles or area of the spell is revealed for the next 1d4 turns, revealing invisible or hidden creatures, events, and objects that enter it.
+        * (3) Grant a spell attack a +1d4 bonus
+        * (1) Choose the outcome of 1 non d20 dice used in the spell.
+        * (2) Cause the spell to be cast as a bonus action instead of an action.
+        * (1) Choose which creatures in the spells area of effect are ignored by the spell.
+        * (2) You may reroll one dice used in the casting of the spell.
+      * Illusion
+        * (3) An area affecting spell can also display minor illusion within the area, for the duration of the spell.
+        * (2) An illusion created by the spell gains a heightened effect (Subject to GM)
+        * (3) The spell deals 1d6 psychic or sonic damage to all affected creatures
+        * (2) The spell requires no verbal component
+        * (2) The spell requires no somatic component
+        * (1) The spells save becomes an intelligence save, but it cannot reduce creatures to below 1 hp.
+        * (4) When casting the spell, become invisible for 2 turns and leave an illusory double that will appear to complete casting it the spell and remain in place until interacted with, or until the start of your next turn.
+      * Necromancy
+        * (2) Any temporary health, arcane health, or healing provided by a spell is converted into damage.
+        * (3) A single target spell deals an extra 1d12 necrotic damage
+        * (2) The spell restores 1d4 health to the caster for every small or larger creature it kills.
+        * (2) The spells save becomes a constitution save.
+        * (2) The spells poison damage becomes acid damage and is increased by 1 dice category.
+        * (2) If the spell has a save, it also applies one of the conditions: shaken, shocked, winded, sickened, staggered for 1d4 turns to all targets on a failed save.
+        * (4) Creatures slain by the spell allow the caster to ignore material components when casting necromancy spells on the remains.
+      * Enchantment
+        * (2) The duration of a spells sleep, charm, fear, domination, or emotional effect is doubled.
+        * (3) A single target spell to become a multi-target spell that can target an extra target within the range of the spell.
+        * (3) Change the spells save type to wisdom and increase the DC by 1
+        * (2) Increase a penalty applied by a spell by 1.
+        * (3) Change the spells DC to be reduced by 3 but grant the spells targets disadvantage on the save.
+        * (3) When the target of a ranged spell is in melee range, grant advantage on a spell attack, or grant disadvantage on the save for the melee targets of the spell.
+        * (3) Creatures targeted by the spell have disadvantage on the next spell you target them with. Lasts until next rest.
+      * Transmutation
+        * (1) Alter the damage dealt by a spell to another damage type.
+        * (3) Increase a roll bonus die (Any dice provided by a spell as a bonus to d20 rolls, such as a +1d4 to a skill check) and increase it by one dice category.
+        * (3) Increase a roll penalty die (Any dice provided by a spell as a penalty to d20 rolls, such as a -1d4 to block checks) and increase it by one dice category.
+        * (1) Cause a ray spell to be treated as a cone at half range.
+        * (1) Cause a cone spell to be treated as a ray at double range.
+        * (2) Cause a spell that grants temporary health to grant half as much arcane health instead.
+        * (4) Cause a spell to be emplaced into a burned out wand or metallic object instead of casting it. The target gains 1d3 charges, allowing you to cast the spell.
+
+      A metamagic effect can be applied to any spell, but the MP cost is reduced by 1 for spells that are of the effects school of magic.
+  - heading: 1st Archetype
+    body: |-
+      At 5th level, choose your 1st archetype:
+
+      * Arcanist
+      * Warmage
+      * Graymage
+      * Wildmage
+  - heading: 2nd Archetype
+    body: |-
+      At 9th level, choose your 2nd archetype:
+
+      * Evoker
+# https://sites.google.com/view/dnd5plus/home/classes/sorcerer-x/arcanist
+- name: Arcanist
+  group: Sorcerer archetypes
+  description: An arcanist is a sorcerer that becomes versed in metamagic, an in doing so becomes a master of spell manipulation.
+    They learn to focus their power into sculpting magic.
+  sections:
+  - heading: Expanded metamagic
+    body: At 5th sorcerer level, learn 3 extra metamagic effects from the base list, and a further 1 extra at every subsequent
+      Arcanist level.
+  - heading: Extra metamagic points
+    body: At 5th sorcerer level, your MP maximum is increased by 3.
+  - heading: Overcharge metamagic
+    body: At 5th sorcerer level, when you use overcharge, you gain 1 temporary MP that can be used to apply metamagic to
+      the overcharged spell. This MP is lost if it is not spent on the spell.
+  - heading: Arcanist traits
+    body: |-
+      At 6th sorcerer level, choose 2 upgrades from the list below:
+
+      * Arcane overcharge - You gain 1 extra temporary MP more from overcharge metamagic.
+      * Ally spell manipulation - You can spend 1 MP as a reaction to apply a metamagic effect to a spell cast by an ally, spending the metamagics MP cost as they do.
+      * Mastered metamagic - Choose 2 metamagic effects that you can apply. Reduce their cost by 1, down to a minimum of 1. Choose a 3rd effect to reduce in cost at 8th sorcerer level.
+      * MP enervation - You can spend 1 rest die to regain 1d4 (min 2) MP as a bonus action.
+      * Forced spell manipulation - You can spend 4 MP or 1 rest die as a reaction to apply a metamagic effects to a spell targeting you or a creature or area within 20 ft of you.
+      * Blood sorcery - You can spend 1d4 HP to gain 1 temporary MP that must be used until the start of your next turn, or it will be lost. This can be done as a free action. The health cost cannot be reduced below 1.
+      * Arcana disruption - You can spend 4 MP to attempt to dispel an ongoing spell, magical ability, or curse within 30 ft with an arcana check.
+      * Metacast arcana - You can spend 3 MP or 1 rest die to reduce the casting time of a spell from an action to a bonus action.
+      * Cantrip manipulation - Upgrade a cantrip or hex you know twice. Your MP maximum is increased by 1.
+  - heading: Spell-catalyst
+    body: At 7th sorcerer level you can choose to lock one spell known, cantrip, or spell you can cast during a rest. Doing
+      so locks the spell or cantrip from use until you finish another rest. The MP cost for all metamagic effects belonging
+      to any school of the locked spell or cantrip are reduced by 1 (min 0).
+  - heading: Secret metamagics
+    body: |-
+      At 8th sorcerer level, learn 3 special metamagics from the list below. They belong to no school.
+
+      * Ring of wrath (3) - Cast a cone spell in a ring around you at the original range.
+      * Twin spell (4) - Cast two of the spell at once, at no increased slot cost. The targets and areas of the spell cannot overlap.
+      * Sniper spell (2) - Double the range of a spell.
+      * stable spell (4) - Cause a concentration spell to lose the concentration component.
+      * Horde spell (4) - Cause a summon spell to summon 1 more creature.
+      * Power spell (3) - Increase the damage dice of the spell by 1 size category.
+      * upgraded cantrip (1) - Upgrade a cantrip when casting it.
+      * willed spell (2) - The spell requires no verbal or somatic components.
+# https://sites.google.com/view/dnd5plus/home/classes/sorcerer-x/warmage
+- name: Warmage
+  group: Sorcerer archetypes
+  description: A warmage is a sorcerer that is trained and honed for combat, be it by the order of a mighty kingdom or by
+    some solemn oath, or in some cases by their lust for conflict.
+  sections:
+  - heading: Arcane combat training
+    body: |-
+      At 5th sorcerer level, gain proficiency with one:
+
+      * +1 bonus to AC and block checks, as well as dexterity and strength saves.
+      * light armor proficiency and proficiency with light shields, as well as a +1 bonus to dexterity saves.
+
+      OR if already proficiency with light armor or light shields:
+
+      * Gain proficiency with heavy armor and heavy shields, and a +1 bonus to strength saves.
+      * Gain proficiency with heavy shields and a +1 bonus to strength saves.
+
+      OR if already proficient with heavy armor or heavy shields
+
+      * Gain a +1 bonus to all saves
+      * Gain a +1 bonus to AC and a +1 bonus to all mental saves.
+      * Gain +1 block at the start of combat, gain a +1 bonus to all physical saves.
+  - heading: Warmage armaments
+    body: At 5th sorcerer level, gain proficiency with 1 weapon group of your choice. You gain a +1 bonus and the damage
+      dice size category of the weapon is increased by 1 while you wield it.
+  - heading: Warmage method
+    body: |-
+      At 5th sorcerer level, choose an ability from the list below:
+
+      * Aura-consumption - When you slay a creature that can cast spells or cantrips, or when such a creature dies within 20 ft, you regain 1 MP.
+      * Arcane armor - Gain medium armor proficiency. If already proficient, gain heavy armor proficiency. You can enchant your armor during rest to grant +1 block at the start of combat. Can only be applied to one armor set at a time.
+      * Arcane blade - You can spend 1 MP or 1 rest die, on a successful attack with a warmage armaments weapon or melee spell attack to make it bypass resistance, and deal cursed damage (cannot be healed by magical means.)
+      * Arcane blink - You can spend 1 MP or 1 rest die to blink up to 20 feet as a bonus action. This movement does not provoke reactions.
+      * Arcane constitution conditioning - Your maximum HP is increased by 6. Once per rest you can ignore 1 damage to fatigue.
+      * Arcane shield - Gain proficiency with light shields. You can spend a spell slot as a reaction to gain 1 temporary block and 1d8 temporary health while wielding a shield, which last 1 minute.
+      * Battle arcana - You can spend up to 3 MP or rest dice to regain a spell slot of a level equal to the number of MP or dice spent.
+      * Dispel energy - You can spend 2 MP or 2 rest dice as an action or reaction to dispel a 10 ft cube area of energy within 30 ft, causing objects to lose almost all inertia, ranged and melee attacks to fail, fires to lose almost all potency and heat, arcs of lightning or energy to be reduced to a harmless level, and potential fall damage to be reset. The effect disjoints projectiles, which fall to place if the effect is dispelled, This effect ends at the end of your turn, or the creatures turn during which you spend the reaction.
+      * Force counterspell - You can spend 3 MP or 1 rest die as a reaction to counterspell a spell being cast by another creature within 60 ft. Make an arcana check vs the spells DC. On a success, the spell is negated.
+      * Magebow - You can spend 1 MP and a bonus action to amplify a ranged weapon attack you make. The attack will cast a 1 action or faster casting time spell of your choice that you imbue the projectile with. If the spell requires a spell attack or touch touch component, it is applied to the target and it fails the save if the bow attack is unblocked.
+      * Mana-burn - The DC of mana potions you consume is reduced by 3. You can produce 1 mana potion once per long rest. Your MP maximum is increased by 1.
+      * Runes of protection - You apply runes to your body. -2 to checks made to avoid standing out. Once per rest you can apply a +1d6 bonus to a save. If this results in a successful save, roll a 1d4. On a 1, the ability can be used again until next rest.
+      * Spellsword casting - You can make a melee attack in place of a melee spell attack or touch component for a spell you cast, applying your weapon damage alongside the effect of the spell.
+      * Warmage channeling - You regain 1 MP whenever an ally uses a rest die within 30 ft.
+      * Smith-mage - Gain proficiency with smiths tools. You can spend 1 MP during a rest to restore 1 charge to an item or weapon in your possession.
+
+      Gain another 2 upgrades at 6th, and then another one at 7th, and 8th sorcerer level.
+  - heading: Power training
+    body: At 6th sorcerer level, your MP maximum and maximum rest dice are increased by 1.
+  - heading: Improved warmage method
+    body: |-
+      At 7th sorcerer level, you gain an upgrade based on your warmage method abilities you already have:
+
+      * Aura-consumption+ - You regain 1d2 MP instead of 1. Your MP maximum is increased by 1.
+      * Arcane Armor+ - You can also enchant 1 set of armor at a time, during a rest, to make it grant its wearer 1d4 arcane health every rest.
+      * Arcane blade+ - Choose a damage type: fire, cold, necrotic, force, lightning, acid, or radiant. The enhanced arcana blade attack also deals 1d8 extra damage of that type.
+      * Arcane blink+ - Increase the distance of arcane blink to 40 feet, or your movement speed, whichever is higher. You can also blink as a move or bonus action.
+      * Arcane constitution conditioning+ - Your maximum HP is further increased by 1, and you can ignore 1 damage to fatigue TWICE per rest now.
+      * Arcane shield+ - After using Arcane shield, grant it a +1 bonus for the 1 minute duration.
+      * Battle arcana+ - You can now spend up to 4 MP for battle arcana, and you regain 1 extra MP every short rest.
+      * Dispel energy+ -Can be cast as a reaction or action for 1 extra MP or rest dice to expand the area to up to a 60 ft sphere originating from the caster. The caster can do so to stabilize collapsing structures, soften cave-ins, and prevent all fire damage in the area until the start of the casters turn. During the casters turn, the caster can choose to continue the effect by paying the MP or rest dice cost again.
+      * Force counterspell+ - Reduce the MP cost of force counterspell by 1, and gain a +1 bonus to arcana checks.
+      * Magebow+ - The enhanced attack also gains a +1 bonus that remains on the item for the following minute. The range increments of the attack are doubled.
+      * Mana-burn+ - You can spend 1 MP, 1 rest die, 1d2 fatigue, or 1 mana potion to immediately take an action. You can do so once per rest safely. Further attempts have a DC 18 constitution save with a +2 to dc per attempt. Failure results in losing 1d10 HP instead. DC reduced by 2 if using mana potion.
+      * Runes of protection+ - Roll 1d3 instead of 1d4 to determine if the ability can be used again. You can also apply the bonus to block checks and death saves, or arcana checks made to avoid calamity or disaster.
+      * Spellsword casting+ - You can cast a spell attack spell as a bonus action, even if the spells casting time is an action, on successful melee attacks made with your warmage armaments weapon group. Doing so costs 1 MP and has the spell attack succeed.
+      * Warmage channeling+ - Your MP maximum is increased by 1. You regain 1 MP at the start of combat.
+      * Smith-mage+ - The number of charges restored is increased to 1d3. Weapons, ammunition, and items you create or enchant deal 1 extra damage, grant 1 extra block, and have a +2 to any DCs.
+
+      At 8th level, choose another.
+  - heading: Power casting
+    body: At 8th sorcerer level overcharge increases the spells level by an extra level when used.
+  - heading: Siphon arcana
+    body: At 8th sorcerer level you can spend MP to use overcharge, spending 3MP per rest dice cost.
+# https://sites.google.com/view/dnd5plus/home/classes/sorcerer-x/graymage
+- name: Graymage
+  group: Sorcerer archetypes
+  description: A graymage is a sorcerer that has learned to master their arcane gift through meditation, learning to access
+    their true inner arcane self through various practices, often involving meditation, diligent focus training, alchemically
+    assisted arcane vision quests, and druidic rituals. Graymages tend to become hermits when seeking to understand their
+    powers, but in exchange gain access to the sources of magic itself.
+  sections:
+  - heading: Knowledge of the inner arcane
+    body: |-
+      Starting at 5th sorcerer level, you gain extra graymage spells known. You have 2 at 5th, and gain 1 extra graymage spell known at every subsequent sorcerer level.
+
+      Choose a greater class of magic and a minor one, either arcane, oath, occult, or mystic. Graymage spells known must come either from the major or minor classes of magic. And you cannot have the majority be of the minor school.
+
+      You also gain a number of graymage spell slots equal to your intelligence modifier -1 (min 1) which are restored every long rest.
+
+      These spells are always cast at the maximum level that you can cast, and the slots spent are treated as being of that level. You may choose to downcast but the slot will still be fully expended.
+  - heading: Unlock magic
+    body: At 5th sorcerer level you sacrifice 2 points of charisma to gain 2 points of intelligence. You can now use intelligence
+      as the casting modifier for sorcerer or arcane spells.
+  - heading: Mend trait
+    body: |-
+      At 6th sorcerer level, if you have 1 racial trait, gain a +1 background, class or archetype feature, or feat induced penalty (Such as the sorcerer trait downsides), remove it.
+
+      Only applies to one penalty(1 stat, or conditional/categorical penalty.)
+  - heading: Graymage trait
+    body: |-
+      At 6th sorcerer level, choose one ability:
+
+      * Arcane discipline - You have 2 extra graymage spell slots. You can spend 2 rest dice during a rest to regain 1 graymage slot. You have a -1 penalty to 1 physical ability score of choice.
+      * Awakened form - You gain +10 max HP. Your blood component cost of spells is reduced by 2 (min 1.) Gain a +1 bonus to an ability score of choice. Gain a -1 penalty to transmutation spells.
+      * Blink-walker - You can blink up to your movement speed as a move action. You can do so a number of times per rest equal to your intelligence bonus. There must be a path that your physical form could, even if by flight, crawl, or swim reach to the target point for the effect to work. You can spend 1 rest die or graymage spell slot to do so when out of uses. You have a -1 penalty to detection and banishment spells.
+      * Cursed insight - You gain a +1 bonus to insight, deception, persuasion, and intimidation checks. You can spend an extra rest dice when using overcharge to perceive the veil while casting it. The spell gains a +1 bonus to DC, any associated attack rolls, skill checks, or block DCs, a +1 bonus to duration if applicable, has its range doubled if applicable, and while casting, you gain arcane sight, echolocation, keen scent, ethereal-perception, aura-detection, and true-sight. You gain a -1 penalty to saves vs Eldritch, Primordial, Fiendish, Demonic, and Fae creature spells and abilities.
+      * Graymage staff - Gain proficiency with simple and martial polearms. You can spend 1 MP or rest dice to cast a spell into a polearm weapon until rest. The spell will be triggered on the next weapons strike. The weapon next attack is enchanted with the following properties: It has a +3 bonus to attacks and block DC, it can use your casting modifier for attacks, it gains or has its throw range increased by 30/60 ft. The target of the attack becomes the target of the spell, or the center/origin of the spell, if valid. You have 1 less maximum rest dice.
+      * Healing runes - When you use overcharge (sorcerer 1) a spell, or when you cast a spell, you also restore 1d6 health. You have a -1 penalty to saves vs spells.
+      * Metamagic interface - Your maximum MP is increased by 5. Illusions within 10 ft of you are boosted, having any DCs increased by 1. You gain a -1 penalty to saves vs divination, abjuration, and illusion spells.
+      * Secrets of arcane infusion - You can spend 1 rest die during a rest to create a lesser enchanted weapon. It has a +1 bonus for 7 days. If you also expend a graymage slot, it is permanent. You can choose to expend 3 MP to favor the weapon being infused, causing it to trigger an effect from a cantrip that you can cast on hit. Can be done on shields, treating a block as a hit for trigger purposes. You have a -3 penalty to max HP.
+      * Spellmaster - You can use sorcerer spell slots to graymage spell slots interchangeably. Sorcerer spell slots still cast spells at their level, while graymage slots always cast at your maximum level. You have 1 less maximum graymage spell slot.
+  - heading: Mend trait
+    body: |-
+      At 7th sorcerer level, if you have 1 racial trait, gain a +1 background, class or archetype feature, or feat induced penalty (Such as the sorcerer trait downsides), remove it.
+
+      Only applies to one penalty(1 stat, or conditional/categorical penalty.)
+  - heading: Mend trait
+    body: |-
+      At 8th sorcerer level, if you have 1 racial trait, gain a +1 background, class or archetype feature, or feat induced penalty (Such as the sorcerer trait downsides), remove it.
+
+      Only applies to one penalty(1 stat, or conditional/categorical penalty.)
+  - heading: Extra graymage trait
+    body: At 8th sorcerer level, choose another graymage trait
+  - heading: Arcane secrets
+    body: |-
+      At 8th sorcerer level, gain the following bonuses:
+
+      * Gain a cantrip upgrade.
+      * Your graymage spell slot maximum is increased by 1.
+      * Your number of graymage spells known is increased by 1.
+# https://sites.google.com/view/dnd5plus/home/classes/sorcerer-x/wildmage
+- name: Wildmage
+  group: Sorcerer archetypes
+  description: A wildmage is a sorcerer that is either untrained, completely intuited, or has by some manner remained untamed
+    and untrained well into their powers maturity. As such they have more raw magical power to contend with, but are prone
+    to invoking chaotic powers, accidents, or wild magic.
+  sections:
+  - heading: Wild magic
+    body: Starting from 5th sorcerer level, whenever you cast a 1st level spell or higher, you must roll a d100 and trigger
+      a wild magic effect, if applicable. Wild magic effects whose conditions cannot be met merely fizzle. The wild magic
+      effect triggers before the spell is cast.
+  - heading: Wild magic list
+    body: |-
+      * BLOOD - Either double a spells existing HP cost component, or add a 1d6 HP cost component. Double range and duration of spell.
+      * CLEANSE - If the spell deals acid or poison damage, one of them becomes healing instead.
+      * INTERLOPER - If the spell has a range of self or touch, it targets a random creature within 100 ft instead (subject to GM)
+      * SOUL BOOM - If the spell is targeted as a cone or ray effect, cast it as a sphere around yourself instead, with a diameter equal to the spells range. This does not target yourself.
+      * DEEP CAST - When casting the spell, the cast duration is increased by one category (bonus action > action > action + bonus action > full round action > two full round actions) you can choose to stop casting. The spell's durations are tripled.
+      * SLIGHT MISCAST - Either roll a d8 (d6 for hex) die to retarget an adjacent tile when targeting a point, choose an adjacent creature or object when targeting a creature or object with touch or attacks, or a nearby valid creature within range when targeting a creature within range.
+      * HEAL - Every creature, living thing, elemental, and construct within 40 ft of you is healed for 1d3 HP.
+      * HATRED - If this spell kills a creature, you gain an extra attack for the next minute, restore 1 rest die, and for the next minute shift two points from intelligence to strength.
+      * TRANSMUTE - Roll 1d10 and rotate the spells damage and effects by that much ( healing > necrotic > poison > lightning > piercing > cold > sonic > bludgeoning > force > fire > radiant > healing…)
+      * DUPLICATE - If the spell creates an object, construct, or creature, create another. If the spell has a range of touch, you can target an additional target with it. If the spell is a ray effect, you can create another ray. You take 1d8 psychic damage.
+      * SLIPSTREAM - Transport yourself to a random stable location within 40 ft (subject to GM.)
+      * CLARITY - Swap one sense for another from this list (sight, hearing + echosight, darkvision, keen scent, tremorsense, aurasight) for 1d20 minutes.
+      * SACRIFICE - You must make a death save. The spell is upcast by one level. If it kills you, roll for another wild magic effect.
+      * SUPERSTRUCTURE - If you are standing in or adjacent to a magic circle, portal, planar gate, ley line, fae circle, elder glyph, or similar (subject to GM) object, either activate it or grant it a spark of life (Subject to GM.)
+      * OVERFLOW - deal 1d4 lightning damage to creatures within 30 ft. Double it for creatures submerged in water, and double it for creatures wearing metal. Also deal 2d6 damage to random tiles within 20 ft (subject to GM.)
+      * SWAP - You and a target of the spell (subject to GM.) are swapped with one another after the spell is cast.
+      * PHANTOM ECHO - The spell fizzles. An illusory copy of you appears there a round later and casts another spell you know at the fizzled spells cast level.
+      * CENSURE - the caster or a target of the spell is chosen. Roll a d3 and apply to the chosen creature or tile:
+        * Target becomes invisible for 1 minute or until it directly deals damage.
+        * Nonmagical writing, seals of ownership, and low magic writing (level 2 or lower) is erased from the target tile or creature.
+        * Targets name is erased from records in 1 mile vicinity.
+      * WISP - a 1HP 20 AC wisp is created at a random point adjacent to the caster. It gives off a color of the GMs choosing and has a goal of its own. It is not hostile to the caster.
+      * Criticality - for each d20 involved in the spell cast, flip a coin, treating the d20 as a nat 1 or nat 20 instead, accordingly.
+      * Universality - If the spell deals no damage, increase its range or area by 2 size categories (5 ft > 30 ft > 500 ft > 1mile > 10 miles > global)
+      * GHOSTLY - The closest target of the spell, or the caster otherwise, becomes ethereal for 1d4 rounds.
+      * MIDNIGHT - Mundane lights and small fire and torches within 50 ft are extinguished, and other light sources are suppressed for 3d4 rounds. The area is subject to minor darkness, having its light reduced by 1 category. Conjuration spells within the area are upcast by 1 level for the duration of the effect. You suffer 1d6 psychic damage.
+      * BINDING - One creature withing 100 ft makes a dc 15 wisdom saves. On a success move to next creature. The creature that fails becomes paralyzed for 2d4 rounds.
+      * SOLAR - Fires, lights, powered machines, and arcane artifacts within 40 ft are boosted for 3d4 rounds. The area has its brightness boosted for 1 hour and blinds creatures with aurasight. For the duration, healing in the area is increased by 1HP.
+      * STORM - The sky above worsens by 1 condition for the next 3d4 minutes (clear > cloudy > rainstorm > thunderstorm > hurricane) and for the duration of the storm (if any) lightning damage in the undercast area is increased by 1.
+      * EQUINOX - an aurora appears above you in the sky. It lasts 1d3 minutes. For the duration, in a one mile radius, all people and creatures can speak one language of your choice.
+      * DIREFROST - the area in a 80 ft radius freezes, taking 1d3 cold damage and freezing liquids into a brittle but solid state.
+      * FAEMOX - Roll 1d4. Based on the result, all adjacent tiles sprout one of the corresponding, if possible: crone grass, elderlychen, red rot, sorcentines. If a corpse is present within those tiles, a further 4d6 adjacent tiles sprout the fungi.
+      * FORCE - all creatures within 30 ft are pushed back 1d3 * 5 ft, away from the caster.
+      * SMITH - a random item (weapon, tool, wand, scroll, armor, or shield) within 40 ft gains one of the following, based on a 1d3 roll:
+        * A -1d3 penalty for 1d4 hours.
+        * A 1d4 - 1 bonus for 1d4 hours.
+        * A permanent 1d6 -4 bonus/penalty.
+      * SHIELD - you and the targets of the spell gain 2d10 arcane health.
+      * FORTUNE - create a 20 ft area around creature, point, or object which lasts for 2d4 minutes. For the duration, you can force a reroll on any d20 roll made by a creature within the affected area, once per roll. You gain advantage on saves while in the area. If a crystal is chosen as the target object, it is instead enchanted with the ability to launch a 60 ft range 1d4+1 force damage bolt as an action, which always hits but has a DC 16 block check.
+      * ORDER - All criminal, outlaw, or banished creatures within 500 ft have their bounty displayed as an ethereal nametag or rune above their forehead. Lasts 6d20 minutes.
+      * LIGHTNESS - enchant the 20 ft area around you for the next 30 minutes. Creatures and objects with that point are reduced to half their weight and have their jump, standing jump, blink, and dash distances doubled.
+      * AWARENESS - you become aware of all creatures, open spaces, and hidden locations within 100 ft for 1d4 rounds. You are otherwise disoriented for the duration.
+      * BLINK - You may relocate and blink to a space of your choosing that you are aware of, which must be within 200 ft.
+      * NULL - If the spell deals cold damage, it also makes the targets make a wisdom save, dispelling their highest level spell effect on a success and repeating the effect. If the spell applies stun or paralysis, double the duration.
+      * PHOENIX - If the spell deals fire damage, it now deals radiant damage. If it applies on fire, the Burning condition cannot be removed except by means of dispelling magic.
+      * ARCANE ERROR - roll 1d3 and rotate the spells range/targets by that value (self or touch > 30 ft cone or 50 ft ray, cone or ray > 1 target within range per 3 covered tiles, target within range > 30 ft sphere within 80 ft, point target effect > self or touch.) Global becomes planar (subject to GM.)
+      * MINDWALK - You and a random spell target can have a 4 round long conversation in the span of casting the spell, telepathically.
+      * TRUTH - manifest a pearl in your palm as you cast the spell. It can be thrown and shattered in a 10 ft sphere, or crushed and blown in a 10 ft cone as a powder. The space exposed to its dust demanifests and interferes with illusions and illusion and enchantment magic, including yours.
+      * STASIS - the tiles the caster occupies become frozen in time for the next 1d3(1d4-1 rounds, 1d10 minutes, 1d12 hours.) the caster and frozen creatures are impervious to outside effects for the duration.
+      * VITALITY - you regain 1d12 + 3 HP. You restore up to one missing limb, but in doing so take 1d3 damage to fatigue.
+      * NECROSIS - Take 1d12 necrotic damage. If you are undead, instead heal 1d8 health. If this kills you, you can attempt a DC 20 arcana check to become undead yourself (subject to GM.)
+      * AURA - You gain a 20 ft aura for 1 minute. Roll 1d4 to determine what it grants:
+        * +1 to d20 rolls for allies.
+        * -1 to saves, block checks, and attacks for enemies.
+        * All creatures can hear your thoughts.
+        * Teleportation and blink effects don't work within the aura.
+      * ACCELERATION - A random creature within 30 ft becomes hasted, gaining an extra action or move action each turn, and a +1 to AC and block checks, for 1d10 rounds.
+      * WAYPOINT - A waypoint is created under your feat. After 1d6 hours, you will be returned to the waypoint if you fail a DC 15 wisdom save. A waypoint can be dispelled.
+      * MUTATION - roll 1d3 to determine:
+        * Gain a +2 bonus to a random ability score for 1 hour.
+        * Gain a +3 bonus to a random ability score for 1 day, but a -1 penalty to another. Also permanently gain darkvision at 100 ft the first time this triggers.
+        * Randomly gain 1 of: keen scent, water breathing, spiderwalking, echosight, heat vision, or an extra 20 ft of jump and movement distance, for 1d8 hours.
+      * REAP - all targets of the spell take 1d6 necrotic damage. Then all targets adjacent to other targets of the spell take 1d6 necrotic damage. A random ally within 30 ft is granted 1 arcane HP per target affected.
+      * VOID - A lesser spatial anomaly appears between you and the nearest target or target point for 1 round. Creatures it overlaps or touches take 1d8 force damage and are thrown away 5 ft. If the spell is a teleportation or blink spell, the target is instead chosen randomly from all valid positions (subject to GM)
+      * REPULSION - you are pushed 10 ft back from the target/direction of the spell. If targeting self, you are made ethereal for 1d4 rounds and transposed over the ethereal plane for the duration (can see but not interact with it.) In case of self centered aoe, or global/area targeting, you are blinked from reality for 1d3 rounds and return afterwards.
+      * SHATTER - crystalline and construct creatures and objects within 40 ft take 1d10 force damage. If the target is an object or construct, it takes a further 1d10 damage.
+      * ELEMENTALISM - Any elementals targeted by the spell gain one of the following, based on a 1d3 roll: blinded for 1d6 rounds, 3d6 arcane health, lose 1d6 health and become dispelled of the highest DC spell affecting them. Constructs killed by the spell are immediately rusted and decay.
+      * Verbatim - For the next 1d4 minutes, you must announce your spells verbally, otherwise they fizzle.
+      * LIGHTNING BOLT - If exposed to at least a cloudy sky, an electric bolt strikes a random tile within 15 ft. Creatures on the target tile must make a DC 19 dexterity save, taking 6d6 damage on a failure and half on a success. Creatures adjacent to the struck tile must make a DC 16 constitution save, taking 1d6 sonic damage on a failure.
+      * DREAM - toss a coin to pick either the casters location or the nearest spell targets location. Roll 6d10 HP and start from the lowest hp creature upwards in a 20 ft radius. If it has less than the rolled amount, put it to sleep for 5 minutes and reduce the rolled amount by the creature's remaining hp, then proceed to the next.
+      * POWER - If the spell creates light, deals radiant damage, heals constructs, heals elementals, or animates objects, its range and effect (healing amount, objects manipulated) are doubled.
+      * DECOHERENCE - you and the targets of the spell become blurred for 1 minute, gaining a +1 bonus to AC and dexterity saves, +1 to disguise and deception checks, and have their faces obscured for the duration.
+      * BLOOM - Up to 6d8 tiles spread out from your location become covered in elderlychen, making them difficult terrain.
+      * MADNESS - Up to 1d6 random creatures within 90 ft must make a wisdom save, becoming confused, disoriented, and fascinated for 1d8 rounds, or becoming mad and confused for 1 minute on a critical failure.
+      * DISCONNECT - a 5 ft radius area around the spells target point becomes a magic dead zone for 1 minute.
+      * BURN - choose a random tile within 10 ft of a point of choice within 30 ft. Ignite the tile and creatures and objects on it.
+      * KNOWLEDGE - One creature within 30 ft hears arcane whispers, gaining a random piece of lore (subject to GM.) and requiring a DC 17 constitution save to not be blinded.
+      * ECHO - the spell is randomly recast at a random valid target at the start of the next turn, from the original spells point of origin.
+      * NONLOCALITY - a random creature within 10 ft becomes nonlocalized for 1 round, blinking out of existence. Afterwards they must make a DC 12 wisdom save to rematerialize. On a failure, they are relocated randomly to a new open stable location within one mile. On a critical failure, their location is subject to GM.
+      * BLANK - a random creature within 100 ft must make an intelligence save. On a failure they forget the previous 1d10 rounds worth of events.
+      * PRICE - your spells now cost gold for the next hour. Cantrips cost 1 silver, and spells cost 1 gold per the level at which it is being cast.
+      * CALM - possessed, enraged, charmed, afraid or terrified, dominated, or fascinated creatures within 40 ft lose the aforementioned conditions and restore 1 rest die.
+      * PIGMENT - swap two colors of choice within 30 ft. This alteration is permanent, but can be dispelled.
+      * EXPLOSION - you and all creatures within 10 ft of you must make a DC 15 dexterity save, taking 3d8 fire damage on a failure, and half of that on a success.
+      * BUBBLE - a 10 ft bubble appears around you. You can take 1 damage to fatigue to blow and make it a 15 ft bubble, or 2 damage to fatigue to make it a 20 ft bubble. The bubble blocks water, noxious and hostile winds and clouds, as well as other gasses. Only a piercing weapon that deals at least 1d4 piercing damage can pop such a bubble. Other solids can pass the membrane. The bubble can also be dispelled.
+      * BANISHMENT - a random ethereal, cosmic, or extraplanar creature within 30 ft must make a DC18 wisdom save, being transported to the ethereal plane on a failure.
+      * INDIGO - You are resistant to faefire and soulfire like magical damage for the next minute, and resistant to damage or effects that would erase your existence for the next minute. You take 1d3 radiant damage.
+      * TURBO - Both you and the nearest target of the spell take 2d6 fire damage. You gain an action immediately afterwards.
+      * ILLUSION - two illusory duplicates of you are created under your control, which require a DC 15 wisdom save to recognize as false. Everything they do is purely illusory. They last 1d4 rounds.
+      * HORN - a loud warhorn is sounded. If you are part of an army, all allied creatures who hear it gain inspiration. It alerts all creatures within 1 mile.
+      * MISFORTUNE - all creatures within 20 ft of you, yourself included, gain disadvantage on their next block, save, or attack roll.
+      * ANIMISM - animate a random object within 30 ft under your control. It has all stats 8, a hover distance of 5, and a float speed of 20, and remain animated until they are destroyed or dispelled. Duplicate/pair items such as a bow and quiver or twinned daggers are animated together if chosen.
+      * SHOCK - a random creature is chosen among the caster and creatures targeted by the spell. Targets take 1d3 psychic and 1d3 force damage, and are shocked and disoriented for 1d3 rounds.
+      * OPPOSITE - Any damage the spell deals becomes healing, and any healing the spell does becomes radiant damage instead. Any temporary or arcane health granted becomes necrotic damage.
+      * BOMBARD - Your hand manifests a bombardment rune. You can throw it up to 40 ft(+5 per STR bonus) as an action. It deals 3d8 damage in a 15 ft radius on a failed DC 18 dex save, half in a success. Whenever you end your turn with it in hand, you must make an INT save to not detonate it.
+      * PASSAGE - You manifest an arcane key in your hand. It can be crushed easily, but grants a +5 bonus to checks made to pick a lock with it.
+      * FRAGMENT - manifest a 5 ft cube of soil or similar loose earth or structure material directly from ruins in the ethereal plane. It appears within 20 ft of you. Roll a DC 20 arcana check to be able to determine the location.
+      * THORNS - A 2d12 tile trail of thorns grows out from your position, converting surfaces to difficult terrain that deals 1d4 damage on entry or actions performed.
+      * BOLT - One of your hands becomes entangled and primed in an arcane mechanism, allowing you to fire it as an action (80/160 ft, spell attack, no block, 1d20 + casting bonus.) It blocks the use of your hand until it is fired.
+      * RESONANCE - You become resonant for 1d8 rounds. You have disadvantage on strength or dexterity checks and saves while resonant. You can move the resonance to another object or creature if you touch them as an action. If the object is a crystal sphere, you may emplace a spell you have learned into it, and roll 1d4-1 (min 1) for its charges.
+      * GATHERING - 1d4 random targets are chosen from among the caster, all creatures within 10 ft of the caster, and all creatures targeted by the spell. The targeted creatures have their hair, beards, manes, and mustaches grow long and appear sagelike. The 4 creatures can speak sylvan so long as the hair is not cut. All targets lose 1 month from their natural lifespan.
+      * HOLY - A radiant ray of light illuminates a 15 ft radius area around your current location for 3 rounds, if you are exposed to the sky. All creatures that end their turn in the light are healed for 1d6 health. Undead creatures take 1d8 radiant damage instead.
+      * ALCHEMIC SPARK - A spark of alchemy zaps from your palm to a random potion, powder, or liquid container within 20 ft, granting it a +1 bonus (subject to GM.)
+      * DARK WHISPER - A black page manifests within 5 ft of you. If you have blank scrolls or pages, two black pages appear instead.
+      * TECHNOMANCY - A random construct within 50 ft is healed for 2d8 HP, or if it died within the last hour, it is revived and healed for 1d4 HP. If none are present, a random damaged object within 50 ft is repaired.
+      * POSSESSION - You must make a DC 16 charisma save. On a failure, you are possessed by a random lost spirit or psychic imprint nearby (Subject to GM.) and must make another save at the start of your future turns in order to break the summon.
+      * DRACONIC - The first time this occurs, nothing happens. The second time, you permanently become slightly scaled and gain a +1 bonus to block checks. The third time this happens, your heart becomes considered draconic for the purposes of spells. Further occurrences allow you to breathe a 15 ft cone of fire, dealing 4d8 fire damage on a failed (DC 10 + proficiency + charisma bonus) dexterity save, and half on a success.
+      * GLEAM - The GM must offer you 3 insights from which to choose in regards to all creatures within 30 ft. You may choose one. The GM may choose to stun you for a round if you agree.
+      * Ley line - If you are near or above a ley line, a point of power, or similar special place (subject to GM) then you regain 1 rest die and the spell is upcast by 1 level. The power for this is drawn from the ley line or point of power ( subject to GM. )
+      * INFERNO - If the spell deals damage, then all the damage dealt is changed to fire, it deals an extra 2d8 fire damage, and creatures are ignited if they fail any saves associated with the spell, and you also immediately become ignited.
+      * UNDEATH - small and larger dead creatures within 20 ft of the caster and all creatures and areas targeted by the spell must make a DC 13 constitution save. On a success, they are risen as simple undead (-3 penalty to all stats, soulless, hostile)
+      * SELF - The first time you roll this, take a permanent -1 penalty to a mental stat and gain a feat. Whenever this is rolled in the future, replace the feat with a different one.
+      * CASCADE - You may choose, either restore 1 rest die, or roll 2 extra wild magic effects instead.
+  - heading: Raw power I
+    body: At 5th sorcerer level, your number of spells known is increased by 1. You gain an extra level 1 spell slot.
+  - heading: Wild traits
+    body: |-
+      At 5th sorcerer level, choose 1 upgrades from the list below:
+
+      * Wildmana infection - You must always attempt saves when targeted by friendly abjuration spells. Reduce all arcane spell damage received by 1.
+      * Spatial anomaly - You must always attempt saves when targeted by friendly conjuration spells. You are treated as 5 ft further for the purposes of all ranged spells and attacks. Your teleportation and blink abilities can reach up to half as far.
+      * Discordant soul - You may attempt to suppress a wild magic effect by making an arcana check (DC equal to spells DC.) Temporary health that you gain is reduced by 2. You gain resistance to necrotic damage from spells.
+      * Wild soul - Your max HP is increased by 6. When the wild-magic d100 roll results in 100, you automatically regain 3 rest dice.
+      * Binding beads - You learn to create 3d4 binding beads during a rest. The previous set crumbles once a new one is created. You can cause a worn binding bead to break and crumble in order to suppress a wild magic effect.
+      * Chaos magic - You may sacrifice 1d4 HP to trigger an additional wild-magic effect when casting a spell. You have resistance to damage dealt by wild magic effects.
+      * Overloaded - Your rest dice maximum is increased by 1. Your touch and melee attack spells now deal an additional 1d4 lightning damage.
+      * Wildmagic battery - You regain 1 MP whenever you trigger a wild magic effect.
+      * Elemental soul - You are treated as an elemental for the purposes of spells and wild magic effects. You gain a +2 bonus to checks made to interact with elementals. You can spend rest dice as a reaction to try and counter any kind of geomancy, pyromancy, cryomancy, or aethermancy spells (Subject to GM.) The rest dice cost is equal to the level of the spell, and the arcana check DC requires is equal to the spells DC + 1.
+  - heading: Raw power II
+    body: At 6th sorcerer level, your number of spells known is increased by 1. You gain an extra level 2 spell slot.
+  - heading: Wild traits II
+    body: At 6th sorcerer level, choose another wildmage traits upgrade.
+  - heading: Raw power III
+    body: At 7th sorcerer level, your number of spells known is increased by 1. You gain an extra level 3 spell slot.
+  - heading: Chaotic overcharge
+    body: At 7th sorcerer level, you may spend 3 extra rest dice when using overcharge to further upcast the spell by 1
+      level. Doing so deals 1 damage to fatigue to you.
+  - heading: Raw power IV
+    body: At 8th sorcerer level, your number of spells known is increased by 1. You gain an extra level 4 spell slot.
+  - heading: Wildmage traits III
+    body: |-
+      At 8th sorcerer level, you may either choose an extra wildmage traits upgrade, or one from the list below:
+
+      * Chaos spark - You can spend an action to cause a chaos spark at a target location within 40 ft, dealing 1d8 + charisma damage. Roll 1d6 to determine the damage: fire, cold, lightning, sonic, acid, necrotic.
+      * Wild-reconstruction - When you cast a healing spell, or trigger a wild magic effect that heals, you may spend an additional movement action to attempt a wild-reconstruction: Target yourself or a creature within 20 ft, Roll 1d20 - 1d8, healing the target if the value is positive, or dealing that much damage if the value is negative. On the maximum possible heal, you may also restore up to 1 severely damaged or missing limb.
+      * Wyrd arcana - Learn 3 occult spells of a level you can cast. You count as undead for the purposes of divination spells.
+  - heading: Wild magic shroud
+    body: |-
+      At 8th sorcerer level, you may spend 1 rest die to envelop yourself in a wild magic shroud for the next 3d4 minutes.
+
+      For the duration, at the start of each of your turns, roll 2d4, and choose one of them to determine which outcome you can activate immediately:
+
+      * HEAL - Grant yourself or a creature within 20 ft 1d6+1 Arcane Health.
+      * HARM - Deal 1d8 damage to an enemy creature within 30 ft.
+      * BLINK - Blink to a stable location of choice within 40 ft.
+      * BOLT - Cause a lightning bolt to arc from you to a target creature within 60 ft, forcing them to make a (DC 12 + prof + your charisma bonus) dex save, taking 6d6 lightning damage on a failure, and half on a success, while also being stunned for one round on a critical failure.
+# https://sites.google.com/view/dnd5plus/home/classes/sorcerer-x/evoker
+- name: Evoker
+  group: Sorcerer archetypes
+  description: An evoker is a sorcerer that has understood that their innate nature comes from a deep source beyond the
+    primitive notions of magic or the arcane. They attune themselves to a cosmic source, such as the arcane prison surrounding
+    direfrost, the universal font of motion, or the magical particles of light that arise from soulfire and hit every plane
+    at once, or the primordial spark whose echo touches every point in time.
+  sections:
+  - heading: Power of choice
+    body: |-
+      At 9th sorcerer level, choose one damage type: fire, cold, lightning, or force damage. This becomes your power of choice damage type.
+
+      When you use overcharge, you can spend 1 MP to alter the damage of the spell to your power of choice damage.
+  - heading: Evoker dice
+    body: |-
+      Evoker Dice (ED) - you gain a number of 1d6 Evoker Dice equal to 4 + 1/2 your highest mental ability score (rounded up.)
+
+      Restoring ED - All evoker dice are restored after a long rest. 1d4 evoker dice are restored on a short rest.
+
+      Damage boosting with ED (1/T) - You may spend up to as many evoker dice as 1/2 your total character level (rounded up,) as a free action and add them to either the damage of a spell being cast by yourself or an ally within 10 ft, or an attack that you make, adding it as damage. You cannot do so more than once per turn.
+
+      In both cases, the dice must be spent before the attack roll is made and before or spell lands/the save is made. The bonus damage is the same as your power of choice damage. When you apply an evoker dice to your attacks or to spells, it also grants a +1 bonus to any associated attack rolls, or to any associated DCs.
+
+      Spellcasting with ED - You may spend evoker dice in place of a spell slot to cast spells. The spell must originally deal the same damage as your power of choice, and the dice cost is equal to 1 + the level of the slot you wish to cast it at. The spells level must be no higher than highest spell level you can cast - 2.
+  - heading: Evoker traits
+    body: |-
+      At 9th sorcerer level, choose one upgrade from the list below:
+
+      * Animated by the power - Take a -2 penalty to max HP. Gain resistance to two adjacent damage types, based on your power of choice:
+        * Fire - cold, poison,
+        * Cold - fire, necrotic.
+        * Lightning - force, acid.
+        * Force - lightning, sonic.
+      * Attuned to the source - You gain resistance to the damage type of your power of choice. Can be taken twice to also gain the ability to grant an ally such an immunity as an action (costs one rest die and has a range of touch.)
+      * Creature of energy - You gain 1 arcane health whenever you cast a level 1 or higher spell that deals your power of choice's damage, or when such a spell is cast within 30 ft of you. Whenever you spend an evoker dice, you gain arcane health equal to the number of dice spent.
+      * Deep reserves - Whenever you cast a spell using evocation dice, roll a chance die based on the level of the spell cast, gaining a chance to restore all dice spent. The chance dice for this is 1d3 = 1 for level 1 spells, and increases by 1 dice size category per extra level.
+      * Evocation savant - Your evoker dice maximum is no longer calculated using 1/2 your highest mental ability score, but just your highest mental ability score.
+      * Feed on the source - If you directly come into contact with an object, element, elemental, or arcane power that deals the damage type of your power of choice, or has in some way a strong affinity or link to that kind of energy or power, then you can, as a bonus action or action, deal 1d12 damage to the target to restore 1d4 health to yourself, gain 1d4 temporary health, and roll a 1d4<2 chance dice and restore 1 rest die on a success.
+      * Fragment of the power - Either learn an arcane cantrip that deals the damage of your power of choice or upgrade such a cantrip twice.
+      * Knowledge of the power - Learn 3 spells from any class of magic, so long as they deal the damage of your power of choice.
+      * Limit break - The evoker dice limit on the level of the spell that can be cast using them is removed, you may now cast any spells that still fit its other criteria, regardless of level, so long as you know the spell. Your evoker dice maximum is increased by 1.
+      * Overpowering evocation - Increase your evoker dice size by 1 size category. Your evoker dice maximum is also increased by 1. Can be taken twice.
+      * Power mastery - Spells that deal your power of choice damage gain an extra benefit that triggers if the spell has an attack component which critically hits, or a save component that is critically failed by the caster. This effect is on top of any other critical hit or failure effects the spell might have:
+        * Fire - Targets are ignited, becoming on fire.
+        * Cold -Targets are winded for 1 round and take 1 damage to fatigue.
+        * Lightning - Targets are stunned for 1 round.
+        * Force - Targets are either knocked prone, disarmed, or pushed back 5 ft.
+      * Power principle - Whenever you deal damage of your power of choice, increase it by 2.
+      * Supercasting - Whenever you cast a spell that deals your power of choice damage, you can spend 1 MP and take 1 damage to fatigue to double its range, area, and duration. This is done before any other metamagic is applied.
+      * Unlocked lightning - Require the power of choice being lightning. You can spend 2 evoker dice, 1 rest die, 1 MP to arc a bolt of lightning from your fingertips as an action, targeting a tile within 200 ft. All creatures within 10 ft of a tile of choice must make a DC 20 constitution check, taking lightning damage equal to 4 evoker dice + your casting bonus on a failure, and half on a success. This damage is considered to be spell damage for the purposes of other abilities and can be increased by other evoker traits.
+      * Unlocked frost - Requires the power of choice being cold. You can freeze up to 1d4+2 tiles within 30 ft at the start of each of your turns, or as a reaction. A frozen tile becomes difficult terrain if applicable (Subject to GM) encases submerged creatures in water or similar liquid into solid ice (DC 18 strength save to break free, if applicable. Subject to GM,) extinguishes mundane fires, and deals 1d4 + casting bonus cold damage to all selected tiles. You are immune to any negative conditions from blizzards, snowstorms, and cold environments, as well as from thawing. You can still be frozen solid, but gain advantages on checks made to break free.
+      * Unlocked inferno - Requires the power of choice being fire. You can spend 1 evoker dice, 1 MP, and 1 rest die to breathe a narrow 60 ft cone of fire. Any missing cost component can be replaced with 1 damage to fatigue. Creatures within the cone must make a dexterity save (DC is 10 + casting bonus + proficiency) taking 3d12 + casting bonus + constitution bonus damage on a failure, and half on a success. This is considered a breath attack.
+      * Unlocked telekinesis - Requires the power of choice being force. You can perform telekinesis as special maneuvers. Once per turn, you can spend 1 evoker dice or 1 MP to do a maneuver as a reaction, bonus action, or move action:
+        * Push a creature within 30 ft up to 1d6 * 5 ft in a direction of choice, negating on a wisdom save.
+        * Project a wall of force in the target surface (up to 1d8 tile large) for as long as you maintain concentration. (Subject to GM.)
+        * Force all creatures within a (1d4 + 1) * 5 ft radius sphere within 60 ft to make a DC 16 constitution or strength save, falling prone and taking 1d4 + casting bonus force damage on a failure, and only taking half damage on a success.
+  - heading: Evoker traits II
+    body: At 10th sorcerer level, gain an extra Evoker traits upgrade.
+  - heading: Powerful Arts
+    body: "At 10th sorcerer level, you learn highly coveted arts that only evokers can learn to wield. Choose one upgrade\
+      \ from the list below:\n\n* Arcane overload - A number of times per long rest equal to your int bonus, you can boost\
+      \ a spell you are casting as a free action, increasing its damage by 5d8 damage of the type of your power of choice.\n\
+      * Infused touch - All damage you deal now deals an extra damage of your power of choice. The damage is equal to your\
+      \ evoker dice + 1. You are considered an elemental for the purposes of other spells.\n* Ley line vampirism - You can\
+      \ spend 3 rest dice (or 3 mp, 2 damage to fatigue, or 4 evoker dice in place of a rest die) as a free action to either\
+      \ suppress a magical effect or spell for 10 minutes (roll save vs the spell/effects DC) or to counterspell a spell\
+      \ being cast within 30 feet (or touching an area within 30 ft with its effect) by making a save vs its DC.\n \nIf\
+      \ either is successful, you gain a number of arcane health and temporary health equal to [ the level of the spell/effect\
+      \ + 2 ]\n* Master evoker - Your evoker dice cost for casting spells with them is now equal to just the slot level\
+      \ (no longer slot level + 1) and your evoker dice are increased in size by 1 dice size category. Your evoker dice\
+      \ maximum is increased by 2.\n* Resonant domain - You can spend 4 rest dice or 9 evoker dice to infuse the surrounding\
+      \ area with your power of choice as a full round action. The surrounding area within a range of 1000 ft becomes infused\
+      \ in one of the following ways, based on your selected power of choice:\n  * Fire - All tiles take 1d4 fire damage,\
+      \ simple difficult terrain or obstacles of choice are burned away, ice or snow is evaporated.\n  * Cold - All tiles\
+      \ take 1d4 cold damage, create difficult frost or ice terrain wherever applicable, all mundane fires are extinguished.\n\
+      \  * Lightning - All tiles take 1d4 lightning damage, all constructs are stunned for 1d3 rounds, the sky becomes stormy.\n\
+      \  * Force - All tiles take 1d4 force damage, collapsing or large objects are either accelerated or dampened (casters\
+      \ choice,) all creatures become hobbled and winded for 1d3 rounds.\n* Twin-sourced scion - You can choose another\
+      \ power of choice. You must also take a cleric Oath (cleric 1) or an occultist Mark and Reward (Occultist 1) it. If\
+      \ you break the oath, you cannot regain evoker magic spell slots until it is restored. When determining what damage\
+      \ kind to add, you may use either or split between both types. You may get bonus effects from other Evoker traits\
+      \ if they give different benefits based on your power of choice.\n* Soul furnace - You may choose to do one of the\
+      \ following once per rest:\n  * Soul evocation - Transmute all your evoker dice. They are reduced to 1/2 their dice\
+      \ size category (1d6 > 1d3, 1d8 > 1d4, 1d10 > 1d6, 1d12 > 1d6) but are doubled in amount for the next 3d10 minutes.\
+      \ After the duration, your remaining evoker dice are reduced by half (rounded down.)\n  * Spirit burn - For the next\
+      \ 3d10 minutes, per evoker dice damage added to damage, also add another 1d4 damage.\n\nAfter either of the soul furnace\
+      \ effects end, you take 1d3 damage to fatigue."
+  - heading: Evoker traits III
+    body: At 11th sorcerer level, gain an extra Evoker traits upgrade.
+  - heading: Powerful arts II
+    body: At 11th sorcerer level, gain an extra Powerful Arts upgrade.
+  - heading: Evoker traits IV
+    body: At 12th sorcerer level, gain an extra Evoker traits upgrade.
+  - heading: Access the source
+    body: |-
+      At 12th sorcerer level, you can spend 10 rest dice as a free action to immediately regain/restore 3 of the following:
+
+      * A level 1, level 2, and level 3 spell slot
+      * A level 4 and level 5 spell slot
+      * A level 6 spell slot.
+      * 2d6 + 1 evoker dice.
+      * 1d4 fatigue.
+      * An action and either bonus action or move action.
+# https://sites.google.com/view/dnd5plus/home/classes/sorcerer-x/ascended-sorcerer
+- name: Ascended sorcerer
+  group: Sorcerer archetypes
+  description: Some sorcerers a made by being exposed or derived from one who was exposed to some profound magical power.
+    But this does not make them worthy of their power. An ascended sorcerer is one who manifests far deeper traits, and
+    becomes a proper heir of their magical power.
+  sections:
+  - heading: Maturated sorcerer traits
+    body: |-
+      At 9th sorcerer level, upgrade every sorcerer trait (sorcerer 2) you have:
+
+      * Arcane dreams - Your number of dream slots is increased by 1.
+      * Arcane intuition - Upgrade every cantrip or hex you know an additional time.
+      * Blood-infused - Choose an ability score that is not charisma. Gain a +2 bonus to it. Your max HP is increased by 4.
+      * Determination - Reduce the fatigue damage from using overcharge at 0HP to only 1 damage to fatigue.
+      * Elder blood - 1d8 HP worth of your blood can replace any spell component worth up to 1000 gold. Your rest dice maximum is increased by 1 more.
+      * Elemental soul - Increase the initial damage reduction and damage bonus from elemental soul by 1. You are considered as an elemental for the purposes of spells and magical effects/abilities. Choose one damage type and gain resistance to it, as well as an additional ability:
+        * Fire - When using Overcharge, you can also add 1d8 fire damage to the spell.
+        * Cold - You ignore frost, cold, or ice based difficult terrain.
+        * Lightning - You gain 30 ft of aurasight.
+        * Sonic - You cannot be deafened. Any jump, fly, or dash distances you grant or have (either via abilities, feats, or spells) are increased by 10 ft.
+      * Mana-symbiosis - Your initial maximum number of mana points granted by mana-symbiosis is increased to 4. You regain 1 extra mana point when consuming mana potions. You regain 1 mana point per rest (not affected by the bonus.)
+      * Odd aura - You can become ethereal at will as either a bonus action or reaction, granting you immunity to non-magical attacks and damage, aurasight at a range of 300 ft, ability to walk through solid objects (but not walls of force) but also susceptibility to magical damage (disadvantage on mental saves, magical damage is increased by 1/2 (rounded down.) You can exit this state as a bonus action or reaction. Rematerializing in a solid object displaces you to the nearest free space and deals 1d6 force damage per 5 ft traveled to the target location.
+      * Serpentine blood - You gain a +2 bonus to dex. You either learn draconic, or if already proficient, you also can communicate with all serpents and reptiles. You gain resistance to acid and fire damage.
+      * Arcane ascension - Your spell slot progression is further advanced by 1 level (learn your 1st level 6 spell at sorcerer level 10.) but your number of spells known is reduced by 1. Upgrade one cantrip you know once. Gain an extra level 6 spell slot at level 12.
+  - heading: The power to overcome
+    body: At 9th sorcerer level, whenever a spell or magical ability that you cast/use would incur a penalty or deal damage
+      to you, you may roll a 1d6<2 chance dice. On a success, you ignore the negative condition, damage, or effect.
+  - heading: Elite sorcerer traits
+    body: "At 10th sorcerer level, choose 1 upgrades from the list below:\n\n* Cantrip mastery\nIt's natural for a sorcerer\
+      \ supreme to sculpt something incredible from the tools they've used the most.\n\nUpgrade an arcane cantrip you have\
+      \ twice. Grant it two special upgrades from the list below:\n  * If it has a casting time of 1 action or 1 bonus action,\
+      \ reduce it to 1 bonus action or 1 move action respectively.\n  * If it has a further innate mechanic that can be\
+      \ used as an action or bonus action, then they can now allow using bonus actions or move actions, respectively.\n\
+      \  * If it affects a number of tiles, double the number.\n  * If it has a range of self or touch, allow it to target\
+      \ creatures within 30 ft as a spell attack.\n  * If it has a concentration component, you may now cast and maintain\
+      \ 2 of the same spell (cantrip) and it will not break concentration (until cast a third time, thus dispelling the\
+      \ oldest effect.)\n  * Upgrade the cantrip an additional time. Can be taken multiple times.\n* Magical knowledge \n\
+      A lot of this is actually intuition, but it hardly matters for most plebs.\n \nLearn 5 extra arcane spells. At 11th\
+      \ and 12th level learn an extra arcane spell. Gain a +3 bonus to arcana checks.\n* Magical manipulation\nIt's actually\
+      \ quite easy once you get it.\n\nLearn 10 additional metamagic effects from your level 4 sorcerer list. You can sacrifice\
+      \ a potion (such as a health potion that heals at least 2d4+2 health, or a potion that grants at least a +2 bonus\
+      \ to an ability score, or at least a +15 bonus to movement speed) to regain 1 MP (or more, subject to GM.)\n\nIf you\
+      \ have innate dispelling, spell redirection, or counterspelling abilities which require a cost, then reduce the cost\
+      \ by 1 (either rest dice, HP dice, or damage to fatigue.) Cannot reduce cost below 0.\n* Spell Signature\n A renowned\
+      \ sorcerer should have a signature spell.\n\nChoose a level 1 spell you can cast. You may cast it innately without\
+      \ spending spell slots or rest dice, as a 1st level spell.\n* Sword and sorcery \nTrue sorcerer kings always wield\
+      \ a blade or weapon of some kind.\n\nGain proficiency with a light, medium, or large blade. You add your charisma\
+      \ bonus to the damage of the chosen weapon. Touch and melee spell attack type spells can be applied by spending 1\
+      \ rest die (in place of a casting time) when landing an attack with the chosen weapon.\n* True erudition \nMagic can\
+      \ certainly help in ones training.\n\nLearn 1 extra language, gain 2 upgrades from the list below:\n  * Gain proficiency\
+      \ with 2 skills of choice.\n  * Gain expertise with a skill you are proficient with.\n  * Gain a +2 bonus to a save\
+      \ of choice.\n  * Gain a +5 bonus to one of your lowest skills.\n  * Learn 3 extra languages.\n* Draconic blood manifestation\n\
+      Your blood is mixed with that of the draconic mages.\n\nYou gain 1 block at the start of combat. Choose a dragonborn\
+      \ or kobold racial trait and gain it (if already a dragonborn or a kobold, you cannot take the same trait twice.)\
+      \ You are considered draconic for the purposes of spells.\n\nBreath spells you cast have their damage dice increased\
+      \ by 1 dice size category.\n* Eldritch blood manifestation\nYou descend from someone who once defeated a very dire\
+      \ curse.\n\nYou learn an occult spell of 1st, 2nd, 3rd, 4th, and 5th level. You may cast and treat them as sorcerer\
+      \ spells. \n\nYou gain advantage on saves vs magical and psychic abilities originating from eldritch, aberrant, or\
+      \ cosmic entities.\n* Faeblood manifestation\nThe blood of an elder race manifests in you.\n\nGain an elf, firbolg,\
+      \ or gnome racial trait (If already that race, the same trait cannot be taken twice.) Gain a +1 bonus to charisma.\
+      \ Your rest dice maximum is increased by 3.\n* Moonkyne blood manifestation \nYour blood is mixed with that of the\
+      \ moonblood mages.\n \nYour rest dice maximum is increased by 1. During a full moon (or equivalent cosmic event, subject\
+      \ to GM) or a lunar or solar eclipse (or equivalent, subject to GM) overcharge further upcasts spells by 1 level,\
+      \ and you gain regeneration 1.\n\n All bite, claw, and breath spells you cast have their damage dice increased by\
+      \ 1 size category.\n* Ogz blood manifestation\nYou have the blood of Og or his followers in you, and as such you still\
+      \ bear its curse, despite the power. Must be dwarf, half-orc, or human.\n\nYour HP maximum is increased by 5, your\
+      \ rest dice maximum is increased by 1. Weapon enchantments that you apply via spells have their duration increased\
+      \ by 1 unit category (rounds > minutes > hours > days > years) \n\nBlack pages automatically wither to dust when you\
+      \ touch them.\n* Paleblood manifestation\nYou appear to be a descendant of the sorcerer kings that attempted a cataclysmic\
+      \ necromantic experiment.\n\nYou gain resistance to necrotic damage. You can speak and understand all undead, and\
+      \ you can spend 1 rest die to command them to answer truthfully.\n* Serpentine blood manifestation\nYour blood is\
+      \ mixed with that of the serpent mages.\n\nYou are immune to poison and acid damage. You gain resistance to physical\
+      \ damage, and gain a +1 bonus to AC. You are considered draconic for the purposes of spells.\n* Sorcerer line\nYou\
+      \ descend from several sorcerers, magi, and arcane scholars. \n\nGain a +3 bonus to social checks with other wizards,\
+      \ sorcerers, magical entities, and arcane constructs and intelligences. Gain a +3 bonus to checks made to interact\
+      \ with magical items and arcane artifacts. \n\nYou learn 2 extra arcane spells."
+  - heading: Elite sorcerer traits II
+    body: At 11th sorcerer level, whenever you use rest dice to restore spell slots, the cost is reduced by 1 (min 1.)
+  - heading: Elite sorcerer traits III
+    body: At 12th sorcerer level, whenever you use rest dice to restore spell slots, the cost is reduced by 1 (min 1.)
+  - heading: Sorcerer Prince
+    body: At 12th sorcerer level, your spells no longer require concentration. If a spell’s duration depends solely
+      on you maintaining concentration, then they become indefinite until you choose to dispel them.

@@ -1,0 +1,722 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/backgrounds
+section: backgrounds
+entries:
+  - name: Abandoned wanderer
+    group: Backgrounds
+    proficiencies: 1 of survival, nature, or Animal Handling.
+    Hardened: +1 max HP.
+    Survivalist: +1 to physical saves.
+  - name: Agent
+    group: Backgrounds
+    proficiencies: 1 language, deception, stealth.
+    Trump card: Once per long rest immediately make an attack or reroll any check or save as a free action.
+  - name: Apprentice alchemist
+    group: Backgrounds
+    proficiencies: Alchemist's tools, 2 of nature, history, survival, medicine, or arcana.
+    Industrious: Once per long rest, when producing or modifying items during a rest that cost a class or character
+      resource, such as rest dice, alchemy points, spell slots, etc, you can reduce the cost by 1, down to
+      0.
+    Lesser healing tincture: You produce one lesser healing tincture each rest so long as you have access to
+      an Alchemist's kit. It is a small potion that heals 1d4 + your Intelligence health.
+  - name: Apprentice artificer
+    group: Backgrounds
+    proficiencies: 1 of Artificer's tools, smith's tools, mechanic's tools, Thieves' tools. 1 of nature, history,
+      investigation, medicine, survival, or arcana.
+    Fascinating: +1 bonus to checks made to identify, examine, or interact with mechanisms, traps, machines,
+      golems, and magical devices.
+    Always stand clear, just in case: +1 to Dexterity saves.
+  - name: Arcane experiment
+    group: Backgrounds
+    proficiencies: One of survival, arcana, or investigation.
+    Mana infused: You gain use of an arcane cantrip of your choice, and use Intelligence as the casting attribute.
+    Mana manipulation: You can regain a 1st-level spell slot, A rest die, or 1 point of fatigue during a rest.
+      You can do so a number of times per long rest equal to the average of your Intelligence and Constitution
+      bonuses (rounded up) but doing so will give you a stacking -1 penalty to a random mental save until you
+      finish a long rest.
+    Arcane signature: You have disadvantage on saves and rolls made against scrying and detection spells.
+  - name: Arena fighter
+    group: Backgrounds
+    proficiencies: 1 melee or thrown weapon of choice, 1 of athletics, intimidation, insight, or performance.
+    Close quarters combat: Your unarmed attacks gain a +1 bonus to hit.
+    Mastered technique: Choose one melee or thrown weapon that you have proficiency with. You deal an additional
+      1d4 damage with that kind of weapon.
+  - name: Arsonist
+    group: Backgrounds
+    proficiencies: Survival.
+    Burned: -1 max HP. Gain resistance to fire damage.
+    The fire rises: All fire damage you deal is increased by 1.
+  - name: Ashlander
+    group: Backgrounds
+    proficiencies: 1 of arcana, nature, or survival. 1 specific weapon of choice.
+    Withstand misery: Gain a +1 bonus to mental saves.
+    Tough life: Your rest dice maximum is increased by 1.
+    Ashlung: -1 to max HP.
+  - name: Authoritarian
+    group: Backgrounds
+    proficiencies: Intimidation, 1 weapon.
+    Dominance: Choose a collective; group, race, tribe or class. You can spend 1 rest die to gain advantage
+      on skill checks made to assert dominance, rule over, intimidate, or oppress that group. This selection
+      must be negotiated with the GM. It can evolve as the game goes on (up to GM).
+  - name: Badlands scavenger
+    group: Backgrounds
+    proficiencies: 1 of survival, investigation, or nature, 2 languages.
+    Make do: When you spend your last rest die, you gain a +1 bonus to all ability score checks, a +1 bonus
+      to death saves, and 1d6 temporary health. The bonuses last until your next rest.
+    Legwork: +5 feet of movement speed.
+  - name: Bookworm
+    group: Backgrounds
+    proficiencies: 3 of medicine, nature, history, religion, or arcana.
+    Learned: +1 to Intelligence or Wisdom.
+    Frail: -1 to Constitution.
+  - name: Bounty hunter
+    group: Backgrounds
+    proficiencies: Light armor, crossbows, investigation.
+    Opener: When you act in the surprise round, you gain an extra action.
+  - name: Brewer's apprentice
+    group: Backgrounds
+    proficiencies: Brewer's tools, survival, nature.
+    Supply: After a long rest, make a brewer's tools check. For every 5 points above 10, craft a minor healing
+      potion (2d4 +2). At 5th character level upgrades to moderate healing potion (3d4 +3), at 9th level upgrades
+      to greater healing potions (4d4 + 4).
+  - name: Brute
+    group: Backgrounds
+    proficiencies: 1 skill of choice, 1 tool or simple weapon of choice.
+    Giant: Gain +1 max HP per level. +1 death save slot.
+  - name: Builder
+    group: Backgrounds
+    proficiencies: Athletics, light hammer, smiths hammer, mallet, 1 of Carpenter's tools, stoneworkers tools,
+      or Mechanic's tools.
+    Well let's have a look then: Gain a +2 bonus to all checks made to investigate the integrity, composition,
+      or history of structures, tools, and works of clockwork, stone, carpentry or other such similar engineering.
+    Craftsman: Gain a +2 bonus to tool checks that you are proficient with.
+  - name: Cave dweller
+    group: Backgrounds
+    proficiencies: Survival, 1 simple weapon, 1 of perception, stealth, or intimidation.
+    Adapted to the dark: Gain 60 feet of darkvision.
+    Primal: -1 to Charisma. Gain the keen scent ability. Gain a climb speed equal to half your movement speed.
+  - name: Champion
+    group: Backgrounds
+    proficiencies: 6 weapons of choice, 1 of athletics, acrobatics, intimidation, or performance.
+    Killing blow: Once per long rest, gain advantage on an attack. If it kills a creature, regain 1 rest die.
+  - name: Charmer
+    group: Backgrounds
+    proficiencies: 1 of persuasion, insight, athletics, performance, an instrument of your choice, or 2 languages
+      of choice.
+    First impressions: Gain advantage on the first Charisma based check you make against a creature.
+    Handsome: +1 Charisma.
+    Rose glasses off: -1 to an ability score of your choice. -2 to a skill of your choice.
+  - name: Commoner
+    group: Backgrounds
+    proficiencies: 2 tools of choice, 1 skill.
+    Fumble: You can reroll 1 roll per rest without disadvantage or advantage, taking the new result regardless
+      of the outcome.
+  - name: Collector
+    group: Backgrounds
+    proficiencies: 1 tool of choice, 1 instrument or game set of choice, sleight of hand.
+    Pockets: You always have minor ingredients, small components, or any other nonsense the GM asks for like
+      casting components that don't seem like a serious deal (subject to the GM and player discussion, the
+      threshold should not be anything worth more than 1 gold).
+    Extra slot: You gain an extra slot, allowing you to attune to one more ring or medallion item, but only
+      one.
+  - name: Conduit
+    group: Backgrounds
+    proficiencies: Religion.
+    Locus: You have a -1 penalty to all saves against spells and magical effects.
+    Reserve: Your rest dice maximum is increased by 1.
+    Ley-line tapping: You may spend 2 rest dice during a rest to perform a ritual with up to three allies.
+      Each ally partaking in the ritual is restored 1 rest die, except you. You instead gain 1d10 arcane health
+      for each rest die restored. Everyone participating may make a DC 20 insight check. If there are at least
+      two successes, 1 member partaking in the ritual is granted inspiration.
+  - name: Courtier
+    group: Backgrounds
+    proficiencies: 2 skills of choice and 1 tool or languages of choice.
+    Pleasant conversation: +1 to persuasion and insight checks.
+    Befuddle: Once per long rest, you can reroll a natural 1 on a Charisma roll.
+  - name: Coven outcast
+    group: Backgrounds
+    proficiencies: 1 language of choice, 1 of religion, history, deception, medicine, or deception.
+    Secret magics: Learn a level 1 occult or mystic spell. You can spend 1 rest die or 1d4 health to cast it.
+      It can be cast up to 1/2 your maximum level (rounded up) but this increases the rest dice or hp cost.
+  - name: Criminal
+    group: Backgrounds
+    proficiencies: Two of Thieves' tools, forgery kit, Poisoner's kit, jeweler's kit, Brewer's tools, stealth,
+      deception, or intimidation, 1 simple weapon.
+    Premeditation: You can spend a rest die during a short rest to grant yourself a +1d4 bonus to all skill
+      checks made to commit a specific crime (subject to the GM) until your next rest.
+  - name: Cult initiate
+    group: Backgrounds
+    proficiencies: 'Arcana and 1 of: history, religion, deception, persuasion, or intimidation.'
+    Lesser words of power: |-
+      Gain use of a cantrip that has only verbal components. Use Constitution as the casting modifier. Alter the cantrip in one of the following ways:
+      * Increase duration by 1 round.
+      * Increase DC by 1.
+      * Increase damage by 1d4.
+      * Reduce the casting time from 1 action to a bonus action.
+      * Increase range by 30/60 feet, or 30 feet if no spell attack is present.
+  - name: Curse-bearer
+    group: Backgrounds
+    proficiencies: 1 skill of choice.
+    Twisted gift: Learn a damage-dealing cantrip. Change the damage type to necrotic.
+    Fell omen: All necrotic damage you inflict is increased by 1.
+  - name: Delver
+    group: Backgrounds
+    proficiencies: Jewelers tools and 2 of survival, nature, acrobatics, perception, sleight of hand, or investigation.
+    Careful step: The first 5 feet of movement you make on your turn ignores difficult terrain and does not
+      trigger traps.
+    Rune deciphering: Gain a +1 bonus to checks made to understand, identify, or interpret runes.
+    Trap injury: -5 feet to movement speed.
+  - name: Diplomat
+    group: Backgrounds
+    proficiencies: Persuasion, history, 2 languages.
+    Negotiation skills: Once per long rest gain a +1d8 bonus to a check or roll made in pursuit of peace or
+      to avoid conflict (subject to the GM).
+  - name: Disciple
+    group: Backgrounds
+    proficiencies: 2 weapons of choice, 1 of either athletics, acrobatics, Animal Handling, or survival, and
+      1 of either nature, religion, medicine, or history.
+    Seek within: Up to two times per long rest, but no more than once per rest, regain 1 of any class resource
+      you possess, such as rest dice, sorcery points, Ki, uses of rage, etc.
+  - name: Dissident
+    group: Backgrounds
+    proficiencies: Simple weapons, 1 skill of choice, 1 tool of choice.
+    Resist: Once per long rest automatically treat a check made to resist constraint, hostility, oppression,
+      or to cause dissent, distraction, or chaos as a minimum success (The minimum roll needed to succeed).
+  - name: Doomsayer
+    group: Backgrounds
+    proficiencies: Intimidation, history.
+    We're ALL gonna die!: Advantage on saves against fear.
+    It gets worse!: Once per long rest, your foretold doom comes true, and a bad situation suddenly becomes
+      worse (subject to the GM).
+  - name: Eldritch witness
+    group: Backgrounds
+    proficiencies: Insight, perception.
+    Disturbed: Gain a -1 penalty to all mental saves. Reduce all incoming psychic damage by 1.
+    Survivor: You can reroll one save per rest.
+  - name: Empath
+    group: Backgrounds
+    proficiencies: Insight, 2 languages.
+    Vast soul: You can gain a +1d4 bonus to checks made to understand other creatures and their intents. This
+      can be done up to as many times per long rest as your Wisdom and Charisma bonuses combined -2 (min 1).
+  - name: Errant Knight
+    group: Backgrounds
+    proficiencies: 'Light and medium armor, History, as well as 1 of: heavy armor, light and heavy shields,
+      3 martial weapons, persuasion, Animal Handling, or insight.'
+    Dueling wound: |-
+      Choose 1 of the following injuries:
+      * -2 max HP.
+      * -2 to a physical save.
+      * -3 to perception and sight based checks.
+      * Movement speed is reduced by 5 feet.
+    Honor: If you are being truthful, you may spend a rest die to immediately make your honesty clear and apparent.
+      This can clear guilt or prove trustworthiness.
+  - name: Exile
+    group: Backgrounds
+    proficiencies: 1 skill of choice. 1 weapon of choice. 1 language.
+    Endeavor: You may choose to burn all your remaining rest dice to gain double advantage on a roll once per
+      long rest. This means rolling three d20s and picking the highest result. You must have at least 1 rest
+      die to use this ability.
+  - name: Expert
+    group: Backgrounds
+    proficiencies: Expertise with 1 skill of choice.
+    Experience: You can spend a rest die to grant a skill check a 1d4 bonus. On a success, the rest die is
+      not lost.
+  - name: Farmhand
+    group: Backgrounds
+    proficiencies: 1 tool of choice or athletics, as well as 1 from either Animal Handling, survival, or nature.
+    Hearty: +1 Constitution. Always heal 1d4 health and remake 1 save against a disease when entering a rest.
+  - name: Follower
+    group: Backgrounds
+    proficiencies: Religion and 1 instrument, tool, or language of choice.
+    Mantra: When you roll a natural 20 on a meaningful religion check, you assemble a fragment of a mantra.
+      3 fragments make a full mantra. You can speak a mantra as a bonus action, restoring 1 rest die to yourself.
+      You cannot have more than 3 mantras.
+  - name: Fraud
+    group: Backgrounds
+    proficiencies: Forgery kit, disguise set, 1 of performance, persuasion or deception.
+    Hello, my name is: When you directly, successfully, and meaningfully deceive a group or person as to your
+      identity, you can regain 1 rest die. This can occur a number of times per long rest equal to your Charisma
+      bonus - 2 (min 1).
+  - name: Freeloader
+    group: Backgrounds
+    proficiencies: 1 tool, game set, vehicle, or instrument of choice.
+    Good vibe: Ignore minor expenses. You can always find a spot to hide out, though it might not be glamorous.
+      Party has a +1d4 bonus to find safety and shelter so long as you assist in any of the associated rolls.
+    Gift keeping: Once per long rest, you can gain a free item from wishful benefactors, through frugality,
+      or simply friendship from a new market place or trader that you find. The smaller the market or seller,
+      the smaller the gift. The gifts can range from good will, food, potions, scrolls, wands, or other items
+      (subject to the GM).
+  - name: Free thinker
+    group: Backgrounds
+    proficiencies: 1 skill or tool of your choice.
+    Unpredictable: You gain a +1 bonus to skill checks you are not proficient with.
+  - name: Fortune teller
+    group: Backgrounds
+    proficiencies: Insight, set of cards, 2 of arcana, history, performance, or religion.
+    Reading: |-
+      During a rest, an ally can spend one rest die to have you perform a reading for them. The ally must choose a skill check and a save type before the reading. You must then roll an insight check and the ally must roll a Charisma check. The DC for both is 13. Depending on the outcome of the rolls, the ally is granted the following effects until the next rest:
+      * Critical success: +3 bonus to skill and save, rest die is refunded.
+      * Both are success: +2 bonus to skill and save.
+      * Mixed result: +1 bonus to one, but -1 penalty to the other.
+      * Both are failure: -1 penalty to skill and save.
+      * Critical failure: -2 penalty to skill and save.
+      * Mixed critical: Failed reading. Fortune teller restores 1 rest die.
+      You can perform a reading for yourself, but the DC is increased to 16. A character cannot benefit from a reading more than once per rest.
+  - name: Gambler
+    group: Backgrounds
+    proficiencies: '1 game set, 2 of: sleight of hand, deception, or insight.'
+    Tempt fate: When the GM rolls to determine the outcome of an event, you can spend a rest die to force the
+      GM to reroll, allowing you to choose which outcome to go with.
+    Raise the stakes: You can spend a rest die to gain advantage on a skill check made to participate in or
+      convince someone to a riskier proposal, typically a bet, dare, wager, contract, or game (subject to the
+      GM).
+  - name: Gifted soul
+    group: Backgrounds
+    proficiencies: Expertise with Insight, and proficiency with one from arcana, or religion.
+    Mark of destiny: Gain the ability to cast an oath or mystic cantrip, using Wisdom or Charisma as the casting
+      attribute.
+  - name: Guard
+    group: Backgrounds
+    proficiencies: 1 martial weapon of choice, investigation, light armor, athletics.
+    Got your back: Once per long rest, gain the ability to call an ally or other friendly npc not engaged in
+      an encounter to immediately join combat, if possible. Your allies also have this ability to call you
+      as backup (subject to the GM. This is a narrative ability as much as a combat ability).
+  - name: Heretic
+    group: Backgrounds
+    proficiencies: Choose two of religion, history, deception, and intimidation.
+    Heresy: Learn an occult cantrip. Use Intelligence or Wisdom as the casting attribute. Once per rest, gain
+      advantage on a check made to uncover secrets or forbidden knowledge.
+  - name: Hermit
+    group: Backgrounds
+    proficiencies: Nature, insight, herbalist's kit, 1 instrument of choice.
+    Pipe-weed mixing: You can attempt to blend special pipe-weed during a long rest. Make a herbalist's kit
+      check. The DC is 12. Gain a dose of pipe-weed for every 3 points by which you exceed the check (min 1).
+      Pipe-weed is a consumable that can be consumed over a period of 5 minutes. Creatures that consume the
+      pipe-weed will regain 1 fatigue, heal 1d4+1 health, and remake a Constitution or mental save against
+      an ongoing effect.
+    Time to think: Gain a +1 bonus to a mental skill of your choice.
+  - name: Hooligan
+    group: Backgrounds
+    proficiencies: Intimidation and 1 of athletics, performance, survival, sleight or hand, or deception.
+    Lucky hook: Roll a 1d20 when landing an unblocked unarmed strike. On a 20, the target of the unarmed strike
+      is stunned for 1 round.
+    Tough: Gain a +1 bonus to Constitution saves and checks.
+  - name: Host
+    group: Backgrounds
+    proficiencies: 2 of a skill, weapon, tool, instrument, game set, or language of choice in any combination.
+    Reduced awareness: -1 to Wisdom and Dexterity based skill checks.
+    Enhanced Constitution: +7 max HP.
+  - name: Hunter
+    group: Backgrounds
+    proficiencies: Simple bows, survival, 1 of Animal Handling, nature, or perception.
+    Track: Once per long rest, you can spend 1 rest die to gain a +1 bonus to all rolls made to track or pursue
+      a target. Lasts until the next rest.
+    The hunt: If you capture or kill a creature that you have spent any rest dice to pursue or track since
+      your last rest, you regain 1 rest die. You can only do so once per rest.
+  - name: Inspector
+    group: Backgrounds
+    proficiencies: Investigation, insight, perception.
+    One step ahead: Act in the surprise round if any of the enemies are backstabbers or betrayers.
+  - name: Laborer
+    group: Backgrounds
+    proficiencies: 1 tool or vehicle, athletics.
+    Strong: +1 to Strength.
+    Hardy: Once per rest, gain advantage on a Strength-based roll.
+  - name: Latent prophet
+    group: Backgrounds
+    proficiencies: 1 of religion, intimidation, insight, perception, or performance. 1 language of choice.
+    Destiny: Once per rest, you can reroll any character's d20 roll, so long as you can see the character.
+      You cannot do this for yourself.
+  - name: Lesser heir
+    group: Backgrounds
+    proficiencies: '2 of: a skill of choice, a martial weapon of choice, an instrument and game kit of choice.
+      Also 1 of persuasion, insight, or deception.'
+    Administrative wit: You gain a +1 bonus to rolls for any kind of planning or preparation type activity
+      that is not made while under attack.
+    Spark of nobility: You can grant an ally an extra rest die to use for any purpose during a rest. Can only
+      be done once per long rest.
+    Pittance: You start the game with 1 lesser healing potion or its gold equivalent.
+  - name: Lone wanderer
+    group: Backgrounds
+    proficiencies: Insight, survival.
+    Push on: You may ignore 1 death dealing blow per long rest.
+  - name: Madman
+    group: Backgrounds
+    proficiencies: Choose 3 of arcana, deception, intimidation, insight, or performance.
+    Chaos: Once per long rest, gain advantage on checks, saves, and attacks made to execute stupid ideas (subject
+      to the GM) for 2 rounds.
+    Slight madness: -1 to Intelligence or Wisdom.
+  - name: Mage apprentice
+    group: Backgrounds
+    proficiencies: Arcana, history.
+    Arcane training: Gain the ability to cast an arcane cantrip, using Intelligence or Charisma as the casting
+      attribute. You can use Dexterity as the casting modifier if it has only somatic components.
+    Mental training: Gain a +1 bonus to Wisdom saves.
+  - name: Mana-burn survivor
+    group: Backgrounds
+    proficiencies: 'Choose either 2 proficiencies or 1 expertise from: arcana, medicine, survival, deception,
+      insight, intimidation.'
+    Mana-burned: Your rest dice maximum is reduced by 1. This cannot reduce your maximum rest dice below 1.
+    Arcane adaptation: Reduce all incoming lightning, psychic, radiant, and force damage by 1 (min 1).
+    Energy conductor: If you take one or more dice of of lightning, psychic, radiant, or force damage, you
+      can regain 1 rest die. You can do so a number of times equal to your Constitution bonus + your Charisma
+      bonus, but the threshold for the ability to trigger is increased by 1 die every time. This threshold
+      is reset after a rest.
+  - name: Marsh dweller
+    group: Backgrounds
+    proficiencies: Survival, nature.
+    Swamp legs: Ignore the first 5 feet of difficult terrain.
+    Swamp fungus: -1 to Constitution. +1 to Wisdom.
+  - name: Mercenary
+    group: Backgrounds
+    proficiencies: Choose 3 of light armor, medium armor, light shields, 3 simple weapons, 2 martial weapons,
+      athletics, survival.
+    Call it: Immediately make a tactical call for the party once per long rest. You and your allies within
+      hearing gain a +1d4 bonus to all rolls made in accordance to the plan until the end of your next turn.
+      If the plan fails, lose 1 rest die, or suffer 1 fatigue damage if at 0 rest dice.
+  - name: Merchant
+    group: Backgrounds
+    proficiencies: Persuasion, scribe's tools, 2 languages, 1 skill of choice.
+    Hustle: When purchasing consumables, you can spend a rest die to double the amount purchased without increasing
+      in cost (does not apply to items the GM deems "special") You can spend a rest die to gain advantage on
+      a check made to strike a business deal with another character.
+  - name: Militia
+    group: Backgrounds
+    proficiencies: Choose 3 of light armor, medium armor, light shields, 2 martial weapons, 3 simple weapons,
+      survival, athletics.
+    Drill: During a long rest, you can choose to train with any number of individuals up to your Wisdom bonus
+      (min 1). For a number of times up to your proficiency bonus until the next long rest, you can grant an
+      ally you trained with a 1d4 bonus to a damage roll, a save, or a skill check as a free action.
+  - name: Miner
+    group: Backgrounds
+    proficiencies: Picks and pickaxes, athletics.
+    Heavy hauling: +1 Strength. Ignore 1 increment of bulk and movement speed reduction from armor and equipment.
+    Prospecting: Expertise on nature, survival, and investigation checks made to evaluate the structural integrity,
+      purpose, make, and mineral richness of caves, digs, mineral veins, and tunnels.
+    Bad lungs: -1 Constitution. -1 max HP.
+  - name: Minstrel
+    group: Backgrounds
+    proficiencies: 1 of performance or acrobatics, expertise with 1 tool, 2 languages, and instrument or game
+      kit of your choice.
+    Showtime: You can spend a rest die during a short rest to gain 3 points of wit that are lost at the end
+      of the next rest. You can spend 1 wit to gain a +1d4 bonus to a Dexterity, Charisma, or Wisdom skill
+      check.
+  - name: Mountain dweller
+    group: Backgrounds
+    proficiencies: Athletics and 1 of either stoneworker tools, jeweler's tools, brewer's tools, herbalist's
+      kit, or cook's utensils.
+    Harrumph: +3 max HP.
+    Firm footing: +1 to physical saves so long as you have not moved more than 5 feet since the start of your
+      turn.
+  - name: Mutant
+    group: Backgrounds
+    proficiencies: 2 of survival, stealth, or intimidation.
+    Mutation: |-
+      Gain 2 of.
+      * Gain damage resistance to one type of damage. Can be taken multiple times.
+      * Gain 60 feet of darkvision.
+      * Water breathing.
+      * Keen scent.
+      * Gain a climbing speed of 30 feet.
+      * Gain the ability to immediately deal 1d4 psychic damage to a creature you can see within 30 feet as an action. Upgraded to 1d6 and 1d8 at 5th and 9th level, respectively.
+      * Increase your AC by 1.
+      * Gain use of one cantrip of your choice, use Constitution as the casting modifier.
+      * Gain a 1d4 bonus to all intimidation rolls.
+      * Gain poison immunity.
+    Unsightly: -1 to Charisma.
+  - name: Mystic pupil
+    group: Backgrounds
+    proficiencies: 3 of nature, Animal Handling, arcana, history, insight, or deception.
+    Mystic art: Gain the ability to cast a mystic cantrip, using your Wisdom or Charisma as the casting modifier.
+      You may use Dexterity if the cantrip has only somatic components.
+  - name: Necromancer's apprentice
+    group: Backgrounds
+    proficiencies: Arcana.
+    Necromancer's Inquiry: |-
+      You can spend 1 rest die, 1d4 HP, and take 1 fatigue to attempt to ask a recently deceased creature 1 question that it must answer truly. You must have access to the remains and it must be during a rest.
+      At 3rd character level you can do so outside a rest as a 1 hour ritual.
+      At 5th character level, when you do so during a rest you can forego the fatigue and hp cost.
+      At 7th character level, the hp and fatigue cost is removed entirely and the ritual takes 10 minutes.
+  - name: Noble
+    group: Backgrounds
+    proficiencies: Choose 4 of persuasion, 2 languages, deception, intimidation, 3 martial weapons, light armor,
+      medium armor, heavy armor, light shields.
+    Inheritance: You begin the game with any kind of non-magical weapon or piece of armor of your choice, as
+      well as two minor healing potions, and a weapon of your choice.
+    Leadership: You gain a +2 bonus on speech checks made when addressing crowds.
+  - name: Nomad
+    group: Backgrounds
+    proficiencies: 1 instrument of choice, 1 of nature, Animal Handling, or survival.
+    Salt of the earth: +3 max hp.
+    Within walking distance: +5 feet to your movement speed.
+  - name: Northlander
+    group: Backgrounds
+    proficiencies: Hand-axe, and 1 of survival, athletics, intimidation, Animal Handling, round shield, Hunting
+      bow, or Brewer's tools.
+    Used to the cold: You have resistance to cold damage.
+    Axe-throwing: Your thrown weapon range is increased by 20/40 feet.
+  - name: Occult seer
+    group: Backgrounds
+    proficiencies: 1 of arcana, religion, or insight.
+    Whispers: Once per long rest you can ask for cryptic insight regarding a matter or situation (subject to
+      the GM).
+    Occult insight: Gain a +1 bonus to insight checks.
+  - name: Outlander sage
+    group: Backgrounds
+    proficiencies: 1 weapon of choice, 2 languages of choice, 1 tool, insight, medicine.
+    Old-world remedies: You can spend a rest die as a bonus action to remove the poisoned or sickened condition
+      from yourself. You gain advantage on saves made to resist diseases.
+    Protective symbols: You gain a +1 bonus to mental saves against the effects and abilities of otherworldly,
+      cosmic, or eldritch forces.
+  - name: Oracle
+    group: Backgrounds
+    proficiencies: Religion, history.
+    Foretell: After a long rest, roll 3d20. Choose one from the list. You can replace any roll until your next
+      long rest with the outcome of the chosen dice.
+  - name: Outcast
+    group: Backgrounds
+    proficiencies: 1 skill, tool, weapon group, or shield type.
+    Odd gift: If your race offers you a choice from a list, take another.
+    Do better: 'If your race offers you an ability that has a number of uses per rest or per long rest, it
+      can be used 1 additional time. If it has a resource limit (for example: Maximum number of special points
+      or dice) then it is increased by 1.'
+  - name: Pearl diver
+    group: Backgrounds
+    proficiencies: Athletics, nature, investigation.
+    Lung capacity: Ignore one instance of fatigue damage up to twice per rest.
+  - name: Philosopher
+    group: Backgrounds
+    proficiencies: 2 Wisdom or Intelligence skills of choice, persuasion.
+    Wise words: Once per long rest, giving wise guidance can restore 1 rest die to an ally (subject to the
+      GM).
+  - name: Physician
+    group: Backgrounds
+    proficiencies: Healer's kit, medicine.
+    Heal the injured: During a rest, you may spend 1 rest die to make a DC 14 healer's tools check for every
+      party member. On a success, the party member is healed for 1d6 health. On a failure, they are healed
+      for 1 instead.
+  - name: Plague doctor
+    group: Backgrounds
+    proficiencies: 1 of healer's kit, herbalist's kit, or Alchemist's kit. 1 of medicine, nature, or survival.
+      And 1 of history, religion, or arcana.
+    The gloves are important!: Reduce all incoming poison and acid damage by 1.
+    Field notes: You have a notebook. Each time you fail a medicine, nature, or healing/biology related, arcana
+      or religion check, you can collect 1 note in your notebook as a bonus action. You can spend up to 3 notes
+      to gain a bonus to such a check. The bonus gained is equal to the amount of notes spent.
+    Exposure: -1 to Strength and Dexterity saves.
+  - name: Prisoner
+    group: Backgrounds
+    proficiencies: Survival and 2 skills or languages of choice.
+    Escape: Gain a +2 bonus to checks made to escape incarceration, interrogation, or binds.
+  - name: Protector
+    group: Backgrounds
+    proficiencies: 'Light armor, light shields, one of: insight, intimidation, or investigation.'
+    Guardian angel: Choose an individual or group to protect with the GM. Once per long rest, when an attack
+      would reduce a protected individual within 10 feet to 0 HP, you can interpose yourself and negate that
+      attack's damage without spending block. The GM determines whether you move adjacent to the target. You
+      and the GM can revise the protected individual or group as the story develops.
+  - name: Prospector alchemist
+    group: Backgrounds
+    proficiencies: 1 of Alchemist's tools, Tinker's tools, or cartographer's tools.
+    Acquire explosives: |-
+      You can spend 1 rest die during a rest in a civilized large settlement or outpost (subject to the GM) or 2 rest dice, 2 phials of either acid or oil, and 2 flasks of heavy alcohol when not in such an area. When doing so, you can create 1d3 prospectors bombs. A prospector bomb can be ignited to have a fuse of anywhere between 1 and 10 rounds, and can be thrown at a range of 30/60 ft. A prospector bomb deals 4d10 + your Intelligence modifier fire and force damage in a 35 ft area.
+      The damage is split. Creatures beyond 10 ft must make a Dexterity save, and take half damage on a successful save. Prospector bombs go bad and unreliable after a long rest.
+  - name: Psion
+    group: Backgrounds
+    proficiencies: None.
+    Gifted: Gain an arcane, oath, mystic, and occult cantrip. Assign a different mental ability score as the
+      casting attribute to each cantrip. Only one attribute may be taken twice, as there are three mental ability
+      scores and 4 cantrips.
+  - name: Raider
+    group: Backgrounds
+    proficiencies: 2 weapons of choice, 1 of animal handling, survival, athletics, or intimidation.
+    Ferocious: You always start combat with 1 extra block.
+    Uncivilized: -1 Intelligence.
+    Uncultured: -1 Charisma.
+  - name: Rancher
+    group: Backgrounds
+    proficiencies: 1 of whips or polearms, Animal Handling, and 1 of nature, survival, intimidation, or medicine.
+    Whoa there!: +1 to melee weapon based pin, trip, push, and grapple checks. +2 if that target is further
+      than 5 feet away.
+    Animal Wisdom: +1 to Animal Handling checks.
+  - name: Recluse
+    group: Backgrounds
+    proficiencies: Insight, and one of history, disguise, performance, deception, stealth, or survival.
+    Unseen: Once per rest, if there is at least one other party member nearby when initiative is rolled, also
+      roll a stealth check with disadvantage. Any enemy that has an initiative lower than the stealth roll
+      will treat you as hidden for the first round of combat.
+  - name: Renegade
+    group: Backgrounds
+    proficiencies: 1 skill of choice, 1 weapon of choice.
+    Won't take me alive!: Once per long rest, you can choose to take a failed death saving throw as a free
+      action on your turn to immediately gain 1d20 temporary health, regain 1 rest die, and gain a +1d10 bonus
+      to your next initiated d20 roll until the end of your turn.
+  - name: Runaway
+    group: Backgrounds
+    proficiencies: 1 of stealth, athletics, survival and 1 instrument of choice, 1 tool and instrument of choice,
+      or deception.
+    Run away: Your movement speed is increased by 10 feet.
+  - name: Savage
+    group: Backgrounds
+    proficiencies: Survival, Animal Handling.
+    Against all odds: You reduce all incoming damage by 1 (min 1).
+  - name: Saboteur
+    group: Backgrounds
+    proficiencies: Deception, 1 simple weapon, and 2 of forgery kit, Thieves' tools, disguise kit, Poisoner's
+      kit.
+    Bastard: You gain advantage on checks, rolls, and attacks made in the moment of betrayal (subject to the
+      GM).
+  - name: Sailor
+    group: Backgrounds
+    proficiencies: 'Athletics and 1 of: acrobatics, perception, performance, 2 languages of choice, 1 instrument
+      and game set of choice, cook''s utensils, cartographer''s tools, survival, or 2 weapons of choice.'
+    Matey: +1 to either Strength or Dexterity.
+    Sea-legs: You can spend a rest die as a bonus action to ignore the effects of 1 of either a poison, a disease,
+      or a Constitution save based debilitating spell or ability that has targeted you. This lasts for 2d4
+      rounds.
+  - name: Saltlander
+    group: Backgrounds
+    proficiencies: 1 weapon proficiency from either spear, light crossbow, hook sword,  serrated dagger. As
+      well as 1 proficiency from athletics, intimidation, survival, or religion.
+    Foe breaker: +2 to contested physical rolls.
+    Rough and ready: +1 max HP, +1 to initiative.
+  - name: Savant
+    group: Backgrounds
+    proficiencies: Expertise with 1 skill.
+    Mastery: When you roll a critical success on a skill you have expertise in, you regain 1 rest die.
+  - name: Scout
+    group: Backgrounds
+    proficiencies: Perception, shortbow, and one of longbow or light crossbow.
+    Eagle eye: Your bow and crossbow attacks deal an additional 1d4 damage when the target is further than
+      40 feet away. This damage is not multiplied on a critical hit.
+  - name: Scribe
+    group: Backgrounds
+    proficiencies: 2 of history, nature, arcana, medicine, religion.
+    Truth-seeker: You have advantage on checks made to uncover, organize, and recount lore and history from
+      books, texts, runes, and myths.
+  - name: Servant
+    group: Backgrounds
+    proficiencies: 4 of cook's utensils, Carpenter's tools, Scribe's tools, performance, insight, survival,
+      Animal Handling, medicine,1 language and 1 instrument of choice, 2 languages, Brewer's tools, tailor's
+      kit.
+    Helping hand: If an ally within 30 feet fails a check by just 1, you may immediately grant them a +1 to
+      that roll. This can be done once per rest.
+    A bit of diligence: Gain a +1 bonus to a skill of your choice.
+  - name: Sewer rat
+    group: Backgrounds
+    proficiencies: 3 of stealth, survival, deception, sleight of hand, acrobatics, performance, or Animal Handling,
+      Thieves' tools.
+    No place to live: -1 max hp. -1 Constitution.
+    But it's home: Resistance to poison damage. Advantage on all saves against disease.
+    Slippery: You can make a move action immediately regardless of if it's your turn a number of times per
+      long rest equal to your Dexterity bonus -1 (min 1). You cannot do this more than once per turn.
+  - name: Smith
+    group: Backgrounds
+    proficiencies: Smith's hammer, smith's tools, athletics.
+    Gear check: You can spend a rest die during a rest to grant an ally a +1 bonus to AC and attacks until
+      your next rest. Cannot stack. You can do so without any associated rest dice cost during a long rest.
+  - name: Sorcerer's child
+    group: Backgrounds
+    proficiencies: 1 of arcana, history.
+    Arcane lineage: 'Choose an arcane school of magic: abjuration, conjuration, divination, evocation, enchantment,
+      illusion, necromancy, or transmutation. Learn a cantrip of that school of magic, and a level 1 spell
+      of that school of magic, which uses your Charisma as the casting modifier, and costs 1 rest die to cast.'
+  - name: Stalker
+    group: Backgrounds
+    proficiencies: Stealth, deception, medicine.
+    Psycho: Attacking out of stealth immediately lets you take an extra attack against the target. Stealth
+      checks made to kill silently have advantage.
+  - name: Tactician
+    group: Backgrounds
+    proficiencies: 2 weapons of choice, light crossbow, and 1 of history, insight, survival, nature, or investigation.
+    Plan B: Once per long rest during an encounter, you and all allies can reroll initiative again before the
+      start of any turn, and start from the top.
+    Issue orders: You can grant an ally that can hear you an extra movement action or bonus action as a free
+      action. They must use up the movement action immediately. You can only do this once per turn, and only
+      a number of times per long rest equal to your Wisdom + Intelligence bonus - 3 (min. 1).
+  - name: Temple student
+    group: Backgrounds
+    proficiencies: 2 specific weapons of choice. 1 of history or religion.
+    Practice 1000 times: Choose one listed maneuver from each of the two weapons selected for this background.
+      When you use one of those maneuvers, you may pay its usual bonus- or move-action cost with a free action.
+  - name: Test subject
+    group: Backgrounds
+    proficiencies: 1 skill of choice. 1 save of choice.
+    Success: Your rest dice maximum is increased by 1. You gain darkvision out to 60 feet, or increase it further
+      by that distance.
+    Unstable: -1 to Constitution.
+  - name: The hero
+    group: Backgrounds
+    proficiencies: Expertise with one skill, tool, instrument, and game set of choice, and proficiency with
+      one weapon of choice.
+    The one: You are the hero, you do not need other benefits.
+  - name: Thornlander
+    group: Backgrounds
+    proficiencies: 1 of history, nature, arcana, or insight, 1 instrument of choice, 1 Agile or Balanced weapon
+      or bow of choice.
+    Duel culture: Once per rest you can make an equip and attack with an unequipped weapon on your person as
+      a free action.
+  - name: Tortured prodigy
+    group: Backgrounds
+    proficiencies: Proficiency with 2 of arcana, religion, history, or sleight of hand.
+    Forced mastery: Learn a level 1 spell of choice. You can spend 1 rest die to cast it. You can spend more
+      rest dice to cast it at a higher levels, up to a maximum of 1/2 your character level rounded up.
+  - name: Town fool
+    group: Backgrounds
+    proficiencies: 'Performance and 1 of: intimidation, persuasion, an instrument, or a game set of choice.'
+    Shocking behavior: Once per long rest, choose a creature that can see or hear you. It makes a Charisma
+      save against DC 5 + your proficiency bonus + your Charisma, Intelligence, and Wisdom bonuses. On a failure,
+      apply Stunned for 1 round. On a success, apply Shocked for 1 round instead. Resolve both conditions using
+      their current definitions.
+    Not too serious: -1 to intimidation and persuasion checks.
+  - name: Underdark traveler
+    group: Backgrounds
+    proficiencies: 1 of survival, arcana, investigation, religion, or insight.
+    Undercommon knowledge: You can understand dwarven, elvish, orc, goblin, and kobold languages, but poorly
+      (subject to the GM).
+    Attuned to the dark: Gain 60 ft of darkvision.
+  - name: Veteran
+    group: Backgrounds
+    proficiencies: '2 martial weapons of choice, light armor, light shields, survival, and 1 of: athletics,
+      stealth, Animal Handling, or 2 languages.'
+    War scars: -1 max HP, -1 to a save of choice, -1 to perception.
+    Hold the line!: +2 to block checks.
+  - name: Wanderer of the wastes
+    group: Backgrounds
+    proficiencies: Survival, 1 weapon of choice.
+    Hardy survivor: You gain resistance to environmental hazards and advantage on checks made to endure harsh
+      environments.
+  - name: Warlock devotee
+    group: Backgrounds
+    proficiencies: Arcana, 1 weapon of choice.
+    Occult insight: Gain an occult cantrip. Use either Intelligence or Charisma as the casting attribute.
+    Dark pact: Learn a 1st level occult spell that you can cast once per rest. This spell is always cast as
+      a level 1 spell. Use either Intelligence or Charisma as the casting attribute. If you slay a small or
+      larger living creature while still able to cast the spell, you may instead spend the casting of the spell
+      to regain a rest die.
+    The cost: -2 max hp.
+  - name: Warrior
+    group: Backgrounds
+    proficiencies: Intimidation, martial weapons.
+    Go to war: You can spend 1 rest die during a short rest, to cause all attacks you make with a weapon type
+      of your choice to deal an additional 1d4 damage until your next rest.
+  - name: Watchman
+    group: Backgrounds
+    proficiencies: Crossbows, perception, 1 skill of choice.
+    Owl-sighted: You gain darkvision out to a range of 60 feet.
+    Keen shot: You may spend a rest die as a free action to cause your next ranged attack to ignore partial
+      cover and gain 100/200 feet of extra range.
+  - name: Woodsman
+    group: Backgrounds
+    proficiencies: Survival or athletics, simple axes and bows.
+    Technique: Add +1 to checks to execute Chop, Cleave, or Swing with a weapon that grants that maneuver.
+      Use that weapon's version of the maneuver.
+    Elbow grease: Gain a +2 bonus to Strength and Constitution based checks during rests.
+  - name: Wretch
+    group: Backgrounds
+    proficiencies: Acrobatics or athletics, and 1 simple weapon.
+    Scrapped talent: Gain proficiency with two skills of choice, but you have a -2 penalty to them.
+    Rage against the dying of light: +3 to death saving throws.
+  - name: Zealot
+    group: Backgrounds
+    proficiencies: 1 simple weapon, religion.
+    Anointed: Gain an oath cantrip. Use Wisdom as the casting modifier. Gain +1 to a physical attribute.

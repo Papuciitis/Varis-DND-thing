@@ -6,6 +6,7 @@ import yaml
 
 
 SECTIONS = {
+    "rules": "Rules of play",
     "classes": "Classes",
     "items": "Items",
     "weapon-rules": "Weapon rules",

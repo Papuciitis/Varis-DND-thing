@@ -1,0 +1,126 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/mystic-magic/lvl-3-mystic-spells
+section: spells
+entries:
+- name: Disenchantment ritual
+  group: Mystic spells
+  lvl: '3'
+  types: abjuration
+  casting: action
+  components: Somatic, verbal
+  duration: concentration
+  range: 20 feet.
+  effect: 'As an action, begin to concentrate on a creature or object. While concentrating, you can spend
+    a bonus action to attempt to dispel one effect from the target: make a spell check vs the DC of the
+    effect. On a success dispel the target of the effect, on a failure make a concentration check.'
+- name: Enchantment of the moon
+  group: Mystic spells
+  lvl: '3'
+  types: Mystic 2, transmutation, abjuration
+  casting: action
+  components: Somatic, small quartz stone
+  duration: 1 week.
+  range: touch
+  effect: |-
+    As an action, enchant your weapon with lunar power. Can only be cast at night under the cover of the moon. The enchanted weapon gains the following upgrades for the rest of the night:
+
+    * Moon rune power - The weapon deals an extra 1d8 radiant damage. The crit range of the weapon is increased by 1 against undead, eldritch, fae, elemental, and beast creatures. Undead fortitude creatures have disadvantage on the roll, if reduced to 0 by the enchanted weapon.
+    * Ethereal after-image - the weapon has an increased range of 1, and has the sweep property.
+    * Runes of wisdom - the weapon grants the wielder one temporary health when slaying a small or larger undead, eldritch, or ethereal creature.
+    * Recharge - The spell restores 1d4 charges to the weapon, if relevant, when first applied.
+  draft_note: The page lists this spell under level 3, but its Type line says Mystic 2. Its level needs
+    an author ruling.
+- name: Force invocation
+  group: Mystic spells
+  lvl: '3'
+  types: illusion
+  casting: action.
+  components: Somatic, verbal, material (polearm)
+  duration: concentration
+  range: creatures within 20 feet.
+  effect: As an action, cast a wave of force with a staff or similar polearm. The wave emanates in a 50
+    ft cone from the caster. All creatures take 3d6 force damage and must make a strength save to avoid
+    being pushed back 10 tiles and reduce damage to half. Creatures that collide take an additional 1d6
+    damage.
+  higher_levels: For each spell level above 3rd, increase all damage by 1d6 and range by 10 ft.
+- name: Lightning crystal
+  group: Mystic spells
+  lvl: '3'
+  types: transmutation, abjuration
+  casting: action
+  components: Somatic, small quartz stone
+  duration: 1 week.
+  range: touch
+  effect: |-
+    As an action, create a lightning crystal (magical consumable) from a stone (such as a small quartz rock.) A lightning crystal lasts for 1 week, and can be treated by an alchemist as a component (thrown crystal)
+
+    The wielder of the crystal can crush it in their hand, releasing a 20 ft cone of lightning from their palm, dealing 3d12 lightning damage to creatures in the area. The creatures affected can make a dexterity save to take half damage. Creatures wearing metal armor or made of metal have disadvantage on the save.
+
+    A lightning stone can be thrown at a single creature instead, dealing 4d10 lightning damage, and causing the target to become stunned for 1 round. The target must make a constitution save to halve the damage and avoid the stun.
+
+    An inert (older than 1 week) lightning stone has its damage amount reduced to 1d4 in either use case.
+- name: Regeneration
+  group: Mystic spells
+  lvl: '3'
+  types: transmutation, abjuration
+  casting: action
+  components: Somatic, verbal
+  duration: 1 minute.
+  range: touch
+  effect: |-
+    As an action, either restore a creature that died in the last turn (subject to the GM) and restore it to life, or cast on a living creature, grant it regeneration 1d6 for a minute. A character affected by this regrows digits and missing eyes.
+
+    If cast on a tree, or other such large static organism, it is restored to life and can be made to move and alter slightly (no more than 5 ft of movement, subject to the GM)
+- name: Rune of power
+  group: Mystic spells
+  lvl: '3'
+  types: Mystic 3, evocation, transmutation, divination
+  casting: action
+  components: Somatic, verbal
+  duration: 10 minutes
+  range: self
+  effect: |-
+    As an action, invoke an rune of power specific to you for 10 minutes, and gain 2 temporary rest dice. Once the type is chosen upon the first casting, it remains that for your character from now on.
+
+    * Rune of fire - Gain fire resistance, or immunity if already resistant. Your melee and thrown attacks, as well as fire spell damage is increased by 1d6 fire damage. You can spend 1 rest die to immediately deal 3d10 + casting bonus fire damage to a creature within 10 feet.
+    * Rune of lightning - Gain lightning resistance, or immunity if already resistant. You can spend a rest dice to blink to a position within 40 feet, dealing 2d6 lightning damage to any creatures of choice along the path. You can do so to immediately escape a grapple, a snare, or similar restraints. Your lightning based spells deal an additional 1d6 lightning damage.
+    * Rune of light - Gain 1d6 temporary health at the start of your turn. Emit light in range of 40 ft. Your spell DC is increased by 2. You can spend a rest dice to grant a character within your light 2d10 temporary health. You can spend a rest dice to cause all creatures within 10 ft to make a constitution save. The DC is increased by 2, as it is a spell effect. On a failure, they take 2d8 force damage and are pushed back 1d4 * 5 feet. Creatures that collide take an additional 1d8 damage. This damage and DC ignores undead fortitude and eldritch resistances.
+    * Rune of amber - Gain a +2 bonus to strength and constitution for the duration. You can spend 1 rest die as an action to cause roots to manifest on a tile within 60 ft. The roots can occupy an area (having 100 hp,) can support a structure (with a strength of up to 30, subject to caster,) or can manifest thorns to create very difficult terrain that deals 1d8 damage on contact. Creatures caught in the tile when the roots sprout must make a dexterity save, and become entangled on a failure.
+    * Rune of blood - Regain 1 health at the start of your turn. Your death saves have advantage. You can spend a rest dice or 1d6 HP as an action to cause a target within 30 ft to make a constitution save. On a failure, they take 1d12 necrotic damage and you regain 1d8 hp. On a success, the target only takes half damage.
+- name: Shroud of illusion
+  group: Mystic spells
+  lvl: '3'
+  types: illusion
+  casting: full round action.
+  components: Somatic, verbal
+  duration: concentration
+  range: creatures within 20 feet.
+  effect: As a full round action, shroud yourself and allies with a spell of illusion. From now on, so
+    long as you maintain concentration, you and all creatures you choose remain under the chosen illusion,
+    extending no further than 20 feet from the caster.
+- name: Threads of magic
+  group: Mystic spells
+  lvl: '3'
+  types: Mystic 3, evocation, transmutation.
+  casting: action
+  components: Somatic, verbal
+  duration: instant
+  range: touch
+  effect: |-
+    As an action, imbue a magical item, tool, or similar object (subject to the GM) to either trigger it, or restore 1d3 charges to it, if applicable.
+
+    If it is a damaged enchanted weapon or piece of equipment (subject to the GM)., this can restore 1 point of damage to it.
+- name: Wield the lightning
+  group: Mystic spells
+  lvl: '3'
+  types: conjuration, evocation, divination
+  casting: full round action
+  components: Somatic, verbal
+  duration: 1 minute.
+  range: 180/360 feet
+  effect: |-
+    As a full round action, conjure a lightning bolt that hovers in your open palm without harming you. You can throw the lightning bolt as an action at a creature within range as a ranged spell attack.
+
+    The lightning bolt deals 6d6 lightning damage.
+
+    This spell can be cast as a reaction when natural lightning strikes near you to capture it instead. This requires a DC 20 save of your choice. A captured lightning bolt deals an extra 2d6 damage.
+  higher_levels: For every level above 3rd, increase damage by 1d6.

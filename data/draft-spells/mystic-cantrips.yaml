@@ -1,0 +1,153 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/mystic-magic/mystic-cantrips
+section: spells
+entries:
+- name: Adapt
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, transmutation, passive
+  range: self
+  casting: Full-round action
+  effect: As a full round action, grant yourself a +1 bonus to an attribute of your choice. Lasts until
+    dispelled, or a new attribute is chosen.
+- name: Empower
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, transmutation
+  range: self
+  casting: bonus action
+  effect: |-
+    As a bonus action, gain an extra 1d4 damage on your next attack, damaging ability, or healing for your next healing ability or spell until the start of your next turn. At the start of your next turn, gain 1 fatigue.
+
+    This dice increases by 1 size category, up until a maximum of 1d8 each time it is used. This increase is reset every rest.
+- name: Claws
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, transmutation
+  casting: action
+  components: verbal, somatic
+  range: self
+  duration: 1 minute
+  effect: As an action, manifest claws. Wielding most weapons or shields with claws either incurs disadvantage
+    or is impossible while the claws remain, but your unarmed attacks deal an extra 1d6 slashing damage.
+  upgrades: |-
+    At 5th level and 9th level, choose one upgrade:
+
+    * Gain a climb speed of 30 feet, or further increase it by 30 feet.
+    * Increase claw damage by 1 dice category. Can be taken multiple times
+    * The damage dealt by claws becomes cursed, and cannot be healed by magical means.
+    * You gain a burrow speed of 15 feet, or increase burrow speed by 15 feet.
+- name: Enchant flask
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, transmutation
+  casting: action
+  components: somatic, material (liquid container in hand)
+  range: self
+  effect: |-
+    As an action, infuse a flask-like consumable or potion (subject to the GM) in your possession. For the next minute, the consumable liquid gains one of the following effects:
+
+    * If it restores health, it restores 1 more.
+    * If it grants temporary health, increase it by 2 more.
+    * If it grants effects that last turns, they last 1 turn longer.
+    * If it grants effects that last minutes, they last 1 minute longer.
+    * It deals 1d4 psychic damage when consumed or applied to a creature.
+    * If it grants any kind of movement speed bonus, increase it by 5 feet.
+    * If it has an effect that has a DC, increase the DC by 1.
+- name: Innervate
+  group: Mystic cantrips
+  lvl: '0'
+  types: necromancy, transmutation
+  casting: action
+  components: material (gemstone worth 50 gold or more)
+  save: wisdom
+  range: self
+  effect: As an action, cause a gemstone or similar item worth 50 gold or more (subject to the GM) in
+    your possession to dissolve, and regain 1 rest die and 1d4 health. A creature cannot benefit from
+    this cantrip more than 2 times per rest.
+  upgrades: |-
+    At 5th and 9th level this cantrip is improved in one of two ways:
+
+    * consuming a precious gemstone worth 1000 gold can be used to immediately bring an ally that died within the last or current round to be revived at 1 health
+    * you can instead restore the rest dice and health to another character within 30 feet, and the healing is increased to 1d6 + casting bonus. If a gemstone worth 100 gold or more is consumed instead, restore 1d8 + casting bonus instead.
+- name: Rune of protection
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, abjuration
+  casting: 2 turns
+  components: somatic, material (paint, chalk, oil, or any other substance used to create a rune)
+  range: touch
+  duration: 1 day
+  effect: |-
+    Inscribe a protective rune in a piece of clothing, armor, or shield, or simply on a creature.
+
+    * If used on a non-weapon object, the object gains a magical +1 bonus for the duration of the day.
+    * If cast on a creature, they reduce all incoming damage by 1 for the duration.
+
+    Only the last rune created is effective, and any old runes quickly vanish. An object cannot benefit from more than 1 rune of protection at a time.
+  upgrades: At 7th level, the rune can be formed in a single action.
+- name: Shroud
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, illusion, enchantment, passive
+  casting: bonus action
+  range: self
+  effect: |-
+    Passive: Your face is shrouded by magic, causing it to always appear covered to your liking, such as with a mask, veil, smoke or other such covering. The appearance and look of the shroud can be altered as a bonus action. This effect can be muted at will by the caster.
+
+    Other creatures have a -1 penalty to insight checks made against you.
+- name: Steal luck
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, divination
+  casting: reaction
+  components: verbal
+  save: charisma
+  range: 30 feet
+  effect: As a reaction, cause a creature that is making a d20 roll with advantage to make a charisma
+    save. Removing the best dice from their roll on a failure, and causing your next d20 roll to have
+    disadvantage and use the stolen result as one of the rolls of the disadvantage.
+- name: Soulfire
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, evocation, abjuration, necromancy
+  casting: action
+  components: verbal, somatic, 1 HP
+  range: special
+  effect: |-
+    As an action, you can conjure a spark from your own essence, losing 1 hp. The spark levitates in your open palm, providing illumination in a 30 ft radius. The spark can be thrown as an action, becoming a bolt of strange fire that deals 1d8 + casting bonus damage as a 60/120 ft ranged spell attack.
+
+    The first up to 6 points of damage for any instance of damage dealt by this spell are fire, and the rest are either necrotic or radiant.
+  upgrades: |-
+    At 4th level, 7th, and 10th level, choose an upgrade:
+
+    * The spark can be blown in a 15 foot cone originating from your palm as an action, dealing the same damage as a bolt to all creatures hit that fail a dexterity save.
+    * Whenever you deal fire or radiant damage to a creature while holding the spark you can deal an additional 1d4 fire, radiant, or necrotic damage. This can be taken again to increase the damage to 1d8.
+    * Increase bolt damage by 1d8. The spark can now be thrown or used as a bonus action.
+    * Creatures hit must make a dexterity save. On a failure, the soulfire starts consuming them, dealing 1d4 damage to the creature until it is dispelled. Can be taken again to increase the DC by 2 and the persistent damage to 1d6 + casting bonus.
+- name: Third eye
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, divination, passive
+  casting: free action
+  components: none
+  range: self
+  effect: |-
+    Passive: Gain darkvision at a range of 60 feet, or increase your darkvision range by 60 otherwise.
+
+    Active: As an action, gain the ability to see invisible creatures and illusions for a number of turns equal to your casting bonus - 3. Min 1. Invisible creatures appear translucent and you can make out their outline. Illusions appear blurred and give off a slight strange light.
+  upgrades: At 5th and 9th level, increase duration by 1 turn.
+- name: Wind dash
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic, divination, passive
+  casting: free action
+  components: none
+  range: self
+  effect: 'Active: As an action, leap up to 5 feet per casting modifier -1 in any direction. If wearing
+    a cloak, increase the distance by 5 feet.'
+  upgrades: |-
+    At 5th and 9th level choose an upgrade:
+
+    * Wind dash can be cast as a bonus action
+    * The distance is increased by 10 feet. Can be taken multiple times
+    * You can make a single melee attack next to the target destination as part of performing the spell, dealing an extra 1d4 damage.

@@ -1,0 +1,9 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/backgrounds
+section: rules
+entries:
+  - name: Choosing a background
+    group: Character creation
+    description: |-
+      You can adapt a background to your character’s history. If it grants proficiency with a tool, instrument, or game set, you also receive that item as starting equipment.
+
+      Each comma-separated option counts as one choice. For example, if you choose three from “Performance, Acrobatics, one instrument and one game set, one language and History,” the instrument and game set count as one choice together. The language and History also count as one choice together.

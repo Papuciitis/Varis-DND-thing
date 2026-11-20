@@ -1,14 +1,14 @@
 lvl 5:
   Spell-blade art:
     desc: >-
-      At 5th occultist level, choose a spell-blade art, which grants proficiency with a weapon group, grants you special abilities to weapons of that group, as well as 
+      At 5th occultist level, choose a spell-blade art, which grants proficiency with a weapon group, gives you special abilities with weapons of that group, as well as
       potentially other abilities.
     arts:
       - Power staff:
         - "gain proficiency with a polearm weapon group."
-        - "You may spend a rest dice during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.) 
+        - "You may spend a rest die during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.)
           You may only attune to one such weapon at a time."
-        - "Polearm weapons you wield have the following maneuver, which costs an extra rest dice: 
+        - "Polearm weapons you wield have the following maneuver, which costs an extra rest die:
             Force strike - attack with DC++ > if strike > dmg 3d6 force > push++."
         # note: this is maneuver notation. There is a maneuver notation that includes "+", "-", ">" symbols and keywords to compress a paragraphs worth of actions
         # into a small sentence. In this case, this reads "When making an attack action with your weapon, you may expend a bonus action or move action, as per base
@@ -18,24 +18,24 @@ lvl 5:
         # This is fine. It makes it possible to easily convey this eyesore in a way that makes weapons categorizeable. It also means that special maneuvers can be easily made.
         # For your information, this notation consists of sentences and blocks. A sentence is "<...>." that ends with ".", and a block ends with ">". The sentence "attack." is 
         # one block. A block just means that they are in sequence and must share the same target. 
-        - While wielding the attuned weapon, you may spend an action to levitate an object or creature within 60ft for 1 round. 
-        - While wielding the attuned weapon, you may spend an action to suppress a fire, leak, crack, or spark within a tile within 15ft for 1d8 rounds.
-        - While wielding the attuned weapon, you may spend an action to lock or unlock a simple lock, open or close a locked portal, or arrange small objects within 15ft.
+        - While wielding the attuned weapon, you may spend an action to levitate an object or creature within 60 ft for 1 round.
+        - While wielding the attuned weapon, you may spend an action to suppress a fire, leak, crack, or spark within a tile within 15 ft for 1d8 rounds.
+        - While wielding the attuned weapon, you may spend an action to lock or unlock a simple lock, open or close a locked portal, or arrange small objects within 15 ft.
 
       - Runed blade: 
         - "Gain proficiency with a martial blade weapon group of choice."
-        - "You may spend a rest dice during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.) 
+        - "You may spend a rest die during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.)
           You may only attune to one such weapon at a time."
-        - "Blades of your chosen group which you wield now have the following maneuvers, which costs an extra rest dice:
+        - "Blades of your chosen group which you wield now have the following maneuvers, each of which costs an extra rest die:
             Fire rune strike - Attack. If strike > +2d6 fire damage. If crit or exploit > apply burning.
             Ice rune strike - Attack. If strike > +2d6 ice damage > apply frostbite.
             Storm rune strike - Attack. If strike > +2d6 lightning damage > if crit or exploit > con save > apply stun."
-        - "While wielding your attuned blade, you may spend an action to channel power through it, spending 1 rest dice or 5 charges from it(if it has charges) and 
+        - "While wielding your attuned blade, you may spend an action to channel power through it, spending 1 rest die or 5 charges from it (if it has charges) and
           increasing its attunement bonus by 1 for 1d10 minutes." 
 
       - Impact catalyst:
         - Gain proficiency with hammers & cudgels.
-        - "You may spend a rest dice during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.) 
+        - "You may spend a rest die during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.)
           You may only attune to one such weapon at a time."
         - "You may spend a rest die from the attuned weapon (if it has any) to perform an enchanted strike as an action. Attack in a 15-ft cone (weapon reach is added to 
           the cone). Make one spell attack roll against the AC of all creatures in the area. Creatures you hit must make a Dexterity save vs the weapon's DC. On a failure
@@ -45,18 +45,18 @@ lvl 5:
     
       - Reaver magic: 
         - gain proficiency with axes.
-        - "You may spend a rest dice during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.) 
+        - "You may spend a rest die during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.)
           You may only attune to one such weapon at a time."
-        - When you slay a small or larger sentient creature with an attuned axe, roll a 1d6 chance dice. On a 6 or higher, restore either 1 occult slot or 1 rest dice.
-        - You may spend 1 occult slot when making an attack with the attuned weapon, increasing the attack's crit range and DC by the slots level. The slot is spent if 
-          the attack lands. You may choose to instead spend a single rest dice, but doing so only extends the crit range by 1.
+        - When you slay a small or larger sentient creature with an attuned axe, roll a 1d6 chance die. On a 6 or higher, restore either 1 occult slot or 1 rest die.
+        - You may spend 1 occult slot when making an attack with the attuned weapon, increasing the attack's crit range and DC by the slot's level. The slot is spent if
+          the attack lands. You may choose to instead spend a single rest die, but doing so only extends the crit range by 1.
 
       - Hex hand: 
         - Gain proficiency with fist weapons.
-        - "You may spend a rest dice during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.) 
+        - "You may spend a rest die during a rest to attune to a weapon of this group, granting it a +1 bonus only while you wield it (this is an attunement bonus.)
           You may only attune to two such weapons at a time."
-        - You can spend one rest dice to project your grasp with an attuned fist weapon, up to a range of 5ft per charisma, intelligence, or dexterity bonus (whichever is higher) 
-          granting it either that much magical reach, or gaining effective telekinesis at that range for objects you could otherwise lift push or interact with.
+        - You can spend one rest die to project your grasp with an attuned fist weapon, up to a range of 5 ft per charisma, intelligence, or dexterity bonus (whichever is higher)
+          granting it either that much magical reach, or gaining effective telekinesis at that range for objects you could otherwise lift, push, or interact with.
   
   attunement ritual:
     At 5th occultist level, your spell-blade art attuned weapons add your charisma bonus to their damage roll, and calculate the block DC using charisma.
@@ -66,24 +66,24 @@ lvl 6:
     desc: "At 6th occultist level, choose one spell-blade exploit upgrade from the list below."
     upgrades:
       Lifedrinker: When you slay a creature with a weapon, you can ignore the health component cost of the next spell you cast until the end of your next turn.
-      Warp strike: You can perform a 'warpstrike' attack as an action with your attuned weapons by spending 1 rest dice or 1 occult slot, allowing you to attack with +30ft of reach. 
-        If the attack hits, you blink to the closest adjacent tile to the target. If an occult slot was used, increase range by 10ft per slot level. 
-      Mage-slayer: When you attack a creature that can cast spells, the attack gains a +1 bonus to damage and DC. Your attuned spell-blade weapon grants you a +1 bonus to saves vs spells."
+      Warp strike: You can perform a 'warpstrike' attack as an action with your attuned weapons by spending 1 rest die or 1 occult slot, allowing you to attack with +30 ft of reach.
+        If the attack hits, you blink to the closest adjacent tile to the target. If an occult slot was used, increase range by 10 ft per slot level.
+      Mage-slayer: When you attack a creature that can cast spells, the attack gains a +1 bonus to damage and DC. Your attuned spell-blade weapon grants you a +1 bonus to saves vs spells.
       Soul-weapon: Your attuned spell-blade weapons can be summoned to your hands as a bonus action. 
-      Strike-casting: If your attuned spell-blade weapon strikes a creature(hits, no block) then you may spend a bonus action to quickly cast a spell on the target after the attack. The
+      Strike-casting: If your attuned spell-blade weapon strikes a creature (hits, no block) then you may spend a bonus action to quickly cast a spell on the target after the attack. The
         spell must have a casting time of only up to 1 action or bonus action. The spell must target the same creature as the attack. The creature has disadvantage on their saves vs 
         the spell. If the spell has a casting time of 1 action, you must make a DC 14 dexterity save, becoming winded for 2 rounds on a failure.
       # winded is a defined condition. it is in under the condition.yaml.
       Death-casting: If you slay a small or larger living creature with your attuned weapon, you may spend a bonus action to quickly cast a spell. If the spell is a cantrip, it 
         gains an extra upgrade just for this cast. The spell must have a casting time of up to 1 action or bonus action. If the spell costs 1 action to cast, you must make a 
         DC 14 dexterity save, becoming winded on a failure.
-      Counter-hex: If you block an attack while wielding an attuned spell-blade weapon, you may spend 1 rest dice as a reaction to cast a spell, targeting the attacker. The spell
+      Counter-hex: If you block an attack while wielding an attuned spell-blade weapon, you may spend 1 rest die as a reaction to cast a spell, targeting the attacker. The spell
         must have a casting time of up to 1 action or bonus action. When doing so, make a DC 16 dexterity save. On a failure, you become winded for 1 round.
       Extra attunement: You may have one additional attuned spell-blade weapon. It must be of the same weapon group as your spell-blade art. 
       # hex hand is permitted with this, since you can now have three hand weapons to swap between. Since they sorta store cantrips it means you have 3 cantrip gloves, potentially.
   
   Soul gem artifice:
-    flavor: "A soul gem is a form of exotic crystal which, among other uses, is able to store arcane power, and allow practitioners to enchant and twist these powers into spells and artifacts.
+    flavor: "A soul gem is a form of exotic crystal which, among other uses, can store arcane power and allow practitioners to enchant and twist these powers into spells and artifacts.
       The name soul gem derives from the legend that pure and natural soul gems are potent enough to store enough potential power to capture a living full soul."
     desc: >-
       At 6th occultist level, you learn to create and use soul gems. 
@@ -106,16 +106,16 @@ lvl 6:
       In order to use a soul gem that you yourself have crafted, you must merely have it in your possession and on your person. You do not need to continuously hold on to it.
 
     Charge soul gem: >-
-      During a rest, when you perform a dark ritual, you may choose to attempt to charge a soul gem. Make an arcana check, reduce it by the result of a single dice of the
-      soul gem. If the result exceeds 20, make the soul gem charged and grant the gem an extra dice (1d3 > 2d3, 1d4 > 2d4, etc) A soul gem cannot be charged more than 
-      twice(three dice.)
+      During a rest, when you perform a dark ritual, you may choose to attempt to charge a soul gem. Make an arcana check, reduce it by the result of a single die of the
+      soul gem. If the result exceeds 20, make the soul gem charged and grant the gem an extra die (1d3 > 2d3, 1d4 > 2d4, etc) A soul gem cannot be charged more than
+      twice (three dice.)
 
       (ex: Charging a 2d10 soul gem, you roll an arcana check and reduce it by 1d10.)
 
     Soul gem casting: >-
-      When casting a spell, you may attempt to utilize a charged soul gem in your possession when casting a spell, allowing you to use the soul gems charge in place of a spell
-      slot. The value of the spell level that the soul gem can support is equal to the amount of dice it has (1dx - 1, 2dx - 2, 3dx - 3)
-      When doing so, roll the soul gems dice and make it mute. For each dice that rolls a 1, remove that dice, and if all dice are removed, destroy the soul gem.
+      When casting a spell, you may attempt to utilize a charged soul gem in your possession when casting a spell, allowing you to use the soul gem's charge in place of a spell
+      slot. The value of the spell level that the soul gem can support is equal to the number of dice it has (1dx - 1, 2dx - 2, 3dx - 3)
+      When doing so, roll the soul gem's dice and make it mute. For each die that rolls a 1, remove that die, and if all dice are removed, destroy the soul gem.
     
     Spell-blade enchanting: >-
       During a rest, when you perform a dark ritual, you may attempt to enchant your attuned spell-blade weapon by sacrificing a charged soul gem. You may grant the weapon
@@ -126,13 +126,13 @@ lvl 6:
           lasts 3 rounds.)
         * Take a beneficial condition or property that the spell would bestow to a creature, and allow the wielder to harness it for 1 round as a free action.
       
-      When performing such an enchantment, make an arcana check. The weapon is granted an amount of charge equal to the arcana check + the roll result of the soul gems total
+      When performing such an enchantment, make an arcana check. The weapon is granted an amount of charge equal to the arcana check + the roll result of the soul gem's total
       dice value (1d3 lesser to 3d12 pristine.) Whenever the wielder chooses to benefit from the enchantment for 1 round, they may consume 1 charge as a free action.
 
       A weapon cannot have more than 1 spell enchantment, and this enchantment is lost if the weapon ceases to be your attuned spell-blade weapon.
 
       You may use a soul gem to restore charge to such an enchanted weapon as an action, rolling the soul gem dice value and restoring that much +1 charge to the weapon. 
-      When doing so, remove 1 dice from the soul gem. If instead it only has one dice, roll it and make the dice mute. If it results in a 1, the dice is destroyed.
+      When doing so, remove 1 die from the soul gem. If it has only one die, roll it and make the gem mute. If the result is a 1, the die is destroyed.
 
 lvl 7:
   Greater spell-blade exploit:
@@ -140,18 +140,18 @@ lvl 7:
     greater exploits:
       Soul gem battery: >-
         You may destroy a soul gem by crushing it as a bonus action to infuse your spell-blade, rolling the crushed soul gem dice value and restoring that much charge to the
-        weapon, and enchanting the weapon to deal extra lightning or fire damage equal to the soul gems dice value. Whenever the extra damage is rolled, if any dice roll
+        weapon, and enchanting the weapon to deal extra lightning or fire damage equal to the soul gem's dice value. Whenever the extra damage is rolled, if any dice roll
         a nat 1, remove them.
 
       Soul collector: >-
-        When you slay a creature with your spell-blade weapon, you may spend 1 rest dice as a free action to charge a soul gem in your possession, making it charged and
-        granting it +1 dice if it is already charged.
+        When you slay a creature with your spell-blade weapon, you may spend 1 rest die as a free action to charge a soul gem in your possession, making it charged and
+        granting it +1 die if it is already charged.
 
       Soul gem casting mastery: >-
         When casting a spell with soul gem casting, the equivalent spell level that the soul gem can support is increased by 1.
 
       Soul gem enchanting mastery: >-
-        When enchanting your spell-blade weapon, you may also enchant it in one of the following ways, depending on the sacrificed gems quality:
+        When enchanting your spell-blade weapon, you may also enchant it in one of the following ways, depending on the sacrificed gem's quality:
           * If lesser or minor gem, choose one: block DC +1, dmg +1, attack rolls +1.
           * If common, choose one: +1d3 fire damage, +1d3 lightning damage, +1d3 cold damage, +1d3 necrotic damage, +1d3 force damage.
           * If major, choose one: remove the unwieldy or inaccurate property, reduce very inaccurate property to inaccurate, crit range +1.
@@ -163,8 +163,8 @@ lvl 7:
       
       Soul-eater: >-
         You can crush a soul gem as a bonus action to do one of the following:
-          * grant yourself temporary HP equal the crushed gems rolled value.
-          * grant yourself the clarity condition and aura-sight for a number of rounds equal to the crushed gems rolled value.
+          * grant yourself temporary HP equal to the crushed gem's rolled value.
+          * grant yourself the clarity condition and aura-sight for a number of rounds equal to the crushed gem's rolled value.
           * heal 1/1/1d2/1d3/1d4/2d4 fatigue, depending on gem quality.
 
       Spell-blade link: >-
@@ -174,16 +174,16 @@ lvl 7:
         When successfully performing a dark ritual during a rest, you may choose to enhance your attuned weapon as one of the outcomes, granting it the ability to turn into
         one of 2 other weapons of its group as a bonus action. You may consume one charge, if the weapon has charge, to transform as a free action.
 
-        This means you have three versions of your weapon, between which you can swap.
+        This means you have three versions of your weapon, which you can swap between.
 
       Spell-blade utilities: >-
-        You can recharge wands with soul gems, same as how you would recharge a soul gem enchantment weapon. If the rolled charge amount exceeds the wands capacity by 10, 
-        you may overcharge the wand, increasing its effects dice values by 1 size category.
+        You can recharge wands with soul gems, same as how you would recharge a soul gem enchantment weapon. If the rolled charge amount exceeds the wand's capacity by 10,
+        you may overcharge the wand, increasing its effect's dice values by 1 size category.
         (rolling 3d8 and restoring 15 charges to a 3/5 charge 1d8 + 2 healing wand turns it into a 1d10 + 2 healing wand until it is depleted.)
 
         Your spell-blade attuned weapons always have the "tool" property.
 
-        When using an ability that would cost rest dice, you may instead siphon charges from your attuned weapon, where 2d3 charges is equivalent to 1 rest dice.
+        When using an ability that would cost rest dice, you may instead siphon charges from your attuned weapon, where 2d3 charges are equivalent to 1 rest die.
 
 lvl 8:
   final spell-blade exploit: >-
@@ -194,9 +194,9 @@ lvl 8:
   
   Master spell-blade enchantment: >-
     At 8th occultist level, when using spell-blade enchanting, you may choose the following as a spell transmutation in addition to the base enchantment:
-      If the spell would teleport or blink the caster, allow the caster to blink 30ft by spending a rest dice while wielding the weapon.
+      If the spell would teleport or blink the caster, allow the caster to blink 30 ft by spending a rest die while wielding the weapon.
       If the spell would heal or grant temporary HP to the caster, the weapon restores 1 HP to the caster whenever it deals damage to a creature.
       If the spell would create undead, allow casting the spell on creatures you slay by expending 1d6 charge.
-      If the spell would summon an elemental, grant the weapon +3d6 bonus damage on crit of the elementals type.
+      If the spell would summon an elemental, grant the weapon +3d6 bonus damage on crit of the elemental's type.
       If the spell would grant an increase to an ability score, you gain a +2 bonus to that ability score while wielding the weapon.
   #note, system is compressed from 20 levels to 12, with 12 being the 20 equivalent in the system. This is the middle third of the occultist class.

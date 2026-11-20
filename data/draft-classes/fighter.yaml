@@ -1,0 +1,674 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x
+- name: Fighter
+  group: Base class
+  description: Be it the wilderness at the outskirts of civilization, the cursed tombs of antiquity, the high seas, or the
+    alleys and halls of the large trade metropolises of the subcontinents, there has never been more need for a man with
+    a good skill with a blade. A fighter is the archetypal warrior, one who knows he has embarked on the path of battle,
+    and the responsibility that this path demands.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      rows:
+      - - '1'
+        - '+2'
+        - Fighting skills, second wind
+      - - '2'
+        - '+2'
+        - Ability score improvement, exert
+      - - '3'
+        - '+2'
+        - extra attack
+      - - '4'
+        - '+3'
+        - 1st archetype
+      - - '5'
+        - '+3'
+        - Ability score improvement
+      - - '6'
+        - '+3'
+        - Extra attack
+      - - '7'
+        - '+4'
+        - 2nd archetype
+      - - '8'
+        - '+4'
+        - Ability score improvement
+      - - '9'
+        - '+4'
+        - Extra attack
+      - - '10'
+        - '+5'
+        - 3rd Archetype
+      - - '11'
+        - '+5'
+        - Ability score improvement
+      - - '12'
+        - '+5'
+        - Extra attack
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d10
+
+      Armor proficiencies: all armor, all shields
+      Weapons: simple weapons, 4 martial weapon groups.
+      Tools: choose 1 from: carpenter's tools, smith's tools, leatherworker's tools, cook's utensils, vehicles (water)
+      Saving throws: Strength, Dexterity
+      Skills: choose two skills from: Acrobatics, Animal handling, Athletics, History, Insight, Intimidation, Perception, Investigation, and Survival
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) Ring shirt and buckler, (b) Chain coat and round shield, (c) metal breastplate, or (d) leather armor, longbow and 20 arrows.
+      * two weapons of choice.
+      * (a) a dungeoneer's back or (b) an explorer's pack
+  - heading: Fighting skills
+    body: "At 1st level, gain access to the fighting skill tree, and choose two abilities. Whenever you level up, gain an\
+      \ extra fighting skill. The abilities are organized as a tree, allowing you to take a skill if you have taken the\
+      \ required fighting skill. Any DC is equal to 8 + your proficiency bonus + your strength or dexterity bonus, whichever\
+      \ is higher.\n\n* Armor training - Gain a +1 bonus to AC while wearing armor.\n  * Heavy armor training - heavy and\
+      \ medium armor provides an additional instance of block at the start of combat.\n    * Weight shifting - Ignore 1\
+      \ bulk from your armor when calculating AC.\n      * Custom fittings - You can spend a rest die on a piece of armor\
+      \ during a rest, specializing it for yourself. You ignore one further bulk from it while wearing it.\n    * Armor\
+      \ absorption - When receiving an instance of damage while wearing light or medium armor, you can gain resistance to\
+      \ the damage as a reaction at the cost of granting your armor a -1 penalty.\n      * Bracing - When using armor absorption,\
+      \ instead make an athletics check vs 5 + the damage taken. On a success, the armor does not suffer any penalty.\n\
+      \  * Armored sprint - Ignore 1 slow from armor.\n  * Juggernaut - For every two points of your combined bulk (before\
+      \ any reductions, rounded up) add +1 damage to your melee and unarmed attacks.\n    * Armor heft — Pending. This feature\
+      \ applies while wearing medium or heavy armor. Heft is an attack trigger, and a weapon effect for meeting that trigger\
+      \ has not been specified.\n  * Shield training - The critical range of your shield bash attacks is increased by 1.\n\
+      \    * Defensive training - Gain a +2 bonus to all block checks while wielding a shield.\n      * Shield bracing -\
+      \ When at 0 block, you can choose to still block the attack, taking a critical hit if you do not succeed the block\
+      \ check. You drop the shield afterwards and it takes a -1 penalty.\n      * Surge of strength - When you roll a natural\
+      \ 20 on a block check while wielding a shield, no block is spent for the check.\n      * Guard training - When a nearby\
+      \ ally within melee range is attacked, you can spend block and attempt the block check yourself to block the attack.\
+      \ The attack still hits the ally if you fail the block check.\n        * Bodyguard - You can spend a reaction to swap\
+      \ tiles with an ally being attacked within 5 ft, and become the target of the attack.\n  * Agile armor training -\
+      \ While at 0 bulk (after any reductions) you gain a +2 bonus to all block checks and dexterity saves.\n    * Combat\
+      \ roll - When subject to an attack, or a strength or dexterity save, you can spend a reaction to gain 1 of the following:\
+      \ either a +1d4 bonus to AC against the attack, the next block check, or the save. At the end of this, move 5 ft without\
+      \ provoking a reaction.\n    * Modify constraints - You can modify a piece of armor during a rest to reduce both it's\
+      \ AC and bulk by 1. This can be repaired during a short rest, and cannot be applied to a piece of armor more than\
+      \ once.\n* Weapon expertise - Choose a weapon group you are proficient with and gain a +1 bonus to all damage dealt\
+      \ by weapons in that group.\n  * Counter - When a maneuver is used against you that requires a block check or a save,\
+      \ you can spend a reaction to roll a weapon attack instead, and determine the outcome.\n    * Parry - If you succeed\
+      \ on a counter check, you can also make an attack against the attacker as a free action.\n    * Expert counter - Gain\
+      \ a +2 bonus to the counter weapon roll.\n  * Edge strike - Your reach weapons deal an additional 1d4 damage at the\
+      \ last 5 feet of their range.\n    * Reach straps - You can modify a weapon with the reach property during a rest\
+      \ to grant it an extra 5 ft of reach. This can only apply when you or other creatures with this skill wield it.\n\
+      \  * Extra weapon proficiency - Choose 2 other weapon groups to gain proficiency with and apply weapon expertise to\
+      \ 1 of them.\n  * Battle focus - While retaining one hand free during combat, you gain an extra reaction.\n    * Grip\
+      \ - You can use the weapons versatile damage dice even when wielding it in one hand.\n  * Power striking - Your two-handed\
+      \ weapon attacks deal an additional 1d4 damage to targets within 5 feet.\n    * Overpower - Your overpower dice are\
+      \ increased by 1 size category.\n  * Two weapon fighting - When attacking with your offhand weapon, you can add your\
+      \ modifier to the damage of the off-hand attack. You gain a +1 bonus to AC while wielding two weapons. The bonus to\
+      \ AC stacks with the two weapon fighting feat.\n    * Twin maneuvers - You can perform one weapon maneuver per turn\
+      \ without spending a bonus action while wielding two weapons.\n  * Attack mastery - Choose a weapon type. You can\
+      \ reroll an attack with this weapon type by spending a rest die. Can only be done once per turn.\n    * Attack art\
+      \ - You can use attack mastery to reroll an attack up to twice per turn.\n    * Dire attack - The attack mastery reroll\
+      \ can be done by taking 1 damage to fatigue instead.\n  * Expert cleave - Your cleave attacks still critically strike\
+      \ if the ignored disadvantage dice is a natural 20, if they hit.\n    * Power cleave - Your cleave attacks can target\
+      \ an additional creature.\n  * Expert throw - Your thrown weapon range is doubled.\n    * Pinning throw - Your thrown\
+      \ weapon attacks can pin grounded targets on a critical hit if they deal piercing damage. The target has to make a\
+      \ strength save as an action or bonus action to break free if it is hit.\n    * Anatomical aim - Your thrown weapon\
+      \ attacks can stun their targets on a critical hit instead of dealing additional damage. The target must make a constitution\
+      \ save. On a failure, it becomes stunned for 1 round. On a success, it takes regular critical strike damage.\n   \
+      \ * Grenadier - Any splash or AOE thrown weapon or tool that you use has its target or effect area increased by 5\
+      \ feet.\n    * Calculated throw - Your thrown weapon attacks ignore 1/2 cover and gain a +1 bonus to hit if the target\
+      \ is not behind cover.\n  * Sharpshooting - Your ranged attacks gain a +2 bonus to their block DC.\n    * Snipe -\
+      \ You can forego your entire turn to make a single ranged attack at advantage. The attack deals an extra 1d6 damage,\
+      \ which is multiplied on a critical hit.\n      * Improved snipe - Increase the bonus damage from snipe to 2d6.\n\
+      \    * Rapid reload - Reduce the reload property of your weapons by 1.\n      * Rapid reload II - Further reduce the\
+      \ reload property of your weapons by 1.\n        * Rapid reload III - Further reduce the reload property of your weapons\
+      \ by 1.\n    * Point blank shot - Your ranged attacks against targets within 5 feet no longer have disadvantage.\n\
+      \      * Execution - Your crossbow attacks against targets within 5 feet gain a 1d6 bonus to damage. This damage is\
+      \ multiplied on a critical hit.\n    * Volley - When attacking with a ranged weapon, you can make an extra attack\
+      \ at disadvantage by spending a move action.\n      * Improved volley - The volley attack is no longer made at disadvantage.\n\
+      * Battle engineering - You gain a +1d4 bonus on checks made to disarm, activate, create, or prepare traps or tools\
+      \ of combat. Weapons with the tool property have their bonuses doubled.\n  * Arson tactics - When dealing fire damage\
+      \ to a creature, increase any damage dealt by 1. You can ignite a weapon with the ignite property as a bonus action.\n\
+      \    * Igniting critical - When critically striking with a weapon that deals fire damage, apply the Burning condition\n\
+      \  * Bomb tinkering - During a rest, you can tinker with bombs you possess or create in one of the following ways:\
+      \ exchange 1 dice of damage, 1 turn of duration, a +1 bonus worth of DC, or a +1 bonus to hit for one another. This\
+      \ ends up swapping around values. No value can be modified further than twice (more than -2 or +2.)\n    * Explosives\
+      \ expertise - Increase the damage dice of any thrown area of effect item or bomb-like thrown weapon you use by 1 size\
+      \ category.\n  * Poison preparation - When you apply poison to a weapon or trap, it gains the following benefits,\
+      \ if applicable: damage dealt is increased by 1d4, duration is increased by 1 turn, DC is increased by 1.\n    * Toxin\
+      \ preparation - Any oil, poison or similar substance that you apply to a weapon or ammunition has it's damage dice,\
+      \ if any, increased by 1 size category.\n  * Siege engineering - Gain a +1d4 bonus on all checks made to reload, repair,\
+      \ or prime siege equipment and mounted ranged equipment. Weapons with the Capacity property can now be fully reloaded\
+      \ as a bonus and move action.\n    * Bolt preparation - You can spend 1 rest die during a short rest to prepare 1d6\
+      \ incendiary or poison arrows or bolts, which deal an additional 1d8 fire, acid, or poison damage respectively. All\
+      \ arrows do not need to be of the same type. You can apply this effect to other non-basic ammunition you create.\n\
+      \      * Alchemy bolt training - Increase the bolt preparation bolt damage and amount to 3d4, and also allow for necrotic\
+      \ and acid damage.\n    * Mechanical training - Gain proficiency with mechanics tools. Reduce the reload property\
+      \ of weapons with the launcher type by 1.\n  * Tool training - Gain proficiency with a kit or set of tools of your\
+      \ choice. Weapons with the tool property now grant a +3 bonus instead.\n    * Weapon modification — Spend 1 rest die\
+      \ during a short rest to modify a Tool weapon or a weapon with fewer than six properties. Choose Swing (attack with\
+      \ block+ and crit range+), or an attack dealing +1d4 damage. The correct weapon-specific Slash, Thrust and Slam sequences\
+      \ for a newly granted maneuver are pending. The draft lists a die of 1d4 for Slash.\n* Survival training - Gain a\
+      \ +1 bonus to nature, survival, stealth, and perception checks.\n  * Ambush training - Gain an extra attack and extra\
+      \ reaction on your first acting turn of combat.\n    * Opportunism - When an attack of opportunity, a shield bash,\
+      \ or a reaction that requires a d20 roll rolls a natural 20, the reaction cost is refunded.\n    * Situational awareness\
+      \ - Gain an extra reaction while wielding one hand free. Gain a +3 bonus to initiative.\n    * Bag and capture - Treat\
+      \ all grapple, snare, and hook properties as being 1 tier higher.\n    * Smoke powder - You can prepare 1d4 smoke\
+      \ pellets during a rest by spending a rest die. A smoke pellet can be thrown at a range of 30 feet and fill a 5 ft\
+      \ space with smoke. Creatures that start or end their turn in the smoke must make a constitution save to not be blinded\
+      \ for 1 round.\n    * Surprise attack - Once per combat you can grant one of you attacks a 1d10 damage bonus. This\
+      \ damage is multiplied on a critical hit.\n      * Improved surprise attack - Upgrade surprise attack damage to 2d8.\n\
+      \  * Alchemical insight - Increase all health restored from potions by 1d4 and all fatigue restored from potions by\
+      \ 1. Applies to potions you consume and potions you create.\n  * Conditioning - Gain a +1 bonus to physical saves\n\
+      \    * Blood infusion - Increase max HP by 1d10.\n    * Extended conditioning - Gain a further +2 bonus to a physical\
+      \ save of your choice.\n    * Extensive training - Gain a +1 bonus to an ability score of your choice.\n    * Fortified\
+      \ will - Gain a +2 bonus to wisdom saves.\n    * Pain tolerance - Reduce all incoming damage by 1.\n      * Ignore\
+      \ pain - Once per long rest, you can choose to make a insight or intimidation check vs damage taken and reduce it\
+      \ to 1 on a success.\n  * Make do - Once during a rest, you can create one of the following at no rest dice cost,\
+      \ depending on what set of tools you are proficient with:\n * Alchemists kit - 1 basic alchemists fire bomb. \n *\
+      \ Brewer's tools - a 1d8 healing flask \n * Carpenter's tools - 1d8 splinter bolts, each applying bleed on a critical\
+      \ hit.\n * Cook's utensils - 1d4 strength rations, each restoring 1 fatigue over 10 minutes. \n * Herbalists kit -\
+      \ 1 herbal potion, which allows you to remake a wisdom or constitution save vs an ongoing effect. \n * Jeweler's tools\
+      \ - 1d4 rock crystals, which can be thrown at a range of 40/80 feet, causing a rainbow spark and noise, and revealing\
+      \ invisible creatures for 1 round with their shards if any are within 5 feet of the target. \n * Leatherworkers tools\
+      \ - 1 net \n * Thieves tools - 1d2 spool keys, which can be used to grant a +2 bonus to a check made to undo a lock-like\
+      \ mechanism, but fails and lock up in the keyhole on a failure. They can be deliberately misused/triggered in a lock\
+      \ to automatically lock a door. \n * Smiths tools - 1 bear trap.\n  * Pack mule - Gain a +2 bonus to all checks made\
+      \ to carry, lift, or move creatures or heavy objects. Ignore 1 bulk from armor.\n  * Self defense training - While\
+      \ wielding no weapons or shields, gain a +1 bonus to AC and block checks. Otherwise, gain 1 extra block at the start\
+      \ of combat.\n    * Brawl tactics - Your unarmed attacks deal an extra 1d4 damage if your previous attack was not\
+      \ an unarmed attack.\n    * Dodge roll - The first time you take damage each turn, you can immediately reduce it by\
+      \ 1d4 and move 5 feet.\n    * Footwork - You can move 5 feet as a free action before or after an attack, allowing\
+      \ you to attempt to attack targets 5 feet further if you commit to the movement.\n    * Unarmed combat - Your unarmed\
+      \ and improvised weapon attacks gain a +1 bonus to hit and damage. You can treat improvised weapons as having the\
+      \ force critical property, but using it will break the improvised weapon.\n* Tactical training - Once per long rest,\
+      \ you can grant an ally within 30 feet advantage on a d20 roll. They must be able to at least see or hear you, or\
+      \ you must be able to interact with them or the subject of the roll.\n  * Charge tactics - Your movement speed is\
+      \ increased by 10 feet. Animals you ride have their movement speed increased by 10 feet.\n  * Evasive maneuvers -\
+      \ The first attack of opportunity against you each turn has disadvantage.\n  * Flanking presence - Enemies within\
+      \ reach have a -2 penalty to block checks. This effect cannot stack from multiple sources.\n  * Rallying call - Once\
+      \ per rest you can do a rallying call for you allies. All allies within hearing restore 1 fatigue, and gain a +1 to\
+      \ their next save, attack, ability check, or death save.\n    * Marching orders - You can spend 1 rest die to restore\
+      \ 1 fatigue to an ally and grant them an immediate movement action.\n  * Rudimentary arcane ward training - You can\
+      \ spend a reaction to gain a +1d4 bonus to a save against a spell. If you fail the save, you can choose to either\
+      \ spend 1 rest die or take 1 damage to fatigue.\n    * Crude counterspell - You can choose to attempt to counterspell\
+      \ a spell or magical ability that is targeting you by taking 1d3 points of fatigue damage. You can use either your\
+      \ arcana, sleight of hand, dexterity, wisdom, or intelligence bonus as the bonus to the counterspell roll.\n    *\
+      \ Sigil training - Gain a +1 bonus to arcana. Increase the rudimentary arcane ward bonus to 1d6, and gain a +1 bonus\
+      \ to all checks made to interact with magical items and objects.\n      * Cantrip training - Learn an arcana or oath\
+      \ cantrip. Use intelligence or wisdom as the casting attribute. If the cantrip has only somatic components, you can\
+      \ use dexterity as the casting attribute. If the cantrip has only a verbal casting component, you can use constitution\
+      \ as the casting attribute.\n      * Hex training - Learn 2 lesser hexes.\n        * Hex training II - Learn 1 major\
+      \ hex.\n          * Hex training III - Learn either 2 lesser hexes or 1 major hex. Upgrade 1 hex of choice once.\n\
+      \            * Hex training III - Learn 1 greater hex. Upgrade one hex of choice once.\n  * Tactical preparation -\
+      \ Your rest dice maximum is increased by 1.\n  * Vital strike - Your critical attacks deal an extra 1d8 damage.\n\
+      \    * Brutal tactics — Increase the damage die of a Regards effect you can use by one size category.\n    * Critical\
+      \ mastery - Treat all force critical weapon properties as being 1 tier higher.\n    * Improved vital strike - Increase\
+      \ the extra damage to 2d8."
+  - heading: Second wind
+    body: |-
+      At 1st level, you may spend any number of rest dice (up to your constitution bonus, min 1) as a bonus action do one of the following per rest dice spent
+
+      * heal 2d4 health, gaining overhealing as temporary health
+      * restore 1 point of fatigue
+  - heading: Ability score improvement
+    body: |-
+      At 2nd, 5th, 8th, and 11th level you gain an ability score improvement. You may increase one ability score of your choice by 2, or two ability scores of your choice by 1. Alternatively, gain a feat.
+
+      Also, a fighter gains an extra fighting skill per feat or ability score increase (from classes only) that they have.
+  - heading: Exert
+    body: |-
+      At 2nd level, you can spend 1 rest die as a free action on your turn to gain an extra turn right after. After the second turn ends, you take 1d3 damage to fatigue.
+
+      You can only use this ability once per round.
+  - heading: Extra attack
+    body: At 3rd level, when making an attack action, you can make an additional attack. This increases to 2 attacks at
+      6th, 3 attacks at 9th level, and 4 attacks at 12th level.
+  - heading: Martial archetype
+    body: |-
+      At 4th level, choose a martial archetype to follow. This archetype grants features at 4th, 5th, and 6th level. The following martial archetypes are available:
+
+      * Marksman
+      * Shieldbearer
+      * Duelist
+  - heading: Veteran archetype
+    body: 'At 7th level, choose a martial archetype to follow. This archetype grants features at 7th, 8th, and 9th level.
+      The following veteran archetypes are available:'
+  - heading: Elite archetype
+    body: At 10th level, choose a martial archetype to follow. This archetype grants a feature at 10th level, as well as
+      a powerful capstone feature at 12th level.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/1-marksman
+- name: Marksman
+  group: Fighter archetypes
+  sections:
+  - heading: Ranged maneuvers
+    body: |-
+      At 4th level, gain two upgrades from the list of abilities below:
+
+      * Hobbling shot - Make a ranged basic attack with disadvantage. On a hit, the target must make a constitution save. If the target fails, it's movement is halved. On a critical failure, the target is made prone. Can be done with any ranged weapon. Cannot be performed if your attacks are already subject to disadvantage.
+      * Multi shot - as a single ranged bow attack, target two different targets, requiring only one attack roll which incurs disadvantage. Doing so is a weapon maneuver and requires spending an extra bonus action to execute.
+      * Focused shot - When making a ranged attack, you can spend one rest die to cause the attack to deal 3d6 extra damage and ignore secondary range penalties. This damage increases by 1d6 per character level above 5th.
+      * Cone of arrows - As an action, you can spend 1 rest die to fire up to 1d4 + your dexterity modifier (min 3) arrows in a cone in front of you. The range is equal to half the weapons first range increment. Up to as many enemies in the cone as arrows fired must make a dexterity save. On a failure, they take your weapon damage.
+      * Intercept - As a reaction, you can make a ranged attack against a flying object or similar projectile. The AC for a thrown object is 14, whereas for another bolt or arrow it is 20 (Subject to GM) knocking it out of the air and preventing its attack/trajectory.
+      * Pincushion - As an attack, spend a rest die to gain advantage against the target. If the attack lands, gain advantage on all following ranged attacks against the target until the end of your next turn.
+      * Distracting shot - Apply disadvantage to a ranged attack. On a hit, the target must make a wisdom save. The dc is DEX based. If the target fails, the target is distracted and gains disadvantage on it's next attack until your next turn. Cannot be performed if your attacks are already subject to disadvantage.
+      * Skyshot - As an action, create a high arching ranged shot against a target within half the first range increment of the weapon. The target must make a dexterity save. On a failure, they take an instant critical hit. The DC is dex based.
+      * Powershot — Attacks with Overdraw apply Strength to damage as usual and deal an extra 1d6 damage. Windup attacks with ranged weapons deal an extra 1d3 damage per action spent.
+
+      Learn an extra maneuver at 5th fighter level.
+  - heading: Specialization
+    body: At 4th fighter level, gain 2 upgrades from either the tactical training, survival training, or battle engineering
+      branches of the fighter skill tree.
+  - heading: Marksman training
+    body: |-
+      At 5th level, choose one ability from below:
+
+      * Keen eye - You gain a +1 bonus to wisdom. So long as you have not moved since the start of your turn, your weapon attacks gain a +1 bonus to hit, and you gain a +2 bonus to perception checks.
+      * Arrow stab - You gain a +1 bonus to dexterity. You can perform a stab with an arrow or bolt in place of an attack of opportunity: Light, 1d6 piercing (ability scaling pending). On a critical hit, the target is blinded. If the attack is not blocked, you can move 5 feet as a free action. If you happen to use a special piece of ammunition, it can be applied to the target.
+      * Power draw - You gain a + 1 bonus to strength. Your overdraw no longer incurs disadvantage.
+      * Dexterous routine - Reduce the reload property of weapons you wield by 1. During a rest, you can spend 1 rest die to modify a crossbow, granting it 3 routine points. A routine point can be spent to treat a critical failure on an attack roll as just a miss. You can spend 1 routine point to grant an attack with the weapon advantage.
+      * Ammunition expert - Special bolts, arrows, or other forms of ammunition that deal additional damage, or have a DC based effect, gain a +1 bonus to instances of damage, and a +1 bonus to any associated DC. You may spend a rest die during a short rest to create one of the following:
+        * 1d4+1 elemental bolts or arrows - each deals 1d6 extra damage that is either fire, cold, acid, or lightning damage.
+        * 1d8 sharpened bolts or arrows - each has it's critical range increased by 2.
+        * 1d6 barbed bolts or arrows - each has a -1 penalty to hit and applies an instance of bleed when the attack roll is a (20 - dexterity bonus) or higher.
+        * 2d4 broadhead bolts or arrows - each has a -1 penalty to hit and has its damage dice increased by 1 size category.
+        * 1d10 balanced bolts or arrows - each has a +1 bonus to hit.
+  - heading: Deadly accuracy
+    body: At 6th level, the critical multiplier for your ranged weapon attacks is increased by 1. Whenever you land a critical
+      hit with a ranged weapon, you regain 1 rest die.
+  - heading: Advanced combat style
+    body: |-
+      At 6th level, you learn an advanced combat style. Choose one from below. Once selected, the choice cannot be made.
+
+      * Barrage - You can spend a rest die to gain an extra attack with bows. This effect lasts until you spend a turn not firing a bow or take damage.
+      * Crossbow mastery - You can reload crossbows as a free action. Per previous reductions in reload property for crossbows, gain a +1 bonus to block DC with crossbow attacks.
+      * Eagle eyes - Your effective range with all ranged attacks is doubled, provided you can see the target. Targets cannot use half cover against your attacks.
+      * Arrow rain - You can spend a full round action to fire 5d4 pieces of ammunition into the sky, with an eventual 15 ft radius circle target area on the ground within weapon range. On your next turn, you can deal 1d4+1 piercing damage to a creature or object at any point within the target area, up to a number of times equal to arrows fired. The same tile cannot be targeted more than 4 times.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/1-shield-bearer
+- name: Shield bearer
+  group: Fighter archetypes
+  sections:
+  - heading: Bulwark
+    body: |-
+      At 4th fighter level you gain the following benefits:
+
+      * Your shields provides you an additional +1 bonus to AC.
+      * You gain a +1 bonus to all strength and dexterity saves while wearing a shield, and all saves against ray and cone based attacks/effects.
+      * You gain +1 block at the start of combat.
+      * You can make a shield bash every time you block a melee attack as a free action.
+      * Gain two fighting skill tree upgrades from the armor training branch.
+  - heading: Improved shield bash
+    body: At 5th level, the damage dice of your shield bash attack is increased by 1 size category.
+  - heading: Defense style
+    body: |-
+      At 5th level, you can choose a defense style ability from the list below:
+
+      * Shield taunt - You can spend an instance of block to slam a creature within melee range with your shield. It must make a dexterity save. The DC is strength based. Add any bonus your shield has to the DC. On a failure, the creature takes shield bash damage and has disadvantage on its next attack. You can do so twice on your turn.
+      * Iron mountain - While wearing heavy armor, you reduce all incoming weapon damage by your strength modifier.
+      * Vigor - Your second wind heals for 1d4 health per rest dice spent more.
+      * Disruptive - You gain advantage on all checks made to preoccupy, block, restrict, or obstruct enemies, or to cause them to attack you instead of an ally. Increase maximum health by 1d6.
+  - heading: Stand resolute
+    body: At 6th level, roll 1d6 > 5 chance dice at the start of your turn if you are below half your maximum block (rounded
+      down, min 1.) On a success, you regain 1 block.
+  - heading: Ironclad
+    body: At 6th level, If you are wielding a shield, or are wearing medium or heavy armor, you gain advantage instead of
+      disadvantage to checks made to block a critical hit.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/1-duelist
+- name: Duelist
+  group: Fighter archetypes
+  sections:
+  - heading: Duelist training
+    body: |-
+      At 4th level, gain the following benefits:
+
+      * choose 2 extra fighting skills from the fighter skill tree.
+      * choose 2 extra weapon groups to become proficient with.
+      * You can switch between weapons as a free action.
+      * You can use weapon maneuvers by spending a move action, instead of a bonus action.
+  - heading: Counter attack
+    body: At 4th level, every melee attack against you provokes an attack of opportunity. Additionally, your attacks of
+      opportunity have advantage.
+  - heading: Dueling tactics
+    body: |-
+      At 5th level, choose 3 upgrades from the list below:
+
+      * Expert cleave - Cleave can target 1 additional creature.
+      * Footwork - The distance of movement maneuvers such as lunge, sidestep, or slash have their movement or distance increased by 5 ft.
+      * Perfect form - The block DC of your weapons is increased by 1. You gain a +1 bonus to block checks.
+      * Belligerence - Your slam and pummel attacks now deal full damage. Your shove and hook maneuvers have their DC increased by 1.
+      * Power strikes - The critical range of your chop attacks is increased by 1, and your crush maneuvers critically strike if the target rolls a natural 1.
+      * Wind strikes - The swift and double-strike now have a third attack that triggers if both previous hit. All-in provides an extra free attack.
+      * Momentum - All weapons you wield have the ram property.
+      * Pursue mastery - Learn 3 extra fighting skills.
+      * Overpowering - Your overpower damage dice count and size category are increased by 1.
+      * Stamina reserves - You have a number of stamina points per rest equal to your highest physical ability score. You can spend a stamina point in place of a bonus or move action for a weapon maneuver.
+  - heading: Extra reaction
+    body: At 6th level, you gain an extra reaction.
+  - heading: Overcome adversity
+    body: |-
+      At 6th level, you can spend a rest die to remove disadvantage from an attack or maneuver you are executing. If the attack lands or the maneuver completes successfully, the rest dice are refunded.
+
+      Alternatively, you can spend a rest die to gain advantage on a saves to prevent or end a condition or disabling effect. On a success, the rest dice is refunded and the effect or condition ends.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/1-mercenary
+- name: Mercenary
+  group: Fighter archetypes
+  sections:
+  - heading: Tactical dice
+    body: |-
+      At 4th fighter level, gain a number of tactical dice equal to your fighter level. A tactical dice can be used to add to on of the following for either yourself or an ally within 10 ft as a free action:
+
+      * the DC of a block check from an attack by you or an ally within 10 ft
+      * the DC of a maneuver of you or an ally within 10 ft
+      * the damage roll of an attack or trap you set up
+      * the DC of a trap you or an ally within 10 ft sets up
+
+      You can spend up to as many tactical dice at once as your intelligence bonus (min 1)
+
+      The value of a tactical dice is 1d4. All tactical dice are restored every long rest, and 2 tactical dice are restored every rest.
+  - heading: Battle training
+    body: At 4th fighter level, gain 2 upgrades from the tactical training or weapon expertise branches of the fighting
+      skill tree.
+  - heading: Weapon training
+    body: At 4th fighter level, choose a weapon group and, optionally, gain proficiency with it. You can always perform
+      up to one maneuver with weapons of that group without expending the bonus action cost. You can do so up to once per
+      turn.
+  - heading: Get a grip
+    body: At 5th fighter level, second wind restores 2d4 extra health and allows you to remake a save vs an ongoing spell
+      effect or condition.
+  - heading: 'Battle tactics:'
+    body: |-
+      At 5th fighter level, you can spend tactical dice to do the following:
+
+      * Grant yourself a bonus to a block check equal to the tactical dice as a free action.
+      * Grant yourself or an ally a bonus to a wisdom or intelligence save equal to the tactical dice as a reaction.
+  - heading: Mercenary trait
+    body: |-
+      At 5th fighter level, choose 2 upgrades from the list below:
+
+      * Greater tactical dice - Your tactical dice are increased by 1 size category. Can be taken multiple times.
+      * Battle planning - You can grant an ally or parting group a tactical dice for use of their choice later. +1 to max number of tactical dice.
+      * Defense tactician - You can spend tactical dice to grant yourself or an ally an instance of block per dice spent as a reaction.
+      * Warmasters shout - You can spend battle dice to grant all creatures within range a bonus to saves vs charm, illusion, fear, distraction, or command effects for the next 3 rounds as a bonus action. Also deals sonic damage equal to dice spent to enemies within 10 ft.
+      * Keen eye - You can spend tactical dice to grant a thrown or ranged attack a bonus to attack. +1 per dice spent.
+      * Strike first - You can spend tactical dice to grant yourself a bonus to initiative rolls.
+      * Seasoned talker - You can use a tactical dice to grant yourself or an ally a bonus to disguise, sleight of hand, or deception checks as a free action.
+      * Pragmatism - You regain 1 tactical dice extra every rest, and your tactical dice maximum is increased by 2.
+      * Ironclad - You ignore 1 bulk from armor and equipment. While wearing heavy armor, your attacks deal 1d4 extra force damage, and you gain a +2 bonus to saves vs move, prone, or displacement effects. You gain +1 block from heavy and medium armor.
+      * Trusty Equipment - You can use tactical dice in place of rest dice for items.
+      * Personalized equipment — During a rest, lock 1 rest die until the weapon breaks or you abandon it. Choose a number of modifications equal to your Intelligence bonus minus 1 (minimum 1). Options are Reach I, Tool, Ignite with 1d6 fire damage, Follow-up (on a hit, attack with disadvantage), Bleeding or Stunned on an unblocked critical hit, or a serrated edge (on an unblocked hit, roll a 1d4 chance die; a success applies Bleeding). For Wild Swings, Rip on a critical hit, Chop and Hook, follow the specific weapon’s listed maneuver. Granting one to a weapon without a listed sequence is pending.
+      * Wandering swordsmith - You can spend 1 rest die or 2 tactical dice to remove a -1 penalty from a weapon. You can triple the cost to do this as an action outside of a rest. You can spend 1 rest die or tactical dice to maintain a weapon, granting it a +1 bonus while maintained, reducing by 1 every long rest. Gain proficiency with smiths tools.
+
+      At 6th fighter level, choose another upgrade.
+  - heading: Warband signature
+    body: |-
+      At 6th fighter level, pick a weapon group and pick a property to add to it. Weapons you wield of this group can be modified during a rest at no cost by you to have them, but prove unwieldy in the hands of those who do not have your particular skills.
+
+      Available properties:
+
+      * Gain Reach I. On a hit, you may forgo damage to make the target attempt a Dexterity or Strength save against the weapon’s block DC. On a failed save, apply Prone.
+      * Serrated edge — On an unblocked hit, roll a 1d3 chance die. On a success, apply Bleeding.
+      * Critical hits gain block-X and cannot be blocked.
+      * Apply Stunned for 1 round on an unblocked critical hit.
+      * On a critical hit, make a follow-up attack with disadvantage. Use the weapon’s listed Wild Strikes maneuver if present. A version for other weapons is pending.
+      * Breach on a critical hit
+      * Clutch / free-handed attack upgrade — pending. These are attack triggers and the granted attack effect is unspecified.
+      * windup & ram
+      * double-strike
+      * Expose & disarm
+      * Use the weapon’s listed Hook maneuver if present. On a hit, you may forgo damage to contest Athletics against the target’s Athletics or Acrobatics. On a success, swap places. A Hook sequence for other weapons is pending.
+      * Gain Ignite with 1d8 fire damage. You can choose to deal bludgeoning damage.
+  - heading: Oath of war
+    body: |-
+      At 6th fighter level, choose one ability from the list below:
+
+      * Bloodlust - You regain 1 tactical dice when slaying a sentient small or medium creature.
+      * Command - You regain 4 tactical dice and 1 rest die when ending or averting combat. Your battle dice can apply to allies damage as well, and the range is increased to 30 ft. Your tactical dice maximum is increased by 2.
+      * Glory - Your tactical dice size is increased by 1 size category. You regain 1 extra tactical dice every rest.
+      * Prestige - Your warband signature weapon group is further modified with one of the following additional properties: Reach I, thrust, sidestep, ignite 1d8, agile, effort, swift. You have a +1 bonus to melee weapon attacks. You regain 1 tactical dice when landing an unblocked critical hit.
+      * Duty - Whenever you use second wind, you restore 1d4 extra health, 1 tactical dice, and allows the get a grip save vs ongoing effects to be made against up to two different conditions or effects.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/2-knight
+- name: Knight
+  group: Fighter archetypes
+  sections:
+  - heading: Shining armor
+    body: At 7th fighter level, medium and heavy armor provides an extra instance of block at the start of combat.
+  - heading: Knightly circles
+    body: |-
+      At 7th fighter level, choose an upgrade:
+
+      * Black knight - Progress intimidation proficiency to proficient > expert > +1 bonus to intimidation checks. Gain a +2 bonus to social skills with subordinates, and when either mocking, judging, or making demands to enemies.
+      * Circle of the rose - Progress persuasion proficiency to proficient > expert > +1 bonus to persuasion checks. Gain a +2 bonus to social checks made when negotiating with enemies, other knights, or leaders of warbands. Gain an extra fighting skill tree upgrade.
+      * Elite guard - Gain 4 fighting skill tree upgrades.
+      * Emerald knight - Learn a mystic cantrip and 1 minor hex.
+      * Iron vanguard - Heavy armor provides an additional instance of block at the start of combat. Your max HP is increased by 8. Gain a +1 bonus to AC.
+      * Knight errant - Your second wind heals 1 extra dice of health. Choose a martial weapon type, it deals 1d4 extra damage. You gain a +1 bonus to physical saves.
+      * Shield brother - Shield also provide an extra +1 block at the start of combat. This applies to up to 1 shield you wield. You gain +1 bonus to block checks. Shield bashes deal an extra 1d6 damage. When providing benefit to an ally (a bonus to a save, attack, check, block, or damage roll) grant it a +1 bonus.
+      * Steel lancer - Choose a two-handed polearm weapon. You can wield it one-handed. Gain a +1 bonus to strength. Gain an extra fighting skill tree upgrade.
+  - heading: Wield power
+    body: At 8th fighter level, any additional magical damage dealt by enchanted weapons that you wield is doubled. Non-magical
+      weapons that you wield are considered as +1 while you wield them.
+  - heading: Knight commander
+    body: |-
+      At 9th knight level, choose an upgrade base on your knightly circle choice at 7th fighter level.
+
+      * Black knight
+        * Black rook — Heavy armor gives you +1 AC and the bulk of your armor and equipment is reduced by 1. Weapon attacks using Chop, Cleave, Crush, Pummel, Ram, Rend, Slam or Swing deal an extra 1d6 damage, using the relevant weapon’s maneuver or property. The bonus also applies to a class-granted +damage attack originally called Overpower. For Heft, apply the bonus when a listed attack’s Heft condition succeeds.
+        * Dark prince - Learn 1 minor hex, oath cantrip, or occult cantrip. Learn a 1st level oath or occult spell which you can cast by spending a rest die, or a major hex. Use strength or dexterity as the casting modifier.
+      * Circle of the rose
+        * Thorn-guard - You may modify a medium or heavy set of armor during a long rest, granting it thorns which deal 1d6 piercing damage to grapplers, people you collide with or push or grapple, pickpockets, or creatures making unarmed or claw attacks against you.
+        * Crimson guard - progress proficiency in 1 of history, arcane, or insight to proficiency > expert > +1.
+      * Elite guard
+        * Captain of the guard - Learn 4 more upgrades from the fighting skill tree. Gain a +2 bonus to checks made to lead and command other troops.
+        * Weapon master - Your weapons deal an extra 1d4 damage of its base type. Gain an extra feat.
+      * Emerald knight
+        * Secrets of the emerald circle - You gain 5 maximum emerald dice, Which can be spent in any combination as spell slots or rest dice used to cast spells you know. You regain 2 per rest and all at long rest. Choose 3 from the following:
+          * Learn 3 lesser hexes.
+          * Learn a level 1 mystic and a level 1 oath spell.
+          * Learn a level 2 mystic or oath or occult spell.
+          * Learn a level 3 mystic spell.
+          * Learn a greater hex.
+        * Keeper of secrets - You may spend 7 rest dice to erase yourself from a creatures memory, so long as they have not known or met you for more than 1 hour, whichever is lower.
+      * Iron vanguard
+        * Indomitable - You can ignore 10 ft of all forced movement, such as push shover, or even forced teleportation effects. Gain +1 death save slot. Gain +6 max HP. Gain a +2 bonus to athletics checks.
+        * Iron giant - Heavy armor provides an additional extra block at the start of combat. Gain a +2 bonus to block checks. Gain a +2 bonus to constitution saves.
+      * Knight errant
+        * Last stand - Once per rest you can choose to ignore being reduced to 0hp, and be reduced to 1hp instead. When this happens, you cannot be reduced below 1hp until your next turn.
+        * Inspiring charge - At the start of combat or a charge, you can use your second wind to instead grant its healing to all allies within 30 ft. Cannot be used more than once per combat. Gain a +2 to social checks during extremely dire times (Subject to GM.)
+      * Shield brother
+        * Brother in arms - All allies within 15 ft gain a +1 bonus to skill checks. You gain a +1 bonus to all skill checks.
+        * One for all and all for one - You can block an attack within 5 ft and become the target as a reaction. When doing so and successfully blocking, the reaction is regained. When you do so for an ally, they can do the same once until rest. Gain a +1 bonus to block checks and dexterity saves.
+      * Steel lancer
+        * Breakthrough - Gain an extra reaction. You can make an attack against creatures entering your reach as a reaction. Gain a +1 bonus to either strength or dexterity. You can move 5 ft towards an enemy whenever you make an attack.
+        * Mailbreaker - You ignore physical resistances and 3 points of physical DR when attacking with your steel lancer chosen weapon. Gain 2 fighting skill tree upgrades.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/2-weapon-master
+- name: Weapon master
+  group: Fighter archetypes
+  sections:
+  - heading: Arms of choice
+    body: At 7th fighter level, choose 2 weapon groups. Performing maneuvers and combat maneuvers and special attacks with
+      weapons of the chosen groups do not cost an extra bonus action.
+  - heading: Lifetime of training
+    body: |-
+      At 7th fighter level, gain an extra fighting skill tree upgrade.
+
+      Gain another at 8th and 9th fighter level.
+  - heading: Action surge
+    body: |-
+      At 7th fighter level you can spend 4 rest dice as a bonus or move action to immediately gain an extra turn right after your current one.
+
+      You cannot perform an action surge more than once per round.
+  - heading: Master arts of the arms
+    body: |-
+      At 8th fighter level, choose 2 upgrades from the list below:
+
+      * Ambidextrous - Gain a +1 bonus to sleight of hand and athletics checks, and checks made to disarm traps. You can wield non-light weapons in your offhand at no attack or damage penalty. Gain a +1 bonus to AC when wielding two weapons.
+      * Bonded weapon - You can attune to weapons from your arms of choice selection during a rest. Doing so increases their damage dice by 1 size category while you wield them.
+      * Diversion master — Gain +1 on Swing attacks after the first, Double-strike attacks, Swift attacks and attacks triggered by Clutch. Gain +1 to Deception and Performance checks.
+      * Dozen strikes - When using action surge by spending a move action and wielding an arms of choice weapon, you can forfeit your next turns movement action in advance to gain an extra attack this turn and next turn.
+      * Immediate action surge - You may perform action surge as a reaction instead of a bonus or move action.
+      * Master of arms - Choose 2 extra weapon groups to benefit from your arms of choice ability.
+      * Perfected motion - Choose 2 weapon maneuvers. The attack rolls and DCs of those maneuvers you perform gain a +2 bonus. Gain a +1 bonus to athletics and acrobatics checks. Can be taken multiple times, each time choosing different maneuvers.
+      * Symphony of combat - You restore 1 rest die and can perform a second wind at no bonus action cost when landing a critical strike.
+      * Strike projectile - You can make an attack with a versatile, one-handed, or agile weapon as a reaction to a ranged attack that's trajectory intersects your reach or targets you. If it equals or exceeds to the projectiles attack, you slice it with your weapon and negate the projectiles attack.
+      * Untouchable master - Gain a +1 bonus to AC and a +2 bonus to dexterity saves and block checks. Gain a 5 ft movement speed increase.
+      * Wind-strike - Your arms of choice weapons gain reach I and deal 1d3 extra force damage.
+
+      Choose an extra upgrade at 9th fighter level.
+  - heading: Master strike
+    body: At 9th fighter level, you can spend 2 rest dice when making an attack or maneuver to allow it to ignore resistances,
+      ethereal effects, illusory dodge or miss effects, and damage immunities. When doing so, increase the attacks damage
+      by 3d6 of any damage the weapon would deal.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/2-guardian
+- name: Guardian
+  group: Fighter archetypes
+  sections:
+  - heading: Stand your ground!
+    body: |-
+      At 7th fighter level, you can spend 3 rest dice as a bonus action or reaction to grant yourself and all allies within 60 ft 2 temporary instances of block that lasts until the end of combat.
+
+      Allies within 5 ft (or your shield/block reach, subject to GM) of you can use your block check instead of their own when using the temporary block granted from this ability.
+
+      This ability has a 1d4 > 3 cooldown chance dice that are rolled at the start of each consecutive turn after use.
+  - heading: Enduring
+    body: At 7th fighter level, increase your max HP by 3 per character level.
+  - heading: Guardian traits
+    body: |-
+      At 7th fighter level, choose an upgrade:
+
+      * Band of sword - When using Stand your ground!, you now also grant affected allies and yourself advantage to their attack until the start of your next turn.
+      * Band of shields - You can spend an extra rest dice when using Stand your ground! to increase the block granted by 1.
+      * Band of heroes - When using Stand your ground! you also grant allies the ability to immediately reroll against all fear, subjugation or compulsion, and curse/hex effects. You gain a +1 bonus to persuasion and checks.
+      * Iron brother - When using your own block check to block for an ally, gain a +3 bonus to the block check. Gain a +1 bonus to all other block checks.
+      * Peak vitality - Your second wind ability restores 1 extra dice of HP per rest dice spent, and has its healing dice increased by 1 size category. Gain +1 to constitution and gain an extra death save slot.
+      * Peak strength - Gain a +2 bonus to strength and a +1 bonus to athletics checks. Ignore 1 instance of bulk from armor and items. Gain a +1 bonus to strength saves.
+      * Peak agility - Gain a +2 bonus to dexterity. Gain a +5 bonus to movement speed. Gain an extra reaction.
+      * Security - You gain a +1 bonus to checks made to assist or interact with creatures that have less health than you. Gain a +2 bonus to checks made to create or detect traps, or to block or fortify structures, barricades, or portals.
+
+      At 8th and 9th fighter level, choose an extra upgrade.
+  - heading: Downtime habits
+    body: At 8th fighter level, gain an extra feat.
+  - heading: Not on my watch!
+    body: |-
+      At 9th fighter level, you can choose an enemy or ally within sight and spend a rest die to gain an effect depending on the target:
+
+      * Ally - Your stand your ground! ability grants them an extra instance of block, and you gain a +3 bonus on skill checks made to either help the targets menial work, combat, or survival. Lasts 10 minutes.
+      * Enemy - You gain resistance to physical damage dealt by the target. Lasts 1 hour.
+
+      You can have an ally and enemy benefit active at the same time, but you cannot target more than one ally or more than one enemy simultaneously.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/3-bannerlord
+- name: Bannerlord
+  group: Fighter archetypes
+  sections:
+  - heading: To arms!
+    body: At 10th fighter level you can spend 4 rest dice to call up to 2 allies within 60 ft to arms. Doing so costs a
+      bonus action or move action and cannot be done more than once per turn. The chosen allies then can then immediately
+      perform an action.
+  - heading: Commanding traits
+    body: |-
+      At 10th fighter level, choose two upgrades from the list below:
+
+      * Siegemaster - Gain a +1 bonus to crossbow and thrown weapon attack and damage rolls. When using To arms! you can also include an ally, whose only allowed action is to make a crossbow, bow, thrown/launched weapon, or ranged spell attack. Gain a +2 bonus to checks made to participate in, repair, and oversee siege and demolition engine and equipment creation.
+      * Route marcher - You and your allies can move through difficult terrain unimpeded when traveling, and do not incur traveling, rest, or overworld penalties from terrain. All fatigue damage taken from travel to the party is reduced by 1. You ignore one instance of bulk from armor and equipment, and your movement speed is increased by 5 ft.
+      * War master - During a rest you can spend 3 rest dice to grant all allies an inspiration dice. A character cannot have more than one inspiration die. Gain a +2 bonus to intimidation and persuasion checks.
+      * Redmane - You gain benefits while wielding lighter armors than heavy:
+        * No armor: Gain a +3 bonus to AC and a +3 bonus to weapon attacks.
+        * Light armor: Gain a +2 bonus to AC and a +1 bonus to weapon attacks.
+        * Medium armor: Gain a +1 bonus to AC, gain an extra instance of block at the start of combat, gain a +1 bonus to melee weapon attacks.
+      * Ledger of war - You gain a +2 bonus to checks made to manage, procure, secure, and exchange you and your allies supplies and property. When you or an ally attempts to create a consumable or tool during a rest, you may spend 1 rest die to double the amount created. When an ally is modifying, altering, or creating a non-consumable item or object, you may spend 1 rest die to grant them a +1 bonus to associated checks.
+      * Runic shield - You may attune to your shield and properly mark it with a rune of your own during a rest. If you do so, it provides an extra instance of block to you at the start of combat, and all beneficial spells have their range doubled only for the purpose of targeting you.
+      * Weapon of conquest - Choose a specific weapon type from a weapon group. You can attune to one during rest, increasing its damage dice by 1 size category.
+      * Raid leader - Increase the number of allies affected by Call to arms! to 3.
+      * High lord - Gain a +10 bonus to max HP, and gain an extra ring slot, gain a +1 bonus to wisdom saves.
+      * Veteran - You and allies in your party gain a +1 bonus to stealth, survival, and deception checks. You gain a +3 bonus to investigation and insight checks during rest. Increase max rest dice by 1.
+
+      Gain an extra upgrade at 12th level.
+  - heading: Lord of war
+    body: |-
+      At 11th fighter level, gain a +1 bonus to social checks and a +1 bonus to charisma and intelligence checks.
+
+      Progress proficiency with cartographers tools: proficient > expert > you can read and compile maps of enchanted areas, melded spaces, and structures in realms like the ethereal plane, and gain a +2 bonus to checks made to read such documents.
+
+      Progress proficiency with navigators tools: proficient > expert > You gain a +3 bonus to checks made to detect hidden passages, enchanted paths, or secret spaces.
+
+      Progress proficiency with scribes tools: proficiency > expertise > Learn 2 languages and gain the ability to learn a level 1 arcane spell that you can cast by spending 1 rest die.
+  - heading: You! To arms!
+    body: At 12th fighter level, you can use a single-ally version of To arms! by spending only 1 rest die, allowing you
+      to grant a single ally an action immediately, but not allowing you to grant other allies actions from commanding traits
+      upgrades.
+  - heading: Lead into battle
+    body: At 12th fighter level, you gain a +5 bonus to initiative checks. While first in initiative order, you gain a +1
+      bonus to all d20 rolls.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/3-champion
+- name: Champion
+  group: Fighter archetypes
+  sections:
+  - heading: Skills of a champion
+    body: |-
+      At 10th fighter level, gain 7 fighting skill tree upgrades.
+
+      Gain an extra fighting skill tree upgrade at 11th and 12th level.
+  - heading: Critical skill
+    body: At 10th fighter level, the critical range of all your attacks is increased by 1.
+  - heading: Inner strength
+    body: At 11th fighter level, you gain +3 max rest dice, +12 to max HP, and +1 to all d20 rolls.
+  - heading: Seize the day!
+    body: |-
+      At 12th fighter level, you can spend a rest die at the start of your turn to gain advantage on all saves, death saves, block checks, attack rolls, and skill checks until the end of your turn.
+
+      This has a cooldown chance of 1d4 > 3.
+# https://sites.google.com/view/dnd5plus/home/classes/fighter-x/3-slayer
+- name: Slayer
+  group: Fighter archetypes
+  sections:
+  - heading: Slayer traits
+    body: |-
+      At 10th fighter level, choose an upgrade from the list below:
+
+      * Crusher - Your bludgeoning weapons deal an extra 1d8 bludgeoning damage and have their block DC increased by 2.
+      * Slasher — Your slashing weapons deal an extra 1d6 slashing damage and gain Follow-up (on a hit, attack with disadvantage). Use the weapon’s listed Rip maneuver; granting Rip to a slashing weapon without a listed version is pending.
+      * Impaler - Your piercing weapons deal an extra 1d6 piercing damage and your piercing weapons have their critical multiplier increased by 1.
+      * Overpowered - Double the damage from the overpower weapon property.
+      * Skull-splitter - Increase the damage of weapons you wield that have the chop property by 1 dice size category. This also applies to additional damage.
+      * Reaper - Weapons you wield with the cleave property deal an extra 1d6 damage of the weapons base type. You can target an additional creature with cleave and your cleave attacks gain a +1 bonus to hit.
+      * Slicer — When using a weapon’s Wild Swings maneuver or the Swift property, make one extra attack. When a weapon’s Double-strike or Follow-up triggers, make two attacks instead of one. Weapons that change your number of attacks deal +1 damage of their base type.
+      * Cunning - You can perform weapon maneuvers that can be done "instead of an attack" as a bonus or move action. Weapons with tactical maneuvers on them deal 1d4 extra damage.
+      * Bloodletter - The rend and bleeding critical properties of your weapons apply an extra instance of bleed. Your slashing damage attacks have a 1d6>5 chance to inflict the bleeding condition. Gain a +1 bonus to constitution saves.
+      * Bruiser - The maximum distance enemies are moved by your maneuvers, attacks, and abilities is increased by 5 ft. Weapons you wield that have an ability to move creatures deal an extra 1d6 damage.
+      * Specialized - Chose a creature type (humanoid, construct, elemental, spirit, undead, beast, monstrosity, eldritch, fae, aberration, or draconic.) your weapons deal an extra 1d10 damage to that creature type.
+      * Reveler slayer - When you slay a small or larger creature with a melee or thrown weapon, you trigger your second wind ability.
+  - heading: Adrenaline surge
+    body: |-
+      At 10th fighter level, you can spend 3 rest dice to enter a surge of adrenaline as an immediate action. If you do so in the surprise round, it costs 1 less rest dice.
+
+      For the next 2d4+1 rounds you gain the following:
+
+      * an extra attack.
+      * an extra reaction.
+      * a +15 bonus to movement speed.
+      * a +10 bonus to jump speed.
+      * a +1 bonus to AC.
+
+      Once the effect ends, it has a cooldown chance dice of 1d8>7.
+  - heading: Greater adrenaline surge
+    body: |-
+      At 11th fighter level, choose an upgrade from the list below:
+
+      * Death surge - While under the effects of Adrenaline surge, your second wind can be used to apply any health restored or temporary health gained as extra damage to your next attack instead.
+      * Lasting adrenaline - Increase the duration of surge by 1d3 rounds.
+      * Surge of speed - Gain an extra movement action when surge is active. Increase jump distance bonus from adrenaline surge by 10 ft.
+      * Surge of power - Choose an evocation cantrip or minor hex. You can cast it using your highest physical attribute as the casting modifier while under the effects of surge. You can cast in place of an attack if it requires an action or less to cast. Gain a +1 bonus to saves while under surge.
+      * Deathless - When you are under the effects of adrenaline surge, you gain a +5 bonus to death saves.
+  - heading: Extra slayer trait
+    body: At 11th fighter level, choose an extra slayer traits upgrade.
+  - heading: Slay the weak
+    body: At 12th fighter level, you deal an extra 1d6 damage to creatures below half health.
+  - heading: Final slayer trait
+    body: At 12th fighter level, either choose an extra slayer traits or greater adrenaline surge upgrade.
+  - heading: Put it to rest
+    body: |-
+      At 12th fighter level, your attacks ignore regeneration, undead fortitude, or similar "ignore dropping to 0 HP" effects.
+
+      If at 12th fighter level you slay a creature with an attuned weapon, and the weapon is a +3, the slain creature must make a charisma check vs a DC of 20 + your insight bonus. On a failure, it is slain and all prepared revivification spells, resurrection effects, or similar magic is severed from the target, and its remains are consecrated with the same DC, preventing them for any use with necromancy or bio-alchemical forms of necromantic effects.

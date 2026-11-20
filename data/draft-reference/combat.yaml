@@ -1,0 +1,22 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/combat-changes
+section: rules
+entries:
+  - name: Block
+    group: Combat
+    description: |-
+      After a rest, your block pool equals your Dexterity modifier (minimum 0), plus block from armor and shields (each minimum 0). Certain armor grants a minimum number of instances at the start of combat. If your remaining pool is lower when you roll initiative, raise it to that amount; spend this armor block last.
+
+      Temporary block is spent first. Multiple sources of temporary block do not stack. Keep the higher amount and refresh its 1-hour duration when reapplied. Other than these grants or a specific feature, expended block returns after a rest.
+  - name: Making a block check
+    group: Combat
+    description: |-
+      After an attack hits and before it deals damage, spend one instance of block as a free action and make a Dexterity check against the attack’s block DC. The usual DC is 8 + the attacker’s proficiency bonus + the attack ability modifier. Use the weapon’s listed modifiers and the maneuver’s instructions. A Breach attack requires an additional instance of block; a block-X attack cannot be blocked.
+
+      On a success, negate the blockable damage and any effect that requires an unblocked strike. On a failure, the attack deals damage normally. You spend the committed block either way. An effect that triggers on a hit can still apply when the hit is blocked.
+
+      If you are proficient with armor or a shield you are using, add your proficiency bonus to the block check. In medium or heavy armor, or with a heavy shield, you can use Strength instead of Dexterity. A critical hit imposes disadvantage on the check. A +1 weapon increases the block DC by 1.
+  - name: Unblockable damage
+    group: Combat
+    description: Some attacks, spells, and abilities state that their damage cannot be blocked. If an attack
+      deals both blockable and unblockable damage, resolve the block check against the blockable portion only.
+      The unblockable portion still applies on a successful check.

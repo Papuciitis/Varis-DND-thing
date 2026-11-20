@@ -1,0 +1,567 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x
+- name: Cleric
+  group: Base class
+  description: In the kingdoms of men and other lands of order, there is a respect for those that bear the oaths that remain.
+    The oaths are old traditions that bind their adherents with magic, older than the kingdoms themselves. A cleric is one
+    who has taken on such oaths in the name of a greater good. While some declare their fealty to the oaths in the name
+    of higher powers or gods, others partake in royal rituals and ceremonies, while others see the oaths themselves to bear
+    a spirit that they serve, all clerics understand that their life is burdened with great purpose.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      - Cantrips known
+      - Spells known
+      - Full Spell slots
+      rows:
+      - - '1'
+        - '2'
+        - Spellcasting, 1st archetype, oath
+        - '1'
+        - '2'
+        - '2'
+      - - '2'
+        - '2'
+        - —
+        - '1'
+        - '3'
+        - '2'
+      - - '3'
+        - '2'
+        - Ability score improvement
+        - '1'
+        - '4'
+        - '2'
+      - - '4'
+        - '3'
+        - —
+        - '1'
+        - '5'
+        - '3'
+      - - '5'
+        - '3'
+        - Ability score improvement
+        - '2'
+        - '6'
+        - '3'
+      - - '6'
+        - '3'
+        - —
+        - '2'
+        - '7'
+        - '3'
+      - - '7'
+        - '4'
+        - 2nd archetype
+        - '2'
+        - '8'
+        - '4'
+      - - '8'
+        - '4'
+        - —
+        - '2'
+        - '9'
+        - '4'
+      - - '9'
+        - '4'
+        - Ability score improvement
+        - '3'
+        - '10'
+        - '4'
+      - - '10'
+        - '5'
+        - —
+        - '3'
+        - '11'
+        - '5'
+      - - '11'
+        - '5'
+        - Ability score improvement
+        - '3'
+        - '12'
+        - '5'
+      - - '12'
+        - '5'
+        - —
+        - '3'
+        - '13'
+        - '5'
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d6
+
+      Armor: Light armor, light shields
+      Weapons: Simple weapons
+      Tools: none
+      Saving throws: Wisdom and Charisma
+      Skills: choose two from History, Insight, Medicine, Persuasion, or Religion
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * a simple weapon
+      * (a) light crossbow and a quiver of 10 bolts, (b) a light shield
+      * (a) a burglar’s pack, (b) a dungeoneer’s pack, or (c) an explorer’s pack
+      * (a) leather armor, (b) chainmail.
+  - heading: Spellcasting
+    body: |-
+      At 1st level, gain the ability to cast spells from the Oath spell list.
+
+      Spellcasting attribute is wisdom.
+
+      You have a number of oath spells known as shown in the chart, and a number of full spell slots. A full spell slot is always the maximum possible level slot. You can cast lower level spells by either up-casting, and thereby spending the whole slot, or by reducing the slot: casting the spell at the desired level, and reducing the slots overall level by that much.
+
+      You regain your slots at the end of a long rest.
+  - heading: Oath
+    body: |-
+      At 1st level, you must choose an oath. An oath represents an ideal that a cleric embodies. Each oath comes with a blessing, and a sign, which will grant you abilities depending on your oath. If an oath is broken, you will lose the ability to cast Oath spells, and will lose the benefit of your blessing (but not the sign). A character can spend a long rest to attempt to atone for breaking their oath, but the method in which they must atone is up to the GM.
+
+      Choose one of the following oaths:
+  - heading: Oath of truth
+    body: |-
+      "Pursue truth"
+
+      Sign - You gain proficiency with insight. If you already had proficiency with insight, you gain expertise instead. If you already had expertise, gain proficiency with a skill of choice.
+
+      Blessing - You gain advantage on all checks made to detect illusions. You can end any enchantment spell affecting you as a bonus action by spending a number of rest dice equal to it's level (minimum of 1.)
+  - heading: Oath of the lore keeper
+    body: |-
+      "Pursue knowledge, preserve the lore, understand."
+
+      Sign - You gain use of 2 languages of your choice. You gain proficiency with history. If you already had proficiency with history, gain expertise instead.
+
+      Blessing - When using a scroll, you can spend 1 rest die to make a wisdom check. The DC is equal to 10 + the level of the scroll. On a success, the scroll is not consumed.
+  - heading: Oath of the Shepherd
+    body: |-
+      "Go forth and bless the ones on the path."
+
+      Sign - You can allow others within 30 ft to use your rest dice for actions. A maximum amount of rest dice equal to your wisdom modifier (min 1) can be used in this way per round.
+
+      Blessing - Whenever you or someone else spends any of your rest dice, you are healed for 1d6 health per rest die spent.
+  - heading: Oath of justice
+    body: |-
+      "Let no Evil persist"
+
+      Sign - You gain proficiency with 3 weapon groups of choice, and 1 of: medium armor, heavy shields, or an extra weapon group of choice.
+
+      Blessing - Your weapon attacks deal an additional amount of damage equal to you wisdom modifier.
+  - heading: Oath of redemption
+    body: |-
+      "Light illuminates darkness"
+
+      Sign - You can forego advantage on an attack, saving throw, or skill check during combat to regain a rest die. This can only be done once per rest.
+
+      Blessing - You can spend 1 rest die as a free action to automatically stabilize a dying character within 10 feet. You can spend 2 rest dice to raise a character that has died this round. Both can only be done once per rest.
+  - heading: Oath of courage
+    body: |-
+      "Strength is necessary"
+
+      Sign - You are immune to fear effects.
+
+      Blessing - Your Strength score is increased by 2.
+  - heading: Oath of vigilance
+    body: |-
+      "I shall be ready for the great battle"
+
+      Sign - Your maximum rest dice count is increased by half your wisdom modifier - 1 (min 1.) You gain proficiency with either investigation, or perception.
+
+      Blessing - You can spend 2 rest dice as a free action to grant a yourself or an ally within 30 feet 1 instance of block. This can only be done once per turn.
+
+      Oath of power
+
+      "The gods will it."
+
+      Sign - Learn a minor hex
+
+      Blessing - Learn a major hex.
+  - heading: 1st Archetype
+    body: |-
+      At 1st level, choose your first archetype:
+
+      * Healer - A cleric archetype that specializes in healing and can crit on heals, gaining the ability to heal at a mere touch.
+      * Oathspeaker - An archetype that focuses on casting, as well as a powerful banishment tool.
+      * Pilgrim - A survivalist utility archetype that focuses on rest-based blessings and runes to reach their goals.
+      * Templar - A martial archetype that gains the ability to smite its enemies with great prejudice.
+  - heading: Ability score improvement
+    body: At 3rd, 5th, 9th, and 11th level you gain an ability score improvement. Gain a +2 bonus to one ability score,
+      or a +1 bonus to two ability scores. Alternatively, you can choose a feat.
+  - heading: 2nd Archetype
+    body: At 7th level, choose your second archetype
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x/1-templar
+- name: Templar
+  group: Cleric archetypes
+  sections:
+  - heading: Martial training
+    body: At 1st cleric level, gain proficiency with medium armor, light shields, and 2 martial weapon groups of choice.
+  - heading: Might
+    body: At 2nd cleric level, you can spend 1 rest die to cause a melee bludgeoning weapon or melee spell attack to deal
+      2d6 extra damage. You can only do so once per turn.
+  - heading: Favored spells
+    body: |-
+      At 3rd cleric level, you take on the tradition of favoring spells.
+
+      At every oath spell level known, designate one spell you know as a favored spell. This also applies when you gain higher levels of spells known.
+
+      Once chosen, the favored spell cannot be switched out.
+
+      Per long rest, you gain a number of favor points equal to your total level. It can be used to cast favored spells. You must spend a number of points equal to the spells would-be level.
+  - heading: Templar blessing
+    body: |-
+      At 4th cleric level, choose one ability from the list below:
+
+      * Aura - Gain a +1 bonus to all saves. This increases to +2 at 7th character level. You may grant an ally within 30 feet a +2 bonus to a saving throw as a reaction.
+      * Blessed health - max HP is increased by 5, gain a +1 bonus to strength, Might deals an extra 1d6 damage.
+      * Counter magics - You can spend 2 rest dice to cast dispel magic. The target must be a spell targeting you or a creature or object within 15 feet. Gain a +1 to arcana checks. This bonus is doubled if your intent is to destroy, dispel, or vanquish the object or subject of study.
+      * Evil slayer - If you slay an undead, fiendish, or evil otherworldly creature with Might, the rest dice cost of it is restored, and you restore 1 favor point.
+      * Innate power - Learn a minor and major hex.
+      * Inspiring call - You may spend an action, a bonus action, and a move action to inspire all allies within hearing, restoring 1 rest die to them. You can do so only once per long rest, and an ally cannot benefit from it more than once per rest.
+      * Will to power - Your rest dice maximum is increased by 1. You may spend a rest die to restore 1d4 favor points.
+  - heading: Templar traits
+    body: |-
+      At 5th cleric level, choose an upgrade:
+
+      * Final stand - You may spend 1 block in place of a rest die to use Might. You can also choose to dispel an AC providing or temporary block providing spell in place of spending a rest die for Might.
+      * Rune power - Learn a greater rune hex. Upgrade it once.
+      * Great power - You may use Might once per rest without spending a rest die. Might deals an extra 1d6 damage.
+      * Oathkeeper - When might is used to slay opponents of your cleric Oath, or malignant or malevolent entities, you regain 1 rest die.
+      * Scroll wisdom — Increase by 1 the maximum spell level you can cast with favor points. You can also spend favor points on other spells you know, at the usual cost of 1 point per spell level. Restore 1 favor point whenever you finish a rest.
+      * Shield of faith - You gain a +1 bonus to AC against attacks from enemies that are opponents of your cleric oath, and gain 1 temporary block at the start of combat when engaging with such creatures or entities. You gain advantage to saves vs disease and curses.
+      * Truly blessed - Gain another templar blessing. Reduce all magical damage you take by 1.
+  - heading: Oath-bearer
+    body: |-
+      At 6th cleric level, choose one ability from the list below:
+
+      * Burning might - The melee weapon used for Might retains power after it's attack. For the following 2d4 turns, the weapon deals an amount of extra fire damage equal to the number of turns remaining. Gain proficiency with smiths tools.
+      * Exemplar - Gain an extra templar blessing and trait. Gain +1 to an ability score of your choice.
+      * Un-flinching- Your insight, perception, investigation, and religion checks gain a +2 bonus. You gain 5 save rerolls per long rest.
+      * Vessel — Regain 2 favor points whenever you finish a rest. Your rest dice maximum increases by 1.
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x/1-healer
+- name: Healer
+  group: Cleric archetypes
+  sections:
+  - heading: Critical heal
+    body: |-
+      At 1st cleric, healing provided by your abilities, spells, or created consumables has a chance to critically heal.
+
+      When such healing is applied, roll a 1d10 chance die for each creature. On a 1, the healing for that creature is doubled.
+  - heading: Healing touch
+    body: At 1st cleric level, you may spend a rest die to touch an ally as an action and heal them for 1d10+wisdom bonus
+      (min 1) health.
+  - heading: Gifts of life
+    body: |-
+      At 2nd, 4th, and 6th cleric level, choose an upgrade from the list below:
+
+        * Aura of life - Any healing done within 10 feet of you is increased by 1 HP per dice healed. +6 max HP.
+        * Bless health - When you use healing touch, you also grant that ally resistance to 1 of choice: poison, necrotic, acid, or fire damage. The resistance lasts for 1 hour.
+        * Critical help - Your critical heal dice size is reduce by 1 size category (1d10 -> 1d8 -> 1d6 -> 1d4.) Can be taken multiple times.
+        * Dire healing touch - You may spend all additional rest dice when using healing touch, healing for an extra 1d6 per rest dice spent beyond the first.
+        * Life-saver - If healing touch revives a dying ally, the rest dice cost is refunded.
+        * Lucky heal - If you critically heal with healing touch, you restore 1 rest die to either yourself or the ally.
+        * Life-force - Your healing spells can be used to deal damage to undead directly, converting all healing into radiant damage. +4 max HP. If rest dice are spent to perform the spell or ability and it kills the undead, then the rest dice are refunded.
+        * Lay on hands - If you have both hands free, you can apply healing touch to two creatures at once, or you can enhance healing touch against one target to increase it by 1d10.
+        * Powerful heal - The heal provided by healing touch is increased by 1d10. Can be chosen multiple times.
+        * Pure heart - You gain a +2 bonus to saves against spells that deal acid, poison, or necrotic damage, as well as ones that inflict disease or disabilities.
+  - heading: Power of light
+    body: |-
+      At 3rd cleric level, choose an ability:
+
+      * You gain a +3 bonus on checks made to appease, calm, or pacify a creature, entity, or group.
+      * You gain a +4 bonus on death saves. +4 max HP.
+      * You gain advantage on checks made to identify and study diseases and curses.
+  - heading: Hope
+    body: At 4th cleric level, your rest dice maximum is increased by 1.
+  - heading: Diligence
+    body: |-
+      At 5th cleric level, you can spend a rest die to treat a diseased or cursed creature during a rest, allowing it another save against the effect and granting in advantage.
+
+      If this results in the creature being treated, the rest dice cost is refunded.
+  - heading: Breath of life
+    body: |-
+      At 6th cleric level, you can attempt to make a medicine check on a creature that has died within the last 3 rounds as an action.
+
+      The DC is equal to the level of the creature + 8 + number of rounds it has been dead. On a success, the creature is restored to life with one remaining death save, unconsciousness, and 0 hp.
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x/1-pilgrim
+- name: Pilgrim
+  group: Cleric archetypes
+  sections:
+  - heading: In search of
+    body: At 1st cleric level, you gain a +2 bonus to history, religion, and insight checks.
+  - heading: Extra rest dice
+    body: At 1st cleric level, your rest dice maximum is increased by 1.
+  - heading: Blessed tools
+    body: |-
+      At 2nd cleric level, you can spend 1 rest die during a rest to enchant 1 item you own. Only one item can be enchanted at any time, and the blessing differs depending on the type of item chosen, and is determined upon enchantment:
+
+      * Weapon blessing - Grant the weapon a +1 bonus. You gain advantage on checks made to retain and not lose it, as well as skill checks involving the use of the weapon.
+      * Shield blessing - Grant the shield a +1 bonus. While wielding it, you can make block checks instead of dex saves against cone and ray attacks.
+      * Ring blessing - The ring grants a +1 bonus to an ability score of choice.
+      * Pendant blessing - The pendant grants a +2 bonus to a save of choice, chosen during the blessing.
+      * Armor blessing - The armor grants the wearer 1d6 temporary health every 2 rounds after taking damage.
+  - heading: Ward of protection
+    body: At 3rd cleric level, you can spend 1 rest die to reroll a save or block check.
+  - heading: Circle of runes
+    body: |-
+      At 4th cleric level you can spend 1 rest die and 10 minutes to create a 10 ft circle of runes that, by default, lasts 2 days. Creating a new circle will dismiss the old one, unless certain criteria are met.
+
+      Creatures native to the plane that are within the circle of runes gain a +2 bonus to checks made to scry, and to arcana checks made to read scrolls or interact with magical items. They also gain advantage on saves against curses, diseases, and to death saves. They also gain a +1 bonus to the level of spells being cast from within the circle.
+
+      A creature native to the plane that is reduced below 0 hp by use of magic while within the circle of runes will instead be placed into stasis (unconscious and remaining at 0 hp) and that specific circle will remain in effect until it is either forcibly dispelled by another creature, the creature in stasis is killed by physical and mundane means, or if the caster creates a new circle of runes.
+
+      Creatures blinked or summoned into the circle of runes, as well as outsiders and undead, have disadvantage on saves made to resist banishment, and must make a DC 20 wisdom save to cross the runes. On a failure, they are forbidden from crossing for 1 day.
+  - heading: Greater blessings
+    body: |-
+      eAt 5th cleric level, choose 2 upgrades for the blessed tools ability:
+
+      * Abundance of enchantment - You can simultaneously have two enchantments at once.
+      * Greater weapon blessing - your enchanted weapon gains 1 weapon property of choice (must fit its type, cannot apply ranged to melee and vice versa, subject to GM.) and deals an extra 1d6 damage of your choosing.
+      * Greater shield blessing - Your enchanted shield bonus is increased to +2 and grants 1 temporary block at the start of combat.
+      * Greater ring blessing - Your enchanted ring bonus is increased to +2.
+      * Greater armor blessing - Your enchanted armor grants damage resistance to a damage type of choice and the temporary HP is increased to 2d8.
+      * Greater pendant blessing - Your enchanted pendant can now either apply the bonus to two of any combination of: save, skill, initiative.
+      * Bless scroll - You can target a scroll, increasing its casting level by 1 when cast, and granting it a 1d4 chance of not being consumed on cast. Does not stack.
+      * Bless wand - You can target a wand with blessed tools, granting it an extra 1d6 charges if it has charges, a +1 bonus to spell attacks or buffs granted by the wand, as well as increasing any associated DCs by 1.
+      * Enchanted map - You can enchant a map with blessed tools, granting its user advantage on checks made to navigate while consulting the map, so long as it is within the bounds of the maps area depicted, as well as granting you a +4 bonus to checks made to find hidden or lost locations or passages while consulting the map.
+      * Bless the runes - You can choose to enchant the circle of runes as a blessed item, trapping outsiders within without a save (creatures not native simply cannot pass the runes or disrupt them of their own volition. Subject to GM.) and shielding anything within from scrying effects.
+      * Blessed wards - You can choose to grant an ally your ward of protection ability during a rest. Doing so costs 1 rest die. You and the ally can now both spend rest dice to allow a reroll for either yourself or the other, as per the ability. The affected ally counts as a blessed item.
+  - heading: The lost runes
+    body: |-
+      At 6th cleric level, you can invoke an elder rune a number of times per rest equal to your wisdom modifier -1 (min 1.) as a bonus action.
+
+      An elder rune can modify a spell or cantrip being cast, an item being created or enchanted, a creature being summoned, or a magical ability being used. Anywhere within the description of the effect, either insert a 1d4 or increase a value by 1d4. This cannot modify the number of creatures being created or summoned.
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x/1-oathspeaker
+- name: Oathspeaker
+  group: Cleric archetypes
+  sections:
+  - heading: Knowledge of the oaths
+    body: Starting at 1st level, and every odd cleric level afterwards, your number of oath spells known is increased by
+      1.
+  - heading: Extra spell slot
+    body: At 2nd cleric level, gain an extra full cleric spell slot.
+  - heading: Banish
+    body: |-
+      At 3rd cleric level, you can spend 3 rest dice to dispel a summoned, undead, elemental, eldritch creature or similar abomination (Subject to GM) within 20 feet as an action and bonus action.
+
+      The target must make a wisdom save. The DC is equal to 8 + 1/2 your cleric level + your wisdom bonus. On a failure, the creature takes 6d8 radiant damage. On a success, they take half. Creatures not native to this plane, or summoned creatures, are banished on a critical failure, returning to their plane of origin.
+
+      If this kills the creature, you restore 1d3 rest dice and the creature is removed from the plane
+  - heading: Sacred power
+    body: |-
+      At 4th cleric level, pick an upgrade from the list below:
+
+      * Oathseal scribe - You can create an oathseal by spending a rest die during a rest. An oathseal can be broken to restore 1d4 spell levels to a spell slot of choice. Gain a +2 bonus to checks made to read and decipher ancient, sacred, or arcane texts.
+      * Light wielder - Choose a weapon group you are proficient with. You can enchant 1 weapon of this group during a rest by spending 1 rest die. The enchanted weapon deals an extra 1d6 radiant damage. You can only have one such weapon enchantment and it lasts until long rest and can be renewed during a long rest.
+      * Fire speaker - You gain resistance to fire damage and can change the damage type of any spell to fire. Banish costs only 1 rest die to cast on fire and ice elementals and other fire/ice based entities (subject to GM)
+      * Thunder caller - You can spend 1 extra rest dice when using banish to increase the damage dice by 1d8 and the range to 50 feet. While there is a storm above (Subject to GM,) this is always applied at no rest dice cost, and the damage is further increased by 1d8.
+      * Radiant one - Banish costs 1 less rest dice when you are exposed to radiant light or sunlight. Banish deals 2d8 extra radiant damage. Your rest dice maximum is increased by 1.
+      * Mountain walker - You gain 1 extra block at the start of combat. +7 max HP. Gain a +3 bonus to block checks. You do not suffer from the environmental hazards of low air.
+  - heading: Read the lore
+    body: At 5th level, gain a +1 bonus to history, religion, arcana, and medicine checks. Gain a +1 bonus to checks made
+      to identify magical items, as well as to saves against cursed items.
+  - heading: Aspect of the oaths
+    body: |-
+      At 6th cleric level, gain an ability of choice from the list below:
+
+      * Worldly insight - Gain proficiency with a skill, save, language, weapon group, tool, instrument, and game set of choice.
+      * Exalted soul - Gain a +1 bonus to all saves, including death saves.
+      * Power of will - Increase your rest dice maximum by 2.
+      * Oath insight - Your number of oath spells known is increased by your proficiency bonus.
+      * Cleanse darkness - Banish restores +1 rest die when slaying and/or banishing the target.
+  - heading: Oppose
+    body: At 6th cleric level, banish can also target creatures that oppose or go against your 1st level cleric oath.
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x/2-paladin
+- name: Paladin
+  group: Cleric archetypes
+  sections:
+  - heading: Paladin oath
+    body: |-
+      At 7th level, you must take on a paladin oath, which requires you to sacrifice power of your own. You take the following penalties:
+
+      * you do not get an extra full spell slot at 7th.
+      * You do not learn an extra spell at 7th, 9th, and 11th level.
+  - heading: Divine protection
+    body: |-
+      At 7th level, you gain a +2 bonus to saves vs spells, magical abilities, and diseases.
+
+      The bonus to saves increases by +1 at 8th and 11th level.
+  - heading: Divine power
+    body: At 7th level, you gain a +1 bonus to your maximum rest dice. This increases to 2 at 9th, and 3 at 11th cleric
+      level.
+  - heading: Paladin power
+    body: |-
+      At 7th cleric level, choose one ability from the list below:
+
+      * Banish - Spend 3 rest dice as an action to dispel magic in a 15 ft cone in front of you. Make a religion check and add your divine protection bonus to it. All magical or supernatural effects that have their DC overcome or equaled by the check are dispelled. Extraplanar or supernatural, undead, and ethereal creatures take 3d10 force damage. This ability has a cooldown chance of 1d6 > 2.
+      * Bless - You can spend 2 rest dice as an action to grant a creature within 15 ft a +1 bonus to all d20 rolls for the next minute. Does not stack.
+      * Cleanse - You can spend 2 rest dice as an action to dispel a creature of enchantments, curses, hexes, and diseases. Make a religion check and add your divine protection bonus to it. All such effects that have their DCs overcome or equaled by the check are dispelled and removed. If cast on an undead, it can instead force them to make a wisdom save vs your result, either taking 3d10 + your wisdom bonus necrotic damage, or being compelled for 2d4 rounds.
+      * Smite - You can spend 1 rest die as a free action to make the attack deal an extra 2d8 radiant damage. Can only be done once per attack.
+      * Ward - You can spend 2 rest dice as an action to grant allies within 30 ft 2d8 + wisdom bonus temporary health which lasts 1 minute.
+  - heading: Paladin traits
+    body: |-
+      At 8th cleric level, choose 2 upgrades from the list below
+
+      * Aura - So long as allies are within 30 ft of you, you can grant them your divine protection bonus as a reaction to them having to make a save vs a valid effect.
+      * Devotee of fire - You gain resistance to fire damage. Your cleric damage dealing abilities and damage dealing spells deal an extra 1d6 points of fire damage (per ability.) Other fire damage you deal is increased by 1 dice size category. Excludes taking other devotee of X traits.
+      * Devotee of justice - Your attacks against undead and opponents of your oath (subject to GM) gain a +1 bonus, and the durations of your abilities, spells, and effects against them is increased by 1 unit category size (round -> minute -> hour -> day.) Excludes taking other devotee of X traits.
+      * Devotee of light - You gain resistance to radiant damage. Healing you receive and apply is increased by 1d4, and temporary and arcane health you apply is increased by 1d6. Excludes taking other devotee of X traits.
+      * Devotee of order - Your rest dice maximum is increased by 2. You are immune to madness effects. Excludes taking other devotee of X traits.
+      * Devotee of strength - You gain a +1 bonus to all physical attributes. Whenever you resist a fear, terror, or compulsion effect, regain 1 rest die.
+      * Devotee of war - Damage dealing paladin powers you have deal an extra dice of damage. Gain proficiency with medium armor. If already proficient, gain proficiency with heavy armor. Excludes taking other devotee of X traits.
+      * Greater banish- Requires the banish paladin ability. Extend it's range by 5dft, add +1 bonus to its religion check roll, and deal an extra 1d10 damage to its valid creatures. Can be taken multiple times.
+      * Greater bless - Requires the bless paladin ability. Increase bonus by +1 and reduce rest dice cost by 1.
+      * Greater cleanse - Requires the cleanse paladin ability. Gain a +1 bonus to its religion check roll, and deal an extra 1d10 damage to valid targets and increase compulsion effect on undead by 1d4 rounds. Can be taken multiple times.
+      * Greater smite - Requires the smite paladin ability. Increase its damage by 1d8 radiant damage. Can be taken multiple times.
+      * Greater ward - Requires the ward paladin ability. Increase its range by 5 ft and the temporary health granted by 1d8. Can be taken multiple times.
+      * Lasting power - Choose a paladin power you know that has a duration. Increase the duration by 1 unit category (rounds -> minutes -> hours -> days)
+      * Purity - You are immune to disease and poison damage.
+      * Shield of faith - Increase your divine protection bonus by 1. Gain 1 temporary block at the start of combat.
+  - heading: Paladin power II
+    body: At 9th cleric level, choose an extra paladin power ability.
+  - heading: Paladin traits II
+    body: At 10th cleric level, choose an extra paladin traits upgrade.
+  - heading: Paladin power III
+    body: At 11th cleric level, choose an extra paladin power ability.
+  - heading: Paladin traits III
+    body: At 11th cleric level, choose an extra paladin traits upgrade.
+  - heading: Slay evil
+    body: At 12th paladin level, you have advantage on attacks against opponents of your oath (Subject to GM.)
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x/2-white-priest
+- name: White priest
+  group: Cleric archetypes
+  sections:
+  - heading: White arcana
+    body: |-
+      At 7th cleric level, when learning new cleric spells, you can learn spells from any class of magic (arcane, mystic, occult, oath,) so long as they are one of the following:
+
+      * A spell that grants healing to the caster or their allies.
+      * A spell that grants temporary health or arcane health.
+      * A spell that grants a bonus to AC, max HP, or save bonuses.
+
+      These spells are still cast as cleric spells that use your cleric casting attribute (wisdom.) and with your cleric spell slot mechanics.
+  - heading: White arcana spell slots
+    body: At 7th cleric level, you gain 2 full level spell slots that can only be used for white arcana spells (any spells
+      that would fit the white arcana requirements.)
+  - heading: Extra spells known
+    body: At 7th cleric level, learn 3 extra oath or white arcana spells.
+  - heading: Traits of light
+    body: |-
+      At 8th cleric level, choose one upgrade from the list below:
+
+      * Anointed one - White arcana is now expanded to include all divination spells. You now possess a faint halo effect which may be revealed or hidden at will, sheds a light at a 20 ft radius, grants immunity from blindness and deafness. Learn a white arcana spell.
+      * At peace - White arcana is now expanded to include spells that remote, grant immunity from, allow rerolls for, or grant protection from negative conditions but do not directly deal damage (Subject to GM.) You are immune to fear, compulsion, and charm effects. Gain a +2 bonus to insight checks. You restore 1 extra rest dice every rest.
+      * Shield-priest - White arcana is now expanded to include spells that grant block, temporary block, or increases to ability scores. Gain proficiency with large shields. Gain proficiency with medium armor. If already proficient, gain proficiency with heavy armor. If already proficient with heavy armor, learn an extra white arcana spell of a level you can cast. You gain +1 temporary block at the start of combat.
+      * Wise one - White arcana is now expanded to include spells that grant awareness of evil or danger (subject to gm.) Learn 3 extra cleric or white arcana spells. Your rest dice maximum is increased by 1.
+      * Saving spirit - White arcana is now expanded to include all spells that have the ability to revive a fallen creature. Learn one such spell (specifically revive, not cleric or white arcana. It can be of any class of magic.) Gain a +1 bonus to all saves, including death saves.
+  - heading: Light mana
+    body: |-
+      At 8th cleric level, you may spent up to as many rest dice as your constitution bonus -1 (min 1.) as an action, gaining one of the following effects based on the number of rest dice spent:
+
+      * 1 - restore 1d4 - 1 (min 1) levels to a spell slot that is depleted. This cannot bring it above the maximum.
+      * 2 - restore a total of 1d3 levels to spell slots that are depleted, in any combination, or to an entirely spent spell slot. This cannot bring any spell slot above the maximum level you can cast.
+      * 3 - restore a total of 1d4 levels to spell slots that are depleted, in any combination, or to an entirely spent spell slot. This cannot bring any spell slot above the maximum level you can cast.
+      * 4 - restore a total of 1d4 +1 levels to spell slots that are depleted, in any combination, or to an entirely spent spell slot. The spent spell slot can exceed your maximum spell level.
+  - heading: Channel divinity
+    body: |-
+      At 9th cleric level, you can attempt divine intervention, on either yourself or an ally within 20 ft. Roll 1d6 and spend as many rest dice as the result, rolling them and recording the result.
+
+      The resulting amount can be added to any of the following: an attack, block, save, or skill check, a healing roll, a damage roll, a d100 roll, or a roll for determining distance or duration.
+  - heading: Sacred power
+    body: At 10th cleric level your rest dice maximum is increased by 3.
+  - heading: Expanded white arcana
+    body: At 11th cleric level, your white arcana is expanded to include 3 spells of choice. These spells must NOT deal
+      necrotic damage, acid damage, create undead or similar abominations, or include the word "profane" or "dark" in the
+      title, unless the name stands in opposition to the term.
+  - heading: Aura of light
+    body: At 12th cleric level, the range of all your spells is overridden to instead also allow bypassing their range,
+      instead having a range of "creatures exposed to light that you have created, cast, invoked, or summoned."
+# https://sites.google.com/view/dnd5plus/home/classes/cleric-x/2-black-priest
+- name: Black priest
+  group: Cleric archetypes
+  sections:
+  - heading: Turn undead
+    body: |-
+      At 7th cleric level, you can spend 2 rest dice to compel undead or fiend creatures in a 20 ft cone as an action. Valid targets that are in the cone must make a wisdom save.
+
+      The DC is equal to 8 + your proficiency bonus + your wisdom bonus.
+
+      On a failure, targets are stunned for 1d4 rounds. On a critical failure, targets can be compelled to do as you say for 1d4 rounds.
+  - heading: Dark enlightenment
+    body: |-
+      At 7th cleric level, choose one ability:
+
+      * Crypt priest - You gain perfect darkvision. You learn undercommon and infernal as languages that you can speak, read, and write. You gain a +3 bonus to checks made to perform rites, rituals, and to concentration checks. Gain resistance to poison damage, or if already resistant, gain immunity.
+      * Shadow priest - You may cause healing spells to deal necrotic damage to targets instead, and can allow spells that target allies to target opponents of your oath, as well as valid targets of your turn undead ability. You gain a +1 bonus to wisdom while in darkness or shadow.
+      * Death priest - Whenever an ally dies within range, you regain 1 rest die. You may spend 1 rest die to sanctify a recently deceased humanoid as a 10 minute ritual. After doing so, you regain 2 rest dice and the remains cannot be turned into undead or eldritch entities. Gain a +2 bonus to death saves.
+      * War prophet - You may spend 1 rest die when rolling initiative to force up to as many allies as your wisdom bonus - 3 (min 1) to reroll initiative. Turn undead can target warriors, mercenaries, and assassins (subject to GM.) in the service of opponents of your oath.
+      * Penitent priest - Your max HP is reduced by 3. You gain 100 ft of darkvision and echosight. Turn undead costs 1 less rest dice and allows you to apply either a stun or compulsion on just a failed save, and doubles the duration on a critical failure.
+  - heading: Accuse
+    body: |-
+      At 8th cleric level, you can you can spend a rest die to curse a target within 40 ft, forcing it to make a wisdom save. On a failure, it is cursed for 1 hour. Other creatures that attack it and are not its allies are healed for 1d6 health.
+
+      The target must be either undead, an opponent of your oath (subject to GM,) or a fiend.
+  - heading: Knowledge of the spheres
+    body: |-
+      At 9th cleric level, you learn secrets of powerful entities, concepts, and magic of a sphere of power of choice. Choose one sphere of choice, then choose an upgrade from within.
+
+      Spheres of power:
+
+      Abyssal ( accuse and turn undead can target demonic type creatures. )
+
+        * The name of chaos - you can spend 1 rest die or 1 level worth of spell slots to disturb magic and reality ever so slightly around a target within range as an action. The target must make a wisdom save. On a failure, they are cursed for 1d3 rounds and have one of their resistances or immunities disabled.
+        * Abyssal chains - You can spend 1 rest die when using accuse to cause the target to also make a strength save. On a failure, ethereal chains restrict the target in place. It can remake the strength save each turn as an action to break free, but doing so causes the target to take 1d6 cold damage and 1d6 necrotic.
+        * The mad myth - When you slay a sentient creature with a soul in combat, you restore 1 rest die. This is tripled if it was an ally. Your rest dice maximum is increased by 1. You take a -2 penalty to intelligence and a -1 penalty to charisma. You can spend 1 rest die to trigger an undead constitution effect (roll a constitution save vs damage taken, remain at 5HP on a success) when being reduced to 0 HP.
+
+      Cosmic ( accuse and turn undead can target cosmic and elemental type creatures, but the DC for such creatures is reduced by 2. )
+
+        * The ancient tongue - You can speak and comprehend every mundane spoken language, as well as interplanar common. You can spend 1 rest die when casting a spell with a verbal component to increase its level by 1. This cannot bring them above the max level you can cast.
+        * Sense true nature - Accuse and turn undead can apply an entirely new effect for their duration: If the targets fail the save, you can speak with them telepathically and understand what their intent is, abstractly (Subject to GM,) for the duration. For the duration, you are also innately aware of targets locations.
+        * Celestial curses - Turn undead can now target celestial creatures, but the DC is reduced by 3. It otherwise has a +1 bonus to DC. Your rest dice maximum is increased by 1. You no are immune to compulsion effects made by celestial and fiendish creatures.
+        * Cosmic weight - You can change accuse to
+
+      Eldritch ( accuse and turn undead can target eldritch type creatures. )
+
+        * Psychic manifestations - Targets of your accuse ability can now be interfered with if they fail the save. For the duration of the accuse effect, you can, as a reaction to the target making an attack or casting a spell, force the creature to make a wisdom save, wasting the action on a failure.
+        * Eldritch sight - Gain blindsight at a range of 20 ft, gain auravision (can detect magic and the schools and classes of magic) at a range of 40 ft. You can cast turn undead as a beam at x3 the range. You always know the location of the accuse target, and can choose to see it and what it is doing as though it was unobstructed by other objects.
+        * Bioexodus - Creatures slain while under the effects of your accuse ability can be turned into a small eldritch slug creature. Its stats are subject to gm, but its mind is lost entirely (subject to GM) and you can choose to terminate it within the first 10 minutes of its creation.
+        * Elder being witness - You may choose to alter the effects of turn undead when using the ability, doing the following: its range is increased by 5 ft. All creatures must also make a dexterity or strength save, becoming ensnared by dark outgrowths that last for the duration of the spell. Creatures can remake the save every turn to break free, but are immobilized otherwise and are not able to blink or teleport out of the tendrils grasp. Creatures slain while grappled leave a thick difficult terrain patch of elderlychen all over their remains.
+
+      Infernal ( accuse and turn undead can target infernal and devilish creatures. )
+
+        * Confession ritual - You can choose to make accuse apply a new and entirely different condition to the target: You can speak as an action or reaction to question the target, forcing it to answer truthfully, or in case of a lie either take 1d12 + your wisdom bonus psychic damage, or be compelled to do a simple physical task of your choice that takes up to 1 round.
+        * Hellwalker - You gain a +3 bonus to saves vs effects and spells from infernal, fiendish, or abyssal creatures. You gain fire immunity. All fire damage you deal is increased by 3.
+        * Purify by flame - You can choose to cause turn undead to deal 5d12 + your wisdom bonus damage instead of applying conditions or curses to the targets that fail the saves.
+        * True nature of forbidden knowledge - Your max HP is reduced by 3. Add up to 3 spells from any class with the word "rune", "runes", or "script" to your list of spells known. Use wisdom as the casting modifier and treat them as cleric spells. Learn 1 language from: infernal, undercommon, abyssal, fiendish, primordial, or elemental.
+
+      Undeath ( accuse and turn undead can target abomination type creatures. )
+
+      * Forbidden life teaching - Learn a spell of any class that creates undead or elemental creatures from remains. It must be level 4 or lower. You can cast it only on creatures that died while subject to your turn undead or accuse ability, but it costs 1 level less in terms of its spell slot use (a level 3 spell would require only 2 levels of a spell slot to be cast at 3rd. A level 1 spell requires no spell slots to cast on such targets.) Such undead gain advantage to saves made to compel or manipulate them and obey your commands perfectly (Subject to GM.)
+      * Knowledge of stillborn gods - You can spend rest dice as an action to deal 1d10 + your wisdom bonus necrotic damage per dice spent to a target within 30 ft, or 1d12 + your wisdom bonus necrotic damage if the target is within melee. You can alternatively use a whole spell slots, using slot levels in place of rest dice. You take 1d4 necrotic damage per dice of damage dealt. The target can make a constitution save to halve the damage, and so can you. The DC is 9 + your prof + your casting modifier bonus. The duration of turn undeads effect is increased by 1 unit category when targeting undead (round > minute > hour > day )
+      * Dark lotus invocation - You gain resistance to necrotic damage. If you are slain by necrotic damage, make an additional death save. On a success, gain a +2 bonus to mental stats and raise as undead. In such cases, so long as you do not break your oath, you can still count as mortal for the purposes of healing spells.
+      * Afterlife economics - When sanctifying (by any means necessary) the corpse of a dead creature that was not your opponent, you may spend 3 rest dice to create a ferryman coin. This can be done once per long rest. A ferryman coin is lost when you would die, allowing you to return to 1 HP within up to 1 hour.
+  - heading: Tonal throat singing
+    body: |-
+      At 10th cleric level gain a +5 bonus to performance checks made to perform deep or guttural ritual and religious chants. This is detectable from a distance. Entering a deep chant requires 2 + 1d4 turns of chanting even for masters of the art.
+
+      If you cast spells while performing a deep chant, you can spend 1 rest die to increase their durations by 1 unit category, or to increase the number of targets by 1 if the spell originally only has 1 target.
+  - heading: Knowledge of the spheres II
+    body: At 10th cleric level, gain an extra upgrade from a learned sphere of power, or learn another sphere of power and
+      gain an upgrade from it.
+  - heading: Knowledge of the spheres III
+    body: At 11th cleric level, gain an extra upgrade from a learned sphere of power, or learn another sphere of power and
+      gain an upgrade from it.
+  - heading: Knowledge of the spheres IV
+    body: At 12th cleric level, gain an extra upgrade from a learned sphere of power, or learn another sphere of power and
+      gain an upgrade from it.
+  - heading: Gaze into the abyss
+    body: |-
+      At 12th cleric level, you can force a creature to make a wisdom save as an action. The DC is 13 + your wisdom bonus + your proficiency bonus. On a failure, the target takes 10d10 psychic damage. If this would reduce the target to 0 HP, you may instead choose one of the following:
+
+      * Destroy the targets remains and grant its soul disadvantage on any checks made to revive or return to life.
+      * Force the target to morph into a creature of a type that turn undead can target. It is cursed to serve you and is always subject to your accuse ability.
+      * Force the creature to explode, forcing creatures within 20 ft to take 3d10 force damage, allowing them to make a dexterity save (DC 8 + prof + wisdom bonus) to halve damage.
+
+      This can be done a number of times per rest equal to your wisdom bonus - 5 (min 1.)

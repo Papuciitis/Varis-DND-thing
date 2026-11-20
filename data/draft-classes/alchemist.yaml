@@ -1,0 +1,652 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x
+- name: Alchemist
+  group: Base class
+  description: Alchemists are the inquisitive eccentrics of the world who have managed to comprehend the arcane systematizations
+    of the material world that the various orders, cults, and universities have described, and as such have obtained a new
+    way of viewing the world; one in which they begin to ask how the world can be remade by their science.
+  draft_note: The progression table places the third archetype at level 10, while the feature text names level 9. The timing
+    of this choice needs confirmation.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      rows:
+      - - '1'
+        - '2'
+        - Alchemy, Alchemy methods
+      - - '2'
+        - '2'
+        - Ability score improvement
+      - - '3'
+        - '2'
+        - Tool of choice
+      - - '4'
+        - '3'
+        - 1st archetype
+      - - '5'
+        - '3'
+        - ability score improvement
+      - - '6'
+        - '3'
+        - '-'
+      - - '7'
+        - '4'
+        - 2nd archetype
+      - - '8'
+        - '4'
+        - Ability score improvement
+      - - '9'
+        - '4'
+        - '-'
+      - - '10'
+        - '5'
+        - 3rd archetype
+      - - '11'
+        - '5'
+        - ability score improvement
+      - - '12'
+        - '5'
+        - '-'
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d6
+
+      Armor: Light armor
+      Weapons: 1 simple weapon group, all crossbows, all thrown weapons
+      Tools: alchemist’s kit
+      Saving throws: Constitution, Intelligence
+      Skills: Choose 3 from Arcana, History, Investigation, Medicine, Nature, Sleight of hand
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) light crossbow and a quiver of 10 bolts, or (b) a sling and a pouch of 20 sling stones
+      * (a) any simple weapon, or (b) three daggers
+      * (a) a dungeoneer’s pack, or (b) an explorer’s pack
+      * Alchemist’s tools
+      * Padded armor
+  - heading: Art of Alchemy
+    body: |-
+      alchemy points
+
+      At 1st level, gain access to Alchemy Points (AP), you gain a number of AP equal to your intelligence bonus + your proficiency bonus each rest, and can store up to as many as your total intelligence + your wisdom bonus (min 0.)
+
+      art of alchemy consists of 3 types of alchemical secrets, the art of extraction, refinement, and creation. At 1st level, you know 1 art of each, and 2 arts of choice, and you learn 2 of choice more every level.
+  - heading: Alchemical extraction
+    body: |-
+      At 1st alchemist level, you can spend 1 AP during a rest, or 1 rest die over a 1 hour process if outside a rest, to extract alchemical material from an adequate source.
+
+      Extracting them requires access to an alchemists set or tools. Per 6 carried alchemical essences, a creature infers 1 bulk:
+
+      * Necrotic essence - Requires an undead or adequately putrid source.
+        * 2d6 necrotic damage
+        * contact: dim light / darkvision
+        * duration +1 size increment (round > minute > hour)
+        * Flammable
+      * Volatile essence - Requires a volatile alchemical reagent.
+        * 1d10 poison damage
+        * Flammable
+        * Cold resistance
+        * rotate damage/effect type of item or essence (... > necrotic > healing > temporary HP > poison > fire > lightning > psychic > cold > ...)
+      * Vital essence - Requires adequate plant, fungal, or vital source.
+        * 1d10 temporary health
+        * contact: oily difficult terrain / covered in oil
+        * contact: encourage plant growth
+        * duration X3
+      * Caustic essence - Requires a caustic alchemical reagent.
+        * 2d6 acid damage
+        * dice size category +1
+        * contact: rust (item damage 1d4)
+        * obscuring smoke 1 minute
+      * Spectral essence - Requires an adequate crystalline, elemental, or arcane source, or 1 phial of mana.
+        * 1d8 lightning damage
+        * 1d4 arcane health
+        * contact: light / darkvision
+        * stun (1 round)
+      * Warping essence - Requires an adequate eldritch, aberrant, or fiendish source.
+        * 1d10 cold damage
+        * Fire resistance
+        * range/area +10 ft
+        * contact: Icy difficult terrain / chilled
+  - heading: Alchemical refinement
+    body: |-
+      At 1st alchemist level, you can spend 1 AP during a rest or 1 rest die over a 1 hour process if outside rest, to modify an alchemical essence. A modified alchemical essence has its effects altered, and they carry over when it is used in alchemical creations.
+
+      Essences become harder to refine per times they have been refined, becoming unusable past a point. Past a number of times equal to your proficiency bonus, you must make a DC 20 alchemist’s tools check, which increases by 5 per further increment. On a failed check, the involved essences fizzle, go bad, or apply one of their effects to the alchemist (Subject to GM.)
+
+      * Distill power - Modify an alchemical essence, increasing its dice size by 1 size category.
+      * Heighten purity - Modify an alchemical essence, increasing its duration by 1 (rounds/minutes) and its area of effect, if any, by 5 ft / 1 tile.
+      * Catalyze - Modify an alchemical essence, also expending one alchemy kit component in the process. The modified essence may grant an additional other effect to alchemical items created from them. The modification can only be applied once.
+      * Infuse - Modify an alchemical essence and sacrifice another alchemical essence, granting the modified essence one of the sacrificed essences properties.
+      * Admix - Modify an alchemical essence and sacrifice another, combining a contact or non-dice effect from both essences into a single effect.
+      * Dilute - Duplicate an alchemical essence, but remove one effect (the same effect) from both essences.
+      * Aeration - Modify up to 2 alchemical essences, granting them both either flammable, or increasing a non-hostile dice effect by 1 dice count.
+      * Sublimate - Modify up to 2 alchemical essences and sacrifice one. Of the two non-sacrifices essences, one must be chosen as the target. Grant the target a combination of 2 effects from the other 2 essences.
+      * Mana filtration - Modify a warping, spectral, or necrotic essence, removing one effect from it but granting it (or increasing a preexisting area effect) "area effect +15 ft." Doing so requires sacrificing a mana potion or a spectral essence.
+      * Fermentation - Modify a vital, necrotic, or spectral essence. The modified essence loses 1 effect but allows its use in two alchemical items before it is expended. It is otherwise a single essence item. An alchemical essence cannot be modified with this more than once.
+      * Anti-formulation - Modify an alchemical essence, changing resistance to damage vulnerability.
+      * Crystallization - modify an alchemical essence that has not yet been refined. Lock in one of its effects, it will always be applied, when applicable, with alchemical items created (in addition to the base chosen effects of the item)
+  - heading: Alchemical items
+    body: |-
+      At 1st alchemists level, you can spend 1 AP during a rest or 1 rest die over a 1 hour process if outside rest, to create an alchemical item:
+
+      * Bomb - Requires expending flammable essence. Can be thrown at a range of 30/60 as a thrown weapon, dealing 1d6 + your int bonus fire damage to creatures in a 5 ft radius. May emplace another essence, applying a hostile effect dice or exposure/effect from the second essence to creatures hit, or to the area affected, or alternatively, modifying the bomb with a property from the second essence (Subject to GM.) Creatures can make a dexterity save to halve the damage. Tile effects last 1 minute.
+      * Reactive flask - Expend an essence, creating a flask, allowing it to be poured up to 2d3+1 tiles to apply a chosen contact effect from the essence, or thrown at a target at a 30/60 range as a thrown weapon, dealing the substances effect dice to the target hit, or applying a contact effect to the covered tiles. Exposed tiles retain the alchemical effect for 1 minute.
+      * Potion - Emplace an essence in a potion and refine it, placing a single effect from the essence into the potion, and granting it to the consumer for a number of minutes equal to your intelligence bonus (min 1.)
+      * Alchemical dust - Expend an essence and one alchemy kit component. Choose up to 4 tiles or a 15 ft cone, applying one effect or effect dice from the essence to target and tiles in the range. Any lasting effect of the dust lasts 1 round when sprinkled.
+      * Alchemical bolts - Expend an alchemical essence, creating 1d4+1 alchemical bolts. Alchemical bolts apply one hostile chosen effect from the essence to the target, in addition to the bolts base damage. The type is chosen when the bolt is created, and it is applied to all bolts created.
+      * Alchemical weapon oil - Expend two alchemical essences, creating a flask of alchemical weapon oil. A flask has 1d3 uses, and when applied (as an action, baseline) will enhance the weapons next 1d4+1 attacks with a property or effect dice from one of the essences. If both essences consumed are of the same kind, two effects or effect dice can be chosen.
+      * Elixir - Expend two alchemical essences, creating an elixir which can be consumed to grant one property to the consumer for 1 minute, treating the consumer as the alchemical item being modifier (Subject to GM. This may result in taking the effect dice damage of the alchemical essence.)
+      * Phials - Expend an alchemical essence, creating 1d3 + int bonus (min 0.) phials of the essence, which can be emptied to cover a tile with a contact or damage effect of the essence, or it can be thrown as a 30/60 thrown weapon, dealing the essences damage dice effects, if any, which are reduced by 2 dice size categories.
+  - heading: Alchemy methods
+    body: |-
+      At 1st alchemical, gain access to the alchemical methods upgrade list below. Pick 2 upgrades at level 1.
+
+      * Alchemical bolt improvement - Requires knowing the alchemical bolt item recipe. When producing bolts, increase the dice used for determining the amount of bolts created by 1 size category. Can be taken an additional time to increase it by 1 extra dice, and to allow picking a different effect per bolt.
+      * Alchemical dust improvement - Requires alchemical dust recipe. Alchemical dusts that you create have their sprinkle range increased by 5 ft, 1 tile, and their effects instead last 1d3 rounds.
+      * Alchemic necromancy fundamentals - You can produce 1 potent necrotic essence if you have access to exotic undead, humanoid, dragon, eldritch, monstrosity, or beast remains. Items created from this essence may have one of the following:
+        * Choose one additional effect from the essence to grant to the item, so long as it is valid (Subject to GM.)
+        * If the item created would deal necrotic or poison damage, you may instead alter it to change the damage to necrotic (if poison) and increase it by 1 dice.
+        * If the item would heal, it instead grants arcane health.
+      * Auto-still modification - You may modify a set of alchemist’s tools by spending 2 AP during a test. This increases its bulk by 1 while carried, and may be used to create a free vital essence or volatile essence, and requires clear water and suitable plant material to function. It can be altered during a rest to instead permit using 1 AP to purify a barrel of water. If adequate exotic plant or fungal material is instead used, 4 necrotic essences can be produced during a long rest.
+      * Bombmaker - Requires knowing how to craft alchemical bomb items. Once per rest, you may produce an alchemical bomb item without paying the 1 AP cost, so long as you have the requires materials. Can be taken twice to increase the number of bombs created when doing so to 3.
+      * Calculated angle - You can treat total cover as half cover so long as the targets top is not covered. Your ranged weapon attack range is increased by 10 ft per int modifier (min 1.)
+      * Educated approach - choose one skill that would otherwise use charisma or wisdom. You can use intelligence for this skill.
+      * Elixir infusion - Requires knowing the elixir item recipe. When producing an elixir, allows sacrificing a third essence to double one of the effects, so long as the essence is of the same type as the one from which the effect is taken. Can be taken an additional time to allow creating an extra elixir of the same kind when doing so.
+      * Experience with explosions - Gain a +2 bonus to saves vs AOE effects and explosion effects.
+      * Extra recipe - learn 3 extra alchemy recipes (essence, refinement, or item in any combination)
+      * Liquid preparation - Requires flask, potion, or phial recipe. When creating a reactive flask, potion, or phials, you may do one of the following to all the items created, up to 4 times per long rest:
+        * Increase any associated DCs by 2.
+        * Increase number of items created by 1.
+        * Increase the duration of an associated effect by 1 (round/minute/hour.)
+        * Increase the number of tiles covered by 1d3+1.
+      * Mule - Reduce bulk by 1. Gain a +1 bonus to deception and stealth checks.
+      * Protective gear - You gain proficiency with medium armor and light shields. If already proficient with medium armor, reduce all poison and acid damage taken by 1. If already proficient with light shields, gain heavy shield proficiency.
+      * Rapid craft - You can spend 1 rest die and 1 AP as a full round action to create an alchemical item worth 1 AP. You can repeat this again on the next round without the rest dice cost.
+      * Scavenging - Gain 2 extra alchemy points every rest.
+      * Secret Alchemical Refining recipes - Learn 1 new refining recipe from the list below. Can be taken more than once:
+        * Herbalization - If you have access to a herbalists kit and sufficient plant material, enhance the healing, temporary HP, or arcane HP granted by the essence. If the essence is used to create a potion that bestows resistance to damage, double the duration of the potion.
+        * Polarization - Modify essence, removing condition effects, but doubling other non-dice effects. Cannot be applied more than once.
+        * Coagulation - Modify an essence that is either flammable or has an oily effect. Sacrifice 2 of its effects, increase others by 1 (size, duration, dice size category, range or stat bestowed, etc)
+        * Violent admixture - Modify an essence and sacrifice the other into it. Add a "3d6 fire damage" effect if sacrificed essence is volatile or necrotic, and "2d8 lightning damage" if the sacrificed essence is warping or etheric, and 1d8 acid damage if the sacrifice essence is caustic.
+        * Polymerize - Modify a flammable essence, or an essence with a light contact effect, removing it and granting it 1 of the following contact effects instead:
+          * Difficult terrain sticky / sticky ( -10 movement speed, +1 vs disarm effects, disarm or unequip is a full round action.)
+          * Difficult terrain flammable / flammable (when ignited, targets in tile or affected targets take 1d4 fire damage.)
+          * Difficult terrain oiled / covered in oil (DC 15 athletics or acrobatics check when moving more than 15 ft to not fall prone.)
+        * Invigorate - Modify an essence that has at least one of the listed effects, replacing it with the listed corresponding effect:
+          * Fire damage and cold damage -> healing of combined worth, reduced by 1 dice.
+          * Lightning damage -> clarity (+2 constitution and +2 wisdom.)
+          * Poison damage or necrotic damage -> temporary health of equivalent worth.
+          * fire damage, lightning damage, poison damage -> vigor (+2 strength and +2 dexterity.)
+          * temporary health, healing, and arcane health -> cunning (+2 intelligence and +2 charisma.)
+      * Secret Alchemical Item recipes - you know the gist:
+        * Alchemists torch - Expend 1 flammable essence, or an essence with fire damage dice effects. The torch can be ignited as a bonus action, at which point it remains lit for 2d4 + 1 rounds. While lit, it burns in a small 5 ft narrow cone out of the torch. Creatures exposed must make a dexterity save, taking 2d6 fire damage. The wielder can poke a melee creature with a torch, incurring disadvantage and dealing double damage, as though it were a critical strike, on a nat 1 on the save.The torch also absorbs one other property or effect from the essence, except for cold damage dice or beneficial effect.
+        * Reactive Salts - Expend 1 essence, creating a consumable powder which can be either consumed as an action, bestowing a lasting alchemical effect from the essence for a minute, or thrown/sprinkled in a 10 ft cone, applying an alchemical effect immediately to all creatures in the cone, though any lasting effects are reduced to 1d4 rounds Both applications can have differing effects from the expended essence. If a consumable effect would grant resistance or vulnerability to a damage type, it instead grants +2 to an attribute depending on damage type (str - fire, dex - lightning, necrotic - con, acid - int, poison - wis, healing - cha)
+        * Lode-stone - Expend 1 alchemical essence that either has a lightning or fire dice effect, and create a small stone that can either be crushed in hand or on a solid surface within 15 ft, or fired by a launched weapon. It applies one effect of the essence in a 15 ft radius immediately, but it cannot deal damage.
+        * Protective face-mask - Requires adequate leather resources and access to leatherworkers tools. Create a mask which has a special compartment which can be filled with an alchemical essence and turned on and off by the wearer as a bonus action, granting the wearer up to 3d4 rounds (rolled when equipped) rounds of a chosen benefit (when applied) of the essence to the wearer.
+        * Burn coil - Expend 1 alchemical essence that is flammable or has fire damage dice effects, and one coil component from your alchemy kit. A burn coil can be applied to a fire weapon as a full round action, and lasts 1 minute when ignited. The ignite effect of the weapon is increased by 1, and one hostile essence effect is applied to unblocked creatures hit. If the additional effect is a damage effect, its damage dice are reduced by 1 dice size category. Cannot apply cold damage, fire resistance, or stun on hit. If the stun property is chosen, it is instead applied on a crit with the weapon.
+      * Specialization - Pick one alchemy creation recipe you know. Every rest, you have 1 extra AP which can be spent to create the chosen recipe.
+
+      Whenever you gain a feat or ability score improvement, gain an extra upgrade.
+  - heading: Ability score improvement
+    body: |-
+      At 2nd, 5th, 8th, and 11th level, gain a +2 bonus to an ability score, or gain a feat.
+
+      Also whenever you would gain an ability score improvement, gain an extra Alchemy method upgrade.
+  - heading: Tool of choice
+    body: |-
+      At 3rd alchemist level, choose one tool of choice:
+
+      * Launchers - You can modify a crossbow to give it the launcher property by spending 1 AP during a rest. Liquid alchemical weapons splash in a cone that is 5 ft smaller than their baseline, and bombs (items with "bomb" in their name) deal an extra dice of their base damage.
+      * Fire - All fire damage you deal is increased by 1. You can modify a polearm or melee piercing or bludgeoning weapon to grant it ignite 1d8, or increase a non-modified ignite weapons ignite dice by 1 size category by spending 1 AP during a rest. You can spend a bonus action to link a bomb with your modified weapon, allowing your next attack with it that lands to deal the bombs damage in addition to the attack. This adds your 2 to the DC of the attacks block check.
+      * Special ammunition - When creating a bomb, you can instead choose to create 1d3+1 pieces of ammunition, granting the bombs impact effect to the ammunition, but reducing all dice used in the bomb by 2 dice size categories (min 1d3.) Alternatively, you can choose to place the bomb or flask at the end of a bolt or arrow when creating it, thus creating a special piece of ammunition that triggers the bomb on impact in addition to the ammunitions baseline effect, but has a -2 penalty to hit. A bolt or arrow modified in this way cannot be modified again.
+      * Explosives - Requires knowing bomb recipe. When creating a bomb, its blast area radius is increased by 5 ft and have their damage increased by 1 dice.
+      * Flasks - Requires knowing flask recipe. Flasks apply both the damage effect, and a contact effect when thrown. You may make a thrown attack as a movement action by expending 1 AP, 1 rest die, or taking 1 damage to fatigue.
+      * Shovel - The base damage of shovels you wield is increased to 1d8. The base tool bonus from shovels is +3 while you wield them. You gain a +2 bonus to nature and investigation checks made in regards to matters of earth, dirt, and stone. Your AP maximum is increased by 1, and you gain 1 more AP every rest.
+  - heading: 1st archetype
+    body: |-
+      At 4th alchemist level, choose your 1st archetype:
+
+      * Brewer
+      * powder-keeper
+      * Experimenter
+      * Mycologist
+  - heading: 2nd archetype
+    body: |-
+      At 7th level, choose your 2nd archetype:
+
+      * Engineer
+      * Smuggler
+  - heading: Extra rest dice
+    body: At 6th level, your rest dice maximum is increased by 2.
+  - heading: 3rd archetype
+    body: The progression table lists this choice at level 10. The draft feature text gives level 9 and supplies no choices.
+      Confirm the level and available archetypes before making this selection.
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/brewer
+- name: Brewer
+  group: Alchemist archetypes
+  sections:
+  - heading: Extraction cask
+    body: At 4th alchemist level, you can modify a large flask/barrel or a set of brewers tools by sacrificing it and a
+      set of alchemist’s tools to create an extraction cask. So long as sufficient material is used, it will automatically
+      produce 1 alchemical essence every rest. An extraction cask incurs 1 bulk while carried and can be fitted onto a backpack
+      or belt.
+  - heading: Potion alchemy
+    body: |-
+      At 4th alchemist level, choose 2 new alchemical items that you can now create from the following potion alchemy list:
+
+      * Distilled spirits flask - Requires sacrificing a volatile or vital essence. Can be sprayed on up to 1d10+1 tiles like a reactive flask, or sprayed in a 15 ft cone. Exposed creatures and tiles gain distilled spirits exposure for 1 minute. Whenever a distilled spirit exposure covered creature or place takes fire damage, it is ignited. Creatures on fire take damage according to the Burning condition, while tiles deal 1d8 fire damage to creatures that enter or start their turn in the tiles. If consumed, deals 1d10 poison damage. If consumed by a dwarf, half-orc, orc, or dragonborn grants a +2 bonus to strength and charisma for 10 minutes, and deals 1 damage to fatigue afterwards.
+      * Power potion - Requires sacrificing an essence which one of flammable, fire damage, or lightning damage. Regain use of a per-rest or per-long-rest ability when consumed. You may spend an additional 1 AP when crafting to infuse an additional positive effect from the essence into the potion, either modifying it or the consumer when drunk.
+      * Energy potion - Requires sacrificing an essence which has the following effects: temporary health, lightning damage, light. Restore 1 rest die.
+      * Resistance potion - Requires sacrificing an essence with a damage effect. The potion grants resistance to the chosen damage effect.
+      * Speed potion - Requires sacrificing an alchemical essence with flammable and temporary health. For each dice of temporary health, grants 5 ft of movement speed.
+      * Minor healing potions - Requires sacrificing an alchemical essence with temporary health. The temporary health granted is instead turned into healing.
+      * Greater healing potion - Requires sacrificing an alchemical essence with at least 2 of: temporary health, arcane health, poison damage. All effects of the stated kind are combined and turned into 1d8+1 points of healing per dice. The dice amount of healing is then reduced by 1.
+      * Physical attribute potion - Requires sacrificing an alchemical essence with a resistance effect. Per present resistance effect, the potion grants a +3 bonus to the following attribute for 10 minutes:
+        * fire - Strength
+        * cold - Dexterity
+        * poison - Constitution
+        * psychic - Intelligence
+        * lightning - Wisdom
+        * necrotic - Charisma
+      * Vitality potion - Requires sacrificing an alchemical essence with a necrotic damage, poison damage, and a resistance effect. When consumed, heals one failed death save, 2d8 + 4 health, and allows remaking a save vs an ongoing disease, poison, or disabling effect.
+
+      Learn an additional item recipe at 5th and 6th alchemist level.
+  - heading: Brewer techniques
+    body: |-
+      At 4th alchemist level, choose 1 upgrade:
+
+      * Distilled to perfection - You can modify one potion or flask by successfully making a DC 15 alchemist’s tools check. On a failure, you must spend 1 AP. Allows you to increase the duration by 1 (rounds, minutes, or hours) and increasing its effects (damage, healing, bonus/penalty) by 1. This cannot be applied more than once to an item.
+      * Extra potion recipe - Learn an extra potion from the potion alchemy list. Also learn an additional alchemy methods (alchemist level 1) upgrade. Can be taken multiple times.
+      * Improved extraction cask - Your extraction cask bestows 1 AP at the start of rest. You cannot benefit from this more than once per rest.
+      * Invigorating alchemy - Health restored, temporary health gained, and arcane health granted, as well as fatigue restored from your alchemical creations is increased by 1. Healing effects from your alchemical items that overheal grant temporary health equal to the overheal instead.
+      * Refining chamber - You can spend 1 AP to modify your alchemist’s tools, allowing you to perform 1 alchemical refinement per rest, free of AP cost.
+      * Siphon chamber - You can spend 1 AP to modify your alchemist’s tools, allowing you to siphon 1 effect from 1 alchemical essence into another, once per rest, free of cost.
+      * Chug chug chug! - You can consume more than 1 potion per turn.
+      * Fire breathing — Requires the distilled spirits flask recipe. Expend one dose to affect a narrow 30 ft cone. Creatures can make a dexterity save to avoid distilled spirit exposure. If the area contains a fire effect, creatures instead take 4d6 + your int bonus (min 1) + your con bonus (min 1) fire damage, taking only half on a successful save.
+      * Fermentation chamber - You can spend 1 AP and 1 bulk worth of metal to upgrade your extraction cask to produce an additional alchemical essence per rest, by adding a fermentation chamber. This requires having access and proficiency with smiths tools. Additionally, the added fermentation chamber can be used once during a rest, allowing you to turn 1 vital essence into 2 caustic essences, or 1 caustic essence into 2 necrotic essences, or 1 necrotic into 2 spectral essences.
+      * Dilute product - You can spend 1 AP to spread a potion or elixir into smaller phials, turning one item into 1d4+1 phials. The items effects are reduced by half (If they have a duration, it is halved, if they add a benefit or bonus, it is halved, if they deal damage it is halved, and if they have an effect on a failed save, it is not applied.)
+
+      Gain an extra upgrade at 5th and 6th alchemist level.
+  - heading: Secret brewing technique
+    body: |-
+      At 6th alchemist level, choose two secret alchemical recipes from the list below:
+
+      * Berserker elixir - Sacrifice 1 extra AP and up to 2 essences, so that among them, there is a fire damage, flammable, and lightning damage effect. When consumed, it grants the drinker a +4 bonus to strength and dexterity, a -4 penalty to block checks, and resistance to cold and physical damage for 1 minute.
+      * Clarity elixir - Sacrifice 1 extra AP and up to 2 essences, so that lightning damage, temporary health, and flammable effects are present. When consumed, grants the consumer a +4 bonus to wisdom and intelligence for 2d4 minutes.
+      * Regeneration elixir - Sacrifice 1 extra AP and up to 2 essences, so that temporary health, healing, and arcane health effects are present. For each dice effect present in the essences, it grants 1d6 rounds of regeneration. At more than 5d6 rounds, it restores missing digits, teeth, and impaired hearing and vision.
+      * Life elixir - Sacrifice 1 extra AP and up to 2 essences, so that necrotic damage, temporary health, and arcane health are present. For every dice effect present in the essences, grant 2d6 healing. When administered to a creature that died within 2 rounds, the administrating creature can make a DC 18 medicine check, reviving the creature on a success and healing them for half the elixirs healing value.
+      * Mana potion - Sacrifice 1 extra AP and 4 spectral essences. Functions as a mana potion: When consumed do one of the following: Regain use of a per-rest ability, restore 1d2 rest dice, restore 1d4+1 levels worth of spell slots, gain a +2 bonus to damaged creatures.
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/powder-keeper
+- name: Powder-keeper
+  group: Alchemist archetypes
+  sections:
+  - heading: Bombmaking
+    body: At 4th alchemist level, learn the bomb alchemical item recipe. If you already know it, you may learn an additional
+      alchemical recipe.
+  - heading: Blasting powder secrets
+    body: |-
+      At 4th alchemist level, you learn the closely guarded secrets of blasting powder creation, learning the following alchemical item recipe:
+
+      Blasting powder - You can spend 1 AP to sacrifice 1 volatile essence, 1 vital essence, and 1 caustic essence to create 2d4 + 1 doses of blasting powder. It can be sacrificed whenever creating a bomb or explosive, granting it 1d6 extra fire damage, and if it has an area of effect size or blast range, it is increased by 5 ft.
+
+      Spend one dose to place a 15 ft alchemical fire trail on the map.
+  - heading: Explosive alchemy
+    body: |-
+      At 4th alchemist level, you gain access to blasting powder recipes, learning 1 recipe at 4th, 5th, and 6th level:
+
+      * Cherry bombs - Requires expending 1 dose of blasting powder. Creates 1d4+1 cherry bombs. Can be thrown at a range of 25/50 as a thrown weapon, dealing 1d4 + int bonus fire damage to creatures in a 5 ft radius. Creatures can make a dexterity save to halve the damage.
+      * Explosive keg — Spend 10 doses of alchemical blasting powder and one alchemy kit component. When detonated, deals 5d10 fire and 5d10 force damage to creatures within 80 ft. Creatures beyond 30 ft can make a dexterity save to halve the damage. Creatures within 120 ft must make a constitution save to not become deafened for 2d4 rounds.
+      * Powder bomb - Requires expending 1 dose of blasting powder and 1 flammable essence. One additional effect can be taken from the essence and granted to the item. Can be ignited as a bonus or move action and thrown at a range of 25/50 ft. Once ignited, it will detonate on its own after 1 round if not thrown. When thrown, deals 3d6 + int bonus fire damage to the target and creatures within 10 ft of it. The main target can attempt to block to halve the damage. Targets within 10 ft of the target can make a dexterity save to halve the damage. If a contact or difficult terrain or contact effect is chosen, it persists on tiles within the area of effect for 1 minute.
+      * Blasting rod — Spend 3 doses of alchemical blasting powder and one alchemy kit component. Can be activated by the wielder to blast a 40 ft narrow cone with 3d8 + int bonus fire damage. Creatures caught in the cone can make a Dexterity save to halve the damage. Creatures that critically fail the save take double damage.
+      * Explosive pellets - Requires expending 2 doses of blasting powder and 1 flammable essence. Creates 1d4 + int bonus (min 1) explosive pellets, which can be thrown as a 20/40 ft thrown weapon, or fired as sling or launcher ammunition. Each pellet deals 1d4 bludgeoning and 1d4 fire damage.
+      * Tar bomb - Requires expending 1 dose of blasting powder and one essence with either an oil effect or a flammable effect. Can be thrown as a 30/60 ft thrown weapon, or launched by a launcher weapon, dealing 3d6+int fire damage to the target, igniting the target if not blocked.
+      * Smoke flask - Requires expending 1 dose of blasting powder and 1 caustic essence. When uncorked and thrown, it creates an expanding cover of smoke, filling a 20 ft radius sphere, obscuring vision and dealing 1 damage worth of fatigue to characters that inhale it. The flask and smoke persists for 5 minutes.
+      * Fire flasks - Requires expending 1 dose of blasting powder and 2 flammable essences. Create 1d3+1 fire flasks. They can be thrown as 30/60 ft thrown weapon, dealing 1d6 fire damage and igniting creatures hit, or the tile hit, for 1d6 rounds. This is separate from the Burning condition, dealing 1d4 + int bonus damage to ignited creatures and creatures entering or beginning their turn in an ignited tile. Creatures that block the attack are not set on fire, but the tile they are on is.
+
+      You may learn a recipe from the Explosive Alchemy list when given the option to learn a regular alchemical recipe.
+  - heading: Powder alchemist traits
+    body: |-
+      At 5th alchemist level, learn 2 upgrades from the list below:
+
+      * Sulphur extraction — Expend a draconid fire sac, suitable igneous elemental remains, or 1 bulk of suitable arcane plant remains in place of essences when using your Blasting Powder feature. You must have a caustic essence, which is retained. Gain 1d4 extra doses.
+      * Explosives expertise - You do not suffer partial adverse effects when succeeding a save vs area of effect alchemical items or explosive/fiery spells. Whenever you roll while prone, you remove 2 instances of the Burning condition from yourself.
+      * Perfected powder mixture - Your alchemical items whose creation includes blasting powder have their damage increased by 1 dice size. Increase the range of your alchemical fire trail from 15 ft to 30 ft per dose.
+      * Arms manufacture - So long as you have the blasting powder necessary, while in a civilized area, you can produce 5AP worth of alchemical items during a long rest.
+      * Special admixture - You may modify up to 1d4+1 doses of blasting powder by spending 1 AP and sacrificing 1 essence, granting them an additional property from the essence, which is granted to items created from them. In case of multiple powders used, no more than 1 such powder effect can be granted.
+      * Perfected angle - You can spend 1 rest die or take 1d2-1 damage to fatigue to make a thrown attack which ignores 1/4 and 2/4 cover. The range of your ranged and thrown weapon attacks is increased by 10/20 ft.
+      * Specialist gear - You can spend 2 rest dice and 3 AP during a rest to modify a set of armor in your possession, sacrificing an essence and a padded or layered coat (light armor.) The modified armor grants the wearer a 1d4 damage reduction from damage effects in the sacrificed essence. Such armor requires mild maintenance by the alchemist, experiencing wear and losing the property after several long rests (Subject to GM.) Up to a maximum of 3 damage reduction effects can be granted.
+      * Duck for cover - You can move up to 10 ft as a bonus action, or as a free action if you have already moved. You become prone afterwards. You can do so once per your turn. Gain a +1 bonus to initiative.
+      * Fragmentation explosive creation - You can spend 1 AP when creating a bomb or an explosive alchemy item to modify it, granting it a +10 bonus to area and granting its area a 3d4 piercing damage splash upon contact, which can be halved on a successful dexterity save. If the item already has a Dexterity save for its area effect, combine both saves into one. This upgrade also expends one alchemy kit component.
+      * Whiteflame secrets - You can spend 1 AP to sacrifice a flammable or caustic essence when creating an item that can ignite. Creatures and areas set on fire by the item are now ignited an additional time(+1 on-fire conditions.)
+      * Spark-sigil -You can spend 1 blasting powder dose and 1 AP or 1 rest die to create a blasting sigil on a surface you can touch. So long as you have the same sigil either depicted on your hand, or on a glove or gauntlet, you can snap at the surface sigil as a bonus action, igniting it if it is within 200 ft.
+      * Produce munitions - When you spend 2 or more AP to create 2 of the same explosive alchemy items (or regular bombs or alchemical bolts) you may spend 1 extra AP to create an additional item without expending additional blasting powder or essences.
+      * Powder packing - You can spend an additional dose of blasting powder when creating an item, granting its effects an additional time.
+      * Powder-singe - You may spend 1 dose of blasting powder as an action to attempt to treat/singe a wound, either allowing an additional save vs an infection, disease, or poison localized to the wound, or removing 1 bleed condition. This deals 1d3 damage to the target.
+      * Weapons of alchemy - You may select 2 alchemical recipes that have a predetermined damage amount that they deal. You can improve those two recipes, increasing their damage dice by 1 size category. If they have associated DCs, grant them a +1 bonus.
+
+      Gain an additional upgrade at 6th Alchemist level.
+  - heading: Great powder secret
+    body: |-
+      At 6th alchemist level, choose 1 special upgrade for blasting powder:
+
+      * Black power - The damage bonus of blasting powder is increased by 1 dice size category, the area bonus is increased by 10 ft. Spend 1 AP to apply the Blasting Powder bonus one additional time when crafting an alchemical item. Once per rest, you can create 6 alchemical bombs (basic alchemical item) so long as you can spend 1 dose of blasting powder and have access to 1 volatile or caustic essence, which itself is used as the bombs main essence but is not consumed if you succeed a DC 15 alchemist's tools check.
+      * Alchemists flame - Burning tile effects you create last twice as long, and when you apply the Burning condition to creatures with your alchemical items, you apply 1 extra on-fire condition (extra fire damage per round, as per on-fire rules.) The area of your alchemical item cone effects is increased by 10 ft, including breath attacks/effects you possess. You may apply your int bonus to fire damage dealing items you create, even if they originally did not have scaling.
+      * Explosion sigil - You may spend carve or inscribe a sigil on a gauntlet or on your palm. An explosion sigil may be invoked as an action while wearing it, allowing you to sacrifice either a spectral essence, a mana potion, or an essence with a lightning effect to trigger it. If successful, you can target a point within 60 ft, causing a surface area to explode, dealing 4d6 force damage and 4d6 fire damage to creatures within 15 ft of the point. Creatures hit can make a dexterity save to halve the damage. Deals double damage to buildings. The target can be further than 60 ft, but per 5 ft outside the range, the damage is reduced by 1d6 dice of the alchemists choosing.
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/experimentor
+- name: Experimenter
+  group: Alchemist archetypes
+  sections:
+  - heading: Field notes
+    body: |-
+      At 4th alchemist level, you can collect field notes. These are insights, inspirations, or observations that you deem are worthy of investigation later on.
+
+      You can spend notes in place of alchemy points.
+
+      You can hold (organize) up to as many field notes as your total intelligence ability score, and start with 1d3+1 notes.
+
+      Every long rest, you can accumulate 1d4+1 field notes.
+  - heading: Scribble notes
+    body: At 4th alchemist level, whenever you would critically succeed a meaningful (subject to GM.) nature, history, arcana,
+      medicine, or tool check, you can scribble a field note as an action until the end of your next turn.
+  - heading: Method of study
+    body: |-
+      At 4th alchemist level, choose one:
+
+      * Study transitions - When you succeed in performing an alchemical refinement which requires a tools check, gain 1 field note. Whenever you fail it, gain as many field notes as the refinements on the essence.
+      * Combat study - Every time you critically strike a creature, or when you stabilize an ally, you gain 1 field note.
+      * Study design - Every rest, the first 3 alchemical items (multiple items at once counts as one item) you create generate 1 field note each. Gain an extra upgrade from the alchemical methods (alchemist 1) list.
+      * Study nature - You gain 1 note each time you examine a new species of dead creature ( tiny or larger, subject to GM,) and 1 field note every time you visit a new region (Subject to GM.)
+      * Study the body - Whenever you critically fail or succeed a medicine check, gain 1 field note. Alternatively, you can gain 1d3+1 field notes once per rest by dissecting a creature you have not dissected within a year. Can only be done during a rest.
+  - heading: Special interest
+    body: |-
+      At 4th alchemist level, choose an upgrade:
+
+      Alchemist extraordinaire - Gain the following:
+
+      * You gain 2 extra alchemy methods upgrades from your 1st level alchemy methods list.
+      * Gain an extra method of study upgrade.
+      * Gain 1 note every rest.
+
+      Compare notes - You can spend 1 field note to gain a +1d4 bonus to an intelligence-based skill check. You can spend 2 field notes during a rest to duplicate an alchemical item you create or modify, creating twice the amount as you compare notes to try and optimize the process. This does not require expending additional essences or materials. You can only do so once per rest.
+
+      Midal shortcut alchemy - (needs better balancing) You can sacrifice 100 gold when creating an alchemical item to apply two of the following (the same effect can be taken twice.):
+
+      * increase damage or effect dice by 1 size category
+      * double the duration of an effect it has.
+      * Increase the DC by 1.
+      * Increase an area of effect or an effect range by 5 ft.
+
+      Electromantic knowledge - You can expend 2 AP and sacrifice spectral or warping essence to create an alchemist's wisp, which is a phial which emits dim blue light, but can be opened to either grant a charge to the nearest item, or to launch a DC 18 dexterity saving throw lightning bolt which deals 4d8 + int bonus (min 1) damage and half on a save, which erupts out of the phial in a 60 ft ray. You may make a DC 15 arcana check when creating the phial, granting it 1 property of the sacrificed essence, if applicable on a success (subject to GM.) If it is thrown at a target as a 30/60 thrown weapon, it cannot be blocked, and the target automatically fails the save on a hit. An alchemist's wisp item cannot be further modified in any way.
+
+      Arcane normalization theory - Gain the following:
+
+      * You gain a +1 bonus to checks made to cast or interact with scrolls or arcane parchments or notes.
+      * You can sacrifice a valid scroll (subject to GM) and spend 1 AP when creating a potion or bomb alchemical item. If it is a potion or elixir, the scroll's effect is applied to the creature consuming it, as though the creature was the target of the scroll. If it is a flask, bomb or similar throwable item, the scroll's effect is applied to the main target. If it is a dust or area covering item, the affected tiles are the target of the spell. Only one scroll can be emplaced into an item being created.
+
+      Council of peers - You can spend 5 AP and 1 Rest die to call a meeting in response to a dire or important situation (Subject to GM) with other allies during a rest. If all present can agree to a plan of action going forward, then each participant is restored 1 Rest die, and may gain a +2 bonus to a skill they are proficient with until next rest.
+
+      Unstable alchemy - Gain the following:
+
+      * You gain a +3 bonus to alchemist's tools checks made to perform alchemical refinements.
+      * When you fail an alchemical refinement, you instead create an unstable essence, which has the following:
+        * +1d4 to attribute / +1d4 to property
+        * lightning, fire, cold vulnerability
+        * contact: electrified surface (1d4 lightning damage) / electrified ( -2 to saves vs spells. +2 lightning damage taken and dealt.)
+        * restore 1 Rest die / duplicate an effect
+
+      Utility pack - You can spend 2 AP to create and maintain a utility pack during a rest. So long as you wear the utility pack, you can spend 1 field note or AP as an action to create an alchemical creation that you have the essences and materials for (they are consumed in the process) without further modifications (abilities that modify an item after creation, or duplicate items.) A utility pack incurs 1 bulk.
+
+      Collection and study - Gain the following:
+
+      * Gain an extra ring slot and an extra pendant slot.
+      * Your field note and AP maximum is increased by 1.
+      * Ignore 1 bulk.
+      * Gain proficiency with a skill and language of choice.
+  - heading: Special interests II
+    body: At 5th alchemist level, choose an extra special interests upgrade.
+  - heading: Experiment
+    body: |-
+      At 5th alchemist level, during a rest, you can spend 2 AP to attempt to combine two alchemical items to create an alchemical item of choice. The two items are sacrificed to create the item. You must be able to justify the items construction or nature, but the GM may require that you expend additional items or materials. Doing so can do the following:
+
+      * Create an item equivalent to both sacrificed item in power combined (negotiated with GM.) and of a type that you could craft. It must have at least 1 property from each item.
+      * Create 2 items of equivalent power to one of the two sacrificed items (negotiated with GM.) and of a type equal to one of the two items sacrificed. They must have at least 1 property from each item.
+
+      When doing so, you may make a DC 15 alchemist's tools check, allowing you to apply one extra property from an available alchemical essence. This does not destroy the essence.
+  - heading: Alchemical discoveries
+    body: |-
+      At 6th alchemist level, you may learn one special alchemical discovery:
+
+      * Perfected manufacture - Alchemical items you create may take 1 additional effect from the essences used to create them. Once per rest when creating an alchemical item, you can spend 1 AP to triplicate it, creating 2 additional items (or 3 times the initial amount in case of multiple items) free of cost.
+      * Calculating criticality - You learn a new alchemical refinement, which allows you to sacrifice one volatile or warping essence to increase all dice effects of another essence by 1 die. Cannot be performed more than once.
+      * Ethermantic knowledge - Any lightning effects of your alchemical essences, or any effect which is transformed into a lightning effect has its dice size and count increased by 1.
+      * Spectral-goggles - You may spend 2 AP, 1 spectral essence, and 2 gemstones worth 200g or more to create a special set of spectacles which cost 1 AP per rest to maintain, and grant the wearer the following:
+        * Darkvision 100 ft
+        * Heat vision 30 ft
+        * +1 bonus to ranged attacks.
+        * Can see particularly strong auras as energized outlines for objects at a range of 50 ft, typically (Subject to GM.)
+      * Resonance staff construction - You may spend 3 AP, 1 mana phial or potion, 1 spectral essence, 1 warping essence, and 1 caustic essence, as well as a sufficient metal weapon (such as shortsword or longsword) to create a resonance staff. A resonance staff is a metal +1 quarterstaff that costs 1 AP to maintain each rest. Up to 3 scrolls can be emplaced in a resonance staff, allowing the casting of them by the wielder so long as they expend a number of Rest Dice or AP equal to the spells level.
+      * Power launcher - You may spend 2 AP, 1 mana phial or potion, one alchemy kit component, and 1 caustic or spectral essence to modify a launcher weapon, improving its item bonus by 1. The modified launcher costs 1 ap to maintain every rest, losing its extra abilities when unmaintained. The launcher gets the following abilities:
+        * Attacks with this weapon gain a +2 bonus to block DC.
+        * Wielder can sacrifice a volatile or warping essence as a bonus action to grant the next attack within this turn a +1 bonus to hit, a 1 die increase to all damage (base, bonus, and ability)
+        * increase the damage/effect/duration dice of thrown alchemical items by 1 size category.
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/mycologist
+- name: Mycologist
+  group: Alchemist archetypes
+  sections:
+  - heading: Fungal essence
+    body: |-
+      At 4th alchemist level, you learn to extract a specialized kind of essence called fungal essence.
+
+      Fungal essence - Requires adequate fungal, moss, slime, or spore material. Counts as a vital essence for the purposes of other recipes.
+
+      * contact: Sticky (DC 14 strength check requires when making moving, ending action on a failure) / sticky (-10 movement speed, -4 to checks made to escape grapple or restraints, dc 14 strength check required to end grapple or unequip item.)
+      * 2d6 psychic damage
+      * distracted (1d10 rounds)
+      * Duration increased by 1 duration size category (rounds > minutes > hours > days)
+  - heading: Fungal alchemy
+    body: |-
+      At 4th alchemist level, you learn to create the following new alchemical items:
+
+        * Magebloom elixir (1 AP) - potion. Requires sacrificing 1 fungal essence. On consumption, grants darkvision and aurasight at 90 ft and regeneration 1 (heal 1 hp at the start of your turn) for 1 minute.
+        * Puffballs (1 AP) - Requires sacrificing 1 fungal essence and 1 vital essence, granting the puffballs 1 effect from the sacrificed vital essence. Creates 1d4 + int bonus puffballs. A puffball can be thrown as a 25/50 thrown weapon, dealing 1d6 poison damage to creatures hit that do not block. On a critical strike, the target becomes poisoned for 1 minute.
+        * Elderlychen salve flask (1 AP) - Requires sacrificing 1 fungal essence and 1 arcane, warping, or volatile essence. Creates a elderlychen salve flask, which has 3 doses, and when applied to a creature as an action or consumed as an action, provides the creature with 2d6 rounds of regeneration. You may spend 1 additional AP to grant the salve 1 effect from the sacrificed non-fungal essence.
+        * Activated tunnel-sponge flask (1 AP) - flask. Requires sacrificing 1 fungal essence and 1 necrotic essence. Creates a flask of tunnel-sponge flask, which can be spilled on up to 4 + your int bonus tiles, or thrown at a point within 40 ft, spilling on all adjacent tiles/surfaces. When a tile is covered in tunnel-sponge spores, the slush rapidly grows and absorbs moisture and detritus, filling up each affected tile with tunnel sponge in 1 minute, which is a material that rapidly hardens and ends up forming a solid obstacle which requires a DC 20 strength check to break. Creatures submerged in the fungus have disadvantage on the strength save.
+        * Redcap extract potion (2 AP) - Requires sacrificing 1 fungal essence, creating a redcap extract potion. On consumption, deals 1d3 psychic damage, removes cursed damage (unhealable damage effects) removes charm conditions, and for the next 3d10 minutes you are immune to fear and reduce fatigue damage taken by 1. Afterwards take 1d3 damage to fatigue.
+        * Moonfern extract (1 AP) - Requires sacrificing 1 fungal essence and 1 vital essence. On consumption, grants a +2 bonus to wisdom and intelligence for 10 minutes, and reduces damage taken by 1 for the duration.
+        * web-bloom flask (1 AP) - Requires sacrificing 1 fungal essence and 1 necrotic or vital essence, granting it 1 effect from the necrotic/vital essence. Can be poured on up to 3d4 + int bonus tiles, or sprayed in a 20 ft cone, or thrown as a 30/60 thrown weapon affecting all tiles within 10 ft of the target. Every affected tile becomes difficult terrain, slowing movement by 5 ft per tile. Creatures affected can make a dexterity save, becoming snared for 1 round on a failure. Additional essence effects can affect the difficult terrain created, or to creatures hit when sprayed/thrown on and failing the save.
+  - heading: Mycologists kit
+    body: |-
+      At 4th alchemist level, during a rest, you can sacrifice a set of alchemist’s tools and spend 1 rest die and 2 AP during a rest to create a mycologists kit, which incurs 1 bulk and allows you to make fungal alchemy creations during rest.
+
+      A mycologists kit grants 2 AP every rest that can only be used to create fungal alchemy items, and generates 1 fungal essence every rest.
+  - heading: Mycologist knowledge
+    body: At 4th alchemist level, gain a +2 and a +1 bonus to nature and medicine checks. You may choose which is +2 and
+      which is +1.
+  - heading: Advanced fungal alchemy
+    body: |-
+      At 5th alchemist level, choose 2 upgrades:
+
+      * Improved mycologists kit - Your mycologist kid provides 1 extra AP and 1 extra fungal essence per rest.
+      * Improved fungal medicine - May sacrifice an additional essence when creating Magebloom elixir, Elderlychen salve flask, or redcap extract potion. When doing so, create an extra instance of the alchemical item and grant it an additional effect from the essence.
+      * Improved fungal growth - Your activated tunnel-sponge flasks tiles fully grow in 3 rounds. Web-bloom flasks cover an additional 1d4 tiles, 5 ft of area when sprayed or thrown, and 1 extra round of being snared. Your mycologists kit grants 1 extra fungal essence per rest.
+      * Improved extract creation - Your magebloom elixir, redcap extract, and moonfern extract last 1d4 minutes longer. Each grants an extra bonus: Magebloom elixir grants a +2 bonus to saves vs spells. Moonfern extract grants further +1 bonus to int and wis. Redcap extract grants a +2 bonus to strength.
+      * Panacea-spores - You may spend 1 AP and 1 fungal essence during a long rest to cure a creature of a non-curse disease.
+  - heading: Fungal methods
+    body: |-
+      At 5th alchemist level, gain 2 upgrades from the list below:
+
+      * Creepy fungus separation - When creating creepy powder, you can grant it one of the following extra effects by spending 2 AP, only one per powder:
+        * Sleep for 1d10 minutes on failed con save, as an exposure effect. Is repeated at start of creatures next turn. Creatures can attempt to tough it out, taking 1d2 damage to fatigue instead if not already at 4 damage to fatigue.
+        * Cause creatures current damage taken to become cursed damage (cannot be healed until rest.) on a failed con save, as an exposure effect.
+        * Cause the fungal grass to grow within a minute instead of an hour, and be as tough as fine wood instead, becoming stonelike after the age of 1 year.
+      * Fungal poisons - Whenever you create an alchemical creation that deals poison damage, you may allow it to deal an extra 1d4 psychic damage as well.
+      * Lurkbloom selection - When lurkbloom flasks growing grass consumes a creatures remains, it sprouts a lurkbloom, which can be harvested by you and reprocessed into 1 AP during rest.
+      * Long-term exposure - You gain resistance to poison and psychic damage. -1 Max HP.
+      * Magestool brew - You can create a new fungal alchemy item, a magestool brew - Potion. grants blindness, deafness, distraction, but also ethereal sight and aurasight which ignore the blindness and deafness for 1 hour. Grants a +1 bonus to religion and arcana checks for the duration.
+      * Necrotic spore pod bombs - You can create a new fungal alchemy item, a necrotic spore bomb - Thrown. 1d3 + 1 bombs created. deals 2d6 + int bonus necrotic damage. On critical hit, creatures become infected by necrotic spores, which removes resistances to poison, fire, or cold damage until cured.
+      * Puffball expertise - When creating puffball bombs, create 1d4 extra.
+      * Puffball selection - When creating puffball bombs, up to as many as your int can be big puffballs, requiring a dexterity save instead of an attack, increasing damage to 4d6 + int bonus poison damage, and applying their effect in a 15 ft sphere. Creatures are blinded for 1d4 rounds on a critical failure, and take half damage on a success.
+      * Redcap seance insight - Learn a mystic or occult cantrip. Use intelligence as the casting modifier. When you create stable redcap extract, you may infuse it with an occult or mystic cantrip you know, granting the consumer that cantrip for the duration, using your casting modifier for it. Increase duration to 1 hour.
+      * Refined gluespore culture - Your gluespore flask liquid property is increased by +5/+3. You can now use a dose of gluespore flask to repair a simple structure for 1d4 point of damage.
+      * Healing moss salve - You can create a new fungal alchemy item, a healing moss salve - Liquid 10/3. Potion. If consumed, grants regeneration for 3d10 rounds. On exposure, heals for 1d4+int bonus health and grants 1d12 temporary health. Surfaces covered in healing moss salve rapidly green and bloom, reducing grow times of plants and fungus by 1 duration size category (years > days > hours > minutes > rounds)
+  - heading: Extra fungal methods
+    body: At 6th alchemist method, choose another fungal methods upgrade.
+  - heading: Specialized mycologists kit
+    body: |-
+      At 6th alchemy level, you can spend 2 AP during a rest to modify a mycologists kit. A kit you modify can have no more upgrades than your int bonus -3 (min 1, max 5)
+
+      The following upgrades are available:
+
+      * Extraction kit - You can spend a rest die to extract 1d3+1 AP from a dead or decayed, small or larger creature. For each size category beyond small, +1 AP gained. The process takes 1 hour. Does not work on skeletons or non-biological remains.
+      * Infusion chamber - Once per rest, you can spend 1 AP to create 1 phial of infused spores and sacrifice one alchemical item you can cerate. A phial of infused spores can be planted in appropriate conditions (subject to GM.) and will mature into 2d4+1 infused buds that can be harvested by a DC 15 nature check (losing a bud per difference between DC on a failure.) An infused bud retains a small spheroid that can be consumed or thrown, dealing either a reduced impact or exposure effect on impact, or on consumption. At their baseline, such reduced effects cannot last longer than 1 round, deal more than 1d4+1 damage of any type, heal or grant more than 1d4 temporary health of any kind, or affect an area larger than a 10 ft radius around impact. Future modifications can treat an infusion chamber bud as an alchemical item that is either a flask or a bomb.
+      * isolation chamber - During a rest, you can extract an effect from one of your fungal alchemy items, and apply its exposure or consumption effect as an extra exposure or impact effect for up to 3 bombs, liquids, or potions. You cannot modify an item in this manner more than once.
+      * Lychwarden bulb - A small delicate mishmash of complex lifeforms jammed into a microterrarium that requires maintenance every rest. It's bioluminescence allows you to detect which auras of magic overlap the kit.
+      * Optimized starter jars - Every rest, you gain 2 extra AP points that can can only be spent on mycologist items or abilities.
+      * Sealing compartment - You can spend 2 AP and an alchemical flask or powder during a rest to create 1d4+1 alchemical spore bombs. They can be thrown at half range. Both if not blocked, and on each of the targets next 1d4 turns, apply the flask surface contact or powder exposure effect of the consumed alchemical item to the target.
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/a2-smuggler
+- name: Smuggler
+  group: Alchemist archetypes
+  sections:
+  - heading: Smuggler traits
+    body: |-
+      At 5th alchemist level, choose one of the following abilities:
+
+      * Always a plan B - Increase movement speed by 10 ft and gain +1 bonus to dexterity.
+      * Attentive - Gain a +1d4 bonus to initiative checks. Gain +1 AP per rest.
+      * Dangerous - Gain proficiency with a martial weapon group of your choice. Gain an extra reaction.
+      * It's a people thing - Gain a +1 bonus to charisma and gain a +1 bonus to wisdom and charisma saves.
+      * Secrecy - Gain a +1 bonus to stealth, deception, and disguise checks. You can move unimpeded while sneaking.
+      * Substance abuse - You can drink 1 potion as a free action, once per round. You can snort a dose of powder to apply it's primary effect and secondary effect for the powders original duration + 2 turns.
+  - heading: Skilled
+    body: At 5th alchemist level, gain 2 extra upgrades from the alchemist methods list
+  - heading: Special stash
+    body: |-
+      At 5th alchemist level, you can procure a special stash during a long rest which contains 3d4+1 exotic materials. When creating alchemical items, you can spend 1 exotic material to do one of the following:
+
+      * When creating an alchemical item, shift the damage type to a type of your choice.
+      * Increase the amount of tools created by 1.
+      * Increase the damage dice of an item by 1 size category.
+      * Increase an effects duration by 1d4.
+      * Increase the area of an effect by 5 feet.
+
+      You can swap out a special stash when in a populated area (subject to GM) in exchange for a number of AP equal to twice the exotic materials exchanged. This can cause your AP to exceed your AP maximum, in which case any AP not spent this rest beyond your maximum is lost.
+  - heading: Rare potions and powders
+    body: |-
+      At 6th alchemist level, every long rest, you learn to make the following alchemical items:
+
+      * Regeneration potion (4AP) - Can be administered to a creature that has died within the last 3 rounds, restoring them to life at 0 HP. Restores some lost limbs (Subject to GM) or 4d6 health if otherwise unmaimed.
+      * Mana concoction (3AP) - If a spell-caster, regain a 1d4 level spell slot, a spell point, 1d4 metamagic points, or regain use of a per-rest or long-rest use of a spell of 1d4 level or lower. Alternatively, gain 3d6 arcane health.
+      * Warding dust (3AP) - Can be scattered in a 15 ft cone, immediately granting all creatures within a +1d4 bonus to their next save against a spell of magical effect, and granting exposed creatures in the area a +1 bonus to all saves against spells and magical effects. Can be applied to an item to identify if it is magically trapped or cursed.
+      * Invisibility potion (2AP) - Grants invisibility for 2d4 minutes.
+      * Muffling powder (2AP) - Can be scattered in a 20 ft cone, mutes the exposure area with no immediate effect.
+
+      You gain one such item for free every long rest.
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/soulstone-alchemist
+- name: Soulstone alchemist
+  group: Alchemist archetypes
+  sections:
+  - heading: Soulgem creation
+    body: |-
+      At 4th alchemist level, you learn the secrets of creating soulstones by experimenting with mana powder. You learn the following alchemical creation:
+
+      * Empty soulgem, 4AP - Item. Becomes a proper soulgem when a slain sentient creature dies near one, gaining either a +1, +2, or +3 bonus depending on the creatures age, power, and intelligence ( subject to GM. )
+
+      You treat all soulgem items (items with the word soulgem) as soulgem items.
+  - heading: The cost of knowledge
+    body: |-
+      At 4th alchemist level, you pay the price of obtaining such a forbidden art. Gain the following:
+
+      * -1 max death save slots.
+      * -1 max HP.
+  - heading: Magical training
+    body: |-
+      At 4th alchemist level, learn two of the following:
+
+      * An arcane cantrip
+      * An occult cantrip
+      * A major hex
+
+      Use your int or dex as the casting modifier.
+  - heading: Soulgem use
+    body: |-
+      At 4th alchemist level, gain 3 of the following upgrades, which are ways in which you can use soulgems, sacrificing them in the process:
+
+      * Temporary weapon enhancement - As a full round action, grant a weapon, piece of armor, or tool a bonus equal to the soulgems bonus for 1d4 hours.
+      * Greater weapon enhancement - During a rest, sacrifice 3 AP and a soulgem to grant a weapon a bonus equal to the soulgems level - 1, and allow it to last 1d100 years.
+      * Alchemical multiplication - When creating or modifying an alchemical item, duplicate it, creating as many additional alchemical items as the soulgems bonus.
+      * Alchemical enhancement - Modify an alchemical item, granting it a dice size increase and damage dice increase equal to the soulgems bonus (ex: 1d4 damage > 2d6 damage > 3d8 damage > 4d10 damage.) and durations by that many units (rounds, minutes, hours, or days.)
+      * Enhanced magic - As a bonus action, upgrade one hex or cantrip that you know as many times as the soulgems bonus. Lasts 2d4 rounds.
+      * Swap powers - During a rest, spend 1 rest die and a +2 or greater soulgem to replace a cantrip or hex you know with a different cantrip or hex of their original class (arcane to arcane, major hex to major hex.)
+      * Learn soulgem magic - As a full-round action, sacrifice a soulgem to learn a spell of a level equal to the soulgems bonus, which the creature who's death powered the soulgem either knew, or has a strong affinity for (Subject to GM.) You can only learn up to as many spells through this method as your int bonus -1 (min 1) and as you learn a spell over the limit, the oldest one is lost. You may spend a number of rest dice equal to the level at which you wish to cast the spell (max 1/2 your level, rounded up) to cast them, using intelligence as your casting modifier.
+  - heading: Soulgem use II
+    body: At 5th alchemist level, learn an extra soulgem use upgrade.
+  - heading: Soulgem secrets
+    body: |-
+      At 5th alchemist level, gain one upgrade:
+
+      * Manifest material - You can sacrifice a soulgem to gain 1d3 + the soulgems bonus AP during rest.
+      * Shielding power - You can sacrifice a soulgem as a bonus action or reaction to gain [ 2d20 + 1d20 per soulgems bonus ] temporary health for 3d4 rounds.
+      * Soulgem casting - You can sacrifice a soulgem as an action to cast a spell you know or scroll you possess at a level equal to 1 + the soulgems bonus, using your charisma or wisdom as the casting attribute, whichever is higher.
+      * Soul boost - You can sacrifice a soulgem to gain a 1d6 bonus to a skill check, increasing it to 1d8 for +2 soulgems, and 1d10 for +3 soulgems.
+  - heading: Soulgem use III
+    body: At 6th alchemist level, learn an extra soulgem use upgrade.
+  - heading: Black soulgem creation
+    body: |-
+      At 6th alchemist level, learn you learn to create the following alchemical item by sacrificing :
+
+      * Empty black soulgem, 5 AP - A soulgem that can only be activated with a +4 soul that is filled when a great wise sentient creature, or a legendary monster of mythical great beast dies within 25 ft of the soulgem. It is treated as a +4 soulgem for all intents and purposes.
+  - heading: Soulgem secrets II
+    body: |-
+      At 6th alchemist level, either gain another soulgem secrets upgrade, or learn one secret method to use soulgems with:
+
+      * Soul dust - you can sacrifice a soulgem and spend 1 AP during a rest to create soul dust - powder 15/4. Unattended exposed items and tools are animated and obey your commands for the next 1d6 rounds, being able to do work or function as you desire, but not beyond their structural means. Duration size is increased by 1 category per soulgem bonus above +1 (rounds > minutes > hours > days.) The enchanted items cannot attack are treated as having a +0 to all checks except ones they are created for, in which they have a +4 bonus to checks.
+      * Soul serum - you can sacrifice a +2 or higher soulgem and spend 1 AP during a rest to create a soul serum - potion. Grants the consumer an extra day of natural lifespan, increasing to year at +3, and decade at +4, as well as 1d8 arcane health per soulgem bonus.
+      * Profane bomb - you can sacrifice a soulgem during a rest by spending 1 AP to modify a bomb (any alchemical item you can create with the word "bomb" in its name) transforming it from a ranged attack to a dexterity save, increasing the DC by 2, and in cast of no AOE, applying the bombs effect in a 10 ft radius per soulgem bonus, or otherwise increasing its area affected by 10 ft per soulgem bonus. All damage dealt is changed to necrotic. Cannot be applied more than once to a bomb.
+# https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/a2-engineer
+- name: Engineer
+  group: Alchemist archetypes
+  sections:
+  - heading: Armor training
+    body: At 5th alchemist level, gain proficiency with medium armor. If already proficient gain proficiency with heavy
+      armor.
+  - heading: Engineering expertise
+    body: At 5th alchemist level, you gain a +1 bonus to checks made to study and interact with mechanisms, clockwork, and
+      golems.
+  - heading: Charge core creation
+    body: At 5th alchemist level, you can spend 3 AP during a rest to create a charge core. A complex consumable that, once
+      created, has 2d4 + intelligence bonus charges. A charge core can be thrown as a bomb, dealing 1d4 + 1d4 per charge
+      lightning damage to the target. You may expend 2 charges from a charge core during a rest to restore 1 charge to a
+      wand or similar magical item.
+  - heading: Personal gear
+    body: |-
+      At 5th alchemist level, choose one ability from the list below:
+
+      * Tuning coils - You can spend 1 AP during a rest to modify a melee weapon with a tuning coil, allowing you to expend 1 charge from a charge core as free action once per attack, to grant it's next attack 2d8 extra lightning damage, and stunning the target for 1 turn on a critical hit. Lasts 1d3 rounds. The extra damage cannot be blocked.
+      * Slag torch - You can spend 2 AP during a rest to create an alchemical torch. An alchemical torch can be loaded with a flask or powder as an action, granting it 2d4+1 ammo. You can spend a charge from a charge core to fire the content in a 10 ft cone as a bonus action, applying the secondary or contact effect, as well as 1d6 + intelligence bonus points of fire damage to all targets in the cone. An alchemical torch can be calibrated to instead burn and apply the effect in a 15 ft ray.
+      * Firing-mechanisms - You can spend 1 AP during a rest to modify a crossbow, granting it an improved firing mechanism, and reducing it's reload property by 1. You may spend a charge from your charge core as a bonus action to cause the next attack of the crossbow to gain 30/60 range, ignore resistances, and increase all damage dice by 1 size category.
+      * Aegis - You can spend 1 AP to modify a light or heavy shield in your possession. When successfully blocking an attack, you can expend 1 charge from a charge core to deal 2d6 force damage to the attacker and push them back 5 feet. You can spend 3 charges from a charge core as a bonus action or reaction to gain an instance of temporary block for 1 round.
+  - heading: Upgrade
+    body: |-
+      At 6th alchemist level, choose 3 upgrades
+
+      * Aegis field - Requires aegis personal gear upgrade. You can spend 1 charge from a charge core as a bonus action to energize the shield, granting you a +1 bonus to AC for 1d4 turns, and granting any blocked ranged attacks a 1d4 > 3 deflect chance, allowing you to deflect them at a target within their remaining range for their attack value.
+      * Arc zap - You may spend an action while in possession of a charge core to force an enemy to make a dexterity save. On a failure, they take 1d8 + your intelligence bonus lightning damage. On a success, they take half. The target has disadvantage if they are wearing metal armor, shields, or weapons.
+      * Charge manipulation - The charge cost of restoring charges to wands is reduced to 1 charge.
+      * Command-word fuses - You may trigger your bombs remotely by expending 1 charge from a charge core.
+      * Emergency cannister - You can spend 1 AP and a flask or powder to add a 3 powder cannisters to your personal gear. While wielding your personal gear, you can apply the primary and secondary effect of a flask or powder at a tile within 5 feet and the tile beyond as a free action. You can only apply 3 cannisters to a piece of gear.
+      * Expanded study - Gain an extra upgrade from the 2nd level alchemy methods list.
+      * Extra charges - Your charge cores have 1d4 more charges.
+      * Gear damage improvement - Your personal gear item damage dice are increased by 1 size category.
+      * Grappling hook - Your personalized gear gains an added grappling hook and launching mechanism, allowing you to expend 1 charge from a charge core to attempt a grappling hook shot within 60feet with a +2 bonus.
+      * Improved firing mechanism - Requires firing mechanism personal gear upgrade. Your firing mechanism upgrade grants the charged attacks an extra 1d6 force or 1d4 lightning damage. All physical attacks from the modified weapon deal +1 damage.
+      * Overtune - Requires tuning coils personal gear upgrade. You can spend 1 charge of the charge core to overtune the coils of your personal gear, adding an extra 2d8 damage to its next attack within the next 1d3 rounds, and extending the duration of any previously applied damage buffs to the next attack by that duration, but dealing 1d8 lightning damage to you instead if no successful attack is made within that period.
+      * Torch pole - Requires slag torch upgrade. You can combine the slag torch with a polearm or similar two-handed weapon, granting it ignite 1d6 or increasing its preexisting ignite property by 1 size category, and allowing you to use the slag torch effect from the weapon, also igniting the weapon in the process.
+  - heading: Personal projects
+    body: At 6th alchemist level, Once per rest you can spend 1 AP during a rest to grant an item a +1 bonus until next
+      rest.

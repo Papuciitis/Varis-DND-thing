@@ -1,0 +1,68 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/spells/misc-magical-items
+section: items
+entries:
+  - name: Arcane powder
+    group: Miscellaneous magical items
+    description: |-
+      A light blue powder made of fine-grained bits of alloy. While not exactly magical in nature itself, it shimmers when affected by magic and gives off a slight glow when in rapid motion. Arcane practitioners and alchemists mostly use it for various implementations, though prolonged exposure at times leads to complications. Often kept in small leather pouches, as most cloth is not fine grained enough to fully contain it. It is heavy enough to not get picked up by the air much.
+
+      Arcane powder can be scattered in a 15 ft cone, or applied carefully on a single object. Creatures and objects covered in it give off a slight glow, revealing invisibility, as well as the presence of magic.
+
+      Can be consumed as an extra spell component while casting a spell to increase its area by 5 feet.
+  - name: Black page
+    group: Miscellaneous magical items
+    description: |-
+      A black page is a fragment of a strange, long-lost arcane script, often the byproduct of strange or decayed spells. They appear as thin dark sheets with golden script, which seems to shift and change when adjacent to more black pages, appearing to form larger more intricate scripts. Once a page is read by a creature aware of some principles of arcana, it degrades and disintegrates, but can allow the reader to attempt to harness some magic from the process.
+
+      During a short rest, you can spend a rest die to attempt to read any number of adjacent black pages. Make an arcana check. The DC is equal to 14 + the number of pages. Gain one of the following benefits depending on the number of pages:
+    Reading the pages:
+      columns:
+        - Pages
+        - Benefit
+      rows:
+        - - '1'
+          - Gain 1d8 arcane health.
+        - - '2'
+          - Gain 60 feet of darkvision until next rest.
+        - - '3'
+          - Identify an item.
+        - - '4'
+          - Know the direction towards an object of choice.
+        - - '5'
+          - Enchant a weapon, granting it a +1 bonus. This cannot enchant a weapon beyond +1.
+        - - '6'
+          - Regain 1d4 levels' worth of spell slots.
+        - - '7'
+          - Regain 1d4 rest dice.
+        - - '8'
+          - Learn a level 1 occult spell. Use Charisma as the modifier. You can cast it once per rest. It is
+            cast as though it used a 1st-level slot. You cannot learn more than 1 spell in this way.
+        - - 9 or more
+          - Attempt to raise a dead creature as an unbound undead. The DC, outcome, and conditions are subject
+            to the GM. For each page beyond 9, the GM may allow a reroll for the arcana check.
+    Other uses: Can be used to increase the level of a spell cast by 1. 3d6 black pages can be combined to
+      create a black scroll. Number chosen when assembly of a scroll begins.
+  - name: Ferryman coin
+    group: Miscellaneous magical items
+    description: |-
+      A small magical silver coin, slightly larger and distinct in tint from common silver coins. The face on it has faded and the markings on it are illegible. When detecting magic, it merely shimmers slightly, with an empty aura.
+
+      A creature in possession of a ferryman coin that is forced to make their last death save can choose, even when unconscious, to lose the ferryman coin and ignore the last failed death save.
+  - name: Ironwood twig
+    group: Miscellaneous magical items
+    description: |-
+      A small fine piece of ironwood. It is said that ironwood retains a bit of lightning from every thunderbolt that strikes the forest. Perhaps that is why it's so often used for arcane implements.
+
+      An ironwood twig can be wrapped around a wand like a ring during a rest, restoring one charge to it.
+  - name: Memory stone fragment
+    group: Miscellaneous magical items
+    description: |-
+      Large structures of memory stone were said to contain the thoughts and dreams of ages past within them, if one learned how to see them. A dark slate blue material, somewhere between steel and stone in hardness, it reacts to touch with a faint dim light. The greater the stone, the more light. This particular fragment has been chipped off from a larger fragment, retaining a bit of the glow.
+
+      The memory stone fragment can be used to store a thought with a DC 17 arcana check during a rest, which can be accessed by focusing on it with a DC 20 insight check.
+  - name: Vial of mosa
+    group: Miscellaneous magical items
+    description: |-
+      A coveted blue liquid in a small crystal flask. The only leftover of a lost branch of alchemy. Once opened, it should be consumed quickly. It is said that in true form, the liquid grants insight into the future.
+
+      Can be consumed to gain 1 temporary rest die that lasts until the next long rest.

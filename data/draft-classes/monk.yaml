@@ -1,0 +1,625 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x
+- name: Monk
+  group: Base class
+  description: Monks are adherents or followers of a lesser temple, teacher, or martial prophet. While no one specific description
+    fits the various people who would be considered monks in the setting, those that have embarked as followers or servants
+    of an order, temple, or master, or who serve a creed with great skill and are taught its lore and training are considered
+    monks.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      rows:
+      - - '1'
+        - '+2'
+        - flurry, Pursuant of the ways
+      - - '2'
+        - '+2'
+        - Ability score improvement, flow, meditation
+      - - '3'
+        - '+2'
+        - monk training, enlightenment
+      - - '4'
+        - '+3'
+        - 1st archetype
+      - - '5'
+        - '+3'
+        - Ability score improvement
+      - - '6'
+        - '+3'
+        - Ability score improvement
+      - - '7'
+        - '+4'
+        - 2nd archetype
+      - - '8'
+        - '+4'
+        - Ability score improvement
+      - - '9'
+        - '+4'
+        - 3rd archetype
+      - - '10'
+        - '+5'
+        - Ability score improvement
+      - - '11'
+        - '+5'
+        - 4th archetype
+      - - '12'
+        - '+5'
+        - Ability score improvement
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d8
+
+      Armor: None
+      Weapons: 2 weapon groups of choice
+      Tools: One tool or instrument of choice
+      Saving throws: Dexterity, Constitution
+      Skills: Choose one from Acrobatics, Athletics, Deception, History, Insight, Nature, Religion, Perception, Performance, Stealth
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) a martial weapon of choice, or (b) two simple weapons of choice.
+      * (a) a dungeoneers pack.
+      * 40 silver coins.
+  - heading: Flurry
+    body: At 1st monk level, you can spend 1 rest die to gain an extra attack. If the extra attack does not miss, the rest
+      dice is refunded. This can be done after you finish your attack action, or before you begin attacking. This can only
+      be done once per turn.
+  - heading: Extra rest dice
+    body: At 1st monk level, your rest dice maximum is increased by 1
+  - heading: Pursuant of the ways
+    body: |-
+      At 1st level, gain 2 upgrades from the list below
+
+      * Blind oracle - Lose sight, gain aura vision at a range of 40 ft and echosight at a range of 120 ft. These ranges increase by 5 ft and 20 ft respectively.
+      * Crossroads watcher - Gain a +3 bonus to checks made to find hidden paths, passages, or messages, or to perceive or detect ethereal or illusory entities. You gain a +2 bonus to saves from abilities and spells cast by undead, eldritch, or infernal entities.
+      * Dark teachings - Gain an occult cantrip. Use wisdom as the casting modifier. Reduce incoming psychic and necrotic damage by 1.
+      * Devotion - Gain a +2 bonus to constitution, you gain 1 reroll for any dice roll, which is refreshed every long rest.
+      * Eternal pupil - Choose one of arcana, nature, history, medicine, religion, or handle animal. Either gain proficiency, or if already proficient, gain expertise in the chosen skill. Learn three extra languages.
+      * Healers gift - You can spend a rest die to heal yourself or a creature you touch as a bonus action for 1d10 + 1 health. all other healing you apply is increased by 1 HP per dice.
+      * Hex discipline - Learn 2 minor hexes, or if you already know at least 2 minor hexes, learn 1 major hex. Upgrade 1 hex you know.
+      * Moon worship - You can immediately impose disadvantage to the roll of a creature within 30 ft, twice per rest.
+      * Mystic warrior - Gain proficiency with light shields. Gain an oath or mystic cantrip. Use wisdom as the casting modifier.
+      * Sun worship - You can gain advantage on a check, save or attack roll twice per rest.
+      * Thunder-father worship - Your medium arms, medium blades, polearms, and heavy blades have the stunning critical property while you wield them. Gain proficiency with one such weapon group of choice. +1 to saves vs fear effects.
+      * Tonal arts - Sonic damage you deal is increased by 1. Sonic damage you take is decreased by 1. You can spend 2 rest dice to make a performance check, forcing a creature within 30 ft to make a constitution save vs the check. On a failure, you may either: deal your unarmed damage as weapon damage to the target, force the target to become shaken, distracted, or sickened for 1 round, or force them to remake a save vs an ongoing enchantment, spell, condition, or save.
+      * Trained fist - Your unarmed damage dice is increased by 1 size category, up to a maximum of 12. This can be taken multiple times.
+      * Warding aura - Gain a +2 bonus to saves vs enchantment or deception magic. Gain the ability to use and manipulate magic items, and gain a +2 bonus to interacting with magical items, structures, and entities.
+      * Way of combat - Gain proficiency with 2 weapon groups of choice and gain a +1d3 bonus to damage with weapons of the chosen group. When enchanting weapons of this type, and effects duration and/or number of attacks the effect lasts is doubled, if applicable.
+      * Way of fire - Gain resistance to bleed and fire damage. Your weapons ignite property values are increased by 1 dice size category, and fire damage you deal is increased by 1.
+      * Way of iron - treat weapons that are not two-handed as light. Treat all other light weapons as agile. Increase range of thrown weapons by 30/60.
+      * Way of water- You can make an unarmed strike as a bonus action. Gain a +1 bonus to dexterity.
+      * Way of wind - Your movement speed is increased by 10 feet. Gain proficiency with acrobatics. if already proficient, gain expertise. If already expert, gain resistance to fall damage.
+      * Way of the mountain - Your rest dice maximum is increase by 1. You can spend 2 rest dice to cause all bludgeoning, force, or sonic damage dealing attacks until the start of your next turn to have a chance of stunning the target. After all attacks are made, all targets hit by the damage that did not block damage must make a constitution save (DC 8 + 1/2 monk level + number of valid unblocked attacks + the highest of your dex or str bonus) to not become stunned for 1 round.
+  - heading: Ability score improvement
+    body: |-
+      At 2nd, 5th, 6th, 8th, 9th, 11th, and 12th level you can increase one ability score by 2, or two ability scores by 1. Alternatively, gain a feat.
+
+      This cannot raise an ability score above 20.
+  - heading: Flow
+    body: At 2nd level, you add your wisdom modifier to block checks. While not wearing light or heavier armor, you gain
+      2 block at the start of combat.
+  - heading: Meditation
+    body: At 2nd level, when you spend only one rest die or less during a short rest, you restore 1 extra rest dice.
+  - heading: Monk training
+    body: |-
+      At 3rd monk level, choose one ability:
+
+      * Armor training - Flow now applies even while wearing light armor, gain proficiency with light armor. Flow grants 1 extra block at the start of combat.
+      * Esoteric knowledge - Learn a cantrip and a level 1 spell, which can be cast by spending a number rest dice equal to the level at which you wish to cast it( max 1/2 total level, rounded up.) They must have a matching school of magic, and both be either oath, occult, or mystic.
+      * Empty vessel method - Up to three times per long rest, when you take bludgeoning, force, lightning, radiant, sonic, or psychic damage, you may spend a reaction to make a melee unarmed attack against a target within range, dealing an extra 1d6 damage of the type taken. If the source of the damage is delivered via spell attack, then negate anything other than damage from the spell attack, and make the target of the unarmed attack also be targeted by an exact copy of the spell attack with all associated effects from its original caster (Subject to GM.)
+      * Flaming fist art Choose a weapon group beyond unarmed from: daggers & knives, light blades, fist weapons, light arms. You may spend a rest die as a bonus action to awaken the flaming fist art for 1 minute, granting you the following effects:
+        * Your unarmed attacks and attacks with weapons of the chosen group deal an extra 1d4 fire damage and count as magical.
+        * All fire damage you deal is increased by 1.
+      * Martial training - Weapon maneuvers that would normally be made with disadvantage are instead made with balance: roll 3d20 and use the middle result. Additionally, you may perform one weapon maneuver per turn without spending a bonus action.
+      * Shifting step discipline - While wearing no armor, you also gain a +1 bonus to ac and your movement speed and jump distance is increased by 10 ft. You can perform a wall dash when moving, treating vertical walls as surfaces to stand on, so long as you do not end your movement on them.
+      * Strength training - Gain proficiency with strength saves. +2 strength.
+      * Tempered endurance - Your maximum rest dice count is increased by 2. Gain +4 max HP.
+      * Twin fangs training - You suffer no penalties from dual-wielding. You can treat all weapons as light so long as they are not two-handed, versatile, or heavy. Once per combat, you can use flurry while wielding two weapons to gain 2 extra attacks.
+  - heading: Enlightenment
+    body: At 3rd monk level, when making a wisdom save against an effect that would otherwise deal half damage or apply
+      a diminished effect on a success, instead take no damage or no adverse effects on a success.
+  - heading: Minor archetype
+    body: |-
+      at 4th monk level, choose your 1st archetype. The following archetypes are available:
+
+      * Disciple
+      * Martial artist
+      * Brawler
+      * Hex warrior
+      * Ki channeler
+  - heading: Major archetype
+    body: |-
+      at 7th level, choose your 2nd archetype. The following archetypes are available:
+
+      * Adversary
+      * Ascendant
+      * Sensei
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/martial-artist
+- name: Martial artist
+  group: Monk archetypes
+  sections:
+  - heading: Greater flurry
+    body: At 5th monk level, you may use flurry and spend an extra rest dice to grant an extra attack. The extra rest dice
+      is refunded alongside the original if the first attack lands.
+  - heading: Martial techniques
+    body: |-
+      At 5th monk level, choose two upgrades from the list below:
+
+      * Art of the knee - Gain a +3 bonus to saves and block checks vs maneuvers. You can push a creature as a free action once per round.
+      * Blade dance - You can spend 3 rest dice while wielding a slashing medium blade, polearm, or similar (Subject to GM) weapon to make three attacks against all creatures within reach of the weapon (An all-creature-cleave, one roll. Any ac below is hit and may attempt to block.)
+      * Block mastery - Gain 1 extra block at the start of combat. Gain a +1 bonus to block checks and strength saves. Can be taken multiple times.
+      * Cleansing method - You can spend 1 rest die to enhance a melee weapon in your possession as an action, granting it an extra 1d10 radiant damage on hits for 1 minute. This damage is cursed when attacking monstrous, eldritch, undead, or fae creatures, negating healing, and consecrates those slain by it, preventing their use for undeath or eldritch forces. You gain a +1 bonus to saves vs monstrous, eldritch, undead, or fae creature spells and magical abilities.
+      * Defensive mastery - Gain a +1 bonus to AC and dexterity saves.
+      * Endurance training - Increase max HP by 8. Your rest dice maximum is increased by 1. Gain a +1 bonus to constitution saves.
+      * Instinctive combat - You can ignore blindness, deafness, or invisibility when making melee attacks within 10 ft. Gain a +1 bonus to wisdom.
+      * Leaping strikes - Your unarmed and melee weapon attacks can target creatures 5 feet further, allowing you to leap and strike them with every hit. Any attacks of opportunity made against you while leaping have disadvantage. Per dexterity modifier above 2, increase the distance by 5 ft.
+      * Lightning strikes - If two of your flurry attacks hit in one turn, you gain an extra flurry attack. This cannot trigger more than once per turn.
+      * Robed warrior - Gain proficiency progression in light armor > medium armor > heavy armor, and progress the category of armor that flow can apply with to light > medium > heavy. Gain proficiency with either a weapon group of choice or heavy shields.
+      * Salvo attack - You can choose to alter flurry when spending its rest dice, causing it to apply double the extra attacks, but only for thrown or ranged weapons. Reduce the reload property of weapons by 1 when using flurry.
+      * Tool weapon mastery - You gain a +2 bonus to maneuver attacks and the DC of maneuvers made with weapons that have the tool property. Gain a +1 bonus to attacks made with weapons with the tool property. The tool property grants a +1 extra bonus.
+      * Wall-runner - You can scale a wall horizontally up to your movement speed, you can wall-hug while descending to ignore fall damage. Gain a +1 bonus to dexterity.
+      * Way of the fist - Your unarmed strike damage dice are increased by 1 size category. Gain a +1 bonus to block checks and AC while unarmed. Can be taken multiple times to increase dice size and block DC further, up to a maximum damage of 1d12.
+      * Weapon art - choose 4 weapon groups, gain proficiency if not proficient. Gain a +1 bonus to attack and damage rolls with them. 3 times per combat, you can ignore one bonus action cost for a weapon maneuver with chosen weapons.
+      * Wind-walker - Increase your movement speed and jump distance by 10 ft. Gain a +1 bonus to dexterity.
+
+      At 6th monk level gain 2 extra upgrades.
+
+      At 7th character level, gain an extra upgrade.
+  - heading: Expanded martial arts
+    body: At 6th monk level, choose an extra upgrade from the Martial Arts (monk 1) list.
+  - heading: Mastered form
+    body: At 6th monk level, you gain a +1 bonus to all physical ability scores.
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/disciple
+- name: Disciple
+  group: Monk archetypes
+  sections:
+  - heading: Disciple cantrip
+    body: |-
+      At 5th monk level, learn a mystic or oath cantrip. Use wisdom as the casting attribute for it. Grant it one of the following benefits, if applicable:
+
+      * 2 extra cantrip upgrades.
+      * a +2 bonus to a spell attack.
+      * a +2 bonus to a DC.
+      * The cantrip can target allies within 30 feet, if the original range is self.
+      * Can target two creatures if the range is touch or single-target spell attack.
+      * The cantrip can be cast in place of a flurry attack if the cantrip has a touch or spell attack component.
+      * You can spend a rest die to apply one of the other effects on this list to it.
+  - heading: Sense aura
+    body: |-
+      At 5th monk level, gain proficiency with insight. If already proficient, gain expertise. If already expert, gain a +1 bonus to it.
+
+      You gain 50 ft of aura sight while focusing and standing still. Allowing you to perceive the presence of greater wills, forces, powers, spells, or enchantments though only vaguely (Subject to GM.)
+  - heading: Inner strength
+    body: |-
+      At 5th monk level, you may take 1 damage to fatigue, lose 1 instance of block or spend 1 rest die to gain a 1d4 bonus to a save.
+
+      You regain 1 extra rest dice during a rest if you start the rest at 0 rest dice.
+  - heading: Disciple insights
+    body: |-
+      At 6th monk level, choose 2 upgrades:
+
+      * Fists of power - Your unarmed strikes deal an additional 1d4 force, sonic, lightning, or fire damage. The damage choice is yours. Can be taken multiple times.
+      * Cantrip secrets - Upgrade a cantrip or spell you know to gain one of the following benefits, if applicable (Can be taken multiple times):
+        * Increase a non-d20 dice used in the cantrip by 1 size category, up to a maximum of 1d12.
+        * Allow an effect of the cantrip to last twice as long.
+        * Decrease a non-d20 dice used in the cantrip by 1 size category, down to a minimum of 1d2.
+        * Increase a DC by 2.
+        * Remove an HP cost component.
+        * Upgrade with extra 5th level cantrip upgrade, if it is a cantrip.
+      * Calm mind - Gain resistance to psychic damage. Your rest dice maximum is increased by 2.
+      * Rites of the dead - You may spend a rest die to either sanctify a dead creature, preventing it from being raised as undead, or to directly deal 3d12 necrotic damage to an undead creature within 20 feet. If this slays an undead creature, the rest dice is refunded.
+      * Listen to ley lines - You may spend a rest die while at a site of power, an exposed or elevated ley lines, or a place that is exposed to powerful mystical or oath magic (Subject to GM.) to gain knowledge of the general state in a location of your choice (must be in the same plane.) or to listen to arcane whispers (Subject to GM.) Gain a +1 bonus to checks made to interact with arcane and magical items.
+      * Mystical magic - Learn a 1st level mystic spell. You can spend 1 rest die to cast it. Can be taken twice to learn a 2nd level mystic spell that can be cast at the cost of 2 rest dice. Use wisdom as the casting modifier.
+      * Oath magic - Learn a 1st level oath spell. You can spend 1 rest die to cast it. Can be taken twice to learn a 2nd level oath spell that can be cast at the cost of 2 rest dice. Use wisdom as the casting modifier.
+  - heading: Unlock chakras
+    body: |-
+      At 6th monk level, you can choose to unleash an inner reserve of power once per long rest as a bonus and move action:
+
+      * Gain 6 temporary rest dice that last for 1 hour.
+      * Gain a +1d4 bonus to saves for 1 hour.
+      * Gain a +1d4 bonus to block block checks for 1 hour.
+
+      After this time, you lose all your remaining rest dice.
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/brawler
+- name: Brawler
+  group: Monk archetypes
+  sections:
+  - heading: Power attack
+    body: |-
+      At 5th monk level, you can alter your entire attack pattern when using flurry before making any attacks, changing it into one great power attack.
+
+      A power attack combines the flurry and base attacks together into one great strike. You cannot make both a power attack and a flurry attack on the same turn. If you would gain other attacks, instead treat them as attacks combined into the power attack.
+
+      A power attack is still treated as a flurry attack for the purposes of other abilities and effects.
+
+      The power attack has a +2 bonus to hit and block DC, and has all damage dice increased by 1 size category (or 1d4 extra on reaching 12) per extra attack combined into the attack.
+  - heading: Critical flurry
+    body: At 5th monk level, your flurry and power attacks have their critical strike range extended by 1.
+  - heading: Brawler traits
+    body: |-
+      At 5th monk level, choose an upgrade:
+
+      * Catch projectile - You can spend a reaction to catch a thrown weapon or projectile. You can throw it back as a reaction.
+      * Critical power attack - Power attack has its critical range increased by 1.
+      * Armored brawler - You gain proficiency with medium armor. You can choose to alter flow, applying a bonus to block checks instead of extra instances of block. You gain 1 extra block at the start of combat.
+      * Fists of steel - Increase your unarmed attack damage by 1 size category. The critical range of your unarmed attacks is increased by 1.
+      * Leaping power attack - You can leap up to half your movement speed and make a power attack. If making a power attack from at least a 1/2 movement speed jump distance, grant it an extra attack to add to it.
+      * Musclebound - Gain a +2 bonus to strength. Gain a +1 bonus to athletics checks. Your thrown weapon attacks have a +20/+40 increase to range.
+      * Hardened - Gain a +2 bonus to strength saves and con saves, reduce damage taken by 1, +4 max HP.
+      * Raw power - All bludgeoning and force damage you deal is increased by 1d4.
+  - heading: Extra brawler trait
+    body: At 6th monk level, choose another brawler trait upgrade.
+  - heading: Brawlers strength
+    body: At 6th monk level, your rest dice maximum is increased by 2.
+  - heading: Raw flurry
+    body: At 6th monk level, you can spend 1 extra rest dice when using flurry to increase the number of extra attacks it
+      grants by 1.
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/hex-warrior
+- name: Hex warrior
+  group: Monk archetypes
+  sections:
+  - heading: Hex warrior I
+    body: At 5th monk level, learn 1 minor and 1 major hex. Upgrade 1 of them once.
+  - heading: Extra feat
+    body: At 5th monk level, learn an extra feat.
+  - heading: Hex warrior II
+    body: At 6th monk level, learn 2 minor or 1 major hex. Also learn a greater hex. Upgrade one hex you know by 1.
+  - heading: Hex secrets
+    body: |-
+      At 6th monk level, gain 2 upgrades:
+
+      * Your hexes that apply to an attack can instead apply to all flurry attacks.
+      * You can cast a hex in place of making a flurry attack, but by doing so you cannot refund the rest dice.
+      * Hexes that grant personal buffs have their duration doubled.
+      * Choose 3 hexes, improve their cooldown chance dice by 1 size category and grant them 1 upgrade.
+      * You can blindcast a hex that has a cooldown, rolling the cooldown chance dice when casting, and casting it on a success, or wasting the casting time on a failure.
+      * Hexes that deal damage in dice have their damage increased by 1 dice.
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/ki-channeler
+- name: Ki channeler
+  group: Monk archetypes
+  sections:
+  - heading: Channel KI
+    body: "At 4th monk level, you gain access to Ki points. Your Ki point maximum is equal to your Constitution or Wisdom\
+      \ modifier (whichever is higher), minus 4 (minimum 2, maximum 5). You restore 1 ki every rest. \n\nKi and rest dice\
+      \ can be interchanged as 2 full round actions. 1 Ki is worth 3 rest dice."
+  - heading: KI powers
+    body: "At 4th monk level, gain access to the Ki powers tree. Whenever you would gain an ability score increase, you\
+      \ can choose to instead gain two upgrades from the Ki powers tree.\n\nAt 4th monk level, gain 2 upgrades from the\
+      \ ki powers tree:\n\n* Channel Ether - you can spend 1 Ki as an action to access the ethereal plane for up to 2d4+1\
+      \ rounds. For the duration, you traverse into the ethereal plane, but retain the ability to faintly see the material\
+      \ plane so long as you are not encased in solid. After the duration, you will either have to spend another point of\
+      \ KI to remain a minute longer (repeating) or you will be forced back so long as you are occupying an empty space.\
+      \ Per round spent overlapping a solid space when being forced back, accumulate 1d6 force damage, which is dealt to\
+      \ you once you rematerialize into the original plane. You can reenter the original plane at will as an action or reaction\
+      \ at any time in the duration.\n  * Ether walker - While in the ethereal plane, so long as you have 1 Ki, you can\
+      \ blink up to your movement speed + your jump distance as a bonus action or action.\n  * Channel Ether II - You can\
+      \ spend 1 Ki to use Channel Ether as a reaction to being targeted by a spell effect, allowing you to make a dexterity\
+      \ save vs the spells DC. On a success, you briefly blink into the ethereal plane, ignoring the spell. On a failure,\
+      \ the spell connects with you in the ethereal plane.\n  * Force etherjump - You can spend 1 ki to instead force a\
+      \ creature to make a wisdom save, entering the ethereal plane as though it were using Channel Ether, either alone\
+      \ or with you.\n  * Ether binding - You can spend 1 Ki as an action to restore 1d3 charges to an item or wand you\
+      \ control, stabilize or activate a portal or magical gateway, or force a target creature within 30 ft to make a wisdom\
+      \ save, becoming dimensionally anchored for 2d3 rounds on a failure, not being allowed to use blink, teleportation,\
+      \ or displacement spells and abilities.\n  * Ki acceleration - You can spend 1 Ki to accelerate a projectile or spell\
+      \ projectile being fired or thrown by you or an ally within 10 ft, or if it's path intersects a 10 ft radius sphere\
+      \ centered on you. When you do so, you double its range, and then double it again, and you can make it gain +4d8 force\
+      \ damage.\n  * Ki-link - You can spend 1 Ki to link to an item or creature you can touch. You innately know the direction\
+      \ towards and distance to (roughly) the linked target, or which plane they are in. You can only link to up to as many\
+      \ targets as your intelligence bonus (min 1.)\n* Ki circulation - You do not fall unconscious when a 0 HP. You may\
+      \ spend 1 KI when reaching 0 hp or losing your last death save, in order to remain at 1d6 HP or at one remaining death\
+      \ slot, respectively. So long as you have at least 1 point of Ki, you can hold your breath for 10 minutes as normal.\n\
+      \  * Ki vitality - So long as you have at least 1 Ki, you reduce all incoming damage by 1. Your maximum Ki count is\
+      \ increased by 1, this increases the maximum allowed ki by 1 (5 to 6.)\n  * Harmonious strength - So long as you have\
+      \ at least one Ki, your jump distance and movement speed are increased by 15, and the AC bonus from Aura is increased\
+      \ by 1. You may spend 1 Ki to gain one of the following for 1 turn: +6 to strength and +3 to athletics, or +6 to dex\
+      \ and +3 to acrobatics.\n  * Empowered awareness - So long as you have at least 1 ki, you have an extra reaction per\
+      \ round, a +2 bonus to initiative, and can spend a reaction to automatically block a ranged projectile attack that\
+      \ is not a nat 20. You can spend 1 Ki to gain expertise and a +1 bonus with one of the following skills for 1 minute:\
+      \ insight, investigation, or perception.\n  * Ki saturation - You can spend 1 Ki to enter stasis, requiring no air,\
+      \ food, or water, until a time of your choosing. You gain a +3 bonus to saves vs sleep or dream spells, and spells\
+      \ while in the ethereal or dream realms.\n  * Transformed eyes - You gain 30 ft of aurasight, and 90 ft of darkvision.\
+      \ So long as you have at least 1 Ki, you gain a +1 bonus to insight, investigation, and perception checks, and your\
+      \ ranged attacks gain a +30/+60 range bonus.\n  * Ki reserves - Once per long rest, you can regain 1 Ki immediately.\n\
+      * Ki projection - So long as you have at least 1 KI, you can manifest a solid-apparition of any shield or melee weapon\
+      \ you are proficient with in your hands. It gives off a faint light, is translucent, and dematerialize as long as\
+      \ you drop it or unequip it. Thrown weapons remain for their thrown attack duration, but dematerialize afterwards.\n\
+      \  * Ki enchantment - You can spend 1 Ki when using Ki projection to grant the weapon a +1 bonus, or 2 Ki to grant\
+      \ the weapon a +2 bonus. When enchanting or creating a weapon, you can spend 1 Ki to enhance the granted weapon property\
+      \ in one of the following: Increase a dice by 1 damage size, increase a duration by 1 unit (turns, rounds, minutes,\
+      \ hours, days,) or increase the area or range of an effect by half (rounded up.)\n  * Ki attunement - You can spend\
+      \ 1 Ki to attune a specific weapon, either conjured by Ki projection, or otherwise, and attune to it. The attuned\
+      \ weapon can be summoned via Ki projection even when at 0 Ki. Only one such weapon can be attuned. Having the two-weapon\
+      \ fighting feat allows attuning to two such weapons at once.\n  * Spirit archer - You can manifest arrows and bolts\
+      \ with Ki Projection. Choose three properties that you can add to such manifested ammunition: +1d8 fire damage, +1d8\
+      \ cold damage, +1 critical range, +1d4 lightning damage in 5 ft around target and to target, +1d8 poison damage and\
+      \ target is poisoned and blinded on a critical hit.\n  * Ki blocking - You can spend 1 ki as a reaction while having\
+      \ at least 1 hand free to automatically block an attack. You can spend 1 ki to create a wall of force in a 15 ft line\
+      \ in front of you (a 15 ft line in any direction with at least one point touching a 10 ft radius around you) that\
+      \ reduces spell, projectile, and elemental damage dealt to creatures by spells that pass through it (or if they intersect\
+      \ between a creature and the origin of the spell/center of its effect) by 3d6. It lasts 1d4 rounds.\n  * Ki shielding\
+      \ - So long as you have at least 1 Ki, you gain 1 temporary block at the start of combat.\n  * Manifesting - So long\
+      \ as you have at least 1 Ki, you can create small items and objects that fit in a 2 ft cube, a 5 ft tile, or a narrow\
+      \ rope-like object up to 60 ft in length. Objects like this dematerialize after a minute if at 1 Ki, or after up to\
+      \ an hour if at 2 Ki or more.\n* Ki fist - So long as you have at least 1 KI, your unarmed attacks are treated as\
+      \ magical and deal +1 force damage. You can spend 1 KI when hitting a target (before block is made) to either: enhance\
+      \ the attack to deal 6d6 extra sonic damage, or directly deal 5d6 sonic damage to the target with no block.\n  * Hypersonic\
+      \ fist - When you use Ki fist, you can spend an extra rest dice to cause it to deal half the sonic and fire damage\
+      \ in a 20 ft cone behind the target, requiring creatures to make a dexterity save, taking half-damage on a success.\
+      \ You can instead spend a ki point to make the after-effect area be a sphere centered around the target. You are immune\
+      \ from this effect.\n  * Ki flurry - When using flurry while unarmed and with at least 1 Ki, you gain an extra attack.\n\
+      \  * Ki blast - Choose one damage type when selecting this: force, lightning, radiant, psychic, or sonic. You can\
+      \ spend 1 Ki as an action, you can fire a 60 ft beam, or fire a blast that targets a 15 ft diameter sphere area within\
+      \ 50 ft that you can see. In either case, targets in the areas take 6d6 points of the selected damage, and must make\
+      \ a dexterity save to halve it.\n  * Indomitable hands - Your hands are immune to fire, acid, poison, and cold damage.\n\
+      \  * Ki redirection - You can spend 1 Ki as a reaction when successfully blocking an attack to immediately make an\
+      \ attack with the benefits of flurry against the target. So long as you have at least 1 Ki, you gain a +3 bonus to\
+      \ block checks.\n  * Ki push - You can spend 1 Ki to replace an attack with a push maneuver. Make an athletics roll\
+      \ instead of an attack roll, adding attack, roll bonuses to the check. And the target must make a strength save vs\
+      \ the outcome of the athletics check. On a failure, it is pushed back 40 ft + 5 ft per strength bonus +5 ft per remaining\
+      \ ki. On a success, reduce this distance by 5 feet for every point the save exceeds your check\n* Transmute Ki - Choose\
+      \ a class of magic: occult, oath, or mystic. You can spend 1 rest die and 1 KI to obtain a cantrip of that school\
+      \ until long rest. When doing so, roll a 1d10>2 chance dice. On a failure, the cantrip is chosen by the GM. You use\
+      \ wisdom +1 as your casting modifier for it. You can only have one cantrip through this ability, replacing the previous\
+      \ if done again.\n  * Elemental Ki - Chose one level 2 arcane spell: pyromancy, cryomancy, geomancy, or ethermancy.\
+      \ Gain the following:\n - Learn the chosen spell.\n - So long as you have at least 1 Ki, you can spend a rest die\
+      \ to cast your chosen spell at 2nd level.\n - You can spend 1 Ki to cast the spell at 3rd level.\n  * Greater Ki transmutation\
+      \ - Choose a class of magic: Occult or Mystic. Learn 2 spells of level 1, and 2 of level 2 of the chosen class. You\
+      \ can spend 1 ki to cast them at a spell level equal to 1/2 your total character level (rounded up.) using your wisdom\
+      \ bonus +1 as the casting modifier.\n  * Ki enervation teaching - So long as you are at 0 Ki, 1 Ki is worth 2 rest\
+      \ dice. Choose one: \n - Gemstone worth 400g or more.\n - Skull of a sentient creature that was slain when it was\
+      \ full of vitality.\n - The heart of a medium or larger greater monstrosity ( lycanthrope, vampire, Crypt Ghoul, or\
+      \ Illithid. Subject to GM.) \nThe chosen item can be sacrificed during rest during a ritual to restore 1 Ki.\n  *\
+      \ Ki restoration - You can spend 1 Ki to regenerate a limb you list since your last round as an action, restore 1\
+      \ rest die, and remake a save vs ongoing diseases and curses.\n  * Ki rune - You can spend 1 Ki point to place a Ki\
+      \ rune no an item for 1d4 days. For the duration, the item gains a +1 bonus (Even mundane non-equipment items, subject\
+      \ to GM), and its maximum bonus (+3 for weapons) is increased by 1 for the duration.\n  * Siphon auras - You can burn\
+      \ 1 Ki point as an action to filter the background magic in a 500 ft radius, allowing you to inspect any area within\
+      \ range in a grayscale perspective. During this process, time is expanded in your perception, allowing you 3 turns\
+      \ of observation and making skill or investigation checks."
+  - heading: Ki powers II
+    body: |-
+      At 5th monk level, gain 1 extra upgrade from Ki powers.
+
+      Also at 5th monk level, choose one:
+
+      * Extra ki points - Your Ki point maximum is increased by 1.
+      * Ki master - You can transfer between ki and rest dice as an action instead of a full round action. Your rest dice maximum is increased by 1.
+      * Enhanced meditation - When using meditation (monk 2) and at 0 Ki, you can restore 1 Ki as well.
+  - heading: Ki powers III
+    body: At 6th monk level, gain 1 extra upgrade from Ki powers.
+  - heading: Ki secrets
+    body: |-
+      At 6th monk level, choose one ability:
+
+      * Ki magic - Choose 2 classes of magic from arcane, occult, or mystic. Learn 3 spells of level 3 or lower from those classes. You can spend 1 Ki to cast them using wisdom +1 as your casting modifier. They are cast at 1/2 your total level (rounded up)
+      * Supernatural lifeforce - You can spend 1 Ki to grant yourself 4d6 + 4 arcane health. This can be done once per round.
+      * Harmonic speed - You can spend 2 Ki to gain an extra turn, either as a free action if done at the end of your turn, or as a reaction if done outside your turn order. This can only be done once per round.
+      * Ki boost - You can spend 2 Ki to double the damage of an attack or ability you use.
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/ascendant
+- name: Ascendant
+  group: Monk archetypes
+  sections:
+  - heading: True Enlightenment
+    body: At 7th monk level you treat spell effects that have critical save failure conditions as only a failure, and a
+      success as a critical success if applicable. This only applies to spells with a mental save.
+  - heading: Higher path
+    body: |-
+      At 7th monk level, choose one:
+
+      * Aether-step - you can spend 1 rest die to gain aether-walking for as long as you maintain concentration. While it is active, you can walk on water, your jump distance and movement speed are increased by 10 ft, and you can walk on frail substances or structures, as well as difficult terrain without any adverse effects, and without triggering pressure based abilities.
+      * Ascended form - you must maintain a diet or routine( agreed with GM.) if you maintain it, you gain a +3 bonus to all attributes, but your rest dice maximum is decreased by 1.
+      * Awakened to magic - learn a total of up to 7 spell levels worth of spells, up to a max level of 4 per spell, which can be cast by spending a number of rest dice equal to the level at which you wish to cast the spell (max 1/2 your character level, rounded up.) Use wisdom as the casting modifier.
+      * Mastered flow - The amount of block granted by flow is increased by 1, and it applies when wearing light armor, or heavy armor if already applicable, or heavy armor if already applicable. Flow now grants a +2 bonus to AC when in appropriate armor.
+      * Immense soul - You gain a -1 penalty to saves vs detection and divination magic. You gain an extra death save slot, +2 maximum rest dice, and all healing and temporary health you grant and receive is increased by 1d3, and all attacks and damaging abilities deal an extra 1d4 force damage.
+      * Psychic aura - You gain the ability to manipulate the world at a range of 25 ft as though you were present and directly manipulating them, using your strength or dexterity score as the modifier. Situations where you are overpowered result in you taking 1d4 psychic damage.
+  - heading: Higher form
+    body: |-
+      At 8th monk level, increase your rest dice maximum by 1.
+
+      Also reduce your aging to 1/12 its natural pace.
+  - heading: Chosen method
+    body: |-
+      At 9th monk level, you can choose one ability from the list below:
+
+      * Chosen magic - Learn a total of 5 spell levels worth of spells, which must be either oath, occult, or mystic, and must be at least level 2, and at most 5th. You can use rest dice to cast them, spending a number of rest dice equal to the level at which you wish to cast the spell -1 (min 1.) Increase your rest dice maximum by 1. Must be either oath, occult, or mystic
+      * Chosen weapon - Choose a weapon group. When using flurry while wielding chosen weapon group, flurry grants 2 extra attacks at the end of it. Only the initial flurry attack determines the refund. Weapons of the chosen weapon group you wield have their block, poison, and ability DCs increased by 2. You can make one maneuver with the chosen weapon per turn without spending a bonus action.
+      * Chosen element - Choose either fire, lightning, cold, acid, or sonic. Your attacks and magic you cast or manifest becomes entwined with it, either manifesting it in harmless ways, dealing an extra 1d8 damage of the chosen element if applicable, and granting you immunity to that form of damage yourself.
+  - heading: Finished path
+    body: |-
+      At 10th monk level, gain an upgrade based on the higher path chosen:
+
+      * Aether-step -> Aether-walk - You can spend 1 rest die to blink to a point within 100 ft that you are aware of as a move action or reaction. This does not provoke reactions.
+      * Ascended form -> Perfected form - The ascended form bonuses to attributes becomes +6 to physical attributes and +4 to mental attributes. Your rest dice maximum is no longer impacted by the penalty.
+      * Awakened to magic -> Magical lucidity - learn a total of up to 6 spell levels worth of spells, up to a max level of 4 per spell, which can be cast by spending a number of rest dice equal to the level at which you wish to cast the spell (max 1/2 your character level, rounded up.) and also learn a cantrip. Use wisdom as the casting modifier. Increase your rest dice maximum by 1. Spells and cantrip must be either oath, occult, or mystic.
+      * Mastered flow -> Perfected flow - The amount of block granted by flow is further increased by 2, and it applies when wearing light armor, or heavy armor if already applicable, or if already applicable at heavy, the bonus is further increased by 1. Gain a +3 bonus to block checks.
+      * Immense soul -> Greater soul - The penalty to detection spells is increased to -2, but the healing and temporary health bonus is increased to 1d6, and the damage bonus is increased to 1d8.
+      * Psychic aura -> Psychic domain - Your psychic aura range is doubled, you gain a +2 bonus to wisdom, and you gain telepathy and awareness of presences at a range of 300 ft.
+  - heading: Clear spirit
+    body: At 11th monk level, your rest dice maximum is increased by 1. You regain 1 extra rest dice every rest.
+  - heading: Final teaching
+    body: |-
+      At 12th monk level, learn a level 6 occult, mystic, or oath spell. You can spend 6 rest dice to cast it, using wisdom as the casting modifier. Upgrade the spell in one of the following ways:
+
+      * Its range is doubled.
+      * If it targets one creature, it can now target two.
+      * If it targets self, it can now target a target creature within touch range.
+      * If it has an area effect, that area is doubled.
+      * Increase its duration or a duration within the spell by 1 unit (turn, round, minute, hour, day, or year.)
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/sensei
+- name: Sensei
+  group: Monk archetypes
+  sections:
+  - heading: Heightened senses
+    body: At 7th monk level, your movement speed is increased by 5 ft and you gain a +1d3 bonus to perception and insight
+      checks.
+  - heading: Master of an art
+    body: |-
+      At 7th monk level choose one:
+
+      * Blademaster - You gain proficiency with all blades. When you use flurry, you can make an extra attack with any blade weapon you are wielding. You can make one free attack with a blade weapon once per round as a free action so long as you are wielding it. Your critical range for such weapons is increased by 1.
+      * Sage-teacher - You gain proficiency with all polearms. You can make one free attack with a polearm weapon once per round as a reaction, and this attack can be a maneuver instead. Extend the reach of your polearm weapon attacks by 1. Gain a +1 bonus to AC while wielding polearms. Each polearm enchantment has a unique +1 bonus added once, that can be anywhere in its effect (Subject to GM.) only while you wield them. Once chosen the effect cannot be changed and is unique per polearm.
+      * Dagger-whisperer - You can make a thrown weapon attack or a knife/dagger/light blade attack as a free action once per round. The range of your thrown attacks is doubled. When you attack while using flurry, if all your attacks were thrown weapon attacks, you can make an extra thrown weapon attack. Gain a +1 bonus to thrown weapon attacks.
+      * Unarmed teacher - You can make one melee attack, push, shove, or grapple check once per round as a free action. Your unarmed strike damage is increased by 1 dice size category. You gain a +2 bonus to insight, persuasion, and intimidation checks.
+      * Tonal master - If flurry is used before an attack is made, all the damage dealt is increased by 1 size category. If it is used after, then the next attack will deal an extra 1d10 force damage per previously landed attack. Gain a +3 bonus to performance checks.
+      * Dragon sage - You gain scales, gaining 1 block at the start of combat, learn draconic, your rest dice maximum is increased by 2, and you can spend 1 rest die as a free action once per round to do one of the following:
+        * Breathe fire or ice in a 20 ft ray, dealing 3d8 + wisdom bonus + constitution bonus damage.
+        * Alter a fire or ice damage dealing effect, increasing its damage dice by 1 size category.
+        * Gain a +4 bonus to an intimidation check.
+        * Gain a +4 bonus to an athletics check.
+      * Leaping lord - You gain a jump distance of 40 ft, and every weapon or unarmed attack made after a jump gains momentum, dealing +1 damage and having +1 to block DC per 5 ft traveled. Attacks of opportunity against you have disadvantage. You can jump as a bonus action, in addition to being able to do so as a movement action.
+      * Sanguine Sage - Your slashing weapons all apply bleed on a critical hit. Whenever you deal slashing damage, roll a 1d6<2 chance dice, applying bleed to the target on a success. Learn an occult cantrip. Whenever you inflict bleed, you heal 1 hp.
+  - heading: Extra rest dice
+    body: At 8th monk level, your rest dice maximum is increased by 1.
+  - heading: Master of 2 arts
+    body: At 9th monk level, choose another master of an art upgrade.
+  - heading: Master defence
+    body: |-
+      At 10th monk level, choose one defensive speciality:
+
+      * Armored sensei - Flow now applies to light, medium, or heavy armor, whichever was last applicable. Flow grants an extra instance of block at the start of combat.
+      * Warded trick - Up to 3 times per rest, you can attempt to counter a spell targeting you or an ally within 5 ft as a reaction. Make a wisdom save vs the spells DC, negating it on a success, and countering it back at the caster on a critical success.
+      * Master duelist - Choose a favored versatile or two-handed weapon (specific weapon, subject to GM.) you gain +1 to AC while wielding it.
+  - heading: Perfected art
+    body: |-
+      At 11th monk level, assemble a perfected art of your own invention. Once created, it cannot be changed. It costs 1 rest die and has a requirement which must be true or done in order to do the maneuver, a trigger which must be executable in order to perform the maneuver and determines the targets of the perfected card, an effect which determines the outcome for every target. You can only perform one perfected art per turn.
+
+      Requirement:
+
+      * Fury driven - You must be below 1/2 max health. +1 power.
+      * Hemomantic - You take 1d8 points of damage to health. +2 power.
+      * Mastered - Spend 3 rest dice. +3 power.
+      * Perfected - You must be above 1/2 max health +2 power.
+
+      Trigger:
+
+      * Unarmed - When you hit with an unarmed strike, target the creature you just hit with the unarmed strike. +1 power.
+      * Hyperdash - As an action, move up to 5 ft per dexterity bonus, moving through occupied tiles and targeting any adjacent creature you pass. +1 power.
+      * Spearhead - As an action, target all creatures in a reach +5 ft ray. +2 power.
+      * Retributive - As a reaction to being attacked, target the attacker. +4 power.
+      * Sagesweep - As an action, target creatures in a cone the size of your weapons reach. +1 power.
+      * Personal - As a bonus action, target a creature within reach. +3 power.
+
+      Effect:
+
+      * powerstrike - Make a weapon attack against all targets simultaneously(1 roll) deal 1d10 damage (of the weapons type) per power to targets and apply the weapons on-hit effects. Cannot be blocked.
+      * windstrike - Force target to make a dexterity save (DC 12 + proficiency + wis bonus), taking 2d6 damage per power (of the weapons type) on a failure and half on a success.
+      * Surge - Deal 1d8 damage per power (fire, lightning, or radiant) to targets, and if a target is slain, deal 2d8 damage to surrounding creatures.
+      * Stormstrike - Make a weapon attack against every target, dealing 2d6 extra force damage, and increasing block DC by power, and stuns for 1 round on a critical strike. You may relocate to any point adjacent to any target at the end of the ability. Against a single target, make 1 attack per power. Can use flurry to add an extra attack.
+      * Heart-bind - Targets must make a constitution save (DC 12 + proficiency + wis bonus,) becoming winded and heartbound on a failure, taking 2d8 force damage per power if they move more than 5 ft or if you choose to end the heart-bind as an action from any distance.
+  - heading: Perfected art II
+    body: |-
+      At 12th monk level, also apply a signature to the Perfected Art, applying an extra effect:
+
+      * Death-handed - If the effect slays a target, you may choose to blink next to it and force them to make a strength or dexterity save. On a failure, you are healed for 3d10 health and the targets corpse rapidly turns to dust and bones, and has a 1d4<2 chance to not be revivable, both as living or undead.
+      * Exploding - Slain creatures deal an additional 1d6 damage to creatures surrounding them, you do not take damage from this effect.
+      * Overwhelming - Take 1 damage to fatigue after the ability ends. +1 power.
+      * Lethal - You deal cursed damage with the ability, meaning that it cannot be healed until the targets finish a long rest.
+      * Vampiric - Per creature slain, heal 1d6 hp.
+      * Echoing - Force the targets to make a constitution save afterwards, taking half of the damage again.
+      * Overdriven - Increase the spells trigger range by 10 ft. +1 power.
+      * Bloodrite - Targets that are dealt damage are also inflicted bleed.
+      * Combo - At the end of the spell, choose one target, blink to it and force it to make a wisdom save. On a failure, deal 1d6 damage per power in a 20 ft cone emanating from the chosen target away from you, dealing damage to all other creatures besides the main target that fail a dexterity save.
+      * Arcanum - You can cast a scroll, spell, or cantrip that targets at least one creature at the end of the ability, so long as the spell has a cast time of action or bonus action. The spell must target creatures that were targeted by the perfected art.
+      * Occultist - You may sacrifice the 1d8 HP worth of blood when using this to double range.
+      * Kensai - Targets must also make a wisdom save, being unable to cast spells or use supernatural abilities for 2 rounds on a failure.
+# https://sites.google.com/view/dnd5plus/home/classes/monk-x/adversary
+- name: Adversary
+  group: Monk archetypes
+  sections:
+  - heading: Darkened path
+    body: "At 7th monk level, upgrade any Pursuant of the ways upgrade that you have by gaining the corresponding effects:\n\
+      \n* Blind oracle -> Shadow sight - You now have shadowsight, allowing you to see any creature of darkness or anything\
+      \ that is in shadow or darkness. Allows you to perceive through solid objects in this manner.\n* Crossroads watcher\
+      \ -> Gatewalker - You can blink to a creature once per combat and immediately make an attack. You can spend 3 rest\
+      \ dice to reactivate or maintain a gate, portal, or similar magical pathway (Subject to GM.) for 1d4 rounds as an\
+      \ action.\n* Dark teachings -> Forbidden knowledge - Upgrade an occult cantrip you know twice. Gain 7 total spell\
+      \ levels worth of occult spells, none higher than 3rd level. Use wisdom as the casting modifier. You may spend a number\
+      \ of rest dice equal to the level at which you wish to cast the spell -1 (at a max possible level no higher than 1/2\
+      \ your total level, rounded up.)\n* Devotion -> Apotheosis - Gain a +20 bonus to max HP. Increase number of rerolls\
+      \ granted by devotion to 2 per rest.\n* Eternal pupil -> Final conclusion - Gain a +2 bonus to all skill checks. You\
+      \ gain a +2 bonus to saves vs fear, charm, and illusion effects, as well as mind override effects.\n* Healers gift\
+      \ -> Truth of necromancy - All healing and all necromancy damage you deal is increased by 1d4. You may use healers\
+      \ gifts active effect or any other healing ability or spell to instead deal necrotic damage to a target directly,\
+      \ dealing double damage. This effect has no save or block. Learn a necromancy cantrip and use wisdom as the casting\
+      \ modifier.\n* Hex discipline -> Hex Mastery - Learn 1 minor hex, 1 major hex, and 1 greater hex. Upgrade a single\
+      \ hex you know, do so 5 times.\n* Moon worship -> Lunar truth - The disadvantage from moon worship can be imposed\
+      \ 1 time more per rest, and the range is increased by 30 ft. Under a moon at night, you may spend a rest die or take\
+      \ 1 damage to fatigue to not have it count towards the limit.\n* Mystic warrior -> Shadow warrior - Learn an arcane\
+      \ or occult cantrip. Upgrade a cantrip you know twice. You may cast a melee spell-attack cantrip, spell, or scroll\
+      \ on a creature after a successful attack by using flurry and replacing the attack granted by the spell casting. Requires\
+      \ an action or bonus action casting time, which is done in place by the flurry attack. Does not refund rest dice if\
+      \ used in this way.\n* Sun worship -> Solar superior - Whenever you have advantage, roll an extra d20, and take the\
+      \ best result.\n* Thunder-father worship -> Cosmic cycles truth - You gain advantage on save vs effects that trigger\
+      \ death save effects. Your melee weapon attacks deal an extra 1d6 lightning damage.\n* Tonal arts -> Tonal architecture\
+      \ - The sonic damage bonus from Tonal arts is increased to 1d4. Learn a spell or cantrip that manipulates an object,\
+      \ pushes a creature, or deals sonic damage. Use your performance bonus as the casting modifier. If it is a spell,\
+      \ it costs a number of rest dice equal to the spells level to cast, or the level at which you wish to cast it (Max\
+      \ 1/2 your total level.)\n* Trained fist -> Cursed hands - Choose one on-hit effect that triggers whenever you make\
+      \ an unarmed or fist-weapon attack, making them magical:\n * Bursting touch - on a successful 1d4>3 chance dice, apply\
+      \ bleed to the target.\n * Burning palm - deal an extra 1d4 fire damage, and ignite on a critical hit.\n * Void punch\
+      \ - deal an extra 1d4 cold damage, and deal 1 damage to fatigue on a critical strike.\n * Screeching strikes - deal\
+      \ an extra 1d4 sonic damage which cannot be blocked. \n * Destructive resonance - Each consecutive unarmed attack\
+      \ on a creature deals 1 extra damage, up to a maximum of 10. This effect persists across turns and is per target.\
+      \ Resets upon not being hit for 1 minute.\n * Profane claws - Your unarmed damage becomes slashing and is increased\
+      \ by 1 damage size category. Your slashing damage dealing fist weapons deal an extra 1d4 slashing damage. You gain\
+      \ a +1 bonus to checks and DCs when grappling.\n* Warding aura -> Forbidden warding rune - You can gain a +2d4 bonus\
+      \ to a save vs a spell as a reaction by spending 1 rest die. You must make saves even vs friendly spells and magical\
+      \ effects.\n* Way of combat -> way of the reaper - Gain a +1 bonus to death saves. Whenever you slay a small or larger\
+      \ creature, regain 1d4 HP.\n* Way of fire -> Path of immolation - Fire damage you deal is increased by a further 4.\
+      \ You may spend a rest die during a rest to grant the ignite property and maintain it on one weapon you are proficient\
+      \ with.\n* Way of iron -> The law of power - Refund rest dice spend to make a maneuver without spending a bonus action,\
+      \ if the maneuver was a success (landed, triggered effect.) Gain an extra attack. Increase the range of thrown weapons\
+      \ by 30/60.\n* Way of water -> Disturbed flow - You can perform one extra move action or one extra bonus action (but\
+      \ not both) once on your turn.\n* Way of wind -> Way of storm - Your jump distance is increased by 30 ft. Gain expertise\
+      \ with acrobatics. If already expert, further increase jump distance by 10 ft. You gain resistance to lightning damage.\n\
+      * Way of the mountain -> Rockfall strike - You may spend 1 rest die when attacking from above (falling, jumping, or\
+      \ descending) to deal an extra 3d10 bludgeoning damage. Increase way of the mountain stun DCs by 1."
+  - heading: Forbidden art
+    body: |-
+      At 8th monk level, choose one
+
+      * Hemomantic transgression - You and your belongings can dissolve into a mist of blood on your turn, becoming ethereal and retaining your movement speed as a fly speed, at the cost of 2 rest dice. You cannot remain in this form for longer than 1 round, and can choose to reconstitute at will. You gain a +4 bonus to checks made to revive you from death if your blood is used in the remains.
+      * Eldritch communion - You are imbued with an eldritch substance, gaining regeneration 1 when below half health, wallclimbing, and the granting your melee and unarmed attacks an extra 5 ft of reach. Gain a +1 bonus to one physical attribute when obtaining this.
+      * Ley line parasitism - You can spend 2 rest dice as a bonus action or move action to blink to a location within a range 40 ft + your movement speed + your jump speed. You must have line of sight to the location. Once you do so, you can use this ability again at no rest dice until the end of your next turn. You can consume a 1d3 charges from a wand or destroy a gemstone worth 50 gold or more up to three times per rest to regain 1 rest die as an action.
+      * Dimworld access - You can spend 1 rest die to move between two points of shadow or darkness within sight. This ability has a 1d4>3 cooldown chance once used. Gain a +1 bonus to saves vs evocation and conjuration spells. Gain a +2 bonus to all attributes when in the ethereal plane or in dream realms.
+      * False time witness - You can spend 3 rest dice to gain an extra turn immediately after your own, resetting things to the way they were at the start of your previous turn. Can only be done once per rest.
+  - heading: Flurry unlocked
+    body: At 9th monk level, the first 6 times you use flurry each rest are free.
+  - heading: Dark flurry
+    body: |-
+      At 9th monk level choose one way to upgrade flurry:
+
+      * Thunderous onslaught method - You can spend an extra rest dice when using flurry before making any attacks, instead making a number of magical attacks equal to the number of attacks you would otherwise get with your flurry +1d3. For each attack, roll a 1d4 > 2 chance dice. On a success, deal your unarmed strike damage to the target and ignore block conditions. These cannot crit. This has a cooldown chance of 1d4>3 upon use.
+      * Blinking flurry - In place of an attack granted by flurry (if made before all attacks are made, flurry attacks can be weaved in between non-flurry attacks) you can blink up to 25 ft without provoking reactions. The range is increased by any bonuses to melee weapon or attack reach you have.
+      * Destructive resonance - When using flurry before an attack action, you can cause the target to take 1d3 extra sonic damage per other damage dice taken from all attacks, including the flurry attacks. This has a cooldown chance of 1d3>2 after use and disables flow while on cooldown (returning any temporary block once the ability is regained.)
+      * Explosive fists - When using flurry before making any attacks, your unarmed attacks deal an extra 1d6 fire or force damage (your choice when choosing the ability) that cannot be blocked, in a 10 ft outward cone originating from the recipient of your unarmed attack.
+  - heading: Forsake enlightenment
+    body: |-
+      At 10th monk level, your enlightenment (monk 4) ability only applies to intelligence saves.
+
+      Gain a +2 bonus to all mental attributes.
+
+      Gain a +10 bonus to max HP.
+
+      Gain a +1 bonus to your proficiency modifier.
+
+      Learn a level 4 and level 5 spell of choice, which must be arcane, occult, or mystic. You can cast it using wisdom as your casting attribute by spending 3 or 4 rest dice respectively. They are always cast at maximum level possible (1/2 your total character level, rounded up)
+  - heading: Delve further
+    body: At 11th monk level, either choose an extra Pursuant of the ways (monk 1) ability which is immediately upgraded
+      through darkened path or an extra monk training (monk 3) ability.
+  - heading: Immortal master
+    body: |-
+      At 12th monk level, you gain a +2 bonus to saves vs spell and magical effects that would dematerialize, disintegrate, totally incinerate or dissolve, remove from reality or the tapestry of time, or consecration or desecration effects. Your remains can still make saves vs such effects if you choose to, as though you were alive (Subject to GM.)
+
+      You age at 1/8th your normal rate.
+
+      Your maximum rest dice are increased by 2.
+
+      Your maximum death save slots are increased by 3.

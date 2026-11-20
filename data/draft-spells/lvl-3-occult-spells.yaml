@@ -1,0 +1,219 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/occult-magic/lvl-3-occult-spells
+section: spells
+entries:
+- name: Aspect of the weaver
+  group: Occult spells
+  lvl: '3'
+  types: transmutation, necromancy
+  casting: full round
+  components: 1d4 HP
+  duration: 2d12 minutes
+  range: 80/240 feet
+  effect: |-
+    As a full round action, sprout 8 spider legs from your back, gain 1d8 arcane health, and gain the following benefits for 2d12 minutes:
+
+    * Gain 20 feet of extra movement speed
+    * Gain the wall-crawler ability, allowing you to traverse vertical and inverted surfaces with ease.
+    * Your bite deals 1d8 extra poison damage.
+    * You gain darkvision at a range of 180 feet.
+    * You gain a +1 bonus to AC and block checks.
+    * You start combat with 1 temporary block, or gain 1 temporary block if casting this during combat.
+    * You can spend a bonus action to touch a surface and cover it in web, or link two places together with a touch. This allows you to create a 5 ft square surface of web, or a 10 ft rope of silk. You can do so to also weave simple clothing, but doing so is subject to the GM.
+- name: Bestow affliction
+  group: Occult spells
+  lvl: '3'
+  types: necromancy, transmutation, abjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: 80/240 feet
+  effect: |-
+    As an action, touch a creature, immediately dealing 1d8 necrotic damage to both you and the target. The target must then make a constitution save. On a failure, the target suffers the following effects:
+
+    * 2d6 acid damage
+    * 2d6 poison damage
+    * The target becomes afflicted, and must make a constitution save again at the start of each of their turns to end the affliction. On a failure, the target takes 1d8 necrotic damage.
+    * Any creature the target comes into physical contact with must make a constitution save to not become afflicted.
+    * If the creature dies while afflicted, its corpse remains afflicted. Any undead creature raised from the body of an afflicted creature will retain the affliction permanently.
+- name: Curse of failure
+  group: Occult spells
+  lvl: '3'
+  types: divination
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: 80/240 feet
+  effect: As an action, curse a creature within 60 feet. For the next day, you can choose to force them
+    to treat the result of a d20 roll as a natural 1. You can do this so long as you see the target. The
+    target can choose to resist this if aware of the magic and the caster, in which case they must make
+    a wisdom save to avoid the effect. You can do this to the target a number of times up to your casting
+    bonus (min 1.)
+- name: Eldritch bolt
+  group: Occult spells
+  lvl: '3'
+  types: transmutation
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: 80/240 feet
+  effect: As an action, cast a bolt of chaos as a spell attack at a target within 80 feet, dealing 1d10
+    lightning damage, 1d10 force damage, and 1d10 sonic damage. If the total damage is a prime number,
+    refund the spell slot.
+  higher_levels: At 4th level add 1d10 fire damage. At 5th level add 1d10 cold damage, at 6th level also
+    refund the spell slot if the damage number is one step away from a prime number.
+- name: Living chains
+  group: Occult spells
+  lvl: '3'
+  types: divination
+  casting: 1 action
+  components: Verbal, Somatic, material(30 ft of chains)
+  duration: 3d6 rounds
+  range: 30 feet
+  effect: |-
+    As an action, cause a segment of chain to come to life. You can order to do one of the following as a move action:
+
+    * move or leap 30 feet
+    * grapple a creature within 30 feet of it using your casting modifier +2 for its grapple check.
+    * become armor around a creature, granting 1 temporary block, falling off once the temporary block is lost.
+- name: Ride the lightning
+  group: Occult spells
+  lvl: '3'
+  types: Conjuration
+  casting: 2 full round actions.
+  components: Verbal, Somatic
+  duration: concentration
+  range: sight
+  effect: |-
+    After 2 full round actions transpose yourself to a location within sight, or to your previous rest site. If the location is under a sky, cause an arc of lightning to strike, requiring all creatures next to where you materialize to make a dexterity save. On a failure, they take 2d8 lightning damage and are stunned until the start of your next turn. On a success, they take half the damage. Targeting an area further than 600 feet may start to become inaccurate (subject to the GM)
+
+    Upcast: When cast as a 5th level spell, you may use it at a ley line stone to transport yourself to another stone like it (subject to the GM).
+- name: Meld to the void
+  group: Occult spells
+  lvl: '3'
+  types: Conjuration
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: Instantaneous
+  range: 15 feet
+  effect: |-
+    As an action, force a creature within 15 feet to make a wisdom save. On a failure, the target takes 4d8 + casting bonus psychic damage. On a success, they take half. If this kills the target, they are raised as a servant wisp for the caster.
+
+    A servant wisp can has an AC of 10, 2 health, a float speed of 20 feet, and can carry around one light object or tend to one simple task that the caster wishes, or can be used in place of an HP component of up to 1d4 HP in a spell.
+
+    A servant wisp can be consumed by the caster or an ally as an action to restore 1 rest die. Doing so also requires a successful charisma save, for creatures other than the caster. If the creature died on a critical failure, the wisp restores 1d2 rest dice and can be used up as a component of blood worth up to 1d8 HP.
+- name: Steal essence
+  group: Occult spells
+  lvl: '3'
+  types: Necromancy, Occult 3
+  casting: 1 action
+  components: Verbal, Attack, Extreme
+  duration: Instantaneous
+  range: reach
+  effect: |-
+    As an action, make a melee weapon attack against a creature within range while casting the spell. The attack deals an additional 6d6 necrotic damage. If the creature is slain by this attack and has a valid sentient soul with a past (subject to the GM,) then you permanently obtain the ability benefits of their background (subject to the GM) but not the proficiencies of the background.
+
+    If the spell is successful, then you permanently reduce your maximum death save slots by 1.
+
+    If the attack lands, but does not slay the creature, you gain 1 failed death save.
+- name: Vomit bees
+  group: Occult spells
+  lvl: '3'
+  types: Conjuration, Occult 3
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: concentration
+  range: self feet
+  effect: As an action, vomit a swarm of bees. You can choose to continue to vomit bees unto your next
+    turn, in which case you can choose to spend your action and bonus action to vomit an additional swarm
+    of bees each. A swarm of bees attacks the nearest enemy (subject to the GM) has a movement speed of
+    60 feet, and ignores you and your allies. Any creature they attack is shaken and distracted, and takes
+    1d6 + casting bonus poison damage at the start of their turn.
+- name: Warp lightning
+  group: Occult spells
+  lvl: '3'
+  types: Conjuration, Evocation, Necromancy, Occult 3
+  casting: 1 action
+  components: Verbal, Somatic, 1 HP worth of blood
+  duration: Instantaneous
+  range: special
+  effect: |-
+    As an action, unleash an arc of lightning by waving your casting hand onto a target within 60 feet but further than 15 feet. The target must make a dexterity save or take 4d8 lightning damage on a failed save. If the target critically fails the save, it and all adjacent creatures to it take an extra 1d8 lightning damage and you may spend a bonus action to deal an extra 2d8 damage to the target, either lightning, or psychic, your choice.
+
+    Invoke: As a bonus action when casting this spell, you may invoke one of the following effects:
+
+    * Increase the outer range of the spell by 30 feet and reduce the inner range by 5 feet.
+    * Increase all instances of damage dealt by 1d8 lightning damage.
+    * Increase all instances of damage dealt by 1d8 psychic damage.
+    * Increase the DC by 1.
+    * Stun all damaged creatures for 1 turn on a failed constitution save.
+
+    Upcast: Per spell level above 3rd, increase the damage dealt by 2d8.
+- name: Compel
+  group: Occult spells
+  lvl: '3'
+  types: Occult 3, enchantment
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: 1 turn
+  range: special
+  effect: As an action, compel a target creature you can see, that can hear you to do your bidding. If
+    the target fails a charisma save, you dictate what they do on their turn, for every action they have
+    available (that you know of.) The target can attempt one constitution or wisdom save for one action
+    to resist each turn.
+- name: 'Dragon aspect: rolling breath'
+  group: Occult spells
+  lvl: '3'
+  types: Evocation, Conjuration, Occult 3
+  casting: 1 action
+  components: Verbal, Somatic
+  duration: 1 turn
+  range: special
+  effect: |-
+    As an action, manifest a spectral drake head and breathe a rolling path of fire in the direction of your choice, originating outwards from your tile, or a tile 10 ft away from you. The path is 15 ft wide and travels 15 ft at the start of the next characters turn, and continues to do so until it has traveled for a number of turns equal to your casting modifier.
+
+    Characters hit by the rolling breath must make a dexterity save, taking 6d6 fire damage on a failure and half as much on a success. Creatures that critically fail the save are ignited.
+
+    If you have the ability to make a breath attack that deals a different type of damage, the damage type of this spell can be changed to fit the damage of your breath attack.
+
+    This is a dragon aspect spell, and requires that it be invoked when casting draconic sacrifice ritual (occult 2) in order to be able to cast this spell. Alternatively, the caster may sacrifice a true dragon heart during a rest and make a DC 17 arcana check. On a success, the spell is fully learned and castable.
+- name: 'Dragon aspect: Scales'
+  group: Occult spells
+  lvl: '3'
+  types: Transmutation, Occult 3
+  casting: action
+  components: Somatic, Verbal
+  duration: 3d4 rounds.
+  range: self
+  effect: |-
+    As an action, manifest dark iron draconic scales around your person and equipment for 3d4 rounds. For the duration, you gain a +3 bonus to AC and to saves vs direct or immediate damage inflicting spells.
+
+    The scales are heavy however, and apply slow 3 to you or any equipment you carry.
+
+    (the slow reduces movement speed by 5 feet per stack. It is reduced by strength bonus, down to a minimum of 1.)
+
+    This is a dragon aspect spell, and requires that it be invoked when casting draconic sacrifice ritual (occult 2) or Draconic blood communion ritual (Occult 4) in order to be able to cast this spell. Alternatively, the caster may sacrifice a pseudo dragon heart during a rest and make a DC 17 arcana check. On a success, the spell is fully learned and castable. On a failure, it remains locked.
+
+    Depending on the heart consumed when unlocking this spells ability to cast it, the scales have an additional property:
+
+    * Ritual, less than pseudo-dragon: The scales also grant resistance to fire damage.
+    * Ritual, pseudo-dragon: The scales grant resistance to fire damage and a damage type of the dragons color.
+    * Ritual, true dragon: The scales grant damage resistance to the dragons color, physical damage, and fire damage. If it was a pure fire dragon, the scales grant immunity to fire damage.
+- name: 'Dragon aspect: Wings'
+  group: Occult spells
+  lvl: '3'
+  types: Transmutation, Occult 3
+  casting: full round action
+  components: Somatic, Verbal
+  duration: 3d4 minutes.
+  range: self
+  effect: |-
+    As a full round action, manifest draconic wings. This requires you to not be bound and be able to let them grow.
+
+    For the duration, you gain a flight speed of either 30 ft, or your movement speed - 10, whichever is highest.
+
+    Dragonborn and kobold characters casting this spell have its duration increased to 3d12 minutes.
+
+    This is a dragon aspect spell, and requires that it be invoked when casting draconic sacrifice ritual (occult 2) or Draconic blood communion ritual (Occult 4) and consuming a dragonborn heart or better in order to be able to cast this spell. Alternatively, the caster may sacrifice a pseudo dragon heart or better during a rest and make a DC 17 arcana check. On a success, the spell is fully learned and castable. On a failure, it remains locked.
+  higher_levels: If cast with a 5th level spell slot, increase duration by to 3d12 minutes for non-draconic
+    casters and 2d6 hours to draconic casters. If cast at 6th, the duration becomes 2 hours for non-draconic
+    casters, and 1 day for draconic casters.

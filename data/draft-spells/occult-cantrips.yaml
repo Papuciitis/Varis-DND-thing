@@ -1,0 +1,286 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/occult-magic/occult-cantrips
+section: spells
+entries:
+- name: Arc
+  group: Occult cantrips
+  lvl: '0'
+  types: evocation, occult, cantrip
+  casting: action
+  components: verbal, somatic
+  range: 15 ft.
+  effect: As an action, pick a chain of up to as many creatures as your casting bonus, starting from you,
+    with gaps up to the range of the spell. The end of the chain can reach outside the max range given
+    in the spell. All creatures on the chain except you must make a constitution save. on a failure they
+    take 1d6 lightning damage, taking half on a success.
+  upgrades: |-
+    At 2nd, 4th, 6th, 8th, 10th, and 12th level choose an upgrade:
+
+    * Increase damage by 1d6. can be taken multiple times.
+    * Apply your casting bonus to damage dealt. Treat your casting modifier as 1 higher for this cantrip.
+    * Increase range by 5 ft. Increase dc by 1. Can be taken multiple times.
+    * You can instead target a weapon you wield, enchanting it instead to deal extra damage on the next number of attacks equal to your casting bonus -1 (min 1) lasts one minute and can only apply to one weapon at a time.
+- name: Bewitched dagger
+  group: Occult cantrips
+  lvl: '0'
+  types: conjuration, enchantment, occult, cantrip
+  casting: action
+  components: verbal, somatic, material(1 or 2 daggers)
+  range: held items
+  duration: 1 minute.
+  effect: |-
+    As an action, enchant a dagger in your possession. For the duration of the spell the dagger levitates by your side and can do one of the following as a free action every turn:
+
+    * Attack a creature within 30 feet as a spell attack with the dagger. The enchanted dagger does not use any modifiers.
+    * Distract a creature within 30 feet, granting it disadvantage on its next attack until the start of your next turn.
+
+    The dagger follows the caster after every action by default.
+  upgrades: |-
+    At 4th, 7th, and 10th level, choose an upgrade:
+
+    * The enchanted daggers can be commanded to protect the caster, granting 1 AC.
+    * The enchanted dagger gains advantage on attacks if the target is within 5 feet.
+    * You can enchant two daggers, allowing two commands instead of just one, and allowing the caster to use the daggers as steps to traverse walls when foregoing any commands.
+    * The caster can apply poison to all enchanted daggers as a bonus action.
+    * Enchanted daggers use the casters intelligence modifier.
+- name: Corrode
+  group: Occult cantrips
+  lvl: '0'
+  types: transmutation, occult, cantrip
+  casting: action
+  components: verbal, somatic, 1 HP
+  range: 15 ft
+  effect: |-
+    As an action, target an item. The item must make a constitution save, or the wielder must make a wisdom save to prevent corrosion. On a failure, the item either takes 1d6 + casting modifier acid or necrotic damage, or a -1 penalty. Can be used to reduce a creature
+
+    Can be cast on a construct, in which case you choose the save type and double the damage.
+  upgrades: |-
+    At 1st, 4th, 7th, and 10th level pick an upgrade
+
+    * Range is doubled. Can be taken twice.
+    * Damage type can be radiant.
+    * When cast on a weapon or ammunition, on a failed save, the item loses applied alchemical effects.
+    * Damage dice size is increased by 1 size category. Damage is increased by 1. Can be taken multiple times.
+    * If a wielder fails a save, they take 1d6 + fire damage unless they drop the item immediately.
+- name: Dark inscriptions
+  group: Occult cantrips
+  lvl: '0'
+  types: Divination, conjuration, enchantment, occult, cantrip
+  casting: action
+  components: verbal, somatic, 1 HP used as ink
+  range: 10 feet
+  effect: |-
+    As an action, sacrifice 1 health and turn it into enchanted ink to inscribe eldritch runes on a a surface, creature, or an object:
+
+    * A surface - You can inscribe a 5x5 foot surface in runes, causing it to cast a predetermined spell of yours on the next creature that comes into contact with the surface. You lose the associated spell slot of any spell cast in such a way, unless it is a cantrip. If a creature dies from this, you gain a black page.
+    * A creature - You can communicate with the target telepathically, and can share another cantrip with it, if you have one. You may have only as many creatures marked in this way as your casting bonus allows. If a marked creature dies, you gain a black page.
+    * An object - You can mark only 1 object at a time in this way. The marked object is treated as magical. You have an innate understanding of the direction and distance of the marked object. You are innately aware of creatures interacting with the object. Any creature that holds the marked object can be a valid target of any of your spells or abilities regardless of range. If a creature is killed while holding the marked object, gain a black page.
+- name: Darkness
+  group: Occult cantrips
+  lvl: '0'
+  types: evocation, abjuration, passive, concentration, occult, cantrip
+  casting: action
+  components: somatic
+  range: 30 foot sphere within 60 feet
+  effect: |-
+    As an action, cause an 30 foot sphere within 60 feet to dim in brightness, causing bright areas to become dim, and dim areas to become dark. Small or dim lights such as candles, small torches, and matches within the target area are extinguished.
+
+    Passive: Gain darkvision at a range of 60 feet. Gain a +1 to DC and spell attack rolls of your other spells and cantrips while in darkness.
+  upgrades: At 7th level, the area becomes a 60 foot sphere, and the inner 30 feet always become dark.
+- name: Devitalize
+  group: Occult cantrips
+  lvl: '0'
+  types: necromancy, abjuration, occult, cantrip
+  casting: action
+  components: verbal, somatic
+  range: 30 ft.
+  effect: As an action, cause up to a 10 ft sphere within range to take 1d4 + 1 cold damage and require
+    creatures within the area to make a constitution save. On a failure, they are weakened for 1 turn.
+    On a success, they take half damage.
+  upgrades: |-
+    At 3rd, 7th, and 11th level, choose an upgrade:
+
+    * Increase range by 10 ft and max sphere size by 5 ft. Can be taken multiple times.
+    * Increase debuff duration by 1 turn.
+    * Creatures that fail the save are also sickened.
+    * The area affected has its small and medium fires put out, as well as minor magical lights dispelled. You can spend a rest dice to freeze liquids solid in the area of effect.
+    * The cold damage is increased by 2d4 and scales with casting modifier. Can be taken multiple times, increasing the damage by 2d4 extra each time.
+- name: Eldritch blast
+  group: Occult cantrips
+  lvl: '0'
+  types: conjuration, evocation, occult, cantrip
+  casting: action
+  components: somatic, verbal
+  range: 60/120 feet spell attack
+  effect: Make a ranged spell attack against a target within range, dealing 1d8 + casting modifier force
+    damage.
+  upgrades: |-
+    At 3rd, 5th, 7th, 9th, and 11th level, choose 1 upgrade. Unless otherwise stated, an upgrade can be taken multiple times:
+
+    * Gain an extra spell attack. It can target a different creature.
+    * Spell attacks have repel 1
+    * Spell attacks have critical 1
+    * Increase range by 60/120
+    * This cantrips spell attacks have a cumulative +1 bonus to hit (The first attack would be at +1, the second +2, etc.) Can only be taken once.
+    * This cantrips spell attacks gain ricochet. They can be retargeted on an initial miss. Can only be taken once.
+- name: False image
+  group: Occult cantrips
+  lvl: '0'
+  types: illusion, enchantment, concentration, occult, cantrip
+  casting: action
+  components: verbal
+  range: creature or object within 25 feet.
+  effect: |-
+    As an action, cause a creature or object to appear different. An object can appear to be a different object of similar size, and a creature can appear to be a different creature of similar size.
+
+    Once a creature examines the enchanted entity, it can make a wisdom save. On a success, it sees through the illusion.
+
+    If attention is brought to the notion that the target of the cantrip is not what it seems, the observing creatures can attempt a save to see through the illusion.
+  upgrades: At 4th, 7th, and 10th level, upgrade the cantrip to increase the number of simultaneous targets
+    that you can affect by 1.
+- name: Fell strike
+  group: Occult cantrips
+  lvl: '0'
+  types: evocation, necromancy, occult, cantrip
+  casting: bonus action
+  components: verbal, material (a melee weapon)
+  save: special
+  range: self
+  effect: |-
+    as a bonus action, enchant a melee weapon you are wielding. Its next attack until the start of your next turn will deal an extra 1d6 damage. This damage is multiplied on a critical hit. The attack is treated as magical. The damage type is chosen when casting the spell and has an associated effect:
+
+    * Force. On hit, the target of the attack must make a strength save, or be pushed back 10 feet.
+    * Fire. On hit, the target of the attack must make a dexterity save, or be set on fire.
+    * Necrotic. On hit, the target of the attack must make a constitution save, or it gains 1 fatigue.
+  upgrades: |-
+    At 4th, 6th, 8th, and 10th level, choose an upgrade:
+
+    * increase the damage dice by 1 size category. Can be taken multiple times.
+    * On a killing blow the action cost of the cantrip is not spent.
+    * Gain a +1 bonus to hit and damage on the enchanted attack.
+    * Gain a new damage type: Lightning. On hit, the target is shocked for 1 turn. On critical hit, they are stunned instead.
+- name: Leech
+  group: Occult cantrips
+  lvl: '0'
+  types: necromancy, occult, cantrip
+  casting: action
+  components: verbal, somatic
+  save: constitution
+  range: 45 feet
+  effect: As an action, cause a creature within range to make a constitution save. On a failure, they
+    take 1d4 necrotic damage and you gain 1d4 arcane health.
+  upgrades: At 4th, 7th, and 10th level, increase dice by 1 size category.
+- name: Lesser curse
+  group: Occult cantrips
+  lvl: '0'
+  types: divination, necromancy, occult, cantrip
+  casting: action
+  components: verbal
+  range: 30 ft
+  effect: |-
+    As an action, curse a creature within range. It must make a charisma save. On a failure, they become cursed for 1 hour or until you cast the cantrip again. A cursed creature takes 1d3 extra damage from your attacks, spells, items, and abilities.
+
+    A creature can become subject to a lesser curse from multiple creatures, in which case they have one curse dice effect but a +1 bonus to it per curses past the first.
+  upgrades: |-
+    At 3rd, 7th, and 11th level, pick an upgrade.
+
+    * Increase damage by 1 size category. Can be taken multiple times.
+    * The target takes the penalty to saves and block checks from your attacks and abilities.
+    * The target takes the penalty to skill checks.
+- name: Mind-spike
+  group: Occult cantrips
+  lvl: '0'
+  types: enchantment, occult, cantrip
+  casting: action
+  components: verbal
+  range: 30 ft
+  effect: As an action, cause a creature within range to make a wisdom save, taking 1d4 + charisma modifier
+    psychic damage on a failure, and half on a success. The target becomes aware of your direction on
+    a successful save.
+  upgrades: |-
+    At 2nd, 5th, 8th, and 11th level, choose an upgrade:
+
+    * damage dice size by 1 size category, and range by 10 ft. Can be taken multiple times
+    * critically strikes if the target critically fails the save.
+    * Apply sickened, weakened, distracted, shocked, or shaken on a failed save for 1 turn.
+    * Also apply your intelligence modifier to the damage dealt.
+- name: Sacrifice
+  group: Occult cantrips
+  lvl: '0'
+  types: necromancy, occult, cantrip
+  casting: action
+  components: somatic, verbal
+  range: 60 feet
+  effect: Mark an enemy for death as an action. Only one enemy may be marked at a time. If until the end
+    of your next turn the marked enemy dies within range of you, you regain 1 rest die.
+- name: Spark sign
+  group: Occult cantrips
+  lvl: '0'
+  types: evocation, occult, cantrip
+  casting: action
+  components: somatic, verbal
+  range: 10 feet
+  effect: Cast a minor or crude spark sign as an action or bonus action, respectively, causing a spark
+    at a tile within range. Creatures caught in the effect must make a dexterity save, taking 2d4 + casting
+    bonus fire damage for a minor sign, and taking 1d4 fire damage for a crude sign on a failure. Creatures
+    that critically fail the save become ignited.
+  upgrades: |-
+    At 2nd, 5th, 8th, and 11th level choose an upgrade:
+
+    * Damage is increased by 1d4. Can be taken multiple times.
+    * Can cast a greater sign by spending both an action and bonus action, causing the effect to target a cone within range.
+    * Increase range by 5 ft, can spend a movement action while casting to further extend it by 5 ft.
+- name: Spinning disc
+  group: Occult cantrips
+  lvl: '0'
+  types: conjuration, evocation, occult, cantrip
+  casting: action
+  components: somatic
+  range: 5 feet
+  effect: As an action, cause all creatures within melee range to take 1d6 + casting bonus slashing damage.
+    Creatures affected can make a dexterity save to halve the damage.
+  upgrades: |-
+    At 4th, 7th, 10th level choose an upgrade:
+
+    * Increase the damage dice by 1 category. Can be taken multiple times
+    * Increase the range by 5 feet, allowing you to target all creatures 10 feet away instead. Can be be taken twice to allow targeting both ranges at the same time.
+    * Change the casting time to a bonus action.
+    * Gain 1 arcane health for every small or larger creature hit.
+- name: Spoil
+  group: Occult cantrips
+  lvl: '0'
+  types: necromancy, occult, cantrip
+  casting: special
+  components: verbal, somatic
+  range: 40 feet.
+  effect: |-
+    As a reaction to another creature that is making a reaction, cause that creature to make a constitution save. On a failure, the targets reaction is wasted instead.
+
+    Or, as an action, cause one piece of food or drink, one potion, or one small container of water within range to become poisoned. If any of it is consumed, the creature that consumes it must make a constitution save to not become poisoned for up to 1 hour.
+  upgrades: |-
+    At 5th level, creatures also become sickened, and take 1d6 unblockable poison damage.
+
+    At 9th level, creatures also become stunned for 1 turn, and take an extra 1d6 unblockable acid damage.
+- name: Spawn spiderlings
+  group: Occult cantrips
+  lvl: '0'
+  types: necromancy, conjuration, occult, cantrip
+  casting: special
+  components: verbal, somatic
+  range: 20 feet.
+  effect: As an action, conjure a poisoned spiderling within range. A poisoned spiderling is tiny, has
+    a move speed of 30, spiderclimb, 13 AC, 1HP, and a +1 1d3 piercing damage bite attack that cannot
+    be blocked. A spiderling automatically fails saves, is frail, acts after your turn, and has no check
+    bonuses, ignores difficult terrain, and is immune to poison damage. Spiderlings understand simple
+    commands you give them. You can cause any number of spiderlings to explode as a bonus action or reaction,
+    dealing 1d4 + your casting modifier poison damage to all adjacent creatures. A poisoned spiderling
+    decays and withers after 10 rounds. Two spiderlings can occupy one tile.
+  upgrades: |-
+    At 2nd, 4th, 6th, 8th, 10th, and 12th level choose an upgrade:
+
+    * You can conjure a spiderling as a bonus action.
+    * You can cast this spell on a target corpse or carrion. If it is small, conjure 1d3 spiderlings. For each size above small, conjure 1d3 extra spiderlings. This consumes the corpse.
+    * You conjure an extra spiderling.
+    * Spiderling bite damage deals an extra 1d3 acid damage, and the spiderling explosion damage is changed to acid.
+    * Increase spiderling explosion damage by 1d4. Can be taken multiple times.
+    * Spiderling movement speed is increased by 10 ft, their AC is increased by 1, and has its attack bonus increased by 2.
+    * Choose another spell, cantrip, or class ability you know. It creates a spiderling for every creature slain by it. Once chosen it cannot be changed.

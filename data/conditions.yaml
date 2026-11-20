@@ -3,17 +3,16 @@ conditions:
   other conditions:
     Prone:
       desc: >-
-        A prone characters movement speed is reduced to 5 feet. Ranged attacks against them that are not in point-blank
-        range have disadvantage. Melee attacks them have advantage. Prone characters melee attacks have disadvantage. You can
-        spend a bonus action to stand up and not be prone anymore.
+        A prone character's movement speed is reduced to 5 feet. Ranged attacks against them that are not in point-blank
+        range have disadvantage. Melee attacks against them have advantage. A prone character's melee attacks have disadvantage. You can
+        spend a bonus action to stand up and end the condition.
 
     Fatigue:
       desc: >
-        Fatigue is an innate property of characters, damage to which(from abilities with "gain X fatigue" or "gain y fatigue")
-        is expressed as a condition which ranges in value from 1 to 10, 10 being the highest.
-        The level of fatigue applies in levels, granting an increasing penalty to dice.
+        When an ability makes a character gain fatigue, record the damage as a condition with levels from 1 to 10, with 10 the highest.
+        Each level of fatigue applies an increasing penalty to rolls.
         
-        1: -1 penalty
+        1: -1 penalty.
         2: -1d2 penalty.
         3: -1d3 penalty.
         4: -1d4 penalty.
@@ -23,28 +22,29 @@ conditions:
         10: -1d12 penalty. When gaining more fatigue, instead make a DC 10 constitution save, and automatically fail a death
         save on a failure.
       
+        The rules do not specify penalties for the two unlisted levels.
+
         Fatigue is fully restored during a long rest.
-        After a short rest, a number of levels of fatigue are lost equal to your con modifier(min 1). 
-        During a short rest, you can choose to spend 1 rest dice to remove one level of fatigue.
+        After a short rest, a number of levels of fatigue are lost equal to your con modifier (min 1).
+        During a short rest, you can choose to spend 1 rest die to remove one level of fatigue.
 
     Grappled:
       desc: >-
         A grappled character is usually grappled by at least one other character. 
 
-        Grappled characters cannot make move actions, but can spend it to attempt a contested strength check to move themselves and the grappling character 5 feet.
+        Grappled characters cannot make move actions, but can spend a move action to attempt a contested strength check to move themselves and the grappling character 5 feet.
         Grappled characters have disadvantage on block checks.
 
-        A grappled condition ends if the restraining character is incapacitated, or if by some effect the grappled character exits the reach of theeir grapplers.
+        The grappled condition ends if the restraining character is incapacitated, or if by some effect the grappled character exits the reach of their grapplers.
 
     On-fire/Burning:
       desc: >-
         Creatures set on fire take damage at the start of each of their turns, 
-        depending on their size(small/smaller - 1d4, medium - 1d6, large - 1d8, etc.)
+        depending on their size (small/smaller - 1d4, medium - 1d6, large - 1d8, etc.)
 
-        Getting soaked can end the condition.
+        Becoming soaked can end the condition.
 
-        A character may also attempt to stop-drop-and-roll, by dropping prone, maing a 
-        dexterity save at the start of the action. On a success, the 
+        A character may also drop prone and roll, making a Dexterity save at the start of the action. On a success, the burning condition ends.
 
     Bleeding:
       desc: >-
@@ -52,14 +52,14 @@ conditions:
         (small/smaller - 1d4, medium 1d6, large/larger - 1d8)
         Bleeding stacks, multiplying the dice per stack.
 
-        At the start of a characters turn, they may make a DC 15 constitution save to remove 1 stack 
+        At the start of a character's turn, they may make a DC 15 constitution save to remove 1 stack
         of bleeding.
 
-        A DC 15 medical check with either a rag, bandage, or a set of healers/doctors tools may by 
-        performed by a character to remove 1 condition of bleeding.
+        A DC 15 medical check with either a rag, bandage, or a set of healer's or doctor's tools may be
+        performed by a character to remove 1 stack of bleeding.
 
-        If by some reason you are magically or alchemically healed by an effect which restored health
-        and involves dice("restore 2d6+2 HP" instead of "Restore 2 HP") you may negate one dice and 
+        If magic or alchemy heals you with an effect that restores health
+        and involves dice ("restore 2d6+2 HP" instead of "Restore 2 HP") you may forgo one die and
         remove one instance of bleeding instead.
 
     Frostbite:
@@ -71,8 +71,8 @@ conditions:
 
         If hours are used, increase it to 1d6 per stack.
 
-        If by some reason you are magically or alchemically healed by an effect which restored health
-        and involves dice("restore 2d6+2 HP" instead of "Restore 2 HP") you may negate two dice and 
+        If magic or alchemy heals you with an effect that restores health
+        and involves dice ("restore 2d6+2 HP" instead of "Restore 2 HP") you may forgo two dice and
         remove one instance of frostbite instead.
 
     Soaked:
@@ -81,7 +81,7 @@ conditions:
 
         You have resistance to fire damage, so long as that damage is 10 or less.
 
-        You have disadvantage on saves vs lightning and cold damage dealing spells and abilities.
+        You have disadvantage on saves against spells and abilities that deal lightning or cold damage.
 
     Maimed:
       desc: >-
@@ -99,7 +99,7 @@ conditions:
     Invisible: 
       desc: >-
         An invisible creature is impossible to see without the aid of magic or a special sense. 
-        The creatures location can still be discovered by noises ir makes or tracks it leaves.
+        The creature's location can still be discovered by noises it makes or tracks it leaves.
         
         Attack rolls against invisible creatures have disadvantage, even if that attacker is aware of
         where the invisible creature is supposed to be.
@@ -107,11 +107,11 @@ conditions:
     Ethereal:
       desc: >-
         An ethereal creature becomes immune to physical damage and unable to attack or meaningfully
-        interract with the material world, but can still be detected as their ghostly image remains 
+        interact with the material world, but can still be detected as their ghostly image remains
         visible. 
         
         An ethereal creature can walk on solid physical surfaces of any kind, may move 
-        through walls as though there was nothing there, and has perfect darkvision. While walking
+        through walls as though there were nothing there, and has perfect darkvision. While walking
         through a solid, they move at the fastest of their climb, swim, or fly speed.
 
         If an ethereal creature loses its ethereal nature while encased or moving through solids, 
@@ -121,11 +121,11 @@ conditions:
     Diseased:
       desc: >-
         A diseased character is any character who has contracted a disease. If a diseased character
-        spends no rest dice during a short rest, they may attempt a constitution save vs the disease.
+        spends no rest dice during a short rest, they may attempt a Constitution save against the disease.
         On a success, they may lose one mundane disease.
 
         The DC and negative effects are specific to each disease, but being diseased makes healing half
-        as effective(rounded down, min 0.)
+        as effective (rounded down, min 0.)
 
         On a long rest, if given good conditions, a character may lose all diseases.
 
@@ -142,28 +142,28 @@ conditions:
   loss of function conditions:
 
     Dazed: 
-      desc: you cannot use bonus actions. 
+      desc: You cannot use bonus actions.
 
     Shocked: 
-      desc: you cannot use reactions. 
+      desc: You cannot use reactions.
       special: If below 9 constitution, make a DC 10 wisdom save when becoming shocked, fainting on a failure.
 
     Blinded: 
-      desc: you cannot see, make block checks, or make vision-based checks. All attacks you make have disadvantage, and you can only target adjacent tiles.
+      desc: You cannot see, make block checks, or make vision-based checks. All attacks you make have disadvantage, and you can only target adjacent tiles.
 
     Deafened: 
-      desc: you cannot hear or make hearing based checks. 
-      special: When casting spells with verbal components, make a DC 15 performance check, fizzling it on a failure.
+      desc: You cannot hear or make hearing-based checks.
+      special: When casting spells with verbal components, make a DC 15 performance check. The spell fizzles on a failure.
 
     Incapacitated:
       desc: You cannot perform any action or reaction.
 
     Winded:
       desc: You cannot perform reactions. At the start of your turn, you must forfeit one action, bonus action, or move action. 
-      special: Becoming winded againt requires a DC 13 constitution save. On a failure, the character becomes exhausted for the duration instead.
+      special: Becoming winded again requires a DC 13 constitution save. On a failure, the character becomes exhausted for the duration instead.
 
     Exhausted:
-      desc: You cannot perform reactions. At the start of your turn, you must forfeit two action types(regular, bonus, or move.)
+      desc: You cannot perform reactions. At the start of your turn, you must forfeit two action types (regular, bonus, or move.)
       special: Becoming winded or exhausted while exhausted instead incurs 1 damage to fatigue.
 
     Stunned: 
@@ -174,8 +174,8 @@ conditions:
       desc: You are incapacitated, cannot block, cannot speak or make saves. You automatically fail strength, dex, int, and wis saves.
 
     Hobbled:
-      desc: Cannot spend move actions. Movement speed if halved. May still move or dash with standard action.
-      special: If below 10 dexterity, movement speed is instead reduced to 1/3 (rounded up, min 5ft.)
+      desc: Cannot spend move actions. Movement speed is halved. May still move or dash with a standard action.
+      special: If below 10 dexterity, movement speed is instead reduced to 1/3 (rounded up, min 5 ft.)
 
     Snared: 
       desc: Cannot move.
@@ -185,41 +185,41 @@ conditions:
   disadvantage conditions:
 
     Weakened: 
-      desc: your attacks have disadvantage.
+      desc: Your attacks have disadvantage.
 
     Off-balance:
-      desc: your block checks have disadvantage. 
+      desc: Your block checks have disadvantage.
 
     Disoriented: 
-      desc: your attack and block checks have disadvantage. You cannot target creatures further than 15ft away. 
+      desc: Your attack and block checks have disadvantage. You cannot target creatures further than 15 ft away.
 
     Sickened: 
-      desc: your physical skill checks and saves have disadvantage.
-      special: You must make a DC 14 constitution save when consuming a potion in order to not vomit it out and lose it's effect.
+      desc: Your physical skill checks and saves have disadvantage.
+      special: You must make a DC 14 constitution save when consuming a potion in order to keep it down and benefit from its effect.
 
     Confused: 
-      desc: your mental skill checks and saves have disadvantage. You cannot make reactions or maintain concentration.
+      desc: Your mental skill checks and saves have disadvantage. You cannot make reactions or maintain concentration.
       special: If below 10 intelligence, you cannot read or cast spells with verbal or somatic components.
 
     Poisoned: 
-      desc: your saves and skill checks have disadvantage.
+      desc: Your saves and skill checks have disadvantage.
 
     Intoxicated: 
-      desc: your d20 rolls have disadvantage.
+      desc: Your d20 rolls have disadvantage.
 
   
   combat conditions:
 
     exposed:
       desc: The next attack against you has advantage.
-      special: unless otherwise stated, taking damage or moving removes the condition.
+      special: Unless otherwise stated, taking damage or moving removes the condition.
 
     tricked:
       desc: The next maneuver against you has no cost, or the next save you make has disadvantage.
-      special: unless otherwise stated, taking damage, moving, or making a save removes the condition.
+      special: Unless otherwise stated, taking damage, moving, or making a save removes the condition.
 
     distracted:
-      desc: Your
+      desc: Your mental skill checks and saves have disadvantage. You cannot take reactions or maintain concentration.
 
 
   fear effect conditions:
@@ -253,11 +253,11 @@ conditions:
       desc: >-
         A fascinated creature cannot target creatures other than the source of its fascination, and has disadvantage 
         on perception checks on things other than the source of its fascination.
-      special: Taking damage, direct interaction, and sudden noises end being fascinated. 
+      special: Taking damage, direct interaction, and sudden noises end the condition.
 
     enraged:
       desc: >-
-        An enraged creature must make an attack action or somehow perform attack at the start of their turn if 
+        An enraged creature must make an attack action or otherwise attack at the start of their turn if
         possible, and treats all other creatures as enemies for the purposes of spells and abilities. An enraged 
         creature must make saves even VS previously allied or beneficial spells.
       special: >-
@@ -276,7 +276,7 @@ conditions:
       spec: If above 18 wisdom, may make a wisdom save at the start of the turn to become stunned for 1 round.
 
     madness:
-      desc: A creature with madness has disadvantage on all skill checks, mental saves, and cannot benefit from their proficiency modifier.
+      desc: A creature with madness has disadvantage on all skill checks and mental saves, and cannot benefit from their proficiency modifier.
       special: If below 18 intelligence, madness also prevents coherent speaking. If below 12, you automatically fail perception checks.
 
     clarity:

@@ -1,0 +1,595 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/druid-x
+- name: Druid
+  group: Base class
+  description: Of the old ways that are forgotten by history, the druids are the mystics, fortunetellers, oracles, and grove
+    wardens that are the inheritors of dying and less known traditions. Druids are either given or have earned the magical
+    gift of mysticism from the descendants of the old circles, which are rumored to be orders whose founding oaths are long
+    since lost.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      rows:
+      - - '1'
+        - '+2'
+        - Spellcasting, cantrips, bestow insight
+      - - '2'
+        - '+2'
+        - Ability score improvement
+      - - '3'
+        - '+2'
+        - Mysticism
+      - - '4'
+        - '+3'
+        - Druid circle
+      - - '5'
+        - '+3'
+        - 1st archetype
+      - - '6'
+        - '+3'
+        - Ability score improvement
+      - - '7'
+        - '+4'
+        - '-'
+      - - '8'
+        - '+4'
+        - '-'
+      - - '9'
+        - '+4'
+        - 2nd archetype
+      - - '10'
+        - '+5'
+        - Ability score improvement
+      - - '11'
+        - '+5'
+        - '-'
+      - - '12'
+        - '+5'
+        - '-'
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d6
+
+      Armor: none
+      Weapons: Quarterstaff, Dagger, 4 simple weapons, 1 martial weapon
+      Tools: one set of tools
+      Saving throws: Wisdom, Constitution
+      Skills: choose two from Animal handling, Athletics, History, Insight, Medicine, Nature, Perception, Survival
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) quarterstaff, (b) a dagger
+      * (a) a burglar’s pack, (b) a dungeoneer’s pack, or (c) an explorer’s pack
+      * Padded armor
+  - heading: Spellcasting and cantrips
+    body: |-
+      At 1st level, you gain access to mystical spellcasting, allowing you to cast and learn spells from the mystic magic list.
+
+      Casting attribute - The casting attribute used is wisdom.
+
+      Spells known - You have a limited number of spells known that increases as you level up. When you learn new non-cantrip spells as a druid, you can learn any spell from the mystic magic spell list, picking spells that are up to a level equal to 1/2 your total level (rounded up.)
+
+      Slot mechanics - You also have a limited number of mystic spell slots, split by spell level, as indicated in the chart below. You may spend a mystic spell slot to cast a mystic spell at the level of the slot used. A spell requires a slot that is at least equal to the level of that spell.
+
+      Cantrips - You also learn a number of mystic cantrips as indicated in the chart below.
+
+      Swapping spells - At every level-up you can swap out an old known spell for a new one.
+
+      Per-rest slot regain - Every rest, you regain a spell slots of a combined spell level equal to 1/2 your druid level (rounded up.) The distribution of the slots is up to you, but the regained slots cannot exceed the maximum spell level that you can cast.
+  - heading: Spell slots and spells known
+    body:
+      columns:
+      - Level
+      - Cantrips
+      - Level 1 slots
+      - Level 2 slots
+      - Level 3 slots
+      - Level 4 slots
+      - Level 5 slots
+      - Level 6 slots
+      - Spells known
+      rows:
+      - - '1'
+        - '2'
+        - '1'
+        - —
+        - —
+        - —
+        - —
+        - —
+        - '2'
+      - - '2'
+        - '2'
+        - '2'
+        - —
+        - —
+        - —
+        - —
+        - —
+        - '5'
+      - - '3'
+        - '2'
+        - '2'
+        - '1'
+        - —
+        - —
+        - —
+        - —
+        - '7'
+      - - '4'
+        - '2'
+        - '3'
+        - '2'
+        - —
+        - —
+        - —
+        - —
+        - '10'
+      - - '5'
+        - '3'
+        - '3'
+        - '2'
+        - '1'
+        - —
+        - —
+        - —
+        - '12'
+      - - '6'
+        - '3'
+        - '3'
+        - '3'
+        - '2'
+        - —
+        - —
+        - —
+        - '15'
+      - - '7'
+        - '3'
+        - '3'
+        - '3'
+        - '2'
+        - '1'
+        - —
+        - —
+        - '17'
+      - - '8'
+        - '3'
+        - '4'
+        - '3'
+        - '2'
+        - '2'
+        - —
+        - —
+        - '20'
+      - - '9'
+        - '4'
+        - '4'
+        - '4'
+        - '3'
+        - '2'
+        - '1'
+        - —
+        - '22'
+      - - '10'
+        - '4'
+        - '4'
+        - '4'
+        - '3'
+        - '2'
+        - '2'
+        - —
+        - '25'
+      - - '11'
+        - '4'
+        - '5'
+        - '4'
+        - '3'
+        - '3'
+        - '2'
+        - '1'
+        - '27'
+      - - '12'
+        - '4'
+        - '5'
+        - '4'
+        - '3'
+        - '3'
+        - '3'
+        - '2'
+        - '30'
+  - heading: Bestow insight
+    body: At 1st level, you can bestow insight to a creature within 30 feet as a bonus action, restoring 1 rest die to them.
+      You can do this a number of times per long rest equal to your wisdom bonus - 2 (min 1.)
+  - heading: Ability score improvement
+    body: |-
+      At 2nd, 6th, and 10th level, you can increase one ability score by 2, or increase two ability scores by 1. Alternatively, gain a feat.
+
+      Also, whenever you gain an ability score improvement, choose one of the following:
+
+      * Gain proficiency with Arcana. If already proficient, gain expertise. If already expert, gain an arcane cantrip. Use either wisdom or int as the casting attribute.
+      * Gain proficiency with Religion. If already proficient, gain expertise. If already expert, gain an oath cantrip.
+      * Gain proficiency with a weapon of choice. Can be taken again to gain a 1d4 bonus to damage dealt by the chosen weapon type.
+      * Increase the number of uses of Bestow insight by 1. Can be taken multiple times.
+      * Gain darkvision at a range of 120 feet or extend it by 120 feet.
+      * Gain enhanced scent, your checks involving smell gain advantage.
+      * Specialize a cantrip you know, reducing its casting time from 1 action to 1 bonus action.
+      * Gain proficiency with light armor. If already proficient with light armor, gain proficiency with medium armor. If already proficient with either, gain 1 temporary block at the start of every encounter.
+  - heading: Mysticism
+    body: |-
+      At 3rd level, you can spend a rest die as a reaction to force a creature within sight to remake a d20 roll. If this results in a natural 20 or a natural 1, the rest dice cost is refunded.
+
+      Alternatively, you can spend 1 rest die to reroll a chance die rolled by your or a creature within 20 ft as a reaction. If this results in a success, the rest dice cost is refunded.
+  - heading: Druid circle
+    body: |-
+      At 4th level, choose one druid circle from the list below, gaining its abilities and changes to your character. A druid circle reflects a characters path to the mystical arts and their alignment with the magical world.
+
+      * The Fox
+      * Cunning - You gain a +2 bonus to sleight of hand checks and persuasion checks.
+      * Stolen wisdom - You can read any scroll or book you steal (take without permission, which you do not originally own) regardless of language, and you gain an extra non-druid cantrip that you can cast by using wisdom as the main modifier.
+      * Dancing gest - When you roll a natural 19 or 20 on a saving throw against an illusion or enchantment spell that creates illusory creatures or objects, you can seize part of the illusion. Choose one object, creature, or distinct segment of the effect. That portion of the illusion comes under your control for the spell’s remaining duration. Its statistics, appearance, and save DCs remain the same as the original effect.
+      * The god's ire - You cannot learn new conjuration or abjuration spells, unless you have a scroll, wand, or mentor of the spell first.
+      * The Lotus
+      * Spirit reach - Your spell ranges are increased by 15 ft or half, whichever is higher.
+      * Ki cultivation - You have 2 Ki points that are restored every long rest. A Ki point can be used to increase the effective level of a spell you cast by 1, or to cast a spell as if using a 1st-level spell slot. This cannot cast it higher than the highest level you could cast.
+      * Deny false reality - You can no longer learn illusion spells.
+      * The Moth
+      * To the flame - You gain one extra life if you die by fire or enemy means. Once this is done, you gain the following benefits:
+        * Your max HP is reduced by 3.
+        * You can swap 1 druid spell known with an occult spell of the same or lower level during a rest. These are still cast the same as druid spells but no longer count as druid spells for the purposes of this ability.
+        * You gain resistance to fire, poison, and cold damage.
+      * Dark enlightenment - You can alter a healing or temporary health spell, causing it to instead deal fire damage to creatures it would otherwise heal or protect, equal to the amount it would heal or the amount of temporary health it would grant.
+      * The third path - You are instantly incinerated and atomized if by any means you are turned into a true undead.
+      * The Owl
+      * The pursuit of wisdom - You gain a +2 bonus to wisdom.
+      * Insight divine - Divination spells you cast have their range doubled, their DC increased by 1, and their duration increased by 1 unit size ( rounds > minutes > hours > days > years )
+      * Forbid the dying force - You cannot learn new necromancy spells. If you are given a necromancy spell by an archetype or class, you may replace it with a different spell of that level (subject to GM.) This does not prevent you from casting necromancy scrolls or wands.
+      * The Raven
+      * Lore keeper - You gain a +1 bonus to all intelligence-based skill checks.
+      * Collector of magic - When swapping out druid spells known, you may replace a number of them with arcane or oath spells. The number of such swapped non-druid spells cannot exceed 1/4th of your druid spells known (rounded down.)
+      * Crowfathers fate - When using mysticism, the reroll has a -1 penalty.
+      * The Serpent
+      * The indirect path - You gain a +2 bonus to deception, stealth, and disguise checks.
+      * Greater influence - You can choose to spend an extra rest dice when using mysticism, thereby rolling another dice and choosing which to use as the outcome.
+      * Isolate soul - You cannot learn divination spells anymore. If you are given a divination spell by an archetype or class, you may replace it with a different spell of that level (subject to GM.) This does not prevent you from casting divination scrolls or wands.
+      * The Mushroom
+      * Mystery sight elixir - During a long rest you can spend 1 rest die to create 1d4 - 1 (min 1.) doses of the mystery sight elixir. It lasts for up to 2 long rests, and grants a creature aurasight at an unlimited range, allowing them to perceive the presence of magic, strong emotions, and supernatural influences in all directions. This reveals auras around creatures, places, and objects at any distance they can see, though not fine detail.
+      * Hyperawareness - You gain advantage on transmutation spells, but you cannot learn transmutation spells without an associated scroll, wand, or mentor.
+      * Transient soul - You and items you wield can touch ethereal creatures as normal.
+      * The Toad
+      * Meditative - Your rest dice maximum is increased by 1.
+      * Dousing - When setting up for a long rest, or when selecting a location to build a structure or encampment, you may attempt to douse by making a DC 15 nature check. On a success, the location is enchanted until the site is destroyed, granting all creatures who rest there for a long rest a +1 bonus to max rest dice, which lasts until their next long rest. This is impossible in places with no water even deep below ground (Subject to GM.) You can spend a rest die to attempt a dousing check to find the nearest source of flowing water or the nearest deepspring of water.
+      * Ribbiting conversation - You do not gain an extra level 1 spell at this level, but instead gain the ability to talk (in primitive terms) to frogs, toads, newts, salamanders, lizards, caecilians, and grass snakes, so long as they are friendly or cordial towards you (Subject to GM.) At level 10, you learn to speak to false dragons (Subject to GM.)
+      * The Wolf
+      * The moon-pact - You gain 100 ft of darkvision and your spell attacks and DCs gain a +1 bonus during the night, as well as a +1 bonus to duration. This is doubled during a lunar event such as a full moon. During this time, you also gain a +2 bonus to saves vs necromancy spells.
+      * Smell evil - You gain advantage on Insight checks to detect aberrations, fey, or eldritch creatures that are disguised as, or exerting magical influence over, others.
+      * Primal magics - Any transmutation spells you cast grant their targets a +1d4 bonus to claw, bite, or unarmed attacks.
+      * The Worm
+      * The low path - You gain resistance to poison and acid damage.
+      * Rot arcana - Any acid or fire damage you deal is changed to poison damage. Poison damage you deal treats creatures that are immune as merely resistant to poison damage. This does not apply to construct, elemental, and ethereal creatures (Subject to GM.)
+      * Spirit consumption - All spells, abilities, and effects that can increase max HP have the amount of max HP granted increased by 1, and the maximum limit/ability (if applicable) by 3. An effect that would increase your max HP by 1 up to a maximum of 10 for that effect would now instead increase it by 2 up to a maximum of 13. A simply one-off +3 to max HP becomes a +4 to max HP.
+  - heading: 1st druid archetype
+    body: |-
+      At 5th level, choose a druid archetype from the list below:
+
+      * Seer
+# https://sites.google.com/view/dnd5plus/home/classes/druid-x/pyromancer
+- name: Pyromancer
+  group: Druid archetypes
+  description: The true pyromancers invoke the first flame, having come to the realization that fire was in fact at the
+    heart of creation. Their symbol is the fireflower. The oldest members of their order are said to reside in secluded
+    temples dedicated to tending its embers. Their order is splintered into many different philosophies.
+  sections:
+  - heading: Order of pyromancy
+    body: |-
+      At 5th level, you must accept one of the following permanent curses:
+
+      * Flame tenders - You can no longer apply temporary health or block via magic. If by any spell or scroll you would do so, you deal twice the amount of fire damage as the temporary health you would otherwise bestow, and you apply the Burning condition to creatures per instance of block or temporary block it would grant. non-magical abilities and items, enchanted items, and wands are immune to this effect. On-fire conditions applied in this way feed magical and supernatural fires (subject to GM.)
+      * Zealots of the first flame - All poison and cold damage you deal via spells, scrolls, wands, or enchanted items is instead converted to fire damage. If by any spell you would apply the chilled or poisoned condition, you instead deal an extra 1d4 radiant damage.
+      * The purifying order - You can spend 1 rest die as an action to deal 2d6 fire damage to a creature within touch or 10 ft of you. If you do so, make a religion check vs every curse or magical ailment afflicting the target, removing the effect on a success.
+      * The ember walkers - You gain resistance to fire damage. You can spend 1 rest die as an action to compel a fire elemental within 15 ft, forcing it to make a wisdom save (DC 9 + prof + wisdom bonus,) becoming charmed for 1d8 rounds on a success. If you slay such a fire elemental while it is compelled, you instead gain immunity to fire damage while in any place other than the material.
+      * The chaos flame - You can no longer heal via spells. Any healing you would apply via spells is instead converted into radiant damage.
+  - heading: Invoke Pyromancy
+    body: At 5th level, you can spend 1 rest die when dealing fire damage with a spell to increase the damage amount by
+      1 dice. When doing so, the range of any cone, ray, breath, or ranged attack spells is increased by 5 ft.
+  - heading: Pyromancer knowledge I
+    body: At 5th level, you can learn 1 fire damage dealing spell from any class of magic. It must be level 2. Treat is
+      as a druid spell and use wisdom as the casting modifier.
+  - heading: Pyromancer knowledge II
+    body: At 6th level, you can learn 1 fire damage dealing spell from any class of magic. It must be level 3. Treat is
+      as a druid spell and use wisdom as the casting modifier.
+  - heading: Pyromancer knowledge III
+    body: At 7th level, you can learn 1 fire damage dealing spell from any class of magic. It must be level 4. Treat is
+      as a druid spell and use wisdom as the casting modifier.
+  - heading: Flame mysticism
+    body: At 7th level, you can use mysticism to reroll any dice of choice in your spells, so long as they are spells that
+      deal fire damage.
+  - heading: Pyromancer knowledge IV
+    body: At 8th level, you can learn 1 fire damage dealing spell from any class of magic. It must be level 5. You can cast
+      it using a level 4 spell slot IF you do not have level 5 spell slots and even if you could not yet cast level 5 spells.
+      Treat is as a druid spell and use wisdom as the casting modifier.
+  - heading: The great pyromancy secrets
+    body: |-
+      At 8th level, choose one upgrade from the list below:
+
+      * The healing flame invocation - You can spend 2 rest dice to deal 3d8 fire damage to a creature but granting them regeneration 1d10 for 1d8 rounds. This ability is not affected by any order of pyromancy effect.
+      * The blackflame heresy - You can spend 3 rest dice when dealing fire damage to a creature to increase the damage dealt by 1 dice, change the damage type to necrotic, and cause the damage dealt to become cursed (cannot be healed unless creature is uncursed, or until finishing a long rest.)
+      * Channel chaos fire - When casting a spell that launches fire damage dealing projectiles, you can spend 1 rest die to increase the amount of projectiles by 1.
+      * The dragonflame heresy - You can spend (max 6.) rest dice or a spell slot as a bonus action to breathe fire in a cone. The size is 20 ft + 10 ft per rest dice or level of the spell slot used, and the damage is 3d8 + 1d8 per rest dice or level of the spell slot used. Creatures caught must make a dexterity save (DC 10 + prof + wis bonus) to halve the damage. If you have an innate breath attack, increase the damage and range by half of that of your innate breath attack.
+# https://sites.google.com/view/dnd5plus/home/classes/druid-x/seer
+- name: Seer
+  group: Druid archetypes
+  sections:
+  - heading: Seer mysticism
+    body: |-
+      At 5th druid level, your rest dice maximum is increased by 1. You can now use mysticism on your own d20 rolls.
+
+      You have 1 dire use of mysticism per long rest: you can use it at no reaction cost and at no rest dice cost.
+  - heading: Foretelling
+    body: "At 5th druid level, an ally may spend 1 rest die to request a foretelling from you. They may ask a question pertaining\
+      \ to a matter of fate, knowledge, history, or insight, and you must make an arcana or insight check (DC 10 for simple\
+      \ insight, DC 15 for complex, or DC 20 for impossible.) \n\nThe GM must reveal this information to you on a success,\
+      \ but they can do it in the following ways:\n\n* Via visual metaphor.\n* By a vision of events or objects in order\
+      \ of the gms choosing.\n* Via a small set of words or names granted to you as ethereal whispers (No more than 6 words.)\n\
+      \nThis has no guarantee of perfectly predicting the future (Subject to GM.)"
+  - heading: Seer traits
+    body: |-
+      At 6th druid level choose one upgrade from the list below:
+
+      * Seers curse/blessing - You can spend an action and 1 rest die to bless or curse a creature within 20 ft, granting it a permanent +1 bonus or a -1 penalty to a skill check or saving throw of choice. A creature can attempt to resist the effect by making a DC 20 wisdom saving throw. A creature cannot have more than seer curse or blessing at a time.
+      * The fated number - At the start of every rest, roll a 1d20. If the rolled number appears as a d20 result during a round of combat, you gain a temporary rest dice until the end of the round, which is lost if not spent. You cannot gain more than 1 such temporary rest dice per round.
+      * Forced vision - You may spend an action and 1 rest die to force a creature within 30 ft to make a wisdom save (DC 10 + proficiency + wisdom bonus.) On a failure, you can cause them to see a hallucinatory version of their exact surroundings from a point of choice within the past, or from a potential future (Subject to GM. Requires knowledge of events to come,) blinding and deafening them to the here and now and forcing them remake the save at the start of each of their next turns to exit the effect. This is an illusion effect.
+      * Forewarned - Gain a +2 bonus to saves vs traps, curses, and hexes, a +1 bonus to saves vs spells, and a +2 bonus to initiative checks.
+      * Quander - You can touch an object, creature, or structure and cause parts of it to glow. The parts correspond to a question or request of your choosing. (For example: touching a building to reveal which walls were worked by masons last, touching a mechanism to reveal which parts are broken, or touching a creature to reveal which parts are infected.) You can do so up to a number of times per rest equal to your wisdom bonus (min 1.)
+      * Fate's intent - You druid mysticism ability's refund range for d20 rolls is extended by 1, effectively refunding a rest die on a natural 2 or 19 alongside a natural 1 or 20.
+  - heading: Awaken the third eye
+    body: |-
+      At 7th druid level, you may spend 1 rest die to gain a sudden flood of awareness around yourself. Doing so requires concentration and lasts for as long as you maintain it. For the duration, you have unobstructed sight of the area around you in a 100 ft radius.
+
+      Effectively, corners, obstacles, disguises, walls, and darkness no longer obstruct your perception of the surrounding 100 ft area.
+
+      Invisible and illusory creatures and objects instead appear to have a slight haze or fog around them, granting you a +5 bonus to checks made to detect them.
+
+      All magical runes and writing become detectable to you.
+  - heading: Extra seer trait
+    body: At 8th druid level, choose an extra upgrade from the seer traits list.
+  - heading: Observer of fate
+    body: At 8th druid level, whenever you gain advantage or disadvantage on a meaningful d20 roll, restore 1 HP.
+# https://sites.google.com/view/dnd5plus/home/classes/druid-x/wildshaper
+- name: Wildshaper
+  group: Druid archetypes
+  sections:
+  - heading: Wildshape
+    body: |-
+      At 5th druid level, you gain the ability to transform into a bestial form, melding your form and belongings into an animal form and gaining new benefits and abilities from it. Once the size and type of your form is decided, it cannot be swapped for another.
+
+      Transforming takes a full round action and requires spending 2 rest dice. A small creature can choose only small or medium forms, while a large creature can only choose large or medium forms. Afterwards you choose the form type. The details of the creature are up to you and the GM to negotiate, but should generally embody the creature you are going after.
+
+      Bestial form sizes:
+
+      * Small: +2 to dexterity. HP: 3d8 + 3 * constitution bonus. +1 AC. Damage dice reduced by 1 size category.
+      * Medium: +2 to strength and dexterity. HP: 4d10 + 4 * constitution bonus. +5 ft of movement speed.
+      * Large: +4 to strength. HP: 5d12 + 6 * constitution bonus. -1 AC. Damage dice increased by 1 size category.
+
+      A transformation can last up to 1 hour and can be prematurely exited by spending an action or move action. If you are reduced to 0 HP while transformed, you fall prone and are dispelled out of your transformation and must make a constitution save vs the damage taken, falling unconscious on a failure.
+  - heading: Felid
+    body: |-
+      Stat bonus: +2 to dexterity. +3 to acrobatics, perception, and stealth checks. +1 to dexterity saves.
+
+      Mobility: +10 ft movement speed. +15 ft jump distance.
+
+      Resistances: fall damage resistance.
+
+      Perks: Perfect darkvision, keen hearing.
+
+      Attacks:
+
+      * claws 1d8, agile, swift, apply Bleeding on an unblocked critical hit
+      * bite 1d8, agile, leap, apply Prone on an unblocked critical hit, +1 critical range.
+  - heading: Canid
+    body: |-
+      Stat bonus: +1 to dexterity and strength. +2 bonus to insight, intimidation, athletics, and investigation checks. +2 to initiative checks.
+
+      Mobility: +5 ft movement speed. +5 ft jump distance.
+
+      Resistances: none
+
+      Perks: Keen scent, keen hearing.
+
+      Attacks:
+
+      * unarmed claws 1d6, agile, bleed on critical.
+      * bite 1d8, agile, ram(+5 block DC per 5 ft traveled,) apply Bleeding on an unblocked critical hit, trip, hook, expose.
+  - heading: Avian
+    body: |-
+      Stat bonus: +3 to dexterity. +5 to perception checks and passive perception.
+
+      Mobility: Flight equal to 20 ft + baseline movement speed, movement speed -10.
+
+      Resistances: -
+
+      Perks: Evasion (dexterity saves negate even partial effects from traps, spells, and abilities)
+
+      Attacks:
+
+      * talons 1d4, agile, swift, wild swings, serrated edge (on an unblocked hit, roll a 1d4 chance die; a success applies Bleeding). Pending natural-weapon sequence for Wild Swings.
+      * beak 1d6, agile, effort, crit multiplier +1 spike
+  - heading: Reptilian
+    body: |-
+      Stat bonus: +1 to strength and dexterity, +2 to constitution. +1 to stealth and intimidation checks. +1 to physical saves. +1 to AC.
+
+      Mobility: +15 ft climb speed. +15 ft swim speed.
+
+      Resistances: poison and fire damage resistance.
+
+      Perks: +1 temporary block upon transformation. Can enter stasis when reduced below 0 HP by cold damage (unconscious, stable, lose all rest dice.)
+
+      Attacks:
+
+      * Talons 1d4, cleave, serrated edge (on an unblocked hit, roll a 1d6 chance die; a success applies Bleeding).
+      * Bite 1d8, effort, rip, clutch. Pending natural-weapon sequences for Rip, Clutch.
+      * Tail whip 1d3, push, trip, Swing (attack with block+ and crit range+), reach.
+  - heading: Rodent
+    body: |-
+      Stat bonus: +1 to dexterity. +2 to stealth, survival, sleight of hand, and perception checks. +2 to grapple checks.
+
+      Mobility: climb speed equal to move speed. +10 ft of burrow speed.
+
+      Resistances: advantage on all saves made for effects from consumed items or materials. Immune to sickened condition.
+
+      Perks: Darkvision at 100 ft. Can manipulate objects as normal with hands, though incurs a -1 penalty on checks made to interact or manipulate fine artifacts or magical items. Tremorsense 40 ft.
+
+      Attacks:
+
+      * claw 1d4, agile, push, hook, duel-strike
+      * bite 1d4, agile, effort, all-in, follow-up on crit
+      * tail whip 1d2, nonlethal, swift, pummel (apply daze if not blocked.)
+  - heading: Serpent
+    body: |-
+      Stat bonus: +2 to dexterity. +2 to disguise and stealth checks. +1 to AC. +3 to checks made to grapple or trip.
+
+      Mobility: -5 ft movement speed.
+
+      Resistances: poison damage resistance. Immune to being prone.
+
+      Perks: Slithering (ignores tile occupation.) Slender Form (Can move through spaces up to 2 size categories smaller.)
+
+      Attacks:
+
+      * bite 1d6, agile, effort, lunge, poisoned (DC 13 + constitution bonus). Pending natural-weapon sequence for Lunge.
+      * tail whip 1d4, effort, crush, push, cleave, reap, redirect, disarm, trip, reach II. Pending natural-weapon sequences for Redirect, Crush.
+      * Slithering grapple - You may attempt a single grapple check on all creatures whose tiles you occupy.
+  - heading: Amphibian
+    body: |-
+      Stat bonus: +2 to dexterity and constitution. +2 to nature, athletics, and insight checks. +3 to push maneuvers.
+
+      Mobility: +30 ft swim speed. -10 ft movement speed. +30 ft jump distance. Wall-walking.
+
+      Resistances: sonic damage resistance.
+
+      Perks: Waterbreathing. Has regeneration 1 while submerged in unpolluted water.
+
+      Attacks:
+
+      * Bite 1d6, poisoned (DC 9 + con bonus,) lunge. Pending natural-weapon sequence for Lunge.
+      * Slam 1d4, push, lunge, redirect, heft. Pending natural-weapon sequences for Lunge, Redirect, Heft.
+  - heading: Suid
+    body: |-
+      Stat bonus: +2 to strength and constitution.
+
+      Mobility: +10 ft movement speed. +5 ft burrow speed.
+
+      Resistances: When taking damage to fatigue, roll a 1d4 chance die per point of fatigue lost, not taking the damage to fatigue on a 3 or higher.
+
+      Perks: Keen scent. Immune to poisoned, sickened, and weakened conditions.
+
+      Attacks:
+
+      * Bite 1d6, effort, rip. Pending natural-weapon sequence for Rip.
+      * Tusks 1d6, ram, +1d6 attack damage, Breach, apply Prone on an unblocked critical hit, push on critical.
+  - heading: Mustelid
+    body: |-
+      Stat bonus: +2 to dexterity. +3 to stealth and survival checks.
+
+      Mobility: +5 ft movement speed. +15 ft swim speed. +15 ft climb speed.
+
+      Resistances: advantage on saving throws and checks to resist being grappled, restrained, hooked, or shoved.
+
+      Perks: keen scent
+
+      Attacks:
+
+      * Claws 1d4, agile, swift, wild swings. Pending natural-weapon sequence for Wild Swings.
+      * Bite 1d6, agile, effort, serrated edge (on an unblocked hit, roll a 1d6 chance die; a success applies Bleeding), apply Bleeding on an unblocked critical hit, Rend (on a strike, apply Bleeding).
+  - heading: Ursid
+    body: |-
+      Stat bonus: +2 to strength and +3 to constitution. +2 to constitution saves. +2 to attack block DC.
+
+      Mobility: +5 ft climb speed. +5 ft movement speed.
+
+      Resistances: cold and bleed damage resistance.
+
+      Perks: Keen scent.
+
+      Attacks:
+
+      * claws 1d8, effort, crush, heft. Pending natural-weapon sequences for Heft, Crush.
+      * bite 1d10, effort, rip, crit multiplier +1. Pending natural-weapon sequence for Rip.
+  - heading: Wildshape traits
+    body: At 5th druid level, you gain access to the wildshape traits. You gain an upgrade from it 5th level, 6th, 7th,
+      and 8th druid level. You also can choose an upgrade from the wildshape traits list instead of the standard list given
+      under the druid ability score improvement list. This only applies whenever you get an ability score improvement(6th
+      and 10th druid level.)
+  - heading: 'Wildshape Trait list:'
+    body: |-
+      * Apex wildshaper - You may consume a small or larger natural creature's heart while transformed. This must be a beast, humanoid, or elemental creature you or your allies have hunted during the current transformation. When doing so, it resets the timer for how long you can remain transformed and restored 3d8 health to you. Can be taken an additional time to not only reset the duration but also increase it further by 2 hours.
+      * Beast of many burdens - Requires not having avian, serpent, or mustelid form. You gain a +1 bonus to strength, both while transformed and when not. Your strength modifier is doubled when calculating carry, lift, and push capacity while transformed (modifier is doubled for athletics checks, if those are involved. Subject to GM.)
+      * Bloody claws - Requires claw or talon attack. Increase claw damage dice by 1 size category, reduce serrated chance dice by 1 size category. +1 to claw attack block DC. Repeatable.
+      * Blood sucker - Requires rodent, mustelid, or reptilian form. Your bite attacks on living targets heal you for 2d4 +1 HP on a critical hit while transformed.
+      * Cat's eyes - Requires felid shape. +3 to insight and perception checks while transformed. You can see lingering emotions and the auras of mystical and occult magic, though you cannot distinguish their colors and therefore immediate nature when transformed.
+      * Constrictor - Requires mustelid or serpent form. When grappling, you can deal 1d6 + strength bonus (1d4 for small, 1d8 for large) force damage to creatures you are grappling whenever: you succeed a grapple check, they fail a check to break free, or you succeed at a check to maintain the grapple.
+      * Charging beast - Requires felid, canid, suid, or ursine form. If you have an attack without a ram property you may add it. Your ram bonuses to damage are doubled.
+      * Camouflage - Gain a +2 bonus to disguise and stealth checks. Choose up to as many specific natural environments as your charisma bonus -1 (min 1. Environments such as temperate grasslands, mountain taiga, salt fens, earthen caves/passages, etc.) where this bonus is instead increased to +7.
+      * Draconic - Requires serpent, amphibian, or reptilian form. You gain a +1 bonus to ac. You can perform a fire belch as a bonus action, dealing 2d4 + constitution bonus fire damage to a tile adjacent to you. Any innate breath attacks you may have in your regular form and are carried into wildshape are extended by 10 ft.
+      * Echolocation - Requires rodent form. You gain echosight at a range of 100 ft, allowing you to detect invisible creatures while transformed. You gain a +1 bonus to investigation and perception checks while transformed.
+      * Empowered form - Your wildshape forms max HP is increased by 1d10 + constitution bonus ( 1d12 + constitution bonus for large.) Repeatable.
+      * Electrogenesis - Requires amphibian form. You may spend 1 rest die or take 1 damage to fatigue as a free action to deal contact damage equal to 2d8 + constitution bonus lightning damage (+1d8 per size above small.) If you are submerged, this effect instead extends to all submerged creatures within 20 ft and all creatures that they are in direct contact with. Damaged creatures must make a constitution save (DC 8 + prof + con bonus,) becoming stunned for 1 round on a failure.
+      * Frenzy - When below 1/2 your wildshape forms HP, you become immune to being stunned and gain a +5 bonus to all movement speeds and increase all wildshape damage dice by 1 size category.
+      * Glider - Requires rodent, mustelid, or avian form. Gain 30 ft of glide distance and +10 ft of climb speed. Gain resistance to fall damage.
+      * Great strength - requires large form. your melee non-bite attacks deal an extra 1d8 damage.
+      * Heavy fur - Requires rodent, suid, felid, canid, or ursid form. You gain resistance to cold damage. Reduce incoming physical, acid, and fire damage by 1.
+      * Hyper scent - Requires canid, ursid, or suid shape. You roll 3d20s for smell based checks now instead of just advantage. You can innately know how much HP is remaining on a living creature within 30 ft just by smelling them.
+      * Hypnotic stare - Requires avian or serpent form. While transformed, you can spend 1 rest die as an action to begin to perform a hypnotic stare at a creature within 15 ft, forcing them to make a wisdom save (DC 10 + prof + wisdom bonus.) On a failure, you can compel the target to move in a direction of your choice, or to disarm themselves.
+      * Increased mobility - Increase up to 2 movement categories granted by the wildshape by 10 ft. Repeatable.
+      * Jackalope - Requires rodent or mustelid form. You gain a new attack, which gains a bonus to attack and damage equal to your headgear's enchantment bonus (or equivalent, subject to GM.) The attack permits adding one maneuver without bonus action cost:
+        * Horns - 1d6 (1d4 for small, 1d8 for large,) ram, lunge, thrust (-1 to hit, crits if target critically fails a block check) sidestep.Jaws of death - Requires bite attack. Your wildshape bite attacks gain a +1d6 bonus to damage, a +1 bonus to hit, and a +1 bonus to block DC and any accompanying DCs (Maneuvers, poison, grapple, etc.)
+      * Long tail - Requires rodent, serpent, or reptilian form. Your tail whip attacks gain 1 reach increment and have their damage dice increased by 1 size category.
+      * Mad bouncing - Requires felid or mustelid form. When dropping below 1/2 health or when coming under a fear or terror effect, and if not restrained, you may spend 1 rest die or take 1 damage to HP to bounce around in a mad dash, immediately relocating to a random valid surface within 30 ft ( Subject to GM and player negotiation.) You or the GM may decide to push up to 2d4 creatures or objects when doing so.
+      * Moonkin wildshape - You may trigger your wildshape transformation automatically at midnight as a free action, costing only 1 rest die, and granting your transformation a +2d10 bonus to HP. You have a +1 bonus to saves vs transmutation spells. Your transformations last 1 hour longer when doing so, or when performed at night.
+      * Mimicry - requires avian or serpent form. You gain a +6 bonus while transformed to performance and disguise checks made to imitate voices and sounds.
+      * Opposable thumbs - Requires felid or rodent shape. You can wield weapons and items normally, and you gain an extra attack while transformed. For rodents the -1 penalty to item manipulation is removed.
+      * Partial shift - You may spend 1 rest die to only partially shift; remaining recognizably humanoid, remaining your size, gaining only half the stat and mobility bonuses (rounded down) but gaining the rest of the changes as normal. Lasts only 10 minutes.
+      * Primal scream - Requires felid, canid, ursine, suid, or avian form. You may spend 1 rest die as a free action to unleash a great shriek, howl, or roar that can be heard far away. Creatures within 40 ft must make a wisdom save vs your intimidation check. Creatures that fail become terrified of you for 1d4 rounds. Apply the Terrified condition. For each time this is used in the same combat, the DC is reduced by 2.
+      * Razorback - Requires ursine, rodent, reptilian, or suid form. You deal an extra 1d4 piercing contact damage (upon grappling, being grappled, round start of enemy while grappled by you, unarmed unexposed attacks on you, collisions with you, or unarmed and unprotected maneuvers on you.) repeatable.
+      * Poison bite - Requires lizard, amphibian, or serpent form. If your bite attack deals an extra 1d8 poison damage. If your bite attack applies the poisoned condition, then the DC for it is increased by 2. Repeatable.
+      * Prolonged wildshape - Your wildshape duration is increased to 3 hours. Can be taken again to further increase it to 6 hours.
+      * Psychotoxin - Requires ability to deal poison damage or apply the poisoned condition while transformed. When you apply the poisoned condition, or when you deal poison damage to a creature, they accumulate 1 point of psychotoxin. As a bonus action you may spend 1 rest die or take 1 damage to fatigue to force a creature with any psychotoxin points to make a constitution save (DC 7 + proficiency + wisdom bonus + psychotoxin points) and to then lose 1d6 points. Creatures that fail the save are made to hallucinate depictions vaguely in line with your choosing (subject to GM,) forcing them to become dazed, hobbled, and distracted for 1d20 minutes. Creatures that that fail the save when at 7 points or above (before reduction) are instead paralyzed for 1 hour.
+      * Quiet stalk - Requires felid, serpent, avian, canid, or mustelid shape. You gain a +2 bonus to stealth while transformed. Attacking from stealth deals an extra 1d10 damage. You can spend 1 rest die to attempt to hide in plain sight while transformed even when visible, so long as you are not completely exposed.
+      * Quickened shift - Your wildshape transformation is reduced by 1 step (full round action > action > bonus action > free action.) Repeatable.Salamander breath - Requires reptilian or amphibian form. Choose a spit/breath attack, which you can use while transformed as an action, at the cost of 1 rest die or 1 damage to fatigue. Can be taken multiple times, but always enhancing the same attack (in area, damage, and distance.) They scale with constitution (adding it to the damage dealt, having a dexterity save DC of 10 + your constitution bonus + proficiency):
+        * 1d8 acid glob. 5 ft radius area within 30 ft. Creates acid covered surface (1d3 acid damage) for 1 minute.
+        * 2d8 fire breath. 15 ft cone.
+        * 3d10 poison stream. 30 ft ray.
+      * Scurrying - requires small form. All granted movement speeds are increased by 15 ft.
+      * Slime coating - Requires amphibian form. You start each with 4 points of slime coating, regaining all when you become submerged. A point can be removed when attacked or contacted as a reaction to do one of the following:
+        * reduce incoming bludgeoning, force, or fire damage by 1d6
+        * deal 1d4 + constitution poison damage to all creatures in contact
+        * make a surface you are on difficult slippery (DC 15 trip) terrain for 1 minute. Does not function when dry (Subject to GM.)
+      * Soaring fighter - Requires avian form. Attacks made while you are flying gain a +2 bonus to hit.
+      * Tough hide - Gain a +1 bonus to AC, strength saves, and block checks while in your wildshape form. Upon entering the form, you gain 1 temporary block that lasts until you revert back to your original form.
+      * Tough as nails - requires mustelid, ursine, or suid form. You can ignore the first time you are reduced to 0HP, returning back to 1d6 HP. If a critical strike would reduce you to 0 HP, you may instead choose to ignore the damage and instead take a failed death save.
+      * Wildshape casting - You can cast spells that have no somatic components while transformed. If you are a rodent, mustelid, or ursine, you may also cast spells that have somatic components but requiring a concentration check before casting to succeed. The concentration check is negated if you have the opposable thumbs wildshape trait.
+  - heading: Wildshape traits II
+    body: At 6th druid level, choose an extra wildshape traits upgrade.
+  - heading: Dire form
+    body: |-
+      At 7th druid level, your wildshape form gains the following permanent benefits:
+
+      * Resistance to non-magical physical attacks. This is bypassed by silver weapons.
+      * Can perform a crude human voice, though it sounds bestial.
+  - heading: Wildshape traits III
+    body: At 7th druid level, choose an extra wildshape traits upgrade.
+  - heading: Wildshape traits IV
+    body: At 8th druid level, choose an extra wildshape traits upgrade.
+  - heading: Beast pact
+    body: |-
+      At 8th druid level, choose one pact from the list below:
+
+      * Pure form - Gain an extra wildshape traits upgrade and an extra feat.
+      * Hybrid form - Choose another bestial form, adding its type and perks to your own wildshape transformation, as well as half of its mobility bonuses. You may also add one of its attacks to your wildshape transformation, but it must be an attack that your wildshape form did not possess previously.
+      * Elder form - Your wildshape form gains an extra +3d6 max HP. Your attacks deal an extra 1d4 damage while transformed and are considered magical.
+      * Elemental form - Choose a damage type: fire, cold, or lightning. Your claw, talon, and bite attacks deal an extra 1d10 damage of the chosen type, and you gain resistance to it, both while transformed and when not. You also learn either infernal, hyperborean, or celestial, respectively.

@@ -1,0 +1,19 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/combat-changes/weapons-properties
+section: rules
+entries:
+  - name: Weapon categories
+    group: Using weapons
+    description: Weapons are divided into simple and martial weapon categories, then further into individual
+      weapon groups, which are either ranged or melee weapon types.
+  - name: Weapon attacks and proficiency
+    group: Using weapons
+    description: |-
+      Melee weapons normally scale with Strength. Agile weapons use Dexterity; Balanced weapons allow Strength or Dexterity. Ranged weapons normally use Dexterity. For a thrown attack, use the weapon’s applicable modifier and its listed range. Use the current weapon entry for exceptions such as Effort and Overdraw.
+
+      When attacking with two weapons, you can spend a bonus action to attack the same target with the off-hand weapon. Unless it is Light, the off-hand attack has disadvantage. Its ability bonus applies to the attack roll, but not to damage unless a feature grants it. Without proficiency, you cannot use the weapon’s maneuvers or add your ability bonus.
+  - name: Using weapon maneuvers
+    group: Using weapons
+    description: |-
+      When taking the Attack action, spend a bonus action or a move action to replace one of your regular attacks with a maneuver listed on the weapon you are wielding. Follow any specific trigger, timing, or cost in the maneuver or a feature that modifies it.
+
+      Read each maneuver in sequence. A condition such as “if strike” applies only to what follows it. Names such as Chop, Reap, and Stab can have different effects on different weapons. For example, the Dagger’s Stab reads “Attack > If unshielded > crit range+.” Make the attack. Its critical range increases by one against an unshielded target.

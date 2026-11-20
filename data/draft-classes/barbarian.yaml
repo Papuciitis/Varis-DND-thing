@@ -1,0 +1,530 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x
+- name: Barbarian
+  group: Base class
+  description: The barbarian is a survivor and a threat, the one who relies on nothing other than their own raw strength
+    and might to carry on, and one who harbors a deep and powerful rage.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      - Battle dice
+      rows:
+      - - '1'
+        - '+2'
+        - Barbarian ways, Rage
+        - '-'
+      - - '2'
+        - '+2'
+        - Barbarian traits, Used to trouble
+        - '-'
+      - - '3'
+        - '+2'
+        - Ability score improvement
+        - '-'
+      - - '4'
+        - '+3'
+        - Battle dice
+        - 1d8
+      - - '5'
+        - '+3'
+        - 1st archetype
+        - 1d8
+      - - '6'
+        - '+3'
+        - Ability score improvement
+        - 1d8
+      - - '7'
+        - '+4'
+        - '-'
+        - 1d10
+      - - '8'
+        - '+4'
+        - Ability score improvement
+        - 1d10
+      - - '9'
+        - '+4'
+        - 2nd archetype
+        - 1d10
+      - - '10'
+        - '+5'
+        - '-'
+        - 1d12
+      - - '11'
+        - '+5'
+        - Ability score improvement
+        - 1d12
+      - - '12'
+        - '+5'
+        - '-'
+        - 1d12
+  - heading: Health and proficiencies
+    body: |-
+      Hit dice: 1d12
+
+      Armor: Light armor, medium armor, light shields.
+      Weapons: All simple weapons, 3 martial weapon groups.
+      Tools: none
+      Saving throws: Strength, Constitution
+      Skills: Choose two from Animal handling, Acrobatics, Athletics, Intimidation, Nature, Perception, and Survival.
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * A martial melee weapon of choice
+      * (a) Four Javelins or (b) Two handaxes
+      * (a) an explorer’s pack
+      * (a) Leather armor and a light shield or (b) two minor healing potions
+  - heading: Endurance
+    body: At 1st barbarian level, your max HP is increased by 1 per character level.
+  - heading: Rage
+    body: |-
+      At 1st barbarian level, you can enter rage by spending 1 rest die as a free action either on your turn, or immediately after taking damage.
+
+      While raging, you gain the following effects:
+
+      * Advantage on strength checks and strength saving throws.
+      * When you make a melee or thrown weapon attack using strength, you add twice your proficiency bonus to the damage dealt.
+      * You have resistance to bludgeoning, piercing, and slashing damage.
+      * Your block checks have disadvantage.
+
+      Your rage lasts for 1d4 +1 rounds.
+
+      Rage is extended by 1d4 rounds whenever you kill a creature or take a critical hit.
+
+      You can exit rage at any moment as a free action.
+
+      You can only enter rage once per combat.
+  - heading: Barbarian traits
+    body: |-
+      At 2nd level, choose three upgrades:
+
+      * Adrenaline rush - Slaying a creature with a critical strike during rage refunds the rest dice cost of rage.
+      * Barbarian king - So long as your are wearing light or no armor, you gain a +1 bonus to your AC. This increases to +2 at 5th, and +3 at 9th barbarian level.
+      * Bloodshot - Slaying a small or larger creature (Subject to GM) while using rage grants you 1 more turn of rage.
+      * Crippling punch - You can spend a rest die as a bonus action to make a melee unarmed or fist weapon attack. The target takes 1 damage to fatigue if the damage is not blocked. All damage dice of the attack are increased by 1 size category.
+      * Eagle eyes - Gain 60 feet of darkvision. +1 to perception and investigation checks. +1 to thrown weapon attacks.
+      * Extended rage - Increase the initial duration of rage by 1 turn.
+      * Extra rage - You can rage an extra time per combat.
+      * Feel no pain - You can spend 1d4 turns of rage to attempt to block an attack when at 0 block.
+      * Lethal edge - Your critical strike damage multiplier is increased by 1.
+      * Oh yeah?? - When you get critically hit, you regain 1 rest die.
+      * Physique - Gain proficiency with athletics. If already proficient, gain expertise. If already expert, gain a +1 bonus to strength.
+      * Power throw - Double the range of your thrown weapons. Reroll any critical failure on a thrown weapon attack.
+      * Rage against death - When reduced to 0 health while using rage, you can instead choose to lose 1d4 turns of rage and make a constitution save VS 5 + the damage taken. On a success, you are instead reduced to a number of hit points equal to your constitution bonus.
+      * Reckless combat - You can choose to forego a reaction instead of spending a bonus action to use a weapon maneuver.
+      * Rip and tear - Your cleave and all properties that derive (are like) cleave can target an additional creature/tile.
+      * Stamina - Increase your rest dice maximum by 1. Ignore the first instance of fatigue damage every rest.
+      * Stare down - You can spend a rest die as a reaction in response to an ally failing a save against a spell or any magical ability that takes away their will, calm, or agency (Subject to GM.) allowing you to make an intimidation check vs the effect DC of the effect the ally failed. On a success, the ally ignores the effect.
+      * Sustained rage - You can choose to spend a rest die or take 1d3 damage to fatigue as a bonus action to extend rage, as though you killed a creature.
+      * Tough hide - Increase max HP by 9.
+      * Unhinged defense - At the start of rage, gain 1 temporary block.
+  - heading: Used to trouble
+    body: |-
+      At 2nd level, you can act in the surprise round by spending one rest die at the start of combat.
+
+      You also gain a +2 bonus to initiative.
+  - heading: Ability score improvement
+    body: |-
+      At 3rd, 6th, 8th, and 11th level, add +2 to ability scores in any combination, or choose a feat.
+
+      Also at those levels, add +1 to a physical ability score. This cannot raise an ability score above 24.
+  - heading: Battle dice
+    body: |-
+      At 4th level, you have a maximum number of battle dice equal to your highest physical attribute bonus.
+
+      The dice are 1d8, and are increased to 1d10 at 7th level, and 1d12 at 10th level.
+
+      You can spend 1 battle die as a free action to add it to a melee or thrown weapon damage roll, or to an athletics check. You cannot apply more than 1 battle die to a roll.
+
+      You can also spend a battle die in any case where a direct damage dealing ability would require you to spend rest dice.
+
+      You regain all battle dice after a rest.
+  - heading: 1st archetype
+    body: |-
+      At 5th level, choose your 1st archetype:
+
+      * Berserker
+      * Raider
+      * Savage
+      * Shaman
+  - heading: 2nd archetype
+    body: |-
+      At 9th level, choose your 2nd archetype:
+
+      * Warlord
+      * Fury
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/berzerker
+- name: Berserker
+  group: Barbarian archetypes
+  sections:
+  - heading: Frenzy
+    body: At 5th barbarian level, while raging you can lose 1 turn of rage to gain an extra attack. You can do so once per
+      round. Additionally, the refresh duration of rage (when you kill a creature or are critically hit) is increased by
+      1.
+  - heading: Berserker tactic
+    body: |-
+      At 6th level, choose one ability:
+
+      * Eye for an eye - When you fail to block damage from a melee attack, you can choose to treat it as a critical strike and make an attack against the creature as a free action. You can do so once per turn.
+      * Mad rage - Gain resistance to psychic damage while raging, and increase both the initial and refresh duration of rage by 1 turn.
+      * Channel fury - You can choose to sacrifice up to as many turns of rage as your constitution bonus as an action to gain a battle die worth of temporary health per turn of rage spent. This temporary health lasts for 10 minutes
+      * Mushroom brew - You can spend 1 rest die during a short rest to prepare 1d2 doses of a frenzy potion, which can be consumed as a bonus action, requires a DC 14 constitution save, and grants 1d3+1 turns of rage on a success, identical to your rage ability, granting any associated abilities you have. A frenzy potion becomes inert after a long rest.
+      * Brawling - Your unarmed strikes deal an additional 1d6 bludgeoning damage. When using frenzy, you can make 1 unarmed strike as a free action.
+      * War taunt - You can spend an action to perform a war taunt. All enemies that hear the taunt must make a wisdom save. On a failure, they are all marked for the rest of combat. A marked enemy receives an additional battle dice worth of damage on the first instance of damage they take from you or an ally within 30 feet for the rest of this encounter.
+  - heading: Perform the rite of fire
+    body: At 7th level, you can spend 1 rest die during a rest to take 1d6 fire damage that cannot be healed until long
+      rest to cause your rage to grant you regeneration 1, healing you for 1 health at the start of every turn. This effect
+      lasts until the next short rest.
+  - heading: Berserker path
+    body: |-
+      At 8th level, choose one ability:
+
+      * Painless - Once per rest during rage, ignore an instance of incoming damage.
+      * Warlord - You can enter rage an additional time per combat, and you regain 1 battle die when entering rage.
+      * Scourge - You can spend battle dice to gain the dice as a bonus to an intimidation check, or an intimidation based DC. +1 Battle die
+      * Beast - You can spend battle dice to gain the dice as a bonus to animal handling checks, or the DC of an ability targeting a beast. +1 Battle die.
+      * Juggernaut - You gain medium armor proficiency. If already proficient, gain heavy armor proficiency. If already proficient with heavy armor, gain +1 block from armor.
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/raider
+- name: Raider
+  group: Barbarian archetypes
+  sections:
+  - heading: Battle revelry
+    body: |-
+      At 5th barbarian level while raging you can spend 1 turn of ongoing rage or 1 battle die to gain temporary health equal to your battle dice roll.
+
+      While below half hp, your attacks gain a +1 bonus to hit, damage, and block dc.
+  - heading: Clan trait
+    body: |-
+      At 5th barbarian level choose one of the upgrades below:
+
+      * Ringed sabers - Gain proficiency with the heavy blades, axes, and medium blades martial weapon groups, or gain a +1 bonus to damage with them if already proficient. Gain a +4 bonus to all weapon based contested checks, and a +3 bonus to all other contested checks.
+      * Red hooks - The rend, chop, hook, and expose properties of weapons you wield deal 1d4 extra damage on a successful maneuver. You can modify a weapon during a long rest to give it 5 feet of reach. To other creatures, this incurs disadvantage on attacks. Gain a +2 bonus to checks made to commune with primal, dark, or cosmic forces (Subject to GM.)
+      * Rune-skins - You can spend a battle die to gain a 1d4 bonus to a mental save. Gain proficiency with arcana. If already proficient, gain expertise. If already expert, learn an arcana cantrip with somatic components. You use strength as the casting attribute.
+      * Fire-branded - Reduce maximum HP by 3. You gain fire and cold resistance while raging. Increase all fire damage you deal by 2. Gain a +1 bonus to religion checks.
+      * Mana-burned - Reduce maximum HP by 3. You gain psychic and lightning resistance while raging. Your rest dice maximum is increased by 1. -1 to arcana checks.
+      * Adder's child - Gain immunity to poison damage. You gain a +2 bonus to persuasion and stealth checks.
+      * Iron-born - You gain 1 block at the start of combat while wearing medium or heavier armor.
+      * Lost clan - Gain proficiency with heavy shields and two weapon groups of choice. You deal 2 extra damage with your attacks while raging.
+      * Outcast - Gain proficiency with survival. Gain 1 extra battle dice. Gain proficiency with a weapon group of choice.
+  - heading: Show of strength
+    body: |-
+      At 6th barbarian level, you can spend 1 turn of rage to do any of the following:
+
+      * Cause your next attack this turn to deal additional damage equal to your battle dice roll + your current number of unspent rest dice.
+      * Make a shove maneuver on all enemies within 5 feet as an action.
+      * Gain a 1d6 bonus to a block check. This increases to 1d8 at 8th level.
+  - heading: Runes of battle
+    body: |-
+      At 7th barbarian level, while resting you can spend 1 rest die or 1 battle die to mark yourself or a willing ally with the runes of battle, granting the following effects:
+
+      * gain 1 temporary block that lasts until next rest
+      * gain 2 temporary battle dice, which can be used in any way that the barbarian bestowing the runes can use them
+      * remake a save against any ongoing adverse effect, such as poison, disease, or curse.
+  - heading: Raider's totem
+    body: |-
+      At 8th barbarian level, choose one ability:
+
+      * Mark of the snake - You can spend battle dice to gain them as a bonus to hit, instead of damage.
+      * Mark of the owl - You can spend battle dice to gain them as a bonus to a mental save.
+      * Mark of the badger - You can spend battle dice to gain them as a bonus to a physical save.
+      * Mark of the cat - You can spend 1 battle die to gain an extra move or bonus action.
+      * Mark of the wolf - You can spend 1 battle die to gain it as a bonus to a tracking or perception check.
+      * Mark of the raven - You can spend 1 battle die to gain a bonus to deception and stealth checks.
+      * Mark of the bear - When spending battle dice to deal additional damage, you may spend a rest die to add it as well.
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/savage
+- name: Savage
+  group: Barbarian archetypes
+  sections:
+  - heading: Barbaric defense
+    body: At 5th barbarian level, while wearing light or no armor, you add your constitution bonus to your AC.
+  - heading: Savage trait
+    body: |-
+      At 5th barbarian level, choose one upgrade from the list below:
+
+      * Hungry for battle - Your rage lasts 1 turn longer & you have +1 battle die.
+      * Natural perfection - Your movement, swim, and climb speed is increased by 10 feet. Your jump distance is increased by 5 feet. You gain 60 feet of darkvision. You gain a +2 bonus to handle-animal checks.
+      * Primal fury - You do not fall unconscious when reaching 0 hp. You can use a battle die to increase a death save roll.
+      * Stupid tough - Increase max HP by +10 and gain 1 temporary block at the start of combat.
+      * Cannibalism - You can consume a humanoid heart during a rest to increase maximum HP by 1, up to a maximum of +20. When you consume a magical beings heart you may learn an occult cantrip (max 1) and can gain 1d6 arcane health.
+      * Skull collector - You can collect and wear (Subject to GM as to how.) skulls from enemies you slay, granting yourself the benefits of one feat they had (but not any increases to attributes or proficiencies) up to a maximum number equal to 3.
+  - heading: Raw power
+    body: At 6th barbarian level you can wield non-bow two-handed weapons as one-handed, and you treat all one-handed weapons
+      as light. You gain an extra attack while wielding only light weapons.
+  - heading: Savage onslaught
+    body: At 7th barbarian level while raging, you can spend 1 rest die, 1 turn of rage, and 1 battle die to gain 2 extra
+      attacks until the end of your turn.
+  - heading: Great unhinged one
+    body: |-
+      At 8th barbarian level, you can apply two battle dice at the same time.
+
+      You regain 1 battle die when slaying a creature in a gruesome way (Subject to GM.)
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/shaman
+- name: Shaman
+  group: Barbarian archetypes
+  sections:
+  - heading: Shamanic elixir
+    body: |-
+      At 5th Barbarian level, during a long rest you can prepare a shamanic elixir.
+
+      Upon consumption, the target gains the benefit of your rage ability, regains 1 rest die, restores 1 fatigue, heals for an amount equal to your battle dice roll, and remakes saves against all ongoing diseases, conditions, and spells.
+
+      If you possess a scroll, spell, consumable, potion (which cannot originate from a shamanic elixir) or similar alchemical ingredient (Subject to GM) then you can consume/use it to emplace its effect into the shamanic elixir (as though the target cast the spell as you.)
+
+      This starts you off with 1 less rest dice after the long rest. A shamanic elixir does not last longer than two long rests.
+  - heading: Shamanic gift
+    body: |-
+      At 5th barbarian level, choose one of the following upgrades:
+
+      * Shamanic magic - Learn two level 1 and two level 2 oath, mystic, or occult spells (of your choosing.) You can spend other spell slots or dice that you may possess, rest dice or battle dice to cast it. Dexterity or Wisdom can be used as the casting attribute.
+      * Elixir mastery - You spend 1 rest die during a long rest to create an extra shamanic elixir, allowing you to create 2.
+      * Shamanic visions - You can spend 1 battle die or rest dice to gain true sight for 1 turn. During this time, you gain advantage on insight, religion, intimidation, and perception checks. During a rest, you can spend 1 rest die to gain a shamanic premonition. A shamanic premonition can be used to gain advantage on an initiative check or to gain advantage on a knowledge or investigation skill check.
+      * Dark rune interpreter - learn an occult cantrip. When you slay a small or larger creature with the cantrip or from using a battle die, you gain a black-page. You can construct a dark grimoire by spending a rest die during a rest. When doing so, roll 3d4. If you have that many black pages, the grimoire is created. If not, up to 2d4 black pages are consumed. A dark grimoire comes with 2d4 spell levels and can be used to cast a spell that is level 5 or lower. The spell must be known by the user. A black page can be consumed to grant the grimoire 1 extra spell level.
+      * Drakeblood affinity - You gain the ability to understand arcane serpents, dragon-like creatures, and similar sentient lizard languages. You gain a +2 bonus to constitution. You can consume a dragonborn or similar draconic creatures heart during a rest to either: gain +1 max HP, up to a maximum of +20, create an extra shamanic elixir. You can also consume such a heart to learn an occult cantrip once, and then afterwards to change it, using your dexterity or wisdom as the casting attribute.
+      * Elixirs of strength - Your elixirs grant the consumer a +4 bonus to strength for 1 hour, and also grant temporary health equal to your battle dice roll. You can administer a shamanic elixir to a creature that has died within the past 1d4 rounds (rolled and known on application) to revive them.
+      * Shamans hex - You can spend 1 rest die or battle dice to hex a creature within 40 ft. The target must make a wisdom save vs a DC 10 + your total level / 2 + you wisdom bonus. On a failure the target takes 2 x your battle dice damage and causes the target to take 1 extra damage from all sources. This is doubled against elemental, ethereal, fae, and fiendish creatures. Lasts 1 hour and cannot affect more than 1 creature at a time. The remains of a hexed creature can be turned into a lesser elixir during a short rest. A lesser elixir does one of the following:
+      - Grant 3d6 arcane health.
+      - Grant a +2 bonus to an ability score of choice for 1 hour.
+      - Grant a +2 bonus to AC.
+      - Grant darkvision and a +1 bonus to perception and investigation.
+  - heading: Spirit journey
+    body: |-
+      At 6th barbarian level, you can spend 1 rest die during a rest to make a DC 15 wisdom check. On a success, you regain 3 class resources of choice (battle dice, per rest ability uses, spell slots, alchemy points, or rerolls, but not per long rest ability uses.) and you gain a +2 bonus to checks made for all interactions with or attempts to detect spiritual, eldritch, undead, fae, or fiendish creatures or entities until next rest.
+
+      Also at 6th barbarian level, gain proficiency with religion. If already proficient, gain expertise. If already expert, increase rest dice maximum by 1.
+  - heading: Shamanic tradition
+    body: |-
+      At 6th barbarian level, choose one of the following abilities:
+
+      * Mixologist - When creating a shamanic elixir, you can spend 1 rest die to create 1 extra.
+      * Spirit seer - When using spirit journey, restore one extra resource, and gain a level 3 shamanic spell slot which can be used to cast any spell you know. Also, learn a level 1, level 2, and level 3 spell, 1 each from mystic, oath, and occult. You use dexterity or wisdom as the casting attribute.
+      * Battle shamanism - Gain proficiency with two of any of the following: An armor class, a shield class, a weapon group, athletics, intimidation, religion. Your battle dice maximum is increased by 2. Your battle dice rolls gain a +1 bonus.
+      * Shamanic insights - Gain an extra shamanic gift. Gain a +1 bonus to your spirit journey bonus vs entities.
+      * Death rites - Creatures you slay by critical hit or by battle dice damage bypass death immunity, undead resilience, and regeneration effects. Slaying such creatures grants a rite point, which can be exchanged during a rest for either a rest die or a black page.
+  - heading: Shadow banishment
+    body: At 7th barbarian level, all damage you deal to ethereal, fiendish, outsider, eldritch, and undead creatures is
+      always increased by an amount equal to your battle dice roll.
+  - heading: Spirit rage
+    body: At 8th barbarian level, you gain advantage to saves vs spells and magic while raging.
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/warlord
+- name: Warlord
+  group: Barbarian archetypes
+  sections:
+  - heading: Weapon of war
+    body: |-
+      At 9th barbarian level, choose one weapon group you are proficient with and make it your weapons of war group. You benefit in the following ways while wielding them, and in relation to them:
+
+      * Extra attack while wielding chosen weapon.
+      * +1 to maneuver DCs and attack rolls while wielding chosen weapon.
+      * Chosen weapon always have the following properties and maneuvers:
+        * Duel strike (Can attack as a bonus action so long as you have not moved since the start of your turn.)
+        * Crush (as bonus action, replace an attack with a dexterity save or block check to see if it lands immediately.)
+        * Take-down (target is prone on unblocked crit)
+  - heading: Contender
+    body: At 9th barbarian level, you gain a +5 bonus on intimidation checks vs creatures that are your enemies.
+  - heading: Warlord traits
+    body: |-
+      At 10th barbarian level, choose 2 upgrades from the list below:
+
+      * Cruelty - your contender bonus is increased by 1 and applies to creatures who are subordinate to you.
+      * Battle hardened - Your number of battle dice is increased by 2. Gain 2 extra barbarian traits (barbarian 2) upgrades.
+      * Beast king - You gain a +3 bonus to all handle animal checks. Your contender bonus applies to beasts and animals. Your hand weapon, bite, unarmed, claw, horn, and tail based attacks deal an extra 1d10 damage. You gain 100 ft of darkvision. You gain 20 ft of echosight.
+      * Belligerent combat - Every time you land a hit on a creature with a melee attack, you may force them to make a strength or dexterity save as a free action, being moved 5 ft away from you on a failure. DC is equal to 12 + your strength bonus + prof bonus. Your other weapon maneuver DCs are increased by 1. +1 strength.
+      * Blood oath of battle - You lose 1 death save slot. Your max HP is increased by 12. You gain an extra rest dice. You can ignore up to 1 point of fatigue damage per rest.
+      * Booming command - when you successfully intimidate a creature, you can force them to immediately make a command that is not self-hurtful or harms their loved ones (subject to GM.) Creatures that are shaken or afraid of you have their duration increased by 2 units (rounds, minutes, hours)
+      * Fiendish bargaining - You may spend a rest die or 2 other class resources (battle dice, alchemy points, bardic inspiration dice) during a rest to attain an occult spell (max level equal to your character (max level of (character level - 1) / 2, rounded up), which uses your constitution or strength as the casting attribute. Only one such spell can be known at a time. Casting it requires a number of rest dice equal or class resource dice equal to its level, or you must take 1d6 necrotic damage per level of the spell. You can only do so up to as many times as your wisdom mod (min 1) per long rest.
+      * Heretic lord - You lose 2 max HP to gain the knowledge of the runes of a forbidden primordial flame of chaos. During a rest you can spend 3 rest dice to apply the rune to a weapon of war. One who wields them and has knowledge of primordial chaos fire (such as yourself, subject to gm) has them deal an extra 2d8 fire damage. You can spend a battle die or rest dice to deal double its value as radiant damage to the target. This must be done before the attack roll is made. Gain a +3 bonus to religion checks.
+      * Iron lord - Upgrade proficiency with armor from light > medium > heavy. If already proficient with heavy armor, gain +1 block at the start of combat. You ignore 1 bulk. Gain proficiency with all shields.
+      * Mad battle — While raging, choose one benefit for your Weapon of War weapons: apply Ram to an attack, add 1d10 damage to an attack, or use the weapon’s listed Chop maneuver. Wild Strikes and granting Chop to a weapon without a listed version are pending. You can use one maneuver with a Weapon of War weapon as a free action while raging, instead of a bonus action.
+      * Raging howl - When you enter rage, you may perform a great scream by spending 1 rest die. Doing so forces all enemies (and allies who are not aware of you or your behavior) within 50 ft to make a wisdom save. The DC is DC 12 + your constitution bonus + proficiency bonus. On a failure, they are shaken for 1d6 rounds, and on a critical failure they are stunned for 1d3 rounds and take 2d6 sonic damage. This is a fear effect. Gain a +1 bonus to constitution.
+      * Reaper of war - All reach weapons of war you wield have reap. You can modify your weapon of war weapons to have an reach, or to extend their reach by 1 category. You have a +4 bonus to death saves and 1 extra death save slot.
+      * Reaver king — During a rest, spend 1 rest die to modify a Weapon of War weapon. It gains Rend (attack; on a strike, apply Bleeding). Its serrated edge also rolls a 1d4 chance die on an unblocked hit, applying Bleeding on a success. Use the weapon’s listed Rip maneuver if it has one; the grant for a weapon without a Rip sequence is pending. A wielder other than you takes a −1 penalty to attack and damage unless this is one of their Weapon of War groups. When you would gain Bleeding, roll 1d3. On a 1, negate it.
+      * Smoking Tark - You can load 3 bolts into a single shot crossbow and overdraw it for a shot as a bonus action. Doing so will fire 3 bolts at once with a -1 penalty, and requires 18 strength to wield and aim. You gain 5 AP (alchemy points) every rest (separate of other sources) which are restored every rest. You can spend 1 ap to create or modify a bolt to deal 1d10 extra fire, cold, or acid damage. You gain a +1 bonus to checks made to explode, ignite, detonate, or incinerate targets.
+      * Ultimate vigilance - You gain a +2 bonus to investigation, insight, perception, and handle animal checks. You gain a +3 bonus to initiative checks. You gain a +2 bonus to saves vs spells, but must make saves even vs friendly spells unless standing absolutely still for a full round.
+  - heading: Warlord traits II
+    body: At 11th barbarian level, gain an extra warlord traits upgrade.
+  - heading: A worthy death
+    body: At 11th barbarian level, when a worthy enemy (subject to GM.) or a true ally dies by your side (within 30 ft)
+      you restore either 1 rest die, 1 battle die, or 1 point of fatigue.
+  - heading: Anointed weapon of war
+    body: |-
+      At 11th barbarian level, you may anoint a weapon from your weapon of war group with the blood of three true enemies (Subject to GM,) either through combat or by spending 3 rest dice during a rest if in possession of their blood.
+
+      When doing so, choose a damage type: lightning, necrotic, fire, cold, or force. The anointed weapon becomes permanently enchanted to deal 1d8 extra damage of the chosen type.
+
+      You gain a +1 bonus to all d20 rolls while wielding the enchanted weapon. This increases to +2 at level 12.
+  - heading: Warlord traits III
+    body: At 12th barbarian level, gain an extra warlord traits upgrade.
+  - heading: Wage war
+    body: At 12th barbarian level, when you are the one to start combat, you gain an extra turn immediately at the start
+      of combat.
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/fury
+- name: Fury
+  group: Barbarian archetypes
+  sections:
+  - heading: Hatred
+    body: At 9th barbarian level, your rage bonuses are increased by 1, and rage lasts 1d4 rounds longer.
+  - heading: Lesser fury traits
+    body: |-
+      At 9th barbarian level, choose two:
+
+      * Battle fury - When you use battle dice to deal damage, gain a bonus to a roll, or for a similar ability, you gain a further 1d4 bonus to the result. Any ability or effect with a duration that is applied or created by spending a battle die has its duration increased by 2 units (rounds, minutes.)
+      * Bloodshot - While under the effects of rage, you cannot fall unconscious or be compelled. You do not exit rage when reaching 0 HP. Failing a save vs a compulsion or sleep effect instead reduces the duration of rage by 1. Your rage lasts 1 round longer.
+      * Carnage - You deal double damage (an extra instance) to structures, constructs, and golem creatures.
+      * Indomitable rage - Choose a damage type. You gain resistance to it while under the effects of rage. Can be taken multiple times.
+      * Incensate rage - Choose a damage type from physical, fire, lightning, or sonic. While under the effects of rage, you deal 1d6 extra damage of the chosen type with all your attacks and damage dealing abilities. Can be taken multiple times, increasing damage by 1d6.
+      * Lethal rage - While under the effects of rage, your weapons have their critical strike range increased by 1.
+  - heading: Hatred II
+    body: At 10th barbarian level, you gain a +1 bonus to saves while under the effects of rage, and your rage bonuses are
+      further increased by 1.
+  - heading: Greater fury trait
+    body: |-
+      At 11th barbarian level, choose one:
+
+      * Leaping fury - You gain a +30 bonus to jump distance and movement speed while under the effects of rage.
+      * Eternal brawl - +10 max HP. You gain +2 temporary block when entering rage.
+      * Fueled by rage - You heal 3d10 health when entering rage. You ignore charm effects from failed saves while under the effects of rage, and instead reduce the duration of rage by 1.
+      * Hatred III - Your rage bonuses are further increased by 1, and the duration of rage by 1.
+  - heading: Eternal fury
+    body: At 12th barbarian level, you can enter rage by spending a battle die, or by sacrificing 1d4 points of HP.
+  - heading: Strife
+    body: At 12 the barbarian level, while raging, you can negate any condition or effect bestowed from a failed save by
+      spending 4 rounds of rage as a bonus action or reaction.
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/warg
+- name: Warg
+  group: Barbarian archetypes
+  sections:
+  - heading: Warg transformation
+    body: |-
+      At 9th barbarian level, when entering rage, you can spend 2 extra rest dice as a full round action to transform and assume a semi-bestial bipedal form instead. When doing so, the transformation and rage are one, and it lasts minutes instead of rounds. While transformed, you gain the following properties:
+
+      * 200 ft of darkvision
+      * keen scent
+      * +2 bonus to strength
+      * -2 penalty to mental stats
+      * +15 ft of movement speed
+      * +10 ft bonus to jump distance
+      * climb speed equal to movement speed
+      * regeneration 1d3
+  - heading: Primal traits
+    body: |-
+      At 10th barbarian level, choose an upgrade:
+
+      * Bestial speed - When transformed, you gain a +2 bonus to dexterity, +1 bonus to AC, and +10 bonus to jump distance and movement speed.
+      * Bestial strength - When transformed, increase the strength bonus gained by a further +2. +10 max HP.
+      * Clawed beast - When transformed, you gain a claws for your unarmed attacks, which deal your unarmed damage +1d10 necrotic damage. The necrotic damage is cursed (cannot be healed until rest.) The claw attack is swift (can be made as bonus action.) You have disadvantage with weapon attacks while transformed. Gain a +1 bonus to natural attacks.
+      * Dark conduit - Learn an occult, mystic, and oath spell. They must be 2nd, 3rd, and 4th level. While transformed, you may cast them by spending 1d4 HP per spell level as a movement action or a bonus action, using your constitution or wisdom bonus as the the casting modifier. While not transformed, you can cast them but at 1d8 HP per spell level instead.
+      * False deer cult - While transformed, you can consume a medium or smaller corpse as a full round action to heal 3d10 health. You gain a +3 bonus to saves vs diseases and curses while transformed, and a +1 bonus when not.
+      * Horned warrior - When transformed, you grow horns, allowing you to make a strength based horn attack as a free action when entering an enemies range and attacking for the first time, dealing 1d12 + STR bludgeoning damage on a success, with a block DC of 12 + str + prof. Gain a +3 bonus to saves vs effects that would move, push, or force you to be prone. Gain a +2 bonus to handle animal while transformed.
+      * Primal fangs - When transformed, you gain a 1d8 bite attack, or increase your innate bite attack by 2 dice size categories. So long as you have not moved, you can make one bite attack as a free action once per turn.
+      * Eyes of a hunter - While transformed, gain perfect darkvision and a +4 bonus to perception and investigation. You can examine a creature for 3 rounds, granting you a 1d8 bonus on your next stealth or deception check made against them.
+      * Primal speech - While transformed, you can speak with animals, though they fear you (subject to GM.) You can learn a mystic spell (up to level 3) that can be cast by spending a battle die or rest dice while transformed. It uses wisdom as the casting modifier.
+      * Swamp creature - While transformed, you gain waterbreathing, you gain a swim speed of 80 ft, your jump distance is increased by 10 ft, and you gain immunity to poison damage.
+      * Superenhanced senses - While transformed, you gain 200 ft of echosight, 100 ft of tremorsense, and a +3 bonus to medicine and nature checks.
+  - heading: Rapid transformation
+    body: At 11th barbarian level, warg transformation only requires an action instead of a full round action.
+  - heading: Primal traits II
+    body: At 11th barbarian level, gain an extra primal traits upgrade.
+  - heading: Rapid transformation II
+    body: At 12th barbarian level, warg transformation only requires a bonus action instead of an action.
+  - heading: Primal traits III
+    body: At 12th barbarian level, gain an extra primal traits upgrade.
+  - heading: Lycanthropic nature
+    body: At 12th barbarian level, you gain 3d8 arcane health whenever you transform, and your regeneration while transformed
+      is increased by 2.
+# https://sites.google.com/view/dnd5plus/home/classes/barbarian-x/stormblade
+- name: Stormblade
+  group: Barbarian archetypes
+  sections:
+  - heading: Storm aspect
+    body: |-
+      At 9th barbarian level, you gain a storm aspect which can be invoked, having base damage and a special effect, and who's mastery also grants you additional permanent boon.
+
+      Aspects:
+
+      * Fire aspect
+        * base damage - 1d10 fire
+        * special effect - on fire
+        * boon - You gain resistance to fire damage.
+      * Lightning aspect
+        * base damage - 1d8 lightning damage
+        * special effect - stunning for 1 round.
+        * boon - Other lightning damage you deal is increased by 1 dice size category.
+      * Thunder aspect
+        * base damage - Your invocation effects deal 1d6 sonic damage
+        * special effect - Deal an extra 2d6 sonic damage
+        * Boon - Your shout and breath attacks and abilities have their range increased by 10 ft, and their damage increased by 1 dice size category.
+      * Blizzard aspect
+        * base damage - 1d10 cold damage
+        * special effect - Targets take 1 damage to fatigue. If applied through a critically failed save, freezes solid for 1d3 rounds.
+        * boon - You gain resistance to cold damage. You ignore difficult terrain while under the effects of rage.
+  - heading: Storm aspect invocation
+    body: |-
+      At 9th barbarian level, learn 2 ways to invoke a storm aspect:
+
+      * Weapon invocation - Spend 1 rest die or 1 round of rage to raise a melee weapon and enchant it for 1 hour. For the duration, its attacks deal storm aspect base damage as extra damage.
+      * Breath invocation - If you have a breath attack, increase its range by 5 ft and cause it to deal storm aspect base damage as extra damage. If you do not, you can spend 1 rest die, battle dice, or 1 round of rage to breathe a 20 ft cone as a bonus action. It that deals 3x base damage on a failed dexterity save, and half on a success. On failure, applies special effect. This effect has a 1d4 < 2 cooldown dice after use.
+      * Shout invocation - As an action, shout a chant of storms in a 15 ft ray. The range is increased by 5 ft per constitution bonus (min 1.) Creatures hit take 3x base damage + your constitution bonus on a failed strength save and have the special effect applied to them.
+      * Sage gesture invocation - As a bonus action, deal base damage + your wisdom bonus at a target exposed tile within 20 ft. If a creature is present, it must make a constitution save to halve damage, also applying the special effect on a failure.
+      * Soulstorm invocation - You can spend 1 rest die during rage to invoke the effect in a 25 ft radius around yourself, dealing your storm aspects base damage + your constitution bonus to creatures that fail a dexterity save, and half on a success. Creatures that critically fail the save also have the special condition applied to them.
+      * War invocation - You can spend 1 round of rage or 1 battle die as a free action to immediately make a melee attack, either unarmed or with a melee weapon, dealing an additional 2x base damage as extra damage, adding battle dice to damage dealt if battle dice were spent, and applying the special condition on a critical hit. You can do so once per round.
+
+      Ability DCs are 12 + con + prof bonus.
+  - heading: Storm magic
+    body: |-
+      At 10th barbarian level, learn 3 spells of any class, so long as they either deal the base damage type of your chosen storm aspect, or apply its special condition. They can be either cantrips, or spells up to level 4.
+
+      You may cast any spell you know that deals your storm aspects base damage type or applies its special condition by spending a number of rest dice equal to the spells level. If cast during a storm, the rest dice cost is reduced by 1.
+  - heading: Stormblade traits
+    body: |-
+      At 10th barbarian level, choose once ability:
+
+      * Powerful invocations - Your storm aspect invocations deal an extra dice of damage.
+      * Greater storm magic - Learn an extra spell or cantrip for Storm magic.
+      * Stormcaller - The rest dice cost of your barbarian abilities and spells you cast is reduced by 1 (min 0) when exposed under a storm.
+  - heading: Greater invocations
+    body: |-
+      At 11th barbarian level, choose 3 upgrades from the list below based on which storm aspect invocations you know.
+
+      * Weapon invocation
+        * Greater weapon invocation - The weapon invocation allows the weapon to deal an extra dice of damage.
+        * Meteor crush - The weapon invocation allows the wielder to spend 1 rest die when making a crush maneuver, dealing an extra x2 aspect base damage to target. Causes the attack to hit a 10 ft cone instead.
+        * Enchanted stormblade - The weapon invocation allows you to point it at a creature as an action, forcing them to make a wisdom save. On a failure, the aspects special condition is applied.
+      * Breath invocation
+        * Breath resonance art - Any cooldown chance dice associated with breath weapons are improved by 1 dice size category.
+        * Dragonsage method - You can double the range of your breath attacks, but reduce them to a narrow cone. Choose an extra damage type: fire, cold, or lightning. Apply 1d6 of that damage to all breath attacks you make.
+        * Storm breath mastery - The range of your breath attacks is increased by 5 ft. Your storm aspect base damage is increased by 1 dice when applied or delivered by breath attacks. The DC of your breath attacks is increased by 1.
+      * Shout invocation
+        * Thrown shout - The range of your shout invocation is doubled.
+        * True voice method - You cannot be muted or silenced. Any verbal component spell you cast has its level increased by 1.
+        * Voice over reality - Your shout invocation requires two more saves, and applies the storm aspects special effect on a failure for both.
+      * Sage gesture invocation
+        * Sage gesture mastery - Increase the range of sage gesture mastery and all spells you cast that have a somatic component by 20 ft. Double the area of effect of spells (if they have one) you cast that have somatic components, and sage gesture mastery now affects a 2x2 tile area.
+        * Summon storm totem - When using sage gesture invocation, you can spend 1 rest die or 1 battle die to instead create a totem of the storms element (a localized blizzard, a standing pillar of fire, a minor whirlwind, or a perpetual lightning bolt, subject to GM) in the invocations target area for 1 minute. It deals 6x storm aspect base damage to creatures that start their turn in or enter the area.
+        * Storm mark - When using sage gesture, you can spend 1 rest die or 1 battle die, or take 1 damage to fatigue, to instead affect a number of tiles equal to 2 + 2x your dexterity bonus within range. The tiles become infused with your storm aspect. Creatures that enter or start their turn on the tile must make a constitution save, taking 1d8 damage of the aspects base damage type and having the storm aspects special effect applied on a failure.
+      * Soulstorm invocation
+        * Eye of the storm - Increase range to 50 ft. Allows leaving inner 5 to 10 ft of effect untouched.
+        * Stormrage - While raging, all your attacks deal an extra 1d8 damage of your storm aspects base damage type.
+        * Soulstorm mastery - You can ignore up to 6 tiles within the soulstorm invocation, sparing creatures and objects within them. Soulstorm deals an extra dice of damage and applies the special effect on a failure.
+      * War invocation
+        * Greater war invocation - When you slay a creature with a war invocation attack, you can restore either 1 rest die or 1 battle die.
+        * Storm striker - You can use war invocation twice per round. Your max battle dice are increased by 1.
+        * Warrior of the storm - You gain a +1 bonus to AC and attacks while fighting under a storm.
+  - heading: 'Power word: Storm'
+    body: |-
+      At 12th barbarian level, you learn to call a storm. Once per long rest, you can speak the storm into being as a full round action. It lasts 2d4 / 2 hours.
+
+      If you have already used this ability since the last long rest, you can attempt to do it again, but doing so requires spending 4 rest dice.
+
+      During such a called storm, your aspect storm aspect and invocation damage is increased by 1d4 (it is applied to all things that benefit from your aspects base damage.)
+
+      Depending on your storm aspect, you gain one of the following effects during such a called storm:
+
+      * Fire aspect, Call comet - As an action, spend 4 rest dice and designate target 3x3 tile area within sight. At the start of the next round, all creatures within the area must make a DC 20 dexterity save. On a failure, they take 4d8 force damage, 4d8 fire damage, and 4d8 radiant damage. This has a 1d12 > 11 cooldown chance dice after use. On a failure they are allowed to relocate to a tile at least 10 ft away from the affected tiles.
+      * Lightning aspect, Call lightning bolt - As an action, spend 2 rest dice to either strike a lightning bolt at a target point within 80 ft. Creatures within 5 ft of target point must make a DC 20 wisdom or constitution save, taking 5d10 lightning damage on a failure and half on a success. On a failure, they are also stunned for 1 round, and are stunned for 1d3 rounds on a critical failure.
+      * Thunder aspect, True storm speaking - The range of any spell you know becomes any point you can see under the storm. The range of all your ranged abilities is doubled while exposed to the storm. All sonic damage you deal is increased by 2d6.
+      * Blizzard aspect, Direfrost caller - You are immune to cold damage. Any time you would stun a creature, they are instead frozen solid for the duration of the storm. Any negative condition you apply also hobbles creatures affected. You may choose to spend 1 rest die when a creature dies under the storm, allowing them to become frozen solid instead, and granting them one more death save when they thaw (subject to GM.)

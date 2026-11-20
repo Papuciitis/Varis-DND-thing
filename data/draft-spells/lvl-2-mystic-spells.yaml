@@ -1,0 +1,290 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/mystic-magic/lvl-2-mystic-spells
+section: spells
+entries:
+- name: Aspect of the cat
+  group: Mystic spells
+  lvl: '2'
+  types: Evocation, Mystic 2
+  casting: bonus action or reaction
+  components: Somatic
+  duration: special.
+  range: reach
+  effect: |-
+    As a bonus action or reaction, cause one of the following effects:
+
+    * Keen senses - Gain keen scent, keen hearing, and 120 ft of darkvision for 1 hour.
+    * Lightning reflex - Grant yourself a +3 bonus to a dexterity save or an acrobatics check.
+    * Zoom - Grant yourself a +20 bonus to movement speed and a +1 bonus to AC for 2 rounds.
+    * 9 lives - Gain a +2 bonus to a death save. Can be cast while dying and unconscious ( special )
+
+    When casting this spell, roll a 1d6 chance dice. The spell slot is not expended on a 3 or higher.
+- name: Aspect of the hawk
+  group: Mystic spells
+  lvl: '2'
+  types: Evocation, Mystic 2
+  casting: bonus action or reaction
+  components: Somatic
+  duration: special.
+  range: reach
+  effect: |-
+    As a bonus action or reaction, cause one of the following effects:
+
+    * Spectral wings - Gain a glide speed equal to either your movement speed or 40 ft, whichever is highest, for 1d4 rounds.
+    * Soaring leap - Leap up to 30 ft + 5 ft per casting bonus. Can be done mid-air.
+    * Dive - Grant a leaping or falling attack to deal an additional 2d8 piercing damage.
+    * Gust - Disperse cloud effects in a 5 ft radius of yourself.
+
+    When casting this spell, roll a 1d4 chance dice. The spell slot is not expended on a 3 or higher.
+- name: Aspect of the ox
+  group: Mystic spells
+  lvl: '2'
+  types: Evocation, Abjuration, Mystic 2
+  casting: bonus action or reaction
+  components: none
+  duration: special
+  range: reach
+  effect: |-
+    As a bonus action or reaction, cause one of the following effects:
+
+    * Stampede - Grant yourself a +10 bonus to movement spend this turn and grant your next attack until the start of your next turn a bonus to damage equal to 2 per 5 ft traveled.
+    * Brawn - Grant yourself a +4 bonus to a block check, strength save, or an athletics check.
+    * Withstand - Grant yourself 1 temporary block for the duration of combat.
+    * Dig in - Ignore up to 10 ft of forced movement until the start of your next turn.
+
+    When casting this spell, roll a 1d4 chance dice. The spell slot is not expended on a 3 or higher.
+- name: Aspect of the wolf
+  group: Mystic spells
+  lvl: '2'
+  types: Evocation, Transmutation, Mystic 2
+  casting: bonus action or reaction
+  components: none
+  duration: special
+  range: reach
+  effect: |-
+    As a bonus action or reaction, cause one of the following effects:
+
+    * Onslaught - Grant yourself an extra attack until the start of your next turn.
+    * Howl - Force creatures within range to make a constitution save, taking 2d8 sonic damage on a failure, and a wisdom save, being shaken for 1d4 rounds on a failure.
+    * Hunters instincts - Grant a survival check made to track a creature a +1d4 bonus.
+    * Bloodthirst - When inflicting or receiving the bleed condition, gain a +2 bonus to d20 rolls for 1d4 rounds.
+
+    When casting this spell, roll a 1d4 chance dice. The spell slot is not expended on a 3 or higher.
+- name: Aspect of the serpent
+  group: Mystic spells
+  lvl: '2'
+  types: Enchantment, Transmutation, Mystic 2
+  casting: bonus action or reaction
+  components: none
+  duration: special
+  range: reach
+  effect: |-
+    As a bonus action or reaction, cause one of the following effects:
+
+    * Slither - Grant yourself a +3 bonus to stealth and disguise checks for the next 2d4 minutes.
+    * Snakebite - Grant an attack made out of stealth an extra +1d6 bonus poison damage, and a 1d4 chance to stun and poison the target for 1d4 rounds.
+    * Forked tongue - Grant a deception or persuasion check a +2 bonus.
+    * Venomancy - Cause a poison or toxic damage dealing spell, item, or effect you are using/inflicting to have its poison and toxic damage increased by 1 dice.
+
+    When casting this spell, roll a 1d4 chance dice. The spell slot is not expended on a 3 or higher.
+- name: Aspect of the owl
+  group: Mystic spells
+  lvl: '2'
+  types: Enchantment, Transmutation, Mystic 2
+  casting: bonus action or reaction
+  components: none
+  duration: special
+  range: reach
+  effect: |-
+    As a bonus action or reaction, cause one of the following effects:
+
+    * Midnight Insight - Upgrade a cantrip you know once for the next 1d3 rounds. Cannot be cast during the day.
+    * Keen mind - Gain a +2 bonus to a wisdom save or to a save vs a sleep effect.
+    * Touch of wisdom - Restore 1d2 charges to a wand or staff.
+    * Winged dash - Immediately dash 20 ft in a straight line without provoking an attack of opportunity. Can be done again as a move action, and can be done again as a free action before the end of your turn.
+
+    When casting this spell, roll a 1d4 chance dice. The spell slot is not expended on a 3 or higher.
+- name: Communion of violence
+  group: Mystic spells
+  lvl: '2'
+  types: Necromancy, Mystic 2
+  casting: action and bonus action
+  components: verbal, somatic
+  duration: 2d3 rounds
+  range: self, select allies within 30 ft
+  effect: |-
+    As an action and bonus action, bless yourself and up to as many allies within 30 ft as your casting bonus -2 (min 1.)
+
+    For the next 2d3 rounds, for every attack made by you or participating ally, reserve a 1d4 dice in the spell. For every enemy slain by you or an ally participating in the spell, add a 1d6 dice to the pool, and in case of the death of you or the participating allies add a 1d12 dice to the pool. At the end of the spell, the participants decide how to divide the accumulated dice as healing.
+- name: Druidic staff
+  group: Mystic spells
+  lvl: '2'
+  types: Transmutation, Abjuration, Mystic 2
+  casting: 5 minutes
+  components: Verbal, Somatic, material( 1 phial of water ), 1 rest die.
+  duration: special
+  range: reach
+  effect: |-
+    As a ritual spell during a rest, enchant a staff or polearm and lock 1 rest die for the duration of the enchantment.
+
+    A druids staff has a +1 bonus, an extra 5 ft of reach (which is magical,) and has 6 charges. The staff can be invoked by anyone who can cast mystic spells or cantrips as an action to do one of the following:
+
+    * Levitate - Levitate a large or smaller object with a levitate speed of 10 ft. Once triggered, can be cast repeatedly at no cost for 2 minutes. Only one object can be levitated at a time. Costs 1 charge.
+    * Snare - Cause a creature on solid ground, dirt, or vegetation within 40 ft to make a dexterity save. On a failure, they are snared and unable to move unless they break free as an action, requiring a strength save. Costs 1 charge.
+    * Magic bubble - Make a wisdom or dexterity based ranged attack against a creature within 40/80 ft. It cannot be blocked and deals 1d8 + casting bonus sonic damage. On a critical strike the target is pushed 5 ft in a direction of the caster's choice. Roll a 1d4 chance dice. On a 2 or lower, costs 1 charge.
+    * Earthwork - Make a number of tiles within 30 ft equal to your casting bonus to undergo a change, either rebuilding, relocating within 10 ft, fortifying, reassembling stones and clay, or reforming and bending wood and earth to your liking. Can either cause or remove difficult terrain per tile affected, or break engraved runes on tiles. Costs 1 charge.
+    * Stone rune - Create a mark or rune on a stone. Creatures within 30 ft of the rune gain a +1 bonus to saves and are protected from eldritch mental effects. If the rune is one a stone structure, all creatures within are subject to the runes effect.
+
+    The druids staff restores all charges at rest.
+  higher_levels: Per level above 2nd, grant the staff an extra 2 max charges.
+- name: Commune with nature
+  group: Mystic spells
+  lvl: '2'
+  types: Divination, Enchantment
+  casting: 1 action
+  components: Somatic
+  duration: special
+  range: reach
+  effect: As an action, make yourself known to a creature. You can understand its intent, recent past,
+    and nature, and charm it, asking of it one task in return for it making one request. If the creature
+    is unwilling, it must make a charisma save to resist. If you do not complete the request, the spell
+    is dispelled.
+- name: Elder runes
+  group: Mystic spells
+  lvl: '2'
+  types: Abjuration, Divination
+  casting: 1 action
+  components: Verbal, somatic, material (ink flask worth 1 copper or similar material)
+  duration: special
+  range: reach
+  effect: |-
+    As an action, inscribe elder runes on a creature, weapon, item, or rest area, granting different effects depending on the target:
+
+    * Creature - Target within 5 feet must make a wisdom save. On a success, they gain 2 temporary block. The runes last until the target rests, and they break once the target loses all temporary block.
+    * Object - The target object cannot be located or scried by means of magic, and is immune to telekinesis or similar effects. Lasts for as long as runes are not dispelled or broken.
+    * Weapon - The runes glimmer on the weapon, and can be awoken by a wielder as an action, granting the weapon 1d4 extra lightning and 1d4 extra radiant damage. The runes last until dispelled, or until rest.
+    * Rest area - Protective runes guard the campsite from danger, allowing the first roll to prevent or deal with danger gain advantage. The stealth rolls of intruders have disadvantage. Lasts for the rest.
+
+    Only a single set of runes can remain active at a time. Casting new runes breaks the previous instance of elder runes.
+
+    Upcast: When cast using specifically a 3rd level spell slot, you may cast divergent elder runes, allowing for two sets of runes. When cast at 5th level spell slot or higher, the runes remain indefinitely, even once the caster dies.
+- name: Enchanted seedling
+  group: Mystic spells
+  lvl: '2'
+  types: Transmutation, Enchantment
+  casting: 1 action
+  components: Somatic, 1 HP
+  duration: special
+  range: reach
+  effect: |-
+    As an action, enchant a seed, spore, or contained sapling (subject to the GM) imbuing it with lifeforce. Doing so costs you 1 HP. When planted, it will grow in the area, even if it is disturbed, stony, poisoned, or near-barren ground (subject to the GM. Total lack of any life-force or sustenance will lead to death) as well as leading it to develop at 10 times the speed, though this may cause it to take on some other unexpected attributes (subject to the GM).
+
+    This cannot produce nutrition from non-nutritious soil.
+- name: Glimpse
+  group: Mystic spells
+  lvl: '2'
+  types: Divination, Enchantment, Mystic 2
+  casting: 1 action
+  components: vision
+  duration: instant
+  range: sight
+  effect: |-
+    As an action attempt to lock eyes with target creature within range. The creature will be made aware of your presence and will be called to look at you, requiring a wisdom save.
+
+    On a failure, you can trigger up to one of the following effects:
+
+    * Deliver a message to the creatures mind, it cannot exceed a short phrase (subject to the GM).
+    * Deal 4d6 + casting bonus psychic damage to the target.
+    * Learn what creatures or entities that you know the target also knows, and if they have met them or know of them.
+    * Force the target to remake the save, either fleeing or being shocked for 1 round. This is a fear effect.
+
+    The caster and the target must have eyes, line of sight to one another, and unimpaired vision in order for the spell to work.
+  higher_levels: Per level above 2nd, the caster can choose an additional effect. If cast at 6th level,
+    the caster can choose telepathically communicate with the target in compressed time, allowing for
+    a short exchange in the span of a single turn (subject to the GM).
+- name: Wild hair
+  group: Mystic spells
+  lvl: '2'
+  types: Transmutation, Mystic 2
+  casting: 1 action
+  components: Verbal, Material
+  duration: instant
+  range: 10 ft
+  effect: |-
+    As an action, cause target creatures hair to magically grow longer. Bald characters gain a long mane of hair, and characters with long hair have it become very long. Characters with very long hair gain dangerously long hair.
+
+    The enchanted hair can then be used to gain the following properties:
+
+    Long hair: can be used to either hold objects, manipulate small objects around the caster, or grapple 1 target within 5 ft of the caster, using the caster's casting bonus as the athletics check.
+
+    Very long hair: like long hair, but can grapple up to 2 targets and the grapple range is 5 ft. The target also gains a climb speed of 30 ft with their hair, and can stand up to 5 ft off the ground with their hair.
+
+    Dangerously long hair: Same as very long hair, but can grapple up to 3 targets, and extend range by 5 ft per time the spell is cast to make the hair longer past the initial very long hair. Treat all tiles target walks on and leave their hair in as dangerous terrain for the target.
+- name: Inner fire
+  group: Mystic spells
+  lvl: '2'
+  types: Abjuration, Evocation
+  casting: Full-round action
+  components: Somatic
+  duration: 1 hour
+  range: reach
+  effect: |-
+    As a full round action, invoke fire within yourself, taking 1 fire damage in the process. Cause yourself to gain 1d6 + 3 charges of inner fire.
+
+    You can spend 1 charge as an action, to breathe fire in a 15 foot cone or 20 foot ray. All creatures hit must make a dexterity save, taking 3d6 + casting bonus fire damage on a failure, and half on a success.
+
+    You can spend 2 charges as an action and bonus action to make a spell attack against a creature within 30 feet with a lesser fireball, dealing 3d4 + constitution bonus + casting bonus fire damage.
+
+    You take reduced fire damage equal to the remaining inner fire charges for the duration.
+- name: Lesser gift of the spider queen
+  group: Mystic spells
+  lvl: '2'
+  types: Transmutation, Conjuration
+  casting: 1 action
+  components: Verbal, somatic, material(1 flask of spider venom that you consume)
+  duration: 1 minute
+  range: 1 creature
+  effect: |-
+    As an action, consume one dose of spider venom. The venom does not harm or debilitate you. Your eyes become dark and you grow fangs. For the duration of the spell, gain a bite attack that you can use as a bonus action, scaling with dexterity, dealing 1d8 poison damage. Enemies bit must make a constitution save, becoming poisoned for 1 minute on a failure.
+
+    You have a wall-walking speed equal to your movement speed for the duration.
+  higher_levels: For every spell slot level above 1st, increase the number of targets by 1.
+- name: Life shroud
+  group: Mystic spells
+  lvl: '2'
+  types: enchantment, abjuration
+  casting: 1 action
+  components: Somatic, Verbal
+  duration: 1 hour
+  range: self
+  effect: As an action, gain 2d10 temporary health. Lasts 1 hour.
+- name: Recycle spell
+  group: Mystic spells
+  lvl: '2'
+  types: Mystic 2, Abjuration, Necromancy, Evocation
+  casting: 1 action
+  components: Somatic
+  duration: 1 minute.
+  range: self
+  effect: |-
+    As an action, destroy a spell, either losing a spell slot and picking the spell of choice from your known spells, or by destroying a scroll within your possession if you can cast it, or by sacrificing the necessary spell slots needed to cast a spell that depends on it. Depending on the spells types, gain the following bonuses per type:
+
+    * Abjuration - Gain +1 AC per two spell levels (rounded down, minimum 1)
+    * Divination - Gain 1 reroll per spell level. Gain one ability to dispel an illusion per spell level.
+    * Enchantment - Gain advantage on a mental save of choice.
+    * Evocation - Gain a temporary rest dice for the duration.
+    * Illusion - Gain 3 uses of light illusion per spell level: As an action become illusory and unseen, and create a false actor. You become visible after 1d4 rounds of using the ability.
+    * Necromancy - Gain 1d4 arcane health per spell level. Grant +1 level to the next necromancy spell cast for the duration.
+    * Conjuration - Gain 1 free blink per two levels of the spell, allowing you to spend a bonus action to blink 50 ft as a bonus action. Gain 2 shadow walk per spell level, allowing you to move between two points within 60 feet as a move action. The movement still provokes AOOs.
+    * Transmutation - Gain one ability of choice: Scent, darkvision, extra reaction, +1d4 bonus to unarmed, light blade, and fist weapon attacks.
+- name: Void touch
+  group: Mystic spells
+  lvl: '2'
+  types: Conjuration, Evocation, Enchantment, Necromancy
+  casting: 1 action
+  components: Somatic
+  duration: instant
+  range: reach
+  effect: As an action, make a spell attack against a creature, dealing 1d6 force damage, 1d6 cold damage,
+    1d6 necrotic damage, and 1d6 acid damage.
+  higher_levels: At 3rd, also deal 1d6 fire damage. At 4th, also deal 1d6 lightning damage, At 5th, also
+    deal 1d6 psychic damage. At 6th, also deal 1d6 radiant damage.

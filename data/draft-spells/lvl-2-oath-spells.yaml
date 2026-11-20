@@ -1,0 +1,151 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/oath-magic/lvl-2-oath-spells
+section: spells
+entries:
+- name: Bestow greatness
+  group: Oath spells
+  lvl: '2'
+  types: abjuration, concentration
+  casting: action
+  components: verbal, somatic
+  duration: 1 hour
+  range: touch
+  effect: |-
+    As an action, bless a creature, granting it the following benefits:
+
+    * Your attacks deal an additional 1d6 radiant damage.
+    * Your block checks gain a +1d6 bonus.
+    * Gain a +10 bonus to movement speed.
+    * You can spend up to 1 rest die as a free action to gain an extra attack.
+- name: Cloak of light
+  group: Oath spells
+  lvl: '2'
+  types: abjuration
+  casting: action
+  components: verbal, somatic
+  duration: 1 hour
+  range: touch
+  effect: |-
+    As an action, enchant a cloak, causing it to emanate light in a 30 ft radius, and granting a +1 bonus to AC to the wielder. The wielder of the cloak bestows disadvantage on melee attacks of opportunity made against the wielder.
+
+    Upcast: When cast using a 3rd level spell slot, if the caster is the wearer of the cloak, they can leap up to 60 feet by spending a rest dice as an action.
+- name: Cloak of mist
+  group: Oath spells
+  lvl: '2'
+  types: abjuration, transmutation
+  casting: action
+  components: verbal, somatic
+  duration: 10 minutes
+  range: touch
+  effect: |-
+    As an action, touch a creature and surround it in a cloak of mist. For the duration of the spell, the creature reduces all incoming damage by 1, and all incoming fire damage by 1d4.
+
+    If the target takes more than 10 points of fire or radiant damage while under the spells effect, the spell is ended.
+
+    Upcast: Per spell slot level used above 2nd level, increase all damage DR by 1, and fire dr by 1 dice size category.
+- name: Holy smite
+  group: Oath spells
+  lvl: '2'
+  types: evocation
+  casting: bonus action
+  components: verbal
+  duration: combat
+  range: special
+  effect: As a bonus action, cast the spell and make a weapon attack. The attack deals an additional 2d8
+    radiant damage. Damage is doubled vs undead.
+  higher_levels: For every level above 2nd, deal an additional 1d8 radiant damage.
+- name: Lesser restoration
+  group: Oath spells
+  lvl: '2'
+  types: abjuration
+  casting: action
+  components: verbal, somatic
+  duration: combat
+  range: touch
+  effect: As an action, cause a creature to retry a save against any disease, curse, or similar ailment
+    that has befallen them, even if not allowed another save during rest. A creature cannot be the target
+    of this spell more times than your casting bonus - 2 (min 1) per year.
+- name: Preach death
+  group: Oath spells
+  lvl: '2'
+  types: necromancy
+  casting: action
+  components: verbal
+  duration: combat
+  range: touch
+  effect: As an action, cause a creature within 30 feet to make a constitution save. On a failure, they
+    take 3d8 psychic damage, and you can repeat the effect again on another creature within range so long
+    as you do not move.
+- name: Restore fatigue
+  group: Oath spells
+  lvl: '2'
+  types: evocation
+  casting: action
+  components: verbal, somatic
+  duration: combat
+  range: touch
+  effect: As an action, restore 1d4 fatigue to a creature. Restore one rest die to it if target is at
+    zero.
+  higher_levels: at 3rd level, restore 2d4 fatigue. At 4th, restore 3d4.
+- name: Shield of dawn
+  group: Oath spells
+  lvl: '2'
+  types: abjuration
+  casting: action
+  components: verbal, somatic
+  duration: combat
+  range: touch
+  effect: As an action, bless a shield, granting it a temporary +1 bonus for 1 day, and allowing the wielder
+    to spend 1 block to negate a ray or cone attack as a free action.
+- name: Stand steadfast
+  group: Oath spells
+  lvl: '2'
+  types: necromancy, abjuration, concentration
+  casting: action
+  components: verbal, somatic
+  duration: instant
+  range: self
+  effect: As an action, heal yourself for 3d8 + casting bonus health, restore 1 block, and restore 1 fatigue
+    to yourself.
+- name: Thunder god's wrath
+  group: Oath spells
+  lvl: '2'
+  types: abjuration, concentration
+  casting: Full-round action
+  components: verbal, somatic
+  duration: combat
+  range: 120 feet
+  effect: As a full round action, call a lightning bolt to strike a creature when exposed to the elements
+    and in the right circumstances (subject to the GM, typically just exposed to somewhat cloudy weather.)
+    The target must make a dexterity save, taking 4d8 + casting modifier damage on a failure, and half
+    on a success.
+- name: Toll the bell
+  group: Oath spells
+  lvl: '2'
+  types: enchantment, abjuration, concentration
+  casting: action + bonus action
+  components: verbal, somatic, material (bell or gong that must be rung as part of the spell)
+  duration: combat
+  range: 80 feet
+  effect: |-
+    As an action, enchant a bell or gong, and as a bonus action point to a creature within 80 feet. The creature must make a wisdom saving throw. on a failure, they are enchanted. You can toll the bell as a bonus action to do one of the following:
+
+    * The creature must spend an action groveling on its turn, or takes 1d8 psychic damage.
+    * The creature must flee combat when possible, or it must make a wisdom save, becoming shocked until the start of their next turn on a failure.
+    * The creature must make an attack against a target as an action on their turn, or it must make a strength save to not drop their weapon.
+    * The creature must move in the target direction, or it must make a constitution save to not take 1d10 necrotic damage.
+
+    You can toll the bell again as an action, but doing so requires a concentration check.
+- name: Bellow flame
+  group: Oath spells
+  lvl: '2'
+  types: oath 2, evocation
+  casting: action + bonus action
+  components: verbal, somatic, material (source of fire within 5 feet, such as a held torch or candle,
+    or a bonfire)
+  range: special
+  effect: |-
+    As an action, breathe into a source of fire within reach or 5 ft, spreading forth a 15 ft cone of fire from the origin of the flame that deals 4d4 points of fire damage. All creatures caught in the cone must make a dexterity save, taking half damage on a success.
+
+    Extra: You can also spend a bonus action before casting this to take a deep breath. If you do so, make a constitution check. For every 4 points above 10, increase the damage by 1d4.
+
+    Scaling: The range is increased by 5 feet for every 3 points of constitution above 10. And the damage is increased by 1d4 for every 2 points of constitution above 10.

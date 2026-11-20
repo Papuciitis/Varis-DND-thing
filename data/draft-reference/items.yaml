@@ -1,0 +1,367 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/items
+section: items
+entries:
+  - name: Potions of healing
+    group: Potions
+    description: Restore 1d6/2d6/3d6/4d6 health.
+  - name: Potion of stamina
+    group: Potions
+    description: Restore 1d3 fatigue.
+  - name: Potion of clarity
+    group: Potions
+    description: Restore 1 rest die, remake a mental save vs ongoing effects.
+  - name: Potion of speed
+    group: Potions
+    description: +10 ft movement speed and a +1d4 to Dexterity based checks for 1 minute.
+  - name: Potion of numbness
+    group: Potions
+    description: Reduce all incoming damage by 2, but take a -2 penalty to Dexterity, Wisdom, and Charisma
+      based checks for 1 hour.
+  - name: Potion of Strength
+    group: Potions
+    description: +2 to Strength checks for 1 hour. Gain advantage on checks made to withstand hot or cold environments
+      for 1 hour.
+  - name: Potion of Wisdom
+    group: Potions
+    description: +2 to Wisdom checks for 1 hour.
+  - name: Potion of Constitution
+    group: Potions
+    description: +2 to Constitution for 1 hour. Remake a save vs ongoing disease.
+  - name: Potion of mana
+    group: Potions
+    description: Make a DC 15 Constitution save. On a success, regain one rest die, one level’s worth of spell
+      slots, or one point in a metamagic or spell-point pool you already have. You also gain 1d4 arcane health.
+      The GM determines the risk on a failure.
+  - name: Potion of crimson
+    group: Potions
+    description: Regain 1d12 health, gain 1d8 temporary health, and 1d4 arcane health.
+  - name: Potion of ambersap
+    group: Potions
+    description: Regain 1 block and 1 rest die.
+  - name: Phial of moonsugar
+    group: Potions
+    description: Extremely sweet and sticky. Attracts insects and sugar consuming critters.
+  - name: Corked flagon
+    group: Potions
+    description: A flagon is a larger container for a potion or elixir, usually storing 4 uses of a potion.
+  - name: Tripwire
+    group: Traps and components
+    description: Can be used to trigger an item, component, or primed crossbow to trigger or attack.
+  - name: Snare trap
+    group: Traps and components
+    description: Can be placed near trees or other counterweights, snares on success.
+  - name: Fine rope
+    group: Traps and components
+    description: Can be used to trip creatures, uphold segments, create intricate rope traps, or extend tripwires
+      and snares.
+  - name: Pressure-plate
+    group: Traps and components
+    description: Triggers item, spring, or primed crossbow, or another connectable component.
+  - name: Bear-trap
+    group: Traps and components
+    description: Deals 2d6 damage and snares target.
+  - name: Caltrops
+    group: Traps and components
+    description: Covers area, dealing 1d4 piercing damage to unprotected targets that stomp through. The area
+      counts as difficult terrain. Falling onto caltrops deals 1d6 piercing damage.
+  - name: Glass beads
+    group: Traps and components
+    description: Trip targets.
+  - name: Ball bearings
+    group: Traps and components
+    description: Trip targets.
+  - name: Chalk dust
+    group: Traps and components
+    description: Exposes invisible creatures, and blinds creatures if thrown at melee range. Requires a Dexterity
+      save.
+  - name: Iron spike
+    group: Traps and components
+    description: Can be used to create either falling or reflexive trap with a spike. Deals 1d8 piercing damage
+      on impact.
+  - name: Spring box
+    group: Traps and components
+    description: Can be used to trigger, prime, or make reflexive a pressure sensitive traps or components.
+      Can be set up to launch a small item when triggered.
+  - name: Powderbox
+    group: Traps and components
+    description: Can be used to ignite or propel a component or object when triggered.
+  - name: Poison flask
+    group: Flasks and similar consumables
+    description: 1d8 poison damage when applied to weapon. DC 14 Constitution save - poisoned for 1 hour.
+  - name: Oil
+    group: Flasks and similar consumables
+    description: Coats four tiles or items, or one Medium object. Once lit, the oil burns for 10 minutes and
+      applies On-fire/Burning to creatures exposed to it.
+  - name: Acid
+    group: Flasks and similar consumables
+    description: Can be used to dissolve a small item, corpse, or cover 1 tile, dealing 1 acid damage to those
+      that enter it.
+  - name: Freezing liquid phial
+    group: Flasks and similar consumables
+    description: Can be used to freeze 1 tile, item, or potion, or to extinguish burning oil or fire. Deals
+      3d4 cold damage when thrown.
+  - name: Smoke flask
+    group: Flasks and similar consumables
+    description: Emits a 10 ft radius sphere of smoke that obscures and lasts 1 minute.
+  - name: Glowlight flask
+    group: Flasks and similar consumables
+    description: Emits a bright light when opened and lasts 1 hour. Can be used to cover an item or 1 tile
+      surface with it.
+  - name: Blade oil
+    group: Flasks and similar consumables
+    description: When applied to weapons, grant a +1 bonus to it for 1 minute.
+  - name: Cleansing balm
+    group: Flasks and similar consumables
+    description: Can be applied to 1 item, tile, or body part to cleanse, or consumed by a creature to grant
+      it an advantaged roll vs disease or infection.
+  - name: Flask of distilled alcohol
+    group: Flasks and similar consumables
+    description: Coats four tiles or items, or can be thrown at a target. The target gives off an odor and
+      loses the use of keen smell for 1 hour. Igniting the alcohol immediately deals 1d8 fire damage and applies
+      On-fire/Burning to coated creatures.
+  - name: Black scroll
+    group: Arcane consumables and magical components
+    description: Can be used to learn an occult spell.
+  - name: Crystallized mana
+    group: Arcane consumables and magical components
+    description: Can be crushed as a reaction to gain a +2 to the next save vs a spell. Lasts 2 turns.
+  - name: Elderlychen spore bag
+    group: Arcane consumables and magical components
+    description: Can be sprayed on 4 items or tiles. Elderlychen will rapidly sprout and glow when exposed
+      to any magical aura.
+  - name: Forge amber
+    group: Arcane consumables and magical components
+    description: 1 can be consumed when enchanting an item to increase a die size or bonus provided by 1.
+  - name: Holy water
+    group: Arcane consumables and magical components
+    description: Can be sprayed in a 10 ft cone, or on 4 tiles. Undead and eldritch creatures that are exposed
+      have disadvantage vs spells for 1 minute.
+  - name: Prismatic dust
+    group: Arcane consumables and magical components
+    description: Reveals invisible creatures and magical items.
+  - name: Stardust
+    group: Arcane consumables and magical components
+    description: Can be consumed during casting to double the duration of a spell, or to increase the maximum
+      health of an elemental being conjured by 1d8.
+  - name: Warding rod
+    group: Arcane consumables and magical components
+    description: Can be consumed during dispelling or disenchanting to gain advantage on the check, but take
+      1d6 fire damage on failure as the rod burns out.
+  - name: Mage-ash phial
+    group: Arcane consumables and magical components
+    description: Can be consumed to increase the lightning, cold, or force damage dealt by a spell by 1 die.
+  - name: Puffballs
+    group: Special flora and fungus
+    description: Fungus, can be thrown to make a small spore cloud that obscures and disorients. Mundane affinity.
+  - name: Elderlychen
+    group: Special flora and fungus
+    description: Lichen that grows in cool areas around magical items and places and glows slightly. Abjuration
+      affinity.
+  - name: Red rot
+    group: Special flora and fungus
+    description: Fungus that grows on the corpses of eldritch and undead creatures. Necromancy and poison affinity.
+  - name: Crystal flowers
+    group: Special flora and fungus
+    description: Strange plant that grows deep underground near ley lines. Difficult to harvest. Conjuration
+      affinity.
+  - name: Windbells
+    group: Special flora and fungus
+    description: Small patches of plant said to grow in ancient ceremony sites. Often used for wakefulness
+      tea. Divination affinity.
+  - name: Magestool
+    group: Special flora and fungus
+    description: Mushroom that grows in secluded shaded places. Poison and illusion affinity.
+  - name: Wargbloom
+    group: Special flora and fungus
+    description: Rare white lichen that blooms during full moons. Enchantment affinity.
+  - name: Deathblossoms
+    group: Special flora and fungus
+    description: Small black flowers that sometimes bloom and quickly wilt around old battlefields or sites
+      of death. Necromancy, abjuration, and poison affinity.
+  - name: Amber physalia
+    group: Special flora and fungus
+    description: Strange golden-milky organism that grows where either cosmic amber has fallen or sacred trees
+      are injured or leak. Quickly shrivels and dries when harvested. Evocation and healing affinity.
+  - name: Ironbeard
+    group: Special flora and fungus
+    description: Lichen of a sort that grows on ironwood trees and in sacred groves. Transmutation and abjuration
+      affinity.
+  - name: Fleshbell
+    group: Special flora and fungus
+    description: Fungus that grows in poisoned or shaded damp places. Poison and healing affinity.
+  - name: Sorcentine
+    group: Special flora and fungus
+    description: Small rare red flower. Bees that find it tend to produce a strange red honey. Elemental and
+      illusion affinity.
+  - name: Dwarfscone
+    group: Special flora and fungus
+    description: Fungus that grows and eats into hard rock and appears as a curved horn-like cap.
+  - name: Wispcap
+    group: Special flora and fungus
+    description: Little bulbous mushroom that very slightly glow in the dark. Grow in patches throughout woods.
+      Healing and mundane affinity.
+  - name: Cronegrass
+    group: Special flora and fungus
+    description: Blue-tinted grass that grows on top of submerged attuned or arcane objects or materials, or
+      near old burial sites. Divination affinity.
+  - name: Suncrown
+    group: Special flora and fungus
+    description: Small golden-orange mushroom that pops and releases spores when stepped on, and can even cause
+      a small spark. Grows in decaying burned places. Mundane and cleansing affinity.
+  - name: Elfrose
+    group: Special flora and fungus
+    description: Ancient white flower bush whose proper cultivation methods have been lost to time. Elemental,
+      anti-disease, evocation, conjuration, and abjuration affinity.
+  - name: Moonfern
+    group: Special flora and fungus
+    description: Subtle gray-white fern that grows in temperate forests and old groves. Blooms at night. Divination
+      and enchantment affinity.
+  - name: Alchemist's supplies
+    group: Tools
+    description: Perform alchemy, identify potions or substances, neutralize acid.
+  - name: Artificer's tools
+    group: Tools
+    description: Repair, assemble, or modify a mechanism or tool. Repair golems and runes. Examine and dissect
+      golems and elementals.
+  - name: Artisan supplies
+    group: Tools
+    description: Create, repair, or modify crafts, clothes, leather, or instruments.
+  - name: Arcane implements
+    group: Tools
+    description: Examine and interact with arcane objects, scrolls, or wands, or golems. Heal elemental.
+  - name: Brewer's supplies
+    group: Tools
+    description: Brew drinks and lesser potions or admixtures.
+  - name: Carpenter's tools
+    group: Tools
+    description: Create, repair, or modify wooden objects and structures.
+  - name: Cartographer tools
+    group: Tools
+    description: Create, examine and compare maps and charts, determine map details, prepare plans with maps,
+      search for hidden knowledge.
+  - name: Cook's utensils
+    group: Tools
+    description: Create meals, process ingredients.
+  - name: Disguise kit
+    group: Tools
+    description: Create disguises, copy appearances, obscure or cover details.
+  - name: Herbalism kit
+    group: Tools
+    description: Examine and prepare plants and fungus, prepare mixtures and remedies.
+  - name: Healer's supplies
+    group: Tools
+    description: Heal creature during rest, tend to disease or injury.
+  - name: Jeweler's tools
+    group: Tools
+    description: Examine, perfect, and alter jewelry and gemstones.
+  - name: Mason's tools
+    group: Tools
+    description: Repair, build, and examine stone structures and objects.
+  - name: Navigator's tools
+    group: Tools
+    description: Plot course, discover position while lost, search for locations.
+  - name: Occult implements
+    group: Tools
+    description: Identify and interact with occult runes and artifacts, examine extra-planar phenomena and
+      objects.
+  - name: Poisoner's kit
+    group: Tools
+    description: Prepare, mix, and test poisons, toxins, antivenoms, and related components.
+  - name: Smith's tools
+    group: Tools
+    description: Create, repair, and alter metal items.
+  - name: Scribe's tools
+    group: Tools
+    description: Create tomes, notes, and scrolls.
+  - name: Surgeon's kit
+    group: Tools
+    description: Treat serious injuries, dissect, perform procedure.
+  - name: Thieves' tools
+    group: Tools
+    description: Open lock, disable trap, sabotage mechanism.
+  - name: Tinker's tools
+    group: Tools
+    description: Create, combine, repair, and modify devices and mechanisms.
+  - name: Base metals
+    group: Semi-mundane materials
+    description: Copper, lead, Iron, Nickel, Tin, and swamp iron. While they have their properties, their alignments
+      are weak and they are mostly used for tools and simple weapons.
+  - name: Aligned metals
+    group: Semi-mundane materials
+    description: Bronze, Electrum, Silver, Steel, or titanium. These are metals that are either aligned or
+      pliable to magical or arcane forces.
+  - name: Higher metals
+    group: Semi-mundane materials
+    description: Gold, Titanium, and Platinum. Higher metals are both used as currency and prime materials
+      for arcane components and materials. Their arcane malleability makes them unaligned to any specific domain
+      or force of magic.
+  - name: Muted materials
+    group: Semi-mundane materials
+    description: Obsidian, amber, opal, pearl, amber, lapis lazuli, malachite and other false crystals. Materials
+      that, while possessing some alignment or material-specific properties, are themselves in fact muting
+      to most magical forces.
+  - name: True gemstones
+    group: Semi-mundane materials
+    description: Amethysts, Diamonds, Emeralds, Corundum, Topaz, Emeralds, etc. These are true crystal structure
+      gemstones with strong resonance, thereby being prime jewelry and enchantment targets.
+  - name: Ironwood
+    group: Semi-mundane materials
+    description: Typically harvested in dead form. A metallic mesh-like structure from a unique organism. It
+      has a strong alignment with mystical magic and maintains similar properties to steel.
+  - name: Memory stone
+    group: Semi-mundane materials
+    description: A dark magenta stone-like material made by a long-lost magical art. Prime material that reacts
+      with psychic and arcane powers. Items that store magic or effects gain increased capacity if they include
+      it.
+  - name: Moon-silver
+    group: Special metals and alloys
+    description: A very rare and limited material, coveted by artificers, smith sages, and enchanters for their
+      unique properties. They possess a strong affinity with lunar magic, and with the arcane in general.
+  - name: Mithril
+    group: Special metals and alloys
+    description: A strong but light alloy of metal, whose forging and crafting is kept as a deep secret among
+      dwarven smith cults. Any armor created from it is at least a +1, and has 3 less bulk.
+  - name: Adamantine
+    group: Special metals and alloys
+    description: A bright blue metal found only within the deepest layers of the earth beneath the undersea
+      and even below the deep caverns rumored to occupy the deepest spots before the magma sea. It has an affinity
+      for sharpness and power, and any edge or weapon made of it will be at least a +1 weapon.
+  - name: Dragonite
+    group: Special metals and alloys
+    description: A heavy bright red metal alloy forged from a secret alloy, the creation of which requires
+      exceedingly unattainable heat, only obtained by dragon's breath or powerful magic. Any weapon created
+      from it has its damage dice increased by 1, but incurs 1 extra bulk.
+  - name: Starmetal
+    group: Special metals and alloys
+    description: A material found in specific enchanted comets that, on very rare occasions, impact the earth.
+      Items and materials created from this rare metal lend themselves to enchantments when forging, and have
+      a +2 bonus, but require extreme Strength to work the metal even under the most powerful forges.
+  - name: Cold iron
+    group: Special metals and alloys
+    description: A form of iron that has been decayed to its true base state by arcane artifice. It is nearly
+      indestructible, decreases nearby temperature slightly, and shields arcane, occult, and mystical divination
+      magic. Items created from this material incur 2 extra bulk.
+  - name: Hemp rope
+    group: Common objects
+    description: Holds up to 500 pounds, or 20 bulk, doubled per quality bonus. 1 bulk / 300 ft.
+  - name: Silk rope
+    group: Common objects
+    description: Holds up to 500 pounds, or 20 bulk. Doubled per quality bonus. 1 bulk / 600 ft.
+  - name: Lantern
+    group: Common objects
+    description: Illuminates 30 ft radius. Can hold up to 6 hours of illumination from oil, and gains +8 hours
+      per quality bonus.
+  - name: Chain
+    group: Common objects
+    description: Holds 5000 pounds, or 200 bulk, doubled per quality. 1 bulk per 100 ft.
+  - name: Telescope
+    group: Common objects
+    description: Grants +1 to checks made to investigate distant objects per item quality bonus.
+  - name: Satchel of ball bearings
+    group: Common objects
+    description: Spill in a 15 ft cone, making difficult terrain that has a DC 14 trip chance if not walking
+      slowly.
+  - name: Bag of caltrops
+    group: Common objects
+    description: Spill or throw cover up to 3 tiles within 15 ft. Makes difficult terrain that has DC 14 Dexterity
+      save, dealing 1d4 piercing damage and hobbling on a failed save.

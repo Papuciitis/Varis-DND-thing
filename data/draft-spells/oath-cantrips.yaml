@@ -1,0 +1,123 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/oath-magic/oath-cantrips
+section: spells
+entries:
+- name: Bless
+  group: Oath cantrips
+  lvl: '0'
+  types: Divination
+  casting: 1 action
+  components: verbal
+  save: dexterity
+  range: 15 feet
+  duration: 1 minute
+  effect: As an action, bless a creature, granting it a 1d3 bonus on an ability check roll of their choice
+    for 1 minute.
+- name: Bolster
+  group: Oath cantrips
+  lvl: '0'
+  types: Abjuration
+  casting: action
+  components: verbal
+  range: self
+  duration: special
+  effect: As an action, gain 1d6 + casting bonus temporary health, which lasts a number of rounds equal
+    to your casting bonus (min 1.)
+  upgrades: |-
+    At 5th level, increase temporary health gained to 2d6 + casting bonus.
+
+    At 9th level, increase temporary health gained to 3d6 + casting bonus.
+- name: Chant
+  group: Oath cantrips
+  lvl: '0'
+  types: Enchantment
+  casting: bonus action
+  components: verbal
+  range: 30 feet
+  effect: As a bonus action, chant, granting all allies within 30 feet a +1 bonus to AC until the start
+    of your next turn. Multiple chant bonuses cannot stack.
+  upgrades: At 7th level, also provide allies with damage reduction 1.
+- name: Cleanse
+  group: Oath cantrips
+  lvl: '0'
+  types: Evocation
+  casting: Bonus action
+  components: somatic, verbal
+  save: constitution
+  range: touch
+  effect: As a bonus action, cause a creature within range to take 1d4 fire damage, and lose the sickened,
+    poisoned, diseased, staggered, confused, blinded, possessed, charmed, dominated, or stunned conditions.
+    This damage cannot be blocked.
+- name: Condemn
+  group: Oath cantrips
+  lvl: '0'
+  types: Abjuration
+  casting: action
+  components: verbal, somatic
+  save: charisma
+  range: 30 feet
+  effect: As an action, condemn a creature. The target must make a charisma save. On a failure, your attacks
+    against the creature deal an additional 1d4 necrotic damage. This lasts for 1d8 turns. The extra damage
+    cannot be blocked. Only one creature at a time can be condemned.
+  upgrades: |-
+    At 4th, 7th, and 10th level, increase damage dice by 1 size category.
+
+    At 5th level and 9th level choose one additional upgrade:
+
+    * The condemned target has disadvantage on block checks made against you.
+    * The condemned target has disadvantage on attacks made against you.
+    * The duration is increased to 3d6 turns.
+    * The extra damage dealt is cursed, and cannot be healed with magic.
+- name: Guidance
+  group: Oath cantrips
+  lvl: '0'
+  types: Divination, passive
+  casting: action
+  components: verbal
+  range: self
+  effect: |-
+    As an action, determine the following about a known object or person that you have access to:
+
+    * If a known entity or group considers the target dangerous.
+    * If a known entity or group considers the target important.
+
+    Answers are subject to the GM.
+
+    Passive: you gain a +1 bonus on checks made to evaluate decisions.
+- name: Strike true
+  group: Oath cantrips
+  lvl: '0'
+  types: Evocation
+  casting: action
+  components: verbal
+  range: self
+  effect: |-
+    As a bonus and move action, pray to grant you one of the following benefits to your next attack until the start of your next turn:
+
+    * Your next attack gains a +1 bonus to hit.
+    * Your next attack deals an additional 1d8 radiant damage.
+    * Your next attack gains a +2 bonus to the block DC.
+  upgrades: At 7th level, the effects are doubled.
+- name: Purifying fire
+  group: Oath cantrips
+  lvl: '0'
+  types: Evocation
+  casting: action
+  components: somatic, material(1 phial of oil worth 1 gold coin)
+  range: touch
+  effect: As an action, Ignite a melee weapon for 1d6 rounds, causing it to deal an additional 1d6 fire
+    damage that cannot be blocked. This damage is doubled on a critical hit.
+  upgrades: |-
+    At 4th and 10th level, increase the duration and damage dice by 1 dice category.
+
+    At 7th level, targets damaged by this must also make a constitution save to not catch fire.
+- name: Saving grace
+  group: Oath cantrips
+  lvl: '0'
+  types: Necromancy, abjuration
+  casting: action
+  components: verbal, somatic
+  range: touch
+  effect: |-
+    As an action, cause a dying creature to become stable, lose up to 1 failed death save, and gain one temporary hit point.
+
+    Passive: Once per long rest, when reduced to 0 health, remain at 1 health instead.

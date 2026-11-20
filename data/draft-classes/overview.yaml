@@ -1,0 +1,54 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes
+- name: Class overview
+  group: Class guide
+  description: Each class gives its rest dice a different use. At the levels below, choose an archetype to develop another
+    side of your character.
+  sections:
+  - heading: Choose a class
+    body:
+      columns:
+      - Class
+      - What it does
+      - Archetype levels
+      rows:
+      - - Alchemist
+        - Spend downtime extracting essences, brewing potions and crafting tools.
+        - 4, 7; third choice at 9 or 10 (pending)
+      - - Barbarian
+        - Use rage and battle dice to withstand punishment and strike back.
+        - 5, 9
+      - - Bard
+        - Inspire allies and learn talent spells from mentors across magical traditions.
+        - 4, 7, 10
+      - - Cleric
+        - Choose an oath and wield the magic of its order.
+        - 1, 7
+      - - Druid
+        - Practice untamed magic through mysticism and a druid circle.
+        - 5, 9
+      - - Fighter
+        - Develop fighting skills through martial, veteran and elite training.
+        - 4, 7, 10
+      - - Monk
+        - Train body and spirit through flurry, flow and meditation.
+        - 4, 7, 9, 11
+      - - Occultist
+        - Seek forbidden magic and accept a mark in return for power.
+        - 5, 9
+      - - Ranger
+        - Prepare equipment, study targets and use focus to carry out a plan.
+        - 4, 7, 10
+      - - Rogue
+        - Use expertise, cunning and sneak attacks to outwit opponents.
+        - 4, 7, 10
+      - - Sorcerer
+        - Channel innate arcane power and shape spells with metamagic.
+        - 5, 9
+      - - Wizard
+        - Study the arcane and develop a magical specialization.
+        - 1, 7
+  - heading: Unfinished choices
+    body: The Artificer and Soulsealer archetypes have no feature rules. Some other archetypes have individual unfinished
+      features marked in their entries.

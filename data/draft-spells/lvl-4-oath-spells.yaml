@@ -1,0 +1,130 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/oath-magic/lvl-4-oath-spells
+section: spells
+entries:
+- name: Brand
+  group: Oath spells
+  lvl: '4'
+  types: Evocation, Oath 4
+  casting: bonus action
+  components: verbal, somatic
+  range: 15 ft
+  duration: permanent
+  effect: As a bonus action, cause a creature to take 4d8 + casting bonus fire damage. A successful constitution
+    or dexterity save halves the damage. If the creature is hostile towards you or under the command of
+    eldritch, undead, or occult powers, then they are cursed with the brand and take a permanent -2 penalty
+    to saves vs your spells, and a -1d4 penalty to death saves until dispelled.
+  higher_levels: At 5th level, damage is increased by 3d6 and penalty is increased to -3/-1d6. At 6th
+    level, you can spend a bonus action to set a cursed branded target of choice on fire.
+- name: Clarity
+  group: Oath spells
+  lvl: '4'
+  types: Divination, Oath 4
+  casting: 3 full round actions
+  components: verbal, somatic
+  range: 15 ft
+  duration: permanent
+  effect: As 3 full round actions, meditate and gain an answer to a question pertaining to a location,
+    creature you have met, or object you have found. The answer cannot be longer than 2 words ( subject
+    to the GM. )
+  higher_levels: Per level above 4th, add an extra maximum word.
+- name: Colossal weapon
+  group: Oath spells
+  lvl: '4'
+  types: Conjuration, Transmutation, Oath 4
+  casting: full round action
+  components: verbal, somatic
+  range: touch
+  duration: 1d4 minutes
+  effect: |-
+    As a full-round action, enchant a weapon to enlarge by size category. It remains wieldable by magical means by those who can cast this spell and has its rune on their hand or arm.
+
+    The weapons damage dice are increased by 1 size category. The weapon has a +3 bonus to block DC and gains reach I.
+
+    It gains +1 damage per 5 ft traveled since start of turn or last attack (whichever occurred last)
+- name: Major blessing
+  group: Oath spells
+  lvl: '4'
+  types: Abjuration, Oath 4
+  casting: action
+  components: verbal, somatic
+  range: 15 ft
+  duration: 1 minute
+  effect: As an action, allow a creature to remake a save vs a spell or ongoing curse to dispel it, and
+    grant it a +1d4 bonus to d20 rolls for the next minute.
+- name: Major Curse
+  group: Oath spells
+  lvl: '4'
+  types: Necromancy, Oath 4
+  casting: action
+  components: verbal, somatic
+  range: 25 ft
+  duration: 1 minute.
+  effect: |-
+    As an action, force a creature to make a wisdom save. On a failure, it is cursed for 1d8 days, taking a penalty to d20 rolls. On the first round, the target has a -1d12 penalty, which decreases by 1 size category each consecutive round until it becomes -1d3 for the remaining duration.
+
+    If cast on a creature benefitting from a blessing effect, attempt to dispel the highest level blessing effect on them.
+- name: Greater heal
+  group: Oath spells
+  lvl: '4'
+  types: Necromancy, Abjuration, Oath 4
+  casting: action
+  components: verbal, somatic
+  range: touch
+  duration: instant
+  effect: |-
+    As an action, touch and heal a living creature for 6d8 + casting bonus health.
+
+    Can be used to revive a character that died in the previous turn, Returning them with 1 remaining death save, restoring only half health to them, but mending their fatal wounds.
+- name: Keening
+  group: Oath spells
+  lvl: '4'
+  types: Abjuration, Oath 4
+  casting: bonus action
+  components: verbal, somatic
+  range: self
+  duration: concentration
+  effect: |-
+    As a bonus action, invoke a protective prayer. You must retain concentration. If you cast a spell or cantrip, the spell is ended. For the duration of the spell, you are immune to 3rd or lower level spells, and gain a +3 bonus to saves vs other spells and magical effects.
+
+    Make a save vs all ongoing spells, curses, and diseases to remove them.
+  higher_levels: Per level above 4th, can target an extra creature within 15 ft. Spell is ended if additional
+    creatures cast spells or cantrips.
+- name: Weigh soul
+  group: Oath spells
+  lvl: '4'
+  types: Evocation, Necromancy
+  casting: bonus action
+  components: verbal, somatic, 1 death save
+  range: self
+  duration: 2 rounds
+  effect: |-
+    As a bonus action, tempt the gods to gain a bonus to your next spell or attack you make within the next 2 rounds.
+
+    Make a death save, marking the slot as lost on a failure, and marking two on a critical failure.
+
+    In case of an attack, it deals an extra 6d8 radiant damage and has a +4 to block DC.
+
+    In case of a spell, deal an extra 1d8 radiant damage, last 1 increment longer (turn, minutes, hours, or days), and has its level upgraded by 1 level.
+  higher_levels: At 5th level, make two death saves, increase damage by 1d8, also gain 2 temporary rest
+    dice. At 6th level, make 3 death saves, increase damage by 1d8 and spell duration increase to 1d10
+    increments, and increase duration and temporary rest dice by 2,
+- name: 'Power word: Messenger'
+  group: Oath spells
+  lvl: '4'
+  types: Abjuration, Oath 6
+  casting: action
+  components: verbal, somatic, 1 rest die.
+  range: special
+  duration: special
+  effect: |-
+    As an action, send out a message to targets of your choosing at a range of up to 500 miles within the same plane of existence. The message is whispered to them, awakes them, or appears in their dreams. It can convey up to 30 words, and is psychic and bypasses deafness. Doing so costs 1 rest die.
+
+    You can choose to list other creatures you know when casting the spell, which will allow them to also receive the message so long as they are within 60 ft of the primary target.
+
+    You can expend a further 1 rest die or make 1 death save to increase the range to 5000 miles.
+
+    You can repeat the extra cost to increase range to global, or to make the whisper linger in a specific area for up to a year and trigger only if the target enters the area.
+
+    It is said that a dying whisper may find listeners separated by oceans of time and space ( subject to the GM. )
+  draft_note: The page lists this spell under level 4, but its Type line says Oath 6. Its level needs
+    an author ruling.

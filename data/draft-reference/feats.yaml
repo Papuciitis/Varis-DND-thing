@@ -1,0 +1,361 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/feats
+section: feats
+entries:
+  - name: Bolt-stacking
+    group: Character feats
+    requirements: 13 Dexterity, 13 Intelligence, proficiency with a crossbow of any kind.
+    description: 'During a long rest, spend one rest die to maintain one personal crossbow. Choose one benefit:
+      load one additional bolt whenever you reload it, or increase its Capacity by 3. Use the crossbow’s listed
+      Reload cost.'
+  - name: Deeper focus
+    group: Character feats
+    requirements: Ranger focus ability, Wisdom 13.
+    description: When entering focus, increase the duration by 1d3 turns.
+  - name: Doctor
+    group: Character feats
+    requirements: Proficiency with nature, investigation or survival, and proficiency with medicine.
+    description: |-
+      You can make a DC 20 medicine check to revive and stabilize a creature on the round after they have died (subject to the GM). If you do so, you restore a rest die to the creature.
+
+      You can spend a rest die to gain a +1d4 bonus to a medicine or medicine related tool check, and on a natural 20, you restore 1 rest die to the creature you are tending to, or yourself.
+  - name: Enhanced spell recovery
+    group: Character feats
+    requirements: Spell recovery (wizard 1).
+    description: You regain 1 extra arcane recovery point every rest. When you spend rest dice to regain a
+      spell, you regain 1 extra.
+  - name: Eviscerate
+    group: Character feats
+    requirements: Dexterity 16/18.
+    description: When wielding two Swift weapons, you can make one additional off-hand attack as part of your
+      Swift bonus-action attack, once per round. If you take this feat a second time, you can also spend a
+      move action to attack with a Swift weapon.
+  - name: Exert +
+    group: Character feats
+    requirements: Exert (fighter 3).
+    description: You can use exert one additional time per encounter.
+  - name: Expanded metamagic
+    group: Character feats
+    requirements: Metamagic (sorcerer 4).
+    description: |-
+      Learn 2 extra metamagic effects from the base sorcerer list.
+
+      Your MP maximum is increased by 1.
+
+      Regain 1 more MP every rest.
+  - name: Expanded alchemy
+    group: Character feats
+    requirements: Alchemist 2.
+    description: |-
+      Learn 1 extra alchemical tool from the base alchemist list, or any upgrade list from an alchemist archetype.
+
+      Learn 1 extra alchemical method from the 2nd level list.
+
+      Regain 1 more AP every rest.
+  - name: Extra battle dice
+    group: Character feats
+    requirements: Battle dice (Barbarian 4).
+    description: Increase your maximum battle dice by 2.
+  - name: Extra combat art
+    group: Character feats
+    requirements: Combat art (Monk 1).
+    description: |-
+      Gain 1 extra combat art from the monk options gained at level 1.
+
+      +1 to any attribute.
+  - name: Extra fighting skills
+    group: Character feats
+    requirements: Fighting skill (fighter level 1 feature).
+    description: |-
+      Gain 2 extra fighting skills.
+
+      +1 to any attribute.
+  - name: Extra insight
+    group: Character feats
+    requirements: Bestow insight (Druid 1).
+    description: |-
+      Gain 1 extra use per long rest of the bestow insight ability.
+
+      +1 to any attribute.
+  - name: Extra occult casting
+    group: Character feats
+    requirements: Ability to cast an occult spell.
+    description: Increase one ability score of your choice by 1. If you have at least one Occultist level,
+      increase your maximum number of occult slots by 1. Otherwise, once per long rest, you can cast one 1st-level
+      occult spell you know at 1st level without expending a spell slot.
+  - name: Extra Ranger training
+    group: Character feats
+    requirements: Ranger training (Ranger 3).
+    description: |-
+      Gain 2 more ranger training options.
+
+      +1 to any attribute.
+  - name: Extra talent spell
+    group: Character feats
+    requirements: Magical talent (bard 1).
+    description: |-
+      Gain 1 more magical talent spell.
+
+      +1 to arcana checks.
+  - name: Extra tricks of the trade
+    group: Character feats
+    requirements: Tricks of the trade (Alchemist 2).
+    description: |-
+      Gain 2 more abilities from your 2nd level alchemist list.
+
+      +1 to any attribute.
+  - name: Extreme training
+    group: Character feats
+    requirements: None.
+    description: |-
+      Lose proficiency with one skill. Upgrade a proficiency with a skill or tool to expertise.
+
+      +1 to an ability score of choice.
+  - name: Flurry of blows
+    group: Character feats
+    requirements: Flurry (monk 3) 18 Dexterity.
+    description: Your flurry attacks grant an extra attack.
+  - name: Fool's luck
+    group: Character feats
+    requirements: 11 Dexterity.
+    description: 'You can choose to retry a save, cause an attacker to reroll an attack against you, or retry
+      a block attempt by spending 2 of any of the following resources: A rest die, 1 damage to fatigue, 1 class
+      resource (such as alchemy points, metamagic points, battle dice, etc) or a use of a per-rest or long
+      rest ability. You can only do so once per round.'
+  - name: Great warrior
+    group: Character feats
+    requirements: A damage-dealing ability with a rest die cost or a per rest or long rest use count.
+    description: Choose a damage-dealing ability with a rest die cost or a per rest or per long rest use count.
+      You can use them an extra 2 times per rest at no rest dice cost.
+  - name: Greater summoning
+    group: Character feats
+    requirements: 14 Intelligence, ability to summon or bind a creature or object.
+    description: You can spend 10 extra minutes when summoning a creature or object once per rest. When doing
+      so, either summon an extra creature, or grant the item the recall ability, allowing you to summon it
+      to your hand as a bonus action.
+  - name: Hermeticism
+    group: Character feats
+    requirements: 15 Intelligence or Wisdom, and proficiency with arcana, insight, or investigation.
+    description: |-
+      Gain a +1 bonus to the DC of effects from scrolls you cast.
+
+      When using a scroll, make a concentration check vs the DC of the scroll. On a success, you can take 1d3 damage to fatigue but do not consume the scroll.
+
+      +1 to investigation checks.
+  - name: Hex casting
+    group: Character feats
+    requirements: 12 Dexterity and 12 Wisdom.
+    description: |-
+      Learn 2 minor hexes, or learn 1 minor hex and gain +1 to an ability score of choice.
+
+      If you know at least 2 more minor hexes than you have major hexes, you can learn a major hex instead, and either learn an extra minor hex or gain a +1 to an ability score of choice.
+
+      If you know at least 2 more major hexes than you know greater hexes, you can learn a greater hex instead, and either learn 2 minor hexes, learn 1 major hex, or gain a +1 to an ability score of choice.
+
+      Can be taken multiple times.
+  - name: Honed Strength
+    group: Character feats
+    requirements: 18 Strength.
+    description: |-
+      Your push, shove, kick, and pull distances, either made bare-handed or by use of tool or weapon, as well as all your jump distances are increased by 5 feet.
+
+      The damage dice of weapons you wield is increased by 1 size category. 1d12 damage weapons instead have their critical range increased by 1.
+  - name: Ice magic
+    group: Character feats
+    requirements: 13 Intelligence, ability to cast a cold damage-dealing spell or cantrip.
+    description: |-
+      You can change spells to deal cold damage instead of fire or poison.
+
+      Reduce incoming fire and cold damage by 2.
+
+      Enemies that take 6 or more cold damage from your spells or cantrips have their movement speed reduced by 10 feet until the start of your next turn.
+  - name: Inspirational
+    group: Character feats
+    requirements: Bardic inspiration (bard 1).
+    description: Your bardic inspiration dice is increased by 1 size category (1d4 → 1d6 → 1d8 → 1d10 → 1d12).
+  - name: Invoke dark powers
+    group: Character feats
+    requirements: 13 in a mental ability score, and either proficiency with arcana or religion, or the ability
+      to cast spells or cantrips.
+    description: |-
+      Gain use of a cantrip of choice from any list, using Constitution as the casting modifier. When you cast it, take 1 point of psychic damage. You cannot reduce this damage to 0. It no longer has any component cost.
+
+      Gain a +2 bonus on checks made to consult forces beyond the mortal plane.
+
+      -3 to max HP.
+  - name: Lunge
+    group: Character feats
+    requirements: 14 Dexterity.
+    description: |-
+      When using a weapon that deals piercing or slashing damage, you can perform Lunge. Use the weapon’s own Lunge maneuver if it has one. Otherwise, use the Dirk’s version: Dash up, then attack with the weapon’s damage die increased by one size.
+
+      Increase one physical ability score by 1.
+  - name: 'Meta-break: Longer'
+    group: Character feats
+    requirements: At least 10 in all ability scores.
+    description: |-
+      Choose a feat, cantrip, class features, spell, or background or race ability that allows you to gain a bonus, change, benefit, or transformation for a duration and increase the duration by 1d3 instances (such as turns, dice, minutes, 10s of minutes, hours, or days).
+
+      Gain a +1 bonus to an ability score of choice.
+  - name: 'Meta-break: More uses'
+    group: Character feats
+    requirements: At least 10 in all ability scores.
+    description: |-
+      Choose a feat, cantrip, class features, spell, or background or race ability that has a limited number of uses per rest or long rest. Increase the amount of uses by 1.
+
+      Gain a +1 bonus to an ability score of choice.
+  - name: 'Meta-break: Greater chance'
+    group: Character feats
+    requirements: At least 10 in all ability scores.
+    description: |-
+      Choose a feat, cantrip, class features, spell, or background or race ability that uses a chance die. Either change the chance die by 1 size category, or improve the success chance by 1 ( a 1d4 resulting in a success on a 3 or higher is now a success on a 2 or higher, or can become a 1d6 roll resulting on a 3 or higher instead).
+
+      Can be taken multiple times. Cannot reduce the odds to fail to zero.
+
+      Gain a +1 bonus to an ability score of choice.
+  - name: More oath spells known
+    group: Character feats
+    requirements: 15 Wisdom, ability to cast oath spells.
+    description: Learn a number of extra oath spells equal to 1/2 your proficiency bonus. This number increases
+      as you level up. The spells learned cannot be higher than the highest level of oath spell you can cast.
+      Use Wisdom as the main casting attribute.
+  - name: More occult spells known
+    group: Character feats
+    requirements: 13 Charisma, 13 Intelligence, ability to cast occult spells.
+    description: Learn a number of extra occult spells equal to 1/2 your proficiency bonus. This number increases
+      as you level up. The spells learned cannot be higher than the highest level of occult spell you can cast.
+      Use either Intelligence or Charisma as the casting attribute.
+  - name: More mystic spells known
+    group: Character feats
+    requirements: Charisma 13, Intelligence 13, and the ability to cast occult spells.
+    description: Learn a number of additional mystic spells equal to half your proficiency bonus. This increases
+      as your proficiency bonus increases. You can learn only spells up to the highest mystic spell level you
+      can already cast. Use Wisdom or Charisma as their casting ability.
+  - name: Oathbound
+    group: Character feats
+    requirements: None.
+    description: |-
+      You may take a cleric oath from the 1st level list, gaining its blessing bonus so long as you adhere to the oath.
+
+      +1 to any attribute.
+  - name: Oaths of might
+    group: Character feats
+    requirements: Cleric class.
+    description: So long as you remain true to your cleric oath, your rest dice maximum is increased by 2.
+  - name: Occult gnosis
+    group: Character feats
+    requirements: 15 in a mental stat, at least 1 level in occultist.
+    description: |-
+      Reduce your maximum number of death save slots by 1. Choose two benefits:
+      * Learn one 1st-level oath or arcane spell. You can cast it with an occult slot.
+      * Increase your maximum number of occult slots by 1.
+      * Gain +2 to death saves.
+      * Increase your maximum rest dice by 1.
+  - name: Occultist knowledge
+    group: Character feats
+    requirements: 13 Intelligence, at least 1 level in occultist.
+    description: Learn one additional occult spell. Choose either +1 to one casting ability score or +1 to
+      your maximum number of occult slots.
+  - name: Offering
+    group: Character feats
+    requirements: Ability to cast a spell or cantrip with an HP cost as a component.
+    description: |-
+      When you kill a creature with a melee weapon, you can choose to spend a bonus action to cast a spell that has an HP cost that you could cast as an action or a full round action. Any duration of the spell is doubled, and all damage dice of the spell are increased by 1 die category.
+
+      You can do so once per long rest. At 10th character level, you can do so 3 times per rest.
+  - name: Offensive magic
+    group: Character feats
+    requirements: 13 Intelligence, ability to cast a cantrip or spell that has a spell attack or save.
+    description: |-
+      Choose a cantrip or spell that has a spell attack, or a save associated with it. Either gain a permanent +1 bonus to the spell attack for that specific cantrip, or increase the DC of the cantrip by 1. If the cantrip has both an attack and a save, you can increase both.
+
+      +1 to a casting attribute.
+  - name: Quick throw
+    group: Character feats
+    requirements: Proficiency with a throwing weapon, 13 Dexterity.
+    description: |-
+      You can make a single basic attack with a thrown weapon as a bonus action.
+
+      +1 Dexterity.
+  - name: Scavenger
+    group: Character feats
+    requirements: Alchemy Points (Alchemist), proficiency with survival.
+    description: |-
+      Increase the amount of Alchemy points gained innately during a rest by 1, and for every rest dice spent during a rest, gain an extra alchemy point.
+
+      +1 Intelligence.
+
+      +1 to survival checks.
+  - name: Second wind +
+    group: Character feats
+    requirements: Second wind (fighter 3).
+    description: |-
+      Second wind heals for an additional 1d4 health.
+
+      +1 to an attribute of choice.
+  - name: Seize the day
+    group: Character feats
+    requirements: None.
+    description: |-
+      If both rolls are a critical success when rolling with advantage or disadvantage, you regain 1d4 rest dice.
+
+      +1 to any attribute.
+  - name: Slap sense into people
+    group: Character feats
+    requirements: Proficiency with performance.
+    description: You can spend 1 rest die as a reaction to a creature casting a spell (or using an action provided
+      by a spell that requires concentration) within 5 feet of you to try and interrupt the casting of the
+      spell. Make a performance check. If it exceeds the DC of the spell + 1d6 (even if the spell does not
+      normally require a save) the spell is interrupted. You must be able to reach the creature. If the check
+      fails and the spell would target an ally, you become the new target of the spell.
+  - name: Stable magic
+    group: Character feats
+    requirements: 13 Intelligence, ability to cast a cantrip or spell that has a duration, or has a concentration
+      requirement.
+    description: Choose a cantrip or spell that has a duration, or has a concentration requirement. Increase
+      the duration by 2 turns. Remove the concentration check from that spell. If the spell has a duration
+      of concentration, you can sustain it indefinitely, so long as you remain within 60 feet of the target
+      of the spell.
+  - name: Templar's might
+    group: Character feats
+    requirements: Strength 14, templar (cleric) might ability.
+    description: The damage of might is increased by 1 die.
+  - name: Trigger happy
+    group: Character feats
+    requirements: 13 Dexterity, proficiency with any crossbow or similar ranged trigger weapon.
+    description: |-
+      You can fire a crossbow as a bonus action, but the attack will have disadvantage. A light crossbow does not suffer disadvantage.
+
+      +1 Dexterity.
+  - name: Toxomancy
+    group: Character feats
+    requirements: Ability to cast poison damage-dealing spells or cantrips.
+    description: |-
+      You can alter your spells and cantrips to deal acid damage instead of poison damage.
+
+      Upgrade one spell or cantrip you know to deal +1d4 poison damage.
+  - name: Violent magic
+    group: Character feats
+    requirements: 14 Charisma, ability to cast a cantrip or spell that deals damage.
+    description: Choose a cantrip or spell that deals damage. Increase damage dealt by 1d4. Remove either a
+      verbal or somatic component.
+  - name: Wand training
+    group: Character feats
+    requirements: 13 Intelligence.
+    description: |-
+      Gain a +1 bonus to spell attacks made with wands, and the DC of spells cast with a wand.
+
+      You can spend 1 rest die to restore 1d4 charges to a wand during a short rest (subject to the GM for particularly powerful wands).
+
+      +1 Intelligence or Dexterity.
+  - name: Weapon technique
+    group: Character feats
+    requirements: Proficiency with a martial weapon.
+    description: Choose two named maneuvers from weapons you are proficient with. When you replace an attack
+      with either maneuver, you may spend one rest die instead of the usual bonus action or move action.
+  - name: Witching hour
+    group: Character feats
+    requirements: Ability to cast occult or arcane spells or cantrips.
+    description: During a long rest, you can prepare one occult or arcane spell of a level that you can cast
+      (min 1). If you know only arcane spells or cantrips, you can prepare only an arcane spell. This spell
+      can be cast once until you prepare a new spell in its place, and is lost upon casting. It is cast at
+      the highest spell level you can cast and does not expend any spell slots.

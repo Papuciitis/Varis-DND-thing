@@ -1,0 +1,113 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/mystic-magic/lvl-5-mystic-spells
+section: spells
+entries:
+- name: Mystic resonance
+  group: Mystic spells
+  lvl: '5'
+  types: Evocation, Concentration, Mystic 5
+  casting: action and bonus action
+  components: Somatic
+  duration: special
+  range: 60 ft
+  effect: |-
+    As an action and bonus action, hum a resonant tune and attune it to target creature, object, or structure within range. Start by creating a performance check. The DC is 15 for mundane objects and structures, 17 for creatures, and 16 for construct creatures. On a success, you resonate, maintain concentration on the spell, and do one of the following:
+
+    * Crash resonance - End the spell and deal 4d12 sonic damage to the target.
+    * Attune further - Recreate the performance check, retaining concentration allowing you maintain the spell until next turn, at which point you may choose the effect again. If you do so, crash resonance deals an extra 1d12 sonic damage.
+    * Study attunement - Recreate the performance check, retaining concentration allowing you maintain the spell until next turn, at which point you may choose the effect again. You can hear through the structure/object/creature, can know what other forces or spell effects are affecting it, and in case of constructs or mechanical objects, can sense their structure and making. This effect extends to the entire structure/creature.
+    * Flow - Recreate the performance check, retaining concentration allowing you maintain the spell until next turn, at which point you may choose the effect again. If you do so, you have advantage on spell saves and saves vs abilities originating from or through the target.
+  higher_levels: |-
+    If cast at 6th level, gain a +2 bonus to concentration checks per level above 5th, and gain the following extra option:
+
+    * Interface - If the target is a construct, mechanism, or complex structure, allows you to make one change in it, using your performance check as a strength or dexterity check, as though you physically made the changes yourself.
+- name: Primal bite
+  group: Mystic spells
+  lvl: '5'
+  types: Transmutation, Abjuration, Mystic 5
+  casting: action
+  components: Somatic, verbal, special
+  duration: concentration
+  range: self
+  effect: While possessing a bite attack, as an action make an attack with it, gaining resistance to damage
+    from biting down or attacks of opportunity, and doubling the damage dealt, including any bonus damage.
+    The critical strike range of this attack is increased by 1.
+  higher_levels: If cast at 6th level, the damage is tripled instead.
+- name: 'Power word: Alchemia'
+  group: Mystic spells
+  lvl: '5'
+  types: Transmutation, Conjuration, Mystic 5
+  casting: full round action
+  components: Somatic, Verbal, 1d3 - 1 fatigue.
+  duration: instant.
+  range: self, or 30 ft area within 50 ft.
+  effect: |-
+    As a full round action, speak the name of a material in the dire tongue. Choose a terrain feature, element, or simple material concept in the area, for example “Fire,” “Salt,” “Stone,” “Glass,”, "Water", “Blood,” “foam,” etc. (subject to the GM).
+
+    Then choose to either follow it with a command word:
+
+    * Appear - you manifest the material chosen within 30 ft of you in a quantity enough to fill a 5 ft cube.
+    * Change - All of the chosen material within a 30 ft area of the caster's choosing within a range of 50 ft chaotically polymorphs into another substance of the GMs choosing. Creatures tied to it take 5d10 necrotic damage.
+    * Destroy - All of the chosen material within a 30 ft area of the caster's choosing within a range of 50 ft violently discorporates, ignites and disintegrates, explodes, or melts (subject to the GM). Creatures tied to it take 5d10 necrotic damage.
+    * Heat - All of the chosen material in an area up to 30 ft diameter within 50 ft ignites or melts, but is not removed. Affected creatures are set on fire.
+
+    The spell forbids the use of sacred and noble metals in its naming, as well as the naming mana or specific poisons.
+
+    Elementals and Ginasi who's being is heavily affected by this spell take double damage.
+
+    Invoking such power incurs 1d3 - 1 points of damage to fatigue.
+- name: Soul lantern
+  group: Mystic spells
+  lvl: '5'
+  types: Evocation, Necromancy, Divination, Mystic 5
+  casting: action
+  components: Somatic, verbal, 1d4 HP.
+  duration: 1 hour
+  range: special
+  effect: |-
+    As an action, sacrifice 1d8 HP to ignite and enchant a lantern, bonfire, or target weapon with the ignite property. It burns with a colorful ethereal flame that reflects the casters soul.
+
+    If it inhabits an ignite weapon, that weapons ignite property is doubled and it ignores the resistances of the damage dealt by the flame, and it cannot be put out except by spells that destroy a creatures soul, deal psychic damage and would put out the flame, or spells that banish creatures like the caster. Destroying the receptacle extinguishes the flame.
+
+    If the flame inhabits a lantern or similar receptacle, the caster can use it as the source for any spell he casts while the flame persists, and counts as the caster for the purposes of spell ranges (spells that emanate from the caster also emanate from the flame.) extinguishing the flame counts as a valid sacrifice (small or larger creature slain) for the purposes of spells and magic.
+
+    If the caster dies while the flame remains, creatures can target the flame as though it were the corpse of the caster, and the flame does not die out if enshrined (subject to the GM)
+- name: Storm
+  group: Mystic spells
+  lvl: '5'
+  types: Evocation, Transmutation, Concentration, Mystic 5
+  casting: Full-round action
+  components: Somatic, verbal
+  duration: 1 hour
+  range: special
+  effect: |-
+    As a full round action, invoke deep magic and rile the sky to worsen within a radius of 500 ft per casting modifier bonus. On a clear sky it begins to rain, putting out small and medium fires naturally and reducing the attack range of ranged projectile attacks and spell attack by 10 ft or half, whichever is more. Also causes creatures to be soaked while exposed. In cold weather, it snows instead, reducing vision of creatures to 30 ft instead of soaking them.
+
+    When casting this spell, make an arcana check to amplify the storm. Each consecutive turn you may continue to make an arcana check as a full round action to amplify the storm, up to as many successful times as your casting bonus -4. The DC is the 18.
+
+    Every time you worsen the storm, choose one added condition to apply to the weather:
+
+    * Heavy rain - ground, sand, and clay surfaces become difficult terrain as mud/snow accumulates.
+    * Heavy wind - Flying creatures are grounded or require strength save to maintain flight. Ranged attacks have disadvantage.
+    * Hail - Flying creatures are grounded. Exposed creatures gain a -1d4 penalty to physical skill checks.
+    * Thundering - Creatures gain a +1d8 bonus to stealth checks made to pass undetected and unheard.
+    * Charged atmosphere - Lightning damage dealing spells and abilities have a 1d12<=1 chance to cause an arc from the skies, dealing an extra 2d8 lightning damage to the target.
+    * Acid rain - Exposed creatures take 1 acid damage per turn.
+    * Blood rain - Requires sacrificing a blood token during casting. Causes blood to rain from the sky. Exposed creatures lose resistances, advantages, and bonuses to saves vs fear effects. Creatures with immunity to fear effects now have to make saves at advantage vs fear effects instead. Undead creatures are not affected.
+- name: Worldtree Root-whispers
+  group: Mystic spells
+  lvl: '5'
+  types: Divination, Conjuration, Concentration, Mystic 5
+  casting: full round action
+  components: Somatic, verbal, special
+  duration: concentration
+  range: special
+  effect: |-
+    As a full round action, touch the roots or bark of a living sacred tree, plant, grove, or offshoot of the worldtree which is not potted or removed from the original plant, and begin concentrating.
+
+    If you do, you are able to project your psyche onto the world-tree, having only 1d3 per caster level HP, no access to your items (except ones that are trans-personal and can be carried into dream realms or when astral projecting.)
+
+    You can continue to remain there so long as you maintain concentration. You can choose to do any of the following while there:
+
+    * Leave a message wisp - A wisp of your own mind/being remains dormant and invisible there. It will relay the message and communicate as you would choose to any target of your choice and will vanish afterwards. You must know or know of the target. You can leave one small item to the message wisp. No more than one message wisp can be left at a time. A message wisp can be dismissed only while you are at walking on the worldtree plane.
+    * Sense denizence - Meditate for a minute to determine the planar location (with rough approximation. subject to the GM) of a creature or structure you seek.
+    * Reach down - You may spend an hour descending the roots to find where you touched the worldtree. This location innately calls out to you and can be achieved by anyone using this spell. When you do so, you may take an item from your person in the original plane, or give an item given by another to your original form in your original plane. Giving the single item to your original plane will immediately require a concentration check.

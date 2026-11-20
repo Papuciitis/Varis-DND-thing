@@ -1,0 +1,443 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/bard-x
+- name: Bard
+  group: Base class
+  description: In a world of arcane lore, alchemical mysteries, ancient ruins, dark cults, and sorcerer kings, there still
+    remains room for a bit of gossip and entertainment. The bard is a socialite, and while neither warlord, nor arch-mage,
+    nor high priest, the bard is the all-round traveled chronicler of these figures.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      - Inspiration die
+      - Talent spells
+      rows:
+      - - '1'
+        - '2'
+        - Bardic inspiration, Magical talent
+        - 1d4
+        - '2'
+      - - '2'
+        - '2'
+        - Bardic traits
+        - 1d4
+        - '3'
+      - - '3'
+        - '2'
+        - ability score improvement
+        - 1d4
+        - '3'
+      - - '4'
+        - '3'
+        - 1st archetype
+        - 1d4
+        - '4'
+      - - '5'
+        - '3'
+        - —
+        - 1d6
+        - '4'
+      - - '6'
+        - '3'
+        - ability score improvement
+        - 1d6
+        - '5'
+      - - '7'
+        - '4'
+        - 2nd archetype
+        - 1d6
+        - '5'
+      - - '8'
+        - '4'
+        - —
+        - 1d6
+        - '6'
+      - - '9'
+        - '4'
+        - Ability score improvement
+        - 1d8
+        - '6'
+      - - '10'
+        - '5'
+        - 3rd archetype
+        - 1d8
+        - '7'
+      - - '11'
+        - '5'
+        - —
+        - 1d8
+        - '7'
+      - - '12'
+        - '5'
+        - —
+        - 1d8
+        - '8'
+  - heading: Health and proficiencies
+    body: "Hit dice: 1d6\n\nArmor: Light armor\nWeapons: Simple weapons, hand crossbows, longswords, rapiers, shortswords\
+      \ \nTools: Three musical instruments, game sets, or sets of tools of your choice, with at least one being an instrument\
+      \ or game set.\nSaving throws: Dexterity, Charisma\nSkills: Choose any three"
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) a shortsword, or (b) any simple weapon
+      * (a) a diplomats pack, or (b) an entertainers pack
+      * a musical instrument or game set of your choice
+      * (a) Padded armor and a longsword, or (b) buckler and a rapier
+  - heading: Bardic Inspiration
+    body: |-
+      At 1st level, you gain a number of inspiration dice equal to your charisma bonus (min 1.) You regain up to a number of inspiration dice per rest equal to your charisma bonus. You may grant an inspiration dice to an ally within hearing as either a bonus action or reaction. Allies can use the inspiration dice as a bonus to an ability score check. An ally can have no more than 1 inspiration die at a time, and they last until rest. You can consume one us of your own inspiration dice for a bonus, but it is reduced by 1 dice size category.
+
+      An inspiration dice is 1d4, and is inherently increased by 1 dice size category every 4 levels, at 5th, and 9th level.
+  - heading: Inspiration dice upgrade
+    body: |-
+      At 1st level, and whenever you gain an ability score increase, choose one upgrade:
+
+      * The inspiration dice is increased by 1 size category. Can be taken multiple times, up to a maximum size of 1d12.
+      * You restore 1 rest die if the inspiration dice causes the ally to succeed on the check and you are within sight to see it (The ally would have failed without it.)
+      * Inspiration dice can be used for a bonus to a mental saving throw.
+      * Inspiration dice can be used for a bonus to a physical saving throw.
+      * Inspiration dice can be used for a bonus to a weapon attack.
+      * Inspiration dice can be used for extra damage to a weapon attack.
+      * Inspiration dice can be added to the damage of spells being cast.
+      * Inspiration dice can be added to the healing provided by a spell you cast.
+      * Your maximum bardic inspiration dice is increased by 1.
+
+      These apply both to you and allies using the inspiration dice.
+  - heading: Magical talent
+    body: |-
+      At 1st bard level, you gain the ability to learn magic in an improvised way.
+
+      Talent spell learning - You can learn up to as many spells as indicated on your talent spells array. Talent spells can be learned by:
+
+      * Learning from someone who knows how to cast the spell. This requires both of you to spend a rest die during a short rest.
+      * Learning the spell after seeing it be cast in the wild. This requires you to spend a rest die during the next rest and make a talent check with disadvantage during a rest.
+      * Learning a spell from a scroll, spell book, or magical item. This requires you to spend a rest die during a rest and make a talent check with disadvantage. On a failure, the spell is miscast, or the scroll is used up (Subject to GM.)
+      * Attempt to recall a previous talent spell you once knew. This requires you to spend a rest die during a rest and make a talent check.
+
+      Talent check - A talent check can be a charisma check or an arcana check vs the save DC of the spell. The spell learned cannot exceed 1/2 your bard level. When learning a new talent spell, you can replace an already known spell with a new spell. These spells can be of any magical school or class.
+
+      Casting - You can spend a number of rest dice equal to the level at which you wish to cast the spell (1/2 your level max, rounded up.) Talent spells you cast use charisma as their casting modifier.
+
+      Hex practice - You can learn lesser, major, and greater hexes as equivalent level 1, level 2, and level 3 spells.
+  - heading: Bardic traits
+    body: |-
+      At 2nd level, choose two abilities from the list below:
+
+      * Deep past - Gain an extra list ability from another class, a feat, your race, or your background. You must possess the corresponding class, feat, race, or background.
+      * Expertise - Gain expertise with a skill, instrument, game set, or tool of your choice that you are proficient with.
+      * Extra proficiencies - Gain proficiency with two skills, languages, instruments, or tools of your choice, in any combination.
+      * Inspire the group - When granting inspiration, you can do so instead as an action, granting up to as many allies as your charisma bonus +1 (min 2.) within hearing range a lesser inspiration dice, which is reduced by 1 size category.
+      * Jack of all trades - Gain a +1 bonus to skills you are not proficient with and a +1 to an ability score of choice.
+      * Know when to bail - While in light or no armor, you can dash as a bonus action. If you could already dash as a bonus action, increase your movement speed by 5 feet.
+      * Luck magnet - Gain 1 personal reroll per rest. You can choose to reroll one of your d20 rolls once per rest.
+      * Magical aptitude - Learn a cantrip of your choice. +1 to arcana checks.
+      * Martial skill - Gain proficiency with 1 martial weapon group of choice. While not wearing medium or heavy armor, start combat with 1 extra block.
+      * Persona insight - Gain proficiency with insight. If already proficient, gain expertise. If already expert, learn a mystic cantrip.
+      * Presence - Increase your maximum rest dice by 1.
+      * Quick wit - You can use an inspiration dice when out of uses by spending 1 rest die.
+      * Speed and reflexes - Gain an extra reaction. +2 to initiative rolls.
+      * Spellcasting training - Increase your maximum talent spells known by 1. Gain a +1 bonus to all talent checks used for your magical talent bardic ability.
+      * The unbearable weight of massive talent - Gain an extra talent spell known, but reduce max HP by 1.
+      * Truly Inspiring - Gain an extra bardic inspiration dice upgrade.
+      * Will eat anything - Gain advantage to saves against all negative effects resulting from eating or consuming various foods, substances, poisons, toxins, or materials (Subject to GM.) +2 max HP.
+  - heading: Ability score improvement
+    body: |-
+      At 3rd, 6th, and 9th level, increase one ability score by 2, or two ability scores by 1. Alternatively, choose a feat.
+
+      This cannot bring an ability score above 20.
+  - heading: Extra bardic trait
+    body: At 3rd bard level, choose an extra bardic traits upgrade.
+  - heading: 1st archetype
+    body: |-
+      At 4th level, choose your 1st archetype:
+
+      * Fool
+      * Poet
+      * Aspirant
+  - heading: 2nd archetype
+    body: At 7th level, choose your 2nd archetype
+  - heading: 3rd archetype
+    body: At 10th level, choose your 3rd archetype
+# https://sites.google.com/view/dnd5plus/home/classes/bard-x/fool
+- name: Fool
+  group: Bard archetypes
+  sections:
+  - heading: Foolishness
+    body: At 4th bard level, you regain a rest die when critically failing a non-trivial skill check (subject to GM,) an
+      attack, or save.
+  - heading: Mockery
+    body: At 4th bard level, you may spend an action to deal 1d6 psychic damage to a creature within 60 feet that can hear
+      you and understand you. This cannot reduce a creature to less than half health. You cannot use mockery more than once
+      per turn.
+  - heading: Attributes of the fool
+    body: |-
+      At 5th bard level, choose one ability from the list below
+
+      * Mocking tongue - You can use mockery as a bonus action instead of an action, you gain resistance to psychic damage. If you have no other ability from the top-level list, also choose one of the following minor traits:
+        * You can use mockery as a reaction against a creature that either critically failed an attack, or if you critically succeeded at a save against an ability of theirs.
+        * The damage dice of mockery is increased by 1 size category, and mockery can now reduce a creature to half of their total HP - your total charisma score (min 1.)
+        * You can choose to spend a rest die when using mockery to taunt the target for 1 attack (The target has disadvantage on their next attack until the start of your next turn unless they target you as well.) If the target attacks you and misses, the rest dice is refunded.
+      * Comic relief - When you regain a rest die from foolishness, you also regain 1d8 health. You gain +1 maximum rest dice. If you have no other ability from the top-level list, also choose one of the following minor traits:
+        * You can choose to forego the damage of mockery to grant the target disadvantage on their next attack against you until the start of your next turn.
+        * You gain a joke talent spell slot. This spell slot is identical to your other talent spell slots, except in the following ways: Once used, it is regained after a short rest, and any spell cast with it is illusory: All regular damage dealt is changed to psychic, reduced to 1d4, and cannot reduce the creature to less than half health the same as your mockery ability. If the spell cast with this slot can only target yourself, it can target a creature within touch range. Every positive bonus or effect granted by the spell instead grants 1 arcane health.
+        * When you are reduced to 0 health, you can choose to make a performance check vs 5 + the damage taken. On a success, you can immediately take 1 action.
+      * Inspiring wit - If you reduce a creature to half health or less with mockery, you can immediately use inspiration on an ally without paying the rest dice cost. If you have no other ability from the top-level list, also choose one of the following minor traits:
+        * If an ally uses your inspiration dice on an attack and does not miss their target, you can choose to use mockery against that target as a free action.
+        * Mockery deals double damage to illusory creatures, is lethal to them, and all creatures with at least 1 inspiration die can remake a save against any ongoing fear, charm, or illusory effect originating from the target.
+        * Your inspiration dice have an extra +1 bonus. If an ally rolls a natural 1 on an inspiration dice, then the rest dice for the inspiration are refunded.
+  - heading: Special talent
+    body: At 6th bard level, choose another ability from the 5th level attributes of the fool list, or choose another minor
+      trait from your already chosen ability.
+  - heading: Parody
+    body: |-
+      At 6th bard level, learn a cantrip of your choice from any magic list. The casting attribute is intelligence for arcane cantrips, charisma or intelligence for occult cantrips, and wisdom for oath and mystical cantrips. Once chosen, modify it in 6 of the following ways:
+
+      * You can use charisma as the casting attribute.
+      * If the cantrip can target yourself, it can target a creature within reach instead.
+      * If the cantrip can be upgraded, upgrade the cantrip an additional time.
+      * If the cantrip has only a verbal component, you can use constitution as the casting attribute.
+      * If the cantrip has only a semantic component, you can use dexterity as the casting attribute.
+      * If the cantrip originally requires a spell attack, it can instead be either a dexterity or intelligence save.
+      * If the cantrip originally requires a saving throw, it can instead be made as part of a melee spell attack.
+      * If the cantrip has a duration, increase it by 1.
+      * If the cantrip has a casting time of 1 action, you can take 1 damage to fatigue to cast it as a bonus action or move action.
+      * If the cantrip grants a bonus to a d20 roll, it can grant the exact same penalty instead.
+      * If the cantrip grants temporary health, it can deal an equal amount of necrotic damage instead.
+      * If the cantrip deals poison damage, it can grant 1d6 temporary health per damage dice instead.
+      * While at half health or less, you can add a +1 to any number used in the cantrip (damage, duration, size in feet, thickness, or bonus to a roll.)
+      * Any necrotic, poison, acid, or lightning damage the cantrip deals becomes radiant damage at night.
+      * You can add a +1 to any number used in the cantrip (damage, duration, size in feet, thickness, or bonus to roll,) if the target of the cantrip was also the last target of your mockery ability or is in possession of any inspiration dice.
+      * If the cantrip is a melee spell attack and has a casting time of 1 action, you can cast it as a bonus action right after a successful melee weapon attack.
+      * If the cantrip has more than 5 feet of range, the range of the cantrip is doubled.
+      * The area of the cantrip is doubled.
+      * If the cantrip critically strikes the target on a spell attack, every target of the cantrip critically failed their saving throw, or the target was unaware of you during the casting of the cantrip, you can use mockery on the target as a free action if within range of the ability.
+      * The cantrip can target one additional creature within range that has inspiration dice.
+# https://sites.google.com/view/dnd5plus/home/classes/bard-x/poet
+- name: Poet
+  group: Bard archetypes
+  sections:
+  - heading: Good lines
+    body: |-
+      At 4th bard level, you gain 3 good lines every long rest. You gain an extra good lines if any of the following occur:
+
+      * You witness an ally succeeding in a check thanks to your bardic inspiration.
+      * You end combat without retreating, surrendering, or falling unconscious.
+      * You spend a rest die.
+      * You critically strike an enemy.
+      * An enemy critically fails an attack against you.
+      * You critically succeed on a saving throw against a spell.
+      * An enemy critically fails on a saving throw against your spell.
+
+      You can spend 1d4 good lines to use bardic inspiration. If the roll exceeds your number of good lines, lose your action next turn.
+      Once during a rest, you can spend 1d4 good lines to restore 1 rest die to an ally.
+
+      You cannot exceed more good lines than your total charisma + half your bard level (rounded down.)
+
+      After every long rest, your number of good lines is reset to 3.
+  - heading: Name the moment
+    body: |-
+      At 4th bard level, you may spend 1 good line as a free action on your turn, or as a reaction to do any of the following:
+
+      * Grant an ally within 30 feet a bonus action that they can immediately perform.
+      * Grant yourself or an ally a 1d4 bonus to a social skill check (Subject to GM.) of your choice.
+
+      You cannot use this ability more than once per turn.
+  - heading: Forms of poetry
+    body: |-
+      At 5th bard level, choose 2 upgrades:
+
+      * Arcane display - Gain an extra bardic inspiration upgrade. Learn an arcane cantrip of your choice. Use charisma as the casting attribute.
+      * Song of blades - Gain proficiency with 2 martial weapon groups of your choice. You also gain a good line whenever you disarm, pin, or otherwise disable or restrain a creature with a weapon (Subject to GM.)
+      * Grim words - You gain a 1d2 good lines whenever you reduce a small or larger creature to 0 hp. Name the moment can also grant an enemy a -1 penalty to a dexterity or intelligence check.
+      * Wit - You gain 1 good line every rest, your good line reset count is now 4, and name the moment can be used to grant an attack of opportunity disadvantage.
+      * Words of power - You can spend 1d4+1 good lines to regain 1 spell slot as an action. If the number exceeds your number of good lines, then you simply waste the action.
+      * Living in the moment - You gain a good line whenever an ally within 30 feet spends a rest die.
+  - heading: Words to live by
+    body: At 6th bard level, when you grant an ally an inspiration die, you can also spend 3 good lines to restore 1 rest
+      die to them. This cannot bring them above their rest dice maximum. You cannot restore another rest dice to an ally
+      until they use up the inspiration die.
+# https://sites.google.com/view/dnd5plus/home/classes/bard-x/aspirant
+- name: Aspirant
+  group: Bard archetypes
+  sections:
+  - heading: Upgraded inspiration
+    body: At 4th bard level, gain an extra bardic inspiration (Bard 1) upgrade from its list.
+  - heading: Greater inspiration dice
+    body: At 4th bard level, your bardic inspiration dice is increased by 1 size category.
+  - heading: Pursue excellence
+    body: |-
+      At 5th bardic level, choose 2 upgrades:
+
+      * Grace of movement - Gain proficiency with acrobatics. If already proficient, gain expertise. Gain a +1 bonus to dexterity. Gain a +1 bonus to AC while not wearing medium or heavy armor.
+      * Physical excellence - Gain proficiency with athletics. Gain a +1 bonus to strength. Increase movement speed by 5 ft. Gain a +1 bonus to persuasion and instinct checks.
+      * Culinary arts - Gain proficiency with survival. You can spend 1 rest die during a rest while preparing a meal to do it excellently. Doing so restores 1 rest die to all allies who can eat. Gain a +1 bonus to constitution so long as you maintain your own diet.
+      * Exquisite memory - Gain proficiency with either history, religion, or nature. You gain a +1 bonus to intelligence. Your maximum number of talent slots is increased by 1.
+      * Masterful insight - Gain proficiency with insight. If already proficient, gain expertise. Gain a +1 bonus to wisdom. Your rest dice maximum is increased by 1.
+      * Influential presence - Gain proficiency with persuasion, performance, or intimidation. Gain a +1 bonus to charisma. Enchantment and evocation spells you cast gain a +1 bonus to DC.
+      * Art of dueling - Gain proficiency with a weapon group of choice. Gain 1 temporary block at the start of combat. Gain a +1 bonus to either strength or dexterity.
+      * Depth of soul - Your maximum amount of talent spells that you can learn is increased by 1. You gain a +1 bonus to either wisdom or charisma. You gain a +2 bonus to your talent checks when learning or remembering a spell.
+      * The art of music - Gain proficiency with an instrument of choice. If already proficient, gain expertise. You can choose to take no rest dice consuming action during a rest to practice. Doing so restores 2 rest dice to you.
+      * Innate acting - Gain proficiency with deception. If already proficient, gain expertise. Learn 2 languages of choice.
+  - heading: Mastery
+    body: At 6th bard level, choose one skill you are at least proficient with. Grant it a +3 bonus.
+  - heading: Jack of all trades
+    body: At 6th bard level, gain 2 extra feats.
+# https://sites.google.com/view/dnd5plus/home/classes/bard-x/empath
+- name: Empath
+  group: Bard archetypes
+  sections:
+  - heading: Memory Marks
+    body: |-
+      At 7th level, you gain a Memory Mark when one of the following occurs during a meaningful (subject to GM) interaction or combat encounter:
+
+      * You critically fail an ability check, saving throw, or attack roll.
+      * You suffer a social setback, humiliation, betrayal, or moral compromise.
+      * A friendly creature you can see critically fails a roll or is critically struck.
+      * The GM agrees that this is a moment of exceptional psychic or emotional power.
+
+      You can hold a number of Memory Marks equal to your proficiency bonus.
+
+      If you would gain a Memory Mark while at maximum, you must either spend one mark immediately or take 1 point of fatigue in order to replace a previous mark with a new one.
+
+      A moment in which you use a memory mark cannot itself create a new memory mark.
+  - heading: Name the emotions
+    body: |-
+      Starting at 7th level, when you gain a Memory Mark, you must tag it with one impression (category of the emotions and how they felt. The emotions can be tracked for flavor but the impression is what matters) which covers a wider subset of emotions:
+
+      * Fracture (for Shame/Loss/Sorrow/Madness)
+      * Tension (for Fear/Anger/Disgust/Lust)
+      * Clarity (for Insight/Joy/Awe/Love)
+      * Resistance (Defiance/Contradiction/Hope/Courage)
+
+      The GM may veto the emotion tag if it clearly does not fit the event.
+  - heading: Psychic recall
+    body: |-
+      Starting at 7th level, you may recall the energies of one Memory Mark to invoke it as either a bonus action during your turn, or a reaction when done outside your turn, and use that energy for one effect corresponding to that emotions impressions. This can only be done once per turn.
+
+      After a memory mark has been is invoked it becomes exhausted. Exhausted memory marks still count towards your maximum number of memory marks and cannot be used until processed.
+
+      Below is a selection of options for impressions:
+  - heading: Fracture
+    body: |-
+      * Gain advantage on a d20 roll that you have failed since the last rest (same skill, attack, save type, etc.) Can be used after the roll to force a reroll instead of accepting the result.
+      * Detect the most prominent fear, concern, duty, or obsession of a creature within 30 ft that you can perceive.
+  - heading: Tension
+    body: |-
+      * Gain advantage on a save or block check, or cause a creature within 30 ft to have disadvantage on a save or block check so long as it is against an ability, attack, or action that you cause.
+      * Grant a creature bardic inspiration without expending an inspiration dice.
+  - heading: Clarity
+    body: |-
+      * Gain advantage on Insight, Investigation, or Perception
+      * Read the mind of another creature that you can perceive, allowing you to determine their surface thoughts, if they are being honest or putting up a deception of some sorts, and if they are who they say they are.
+  - heading: Resistance
+    body: |-
+      * Gain advantage on hostile or defensive social skill check (intimidation, hostile or defensive use of insight, most deception checks, subject to GM.)
+      * Ignore fatigue for 1d8 rounds.
+  - heading: Process impressions
+    body: |-
+      Starting at 8th level, you can process memory marks during a rest to gain a temporary bonus to a skill of choice until next rest. If the mark is exhausted, the bonus is equal to +1, but if the mark is not exhausted, the bonus is equal to +2. Doing so erases the memory mark. This cannot increase a single skill by more than +5.
+
+      You may choose to instead reconsider an exhausted memory mark, changing its impression to that of another and making it unexhausted.
+  - heading: Empathic magic
+    body: |-
+      Starting at 8th level, you may exhaust and remove a memory mark to cast a spell that you know, taking 1d2 points of fatigue in the process. the kind of spells you can cast must have at least one of the schools corresponding to the expended memory mark. If the spell contains both schools, the fatigue cost is reduced to 1. The level of the spell cast is equal to the highest level of spell you can cast:
+
+      * fracture - cast an illusion or charm spell without spending spell slots.
+      * tension - cast a transmutation or necromancy spell without spending spell slots.
+      * clarity - cast a divination or conjuration spell without spending spell slots.
+      * resistance - cast an evocation or abjuration spell without spending spell slots.
+  - heading: Empath traits
+    body: |-
+      8th level, choose 2 upgrades from the list below:
+
+      * Mirror behavior - When you notice a creature that succeeds a perception, performance, insight, persuasion, intimidation, or deception check, you may automatically gain a special memory mark which grants you a +3 bonus. The mark can have an impression of your choice. It does not count towards your maximum number of marks, but is lost upon entering a rest.
+      * Psychic bracing - when you would gain fatigue from empathic magic, reduce the amount of fatigue by 1.
+      * Mental backlog - You gain a bonus for every unique type of unexhausted memory mark that you have:
+        * fracture - gain a +1 to mental saves and a +1 to deception checks.
+        * tension - gain a +1 to block checks and a +1 to investigation checks.
+        * clarity - gain a +1 to initiative checks and a +1 to insight checks.
+        * resistance - gain a +1 to attack rolls and a +1 to intimidation checks.
+      * Emotional lock-in - Once per rest, upon gaining a memory mark, you may use it until the end of your next turn as a free action. This mark is immediately consumed once exhausted, and does not count towards your memory mark maximum.
+      * Suppress emotional forces - You can exhaust memory marks to remove a condition affecting you depending on the kind of impression the mark has:
+        * fracture - fear or terror
+        * tension - charmed
+        * clarity - distraction or confusion
+        * resistance - blindness or deafness
+      * Emotional depth - Your maximum number of marks is increased by 1.
+      * Psychological warfare - Per unexhausted fracture impression, gain a +1 bonus to intimidation.
+      * Empathic alertness - Per unexhausted tension impression, gain a +1 bonus to perception checks.
+      * Empathic awareness - Per unexhausted clarity impression, gain a +1 bonus to insight checks.
+      * Psychological defenses - Per unexhausted resistance impression, gain a +1 bonus to wisdom saves.
+      * Premonition - Per unexhausted memory mark, gain a +1 bonus
+      * Empathic communion - You may exhaust two memory marks to communicate to a creature that cannot understand you otherwise. This can be with animals, spirits, creatures that speak foreign languages, and elementals.
+      * Contemplate - You can process an additional memory mark during a rest.
+      * Mind cabinet - When processing memory marks, the bonus is increased to +2 if exhausted, and a +3 bonus if not exhausted.
+      * Psi overload - You may exhaust a memory mark to deal 2d8 psychic damage to any creature reading your mind or psychically communicating with you. You may choose to remove the memory mark instead of exhausting it to increase the damage to 2d12 + your charisma modifier, and to force the target to make a DC 20 charisma save, applying one of the following conditions on a failure: confused, disoriented, or distracted.
+      * Psychogenesis - When casting a spell using empathic magic, you can exhaust a memory mark to grant it an additional spell level.
+  - heading: Extra empath trait
+    body: At 9th bard level, choose an extra empath traits upgrade.
+  - heading: Grant empathic impression
+    body: At 9th bard level, you can exhaust a memory mark when using bardic inspiration in order to grant the target/s
+      of bardic inspiration a benefit of your choice that you could get yourself by exhausting the impression of that memory
+      mark.
+# https://sites.google.com/view/dnd5plus/home/classes/bard-x/muse-whisperer
+- name: Muse caller
+  group: Bard archetypes
+  also_known_as: Muse-whisperer
+  description: While the magi and the priests may argue over the nature of the gods, and warlocks and mystics speak of spirits
+    that move the world in ways unknown, some subtle souls instead tread the narrow path to find that which persists among
+    the common folk and goes unseen by more crude beings. A follower of such notions often call them muses, as they are
+    neither will, nor being, but they move the souls of mortals nonetheless and live on eternal in their art and stories.
+  sections:
+  - heading: Inner muse
+    body: At 7th Bard level, pick an inner muse from the selection below, gaining both a boon, and a musing which is an
+      ability which can be used during a rest.
+  - heading: The Witness
+    body: |-
+      description
+
+      Boon: You can learn an extra level 1 and level 3 talent spell. These do not count towards the maximum number of spells known, and the DC of learning new bard spells is reduced by 1.
+
+      Musing: You may spend 1 rest die or inspiration dice to gain advantage on checks made to determine lore, examine artifacts, or investigate or observe societal aspects during the rest.
+  - heading: The Songbird
+    body: |-
+      description
+
+      Boon: You may make performance checks in place of handle animal checks.
+
+      Musing: You can spend 2 inspiration dice during a rest (after they are restored) to restore 1 rest die to all allies. When you do so, roll the bardic inspiration dice, and restore that much health to allies, distributed in a manner of your choosing.
+  - heading: The Glorious Will
+    body: |-
+      description
+
+      Boon: You may grant an ally up to 1 more bardic inspiration dice at a time. (By default it an ally cannot have more than 1.) An ally may spend a rest die to apply both inspiration dice at the same time.
+
+      Musing: You may spend 1 rest die and 1 inspiration die during a rest to grant yourself a +1 bonus to all d20 rolls until next rest.
+  - heading: The Spirit of Beauty
+    body: |-
+      description
+
+      Boon: You can learn an extra level 1 and level 3 talent spell. These do not count towards the maximum number of spells known, and the DC of learning new bard spells is reduced by 1.
+
+      Musing: You may spend 1 rest die or inspiration dice to gain advantage on checks made to determine lore, examine artifacts, or investigate or observe societal aspects during the rest.
+  - heading: The Fearless Love
+    body: |-
+      description
+
+      Boon: You regain 1 inspiration die or 1 rest die whenever you pacify or befriend a meaningful foe or beast (Subject to GM,) or whenever you end a meaningful conflict among allies (Subject to GM.)
+
+      Musing: You can spend 1 inspiration die and 1 rest die during a rest to remove a curse or affliction from an ally or yourself without requiring a save or checks. This requires spending a 1 hour ritual with them where you discuss the nature of life, love, and the soul.
+  - heading: The Revelry
+    body: |-
+      description
+
+      Boon: You can spend 1 rest die, and either 1 inspiration die or 1 talent spell slot as an action to grant an ally within 30 ft advantage on an attack roll, or any roll that can benefit from your bardic inspiration dice
+
+      Musing: You may spend 1 rest die, 1 talent spell slot, and 1 inspiration die to grant yourself an extra attack and a +2 bonus to death saves until your next rest.
+  - heading: True expression
+    body: The draft supplies a heading without rules text.

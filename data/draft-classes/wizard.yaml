@@ -1,0 +1,478 @@
+section: classes
+entries:
+# https://sites.google.com/view/dnd5plus/home/classes/wizard-x
+- name: Wizard
+  group: Base class
+  description: A wizard is a practitioner of the arcane who, either through genius, madness, stubbornness, or sheer dedication,
+    has managed to understand and decipher the various arcane models, texts, diagrams, metaphors, and explanations of the
+    orders, schools, and mystics of the world to a sufficient degree. Unlike sorcerers and clerics, wizards neither bind
+    their magic to a higher oath, nor rely on another's gift. Rather, they have dedicated their lives and training to be
+    able to wield and interface with the arcane aspects of magic by their own will and hand alone. It is the nature of the
+    arcane to be extendable to the material world, and as such most wizards rely on the use of rune magic in some form,
+    typically personal spell books.
+  sections:
+  - heading: Class progression
+    body:
+      columns:
+      - Level
+      - Proficiency bonus
+      - Features
+      - Cantrips known
+      rows:
+      - - '1'
+        - '2'
+        - Spellcasting, 1st Archetype, Arcane recovery
+        - '1'
+      - - '2'
+        - '2'
+        - —
+        - '1'
+      - - '3'
+        - '2'
+        - Ability score improvement
+        - '1'
+      - - '4'
+        - '3'
+        - —
+        - '1'
+      - - '5'
+        - '3'
+        - Ability score improvement
+        - '1'
+      - - '6'
+        - '3'
+        - —
+        - '1'
+      - - '7'
+        - '4'
+        - Specialization Archetype
+        - '2'
+      - - '8'
+        - '4'
+        - —
+        - '2'
+      - - '9'
+        - '4'
+        - Ability score improvement
+        - '2'
+      - - '10'
+        - '5'
+        - —
+        - '2'
+      - - '11'
+        - '5'
+        - Ability score improvement
+        - '2'
+      - - '12'
+        - '5'
+        - —
+        - '2'
+  - heading: Health and proficiencies
+    body: "Hit dice: 1d6\n\nArmor: none\nWeapons: light crossbow, dagger, quarterstaff\nTools: \nSaving throws: intelligence\
+      \ and wisdom\nSkills: 2 of arcana, history, religion, nature, mechanism, perception, insight, or medicine."
+  - heading: Equipment
+    body: |-
+      You start with the following equipment, in addition to the equipment granted by your background:
+
+      * (a) quarterstaff, or (b) a dagger
+      * (a) a cartographer's pack, (b) a dungeoneer’s pack, or (c) an explorer’s pack
+  - heading: Spellcasting
+    body: |-
+      At 1st level you gain the ability to cast arcane spells. You start with a spell book with 2 level 1 spells, and an additional number of level 1 spells equal to your intelligence bonus. During a long rest, you can prepare any combination of spells, up to the number of prepared spells specified in the class table.
+
+      When leveling up, you can add 1 more arcane spell of any spell level you can cast to your spellbook.
+
+      You can copy over spells into your spellbook as written in the base rules.
+
+      Your casting attribute is intelligence.
+
+      The DC of your spells is equal to 8 + your proficiency + your intelligence modifier (min 0)
+  - heading: Spell slots by level
+    body:
+      columns:
+      - Wizard level
+      - Level 1
+      - Level 2
+      - Level 3
+      - Level 4
+      - Level 5
+      - Level 6
+      rows:
+      - - '1'
+        - '1'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+      - - '2'
+        - '2'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+      - - '3'
+        - '2'
+        - '1'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+      - - '4'
+        - '3'
+        - '2'
+        - '0'
+        - '0'
+        - '0'
+        - '0'
+      - - '5'
+        - '3'
+        - '2'
+        - '1'
+        - '0'
+        - '0'
+        - '0'
+      - - '6'
+        - '3'
+        - '3'
+        - '2'
+        - '0'
+        - '0'
+        - '0'
+      - - '7'
+        - '4'
+        - '3'
+        - '2'
+        - '1'
+        - '0'
+        - '0'
+      - - '8'
+        - '4'
+        - '3'
+        - '3'
+        - '2'
+        - '0'
+        - '0'
+      - - '9'
+        - '4'
+        - '4'
+        - '3'
+        - '2'
+        - '1'
+        - '0'
+      - - '10'
+        - '4'
+        - '4'
+        - '3'
+        - '3'
+        - '2'
+        - '0'
+      - - '11'
+        - '5'
+        - '4'
+        - '4'
+        - '3'
+        - '2'
+        - '1'
+      - - '12'
+        - '5'
+        - '4'
+        - '4'
+        - '3'
+        - '3'
+        - '2'
+  - heading: Cantrips
+    body: At 1st level you gain use of an arcane cantrip. At 7th level you learn an additional cantrip. You use intelligence
+      as the casting attribute for these cantrips.
+  - heading: Arcane recovery
+    body: |-
+      At 1st level, whenever you take a short rest, you gain a number of arcane points equal to your intelligence modifier to spend to regain spell slots. You can spend any number of rest dice up to your intelligence modifier to gain that many arcane points. You can then regain spell slots or swap out prepared spells in exchange for arcane points.
+
+      If regaining a spell slot, the cost is equal to the level of the spell slot. When swapping out a prepared spell, the cost is equal to half the spell slot level rounded down (min 1)
+  - heading: 1st Archetype
+    body: |-
+      At 1st level choose your first wizard archetype:
+
+      * Scholar
+      * Scribe
+      * Court mage
+  - heading: Ability score improvement
+    body: At 3rd, 5th, 9th, and 11th level, increase one ability score by 2 or two ability scores by 1.
+  - heading: Specialization Archetype
+    body: At 7th level, choose a specialization archetype
+# https://sites.google.com/view/dnd5plus/home/classes/wizard-x/court-mage
+- name: Court mage
+  group: Wizard archetypes
+  sections:
+  - heading: Arcane focus
+    body: |-
+      At 1st wizard level, you can designate a kind of item to be your arcane focus during rest by spending one rest die.
+
+      An arcane focus is a casting implement and trusty tool used by court mages. Once a focus type is chosen, it cannot be changed, but you can swap out a focus item by designating a new focus item during rest.
+
+      The following focus item types are available:
+
+      * Ring - Has two extra arcane focus points. Per +1 bonus, it grants you +1 AC. Must be a mundane ring before choosing.
+      * Spear - The spear uses your casting modifier. When making a successful melee spell attack, you can choose to also deal weapon damage from the spear as though you hit.
+      * Staff - Choose a level one spell of any class. The staff can be used to cast it once per rest.
+      * Wand - You can transform a wand (or restore a burned out wand) during a rest to be your personal arcane focus item. Choose 2 cantrips. The wand can now be used to cast them at will. The cantrips consider your character level for upgrades. You can retain the wands previous spells and use the arcane focus points to cast them in place of charges.
+
+      An arcane focus has arcane focus points equal to 1/2 your level (rounded down, min 1.) Arcane focus points can be used to cast spells you know, by converting one focus point to 1 level of spell slot. All focus points are regained upon long rest.
+  - heading: Art and mastery
+    body: |-
+      At 2nd wizard level, choose two upgrades:
+
+      * Alchemical theory - Gain proficiency with alchemist’s tools or with nature. Your transmutation spell DC is increased by 1. Gain +1 bonus to checks made to identify materials and their workings. Gain a +1 bonus to checks made to persuade, interpret, or negotiate with alchemists, tinkers, and artificers.
+      * Arbitrage - You gain a +3 bonus to checks made to create legal documents, papers, or to negotiate deals and agreements with other entities. You gain a +1 bonus to saves made vs magical rune or text effects.
+      * Architecture and engineering - Gain proficiency with either mechanism or mechanics tools. Gain a +2 bonus on checks made to interact with golems, and mechanical hazards.
+      * Entrepreneurship - Gain a +2 bonus to checks made to manage and run a venture or enterprise. Gain proficiency with a set of tools of choice.
+      * Hex familiarity - Gain a +1 bonus to saves vs hexes and to AC vs hex attacks. Learn a minor hex and major hex. Gain a +1 bonus to wisdom.
+      * Husbandry knowledge - Gain proficiency with handle animal and nature. Gain a +2 bonus to checks made to examine, identify, or determine the locations of the lairs and nests of beasts.
+      * Knowledge of the realm - Gain proficiency with history. If already proficient, gain expertise. Gain a +2 bonus to checks made to interact with nobility, guild leaders, and establishment owners.
+      * Medicinal arts - Gain proficiency with medicine and physicians tools. You can spend 1 rest die to grant a creature a +1d4 bonus to a save vs a disease or blight during a rest. You gain a +1 bonus to saves vs disease.
+      * Noetic practice - Gain proficiency with one of nature, history, arcana, or religion. Your intelligence considered 2 higher only during rest.
+      * Oration and rhetoric - Gain a +2 bonus to checks made to address crowds, groups, or followers. Gain proficiency with 1 of persuasion, intimidation, or deception.
+      * Religious ties - Gain proficiency with religion. You have a +2 bonus to checks made to interact with oathbearers, members of organized religions, and spiritual leaders.
+      * Sparring practice - Gain a +1 bonus to dex and strength. Gain a +1 bonus to block checks. Gain proficiency with acrobatics or athletics.
+      * Spycraft training - Gain proficiency with either deception or persuasion. Gain a +2 bonus on checks made to interact with criminal leaders and organizations, as well as occult group and coven members.
+      * Theatrical arts - Gain proficiency with performance and one instrument of choice. Your enchantment spell DC is increased by 1.
+      * Tradecraft - Gain proficiency with persuasion. You gain a +2 bonus to checks made to negotiate prices or terms.
+  - heading: Invoke arcane focus
+    body: At 2nd wizard level, you can invoke your arcane focus once per rest. When doing so, restore 1 arcane focus points
+      to it and grant it a +1 bonus for 10 minutes.
+  - heading: Extra spell slots
+    body: '* At 3rd wizard level, you have 1 extra spell slot per every level of slot that you can cast.'
+  - heading: Arcane focus training
+    body: |-
+      At 4th wizard level, choose one upgrade from the list below:
+
+      * Arcane banner - Requires spear or staff arcane focus. You can spend 2 rest dice or arcane spell points to place your arcane focus into the ground and display a banner, flag, or sign. Creatures within 20 ft of the banner gain a +4 bonus to saves vs spells and effects not originating from within the banners area. The effect is lost once you move or take the arcane focus. You can use the items arcane focus points while within the banners range.
+      * Arcane focus ward - Requires wand or staff arcane focus. You can spend 2 arcane focus points or rest dice to attempt to counter an area of effect spell or ability that deals damage or debilitates in a 10 ft radius around you. Make an arcana checks vs the effect DC. On a success, all creatures within 10 ft of you ignore the spell or ability.
+      * Arcane spear - Requires spear arcane focus. You can spend 1 rest die to make an attack with your focus the attack gains reach II. If it lands, you deal an extra instance of damage for everything the attack deals as force damage.
+      * Empowered staff - Requires staff arcane focus. You can also emplace a level 2 spell into the staff and cast it once per long rest. The staff has +1 max arcane focus points.
+      * Extra focus points - Your arcane focus has +2 max arcane focus points.
+      * Extra arcane invocations - You can use invoke arcane focus an extra time once per rest.
+      * Enchanted ring - Requires ring arcane focus. The arcane ring also provides a +2 bonus to an attribute of choice.
+      * Greater invocation - When using invoke arcane focus, you recover 1 extra arcane focus. The duration is increased to 1 hour.
+      * Power staff - Requires staff arcane focus. Up to once every 10 minutes, you can upcast one spell you cast by 1 level.
+      * Reverse recall - Requires spear arcane focus. You can blink to your arcane focus.
+      * Ring of mastery - Requires ring arcane focus. While wearing the arcane focus, your cantrips gain an extra upgrade. The upgrade can be swapped by spending 1 rest die during a rest.
+      * Ring of power - Requires ring arcane focus. Your arcane focus ring does not count towards your ring slot. It has +2 max arcane focus points.
+      * Ring of protection - Requires ring arcane focus. The rings enchanted bonus also applies a +1 bonus to saves vs spells and block. The ring has a permanent +1.
+      * Siege rip - Requires staff, wand, or spear arcane focus. You can spend 1 rest die or arcane focus point to shatter up to as many surface tiles as your casting bonus, starting from a tile within 10 ft of you. The surface is turned to difficult terrain, earthenware or wooden structures take 2d12 force damage, weak walls or stones are shattered, and creatures standing on the tiles must make a dexterity save and take 1d8 + casting bonus force damage.
+      * Spell-weaving - Requires ring arcane focus. Your spell focus can be used to store an extra prepared spell. Effectively, you can prepare 1 extra spell of any level you can cast. It has +1 max arcane focus points.
+      * Staff of light - Requires staff arcane focus. You can spend 1 rest die or arcane focus point to do the following maneuvers with your staff:
+        * Force push - As an action, choose creatures in up to a 25 ft cone. They must make a constitution save. One a failure, they are pushed back 15 ft and fall prone. On a success, they are pushed back 5 ft.
+        * Illuminate - As an action, cause arcane light to flow out of your staff and fill a 60 ft area around you. All creatures within it immediately remake saves vs ongoing spell effects or curses, invisible creatures must make a wisdom save to not lose invisibility, and illusion effects are disrupted for the duration. lasts 3 turns.
+        * Hold - As an action or reaction, cause a creature, 5 ft sphere, or medium or large object in motion within 30 ft to be suspended until the start of your next turn. Negates fall damage. Can be used on an area to grant attacks passing through disadvantage.
+      * Shield ring - Requires ring arcane focus. You can spend 1 rest die or 1 AP while wearing your arcane focus to gain a +6 bonus to a save vs a spell or magical ability, or to a block check vs a magical attack.
+      * Spectral assault - Requires spear arcane focus. You can spend 1 arcane focus point or 1 rest die to make a sweeping line on a surface emit spectral spears and strike at creatures within the area. Effects a number of tiles equal to your intelligence modifier + 2 (min 1) and can either project the line outwards from your melee range, or parallel to you within a 15 ft radius. All creatures within the areas affected must make a dexterity save, taking a copy of your spear attack on a failure.
+      * Spell reap - Requires spear arcane focus. When casting a cone spell or ability that requires saves from targets, you can spend 1 rest die or arcane focus point to make wide attack with your spear instead, making a spell attack instead. Creatures hit take the damage of your spear and are treated as failing the spell.
+      * Staff of the magos - Requires staff arcane focus. You can copy another spell being cast within 30 ft as a reaction. If the spell is higher than 2nd level, you must make an arcana check vs the spell DC. On a success, the spell is copied into the staff and can be cast once per rest.
+      * Versatile wand - Requires wand arcane focus. You gain a +1 bonus to spell attacks made with wands. Add another cantrip to the wand, and grant all wand cantrips an extra upgrade.
+      * Wand dueling - Requires wand arcane focus. You can attempt to dispel a directly targeted spell aimed at you while wielding your arcane focus as a reaction, by spending 1 rest die or 1 arcane focus point to make an arcana check vs the DC of the spell. On a success, it is dispelled. On a critical success, you can redirect the spell.
+      * Wand enervation - Requires wand arcane focus. You can spend 1 rest die or arcane focus points while wielding your arcane focus wand and casting a spell, or when a spell is being cast within 15 ft of you, to upcast it by 1 level.
+      * Winged spear - Requires spear arcane focus. You can also apply spear damage on ranged spell attacks within 60 ft, as though the spear was used for the spell attack. Your spear arcane focus can be recalled to your hand as a bonus action.
+
+      At 5th and 6th level, choose another.
+  - heading: Diplomatic composure
+    body: |-
+      At 5th wizard level, gain a +2 bonus to either charisma or wisdom.
+
+      Also, choose a category of people that you gain a +2 bonus to persuasion, insight, deception, and investigation checks on:
+
+      * Nobility
+      * Merchants and traders
+      * Craftsmen and builders
+      * Guild, gang, and troupe leaders
+      * Criminal elements
+      * The underclasses and exiles
+      * Commoners
+      * Travelers, Sailors and explorers
+  - heading: Grand arcane focus.
+    body: At 6th wizard level, your arcane focus gains a permanent +1 bonus on top of other previous bonuses.This bonus
+      transfers across different arcane focuses. Your arcane focus also has a +1 maximum arcane focus points. It regains
+      1 arcane focus point per rest.
+# https://sites.google.com/view/dnd5plus/home/classes/wizard-x/scholar
+- name: Scholar
+  group: Wizard archetypes
+  description: An arcane scholar is an archetype of wizard that focuses on the niche study of a particular form of magic.
+    Be they secluded experimenters in towers, court wizards, or self-made a hedge-mage, a scholar is a wizard who specializes
+    in a particular aspect of magic.
+  sections:
+  - heading: Arcane school
+    body: |-
+      At 1st wizard level, choose an arcane school of focus:
+
+      * Abjuration
+      * Conjuration
+      * Divination
+      * Enchantment
+      * Evocation
+      * Illusion
+      * Necromancy
+      * Transmutation
+
+      At 1st level, learn a cantrip of that school, and add an extra 1st level spell from this school to your list of spells known.
+  - heading: Arcane school specialization
+    body: At 1st wizard level, you can cast a prepared spell of your chosen arcane school by spending a number of rest dice
+      equal to the spells level, or the level at which you want to cast the spell.
+  - heading: Signature spell
+    body: At 1st level, choose a 1st level arcane spell of your chosen arcane school and permanently learn it. You do not
+      require a spell book to cast this spell, and it counts as always prepared, without counting as a prepared spell.
+  - heading: Essence dice
+    body: |-
+      Starting at 2nd wizard level, you gain a number of arcane essence dice equal to your intelligence bonus (min 1.)
+
+      You can spend arcane essence dice interchangeably with rest dice when using rest dice consuming items, abilities, or spells who's effects are tagged with your chosen school of magic. All arcane essence dice are regained during a long rest.
+  - heading: Arcane scholar trait
+    body: |-
+      Starting at 3rd wizard level, choose 2 upgrades:
+
+      * Arcana focus - You gain expertise with arcana. gain a +1 bonus to another intelligence based skill of your choice.
+      * Arcana manipulation - Your arcane essence dice maximum is increased by 1.
+      * Casting focus - You gain 1 extra recovery point at the start of each rest.
+      * Down-casting method - Choose a 2nd level arcane spell. Add it to your spell book if you do not have it already. You can down-cast it using a 1st level spell slot, but reducing damage, duration, and range by half.
+      * Expanded cantrips - Learn an extra arcane cantrip. Upgrade a cantrip of choice once.
+      * Spell binders - You can create 1d4 spell-binders during a long rest. A spell binder can be added to a prepared spell (literally, added in the page, in the spell book) during a rest, allowing you to up-cast them by 1 when casting the prepared spell. When casting the spell, make a DC 15 arcana check to cast the spell 1 level higher. On a failure or natural 1, a spell-binder attached to the page is broken and used up.
+      * Spell study expertise - The DC of copying spells into your spell books is reduced by 1. It is further reduced by 1 for spells of your chosen school. You gain a +1 bonus to arcana checks associated with your chosen school of magic.
+  - heading: Arcane school secret
+    body: |-
+      Starting at 4th wizard level, choose an upgrade based on your chosen arcane school:
+
+      * ( Abjuration )
+        * Armor casting - Gain light armor proficiency. If already proficient with light armor, gain medium armor proficiency. If already proficient with medium armor, gain heavy armor proficiency. If already proficient with heavy armor, gain another Arcane scholar trait upgrade.
+        * Arcane reinforcement - The amount of block granted by your spells is increased by 1.
+        * Attune to vitality - The amount of temporary health and arcane health granted by your spells is increased by 1d6 and 1d2 respectively.
+        * Minor counterspell - You can spend 2 rest dice to make an arcana check vs the DC of a scroll, spell or cantrip being cast within a 50 ft radius. On a success, the spell is negated.
+      * ( Conjuration )
+        * Bound items - You can designate a number of light and relatively small items (including light weapons, or projectiles) equal to your intelligence bonus. You can always produce these items as a free action, and you can magically store them on your person as a free action. You can designate such items at a rest.
+        * Odd step - You may teleport as a move action by spending 1 rest die, up to a distance of 60 feet. This still provokes attacks of opportunity, but any attack made against you while blinking has disadvantage. If no other creature is aware of you, you can blink as a free action.
+        * Summon lesser item - You may conjure a minor mundane item (Subject to GM,) worth 1 silver coin or less, and no larger than a 1 ft cube. These minor items cannot feed, heal, or repair items, though they can otherwise appear, feel, and taste ordinary. Summoned lesser items last for up to an hour, or until dispelled. You can have up to as many such items as your intelligence bonus.
+        * Translocate - You can transpose a creature within 30 ft as an action, moving it to a nearby empty space up to 5 ft away. This increases to up to 10 ft away at 6th level.
+      * ( Divination )
+        * Detection wards - Gain advantage on initiative checks. So long as you have at least 1 rest die, you can act in the surprise round, and gain advantage to saves against traps.
+        * Forewarn from danger - You can forewarn a creature of incoming danger as a bonus action by spending 1 rest die, granting them 3d10 temporary health for the next hour.
+        * Premonition - Every long rest, roll a d20 that you can use to replace any other d20 roll at will. Once a die is used to replace the roll, that die is spent. You can spend 1 rest die or arcane essence dice during a rest to reroll the d20s.
+        * Probabilimancy - During an encounter, you can choose to make an attack, save, or urgent skill check (subject to GM) with disadvantage. If the outcome is a success, regain 1 rest die. You can do so until successful once per rest.
+      * ( Enchantment )
+        * Ego projection - You gain advantage on any check to possess or control a creature or remain in some state of consciousness or astral projection, and on saves made to avoid domination, possession, or charm, or banishment. You can choose to forego this effect at will.
+        * Memory wipe - You can spend 1 rest die as an action to cause a creature within 30 feet to make an intelligence save. On a failure, they forget the this round and the previous one at the end of this round.
+        * Negate perception - You can spend 1 rest die to cause nearby creatures to ignore you so long as you do not move. This lasts until you move.
+        * Telepathy - You can speak with creatures telepathically up to 500 feet away, so long as you are aware of them. You gain resistance to psychic damage.
+      * ( Evocation )
+        * Autoauraphagy - You can choose to spend 1 rest die and take 1d4 damage to fatigue to cast a 3rd level or lower spell without expending a spell slot. The spell is cast at it's lowest possible level. If it is an evocation spell, the fatigue damage is reduced to 1d2.
+        * Energy manipulation - Choose a damage type: fire, cold, acid, lightning, or force. When dealing spell or cantrip damage of that type, increase it by 1d4.
+        * Energy infusion - Choose a damage type: fire, cold, lightning, force, or sonic. Weapons you wield can deal an additional 1d6 damage of that kind, and ammunition you fire can deal 1d4 extra damage of that kind.
+        * Power projection - You can spend 1 rest die to increase your casting attributes by +2 for 1 hour.
+      * ( Illusion )
+        * Juxtapose - You can swap places with illusions of yourself within a range of 500 ft.
+        * Many faces - As an action, you can change your appearance at will. You will still remain your base shape (humanoid, normally. Quadruped when polymorphed into a cat, for example) and approximate size, but your attire, grimace, face, gender, and apparent race (within limits) can be made to appear different as a bonus action.
+        * Permanent distortion - When you move more than 20 feet in a single turn, you gain a +1d4 bonus to dexterity saves, and attackers have a -1d4 penalty to attacks made against you.
+        * Arcane blindness - You can spend 1 rest die as an action to force a creature within 60 ft to make a wisdom save. On a failure, they are blinded for 1d4 rounds. On a critical failure, the creature can instead be made to see an entirely false version of events or reality.
+      * ( Necromancy )
+        * Arcane fortitude - you use intelligence to calculate your health from wizard levels. Your health from wizard levels is now 1d4 + your intelligence modifier.
+        * Fortified necromancy - Your necromancy created creatures have their maximum health increased by 1d8, have a +2 to a stat of your choice, and have 1 extra block during encounters.
+        * Essence manipulation - When a small or larger, or sapient, or magically infused creature dies within 30 feet, you gain 1d4 arcane health. You can consume 1d12 arcane health as an action to gain 1 rest die. If the cost exceeds your arcane health amount, you pay the rest with health. You must have at least 1 point of arcane health to use this ability.
+        * Arcane sustenance - You can spend 1 rest die when an undead dies within 20 ft to regain a level 1d3 spell slot. Gain a +1 bonus to checks made to interact with undead.
+      * ( Transmutation )
+        * Armor enforcing - You gain light armor proficiency, or if you already had it, gain medium armor proficiency instead. You can spend 1 rest die during a rest to cause a piece of armor or a shield to gain a +1 bonus to AC. This effect is permanent and lasts until either the armor is destroyed or a new set of armor becomes enchanted.
+        * Neutralize elements - You can spend a reaction to attempt to suppress an instance of fire, cold, lightning, or acid damage on yourself or an ally as a reaction. Doing so reduces the damage by 1d8. You can also do so as a bonus action on an item being consumed by said elements, granting it advantage on any save for a round.
+        * Self-modification - You can choose to gain a +1 bonus to 3 non-intelligence skills of your choice, a +1 bonus to a non-intelligence attribute of your choice, and 90 feet of darkvision.
+        * Mana extraction - You gain a +1 bonus to checks made to interact with arcane and alchemical substances. During a rest you can spend 1 arcane recovery point (wizard 1)
+  - heading: Arcana specialization
+    body: |-
+      At 5th wizard level, choose an ability:
+
+      * Further study - Gain an extra arcane scholar trait.
+      * More insights - Gain an extra arcane school secret.
+      * Signature casting - Also gain a signature spell at 2nd and 3rd spell level.
+      * Fundamentals mastery - Upgrade up to two cantrips you know once, if applicable.
+      * Self-sustaining magic - Your enchantment spells persist after you die, if their duration is "until cast again" or "until dispelled". Your rest dice maximum is increased by 1. Gain 1 extra spell recovery point during a rest.
+      * Protective runes - You gain a +1 bonus on checks made to decipher magical, cosmic, or eldritch runes. Your max block is increased by 1.
+  - heading: Master the subject
+    body: |-
+      At 6th wizard level, gain an ability based on your chosen arcane school:
+
+      * Abjuration - You gain a +1 bonus to all saves against spells and magical effects, and a +1 bonus to checks made to dispel or counterspell magic.
+      * Conjuration - You gain a +1 bonus to all checks made to discover, identify, and modify planar and cosmic properties, as well as other magical effects that cover large areas. The range of any spell or cantrip in your possession is doubled, and spells that have a range of touch can now affect creatures within 20 feet.
+      * Divination - You add your intelligence modifier to the initiative roll. You gain a +1 bonus to insight, investigation, and perception.
+      * Enchantment - You may spend a rest die as a bonus action to target a creature within 60 feet with a charm. They must make a wisdom save vs your spell DC. On a failure, they gain disadvantage on spell saves vs your spells until the effect is dispelled. This effect counts as a curse.
+      * Evocation - You have 8d6 energy dice. You may add up to as many energy dice as your intelligence bonus - 1 (min 1) to the damage dealt by a spell, magical weapon, or a cantrip. The dice must be applied before the spell is cast.
+      * Illusion - You can create a quasi-material duplicate of yourself as a bonus action, while granting yourself invisibility. You and the duplicate move on the same turn. You can fully control the duplicate, and it can do anything you could do. It can appear to take damage, be hit, but cannot deal direct damage, and cannot use the items you have. It has 1/2 your current HP and lasts up to 1 hour. You can see and perceive through it, if necessary.
+      * Necromancy - You gain a +3 bonus on all checks made to command and control undead creatures and necromantic entities. You gain 1d4 arcane health every time you slay a small or larger creature with your spells.
+      * Transmutation - You gain +1 to an attribute of your choice and gain resistance to one of the following damage types: fire, cold, poison, acid, force.
+# https://sites.google.com/view/dnd5plus/home/classes/wizard-x/scribe
+- name: Scribe
+  group: Wizard archetypes
+  sections:
+  - heading: Scribe tool proficiency
+    body: At 1st wizard level, you become proficient with scribe's tools, or gain a +1 bonus to scribe tool checks if already
+      proficient.
+  - heading: Arcane inscription
+    body: |-
+      At 1st wizard level, you learn the ability to inscribe arcane scrolls. During a long rest, you may create one scroll of any spell from your spell book, or spell you can cast. This functions as a simple scroll item and can be passed on to other creatures and sold. This requires access to scribes tools.
+
+      Also, gain a +1 bonus to checks made to add new spells to your spell book.
+  - heading: Minor arcane trinkets
+    body: |-
+      At 2nd wizard level, you can spend arcane recovery points to create minor arcane trinkets:
+
+      * Arcane seal (1 ARP) - can be broken as a bonus action to grant the next spell you cast +1 spell level. Applying further arcane seal effects to yourself deals 1d10 lightning damage to you and dispels both.
+      * Blank scroll (2 ARP) - An unstable blank scroll. It decays after a long rest. Once cast, it grants the reader 1d12 arcane health.
+      * Cantrip invocation (3 ARP) - A minor scroll. Can be read as an action to grant an extra upgrade to a cantrip you know for 1 day.
+      * Enchanted map (1 ARP) - An enchanted folded piece of paper. Once unfolded by a creature, it begins to map the creatures steps from the center of the map. No other details are added. The scale represents about a square mile on a single page. The map follows the initial creature until they either leave well beyond the bounds of the map (Subject to GM,) or the document is destroyed.
+  - heading: Arcane notes
+    body: |-
+      At 3rd wizard level, you can create an arcane note every rest that you can securely store in your spellbook. They can be exchanged for arcane recovery points during a rest, but remain useful until the next long rest.
+
+      Effectively, you have an extra arcane point that can be kept until the next long rest, every rest. The note is an item, however.
+  - heading: Scribe secrets
+    body: |-
+      At 4th wizard level, choose 3 upgrades from below:
+
+      * Arcane cartography - Your enchanted maps will now attempt to fill in the space around the footsteps, to a somewhat rudimentary ability. This does not create place-names on the map, though it can be influenced by arcane forces ( Subject to GM. )
+      * Cantrip binding - You may place a cantrip you can cast in a blank scroll, allowing the creature that reads it to use the cantrip, using intelligence as the casting modifier. When you do so, you must make a DC 14 arcana check. On a failure, you are cursed and cannot use the cantrip until you finish another rest.
+      * Enchanted ink - You can spend 1 arcane recovery point during a rest to create an vial of enchanted ink, which can be spilled or thrown onto a surface to create the writing or depiction desired by the creature applying the ink. The surface the ink can cover can be no greater than a 5 ft square.
+      * Improved arcana - You gain 1 more arcane recovery point every rest. Can be taken up to three times.
+      * Improved invocations - Cantrip invocations you create now also provide one of the following benefits to the upgraded cantrip: +1 to spell attacks, +1 to DC, +1 to duration in turns, +5 feet of area or +1 targets within area. The bonus is applied when the invocation is created, and requires the in.
+      * Invocation seals - Creating an cantrip invocation costs 1 less ARP.
+      * Lesser inscription - You may emplace a 1st level spell you can cast into a blank scroll when creating blank scrolls, allowing an ally to cast it when reading the scroll.
+      * Rune knowledge - You gain a +2 bonus on checks made to read scrolls and checks made to decipher, invoke, and create arcane or magical runes.
+      * Scroll displacement - When you use up a scroll you did not create, you gain a blank scroll.
+      * 2 Seal method - Your arcane seals no longer dispel themselves when two are active. They now dispel when 3 are active.
+  - heading: Spell book project
+    body: |-
+      At 5th wizard level, your personal spell book becomes a project onto itself. You can modify your spell books in 3 of the following ways:
+
+      * Inscribed cantrip - Learn a cantrip specific to your spell book. You may cast it while wielding the spell book.
+      * Immediate spell compartment - You may lock a spell into the the book until next rest, allowing you to cast it at the lowest possible level once without expending a spell slot, but forbidding you from preparing it yourself. When casting it, roll a 1d20. On a 20, you may cast it again.
+      * Defense aura - You gain a +1 bonus to AC while wielding the tome.
+      * Emergency ward - You can choose to expend 1 arcane note or 2 levels worth of spell slots to gain an instance of block as a reaction while in possession of the spell book.
+      * Entangled belonging - You can conjure your spell book to your possession as a bonus action. If you are in another plane, or blocked from teleportation magic, this effect is nullified.
+      * Casting contracts - When casting a spell, you can spend 1 arcane note to grant it a modification in one of the following ways:
+        * Change the range from reach to target within 30 feet.
+        * Double the duration of the spell.
+        * Cause the spell to only manifest and come into effect after a duration of your liking, up to a year.
+      * Experimentation notes - You gain one specific extra scribe secrets upgrade while in possession of the spell book.
+      * Combat note section - Every time you critically strike on a spell attack, you can spend a bonus action within the next 2 rounds to make an arcane note.
+      * Field note section - Every time 1 or more creatures critically fail a saving throw against one of your spells, you can spend a bonus action within the next 2 rounds to make an arcane note.
+      * Mana-catcher - You gain 1 arcane rest dice each long rest. You may use it while wielding the tome. The tome retains the arcane rest die between long rests, allowing you to keep up to as many as your intelligence bonus - 2 (min 1) in the spell book.
+      * Arcane compass - Your spell book has an arcane compass, allowing you to place waypoints by marking physical objects with a waypoint rune. This always appears in your arcane maps, and can alter arcane maps to your liking. A waypoint is destroyed if the rune is removed. You may check the book, and the compass will point towards your waypoint of choice. Only as many waypoints as your intelligence bonus can remain active for the book. You can choose to remove a waypoint from the book.
+      * Seal slots - You may spend an arcane seal to immediately cast a 1st level spell at 1st level from your spell book. It can be any 1st level spell within the spell book.
+      * Arcane translation page - Choose up to 2 languages. Gain the ability to speak those language while holding the tome, and turning to this page. The page translates and explains how to convey the meaning of the sentence.
+
+      Only your active spell book retains this effect, and abandoned project spell books tend to decay ( Subject to GM.)
+
+      Acquiring a new spell book allows you to apply different modifications.
+  - heading: Read between the lines
+    body: |-
+      At 6th wizard level, you regain 1 rest die every time you read a 2nd level or higher scroll.
+
+      Also, you gain a +1 bonus to all checks made to interact with arcane runes, text, or maps.
+# https://sites.google.com/view/dnd5plus/home/classes/wizard-x/artificer
+- name: Artificer
+  group: Wizard archetypes
+  status: Unfinished draft
+  description: The draft names this wizard archetype but supplies no features.

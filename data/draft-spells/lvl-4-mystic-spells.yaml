@@ -1,0 +1,140 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/mystic-magic/lvl-4-mystic-spells
+section: spells
+entries:
+- name: Druidic shapeshift
+  group: Mystic spells
+  lvl: '4'
+  types: Transmutation, Mystic 4
+  casting: action
+  components: Somatic, verbal, 1 fatigue
+  duration: 1 hour
+  range: self
+  effect: |-
+    As an action, transform into a beast of your choosing for 1 hour. You cannot speak in this form and your items and gear are sublimated as part of the transformation.
+
+    During a lunar event (lunar eclipse, eclipse, full moon peak, etc subject to the GM. ) duration is extended to 1d10 hours.
+
+    When learning the spell, do one of the following:
+
+    * Pick a large beast who's form to take learn.
+    * Pick 2 medium beasts whose forms to learn.
+    * Pick a medium and small beast whose forms to learn.
+
+    If the beast form is slain, you are returned to human form and take 1d3 damage to fatigue. If the effect ends naturally or is dispelled, you take 1 point of damage to fatigue.
+
+    You can end the effect at will.
+  higher_levels: Per level above 4th, grant the beast form a +2 bonus to ability scores, grant it a +3
+    to a favored skill, and and extend the duration by 1 hour.
+- name: Necrofungus
+  group: Mystic spells
+  lvl: '4'
+  types: Necromancy, Mystic 4
+  casting: action
+  components: Verbal, Somatic, Material (phial of 1d4 HP worth of blood)
+  duration: 1d12
+  range: 20 ft area within 30 ft.
+  effect: |-
+    As an action, spread necrofungus in a 20 ft area. All creatures and corpses within the area are infected with necrofungus for the next 1d12 hours. Living creatures take 1d8 necrotic damage when reaching 0HP, immediately taking 1 failed death save.
+
+    Dead bodies and corpses are raised as a necrofungus undead. A necrofungus undead is under your command, but successive generations of necrofungus undead slowly lose obedience towards the caster (subject to the GM).
+  Necrofungus undead: |-
+    Type: undead, fungal
+
+    Base stats:
+    HP: 6d10 + casting attribute bonus * 3
+    BLOCK: +5 / 2
+    AC: 15
+    Physical saves: +2
+    Mental saves: +1
+
+    Walk speed 25, echolocation, keen scent, aura-sight, blind, poison immunity.
+
+    Skills: + casting bonus to perception and investigation.
+
+    Limited-lifespan: After every hour, roll 1d6, and reduce movement speed by 5 ft. At 0 ft, the necrofungus undead expires. This can be offset if the undead has slain and consumed a tiny or larger creature within the last 6 hours.
+
+    Anti-magic: Has a +2 bonus to saves vs spells and magical effects. Doubles bonuses, gains a feat, and loses limited-lifespan property if consuming a magical creature or spell casters remains.
+
+    Corpse-eater: Restored 1d20 HP and 1 block upon consuming a tiny or larger corpse.
+
+    Multi-form: The size of the necrofungus undead depends on the original corpses size. The claw and bits attacks have a +1 bonus to DC and have their damage dice increased by 1 size category (d4 > d6 > d8 > d10 > d12) per size category above small.
+
+    Attacks & actions:
+
+    * Claw attack +5 - DC 17 block, 2d4 + casting bonus slashing damage. Grab on success.
+    * Bite - Grabbed target makes DC 17 dexterity save. On a failure they take 3d4 + casting bonus piercing damage and an instance of bleed, and the target is infected with necrofungus for 1d12 hours.
+- name: Primordial roar
+  group: Mystic spells
+  lvl: '4'
+  types: Evocation, Mystic 4
+  casting: action
+  components: Verbal, 1 fatigue
+  duration: 1 hour
+  range: self
+  effect: |-
+    As an action, make a scream as part of casting the spell at the cost of 1 fatigue. The scream is so loud that creatures must make a constitution save, taking 3d6 + constitution bonus sonic damage.
+
+    You can make the shout effect a 40 ft cone or a 20 ft area around you.
+
+    Creature struck must also make a wisdom save. On a failure, or on a critical constitution save, targets take 3d6 + casting bonus psychic damage.
+
+    Creatures that critically fail the wisdom save make a death save. Creatures that fail either save have disadvantage on their next attack.
+  higher_levels: Per level above 4th, increase both damage instances by 1d6 and range by 10/5 ft.
+- name: Spirit slash
+  group: Mystic spells
+  lvl: '4'
+  types: Evocation, Mystic 4
+  casting: action
+  components: Verbal, 1 fatigue
+  duration: 1 hour
+  range: 10 ft
+  effect: |-
+    As an action, manifest a great spectral claw and take a swipe at a target creature within 10 ft as a melee spell attack, dealing 3d6 + casting bonus slashing damage. If you wield a polearm or a slashing weapon, you can use it for the attack, adding its damage dice and using its block check for the attack, and applying any additional properties.
+
+    If not blocked, apply bleed to the target 1d3 times.
+
+    On a critical hit or critical block check failure, the target is knocked prone.
+
+    When casting this spell, roll a 1d4 chance dice. On a 3 or higher, the spell slots/levels/resources used to cast this spell are not consumed.
+- name: Spirit wings
+  group: Mystic spells
+  lvl: '4'
+  types: Evocation, Conjuration, Mystic 4
+  casting: action or reaction
+  components: Verbal, 1 fatigue
+  duration: 1 hour
+  range: 10 ft
+  effect: |-
+    As an action or reaction, manifest spectral wings and gain the ability to make a dash up to 60 ft + 5 ft per casting modifier bonus, or ignore or redirect a fall. You can choose to target the tile next to a creature within range and make an attack either with a weapon or innate attack you can use. This attack gains advantage to hit, deals an extra 1d10 force damage, and has its critical strike range increased by 1.
+
+    The dash does not need to be a straight line, as the wings offer excellent maneuverability.
+
+    When casting this spell, roll a 1d4 chance dice. On a 3 or higher, the spell slots/levels/resources used to cast this spell are not consumed.
+  higher_levels: If cast at 5th caster level or higher, the wings remain after the initial burst, providing
+    a fly speed equal to your movement speed for 1 minute, with excellent maneuverability.
+- name: Communion of the moon
+  group: Mystic spells
+  lvl: '4'
+  types: Divination, Transmutation, Conjuration, Mystic 4
+  casting: full round action
+  components: Verbal, Material (special)
+  duration: 2d8 minutes
+  range: self
+  effect: |-
+    As a full rounds action, sacrifice one of the following:
+
+    * The heart of an elder race (elf, gnome, dwarf, or firbolg)
+    * 4 rest dice
+    * The eye of a spellcaster of any race and the skull of a sentient creature that could speak and dream.
+
+    If you do so, you may assume the moonkin form for 2d8 minutes, so long as you do not lose sight of the moon for more than 2 rounds. While in this form, you gain the following benefits:
+
+    * +2 bonus to wisdom and charisma.
+    * Fly speed of 35 ft.
+    * Do not require food, water, or breathing.
+    * You can steal 1/2 of any healing, temporary health, or radiant damage being dealt within 40 ft as a reaction. When you do so, make a wisdom check vs the targets wisdom check, granting it to yourself as arcane health instead.
+    * You can spend up to 3d6 arcane health to add it anywhere in any spell or ability you use, but this cannot be used to increase the amount of AC or block provided. Doing so causes you to take the amount rolled as damage.
+    * Gain advantage on concentration checks.
+    * When this spell ends or is dispelled, all remaining arcane health is spread out to all creatures within sight equally (subject to the GM).
+  higher_levels: When cast at 5th level, double all values used in this, as well as duration. When cast
+    at 6th, increase duration to 1 hour.

@@ -1,0 +1,54 @@
+# Draft source: https://sites.google.com/view/dnd5plus/home/playable-races
+section: races
+entries:
+  - name: Shadowling
+    group: ''
+    types:
+      - humanoid
+    size: Medium
+    speed: 30 feet
+    attribute_bonuses: +2 to Dexterity, Constitution, Intelligence, or Wisdom
+    description: Also called fetchlings, Shadowlings descend from elves, orcs, humans, or Ginasi who survived
+      a supernatural threat at birth. Ashen hair, gray skin, and pointed ears mark many of them. Some bear
+      a rune-shaped mark or see a color others cannot. They are rare, and no Shadowling settlement is known.
+    proficiencies:
+      - Two skills of your choice.
+    traits:
+      - name: Shadowling mark
+        description: Reduce your maximum HP by 2.
+      - name: Uncursed
+        description: Gain +1 on saves against curses and against necromancy and transmutation spells.
+      - name: Shadowling origin
+        description: Choose one origin.
+        minitrait_list:
+          Curse-born: Lose one death save slot. Increase your maximum rest dice by 2 and gain +1 to Arcana
+            checks.
+          Frozen heart: Gain cold resistance and +1 AC. Take a −1 penalty to Persuasion and Insight checks.
+          Hex experiment survivor: Increase maximum rest dice by 1. Learn one hex that costs one rest die to
+            cast.
+          Lycanthropy rejection: Gain advantage on saves against consumables and on scent-based checks. Add
+            +3 to checks to track or pursue a target. Take −1 on mental checks during a full moon or an equivalent
+            event agreed with the GM.
+          Mana contamination: Increase maximum rest dice by 1. Gain +1 on saves against arcane spells and −1
+            on saves against disease.
+          Necrotic contamination: Gain resistance to necrotic and poison damage. Reduce healing received by
+            1 and increase necrotic damage dealt by 1.
+          Occult birth: Learn an occult or mystic cantrip, using Constitution to cast it. Learn one additional
+            language.
+          Polymorphic shock: Increase one physical ability score by 1 at level 1 and whenever you gain a feat
+            or ability score increase. You must attempt saving throws against beneficial transmutation spells
+            too.
+          Rescued by alchemy: Gain poison and acid resistance and lose 1 maximum HP. Extend potion effects
+            on yourself by 2 of the effect’s original time unit (turns, minutes, or hours).
+          Saved by order: Learn an oath cantrip. Cast it with Wisdom and upgrade its casting modifier by 1.
+            The order’s amulet permanently occupies your amulet slot. Attempts to steal it have disadvantage.
+          Severed fate: Double the Uncursed bonus and apply it to saves against divination and detection spells
+            as well.
+          Shadowling descendant: Gain one feat, one language proficiency, and one tool proficiency of your
+            choice.
+          Soulblight survivor: Increase the Uncursed bonus by 1. Gain psychic resistance and take 1 more radiant
+            damage when damaged by it.
+          Vampirism rejection: Gain darkvision to 60 feet, advantage on hearing-based checks, and +2 Dexterity.
+            You have sunlight sensitivity.
+          Wraith-blooded: Take −1 on d20 rolls during the day and gain +1 at night. Apply Uncursed to saves
+            against enchantment and divination spells too.

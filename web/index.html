@@ -3,42 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#183b33">
+  <meta name="theme-color" content="#19392f">
   <title>Open D&amp;D · Rules compendium</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="catalog.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#reader" id="skip">Skip to entry</a>
+  <a class="skip-link" href="#reader" id="skip">Skip to content</a>
   <header class="masthead">
     <div class="masthead-inner">
-      <a class="identity" href="#" aria-label="Open D&amp;D home">
-        <span class="book-mark" aria-hidden="true"></span>
-        <span>Open D&amp;D</span>
+      <a class="identity" href="#" aria-label="Open D&amp;D compendium home">
+        <span class="book-mark" aria-hidden="true"></span>Open D&amp;D
       </a>
-      <span class="site-name">Rules compendium</span>
+      <div class="global-tools">
+        <label class="sr-only" for="section-picker">Browse a section</label>
+        <select id="section-picker"><option value="">Compendium index</option></select>
+        <form role="search" id="search-form" aria-label="Search the compendium">
+          <span class="search-icon" aria-hidden="true"></span>
+          <label class="sr-only" for="search">Search all rules</label>
+          <input id="search" type="search" placeholder="Search all rules" autocomplete="off">
+          <kbd aria-hidden="true">/</kbd>
+        </form>
+      </div>
     </div>
-    <nav id="sections" aria-label="Compendium sections"></nav>
   </header>
   <main class="page">
-    <aside id="browse">
-      <div class="side-heading">
-        <h2 id="section-name">Entries</h2>
-        <button id="browse-toggle" type="button" aria-expanded="false" aria-controls="browser-controls">Browse entries</button>
-      </div>
-      <div id="browser-controls">
-        <form role="search" id="search-form">
-          <label class="sr-only" for="search">Search this section</label>
-          <input type="search" id="search" placeholder="Search this section" autocomplete="off">
-          <label class="sr-only" for="group">Filter by group</label>
-          <select id="group"><option value="">All groups</option></select>
-        </form>
-        <div class="list-heading"><span id="entry-count" aria-live="polite"></span></div>
-        <nav id="entries" aria-label="Entries in this section"></nav>
-      </div>
-    </aside>
+    <nav id="trail" aria-label="Breadcrumb"></nav>
     <article id="reader" tabindex="-1" aria-labelledby="entry-title"></article>
+    <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
   </main>
   <noscript><p>This compendium needs JavaScript to display its entries.</p></noscript>
 </body>

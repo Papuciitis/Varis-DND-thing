@@ -1,0 +1,196 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells/oath-magic/lvl-1-oath-spells
+section: spells
+entries:
+- name: Bestow might
+  group: Oath spells
+  lvl: '1'
+  types: transmutation, concentration
+  casting: action
+  components: verbal
+  duration: concentration (up to 10 minutes)
+  range: touch
+  effect: As an action, touch a creature, granting it 1d6 temporary health, 1 temporary block, and grant
+    its melee and strength-based attacks an additional 1d4 damage. The creatures jump, shove, pull, and
+    push distances are increased by 5 feet.
+  higher_levels: Per spell slot level above 1st, you can either increase the block by 1, increase temporary
+    health by 1d6, or increase the extra damage dice by 1 category(1d6, 1d8, 1d10, 1d12) for each level.
+- name: Bless abode
+  group: Oath spells
+  lvl: '1'
+  types: Abjuration, Oath 1
+  casting: action
+  components: verbal
+  duration: 1 day
+  range: 15 ft
+  effect: As an action when standing in front and within range of a doorway to a small abode, no larger
+    than 40 5 ft tiles (subject to the GM) and bless it, granting allies and friends within a +1 bonus
+    to checks made during rest, and a +1 bonus to saves vs necromancy spells or spells originating from
+    undead, eldritch, or occult sources (subject to the GM).
+  higher_levels: Per level above 1st, increase the permitted target structure to medium(100 tiles) at
+    2nd, large(250 tiles) at 3rd, or a small settlement up to a range of 150 ft (subject to the GM) at
+    4th.
+- name: Harm
+  group: Oath spells
+  lvl: '1'
+  types: necromancy, transmutation
+  casting: action
+  components: verbal, somatic
+  range: touch
+  effect: |-
+    Make a spell attack against a creature within melee range. On a success, deal 3d6 + your casting modifier necrotic damage. This damage cannot be blocked.
+
+    Upcast: Per spell slot level above 1st, increase damage by 1d6.
+- name: Heal
+  group: Oath spells
+  lvl: '1'
+  types: abjuration, transmutation
+  casting: action
+  components: verbal, somatic
+  range: touch
+  effect: Heal a creature for 1d8 + your casting modifier damage.
+  higher_levels: Per spell slot level above 1st, increase healing by 1d8.
+- name: Ignite
+  group: Oath spells
+  lvl: '1'
+  types: oath 1, evocation
+  casting: action
+  components: verbal, somatic
+  duration: combat
+  range: touch
+  effect: As an action, try to grab a creature or object within reach. The target takes 2d8 fire damage
+    and gains one stack of Burning. A creature aware of you can negate the spell with a successful Dexterity
+    save.
+  higher_levels: Each slot level above 1st adds 1d8 initial fire damage and one stack of Burning.
+- name: Know other
+  group: Oath spells
+  lvl: '1'
+  types: divination, enchantment
+  casting: action
+  components: none
+  range: 30 feet
+  effect: As an action, compel a creature within range to make a charisma save. On a failure, you know
+    their current highest concern or desire, as well as emotional state.
+- name: Piercing word
+  group: Oath spells
+  lvl: '1'
+  types: necromancy, enchantment
+  casting: action
+  components: verbal
+  range: 30 feet.
+  effect: As an action, cause a creature within range that can hear you and understand you to take 2d8
+    + your casting modifier damage. The damage can be either psychic, or necrotic. The creature must make
+    a wisdom save. On a success, they take half damage. On a failure, they become shocked for 1d4 rounds.
+  higher_levels: Per spell slot level above 1st, increase damage by 1d10.
+- name: Promise
+  group: Oath spells
+  lvl: '1'
+  types: divination
+  casting: action
+  components: verbal, somatic, focus (ring, necklace, or crown)
+  range: self
+  effect: As an action, briefly cause an aura of light to surround you, indicating to others that you
+    mean them no harm. Creatures generally see this as being an indication of safety. If you ever cause
+    harm one that you have given a promise of peace to, or use it to ensnare, trap, or grapple a creature,
+    you can never cast it again.
+- name: Question evil
+  group: Oath spells
+  lvl: '1'
+  types: divination, oath 1
+  casting: action
+  components: verbal, somatic
+  duration: instant
+  range: 60 ft
+  effect: |-
+    As an action, ask target entity a question. The target must be an undead, eldritch, occult, infernal, fiendish or demonic entity. It hears the question and is made aware of the casters presence. It must make a wisdom save, and must answer to the best of its ability on a failure, being granted telepathy if it cannot speak, just for the answer.
+
+    The target must be an undead, eldritch, occult, infernal, fiendish or demonic entity.
+  higher_levels: If cast at 3rd level, the target can be asked 2 other questions on a failed save.
+- name: Runes of devilry
+  group: Oath spells
+  lvl: '1'
+  types: Abjuration, necromancy, concentration
+  casting: action
+  components: verbal, somatic, material (chalk, paint, or other substance to inscribe or draw with)
+  duration: 2d6 rounds
+  range: special
+  effect: |-
+    As an action, write runes of fire and devilry on a creature within 10 feet, an object in your possession, or on a 5 ft square on a surface within 15 feet.
+
+    When cast on creature - The creature must make a dexterity save, and the caster must make a concentration check to not miscast the spell. On a failed save, deal 1d4 fire damage to the creature, then give it resistance to fire damage. At any point during the casting of the spell, the caster can spend a bonus action to deal 1d6 extra fire damage to the creature, and can choose to make it nonlethal.
+
+    When cast on a weapon - The weapons attacks deal an additional 1d6 fire damage and are treated as magical, and gains the Critical I property.
+
+    When cast on an item - grant the item fire immunity.
+
+    When cast on an area - create a sigil of fire. Any creature that steps on it take 2d6 + casting bonus fire damage, and must make a dexterity save to halve it. The sigil is hidden with a DC of 10 + the casters disguise bonus. Surrounding creatures within 5 feet of the blast must do the same for half damage.
+
+    Upcast: Per spell slot level above 1st, increase any damage dealt by 1d6, except the initial damage dealt when cast on a creature.
+- name: Rune of light
+  group: Oath spells
+  lvl: '1'
+  types: Oath 1, Abjuration
+  casting: action
+  components: verbal, somatic
+  duration: 1 day
+  range: 10 ft
+  effect: |-
+    As an action, speak a rune of light into being upon a creature, which dims to imperceptibility in 1 turn, but remains for a day. Such a rune is invisible to mortals, but perceptible by eldritch, undead, profane, psychic, or celestial entities. The target gains a single 1d8 dice of light, which lasts for a day or until used.
+
+    A dice of light an be used to be granted as a bonus to a save vs an eldritch, undead, profane, psychic, or elemental creatures abilities, in place of a rest dice, or as a bonus to a skill check made to seek safety, or to reduce incoming damage by the amount rolled from the dice.
+- name: Sanctuary
+  group: Oath spells
+  lvl: '1'
+  types: Abjuration, concentration
+  casting: action
+  components: verbal, somatic
+  duration: concentration, up to 3 * casting bonus rounds (min 3)
+  range: 30 feet sphere around the caster
+  effect: Create a 15 foot radius circle. It can either follow a target as an aura, or remain in a static
+    location. All attacks made by or against creatures in the circle have disadvantage and a block DC
+    of 8. Whenever a creature within the area is damaged or damages another creature, you must remake
+    a concentration check to not lose concentration of the spell.
+- name: Smite
+  group: Oath spells
+  lvl: '1'
+  types: Evocation
+  casting: bonus action
+  components: verbal, somatic
+  duration: 2 rounds.
+  range: 40 feet
+  effect: |-
+    As a bonus action, either enchant your weapon or an attack you ar making, causing it to deal an additional 2d6 points of radiant damage to the next creature hit. This damage cannot be blocked. Lasts until the next creature is hit, or up until the end of your next turn.
+
+    Upcast: Per spell slot level above 1st, increase the damage dealt by 1d6.
+- name: Suppress
+  group: Oath spells
+  lvl: '1'
+  types: Abjuration, necromancy, concentration
+  casting: action
+  components: verbal, somatic
+  duration: special
+  range: 40 feet
+  effect: |-
+    As an action, suppress a creature within range. The creature must make a charisma save at the start of their turn. On a failure, the creature has disadvantage on attacks, and creatures that must make saves against their abilities have advantage. On a success, the spell ends. The creature can retry the save at the start of their turn as a bonus action. The concentration can last up to a number of rounds equal to 2 * your casting bonus (min 1)
+
+    Upcast: Per spell slot level above 1st, you can take 1 damage to fatigue to ignore a successful save by the target once.
+- name: Temperance
+  group: Oath spells
+  lvl: '1'
+  types: Abjuration
+  casting: action
+  components: verbal, somatic
+  duration: 3d4 turns
+  range: reach
+  effect: Bless a creature with temporary health. For the next 3d4 turns, if the creature has less than
+    1 temporary health, they gain 2 temporary health.
+- name: Withstand
+  group: Oath spells
+  lvl: '1'
+  types: evocation, abjuration
+  casting: action
+  components: verbal, somatic
+  duration: instant
+  range: 10 ft area
+  effect: As an action, repel all creatures within 10 feet. All creatures within 10 feet of the caster
+    must make a constitution save. On a failure, they are pushed back 10 feet and knocked prone. After
+    successfully casting the spell, the caster restores 1 fatigue and gains 1d4 temporary health.

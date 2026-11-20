@@ -1,0 +1,33 @@
+# Source: https://sites.google.com/view/dnd5plus/home/spells
+section: spells
+entries:
+- name: Traditions of magic
+  group: Magic rules
+  description: The four spell traditions draw on different ages of magic.
+  Arcane: Structured magic from the fourth age, mastered through study and meticulous practice. An arcane
+    caster in danger might gain block or AC, or create an illusion.
+  Oath: Elder magic consolidated in the third age, tied to laws, symbols, and ideals. Oath spells offer
+    healing and protection.
+  Occult: Forbidden magic from the second age, created by dark powers that demand a price. An occult caster
+    might steal health or power, or gain a defense that also increases the danger.
+  Mystic: Cosmic magic from the first age, now fading from the world. Mystic spells create opportunities
+    to lessen or confront danger.
+- name: Casting from scrolls
+  group: Magic rules
+  description: A scroll contains a spell. Casting it requires an Arcana check and rest dice. The scroll
+    is consumed on use, usually burning up harmlessly.
+- name: Casting from wands
+  group: Magic rules
+  description: A wand specifies the spell it casts and its number of charges. A wielder without proficiency
+    in magical items and implements must make the associated Arcana check to use it. Each use consumes
+    1 charge. At 0 charges, the wand is expended.
+- name: Casting and upgrading hexes
+  group: Magic rules
+  description: |-
+    Unlike the other 4 classes of magic, hex magic can be taught by imitation and discipline, uses dexterity or wisdom as the modifier, and involves the invocation of hand-signs and runes, and can consume either stamina (fatigue), rest dice, or class resources. All hexes have a verbal and somatic component, and so require at least 1 free casting hand.
+
+    As a hex invocation is a movement-based power, most animals react to it with fear. Some companions and servant animals can be trained to avoid this, but most will still react with shock, spook, and disturbance, as they can understand it partially (subject to the GM).
+
+    There are minor hexes, major hexes, and greater hexes. All hexes are however treated as cantrips, as they can be cast indefinitely. If a hex does not feature a cost, it is presumed to not have one.
+
+    Every time a character gains a feat, they also upgrade every hex they know once, if they can.
