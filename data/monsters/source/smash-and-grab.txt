@@ -1,0 +1,350 @@
+<PARSED TEXT FOR PAGE: 1 / 8>
+Smash and grab
+
+Infernal Commando
+
+Medium fiend (Infernal Descendant), chaotic evil
+Armor Class: 18 (plate armor)
+Hit Points: 75 (10d8 + 30) (120 max HP)
+Speed: 30 ft.
+STR 18 (+4) | DEX 14 (+2) | CON 16 (+3) | INT 12 (+1) | WIS 11 (+0) | CHA 15 (+2)
+
+Skills: Intimidation +5, Perception +3
+Damage Resistances: fire; bludgeoning, piercing, and slashing from nonmagical attacks
+Senses: Darkvision 120 ft., passive Perception 13
+Languages: Common, Infernal, Abyssal
+Challenge: 5 (1,800 XP)
+Abilities:
+
+Multiattack: Infernal Commando attacks twice with Hellfire Blade.
+Hellfire Blade: Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 10 (1d8 + 6)
+slashing damage plus 7 (2d6) fire damage.
+Magic Resistance Shield: The Commando has advantage on saving throws against spells
+and other magical effects.
+Darkness (1/day): Casts darkness without expending a spell slot.
+Hellish Rebuke (1/day): In response to being damaged, can cast hellish rebuke at 2nd
+level.
+Misty Step (1/long rest): As a bonus action, the Commando can teleport up to 30 feet to an
+unoccupied space it can see.
+Fiendish resilience (1/short rest). Can make another action.
+
+Reaction: Can add +3 to AC, when hit by an attack using it’s shield.
+
+
+Infernal Reaver
+
+Medium fiend (Infernal Descendant), chaotic evil
+Armor Class: 16 (natural armor)
+Hit Points: 60 (8d8 + 24) (88 max HP)
+Speed: 30 ft.
+STR 17 (+3) | DEX 15 (+2) | CON 16 (+3) | INT 9 (-1) | WIS 10 (+0) | CHA 14 (+2)
+
+Skills: Athletics +6
+Damage Resistances: fire
+Senses: Darkvision 60 ft., passive Perception 10
+Languages: Common, Infernal
+Challenge: 3 (700 XP)
+Abilities:
+
+Multiattack. Can attack twice with Chain whip
+<PARSED TEXT FOR PAGE: 2 / 8>
+Chain Whip: Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 9 (2d6 + 3)
+slashing damage, and the target is pulled up to 10 feet closer to the Reaver.
+Fiery Nova (1/encounter): All creatures within 10 ft. must make a DC 14 Dexterity saving
+throw, taking 14 (4d6) fire damage on a failed save, or half as much damage on a successful
+one.
+
+
+
+
+Infernal Technomancer
+
+Medium fiend (Infernal Descendant), chaotic evil
+Armor Class: 15 (mage armor)
+Hit Points: 44 (8d8 + 8) (72 max HP)
+Speed: 30 ft.
+STR 10 (+0) | DEX 14 (+2) | CON 12 (+1) | INT 17 (+3) | WIS 12 (+1) | CHA 13 (+1)
+
+Skills: Arcana +6
+Damage Resistances: fire
+Senses: Darkvision 60 ft., passive Perception 11
+Languages: Common, Infernal
+Challenge: 4 (1,100 XP)
+Abilities:
+
+Eldritch Blaster: Ranged Spell Attack: +6 to hit, range 120 ft., one target. Hit: 10 (2d10 + 5)
+force damage.
+Shield (1/day): Casts shield as a reaction to being hit by an attack, adding +5 to AC.
+Silence (1/day): Casts silence without expending a spell slot, creating a 20-ft-radius sphere
+where sound is impossible.
+
+
+Infernal Saboteur
+
+Medium fiend (Infernal Descendant), chaotic evil
+Armor Class: 14 (leather armor)
+Hit Points: 52 (8d8 + 16) (80 max HP)
+Speed: 30 ft., fly 50 ft.
+STR 12 (+1) | DEX 18 (+4) | CON 14 (+2) | INT 11 (+0) | WIS 13 (+1) | CHA 10 (+0)
+
+Skills: Stealth +7, Acrobatics +7
+Damage Resistances: fire
+Senses: Darkvision 60 ft., passive Perception 11
+Languages: Common, Infernal
+Challenge: 3 (700 XP)
+Abilities:
+
+Serrated Dagger: Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d4 + 4)
+piercing damage.
+Sneak Attack: Extra 4d6 damage
+<PARSED TEXT FOR PAGE: 3 / 8>
+Stealthy: The Saboteur has advantage on Dexterity (Stealth) checks.
+Cloaking Device: As an action, the Saboteur can become invisible until the end of its next
+turn or until it attacks, casts a spell, or uses a device.
+Explosive Charge (1/day): The Saboteur can set an explosive charge that detonates at the
+start of its next turn. All creatures within a 10-foot radius must make a DC 14 Dexterity
+saving throw, taking 18 (4d8) fire damage on a failed save, or half as much damage on a
+successful one.
+Hellish Rebuke (1/day): In response to being damaged, can cast hellish rebuke at 2nd
+level, dealing 14 (3d10) fire damage on a failed Dexterity saving throw (DC 14), and half on
+a successful one.
+
+
+Infernal Behemoth
+
+Large fiend (Infernal Descendant), chaotic evil
+Armor Class: 18 (natural armor)
+Hit Points: 142 (15d10 + 60) (210 max HP)
+Speed: 25 ft.
+STR 22 (+6) | DEX 10 (+0) | CON 18 (+4) | INT 7 (-2) | WIS 11 (+0) | CHA 12 (+1)
+
+Saving Throws: Str +10, Con +8
+Skills: Intimidation +5
+Damage Resistances: Fire; bludgeoning, piercing, and slashing from nonmagical attacks
+Senses: Darkvision 60 ft., passive Perception 10
+Languages: Common, Infernal
+Challenge: 7 (2,900 XP)
+Abilities:
+
+Menacing Presence: Any creature that starts its turn within 30 feet of the Behemoth and
+can see it must make a DC 15 Wisdom saving throw or become frightened until the end of
+their turn.
+Fiendish Durability: If damage reduces the Behemoth to 0 hit points, it must make a
+Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant
+or from a critical hit. On a success, the Behemoth drops to 1 hit point instead.
+Actions:
+
+Multiattack: The Behemoth makes two attacks with its maul.
+Maul: Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 19 (3d8 + 6)
+bludgeoning damage.
+Ground Slam: Melee Weapon Attack: +10 to hit, reach 5 ft., all creatures other than the
+Behemoth in a 10 ft. radius. Hit: 17 (2d10 + 6) bludgeoning damage and the targets must
+succeed on a DC 16 Strength saving throw or be knocked prone.
+Reactions:
+
+Retaliatory Strike: When the Behemoth takes damage from a creature within reach, it can
+make a maul attack against that creature.
+<PARSED TEXT FOR PAGE: 4 / 8>
+Infernal Hound
+Medium fiend (Infernal Descendant), chaotic evil
+Armor Class: 15 (natural armor)
+Hit Points: 45 (7d8 + 14) (70 max HP)
+Speed: 50 ft.
+STR 17 (+3) | DEX 12 (+1) | CON 14 (+2) | INT 6 (-2) | WIS 13 (+1) | CHA 6 (-2)
+
+Skills: Perception +5
+Damage Resistances: Fire
+Senses: Darkvision 60 ft., passive Perception 15
+Languages: Understands Infernal but can't speak it
+Challenge: 3 (700 XP)
+Abilities:
+
+Keen Hearing and Smell: The hound has advantage on Wisdom (Perception) checks that
+rely on hearing or smell.
+Pack Tactics: The hound has advantage on an attack roll against a creature if at least one
+of the hound's allies is within 5 feet of the creature and the ally isn't incapacitated.
+Actions:
+
+Bite: Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing
+damage.
+Fire Breath (Recharge 5–6). The hound exhales fire in a 15-foot cone. Each creature in that
+area must make a DC 12 Dexterity saving throw, taking 21 (6d6) fire damage on a failed
+save, or half as much damage on a successful one.
+Reactions:
+
+Masters Best Friend: When an ally takes damage from a creature within reach, it can make
+a bite attack against that creature.
+
+Infernal Healer
+
+Medium fiend (Infernal Descendant), chaotic evil
+Armor Class: 16 (natural armor)
+Hit Points: 105 (14d8 + 42) (154 max HP)
+Speed: 30 ft.
+STR 16 (+3) | DEX 14 (+2) | CON 16 (+3) | INT 12 (+1) | WIS 18 (+4) | CHA 16 (+3)
+
+Saving Throws: Con +7, Wis +8
+Skills: Medicine +8, Insight +8
+Damage Resistances: Fire; bludgeoning, piercing, and slashing from nonmagical attacks
+Senses: Darkvision 60 ft., passive Perception 14
+Languages: Common, Infernal
+Challenge: 8 (3,900 XP)
+Abilities:
+<PARSED TEXT FOR PAGE: 5 / 8>
+Fiendish Vitality: The Infernal Healer regenerates 10 hit points at the start of its turn if it has
+at least 1 hit point. If the Infernal Healer takes radiant damage, this trait doesn't function at
+the start of the Infernal Healer's next turn.
+Aura of Resilience: Friendly creatures within 10 feet of the Infernal Healer have advantage
+on saving throws against poison and disease.
+Actions:
+
+Multiattack: The Healer makes two attacks with its heavy mace.
+Heavy mace: Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: (2d6 + 3)
+bludgeoning damage plus (2d4) fire damage.
+Corrupting Touch: Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (3d6 + 3)
+necrotic damage, and the target must make a DC 15 Constitution saving throw or be
+poisoned for 1 minute. The poisoned target can repeat the saving throw at the end of each of
+its turns, ending the effect on itself on a success.
+Infernal Restoration (3/day): The Infernal Healer can touch a creature and restore up to 30
+hit points. This touch also cures the creature of any poison or disease currently affecting it.
+
+Fiendish Revival (1/day): The Infernal Healer can revive a fallen fiendish ally within 30 feet
+that has died within the last minute. The revived creature returns to life with half its maximum
+hit points and can immediately take an action.
+
+Plague of Despair (Recharge 6): The Infernal Healer releases a wave of necrotic energy in
+a 30-foot radius. Each creature of the Infernal Healer's choice within this radius must make a
+DC 16 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half
+as much damage on a successful one. Additionally, any fiendish allies within the radius
+regain hit points equal to half the damage dealt.
+Reactions:
+
+Protective Ward: When a friendly creature within 30 feet of the Infernal Healer takes
+damage, the Infernal Healer can reduce that damage by 1d10.
+
+Legendary Actions:
+
+The Infernal Healer can take 3 legendary actions, choosing from the options below. Only one
+legendary action option can be used at a time and only at the end of another creature's turn.
+The Infernal Healer regains spent legendary actions at the start of its turn.
+
+Detect: The Infernal Healer makes a Wisdom (Perception) check.
+Corrupting Touch: The Infernal Healer makes one corrupting touch attack.
+Infernal Mend (Costs 2 Actions): The Infernal Healer touches a fiendish ally within 5 feet,
+healing it for 20 hit points.
+
+
+Infernal Portal
+
+Object, unaligned
+Armor Class: 17 (arcane protection)
+Hit Points: 200
+<PARSED TEXT FOR PAGE: 6 / 8>
+Damage Immunities: poison, psychic, necrotic, thunder; bludgeoning, piercing, and slashing
+from nonmagical attacks
+Damage Vulnerabilities: force
+Condition Immunities: charmed, exhaustion, frightened, grappled, incapacitated, paralyzed,
+petrified, poisoned, prone
+Senses: -
+Languages: -
+Challenge: -
+Abilities:
+
+Arcane Lock: The portal is magically sealed. Casting dispel magic (DC 15) on the portal will
+lower its AC to 10 until the end of the caster’s next turn.
+Dimensional Anchor: Any attempt to teleport within 60 feet of the portal must succeed on a
+DC 15 Charisma saving throw, or the teleport fails.
+Unstable: When the portal has less than 25 % its hit points, roll 1d100.
+    ● On 1, Portal is destroyed,
+    ● 2-50 - nothing happens
+    ● 50-60 - summon 3d4 Infernal Hounds
+    ● 60-70 - summon 1d4 Infernal Saboteur
+    ● 70-80 - summon 1d2 Infernal Behemoth
+    ● 80-90 - portal regains 6d10+30 HP
+    ● 90-99 - portal deals in 100ft sphere 8d6 force damage (DC 14 DEX save) or half
+        when succeeded
+    ● 100 - portal regains all hit points and summons one Infernal Hound, Infernal
+        Saboteur, Infernal Behemoth
+Actions:
+
+Close Portal (Special): The portal can be closed if a character spends an action to cast
+dispel magic at 4th level (DC 15) on it or deals a total of 50 force damage to it in one attack.
+Legendary Actions (3 Actions):
+
+Summon Hound (Costs 1 Action): The portal summons 2d4 Infernal Hounds. Can only be
+used if the portal has more than 25 % its hit points.
+Summon Infernal (Costs 2 Actions): The portal summons one Infernal Saboteur. Can only be
+used if the portal has more than half its hit points.
+Summon Behemoth (Costs 3 actions): The portal summons one Infernal Behemoth. Can
+only be used if the portal has more than 75 % its hit points.
+
+Reactions:
+
+Portal Feedback: When the portal takes force damage, it releases a burst of energy. Each
+creature within 10 feet of the portal must succeed on a DC 13 Dexterity saving throw or take
+2d6 force damage.
+<PARSED TEXT FOR PAGE: 7 / 8>
+Magical Guard
+
+Medium humanoid (any race), any alignment
+
+Armor Class: 15 (mage armor) Hit Points: 65 (10d8 + 20) (100 max HP) Speed: 30 ft.
+
+STR 12 (+1) | DEX 14 (+2) | CON 14 (+2) | INT 16 (+3) | WIS 15 (+2) | CHA 13 (+1)
+
+Saving Throws: Int +6, Wis +5 Skills: Arcana +6, Perception +5 Damage Resistances:
+damage from spells Senses: Passive Perception 15 Languages: Any two languages
+Challenge: 5 (1,800 XP)
+
+Spellcasting: The guard is a 6th-level spellcaster. Their spellcasting ability is Intelligence
+(spell save DC 14, +6 to hit with spell attacks). The guard has the following wizard spells
+prepared:
+
+   ●   Cantrips (at will): detect magic, mage hand, prestidigitation, lithoresonance
+   ●   1st level (4 slots): shield, magic missile, detect magic, identify, crystal cascade
+   ●   2nd level (3 slots): counterspell, mirror image, crystalize
+   ●   3rd level (3 slots): dispel magic, boulder blast, actinide armor
+
+Actions
+
+   ●   Multiattack: The guard makes two attacks: one with their melee weapon and one
+       with a cantrip.
+   ●   Shortsword: Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2)
+       piercing damage.
+   ●   Wind Slash: Ranged Spell Attack: +6 to hit, reach 60 ft., one target. Hit (2d8+3)
+       slashing damage.
+   ●
+
+Magic Resistance: The guard has advantage on saving throws against spells and other
+magical effects.
+
+Counterspell Expert: The guard can use counterspell as a reaction without expending a
+spell slot (recharge 5–6).
+
+
+
+
+Event Guard
+
+Medium humanoid (any race), any alignment
+
+Armor Class: 16 (Chain Shirt, Shield) Hit Points: 58 (9d8 + 18) (90 max HP) Speed: 30 ft.
+
+STR 14 (+2) | DEX 12 (+1) | CON 14 (+2) | INT 10 (+0) | WIS 11 (+0) | CHA 12 (+1)
+
+Skills: Perception +2, Athletics +4 Senses: Passive Perception 12 Languages: Any one
+language (usually Common) Challenge: 2 (450 XP)
+
+Actions
+<PARSED TEXT FOR PAGE: 8 / 8>
+   ●     Multiattack: The guard makes two melee attacks.
+   ●     Longsword: Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3)
+         slashing damage, or 8 (1d10 + 3) slashing damage if used with two hands.
+   ●     Heavy Crossbow: Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target.
+         Hit: 5 (1d10) piercing damage.
+
+Traits
+
+   ●     Brave: The guard has advantage on saving throws against being frightened.
+   ●     Dutybound: The guard has a sworn duty to protect the event and its attendees.
+         They will fight to the death to uphold their duty.

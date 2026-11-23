@@ -1,0 +1,762 @@
+<PARSED TEXT FOR PAGE: 1 / 15>
+ 📢 Do not request access to edit!                                Layout Values
+ ✅ Using this template: Make a copy of it!
+            Sign into your Google account.                       Colors
+            Then click File > Make a copy.
+                                                                   Background. #f3f3f9 or #fff9f0
+                                                                   Greenish. #e2efc6
+  This is a Template                                               Monster Stat Block Background. #fdf1dc
+ This Doc was made using my DnD 5e Style Template. To
+ make other docs in this style make a copy of the Style          Page Setup
+ Template.
+                                                                 Margins: Top: 0.5, Bottom: 0.5, Sides: 0.6, Center: 0.3
+ Have fun!
+
+                                                                 Tips and Tricks
+ Made by /u/YaAlex.
+
+
+
+
+Chapter (Title)
+                                                                 Using This Doc as a Style Template
+                                                                 If you want to use this template as is, you can simply make a
+                                                                 copy of the doc whenever you want to create something new.
+  This is a Subtitle (Subtitle)                                  That way the styles are already baked in and you are always
+                                                                 ready to go.
+Lorem ipsum References(Italic) dolor sit amet, consetetur
+sadipscing elitr, sed diam nonumy eirmod tempor. Lorem           If you want to modify this template to suit your own needs,
+ipsum dolor sit amet, consetetur sadipscing elitr, sed diam      you can of course do that by simply modifying a copy of it and
+nonumy eirmod tempor diam nonumy eirmod.                         then using that as a template.
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt.                              Changing the Style
+                                                                 If you wish to change the styles used in this doc you should
+
+Section (Heading 1)                                              always update them in the drop down menu to make sure
+                                                                 they are consistent throughout the doc.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.
+
+Subsection (Heading 2)
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt ut labore.
+
+Feature (Heading 3)
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed     Bullet Point Lists
+diam nonumy eirmod tempor invidunt ut labore.
+                                                                 I don’t use the built in enumerations as I find their spacing and
+Feature (Heading 3)                                              indentation is not to my taste. That is why I simply use the
+                                                                 character “•” with a space in front for my lists.
+  Tags and Types (Subtitle)
+                                                                   For ease of use you can add a “shortcut” under Tools >
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed     Preferences > Substitutions. For example I added the
+diam nonumy eirmod tempor invid.
+                                                                 substitution “**” → “ •”. That way whenever I
+  • A Bullet Point                                               want so make a simple list of a few items I can
+  • Another                                                      easily insert this • symbol.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt.
+   Paragraph(Bold). Ipsum dolor sit amet, consetetur
+sadipscing elitr, ipsum dolor sit amet, consetetur sadipscing
+elitr, sed.
+   Subfeature(Bold/Italic). Ipsum dolor sit amet, consetetur
+sadipscing elitr, ipsum dolor sit amet, consetetur sadipscing
+elitr, sed.
+  Minisection (Heading 4)
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+  diam sadipscing elitr, sed diam nonumy eirmod tempor
+  invidunt.
+
+                                                                                                                                     1
+<PARSED TEXT FOR PAGE: 2 / 15>
+Other Template Docs in This Style
+> DnD Homebrew Doc Template
+> DnD Game Doc Template
+> DnD Player Character Draft Doc
+> DnD Party Draft Doc
+
+
+
+
+                                    2
+<PARSED TEXT FOR PAGE: 3 / 15>
+Other Objects                                      Blocks & Sidebars
+Tables                                             Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet.
+
+Table Title (Heading 5)                              Sidebar Title (Heading 6)
+   First Column    Second Column                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                                    diam nonumy eirmod tempor.
+         1st       Lorem whatever
+        2nd        Ipsum and so on
+         3rd
+         4th                                         Sidebar Title (Heading 6)
+                                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                                    diam nonumy eirmod tempor.
+D20 Table
+  d20    Entry
+    1    Test entry.
+                                                     Sidebar Title (Heading 6)
+    2
+                                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+    3
+                                                    diam nonumy eirmod tempor.
+    4
+    5
+    6
+    7                                                Block Title (Heading 6)
+    8                                               Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+    9                                               sed diam nonumy eirmod tempor.
+   10
+   11
+   12                                                Block Title (Heading 6)
+   13                                               Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+   14                                               sed diam nonumy eirmod tempor.
+   15
+   16
+   17                                                Block Title (Heading 6)
+   18                                               Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+   19                                               sed diam nonumy eirmod tempor.
+   20
+
+
+Split Table                                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                                    sed diam nonumy eirmod tempor. Sadipscing elitr, sed
+  d12    Entry                       d12   Entry    diam nonumy eirmod tempor.
+   1                                   7
+                                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+   2                                  8
+                                                    sed diam nonumy eirmod tempor. Sadipscing elitr, sed
+   3                                  9
+                                                    diam nonumy eirmod tempor.
+   4                                 10
+   5                                  11
+   6                                  12
+
+
+
+
+                                                                                                                   3
+<PARSED TEXT FOR PAGE: 4 / 15>
+Classname (Heading 1)
+Flavor and description text.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor. Lorem ipsum dolor sit amet,
+consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+  (single column - starts here!)
+
+ The Class
+                                                                                           -- Spell Slots per Spell Level --
+       Proficiency                                           Cantrips Spells
+ Level   Bonus Features                                       Known Known      1st   2nd   3rd   4th    5th    6th     7th     8th   9th
+   1st        +2      Feature, Feature                          4        2      2     -    -      -       -      -      -       -     -
+  2nd         +2                                                4        3      3     -    -      -       -      -      -       -     -
+   3rd        +2                                                4        4      4     2    -      -       -      -      -       -     -
+   4th        +2      Ability Score Improvement                 5        5      4     3    -      -       -      -      -       -     -
+   5th        +3                                                5        6      4     3    2      -       -      -      -       -     -
+   6th        +3                                                5        7      4     3    3      -       -      -      -       -     -
+   7th        +3                                                5        8      4     3    3      1       -      -      -       -     -
+   8th        +3      Ability Score Improvement                 5        9      4     3    3      2       -      -      -       -     -
+   9th        +4                                                5       10      4     3    3      3       1      -      -       -     -
+  10th        +4                                                6       11      4     3    3      3       2      -      -       -     -
+  11th        +4                                                6       12      4     3    3      3       2      1      -       -     -
+  12th        +4      Ability Score Improvement                 6       12      4     3    3      3       2      1      -       -     -
+  13th        +5                                                6       13      4     3    3      3       2      1      1       -     -
+  14th        +5                                                6       13      4     3    3      3       2      1      1       -     -
+  15th        +5                                                6       14      4     3    3      3       2      1      1       1     -
+  16th        +5      Ability Score Improvement                 6       14      4     3    3      3       2      1      1       1     -
+  17th        +6                                                6       15      4     3    3      3       2      1      1       1     1
+  18th        +6                                                6       15      4     3    3      3       3      1      1       1     1
+  19th        +6      Ability Score Improvement                 6       15      4     3    3      3       3      2      1       1     1
+  20th        +6                                                6       15      4     3    3      3       3      2      2       1     1
+  (single column - ends here!)
+
+
+Class Features
+As a ___ you gain the following class features.                      Class Feature
+Hit Points                                                           Beginning at 1st level, you lorem ipsum dolor sit amet,
+Hit Dice: 1dX per ___ level                                          consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+                                                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+Hit Points at 1st Level: X + your Con modifier                       diam nonumy eirmod tempor.
+Hit Points at Higher Levels: 1dX + your Con mod. per ___
+
+                                                                     Subclasses
+level after 1st
+
+Proficiencies
+                                                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+Armor:                                                               diam nonumy eirmod tempor.
+Weapons:
+Tools:                                                               Subclass
+Saving Throws:
+                                                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+Skills:                                                              diam nonumy eirmod tempor.
+
+Equipment                                                            Subclass Feature
+You start with the following equipment, in addition to the           At 3rd level, you lorem ipsum dolor sit amet, consetetur
+equipment granted by your background:                                sadipscing elitr, sed diam nonumy eirmod tempor.
+   • (a) a X or (b) a Y
+  • Two Z
+
+
+                                                                                                                                           4
+<PARSED TEXT FOR PAGE: 5 / 15>
+Race
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor. Lorem ipsum dolor sit amet,
+                                                                       Stat Blocks
+                                                                       Adult Red Dragon
+consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+
+Description, Flavor & Backstory                                          Huge dragon, chaotic evil
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                                                       Armor Class 19 (natural armor)
+diam nonumy eirmod tempor. Lorem ipsum dolor sit amet,
+consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+                                                                       Hit Points 256 (19d12 + 133)
+                                                                       Speed 40ft., climb 40ft., fly 80ft.
+Race Names                                                                STR        DEX         CON          INT         WIS         CHA
+                                                                         27 (+8)    10 (+0)     25 (+7)      16 (+3)     13 (+1)     21 (+5)
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor. Lorem ipsum dolor sit amet,
+                                                                       Saving Throws Dex +6, Con +13, Wis +7, Cha +11
+consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+                                                                       Skills Perception +13, Stealth +6
+  Abc Names:                                                           Damage Immunities fire
+  Test, Blubb, test. test. test, test, test, test, test, test, test,   Senses blindsight 60 ft., darkvision 120 ft., passive Perception 23
+  test                                                                 Languages Common, Draconic
+                                                                       Challenge 17 (18,000 XP)
+  Xyz Names:
+  Lasdb, Odan, Lhas, Test, Blubb, test. test. test, test, test,        Legendary Resistance (3/Day). If the dragon fails a saving
+  test, test, test, test, test                                         throw, it can choose to succeed instead.
+
+Race Traits                                                            Actions
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed           Multiattack. The dragon can use its Frightful Presence. It then
+diam nonumy.                                                           makes three attacks: one with its bite and two with its claws.
+  Ability Score Increase. +2 Str and +1 Wis                            Bite. Melee Weapon Attack: +14 to hit, reach 10 ft., one
+                                                                       target. Hit: 19 (2d10 + 8) piercing damage plus 7 (2d6) fire
+  Age.
+                                                                       damage.
+  Alignment.
+                                                                       Claw. Melee Weapon Attack: +14 to hit, reach 5 ft., one
+  Size.                                                                target. Hit: 15 (2d6 + 8) slashing damage.
+  Speed.                                                               Tail. Melee Weapon Attack: +14 to hit, reach 15 ft., one
+  Feature.                                                             target. Hit: 17 (2d8 + 8) bludgeoning damage.
+
+  Languages.                                                           Frightful Presence. Each creature...
+
+  Subrace.                                                             Fire Breath (Recharge 5–6). The dragon exhales fire in a 60-
+                                                                       foot cone. Each creature in that area must make a DC 21
+Subrace 1                                                              Dexterity saving throw, taking 63 (18d6) fire damage on a
+                                                                       failed save, or half as much damage on a successful one.
+  Short Description
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed           Legendary Actions
+diam nonumy eirmod tempor. Lorem ipsum dolor sit amet,                 The dragon can take 3 legendary actions, choosing from the
+consetetur sadipscing elitr, sed diam nonumy eirmod tempor.            options below. Only one legendary action can be used at a
+  Ability Score Increase. +2 Str and +1 Wis                            time and only at the end of another creature's turn. The
+                                                                       dragon regains spent legendary actions at the start of its turn.
+  Feature.
+                                                                       Detect. The dragon makes a Wisdom (Perception) check.
+                                                                       Tail Attack. The dragon makes a tail attack.
+                                                                       Wing Attack (Costs 2 Actions). The dragon beats its wings.
+                                                                       Each creature within 10 feet of the dragon must succeed on a
+                                                                       DC 22 Dexterity saving throw or take 15 (2d6 + 8)
+                                                                       bludgeoning damage and be knocked prone. The dragon can
+                                                                       then fly up to half its flying speed.
+
+
+
+
+                                                                                                                                               5
+<PARSED TEXT FOR PAGE: 6 / 15>
+Appendix: d100 Table
+                       53
+                       54
+                       55
+D100 Table             56
+ d100   Entry          57
+  01    Test entry.    58
+  02                   59
+  03                   60
+  04                   61
+  05                   62
+  06                   63
+  07                   64
+  08                   65
+  09                   66
+  10                   67
+  11                   68
+  12                   69
+  13                   70
+  14                   71
+  15                   72
+  16                   73
+  17                   74
+  18                   75
+  19                   76
+  20                   77
+  21                   78
+  22                   79
+  23                   80
+  24                   81
+  25                   82
+  26                   83
+  27                   84
+  28                   85
+  29                   86
+  30                   87
+  31                   88
+  32                   89
+  33                   90
+  34                   91
+  35                   92
+  36                   93
+  37                   94
+  38                   95
+  39                   96
+  40                   97
+  41                   98
+  42                   99
+  43                   00
+  44
+  45
+  46
+  47
+  48
+  49
+  40
+  51
+  52
+
+                            6
+<PARSED TEXT FOR PAGE: 7 / 15>
+Monster
+                                                                 Stat Blocks
+Manual for 5.5e
+  This is a Subtitle (Subtitle)
+Lorem ipsum References(Italic) dolor sit amet, consetetur
+sadipscing elitr, sed diam nonumy eirmod tempor. Lorem
+ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor diam nonumy eirmod.
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt.
+
+
+Forest monsters
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.
+
+CR 0 - 2
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt ut labore.
+
+Hostile
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt ut labore.
+  • Rootbound Stalker
+  • A Bullet Point
+  • Another
+                                                                 Rootbound Stalker
+                                                                   Medium plant, neutral evil
+Neutral
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed     Armor Class 12 (natural armor)
+diam nonumy eirmod tempor invidunt ut labore.                    Hit Points 27 (5d8+5)
+  • Sprig Buddy                                                  Speed 30ft.
+  • A Bullet Point                                                  STR       DEX        CON        INT       WIS       CHA
+  • Another                                                        15 (+2)   14 (+2)    13 (+1)    6 (-2)    12 (+1)    7 (-2)
+
+                                                                 Saving Throws Dex +4
+                                                                 Skills Perception +3, Stealth +6
+Ally                                                             Damage Vulnerabilities fire
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed     Damage Resistances piercing from nonmagical attacks
+diam nonumy eirmod tempor invidunt ut labore.                    Condition Immunities charmed, frightened
+                                                                 Senses darkvision 60 ft., passive Perception 13
+  • A Bullet Point                                               Languages understands Common and Sylvan but can’t speak
+  • Another                                                      Challenge 1 (200 XP)
+
+                                                                 Block. 2 (from Dexterity)
+  Ngl bro, AI is making this so much faster, while you made 4    Forest Camouflage. The Rootbound Stalker has advantage
+creatures i made one. M.B.                                       on Dexterity (Stealth) checks made in forested terrain.
+                                                                 Predatory Stillness. If the Rootbound Stalker hasn’t moved
+                                                                 since the end of its last turn, creatures have disadvantage
+                                                                 on Wisdom (Perception) checks to notice it.
+
+                                                                 Actions
+                                                                 Multiattack. The Rootbound Stalker makes two Claw attacks.
+                                                                 Claw. Melee Weapon Attack: +4 to hit, reach 5 ft., one target.
+                                                                 Hit: 6 (1d6 + 2) slashing damage.
+
+
+
+
+                                                                                                                                  7
+<PARSED TEXT FOR PAGE: 8 / 15>
+                                                                Hostile
+                                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                                                diam nonumy eirmod tempor invidunt ut labore.
+                                                                  • A Bullet Point
+                                                                  • Another
+
+
+
+                                                                Neutral
+                                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                                                diam nonumy eirmod tempor invidunt ut labore.
+                                                                  • A Bullet Point
+                                                                  • Another
+
+
+
+                                                                Ally
+                                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                                                diam nonumy eirmod tempor invidunt ut labore.
+                                                                  • A Bullet Point
+                                                                  • Another
+
+
+
+                                                                CR x - x
+                                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+Sprig Buddy                                                     diam nonumy eirmod tempor invidunt ut labore.
+
+  Tiny plant, neutral                                           Hostile
+Armor Class 12 (natural armor)                                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+Hit Points 5 (2d4)                                              diam nonumy eirmod tempor invidunt ut labore.
+Speed 20ft., climb 20 ft.                                         • Orc Psycho
+
+  STR         DEX        CON       INT       WIS       CHA        • The False One
+  6 (-2)     14 (+2)    10 (+0)   6 (-2)    11 (+0)   10 (+0)     • Another
+                                                                  • Another
+Skills Perception +2, Stealth +4
+Damage Vulnerabilities fire                                       • Another
+Senses darkvision 30 ft., passive Perception 12
+Languages understands Common and Sylvan but can’t speak
+Challenge 0 (10 XP)                                             Neutral
+Block. 2 (from Dexterity)                                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+Just a Little Guy. The Sprig Buddy can occupy the same          diam nonumy eirmod tempor invidunt ut labore.
+space as a Medium or larger creature. It is not considered        • A Bullet Point
+hostile unless attacked or threatened.
+Forest Pal. While within 5 feet of a friendly creature, the       • Another
+Sprig Buddy has advantage on Dexterity (Stealth) checks
+and saving throws against being frightened.
+                                                                Ally
+Actions                                                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+Twig Tap. Melee Weapon Attack: +4 to hit, reach 5 ft., one      diam nonumy eirmod tempor invidunt ut labore.
+target.                                                           • A Bullet Point
+Hit: 1 (1d4 - 2) bludgeoning damage.
+                                                                  • Another
+
+
+
+Humanoids
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.
+
+CR 0 - 2
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt ut labore.
+                                                                                                                               8
+<PARSED TEXT FOR PAGE: 9 / 15>
+                                                                                                                    Instagram @ccrawlers
+
+Orc Psycho                                                           The False One
+  Medium humanoid, chaotic evil                                        Medium humanoid, neutral evil
+
+Armor Class 14 (leather armor, spiked shield)                        Armor Class 11
+Hit Points 30 (4d8+12)                                               Hit Points 72 (8d8+32)
+Speed 35ft.                                                          Speed 25ft.
+   STR        DEX         CON         INT         WIS       CHA         STR        DEX         CON          INT         WIS      CHA
+  16 (+3)    16 (+3)     14 (+2)      8 (-1)      8 (-1)   10 (+0)     16 (+3)    12 (+1)     16 (+3)      6 (-2)      12 (+1)   5 (-3)
+
+Saving Throws Str +5, Dex +5                                         Saving Throws Str +6, Dex +6
+Skills Athletics +5, Acrobatics +5, Intimidation +2                  Skills Athletics +6
+Damage Vulnerabilities fire                                          Damage Reduction physical reduction 1
+Senses darkvision 60 ft., passive Perception 9                       Senses darkvision 60 ft., passive Perception 11
+Languages Common, Orc                                                Languages —
+Challenge 1 (200 XP)                                                 Challenge 3 (700 XP)
+Block. 3 (from Dexterity)                                            Block. 1 (from Dexterity)
+Dual-Wielding Psycho. This orc wields two cleavers and a             Dense, Untrue Flesh. The False One can use Strength instead
+strapped-on spiked shield, using unorthodox attacks.                 of Dexterity for block checks.
+Unhinged Resilience. The Orc Psycho can take damage below            When it successfully blocks an attack, the attacker’s speed
+half HP without suffering disadvantage on Block checks.              is reduced by 5 ft until the end of their next turn.
+Blood Frenzy. The Orc Psycho gains advantage on melee                Wrong Weight. The False One has advantage on checks and
+attacks against creatures below half HP.                             saves against being shoved, tripped, or forcibly moved.
+
+Actions                                                              Actions
+Multiattack. The Orc Psycho makes two attacks with its meat          Multiattack. The False One makes two Slam attacks
+cleavers or spiked shield.
+                                                                     Slam ( Slam †, Pressure ᐁ). Melee Weapon Attack: +6 to hit,
+Meat Cleaver (Light, Stab †, Brutal ✶). Melee Weapon                 reach 5 ft., one target.
+Attack: +5 to hit, reach 5 ft., one target.                          Hit: 7 (1d8 + 3) bludgeoning damage.
+Hit: 7 (1d6 + 3) slashing damage.                                    Slam (†). Make an attack, allowing the target to move 5ft in
+Stab (†). The target has disadvantage on its Block check             any direction as a reaction. If it does not or cannot, the attack
+against this attack.                                                 damage dice are increased by 1 size category.
+Shield Slam (Bash). Melee Weapon Attack: +5 to hit, reach 5          Weight of the Untrue. When the False One lands an unblocked
+ft., one target.                                                     Slam, it may choose to deal no damage.
+Hit: 6 (1d4 + 3) bludgeoning damage. If the attack hits, the         Instead, the target loses 1 additional block and is knocked
+target cannot take reactions until the start of its next turn.       prone.
+
+                                                                                                                                           9
+<PARSED TEXT FOR PAGE: 10 / 15>
+                                                                                                           Instagram @yaroslav_salo91
+
+                                                                     Antlered Witness
+                                      Instagram @yaroslav_salo91
+                                                                       Medium humanoid, neutral evil
+Horned Skirmisher                                                    Armor Class 13 (light, natural hide)
+  Medium humanoid, chaotic evil                                      Hit Points 58 (7d8+21)
+                                                                     Speed 30ft.
+Armor Class 14 (light, natural hide)
+Hit Points 45 (6d8+18)                                                  STR        DEX         CON         INT          WIS       CHA
+Speed 35ft.                                                            11 (+0)    14 (+2)     16 (+3)     12 (+1)      15 (+2)   14 (+2)
+
+   STR        DEX         CON         INT          WIS      CHA      Saving Throws Wis +5, Con +6
+  12 (+1)    17 (+3)     14 (+2)      8 (-1)      12 (+1)   6 (-2)   Skills Religion +4, Intimidation +5
+                                                                     Damage Reduction necrotic reduction 2
+Saving Throws Dex +6                                                 Senses darkvision 60 ft., passive Perception 12
+Skills Acrobatics +6, Stealth +6                                     Languages Common, Infernal
+Senses darkvision 60 ft., passive Perception 11                      Challenge 4 (1100 XP)
+Languages Common
+                                                                     Block. 2 (from Dexterity)
+Challenge 3 (700 XP)
+                                                                     Ritual Frame. The Antlered Witness can use Wisdom instead
+Block. 3 (from Dexterity)                                            of Dexterity for block checks.
+Skirmisher Instinct. The Horned Skirmisher can take the              Witness to Unmaking. Creatures within 10 ft of the Antlered
+Sidestep tactical maneuver without spending a resource               Witness have disadvantage on the first block check they
+once per round.                                                      make each round.
+Cruel Momentum. After the Horned Skirmisher moves at
+                                                                     Spellcasting. Wisdom (save DC 13, +5 to hit).
+least 10 ft on its turn, its next melee attack gains +1 block
+                                                                     At Will. Devitalize, Soulfire
+DC.
+                                                                     2/day. Essence leech, Void touch
+
+Actions                                                              Actions
+Multiattack. The Horned Skirmisher makes two Claw attacks.
+                                                                     Multiattack. The Antlered Witness makes one Claw attack
+Claw ( Slash †, Follow-Up ᐁ). Melee Weapon Attack: +6 to hit,        and casts one spell, or makes two Claw attacks.
+reach 5 ft., one target.
+                                                                     Claw ( Rend †, Follow-Up ᐁ). Melee Weapon Attack: +6 to hit,
+Hit: 6 (1d6 + 3) slashing damage.
+                                                                     reach 5 ft., one target.
+Slash (†). Move 5 ft alongside the target and increase the           Hit: 6 (1d6 + 3) slashing damage.
+damage dice by one size on a hit.
+                                                                     Rend (†). If the attack is not blocked, apply bleed to the
+Horn Gore ( Lunge †, Trip ᐁ). Melee Weapon Attack: +6 to hit,        target.
+reach 5 ft., one target.
+Hit: 7 (1d8 + 3) piercing damage.                                    Reactions
+Lunge (†). Move 5 ft toward the target when making the               Judging Gaze. If a creature within 30 ft fails a block check
+attack; increase damage by one dice size on a hit.                   imposed by the Antlered Witness, it may force that creature
+                                                                                                                                           10
+<PARSED TEXT FOR PAGE: 11 / 15>
+to make a Wisdom save or become frightened until the end of          Reactions
+its turn.
+                                                                     Intercept. If a creature within 5 ft misses the Ravager or has
+                                                                     an attack blocked, the Ravager may immediately make one
+                                                                     Claw attack against that creature.
+
+
+
+
+                                      Instagram @yaroslav_salo91
+
+Many-Limbed Ravager
+                                                                                                                Instagram @helgecbalzer
+  Medium humanoid, chaotic evil
+
+Armor Class 14 (unnatural hide)
+                                                                     Many-Limbed Ravager
+Hit Points 66 (8d8+24)                                                 Medium humanoid, neutral evil
+Speed 35ft., climb 20 ft.
+                                                                     Armor Class 11 (unnatural hide)
+   STR        DEX         CON          INT         WIS      CHA      Hit Points 95 (10d8+50)
+  15 (+2)    16 (+3)     16 (+3)      7 (-2)      12 (+1)   6 (-2)   Speed 25 ft.
+Saving Throws Dex +6, Con +6                                            STR        DEX         CON          INT         WIS      CHA
+Skills Athletics +5, Acrobatics +6                                     18 (+4)    10 (+0)     20 (+0)      6 (-2)      13 (+1)   8 (-1)
+Senses darkvision 60 ft., passive Perception 11
+Languages —                                                          Saving Throws Str +7, Con +8
+Challenge 4 (1100 XP)                                                Skills Athletics +7
+                                                                     Damage Reduction physical reduction 2
+Block. 3 (from Dexterity)                                            Senses darkvision 60 ft., passive Perception 11
+Unnatural Limbs. Once per turn, when the Many-Limbed                 Languages —
+Ravager lands a melee attack, it may make one additional             Challenge 5 (1800 XP)
+melee attack against the same target without spending an
+action.                                                              Block. 3 (from dense mass)
+This extra attack cannot trigger maneuvers.                          Dense Mass. Dense Mass grants Block 3 and counts as bulk 3
+Relentless Pressure. When a creature successfully blocks one         for Heft and forced movement, without suffering AC or
+of the Ravager’s attacks, the Ravager gains +1 to its next           speed penalties.
+attack roll against that creature until the end of its turn.         Burden of Growth. The Burdened Herald cannot Dash.
+                                                                     Whenever it loses a block, it gains +1 damage on all attacks
+Actions                                                              until the end of its next turn.
+                                                                     Many Mouths. Creatures that start their turn within 5 ft of
+Multiattack. The Many-Limbed Ravager makes two Claw                  the Burdened Herald must succeed on a Constitution (DC
+attacks.                                                             13) save or take 3 (1d6) necrotic damage.
+Claw ( Rend †, Follow-Up ᐁ). Melee Weapon Attack: +6 to hit,         This damage is unblockable.
+reach 5 ft., one target.
+Hit: 6 (1d6 + 3) slashing damage.                                    Actions
+Rend (†). If the attack is not blocked, apply bleed to the           Multiattack. The Burdened Herald makes two Tendril Slam
+target.                                                              attacks and one Gnawing Maw attack.
+Grasping Limbs (Hook ᐁ, Trip ᐁ). Melee Weapon Attack: +6 to          Tendril Slam (Reach I, Slam †, Heft ᐁ). Melee Weapon Attack:
+hit, reach 5 ft., one target.                                        +7 to hit, reach 10 ft., one target.
+Hit: 5 (1d4 + 3) bludgeoning damage.                                 Hit: 9 (1d10 + 4) bludgeoning damage.
+
+
+
+                                                                                                                                          11
+<PARSED TEXT FOR PAGE: 12 / 15>
+Slam (†). Make an attack, allowing the target to move 5ft in
+any direction as a reaction. If it does not or cannot, the attack
+damage dice are increased by 1 size category.
+Gnawing Maw (Rend †). Melee Weapon Attack: +7 to hit,
+reach 5 ft., one target.
+Hit: 8 (1d8 + 4) piercing damage and 1d4 necrotic damage.
+Rend (†). If the attack is not blocked, apply bleed to the
+target.
+
+
+
+
+                                                                    12
+<PARSED TEXT FOR PAGE: 13 / 15>
+Aberrant
+                                                                      Inspiration
+                                                                       https://discover.hubpages.com/education/9-Mysterious-
+                                                                      Monsters-of-Africa
+
+
+
+creatures
+  Im tryna do a thin ‘ere. Good luck, love you! Thanks!
+  Aberrant are creatures born of silence before life, in
+nothingness they were born and to nothingness they wish to
+return.
+Aberrant are hostile to anyone alive, they don't recognise life
+as they see any form of life being too noisy and disturbing,
+they don’t innately hold any kind of intelligence of their own
+but seem to respond with curiosity for information and
+knowledge of other life forms as long as it could in some way
+provide a way to destroy more life in world. Major
+aberrations are near inconceivable in strength but smaller
+creatures attack on instinct almost anything, yet will do the
+bidding of a larger aberrant, instinctively choosing to seek
+one out if left to its survival. (some more yappa yappa)
+
+
+
+Adjole
+  Small aberrant, chaotic evil
+
+Armor Class 11 (natural armor)
+Hit Points 9 (2d6)
+Speed 30ft., climb 30ft.
+   STR        DEX         CON        INT           WIS      CHA
+  12 (+1)    13 (+2)     13 (+2)     8 (-1)       13 (+1)   1 (-5)
+
+Saving Throws Dex +2, Con +2,
+Skills Perception +1, Stealth +2
+Damage resistances Psychic
+Damage Vulnerabilities fire, cold, lightning
+Senses darkvision 60 ft., passive Perception 13
+Languages Aberrant
+Challenge 1 (XP. shit brah 2 i guess?)
+Block. 1 (from dexterity)
+Loyal subservience. Adjole gets +2 to all ability checks and
+saving throws when it is within 60 ft of a size large aberrant
+or larger.
+
+Absorbent skin. When taking a physical mele attack whilst
+holding weapon make a contested grapple saving throw, if
+you fail the saving the weapon gets stuck in adjoles skin.
+
+
+
+Actions
+Bite. Adjole lunges at its target. +3 to hit, mele attack, 5ft, one
+target, Hit 4 (1d6+1 piercing damage).
+Grapple and restrain. Adjole makes a grapple attack. You have
+to make a contested str saving throw. When grappled you
+take 1d6 force damage and 1d6 bludgeoning damage.
+
+Lore
+   Fuck all, they look like a weird little worm slinky and they
+like helping other aberrant. idk.
+
+
+
+
+                                                                                                                               13
+<PARSED TEXT FOR PAGE: 14 / 15>
+Dongajni
+  Medium size aberrant, chaotic evil
+
+Armor Class 20 (natural armor)
+Hit Points 27 (5d10)
+Speed 45ft., climb 20ft.
+   STR        DEX        CON          INT          WIS     CHA
+  14 (+2)    11(+0)     14 (+2)      10(-0)       16(+4)   1 (-5)
+
+Saving Throws Wis +4, Con+2
+Skills Perception +4,
+Damage resistances Psychic, poison
+Damage Vulnerabilities fire, cold, lightning
+Senses darkvision 60 ft., passive Perception 16
+Languages Aberrant
+Challenge 3 (XP. shit brah 67 or sum)
+
+Brittle shell carapace. Dongajni gets an armor class of 17
+taking a mele weapon attack.
+Magical resistance. Magic attacks made against have to be
+made with -2 to its attack roll and deals 1d4 damage less.
+
+
+
+Actions
+Bite. Dongajni lunges at its target. +2 to hit, mele attack, 5ft,
+one target, Hit 7 (2d6+1 piercing damage).
+Stinger stab. Dongajni strikes with its tail stinger. +0 to hit,
+mele attack, 10ft, one target, Hit 5 (1d8+1 piercing damage).
+On hit target makes a DC 14 constitution saving throw, on
+failure target is poisioned for 4 turns (idk) taking 3d4 poison
+damage.
+Hypnotic stare. Dongajni stares at you with its fuckass eye.
+Target creature must make a wisdom DC 16 saving throw, on
+failure the target is charmed, non magically and keeps
+approaching Dongajni without attacking. When taken
+damage the charm is broken.
+
+Lore
+   Human centipede sounds like a fun movie if you make it
+from muppets. Oh the creature. It's a scorpion hypnotiser or
+sum. It also doesn’t particularly like Adjole, but can if there is
+a larger aberrant. These are AI images, but they are placed
+here as placeholders, we don’t have money for actual artists.
+
+
+
+
+                                                                     14
+<PARSED TEXT FOR PAGE: 15 / 15>
+Jobafo
+ Large size aberrant, chaotic evil
+
+Armor Class 16 (natural armor)
+Hit Points 75 (10d12+10)
+Speed 45ft., climb 20ft.
+  STR         DEX         CON         INT          WIS     CHA
+ 16 (+3)     14 (+2)     16 (+3)     20(+5)       16(+4)   1 (-5)
+
+Saving Throws Int +5, Str +3
+Skills Perception +4,
+Damage resistances Psychic, poison
+Damage Vulnerabilities fire, cold, lightning
+Senses True sight 60 ft., passive Perception 16
+Languages Aberrant
+Challenge 69 (XP. shit brah a lot probs)
+
+Remarkable cleverness. Masters degree in gender studies.
+Its kinda cleaver I guess, havent figured out how.
+
+Vulnerable spot. Its ass is its weakspot so it hides it.
+
+
+
+
+                                                                    15

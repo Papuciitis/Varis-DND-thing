@@ -1,0 +1,33 @@
+section: rules
+entries:
+- name: Using converted monsters
+  group: Monsters
+  description: >-
+    The monster manual includes every creature from the campaign's creature template, Steel Dragons,
+    Chronica export, and Smash and grab encounter. Imported examples and encounter objects are included.
+    Original statistics and sourced alternatives remain available in collapsed source panels.
+  sections:
+  - heading: At the table
+    body: >-
+      Use the current Block, condition, spell and rest rules. Ordinary proficient attacks show a Block DC
+      of 8 plus their attack bonus unless an explicit rule modifies it. Damage and effects that depend on
+      an unblocked strike do not apply after a successful Block. Saving-throw-only effects cannot be Blocked.
+      Natural armor alone grants no equipment training. Daily abilities retain their daily timing.
+      A source challenge rating is an encounter estimate, not a guarantee of balance after conversion.
+  - heading: Missing source data
+    body: >-
+      Incomplete mechanics use fitting existing rules or statblocks, identified in conversion notes and
+      replacement sources. Chronica ability modifiers remain modifiers when an exact ability score was
+      never recorded. The original text remains available for comparison.
+  - heading: Add or edit a monster
+    body: >-
+      Open Monster manual and choose Add your monster statblock, or open a creature and use Edit statblock
+      or Duplicate monster. The preview updates while you type. Save monster updates browsing and search
+      and saves the change in this browser. Cancel discards the current draft.
+  - heading: Save edits to the shared catalog
+    body: >-
+      Save YAML file writes to the file you select when your browser supports direct file access; otherwise
+      it downloads custom.yaml. Save or place this file at data/monsters/custom.yaml, rebuild the compendium,
+      and refresh. Export custom.yaml creates a portable backup. New monsters and targeted overrides are
+      stored together without replacing the imported source collections. Browser edits alone do not update
+      Git, the hosted page, another browser or another device.

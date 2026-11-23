@@ -100,7 +100,7 @@ def build(output_dir):
             "count": len(section["entries"]), "url": hashed_file(
                 output_dir, "data", section["key"], "json", json_text(section))})
     write_page(output_dir / "data/catalog-manifest.json", json_text(manifest))
-    pages = (("index.html", "styles.css", ("entry-order.js", "magic-categories.js", "item-views.js", "browse-views.js", "magic-items.js", "app.js")),
+    pages = (("index.html", "styles.css", ("entry-order.js", "magic-categories.js", "item-views.js", "browse-views.js", "magic-items.js", "monster-editor.js", "app.js")),
              ("character.html", "character.css", ("entry-order.js", "magic-categories.js", "magic-items.js", "character-state.js", "character-effects.js",
               "character-equipment.js", "character-casting.js", "character-rules.js", "character-builder.js", "character.js")))
     assets = {}

@@ -1,0 +1,1101 @@
+section: monsters
+entries:
+- name: Ancient Steel Dragon
+  group: Steel dragons
+  meta: Gargantuan dragon, typically lawful good
+  size: Gargantuan
+  type: dragon
+  alignment: typically lawful good
+  cr: '24'
+  xp: 62000
+  proficiency_bonus: '+7'
+  ac: 22 (natural armor)
+  block: 0 / +0
+  hp: 546 (28d20 + 252)
+  speed: 40 ft., climb 40 ft., fly 80 ft.
+  abilities:
+    str: '30'
+    dex: '10'
+    con: '29'
+    int: '24'
+    wis: '15'
+    cha: '23'
+  saving_throws: DEX +7, CON +16, WIS +9, CHA +13
+  skills: Perception +16, Stealth +7
+  damage_immunities: acid, poison
+  condition_immunities: Poisoned
+  senses: blindsight 30 ft., darkvision 120 ft., passive Perception 26
+  languages: Common, Draconic, Dwarvish, Elvish, Goblin, Halfling, Orc, Undercommon
+  description: 'Steel dragons are curious, sociable dragons with expressive faces, blade-like wings, fine head and
+    neck spines, and scales that brighten from blue-grey to polished steel as they age. They smell of wet metal
+    and move with feline grace.
+
+
+    They spend much of their lives as humanoids, gathering knowledge, forming friendships, and supporting the fair
+    laws of their chosen city. Libraries, colleges, inns, guildhalls and other public places can serve as their
+    legally owned lairs. Their greatest treasure is accumulated experience and connection with other people.
+
+
+    A dragon may simulate a humanoid lifetime, feign its death, and return under another identity. Steel-grey hair,
+    metallic nails, or a steel accessory often betrays its heritage. It prefers to avoid violence and uses its nonlethal
+    poisonous breath when forced to defend its home or friends.'
+  traits:
+  - name: Legendary Resistance (3/day)
+    description: When it fails a saving throw, the dragon can choose to succeed instead. It has three uses per 24
+      hours; these uses do not refresh at the start of each turn.
+  - name: Limited Magic Immunity
+    description: The dragon is unaffected and undetectable by spells of level 7 or lower unless it allows the spell
+      to affect or detect it. It has advantage on saves against other spells and magical effects. Compare the current
+      Varis spell's actual level; a self-contained ability is not automatically a spell merely because its effect
+      resembles one.
+  - name: Block and natural armor
+    description: Block pool 0; Block check +0. Natural armor alone grants no extra Block and does not confer worn-armor
+      proficiency. If an effect grants temporary Block, use Dexterity for its check unless that effect states otherwise.
+  actions:
+  - name: Multiattack
+    description: The dragon may use Frightful Presence, then makes one Bite attack and two Claw attacks. Each attack
+      has its own attack roll and opportunity to Block.
+  - name: Bite
+    description: 'Melee attack: +17 to hit; reach 5 ft.; one creature; Block DC 25. On an unblocked strike, deal
+      21 (2d10 + 10) piercing damage plus 14 (4d6) acid damage. The acid rider is part of the blockable attack.'
+  - name: Claw
+    description: 'Melee attack: +17 to hit; reach 5 ft.; one target; Block DC 25. On an unblocked strike, deal 17
+      (2d6 + 10) slashing damage.'
+  - name: Tail
+    description: 'Melee attack: +17 to hit; reach 20 ft.; one target; Block DC 25. On an unblocked strike, deal
+      19 (2d8 + 10) bludgeoning damage.'
+  - name: Frightful Presence
+    description: 'Each creature the dragon chooses within 120 feet that is aware of it makes a DC 21 Wisdom save.
+      On failure, it becomes Afraid for 1 minute: subtract 1d8 from its d20 rolls; while it can detect the dragon,
+      it must use movement actions at the start of its turn to move away or forfeit those actions. It repeats the
+      save at the end of each of its turns, ending the effect on success. Success or the effect ending grants immunity
+      to this dragon''s Frightful Presence for 24 hours. Use the current Afraid condition, including its repeated-fear
+      escalation. This saving-throw effect cannot be Blocked.'
+  - name: Breath Attack (Recharge 5-6)
+    description: 'Choose acid or poison gas; both share one recharge. Acid fills a 90-foot line 10 feet wide: each
+      creature in it makes a DC 22 Dexterity save, taking 67 (15d8) acid damage on failure or half on success. Poison
+      fills a 90-foot cone: each creature in it makes a DC 22 Constitution save, taking 77 (22d6) poison damage
+      on failure or half on success. A creature reduced to 0 HP by this poison damage immediately stabilizes and
+      awakens 1d6 hours later with 1 HP. Poison damage alone does not apply the Poisoned condition. Neither breath
+      area can be Blocked. After use, roll 1d6 at the start of each of the dragon''s turns; on 5-6, regain this
+      action. A short or long rest also restores the breath, using Varis rest durations.'
+  - name: Change Shape
+    description: The dragon takes the shape of a humanoid or beast of Large size or smaller, choosing its physical
+      appearance. A beast form must have CR no greater than the dragon's. Its statistics remain unchanged except
+      for size. The form lasts until it uses this action to change again or return to its true form, drops to 0
+      HP, or dies. Using a breath weapon or natural attack immediately ends the transformation.
+  legendary_actions:
+  - name: Legendary action pool
+    description: The dragon has 3 legendary actions. At the end of another creature's turn it may choose one option
+      and pay its cost. It can use only one option at a time, and regains spent legendary actions at the start of
+      its own turn. These are separate from its action, bonus action and reaction.
+  - name: Detect (1 action)
+    description: The dragon makes a Wisdom (Perception) check.
+  - name: Tail Attack (1 action)
+    description: The dragon makes one Tail attack, using its listed attack bonus, reach, Block DC and unblocked-strike
+      damage.
+  - name: Wing Attack (2 actions)
+    description: Each creature within 15 feet makes a DC 20 Dexterity save. On failure, it takes 15 (2d6 + 8) bludgeoning
+      damage and is knocked Prone. On success, it takes no damage and is not knocked Prone. The dragon may then
+      fly up to half its flying speed. This saving-throw area cannot be Blocked.
+  lair_actions:
+  - name: Lair initiative
+    description: In its lair, on initiative count 20 (losing ties), the legendary dragon chooses one of the following
+      lair actions. It cannot choose the same effect in consecutive rounds.
+  - name: Drain a spell slot
+    description: Each creature the dragon chooses in the lair makes a DC 15 Intelligence save. On failure, it expends
+      an available spell slot of its lowest unexpended level as though it had cast a spell. A creature without spell
+      slots loses none; rest dice and other non-slot resources are not spell slots. The dragon gains 1d4 temporary
+      HP for every spell level drained. Apply the current temporary-HP rules; these are temporary HP, not Arcane
+      Health. This saving-throw effect cannot be Blocked.
+  - name: Falling rubble
+    description: A piece of ceiling falls into a 10-foot area within 120 feet of the dragon. Each creature in the
+      area makes a DC 14 Dexterity save, taking 2d12 bludgeoning damage on failure, or half on success. A failure
+      by 5 or more also knocks it Prone and Pins it beneath the rubble. Pinned prevents moving or changing prone/upright
+      status but permits actions and bonus actions. It or an ally within 5 feet can use an action to move the rubble
+      and end Pinned. This saving-throw area cannot be Blocked.
+  - name: Rearrange the lair
+    description: 'The dragon lowers up to 30 feet of existing wall into the floor, or raises up to 30 feet of new
+      wall from floor to ceiling. A new wall may have doors and windows or be featureless. A creature in the new
+      wall''s space makes a DC 15 Dexterity save. On success, it moves into an unoccupied space on either side that
+      it chooses. On failure, it is pushed up to the ceiling and falls on a randomly chosen side. For the unspecified
+      fall damage, use the existing Basic Rules falling rule: 1d6 bludgeoning damage per 10 feet fallen, maximum
+      20d6; it lands Prone unless it avoids the falling damage. This saving-throw effect cannot be Blocked.'
+  regional_effects:
+  - name: Scholarly atmosphere
+    description: Creatures within 1 mile of the lair have advantage on Intelligence checks.
+  - name: Lair admiration (charm effect)
+    description: A creature that spends more than 24 hours in the lair over a week makes a DC 15 Wisdom save. On
+      failure, it cannot speak poorly of the lair and, if it enjoyed itself there, is forthcoming with others about
+      its enjoyment. This is the source's specific charm effect, not the Varis Fascinated condition; it does not
+      impose that condition's targeting restrictions. On a successful save the creature is unaware of the charm
+      attempt.
+  - name: Sense chaotic visitors
+    description: The dragon knows when creatures with a chaotic alignment are within 3 miles of its lair, but does
+      not learn their exact positions.
+  - name: Dragon's death
+    description: All regional effects end immediately if the dragon dies.
+  source_ref: STEEL DRAGONS.docx, pages 5-7; shared lore/lair/regional effects pages 1-5
+  conversion_notes:
+  - Preserves the source AC, HP, attacks, damage, ranges, save DCs, immunities and age-specific Change Shape limits;
+    adds Varis Block and unblocked-strike handling. CR is the source encounter estimate, not a claim of recalculated
+    Varis balance.
+  - Frightened is replaced with the existing Varis Afraid condition. Rubble uses the existing Pinned condition instead
+    of the undefined Restrained condition. Prone and Poisoned use the current Varis definitions.
+  - Source per-day uses are recorded per 24 hours, consistently with the campaign conversion conventions. Short
+    rest is one day and long rest one week by default.
+  - Lair admiration retains its printed specific charm behavior; the similar word fascinated does not import the
+    mechanically different Varis Fascinated condition.
+  - The source Wing Attack sentence omits succeed on before its Dexterity save. Completed that procedure from the
+    existing official Adult Red Dragon Wing Attack; retained the steel source DC 20, radius 15 feet, damage 15 (2d6
+    + 8), and two-action cost rather than substituting the red dragon's numbers.
+  - Shared lair/regional effects apply to these legendary age categories. Spell-slot drain uses actual class slots
+    and does not invent a conversion for Bard rest dice or other non-slot resources. For a class whose slots hold
+    several spell levels, apply that class's existing slot spending rules rather than assuming 5e independent slots.
+  - The printed level-7 Limited Magic Immunity threshold is retained. Because the ordinary Varis spell catalog ends
+    at level 6, this makes the dragon immune to all ordinary catalog spells unless it allows them; this strong source
+    ability was not silently rebalanced.
+  replacement_sources:
+  - field: Wing Attack missing saving-throw verb
+    alternative: 'Adult Red Dragon: Wing Attack (procedure only)'
+    source: https://www.dndbeyond.com/monsters/16771-adult-red-dragon
+  - field: Rearrange the lair unspecified fall damage
+    alternative: 'Basic Rules 2014: Falling'
+    source: https://www.dndbeyond.com/sources/dnd/basic-rules-2014/adventuring#Falling
+  original_5e: 'Ancient Steel Dragon
+
+    Gargantuan dragon, typically lawful good
+
+
+
+    Armor Class - 22 (natural armor)
+
+    Hit Points - 546 (28d20 + 252)
+
+    Speed - 40 ft., climb 40 ft., fly 80 ft.
+
+
+
+    STR 30 (+10)
+
+    DEX 10 (+0)
+
+    CON 29 (+9)
+
+    INT    24 (+7)
+
+    WIS 15 (+2)
+
+    CHA 23 (+6)
+
+
+
+    Saves DEX +7, CON +16, WIS +9, CHA +13
+
+    Skills Perception +16, Stealth +7
+
+    Damage Immunities acid, poison
+
+    Condition Immunities poisoned
+
+    Senses blindsight 30 ft., darkvision 120 ft., passive Perception 26
+
+    Languages Common, Draconic, Dwarvish, Elvish, Goblin, Halfling, Orc,
+
+    Undercommon
+
+    Challenge 24 (62,000 XP)
+
+
+
+    Proficiency Bonus +7
+
+
+
+    Traits
+
+    Legendary Resistance (3/Day).
+
+    If the dragon fails a saving throw, it can choose to succeed instead.
+
+
+
+    Limited Magic Immunity.
+
+    The dragon can''t be affected or detected by spells of 7th level or lower unless it wishes
+
+    to be. It has advantage on saving throws against all other spells and magical effects.
+
+
+
+    Actions
+
+    Multiattack.
+
+    The dragon can use its Frightful Presence. It then makes three attacks: one with its
+
+    bite and two with its claws.
+
+
+
+    Bite.
+
+    Melee Weapon Attack: +17 to hit, reach 5 ft., one creature.
+
+    Hit: 21 (2d10 + 10) piercing damage plus 14 (4d6) acid damage.
+
+
+
+    Claw.
+
+    Melee Weapon Attack: +17 to hit, reach 5 ft., one target.
+
+    Hit: 17 (2d6 + 10) slashing damage.
+
+
+
+    Tail.
+
+    Melee Weapon Attack: +17 to hit, reach 20 ft., one target.
+
+    Hit: 19 (2d8 + 10) bludgeoning damage.
+
+
+
+    Frightful Presence.
+
+    Each creature of the dragon’s choice that is within 120 feet of the dragon and aware
+
+    of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1
+
+    minute. A creature can repeat the saving throw at the end of each of its turns, ending
+
+    the effect on itself on a success. If a creature’s saving throw is successful or the effect
+
+    ends for it, the creature is immune to the dragon’s Frightful Presence for the next 24
+
+    hours.
+
+
+
+    Breath Attack (Recharge 5-6).
+
+    The dragon can choose to breathe either a line of acid or a cone of poison gas. If it
+
+    chooses acid, it exhales acid in a 90-foot line that is 10 feet wide. Each creature in
+
+    that line must make a DC 22 Dexterity saving throw, taking 67 (15d8) acid damage
+
+    on a failed save, or half as much damage on a successful one.
+
+    If it chooses poison gas, it exhales poisonous gas in a 90-foot cone. Each creature
+
+    in that area must make a DC 22 Constitution saving throw, taking 77 (22d6) poison
+
+    damage on a failed save, or half as much damage on a successful one. If this
+
+    damage reduces the creature to 0 hit points or less they immediately stabilise and
+
+    awaken 1d6 hours later with 1 hit point.
+
+
+
+    Change Shape.
+
+    The dragon can change its shape to assume the form of a humanoid or beast of
+
+    large size or smaller with any physical traits it wishes. The transformation lasts
+
+    until the dragon uses this action again, either to change shape or to return to its
+
+    true form, or it drops to 0 hit points or dies. If the target chooses the form of a
+
+    beast it must choose a creature with a CR equal to or lower than the dragon’s. In
+
+    any alternate form the dragon retains its game statistics, though its size changes
+
+    to match that of its chosen form. If the dragon uses its breath weapons or any
+
+    natural attacks the transformation immediately ends and the dragon returns to its
+
+    true form.
+
+
+
+    Legendary Actions
+
+    The dragon can take 3 legendary actions, choosing from the options below. Only one
+
+    legendary action option can be used at a time and only at the end of another
+
+    creature''s turn. The dragon regains spent legendary actions at the start of its turn.
+
+
+
+    Detect.
+
+    The dragon makes a Wisdom (Perception) check.
+
+
+
+    Tail Attack.
+
+    The dragon makes a tail attack.
+
+
+
+    Wing Attack (Costs 2 Actions).
+
+    The dragon beats its wings. Each creature within 15 feet of the dragon must on a DC
+
+    20 Dexterity saving throw or take 15 (2d6 + 8) bludgeoning damage and be knocked
+
+    prone. The dragon can then fly up to half its flying speed.'
+- name: Adult Steel Dragon
+  group: Steel dragons
+  meta: Huge dragon, typically lawful good
+  size: Huge
+  type: dragon
+  alignment: typically lawful good
+  cr: '17'
+  xp: 18000
+  proficiency_bonus: '+6'
+  ac: 19 (natural armor)
+  block: 0 / +0
+  hp: 256 (19d12 + 133)
+  speed: 40 ft., climb 40 ft., fly 80 ft.
+  abilities:
+    str: '27'
+    dex: '10'
+    con: '25'
+    int: '20'
+    wis: '13'
+    cha: '21'
+  saving_throws: DEX +6, CON +13, WIS +7, CHA +11
+  skills: Perception +13, Stealth +6
+  damage_immunities: acid, poison
+  condition_immunities: Poisoned
+  senses: blindsight 30 ft., darkvision 120 ft., passive Perception 23
+  languages: Common, Draconic, Dwarvish, Elvish, Goblin, Halfling, Orc, Undercommon
+  description: 'Steel dragons are curious, sociable dragons with expressive faces, blade-like wings, fine head and
+    neck spines, and scales that brighten from blue-grey to polished steel as they age. They smell of wet metal
+    and move with feline grace.
+
+
+    They spend much of their lives as humanoids, gathering knowledge, forming friendships, and supporting the fair
+    laws of their chosen city. Libraries, colleges, inns, guildhalls and other public places can serve as their
+    legally owned lairs. Their greatest treasure is accumulated experience and connection with other people.
+
+
+    A dragon may simulate a humanoid lifetime, feign its death, and return under another identity. Steel-grey hair,
+    metallic nails, or a steel accessory often betrays its heritage. It prefers to avoid violence and uses its nonlethal
+    poisonous breath when forced to defend its home or friends.'
+  traits:
+  - name: Legendary Resistance (3/day)
+    description: When it fails a saving throw, the dragon can choose to succeed instead. It has three uses per 24
+      hours; these uses do not refresh at the start of each turn.
+  - name: Limited Magic Immunity
+    description: The dragon is unaffected and undetectable by spells of level 6 or lower unless it allows the spell
+      to affect or detect it. It has advantage on saves against other spells and magical effects. Compare the current
+      Varis spell's actual level; a self-contained ability is not automatically a spell merely because its effect
+      resembles one.
+  - name: Block and natural armor
+    description: Block pool 0; Block check +0. Natural armor alone grants no extra Block and does not confer worn-armor
+      proficiency. If an effect grants temporary Block, use Dexterity for its check unless that effect states otherwise.
+  actions:
+  - name: Multiattack
+    description: The dragon may use Frightful Presence, then makes one Bite attack and two Claw attacks. Each attack
+      has its own attack roll and opportunity to Block.
+  - name: Bite
+    description: 'Melee attack: +14 to hit; reach 5 ft.; one creature; Block DC 22. On an unblocked strike, deal
+      19 (2d10 + 8) piercing damage plus 7 (2d6) acid damage. The acid rider is part of the blockable attack.'
+  - name: Claw
+    description: 'Melee attack: +14 to hit; reach 5 ft.; one target; Block DC 22. On an unblocked strike, deal 15
+      (2d6 + 8) slashing damage.'
+  - name: Tail
+    description: 'Melee attack: +14 to hit; reach 15 ft.; one target; Block DC 22. On an unblocked strike, deal
+      17 (2d8 + 8) bludgeoning damage.'
+  - name: Frightful Presence
+    description: 'Each creature the dragon chooses within 120 feet that is aware of it makes a DC 19 Wisdom save.
+      On failure, it becomes Afraid for 1 minute: subtract 1d8 from its d20 rolls; while it can detect the dragon,
+      it must use movement actions at the start of its turn to move away or forfeit those actions. It repeats the
+      save at the end of each of its turns, ending the effect on success. Success or the effect ending grants immunity
+      to this dragon''s Frightful Presence for 24 hours. Use the current Afraid condition, including its repeated-fear
+      escalation. This saving-throw effect cannot be Blocked.'
+  - name: Breath Attack (Recharge 5-6)
+    description: 'Choose acid or poison gas; both share one recharge. Acid fills a 60-foot line 5 feet wide: each
+      creature in it makes a DC 18 Dexterity save, taking 54 (12d8) acid damage on failure or half on success. Poison
+      fills a 60-foot cone: each creature in it makes a DC 18 Constitution save, taking 56 (16d6) poison damage
+      on failure or half on success. A creature reduced to 0 HP by this poison damage immediately stabilizes and
+      awakens 1d6 hours later with 1 HP. Poison damage alone does not apply the Poisoned condition. Neither breath
+      area can be Blocked. After use, roll 1d6 at the start of each of the dragon''s turns; on 5-6, regain this
+      action. A short or long rest also restores the breath, using Varis rest durations.'
+  - name: Change Shape
+    description: The dragon takes the shape of a humanoid or beast of Huge size or smaller, choosing its physical
+      appearance. A beast form must have CR no greater than the dragon's. Its statistics remain unchanged except
+      for size. The form lasts until it uses this action to change again or return to its true form, drops to 0
+      HP, or dies. Using a breath weapon or natural attack immediately ends the transformation.
+  legendary_actions:
+  - name: Legendary action pool
+    description: The dragon has 3 legendary actions. At the end of another creature's turn it may choose one option
+      and pay its cost. It can use only one option at a time, and regains spent legendary actions at the start of
+      its own turn. These are separate from its action, bonus action and reaction.
+  - name: Detect (1 action)
+    description: The dragon makes a Wisdom (Perception) check.
+  - name: Tail Attack (1 action)
+    description: The dragon makes one Tail attack, using its listed attack bonus, reach, Block DC and unblocked-strike
+      damage.
+  - name: Wing Attack (2 actions)
+    description: Each creature within 15 feet makes a DC 20 Dexterity save. On failure, it takes 15 (2d6 + 8) bludgeoning
+      damage and is knocked Prone. On success, it takes no damage and is not knocked Prone. The dragon may then
+      fly up to half its flying speed. This saving-throw area cannot be Blocked.
+  lair_actions:
+  - name: Lair initiative
+    description: In its lair, on initiative count 20 (losing ties), the legendary dragon chooses one of the following
+      lair actions. It cannot choose the same effect in consecutive rounds.
+  - name: Drain a spell slot
+    description: Each creature the dragon chooses in the lair makes a DC 15 Intelligence save. On failure, it expends
+      an available spell slot of its lowest unexpended level as though it had cast a spell. A creature without spell
+      slots loses none; rest dice and other non-slot resources are not spell slots. The dragon gains 1d4 temporary
+      HP for every spell level drained. Apply the current temporary-HP rules; these are temporary HP, not Arcane
+      Health. This saving-throw effect cannot be Blocked.
+  - name: Falling rubble
+    description: A piece of ceiling falls into a 10-foot area within 120 feet of the dragon. Each creature in the
+      area makes a DC 14 Dexterity save, taking 2d12 bludgeoning damage on failure, or half on success. A failure
+      by 5 or more also knocks it Prone and Pins it beneath the rubble. Pinned prevents moving or changing prone/upright
+      status but permits actions and bonus actions. It or an ally within 5 feet can use an action to move the rubble
+      and end Pinned. This saving-throw area cannot be Blocked.
+  - name: Rearrange the lair
+    description: 'The dragon lowers up to 30 feet of existing wall into the floor, or raises up to 30 feet of new
+      wall from floor to ceiling. A new wall may have doors and windows or be featureless. A creature in the new
+      wall''s space makes a DC 15 Dexterity save. On success, it moves into an unoccupied space on either side that
+      it chooses. On failure, it is pushed up to the ceiling and falls on a randomly chosen side. For the unspecified
+      fall damage, use the existing Basic Rules falling rule: 1d6 bludgeoning damage per 10 feet fallen, maximum
+      20d6; it lands Prone unless it avoids the falling damage. This saving-throw effect cannot be Blocked.'
+  regional_effects:
+  - name: Scholarly atmosphere
+    description: Creatures within 1 mile of the lair have advantage on Intelligence checks.
+  - name: Lair admiration (charm effect)
+    description: A creature that spends more than 24 hours in the lair over a week makes a DC 15 Wisdom save. On
+      failure, it cannot speak poorly of the lair and, if it enjoyed itself there, is forthcoming with others about
+      its enjoyment. This is the source's specific charm effect, not the Varis Fascinated condition; it does not
+      impose that condition's targeting restrictions. On a successful save the creature is unaware of the charm
+      attempt.
+  - name: Sense chaotic visitors
+    description: The dragon knows when creatures with a chaotic alignment are within 3 miles of its lair, but does
+      not learn their exact positions.
+  - name: Dragon's death
+    description: All regional effects end immediately if the dragon dies.
+  source_ref: STEEL DRAGONS.docx, pages 7-10; shared lore/lair/regional effects pages 1-5
+  conversion_notes:
+  - Preserves the source AC, HP, attacks, damage, ranges, save DCs, immunities and age-specific Change Shape limits;
+    adds Varis Block and unblocked-strike handling. CR is the source encounter estimate, not a claim of recalculated
+    Varis balance.
+  - Frightened is replaced with the existing Varis Afraid condition. Rubble uses the existing Pinned condition instead
+    of the undefined Restrained condition. Prone and Poisoned use the current Varis definitions.
+  - Source per-day uses are recorded per 24 hours, consistently with the campaign conversion conventions. Short
+    rest is one day and long rest one week by default.
+  - Lair admiration retains its printed specific charm behavior; the similar word fascinated does not import the
+    mechanically different Varis Fascinated condition.
+  - The source Wing Attack sentence omits succeed on before its Dexterity save. Completed that procedure from the
+    existing official Adult Red Dragon Wing Attack; retained the steel source DC 20, radius 15 feet, damage 15 (2d6
+    + 8), and two-action cost rather than substituting the red dragon's numbers.
+  - Shared lair/regional effects apply to these legendary age categories. Spell-slot drain uses actual class slots
+    and does not invent a conversion for Bard rest dice or other non-slot resources. For a class whose slots hold
+    several spell levels, apply that class's existing slot spending rules rather than assuming 5e independent slots.
+  - The printed level-6 Limited Magic Immunity threshold is retained. Because the ordinary Varis spell catalog ends
+    at level 6, this makes the dragon immune to all ordinary catalog spells unless it allows them; this strong source
+    ability was not silently rebalanced.
+  - Source prints CR 17 with 5,900 XP (the CR 10 value). Uses the existing official CR 17 value of 18,000 XP; CR
+    itself remains 17.
+  replacement_sources:
+  - field: Wing Attack missing saving-throw verb
+    alternative: 'Adult Red Dragon: Wing Attack (procedure only)'
+    source: https://www.dndbeyond.com/monsters/16771-adult-red-dragon
+  - field: Rearrange the lair unspecified fall damage
+    alternative: 'Basic Rules 2014: Falling'
+    source: https://www.dndbeyond.com/sources/dnd/basic-rules-2014/adventuring#Falling
+  - field: XP
+    alternative: 'Adult Red Dragon CR 17 encounter XP: 18,000'
+    source: https://www.dndbeyond.com/monsters/16771-adult-red-dragon
+  original_5e: 'Adult Steel Dragon
+
+    Huge dragon, typically lawful good
+
+    Armor Class - 19 (natural armor)
+
+    Hit Points - 256 (19d12 + 133)
+
+    Speed - 40 ft., climb 40 ft., fly 80 ft.
+
+
+
+    STR 27 (+8)
+
+    DEX 10 (+0)
+
+    CON 25 (+7)
+
+    INT     20 (+5)
+
+    WIS 13 (+1)
+
+    CHA 21 (+5)
+
+
+
+    Saves DEX +6, CON +13, WIS +7, CHA +11
+
+    Skills Perception +13, Stealth +6
+
+    Damage Immunities acid, poison
+
+    Condition Immunities poisoned
+
+    Senses blindsight 30 ft., darkvision 120 ft., passive Perception 23
+
+    Languages Common, Draconic, Dwarvish, Elvish, Goblin, Halfling, Orc,
+
+    Undercommon
+
+    Challenge 17 (5,900 XP)
+
+
+
+    Proficiency Bonus +6
+
+
+
+    Traits
+
+    Legendary Resistance (3/Day).
+
+    If the dragon fails a saving throw, it can choose to succeed instead.
+
+
+
+    Limited Magic Immunity.
+
+    The dragon can''t be affected or detected by spells of 6th level or lower unless it wishes
+
+    to be. It has advantage on saving throws against all other spells and magical effects.
+
+
+
+    Actions
+
+    Multiattack.
+
+    The dragon can use its Frightful Presence. It then makes three attacks: one with its
+
+    bite and two with its claws.
+
+
+
+    Bite.
+
+    Melee Weapon Attack: +14 to hit, reach 5 ft., one creature.
+
+    Hit: 19 (2d10 + 8) piercing damage plus 7 (2d6) acid damage.
+
+    Claw.
+
+    Melee Weapon Attack: +14 to hit, reach 5 ft., one target.
+
+    Hit: 15 (2d6 + 8) slashing damage.
+
+
+
+    Tail.
+
+    Melee Weapon Attack: +14 to hit, reach 15 ft., one target.
+
+    Hit: 17 (2d8 + 8) bludgeoning damage.
+
+
+
+    Frightful Presence.
+
+    Each creature of the dragon’s choice that is within 120 feet of the dragon and aware
+
+    of it must succeed on a DC 19 Wisdom saving throw or become frightened for 1
+
+    minute. A creature can repeat the saving throw at the end of each of its turns, ending
+
+    the effect on itself on a success. If a creature’s saving throw is successful or the effect
+
+    ends for it, the creature is immune to the dragon’s Frightful Presence for the next 24
+
+    hours.
+
+
+
+    Breath Attack (Recharge 5-6).
+
+    The dragon can choose to breathe either a line of acid or a cone of poison gas. If it
+
+    chooses acid, it exhales acid in a 60-foot line that is 5 feet wide. Each creature in
+
+    that line must make a DC 18 Dexterity saving throw, taking 54 (12d8) acid damage
+
+    on a failed save, or half as much damage on a successful one.
+
+    If it chooses poison gas, it exhales poisonous gas in a 60-foot cone. Each creature
+
+    in that area must make a DC 18 Constitution saving throw, taking 56 (16d6) poison
+
+    damage on a failed save, or half as much damage on a successful one. If this
+
+    damage reduces the creature to 0 hit points or less they immediately stabilise and
+
+    awaken 1d6 hours later with 1 hit point.
+
+
+
+    Change Shape.
+
+    The dragon can change its shape to assume the form of a humanoid or beast of
+
+    Huge size or smaller with any physical traits it wishes. The transformation lasts
+
+    until the dragon uses this action again, either to change shape or to return to its
+
+    true form, or it drops to 0 hit points or dies. If the target chooses the form of a
+
+    beast it must choose a creature with a CR equal to or lower than the dragon’s. In
+
+    any alternate form the dragon retains its game statistics, though its size changes
+
+    to match that of its chosen form. If the dragon uses its breath weapons or any
+
+    natural attacks the transformation immediately ends and the dragon returns to its
+
+    true form.
+
+    Legendary Actions
+
+    The dragon can take 3 legendary actions, choosing from the options below. Only one
+
+    legendary action option can be used at a time and only at the end of another
+
+    creature''s turn. The dragon regains spent legendary actions at the start of its turn.
+
+
+
+    Detect.
+
+    The dragon makes a Wisdom (Perception) check.
+
+
+
+    Tail Attack.
+
+    The dragon makes a tail attack.
+
+
+
+    Wing Attack (Costs 2 Actions).
+
+    The dragon beats its wings. Each creature within 15 feet of the dragon must on a DC
+
+    20 Dexterity saving throw or take 15 (2d6 + 8) bludgeoning damage and be knocked
+
+    prone. The dragon can then fly up to half its flying speed.'
+- name: Young Steel Dragon
+  group: Steel dragons
+  meta: Large dragon, typically lawful good
+  size: Large
+  type: dragon
+  alignment: typically lawful good
+  cr: '10'
+  xp: 5900
+  proficiency_bonus: '+4'
+  ac: 18 (natural armor)
+  block: 0 / +0
+  hp: 178 (17d10 + 85)
+  speed: 40 ft., climb 40 ft., fly 80 ft.
+  abilities:
+    str: '23'
+    dex: '10'
+    con: '21'
+    int: '16'
+    wis: '11'
+    cha: '19'
+  saving_throws: DEX +4, CON +9, WIS +4, CHA +8
+  skills: Perception +8, Stealth +4
+  damage_immunities: acid, poison
+  condition_immunities: Poisoned
+  senses: blindsight 30 ft., darkvision 120 ft., passive Perception 18
+  languages: Common, Draconic, Dwarvish, Elvish, Halfling, Orc
+  description: 'Steel dragons are curious, sociable dragons with expressive faces, blade-like wings, fine head and
+    neck spines, and scales that brighten from blue-grey to polished steel as they age. They smell of wet metal
+    and move with feline grace.
+
+
+    They spend much of their lives as humanoids, gathering knowledge, forming friendships, and supporting the fair
+    laws of their chosen city. Libraries, colleges, inns, guildhalls and other public places can serve as their
+    legally owned lairs. Their greatest treasure is accumulated experience and connection with other people.
+
+
+    A dragon may simulate a humanoid lifetime, feign its death, and return under another identity. Steel-grey hair,
+    metallic nails, or a steel accessory often betrays its heritage. It prefers to avoid violence and uses its nonlethal
+    poisonous breath when forced to defend its home or friends.'
+  traits:
+  - name: Limited Magic Immunity
+    description: The dragon is unaffected and undetectable by spells of level 4 or lower unless it allows the spell
+      to affect or detect it. It has advantage on saves against other spells and magical effects. Compare the current
+      Varis spell's actual level; a self-contained ability is not automatically a spell merely because its effect
+      resembles one.
+  - name: Block and natural armor
+    description: Block pool 0; Block check +0. Natural armor alone grants no extra Block and does not confer worn-armor
+      proficiency. If an effect grants temporary Block, use Dexterity for its check unless that effect states otherwise.
+  actions:
+  - name: Multiattack
+    description: The dragon makes one Bite attack and two Claw attacks. Each attack has its own attack roll and
+      opportunity to Block.
+  - name: Bite
+    description: 'Melee attack: +10 to hit; reach 5 ft.; one creature; Block DC 18. On an unblocked strike, deal
+      17 (2d10 + 6) piercing damage plus 3 (1d6) acid damage. The acid rider is part of the blockable attack.'
+  - name: Claw
+    description: 'Melee attack: +10 to hit; reach 5 ft.; one target; Block DC 18. On an unblocked strike, deal 13
+      (2d6 + 6) slashing damage.'
+  - name: Breath Attack (Recharge 5-6)
+    description: 'Choose acid or poison gas; both share one recharge. Acid fills a 30-foot line 5 feet wide: each
+      creature in it makes a DC 14 Dexterity save, taking 49 (11d8) acid damage on failure or half on success. Poison
+      fills a 30-foot cone: each creature in it makes a DC 14 Constitution save, taking 42 (12d6) poison damage
+      on failure or half on success. A creature reduced to 0 HP by this poison damage immediately stabilizes and
+      awakens 1d6 hours later with 1 HP. Poison damage alone does not apply the Poisoned condition. Neither breath
+      area can be Blocked. After use, roll 1d6 at the start of each of the dragon''s turns; on 5-6, regain this
+      action. A short or long rest also restores the breath, using Varis rest durations.'
+  - name: Change Shape
+    description: The dragon takes the shape of a humanoid or beast of Large size or smaller, choosing its physical
+      appearance. A beast form must have CR no greater than the dragon's. Its statistics remain unchanged except
+      for size. The form lasts until it uses this action to change again or return to its true form, drops to 0
+      HP, or dies. Using a breath weapon or natural attack immediately ends the transformation.
+  source_ref: STEEL DRAGONS.docx, pages 10-12; shared lore/lair/regional effects pages 1-5
+  conversion_notes:
+  - Preserves the source AC, HP, attacks, damage, ranges, save DCs, immunities and age-specific Change Shape limits;
+    adds Varis Block and unblocked-strike handling. CR is the source encounter estimate, not a claim of recalculated
+    Varis balance.
+  - Frightened is replaced with the existing Varis Afraid condition. Rubble uses the existing Pinned condition instead
+    of the undefined Restrained condition. Prone and Poisoned use the current Varis definitions.
+  - Source per-day uses are recorded per 24 hours, consistently with the campaign conversion conventions. Short
+    rest is one day and long rest one week by default.
+  - Lair admiration retains its printed specific charm behavior; the similar word fascinated does not import the
+    mechanically different Varis Fascinated condition.
+  - Source passive Perception 14 conflicts with its Perception +8. Corrected to 18 using the existing passive-check
+    rule, 10 + the Perception bonus.
+  replacement_sources:
+  - field: passive Perception
+    alternative: 'Basic Rules 2014 passive checks: 10 + skill bonus'
+    source: https://www.dndbeyond.com/sources/dnd/basic-rules-2014/using-ability-scores#PassiveChecks
+  original_5e: 'Young Steel Dragon
+
+    Large dragon, typically lawful good
+
+
+
+    Armor Class - 18 (natural armor)
+
+    Hit Points - 178 (17d10 + 85)
+
+    Speed - 40 ft., climb 40 ft., fly 80 ft.
+
+
+
+    STR 23 (+6)
+
+    DEX 10 (+0)
+
+    CON 21 (+5)
+
+    INT    16 (+3)
+
+    WIS 11 (+0)
+
+    CHA 19 (+4)
+
+
+
+    Saves DEX +4, CON +9, WIS +4, CHA +8
+
+    Skills Perception +8, Stealth +4
+
+    Damage Immunities acid, poison
+
+    Condition Immunities poisoned
+
+    Senses blindsight 30 ft., darkvision 120 ft., passive Perception 14
+
+    Languages Common, Draconic, Dwarvish, Elvish, Halfling, Orc
+
+    Challenge 10 (5,900 XP)
+
+
+
+    Proficiency Bonus +4
+
+
+
+    Traits
+
+    Limited Magic Immunity.
+
+    The dragon can''t be affected or detected by spells of 4th level or lower unless it wishes
+
+    to be. It has advantage on saving throws against all other spells and magical effects.
+
+
+
+    Actions
+
+    Multiattack.
+
+    The dragon makes three attacks: one with its bite and two with its claws.
+
+
+
+    Bite.
+
+    Melee Weapon Attack: +10 to hit, reach 5 ft., one creature.
+
+    Hit: 17 (2d10 + 6) piercing damage plus 3 (1d6) acid damage.
+
+
+
+    Claw.
+
+    Melee Weapon Attack: +10 to hit, reach 5 ft., one target.
+
+    Hit: 13 (2d6 + 6) slashing damage.
+
+
+
+    Breath Attack (Recharge 5-6).
+
+    The dragon can choose to breathe either a line of acid or a cone of poison gas. If it
+
+    chooses acid, it exhales acid in a 30-foot line that is 5 feet wide. Each creature in
+
+    that line must make a DC 14 Dexterity saving throw, taking 49 (11d8) acid damage
+
+    on a failed save, or half as much damage on a successful one.
+
+    If it chooses poison gas, it exhales poisonous gas in a 30-foot cone. Each creature
+
+    in that area must make a DC 14 Constitution saving throw, taking 42 (12d6) poison
+
+    damage on a failed save, or half as much damage on a successful one. If this
+
+    damage reduces the creature to 0 hit points or less they immediately stabilise and
+
+    awaken 1d6 hours later with 1 hit point.
+
+
+
+    Change Shape.
+
+    The dragon can change its shape to assume the form of a humanoid or beast of
+
+    large size or smaller with any physical traits it wishes. The transformation lasts
+
+    until the dragon uses this action again, either to change shape or to return to its
+
+    true form, or it drops to 0 hit points or dies. If the target chooses the form of a
+
+    beast it must choose a creature with a CR equal to or lower than the dragon’s. In
+
+    any alternate form the dragon retains its game statistics, though its size changes
+
+    to match that of its chosen form. If the dragon uses its breath weapons or any
+
+    natural attacks the transformation immediately ends and the dragon returns to its
+
+    true form.'
+- name: Steel Dragon Wyrmling
+  group: Steel dragons
+  meta: Medium dragon, typically lawful good
+  size: Medium
+  type: dragon
+  alignment: typically lawful good
+  cr: '4'
+  xp: 1100
+  proficiency_bonus: '+2'
+  ac: 17 (natural armor)
+  block: 0 / +0
+  hp: 75 (10d8 + 30)
+  speed: 30 ft., climb 30 ft., fly 60 ft.
+  abilities:
+    str: '19'
+    dex: '10'
+    con: '17'
+    int: '14'
+    wis: '11'
+    cha: '15'
+  saving_throws: DEX +2, CON +5, WIS +2, CHA +4
+  skills: Perception +2, Stealth +2
+  damage_immunities: acid, poison
+  condition_immunities: Poisoned
+  senses: blindsight 10 ft., darkvision 60 ft., passive Perception 12
+  languages: Common, Draconic
+  description: 'Steel dragons are curious, sociable dragons with expressive faces, blade-like wings, fine head and
+    neck spines, and scales that brighten from blue-grey to polished steel as they age. They smell of wet metal
+    and move with feline grace.
+
+
+    They spend much of their lives as humanoids, gathering knowledge, forming friendships, and supporting the fair
+    laws of their chosen city. Libraries, colleges, inns, guildhalls and other public places can serve as their
+    legally owned lairs. Their greatest treasure is accumulated experience and connection with other people.
+
+
+    A dragon may simulate a humanoid lifetime, feign its death, and return under another identity. Steel-grey hair,
+    metallic nails, or a steel accessory often betrays its heritage. It prefers to avoid violence and uses its nonlethal
+    poisonous breath when forced to defend its home or friends.'
+  traits:
+  - name: Limited Magic Immunity
+    description: The dragon is unaffected and undetectable by spells of level 2 or lower unless it allows the spell
+      to affect or detect it. It has advantage on saves against other spells and magical effects. Compare the current
+      Varis spell's actual level; a self-contained ability is not automatically a spell merely because its effect
+      resembles one.
+  - name: Block and natural armor
+    description: Block pool 0; Block check +0. Natural armor alone grants no extra Block and does not confer worn-armor
+      proficiency. If an effect grants temporary Block, use Dexterity for its check unless that effect states otherwise.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +6 to hit; reach 5 ft.; one creature; Block DC 14. On an unblocked strike, deal
+      9 (1d10 + 4) piercing damage plus 3 (1d6) acid damage. The acid rider is part of the blockable attack.'
+  - name: Breath Attack (Recharge 5-6)
+    description: 'Choose acid or poison gas; both share one recharge. Acid fills a 15-foot line 5 feet wide: each
+      creature in it makes a DC 11 Dexterity save, taking 22 (5d8) acid damage on failure or half on success. Poison
+      fills a 15-foot cone: each creature in it makes a DC 11 Constitution save, taking 21 (6d6) poison damage on
+      failure or half on success. A creature reduced to 0 HP by this poison damage immediately stabilizes and awakens
+      1d6 hours later with 1 HP. Poison damage alone does not apply the Poisoned condition. Neither breath area
+      can be Blocked. After use, roll 1d6 at the start of each of the dragon''s turns; on 5-6, regain this action.
+      A short or long rest also restores the breath, using Varis rest durations.'
+  - name: Change Shape
+    description: The dragon takes the shape of a humanoid or beast of Medium size or smaller, choosing its physical
+      appearance. A beast form must have CR no greater than the dragon's. Its statistics remain unchanged except
+      for size. The form lasts until it uses this action to change again or return to its true form, drops to 0
+      HP, or dies. Using a breath weapon or natural attack immediately ends the transformation.
+  source_ref: STEEL DRAGONS.docx, pages 12-13; shared lore/lair/regional effects pages 1-5
+  conversion_notes:
+  - Preserves the source AC, HP, attacks, damage, ranges, save DCs, immunities and age-specific Change Shape limits;
+    adds Varis Block and unblocked-strike handling. CR is the source encounter estimate, not a claim of recalculated
+    Varis balance.
+  - Frightened is replaced with the existing Varis Afraid condition. Rubble uses the existing Pinned condition instead
+    of the undefined Restrained condition. Prone and Poisoned use the current Varis definitions.
+  - Source per-day uses are recorded per 24 hours, consistently with the campaign conversion conventions. Short
+    rest is one day and long rest one week by default.
+  - Lair admiration retains its printed specific charm behavior; the similar word fascinated does not import the
+    mechanically different Varis Fascinated condition.
+  original_5e: 'Steel Dragon Wyrmling
+
+    Medium dragon, typically lawful good
+
+
+
+    Armor Class - 17 (natural armor)
+
+    Hit Points - 75 (10d8 + 30)
+
+    Speed - 30 ft., climb 30 ft., fly 60 ft.
+
+
+
+    STR 19 (+4)
+
+    DEX 10 (+0)
+
+    CON 17 (+3)
+
+    INT    14 (+2)
+
+    WIS 11 (+0)
+
+    CHA 15 (+2)
+
+
+
+    Saves DEX +2, CON +5, WIS +2, CHA +4
+
+    Skills Perception +2, Stealth +2
+
+    Damage Immunities acid, poison
+
+    Condition Immunities poisoned
+
+    Senses blindsight 10 ft., darkvision 60 ft., passive Perception 12
+
+    Languages Common, Draconic
+
+    Challenge 4 (1,100 XP)
+
+
+
+    Proficiency Bonus +2
+
+
+
+    Traits
+
+    Limited Magic Immunity.
+
+    The dragon can''t be affected or detected by spells of 2nd level or lower unless it
+
+    wishes to be. It has advantage on saving throws against all other spells and magical
+
+    effects.
+
+
+
+    Actions
+
+    Bite.
+
+    Melee Weapon Attack: +6 to hit, reach 5 ft., one creature.
+
+    Hit: 9 (1d10 + 4) piercing damage plus 3 (1d6) acid damage.
+
+
+
+    Breath Attack (Recharge 5-6).
+
+    The dragon can choose to breathe either a line of acid or a cone of poison gas. If it
+
+    chooses acid, it exhales acid in a 15-foot line that is 5 feet wide. Each creature in
+
+    that line must make a DC 11 Dexterity saving throw, taking 22 (5d8) acid damage
+
+    on a failed save, or half as much damage on a successful one.
+
+    If it chooses poison gas, it exhales poisonous gas in a 15-foot cone. Each creature
+
+    in that area must make a DC 11 Constitution saving throw, taking 21 (6d6) poison
+
+    damage on a failed save, or half as much damage on a successful one. If this
+
+    damage reduces the creature to 0 hit points or less they immediately stabilise and
+
+    awaken 1d6 hours later with 1 hit point.
+
+
+
+    Change Shape.
+
+    The dragon can change its shape to assume the form of a humanoid or beast of
+
+    medium size or smaller with any physical traits it wishes. The transformation
+
+    lasts until the dragon uses this action again, either to change shape or to return to
+
+    its true form, or it drops to 0 hit points or dies. If the target chooses the form of a
+
+    beast it must choose a creature with a CR equal to or lower than the dragon’s. In
+
+    any alternate form the dragon retains its game statistics, though its size changes
+
+    to match that of its chosen form. If the dragon uses its breath weapons or any
+
+    natural attacks the transformation immediately ends and the dragon returns to its
+
+    true form.'

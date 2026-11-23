@@ -24,6 +24,7 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
     set textContent(value) { this._text = String(value); this.replaceChildren(); }
     get childElementCount() { return this.children.filter(n => !['#text', '#fragment'].includes(n.localName)).length; }
     get firstElementChild() { return this.children.find(n => n.localName !== '#text'); }
+    get firstChild() { return this.children[0]; }
     get isConnected() { return this === document || !!this.parentNode?.isConnected; }
     get classList() { return {add: name => { this.className += ' ' + name; }}; }
     append(...nodes) { for (let node of nodes) { if (typeof node === 'string') { const t = new Node('#text'); t._text = node; node = t; } if (node.localName === '#fragment') { this.append(...node.children); node.children = []; } else { node.parentNode = this; this.children.push(node); } } }
@@ -36,6 +37,9 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
     focus() { document.activeElement = this; }
     select() {}
     setSelectionRange(start, end) { this.selectionStart = start; this.selectionEnd = end; }
+    remove() { if (this.parentNode) this.parentNode.children = this.parentNode.children.filter(node => node !== this); this.parentNode = null; }
+    showModal() { this.open = true; }
+    close() { this.open = false; this.dispatch('close'); }
     scrollIntoView() {}
     scrollTo(value) { this.scrollLeft = value.left; this.dispatch('scroll'); }
     matches(selector) {
@@ -61,6 +65,7 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
   document.createDocumentFragment = () => new Node('#fragment');
   document.createTextNode = value => { const node = new Node('#text'); node._text = String(value); return node; };
   document.activeElement = document;
+  document.body = document;
   const window = new Node('window'); window.scrollTo = () => {};
   const location = {hash: initial};
   const sections = Object.entries(data).map(([key, entries]) => ({key, title: key[0].toUpperCase() + key.slice(1), count: entries.length, entries: []}));
@@ -72,6 +77,7 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
     async loadAll() { await Promise.all(sections.filter(s => !loaded.has(s.key)).map(s => loader.loadSection(s.key))); return sections; }
   };
   const context = vm.createContext({console, document, window, location, URLSearchParams, Intl, DndCatalog: loader,
+    showSaveFilePicker: options.showSaveFilePicker,
     Blob,setTimeout:fn=>fn(),URL:{createObjectURL(blob){const url='blob:test-'+objectUrls.size;objectUrls.set(url,blob);return url;},revokeObjectURL(url){objectUrls.delete(url);}},
     localStorage: {getItem:key=>options.storage?.get(key) || null,setItem:(key,value)=>{if(options.storageFailure)throw new Error('Storage unavailable');if(options.storage)options.storage.set(key,value);}},
     history: {replaceState(_state, _title, hash) { location.hash = hash; }},
@@ -82,12 +88,87 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
   vm.runInContext(orderSource, context, {filename:'entry-order.js'});
   for (const name of ['magic-categories.js', 'item-views.js', 'browse-views.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',name),'utf8'),context,{filename:name});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/magic-items.js'),'utf8'),context,{filename:'magic-items.js'});
+  vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/monster-editor.js'),'utf8'),context,{filename:'monster-editor.js'});
   vm.runInContext(source, context, {filename: 'app.js'});
   const reader = document.getElementById('reader');
   return {document, reader, calls, sections, downloads, get hash() { return location.hash; }, async route(hash) { location.hash = hash; window.dispatch('hashchange'); await settle(); }, async change(id, value) { const select = document.getElementById(id); assert(select, 'Missing '+id); select.value = value; select.dispatch('change'); window.dispatch('hashchange'); await settle(); }, link(text) { return reader.querySelectorAll('a').find(n => n.textContent === text); }};
 }
 
 const names = h => h.reader.querySelectorAll('.result-name').map(node => node.textContent);
+
+test('monster authoring refreshes the catalog, persists, exports YAML, and leaves Cancel unchanged', async () => {
+  const storage = new Map();
+  const original = {...entry('City guard', 'Guards', {ac:'12', hp:'20', abilities:{dex:'14'}, actions:[{name:'Spear', description:'Attack +3; Block DC 11.'}]}), source:'monsters/guards.yaml'};
+  const h = boot({monsters:[original]}, '', {storage});
+  await h.route('#section=monsters');
+  h.reader.querySelectorAll('button').find(button => button.textContent === 'Add your monster statblock').click();
+  let dialog = h.document.querySelector('dialog');
+  const input = (title, root=dialog) => root.querySelectorAll('label').find(label => label._text === title).querySelector('input');
+  input('Name').value = 'Lantern wisp';
+  input('Hit points').value = '7';
+  dialog.querySelector('form').dispatch('input');
+  assert.match(dialog.querySelector('.monster-editor-preview').textContent, /Lantern wisp/);
+  dialog.querySelector('form').dispatch('submit');
+  await h.route(h.hash);
+  assert.match(h.reader.textContent, /Lantern wisp/);
+  assert.match(h.reader.textContent, /Hit points7/);
+  await h.route('#section=monsters');
+  assert.deepEqual(names(h), ['Lantern wisp', 'City guard']);
+  h.reader.querySelectorAll('button').find(button => button.textContent === 'Export custom.yaml').click();
+  assert.equal(h.downloads[0].name, 'custom.yaml');
+  assert.match(await h.downloads[0].blob.text(), /name: "Lantern wisp"/);
+  const reloaded = boot({monsters:[original]}, '#section=monsters', {storage});
+  await settle();
+  assert(names(reloaded).includes('Lantern wisp'));
+  await h.route('#section=monsters&entry=Lantern+wisp&group=Custom+monsters');
+  h.reader.querySelectorAll('button').find(button => button.textContent === 'Edit statblock').click();
+  dialog = h.document.querySelector('dialog'); input('Name').value = 'Discard this';
+  dialog.querySelectorAll('button').find(button => button.textContent === 'Cancel').click();
+  assert.equal(h.document.querySelector('dialog'), null);
+  assert.match(h.reader.textContent, /Lantern wisp/);
+  assert.doesNotMatch(h.reader.textContent, /Discard this/);
+});
+
+test('browser monster renames keep summon cards linked to their original identity', async () => {
+  const monster = {...entry('Skeleton', 'Undead', {hp:'13', actions:[{name:'Claw', description:'Block DC 12.'}]}), source:'monsters/undead.yaml'};
+  const spell = entry('Raise skeleton', 'Occult spells', {summons:[{monster:'Skeleton'}]});
+  const h = boot({monsters:[monster], spells:[spell]}, '', {storage:new Map()});
+  await h.route('#section=monsters&entry=Skeleton&group=Undead');
+  h.reader.querySelectorAll('button').find(button => button.textContent === 'Edit statblock').click();
+  const dialog = h.document.querySelector('dialog');
+  dialog.querySelectorAll('label').find(label => label._text === 'Name').querySelector('input').value = 'Rattler';
+  dialog.querySelector('form').dispatch('submit'); await settle();
+  await h.route('#section=spells&entry=Raise+skeleton&group=Occult+spells');
+  const card = h.reader.querySelector('.summon-card');
+  assert.match(card.textContent, /Rattler/);
+  assert.doesNotMatch(card.textContent, /not available/);
+  assert.match(card.querySelector('a').href, /entry=Rattler/);
+});
+
+test('monster sources remain collapsed and obsolete source rules are excluded from search', async () => {
+  const monster = {...entry('Ash bird', 'Beasts', {hp:'9', actions:[{name:'Peck', description:'An unblocked strike deals fire damage.'}], original_5e:'Legacy spellslots', replacement_sources:[{name:'Donor beast', source:'https://example.test/rules'}]}), source:'monsters/ash.yaml'};
+  const h = boot({monsters:[monster]});
+  await h.route('#section=monsters&entry=Ash+bird&group=Beasts');
+  const sources = h.reader.querySelectorAll('.monster-provenance');
+  assert.equal(sources.length, 2); assert(sources.every(block => !block.open));
+  await h.route('#q=Legacy+spellslots&scope=monsters'); assert.deepEqual(names(h), []);
+  await h.route('#q=unblocked+strike&scope=monsters'); assert.deepEqual(names(h), ['Ash bird']);
+});
+
+test('saving a selected custom YAML file preserves compiled additions and reuses its handle', async () => {
+  const writes = []; let selections = 0, closes = 0;
+  const custom = {...entry('Saved beast', 'Custom monsters', {id:'custom-saved', hp:'12'}), source:'monsters/custom.yaml'};
+  const h = boot({monsters:[custom]}, '', {showSaveFilePicker:async () => {
+    selections++;
+    return {name:'custom.yaml', createWritable:async () => ({write:async text => writes.push(text), close:async () => {closes++;}})};
+  }});
+  await h.route('#section=monsters');
+  const save = h.reader.querySelectorAll('button').find(button => button.textContent.startsWith('Save YAML file'));
+  save.click(); await settle(); save.click(); await settle();
+  assert.equal(selections, 1); assert.equal(writes.length, 2); assert.equal(closes, 2);
+  assert.match(writes[0], /name: "Saved beast"/);
+  assert.match(h.reader.querySelector('.monster-tools').textContent, /Saved custom.yaml/);
+});
 const leveledSpells = [entry('Alpha third', 'Arcane', {lvl:'3'}), entry('Zeta first', 'Arcane', {level:1}), entry('Élan first', 'Arcane', {lvl:'1'}), entry('Beta second', 'Mystic', {lvl:'2'}), entry('Zing', 'Arcane cantrips', {description:'A cantrip'}), entry('A missing', 'Arcane', {description:'No stated spell level'})];
 
 test('magic item browsing filters converted rules, hides original comparisons and saves item edits',async()=>{

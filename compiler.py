@@ -94,7 +94,10 @@ def weapon_records(data):
 def source_records(path, data):
     # An explicit section works in every directory, including future collections.
     if isinstance(data, dict) and "section" in data:
-        if data.keys() - {"section", "entries"}:
+        allowed = {"section", "entries"}
+        if data["section"] == "monsters":
+            allowed.add("monster_overrides")
+        if data.keys() - allowed:
             raise ValueError("collection documents must contain only section and entries")
         yield from named_records(data["section"], data["entries"])
     elif path == "weapons.yaml":
@@ -129,6 +132,63 @@ def unwrapped(data, key):
     return mapping(data[key], key)
 
 
+def apply_monster_overrides(documents, sections):
+    """Replace catalog monsters using their immutable original source identities."""
+    monsters = sections["monsters"]["entries"]
+    originals = {(entry["source"], entry["group"], entry["name"]): index
+                 for index, entry in enumerate(monsters)}
+    targets = set()
+    origins = {}
+    for path, records in documents:
+        try:
+            for record in sequence(records, "monster_overrides"):
+                record = mapping(record, "monster override")
+                if record.keys() != {"target", "entry"}:
+                    raise ValueError("monster override must contain only target and entry")
+                target = mapping(record["target"], "monster override target")
+                if target.keys() != {"source", "group", "name"}:
+                    raise ValueError("monster override target must contain source, group and name")
+                source = name_text(target["source"], "monster override target source")
+                name = name_text(target["name"], "monster override target name")
+                if not isinstance(target["group"], str):
+                    raise ValueError("monster override target group must be text")
+                group = target["group"].strip()
+                identity = (source, group, name)
+                if identity not in originals:
+                    raise ValueError(f"unknown monster override target {identity!r}")
+                if identity in targets:
+                    raise ValueError(f"duplicate monster override target {identity!r}")
+                targets.add(identity)
+                fields = mapping(record["entry"], "monster override entry").copy()
+                new_name = name_text(fields.pop("name", None), "monster override entry name")
+                new_group = fields.pop("group", "")
+                if not isinstance(new_group, str):
+                    raise ValueError("monster override entry group must be text")
+                if fields.keys() & {"section", "source", "monster_target", "monster_overrides"}:
+                    raise ValueError("monster override entry cannot replace section or source identity")
+                index = originals[identity]
+                monsters[index] = {"name": new_name, "group": new_group.strip(),
+                    "details": fields, "source": source,
+                    "monster_target": {"source": source, "group": group, "name": name}}
+                origins[index] = path
+        except (KeyError, ValueError, TypeError) as exc:
+            raise ValueError(f"{path}: {exc}") from exc
+    # Names also identify summon references, so current and original names must
+    # remain unambiguous even when a monster moves to a different group.
+    if documents:
+        names = {}
+        for index, entry in enumerate(monsters):
+            aliases = {entry["name"].casefold()}
+            if entry.get("monster_target"):
+                aliases.add(entry["monster_target"]["name"].casefold())
+            for alias in aliases:
+                if alias in names:
+                    previous = names[alias]
+                    path = origins.get(index, origins.get(previous, entry["source"]))
+                    raise ValueError(f"{path}: duplicate or ambiguous monster name {alias!r}")
+                names[alias] = index
+
+
 def apply_summon_links(document, sections):
     """Attach references only; imported creatures never replace a spell's mechanics."""
     if mapping(document, "summon links document").keys() != {"summon_links"}:
@@ -136,9 +196,13 @@ def apply_summon_links(document, sections):
     spells = {(entry["group"], entry["name"]): entry for entry in sections["spells"]["entries"]}
     monsters = {}
     for entry in sections["monsters"]["entries"]:
-        if entry["name"] in monsters:
-            raise ValueError(f"ambiguous monster name {entry['name']!r}")
-        monsters[entry["name"]] = entry
+        aliases = {entry["name"]}
+        if entry.get("monster_target"):
+            aliases.add(entry["monster_target"]["name"])
+        for alias in aliases:
+            if alias in monsters:
+                raise ValueError(f"ambiguous monster name {alias!r}")
+            monsters[alias] = entry
     seen = set()
     for record in sequence(document["summon_links"], "summon_links"):
         record = mapping(record, "summon link")
@@ -154,6 +218,7 @@ def apply_summon_links(document, sections):
         if not summons:
             raise ValueError("summons must not be empty")
         linked = set()
+        resolved_summons = []
         for summon in summons:
             summon = mapping(summon, "summon")
             if summon.keys() - {"monster", "label", "notes"}:
@@ -161,13 +226,15 @@ def apply_summon_links(document, sections):
             monster = name_text(summon.get("monster"), "monster")
             if monster not in monsters:
                 raise ValueError(f"Unknown monster {monster!r}")
-            if monster in linked:
-                raise ValueError(f"duplicate monster {monster!r}")
-            linked.add(monster)
+            resolved = monsters[monster]["name"]
+            if resolved in linked:
+                raise ValueError(f"duplicate monster {resolved!r}")
+            linked.add(resolved)
+            resolved_summons.append(dict(summon, monster=resolved))
         details = mapping(spells[identity]["details"], "spell details")
         if "summons" in details:
             raise ValueError(f"spell {identity!r} already defines summons")
-        details["summons"] = summons
+        details["summons"] = resolved_summons
         if record.get("source_ref"):
             details["summon_source"] = name_text(record["source_ref"], "source_ref")
 
@@ -178,6 +245,7 @@ def compile_data(data_dir: Path) -> list[dict]:
     seen = set()
     summon_document = None
     has_summon_document = False
+    monster_overrides = []
     files = sorted(path for path in data_dir.rglob("*")
                    if path.is_file() and path.suffix.lower() in (".yml", ".yaml"))
     if not files:
@@ -204,8 +272,11 @@ def compile_data(data_dir: Path) -> list[dict]:
                 sections[section]["entries"].append(
                     {"name": name, "group": group, "details": details, "source": path}
                 )
+            if isinstance(data, dict) and data.get("section") == "monsters" and "monster_overrides" in data:
+                monster_overrides.append((path, data["monster_overrides"]))
         except (KeyError, ValueError, TypeError, yaml.YAMLError) as exc:
             raise ValueError(f"{path}: {exc}") from exc
+    apply_monster_overrides(monster_overrides, sections)
     sections["classes"]["entries"].sort(key=lambda entry: entry["group"] != "Base class")
     if has_summon_document:
         try:

@@ -1,0 +1,5402 @@
+{
+  "source": "chronica.ventures-campaign-Tales of Custead pt.2-export.json",
+  "export_created_at": "2026-11-23T23:21:59.138+02:00",
+  "monsters": [
+    {
+      "id": 28875,
+      "name": "Blood Boar",
+      "folder": "Enemies/forest/day",
+      "type": "Large beast",
+      "description": "",
+      "notes": "<p>Senses passive Perception 9</p><p>Languages —</p><p>Challenge 4 (1,100 XP)</p>",
+      "ability_ids": [],
+      "stats": {
+        "98563": [
+          "107"
+        ],
+        "98557": [
+          "+4"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "40"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Tusks",
+          "+6",
+          "5 ft",
+          "2d8+4 + 2d6",
+          "slashing + acid"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Berserk",
+          "At the start of its turn the boar can gain advantage on all melee weapon attack rolls during that turn but attack rolls against it have advantage until the start of its next turn."
+        ],
+        "98650": [
+          "Charge",
+          "If the boar moves at least 20 feet straight toward a target and then hits it with a tusk attack on the same turn the target takes an extra 7 (2d6) slashing damage. If the target is a creature it must succeed on a DC 14 Strength saving throw or be knocked prone."
+        ],
+        "98583": [
+          "1600 pounds"
+        ],
+        "98582": [
+          "6 feet 5 inches"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 28876,
+      "name": "Boar",
+      "folder": "Enemies/forest/day",
+      "type": "Medium beast",
+      "description": "",
+      "notes": "<p>Senses Passive Perception 9</p><p>Languages --</p><p>Challenge 1/4 (50 XP)</p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98583": [
+          "285 pounds"
+        ],
+        "98582": [
+          "3 feet"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "18"
+        ],
+        "98564": [
+          "11"
+        ],
+        "98565": [
+          "40 ft"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Tusk",
+          "+3",
+          "5 ft",
+          "1d6+1",
+          "Slashing"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Charge",
+          "If the boar moves at least 20 ft. straight toward a target and then hits it with a tusk attack on the same turn the target takes an extra 3 (1d6) slashing damage. If the target is a creature it must succeed on a DC 11 Strength saving throw or be knocked prone."
+        ],
+        "98650": [
+          "Relentless",
+          "(Recharges after a Short or Long Rest): If the boar takes 7 damage or less that would reduce it to 0 Hit Points it is reduced to 1 hit point instead."
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 28877,
+      "name": "Dire Boar",
+      "folder": "Enemies/forest/day",
+      "type": "Large Beast",
+      "description": "",
+      "notes": "<p>Senses Passive Perception 8</p><p>Languages --</p><p>Challenge 2 (450 XP)</p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "-2"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "65"
+        ],
+        "98564": [
+          "12"
+        ],
+        "98565": [
+          "40"
+        ],
+        "98583": [
+          "1200 pounds"
+        ],
+        "98582": [
+          "6 feet"
+        ],
+        "98590": [
+          "Tusk",
+          "+5",
+          "5 ft",
+          "2d6+3",
+          "Slashing"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98651": [
+          "Charge",
+          "If the boar moves at least 20 ft. straight toward a target and then hits it with a tusk attack on the same turn the target takes an extra 7 (2d6) slashing damage. If the target is a creature it must succeed on a DC 13 Strength saving throw or be knocked prone."
+        ],
+        "98650": [
+          "Relentless",
+          "(Recharges after a Short or Long Rest). If the boar takes 10 damage or less that would reduce it to 0 hit points it is reduced to 1 hit point instead."
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15880,
+      "name": "Fiend Follower",
+      "folder": "Enemies/building",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "2d8+2"
+        ],
+        "98564": [
+          "10"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98590": [
+          "Dagger",
+          "+2",
+          "5 ft",
+          "1d4+2",
+          "Piercing"
+        ],
+        "98589": [
+          "Eldritch blast",
+          "+2",
+          "120 ft",
+          "1d10+2",
+          "Force"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 16348,
+      "name": "Marrashi",
+      "folder": "Enemies/building",
+      "type": "Monstrosity",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+4"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "+3"
+        ],
+        "98562": [
+          "0"
+        ],
+        "98564": [
+          "16"
+        ],
+        "98565": [
+          "30 ft; fly 70 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Longbow",
+          "+7",
+          "600 ft",
+          "2d8+2",
+          "Piercing"
+        ],
+        "98589": [
+          "Bite",
+          "+6",
+          "5 ft",
+          "1d4+3",
+          "Piercing"
+        ],
+        "98588": [
+          "Claw",
+          "+6",
+          "5 ft",
+          "2d4 +1",
+          "slashing"
+        ],
+        "98645": [
+          "DEX +7",
+          "WIS +6",
+          "Acrobatics +6",
+          "Perception +6",
+          "",
+          ""
+        ],
+        "98593": [],
+        "98651": [
+          "Sewer Plague",
+          "Each time a target takes damage from an arrow they must make a DC 11 Constitution saving throw or suffer the effects of Sewer Plague.  It takes 1d4 days for sewer plague's symptoms to manifest in an infected creature. Symptoms include fatigue and cramps. The infected creature suffers one level of exhaustion and it regains only half the normal number of hit points from spending Hit Dice and no hit points from finishing a long rest. At the end of each long rest an infected creature must make a DC 11 Constitution saving throw. On a failed save the character gains one level of exhaustion. On a successful save the character's exhaustion level decreases by one level. If a successful saving throw reduces the infected creature's level of exhaustion below 1 the creature recovers from the disease."
+        ],
+        "98650": [
+          "Tarkir Arrow",
+          "The target must succeed on a DC 14 Constitution saving throw or become poisoned. Each day the target must succeed on another DC 14 Constitution saving throw or it reduces its hit point maximum by five points if the hit point maximum is reduced to zero the target dies and a Marrashi is born from the remains. This disease requires magical restoration to cure it."
+        ],
+        "98587": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98563": [
+          "18d8+20"
+        ],
+        "98592": [
+          "Poison"
+        ],
+        "98591": [
+          "Piercing"
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 16349,
+      "name": "Bandit",
+      "folder": "Enemies/building",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+0"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "2d8+2"
+        ],
+        "98564": [
+          "12"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Scimitar",
+          "+3",
+          "5 ft",
+          "1d6+1",
+          "Slashing"
+        ],
+        "98589": [
+          "Light crossbow",
+          "+3",
+          "80/320 ft",
+          "1d8+1",
+          "Piercing"
+        ],
+        "98588": [],
+        "98587": [],
+        "98645": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 16350,
+      "name": "Thug",
+      "folder": "Enemies/building",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "5d8+8"
+        ],
+        "98564": [
+          "11"
+        ],
+        "98565": [
+          "30 feet"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Mace",
+          "+4",
+          "5 ft",
+          "1d6+2",
+          "Bludgeoning"
+        ],
+        "98589": [
+          "Heavy Crossbow",
+          "+2",
+          "100/400 ft",
+          "1d10",
+          "Piercing"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Pack tactics",
+          "The Thug has advantage on an attack roll against a creature if atleast one of the thugs allies is within 5 ft of the creature and the ally isn't incapacitated"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15903,
+      "name": "Dragazhar",
+      "folder": "Enemies/forest/night",
+      "type": "",
+      "description": "<p>The night hunter is a malicious bat with velvet black fur, orange or red eyes and a long tail with a triangular razor-sharp end. Night hunters are nocturnal when they live on the surface, where they reside in large trees. In the Underdark, the are active at any time. Night hunters hunt in packs. They are not above eating carrion and even attack human settlements when they are hungry. Some night hunters serve as familiars for drow wizards.</p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [
+        "329915",
+        "none"
+      ],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "0"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "0"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "4d8+8"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "10 ft;fly 50 ft"
+        ],
+        "98583": [
+          "10-15 pounds"
+        ],
+        "98582": [
+          "Wingspan 7 feet"
+        ],
+        "98590": [
+          ""
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          "Tail",
+          "+6",
+          "5 ft",
+          "2d6+4",
+          "Slashing"
+        ],
+        "98587": [
+          "Claws",
+          "+6",
+          "5 ft",
+          "1d6+4",
+          "Slashing"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98595": [],
+        "98596": [
+          "false",
+          "false",
+          "false",
+          "false"
+        ]
+      }
+    },
+    {
+      "id": 15902,
+      "name": "Balckspawn Stalker",
+      "folder": "Enemies/forest/night",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [
+        "329915",
+        "none"
+      ],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "-1"
+        ],
+        "98563": [
+          "8d8+8"
+        ],
+        "98564": [
+          "13"
+        ],
+        "98565": [
+          "30 ft climb 30 ft"
+        ],
+        "98583": [
+          "5000 pounds"
+        ],
+        "98582": [
+          "6 - 8 feet"
+        ],
+        "98590": [
+          "Bite",
+          "+4",
+          "5 ft",
+          "1d8+2 + 1d8",
+          "Piercing + acid"
+        ],
+        "98589": [
+          "Tails",
+          "+4",
+          "5 ft",
+          "2d4 + 2",
+          "Bludgeoning"
+        ],
+        "98588": [
+          "Web (Recharge 5-6)",
+          "+4",
+          "30/60 ft",
+          "DC 11 STR check",
+          "Restrained"
+        ],
+        "98587": [
+          "Acid Breath (Recharge 5-6)",
+          "+4",
+          "15 ft line; 5 feet wide",
+          "DC 11 DEX SAVE",
+          "5d8 acid"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98596": [],
+        "98595": [],
+        "98645": [],
+        "98651": [],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 15892,
+      "name": "Minotaur female barbarian - Miratrin 'Strongwalker'",
+      "folder": "Mercenary group #1 - The Shieldwrights",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98583": [
+          "588 pounds"
+        ],
+        "98582": [
+          "8 feet 9 inches"
+        ],
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "0"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "0"
+        ],
+        "98563": [
+          "90"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "40"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Halberd",
+          "+6",
+          "10 ft",
+          "1d10+3",
+          "Slashing"
+        ],
+        "98589": [
+          "Horns",
+          "+6",
+          "5 ft",
+          "1d6+3",
+          "Piercing"
+        ],
+        "98588": [
+          "Bite (Rage)(Magical)",
+          "+6",
+          "5 ft",
+          "1d8 (Heal 3 HP)",
+          "Piercing"
+        ],
+        "98645": [
+          "+6",
+          "+2",
+          "+6",
+          "0",
+          "-1",
+          "0"
+        ],
+        "98593": [],
+        "98592": [
+          "Dexterity saving throws"
+        ],
+        "98591": [],
+        "98587": [
+          ""
+        ],
+        "98651": [
+          "Rage",
+          "In battle you fight with primal ferocity. On your turn you can enter a rage as a bonus action.  While raging you gain the following benefits if you aren't wearing heavy armor:  You have advantage on Strength checks and Strength saving throws. When you make a melee weapon attack using Strength you gain a bonus to the damage roll that increases as you gain levels as a barbarian as shown in the Rage Damage column of the Barbarian table. You have resistance to bludgeoning piercing and slashing damage. If you are able to cast spells you can't cast them or concentrate on them while raging.  Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.  Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table you must finish a long rest before you can rage again."
+        ],
+        "98650": [
+          "Goring Rush",
+          "Immediately after you use the move action on your turn and move at least 20 feet you can make one melee attack with your horns as a bonus action."
+        ],
+        "98649": [
+          "Hammering Horns",
+          "Immediately after you hit a creature with a melee attack as part of the Attack action on your turn you can use a bonus action to attempt to shove that target with your horns. The target must be no more than one size larger than you and within 5 feet of you. Unless it succeeds on a Strength saving throw against a DC equal to 8 + your proficency bonus + your Strength modifier you push it up to 10 feet away from you."
+        ],
+        "98648": [
+          "Beastial Soul",
+          "When you jump you can make a Strength (Athletics) check and extend your jump by a number of feet equal to the check’s total. You can make this special check only once per turn."
+        ],
+        "98647": [
+          "Headman's Chop",
+          "When a creature falls prone while within your reach they provoke an opportunity attack from you. When you have advantage on an attack roll against a prone creature you can reroll one of the dice once."
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15893,
+      "name": "Camelfolk female sorcerer - Papaya",
+      "folder": "Mercenary group #1 - The Shieldwrights",
+      "type": "Humanoid/Beast",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98583": [
+          "388 pounds"
+        ],
+        "98582": [
+          "8 feet 10 inches"
+        ],
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "-1"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "+3"
+        ],
+        "98564": [
+          "10"
+        ],
+        "98565": [
+          "25"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Battleaxe",
+          "+4",
+          "5 ft",
+          "1d8+1 (1d10+1)",
+          "Slashing"
+        ],
+        "98589": [
+          "Fire Bolt",
+          "+6",
+          "120 ft",
+          "2d10",
+          "Fire"
+        ],
+        "98588": [
+          "Burning Hands (4x)",
+          "DEX (14)",
+          "15 foot cone",
+          "3d6",
+          "Fire"
+        ],
+        "98587": [
+          "Flaming Sphere (4x)",
+          "DEX (14)",
+          "60 ft",
+          "3d6",
+          " Fire"
+        ],
+        "98645": [
+          "+1",
+          "-1",
+          "+5",
+          "+1",
+          "+1",
+          "+6"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "Extreme Heat; Fire"
+        ],
+        "98651": [
+          "Food storage",
+          "You are able to store fat into your humps to keep yourself from suffering fatigue from not eating or drinking. You can go a number of days without food equal to your Constitution score and can survive without water for half as long."
+        ],
+        "98650": [
+          "Control Flames",
+          "You choose nonmagical flame that you can see within range and that fits within a 5-foot cube. You affect it in one of the following ways:  You instantaneously expand the flame 5 feet in one direction provided that wood or other fuel is present in the new location. You instantaneously extinguish the flames within the cube. You double or halve the area of bright light and dim light cast by the flame change its color or both. The change lasts for 1 hour. You cause simple shapes—such as the vague form of a creature an inanimate object or a location—to appear within the flames and animate as you like. The shapes last for 1 hour."
+        ],
+        "98649": [
+          "Heart of Fire",
+          "At 1st level whenever you start casting a spell of 1st level or higher that deals fire damage fiery magic erupts from you. This eruption causes creatures of your choice that you can see within 10 feet of you to take fire damage equal to half your sorcerer level (minimum of 1)."
+        ],
+        "98648": [
+          "Fire in the Veins",
+          "you gain resistance to fire damage. In addition spells you cast ignore resistance to fire damage."
+        ],
+        "98647": [
+          "Twinned Spell (6x)",
+          "When you cast a spell that targets only one creature and doesn't have a range of self you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell"
+        ],
+        "98646": [
+          "Flash Recall",
+          "You've developed the ability to instantly recall an unprepared spell in moments of sudden necessity.  As a bonus action you prepare a spell of 1st level or higher from your spellbook (if you're a wizard) or from your class spell list (if you're not a wizard). This spell must be of a level for which you have spell slots and it replaces another spell of an equal or higher level that you had previously prepared."
+        ],
+        "98563": [
+          "48"
+        ]
+      }
+    },
+    {
+      "id": 15891,
+      "name": "Leonin male fighter leader - Drion Goldenseeker",
+      "folder": "Mercenary group #1 - The Shieldwrights",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p>Has adamantine plate armor</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "0"
+        ],
+        "98561": [
+          "0"
+        ],
+        "98562": [
+          "0"
+        ],
+        "98563": [
+          "72"
+        ],
+        "98564": [
+          "18"
+        ],
+        "98565": [
+          "35 ft"
+        ],
+        "98583": [
+          "220 pounds"
+        ],
+        "98582": [
+          "6 ft 5 in"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Greataxe",
+          "+6",
+          "5 ft",
+          "1d12+3",
+          "Slashing"
+        ],
+        "98589": [
+          "Short-sword",
+          "+6",
+          "5ft",
+          "1d6+3",
+          "Slashing"
+        ],
+        "98588": [
+          "Short-sword (Offhand)",
+          "+6",
+          "5ft",
+          "1d6",
+          "Slashing"
+        ],
+        "98587": [
+          "Claws",
+          "+6",
+          "5 ft",
+          "1d4+3",
+          "Slashing"
+        ],
+        "98645": [
+          "+6",
+          "+1",
+          "+6",
+          "0",
+          "0",
+          "0"
+        ],
+        "98593": [
+          "Stealth"
+        ],
+        "98592": [],
+        "98591": [
+          "Critical hit"
+        ],
+        "98651": [
+          "Daunting Roar",
+          "As a bonus action you can let out an especially menacing roar. Creatures of your choice within 10 feet of you that can hear you must succeed on a Wisdom saving throw or become frightened of you until the end of your next turn. The DC of the save equals 14. Once you use this trait you can't use it again until you finish a short or long rest."
+        ],
+        "98650": [
+          "Great Weapon Fighting",
+          "When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands you can reroll the die and must use the new roll even if the new roll is a 1 or a 2."
+        ],
+        "98649": [
+          "Second Wind",
+          "You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn you can use a bonus action to regain hit points equal to 1d10 + your fighter level.  Once you use this feature you must finish a short or long rest before you can use it again."
+        ],
+        "98648": [
+          "Action Surge",
+          "Starting at 2nd level you can push yourself beyond your normal limits for a moment. On your turn you can take one additional action."
+        ],
+        "98647": [
+          "Rallying Cry",
+          "When you use your Second Wind feature you can choose up to three creatures within 60 feet of you that are allied with you. Each one regains hit points equal to your fighter level provided that the creature can see or hear you."
+        ],
+        "98646": [
+          "Great Weapon Master",
+          "On your turn when you score a critical hit with a melee weapon or reduce a creature to 0 hit points with one you can make one melee weapon attack as a bonus action. Before you make a melee attack with a heavy weapon that you are proficient with you can choose to take a -5 penalty to the attack roll. If the attack hits you add +10 to the attack’s damage."
+        ]
+      }
+    },
+    {
+      "id": 15890,
+      "name": "Loxodon male cleric - Chandruuv",
+      "folder": "Mercenary group #1 - The Shieldwrights",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98583": [
+          "588 pounds"
+        ],
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "-2"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "0"
+        ],
+        "98561": [
+          "+3"
+        ],
+        "98562": [
+          "+1"
+        ],
+        "98563": [
+          "61"
+        ],
+        "98564": [
+          "16"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98582": [
+          "8 feet 3 inches"
+        ],
+        "98596": [],
+        "98595": [],
+        "98591": [],
+        "98590": [
+          "War-Hammer",
+          "+5",
+          "5 ft",
+          "1d8+2(1d10+2)",
+          "Bludgeoning"
+        ],
+        "98589": [
+          "Trunk",
+          "+5",
+          "5 ft",
+          "3",
+          "Bludgeoning"
+        ],
+        "98588": [
+          "Sacred Flame",
+          "DEX 14",
+          "60 ft",
+          "2d8",
+          "Radiant"
+        ],
+        "98587": [
+          "Inflict wounds (4x)",
+          "+6",
+          "5 ft",
+          "3d10",
+          "Necrotic"
+        ],
+        "98645": [
+          "+2",
+          "-2",
+          "+3",
+          "0",
+          "+6",
+          "+4"
+        ],
+        "98593": [
+          "Stealth"
+        ],
+        "98592": [
+          "Charmed; Frightened"
+        ],
+        "98651": [
+          "Cure Wounds (3x)",
+          "A creature you touch regains a number of hit points equal to 2d8+3. This spell has no effect on undead or constructs."
+        ],
+        "98650": [
+          "Create Food and Water (3x)",
+          "You create 45 pounds of food and 30 gallons of water on the ground or in containers within range enough to sustain up to fifteen humanoids or five steeds for 24 hours. The food is bland but nourishing and spoils if uneaten after 24 hours. The water is clean and doesn’t go bad."
+        ],
+        "98649": [
+          "Keen Smell",
+          "Thanks to your sensitive trunk you have advantage on Wisdom (Perception) Wisdom (Survival) and Intelligence (Investigation) checks that involve smell."
+        ],
+        "98648": [
+          "Channel Divinity: Rhonas' Blessing (1x)",
+          "At 2nd level you can use your Channel Divinity to enhance your physical might. When you make an attack roll ability check or saving throw using Strength you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll but before the DM says whether the roll succeeds or fails. At 6th level when a creature within 30 feet of you makes an attack roll ability check or saving throw using Strength you can use your reaction to grant that creature a +10 bonus to the roll using your Channel Divinity. You make this choice after you see the roll but before the DM says whether the roll succeeds or fail."
+        ],
+        "98647": [
+          "Destroy Undead (1x)",
+          "As an action you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw it is turned for 1 minute or until it takes any damage.  A turned creature must spend its turns trying to move as far away from you as it can and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move the creature can use the Dodge action. Starting at 5th level when an undead fails its saving throw against your Turn Undead feature the creature is instantly destroyed if its challenge rating is at or below 1/2. "
+        ],
+        "98646": [
+          "Angry Tank",
+          "When a creature hit you with an attack using a non-magical melee weapon the attacker must roll a d20. On a roll of 10 or lower the weapon breaks. Non-magical projectiles and improvised weapons break automatically (no roll required)."
+        ]
+      }
+    },
+    {
+      "id": 15886,
+      "name": "Raguch the Ogrillion",
+      "folder": "Mercenary group #2",
+      "type": "Giant",
+      "description": "<p><br></p>",
+      "notes": "<p>Languages: Common, Orc, Giant</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "0"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "0"
+        ],
+        "98563": [
+          "33"
+        ],
+        "98564": [
+          "12"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [
+          "401 pounds"
+        ],
+        "98582": [
+          "8 feet 1 inches"
+        ],
+        "98596": [],
+        "98595": []
+      }
+    },
+    {
+      "id": 15889,
+      "name": "The Ondonti male druid/cleric",
+      "folder": "Mercenary group #2",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "0"
+        ],
+        "98561": [
+          "+3"
+        ],
+        "98562": [
+          "0"
+        ],
+        "98563": [
+          "18"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [
+          "230 pounds"
+        ],
+        "98582": [
+          "6 feet 2 inches"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Scythe",
+          "+3",
+          "5 ft",
+          "1d10",
+          "Slashing"
+        ],
+        "98589": [
+          "Thorn Whip",
+          "+5",
+          "30 ft",
+          "1d6",
+          "Piercing"
+        ],
+        "98588": [],
+        "98587": [],
+        "98593": [],
+        "98592": [
+          "Poison"
+        ],
+        "98591": [
+          "Charm spells"
+        ]
+      }
+    },
+    {
+      "id": 15887,
+      "name": "The Half-Orc Female sorcerer leader",
+      "folder": "Mercenary group #2",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "0"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "0"
+        ],
+        "98562": [
+          "+2"
+        ],
+        "98564": [
+          "13"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [
+          "200 pounds"
+        ],
+        "98582": [
+          "6 ft"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Shortsword",
+          "+4",
+          "5 ft",
+          "1d6+2",
+          "Slashing"
+        ],
+        "98589": [
+          "Poison Spray",
+          "DC 14 CON",
+          "10 ft",
+          "1d12",
+          "Poison"
+        ],
+        "98588": [
+          "Ray of Sickness",
+          "+4",
+          "60 ft",
+          "2d8",
+          "Poison/DC 14 CON"
+        ],
+        "98587": [
+          "Cloud of Daggers",
+          "Instant( up for minute)",
+          "60 ft",
+          "4d4",
+          "Slashing"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98563": [
+          "26"
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          "Enlarge/Reduce",
+          "You cause a creature or an object you can see within range to grow larger or smaller for the duration. Choose either a creature or an object that is neither worn nor carried. If the target is unwilling it can make a Constitution saving throw. On a success the spell has no effect.  If the target is a creature everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.  Enlarge. The target’s size doubles in all dimensions and its weight is multiplied by eight. This growth increases its size by one category – from Medium to Large for example. If there isn’t enough room for the target to double its size the creature or object attains the maximum possible size in the space available. Until the spell ends the target also has advantage on Strength checks and Strength saving throws. The target’s weapons also grow to match its new size. While these weapons are enlarged the target’s attack with them deal 1d4 extra damage.  Reduce. The target’s size is halved in all dimensions and its weight is reduced to one-eighth of normal. This reduction decreases its size by one category – from Medium to Small for example. Until the spell ends the target also has disadvantage on Strength checks and Strength saving throws. The target’s weapons also shrink to match its new size. While these weapons are reduced the target’s attacks with them deal 1d4 less damage (this can’t reduce the damage below 1)."
+        ],
+        "98649": [
+          "Hold Person",
+          "Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns the target can make another Wisdom saving throw. On a success the spell ends on the target."
+        ],
+        "98646": [
+          "Twinned Spell",
+          "When you cast a spell that targets only one creature and doesn't have a range of self you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell."
+        ],
+        "98645": [
+          "CON +4",
+          "CHA +5",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "98651": [
+          "Control flames",
+          "You choose nonmagical flame that you can see within range and that fits within a 5-foot cube. You affect it in one of the following ways:  You instantaneously expand the flame 5 feet in one direction provided that wood or other fuel is present in the new location. You instantaneously extinguish the flames within the cube. You double or halve the area of bright light and dim light cast by the flame change its color or both. The change lasts for 1 hour. You cause simple shapes—such as the vague form of a creature an inanimate object or a location—to appear within the flames and animate as you like. The shapes last for 1 hour."
+        ],
+        "98650": [
+          "Sudden Awakening",
+          "Each sleeping creature you choose within range awakens and then each prone creature within range can stand up without expending any movement."
+        ]
+      }
+    },
+    {
+      "id": 15888,
+      "name": "The Gray Orc male",
+      "folder": "Mercenary group #2",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [],
+        "98589": [],
+        "98588": [],
+        "98587": [],
+        "98645": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 15899,
+      "name": "Wild Man barbarian",
+      "folder": "Mercenary group #4",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [
+          "250 pounds"
+        ],
+        "98582": [
+          "6 feet 5 inches"
+        ]
+      }
+    },
+    {
+      "id": 15901,
+      "name": "Elftaur female druid",
+      "folder": "Mercenary group #4",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [
+          "1085 pounds"
+        ],
+        "98582": [
+          "6 feet 5 inches"
+        ]
+      }
+    },
+    {
+      "id": 15900,
+      "name": "Tiefling female sorcerer leader",
+      "folder": "Mercenary group #4",
+      "type": "",
+      "description": "<p><br></p><p><br></p>",
+      "notes": "<p><br></p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [
+          "192 pounds"
+        ],
+        "98582": [
+          "6 feet 7 inches"
+        ],
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98590": [
+          ""
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98651": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15898,
+      "name": "Leonin male (rogue/assasin)",
+      "folder": "Mercenary group #4",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [
+          "330 pounds"
+        ],
+        "98582": [
+          "6 feet 3 inches"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [],
+        "98589": [],
+        "98588": [],
+        "98587": [],
+        "98645": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 15912,
+      "name": "Hyena",
+      "folder": "Enemies/gnolls",
+      "type": "Beast",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+0"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "1d8+1"
+        ],
+        "98564": [
+          "11"
+        ],
+        "98565": [
+          "50"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+2",
+          "5 ft",
+          "1d6",
+          "Piercing"
+        ],
+        "98589": [],
+        "98588": [],
+        "98587": [],
+        "98645": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Pack tactics",
+          "The hyena has advantage on an attack roll against a creature if at least one of the hyena's allies is within 5 feet of the creature and the ally isn't incapacitated."
+        ],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 15910,
+      "name": "Gnoll Spearmen",
+      "folder": "Enemies/gnolls",
+      "type": "Humanoid",
+      "description": "<p><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">Gnolls are feral, hyena-headed humanoids that attack without warning, slaughtering their victims and devouring their flesh.</span></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+0"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "5d8"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [
+          "280-320 pounds"
+        ],
+        "98582": [
+          "7 feet - 7 feet 6 inches"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+4",
+          "5 ft",
+          "1d4+2",
+          "Piercing"
+        ],
+        "98589": [
+          "Spear",
+          "+4",
+          "5 ft (20/60 ft)",
+          "1d6+2",
+          "Piercing"
+        ],
+        "98588": [
+          "Spear (Two handed)",
+          "+4",
+          "5 ft",
+          "1d8+2",
+          "Piercing"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Rampage",
+          "When the gnoll reduces a creature to 0 hit points with a melee attack on its turn the gnoll can take a bonus action to move up to half its speed and make a bite attack."
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15911,
+      "name": "Gnoll Ranger",
+      "folder": "Enemies/gnolls",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+0"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "5d8"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+4",
+          "5 ft",
+          "1d4+2",
+          "Piercing"
+        ],
+        "98589": [
+          "Longbow",
+          "+3",
+          "150/600 ft",
+          "1d8+1",
+          "Piercing"
+        ],
+        "98588": [],
+        "98587": [],
+        "98645": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Rampage",
+          "When the gnoll reduces a creature to 0 hit points with a melee attack on its turn the gnoll can take a bonus action to move up to half its speed and make a bite attack."
+        ],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 15913,
+      "name": "Krenshar",
+      "folder": "Enemies/gnolls",
+      "type": "Monstrosity",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "2d8+2"
+        ],
+        "98564": [
+          "13"
+        ],
+        "98565": [
+          "40"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+4",
+          "5 ft",
+          "2d4+2",
+          "Piercing"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98651": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15915,
+      "name": "Gnoll Krenshar rider",
+      "folder": "Enemies/gnolls",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-1"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "5d10+10"
+        ],
+        "98564": [
+          "16"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+5",
+          "5 ft",
+          "1d4+3",
+          "Piercing"
+        ],
+        "98589": [
+          "Flail",
+          "+5",
+          "5 ft",
+          "1d8+2",
+          "Bludgeoning"
+        ],
+        "98588": [],
+        "98587": [],
+        "98645": [],
+        "98593": [],
+        "98592": [
+          "Falling of mount"
+        ],
+        "98591": [],
+        "98651": [
+          "Unwavering Mark",
+          "While it is within 5 feet of you a creature marked by you has disadvantage on any attack roll that doesn't target you."
+        ],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 15914,
+      "name": "Dire Krenshar",
+      "folder": "Enemies/gnolls",
+      "type": "Large monstrosity",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "5d10+10"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "50 feet"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+5",
+          "5 ft",
+          "2d6+3",
+          "Piercing"
+        ],
+        "98589": [
+          "Claws",
+          "+5",
+          "5 ft",
+          "1d4",
+          "Slashing"
+        ],
+        "98588": [],
+        "98587": [],
+        "98645": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Knocking prone",
+          "When hitting with claws if the target is a creature it must succeed on a DC 13 Strength saving throw or be knocked prone."
+        ],
+        "98650": [
+          "Scare",
+          "A krenshar can pull the skin back from its head revealing the musculature and bony structures of its skull. Combining this with a loud screech produces an unsettling effect on a single creature within 100 feet. The target must succeed on a DC 12 Charisma saving throw or suffer the Frightened condition. The target can make a new saving throw at the end of each of its turns. A creature that successfully saves cannot be affected again by the same krenshar’s scare ability for 24 hours. The shriek does not affect other krenshars."
+        ],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 25833,
+      "name": "Nightcrawler",
+      "folder": "The Fuckening End",
+      "type": "Gargantuan undead (nightshade), chaotic evil",
+      "description": "<p>A nightcrawler is a gargantuan behemoth which is a Shadowfell-native relative of the purple worm, and is utterly black in color.</p><p>Nightcrawlers resembled purple worms, but were covered in solid black, chitinous armor. Even the teeth and the inside of the mouth were black. They were approximately 100 feet (30 meters) long and weighed 55,000 pounds (25,000 kilograms).</p>",
+      "notes": "<p><span style=\"color: rgb(42, 24, 4);\">The nightcrawler can cast the following spells, requiring no material components:</span></p><p><span style=\"color: rgb(42, 24, 4);\">At will:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Blight\" rel=\"noopener noreferrer\" target=\"_blank\">blight</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Contagion\" rel=\"noopener noreferrer\" target=\"_blank\">contagion</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Darkness\" rel=\"noopener noreferrer\" target=\"_blank\">darkness</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Detect_Magic\" rel=\"noopener noreferrer\" target=\"_blank\">detect magic</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Dispel_Magic\" rel=\"noopener noreferrer\" target=\"_blank\">dispel magic</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(as a 5th-level spell),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Haste\" rel=\"noopener noreferrer\" target=\"_blank\">haste</a></em><span style=\"color: rgb(42, 24, 4);\">*,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Invisibility\" rel=\"noopener noreferrer\" target=\"_blank\">invisibility</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:See_Invisibility\" rel=\"noopener noreferrer\" target=\"_blank\">see invisibility</a></em><span style=\"color: rgb(42, 24, 4);\">*</span></p><p><span style=\"color: rgb(42, 24, 4);\">3/day:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Cone_of_Cold\" rel=\"noopener noreferrer\" target=\"_blank\">cone of cold</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(as a 7th-level spell),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Confusion\" rel=\"noopener noreferrer\" target=\"_blank\">confusion</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Hold_Monster\" rel=\"noopener noreferrer\" target=\"_blank\">hold monster</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(as a 5th-level spell)</span></p><p><span style=\"color: rgb(42, 24, 4);\">1/day:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Finger_of_Death\" rel=\"noopener noreferrer\" target=\"_blank\">finger of death</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Hold_Monster\" rel=\"noopener noreferrer\" target=\"_blank\">hold monster</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(as a 9th-level spell),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Plane_Shift\" rel=\"noopener noreferrer\" target=\"_blank\">plane shift</a></em></p><p><span style=\"color: rgb(42, 24, 4);\">*The nightcrawler casts these spells on itself before combat.</span></p><p><br></p><p><span style=\"color: rgb(42, 24, 4);\">Senses: blindsight 30 ft., darkvision 120 ft., tremorsense 60 ft., passive Perception 26</span></p><p><span style=\"color: rgb(42, 24, 4);\">Languages: Undercommon, telepathy 100 ft.</span></p><p><br></p><p>A swallowed creature is blinded and restrained and has total cover against attacks and other effects outside the nightcrawler.</p><p>At the start of each of the nightcrawler's turns, each creature swallowed by the nightcrawler takes 21 (6d6) necrotic damage and must succeed on a DC 17 Constitution saving throw or have its hit point maximum reduced by an amount equal to the necrotic damage taken. This reduction lasts until the target completes a long rest. The target dies if this effect reduces its hit point maximum to 0.</p><p>Creatures which die inside the nightcrawler's stomach immediately rise as nightshade zombies under the nightcrawler's control, retaining their place in the initiative order, and are immediately regurgitated by the nightcrawler, landing in a space within 10 feet of the nightcrawler.</p><p>If the nightcrawler takes 30 damage or more on a single turn from a creature inside it, the nightcrawler must succeed on a DC 21 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the nightcrawler. If the nightcrawler dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone.</p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+9"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "+6"
+        ],
+        "98560": [
+          "+4"
+        ],
+        "98561": [
+          "+4"
+        ],
+        "98562": [
+          "+3"
+        ],
+        "98563": [
+          "16d20+96 (264)"
+        ],
+        "98564": [
+          "18 (with haste 20)"
+        ],
+        "98565": [
+          "50 ft ; burrow 30 ft"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+14 (DC 20 DEX)",
+          "10 ft",
+          "3d8+9",
+          "Piercing"
+        ],
+        "98589": [
+          "Stinger",
+          "+14 (DC 20 CON)",
+          "10 ft",
+          "3d6 +9 (12d6)",
+          "Piercing (poison)"
+        ],
+        "98588": [
+          "Swallowed",
+          "DC 17 CON",
+          "",
+          "6d6",
+          "Necrotic"
+        ],
+        "98587": [
+          "Summon Undead (1/day)",
+          "",
+          "",
+          "Can choose to summon 1d8+8 shadows; 1d4+2 nightshade zombies; 1d4+2 wraiths; 1d4 dread specters",
+          ""
+        ],
+        "98645": [
+          "+9",
+          "+0",
+          "+6",
+          "+4",
+          "+10",
+          "+3"
+        ],
+        "98593": [
+          "radiant"
+        ],
+        "98592": [],
+        "98591": [
+          "cold; poison; bludgeoning NM; piercing NM; slashing NM; exhaustion; poisoned"
+        ],
+        "98651": [
+          "Innate Spellcasting",
+          "The nightcrawler's innate spellcasting ability is Charisma (save DC 17)."
+        ],
+        "98650": [
+          "Magic resistance",
+          "The nightcrawler has advantage on saving throws against spells and other magical effects."
+        ],
+        "98649": [
+          "Magic Weapons",
+          "The nightcrawler's weapon attacks are magical."
+        ],
+        "98648": [
+          "Shadow Camouflage",
+          ""
+        ],
+        "98647": [
+          "Turn Resistance aura",
+          "The nightcrawler and any other undead creature within 30 feet of it have advantage on saving throws against any effect that turns undead."
+        ],
+        "98646": [
+          "Sunlight Weakness",
+          "The nightcrawler and any other undead creature within 30 feet of it have advantage on saving throws against any effect that turns undead."
+        ],
+        "98583": [
+          "55000 pounds"
+        ],
+        "98582": [
+          "100 feet"
+        ]
+      }
+    },
+    {
+      "id": 25835,
+      "name": "Shadow",
+      "folder": "The Fuckening End",
+      "type": "Medium undead, chaotic evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 10</p><p>Languages: ---</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "-2"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "-1"
+        ],
+        "98563": [
+          "3d8+3"
+        ],
+        "98564": [
+          "12"
+        ],
+        "98565": [
+          "40 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Strength Drain",
+          "+4 (DC 8)",
+          "5 ft",
+          "2d6+2 (1d4)",
+          "Necrotic (reduced strength)"
+        ],
+        "98645": [
+          "-2",
+          "+2",
+          "+1",
+          "-2",
+          "+0",
+          "-1"
+        ],
+        "98593": [
+          "radiant"
+        ],
+        "98592": [
+          "acid; cold; fire; lightning; thunder; bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98591": [
+          "necrotic; poison; exhaustion; frightened; grappled; paralyzed; petrified; poisoned; prone; restrained"
+        ],
+        "98651": [
+          "Amorphus",
+          "The shadow can move through a space as narrow as 1 inch wide without squeezing."
+        ],
+        "98650": [
+          "Shadow Stealth",
+          ""
+        ],
+        "98649": [
+          "Sunlgiht Weakness",
+          "While in sunlight the shadow has disadvantage on attack rolls ability checks and saving throws."
+        ],
+        "98648": [
+          "Undead Nature",
+          "A shadow doesn't require air food drink or sleep."
+        ],
+        "98647": [
+          "Dark Disposition",
+          "From the darkness the shadow reaches out to feed on living creatures' vitality. They can consume any living creature but they are especially drawn to creatures untainted by evil. A creature that lives a life of goodness and piety consigns its basest impulses and strongest temptations to the darkness where the shadows hunger. "
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25836,
+      "name": "Wraith",
+      "folder": "The Fuckening End",
+      "type": "Medium undead, neutral evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 12</p><p>Languages: any</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "-2"
+        ],
+        "98558": [
+          "+3"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "+2"
+        ],
+        "98562": [
+          "+2"
+        ],
+        "98563": [
+          "9d8 +27 (67)"
+        ],
+        "98564": [
+          "13"
+        ],
+        "98565": [
+          "0 ft. fly 60 ft (hover)"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Life Drain",
+          "+6 (DC 14 CON)",
+          "5 ft",
+          "4d8+3",
+          "Necrotic (reduces hp max)"
+        ],
+        "98589": [
+          "Create Specter",
+          "",
+          "10 ft",
+          "Raise Specter",
+          ""
+        ],
+        "98645": [
+          "-2",
+          "+3",
+          "+3",
+          "+1",
+          "+2",
+          "+2"
+        ],
+        "98593": [],
+        "98592": [
+          "acid; cold; fire; lightning; thunder; bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98591": [
+          "necrotic; poison; charmed; exhaustion; grappled; paralyzed; petrified; poisioned; prone; restrained"
+        ],
+        "98651": [
+          "Incorporeal Movement",
+          "The wraith can move through other creatures and objects as if they were difficult terrain. It takes 1d10 force damage if it ends its turn inside an object."
+        ],
+        "98650": [
+          "Sunlight Sensitivity",
+          "While in sunlight the wraith has disadvantage on attack rolls as well as on Wisdom (Perception) checks that rely on sight."
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25838,
+      "name": "Specter",
+      "folder": "The Fuckening End",
+      "type": "Medium undead, chaotic evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 10</p><p>Languages: any, but can't speak</p>",
+      "ability_ids": [],
+      "stats": {
+        "98592": [
+          "acid; cold; fire; lightning; thunder; bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98557": [
+          "-5"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+0"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "5d8 (22)"
+        ],
+        "98564": [
+          "12"
+        ],
+        "98565": [
+          "0 ft.; fly 50 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Life Drain",
+          "+4 (DC 10 CON)",
+          "5ft",
+          "3d6",
+          "Necrotic (reduced hp max)"
+        ],
+        "98645": [
+          "-5",
+          "+2",
+          "+0",
+          "+0",
+          "+0",
+          "+0"
+        ],
+        "98593": [],
+        "98591": [
+          "necrotic; posion; charmed; exhaustion; grappled; paralyzed; petrified; poisoned; prone; restrained; unconscious"
+        ],
+        "98651": [
+          "Incorporeal Movement",
+          "The specter can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+        ],
+        "98650": [
+          "Sunlight sensitivity",
+          "While in sunlight the specter has disadvantage on attack rolls as well as on Wisdom (Perception) checks that rely on sight."
+        ],
+        "98649": [
+          "Undead Nature",
+          "A specter doesn't require air food drink or sleep."
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25837,
+      "name": "Dread Specter",
+      "folder": "The Fuckening End",
+      "type": "Medium undead, chaotic evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 12</p><p>Languages: any, but can't speak</p>",
+      "ability_ids": [],
+      "stats": {
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98557": [
+          "-5"
+        ],
+        "98558": [
+          "+5"
+        ],
+        "98559": [
+          "+4"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+2"
+        ],
+        "98562": [
+          "+3"
+        ],
+        "98563": [
+          "15d8+60 (127)"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "0 ft.; fly 50 ft. (hover)"
+        ],
+        "98583": [],
+        "98590": [
+          "Life Drain",
+          "+9 (DC 16 CON)",
+          "5 ft",
+          "14d8",
+          "Necrotic (reduce hp max)"
+        ],
+        "98645": [
+          "-5",
+          "+5",
+          "+4",
+          "+0",
+          "+2",
+          "+3"
+        ],
+        "98593": [],
+        "98592": [
+          "acid; cold; fire; lightning; thunder; bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98591": [
+          "necrotic; poison; charmed; exhaustion; grappled; paralyzed; petrified; poisoned; prone; restrained; unconscious"
+        ],
+        "98651": [
+          "Incorporeal Movement",
+          "The specter can move through other creatures and objects as if they were difficult terrain. It takes 1d10 force damage if it ends its turn inside an object."
+        ],
+        "98650": [
+          "Sunlight Sensitivity",
+          "While in sunlight the specter has disadvantage on attack rolls as well as on Wisdom (Perception) checks that rely on sight."
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25834,
+      "name": "Nightshade Zombie",
+      "folder": "The Fuckening End",
+      "type": " Medium undead (nightshade), lawful evil",
+      "description": "<p>A much stronger relative of the wight, native to the Shadowfell. Nightshade zombies look much like ordinary, Material Plane-native zombies, but are easily distinguishable from their lesser cousins by the fell aura emanating from them, visible to the naked eye as purple-black smoke curling around the corpse.</p><p><br></p><p>One would be remiss to treat nightshades as flippantly as ordinary zombies. Nightshades lack the shambling gait of ordinary zombies; they are capable of incredible bursts of speed which close large distances quickly. Their touch can drain your very life force, and when you're nothing more than a withered husk, your corpse is infused with energy from the Shadowfell, and you join their ranks. As if that weren't enough, these creatures' shadow magic protects them from injury, and they spread deadly diseases which can debilitate their victims for days on end if they even survive an encounter with a nightshade. Worst of all: they're as intelligent as humans, and can plan and strategize. One has to wonder how the world has not yet been overrun by these monstrosities.</p>",
+      "notes": "<p><span style=\"color: rgb(42, 24, 4);\">The zombie can cast the following spells, requiring no material components:</span></p><p><span style=\"color: rgb(42, 24, 4);\">At will:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Darkness\" rel=\"noopener noreferrer\" target=\"_blank\">darkness</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Detect_Magic\" rel=\"noopener noreferrer\" target=\"_blank\">detect magic</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:See_Invisibility\" rel=\"noopener noreferrer\" target=\"_blank\">see invisibility</a></em></p><p><span style=\"color: rgb(42, 24, 4);\">3/day:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Contagion\" rel=\"noopener noreferrer\" target=\"_blank\">contagion</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Hold_Monster\" rel=\"noopener noreferrer\" target=\"_blank\">hold monster</a></em></p><p><br></p><p>Senses: darkvision 60 ft., passive Perception 14</p><p>Languages: any</p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "+1"
+        ],
+        "98563": [
+          "10d8+30 (75)"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "30 ft."
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Life Drain",
+          "+9 (DC 17 CON)",
+          "5 ft",
+          "6d8",
+          "Necrotic (reduced hp max)"
+        ],
+        "98645": [
+          "+3",
+          "+1",
+          "+3",
+          "+0",
+          "+1",
+          "+1"
+        ],
+        "98593": [
+          "radiant"
+        ],
+        "98592": [
+          "bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98651": [
+          "Aggresive",
+          ""
+        ],
+        "98650": [
+          "Innate Spellcasting",
+          "The zombie's innate spellcasting ability is Constitution (save DC 14)."
+        ],
+        "98649": [
+          "Shadow Camouflage",
+          "While in dim light or darkness the zombie can take the Hide action as a bonus action and has advantage on Dexterity (Stealth) checks."
+        ],
+        "98648": [
+          "Shadow Sight",
+          "Magical darkness doesn't impede the zombie's darkvision."
+        ],
+        "98647": [
+          "Sunlight Weakness",
+          "While in sunlight the zombie has disadvantage on attack rolls ability checks and saving throws."
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98646": [
+          "Undead Fortitude",
+          "If damage reduces the zombie to 0 hit points it must make a Constitution saving throw with a DC of 5 + the damage taken unless the damage is radiant or from a critical hit. On a success the zombie drops to 1 hit point instead."
+        ],
+        "98587": [
+          ""
+        ],
+        "98591": [
+          "cold; poison; exhaustion; poisoned"
+        ]
+      }
+    },
+    {
+      "id": 25832,
+      "name": "Atropal",
+      "folder": "The Fuckening End",
+      "type": " Huge undead (titan), lawful evil",
+      "description": "<p>Atropals are stillborn godlings who spontaneously rise as undead. A soul-numbing cold comes before and follows after an atropal — the life energy of heroic creatures is suppressed in its foul aura, and the life force of lesser creatures is extinguished. An atropal is black with afterbirth, malformed and unfinished, and obviously undead. Not even divine intervention can breathe life into this miserable abomination.</p><p><br></p><p>Its wet, wrinkled, and bloated humanoid body is surmounted by a hairless, overlarge head, with glassy, vacant eyes. It constantly drools stinking ichor as it mouths obscenities. Its arms are too slender and its tiny hands end in cruelly sharpened nails, while its legs are atrophied, dead things that hang uselessly below it. An atropal never walks, but always floats.</p><p><br></p><p>When an atropal rises, the gods cringe, and seek to banish the horrid remnant by sealing it away in a separate cemetery plane or beneath the crypts of dead civilizations. Woe to the adventuring party or wizard-archeologist who untombs an atropal — once released, the atropal kills everything in a wider and wider swath until it is somehow neutralized.</p><p><br></p><p>In combat, an atropal sends undead minions and nightcrawlers before it. An atropal is quick to cast dispel magic on foes, especially those using spells like death ward to protect themselves from negative energy.</p>",
+      "notes": "<p><span style=\"color: rgb(42, 24, 4);\">The atropal can cast the following spells, requiring no material components:</span></p><p><span style=\"color: rgb(42, 24, 4);\">At will:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Arcane_Hand\" rel=\"noopener noreferrer\" target=\"_blank\">arcane hand</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(as a 9th-level spell),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Cone_of_Cold\" rel=\"noopener noreferrer\" target=\"_blank\">cone of cold</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(as a 9th-level spell),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Dispel_Magic\" rel=\"noopener noreferrer\" target=\"_blank\">dispel magic</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(as a 5th-level spell),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Greater_Invisibility\" rel=\"noopener noreferrer\" target=\"_blank\">greater invisibility</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/Elemental_Bane_(5e_Spell)\" rel=\"noopener noreferrer\" target=\"_blank\">elemental bane</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(necrotic; as a 9th-level spell),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Nondetection\" rel=\"noopener noreferrer\" target=\"_blank\">nondetection</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(self only),&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Plane_Shift\" rel=\"noopener noreferrer\" target=\"_blank\">plane shift</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Speak_With_Dead\" rel=\"noopener noreferrer\" target=\"_blank\">speak with dead</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Teleport\" rel=\"noopener noreferrer\" target=\"_blank\">teleport</a></em></p><p><span style=\"color: rgb(42, 24, 4);\">5/day:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Haste\" rel=\"noopener noreferrer\" target=\"_blank\">haste</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Mislead\" rel=\"noopener noreferrer\" target=\"_blank\">mislead</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Weird\" rel=\"noopener noreferrer\" target=\"_blank\">weird</a></em></p><p><br></p><p>Senses: blindsight 120 ft., darkvision 120 ft., truesight 120 ft., passive Perception 25</p><p>Languages: Abyssal, Celestial, Infernal, Common; telepathy 1000 ft</p><p><br></p><p>LEGENDARY ACTIONS</p><p>The atropal can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The atropal regains spent legendary actions at the start of its turn.</p><p><br></p><p>Touch. The atropal uses its Withering Touch.</p><p>Death Ray (Costs 2 Actions). The atropal uses its Death Ray.</p><p>Wail (Costs 3 Actions). The atropal lets out a withering wail. Any creature within 120 feet of the atropal that can hear the wail must succeed on a DC 22 Constitution saving throw or gain one level of exhaustion.</p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+7"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+10"
+        ],
+        "98560": [
+          "+7"
+        ],
+        "98561": [
+          "+6"
+        ],
+        "98562": [
+          "+9"
+        ],
+        "98563": [
+          "48d12+480 (792)"
+        ],
+        "98564": [
+          "18"
+        ],
+        "98565": [
+          "10 ft. fly 80 ft. (hover)"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Withering Touch",
+          "+16 (DC 22 CON)",
+          "10 ft",
+          "8d6+7",
+          "Necrotic"
+        ],
+        "98589": [
+          "Death Ray",
+          "DC 22 CON",
+          "120 ft",
+          "13d8 + 30 (save half)",
+          "Necrotic"
+        ],
+        "98588": [
+          "Hitpoint reduction",
+          "If failed DC",
+          "",
+          "HP max reduced by damage taken",
+          "At 0 summons nightshade zombie"
+        ],
+        "98587": [
+          "Summon Nightcrawler",
+          "Recharge 6",
+          "60 ft",
+          "",
+          ""
+        ],
+        "98645": [
+          "+7",
+          "+2",
+          "+10",
+          "+7",
+          "+15",
+          "+9"
+        ],
+        "98593": [],
+        "98592": [
+          "cold; fire"
+        ],
+        "98591": [
+          "poison; bludgeoning NM; piercing NM; slashing NM; charmed; exhaustion; paralyzed; petrified; poisoned; stunned"
+        ],
+        "98650": [
+          "Immutable Form / Turn Immunity",
+          "The atropal is immune to any spell or effect that would alter its form. The atropal is immune to effects that turn undead. "
+        ],
+        "98649": [
+          "Innate Spellcasting",
+          "The atropal's innate spellcasting ability is Wisdom (save DC 22 +15 to hit with spell attacks)."
+        ],
+        "98648": [
+          "Legendary Resistance (3/day)",
+          "If the atropal fails a saving throw it can choose to succeed instead."
+        ],
+        "98647": [
+          "Magic Resistance",
+          "The atropal has advantage on saving throws against spells and other magical effects."
+        ],
+        "98646": [
+          "Negative Energy Aura",
+          "Creatures within 30 feet of the atropal that aren't undead can't regain hit points and any creature that starts its turn within 30 feet of the atropal takes 10 (3d6) necrotic damage if it's not undead. Any humanoid that dies within this aura becomes a nightshade zombie under the atropal's command. The dead humanoid retains its place in the initiative order and animates at the start of its next turn provided that its body hasn't been completely destroyed."
+        ],
+        "98651": [
+          "Alert",
+          "The atropal gains a +5 bonus to initiative rolls. The atropal can't be surprised while conscious and other creatures don't gain advantage on attack rolls against it as a result of being unseen by it."
+        ]
+      }
+    },
+    {
+      "id": 26577,
+      "name": "Grootslang",
+      "folder": "The Fuckening Middle",
+      "type": "Gargantuan monstrosity, neutral evil",
+      "description": "<p><strong style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">Senses&nbsp;</strong><span style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">blindsight 30 ft., darkvision 60 ft., passive Perception 15</span></p><p><strong style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">Languages&nbsp;</strong><span style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">Common</span></p><p><strong style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">Challenge&nbsp;</strong><span style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">8 (3,900 XP)</span></p>",
+      "notes": "<p><strong style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\"><em>Swallow.</em></strong><span style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">&nbsp;Grootslang makes one bite attack against a Medium or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage and is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside Grootslang, and it takes 9 (2d8) bludgeoning damage at the start of each of Grootslang's turns.</span></p><p><span style=\"color: rgb(20, 20, 20); background-color: rgb(254, 254, 254);\">If Grootslang takes 30 damage or more on a single turn from a creature inside it, Grootslang must succeed on a DC 18 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of Grootslang. If Grootslang dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 5 feet of movement per round it was swallowed, exiting prone.</span></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+7"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+4"
+        ],
+        "98560": [
+          "+4"
+        ],
+        "98561": [
+          "+2"
+        ],
+        "98562": [
+          "-1"
+        ],
+        "98563": [
+          "10d20+40"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "40 ft; swim 40 ft"
+        ],
+        "98583": [],
+        "98582": [
+          "30 feet "
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+10",
+          "15 ft",
+          "2d8 + 7",
+          "Piercing"
+        ],
+        "98589": [
+          "Gore",
+          "+10",
+          "10 ft (target is prone)",
+          "2d10+7",
+          "Piercing"
+        ],
+        "98588": [
+          "Constrict",
+          "+10 (DC 18)",
+          "5 ft",
+          "2d10+7",
+          "Bludgeoning"
+        ],
+        "98587": [
+          "Swallow",
+          "DC 18",
+          "",
+          "2d8",
+          "Bludgeoning"
+        ],
+        "98645": [
+          "+10",
+          "+4",
+          "+4",
+          "+4",
+          "+4",
+          "+2"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Ageless",
+          "Grootslang cannot suffer from frailty of old age die from old age or be aged magically."
+        ],
+        "98650": [
+          "Magic resistance",
+          "Grootslang has advantage on saving throws made against spells and other magical effects."
+        ],
+        "98649": [
+          "Serpentine Charge",
+          "If Grootslang moves at least 20 feet straight toward a creature and then hits it with a bite or gore attack on the same turn that target must succeed on a DC 18 Strength saving throw or be knocked prone. If the target is prone Grootslang can make one constrict attack against it as a bonus action."
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 28879,
+      "name": "Scorpion",
+      "folder": "Creatures/Desert",
+      "type": "Tiny beast",
+      "description": "",
+      "notes": "<p>Senses Blindsight 10 Ft., passive Perception 9</p><p>Challenge 0 (10 XP)</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "-4"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "-1"
+        ],
+        "98560": [
+          "-5"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "-4"
+        ],
+        "98563": [
+          "3"
+        ],
+        "98564": [
+          "11"
+        ],
+        "98565": [
+          "10"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Sting",
+          "+2",
+          "5 ft",
+          "1d1 + 1d8 (DC 9 CON/halved)",
+          "Piercing + poison"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Blindsight 10 ft",
+          ""
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 28878,
+      "name": "Giant Scorpion",
+      "folder": "Creatures/Desert",
+      "type": "Large beast",
+      "description": "",
+      "notes": "<p>Senses Blindsight 60 Ft., passive Perception 9<br></p><p>Challenge 3 (700 XP)</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-5"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "-4"
+        ],
+        "98563": [
+          "84"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "40"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Claw (2x)",
+          "+4",
+          "5 ft",
+          "1d8+2 (DC 12 STR/DEX)",
+          "Bludgeoning (Grappled)"
+        ],
+        "98589": [
+          "Sting",
+          "+4",
+          "5 ft",
+          "1d10+2 (DC 12 CON - 4d10)",
+          "Piercing (Poison)"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Blindsight 60 ft",
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 28881,
+      "name": "Canyon Viper",
+      "folder": "Creatures/Desert",
+      "type": "Medium beast",
+      "description": "",
+      "notes": "<p>Senses passive Perception 14</p><p>Languages —</p><p>Challenge 1 (200 XP)</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+4"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "+2"
+        ],
+        "98562": [
+          "-5"
+        ],
+        "98563": [
+          "80"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "30 ft; swim 20 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+6",
+          "10 ft",
+          "1d6+4 (DC 12 CON (3d6))",
+          "Piercing (Poison)"
+        ],
+        "98589": [],
+        "98588": [],
+        "98587": [],
+        "98645": [
+          "+1",
+          "+5",
+          "+2",
+          "-4",
+          "+3",
+          "-5"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "poison; poisoned"
+        ],
+        "98651": [
+          "Infrared",
+          "The canyon viper can sense the heat signatures of all creatures within a 30 foot radius not behind at least 5 feet of cover even if they are magically hidden."
+        ],
+        "98650": [
+          "Keen Smell",
+          "The canyon viper has advantage on Wisdom (Perception) checks that rely on smell."
+        ],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 28880,
+      "name": "Girtablilu",
+      "folder": "Creatures/Desert",
+      "type": "Large monstrosity",
+      "description": "<p>Girtablilu fiercely guard ancient places and treasures lost to history. Far from civilized eyes, they thrive and piously protect their charges with the aid of monstrously large scorpions that girtablilu keep as pets.</p><p><br></p><p>All girtablilu share a zeal for religion, although the objects of veneration vary from tribe to tribe. Some girtablilu tribes still serve long-forgotten deities, preserving the divinities' names and holy rituals. Others embrace religions derived from prehistoric worship, devoted to the idea of gods that once were or might never have been.</p><p><br></p><p>Girtablilu leaders are clerics or oracles, and are responsible for the tribe's religious observances and laws. Tradition and service to the group are important. Those who violate tribal beliefs are killed or exiled into the harsh wasteland. Girtablilu believe that no sacrifice in life (including death in the service of the gods) goes unrewarded in the hereafter; this belief makes them fierce and fearless fighters.</p>",
+      "notes": "<p>Senses passive Perception 15<br>Languages Sylvian, Girtablilu<br>Challenge 5 (1,800 XP)</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+5"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+2"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "150 (10d10+50)"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "40"
+        ],
+        "98583": [
+          "800 pounds"
+        ],
+        "98582": [
+          "13 feet"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Glaive (1x)",
+          "+6",
+          "10 ft",
+          "1d10+3",
+          "Slashing"
+        ],
+        "98589": [
+          "Pincer (2x)",
+          "+6",
+          "5 ft",
+          "1d6+3",
+          "Bludgeoning"
+        ],
+        "98588": [
+          "Stinger (1x)",
+          "+6",
+          "10 ft",
+          "1d6+3 (DC 14 CON (4d10))",
+          "Piercing (Poison)"
+        ],
+        "98645": [
+          "+6",
+          "+5",
+          "+5",
+          "+0",
+          "+2",
+          "+0"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98587": [
+          ""
+        ],
+        "98651": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 29962,
+      "name": "Necrobotic Giant Scorpion",
+      "folder": "Creatures/Desert",
+      "type": "Large Undead",
+      "description": "<p>Blindsight 60 ft</p>",
+      "notes": "",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "0"
+        ],
+        "98560": [
+          "-5"
+        ],
+        "98561": [
+          "-5"
+        ],
+        "98562": [
+          "-4"
+        ],
+        "98563": [
+          "74"
+        ],
+        "98564": [
+          "16"
+        ],
+        "98565": [
+          "40 ft; Fly 60 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Claw (2x)",
+          "+6",
+          "5 ft",
+          "1d8+3 (DC 13 STR/DEX)",
+          "Bludgeoning (Grappled)"
+        ],
+        "98589": [
+          "Stinger",
+          "+6",
+          "10 ft",
+          "1d10+3",
+          "Piercing"
+        ],
+        "98593": [
+          "Cold"
+        ],
+        "98592": [
+          "Thunder"
+        ],
+        "98591": [
+          "Poison; Charmed; Poisoned; Exhaustion; Lightning"
+        ],
+        "98651": [
+          "Fly",
+          "As bonus action scorpion can use his air thrusters to fly up to 60 ft and hover"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 26579,
+      "name": "Sirian Werebull",
+      "folder": "Creatures/Desert",
+      "type": "Large beast, chaotic neutral",
+      "description": "<p>The Sirian Werebull is a very dangerous and fast enemy that primarily attacks by charging into the target and ramming it with their horns.</p>",
+      "notes": "<p>Senses: passive perception 12</p><p>Languages: ---</p><p>Challenge: 4</p>",
+      "ability_ids": [],
+      "stats": {
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98557": [
+          "+7"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+4"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "-2"
+        ],
+        "98562": [
+          "-1"
+        ],
+        "98563": [
+          "8d12+32"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "60 ft"
+        ],
+        "98590": [
+          "Gore",
+          "+10",
+          "5 ft",
+          "2d8+7",
+          "Piercing"
+        ],
+        "98589": [
+          "Hooves",
+          "+2",
+          "5 ft",
+          "1d6+2",
+          "Bludgeoning"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          "+7",
+          "+5",
+          "+7",
+          "-4",
+          "-2",
+          "-1"
+        ],
+        "98592": [
+          "Slowed"
+        ],
+        "98591": [
+          "Grappled"
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ],
+        "98651": [
+          "Charge",
+          "If the bull moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn the target takes an extra 16(4d8) damage. If the target is a creature it must succeed on a DC 15 Strength saving throw or be thrown in the air 10 ft and then fall knocked prone dealing extra 1d6 bludgeoning fall damage."
+        ]
+      }
+    },
+    {
+      "id": 30150,
+      "name": "Rocktor",
+      "folder": "Creatures/Desert",
+      "type": "Huge beast",
+      "description": "<p>CR 6</p>",
+      "notes": "",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+6"
+        ],
+        "98558": [
+          "-1"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "135"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "40 ft; burrow 50 ft"
+        ],
+        "98583": [
+          "17600 pounds"
+        ],
+        "98582": [
+          "Length 40 feet"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Gore (1x)",
+          "+9",
+          "5 ft",
+          "3d8+6",
+          "Piercing"
+        ],
+        "98589": [
+          "Bite (1x)",
+          "+9",
+          "5 ft",
+          "3d10+5",
+          "Piercing"
+        ],
+        "98588": [
+          "Tail (1x)",
+          "+9 (DC 16 STR)",
+          "10 ft",
+          "2d8+5 ",
+          "Bludgeoning (Knocked prone)"
+        ],
+        "98645": [
+          "+5",
+          "-1",
+          "+3",
+          "-4",
+          "+0",
+          "-2"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Hold breath",
+          "The Rocktor can hold its breath for 30 minutes"
+        ],
+        "98650": [
+          "Charge",
+          "moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone the elephant can make one bite attack against it as a bonus action."
+        ],
+        "98587": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 30147,
+      "name": "Bark Lizard",
+      "folder": "Creatures/Desert",
+      "type": "Large beast",
+      "description": "<p>Osmosis<br>When gained 380 hitpoints, the size is now huge and and attacks now deal extra dice damage. When gained 760 hitpoints, the size is now gargantuan and all attacks deal extra 3d10 poison damage on failed DC 17 CON save.<br><br>CR 5 ; 12 ; 18</p>",
+      "notes": "",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+4"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "-3"
+        ],
+        "98561": [
+          "-3"
+        ],
+        "98562": [
+          "-1"
+        ],
+        "98563": [
+          "138"
+        ],
+        "98564": [
+          "16"
+        ],
+        "98565": [
+          "35 ft; burrow 20 ft; fly 70 ft"
+        ],
+        "98583": [
+          "1200 pounds"
+        ],
+        "98582": [
+          "10 ft"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite (1x)",
+          "+7 (DC 13 CON)",
+          "10 ft",
+          "2d6+4 (1d4)",
+          "Piercing (Poison)"
+        ],
+        "98589": [
+          "Claw (2x)",
+          "+7",
+          "5 ft",
+          "1d6 +4",
+          "Slashing"
+        ],
+        "98588": [
+          "Vine throw (Recharge 5-6)",
+          "DC 15",
+          "60 ft",
+          "",
+          "Grappled and restrained"
+        ],
+        "98645": [
+          "+4",
+          "+3",
+          "+6",
+          "-3",
+          "-3",
+          "-1"
+        ],
+        "98593": [
+          "Fire"
+        ],
+        "98592": [],
+        "98591": [
+          "Cold"
+        ],
+        "98651": [
+          "Water walk",
+          "Bark lizard can move across water without sinking. The creature can't be drowned or sunk."
+        ],
+        "98649": [
+          "Osmosis",
+          "When creature is damaged by cold damage it's immune to that and heals itself for half of the damage and grows by 3 inches. The healing cap is 900 hit points. "
+        ],
+        "98587": [
+          ""
+        ],
+        "98650": [
+          "Tremorsense",
+          "When stationary for atleast 3 turns creature can root itself into the ground and sense creatures up to 60 ft away."
+        ],
+        "98648": [
+          "Camouflage",
+          "When stationary for atleast 3 turns the creature becomes dead tree like and camouflaged from others. WIth DC 20 perception check person can understand that it's not just a dead tree."
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 26580,
+      "name": "Kleer",
+      "folder": "Creatures/Desert",
+      "type": "Medium undead, neutral evil",
+      "description": "<p>Having been stripped of their skin and muscles,&nbsp;Mental&nbsp;brought the Kleers back to life by reconstructing their skeletons, which were the only parts of the creatures that remained. After being raised from the dead, they now serve in Mental's army and are thought to number in the tens of thousands.</p>",
+      "notes": "<p><strong style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">Senses</strong><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">&nbsp;passive Perception 6</span></p><p><strong style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">Languages</strong><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">&nbsp;—</span></p><p><strong style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">Challenge</strong><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">&nbsp;3</span></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+5"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "+2"
+        ],
+        "98561": [
+          "-3"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "3d8+14"
+        ],
+        "98564": [
+          "12"
+        ],
+        "98565": [
+          "45 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Claws (2x)",
+          "+5",
+          "5 ft",
+          "1d12+2",
+          "Slashing"
+        ],
+        "98645": [
+          "+5",
+          "+5",
+          "+4",
+          "+2",
+          "-3",
+          "-3"
+        ],
+        "98593": [
+          "Bludgeoning"
+        ],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Leap",
+          "If enemy is in 20 ft range and all movement is spent it can use bonus action to leap onto target"
+        ],
+        "98589": [
+          "Chain-ball",
+          "+8 (DC 16 STR)",
+          "120 ft",
+          "2d4+5",
+          "Bludgeoning (grappled and restrained)"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 26578,
+      "name": "Kongamato",
+      "folder": "Creatures/Desert",
+      "type": "Large beast, unaligned",
+      "description": "<p><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">First described and named by Frank Welland&nbsp;</span><em style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">In Witchbound Africa</em><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">&nbsp;(1932) as a large beaked, reddish creature with leathery wings, much of the writing about the kongamato points to locals identifying illustrations of a pterodactyl as the same creature. He also notes that “[locals] do not consider it to be an unnatural thing like a mulombe (demon) only a very awful thing, like a man-eating lion or a rogue elephant, but infinitely worse”. However the kongamato is a proper cryptid if there ever was one, there are many stories about it, and in truth it resembles a variety of airborne mythical creatures</span></p>",
+      "notes": "<p><strong style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">Senses</strong><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">&nbsp;passive Perception 13</span></p><p><strong style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">Languages</strong><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">&nbsp;—</span></p><p><strong style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">Challenge</strong><span style=\"background-color: rgb(254, 254, 254); color: rgb(20, 20, 20);\">&nbsp;3 (700 XP)</span></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+4"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "7d10+14"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "15 ft; fly 60 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+6",
+          "5 ft",
+          "2d6+4",
+          "Piercing"
+        ],
+        "98589": [
+          "Talons",
+          "+6",
+          "5 ft",
+          "1d8 +4",
+          "Piercing"
+        ],
+        "98645": [
+          "+4",
+          "+2",
+          "+2",
+          "-4",
+          "+3",
+          "-2"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Flyby",
+          "The kongamato doesn’t provoke an opportunity attack when it flies out of an enemy’s reach."
+        ],
+        "98650": [
+          "Keen Sight",
+          "The kongamato has advantage on Wisdom (Perception) checks that rely on sight."
+        ],
+        "98649": [
+          "Swoop",
+          "If the kongamato flies at least 30 feet straight toward a creature and then hits it with a bite attack on the same turn it can use a bonus action to try to bowl the creature over. The creature must succeed on a DC 14 Strength saving throw or be knocked prone."
+        ],
+        "98648": [
+          "Soar",
+          "When the kongamato grapples a prone creature with its talons it can use its reaction to fly up to half its flying speed."
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 30713,
+      "name": "Monooze",
+      "folder": "Creatures/Desert",
+      "type": "Medium Ooze",
+      "description": "<p>Blindsight 60 ft., <br>Passive perception 10,<br>Languages ----<br>CR 6</p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+3"
+        ],
+        "98558": [
+          "-3"
+        ],
+        "98559": [
+          "+5"
+        ],
+        "98560": [
+          "-5"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "-5"
+        ],
+        "98563": [
+          "150"
+        ],
+        "98564": [
+          "6"
+        ],
+        "98565": [
+          "20 ft; climb 20 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Pseudopod (2x)",
+          "+6",
+          "5 ft",
+          "1d6+3 + 3d6",
+          "Bludgeoning + Acid"
+        ],
+        "98645": [
+          "+3",
+          "-3",
+          "+5",
+          "-5",
+          "-1",
+          "-5"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "acid; lightning; slashing; petrification; blinded; charmed; deafened; exhaustion; frightened; prone"
+        ],
+        "98651": [
+          "Arcane Absorption",
+          "Whenever the ooze is subjected to damage caused by magic it takes no damage and instead regains a number of hit points equal to the damage dealt."
+        ],
+        "98649": [
+          "Amorphus",
+          "The ooze can move through a space as narrow as 1 inch wide without squeezing."
+        ],
+        "98648": [
+          "Transparent",
+          "Even when the ooze is in plain sight it takes a successful DC 15 Wisdom (Perception) check to spot a cube that has neither moved nor attacked. A creature that tries to enter the cube's space while unaware of the cube is surprised by the cube."
+        ],
+        "98647": [
+          "Enlarge",
+          "The ooze can use its bonus action to make it self twice as large  becoming Large creature"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98650": [
+          "Engulf",
+          "The ooze moves up to its speed. While doing so it can enter it's size or smaller creatures' spaces. Whenever the ooze enters a creature's space the creature must make a DC 15 Dexterity saving throw. On a successful save the creature can choose to be pushed 5 feet back or to the side of the ooze. A creature that chooses not to be pushed suffers the consequences of a failed saving throw. On a failed save the ooze enters the creature's space and the creature takes 10 (3d6) acid damage and is engulfed. The engulfed creature is restrained and takes 21 (6d6) acid damage at the start of each of the ooze's turns. When the ooze moves the engulfed creature moves with it. An engulfed creature can try to escape by taking an action to make a DC 15 Strength check. On a success the creature escapes and enters a space of its choice within 5 feet of the ooze."
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15877,
+      "name": "Ranged Guard",
+      "folder": "Dastow city guards",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<table><tbody><tr><td data-row=\"1\"><strong style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Human names:</strong></td><td data-row=\"1\"><strong style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Dwarf names:</strong></td><td data-row=\"1\"><strong style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Half-elf/Elf names:</strong></td></tr><tr><td data-row=\"2\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Bob Hughe</span></td><td data-row=\"2\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Wynna Magmaforged</span></td><td data-row=\"2\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Taumaillin Khraemorinh</span></td></tr><tr><td data-row=\"3\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Samuel Johnston</span></td><td data-row=\"3\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Ravuli Koboldrock</span></td><td data-row=\"3\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Nelayarel Elsinore</span></td></tr><tr><td data-row=\"4\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Meir Sheppard</span></td><td data-row=\"4\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Lomnoki Largefeet</span></td><td data-row=\"4\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Havefyndar Orikas</span></td></tr><tr><td data-row=\"5\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Julius Tozer</span></td><td data-row=\"5\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Alfostrek Redjaw</span></td><td data-row=\"5\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Urlumin Labas</span></td></tr><tr><td data-row=\"6\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Ram Fields</span></td><td data-row=\"6\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Kirnenelyn Bottletank</span></td><td data-row=\"6\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Jaqtien Holaralei</span></td></tr><tr><td data-row=\"7\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Claudia Black</span></td><td data-row=\"7\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Glarbog Goldenmantle</span></td><td data-row=\"7\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(64, 64, 64);\">Claunelyn Sheparalei</span></td></tr></tbody></table><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "0"
+        ],
+        "98561": [
+          "0"
+        ],
+        "98562": [
+          "+1"
+        ],
+        "98563": [
+          "20"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98564": [
+          "11"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98590": [
+          "Longbow",
+          "+4",
+          "150/600 feet",
+          "1d8+2",
+          "Piercing"
+        ],
+        "98589": [
+          "Dagger",
+          "+4",
+          "5 ft",
+          "1d4+2",
+          "Piercing"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15879,
+      "name": "Sword Guard",
+      "folder": "Dastow city guards",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "25"
+        ],
+        "98564": [
+          "11"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98590": [
+          "Shortsword",
+          "+3",
+          "5 ft",
+          "1d6+1",
+          "Slashing"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15878,
+      "name": "Spear Guard",
+      "folder": "Dastow city guards",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<table><tbody><tr><td data-row=\"1\"><strong style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Human names:</strong></td><td data-row=\"1\"><strong style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Dwarf names:</strong></td><td data-row=\"1\"><strong style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Half-elf/Elf names:</strong></td></tr><tr><td data-row=\"2\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Bob Hughe</span></td><td data-row=\"2\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Wynna Magmaforged</span></td><td data-row=\"2\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Taumaillin Khraemorinh</span></td></tr><tr><td data-row=\"3\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Samuel Johnston</span></td><td data-row=\"3\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Ravuli Koboldrock</span></td><td data-row=\"3\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Nelayarel Elsinore</span></td></tr><tr><td data-row=\"4\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Meir Sheppard</span></td><td data-row=\"4\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Lomnoki Largefeet</span></td><td data-row=\"4\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Havefyndar Orikas</span></td></tr><tr><td data-row=\"5\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Julius Tozer</span></td><td data-row=\"5\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Alfostrek Redjaw</span></td><td data-row=\"5\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Urlumin Labas</span></td></tr><tr><td data-row=\"6\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Ram Fields</span></td><td data-row=\"6\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Kirnenelyn Bottletank</span></td><td data-row=\"6\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Jaqtien Holaralei</span></td></tr><tr><td data-row=\"7\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Claudia Black</span></td><td data-row=\"7\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Glarbog Goldenmantle</span></td><td data-row=\"7\"><span style=\"color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);\">Claunelyn Sheparalei</span></td></tr></tbody></table><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "28"
+        ],
+        "98564": [
+          "16"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98590": [
+          "Spear",
+          "+4",
+          "5 ft (20/60)",
+          "1d6+2",
+          "Piercing"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15908,
+      "name": "Custead Armored Forces",
+      "folder": "Dastow city guards",
+      "type": "Humanoid",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98596": [],
+        "98595": [],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98557": [
+          "+5"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "+1"
+        ],
+        "98565": [
+          "25"
+        ],
+        "98583": [
+          "170 pounds + (rolled height x 1d4)"
+        ],
+        "98582": [
+          "6 feet + 1d10 inches"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98563": [
+          "5d10+15"
+        ],
+        "98564": [
+          "21"
+        ],
+        "98590": [
+          "Lance",
+          "+8",
+          "10 ft",
+          "1d12+5",
+          "Piercing"
+        ],
+        "98645": [
+          "STR +8",
+          "CON +6",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "98651": [
+          "Lance adept",
+          "By training can hold lance with one hand"
+        ],
+        "98650": [
+          "Evasive Footwork",
+          "When you move you can expend one superiority die rolling the die and adding the number rolled to your AC until you stop moving."
+        ],
+        "98648": [
+          "Heavy Armor Master",
+          "While you are wearing heavy armor bludgeoning piercing and slashing damage that you take from nonmagical weapons is reduced by 3."
+        ],
+        "98649": [
+          "Shield Master",
+          "You use shields not just for protection but also for offense. You gain the following benefits while you are wielding a shield:  If you take the Attack action on your turn you can use a bonus action to try to shove a creature within 5 feet of you with your shield. If you aren't incapacitated you can add your shield's AC bonus to any Dexterity saving throw you make against a spell or other harmful effect that targets only you. If you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage you can use your reaction to take no damage if you succeed on the saving throw interposing your shield between yourself and the source of the effect."
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 15907,
+      "name": "Black Orc Mercs",
+      "folder": "Dastow city guards",
+      "type": "Humanoid",
+      "description": "<p><span style=\"color: rgb(42, 24, 4); background-color: rgb(253, 249, 211);\">The black orcs are among the strongest, biggest and most disciplined breeds of orcs, and get their name from their dark green skin and their tendency of wearing black or dark grey heavy armour. They are taller and stronger than the common orcs and pride themselves at being better fighters than the average orc or goblinoid creature.</span></p><p><strong style=\"color: rgb(42, 24, 4); background-color: rgb(253, 249, 211);\"><em>Super Soldier Orcs.</em></strong><span style=\"color: rgb(42, 24, 4); background-color: rgb(253, 249, 211);\">&nbsp;The origins of the black orcs are shrouded in mystery, but there are rumors they were created by the duergar, the grey dwarves of the Underdark, perhaps to serve as better slaves or warriors. Certainly, the black orcs' sturdy constitution would allow them to prosper in the harsh enviroment of the Underdark where other orcish workers would perish. They first appeared on the surface as a whole tribe escaped from the Underdark and conquered other orcs living on the surface world.</span></p><p><strong style=\"color: rgb(42, 24, 4); background-color: rgb(253, 249, 211);\"><em>Orcish disciplinarians.</em></strong><span style=\"color: rgb(42, 24, 4); background-color: rgb(253, 249, 211);\">&nbsp;Black orcs regard other orcs and goblinoids with contempt, especially the small goblins, who are always running away instead of standing and fighting. In battle, black orcs keep a constant eye out for bickering in the ranks, and it takes little more than a dark scowl or a throaty growl from a single black orc to bring the other orcs into line. Should that fail, black orcs are perfectly willing, and exceptionally able, to wade in and smash some heads together, thus restoring order at the insignificant cost of the lives of the wrongdoers.</span></p><p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+4"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+4"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "+1"
+        ],
+        "98563": [
+          "5d8+20"
+        ],
+        "98564": [
+          "18"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [
+          "200 pounds + (rolled inches x 4d4)"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Greataxe",
+          "+7",
+          "5 ft",
+          "1d12+4",
+          "Slashing"
+        ],
+        "98589": [
+          "Battleaxe (one handed)",
+          "+7",
+          "5 ft",
+          "1d8+4",
+          "Slashing"
+        ],
+        "98582": [
+          "6 feet 6 inches + 2d6 inches"
+        ],
+        "98588": [
+          "Battleaxe (two handed)",
+          "+7",
+          "5 ft",
+          "1d10+4",
+          "Slashing"
+        ],
+        "98593": [],
+        "98591": [],
+        "98587": [
+          ""
+        ],
+        "98592": [
+          "Charmed; frightened"
+        ],
+        "98645": [
+          "CON +6",
+          "WIS +3",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "98651": [],
+        "98650": [],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 15895,
+      "name": "Sand shifter female",
+      "folder": "Mercenary group #3",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [
+          "74 pounds"
+        ],
+        "98582": [
+          "3 feet 10 inches"
+        ]
+      }
+    },
+    {
+      "id": 15894,
+      "name": "Forest child female leader",
+      "folder": "Mercenary group #3",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [],
+        "98582": []
+      }
+    },
+    {
+      "id": 15896,
+      "name": "Formicid male",
+      "folder": "Mercenary group #3",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [
+          "41 pounds"
+        ],
+        "98582": [
+          "3 feet"
+        ]
+      }
+    },
+    {
+      "id": 15897,
+      "name": "Ishilb male paladin",
+      "folder": "Mercenary group #3",
+      "type": "",
+      "description": "<p><br></p>",
+      "notes": "<p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [],
+        "98558": [],
+        "98559": [],
+        "98560": [],
+        "98561": [],
+        "98562": [],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [
+          "304 pounds"
+        ],
+        "98582": [
+          "5 feet"
+        ]
+      }
+    },
+    {
+      "id": 25840,
+      "name": "Ghoul",
+      "folder": "The Fuckening Start",
+      "type": "Medium undead, chaotic evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 10</p><p>Languages: common</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+0"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "5d8 (22)"
+        ],
+        "98564": [
+          "12"
+        ],
+        "98565": [
+          "30 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+4",
+          "5 ft",
+          "2d6 +2",
+          "Piercing"
+        ],
+        "98589": [
+          "Claws",
+          "+4 (DC 10 CON)",
+          "5 ft",
+          "2d4+2",
+          "Slashing (paralyzed(not elf/undead))"
+        ],
+        "98645": [
+          "+1",
+          "+2",
+          "+0",
+          "-2",
+          "+0",
+          "-2"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "poison; charmed; exhaustion; poisoned"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98651": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25842,
+      "name": "Zombie",
+      "folder": "The Fuckening Start",
+      "type": "Medium undead, neutral evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 60 ft.; passive Perception 8</p><p>Languages: all, but can't speak</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "-2"
+        ],
+        "98559": [
+          "+3"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "-2"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "3d8+9 (22)"
+        ],
+        "98564": [
+          "8"
+        ],
+        "98565": [
+          "20 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Slam",
+          "+3",
+          "5 ft",
+          "1d6+1",
+          "Bludgeoning"
+        ],
+        "98645": [
+          "+1",
+          "-2",
+          "+3",
+          "-4",
+          "+0",
+          "-3"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "poison; poisoned"
+        ],
+        "98651": [
+          "Undead Fortitude",
+          "If damage reduces the zombie to 0 hit points it must make a Constitution saving throw with a DC of 5 + the damage taken unless the damage is radiant or from a critical hit. On a success the zombie drops to 1 hit point instead."
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 26564,
+      "name": "Ogre Ghoul",
+      "folder": "The Fuckening Start",
+      "type": "Large undead, chaotic evil",
+      "description": "<p><em style=\"background-color: rgb(255, 255, 255); color: rgb(58, 58, 58);\">Nearly ten feet tall, this muscular humanoid has seen better days. Once an ogre, time and becoming an undead monstrosity, have, if possible, worsened its appearance. The creature's pale brown skin is stretched tightly across its form. Sharp claws and teeth are the most prominent features as the creature moves to attack.</em></p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 11</p><p>Languages: giant, but can't speak</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+4"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+6"
+        ],
+        "98560": [
+          "+1"
+        ],
+        "98561": [
+          "+1"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "11d10+66"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "25 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Slam",
+          "+7",
+          "5 ft",
+          "2d8+4",
+          "Bludgeoning"
+        ],
+        "98589": [
+          "Bite",
+          "+7 (DC CON 13)",
+          "5 ft",
+          "1d4+4 (3d6 per turn)",
+          "Piercing (paralyzed)"
+        ],
+        "98588": [
+          "Gorge",
+          "DC 15 STR (DC 16 CON)",
+          "5 ft",
+          "(3d6 and heals the same damage)",
+          "Grappled (paralyzed)"
+        ],
+        "98587": [],
+        "98645": [
+          "+4",
+          "+1",
+          "+9",
+          "+1",
+          "+1",
+          "-3"
+        ],
+        "98593": [],
+        "98592": [
+          "necrotic; bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98591": [
+          "poison; poisoned; blinded; charmed"
+        ],
+        "98651": [
+          "Magic resistance",
+          "Has advantage on all saving throws against magical effects"
+        ],
+        "98650": [
+          "Turn Immunity",
+          "Is immune to any effect that would normally turn undead"
+        ],
+        "98649": [],
+        "98648": [],
+        "98647": [],
+        "98646": []
+      }
+    },
+    {
+      "id": 25843,
+      "name": "Death Giant",
+      "folder": "The Fuckening Start",
+      "type": "Huge Giant",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 120 ft.; passive Perception 16</p><p>Languages: Common, Giant, Primordial</p><p><br></p><p><span style=\"color: rgb(42, 24, 4);\">The giant can innately cast the following spells, requiring no material components:</span></p><p><span style=\"color: rgb(42, 24, 4);\">At will:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Darkness\" rel=\"noopener noreferrer\" target=\"_blank\">darkness</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Detect_Magic\" rel=\"noopener noreferrer\" target=\"_blank\">detect magic</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Speak_with_Dead\" rel=\"noopener noreferrer\" target=\"_blank\">speak with dead</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(the giant doesn't need a corpse to speak with a creature whose soul it has collected or trapped in a&nbsp;</span><em style=\"color: rgb(42, 24, 4);\">soul stone</em><span style=\"color: rgb(42, 24, 4);\">)</span></p><p>3/day each:&nbsp;<em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Animate_Dead\" rel=\"noopener noreferrer\" target=\"_blank\">animate dead</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Blight\" rel=\"noopener noreferrer\" target=\"_blank\">blight</a></em></p><p><br></p><p><strong>Release Soul. </strong>If the giant has collected at least one soul, it can expend one soul to gain one of the following benefits.</p><p><strong>Guide.</strong> The giant gains advantage on each attack roll it makes before the end of its next turn.</p><p><strong>Harm.</strong> The giant makes one Death Shard attack. If the attack hits, it deals an additional 11 (2d10) necrotic damage and if the target is a creature, it must succeed on a DC 15 Constitution saving throw or be paralyzed until the end of its next turn.</p><p><strong>Heal. </strong>The giant regains 22 (4d10) hit points.</p><p><strong>Trap. </strong>The giant creates a soul stone. A creature whose soul is trapped in a soul stone can't be restored to life by any means short of a wish spell, whereupon the soul stone is destroyed. While the giant is holding a soul stone, it can use its Consume Soul without expending one of its collected souls. The soul stone is then destroyed. The giant can't create more than one soul stone at a time.</p><p><br></p><p><br></p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+7"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "+6"
+        ],
+        "98560": [
+          "+2"
+        ],
+        "98561": [
+          "+2"
+        ],
+        "98562": [
+          "+3"
+        ],
+        "98563": [
+          "12d12+72(150)"
+        ],
+        "98564": [
+          "17 (splint)"
+        ],
+        "98565": [
+          "40 ft"
+        ],
+        "98583": [
+          "2000 pounds"
+        ],
+        "98582": [
+          "15 ft"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Greataxe (2x)",
+          "+11",
+          "10 ft",
+          "3d12+7 + 2d6",
+          "Slashing + necrotic"
+        ],
+        "98589": [
+          "Death Shard (1x)",
+          "+7",
+          "60/240 ft",
+          "2d10",
+          "Necrotic"
+        ],
+        "98645": [
+          "+7",
+          "+0",
+          "+10",
+          "+6",
+          "+6",
+          "+3"
+        ],
+        "98593": [
+          "radiant"
+        ],
+        "98592": [
+          "bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98591": [
+          "necrotic; poison; posioned"
+        ],
+        "98651": [
+          "Collect Soul",
+          "As a bonus action the giant can target one creature it can see within 5 feet of it that has 0 hit points and is still alive. The target must succeed on a DC 15 Constitution saving throw against this magic or die. If the target dies the giant collects its soul (see Release Soul below). If a creature whose soul is collected by the giant is restored to life the giant loses its soul. The giant can only collect seven souls at one time."
+        ],
+        "98650": [
+          "Death's Sight",
+          "Magical darkness doesn't impede the giant's darkvision."
+        ],
+        "98649": [
+          "Innate Spellcasting",
+          "The giant's innate spellcasting ability is Charisma (spell save DC 15)."
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25841,
+      "name": "Skeleton",
+      "folder": "The Fuckening Start",
+      "type": "Medium undead, lawful evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: Darkvision 60 ft., passive Perception 9</p><p>Languages: all, but can't speak</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+0"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-2"
+        ],
+        "98561": [
+          "-1"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "2d8+4(13)"
+        ],
+        "98564": [
+          "13"
+        ],
+        "98565": [
+          "30 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Slap",
+          "+2",
+          "5 ft",
+          "1d4",
+          "Bludgeoning"
+        ],
+        "98645": [
+          "+0",
+          "+2",
+          "+2",
+          "-2",
+          "-1",
+          "-3"
+        ],
+        "98593": [
+          "bludgeoning"
+        ],
+        "98592": [],
+        "98591": [
+          "poison;exhaustion;poisoned"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98651": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25839,
+      "name": "Death Titan",
+      "folder": "The Fuckening Start",
+      "type": "Gargantuan giant, neutral evil",
+      "description": "<p><span style=\"color: rgb(42, 24, 4);\">Death titans are dastardly giants that are feared as masters of undeath and necromantic lore. A death titan is constantly surrounded by wisps of translucent smoke that grow thicker the more souls it has gathered. Within the smoke, the tormented faces of those whose souls it has taken can be seen. </span></p><p><span style=\"color: rgb(58, 58, 58);\">This titan wields the power of death and darkness. He's huge (about 50 ft/15m tall), muscular, and armed with black plate armor (though its open around his ribs and stomach) and a jagged greatsword, ornamented with dangling human and not-so-human skulls. His chest cavity is stuffed with various corpses, that slowly fall from his exposed rib cage as he moves.. and army of undead that fall from him.</span></p>",
+      "notes": "<p>Senses: darkvision 120 ft, passive Perception 20</p><p>Languages: Common, Giant, Primordial</p><p><br></p><p><span style=\"color: rgb(42, 24, 4);\">The giant can innately cast the following spells, requiring no material components:</span></p><p><span style=\"color: rgb(42, 24, 4);\">At will:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Darkness\" rel=\"noopener noreferrer\" target=\"_blank\">darkness</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Detect_Magic\" rel=\"noopener noreferrer\" target=\"_blank\">detect magic</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Speak_with_Dead\" rel=\"noopener noreferrer\" target=\"_blank\">speak with dead</a></em><span style=\"color: rgb(42, 24, 4);\">&nbsp;(the giant doesn't need a corpse to speak with a creature whose soul it has collected or trapped in a&nbsp;</span><em style=\"color: rgb(42, 24, 4);\">soul stone</em><span style=\"color: rgb(42, 24, 4);\">)</span></p><p>3/day each:&nbsp;<em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Animate_Dead\" rel=\"noopener noreferrer\" target=\"_blank\">animate dead</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Blight\" rel=\"noopener noreferrer\" target=\"_blank\">blight</a></em><span style=\"color: rgb(42, 24, 4);\">,&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Circle_of_Death\" rel=\"noopener noreferrer\" target=\"_blank\">circle of death</a></em></p><p><span style=\"color: rgb(42, 24, 4);\">1/day:&nbsp;</span><em style=\"color: rgb(0, 43, 184);\"><a href=\"https://www.dandwiki.com/wiki/5e_SRD:Create_Undead\" rel=\"noopener noreferrer\" target=\"_blank\">create undead</a></em></p><p><br></p><p><strong>Release Soul.</strong> If the giant has collected at least one soul, it can expend one soul to gain one of the following benefits.</p><p><strong>Guide.</strong> The giant gains advantage on each attack roll it makes before the end of its next turn.</p><p><strong>Harm.</strong> The giant makes one Death Shard attack. If the attack hits, it deals an additional 22 (4d10) necrotic damage and if the target is a creature, it must succeed on a DC 20 Constitution saving throw or be paralyzed until the end of its next turn.</p><p><strong>Heal.</strong> The giant regains 44 (8d10) hit points.</p><p><strong>Trap.</strong> The giant creates a soul stone. A creature whose soul is trapped in a soul stone can't be restored to life by any means short of a wish spell, whereupon the soul stone is destroyed. While the giant is holding a soul stone, it can use its Consume Soul without expending one of its collected souls. The soul stone is then destroyed. The giant can't create more than one soul stone at a time.</p><p><br></p><p><strong>Summon Wraith (1/Day).</strong> The giant summons a wraith. The summoned wraith appears in an unoccupied space within 60 feet of its summoner and acts as an ally of the summoner. It remains for 10 minutes, until it dies, or until its summoner dismisses it as an action.</p><p><br></p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+8"
+        ],
+        "98558": [
+          "+0"
+        ],
+        "98559": [
+          "+7"
+        ],
+        "98560": [
+          "+3"
+        ],
+        "98561": [
+          "+3"
+        ],
+        "98562": [
+          "+5"
+        ],
+        "98563": [
+          "16d20+112 (280)"
+        ],
+        "98564": [
+          "18"
+        ],
+        "98565": [
+          "40 ft"
+        ],
+        "98596": [],
+        "98595": [],
+        "98645": [
+          "+8",
+          "+7",
+          "+14",
+          "+10",
+          "+10",
+          "+5"
+        ],
+        "98593": [
+          "radiant"
+        ],
+        "98592": [
+          "bludgeoning NM; piercing NM; slashing NM"
+        ],
+        "98591": [
+          "necrotic; poison; poisoned"
+        ],
+        "98649": [
+          "Innate Spellcasting",
+          "The giant's innate spellcasting ability is Charisma (spell save DC 20)."
+        ],
+        "98648": [
+          "Fall Undead",
+          "Every time when he got's hit by more than 10% of his current HP 1 dead creature falls from his body."
+        ],
+        "98583": [
+          "20000 pounds"
+        ],
+        "98582": [
+          "50 ft"
+        ],
+        "98590": [
+          "Greatsword (2x)",
+          "+15",
+          "15 ft.",
+          "4d12+8  +  4d6",
+          "Slashing + necrotic"
+        ],
+        "98651": [
+          "Collect Soul",
+          "As a bonus action the giant can target one creature it can see within 5 feet of it that has 0 hit points and is still alive. The target must succeed on a DC 20 Constitution saving throw against this magic or die. If the target dies the giant collects its soul (see Release Soul below). If a creature whose soul is collected by the giant is restored to life the giant loses its soul. The giant can only collect thirteen souls at one time."
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ],
+        "98589": [
+          "Death Shard (1x)",
+          "+12",
+          "60/240 ft",
+          "4d10",
+          "Necrotic"
+        ],
+        "98650": [
+          "Death's Sight",
+          "Magical darkness doesn't impede the giant's darkvision."
+        ]
+      }
+    },
+    {
+      "id": 25845,
+      "name": "Ettin Zombie",
+      "folder": "The Fuckening Start",
+      "type": "Large Undead, Neutral Evil",
+      "description": "<p><br></p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 14</p><p>Languages: Orc, Giant, but can't speak</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+5"
+        ],
+        "98558": [
+          "-2"
+        ],
+        "98559": [
+          "+4"
+        ],
+        "98560": [
+          "-4"
+        ],
+        "98561": [
+          "-2"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "12d10+40 (106)"
+        ],
+        "98564": [
+          "9"
+        ],
+        "98565": [
+          "30 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Battleaxe (1x)",
+          "+7",
+          "5 ft",
+          "2d8+5",
+          "Slashing"
+        ],
+        "98589": [
+          "Morningstar",
+          "+7",
+          "5 ft",
+          "2d8+5",
+          "Bludgeoning"
+        ],
+        "98645": [
+          "+5",
+          "-2",
+          "+4",
+          "-4",
+          "+0",
+          "-3"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "poison; poisoned"
+        ],
+        "98651": [
+          "Two Heads",
+          "The zombie has advantage on WIsdom (Perception) checks and on saving throws against being blinded; charmed; deafened; frightened; stunned and knocked unconscious"
+        ],
+        "98650": [
+          "Undead Fortitude",
+          "If damage reduces the zombie to 0 hit points it must make a Constitution saving throw with DC of 5 + the damage taken unless the damage is radiant or from a critical hit. On a success the zombie drops to 1 hit point instead"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 25844,
+      "name": "Dread Rat",
+      "folder": "The Fuckening Start",
+      "type": "Large beast, unaligned",
+      "description": "<p>Strong and extremely large, dread rats are opportunistic omnivores that can eat almost anything. They prefer to eat easy meals, such as carcasses left by predators, but a pack of dread rats might hunt a flock of sheep or lone humanoid. Dread rats only attack dangerous creatures, such as bears and wolves, if they feel they have a distinct advantage. Some goblinoids keep dread rats as pets or hunting companions, though they can be trained as pack animals and mounts.</p>",
+      "notes": "<p>Senses: darkvision 60 ft., passive Perception 12</p><p>Languages: ---</p>",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+2"
+        ],
+        "98558": [
+          "+3"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-3"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "-2"
+        ],
+        "98563": [
+          "3d10+6 (22)"
+        ],
+        "98564": [
+          "13"
+        ],
+        "98565": [
+          "30 ft"
+        ],
+        "98583": [],
+        "98582": [],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Bite",
+          "+5",
+          "5 ft",
+          "1d8+3",
+          "Piercing"
+        ],
+        "98589": [
+          "Claws",
+          "+5",
+          "5 ft",
+          "1d6+3",
+          "Slashing"
+        ],
+        "98645": [
+          "+2",
+          "+3",
+          "+2",
+          "-3",
+          "+0",
+          "-2"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [],
+        "98651": [
+          "Keen Smell",
+          "The rat has advantage on Wisdom (Perception) checks that rely on smell."
+        ],
+        "98650": [
+          "Pack Tactics",
+          "The rat has advantage on an attack roll against a creature if at least one of the rat's allies is within 5 feet of the creature and the ally isn't incapacitated."
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 31254,
+      "name": "Enderman",
+      "folder": "Portal",
+      "type": "Humanoid",
+      "description": "",
+      "notes": "",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+4"
+        ],
+        "98558": [
+          "+2"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "+0"
+        ],
+        "98561": [
+          "+0"
+        ],
+        "98562": [
+          "+0"
+        ],
+        "98563": [
+          "148"
+        ],
+        "98564": [
+          "15"
+        ],
+        "98565": [
+          "35 feet"
+        ],
+        "98583": [],
+        "98582": [
+          "10 feet 2 inches"
+        ],
+        "98596": [],
+        "98595": [],
+        "98593": [
+          "Cold; Water"
+        ],
+        "98592": [],
+        "98590": [
+          "Unarmed attack (2x)",
+          "+7",
+          "10 feet",
+          "1d6+4",
+          "Bludgeoning"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98591": [],
+        "98651": [
+          "Teleport",
+          "As reaction can teleport out of any aimed projectile or spell up to 90 feet."
+        ],
+        "98650": [
+          "Pick up",
+          "Has advantage to grapple"
+        ],
+        "98649": [
+          "Frightful stare",
+          "If someone looks at this creature it has to make Wisdom 14 saving throw or be frightened for 1 minute"
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 31256,
+      "name": "Imp",
+      "folder": "Portal",
+      "type": "Small Humanoid",
+      "description": "",
+      "notes": "",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+1"
+        ],
+        "98558": [
+          "+3"
+        ],
+        "98559": [
+          "+1"
+        ],
+        "98560": [
+          "-3"
+        ],
+        "98561": [
+          "-2"
+        ],
+        "98562": [
+          "+3"
+        ],
+        "98563": [],
+        "98564": [],
+        "98565": [],
+        "98583": [],
+        "98582": [
+          "3 feet"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Claws (2x)",
+          "+4",
+          "5 feet",
+          "1d6+1",
+          "Slashing"
+        ],
+        "98589": [
+          "Fire bolt",
+          "+6",
+          "120 feet",
+          "2d10",
+          "Fire"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "Poison; Poisoned"
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98651": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    },
+    {
+      "id": 31255,
+      "name": "Unwilling",
+      "folder": "Portal",
+      "type": "Humanoid Undead",
+      "description": "<p>CR 1</p>",
+      "notes": "",
+      "ability_ids": [],
+      "stats": {
+        "98557": [
+          "+4"
+        ],
+        "98558": [
+          "+1"
+        ],
+        "98559": [
+          "+2"
+        ],
+        "98560": [
+          "-3"
+        ],
+        "98561": [
+          "-2"
+        ],
+        "98562": [
+          "-3"
+        ],
+        "98563": [
+          "50"
+        ],
+        "98564": [
+          "14"
+        ],
+        "98565": [
+          "30"
+        ],
+        "98583": [],
+        "98582": [
+          "6 feet"
+        ],
+        "98596": [],
+        "98595": [],
+        "98590": [
+          "Unarmed attack (2x)",
+          "+6",
+          "5 feet",
+          "1d4+4",
+          "Bludgeoning"
+        ],
+        "98593": [],
+        "98592": [],
+        "98591": [
+          "Poison; Poisoned"
+        ],
+        "98589": [
+          ""
+        ],
+        "98588": [
+          ""
+        ],
+        "98587": [
+          ""
+        ],
+        "98645": [
+          ""
+        ],
+        "98651": [
+          ""
+        ],
+        "98650": [
+          ""
+        ],
+        "98649": [
+          ""
+        ],
+        "98648": [
+          ""
+        ],
+        "98647": [
+          ""
+        ],
+        "98646": [
+          ""
+        ]
+      }
+    }
+  ]
+}

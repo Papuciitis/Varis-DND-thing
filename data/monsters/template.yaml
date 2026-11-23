@@ -1,0 +1,809 @@
+# Converted from every creature block in the supplied template, including examples.
+section: monsters
+entries:
+- name: Adult Red Dragon
+  group: Creature template monsters
+  id: template-adult-red-dragon
+  meta: Huge dragon, chaotic evil
+  cr: '17'
+  ac: 19 (natural armor)
+  hp: 256 (19d12 + 133)
+  speed: 40 ft., climb 40 ft., fly 80 ft.
+  block: 0 / +0 check
+  abilities:
+    str: '27'
+    dex: '10'
+    con: '25'
+    int: '16'
+    wis: '13'
+    cha: '21'
+  saving_throws: Dex +6, Con +13, Wis +7, Cha +11
+  skills: Perception +13, Stealth +6
+  damage_immunities: fire
+  senses: blindsight 60 ft., darkvision 120 ft., passive Perception 23
+  languages: Common, Draconic
+  proficiency_bonus: '+6'
+  traits:
+  - name: Legendary Resistance (3/day)
+    description: When the dragon fails a saving throw, it may choose to succeed instead. Uses recover per day,
+      not per long rest.
+  - name: Legendary action budget
+    description: Three legendary actions each round, recovered at the start of its turn. Spend only one option
+      at a time, at the end of another creature's turn.
+  actions:
+  - name: Multiattack
+    description: Use Frightful Presence, then make one Bite and two Claw attacks.
+  - name: Bite
+    description: 'Melee attack: +14 to hit, reach 10 ft., one target; Block DC 22. Unblocked strike: 19 (2d10
+      + 8) piercing plus 7 (2d6) fire damage.'
+  - name: Claw
+    description: 'Melee attack: +14 to hit, reach 5 ft., one target; Block DC 22. Unblocked strike: 15 (2d6
+      + 8) slashing damage.'
+  - name: Tail
+    description: 'Melee attack: +14 to hit, reach 15 ft., one target; Block DC 22. Unblocked strike: 17 (2d8
+      + 8) bludgeoning damage.'
+  - name: Frightful Presence
+    description: Each chosen creature within 120 ft. that is aware of the dragon makes a DC 19 Wisdom save.
+      Failure applies Afraid for 1 minute. Repeat the save at the end of each affected turn; success ends the
+      effect. A successful save or ending the effect grants immunity to this dragon's presence for 24 hours.
+  - name: Fire Breath (recharge 5–6)
+    description: '60 ft. cone; DC 21 Dexterity save. Failure: 63 (18d6) fire damage; success: half. This saving-throw-only
+      damage cannot be Blocked. At the start of each turn while expended, roll 1d6; recharge on 5 or 6.'
+  legendary_actions:
+  - name: Detect (1 action)
+    description: Make a Wisdom (Perception) check.
+  - name: Tail Attack (1 action)
+    description: Make one Tail attack.
+  - name: Wing Attack (2 actions)
+    description: 'Each creature within 10 ft. makes a DC 22 Dexterity save. Failure: 15 (2d6 + 8) bludgeoning
+      damage and Prone. The dragon may then fly up to half its flying speed. Saving-throw-only damage cannot
+      be Blocked.'
+  replacement_sources:
+  - name: Frightful Presence completion
+    description: 'D&D Beyond / Basic Rules (2014), Adult Red Dragon: https://www.dndbeyond.com/monsters/16771-adult-red-dragon'
+  conversion_notes:
+  - The example red dragon is a playable compendium entry. Its truncated Frightful Presence was completed using
+    the matching 2014 monster. The current Afraid condition replaces legacy frightened. Natural armor grants
+    no unprinted Block or armor proficiency.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 5
+  original_5e: "Adult Red Dragon\n\n\n      Huge dragon, chaotic evil\n\n    Armor Class 19 (natural armor)\n\
+    \n\n    Hit Points 256 (19d12 + 133)\n    Speed 40ft., climb 40ft., fly 80ft.\n       STR        DEX  \
+    \       CON          INT         WIS         CHA\n      27 (+8)    10 (+0)     25 (+7)      16 (+3)   \
+    \  13 (+1)     21 (+5)\n\n\n    Saving Throws Dex +6, Con +13, Wis +7, Cha +11\n\n    Skills Perception\
+    \ +13, Stealth +6\n    Damage Immunities fire\n,   Senses blindsight 60 ft., darkvision 120 ft., passive\
+    \ Perception 23\n    Languages Common, Draconic\n    Challenge 17 (18,000 XP)\n\n    Legendary Resistance\
+    \ (3/Day). If the dragon fails a saving\n    throw, it can choose to succeed instead.\n\n    Actions\n\
+    \    Multiattack. The dragon can use its Frightful Presence. It then\n    makes three attacks: one with\
+    \ its bite and two with its claws.\n    Bite. Melee Weapon Attack: +14 to hit, reach 10 ft., one\n    target.\
+    \ Hit: 19 (2d10 + 8) piercing damage plus 7 (2d6) fire\n\n    damage.\n\n    Claw. Melee Weapon Attack:\
+    \ +14 to hit, reach 5 ft., one\n    target. Hit: 15 (2d6 + 8) slashing damage.\n    Tail. Melee Weapon\
+    \ Attack: +14 to hit, reach 15 ft., one\n    target. Hit: 17 (2d8 + 8) bludgeoning damage.\n\n    Frightful\
+    \ Presence. Each creature...\n\n    Fire Breath (Recharge 5–6). The dragon exhales fire in a 60-\n    foot\
+    \ cone. Each creature in that area must make a DC 21\n    Dexterity saving throw, taking 63 (18d6) fire\
+    \ damage on a\n    failed save, or half as much damage on a successful one.\n\n    Legendary Actions\n\
+    \    The dragon can take 3 legendary actions, choosing from the\n    options below. Only one legendary\
+    \ action can be used at a\n    time and only at the end of another creature's turn. The\n    dragon regains\
+    \ spent legendary actions at the start of its turn.\n\n    Detect. The dragon makes a Wisdom (Perception)\
+    \ check.\n    Tail Attack. The dragon makes a tail attack.\n    Wing Attack (Costs 2 Actions). The dragon\
+    \ beats its wings.\n    Each creature within 10 feet of the dragon must succeed on a\n    DC 22 Dexterity\
+    \ saving throw or take 15 (2d6 + 8)\n    bludgeoning damage and be knocked prone. The dragon can\n    then\
+    \ fly up to half its flying speed.\n\n\n\n\n                                                          \
+    \                  5"
+- name: Rootbound Stalker
+  group: Creature template monsters
+  id: template-rootbound-stalker
+  meta: Medium plant, neutral evil
+  cr: '1'
+  ac: 12 (natural armor)
+  hp: 27 (5d8 + 5)
+  speed: 30 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '15'
+    dex: '14'
+    con: '13'
+    int: '6'
+    wis: '12'
+    cha: '7'
+  saving_throws: Dex +4
+  skills: Perception +3, Stealth +6
+  damage_vulnerabilities: fire
+  damage_resistances: piercing from nonmagical attacks
+  condition_immunities: Charmed; fear effects (Shaken, Afraid, Terrified)
+  senses: darkvision 60 ft., passive Perception 13
+  languages: understands Common and Sylvan but cannot speak
+  traits:
+  - name: Forest Camouflage
+    description: Advantage on Dexterity (Stealth) checks in forest terrain.
+  - name: Predatory Stillness
+    description: If it has not moved since the end of its last turn, creatures have disadvantage on Wisdom
+      (Perception) checks to notice it.
+  actions:
+  - name: Multiattack
+    description: Make two Claw attacks.
+  - name: Claw
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 6 (1d6 +
+      2) slashing damage.'
+  conversion_notes:
+  - Legacy frightened immunity maps to the existing Vara fear-effect family. Source Block 2 is retained; natural
+    armor grants no additional Block.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 7
+  original_5e: "Rootbound Stalker\n     Medium plant, neutral evil\n\n   Armor Class 12 (natural armor)\n \
+    \  Hit Points 27 (5d8+5)\n   Speed 30ft.\n      STR       DEX        CON        INT       WIS       CHA\n\
+    \     15 (+2)   14 (+2)    13 (+1)    6 (-2)    12 (+1)    7 (-2)\n\n   Saving Throws Dex +4\n   Skills\
+    \ Perception +3, Stealth +6\n   Damage Vulnerabilities fire\n   Damage Resistances piercing from nonmagical\
+    \ attacks\n   Condition Immunities charmed, frightened\n   Senses darkvision 60 ft., passive Perception\
+    \ 13\n   Languages understands Common and Sylvan but can’t speak\n   Challenge 1 (200 XP)\n\n   Block.\
+    \ 2 (from Dexterity)\n   Forest Camouflage. The Rootbound Stalker has advantage\n   on Dexterity (Stealth)\
+    \ checks made in forested terrain.\n   Predatory Stillness. If the Rootbound Stalker hasn’t moved\n   since\
+    \ the end of its last turn, creatures have disadvantage\n   on Wisdom (Perception) checks to notice it.\n\
+    \n   Actions\n   Multiattack. The Rootbound Stalker makes two Claw attacks.\n   Claw. Melee Weapon Attack:\
+    \ +4 to hit, reach 5 ft., one target.\n   Hit: 6 (1d6 + 2) slashing damage.\n\n\n\n\n                 \
+    \                                                   7"
+- name: Sprig Buddy
+  group: Creature template monsters
+  id: template-sprig-buddy
+  meta: Tiny plant, neutral
+  cr: '0'
+  ac: 12 (natural armor)
+  hp: 5 (2d4)
+  speed: 20 ft., climb 20 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '6'
+    dex: '14'
+    con: '10'
+    int: '6'
+    wis: '11'
+    cha: '10'
+  skills: Perception +2, Stealth +4
+  damage_vulnerabilities: fire
+  senses: darkvision 30 ft., passive Perception 12
+  languages: understands Common and Sylvan but cannot speak
+  traits:
+  - name: Just a Little Guy
+    description: May occupy the same space as a Medium or larger creature. It is not hostile unless threatened
+      or attacked.
+  - name: Forest Pal
+    description: Within 5 ft. of a friendly creature, it has advantage on Dexterity (Stealth) checks and saves
+      against fear effects.
+  actions:
+  - name: Twig Tap
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d4 − 2
+      bludgeoning damage (source lists 1 as its fixed damage).'
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 8
+  original_5e: "Sprig Buddy\n\n  Tiny plant, neutral\nArmor Class 12 (natural armor)\nHit Points 5 (2d4)\n\
+    Speed 20ft., climb 20 ft.\n\n  STR         DEX        CON       INT       WIS       CHA\n  6 (-2)     14\
+    \ (+2)    10 (+0)   6 (-2)    11 (+0)   10 (+0)\n\nSkills Perception +2, Stealth +4\nDamage Vulnerabilities\
+    \ fire\nSenses darkvision 30 ft., passive Perception 12\nLanguages understands Common and Sylvan but can’t\
+    \ speak\nChallenge 0 (10 XP)\nBlock. 2 (from Dexterity)\nJust a Little Guy. The Sprig Buddy can occupy\
+    \ the same\nspace as a Medium or larger creature. It is not considered\nhostile unless attacked or threatened.\n\
+    Forest Pal. While within 5 feet of a friendly creature, the\nSprig Buddy has advantage on Dexterity (Stealth)\
+    \ checks\nand saving throws against being frightened.\n\nActions\nTwig Tap. Melee Weapon Attack: +4 to\
+    \ hit, reach 5 ft., one\ntarget.\nHit: 1 (1d4 - 2) bludgeoning damage."
+  conversion_notes:
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+- name: Orc Psycho
+  group: Creature template monsters
+  id: template-orc-psycho
+  meta: Medium humanoid, chaotic evil
+  cr: '1'
+  ac: 14 (source leather armor and strapped spiked shield)
+  hp: 30 (4d8 + 12)
+  speed: 35 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '16'
+    dex: '16'
+    con: '14'
+    int: '8'
+    wis: '8'
+    cha: '10'
+  saving_throws: Str +5, Dex +5
+  skills: Athletics +5, Acrobatics +5, Intimidation +2
+  damage_vulnerabilities: fire
+  senses: darkvision 60 ft., passive Perception 9
+  languages: Common, Orc
+  traits:
+  - name: Dual-Wielding Psycho
+    description: Wields two cleavers and a strapped spiked shield using its printed custom defense profile.
+  - name: Unhinged Resilience
+    description: Being below half HP does not impose disadvantage on its Block checks.
+  - name: Blood Frenzy
+    description: Advantage on melee attacks against creatures below half their maximum HP.
+  actions:
+  - name: Multiattack
+    description: Make two attacks, choosing Meat Cleaver or Shield Slam each time.
+  - name: Meat Cleaver — Stab
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 7 (1d6 +
+      3) slashing damage. The target makes its Block check against this attack with disadvantage.'
+  - name: Shield Slam
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 6 (1d4 +
+      3) bludgeoning damage. An unblocked strike prevents the target from taking reactions until the start
+      of its next turn.'
+  conversion_notes:
+  - The source already assigns Block 3 and AC 14 to this unusual dual-cleaver, strapped-shield loadout. Keep
+    those explicit monster values rather than inferring unlisted armor proficiency or shield Block. Brutal
+    ? was an undefined optional tag; the confirmed Stab maneuver and Shield Slam effect are fully written here.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 9
+  original_5e: "Orc Psycho\n  Medium humanoid, chaotic evil\n\nArmor Class 14 (leather armor, spiked shield)\n\
+    Hit Points 30 (4d8+12)\nSpeed 35ft.\n   STR        DEX         CON         INT         WIS       CHA\n\
+    \  16 (+3)    16 (+3)     14 (+2)      8 (-1)      8 (-1)   10 (+0)\n\nSaving Throws Str +5, Dex +5\nSkills\
+    \ Athletics +5, Acrobatics +5, Intimidation +2\nDamage Vulnerabilities fire\nSenses darkvision 60 ft.,\
+    \ passive Perception 9\nLanguages Common, Orc\nChallenge 1 (200 XP)\nBlock. 3 (from Dexterity)\nDual-Wielding\
+    \ Psycho. This orc wields two cleavers and a\nstrapped-on spiked shield, using unorthodox attacks.\nUnhinged\
+    \ Resilience. The Orc Psycho can take damage below\nhalf HP without suffering disadvantage on Block checks.\n\
+    Blood Frenzy. The Orc Psycho gains advantage on melee\nattacks against creatures below half HP.\n\nActions\n\
+    Multiattack. The Orc Psycho makes two attacks with its meat\ncleavers or spiked shield.\n\nMeat Cleaver\
+    \ (Light, Stab †, Brutal ✶). Melee Weapon\nAttack: +5 to hit, reach 5 ft., one target.\nHit: 7 (1d6 + 3)\
+    \ slashing damage.\nStab (†). The target has disadvantage on its Block check\nagainst this attack.\nShield\
+    \ Slam (Bash). Melee Weapon Attack: +5 to hit, reach 5\nft., one target.\nHit: 6 (1d4 + 3) bludgeoning\
+    \ damage. If the attack hits, the\ntarget cannot take reactions until the start of its next turn."
+- name: The False One
+  group: Creature template monsters
+  id: template-the-false-one
+  meta: Medium humanoid, neutral evil
+  cr: '3'
+  ac: '11'
+  hp: 72 (8d8 + 32)
+  speed: 25 ft.
+  block: 1 / +3 check
+  abilities:
+    str: '16'
+    dex: '12'
+    con: '16'
+    int: '6'
+    wis: '12'
+    cha: '5'
+  saving_throws: Str +6, Dex +6
+  skills: Athletics +6
+  damage_reduction: physical reduction 1
+  senses: darkvision 60 ft., passive Perception 11
+  languages: —
+  traits:
+  - name: Dense, Untrue Flesh
+    description: Uses Strength for Block checks. On a successful Block, reduce the attacker's speed by 5 ft.
+      until the end of that attacker's next turn.
+  - name: Wrong Weight
+    description: Advantage on checks and saves against being shoved, tripped or forcibly moved.
+  actions:
+  - name: Multiattack
+    description: Make two Slam attacks.
+  - name: Slam
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 7 (1d8 +
+      3) bludgeoning damage. The target may use its reaction to move 5 ft. in any direction before the attack.
+      If it does not or cannot, increase the damage die to 1d10.'
+  - name: Weight of the Untrue
+    description: When Slam makes an unblocked strike, it may forgo all damage to remove 1 additional remaining
+      Block from the target and apply Prone.
+  - name: Pressure
+    description: When the target Blocks its Slam, it may attack that target again with disadvantage, as the
+      existing Pressure maneuver.
+  replacement_sources:
+  - name: Pressure
+    description: data/draft-reference/additional-weapon-terms.yaml / Tactical maneuvers / Pressure
+  conversion_notes:
+  - Source Slam and Weight of the Untrue are retained. Pressure ? is completed from the existing current Pressure
+    maneuver. Printed HP and dice are retained despite their inconsistent average.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 9
+  original_5e: "The False One\n    Medium humanoid, neutral evil\n\n  Armor Class 11\n  Hit Points 72 (8d8+32)\n\
+    \  Speed 25ft.\n     STR        DEX         CON          INT         WIS      CHA\n    16 (+3)    12 (+1)\
+    \     16 (+3)      6 (-2)      12 (+1)   5 (-3)\n\n  Saving Throws Str +6, Dex +6\n  Skills Athletics +6\n\
+    \  Damage Reduction physical reduction 1\n  Senses darkvision 60 ft., passive Perception 11\n  Languages\
+    \ —\n  Challenge 3 (700 XP)\n  Block. 1 (from Dexterity)\n  Dense, Untrue Flesh. The False One can use\
+    \ Strength instead\n  of Dexterity for block checks.\n  When it successfully blocks an attack, the attacker’s\
+    \ speed\n  is reduced by 5 ft until the end of their next turn.\n  Wrong Weight. The False One has advantage\
+    \ on checks and\n  saves against being shoved, tripped, or forcibly moved.\n\n  Actions\n  Multiattack.\
+    \ The False One makes two Slam attacks\n\n  Slam ( Slam †, Pressure ᐁ). Melee Weapon Attack: +6 to hit,\n\
+    \  reach 5 ft., one target.\n  Hit: 7 (1d8 + 3) bludgeoning damage.\n  Slam (†). Make an attack, allowing\
+    \ the target to move 5ft in\n  any direction as a reaction. If it does not or cannot, the attack\n  damage\
+    \ dice are increased by 1 size category.\n  Weight of the Untrue. When the False One lands an unblocked\n\
+    \  Slam, it may choose to deal no damage.\n  Instead, the target loses 1 additional block and is knocked\n\
+    \  prone.\n\n                                                                        9"
+- name: Horned Skirmisher
+  group: Creature template monsters
+  id: template-horned-skirmisher
+  meta: Medium humanoid, chaotic evil
+  cr: '3'
+  ac: 14 (light natural hide)
+  hp: 45 (6d8 + 18)
+  speed: 35 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '12'
+    dex: '17'
+    con: '14'
+    int: '8'
+    wis: '12'
+    cha: '6'
+  saving_throws: Dex +6
+  skills: Acrobatics +6, Stealth +6
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Common
+  traits:
+  - name: Skirmisher Instinct — Sidestep
+    description: 'Once per round, use the existing free-handed Sidestep maneuver: if free-handed, Dash. The
+      feature waives the resource cost specified in its source.'
+  - name: Cruel Momentum
+    description: After moving at least 10 ft. on its turn, its next melee attack has +1 Block DC (DC 15).
+  actions:
+  - name: Multiattack
+    description: Make two Claw attacks.
+  - name: Claw — Slash
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 6 (1d6 +
+      3) slashing damage. For Slash, move 5 ft. alongside the target; on an unblocked strike use 1d8 + 3 instead.'
+  - name: Horn Gore — Lunge
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 7 (1d8 +
+      3) piercing damage. For Lunge, move 5 ft. toward the target when attacking; on an unblocked strike use
+      1d10 + 3 instead.'
+  - name: Trip
+    description: On a hit, forgo damage and the Block check. The target makes a Strength or Dexterity save
+      against this attack's Block DC; failure applies Prone.
+  replacement_sources:
+  - name: Sidestep
+    description: data/weapons.yaml / Dueling blade / sidestep
+  - name: Trip
+    description: data/draft-reference/additional-weapon-terms.yaml / Tactical maneuvers / Trip
+  conversion_notes:
+  - Uses the existing free-handed Sidestep and Trip rules for incomplete labels. Unspecified Follow-Up ? is
+    replaced by the source Multiattack sequence; no extra attack is invented.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 10
+  original_5e: "Horned Skirmisher\n  Medium humanoid, chaotic evil\n\nArmor Class 14 (light, natural hide)\n\
+    Hit Points 45 (6d8+18)\nSpeed 35ft.\n\n   STR        DEX         CON         INT          WIS      CHA\n\
+    \  12 (+1)    17 (+3)     14 (+2)      8 (-1)      12 (+1)   6 (-2)\n\nSaving Throws Dex +6\nSkills Acrobatics\
+    \ +6, Stealth +6\nSenses darkvision 60 ft., passive Perception 11\nLanguages Common\n\nChallenge 3 (700\
+    \ XP)\n\nBlock. 3 (from Dexterity)\nSkirmisher Instinct. The Horned Skirmisher can take the\nSidestep tactical\
+    \ maneuver without spending a resource\nonce per round.\nCruel Momentum. After the Horned Skirmisher moves\
+    \ at\n\nleast 10 ft on its turn, its next melee attack gains +1 block\n\nDC.\n\n\nActions\nMultiattack.\
+    \ The Horned Skirmisher makes two Claw attacks.\n\nClaw ( Slash †, Follow-Up ᐁ). Melee Weapon Attack: +6\
+    \ to hit,\nreach 5 ft., one target.\n\nHit: 6 (1d6 + 3) slashing damage.\n\nSlash (†). Move 5 ft alongside\
+    \ the target and increase the\ndamage dice by one size on a hit.\n\nHorn Gore ( Lunge †, Trip ᐁ). Melee\
+    \ Weapon Attack: +6 to hit,\nreach 5 ft., one target.\nHit: 7 (1d8 + 3) piercing damage.\nLunge (†). Move\
+    \ 5 ft toward the target when making the\nattack; increase damage by one dice size on a hit."
+- name: Antlered Witness
+  group: Creature template monsters
+  id: template-antlered-witness
+  meta: Medium humanoid, neutral evil
+  cr: '4'
+  ac: 13 (light natural hide)
+  hp: 58 (7d8 + 21)
+  speed: 30 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '11'
+    dex: '14'
+    con: '16'
+    int: '12'
+    wis: '15'
+    cha: '14'
+  saving_throws: Wis +5, Con +6
+  skills: Religion +4, Intimidation +5
+  damage_reduction: necrotic reduction 2
+  senses: darkvision 60 ft., passive Perception 12
+  languages: Common, Infernal
+  traits:
+  - name: Ritual Frame
+    description: Uses Wisdom instead of Dexterity for Block checks.
+  - name: Witness to Unmaking
+    description: Creatures within 10 ft. have disadvantage on their first Block check each round.
+  - name: Spellcasting
+    description: 'Wisdom; spell save DC 13, spell attacks +5 (Block DC 13 for blockable spell attacks). At
+      will: Devitalize and Soulfire. Twice per day each: Essence leech and Void touch. Use the current compendium
+      spell text, components and any HP costs; these innate daily uses replace spending spell slots.'
+  actions:
+  - name: Multiattack
+    description: Make one Claw attack and cast one listed spell, or make two Claw attacks.
+  - name: Claw — Rend
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 6 (1d6 +
+      3) slashing damage. An unblocked strike applies one stack of Bleeding using the current condition.'
+  reactions:
+  - name: Judging Gaze
+    description: When a creature within 30 ft. fails a Block check against this creature's attack, it makes
+      a DC 13 Wisdom save. Failure applies Afraid until the end of that creature's current turn.
+  replacement_sources:
+  - name: Missing reaction save DC
+    description: The source spellcasting already gives Wisdom DC 13; Judging Gaze uses that existing Wisdom
+      save DC.
+  - name: Current spells
+    description: data/draft-spells/occult-cantrips.yaml / Devitalize; mystic-cantrips.yaml / Soulfire; lvl-2-occult-spells.yaml
+      / Essence leech; lvl-2-mystic-spells.yaml / Void touch
+  conversion_notes:
+  - The unfinished Judging Gaze reuses the statblock's existing Wisdom save DC 13 and the current Afraid condition.
+    Confirmed Rend applies current Bleeding. Unspecified Follow-Up ? uses the printed Multiattack instead of
+    an invented extra attack. The source spellcasting gives no character level, so unselected cantrip upgrades
+    are not added.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 10–11
+  original_5e: "Antlered Witness\n\n   Medium humanoid, neutral evil\n Armor Class 13 (light, natural hide)\n\
+    \ Hit Points 58 (7d8+21)\n Speed 30ft.\n\n    STR        DEX         CON         INT          WIS     \
+    \  CHA\n   11 (+0)    14 (+2)     16 (+3)     12 (+1)      15 (+2)   14 (+2)\n\n Saving Throws Wis +5,\
+    \ Con +6\n Skills Religion +4, Intimidation +5\n Damage Reduction necrotic reduction 2\n Senses darkvision\
+    \ 60 ft., passive Perception 12\n Languages Common, Infernal\n Challenge 4 (1100 XP)\n\n Block. 2 (from\
+    \ Dexterity)\n\n Ritual Frame. The Antlered Witness can use Wisdom instead\n of Dexterity for block checks.\n\
+    \ Witness to Unmaking. Creatures within 10 ft of the Antlered\n Witness have disadvantage on the first\
+    \ block check they\n make each round.\n\n Spellcasting. Wisdom (save DC 13, +5 to hit).\n\n At Will. Devitalize,\
+    \ Soulfire\n\n 2/day. Essence leech, Void touch\n\n Actions\n\n Multiattack. The Antlered Witness makes\
+    \ one Claw attack\n and casts one spell, or makes two Claw attacks.\n\n Claw ( Rend †, Follow-Up ᐁ). Melee\
+    \ Weapon Attack: +6 to hit,\n\n reach 5 ft., one target.\n Hit: 6 (1d6 + 3) slashing damage.\n\n Rend (†).\
+    \ If the attack is not blocked, apply bleed to the\n target.\n\n Reactions\n Judging Gaze. If a creature\
+    \ within 30 ft fails a block check\n imposed by the Antlered Witness, it may force that creature\n    \
+    \                                                                   10\nto make a Wisdom save or become\
+    \ frightened until the end of\nits turn."
+- name: Many-Limbed Ravager
+  group: Creature template monsters
+  id: template-many-limbed-ravager
+  meta: Medium humanoid, chaotic evil
+  cr: '4'
+  ac: 14 (unnatural hide)
+  hp: 66 (8d8 + 24)
+  speed: 35 ft., climb 20 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '15'
+    dex: '16'
+    con: '16'
+    int: '7'
+    wis: '12'
+    cha: '6'
+  saving_throws: Dex +6, Con +6
+  skills: Athletics +5, Acrobatics +6
+  senses: darkvision 60 ft., passive Perception 11
+  languages: —
+  traits:
+  - name: Unnatural Limbs
+    description: Once per turn, after an unblocked melee strike, make one additional melee attack against the
+      same target without spending an action. It cannot trigger maneuvers.
+  - name: Relentless Pressure
+    description: After a creature successfully Blocks one of its attacks, gain +1 to the next attack roll against
+      that creature before the end of this turn.
+  actions:
+  - name: Multiattack
+    description: Make two Claw attacks.
+  - name: Claw — Rend
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 6 (1d6 +
+      3) slashing damage. An unblocked strike applies one stack of current Bleeding.'
+  - name: Grasping Limbs
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 5 (1d4 +
+      3) bludgeoning damage.'
+  - name: Trip
+    description: On a hit with Grasping Limbs, forgo damage and the Block check. Target makes a Strength or
+      Dexterity save against Block DC 14; failure applies Prone.
+  reactions:
+  - name: Intercept
+    description: When a creature within 5 ft. misses it or has its attack Blocked by it, make one Claw attack
+      against that creature.
+  replacement_sources:
+  - name: Trip
+    description: data/draft-reference/additional-weapon-terms.yaml / Tactical maneuvers / Trip
+  conversion_notes:
+  - The source supplies the additional attack explicitly; it is not a guessed Follow-Up. Incomplete Hook ?
+    has no confirmed sequence, so Grasping Limbs offers the existing Trip maneuver. The separate CR 5 block
+    is retained as Burdened Herald.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 11
+  original_5e: "Many-Limbed Ravager\n\n  Medium humanoid, chaotic evil\n\nArmor Class 14 (unnatural hide)\n\
+    \nHit Points 66 (8d8+24)\nSpeed 35ft., climb 20 ft.\n\n   STR        DEX         CON          INT     \
+    \    WIS      CHA\n  15 (+2)    16 (+3)     16 (+3)      7 (-2)      12 (+1)   6 (-2)\nSaving Throws Dex\
+    \ +6, Con +6\nSkills Athletics +5, Acrobatics +6\nSenses darkvision 60 ft., passive Perception 11\nLanguages\
+    \ —\nChallenge 4 (1100 XP)\n\nBlock. 3 (from Dexterity)\nUnnatural Limbs. Once per turn, when the Many-Limbed\n\
+    Ravager lands a melee attack, it may make one additional\nmelee attack against the same target without\
+    \ spending an\naction.\nThis extra attack cannot trigger maneuvers.\nRelentless Pressure. When a creature\
+    \ successfully blocks one\nof the Ravager’s attacks, the Ravager gains +1 to its next\nattack roll against\
+    \ that creature until the end of its turn.\n\nActions\n\nMultiattack. The Many-Limbed Ravager makes two\
+    \ Claw\nattacks.\nClaw ( Rend †, Follow-Up ᐁ). Melee Weapon Attack: +6 to hit,\nreach 5 ft., one target.\n\
+    Hit: 6 (1d6 + 3) slashing damage.\nRend (†). If the attack is not blocked, apply bleed to the\ntarget.\n\
+    Grasping Limbs (Hook ᐁ, Trip ᐁ). Melee Weapon Attack: +6 to\nhit, reach 5 ft., one target.\nHit: 5 (1d4\
+    \ + 3) bludgeoning damage.\nReactions\n\n  Intercept. If a creature within 5 ft misses the Ravager or has\n\
+    \  an attack blocked, the Ravager may immediately make one\n  Claw attack against that creature.\n\n\n\n\
+    \n\n\n\n                                             Instagram @helgecbalzer"
+- name: Burdened Herald
+  group: Creature template monsters
+  id: template-burdened-herald
+  meta: Medium humanoid, neutral evil
+  cr: '5'
+  ac: 11 (unnatural hide)
+  hp: 95 (10d8 + 50)
+  speed: 25 ft.
+  block: 3 / +0 check
+  abilities:
+    str: '18'
+    dex: '10'
+    con: '20'
+    int: '6'
+    wis: '13'
+    cha: '8'
+  saving_throws: Str +7, Con +8
+  skills: Athletics +7
+  damage_reduction: physical reduction 2
+  senses: darkvision 60 ft., passive Perception 11
+  languages: —
+  traits:
+  - name: Dense Mass
+    description: Grants Block 3 and counts as Bulk 3 for Heft and forced movement without applying AC or speed
+      penalties.
+  - name: Burden of Growth
+    description: Cannot Dash. Whenever it spends or otherwise loses one Block, gain +1 damage on all attacks
+      until the end of its next turn.
+  - name: Many Mouths
+    description: 'At the start of a creature''s turn within 5 ft., it makes a DC 13 Constitution save. Failure:
+      3 (1d6) necrotic damage. This saving-throw-only effect cannot be Blocked.'
+  actions:
+  - name: Multiattack
+    description: Make two Tendril Slam attacks and one Gnawing Maw attack.
+  - name: Tendril Slam
+    description: 'Melee attack: +7 to hit, reach 10 ft., one target; Block DC 15. Unblocked strike: 9 (1d10
+      + 4) bludgeoning damage. The target may use its reaction to move 5 ft. in any direction before the attack.
+      If it does not or cannot, increase the damage die to 1d12.'
+  - name: Gnawing Maw — Rend
+    description: 'Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 8 (1d8 +
+      4) piercing plus 1d4 necrotic damage. An unblocked strike applies one stack of current Bleeding.'
+  conversion_notes:
+  - The duplicate heading says Many-Limbed Ravager, but all internal rules call this creature Burdened Herald.
+    Its separate CR 5 profile is retained under that internal name. Constitution score 20 is retained and its
+    modifier is +5; the source printed +0 by mistake. Explicit Dense Mass Block 3 is retained.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 11–12
+  original_5e: "Many-Limbed Ravager\n    Medium humanoid, neutral evil\n\n  Armor Class 11 (unnatural hide)\n\
+    \  Hit Points 95 (10d8+50)\n  Speed 25 ft.\n     STR        DEX         CON          INT         WIS  \
+    \    CHA\n    18 (+4)    10 (+0)     20 (+0)      6 (-2)      13 (+1)   8 (-1)\n\n  Saving Throws Str +7,\
+    \ Con +8\n  Skills Athletics +7\n  Damage Reduction physical reduction 2\n  Senses darkvision 60 ft., passive\
+    \ Perception 11\n  Languages —\n  Challenge 5 (1800 XP)\n\n  Block. 3 (from dense mass)\n  Dense Mass.\
+    \ Dense Mass grants Block 3 and counts as bulk 3\n  for Heft and forced movement, without suffering AC\
+    \ or\n  speed penalties.\n  Burden of Growth. The Burdened Herald cannot Dash.\n  Whenever it loses a block,\
+    \ it gains +1 damage on all attacks\n  until the end of its next turn.\n  Many Mouths. Creatures that start\
+    \ their turn within 5 ft of\n  the Burdened Herald must succeed on a Constitution (DC\n  13) save or take\
+    \ 3 (1d6) necrotic damage.\n  This damage is unblockable.\n\n  Actions\n  Multiattack. The Burdened Herald\
+    \ makes two Tendril Slam\n  attacks and one Gnawing Maw attack.\n  Tendril Slam (Reach I, Slam †, Heft\
+    \ ᐁ). Melee Weapon Attack:\n  +7 to hit, reach 10 ft., one target.\n  Hit: 9 (1d10 + 4) bludgeoning damage.\n\
+    \n\n\n                                                                       11\nSlam (†). Make an attack,\
+    \ allowing the target to move 5ft in\nany direction as a reaction. If it does not or cannot, the attack\n\
+    damage dice are increased by 1 size category.\nGnawing Maw (Rend †). Melee Weapon Attack: +7 to hit,\n\
+    reach 5 ft., one target.\nHit: 8 (1d8 + 4) piercing damage and 1d4 necrotic damage.\nRend (†). If the attack\
+    \ is not blocked, apply bleed to the\ntarget.\n\n\n\n\n                                               \
+    \                     12\n"
+- name: Adjole
+  group: Creature template monsters
+  id: template-adjole
+  meta: Small aberration, chaotic evil
+  cr: '1'
+  ac: 11 (natural armor)
+  hp: 9 (2d6)
+  speed: 30 ft., climb 30 ft.
+  block: 1 / +1 check
+  abilities:
+    str: '12'
+    dex: '13'
+    con: '13'
+    int: '8'
+    wis: '13'
+    cha: '1'
+  saving_throws: Dex +2, Con +2
+  skills: Perception +1, Stealth +2
+  damage_resistances: psychic
+  damage_vulnerabilities: fire, cold, lightning
+  senses: darkvision 60 ft., passive Perception 13
+  languages: Aberrant
+  traits:
+  - name: Loyal Subservience
+    description: Within 60 ft. of a Large or larger aberration, add +2 to ability checks and saving throws.
+  - name: Absorbent Skin — existing Adhesive alternative
+    description: Its skin adheres to objects touching it. A Huge or smaller creature touching the skin is Grappled
+      (escape DC 13), and checks to escape this adhesion have disadvantage. Apply the current Grappled condition.
+      The Adhesive rule replaces the undefined contested weapon-sticking procedure; it grants no automatic
+      disarm.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +3 to hit, reach 5 ft., one target; Block DC 11. Unblocked strike: 4 (1d6 +
+      1) piercing damage.'
+  - name: Grapple and Restrain — Constrict alternative
+    description: Melee attack +4, reach 5 ft., one creature; Block DC 12. On an unblocked strike deal 6 (1d8
+      + 2) bludgeoning damage and apply Grappled (escape DC 14). While held, apply Pinned and Off-balance as
+      the current condition equivalents for physical restraint. It cannot use this Constrict on another target
+      while holding one. The target may spend an action on a Strength (Athletics) or Dexterity (Acrobatics)
+      check against DC 14, ending the hold on success.
+  replacement_sources:
+  - name: Absorbent Skin
+    description: 'Mimic / Adhesive, Basic Rules (2014): https://www.dndbeyond.com/monsters/16957-mimic'
+  - name: Grapple and Restrain
+    description: 'Constrictor Snake / Constrict, Basic Rules (2014): https://www.dndbeyond.com/monsters/16830-constrictor-snake'
+  conversion_notes:
+  - Source Dexterity and Constitution scores of 13 each give +1, despite the printed +2 modifiers. Printed
+    save bonuses are retained as independent bonuses. Two ambiguous procedures are replaced by existing Adhesive
+    and Constrict abilities, with their printed attack/damage/escape values. No new weapon-seizure mechanic
+    is invented. Joke XP is omitted; source CR 1 remains a reference.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 13
+  original_5e: "Adjole\n  Small aberrant, chaotic evil\n\nArmor Class 11 (natural armor)\nHit Points 9 (2d6)\n\
+    Speed 30ft., climb 30ft.\n   STR        DEX         CON        INT           WIS      CHA\n  12 (+1)  \
+    \  13 (+2)     13 (+2)     8 (-1)       13 (+1)   1 (-5)\n\nSaving Throws Dex +2, Con +2,\nSkills Perception\
+    \ +1, Stealth +2\nDamage resistances Psychic\nDamage Vulnerabilities fire, cold, lightning\nSenses darkvision\
+    \ 60 ft., passive Perception 13\nLanguages Aberrant\nChallenge 1 (XP. shit brah 2 i guess?)\nBlock. 1 (from\
+    \ dexterity)\nLoyal subservience. Adjole gets +2 to all ability checks and\nsaving throws when it is within\
+    \ 60 ft of a size large aberrant\nor larger.\n\nAbsorbent skin. When taking a physical mele attack whilst\n\
+    holding weapon make a contested grapple saving throw, if\nyou fail the saving the weapon gets stuck in\
+    \ adjoles skin.\n\n\n\nActions\nBite. Adjole lunges at its target. +3 to hit, mele attack, 5ft, one\ntarget,\
+    \ Hit 4 (1d6+1 piercing damage).\nGrapple and restrain. Adjole makes a grapple attack. You have\nto make\
+    \ a contested str saving throw. When grappled you\ntake 1d6 force damage and 1d6 bludgeoning damage.\n\n\
+    Lore\n   Fuck all, they look like a weird little worm slinky and they\nlike helping other aberrant. idk.\n\
+    \n\n\n\n                                                                                              \
+    \                                 13"
+- name: Dongajni
+  group: Creature template monsters
+  id: template-dongajni
+  meta: Medium aberration, chaotic evil
+  cr: '3'
+  ac: 20 (natural armor); 17 against melee weapon attacks
+  hp: 27 (5d10)
+  speed: 45 ft., climb 20 ft.
+  block: 0 / +0 check
+  abilities:
+    str: '14'
+    dex: '11'
+    con: '14'
+    int: '10'
+    wis: '16'
+    cha: '1'
+  saving_throws: Wis +4, Con +2
+  skills: Perception +4
+  damage_resistances: psychic, poison
+  damage_vulnerabilities: fire, cold, lightning
+  senses: darkvision 60 ft., passive Perception 16
+  languages: Aberrant
+  traits:
+  - name: Brittle Shell Carapace
+    description: AC is 17 against melee weapon attacks; otherwise use AC 20.
+  - name: Magical Resistance
+    description: Spell attacks against it take −2 to their attack rolls. Reduce damage from a magical attack
+      against it by 1d4 (minimum 0).
+  actions:
+  - name: Bite
+    description: 'Melee attack: +2 to hit, reach 5 ft., one target; Block DC 10. Unblocked strike: 7 (2d6 +
+      1) piercing damage.'
+  - name: Stinger Stab
+    description: 'Melee attack: +0 to hit, reach 10 ft., one target; Block DC 8. Unblocked strike: 5 (1d8 +
+      1) piercing damage. On an unblocked strike the target makes a DC 14 Constitution save. Failure: 3d4 poison
+      damage and Poisoned for 4 rounds; success: no poison effect. Damage is immediate; the source''s four-turn
+      duration applies to the condition only.'
+  - name: Hypnotic Stare — Charm alternative
+    description: Choose one humanoid within 30 ft. that can see the Dongajni. DC 17 Wisdom save; failure Charms
+      for 24 hours and makes the humanoid a willing ally, though not controlled. When Dongajni or its allies
+      harm the target it may repeat the save. Ends if Dongajni dies, changes plane, or ends it with a bonus
+      action.
+  replacement_sources:
+  - name: Missing range and expiry for Hypnotic Stare
+    description: 'Vampire / Charm, Basic Rules (2014): https://www.dndbeyond.com/monsters/17043-vampire'
+  conversion_notes:
+  - The incomplete, no-range Hypnotic Stare is supplied using the existing Vampire Charm action; the separate
+    source DC 16 stare is preserved only in original text. The confirmed poison duration 4 turns and 3d4 damage
+    remain. Printed HP and ability scores remain; derived Wisdom modifier is +3. Joke XP is omitted.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 14
+  original_5e: "Dongajni\n  Medium size aberrant, chaotic evil\n\nArmor Class 20 (natural armor)\nHit Points\
+    \ 27 (5d10)\nSpeed 45ft., climb 20ft.\n   STR        DEX        CON          INT          WIS     CHA\n\
+    \  14 (+2)    11(+0)     14 (+2)      10(-0)       16(+4)   1 (-5)\n\nSaving Throws Wis +4, Con+2\nSkills\
+    \ Perception +4,\nDamage resistances Psychic, poison\nDamage Vulnerabilities fire, cold, lightning\nSenses\
+    \ darkvision 60 ft., passive Perception 16\nLanguages Aberrant\nChallenge 3 (XP. shit brah 67 or sum)\n\
+    \nBrittle shell carapace. Dongajni gets an armor class of 17\ntaking a mele weapon attack.\nMagical resistance.\
+    \ Magic attacks made against have to be\nmade with -2 to its attack roll and deals 1d4 damage less.\n\n\
+    \n\nActions\nBite. Dongajni lunges at its target. +2 to hit, mele attack, 5ft,\none target, Hit 7 (2d6+1\
+    \ piercing damage).\nStinger stab. Dongajni strikes with its tail stinger. +0 to hit,\nmele attack, 10ft,\
+    \ one target, Hit 5 (1d8+1 piercing damage).\nOn hit target makes a DC 14 constitution saving throw, on\n\
+    failure target is poisioned for 4 turns (idk) taking 3d4 poison\ndamage.\nHypnotic stare. Dongajni stares\
+    \ at you with its fuckass eye.\nTarget creature must make a wisdom DC 16 saving throw, on\nfailure the\
+    \ target is charmed, non magically and keeps\napproaching Dongajni without attacking. When taken\ndamage\
+    \ the charm is broken.\n\nLore\n   Human centipede sounds like a fun movie if you make it\nfrom muppets.\
+    \ Oh the creature. It's a scorpion hypnotiser or\nsum. It also doesn’t particularly like Adjole, but can\
+    \ if there is\na larger aberrant. These are AI images, but they are placed\nhere as placeholders, we don’t\
+    \ have money for actual artists.\n\n\n\n\n                                                            \
+    \         14"
+- name: Jobafo
+  group: Creature template monsters
+  id: template-jobafo
+  meta: Large aberration, chaotic evil
+  cr: Unrated
+  ac: 16 (natural armor)
+  hp: 75 (10d12 + 10)
+  speed: 45 ft., climb 20 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '16'
+    dex: '14'
+    con: '16'
+    int: '20'
+    wis: '16'
+    cha: '1'
+  saving_throws: Int +5, Str +3
+  skills: Perception +4
+  damage_resistances: psychic, poison
+  damage_vulnerabilities: fire, cold, lightning
+  senses: truesight 60 ft., passive Perception 16
+  languages: Aberrant; telepathy 120 ft. (Aboleth alternative)
+  traits:
+  - name: Probing Telepathy — existing cleverness alternative
+    description: If a creature it can see communicates telepathically with it, it learns that creature's greatest
+      desires.
+  - name: Vulnerable Spot — Expose alternative
+    description: Use the current Expose maneuver and Exposed condition to exploit its vulnerable spot. On a
+      hit with an ability granting Expose, forgo damage and the Block check; the target makes a Strength or
+      Dexterity save against the chosen weapon damage, Block DC or Athletics total. Failure applies Exposed
+      until the end of the attacker's next turn. No special facing or extra damage multiplier is granted.
+  actions:
+  - name: Multiattack — Aboleth alternative
+    description: Make two Tentacle attacks and use Consume Memories or Dominate Mind if available.
+  - name: Tentacle — Aboleth alternative
+    description: 'Melee attack: +9 to hit, reach 15 ft., one target; Block DC 17. Unblocked strike: 12 (2d6
+      + 5) bludgeoning damage. A Large or smaller creature is Grappled (escape DC 14) by one of four tentacles.'
+  - name: Consume Memories — Aboleth alternative
+    description: 'One creature within 30 ft. that is Charmed or Grappled by Jobafo makes a DC 16 Intelligence
+      save. Failure: 10 (3d6) psychic damage; success: half. If this reduces a humanoid to 0 HP, Jobafo acquires
+      its memories.'
+  - name: Dominate Mind (2/day) — Aboleth alternative
+    description: 'One visible creature within 30 ft. makes a DC 16 Wisdom save. Failure: Charmed and allied
+      to Jobafo, which controls it while within 60 ft. They can communicate telepathically over any distance.
+      Repeat the save whenever damaged or after each 24 hours spent at least 1 mile away. Ends on a successful
+      save, Jobafo''s death, or separation to different planes.'
+  replacement_sources:
+  - name: Missing actions and undefined cleverness
+    description: 'Aboleth (2024), Basic Rules / Monster Manual: https://www.dndbeyond.com/monsters/5194867-aboleth'
+  - name: Undefined weak spot
+    description: data/draft-reference/additional-weapon-terms.yaml / Expose and data/conditions.yaml / exposed
+  status: Converted with an existing Aboleth action profile; encounter difficulty unassessed
+  conversion_notes:
+  - The source gives no actions, an undefined cleverness joke, an undefined weak spot, and joke CR 69. Existing
+    Aboleth actions and Probing Telepathy provide an attributed playable alternative; their printed values
+    are not recalculated or invented. No weak-spot rule is invented. Source defenses and ability scores are
+    retained, so Aboleth CR 10 is not asserted for this mixed profile. Derived Wisdom modifier is +3, not the
+    source's +4.
+  - Uses the current Vara Block pool/check and conditions. Damage and attached attack effects below require
+    an unblocked strike; saving-throw-only effects cannot be Blocked.
+  - Printed source HP, AC, attacks, speeds and saves are retained except for the explicitly identified existing-rule
+    replacements. Source CR is an encounter reference, not a new balance assessment.
+  - The undefined weak spot uses the existing Expose/Exposed rules instead of a new rear-facing or damage multiplier
+    mechanic.
+  source_ref: Faila DnD 5e StyleTemplate kopija.docx / page 15
+  original_5e: "Jobafo\n Large size aberrant, chaotic evil\n\nArmor Class 16 (natural armor)\nHit Points 75\
+    \ (10d12+10)\nSpeed 45ft., climb 20ft.\n  STR         DEX         CON         INT          WIS     CHA\n\
+    \ 16 (+3)     14 (+2)     16 (+3)     20(+5)       16(+4)   1 (-5)\n\nSaving Throws Int +5, Str +3\nSkills\
+    \ Perception +4,\nDamage resistances Psychic, poison\nDamage Vulnerabilities fire, cold, lightning\nSenses\
+    \ True sight 60 ft., passive Perception 16\nLanguages Aberrant\nChallenge 69 (XP. shit brah a lot probs)\n\
+    \nRemarkable cleverness. Masters degree in gender studies.\nIts kinda cleaver I guess, havent figured out\
+    \ how.\n\nVulnerable spot. Its ass is its weakspot so it hides it.\n\n\n\n\n                          \
+    \                                          15"

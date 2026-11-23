@@ -14,6 +14,40 @@
   color: var(--ink);
   background: var(--page);
 }
+
+/* Monster authoring uses the same paper, ink and green as the compendium. */
+.monster-tools { padding: 1rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); margin-block: 1.2rem; }
+.monster-editor-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1rem; margin-block: .85rem; }
+.monster-editor-actions button { min-height: 42px; }
+.monster-tools .state-message { margin: .5rem 0 0; max-width: 85ch; }
+.monster-editor-dialog { width: min(1400px, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0; border: 1px solid var(--line); border-radius: 9px; color: var(--ink); background: var(--page); box-shadow: 0 12px 60px #10251c55; }
+.monster-editor-dialog::backdrop { background: #10251c99; }
+.monster-editor-heading { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.4rem; background: var(--paper); border-bottom: 1px solid var(--line); }
+.monster-editor-heading h2 { margin: 0; }
+.monster-editor-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.3rem; padding: 1.3rem; align-items: start; }
+.monster-editor-form { min-width: 0; }
+.monster-editor-form fieldset { min-width: 0; margin: 0 0 1rem; padding: .9rem 1rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); }
+.monster-editor-form legend { color: var(--green); font-weight: 700; padding-inline: .35rem; }
+.monster-editor-form label { display: flex; flex-direction: column; gap: .25rem; margin-block: .55rem; font-size: .9rem; font-weight: 600; }
+.monster-editor-form input, .monster-editor-form textarea { display: block; width: 100%; min-width: 0; border: 1px solid #abb5a9; border-radius: 4px; padding: .55rem .65rem; font: 400 .95rem/1.45 var(--sans); background: #fff; color: var(--ink); }
+.monster-editor-form textarea { resize: vertical; }
+.monster-editor-form details { padding: .8rem; border: 1px solid var(--line); background: var(--paper); }
+.monster-editor-form summary { cursor: pointer; }
+.monster-action-row { border-bottom: 1px solid var(--line); padding-bottom: .7rem; margin-bottom: .7rem; }
+.monster-editor-preview-host { position: sticky; top: 5rem; min-width: 0; }
+.monster-editor-preview { padding: 1.2rem; background: var(--paper); border-top: 4px solid var(--gold); border-radius: 4px; box-shadow: 0 2px 7px #1b35231a; overflow-wrap: anywhere; }
+.monster-editor-preview h2 { margin-top: 0; }
+.monster-editor-preview p { white-space: pre-line; }
+.monster-editor-preview .monster-abilities { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .5rem; }
+.monster-editor-message:not(:empty) { color: #8c2920; background: #fff2e8; border: 1px solid #d9aa83; padding: .7rem; }
+.monster-primary { border: 1px solid var(--green); border-radius: 5px; background: var(--green); color: white; padding: .6rem 1rem; font-weight: 600; cursor: pointer; }
+@media (max-width: 780px) {
+  .monster-editor-body { grid-template-columns: minmax(0,1fr); padding: .8rem; }
+  .monster-editor-preview-host { position: static; }
+  .monster-editor-preview .monster-abilities { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .monster-editor-dialog { width: calc(100vw - 1rem); max-height: calc(100vh - 1rem); }
+  .monster-editor-heading { padding: .8rem; }
+}
 * { box-sizing: border-box; }
 .sheet-link { color: inherit; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; padding: .4rem .6rem; font-weight: 600; }
 body { margin: 0; min-height: 100vh; }

@@ -1,0 +1,473 @@
+{
+  "The Gray Orc male": {
+    "baseline": "Orc",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-o",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has no combat statistics. Use the existing Orc statblock as an explicit stand-in; do not infer new gray-orc racial traits.",
+    "fields": {
+      "meta": "Medium humanoid (orc), chaotic evil",
+      "cr": "1/2",
+      "ac": "13 (hide armor)",
+      "hp": "15 (2d8 + 6)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "16",
+        "dex": "12",
+        "con": "16",
+        "int": "7",
+        "wis": "11",
+        "cha": "10"
+      },
+      "senses": "darkvision 60 ft., passive Perception 10",
+      "languages": "Common, Orc",
+      "skills": "Intimidation +2",
+      "bonus_actions": [
+        {
+          "name": "Aggressive",
+          "description": "Move up to its speed toward a hostile creature that it can see."
+        }
+      ],
+      "actions": [
+        {
+          "name": "Greataxe",
+          "description": "+5 to hit; reach 5 ft.; one target. Hit: 9 (1d12 + 3) slashing damage."
+        },
+        {
+          "name": "Javelin",
+          "description": "+5 to hit; reach 5 ft. or range 30/120 ft.; one target. Hit: 6 (1d6 + 3) piercing damage."
+        }
+      ]
+    }
+  },
+  "Wild Man barbarian": {
+    "baseline": "Berserker",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has only height and weight. The existing Berserker supplies all missing combat statistics.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any chaotic alignment",
+      "cr": "2",
+      "ac": "13 (hide armor)",
+      "hp": "67 (9d8 + 27)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "16",
+        "dex": "12",
+        "con": "17",
+        "int": "9",
+        "wis": "11",
+        "cha": "9"
+      },
+      "senses": "passive Perception 10",
+      "languages": "any one language (usually Common)",
+      "traits": [
+        {
+          "name": "Reckless",
+          "description": "At the start of its turn, it may gain advantage on all melee weapon attack rolls that turn. Attack rolls against it then have advantage until its next turn begins."
+        }
+      ],
+      "actions": [
+        {
+          "name": "Greataxe",
+          "description": "+5 to hit; reach 5 ft.; one target. Hit: 9 (1d12 + 3) slashing damage."
+        }
+      ]
+    }
+  },
+  "Elftaur female druid": {
+    "baseline": "Druid",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has only height and weight. The existing Druid supplies missing combat statistics; no elftaur racial mechanics are invented.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any alignment",
+      "cr": "2",
+      "ac": "11 (16 with barkskin)",
+      "hp": "27 (5d8 + 5)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "10",
+        "dex": "12",
+        "con": "13",
+        "int": "12",
+        "wis": "15",
+        "cha": "11"
+      },
+      "senses": "passive Perception 14",
+      "languages": "Druidic plus any two languages",
+      "skills": "Medicine +4, Nature +3, Perception +4",
+      "spellcasting": {
+        "level": "4",
+        "ability": "Wisdom",
+        "save_dc": "12",
+        "attack_bonus": "+4",
+        "cantrips": [
+          "druidcraft",
+          "produce flame",
+          "shillelagh"
+        ],
+        "slots": {
+          "1": 4,
+          "2": 3
+        },
+        "spells": {
+          "1": [
+            "entangle",
+            "longstrider",
+            "speak with animals",
+            "thunderwave"
+          ],
+          "2": [
+            "animal messenger",
+            "barkskin"
+          ]
+        }
+      },
+      "actions": [
+        {
+          "name": "Quarterstaff",
+          "description": "+2 to hit (+4 with shillelagh); reach 5 ft.; one target. Hit: 3 (1d6) bludgeoning damage, or 4 (1d8 + 2) bludgeoning damage with shillelagh or if wielded with two hands."
+        }
+      ]
+    }
+  },
+  "Tiefling female sorcerer leader": {
+    "baseline": "Mage",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has only height and weight. The published Mage is an explicit spellcaster stand-in, with its Intelligence casting retained; it does not claim to reconstruct the original sorcerer.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any alignment",
+      "cr": "6",
+      "ac": "12 (15 with mage armor)",
+      "hp": "40 (9d8)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "9",
+        "dex": "14",
+        "con": "11",
+        "int": "17",
+        "wis": "12",
+        "cha": "11"
+      },
+      "senses": "passive Perception 11",
+      "languages": "any four languages",
+      "saving_throws": "Int +6, Wis +4",
+      "skills": "Arcana +6, History +6",
+      "spellcasting": {
+        "level": "9",
+        "ability": "Intelligence",
+        "save_dc": "14",
+        "attack_bonus": "+6",
+        "cantrips": [
+          "fire bolt",
+          "light",
+          "mage hand",
+          "prestidigitation"
+        ],
+        "slots": {
+          "1": 4,
+          "2": 3,
+          "3": 3,
+          "4": 3,
+          "5": 1
+        },
+        "spells": {
+          "1": [
+            "detect magic",
+            "mage armor",
+            "magic missile",
+            "shield"
+          ],
+          "2": [
+            "misty step",
+            "suggestion"
+          ],
+          "3": [
+            "counterspell",
+            "fireball",
+            "fly"
+          ],
+          "4": [
+            "greater invisibility",
+            "ice storm"
+          ],
+          "5": [
+            "cone of cold"
+          ]
+        }
+      },
+      "actions": [
+        {
+          "name": "Dagger",
+          "description": "+5 to hit; reach 5 ft. or range 20/60 ft.; one target. Hit: 4 (1d4 + 2) piercing damage."
+        }
+      ]
+    }
+  },
+  "Leonin male (rogue/assasin)": {
+    "baseline": "Spy",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has only height and weight. The existing Spy supplies missing combat statistics; no leonin racial mechanics are invented.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any alignment",
+      "cr": "1",
+      "ac": "12",
+      "hp": "27 (6d8)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "10",
+        "dex": "15",
+        "con": "10",
+        "int": "12",
+        "wis": "14",
+        "cha": "16"
+      },
+      "senses": "passive Perception 16",
+      "languages": "any two languages",
+      "skills": "Deception +5, Insight +4, Investigation +5, Perception +6, Persuasion +5, Sleight of Hand +4, Stealth +4",
+      "traits": [
+        {
+          "name": "Sneak Attack (1/Turn)",
+          "description": "A weapon attack that hits deals an extra 7 (2d6) damage if it has advantage, or if an ally that is not incapacitated is within 5 feet of its target and the attack does not have disadvantage."
+        }
+      ],
+      "bonus_actions": [
+        {
+          "name": "Cunning Action",
+          "description": "Take the Dash, Disengage, or Hide action."
+        }
+      ],
+      "actions": [
+        {
+          "name": "Multiattack",
+          "description": "Make two melee attacks."
+        },
+        {
+          "name": "Shortsword",
+          "description": "+4 to hit; reach 5 ft.; one target. Hit: 5 (1d6 + 2) piercing damage."
+        },
+        {
+          "name": "Hand Crossbow",
+          "description": "+4 to hit; range 30/120 ft.; one target. Hit: 5 (1d6 + 2) piercing damage."
+        }
+      ]
+    }
+  },
+  "Sand shifter female": {
+    "baseline": "Scout",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has only height and weight. The existing Scout supplies missing combat statistics; no sand-shifter racial mechanics are invented.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any alignment",
+      "cr": "1/2",
+      "ac": "13 (leather armor)",
+      "hp": "16 (3d8 + 3)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "11",
+        "dex": "14",
+        "con": "12",
+        "int": "11",
+        "wis": "13",
+        "cha": "11"
+      },
+      "senses": "passive Perception 15",
+      "languages": "any one language (usually Common)",
+      "skills": "Nature +4, Perception +5, Stealth +6, Survival +5",
+      "traits": [
+        {
+          "name": "Keen Hearing and Sight",
+          "description": "Advantage on Wisdom (Perception) checks that rely on hearing or sight."
+        }
+      ],
+      "actions": [
+        {
+          "name": "Multiattack",
+          "description": "Make two melee attacks or two ranged attacks."
+        },
+        {
+          "name": "Shortsword",
+          "description": "+4 to hit; reach 5 ft.; one target. Hit: 5 (1d6 + 2) piercing damage."
+        },
+        {
+          "name": "Longbow",
+          "description": "+4 to hit; range 150/600 ft.; one target. Hit: 6 (1d8 + 2) piercing damage."
+        }
+      ]
+    }
+  },
+  "Forest child female leader": {
+    "baseline": "Druid",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has no combat statistics. The existing Druid supplies missing combat statistics; no forest-child racial mechanics are invented.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any alignment",
+      "cr": "2",
+      "ac": "11 (16 with barkskin)",
+      "hp": "27 (5d8 + 5)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "10",
+        "dex": "12",
+        "con": "13",
+        "int": "12",
+        "wis": "15",
+        "cha": "11"
+      },
+      "senses": "passive Perception 14",
+      "languages": "Druidic plus any two languages",
+      "skills": "Medicine +4, Nature +3, Perception +4",
+      "spellcasting": {
+        "level": "4",
+        "ability": "Wisdom",
+        "save_dc": "12",
+        "attack_bonus": "+4",
+        "cantrips": [
+          "druidcraft",
+          "produce flame",
+          "shillelagh"
+        ],
+        "slots": {
+          "1": 4,
+          "2": 3
+        },
+        "spells": {
+          "1": [
+            "entangle",
+            "longstrider",
+            "speak with animals",
+            "thunderwave"
+          ],
+          "2": [
+            "animal messenger",
+            "barkskin"
+          ]
+        }
+      },
+      "actions": [
+        {
+          "name": "Quarterstaff",
+          "description": "+2 to hit (+4 with shillelagh); reach 5 ft.; one target. Hit: 3 (1d6) bludgeoning damage, or 4 (1d8 + 2) bludgeoning damage with shillelagh or if wielded with two hands."
+        }
+      ]
+    }
+  },
+  "Formicid male": {
+    "baseline": "Guard",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has only height and weight. The existing Guard supplies missing combat statistics; no formicid racial mechanics are invented.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any alignment",
+      "cr": "1/8",
+      "ac": "16 (chain shirt, shield)",
+      "hp": "11 (2d8 + 2)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "13",
+        "dex": "12",
+        "con": "12",
+        "int": "10",
+        "wis": "11",
+        "cha": "10"
+      },
+      "senses": "passive Perception 12",
+      "languages": "any one language (usually Common)",
+      "skills": "Perception +2",
+      "actions": [
+        {
+          "name": "Spear",
+          "description": "+3 to hit; reach 5 ft. or range 20/60 ft.; one target. Hit: 4 (1d6 + 1) piercing damage."
+        }
+      ]
+    }
+  },
+  "Ishilb male paladin": {
+    "baseline": "Knight",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has only height and weight. The existing Knight supplies missing combat statistics as a martial stand-in; no paladin spellcasting or ish ilb racial mechanics are invented.",
+    "fields": {
+      "meta": "Medium humanoid (any race), any alignment",
+      "cr": "3",
+      "ac": "18 (plate)",
+      "hp": "52 (8d8 + 16)",
+      "speed": "30 ft.",
+      "abilities": {
+        "str": "16",
+        "dex": "11",
+        "con": "14",
+        "int": "11",
+        "wis": "11",
+        "cha": "15"
+      },
+      "senses": "passive Perception 10",
+      "languages": "any one language (usually Common)",
+      "saving_throws": "Con +4, Wis +2",
+      "traits": [
+        {
+          "name": "Brave",
+          "description": "Advantage on saving throws against being frightened."
+        }
+      ],
+      "actions": [
+        {
+          "name": "Multiattack",
+          "description": "Make two melee attacks."
+        },
+        {
+          "name": "Greatsword",
+          "description": "+5 to hit; reach 5 ft.; one target. Hit: 10 (2d6 + 3) slashing damage."
+        },
+        {
+          "name": "Heavy Crossbow",
+          "description": "+2 to hit; range 100/400 ft.; one target. Hit: 5 (1d10) piercing damage."
+        },
+        {
+          "name": "Leadership (Recharges after a Short or Long Rest)",
+          "description": "For 1 minute, whenever a nonhostile creature it can see within 30 feet makes an attack roll or a saving throw, it can utter a command or warning. If that creature can hear and understand it, the creature adds 1d4 to the roll. A creature can benefit from one Leadership die at a time. The effect ends if the knight is incapacitated."
+        }
+      ],
+      "reactions": [
+        {
+          "name": "Parry",
+          "description": "Add 2 to AC against one melee attack that would hit. The knight must see the attacker and wield a melee weapon."
+        }
+      ]
+    }
+  },
+  "Imp": {
+    "baseline": "Imp",
+    "source": "https://www.dndbeyond.com/monsters/16933-imp",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "Only the campaign Imp's missing AC, hit points and speed are supplied by the published Imp; its recorded modifiers, attacks and creature type remain unchanged.",
+    "fields": {
+      "ac": "13",
+      "hp": "10 (3d4 + 3)",
+      "speed": "20 ft., fly 40 ft."
+    }
+  },
+  "Raguch the Ogrillion": {
+    "baseline": "Ogre actions",
+    "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-o",
+    "license": "SRD 5.1; CC BY 4.0; https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+    "reason": "The campaign record has modifiers, AC, HP and speed but no attacks. Published Ogre attacks are used unchanged as explicit alternatives; their attack values are not recalculated to pretend they were recorded in the campaign.",
+    "fields": {
+      "actions": [
+        {
+          "name": "Greatclub",
+          "description": "+6 to hit; reach 5 ft.; one target. Hit: 13 (2d8 + 4) bludgeoning damage."
+        },
+        {
+          "name": "Javelin",
+          "description": "+6 to hit; reach 5 ft. or range 30/120 ft.; one target. Hit: 11 (2d6 + 4) piercing damage."
+        }
+      ]
+    }
+  }
+}
+

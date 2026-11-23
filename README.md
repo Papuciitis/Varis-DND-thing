@@ -72,7 +72,7 @@ Items are organized into Weapons, Armor & shields, Items, Consumables, Materials
 
 The reader's spell filter offers four classes of magic: Arcane, Oath, Occult and Mystic, each including spells and cantrips. Select level 0 for cantrips. Hexes and magic references remain accessible through separate links. Default reader order is class of magic, numeric level, then name; explicit level and alphabetical orders remain available. The sheet's spell picker and saved spell list retain numeric level order, and saved spells can be filtered by level. Archetypes and unlocked features use level order; monsters default to Challenge order. Search defaults to relevance. Display changes preserve preparations and rule links.
 
-Open a result to read its stats and expand the features you need. The address of an entry can be bookmarked. The monster manual contains workbook reference drafts; linked summons retain the current spell's rules and embedded statistics as the priority.
+Open a result to read its stats and expand the features you need. The address of an entry can be bookmarked. The monster manual includes the converted campaign creatures and existing workbook references. Add, edit or duplicate statblocks directly in the reader, preview changes, and save a custom YAML collection for the shared catalog. Linked summons retain the current spell's rules and embedded statistics as the priority. See [monster conversion and editing](docs/monsters.md).
 
 ## Rules sources
 
@@ -93,6 +93,7 @@ See [the coverage comparison](COVERAGE.md) for counts and source reconciliation,
 | Races, feats, and conditions | `races.yml`, `feats.yaml`, `conditions.yaml` |
 | Backgrounds, equipment, additional feats and conditions, core rules | `draft-reference/` |
 | Workbook creature reference drafts and spell-to-creature links | `monsters.yaml`, `summon-links.yaml` |
+| Converted campaign monsters, original snapshots and custom statblocks | `monsters/` |
 | Prototype maneuver design | `maneuver-notes.yaml` |
 
 The `draft-` directory names identify where material came from. Use the compiled entry to look up the current wording.

@@ -79,11 +79,15 @@
   const groupsBySection = new Map();
   function indexSection(section) {
     globalThis.MagicItems?.apply(section);
+    globalThis.MonsterEditor?.apply(section);
+    if (section.key === "monsters") section.count = section.entries.length;
     dataBySection.set(section.key, section.entries.map(entry => {
       const name = norm(entry.name);
       const lead = norm([entry.name, entry.group, section.title,
         section.key === "magic-items" ? magicCategories?.searchTerms(entry) || "" : ""].join(" "));
-      const body = norm(JSON.stringify(section.key === "magic-items" && globalThis.MagicItems ? globalThis.MagicItems.searchable(entry) : entry.details) ?? "").replace(/\\n/g, " ");
+      const searchable = section.key === "magic-items" && globalThis.MagicItems ? globalThis.MagicItems.searchable(entry)
+        : section.key === "monsters" && globalThis.MonsterEditor ? globalThis.MonsterEditor.searchable(entry) : entry.details;
+      const body = norm(JSON.stringify(searchable) ?? "").replace(/\\n/g, " ");
       return {section, entry, name, lead, text: lead + " " + body};
     }));
     all = sections.flatMap(section => dataBySection.get(section.key) || []);
@@ -315,6 +319,14 @@
       head.append(el("p", "index-intro", "Converted for the Varis rules. Browse the collection or open an item to edit its rules."));
       head.append(link("Using converted magic items",{section:"rules",group:"Magic items",entry:"Using converted magic items"},"text-link"));
       reader.append(globalThis.MagicItems.toolbar(section, () => {indexSection(section);draw();}));
+    }
+    if (section.key === "monsters" && globalThis.MonsterEditor) {
+      head.append(el("p", "index-intro", "Browse creature statblocks, add your own monster, or edit an existing creature for your table."));
+      head.append(link("Monster conversion and editing", {section:"rules", group:"Monsters", entry:"Using converted monsters"}, "text-link"));
+      reader.append(globalThis.MonsterEditor.toolbar(section, updated => {
+        indexSection(section);
+        if (updated) openFilters(entryRoute(section, updated)); else draw();
+      }));
     }
     const form = el("form", "filters");
     form.setAttribute("role", "search");
@@ -765,7 +777,7 @@
   function monsterBlock(entry, depth = 2) {
     const block = el("div", "stat-block");
     const value = entry.details || {};
-    const known = new Set(["name", "group", "meta", "size", "type", "alignment", "abilities", "traits", "actions", "bonus_actions", "reactions", "legendary_actions", "notes", "source_ref", "status", "description", "desc"]);
+    const known = new Set(["id", "name", "group", "meta", "size", "type", "alignment", "abilities", "traits", "actions", "bonus_actions", "reactions", "legendary_actions", "mythic_actions", "lair_actions", "regional_effects", "spell_references", "notes", "source_ref", "status", "description", "desc"]);
     if (value.status) block.append(el("p", "monster-status", value.status));
     const meta = value.meta || [value.size, value.type, value.alignment].filter(Boolean).join(" · ");
     if (meta) block.append(plain(meta) ? el("p", "monster-meta", meta) : renderValue(meta, depth));
@@ -792,14 +804,36 @@
     }
     if (abilities.childElementCount) block.append(abilities);
     if (value.description || value.desc) block.append(prose(value.description || value.desc));
-    for (const key of ["traits", "actions", "bonus_actions", "reactions", "legendary_actions"]) {
+    if (Array.isArray(value.spell_references) && value.spell_references.length) {
+      const spells = el("section", "field monster-spells");
+      spells.append(el("h" + Math.min(depth, 6), "", "Current spell rules"));
+      const list = el("ul", "rule-list");
+      for (const reference of value.spell_references) {
+        const row = el("li");
+        row.append(link(reference.name, {section:"spells", entry:reference.name, group:reference.group}));
+        if (reference.source_spell && norm(reference.source_spell) !== norm(reference.name)) {
+          row.append(document.createTextNode(" (replaces " + reference.source_spell + ")"));
+        }
+        if (reference.rule) row.append(prose(reference.rule));
+        list.append(row);
+      }
+      spells.append(list); block.append(spells);
+    }
+    for (const key of ["traits", "actions", "bonus_actions", "reactions", "legendary_actions", "mythic_actions", "lair_actions", "regional_effects"]) {
       if (value[key]?.length) block.append(textField(key, value[key], depth));
     }
+    const provenance = [];
     for (const [key, item] of Object.entries(value)) {
+      if (/^(?:original_|source_|conversion_|replacement_sources$|fallback_reference$)/.test(key)) {
+        const fold = el("details", "chapter monster-provenance");
+        fold.append(el("summary", "", key === "original_5e" ? "Original source statblock" : label(key)), renderValue(item, depth + 1, label(key)));
+        provenance.push(fold);
+        continue;
+      }
       if (!known.has(key) && item != null && item !== "") block.append(textField(key, item, depth));
     }
     if (value.notes?.length) block.append(textField("notes", value.notes, depth));
-    if (value.source_ref) block.append(textField("source_ref", value.source_ref, depth));
+    block.append(...provenance);
     return block;
   }
   function summonPicker(entry) {
@@ -822,7 +856,8 @@
     track.setAttribute("aria-label", "Creature stat blocks; swipe or use Previous and Next");
     const cards = references.map(reference => {
       const card = el("article", "summon-card");
-      const monster = section?.entries.find(candidate => norm(candidate.name) === norm(reference.monster));
+      const monster = section?.entries.find(candidate => norm(candidate.name) === norm(reference.monster)
+        || candidate.monster_target && norm(candidate.monster_target.name) === norm(reference.monster));
       const title = el("h3", "summon-title");
       if (monster) title.append(link(reference.label || cap(monster.name), entryRoute(section, monster)));
       else title.textContent = reference.label || reference.monster;
@@ -903,6 +938,12 @@
       header.append(globalThis.MagicItems.editor(section, entry, updated => {
         indexSection(section);
         if(updated && location.hash !== href(entryRoute(section,updated)))openFilters(entryRoute(section,updated));else draw();
+      }));
+    }
+    if (section.key === "monsters" && globalThis.MonsterEditor) {
+      header.append(globalThis.MonsterEditor.editor(section, entry, updated => {
+        indexSection(section);
+        if (updated && location.hash !== href(entryRoute(section, updated))) openFilters(entryRoute(section, updated)); else draw();
       }));
     }
     if (section.key === "classes") {
