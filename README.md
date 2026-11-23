@@ -99,7 +99,7 @@ The `draft-` directory names identify where material came from. Use the compiled
 
 ## Campaign magic items
 
-**Magic items** is a separate collection of all 300 items from the campaign workbook, rewritten for the Varis system. The displayed description contains the converted rules. Original 5e text, source cells and conversion notes are available separately for comparison. Search and filter by rarity or item type, open an item, and expand **Edit this item** to adjust it.
+**Magic items** is a separate collection of all 300 items from the campaign workbook, rewritten for the Varis system. Browse seven reviewed categories: weapons/ammunition, armor/shields, wearables/jewelry, staves/wands/rods, scrolls, potions/consumables, and miscellaneous. Combine category, rarity, item type, and text filters, including category-word searches. The character sheet's equipment picker offers the same magic categories. The displayed description contains the converted rules; original 5e text, source cells and conversion notes remain separate comparisons. Open an item and expand **Edit this item** to adjust its category or rules.
 
 The six editable rarity files, original workbook, source snapshot, and shared conversion conventions are tracked under `data/magic-items/`. Page edits save in the current browser. Use **Export item edits** for a portable backup, or **Export source file** to replace that item's complete source collection and commit the edited rules. Rebuild after changing a source file. See [magic item conversion and editing](docs/magic-items.md) for the workflow and automation limits.
 

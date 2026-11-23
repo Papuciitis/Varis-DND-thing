@@ -3,6 +3,7 @@ entries:
 - name: Antitoxin
   group: Uncommon
   id: mi-uncommon-002
+  category: consumables
   type: Potion
   rarity: Uncommon
   attunement: 'No'
@@ -20,6 +21,7 @@ entries:
 - name: Scroll of Plant Growth
   group: Uncommon
   id: mi-uncommon-003
+  category: scrolls
   type: Scroll
   rarity: Uncommon
   attunement: 'No'
@@ -40,6 +42,7 @@ entries:
 - name: Cloak of Elvenkind
   group: Uncommon
   id: mi-uncommon-004
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -59,6 +62,7 @@ entries:
 - name: Robe of Useful Items
   group: Uncommon
   id: mi-uncommon-005
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -80,6 +84,7 @@ entries:
 - name: Cactus Mace
   group: Uncommon
   id: mi-uncommon-006
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -100,6 +105,7 @@ entries:
 - name: Weaving Wasp Needles (up to 20 darts)
   group: Uncommon
   id: mi-uncommon-007
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -142,6 +148,7 @@ entries:
 - name: Great Owl's Shroud
   group: Uncommon
   id: mi-uncommon-008
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -170,6 +177,7 @@ entries:
 - name: Ambitious Medic's Box
   group: Uncommon
   id: mi-uncommon-009
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -208,6 +216,7 @@ entries:
 - name: Mimicloak
   group: Uncommon
   id: mi-uncommon-010
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -233,6 +242,7 @@ entries:
 - name: Kraken's Whip
   group: Uncommon
   id: mi-uncommon-011
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -263,6 +273,7 @@ entries:
 - name: Eye of the Bookwurm
   group: Uncommon
   id: mi-uncommon-012
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -288,6 +299,7 @@ entries:
 - name: Dagger of the Ogre Mage (shortsword)
   group: Uncommon
   id: mi-uncommon-013
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'Yes'
@@ -321,6 +333,7 @@ entries:
 - name: Ring of Volleys
   group: Uncommon
   id: mi-uncommon-014
+  category: wearables
   type: Ring
   rarity: Uncommon
   attunement: 'No'
@@ -341,6 +354,7 @@ entries:
 - name: Camper's Respite
   group: Uncommon
   id: mi-uncommon-015
+  category: spellcasting
   type: Rod
   rarity: Uncommon
   attunement: 'No'
@@ -382,6 +396,7 @@ entries:
 - name: Alchemist's Potion Belt
   group: Uncommon
   id: mi-uncommon-016
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -407,6 +422,7 @@ entries:
 - name: Frostbitten Buckler (shield)
   group: Uncommon
   id: mi-uncommon-017
+  category: armor-shields
   type: Shield
   rarity: Uncommon
   attunement: 'Yes'
@@ -431,6 +447,7 @@ entries:
 - name: Tub of Churning and Fermentation
   group: Uncommon
   id: mi-uncommon-018
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -459,6 +476,7 @@ entries:
 - name: Venombane Armor
   group: Uncommon
   id: mi-uncommon-019
+  category: armor-shields
   type: Armor
   rarity: Uncommon
   attunement: 'Yes'
@@ -481,6 +499,7 @@ entries:
 - name: Griffon Component Pack
   group: Uncommon
   id: mi-uncommon-020
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -509,6 +528,7 @@ entries:
 - name: Badge of the Savant
   group: Uncommon
   id: mi-uncommon-021
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -535,6 +555,7 @@ entries:
 - name: Ring of Healer's Heroism
   group: Uncommon
   id: mi-uncommon-022
+  category: wearables
   type: Ring
   rarity: Uncommon
   attunement: 'Yes'
@@ -557,6 +578,7 @@ entries:
 - name: Chromacloth (sling)
   group: Uncommon
   id: mi-uncommon-023
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -584,6 +606,7 @@ entries:
 - name: Fine Mustache
   group: Uncommon
   id: mi-uncommon-024
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -608,6 +631,7 @@ entries:
 - name: Gnome Double Bolt
   group: Uncommon
   id: mi-uncommon-025
+  category: weapons
   type: Ammunition
   rarity: Uncommon
   attunement: 'No'
@@ -631,6 +655,7 @@ entries:
 - name: Bag of Goodberries
   group: Uncommon
   id: mi-uncommon-026
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -651,6 +676,7 @@ entries:
 - name: Mask of Divoc
   group: Uncommon
   id: mi-uncommon-027
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -669,6 +695,7 @@ entries:
 - name: Shadowglass Daggers
   group: Uncommon
   id: mi-uncommon-028
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -689,6 +716,7 @@ entries:
 - name: Stone of Healing
   group: Uncommon
   id: mi-uncommon-029
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -710,6 +738,7 @@ entries:
 - name: Lockmelter
   group: Uncommon
   id: mi-uncommon-030
+  category: consumables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -732,6 +761,7 @@ entries:
 - name: Goodberry sapling
   group: Uncommon
   id: mi-uncommon-031
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -757,6 +787,7 @@ entries:
 - name: Euphloria (Shield)
   group: Uncommon
   id: mi-uncommon-032
+  category: armor-shields
   type: Shield
   rarity: Uncommon
   attunement: 'Yes'
@@ -785,6 +816,7 @@ entries:
 - name: Coin of Returning
   group: Uncommon
   id: mi-uncommon-033
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -803,6 +835,7 @@ entries:
 - name: Cutting Chalk
   group: Uncommon
   id: mi-uncommon-034
+  category: consumables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -831,6 +864,7 @@ entries:
 - name: Dragon's Tooth Dagger
   group: Uncommon
   id: mi-uncommon-035
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -853,6 +887,7 @@ entries:
 - name: Cool Rock
   group: Uncommon
   id: mi-uncommon-036
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -874,6 +909,7 @@ entries:
 - name: Book of Endless Pages
   group: Uncommon
   id: mi-uncommon-037
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -900,6 +936,7 @@ entries:
 - name: Smoking Pipe of Intention
   group: Uncommon
   id: mi-uncommon-038
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -921,6 +958,7 @@ entries:
 - name: Rat Catcher (Javelin) (30/120)
   group: Uncommon
   id: mi-uncommon-039
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -948,6 +986,7 @@ entries:
 - name: Porcupine (Mace)
   group: Uncommon
   id: mi-uncommon-040
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -971,6 +1010,7 @@ entries:
 - name: Feather of Falling
   group: Uncommon
   id: mi-uncommon-041
+  category: consumables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -989,6 +1029,7 @@ entries:
 - name: Grenade of sacrifice
   group: Uncommon
   id: mi-uncommon-042
+  category: consumables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1013,6 +1054,7 @@ entries:
 - name: Lodestone Tankard
   group: Uncommon
   id: mi-uncommon-043
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1032,6 +1074,7 @@ entries:
 - name: Wand of Relieved Burdens
   group: Uncommon
   id: mi-uncommon-044
+  category: spellcasting
   type: Wand
   rarity: Uncommon
   attunement: 'No'
@@ -1056,6 +1099,7 @@ entries:
 - name: Princesse's Flute
   group: Uncommon
   id: mi-uncommon-045
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1078,6 +1122,7 @@ entries:
 - name: Boots of Wellfitting
   group: Uncommon
   id: mi-uncommon-046
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1097,6 +1142,7 @@ entries:
 - name: Gloves of Sign Language
   group: Uncommon
   id: mi-uncommon-047
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -1116,6 +1162,7 @@ entries:
 - name: Band of the Full Beast
   group: Uncommon
   id: mi-uncommon-048
+  category: wearables
   type: Ring
   rarity: Uncommon
   attunement: 'No'
@@ -1137,6 +1184,7 @@ entries:
 - name: Reading Spectacles
   group: Uncommon
   id: mi-uncommon-049
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1155,6 +1203,7 @@ entries:
 - name: Circuit Breaker (club)
   group: Uncommon
   id: mi-uncommon-050
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -1176,6 +1225,7 @@ entries:
 - name: Arondight (Short-sword)
   group: Uncommon
   id: mi-uncommon-051
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -1197,6 +1247,7 @@ entries:
 - name: Ring of Shadows (ring)
   group: Uncommon
   id: mi-uncommon-052
+  category: wearables
   type: Ring
   rarity: Uncommon
   attunement: 'Yes'
@@ -1219,6 +1270,7 @@ entries:
 - name: Grappling Hook Launcher
   group: Uncommon
   id: mi-uncommon-053
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1243,6 +1295,7 @@ entries:
 - name: Mellow-leaf Wine
   group: Uncommon
   id: mi-uncommon-054
+  category: consumables
   type: Potion
   rarity: Uncommon
   attunement: 'No'
@@ -1264,6 +1317,7 @@ entries:
 - name: Bladed Cloak
   group: Uncommon
   id: mi-uncommon-055
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -1288,6 +1342,7 @@ entries:
 - name: Angel's Tear amulet
   group: Uncommon
   id: mi-uncommon-056
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -1308,6 +1363,7 @@ entries:
 - name: Gloves of Reciprocity
   group: Uncommon
   id: mi-uncommon-057
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -1331,6 +1387,7 @@ entries:
 - name: Hidden Spring Sheath
   group: Uncommon
   id: mi-uncommon-058
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1351,6 +1408,7 @@ entries:
 - name: Susuk needle
   group: Uncommon
   id: mi-uncommon-059
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -1373,6 +1431,7 @@ entries:
 - name: Dry Oil
   group: Uncommon
   id: mi-uncommon-060
+  category: consumables
   type: Potion
   rarity: Uncommon
   attunement: 'No'
@@ -1398,6 +1457,7 @@ entries:
 - name: Mist Pellet
   group: Uncommon
   id: mi-uncommon-061
+  category: consumables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1421,6 +1481,7 @@ entries:
 - name: Can Trip (consumable)
   group: Uncommon
   id: mi-uncommon-062
+  category: consumables
   type: Potion
   rarity: Uncommon
   attunement: 'No'
@@ -1447,6 +1508,7 @@ entries:
 - name: Gyorm Shell
   group: Uncommon
   id: mi-uncommon-063
+  category: weapons
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'
@@ -1469,6 +1531,7 @@ entries:
 - name: Kab-Ar (dagger)
   group: Uncommon
   id: mi-uncommon-064
+  category: weapons
   type: Weapon
   rarity: Uncommon
   attunement: 'No'
@@ -1493,6 +1556,7 @@ entries:
 - name: Ring of Healing
   group: Uncommon
   id: mi-uncommon-065
+  category: wearables
   type: Ring
   rarity: Uncommon
   attunement: 'Yes'
@@ -1512,6 +1576,7 @@ entries:
 - name: Shadecast Ring
   group: Uncommon
   id: mi-uncommon-066
+  category: wearables
   type: Ring
   rarity: Uncommon
   attunement: 'Yes'
@@ -1538,6 +1603,7 @@ entries:
 - name: Amulet of Death Sense
   group: Uncommon
   id: mi-uncommon-067
+  category: wearables
   type: Wondrous item
   rarity: Uncommon
   attunement: 'Yes'
@@ -1559,6 +1625,7 @@ entries:
 - name: Voodoo Doll
   group: Uncommon
   id: mi-uncommon-068
+  category: misc
   type: Wondrous item
   rarity: Uncommon
   attunement: 'No'

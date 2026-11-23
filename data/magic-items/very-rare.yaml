@@ -1,6 +1,7 @@
 section: magic-items
 entries:
 - id: mi-very-rare-002
+  category: weapons
   type: Weapon
   base_item: Dagger
   desc: |-
@@ -31,6 +32,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-003
+  category: weapons
   type: Weapon
   base_item: Longbow
   desc: |-
@@ -59,6 +61,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-004
+  category: wearables
   type: Wondrous item
   desc: |-
     While wearing this feathered cloak, increase Constitution by 2, to a maximum of 20; gain poison resistance and advantage on saves against disease and poison. As a bonus action, transform it into vulture wings for 1 minute, gaining a flying speed of 60 feet. While transformed, an unblocked melee weapon strike against a creature missing HP deals an extra 1d6 necrotic damage. Regain the wing power at dusk.
@@ -94,6 +97,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-005
+  category: weapons
   type: Weapon
   base_item: Rapier
   magic_bonus: '2'
@@ -126,6 +130,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-006
+  category: wearables
   type: Wondrous item
   desc: |-
     This eyepiece holds 5 charges and regains 1d4 + 1 at dawn. As a reaction at the end of another creature's turn, spend 1 charge and target that creature if you can see it within 60 feet. Choose Past or Future.
@@ -156,6 +161,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-007
+  category: weapons
   type: Weapon
   base_item: Longspear
   magic_bonus: '2'
@@ -185,6 +191,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-008
+  category: weapons
   type: Weapon
   desc: |-
     A matched Varis Dagger (Hour) and Short sword (Minute), sharing one attunement. Wield each using its own base weapon, training, and maneuvers. Holding one lets you spend an action to learn the distance and direction to the other on the same plane. Competing attunement is resolved by opposed Intelligence (Arcana) checks; a tie preserves the current bearer. The winner controls the pair and cannot be displaced this way for 24 hours.
@@ -219,6 +226,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-009
+  category: weapons
   type: Weapon
   base_item: Longbow
   desc: |-
@@ -246,6 +254,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-010
+  category: wearables
   type: Wondrous item
   desc: |-
     As an action, summon two spectral arms attached to your torso for 1 minute. They manipulate unattended objects, open unlocked containers, draw or stow accessible items, or pour a vial, but cannot wield weapons, shields, or spell components. Each carries up to 10 pounds and does not grant additional actions or equipment slots.
@@ -275,6 +284,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-011
+  category: wearables
   type: Wondrous item
   desc: While wearing this platinum helm, gain +1 AC and +1 to saving throws. If you possess a breath-weapon feature,
     once per dawn you can replace one use with a holy blue breath, spending its normal action and resource. Use
@@ -302,6 +312,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-012
+  category: misc
   type: Wondrous item
   desc: |-
     This warhorn holds 4 charges and regains 1d4 at dawn. Its sound carries 300 feet. As an action, spend 1 charge to summon one loyal Large war elk in an unoccupied space within 30 feet. A previous elk from this horn vanishes. It remains until killed, dismissed as an action, or your attunement ends. It has AC 14, HP 37, speed 60 feet, Strength 18, Dexterity 12, Constitution 16, Intelligence 6, Wisdom 12, Charisma 8; saves use these modifiers. It acts after you, obeys spoken commands, and takes one action and one move action each turn. Its antlers attack at +6, reach 5 feet, dealing 2d6 + 4 piercing damage, Block DC 14. If ridden it supplies movement and cannot attack on that turn.
@@ -330,6 +341,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-013
+  category: misc
   type: Wondrous item
   desc: |-
     Turn this key in empty air as an action. Over 1 minute, a spectral doorway appears and remains for 24 hours, leading to an extradimensional dwelling with up to twenty furnished 20-foot rooms, food and beds for twenty guests, and an additional library. Only creatures you name can enter; you can open, close, or dismiss the doorway as an action while within 30 feet. It cannot be used to enter another plane or bypass a barrier in the surrounding world. When dismissed or expired, occupants and their possessions appear safely beside the entrance; created food, furnishings, and copied library books vanish outside it.
@@ -359,6 +371,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-014
+  category: weapons
   type: Weapon
   base_item: Greataxe
   magic_bonus: '2'
@@ -388,6 +401,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-015
+  category: weapons
   type: Weapon
   base_item: Heavy crossbow
   desc: |-
@@ -410,6 +424,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-016
+  category: weapons
   type: Weapon
   base_item: Greatsword
   desc: |-
@@ -434,6 +449,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-017
+  category: wearables
   type: Wondrous item
   desc: |-
     This owlbear-hide cloak has two grasping cloth arms. As a bonus action, use them to draw or stow one object in an unlocked, accessible container within 5 feet; the object must fit through the opening. The cloak can carry one object of up to 50 pounds in each arm, but cannot wield weapons or shields, use items, cast spells, or bypass locks. Carrying something in its arms does not grant you extra actions.
@@ -458,6 +474,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-018
+  category: wearables
   type: Ring
   desc: While wearing this ring and having at least 1 current HP, regain 1d6 HP every 10 minutes. This does not
     restore Arcane Health, Temp HP, Block, or rest dice, and cannot raise you from 0 HP. Apply Diseased and other
@@ -480,6 +497,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-019
+  category: wearables
   type: Ring
   desc: |-
     This ring stores up to 6 soul charges, initially 0. Gain 1 when you kill or materially assist in killing a hostile creature with a character level or Challenge of at least 1; harmless captive or summoned creatures grant none. As a bonus action, spend charges for one power: 1 charge grants advantage on Intimidation checks for 1 hour; 2 charges cloak you in shadow for 1 hour, granting +1 AC and advantage on Stealth checks, but no invisibility; 6 charges empower your next three unblocked weapon strikes within 10 minutes, each dealing an extra 3d6 necrotic damage. A new activation replaces the same power's previous duration or strikes.
@@ -506,6 +524,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-020
+  category: weapons
   type: Weapon
   base_item: Spear
   magic_bonus: '2'
@@ -533,6 +552,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-021
+  category: weapons
   type: Weapon
   base_item: Hand crossbow
   desc: This magical Varis Hand crossbow retains its normal damage, properties, maneuvers, and Reload rules. Its
@@ -557,6 +577,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-022
+  category: armor-shields
   type: Armor
   base_item: Plated leather armor
   magic_bonus: '2'
@@ -582,6 +603,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-023
+  category: wearables
   type: Ring
   desc: While wearing this ring, gain advantage on Wisdom (Insight) checks to recognize your own emotions, motives,
     remembered decisions, or internal compulsions. This does not reveal unknown external facts, automatically identify
@@ -603,6 +625,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-024
+  category: weapons
   type: Ammunition
   desc: 'This single arrow has living wings in place of fletching. When fired from a bow, add +3 to the shot''s
     attack roll and Block DC, without adding damage. It uses that bow''s damage, range, training, and applicable
@@ -626,6 +649,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-025
+  category: weapons
   type: Weapon
   base_item: javelin
   desc: |-
@@ -654,6 +678,7 @@ entries:
   source_rarity: Very Rare
   manual_attack: 'Yes'
 - id: mi-very-rare-026
+  category: consumables
   type: Potion
   desc: Drink this potion as an action. A living creature other than a construct is cured of its current diseases,
     including the Diseased condition. For the next 48 hours it has advantage on Constitution saves and may change
@@ -678,6 +703,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-027
+  category: consumables
   type: Potion
   desc: |-
     Drink this foul root potion as an action. For 8 hours, roll 2d20 whenever you begin casting a spell. If neither die is 1 or 2, cast normally and double the spell's rolled damage, after adding its normal modifiers, before resistance or vulnerability. Healing, secondary conditions, and later independent damage rolls are not doubled; for ongoing spells, double only the first damage roll.
@@ -700,6 +726,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-028
+  category: consumables
   type: Potion
   desc: |-
     Drink as an action. One hour later, you lay 3d4 eggs, hatching into loyal chickens after 10 minutes. Each has AC 10, HP 1, speed 20 feet, no effective attack, and obeys simple empathic instructions to follow, wait, or move to a visible place. They cannot perform skilled tasks or carry more than 1 pound. Throwing a chicken at range 30/60 is an improvised ranged attack for 1d4 bludgeoning damage, Block DC 8 + your Dexterity modifier; the chicken dies or flees after impact.
@@ -727,6 +754,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-029
+  category: consumables
   type: Wondrous item
   desc: |-
     Danion's skull-shaped bottle bears the warning DO NOT DRINK. Its sealed cork or glass requires an action and DC 20 Strength check to open or break while enchanted. Removing its enchantment makes it ordinary glass. While a hostile fiend, undead, or creature that has deliberately killed an innocent in the last day is within 30 feet, the liquid vibrates and sheds dim red light 10 feet.
@@ -758,6 +786,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-030
+  category: wearables
   type: Wondrous item
   desc: While wearing this amulet, your maximum number of attuned magic items increases by one, from three to four
     under the collection's normal rules. The amulet does not itself require attunement. Only one Amulet of Attunement
@@ -779,6 +808,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-031
+  category: wearables
   type: Wondrous item
   desc: |-
     This steel circlet grants +1 AC while worn, even without attunement. If attuned, use an action to choose or extinguish one light mode: a 60-foot cone of bright light, a 120-foot cone of dim light, or a flash in a 20-foot cone. The continuous modes remain until changed or removed and are illumination, not sunlight.
@@ -803,6 +833,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-032
+  category: misc
   type: Wondrous item
   desc: |-
     Within any three consecutive days, cast a total of 40 spell levels of transformation magic within 5 feet of this seed to awaken it. Count each paid spell level once; cantrips count 0, and free item effects count 0. Transformation magic must physically alter a creature, object, or material. A DC 16 Intelligence (Nature) check reveals the need for transformation magic, DC 18 reveals the 40-level requirement, and DC 22 reveals the growth category. A power allowing speech with plants reduces these DCs by 2.
@@ -884,6 +915,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-033
+  category: weapons
   type: Weapon
   base_item: halberd
   magic_bonus: '3'
@@ -914,6 +946,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-034
+  category: wearables
   type: Wondrous item
   desc: These gauntlets are made from the hands of the ogre Takkok. While wearing them, your Strength score is 19
     if it would otherwise be lower. They do not add 19 to your score, raise an existing score of 19 or higher, or
@@ -937,6 +970,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-035
+  category: weapons
   type: Weapon
   base_item: Dagger
   magic_bonus: '2'
@@ -964,6 +998,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-036
+  category: weapons
   type: Weapon
   base_item: glaive
   magic_bonus: '1'
@@ -990,6 +1025,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-037
+  category: misc
   type: Wondrous item
   desc: |-
     This pint refills with strong magical beer whenever held upright. As a bonus action, drink to enter a borrowed rage for 1 minute: gain +2 to Strength-based melee damage and advantage on Strength checks and saves, but cannot cast or concentrate on spells. It ends early if you become unconscious. It does not stack with another rage and does not restore or spend a class rage resource. Creatures immune or resistant to poison or disease taste ordinary beer and gain none of this rage.
@@ -1014,6 +1050,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-038
+  category: weapons
   type: Weapon
   base_item: war hammer
   desc: This Varis war hammer uses its normal damage, properties, training, and maneuvers. Its melee attacks deal
@@ -1037,6 +1074,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-039
+  category: misc
   type: Wondrous item
   desc: Once per long rest, play this flute as an action to summon one crab swarm in a free space within 30 feet.
     It has AC 11, HP 6d4, walking and swimming speed 20 feet, Strength 10, Dexterity 12, Constitution 10, other
@@ -1061,6 +1099,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-040
+  category: wearables
   type: Wondrous item
   desc: |-
     This necklace has five runestones, initially charged. When damage would reach you after a Block check, use a reaction and discharge one or more charged stones. Roll 1d6 for each discharged stone and reduce that one damage event by the total, minimum 0, before applying it to Arcane Health, Temp HP, or HP. This is damage reduction, not another Block, and can reduce save-based or otherwise unblockable damage. Unused reduction is lost.
@@ -1085,6 +1124,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-041
+  category: wearables
   type: Wondrous item
   desc: While wearing these glasses, spend an action examining one magical object within reach and expend one of
     three uses. Learn its activation instructions, charges remaining, attunement requirement, and all deliberately
@@ -1108,6 +1148,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-042
+  category: consumables
   type: Potion
   desc: |-
     Drink as an action. Gibbering mouths appear on your body for 1d4 + 1 rounds. Once on each turn, use a bonus action to make a proficient melee attack using Strength or Dexterity, reach 5 feet, dealing 2d6 piercing damage plus that ability modifier; Block DC is 8 + proficiency + that modifier. On an unblocked strike that kills a creature no larger than you, its remains are absorbed.
@@ -1131,6 +1172,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-043
+  category: armor-shields
   type: Armor
   base_item: Plated armor suit
   desc: |-
@@ -1153,6 +1195,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-044
+  category: wearables
   type: Wondrous item
   desc: While wearing these gloves, use an action to extinguish nonliving, nonmagical heat sources you can see within
     60 feet, affecting up to three adjacent 5-foot cubes. Examples include flames, hot coals, and heated stone.
@@ -1178,6 +1221,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-045
+  category: weapons
   type: Weapon
   desc: A linked pair consisting of a Varis smiths hammer and Sickle. Wield them using their individual base properties,
     training, damage, maneuvers, and normal off-hand costs. While you wield both, whenever one scores an unblocked
@@ -1202,6 +1246,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-046
+  category: weapons
   type: Weapon
   base_item: halberd
   magic_bonus: '2'
@@ -1230,6 +1275,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-047
+  category: consumables
   type: Potion
   desc: Drink this elixir as an action to restore up to 5 expended Metamagic points in your existing Sorcerer Metamagic
     pool, never exceeding its current maximum. The entire potion is consumed even if fewer than 5 points were missing.
@@ -1252,6 +1298,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-048
+  category: weapons
   type: Weapon
   base_item: Dagger
   magic_bonus: '2'
@@ -1282,6 +1329,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-049
+  category: weapons
   type: Weapon
   desc: |-
     A two-handed martial ranged weapon: range 80/240, capacity 6, Reload III to refill, dealing 1d12 lightning damage. A wielder proficient with martial ranged weapons adds proficiency and Dexterity to attacks, Dexterity to damage, and uses Block DC 8 + proficiency + Dexterity; without training add neither. Each shot consumes one loaded bullet or electrum coin. Reloading spends an action and loads up to six such pieces. It grants no mundane musket maneuvers beyond a normal attack.
@@ -1312,6 +1360,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-050
+  category: wearables
   type: Wondrous item
   desc: |-
     While wearing these arcane gloves, when you cast a leveled spell using your own class resource, you may resolve its printed higher-level scaling as though cast one spell level higher, to a maximum of Varis level 6. Pay the ordinary cost of the level you actually cast, and obey all other prerequisites, components, concentration, and action costs. This does not teach spells, unlock a higher spell list, improve cantrips, increase a spell's DC, or enhance item-cast effects. If the spell has no printed higher-level benefit, there is no benefit. Multiple free-level effects do not stack; use the highest.
@@ -1335,6 +1384,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-051
+  category: misc
   type: Wondrous item
   desc: When this stone is first introduced, fix one ancestry or creature subtype as its target; write that choice
     with the item. While uncovered, it emits an alluring aura within 60 feet. A targeted creature entering the aura
@@ -1364,6 +1414,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-052
+  category: weapons
   type: Weapon
   desc: |-
     A two-handed martial rifle: range 100/300, capacity 1, Reload III. A trained martial-ranged wielder adds proficiency and Dexterity to attacks, Dexterity to damage, and uses Block DC 8 + proficiency + Dexterity; an untrained wielder adds neither. The rifle deals 3d10 piercing damage against Large or smaller targets, or 3d10 bludgeoning against Huge or larger ones. Its damage ignores resistance, but immunity becomes resistance rather than being completely bypassed. It can be blocked normally. Reloading costs an action and one rifle round.
@@ -1393,6 +1444,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-053
+  category: weapons
   type: Weapon
   base_item: two-handed war hammer
   damage: 1d10b
@@ -1418,6 +1470,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-054
+  category: misc
   type: Wondrous item
   desc: Only a construct can attune to this arcane memory module. While attuned and carrying or installing it, increase
     your Intelligence score by 1 and your Intelligence maximum by 2. Apply the maximum increase first; this does
@@ -1439,6 +1492,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-055
+  category: wearables
   type: Wondrous item
   desc: |-
     While attuned and wearing this helmet, gain necrotic and poison resistance and immunity to fear effects. At each dawn after a full day worn, gain +1 Constitution from this helmet, maximum +4; this bonus can raise Constitution above its normal maximum by up to 4. Increases to maximum HP preserve existing wounds rather than healing you.
@@ -1463,6 +1517,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-056
+  category: spellcasting
   type: Staff
   base_item: Quarterstaff
   desc: |-
@@ -1486,6 +1541,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-057
+  category: misc
   type: Wondrous item
   desc: |-
     Once per dawn, press this six-button orb as an action and roll 6d6. The most frequent face selects the result; on a tie roll one further d6 until it shows a tied face. If all six original dice differ, use the homunculus result instead. Random points are chosen by rolling d8 for compass direction and d4 times 5 feet for distance, choosing the nearest legal space.
@@ -1513,6 +1569,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-058
+  category: weapons
   type: Weapon
   desc: |-
     A one-handed single-shot martial firearm, range 60/100, capacity 1, Reload III. Reloading costs an action and one platinum piece, which is consumed when fired. While loading, name copper, silver, electrum, gold, or platinum. Make a ranged attack with Dexterity, adding proficiency only if trained with martial ranged weapons. Block DC is 8 + proficiency + Dexterity for a trained wielder; an untrained wielder adds neither modifier.
@@ -1541,6 +1598,7 @@ entries:
   source_rarity: Very Rare
   manual_attack: 'Yes'
 - id: mi-very-rare-059
+  category: weapons
   type: Weapon
   base_item: Longsword
   magic_bonus: '1'
@@ -1565,6 +1623,7 @@ entries:
   source_attunement: Yes (by rogue)
   source_rarity: Very Rare
 - id: mi-very-rare-060
+  category: wearables
   type: Wondrous item
   desc: |-
     This implant is placed at the base of your neck during attunement and removed safely during a short rest when attunement ends. While attuned, you do not need ordinary material components for your own spells. You still need every component with a stated price and every component consumed by a spell, even if no price is printed; you also retain other casting costs and implement prerequisites.
@@ -1587,6 +1646,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-061
+  category: weapons
   type: Weapon
   base_item: Longsword
   damage: 2d6s
@@ -1611,6 +1671,7 @@ entries:
   source_attunement: 'No'
   source_rarity: Very Rare
 - id: mi-very-rare-062
+  category: wearables
   type: Wondrous item
   desc: While attuned and wearing this circlet, it has a maximum number of charges equal to your Intelligence modifier
     + Wisdom modifier + Charisma modifier, minimum 1. Recalculate that maximum when those scores change without
@@ -1636,6 +1697,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-063
+  category: weapons
   type: Weapon
   base_item: Greatsword
   desc: |-
@@ -1661,6 +1723,7 @@ entries:
   source_attunement: 'Yes'
   source_rarity: Very Rare
 - id: mi-very-rare-064
+  category: wearables
   type: Wondrous item
   desc: 'While attuned and wearing this jeweled headband, increase Intelligence and its maximum by 2. Apply the
     maximum increase first; the headband does not set your score to the maximum. Choose one Intelligence-based skill

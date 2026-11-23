@@ -56,7 +56,7 @@ function boot(options={}){
    async loadBuilder(){requests.push('builder');return {};},
    async loadSection(key){requests.push(key);if(options.delay)await options.delay(key);const section=sections.find(item=>item.key===key);section.entries=catalog.find(item=>item.key===key).entries;loaded.add(key);return section;}};
  }
- const g=vm.createContext(context);for(const name of ['entry-order.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
+ const g=vm.createContext(context);for(const name of ['entry-order.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
  const q=(selector)=>{const n=document.querySelector(selector);assert(n,'missing control '+selector);return n;};
  const field=p=>q('[data-path="'+p+'"]');const action=(act,extra='')=>q('[data-action="'+act+'"]'+extra);
  function set(n,v,change=true){if(n.type==='checkbox')n.checked=v;else n.value=v;fire(n,'input');if(change)fire(n,'change');}
@@ -87,6 +87,57 @@ test('spell picker defaults to level order and supports level filters and A-Z',(
  const rows=h.q('#catalog-results').querySelectorAll('[data-action="add-catalog"]');assert.ok(rows.length);
  for(const row of rows){const id=JSON.parse(row.dataset.entryId);const e=catalog.find(s=>s.key===id[0]).entries.find(e=>e.name===id[2]&&e.group===id[1]);assert.equal(Number(e.details.lvl),2);}
  h.set(h.q('#catalog-sort'),'name');assert.equal(h.q('#catalog-level').value,'2');
+ storage.clear();
+});
+
+test('inventory magic categories combine with rarity and category search while preserving stable saved identity',()=>{
+ storage.clear();const h=boot();h.action('catalog','[data-kind="inventory"]').click();
+ const category=h.q('#catalog-magic-category');
+ const categories=h.context.MagicCategories.categories;
+ assert.deepEqual(category.querySelectorAll('option').map(node=>node.value),['','all-magic',...categories.map(item=>item.key)]);
+ assert.equal(category.querySelectorAll('option')[0].textContent,'All equipment');
+ const magic=catalog.find(section=>section.key==='magic-items').entries;
+ assert.equal(magic.length,300);
+ const identity=entry=>h.context.MagicItems.entryId('magic-items',entry);
+ const byIdentity=new Map(magic.map(entry=>[identity(entry),entry]));
+ const visible=()=>h.q('#catalog-results').querySelectorAll('[data-action="add-catalog"]');
+ h.set(category,'all-magic');
+ assert.equal(h.q('#catalog-count').textContent,'300 matching rules');
+ assert(visible().every(button=>byIdentity.has(button.dataset.entryId)));
+ h.set(category,'weapons');
+ assert(visible().length);
+ assert(visible().every(button=>h.context.MagicCategories.category(byIdentity.get(button.dataset.entryId))==='weapons'));
+ assert(!visible().some(button=>JSON.parse(button.dataset.entryId)[0]==='items'));
+ h.set(category,'wearables');h.set(h.q('#catalog-query'),'jewellery',false);
+ const wearables=magic.filter(entry=>h.context.MagicCategories.category(entry)==='wearables');
+ assert.equal(h.q('#catalog-count').textContent,`${wearables.length} matching rules`);
+ assert(visible().every(button=>h.context.MagicCategories.category(byIdentity.get(button.dataset.entryId))==='wearables'));
+ const rarity=wearables[0].group;h.set(h.q('#catalog-group'),rarity);
+ const matching=wearables.filter(entry=>entry.group===rarity);
+ assert.equal(h.q('#catalog-count').textContent,`${matching.length} matching ${matching.length===1?'rule':'rules'}`);
+ assert(h.q('#catalog-results').querySelectorAll('.list-card-meta').every(node=>node.textContent===`Wearables & jewelry · ${rarity}`));
+ const selected=byIdentity.get(visible()[0].dataset.entryId),selectedId=identity(selected);
+ visible()[0].click();h.action('close-dialog').click();
+ assert.equal(saved().characters[0].inventory[0].entryId,selectedId);
+ assert.deepEqual(JSON.parse(selectedId),['magic-items','',selected.details.id]);
+ const reopened=boot();
+ assert.equal(saved().characters[0].inventory[0].entryId,selectedId);
+ assert(reopened.q('#pane-gear').textContent.includes(selected.name));
+ reopened.action('catalog','[data-kind="spells"]').click();
+ assert.equal(reopened.document.getElementById('catalog-magic-category'),null);
+ storage.clear();
+});
+
+test('hosted inventory lazily loads all magic items before its category filter is used',async()=>{
+ storage.clear();const h=boot({lazy:true});await delay(0);
+ assert(!h.requests.includes('magic-items'));
+ h.action('catalog','[data-kind="inventory"]').click();await delay(0);
+ assert(h.requests.includes('magic-items'));
+ h.set(h.q('#catalog-magic-category'),'all-magic');
+ assert.equal(h.q('#catalog-count').textContent,'300 matching rules');
+ assert(h.q('#catalog-results').querySelectorAll('[data-action="add-catalog"]').every(button=>JSON.parse(button.dataset.entryId)[0]==='magic-items'));
+ h.set(h.q('#catalog-query'),'potions',false);
+ assert(h.q('#catalog-results').querySelectorAll('.list-card-meta').some(node=>node.textContent.startsWith('Potions & consumables · ')));
  storage.clear();
 });
 

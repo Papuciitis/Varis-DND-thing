@@ -2,6 +2,7 @@ section: magic-items
 entries:
 - name: Necklace of fireballs(up to 6 beads)
   id: mi-rare-002
+  category: consumables
   type: Wondrous item
   desc: The necklace holds up to six expendable beads. As an action, detach and throw one or more beads at a point
     within 60 feet. They explode together in a 20-foot-radius sphere using the Varis Fireball damage of 6d8 fire.
@@ -25,6 +26,7 @@ entries:
   source_rarity: Rare
 - name: Glasses of Lightning
   id: mi-rare-003
+  category: wearables
   type: Wondrous item
   desc: While wearing these glasses, you can read and absorb written information in a language you understand ten
     times as quickly. This accelerates reading only. It does not shorten spell preparation, copying, crafting, rituals,
@@ -43,6 +45,7 @@ entries:
   source_rarity: Rare
 - name: Dragonbreath Ammunition (up to 20 bolts or arrows)
   id: mi-rare-004
+  category: weapons
   type: Ammunition
   desc: Replace one ranged weapon attack with firing a piece of this ammunition at a point within your weapon's
     range. It is destroyed and releases a breath effect forward from that point along the shot's direction. Creatures
@@ -70,6 +73,7 @@ entries:
   source_rarity: Rare
 - name: Cinnabar Rapier
   id: mi-rare-005
+  category: weapons
   type: Weapon
   base_item: Rapier
   desc: This magical Rapier retains its Varis damage, properties and maneuvers. It has 10 charges and regains 1d8
@@ -91,6 +95,7 @@ entries:
   source_rarity: Rare
 - name: Chain Devil gloves
   id: mi-rare-006
+  category: wearables
   type: Wondrous item
   desc: While wearing these gloves, each weapon you throw using a Throw property can remain joined to your hand
     by an ethereal chain, to a maximum of four chains. A chain ends if the weapon is held by another creature or
@@ -120,6 +125,7 @@ entries:
   source_rarity: Rare
 - name: Windswept Wyvernplate (Medium armor)
   id: mi-rare-007
+  category: armor-shields
   type: Armor
   base_item: Plated leather armor
   desc: This armor uses the Varis Plated leather armor profile, including Bulk 5, Block 1, Slow 1 and Protection
@@ -144,6 +150,7 @@ entries:
   source_rarity: Rare
 - name: Salamander Flame Gauntlets
   id: mi-rare-008
+  category: wearables
   type: Wondrous item
   desc: Your unblocked unarmed hand strikes deal an extra 1d4 fire damage. As a bonus action, create a fiery blade
     in a free hand for 1 minute, dismissible freely. It requires no concentration. Choose Strength, Dexterity or
@@ -172,6 +179,7 @@ entries:
   source_rarity: Rare
 - name: Bow of the Twilight Valkyrie
   id: mi-rare-009
+  category: weapons
   type: Weapon
   base_item: Longbow
   desc: This magical Longbow uses its Varis profile. Once on your turn when taking the Attack action, declare positive
@@ -200,6 +208,7 @@ entries:
   source_rarity: Rare
 - name: Conspirator's Coat
   id: mi-rare-010
+  category: wearables
   type: Wondrous item
   desc: While wearing this coat, you have advantage on Deception checks. It holds 5 charges and regains 1d4 + 1
     at dusk, up to 5. As a bonus action, spend 1 charge to disappear and release one to three ravens. Each has AC
@@ -228,6 +237,7 @@ entries:
   source_rarity: Rare
 - name: Champion's Greatbow (longbow)
   id: mi-rare-011
+  category: weapons
   type: Weapon
   base_item: Longbow
   desc: You need Strength 13 to wield this magical Longbow. Use the Varis Longbow properties and maneuvers, but
@@ -256,6 +266,7 @@ entries:
   source_rarity: Rare
 - name: Coldsnap (whip)
   id: mi-rare-012
+  category: weapons
   type: Weapon
   base_item: whip
   magic_bonus: '1'
@@ -282,6 +293,7 @@ entries:
   source_rarity: Rare
 - name: Bow of Mind Thievery
   id: mi-rare-013
+  category: weapons
   type: Weapon
   base_item: Longbow
   desc: This magical Varis Longbow deals an extra 1d4 psychic damage on every unblocked strike. Once per dawn, after
@@ -311,6 +323,7 @@ entries:
   source_rarity: Rare
 - name: Scarlet Scourge
   id: mi-rare-014
+  category: weapons
   type: Weapon
   base_item: whip
   magic_bonus: '1'
@@ -339,6 +352,7 @@ entries:
   source_rarity: Rare
 - name: Thalamus Thread
   id: mi-rare-015
+  category: weapons
   type: Wondrous item
   desc: Fit this oily psychic thread to one bow or crossbow during a rest. Its ammunition counts as magical while
     fired from that weapon, without granting an enhancement bonus. Once per dawn, after an unblocked ranged strike,
@@ -367,6 +381,7 @@ entries:
   source_rarity: Rare
 - name: Spiderbite Daggers
   id: mi-rare-016
+  category: weapons
   type: Weapon
   base_item: Dagger
   desc: This item is a matched pair of magical Varis Daggers. If both deal an unblocked strike to the same creature
@@ -390,6 +405,7 @@ entries:
   source_rarity: Rare
 - name: Thunderous Flail
   id: mi-rare-017
+  category: weapons
   type: Weapon
   base_item: flail
   desc: This magical Varis flail has 3 charges and regains 1d3 at dawn. While it has a charge, its first unblocked
@@ -424,6 +440,7 @@ entries:
   source_rarity: Rare
 - name: Spellwriter's Brace
   id: mi-rare-018
+  category: wearables
   type: Wondrous item
   desc: At the end of a long rest, while wearing this brace, inscribe up to four different or repeated spells from
     your own spellbook as tattoos on your arm. Each must be level 1-5 and a level you can normally cast. They count
@@ -457,6 +474,7 @@ entries:
   source_rarity: Rare
 - name: Sandstorm Dancer
   id: mi-rare-019
+  category: wearables
   type: Wondrous item
   desc: 'This cloak billows illusory sand. It has 8 charges and regains 1d6 + 2 at dawn. Spend an action and charges
     for one power. Mirage (2): for 1 minute, attacks against you have disadvantage while you maintain concentration;
@@ -484,6 +502,7 @@ entries:
   source_rarity: Rare
 - name: Insatiable Tome
   id: mi-rare-020
+  category: misc
   type: Wondrous item
   desc: This 12-pound tome has 1,000 blank vellum pages. Over 1 minute it devours and destroys a smaller nonmagical
     book or document placed beside it. As an action, speak its command word and the document's title to reproduce
@@ -516,6 +535,7 @@ entries:
   source_rarity: Rare
 - name: Gloves of Healing
   id: mi-rare-021
+  category: wearables
   type: Wondrous item
   desc: While wearing these gloves, when a level 1 or higher spell you cast restores HP to a creature, add your
     proficiency bonus to the HP it regains. The same benefit can instead apply when you use healer's supplies to
@@ -540,6 +560,7 @@ entries:
   source_rarity: Rare
 - name: Mistwalker Armor (light armor)
   id: mi-rare-022
+  category: armor-shields
   type: Armor
   base_item: Leather armor
   desc: This armor uses the Varis Leather armor profile. Once per dawn, use an action to create dense fog in a 40-foot-radius
@@ -565,6 +586,7 @@ entries:
   source_rarity: Rare
 - name: Bow of the Eldritch Archer
   id: mi-rare-023
+  category: weapons
   type: Weapon
   base_item: Longbow
   desc: This magical Varis Longbow consumes each arrow when fired and transforms it into energy. Replace its base
@@ -595,6 +617,7 @@ entries:
   source_rarity: Rare
 - name: Djinn and Tonic
   id: mi-rare-024
+  category: consumables
   type: Potion
   desc: Drink this single-use potion as an action. For 1 hour a harmless breeze dramatically stirs your hair and
     clothing, and its alcohol is twice as potent as an ordinary drink. For the first 10 minutes, or until you end
@@ -625,6 +648,7 @@ entries:
   source_rarity: Rare
 - name: Spellsword
   id: mi-rare-025
+  category: weapons
   type: Weapon
   base_item: Short sword
   desc: 'As a bonus action while gripping this hilt, expend your own Varis casting resource for a spell of level
@@ -666,6 +690,7 @@ entries:
   source_rarity: Rare
 - name: Bounder's Ball
   id: mi-rare-026
+  category: weapons
   type: Wondrous item
   desc: Thrown by itself, this glowing metal strip summons a harmless animal spirit that immediately retrieves it.
     Spend 10 minutes pressing it to a weapon that can be wielded in one hand to attach it; a Versatile weapon qualifies,
@@ -699,6 +724,7 @@ entries:
   source_rarity: Rare
 - name: Screaming Longbow
   id: mi-rare-027
+  category: weapons
   type: Weapon
   base_item: Longbow
   desc: This magical Varis Longbow's arrows howl audibly within 100 feet. Every unblocked strike deals an extra
@@ -723,6 +749,7 @@ entries:
   source_rarity: Rare
 - name: Reap and Sew (light crossbow)
   id: mi-rare-028
+  category: weapons
   type: Weapon
   base_item: Light crossbow
   magic_bonus: '2'
@@ -758,6 +785,7 @@ entries:
   source_rarity: Rare
 - name: Bartender's Armistice
   id: mi-rare-029
+  category: consumables
   type: Wondrous item
   desc: 'A found set contains 1d3 + 1 coasters. As an action, throw one to a visible ground point within 30 feet
     and speak its command. It anchors and projects a 30-foot-radius, 15-foot-high cylinder for 10 minutes. On appearing,
@@ -802,6 +830,7 @@ entries:
   source_rarity: Rare
 - name: Aged Goodberry Wine
   id: mi-rare-030
+  category: consumables
   type: Potion
   desc: A bottle contains 1d4 + 3 servings. Drink a serving over 1 minute. You may spend any number of your remaining
     rest dice, rolling each and regaining that roll + your Constitution modifier + 1 HP per die, to a minimum of
@@ -828,6 +857,7 @@ entries:
   source_rarity: Rare
 - name: Prototype Thunderberd (halberd)
   id: mi-rare-031
+  category: weapons
   type: Weapon
   base_item: halberd
   desc: 'This magical Varis halberd deals an extra 1d6 lightning damage on an unblocked strike. It has 10 charges
@@ -868,6 +898,7 @@ entries:
   source_rarity: Rare
 - name: Heavenly Chalice
   id: mi-rare-032
+  category: misc
   type: Wondrous item
   desc: This 2-pound chalice holds one potion. Once per 24 hours, a Cleric, an oath caster or a creature with an
     established celestial bond can pray over a healing potion in it for 1 minute. The potion becomes a pool of HP
@@ -898,6 +929,7 @@ entries:
   source_rarity: Rare
 - name: Arcanist Gauntlets
   id: mi-rare-033
+  category: wearables
   type: Wondrous item
   desc: These gauntlets are a spellcasting implement. When committing the normal class resource for a level 1-5
     spell you can cast, roll d6. On a result at least equal to the spell's level, the gauntlets pay its basic casting
@@ -931,6 +963,7 @@ entries:
   source_rarity: Rare
 - name: Coldfire Anvil
   id: mi-rare-034
+  category: misc
   type: Wondrous item
   desc: This 50-pound, 18-inch anvil enchants one nonmagical metal weapon after 8 hours of work, or 4 hours with
     smith's-tools proficiency. The weapon keeps its Varis profile, counts as magical and deals an extra 1d6 cold
@@ -960,6 +993,7 @@ entries:
   source_rarity: Rare
 - name: Quick Change Ring
   id: mi-rare-035
+  category: wearables
   type: Ring
   desc: Bind one unworn suit of armor to this ring over 1 hour. Binding a second ejects the first into a free space
     within 5 feet. As an action while wearing the ring, speak its command and touch the bound armor to store it
@@ -1000,6 +1034,7 @@ entries:
   source_rarity: Rare
 - name: Blackthorn Spear of the Moonless Hunter
   id: mi-rare-036
+  category: weapons
   type: Weapon
   base_item: Spear
   magic_bonus: '1'
@@ -1039,6 +1074,7 @@ entries:
   source_rarity: Rare
 - name: Magma War Pick
   id: mi-rare-037
+  category: weapons
   type: Weapon
   base_item: war pick
   magic_bonus: '1'
@@ -1063,6 +1099,7 @@ entries:
   source_rarity: Rare
 - name: The Starlight Silver (Katana)
   id: mi-rare-038
+  category: weapons
   type: Weapon
   base_item: Katana
   magic_bonus: '1'
@@ -1087,6 +1124,7 @@ entries:
   source_rarity: Rare
 - name: Warlute (Lute/axe/light crossbow(30/90))
   id: mi-rare-039
+  category: weapons
   type: Weapon
   base_item: hand-axe
   desc: 'Requires attunement by a Bard. This magical instrument is also a Varis hand-axe and a Light crossbow; choose
@@ -1118,6 +1156,7 @@ entries:
   source_rarity: Rare
 - name: Feie's favor(ring)
   id: mi-rare-040
+  category: wearables
   type: Ring
   desc: While wearing this ring, you can communicate simple ideas, warnings and questions with wolves. It does not
     make them friendly or command them. At each dawn roll d4; that is the ring's number of uses until the following
@@ -1138,6 +1177,7 @@ entries:
   source_rarity: Rare
 - name: Mask of Memories
   id: mi-rare-041
+  category: wearables
   type: Wondrous item
   desc: While wearing this fragile mask, you form exact permanent memories of what you consciously see, hear, think
     and do. Creatures seeing or hearing you also perfectly remember your actions they actually perceived, but gain
@@ -1163,6 +1203,7 @@ entries:
   source_rarity: Rare
 - name: Orb of Passage
   id: mi-rare-042
+  category: consumables
   type: Wondrous item
   desc: Place a physical key on this orb and speak 'Find a Passage' as an action. The key dissolves. The floating
     orb follows you and, on command, indicates a traversable route toward the specific lock for which that key was
@@ -1190,6 +1231,7 @@ entries:
   source_rarity: Rare
 - name: Ring of Splat
   id: mi-rare-043
+  category: wearables
   type: Ring
   desc: This cinnamon-and-fruit-scented ring gives creatures disadvantage on checks to identify or track you by
     smell alone. It holds 5 charges and regains 1d4 + 1 at dawn. As a bonus action, spend 1 charge to make a melee
@@ -1217,6 +1259,7 @@ entries:
   source_rarity: Rare
 - name: Chalk of Hiding
   id: mi-rare-044
+  category: consumables
   type: Wondrous item
   desc: This chalk can draw a total of 50 feet of line before being consumed. Draw a complete border on a single
     flat surface around a creature or object. While wholly within the border and touching that surface, the enclosed
@@ -1242,6 +1285,7 @@ entries:
   source_rarity: Rare
 - name: Overdue Lesson (Mace)
   id: mi-rare-045
+  category: weapons
   type: Weapon
   base_item: mace
   desc: This magical Varis mace is stitched from books. A Wizard wielding it is proficient and may use Intelligence
@@ -1267,6 +1311,7 @@ entries:
   source_rarity: Rare
 - name: Throgdore's Big Stick (Greatclub)
   id: mi-rare-046
+  category: weapons
   type: Weapon
   base_item: Great-club
   magic_bonus: '1'
@@ -1296,6 +1341,7 @@ entries:
   source_rarity: Rare
 - name: Dreamrealm Blade (Longsword)
   id: mi-rare-047
+  category: weapons
   type: Weapon
   base_item: Longsword
   magic_bonus: '1'
@@ -1325,6 +1371,7 @@ entries:
   source_rarity: Rare
 - name: Ring of Desperate Respite
   id: mi-rare-048
+  category: wearables
   type: Ring
   desc: This ring has 6 charges, all restored at dawn. As a reaction after a weapon strike passes your Block, spend
     1 charge to gain resistance to bludgeoning, piercing and slashing damage until the end of your next turn, including
@@ -1354,6 +1401,7 @@ entries:
   source_rarity: Rare
 - name: Cup of Purity
   id: mi-rare-049
+  category: misc
   type: Wondrous item
   desc: This unicorn-ivory cup holds one pint. A liquid poured into it instantly reveals whether it contains a poison,
     toxin or venom, and neutralizes that harmful substance. Pure poison becomes clear drinking water; poisoned ordinary
@@ -1377,6 +1425,7 @@ entries:
   source_rarity: Rare
 - name: Sidras' swearing sword (Shortsword)
   id: mi-rare-050
+  category: weapons
   type: Weapon
   base_item: Short sword
   magic_bonus: '1'
@@ -1403,6 +1452,7 @@ entries:
   source_rarity: Rare
 - name: Glutton's Bane (Dagger)
   id: mi-rare-051
+  category: weapons
   type: Weapon
   base_item: Dagger
   desc: This magical Varis Dagger grants advantage on attacks against a creature while you are swallowed by or otherwise
@@ -1426,6 +1476,7 @@ entries:
   source_rarity: Rare
 - name: Jawbraker (Warhammer)
   id: mi-rare-052
+  category: weapons
   type: Weapon
   base_item: war hammer
   magic_bonus: '2'
@@ -1445,6 +1496,7 @@ entries:
   source_rarity: Rare
 - name: Book of Mispells
   id: mi-rare-053
+  category: misc
   type: Wondrous item
   desc: Once per dawn, use an action to read one deliberately misspelled incantation. No casting resource is spent.
     Massage gives a willing creature within 120 feet a pleasant backrub for 1 minute. Mage armoire creates an empty
@@ -1476,6 +1528,7 @@ entries:
   source_rarity: Rare
 - name: Archivist spectacles
   id: mi-rare-054
+  category: wearables
   type: Wondrous item
   desc: While wearing these spectacles, you have advantage on Arcana and History checks to recall or interpret knowledge,
     and read ordinary text three times as quickly. Once per dawn, use an action to understand the literal meaning
@@ -1497,6 +1550,7 @@ entries:
   source_rarity: Rare
 - name: Tuning Knife (dagger)
   id: mi-rare-055
+  category: weapons
   type: Weapon
   base_item: Dagger
   desc: This magical Varis Dagger rings like a tuning fork when tapped against a surface. A creature that takes
@@ -1520,6 +1574,7 @@ entries:
   source_rarity: Rare
 - name: Sakuretsusakura (whip)
   id: mi-rare-056
+  category: weapons
   type: Weapon
   base_item: whip
   magic_bonus: '1'
@@ -1546,6 +1601,7 @@ entries:
   source_rarity: Rare
 - name: Rod of the Arbor Abode (staff)
   id: mi-rare-057
+  category: spellcasting
   type: Staff
   base_item: Quarterstaff
   desc: This rod can serve as a magical Varis Quarterstaff. As an action, plant it in earth with sufficient open
@@ -1576,6 +1632,7 @@ entries:
   source_rarity: Rare
 - name: Madama Cupcake
   id: mi-rare-058
+  category: consumables
   type: Wondrous item
   desc: Eating this single-use cupcake takes an action. It nourishes one Medium or smaller creature for 3 days without
     bloating it or preventing ordinary eating. It does not provide drinking water, sleep, a rest or recovery of
@@ -1596,6 +1653,7 @@ entries:
   source_rarity: Rare
 - name: Sand of The Pocket
   id: mi-rare-059
+  category: wearables
   type: Wondrous item
   desc: Attach this pouch to clothing to create a pocket always holding one handful of sand. A hand or equivalent
     limb must remove it; tipping it cannot pour sand. Removed sand vanishes after 1 minute, preventing stockpiling
@@ -1625,6 +1683,7 @@ entries:
   source_rarity: Rare
 - name: Silver fork (Dagger)
   id: mi-rare-060
+  category: weapons
   type: Weapon
   base_item: Dagger
   magic_bonus: '2'
@@ -1653,6 +1712,7 @@ entries:
   source_rarity: Rare
 - name: Ale of Flying Fist (Potion)
   id: mi-rare-061
+  category: consumables
   type: Potion
   desc: Drink this single-use golden, steaming ale as an action. Gain 10 temporary HP lasting 1 hour, replacing
     rather than stacking with other temporary HP. For that hour, add 1d4 to your attack rolls and saving throws;
@@ -1675,6 +1735,7 @@ entries:
   source_rarity: Rare
 - name: Brass Door Knob
   id: mi-rare-062
+  category: misc
   type: Wondrous item
   desc: As an action, hold this knob in empty air and turn it to open a shimmering cupboard door. It is inert while
     physically attached to a wall or real door. Its extradimensional cupboard has ten shelves, five visible at once
@@ -1704,6 +1765,7 @@ entries:
   source_rarity: Rare
 - name: Wand of Counterspell
   id: mi-rare-063
+  category: spellcasting
   type: Wand
   desc: This wand holds 4 charges and regains 1d4 at dawn. As a reaction when you see a creature within 60 feet
     begin casting a spell, spend one or more charges. The spell fails automatically if its Varis level is at most
@@ -1729,6 +1791,7 @@ entries:
   source_rarity: Rare
 - name: Bow of Thorns (Longbow)
   id: mi-rare-064
+  category: weapons
   type: Weapon
   base_item: Longbow
   magic_bonus: '1'
@@ -1756,6 +1819,7 @@ entries:
   source_rarity: Rare
 - name: Frostner (Greataxe)
   id: mi-rare-065
+  category: weapons
   type: Weapon
   base_item: Greataxe
   magic_bonus: '1'
@@ -1787,6 +1851,7 @@ entries:
   source_rarity: Rare
 - name: Abyssal Harpoon (Spear)
   id: mi-rare-066
+  category: weapons
   type: Weapon
   base_item: Spear
   desc: 'This magical Varis Spear uses its printed Throw range. A thrown attack can pass through up to 5 feet of
@@ -1819,6 +1884,7 @@ entries:
   source_rarity: Rare
 - name: Abject Chronomancer
   id: mi-rare-067
+  category: misc
   type: Wondrous item
   desc: While attuned to and carrying this timepiece, treat the d20 for initiative as 15, then apply your ordinary
     initiative modifiers, including Fatigue and other applicable effects. You cannot choose to roll instead. Your
@@ -1842,6 +1908,7 @@ entries:
   source_rarity: Rare
 - name: Scroll of Nightmares
   id: mi-rare-068
+  category: scrolls
   type: Scroll
   desc: As an action, spend 3 rest dice and read this consumable scroll, then make a DC 15 Arcana check. The scroll
     and dice are consumed even on failure; on failure no nightmare is released. On success, choose up to ten creatures
@@ -1867,6 +1934,7 @@ entries:
   source_rarity: Rare
 - name: Amulet of Cheetah Speed
   id: mi-rare-069
+  category: wearables
   type: Wondrous item
   desc: While worn, increase your walking speed by 10 feet. Once per long rest, activate a burst as a bonus action
     for 1 minute. During it, double your current walking speed, gain +2 AC, advantage on Dexterity saves and one
@@ -1888,6 +1956,7 @@ entries:
   source_rarity: Rare
 - name: Belt of Antipode
   id: mi-rare-070
+  category: wearables
   type: Wondrous item
   desc: While wearing this belt, you are immune to cold damage and vulnerable to fire damage. After resolving applicable
     damage reduction and resistance, double the fire damage you would otherwise take. The belt does not protect
@@ -1907,6 +1976,7 @@ entries:
   source_rarity: Rare
 - name: Spectacles of Revelation
   id: mi-rare-071
+  category: wearables
   type: Wondrous item
   desc: While worn, these spectacles reveal the presence of magic within 30 feet and a visible aura on creatures
     and objects you can see. You can read magical script as literal writing, but do not automatically understand
@@ -1933,6 +2003,7 @@ entries:
   source_rarity: Rare
 - name: Aibat's War Club (Maul)
   id: mi-rare-072
+  category: weapons
   type: Weapon
   base_item: War Maul
   magic_bonus: '1'
@@ -1957,6 +2028,7 @@ entries:
   source_rarity: Rare
 - name: Devil's Eye (Potion)
   id: mi-rare-073
+  category: consumables
   type: Potion
   desc: Consume the preserved black eye and potion as an action, expending the vial. For 1 hour you see normally
     through magical and nonmagical darkness within 60 feet. This does not reveal invisible creatures, see through
@@ -1978,6 +2050,7 @@ entries:
   source_rarity: Rare
 - name: Elven Rope armor (leather armor)
   id: mi-rare-074
+  category: armor-shields
   type: Armor
   base_item: Leather armor
   desc: While worn, this silk-rope armor uses the current Varis Leather armor profile. As an action, speak its command
@@ -2002,6 +2075,7 @@ entries:
   source_rarity: Rare
 - name: Amulet of The Warmage
   id: mi-rare-075
+  category: wearables
   type: Wondrous item
   desc: While worn, gain resistance to force damage and +3 to Arcana checks. The amulet holds 4 charges and regains
     1d4 spent charges when you finish a long rest, up to 4. Spend 1 charge to cast any current Varis Arcane cantrip
@@ -2025,6 +2099,7 @@ entries:
   source_rarity: Rare
 - name: Ring of Rock Eating
   id: mi-rare-076
+  category: wearables
   type: Ring
   desc: While wearing this ring, your teeth and digestive system can safely chew and digest ordinary nonmagical
     stone as food. One pound of rock provides a day's nourishment for a Medium creature, with proportionate amounts

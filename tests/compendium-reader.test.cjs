@@ -80,7 +80,7 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
   if (options.manifestGlobal) context.DND_CATALOG = sections;
   if (options.portable) { context.DND_CATALOG = sections; sections.forEach(s => { s.entries = data[s.key]; }); delete context.DndCatalog; }
   vm.runInContext(orderSource, context, {filename:'entry-order.js'});
-  for (const name of ['item-views.js', 'browse-views.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',name),'utf8'),context,{filename:name});
+  for (const name of ['magic-categories.js', 'item-views.js', 'browse-views.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',name),'utf8'),context,{filename:name});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/magic-items.js'),'utf8'),context,{filename:'magic-items.js'});
   vm.runInContext(source, context, {filename: 'app.js'});
   const reader = document.getElementById('reader');
@@ -96,7 +96,8 @@ test('magic item browsing filters converted rules, hides original comparisons an
     {...entry('Frost ring','Uncommon',{id:'frost',type:'Ring',rarity:'Uncommon',desc:'Cold resistance.'}),source:'magic-items/uncommon.yaml'}];
   const h=boot({'magic-items':items},'',{storage});await h.route('#section=magic-items');
   assert.equal(h.document.getElementById('group'),null);
-  assert.deepEqual(h.reader.querySelectorAll('.panel-name').map(node=>node.textContent),['Uncommon','Rare']);
+  assert.deepEqual(h.reader.querySelectorAll('.panel-name').map(node=>node.textContent),['Weapons & ammunition','Wearables & jewelry']);
+  assert(h.link('Uncommon (1)'));assert(h.link('Rare (1)'));
   await h.route('#section=magic-items&browse=all');
   assert.deepEqual(names(h),['Ember blade','Frost ring']);assert(h.document.getElementById('magic-rarity'));assert(h.document.getElementById('magic-type'));
   await h.change('magic-rarity','Rare');assert.deepEqual(names(h),['Ember blade']);
@@ -437,4 +438,44 @@ test('object-map trait choices like Shadowling render as individual children whi
   assert.equal(lists[1].querySelectorAll('.trait-child').length,1);
   assert.match(lists[0].textContent,/Shadow gift 14Gift rules 14/);
   assert.match(lists[1].textContent,/Named giftNamed rules/);
+});
+
+test('magic categories combine with rarity, type and search while legacy rarity routes still work', async () => {
+  const make=(name,id,type,category,rarity='Rare')=>({...entry(name,rarity,{id,type,category,rarity,desc:'Converted campaign rules.'}),source:'magic-items/rare.yaml'});
+  const items=[make('Ember blade','ember','Weapon','weapons'),make('Ember arrow','arrow','Ammunition','weapons'),make('Ember common','common','Weapon','weapons','Common'),make('Ember plate','plate','Armor','armor-shields'),make('Frost ring','ring','Ring','wearables')];
+  const h=boot({'magic-items':items});await h.route('#section=magic-items');
+  assert.deepEqual(h.reader.querySelectorAll('.panel-name').map(node=>node.textContent),['Weapons & ammunition','Armor & shields','Wearables & jewelry']);
+  assert(h.reader.querySelector('.panel-examples'));assert(h.link('Browse all 5 entries'));
+  await h.route('#section=magic-items&category=weapons');assert.deepEqual(names(h),['Ember arrow','Ember blade','Ember common']);
+  await h.change('magic-rarity','Rare');assert.deepEqual(names(h),['Ember arrow','Ember blade']);
+  await h.change('magic-type','Weapon');assert.deepEqual(names(h),['Ember blade']);
+  const query=h.document.getElementById('section-search');query.value='ember';query.dispatch('input');await settle();assert.deepEqual(names(h),['Ember blade']);
+  const state=new URLSearchParams(h.hash.slice(1));assert.equal(state.get('category'),'weapons');assert.equal(state.get('rarity'),'Rare');assert.equal(state.get('type'),'Weapon');
+  await h.route('#section=magic-items&group=Rare');assert.equal(names(h).length,4);
+  await h.route('#section=magic-items&filter=armour');assert.deepEqual(names(h),['Ember plate']);
+  await h.route('#q=jewellery&scope=magic-items');assert.deepEqual(names(h),['Frost ring']);
+});
+
+test('editing a magic category refreshes browsing and search, persists through reload and exports with stable source identity', async () => {
+  const storage=new Map(),original={...entry('Crystal charm','Rare',{id:'crystal',type:'Wondrous item',category:'misc',rarity:'Rare',desc:'A reusable charm.'}),source:'magic-items/rare.yaml'};
+  const h=boot({'magic-items':[JSON.parse(JSON.stringify(original))]},'',{storage});await h.route('#section=magic-items&entry=Crystal+charm&group=Rare');
+  let form=h.reader.querySelector('.magic-editor').querySelector('form');
+  let category=form.querySelectorAll('label').find(label=>label.querySelector('span')?.textContent==='Category').querySelector('select');
+  category.value='wearables';form.dispatch('submit');await settle();
+  assert.match(h.document.getElementById('trail').textContent,/Wearables & jewelry/);
+  await h.route('#section=magic-items&category=wearables&filter=jewellery');assert.deepEqual(names(h),['Crystal charm']);
+  const reloaded=boot({'magic-items':[JSON.parse(JSON.stringify(original))]},'#section=magic-items&category=wearables',{storage});await settle();assert.deepEqual(names(reloaded),['Crystal charm']);
+  await h.route('#section=magic-items&entry=Crystal+charm&group=Rare');form=h.reader.querySelector('.magic-editor').querySelector('form');
+  form.querySelectorAll('button').find(button=>button.textContent==='Export source file').click();
+  const exported=JSON.parse(await h.downloads[0].blob.text());
+  assert.equal(exported.entries[0].category,'wearables');assert.equal(exported.entries[0].id,'crystal');assert.equal(exported.entries[0].group,'Rare');
+});
+
+test('magic item entry navigation never crosses its category even within the same rarity collection', async () => {
+  const items=[entry('A blade','Rare',{id:'a',type:'Weapon',category:'weapons'}),entry('M ring','Rare',{id:'m',type:'Ring',category:'wearables'}),entry('Z blade','Rare',{id:'z',type:'Weapon',category:'weapons'})];
+  const h=boot({'magic-items':items});await h.route('#section=magic-items&entry=A+blade&group=Rare');
+  const nav=h.reader.querySelector('.entry-navigation');assert.equal(nav.querySelectorAll('a').length,1);
+  assert.equal(nav.querySelector('a').getAttribute('aria-label'),'Next entry: Z blade');
+  const crumbs=h.document.getElementById('trail').querySelectorAll('a');
+  assert(crumbs.some(link=>link.href.includes('category=weapons')));
 });

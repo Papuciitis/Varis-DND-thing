@@ -3,6 +3,7 @@ entries:
 - name: Scroll of Message
   group: Common
   id: mi-common-002
+  category: scrolls
   type: Scroll
   rarity: Common
   attunement: 'No'
@@ -21,6 +22,7 @@ entries:
 - name: Scroll of Color Spray
   group: Common
   id: mi-common-003
+  category: scrolls
   type: Scroll
   rarity: Common
   attunement: 'No'
@@ -39,6 +41,7 @@ entries:
 - name: Scroll of Goodberry
   group: Common
   id: mi-common-004
+  category: scrolls
   type: Scroll
   rarity: Common
   attunement: 'No'
@@ -57,6 +60,7 @@ entries:
 - name: Scroll of Detect Evil and Good
   group: Common
   id: mi-common-005
+  category: scrolls
   type: Scroll
   rarity: Common
   attunement: 'No'
@@ -76,6 +80,7 @@ entries:
 - name: Phasing Bow
   group: Common
   id: mi-common-006
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'No'
@@ -106,6 +111,7 @@ entries:
 - name: Forecaster's Cloak
   group: Common
   id: mi-common-007
+  category: wearables
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -127,6 +133,7 @@ entries:
 - name: Merry Berry
   group: Common
   id: mi-common-008
+  category: consumables
   type: Potion
   rarity: Common
   attunement: 'No'
@@ -152,6 +159,7 @@ entries:
 - name: Squasher
   group: Common
   id: mi-common-009
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'No'
@@ -173,6 +181,7 @@ entries:
 - name: Dress of Many Pockets
   group: Common
   id: mi-common-010
+  category: wearables
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -197,6 +206,7 @@ entries:
 - name: Freerunner's Armor (light armor)
   group: Common
   id: mi-common-011
+  category: armor-shields
   type: Armor
   rarity: Common
   attunement: 'No'
@@ -220,6 +230,7 @@ entries:
 - name: Leatherbeard
   group: Common
   id: mi-common-012
+  category: wearables
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -245,6 +256,7 @@ entries:
 - name: Smash Potatoes
   group: Common
   id: mi-common-013
+  category: consumables
   type: Potion
   rarity: Common
   attunement: 'No'
@@ -269,6 +281,7 @@ entries:
 - name: Griffon Coinpouch
   group: Common
   id: mi-common-014
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -295,6 +308,7 @@ entries:
 - name: Cleaning Cube
   group: Common
   id: mi-common-015
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -333,6 +347,7 @@ entries:
 - name: Rope Caster (hand crossbow)
   group: Common
   id: mi-common-016
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'No'
@@ -371,6 +386,7 @@ entries:
 - name: Invisible wand
   group: Common
   id: mi-common-017
+  category: spellcasting
   type: Wand
   rarity: Common
   attunement: 'No'
@@ -389,6 +405,7 @@ entries:
 - name: Ring of The Rodent
   group: Common
   id: mi-common-018
+  category: wearables
   type: Ring
   rarity: Common
   attunement: 'Yes'
@@ -405,6 +422,7 @@ entries:
 - name: Arctic Smite (Battleaxe)
   group: Common
   id: mi-common-019
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'Yes'
@@ -430,6 +448,7 @@ entries:
 - name: Close Quarters Bow (Shortbow 50/150)
   group: Common
   id: mi-common-020
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'No'
@@ -457,6 +476,7 @@ entries:
 - name: Luxurious Satin Bedroll
   group: Common
   id: mi-common-021
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -479,6 +499,7 @@ entries:
 - name: Unlucky Bastard (Longsword)
   group: Common
   id: mi-common-022
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'Yes'
@@ -501,6 +522,7 @@ entries:
 - name: Failed Poison (Potion)
   group: Common
   id: mi-common-023
+  category: consumables
   type: Potion
   rarity: Common
   attunement: 'No'
@@ -548,6 +570,7 @@ entries:
 - name: Spiked Chain (Morningstar)
   group: Common
   id: mi-common-024
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'No'
@@ -593,6 +616,7 @@ entries:
 - name: The Stick of Usefulness
   group: Common
   id: mi-common-025
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -616,6 +640,7 @@ entries:
 - name: A Modest Knife (Dagger)
   group: Common
   id: mi-common-026
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'No'
@@ -640,6 +665,7 @@ entries:
 - name: Pillar Boots
   group: Common
   id: mi-common-027
+  category: wearables
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -666,6 +692,7 @@ entries:
 - name: Traveler's Flask
   group: Common
   id: mi-common-028
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -685,6 +712,7 @@ entries:
 - name: Tinkerer's Glasses
   group: Common
   id: mi-common-029
+  category: wearables
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -703,6 +731,7 @@ entries:
 - name: Alchemical Reagent Set
   group: Common
   id: mi-common-030
+  category: consumables
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -738,6 +767,7 @@ entries:
 - name: Potion of Guidance
   group: Common
   id: mi-common-031
+  category: consumables
   type: Potion
   rarity: Common
   attunement: 'No'
@@ -754,6 +784,7 @@ entries:
 - name: Thoughts & Prayers (brass knuckles)
   group: Common
   id: mi-common-032
+  category: weapons
   type: Weapon
   rarity: Common
   attunement: 'No'
@@ -775,6 +806,7 @@ entries:
 - name: Multitool (tools)
   group: Common
   id: mi-common-033
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -795,6 +827,7 @@ entries:
 - name: Wine of Nightshade
   group: Common
   id: mi-common-034
+  category: consumables
   type: Potion
   rarity: Common
   attunement: 'No'
@@ -819,6 +852,7 @@ entries:
 - name: Utility Harness
   group: Common
   id: mi-common-035
+  category: wearables
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -837,6 +871,7 @@ entries:
 - name: Protective Basket Hilt
   group: Common
   id: mi-common-036
+  category: weapons
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -855,6 +890,7 @@ entries:
 - name: Jaw Trap
   group: Common
   id: mi-common-037
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -879,6 +915,7 @@ entries:
 - name: Portable Leg Snare
   group: Common
   id: mi-common-038
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -904,6 +941,7 @@ entries:
 - name: Shekel Ring
   group: Common
   id: mi-common-039
+  category: wearables
   type: Ring
   rarity: Common
   attunement: 'No'
@@ -922,6 +960,7 @@ entries:
 - name: Hypnotic Pendant
   group: Common
   id: mi-common-040
+  category: wearables
   type: Wondrous item
   rarity: Common
   attunement: 'Yes'
@@ -940,6 +979,7 @@ entries:
 - name: Elf Whistle
   group: Common
   id: mi-common-041
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -962,6 +1002,7 @@ entries:
 - name: Healing Powder
   group: Common
   id: mi-common-042
+  category: consumables
   type: Potion
   rarity: Common
   attunement: 'No'
@@ -981,6 +1022,7 @@ entries:
 - name: Bat's balls
   group: Common
   id: mi-common-043
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'
@@ -1002,6 +1044,7 @@ entries:
 - name: A Kazoo
   group: Common
   id: mi-common-044
+  category: misc
   type: Wondrous item
   rarity: Common
   attunement: 'No'

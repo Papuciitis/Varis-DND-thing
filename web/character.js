@@ -39,10 +39,16 @@
   const entries = new Map();
   function refreshCatalog() {
     for(const section of globalThis.DND_CATALOG || [])globalThis.MagicItems?.apply(section);
-    catalog = (globalThis.DND_CATALOG || []).flatMap(section => section.entries.map(entry => ({
-    ...entry, section: section.key, sectionTitle: section.title, entryId: globalThis.MagicItems?.entryId(section.key,entry) || JSON.stringify([section.key, entry.group, entry.name]),
-    searchText: (entry.name + " " + entry.group + " " + JSON.stringify(section.key==="magic-items" && globalThis.MagicItems ? globalThis.MagicItems.searchable(entry) : entry.details)).toLowerCase()
-    })));
+    catalog = (globalThis.DND_CATALOG || []).flatMap(section => section.entries.map(entry => {
+      const indexed = {...entry, section: section.key, sectionTitle: section.title,
+        entryId: globalThis.MagicItems?.entryId(section.key,entry) || JSON.stringify([section.key, entry.group, entry.name])};
+      const magic = section.key === "magic-items";
+      indexed.magicCategory = magic ? globalThis.MagicCategories?.category(indexed) || "" : "";
+      indexed.magicCategoryTitle = magic ? globalThis.MagicCategories?.categories.find(category => category.key === indexed.magicCategory)?.title || "" : "";
+      indexed.searchText = (entry.name + " " + entry.group + " " + JSON.stringify(magic && globalThis.MagicItems ? globalThis.MagicItems.searchable(entry) : entry.details)
+        + (magic ? " magic item magic items " + (globalThis.MagicCategories?.searchTerms(indexed) || "") : "")).toLowerCase();
+      return indexed;
+    }));
     entries.clear();
     for (const entry of catalog) entries.set(entry.entryId, entry);
   }
@@ -549,7 +555,8 @@
     const preferences = catalogPreferences[kind];
     const levels = [...new Set(catalog.filter(entry=>allowed.includes(entry.section)).map(Order.level).filter(level=>level!==null))].sort((a,b)=>a-b);
     const ordering = sortField("catalog-sort",preferences.sort,kind!=='inventory'&&levels.length>0) + (kind==='spells'?`<label class="field"><span>Spell level</span><select id="catalog-level"><option value="">All levels</option>${levels.map(level=>`<option value="${level}" ${String(level)===preferences.level?'selected':''}>${level===0?'Level 0 / cantrips':'Level '+level}</option>`).join('')}</select></label>`:'');
-    openDialog("Add " + (kind === "inventory" ? "equipment" : kind), `<div class="catalog-search"><label class="field"><span>Search rules</span><input id="catalog-query" type="search" placeholder="Search by name or rule text" autocomplete="off"></label><label class="field"><span>Group</span><select id="catalog-group"><option value="">All groups</option>${groups.map(group => `<option>${escape(group)}</option>`).join("")}</select></label>${ordering}</div><p class="section-note" id="catalog-count"></p><div class="catalog-results" id="catalog-results"></div>`, button("Close", "close-dialog"));
+    const magicCategories = kind === "inventory" ? `<label class="field"><span>Magic category</span><select id="catalog-magic-category"><option value="">All equipment</option><option value="all-magic">All magic items</option>${(globalThis.MagicCategories?.categories || []).map(category => `<option value="${escape(category.key)}">${escape(category.title)}</option>`).join("")}</select></label>` : "";
+    openDialog("Add " + (kind === "inventory" ? "equipment" : kind), `<div class="catalog-search"><label class="field"><span>Search rules</span><input id="catalog-query" type="search" placeholder="Search by name or rule text" autocomplete="off"></label><label class="field"><span>Group</span><select id="catalog-group"><option value="">All groups</option>${groups.map(group => `<option>${escape(group)}</option>`).join("")}</select></label>${magicCategories}${ordering}</div><p class="section-note" id="catalog-count"></p><div class="catalog-results" id="catalog-results"></div>`, button("Close", "close-dialog"));
     renderCatalogResults();
   }
 
@@ -557,11 +564,14 @@
     const allowed = catalogKind === "spells" ? ["spells"] : catalogKind === "inventory" ? ["items", "magic-items"] : ["classes", "feats", "races", "backgrounds"];
     const query = byId("catalog-query").value.toLowerCase().trim();
     const group = byId("catalog-group").value;
+    const magicCategory = catalogKind === "inventory" ? byId("catalog-magic-category")?.value || "" : "";
     const words = query.split(/\s+/).filter(Boolean);
     const preferences = catalogPreferences[catalogKind];
-    const results = catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules" && (!group || entry.group === group) && (catalogKind!=='spells'||!preferences.level||String(Order.level(entry))===preferences.level) && words.every(word => entry.searchText.includes(word))).sort((a, b) => Order.compare(a,b,preferences.sort));
+    const results = catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules" && (!group || entry.group === group)
+      && (!magicCategory || entry.section === "magic-items" && (magicCategory === "all-magic" || entry.magicCategory === magicCategory))
+      && (catalogKind!=='spells'||!preferences.level||String(Order.level(entry))===preferences.level) && words.every(word => entry.searchText.includes(word))).sort((a, b) => Order.compare(a,b,preferences.sort));
     byId("catalog-count").textContent = `${results.length} matching ${results.length === 1 ? "rule" : "rules"}`;
-    byId("catalog-results").innerHTML = results.slice(0, catalogLimit).map(entry => `<article class="catalog-result"><div><h3>${escape(entry.name)}</h3><p class="list-card-meta">${escape(entry.group || entry.sectionTitle)}${Order.level(entry)!==null?' · '+entryLevelLabel(entry):''}</p></div><div class="entry-actions">${button("Read", "catalog-read", `data-entry-id="${escape(entry.entryId)}"`, "button-small")}${button("Add", "add-catalog", `data-entry-id="${escape(entry.entryId)}" aria-label="Add ${escape(entry.name)}"`, "button-primary button-small")}</div></article>`).join("") + (results.length > catalogLimit ? button("Show more", "catalog-more", "", "full-width") : "") + (!results.length ? `<p class="empty-state">No matching rules. Try another name or group.</p>` : "");
+    byId("catalog-results").innerHTML = results.slice(0, catalogLimit).map(entry => `<article class="catalog-result"><div><h3>${escape(entry.name)}</h3><p class="list-card-meta">${escape((entry.magicCategoryTitle ? entry.magicCategoryTitle + " · " : "") + (entry.group || entry.sectionTitle))}${Order.level(entry)!==null?' · '+entryLevelLabel(entry):''}</p></div><div class="entry-actions">${button("Read", "catalog-read", `data-entry-id="${escape(entry.entryId)}"`, "button-small")}${button("Add", "add-catalog", `data-entry-id="${escape(entry.entryId)}" aria-label="Add ${escape(entry.name)}"`, "button-primary button-small")}</div></article>`).join("") + (results.length > catalogLimit ? button("Show more", "catalog-more", "", "full-width") : "") + (!results.length ? `<p class="empty-state">No matching rules. Try another name or group.</p>` : "");
   }
 
   function itemEditor(list, index) {
@@ -768,7 +778,7 @@
     const target = event.target;
     if(Wizard?.handleChange(target))return;
     if (target.id === "backup-input") { importBackup(target.files[0]); return; }
-    if (target.id === "catalog-group") { catalogLimit = 30; renderCatalogResults(); return; }
+    if (target.id === "catalog-group" || target.id === "catalog-magic-category") { catalogLimit = 30; renderCatalogResults(); return; }
     if (target.id === "catalog-sort" || target.id === "catalog-level") { catalogPreferences[catalogKind][target.id==='catalog-sort'?'sort':'level']=target.value; catalogLimit=30; renderCatalogResults(); return; }
     if (target.id === "spell-sort" || target.id === "spell-filter") { if(target.id==='spell-sort')spellSort=target.value;else spellFilter=target.value; renderSpells(); return; }
     if (target.id === "feature-sort") { featureSort=target.value; renderFeatures(); return; }

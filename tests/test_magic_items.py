@@ -63,6 +63,13 @@ class MagicItemTests(unittest.TestCase):
                 with self.subTest(item=entry["name"]):
                     self.assertRegex(str(details["magic_bonus"]), r"^-?\d+$")
 
+    def test_every_converted_item_has_a_reviewed_category(self):
+        categories = {"weapons", "armor-shields", "wearables", "spellcasting", "scrolls", "consumables", "misc"}
+        for entry in self.items:
+            with self.subTest(item=entry["name"]):
+                self.assertIn(entry["details"].get("category"), categories)
+        self.assertEqual({entry["details"]["category"] for entry in self.items}, categories)
+
     def test_snapshot_can_be_reproduced_from_preserved_workbook(self):
         spec = importlib.util.spec_from_file_location("extract_magic", ROOT / "scripts/extract-magic-workbook.py")
         module = importlib.util.module_from_spec(spec)

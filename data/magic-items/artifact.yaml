@@ -17,6 +17,7 @@ entries:
   name: The Griffon's Saddlebag
   group: Artifact
   id: mi-artifact-002
+  category: misc
   rarity: Artifact
   attunement: 'No'
   price: 170000 GP
@@ -86,6 +87,7 @@ entries:
   name: Holy Moonlight Greatsword
   group: Artifact
   id: mi-artifact-003
+  category: weapons
   rarity: Artifact
   attunement: 'Yes'
   price: 100000 GP
@@ -126,6 +128,7 @@ entries:
   name: Gloom (Shortsword)
   group: Artifact
   id: mi-artifact-004
+  category: weapons
   rarity: Artifact
   attunement: 'Yes'
   price: 80000 GP
@@ -193,6 +196,7 @@ entries:
   name: Mirror of Restoration
   group: Artifact
   id: mi-artifact-005
+  category: misc
   rarity: Artifact
   attunement: 'No'
   price: 60000 GP

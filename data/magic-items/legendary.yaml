@@ -10,6 +10,7 @@ entries:
   name: Death's shadow
   group: Legendary
   id: mi-legendary-002
+  category: wearables
   rarity: Legendary
   attunement: 'Yes'
   price: 36000 GP
@@ -47,6 +48,7 @@ entries:
   name: Crypt Keeper Glaive
   group: Legendary
   id: mi-legendary-003
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 28000 GP
@@ -77,6 +79,7 @@ entries:
   name: Realmswarden Greataxe
   group: Legendary
   id: mi-legendary-004
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 34000 GP
@@ -115,6 +118,7 @@ entries:
   name: Storm Thrower Harpoon (trident)
   group: Legendary
   id: mi-legendary-005
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 28000 GP
@@ -154,6 +158,7 @@ entries:
   name: Spirit Cleaver (dagger)
   group: Legendary
   id: mi-legendary-006
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 34000 GP
@@ -184,6 +189,7 @@ entries:
   name: Glaive of the Revenant King
   group: Legendary
   id: mi-legendary-007
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 34000 GP
@@ -225,6 +231,7 @@ entries:
   name: Love's Embrace (Greatsword)
   group: Legendary
   id: mi-legendary-008
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 16000 GP
@@ -262,6 +269,7 @@ entries:
   name: Tome of Lost Knowledge
   group: Legendary
   id: mi-legendary-009
+  category: misc
   rarity: Legendary
   attunement: 'Yes'
   price: 24000 GP
@@ -299,6 +307,7 @@ entries:
   name: Quiver of Elemental Chaos
   group: Legendary
   id: mi-legendary-010
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 16000 GP
@@ -369,6 +378,7 @@ entries:
   name: Void Blade (Greatsword)
   group: Legendary
   id: mi-legendary-011
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 34000 GP
@@ -402,6 +412,7 @@ entries:
   name: Dawn's Strife (Longsword)
   group: Legendary
   id: mi-legendary-012
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 4000 GP
@@ -437,6 +448,7 @@ entries:
   name: Talon of the First Brute (Greatsword)
   group: Legendary
   id: mi-legendary-013
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 4000 GP
@@ -463,6 +475,7 @@ entries:
   name: Duskbringer (Greatsword)
   group: Legendary
   id: mi-legendary-014
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 10000 GP
@@ -491,6 +504,7 @@ entries:
   name: Perfectly Square Stone
   group: Legendary
   id: mi-legendary-015
+  category: misc
   rarity: Legendary
   attunement: 'No'
   price: 1000 GP
@@ -518,6 +532,7 @@ entries:
   name: Ari'thalas, Bow of the Silverwing (longbow)
   group: Legendary
   id: mi-legendary-016
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 30000 GP
@@ -543,6 +558,7 @@ entries:
   name: Angel's Tear (Potion)
   group: Legendary
   id: mi-legendary-017
+  category: consumables
   rarity: Legendary
   attunement: 'No'
   price: 1000 GP
@@ -570,6 +586,7 @@ entries:
   name: Sir Eggbert (Greatsword)
   group: Legendary
   id: mi-legendary-018
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 26000 GP
@@ -594,6 +611,7 @@ entries:
   name: Wallet of the Slayer
   group: Legendary
   id: mi-legendary-019
+  category: misc
   rarity: Legendary
   attunement: 'No'
   price: 10000 GP
@@ -621,6 +639,7 @@ entries:
   name: Googly Eyes of Sentience
   group: Legendary
   id: mi-legendary-020
+  category: misc
   rarity: Legendary
   attunement: 'No'
   price: 3000 GP
@@ -651,6 +670,7 @@ entries:
   name: Pipe of Smoke Shaping
   group: Legendary
   id: mi-legendary-021
+  category: misc
   rarity: Legendary
   attunement: 'Yes'
   price: 10000 GP
@@ -675,6 +695,7 @@ entries:
   name: Bloodthirster (Longsword)
   group: Legendary
   id: mi-legendary-022
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 23000 GP
@@ -705,6 +726,7 @@ entries:
   name: Azuredge (Hand axe)
   group: Legendary
   id: mi-legendary-023
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 34000 GP
@@ -735,6 +757,7 @@ entries:
   name: 'Brillian Lance '
   group: Legendary
   id: mi-legendary-024
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 24000 GP
@@ -761,6 +784,7 @@ entries:
   name: Eleanor's Sagacity (potion)
   group: Legendary
   id: mi-legendary-025
+  category: consumables
   rarity: Legendary
   attunement: 'No'
   price: 50000 GP
@@ -790,6 +814,7 @@ entries:
   name: Ricochet (sling)
   group: Legendary
   id: mi-legendary-026
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 23000 GP
@@ -817,6 +842,7 @@ entries:
   name: Worldforger (War-hammer)
   group: Legendary
   id: mi-legendary-027
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 40000 GP
@@ -847,6 +873,7 @@ entries:
   name: Voli's Eye
   group: Legendary
   id: mi-legendary-028
+  category: wearables
   rarity: Legendary
   attunement: 'Yes'
   price: 12000 GP
@@ -875,6 +902,7 @@ entries:
   name: Icebreaker (horn)
   group: Legendary
   id: mi-legendary-029
+  category: misc
   rarity: Legendary
   attunement: 'No'
   price: 20000 GP
@@ -900,6 +928,7 @@ entries:
   name: Robe of The Clensing Sands
   group: Legendary
   id: mi-legendary-030
+  category: wearables
   rarity: Legendary
   attunement: 'No'
   price: 20000 GP
@@ -926,6 +955,7 @@ entries:
   name: Armor of The Plot (Light, Medium or Heavy)
   group: Legendary
   id: mi-legendary-031
+  category: armor-shields
   rarity: Legendary
   attunement: 'Yes'
   price: 50000 GP
@@ -954,6 +984,7 @@ entries:
   name: Proficiency Gloves
   group: Legendary
   id: mi-legendary-032
+  category: wearables
   rarity: Legendary
   attunement: 'Yes'
   price: 5000 GP
@@ -981,6 +1012,7 @@ entries:
   name: Crossbow That Shoots Rotating Swords
   group: Legendary
   id: mi-legendary-033
+  category: weapons
   rarity: Legendary
   attunement: 'No'
   price: 10000 GP
@@ -1016,6 +1048,7 @@ entries:
   name: Breastplate of Swoleness
   group: Legendary
   id: mi-legendary-034
+  category: armor-shields
   rarity: Legendary
   attunement: 'Yes'
   price: 50000 GP
@@ -1043,6 +1076,7 @@ entries:
   name: What (scroll)
   group: Legendary
   id: mi-legendary-035
+  category: scrolls
   rarity: Legendary
   attunement: 'No'
   price: I dunno GP
@@ -1075,6 +1109,7 @@ entries:
   name: Legendary Bat
   group: Legendary
   id: mi-legendary-036
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 30000 GP
@@ -1101,6 +1136,7 @@ entries:
   name: Boomstick (pistol)
   group: Legendary
   id: mi-legendary-037
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 20000 GP
@@ -1129,6 +1165,7 @@ entries:
   name: Exalted Band of the Fell Beast
   group: Legendary
   id: mi-legendary-038
+  category: wearables
   rarity: Legendary
   attunement: 'Yes'
   price: 25000 GP
@@ -1156,6 +1193,7 @@ entries:
   name: The Misery Heart
   group: Legendary
   id: mi-legendary-039
+  category: misc
   rarity: Legendary
   attunement: 'Yes'
   price: 30000 GP
@@ -1181,6 +1219,7 @@ entries:
   name: Helm of Shadowsteps
   group: Legendary
   id: mi-legendary-040
+  category: wearables
   rarity: Legendary
   attunement: 'Yes'
   price: 15000 GP
@@ -1211,6 +1250,7 @@ entries:
   name: Aether
   group: Legendary
   id: mi-legendary-041
+  category: misc
   rarity: Legendary
   attunement: 'Yes'
   price: 20000 GP
@@ -1242,6 +1282,7 @@ entries:
   name: Paradiso (Shield)
   group: Legendary
   id: mi-legendary-042
+  category: armor-shields
   rarity: Legendary
   attunement: 'Yes'
   price: 30000 GP
@@ -1267,6 +1308,7 @@ entries:
   name: Angel Plate (Plate armor)
   group: Legendary
   id: mi-legendary-043
+  category: armor-shields
   rarity: Legendary
   attunement: 'Yes'
   price: 20000 GP
@@ -1293,6 +1335,7 @@ entries:
   name: Shadow Maul
   group: Legendary
   id: mi-legendary-044
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 15000 GP
@@ -1322,6 +1365,7 @@ entries:
   name: Arcane Propulsion Armor (Medium armor)
   group: Legendary
   id: mi-legendary-045
+  category: armor-shields
   rarity: Legendary
   attunement: 'Yes'
   price: 20000 GP
@@ -1350,6 +1394,7 @@ entries:
   name: Faerie Wings
   group: Legendary
   id: mi-legendary-046
+  category: wearables
   rarity: Legendary
   attunement: 'Yes'
   price: 15000 GP
@@ -1378,6 +1423,7 @@ entries:
   name: Delphyne's Armor (Plate)
   group: Legendary
   id: mi-legendary-047
+  category: armor-shields
   rarity: Legendary
   attunement: 'Yes'
   price: 20000 GP
@@ -1416,6 +1462,7 @@ entries:
   name: Tornado Maker (longsword)
   group: Legendary
   id: mi-legendary-048
+  category: weapons
   rarity: Legendary
   attunement: 'Yes'
   price: 20000 GP
@@ -1445,6 +1492,7 @@ entries:
   name: Death's Siphon (Bracelet)
   group: Legendary
   id: mi-legendary-049
+  category: wearables
   rarity: Legendary
   attunement: 'Yes'
   price: 15000 GP

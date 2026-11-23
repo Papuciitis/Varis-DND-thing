@@ -28,10 +28,24 @@
         throw new Error("Magic bonus must be a whole number.");
       }
     }
+    let category;
+    if (Object.hasOwn(entry.details,"category")) {
+      const value=entry.details.category;
+      if (value != null && typeof value !== "string") throw new Error("Choose a valid magic item category.");
+      const requested=String(value ?? "").trim().toLowerCase();
+      const selected=globalThis.MagicCategories?.categories.find(item=>item.key===requested || item.title.toLowerCase()===requested);
+      if (requested && !selected) throw new Error("Choose a valid magic item category.");
+      category=selected?.key || "";
+    }
     const result=clone({...entry,name:entry.name.trim(),group:entry.group.trim()});
+    if (category !== undefined) result.details.category=category;
     const original=originals.get(expectedId);
     if(original) {
       result.source=original.source;
+      // Backups made before categories existed should inherit the current catalog's classification.
+      if (!Object.hasOwn(result.details,"category") && Object.hasOwn(original.details || {},"category")) {
+        result.details.category=clone(original.details.category);
+      }
       for(const key of Object.keys(result.details))if(provenanceKey(key))delete result.details[key];
       for(const [key,value] of Object.entries(original.details || {}))if(provenanceKey(key))result.details[key]=clone(value);
     }
@@ -180,8 +194,18 @@
     }
     textField("Name",entry.name,value=>edited.name=value);
     textField("Collection",entry.group,value=>edited.group=value);
+    if (globalThis.MagicCategories) {
+      const label=node("label",undefined,"magic-field"), select=node("select");
+      label.append(node("span","Category"));
+      const automatic=node("option","Automatic");automatic.value="";select.append(automatic);
+      for (const item of globalThis.MagicCategories.categories) {
+        const option=node("option",item.title);option.value=item.key;select.append(option);
+      }
+      select.value=entry.details?.category ? globalThis.MagicCategories.category(entry) : "";
+      label.append(select);form.append(label);fields.push(()=>edited.details.category=select.value);
+    }
     for(const [key,value] of Object.entries(entry.details || {})) {
-      if(key === "id" || provenanceKey(key))continue;
+      if(key === "id" || (key === "category" && globalThis.MagicCategories) || provenanceKey(key))continue;
       const title=/^(?:desc|description)$/.test(key)?"Converted rules":key.replace(/_/g," ").replace(/^./,c=>c.toUpperCase());
       if(value===null || typeof value!=="object") {
         textField(title,value,text=>edited.details[key]=typeof value==="number"?Number(text):text,/desc|rules|notes|effect|usage|activation|recharge/i.test(key)||String(value).length>100);
