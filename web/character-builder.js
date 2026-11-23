@@ -20,9 +20,9 @@
     const metadata = rules.metadata || {};
     const order = globalThis.EntryOrder;
     const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
-    const itemEntries = () => (rules.catalog || []).flatMap(section => ["items","magic-items"].includes(section.key) ? (section.entries || []).map(entry => ({...entry,entryId:globalThis.MagicItems?.entryId(section.key,entry) || JSON.stringify([section.key,entry.group || "",entry.name])})) : []);
+    const itemEntries = () => (rules.catalog || []).flatMap(section => ["items","magic-items"].includes(section.key) ? (section.entries || []).map(entry => ({...entry,section:section.key,entryId:globalThis.MagicItems?.entryId(section.key,entry) || JSON.stringify([section.key,entry.group || "",entry.name])})) : []);
     let items=itemEntries();
-    const weaponGroups = [...new Set(items.filter(entry => entry.details?.damage && entry.details?.type).map(entry => entry.group))].sort();
+    let weaponGroups=[];
     const allSkills = Object.keys(globalThis.CharacterRules?.skillAbilities || {});
     const details = (title, value) => value ? `<details class="builder-rule"><summary>${escape(title)}</summary><div class="rule-body">${renderRule(value)}</div></details>` : "";
     const select = (path, values, current, placeholder = "Choose…") => `<select data-builder-path="${escape(path)}">${option("",placeholder,!current)}${values.map(item => option(item.id,item.name,item.id === current)).join("")}</select>`;
@@ -218,6 +218,12 @@
 
     function start(character, fresh = false) {
       items=itemEntries();
+      weaponGroups=[...new Set(items.flatMap(entry => {
+        // Base weapon groups already come from ordinary equipment; magic collections group by rarity.
+        const group=entry.section === "magic-items" ? entry.details?.weapon_group : entry.group;
+        const profile=globalThis.MagicItems?.equipment(entry,rules.catalog) || entry;
+        return group && profile.details?.damage && profile.details?.type ? [group] : [];
+      }))].sort();
       draft = rules.enable(copy(character)); step = 0; open = true; isNew = !!fresh; itemToAdd = ""; render(); return true;
     }
     function cancel() { if (!open) return false; open = false; draft = null; onCancel(); return true; }

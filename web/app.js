@@ -18,6 +18,8 @@
   const sectionRequests = new Map();
   const perPage = 24;
   const order = globalThis.EntryOrder;
+  const itemViews = globalThis.ItemViews;
+  const browseViews = globalThis.BrowseViews;
   const collate = new Intl.Collator("en", {numeric: true, sensitivity: "base"});
   const rarityOrder=["common","uncommon","rare","very rare","legendary","artifact"];
   const compareRarity=(a,b)=>{
@@ -146,6 +148,7 @@
   }
   function sortOptions(kind, query) {
     const options = query ? [["relevance", "Relevance"]] : [];
+    if (kind === "spells") options.push(["magic-asc", "Class of magic, level, name"]);
     if (kind === "monsters") options.push(["challenge-asc", "Challenge: low to high"], ["challenge-desc", "Challenge: high to low"]);
     else if (kind) options.push(["level-asc", "Level: low to high"], ["level-desc", "Level: high to low"]);
     options.push(["name", "Name: A–Z"]);
@@ -262,25 +265,43 @@
   }
   function directory(section, params) {
     const base = {section: section.key};
-    const groups = groupsBySection.get(section.key);
+    const category = section.key === "items" ? itemViews?.categories.find(item => item.key === params.category) : null;
+    const itemGroups = category ? new Set(section.entries.filter(entry => itemViews.category(entry) === category.key).map(entry => entry.group)) : null;
+    const groups = groupsBySection.get(section.key).filter(([name]) => !itemGroups || itemGroups.has(name));
     const group = browseGroup(section, params.group || "");
+    const magicClass = section.key === "spells" ? order.magicClass(group) : "";
     const level = params.level || "";
     const filter = params.filter || "";
     const kind = orderKind(section, group);
     const sort = selectedSort(params, kind, filter);
     const grouped = groups.filter(([name]) => name);
+    const compareEntries = ["races", "feats", "backgrounds"].includes(section.key);
+    const listView = compareEntries && (params.view === "list" || section.key === "races" && params.view !== "pages");
+    const itemHome = section.key === "items" && !category && !group && !filter && !params.browse;
+    const weaponTree = section.key === "items" && category?.key === "weapons" && !group && params.view !== "pages";
     const baseClassView = section.key === "classes" && !group && !level && !filter && !params.browse;
-    const groupedView = !["classes", "spells", "monsters"].includes(section.key) && grouped.length > 1 && !group && !level && !filter && !params.browse && !params.rarity && !params.type;
-    const parts = [[section.title, group ? base : null]];
-    if (group) parts.push([cap(group), null]);
+    const groupedView = !compareEntries && !["classes", "spells", "monsters", "items"].includes(section.key) && grouped.length > 1 && !group && !level && !filter && !params.browse && !params.rarity && !params.type;
+    const groupTitle = magicClass || cap(group);
+    const parts = [[section.title, group || category ? base : null]];
+    if (category) parts.push([category.title, group ? {...base, category: category.key} : null]);
+    if (group) parts.push([groupTitle, null]);
     crumbs(parts);
     const head = el("header", "index-heading");
-    head.append(heading(group ? cap(group) : section.title));
+    head.append(heading(group ? groupTitle : category?.title || section.title));
     if (baseClassView) {
       head.append(el("p", "index-intro", "Choose a class to read its features and archetypes."));
       head.append(link("Browse all class entries", {...base, browse: "all"}, "text-link"));
     }
     reader.append(head);
+    if (section.key === "spells") {
+      const extraGroups = grouped.filter(([name]) => !order.magicClass(name));
+      if (extraGroups.length) {
+        const extra = el("nav", "related spell-reference-links");
+        extra.setAttribute("aria-label", "Hexes and magic references");
+        for (const [name] of extraGroups) extra.append(link(cap(name), {...base, group: name}, "related-link"));
+        head.append(extra);
+      }
+    }
     if (section.key === "magic-items" && globalThis.MagicItems) {
       head.append(el("p", "index-intro", "Converted for the Varis rules. Browse the collection or open an item to edit its rules."));
       head.append(link("Using converted magic items",{section:"rules",group:"Magic items",entry:"Using converted magic items"},"text-link"));
@@ -306,7 +327,30 @@
       event.preventDefault();
       setFilter(input.value, true);
     });
-    if (grouped.length > 1 && !baseClassView && section.key!=="magic-items") {
+    if (section.key === "items" && itemViews) {
+      const [field, select] = labelledSelect("Category", "item-category");
+      select.append(new Option("All categories", ""));
+      for (const item of itemViews.categories) select.append(new Option(item.title, item.key));
+      select.value = category?.key || "";
+      select.addEventListener("change", () => openFilters({...params, category: select.value, group: "", view: "", page: "", browse: ""}));
+      form.append(field);
+    }
+    if (compareEntries || category?.key === "weapons" && !group) {
+      const [field, select] = labelledSelect("Display", "entry-view");
+      const options = compareEntries ? [["pages", "Pages"], ["list", "Expandable list"]] : [["tree", "Weapon groups"], ["pages", "Pages"]];
+      for (const [value, text] of options) select.append(new Option(text, value));
+      select.value = compareEntries ? listView ? "list" : "pages" : weaponTree ? "tree" : "pages";
+      select.addEventListener("change", () => openFilters({...params, view: select.value, page: "", browse: "all"}));
+      form.append(field);
+    }
+    if (section.key === "spells") {
+      const [field, select] = labelledSelect("Class of magic", "group");
+      select.append(new Option("All classes of magic", ""));
+      for (const name of order.magicClasses) select.append(new Option(name, name));
+      select.value = magicClass;
+      select.addEventListener("change", () => openFilters({...params, group: select.value, browse: "all", page: ""}));
+      form.append(field);
+    } else if (grouped.length > 1 && !baseClassView && section.key !== "magic-items" && !itemHome) {
       const [field, select] = labelledSelect("Group", "group");
       select.append(new Option("All groups", ""));
       for (const [title] of grouped) select.append(new Option(cap(title), title));
@@ -343,6 +387,19 @@
       reader.append(el("p", "state-message", "This section has no entries yet."));
       return;
     }
+    if (itemHome && itemViews) {
+      const shelves = el("div", "groups item-categories");
+      for (const item of itemViews.categoriesFor(section.entries)) {
+        shelves.append(panelLink(item.title, item.count, {...base, category: item.key}));
+      }
+      reader.append(shelves);
+      return;
+    }
+    if (baseClassView && browseViews) {
+      reader.append(browseViews.classDirectory(section, {el, link, entryRoute, renderDetails: details}));
+      byId("announcement").textContent = countText(section.entries.filter(entry => entry.group === "Base class").length);
+      return;
+    }
     if (groupedView) {
       const groupsHead = el("div", "subhead");
       groupsHead.append(el("h2", "", section.key==="magic-items"?"Browse by rarity":"Browse by group"), link("Browse all " + countText(section.entries.length), {...base, browse: "all"}, "text-link"));
@@ -357,10 +414,41 @@
     } else {
       const rows = dataBySection.get(section.key).filter(({entry}) =>
         (!baseClassView || entry.group === "Base class") &&
-        (!group || browseGroup(section, entry.group) === group) && (!level || entryLevel(entry) === level) &&
+        (!group || (magicClass ? order.magicClass(entry) === magicClass : browseGroup(section, entry.group) === group)) && (!level || entryLevel(entry) === level) &&
+        (!category || itemViews.category(entry) === category.key) &&
         (section.key !== "magic-items" || ((!params.rarity || entry.details?.rarity === params.rarity) && (!params.type || entry.details?.type === params.type))));
-      reader.append(resultList(matching(rows, filter, sort), baseClassView ? {...params, group: "Base class"} : params));
+      const matches = matching(rows, filter, sort);
+      if (matches.length && (listView && browseViews || weaponTree && itemViews)) {
+        const count = countText(matches.length);
+        byId("announcement").textContent = count;
+        reader.append(el("p", "result-count", count));
+        reader.append(listView ? browseViews.expandableList(matches, {el, link, entryRoute, renderDetails: details}) : weaponDirectory(matches));
+      } else reader.append(resultList(matches, baseClassView ? {...params, group: "Base class"} : params));
     }
+  }
+  function weaponDirectory(rows) {
+    const section = rows[0].section;
+    const tree = el("div", "weapon-tree");
+    function branch(node, depth) {
+      const block = el("details", "weapon-branch");
+      const summary = el("summary", "", cap(node.title));
+      summary.append(el("span", "tree-count", countText(node.count)));
+      block.append(summary);
+      block.open = depth === 0;
+      if (node.entries) {
+        const list = el("ul", "weapon-list");
+        for (const entry of node.entries) {
+          const item = el("li");
+          item.append(link(cap(entry.name), entryRoute(section, entry), "weapon-entry-link"));
+          if (entry.details?.damage) item.append(el("span", "result-meta", String(entry.details.damage)));
+          list.append(item);
+        }
+        block.append(list);
+      } else for (const child of node.children) block.append(branch(child, depth + 1));
+      return block;
+    }
+    for (const node of itemViews.weaponTree(rows.map(row => row.entry))) tree.append(branch(node, 0));
+    return tree;
   }
   function globalResults(params) {
     crumbs([["Search", null]]);
@@ -478,6 +566,17 @@
     block.append(el("h" + Math.min(6, depth), "", label(key)), renderValue(value, depth + 1, label(key)));
     return block;
   }
+  function traitChildren(value, depth) {
+    const list = el("ul", "trait-children");
+    const children = Array.isArray(value) ? value : plain(value) || ["name", "desc", "description"].some(key => Object.hasOwn(value, key))
+      ? [value] : Object.entries(value).map(([name, body]) => ({[name]: body}));
+    for (const item of children) {
+      const child = el("li", "trait-child");
+      child.append(renderValue(item, depth));
+      list.append(child);
+    }
+    return list;
+  }
   function renderValue(value, depth, title = "") {
     if (plain(value)) return prose(value);
     if (isTable(value)) return table(value, depth, title);
@@ -500,6 +599,7 @@
     for (const [key, item] of Object.entries(value)) {
       if (key === "name" && typeof item === "string") continue;
       if (/^(?:desc|description)$/i.test(key) && plain(item)) output.append(prose(item));
+      else if (key === "minitrait_list") output.append(traitChildren(item, depth + 1));
       else if (key === "sections" && isSections(item)) output.append(renderValue(item, depth));
       else output.append(textField(key, item, depth));
     }
@@ -509,10 +609,10 @@
     "range", "duration", "components", "cooldown", "target", "weight", "cost", "attribute_bonuses", "tradition", "school", "status",
     "prerequisite", "prerequisites", "requirements", "save", "base ac", "ac bonus", "current_rules", "rarity", "attunement",
     "price", "base_item", "magic_bonus"]);
-  function details(entry) {
+  function details(entry, target = reader) {
     const value = entry.details;
     if (plain(value) || Array.isArray(value) || isTable(value)) {
-      reader.append(renderValue(value, 2, entry.name));
+      target.append(renderValue(value, 2, entry.name));
       return;
     }
     const stats = el("dl", "stats");
@@ -530,6 +630,7 @@
         provenance.push(block);continue;
       }
       if (key === "summons") continue;
+      if (key === "minitrait_list") { intro.append(traitChildren(item, 2)); continue; }
       if (key === "sections" && isSections(item)) { chapters.push(...item); continue; }
       if (key === "draft_note" && plain(item)) {
         const note = el("aside", "draft-note");
@@ -551,16 +652,21 @@
       block.append(el("summary","","Source workbook"),renderValue(sourceFields,3,"Source workbook"));
       provenance.push(block);
     }
-    if (stats.childElementCount) reader.append(stats);
-    reader.append(intro);
+    if (stats.childElementCount) target.append(stats);
+    target.append(intro);
     if(provenance.length) {
       // The converted rules lead; source comparisons stay closed until requested.
-      for(const item of chapters)reader.append(textField(item.heading,item.body,2));
-      reader.append(...provenance);return;
+      for(const item of chapters)target.append(textField(item.heading,item.body,2));
+      target.append(...provenance);return;
     }
     const long = chapters.length > 4 || (chapters.length > 1 && JSON.stringify(chapters).length > 4200);
     if (!long) {
-      for (const item of chapters) reader.append(textField(item.heading, item.body, 2));
+      for (const item of chapters) target.append(textField(item.heading, item.body, 2));
+      return;
+    }
+    // Comparison entries can coexist; only the standalone entry needs a jump picker.
+    if (target !== reader) {
+      for (const item of chapters) target.append(textField(item.heading, item.body, 2));
       return;
     }
     const [jumpField, jump] = labelledSelect("Jump to a feature", "chapter-picker");
@@ -721,14 +827,37 @@
     block.append(track);
     return block;
   }
+  function entryNavigation(section, entry) {
+    const category = section.key === "items" ? itemViews?.category(entry) : "";
+    const kind = orderKind(section, browseGroup(section, entry.group));
+    const siblings = section.entries.filter(candidate => candidate.group === entry.group &&
+      (!category || itemViews.category(candidate) === category)).slice()
+      .sort((a, b) => order.compare(a, b, selectedSort({}, kind, "")));
+    const index = siblings.indexOf(entry);
+    const nav = el("nav", "entry-navigation");
+    nav.setAttribute("aria-label", "Entry navigation");
+    for (const [text, offset] of [["Previous", -1], ["Next", 1]]) {
+      if (offset === 1) nav.append(el("span", "entry-position", (index + 1) + " of " + siblings.length));
+      const sibling = siblings[index + offset];
+      const control = sibling ? link(text, entryRoute(section, sibling), "button-link") : el("span", "button-link is-disabled", text);
+      if (sibling) {
+        control.setAttribute("aria-label", text + " entry: " + cap(sibling.name));
+        control.title = cap(sibling.name);
+      } else control.setAttribute("aria-disabled", "true");
+      nav.append(control);
+    }
+    return nav;
+  }
   function showEntry(section, entry) {
     const base = {section: section.key};
     const parts = [[section.title, base]];
-    if (entry.group) parts.push([cap(entry.group), {...base, group: entry.group}]);
+    const category = section.key === "items" ? itemViews?.categories.find(item => item.key === itemViews.category(entry)) : null;
+    if (category) parts.push([category.title, {...base, category: category.key}]);
+    if (entry.group) parts.push([cap(entry.group), {...base, ...(category ? {category: category.key} : {}), group: entry.group}]);
     parts.push([cap(entry.name), null]);
     crumbs(parts);
     const header = el("header", "entry-heading");
-    header.append(heading(cap(entry.name)));
+    header.append(heading(cap(entry.name)), entryNavigation(section, entry));
     if (section.key === "classes") {
       const links = classLinks(section, entry);
       if (links.childElementCount) header.append(links);

@@ -66,7 +66,11 @@ Automatic damage passes through **Arcane Health → Temp HP → HP**; manual poo
 
 ## Use the compendium
 
-The compendium index groups sections by use. Choose a section to browse its entries or use **Search all rules** to find a name or phrase across the book. Spell filters include tradition/group and level. Spells default to numeric level order, with cantrips first, in the reader, the sheet's spell picker and the saved spell list. **Sort by** also offers descending level or A–Z; saved spells can be filtered by level. Archetype and unlocked feature lists use level order, while monster browsing defaults to Challenge order. Search results default to relevance. Changing display order preserves preparations and rule links.
+The compendium index groups sections by use. Choose a section or use **Search all rules** to find a name or phrase. The class overview links each base class and expands its archetypes. Races start as an expandable list for comparison; races, feats and backgrounds can switch between **Pages** and **Expandable list**. Entry pages offer **Previous** and **Next** within their own group and item category.
+
+Items are organized into Weapons, Armor & shields, Items, Consumables, Materials, and Special plants & fungi. The Weapons view can expand training type, melee/ranged use, and weapon family, or switch to ordinary pages. These are display categories; source groups and saved item references stay unchanged.
+
+The reader's spell filter offers four classes of magic: Arcane, Oath, Occult and Mystic, each including spells and cantrips. Select level 0 for cantrips. Hexes and magic references remain accessible through separate links. Default reader order is class of magic, numeric level, then name; explicit level and alphabetical orders remain available. The sheet's spell picker and saved spell list retain numeric level order, and saved spells can be filtered by level. Archetypes and unlocked features use level order; monsters default to Challenge order. Search defaults to relevance. Display changes preserve preparations and rule links.
 
 Open a result to read its stats and expand the features you need. The address of an entry can be bookmarked. The monster manual contains workbook reference drafts; linked summons retain the current spell's rules and embedded statistics as the priority.
 

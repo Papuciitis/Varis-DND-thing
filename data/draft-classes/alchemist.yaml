@@ -126,7 +126,7 @@ entries:
       * Admix - Modify an alchemical essence and sacrifice another, combining a contact or non-dice effect from both essences into a single effect.
       * Dilute - Duplicate an alchemical essence, but remove one effect (the same effect) from both essences.
       * Aeration - Modify up to 2 alchemical essences, granting them both either flammable, or increasing a non-hostile dice effect by 1 dice count.
-      * Sublimate - Modify up to 2 alchemical essences and sacrifice one. Of the two non-sacrifices essences, one must be chosen as the target. Grant the target a combination of 2 effects from the other 2 essences.
+      * Sublimate - Modify up to 2 alchemical essences and sacrifice one. Of the two non-sacrificed essences, one must be chosen as the target. Grant the target a combination of 2 effects from the other 2 essences.
       * Mana filtration - Modify a warping, spectral, or necrotic essence, removing one effect from it but granting it (or increasing a preexisting area effect) "area effect +15 ft." Doing so requires sacrificing a mana potion or a spectral essence.
       * Fermentation - Modify a vital, necrotic, or spectral essence. The modified essence loses 1 effect but allows its use in two alchemical items before it is expended. It is otherwise a single essence item. An alchemical essence cannot be modified with this more than once.
       * Anti-formulation - Modify an alchemical essence, changing resistance to damage vulnerability.
@@ -188,7 +188,7 @@ entries:
         * Alchemists torch - Expend 1 flammable essence, or an essence with fire damage dice effects. The torch can be ignited as a bonus action, at which point it remains lit for 2d4 + 1 rounds. While lit, it burns in a small 5 ft narrow cone out of the torch. Creatures exposed must make a dexterity save, taking 2d6 fire damage. The wielder can poke a melee creature with a torch, incurring disadvantage and dealing double damage, as though it were a critical strike, on a nat 1 on the save. The torch also absorbs one other property or effect from the essence, except for cold damage dice or beneficial effect.
         * Reactive Salts - Expend 1 essence, creating a consumable powder which can be either consumed as an action, bestowing a lasting alchemical effect from the essence for a minute, or thrown/sprinkled in a 10 ft cone, applying an alchemical effect immediately to all creatures in the cone, though any lasting effects are reduced to 1d4 rounds Both applications can have differing effects from the expended essence. If a consumable effect would grant resistance or vulnerability to a damage type, it instead grants +2 to an attribute depending on damage type (str - fire, dex - lightning, necrotic - con, acid - int, poison - wis, healing - cha)
         * Lode-stone - Expend 1 alchemical essence that either has a lightning or fire dice effect, and create a small stone that can either be crushed in hand or on a solid surface within 15 ft, or fired by a launched weapon. It applies one effect of the essence in a 15 ft radius immediately, but it cannot deal damage.
-        * Protective face-mask - Requires adequate leather resources and access to leatherworkers tools. Create a mask which has a special compartment which can be filled with an alchemical essence and turned on and off by the wearer as a bonus action, granting the wearer up to 3d4 rounds (rolled when equipped) rounds of a chosen benefit (when applied) of the essence to the wearer.
+        * Protective face-mask - Requires adequate leather resources and access to leatherworkers tools. Create a mask which has a special compartment which can be filled with an alchemical essence and turned on and off by the wearer as a bonus action, granting the wearer up to 3d4 rounds (rolled when equipped) of a chosen benefit (when applied) of the essence to the wearer.
         * Burn coil - Expend 1 alchemical essence that is flammable or has fire damage dice effects, and one coil component from your alchemy kit. A burn coil can be applied to a fire weapon as a full round action, and lasts 1 minute when ignited. The ignite effect of the weapon is increased by 1, and one hostile essence effect is applied to unblocked creatures hit. If the additional effect is a damage effect, its damage dice are reduced by 1 dice size category. Cannot apply cold damage, fire resistance, or stun on hit. If the stun property is chosen, it is instead applied on a crit with the weapon.
       * Specialization - Pick one alchemy creation recipe you know. Every rest, you have 1 extra AP which can be spent to create the chosen recipe.
 
@@ -542,7 +542,7 @@ entries:
 
       * Regeneration potion (4AP) - Can be administered to a creature that has died within the last 3 rounds, restoring them to life at 0 HP. Restores some lost limbs (Subject to GM) or 4d6 health if otherwise unmaimed.
       * Mana concoction (3AP) - If a spell-caster, regain a 1d4 level spell slot, a spell point, 1d4 metamagic points, or regain use of a per-rest or long-rest use of a spell of 1d4 level or lower. Alternatively, gain 3d6 arcane health.
-      * Warding dust (3AP) - Can be scattered in a 15 ft cone, immediately granting all creatures within a +1d4 bonus to their next save against a spell of magical effect, and granting exposed creatures in the area a +1 bonus to all saves against spells and magical effects. Can be applied to an item to identify if it is magically trapped or cursed.
+      * Warding dust (3AP) - Can be scattered in a 15 ft cone, immediately granting all creatures within a +1d4 bonus to their next save against a spell or magical effect, and granting exposed creatures in the area a +1 bonus to all saves against spells and magical effects. Can be applied to an item to identify if it is magically trapped or cursed.
       * Invisibility potion (2AP) - Grants invisibility for 2d4 minutes.
       * Muffling powder (2AP) - Can be scattered in a 20 ft cone, mutes the exposure area with no immediate effect.
 
@@ -598,16 +598,16 @@ entries:
     body: At 6th alchemist level, learn an extra soulgem use upgrade.
   - heading: Black soulgem creation
     body: |-
-      At 6th alchemist level, learn you learn to create the following alchemical item by sacrificing :
+      At 6th alchemist level, you learn to create the following alchemical item by sacrificing :
 
       * Empty black soulgem, 5 AP - A soulgem that can only be activated with a +4 soul that is filled when a great wise sentient creature, or a legendary monster of mythical great beast dies within 25 ft of the soulgem. It is treated as a +4 soulgem for all intents and purposes.
   - heading: Soulgem secrets II
     body: |-
       At 6th alchemist level, either gain another soulgem secrets upgrade, or learn one secret method to use soulgems with:
 
-      * Soul dust - you can sacrifice a soulgem and spend 1 AP during a rest to create soul dust - powder 15/4. Unattended exposed items and tools are animated and obey your commands for the next 1d6 rounds, being able to do work or function as you desire, but not beyond their structural means. Duration size is increased by 1 category per soulgem bonus above +1 (rounds > minutes > hours > days.) The enchanted items cannot attack are treated as having a +0 to all checks except ones they are created for, in which they have a +4 bonus to checks.
+      * Soul dust - you can sacrifice a soulgem and spend 1 AP during a rest to create soul dust - powder 15/4. Unattended exposed items and tools are animated and obey your commands for the next 1d6 rounds, being able to do work or function as you desire, but not beyond their structural means. Duration size is increased by 1 category per soulgem bonus above +1 (rounds > minutes > hours > days.) The enchanted items cannot attack and are treated as having a +0 to all checks except ones they are created for, in which they have a +4 bonus to checks.
       * Soul serum - you can sacrifice a +2 or higher soulgem and spend 1 AP during a rest to create a soul serum - potion. Grants the consumer an extra day of natural lifespan, increasing to year at +3, and decade at +4, as well as 1d8 arcane health per soulgem bonus.
-      * Profane bomb - you can sacrifice a soulgem during a rest by spending 1 AP to modify a bomb (any alchemical item you can create with the word "bomb" in its name) transforming it from a ranged attack to a dexterity save, increasing the DC by 2, and in cast of no AOE, applying the bombs effect in a 10 ft radius per soulgem bonus, or otherwise increasing its area affected by 10 ft per soulgem bonus. All damage dealt is changed to necrotic. Cannot be applied more than once to a bomb.
+      * Profane bomb - you can sacrifice a soulgem during a rest by spending 1 AP to modify a bomb (any alchemical item you can create with the word "bomb" in its name) transforming it from a ranged attack to a dexterity save, increasing the DC by 2, and in case of no AOE, applying the bombs effect in a 10 ft radius per soulgem bonus, or otherwise increasing its area affected by 10 ft per soulgem bonus. All damage dealt is changed to necrotic. Cannot be applied more than once to a bomb.
 # https://sites.google.com/view/dnd5plus/home/classes/alchemist-x/a2-engineer
 - name: Engineer
   group: Alchemist archetypes

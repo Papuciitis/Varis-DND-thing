@@ -70,6 +70,41 @@ test('attunement gates profile overrides and bonuses while retaining the mundane
   assert.equal(derive([row(gun,{attuned:true})],simpleOnly).attacks[0].trained,false);
 });
 
+test('renamed magic weapons retain proficiency in their named mundane base weapon',()=>{
+  const blade = magic('Dream blade','named-blade',{base_item:'Longsword',attunement:'Yes',magic_bonus:'1'});
+  const {row,derive} = boot([blade]);
+  const training = {proficiencies:{weapons:'hand crossbows, longswords, rapiers, shortswords'}};
+  const inactive = derive([row(blade,{attuned:false})],training).attacks[0];
+  const active = derive([row(blade,{attuned:true})],training).attacks[0];
+  assert.equal(inactive.trained,true);
+  assert.equal(inactive.bonus,6);
+  assert.equal(inactive.damage,'1d8s + 3');
+  assert.equal(active.trained,true);
+  assert.equal(active.bonus,7);
+  assert.equal(active.damage,'1d8s + 4');
+  assert.equal(derive([row(blade,{attuned:true,weaponTraining:'untrained'})],training).attacks[0].trained,false);
+});
+
+test('custom weapon training overrides stop inheriting named base proficiency only while active',()=>{
+  for (const overrides of [{weapon_type:'martial'},{weapon_group:'firearms'},
+    {weapon_type:'martial',weapon_group:'firearms'}]) {
+    const gun = magic('Bound rifle','named-base-'+Object.keys(overrides).join('-'),{
+      base_item:'Heavy crossbow',attunement:'Yes',damage:'2d8 force',magic_bonus:'1',...overrides
+    });
+    const {row,derive} = boot([gun]);
+    const training = {proficiencies:{weapons:'heavy crossbow'}};
+    const inactive = derive([row(gun,{attuned:false})],training).attacks[0];
+    const active = derive([row(gun,{attuned:true})],training).attacks[0];
+    assert.equal(inactive.trained,true);
+    assert.equal(inactive.bonus,7);
+    assert.equal(inactive.damage,'1d12p + 4');
+    assert.equal(active.trained,false);
+    assert.equal(active.bonus,1);
+    assert.equal(active.damage,'2d8 force + 1');
+    assert.equal(derive([row(gun,{attuned:true,weaponTraining:'proficient'})],training).attacks[0].trained,true);
+  }
+});
+
 test('nondamaging item profiles never receive an ability or enchantment damage bonus',()=>{
   const rope = magic('Rope caster','rope',{base_item:'Heavy crossbow',damage:'-',magic_bonus:'2',
     properties:'Range 30/60',maneuvers:[]});

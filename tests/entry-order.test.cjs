@@ -30,3 +30,38 @@ test('group ordering pairs spell traditions, orders hex tiers and leaves unknown
  assert.deepEqual(['Fighter archetypes','Base class','Bard archetypes'].sort((a,b)=>order.compareGroups({key:'classes'},a,b)),['Base class','Bard archetypes','Fighter archetypes']);
  assert.deepEqual(['Z gear','A gear'].sort((a,b)=>order.compareGroups('items',a,b)),['A gear','Z gear']);
 });
+
+test('class of magic unifies each tradition\'s spells and cantrips without assigning hex magic',()=>{
+ const order=setup();
+ assert.deepEqual(Array.from(order.magicClasses),['Arcane','Oath','Occult','Mystic']);
+ for (const name of order.magicClasses) {
+   for (const group of [name,name+' spells',name+' cantrips']) assert.equal(order.magicClass({group}),name);
+ }
+ assert.equal(order.magicClass('  oAtH  cantrips '),'Oath');
+ assert.equal(order.magicClass({group:'Custom group',details:{tradition:'Mystic'}}),'Mystic');
+ for (const group of ['Minor hexes','Major hexes','Greater hexes','Magic rules','Ancient rituals']) assert.equal(order.magicClass({group}),'');
+ assert.equal(order.magicClass({name:'Occult reference',details:{description:'An Arcane cantrip'}}),'');
+});
+
+test('default spell ordering prioritizes class of magic then numeric level and name',()=>{
+ const order=setup(),rows=[
+  {name:'Mystic zero',group:'Mystic cantrips'},
+  {name:'Occult zero',group:'Occult cantrips'},
+  {name:'Oath zero',group:'Oath cantrips'},
+  {name:'Arcane ten',group:'Arcane spells',details:{lvl:'10'}},
+  {name:'Beta second',group:'Arcane spells',details:{lvl:'2'}},
+  {name:'Alpha second',group:'Arcane spells',details:{lvl:'2'}},
+  {name:'Arcane zero',group:'Arcane cantrips'},
+  {name:'Unknown level',group:'Arcane spells'},
+  {name:'Hex',group:'Minor hexes',details:{lvl:'0'}},
+  {name:'Casting rules',group:'Magic rules'}
+ ];
+ const before=JSON.stringify(rows);
+ assert.deepEqual([...rows].sort((a,b)=>order.compare(a,b,'magic-asc')).map(e=>e.name),[
+  'Arcane zero','Alpha second','Beta second','Arcane ten','Unknown level',
+  'Oath zero','Occult zero','Mystic zero','Hex','Casting rules'
+ ]);
+ assert.equal(JSON.stringify(rows),before);
+ // An explicit numeric-level sort remains independent of the class ordering.
+ assert.equal(order.compare(rows[0],rows[3],'level-asc')<0,true);
+});

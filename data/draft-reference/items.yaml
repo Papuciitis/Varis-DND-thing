@@ -80,7 +80,7 @@ entries:
       on impact.
   - name: Spring box
     group: Traps and components
-    description: Can be used to trigger, prime, or make reflexive a pressure sensitive traps or components.
+    description: Can be used to trigger, prime, or make reflexive pressure-sensitive traps or components.
       Can be set up to launch a small item when triggered.
   - name: Powderbox
     group: Traps and components
@@ -198,7 +198,7 @@ entries:
     description: Fungus that grows and eats into hard rock and appears as a curved horn-like cap.
   - name: Wispcap
     group: Special flora and fungus
-    description: Little bulbous mushroom that very slightly glow in the dark. Grow in patches throughout woods.
+    description: Little bulbous mushrooms that very slightly glow in the dark. Grow in patches throughout woods.
       Healing and mundane affinity.
   - name: Cronegrass
     group: Special flora and fungus

@@ -7,11 +7,11 @@ const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const plain = value => JSON.parse(JSON.stringify(value));
 
-function setup() {
+function setup(extraSections = []) {
   const file = path.join(root, 'web/character-builder.js');
   assert.ok(fs.existsSync(file), 'The character creator must provide a six-step draft wizard');
   const context = vm.createContext({crypto:require('node:crypto').webcrypto});
-  for (const name of ['entry-order.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js']) {
+  for (const name of ['entry-order.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js']) {
     vm.runInContext(fs.readFileSync(path.join(root,'web',name),'utf8'),context);
   }
   const metadata = {
@@ -19,7 +19,7 @@ function setup() {
     classes:[{id:'fighter',name:'Fighter',hitDie:'d10',description:'Fighter prose',saves:['str','dex'],proficiencies:{armor:'all armor',weapons:'simple weapons',tools:''},skillChoice:{count:1,options:['Athletics','Perception']},castingAbilities:[],archetypeLevels:[4,7],features:[]}],
     archetypes:[{id:'arch4',name:'Early archetype',className:'Fighter',minLevel:4,features:[]},{id:'arch7',name:'Later archetype',className:'Fighter',minLevel:7,features:[]}]
   };
-  const catalog=[{key:'items',entries:[{name:'Dagger',group:'Light blades',details:{damage:'1d4',type:'simple',properties:'light, versatile'}}]}];
+  const catalog=[{key:'items',entries:[{name:'Dagger',group:'Light blades',details:{damage:'1d4',type:'simple',properties:'light, versatile'}}]},...extraSections];
   const rules=context.CharacterRules.create(metadata,catalog),shows=[],finished=[],cancelled=[];
   const builder=context.CharacterBuilder.create({rules,show:(...args)=>shows.push(args),onFinish:(...args)=>finished.push(args),onCancel:()=>cancelled.push(true),renderRule:value=>'<p>'+String(value).replace(/</g,'&lt;')+'</p>'});
   return {builder,rules,State:context.CharacterState,shows,finished,cancelled,catalog};
@@ -92,6 +92,26 @@ test('equipment controls add, equip, configure and remove gear in the draft',()=
   const c=finished[0][0];assert.equal(c.inventory.length,1);assert.equal(c.inventory[0].equipped,true);assert.equal(c.inventory[0].twoHanded,true);assert.equal(c.inventory[0].weaponTraining,'proficient');
   builder.start(c);builder.handleAction('builder-step',{dataset:{builderStep:'4'}});builder.handleAction('builder-remove-item',{dataset:{builderIndex:'0'}});
   builder.handleAction('builder-step',{dataset:{builderStep:'5'}});builder.handleAction('builder-finish',{});assert.equal(finished[1][0].inventory.length,0);assert.equal(c.inventory.length,1);
+});
+
+test('weapon proficiency groups use equipment families for embedded and later-loaded magic catalogs',()=>{
+  for (const delayed of [false,true]) {
+    const magicSection={key:'magic-items',entries:[
+      {name:'Dream knife',group:'Rare',details:{id:'knife',type:'Weapon',base_item:'Dagger',damage:'1d4 force'}},
+      {name:'Rifle',group:'Legendary',details:{id:'rifle',type:'Weapon',base_item:'Dagger',weapon_type:'martial',weapon_group:'firearms'}}
+    ]};
+    const {builder,State,shows,finished,catalog}=setup(delayed ? [] : [magicSection]);
+    if (delayed) catalog.push(magicSection);
+    builder.start(State.createCharacter());
+    builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
+    const groups=[...shows.at(-1)[1].matchAll(/data-builder-group="([^"]+)"/g)].map(match=>match[1]);
+    assert.deepEqual(groups,['Light blades','firearms']);
+    builder.handleChange({dataset:{builderGroup:'Rare'},checked:true,type:'checkbox'});
+    builder.handleChange({dataset:{builderGroup:'firearms'},checked:true,type:'checkbox'});
+    builder.handleAction('builder-step',{dataset:{builderStep:'5'}});
+    builder.handleAction('builder-finish',{});
+    assert.deepEqual(plain(finished[0][0].build.weaponGroups),['firearms']);
+  }
 });
 
 test('recorded HP rolls survive wizard navigation and use the actual class die',()=>{

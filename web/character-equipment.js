@@ -66,11 +66,18 @@
     if (row.weaponTraining === "proficient") return true;
     if (row.weaponTraining === "untrained") return false;
     const groups = [lower(entry.group), lower(entry.details?.group)];
+    const names = [entry.name];
+    if (entry.section === "magic-items" && entry.details?.base_item) {
+      const active = !globalThis.MagicItems?.requiresAttunement(entry) || row.attuned === true;
+      const customTraining = active && (["simple", "martial"].includes(lower(entry.details.weapon_type))
+        || lower(entry.details.weapon_group));
+      if (!customTraining) names.push(entry.details.base_item);
+    }
     if ((context.weaponGroups || []).some(group => groups.includes(lower(group)))) return true;
     const light = has(properties(entry), "light");
     return trainingClauses(context.proficiencies?.weapons).some(declaration => {
       const clause = declaration.replace(/^all\s+/, "");
-      if (singular(entry.name) === singular(clause) || groups.includes(clause)) return true;
+      if (names.some(name => singular(name) === singular(clause)) || groups.includes(clause)) return true;
       if (/^thrown weapons?$/.test(clause)) {
         return has(properties(entry), "throw") || groups.some(group => /^thrown\b/.test(group));
       }

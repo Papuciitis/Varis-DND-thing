@@ -4,6 +4,17 @@
 (() => {
   const collate = new Intl.Collator("en", {numeric:true, sensitivity:"base"});
   const normalizeGroup = value => String(value ?? "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  const magicClasses = Object.freeze(["Arcane", "Oath", "Occult", "Mystic"]);
+  function magicClass(entry) {
+    const candidates = typeof entry === "string" ? [entry] : [entry?.group, entry?.tradition, entry?.details?.tradition];
+    for (const value of candidates) {
+      const group = normalizeGroup(value).replace(/\s+/g, " ");
+      const name = group.match(/^(arcane|oath|occult|mystic)(?: (?:cantrips?|spells?))?$/)?.[1];
+      if (name) return magicClasses.find(item => normalizeGroup(item) === name);
+    }
+    // Hex magic is explicitly separate from the four classes in the source rules.
+    return "";
+  }
   const spellGroupOrder = new Map([
     "Arcane cantrips", "Arcane spells", "Mystic cantrips", "Mystic spells",
     "Oath cantrips", "Oath spells", "Occult cantrips", "Occult spells",
@@ -33,6 +44,18 @@
     return number(value);
   }
   function compare(a, b, mode="name") {
+    if (mode === "magic-asc") {
+      const rank = entry => {
+        const index = magicClasses.indexOf(magicClass(entry));
+        return index < 0 ? magicClasses.length : index;
+      };
+      const difference = rank(a) - rank(b);
+      if (difference) return difference;
+      const left = level(a), right = level(b);
+      if (left === null && right !== null) return 1;
+      if (right === null && left !== null) return -1;
+      if (left !== null && right !== null && left !== right) return left - right;
+    }
     const read = mode.startsWith("level-") ? level : mode.startsWith("challenge-") ? challenge : null;
     if (read) {
       const left=read(a),right=read(b);
@@ -46,5 +69,5 @@
     }
     return collate.compare(a?.name || "",b?.name || "") || collate.compare(a?.group || "",b?.group || "");
   }
-  globalThis.EntryOrder = Object.freeze({level,challenge,compare,compareGroups});
+  globalThis.EntryOrder = Object.freeze({level,challenge,compare,compareGroups,magicClass,magicClasses});
 })();

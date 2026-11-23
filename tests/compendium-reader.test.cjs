@@ -80,6 +80,7 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
   if (options.manifestGlobal) context.DND_CATALOG = sections;
   if (options.portable) { context.DND_CATALOG = sections; sections.forEach(s => { s.entries = data[s.key]; }); delete context.DndCatalog; }
   vm.runInContext(orderSource, context, {filename:'entry-order.js'});
+  for (const name of ['item-views.js', 'browse-views.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',name),'utf8'),context,{filename:name});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/magic-items.js'),'utf8'),context,{filename:'magic-items.js'});
   vm.runInContext(source, context, {filename: 'app.js'});
   const reader = document.getElementById('reader');
@@ -136,7 +137,7 @@ test('source export recovers current editor changes when browser storage cannot 
 
 test('hex source tiers order within level zero without changing their spell level', async () => {
   const spells = [entry('B greater','Greater hexes',{lvl:'0'}),entry('Z minor','Minor hexes',{lvl:'0'}),entry('A major','Major hexes',{lvl:'0'}),entry('B minor','Minor hexes',{lvl:'0'}),entry('Z cantrip','Arcane cantrips',{lvl:'0'}),entry('A cantrip','Mystic cantrips',{lvl:'0'}),entry('A first','Arcane spells',{lvl:'1'}),entry('A unknown','Magic rules')];
-  const h = boot({spells}); await h.route('#section=spells');
+  const h = boot({spells}); await h.route('#section=spells&sort=level-asc');
   assert.deepEqual(names(h), ['A cantrip','Z cantrip','B minor','Z minor','A major','B greater','A first','A unknown']);
   const hex = h.reader.querySelectorAll('.result').find(node => node.querySelector('.result-name').textContent === 'B greater');
   assert.match(hex.textContent, /Level 0/);
@@ -147,12 +148,15 @@ test('hex source tiers order within level zero without changing their spell leve
   await h.route('#section=spells&filter=minor'); assert.deepEqual(names(h), ['B minor','Z minor']);
 });
 
-test('spell group filter presents tradition pairs and minor-to-greater hex tiers before other rules', async () => {
+test('spell class filter has four combined classes while hexes and references stay accessible', async () => {
   const groups = ['Arcane cantrips','Arcane spells','Mystic cantrips','Mystic spells','Oath cantrips','Oath spells','Occult cantrips','Occult spells','Minor hexes','Major hexes','Greater hexes','Ancient rituals','Magic rules'];
   const h = boot({spells:groups.toReversed().map((group,index)=>entry('Entry '+index,group,{lvl:'0'}))}); await h.route('#section=spells');
   const select = h.document.getElementById('group'); assert(select);
-  assert.deepEqual(select.children.slice(1).map(node=>node.textContent), groups);
-  await h.change('group','Minor hexes');
+  assert.deepEqual(select.children.slice(1).map(node=>node.textContent), ['Arcane','Oath','Occult','Mystic']);
+  await h.change('group','Arcane');
+  assert.equal(names(h).length, 2);
+  assert(h.link('Minor hexes')); assert(h.link('Magic rules'));
+  await h.route(h.link('Minor hexes').href);
   assert.equal(names(h).length, 1); assert.match(h.reader.querySelector('.result').textContent, /Level 0/);
 });
 
@@ -163,11 +167,11 @@ test('browse and result-page links use plain labels', async () => {
   await h.route('#section=spells&page=2'); assert(h.link('Previous'));
 });
 
-test('spell directory defaults to levels, including cantrips, name ties and unknowns last', async () => {
+test('spell directory defaults to class of magic then level and name, with explicit numeric orders available', async () => {
   const h = boot({spells:leveledSpells}); await h.route('#section=spells');
-  assert.deepEqual(names(h), ['Zing','Élan first','Zeta first','Beta second','Alpha third','A missing']);
+  assert.deepEqual(names(h), ['Zing','Élan first','Zeta first','Alpha third','A missing','Beta second']);
   assert.equal(h.reader.querySelectorAll('.groups').length, 0);
-  const sort = h.document.getElementById('entry-sort'); assert(sort); assert.equal(sort.value, 'level-asc');
+  const sort = h.document.getElementById('entry-sort'); assert(sort); assert.equal(sort.value, 'magic-asc');
   assert(h.reader.textContent.includes('Level 0'));
   await h.route('#section=spells&sort=level-desc');
   assert.deepEqual(names(h), ['Alpha third','Beta second','Élan first','Zeta first','Zing','A missing']);
@@ -336,4 +340,101 @@ test('portable catalog fallback and rules prose render safely', async () => {
   assert.match(h.reader.textContent, /Unsafe <script>/);
   assert.equal(h.reader.querySelectorAll('script,img').length, 0);
   assert.equal(h.reader.querySelector('strong').textContent, 'bold');
+});
+
+test('entry navigation stays in its original group and item category, including disabled ends', async () => {
+  const items = [entry('A gear','Miscellaneous magical items'),entry('Memory stone fragment','Miscellaneous magical items'),entry('Z gear','Miscellaneous magical items')];
+  const h = boot({items,spells:[entry('First','Arcane spells',{lvl:1}),entry('Last','Arcane spells',{lvl:3}),entry('Cantrip','Arcane cantrips',{lvl:0})]});
+  await h.route('#section=items&entry=A+gear&group=Miscellaneous+magical+items');
+  let nav = h.reader.querySelector('.entry-navigation');
+  assert.equal(nav.querySelector('[aria-disabled="true"]').textContent,'Previous');
+  assert.equal(nav.querySelector('a').getAttribute('aria-label'),'Next entry: Z gear');
+  assert.match(nav.textContent,/1 of 2/);
+  await h.route(nav.querySelector('a').href);
+  nav = h.reader.querySelector('.entry-navigation');
+  assert.equal(nav.querySelector('[aria-disabled="true"]').textContent,'Next');
+  assert.equal(nav.querySelector('a').getAttribute('aria-label'),'Previous entry: A gear');
+  await h.route('#section=spells&entry=Last&group=Arcane+spells');
+  nav = h.reader.querySelector('.entry-navigation');
+  assert.equal(nav.querySelector('a').getAttribute('aria-label'),'Previous entry: First');
+  assert.equal(nav.querySelectorAll('a').length,1);
+});
+
+test('race comparison defaults to every entry with independent bodies and no duplicate feature picker IDs', async () => {
+  const races=Array.from({length:30},(_,index)=>entry('Race '+index,'Ancestries',{
+    description:'Race '+index+' rules',
+    sections:Array.from({length:6},(_,n)=>({heading:'Feature '+n,body:'Feature text '+n}))
+  }));
+  const h=boot({races});await h.route('#section=races');
+  assert.equal(h.document.getElementById('entry-view').value,'list');
+  assert.equal(h.reader.querySelectorAll('.comparison-entry').length,30);
+  assert.equal(h.reader.querySelectorAll('#chapter-picker').length,0);
+  assert.equal(h.reader.querySelectorAll('.pagination').length,0);
+  const cards=h.reader.querySelectorAll('.comparison-entry');cards[0].open=true;cards[1].open=true;
+  assert.equal(cards[0].open,true);assert.equal(cards[1].open,true);
+  assert.match(cards[29].querySelector('.comparison-body').textContent,/Feature text 5/);
+  await h.change('entry-view','pages');
+  assert.equal(names(h).length,24);assert(h.link('Next'));
+});
+
+test('feats and backgrounds offer a complete comparison list while retaining group and text filters', async () => {
+  for(const key of ['feats','backgrounds']){
+    const records=Array.from({length:29},(_,index)=>entry('Choice '+index,index<27?'Common':'Other'));
+    const h=boot({[key]:records});await h.route('#section='+key+'&group=Common');
+    assert.equal(names(h).length,24);
+    await h.change('entry-view','list');
+    assert.equal(names(h).length,27);
+    assert.equal(new URLSearchParams(h.hash.slice(1)).get('group'),'Common');
+    const input=h.document.getElementById('section-search');input.value='Choice 26';input.dispatch('input');await settle();
+    assert.deepEqual(names(h),['Choice 26']);
+    assert.equal(h.document.getElementById('entry-view').value,'list');
+  }
+});
+
+test('mini traits render under their parent ability as named nested choices without a Trait options heading', async () => {
+  const race=entry('Dwarf','',{traits:[{name:'Dwarven traits',description:'Choose two traits.',minitrait_list:[{'Ironbeard':'Armor benefit.'},{name:'Craftsmanship',description:'Tool benefit.'}]}]});
+  const h=boot({races:[race]});await h.route('#section=races&entry=Dwarf');
+  assert.doesNotMatch(h.reader.textContent,/Trait options/);
+  const list=h.reader.querySelector('.trait-children');assert(list);
+  assert.equal(list.querySelectorAll('.trait-child').length,2);
+  assert.match(list.parentNode.textContent,/Dwarven traitsChoose two traits/);
+  assert.match(list.textContent,/IronbeardArmor benefit/);assert.match(list.textContent,/CraftsmanshipTool benefit/);
+  await h.route('#section=races');assert(h.reader.querySelector('.comparison-body').querySelector('.trait-children'));
+});
+
+test('item shelves and nested weapons preserve source links and allow ordinary result pages', async () => {
+  const dagger={...entry('Dagger','simple melee',{type:'simple',group:'daggers',damage:'1d4p',properties:'agile, light'}),source:'weapons.yaml'};
+  const bow={...entry('Shortbow','simple ranged',{type:'simple',group:'bows',damage:'1d6p',properties:'range 60/120'}),source:'weapons.yaml'};
+  const plate=entry('Plate','Heavy armor',{'Base AC':'18'}),plant=entry('Wispcap','Special flora and fungus'),potion=entry('Healing draught','Potions');
+  const h=boot({items:[dagger,bow,plate,plant,potion,entry('Rope','Equipment'),entry('Iron','Special metals and alloys')]});
+  await h.route('#section=items');
+  assert.deepEqual(h.reader.querySelectorAll('.panel-name').map(node=>node.textContent),['Weapons','Armor & shields','Items','Consumables','Materials','Special plants & fungi']);
+  await h.route('#section=items&category=weapons');
+  assert(h.reader.querySelector('.weapon-tree'));
+  assert.match(h.reader.textContent,/Simple weapons/);assert.match(h.reader.textContent,/Melee/);assert.match(h.reader.textContent,/Ranged/);
+  const links=h.reader.querySelectorAll('.weapon-entry-link');assert.equal(links.length,2);
+  assert.equal(new URLSearchParams(links[0].href.slice(1)).get('group'),'simple melee');
+  await h.change('entry-view','pages');assert.deepEqual(names(h),['Dagger','Shortbow']);
+  assert.equal(new URLSearchParams(h.hash.slice(1)).get('category'),'weapons');
+  await h.change('item-category','armor-shields');assert.deepEqual(names(h),['Plate']);
+  await h.route('#section=items&group=Heavy+armor');assert.deepEqual(names(h),['Plate']);
+});
+
+test('a class of magic includes spells and level-zero cantrips through filters and legacy group links', async () => {
+  const h=boot({spells:[entry('Arcane zero','Arcane cantrips'),entry('Arcane tenth','Arcane spells',{lvl:10}),entry('Oath zero','Oath cantrips'),entry('Oath first','Oath spells',{lvl:1})]});
+  await h.route('#section=spells&group=Arcane');assert.deepEqual(names(h),['Arcane zero','Arcane tenth']);
+  await h.change('spell-level','0');assert.deepEqual(names(h),['Arcane zero']);
+  await h.route('#section=spells&group=Arcane+spells');assert.deepEqual(names(h),['Arcane zero','Arcane tenth']);
+  await h.route('#section=spells');assert.deepEqual(names(h),['Arcane zero','Arcane tenth','Oath zero','Oath first']);
+});
+
+test('object-map trait choices like Shadowling render as individual children while named records remain intact', async () => {
+  const options=Object.fromEntries(Array.from({length:15},(_,index)=>['Shadow gift '+index,'Gift rules '+index]));
+  const race=entry('Shadowling','',{traits:[{name:'Shadow gifts',minitrait_list:options},{name:'Other gifts',minitrait_list:{name:'Named gift',description:'Named rules'}}]});
+  const h=boot({races:[race]});await h.route('#section=races&entry=Shadowling');
+  const lists=h.reader.querySelectorAll('.trait-children');
+  assert.equal(lists[0].querySelectorAll('.trait-child').length,15);
+  assert.equal(lists[1].querySelectorAll('.trait-child').length,1);
+  assert.match(lists[0].textContent,/Shadow gift 14Gift rules 14/);
+  assert.match(lists[1].textContent,/Named giftNamed rules/);
 });
