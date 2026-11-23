@@ -28,9 +28,11 @@
       const warnings = [], features = [], choices = [], effects = [];
       const adjustments = build.adjustments || {};
       const proficiency = c.combat.proficiencyOverride ?? State.proficiencyBonus(c.level);
-      const addFeature = (feature,parent) => {
+      const addFeature = (feature,parent,archetypeMinLevel = null) => {
         if ((feature.level || 1)>c.level) return;
-        features.push({...feature,parent});
+        const derivedFeature = {...feature,parent};
+        if (archetypeMinLevel !== null) derivedFeature.requiredLevel = Math.max(feature.level || 1,archetypeMinLevel);
+        features.push(derivedFeature);
         effects.push(globalThis.CharacterEffects.lookup(parent,feature.name));
         let groups=feature.choices || [];
         if(/ability.score.improvement/i.test(feature.name) && !groups.length) {
@@ -81,7 +83,7 @@
             warnings.push(`${selected.name} is not eligible for the level ${slots[i]} archetype slot.`); continue;
           }
           seen.add(selected.id); eligibleArchetypes.push(selected);
-          for (const f of selected.features || []) addFeature(f,selected.name);
+          for (const f of selected.features || []) addFeature(f,selected.name,selected.minLevel);
           if (selected.status) warnings.push(`${selected.name}: ${selected.status}`);
         }
       }
@@ -156,8 +158,10 @@
       const castingAbility=c.combat.spellAbility || cls?.castingAbilities?.[0] || '';
       const reductions={...gear.reductions};for(const [key,value] of Object.entries(combined.reductions)) reductions[key]=Math.max(reductions[key] || 0,value);
       warnings.push(...gear.warnings,...race?.warnings || [],...cls?.warnings || []);
-      if(c.level>12 && enabled) warnings.push('The current Vara progression ends at level 12.');
-      return {enabled,race,cls,eligibleArchetypes,abilities,abilityBonuses,saves,skillRanks,skillBonuses,saveBonuses,proficiencies,proficiency,armorClass,speed,blockMaximum,blockCheck,combatFloor:gear.armorBlock+gear.shieldBlock+numeric(combined.combatBlock),hpMaximum,hpExplanation,restMaximum,deathSaveSlots:Math.max(1,3+numeric(combined.deathSaveSlots)),castingAbility,initiative:mod(abilities.dex)+c.combat.initiativeBonus+numeric(combined.initiative),features,choices,attacks,raceSkillCount,raceSkillOptions,reductions,resistances:unique([...gear.resistances,...combined.resistances]),immunities:combined.immunities,warnings:unique(warnings),gear,effects:combined};
+      const casting = globalThis.CharacterCasting?.derive(c,enabled ? cls : null,{abilities,effects:combined,choices,features,proficiency,restMaximum}) || null;
+      if (casting) warnings.push(...casting.warnings);
+      if(c.level>12 && enabled) warnings.push('The current Varis progression ends at level 12.');
+      return {enabled,race,cls,eligibleArchetypes,abilities,abilityBonuses,saves,skillRanks,skillBonuses,saveBonuses,proficiencies,proficiency,armorClass,speed,blockMaximum,blockCheck,combatFloor:gear.armorBlock+gear.shieldBlock+numeric(combined.combatBlock),hpMaximum,hpExplanation,restMaximum,deathSaveSlots:Math.max(1,3+numeric(combined.deathSaveSlots)),castingAbility,casting,initiative:mod(abilities.dex)+c.combat.initiativeBonus+numeric(combined.initiative),features,choices,attacks,raceSkillCount,raceSkillOptions,reductions,resistances:unique([...gear.resistances,...combined.resistances]),immunities:combined.immunities,warnings:unique(warnings),gear,effects:combined};
     }
 
     function reconcile(input) {
@@ -170,7 +174,7 @@
       c.ancestry=d.race?.name || c.ancestry;c.className=d.cls?.name || c.className;
       c.subclass=d.eligibleArchetypes.map(a=>a.name).join(', ');
       if(d.cls?.hitDie)c.restDice.die=d.cls.hitDie;
-      return c;
+      return d.casting ? globalThis.CharacterCasting.reconcile(c,d.casting) : c;
     }
 
     function damage(input,amount,options={}) {
@@ -203,7 +207,7 @@
     function rest(input,kind) {
       const c=reconcile(input),d=derive(c);c.resources.block.current=c.resources.block.max;
       if(c.build?.enabled)c.build.health.fatigue=kind==='long'?0:Math.max(0,c.build.health.fatigue-Math.max(1,mod(d.abilities.con)));
-      return c;
+      return d.casting ? globalThis.CharacterCasting.rest(c,d.casting,kind) : c;
     }
 
     function startCombat(input) {

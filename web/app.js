@@ -17,6 +17,7 @@
   const loadedSections = new Set();
   const sectionRequests = new Map();
   const perPage = 24;
+  const order = globalThis.EntryOrder;
   const collate = new Intl.Collator("en", {numeric: true, sensitivity: "base"});
   const families = [
     ["Characters", ["classes", "races", "backgrounds", "feats"]],
@@ -57,9 +58,9 @@
   }
   const entryRoute = (section, entry) => ({section: section.key, entry: entry.name, group: entry.group});
   const norm = value => String(value).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’‘]/g, "'").trim();
-  function spellLevel(entry) {
-    const value = String(entry.details?.lvl ?? entry.details?.level ?? "").trim();
-    return value || (/\bcantrips?\b/i.test(entry.group) ? "0" : "");
+  function entryLevel(entry) {
+    const value = order.level(entry);
+    return value == null ? "" : String(value);
   }
   const levelLabel = value => "Level " + value;
   let all = [];
@@ -81,8 +82,7 @@
       const group = browseGroup(section, entry.group);
       groups.set(group, (groups.get(group) || 0) + 1);
     }
-    groupsBySection.set(section.key, [...groups].sort(([a], [b]) =>
-      Number(b === "Base class") - Number(a === "Base class") || collate.compare(a, b)));
+    groupsBySection.set(section.key, [...groups].sort(([a], [b]) => order.compareGroups(section, a, b)));
   }
   function initialize() {
     if (initialized) return Promise.resolve();
@@ -123,14 +123,38 @@
     sectionRequests.set(key, request);
     return request;
   }
-  function matching(items, query) {
+  function matching(items, query, sort = "relevance") {
     const q = norm(query);
     const words = q.split(/\s+/).filter(Boolean);
     const rank = row => row.name === q ? 0 : row.name.startsWith(q) ? 1 : row.name.includes(q) ? 2 :
       words.every(w => row.lead.includes(w)) ? 3 : 4;
     return items.filter(row => words.every(w => row.text.includes(w))).sort((a, b) =>
-      (q ? rank(a) - rank(b) : 0) || collate.compare(a.entry.name, b.entry.name) ||
+      (q && sort === "relevance" ? rank(a) - rank(b) : 0) || order.compare(a.entry, b.entry, sort === "relevance" ? "name" : sort) ||
       collate.compare(a.entry.group, b.entry.group) || collate.compare(a.section.title, b.section.title));
+  }
+  function orderKind(section, group = "") {
+    if (["spells", "monsters"].includes(section?.key)) return section.key;
+    if (section?.key === "classes" && / archetypes$/i.test(group) && section.entries.some(entry =>
+      browseGroup(section, entry.group) === group && order.level(entry) != null)) return "classes";
+    return "";
+  }
+  function sortOptions(kind, query) {
+    const options = query ? [["relevance", "Relevance"]] : [];
+    if (kind === "monsters") options.push(["challenge-asc", "Challenge: low to high"], ["challenge-desc", "Challenge: high to low"]);
+    else if (kind) options.push(["level-asc", "Level: low to high"], ["level-desc", "Level: high to low"]);
+    options.push(["name", "Name: A–Z"]);
+    return options;
+  }
+  function selectedSort(params, kind, query) {
+    const options = sortOptions(kind, query);
+    return options.some(([value]) => value === params.sort) ? params.sort : options[0][0];
+  }
+  function sortControl(params, kind, query) {
+    const [field, select] = labelledSelect("Sort", "entry-sort");
+    for (const [value, text] of sortOptions(kind, query)) select.append(new Option(text, value));
+    select.value = selectedSort(params, kind, query);
+    select.addEventListener("change", () => openFilters({...params, sort: select.value, page: ""}));
+    return field;
   }
   function heading(name) {
     const h = el("h1", "", name);
@@ -202,8 +226,9 @@
       const a = link("", entryRoute(section, entry), "result");
       a.append(el("span", "result-name", cap(entry.name)));
       const info = [!params.section ? section.title : "", params.group === entry.group ? "" : entry.group];
-      const level = section.key === "spells" ? spellLevel(entry) : "";
+      const level = section.key === "monsters" ? "" : entryLevel(entry);
       if (level && !info.some(s => /cantrip/i.test(s) && level === "0")) info.push(levelLabel(level));
+      if (section.key === "monsters" && order.challenge(entry) != null) info.push("CR " + entry.details.cr);
       a.append(el("span", "result-meta", info.filter(Boolean).map(cap).join(" · ")));
       li.append(a);
       list.append(li);
@@ -212,9 +237,9 @@
     if (nPages > 1) {
       const nav = el("nav", "pagination");
       nav.setAttribute("aria-label", "Result pages");
-      if (page > 1) nav.append(link("← Previous", {...params, page: page - 1}, "button-link"));
+      if (page > 1) nav.append(link("Previous", {...params, page: page - 1}, "button-link"));
       nav.append(el("span", "", "Page " + page + " of " + nPages));
-      if (page < nPages) nav.append(link("Next →", {...params, page: page + 1}, "button-link"));
+      if (page < nPages) nav.append(link("Next", {...params, page: page + 1}, "button-link"));
       wrap.append(nav);
     }
     return wrap;
@@ -235,9 +260,11 @@
     const group = browseGroup(section, params.group || "");
     const level = params.level || "";
     const filter = params.filter || "";
+    const kind = orderKind(section, group);
+    const sort = selectedSort(params, kind, filter);
     const grouped = groups.filter(([name]) => name);
     const baseClassView = section.key === "classes" && !group && !level && !filter && !params.browse;
-    const groupedView = section.key !== "classes" && grouped.length > 1 && !group && !level && !filter && !params.browse;
+    const groupedView = !["classes", "spells", "monsters"].includes(section.key) && grouped.length > 1 && !group && !level && !filter && !params.browse;
     const parts = [[section.title, group ? base : null]];
     if (group) parts.push([cap(group), null]);
     crumbs(parts);
@@ -245,7 +272,7 @@
     head.append(heading(group ? cap(group) : section.title));
     if (baseClassView) {
       head.append(el("p", "index-intro", "Choose a class to read its features and archetypes."));
-      head.append(link("Browse all class entries →", {...base, browse: "all"}, "text-link"));
+      head.append(link("Browse all class entries", {...base, browse: "all"}, "text-link"));
     }
     reader.append(head);
     const form = el("form", "filters");
@@ -277,7 +304,7 @@
       form.append(field);
     }
     if (section.key === "spells") {
-      const levels = [...new Set(section.entries.map(spellLevel).filter(Boolean))].sort(collate.compare);
+      const levels = [...new Set(section.entries.map(entryLevel).filter(Boolean))].sort(collate.compare);
       if (levels.length) {
         const [field, select] = labelledSelect("Spell level", "spell-level");
         select.append(new Option("All levels", ""));
@@ -287,6 +314,7 @@
         form.append(field);
       }
     }
+    if (kind) form.append(sortControl(params, kind, filter));
     reader.append(form);
     if (!section.entries.length) {
       reader.append(el("p", "state-message", "This section has no entries yet."));
@@ -294,7 +322,7 @@
     }
     if (groupedView) {
       const groupsHead = el("div", "subhead");
-      groupsHead.append(el("h2", "", "Browse by group"), link("Browse all " + countText(section.entries.length) + " →", {...base, browse: "all"}, "text-link"));
+      groupsHead.append(el("h2", "", "Browse by group"), link("Browse all " + countText(section.entries.length), {...base, browse: "all"}, "text-link"));
       reader.append(groupsHead);
       const grid = el("div", "groups");
       for (const [title, n] of grouped) grid.append(panelLink(cap(title), n, {...base, group: title}));
@@ -306,8 +334,8 @@
     } else {
       const rows = dataBySection.get(section.key).filter(({entry}) =>
         (!baseClassView || entry.group === "Base class") &&
-        (!group || browseGroup(section, entry.group) === group) && (!level || spellLevel(entry) === level));
-      reader.append(resultList(matching(rows, filter), baseClassView ? {...params, group: "Base class"} : params));
+        (!group || browseGroup(section, entry.group) === group) && (!level || entryLevel(entry) === level));
+      reader.append(resultList(matching(rows, filter, sort), baseClassView ? {...params, group: "Base class"} : params));
     }
   }
   function globalResults(params) {
@@ -319,10 +347,16 @@
     select.append(new Option("All sections", ""));
     for (const s of sections) select.append(new Option(s.title, s.key));
     select.value = params.scope || "";
-    select.addEventListener("change", () => openFilters({...params, scope: select.value, page: ""}));
+    select.addEventListener("change", () => {
+      const next = {...params, scope: select.value, page: ""};
+      const kind = orderKind(sectionByKey.get(select.value));
+      if (!sortOptions(kind, params.q).some(([value]) => value === next.sort)) next.sort = "";
+      openFilters(next);
+    });
     const toolbar = el("div", "filters search-scope");
-    toolbar.append(field);
-    reader.append(toolbar, resultList(matching(dataBySection.get(params.scope) || all, params.q), params));
+    const kind = orderKind(sectionByKey.get(params.scope));
+    toolbar.append(field, sortControl(params, kind, params.q));
+    reader.append(toolbar, resultList(matching(dataBySection.get(params.scope) || all, params.q, selectedSort(params, kind, params.q)), params));
   }
 
   function inline(text) {
@@ -530,7 +564,7 @@
   function classArchetypes(section, entry) {
     if (entry.group !== "Base class") return null;
     const children = section.entries.filter(child => norm(browseGroup(section, child.group)) === norm(entry.name + " archetypes"))
-      .sort((a, b) => collate.compare(a.name, b.name));
+      .sort((a, b) => order.compare(a, b, "level-asc"));
     if (!children.length) return null;
     const block = el("section", "class-archetypes");
     block.append(el("h2", "", cap(entry.name) + " archetypes"));
@@ -538,6 +572,7 @@
     for (const child of children) {
       const item = el("li");
       item.append(link(cap(child.name), entryRoute(section, child)));
+      if (order.level(child) != null) item.append(el("span", "result-meta", " · " + levelLabel(order.level(child))));
       list.append(item);
     }
     block.append(list);
@@ -755,7 +790,7 @@
     const query = search.value.trim();
     const current = Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
     if (!query && !current.q) return;
-    openFilters(query ? {q: query, scope: current.scope} : {}, Object.hasOwn(current, "q"));
+    openFilters(query ? {q: query, scope: current.scope, sort: current.sort} : {}, Object.hasOwn(current, "q"));
   }
   search.addEventListener("input", searchAll);
   byId("search-form").addEventListener("submit", e => { e.preventDefault(); searchAll(); });

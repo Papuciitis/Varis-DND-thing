@@ -4,13 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#791d29">
-  <meta name="description" content="An editable Vara DnD character sheet with resource tracking and portable character backups.">
-  <title>Character sheet · Vara DnD</title>
+  <meta name="description" content="An editable Varis DnD character sheet with resource tracking and portable character backups.">
+  <title>Character sheet · Varis DnD</title>
   <link rel="stylesheet" href="character.css">
   <script defer src="catalog-loader.js"></script>
+  <script defer src="entry-order.js"></script>
   <script defer src="character-state.js"></script>
   <script defer src="character-effects.js"></script>
   <script defer src="character-equipment.js"></script>
+  <script defer src="character-casting.js"></script>
   <script defer src="character-rules.js"></script>
   <script defer src="character-builder.js"></script>
   <script defer src="character.js"></script>
@@ -19,7 +21,7 @@
   <a class="sr-only skip-link" href="#sheet-content">Skip to character sheet</a>
   <header class="app-header">
     <div class="header-inner">
-      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">V</span><span>VARA <span class="brand-subtitle">Character sheet</span></span></a>
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">V</span><span>VARIS <span class="brand-subtitle">Character sheet</span></span></a>
       <a class="rules-link" href="index.html" target="_blank" rel="noopener">Rules compendium</a>
       <div class="top-tools">
         <label class="sr-only" for="character-picker">Switch character</label>
@@ -63,7 +65,7 @@
       <section class="pane" id="pane-features" role="tabpanel" aria-labelledby="tab-features" tabindex="0" hidden></section>
       <section class="pane" id="pane-notes" role="tabpanel" aria-labelledby="tab-notes" tabindex="0" hidden></section>
     </div>
-    <footer class="sheet-footer"><span>Vara DnD</span><span>Your character, at a glance</span><button class="text-button" type="button" data-action="print">Print sheet</button></footer>
+    <footer class="sheet-footer"><span>Varis DnD</span><span>Your character, at a glance</span><button class="text-button" type="button" data-action="print">Print sheet</button></footer>
   </main>
   <dialog class="modal" id="editor-dialog" aria-labelledby="dialog-title">
     <div class="modal-header"><h2 id="dialog-title"></h2><button class="button button-quiet" type="button" data-action="close-dialog" aria-label="Close dialog">Close</button></div>

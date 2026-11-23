@@ -22,6 +22,7 @@
   }
   const State = globalThis.CharacterState;
   const Rules = globalThis.CharacterRules.create(globalThis.DND_CHARACTER_RULES || {}, globalThis.DND_CATALOG || []);
+  const Order = globalThis.EntryOrder;
   const storageKey = "vara.character-sheets.v1";
   const currentRules = globalThis.DND_RULES_VERSION || "vara-rules-prototype";
   const abilityNames = {str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma"};
@@ -77,6 +78,10 @@
   let dirty = false;
   let catalogKind = "spells";
   let catalogLimit = 30;
+  let spellSort = "level-asc";
+  let spellFilter = "";
+  let featureSort = "level-asc";
+  const catalogPreferences = {spells:{sort:"level-asc",level:""},inventory:{sort:"name",level:""},features:{sort:"name",level:""}};
   const healthAdjustment = {pool: "hp", amount: 1};
   const expanded = new Set();
   const baselines = new Map();
@@ -202,6 +207,7 @@
     }
     character = library.find(item => item.id === id) || character;
     baselines.set(character.id, JSON.stringify(character));
+    character = Rules.reconcile(character);
     render();
   }
 
@@ -269,7 +275,7 @@
   function renderHeader() {
     byId("character-name").value = character.name;
     byId("character-subtitle").textContent = ["Level " + character.level, character.className || "Choose a class", character.ancestry].filter(Boolean).join(" · ");
-    document.title = (character.name || "Character sheet") + " · Vara DnD";
+    document.title = (character.name || "Character sheet") + " · Varis DnD";
     byId("character-picker").innerHTML = library.map(item => `<option value="${escape(item.id)}" ${item.id === character.id ? "selected" : ""}>${escape(item.name || "Unnamed character")}</option>`).join("");
     if (!storageAvailable) byId("save-status").textContent = "Use Save backup to keep changes";
   }
@@ -306,7 +312,7 @@
     byId("character-subtitle").textContent = ["Level " + character.level, character.className || "Choose a class", character.ancestry].filter(Boolean).join(" · ");
     const option = byId("character-picker").querySelector("option:checked");
     if (option) option.textContent = character.name || "Unnamed character";
-    document.title = (character.name || "Character sheet") + " · Vara DnD";
+    document.title = (character.name || "Character sheet") + " · Varis DnD";
   }
 
   function resourceCard(key) {
@@ -376,22 +382,38 @@
     return missing + `<div class="entry-actions">${found ? button("Read rule", "read-rule", `data-entry-id="${escape(item.entryId)}"`, "button-small") : ""}${button("Edit", "edit-item", `data-list="${list}" data-index="${index}"`, "button-quiet button-small")}</div>`;
   }
 
+  function sortField(id, value, level=true) {
+    const options = level ? [["level-asc","Level: low to high"],["level-desc","Level: high to low"],["name","Name: A–Z"]] : [["name","Name: A–Z"]];
+    return `<label class="field"><span>Sort by</span><select id="${id}">${options.map(([key,label])=>`<option value="${key}" ${value===key?'selected':''}>${label}</option>`).join("")}</select></label>`;
+  }
+
+  function entryLevelLabel(entry) {
+    const level = Order.level(entry);
+    return level === null ? "" : level === 0 && /\bcantrips?\b/i.test(entry?.group || "") ? "Cantrip" : "Level " + level;
+  }
+
+  function spellViewTools() {
+    const levels = [...new Set(character.spells.map(item=>Order.level(entries.get(item.entryId))).filter(level=>level!==null))].sort((a,b)=>a-b);
+    return `<div class="collection-tools">${sortField("spell-sort",spellSort)}<label class="field"><span>Spell level</span><select id="spell-filter"><option value="">All levels</option>${levels.map(level=>`<option value="${level}" ${String(level)===spellFilter?'selected':''}>${level===0?'Level 0 / cantrips':'Level '+level}</option>`).join("")}</select></label></div>`;
+  }
+
   function renderCollection(list, title, description, kind) {
-    const items = character[list];
+    let items = character[list].map((item,index)=>({item,index,rule:entries.get(item.entryId)}));
+    if (list === "spells") items = items.filter(row=>!spellFilter || String(Order.level(row.rule))===spellFilter).sort((a,b)=>Order.compare({...a.rule,name:a.item.name},{...b.rule,name:b.item.name},spellSort));
     const actions = button("Add from rules", "catalog", `data-kind="${kind}"`, "button-primary") + button("Add custom", "add-item", `data-list="${list}"`);
-    const body = items.length ? `<div class="list">${items.map((item, index) => {
-      const rule = entries.get(item.entryId);
+    const body = items.length ? `<div class="list">${items.map(({item,index,rule}) => {
       let toggle = "";
       if (list === "inventory") toggle = `<div class="inline-fields"><label class="check-label"><input type="checkbox" data-path="inventory.${index}.equipped" ${item.equipped ? "checked" : ""}>Equipped</label>${numberField("Quantity", `inventory.${index}.quantity`)}</div>`;
       if (list === "spells") toggle = `<label class="check-label"><input type="checkbox" data-path="spells.${index}.prepared" ${item.prepared ? "checked" : ""}>Readied / prepared</label>`;
       const details = rule?.details || {};
-      const meta = [rule?.group, details.lvl != null ? "Level " + details.lvl : "", details.casting, details.range].filter(value => typeof value === "string" && value).join(" · ");
+      const meta = [rule?.group, entryLevelLabel(rule), details.casting, details.range].filter(value => typeof value === "string" && value).join(" · ");
       return `<article class="list-card"><header class="list-card-header"><div><h3 class="list-card-title">${escape(item.name)}</h3>${meta ? `<p class="list-card-meta">${escape(meta)}</p>` : ""}</div>${toggle}</header>${item.notes ? `<p class="preserve-lines">${escape(item.notes)}</p>` : ""}${referenceActions(item, list, index)}</article>`;
     }).join("")}</div>` : empty("Your " + title.toLowerCase() + " starts here", description, actions);
-    return panel(title, `<p class="section-note">${escape(description)}</p>${body}`, items.length ? `<div class="entry-actions">${actions}</div>` : "");
+    return panel(title, `<p class="section-note">${escape(description)}</p>${list==='spells'&&character.spells.length?spellViewTools():''}${body}`, character[list].length ? `<div class="entry-actions">${actions}</div>` : "");
   }
 
   function renderSpells() {
+    if (spellFilter && !character.spells.some(item=>String(Order.level(entries.get(item.entryId)))===spellFilter)) spellFilter="";
     const combat = character.combat;
     const castingAbility=values().castingAbility;
     const modifier = castingAbility ? State.abilityModifier(values().abilities[castingAbility]) : 0;
@@ -399,8 +421,30 @@
     const spellAttack = combat.spellAttackOverride ?? proficiency() + modifier + combat.spellAttackBonus;
     const spellSave = combat.spellSaveOverride ?? 8 + proficiency() + saveModifier + combat.spellSaveBonus;
     const casting = `<div class="combat-strip"><div class="combat-stat"><span class="combat-value">${castingAbility ? castingAbility.toUpperCase() : "—"}</span><span class="combat-label">Casting ability</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellAttackOverride != null ? signed(spellAttack) : "—"}</span><span class="combat-label">Spell attack</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellSaveOverride != null ? spellSave : "—"}</span><span class="combat-label">Save DC</span></div></div>`;
-    const slots = character.spellSlots.length ? `<div class="list">${character.spellSlots.map((slot, index) => `<div class="slot-row" data-slot-index="${index}">${numberField("Level", `spellSlots.${index}.level`, {min: 0, max: 20})}${numberField("Available", `spellSlots.${index}.current`)}${numberField("Maximum", `spellSlots.${index}.max`)}${button("−1", "resource", `data-key="slot:${slot.level}" data-delta="-1" aria-label="Spend a level ${slot.level} slot"`)}${button("Remove", "remove", `data-list="spellSlots" data-index="${index}"`, "button-quiet button-small")}</div>`).join("")}</div>` : `<p class="section-note">Add slots by level where your class uses them. Use named Class resources for occult slots, individual partial slots, or other spell costs.</p>`;
-    byId("pane-spells").innerHTML = panel("Spellcasting", casting, button("Edit spellcasting", "casting", "", "button-small")) + panel("Spell slots", slots, button("Add slot level", "add-slot", "", "button-small")) + renderCollection("spells", "Spells", "Select spells from the rules. Record preparations and apply each spell's listed costs using your resource trackers.", "spells");
+    const slots = character.spellSlots.length ? `<div class="list">${character.spellSlots.map((slot,index)=>({slot,index})).sort((a,b)=>a.slot.level-b.slot.level).map(({slot,index}) => `<div class="slot-row" data-slot-index="${index}">${numberField("Level", `spellSlots.${index}.level`, {min: 0, max: 20})}${numberField("Available", `spellSlots.${index}.current`)}${numberField("Maximum", `spellSlots.${index}.max`)}${button("−1", "resource", `data-key="slot:${slot.level}" data-delta="-1" aria-label="Spend a level ${slot.level} slot"`)}${button("Remove", "remove", `data-list="spellSlots" data-index="${index}"`, "button-quiet button-small")}</div>`).join("")}</div>` : `<p class="section-note">Add slots by level where your class uses them. Use named Class resources for occult slots, individual partial slots, or other spell costs.</p>`;
+    const manual = values().casting?.profile ? `<details class="panel disclosure manual-casting" ${character.spellSlots.length?'open':''}><summary>Manual spell slots</summary>${slots}<div class="entry-actions">${button("Add slot level", "add-slot", "", "button-small")}</div></details>` : panel("Spell slots", slots, button("Add slot level", "add-slot", "", "button-small"));
+    byId("pane-spells").innerHTML = panel("Spellcasting", casting, button("Edit spellcasting", "casting", "", "button-small")) + renderClassCasting() + manual + renderCollection("spells", "Spells", "Select spells from the rules. Record preparations and apply each spell's listed costs using your resource trackers.", "spells");
+  }
+
+  function renderClassCasting() {
+    const casting = values().casting;
+    if (!casting?.profile) return "";
+    const summary = [casting.maxCastLevel!==null?'Maximum spell level '+casting.maxCastLevel:'',casting.knownSpells!==null?casting.knownSpells+' spells known':'',casting.cantrips!==null?casting.cantrips+(casting.cantrips===1?' cantrip':' cantrips'):'',casting.spellbookCount!==null?casting.spellbookCount+' class-granted spellbook spells':''].filter(Boolean);
+    let body = `<div id="class-casting"><p class="section-note">${escape(summary.join(' · '))}</p>`;
+    if (!casting.enabled) {
+      body += `<p class="section-note">${casting.needsMigration?'Your existing manual trackers are kept below. Matching spent slots are carried over when you activate class tracking.':'Class tracking is switched off. You can keep manual trackers or use your class progression.'}</p>${button("Use class slots","enable-casting","","button-primary")}`;
+    } else {
+      if (casting.mode==='full') body += `<div class="collection-tools">${numberField("Maximum full-slot level","build.casting.maxSlotLevel",{min:1,max:20,placeholder:casting.maxCastLevel??'From your table'})}${button("Apply level","casting-configure")}<p class="section-note">Full slots can be reduced independently by the level of the spell you cast.</p></div>`;
+      body += `<div class="casting-pools">${casting.pools.map(pool=>{
+        const attr = `data-pool-id="${escape(pool.id)}"`;
+        const usable = pool.current!==null && pool.current>0;
+        const levelOptions = ['full','rest-dice'].includes(pool.kind) && pool.level!==null ? `<label class="field"><span>Cast at level</span><select data-cast-level>${Array.from({length:Math.min(20,pool.level)},(_,index)=>`<option value="${index+1}">${index+1}</option>`).join('')}</select></label>`:'';
+        return `<article class="casting-pool" ${attr}><div><h3>${escape(pool.label)}</h3>${pool.kind==='occult'?`<p class="list-card-meta">Each slot casts at level ${pool.level}</p>`:''}${pool.kind==='full'?'<p class="list-card-meta">Remaining spell levels</p>':''}</div><div class="casting-count"><strong data-casting-current>${pool.current??'—'}</strong><span> / ${pool.max??'—'}</span></div><div class="casting-controls">${levelOptions}${button(pool.kind==='full'?'Cast / reduce':pool.kind==='rest-dice'?'Cast spell':pool.kind==='points'?'Spend point':'Spend slot','casting-spend',`${attr} ${usable?'':'disabled'}`,'button-primary button-small')}${pool.kind==='full'?button('Spend whole slot','casting-whole',`${attr} ${usable?'':'disabled'}`,'button-small'):''}${button('Restore 1','casting-restore',`${attr} ${pool.max===null||pool.current===pool.max?'disabled':''}`,'button-small')}</div></article>`;
+      }).join('')}</div><p class="section-note">Class capacities update with your level and selected features. Restore uses only when their recovery rules allow it. Manual trackers below are separate.</p>${button("Use manual trackers","disable-casting","","button-quiet button-small")}`;
+    }
+    if(casting.warnings.length)body+=`<details class="source-warning"><summary>${casting.warnings.length} casting rules to check</summary><ul>${casting.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`;
+    if(casting.recovery.length)body+=`<details class="detail-section"><summary>Spell recovery rules</summary>${casting.recovery.map(rule=>`<h3>${escape(rule.name)}</h3>${ruleContent(rule.details)}`).join('')}</details>`;
+    return panel("Class casting · "+values().cls.name,body+'</div>');
   }
 
   function renderGear() {
@@ -411,7 +455,7 @@
 
   function renderFeatures() {
     const d=values();
-    const automatic=d.enabled?panel("Your ancestry & class features",`<p class="section-note">Features unlock at your level. Open the builder to choose options or level up.</p><div class="list">${d.features.map(feature=>`<details class="list-card"><summary>${escape(feature.name)} <span class="muted">· ${escape(feature.parent)} · level ${feature.level || 1}</span></summary>${ruleContent(feature.details)}${d.choices.filter(c=>c.featureId===feature.id).map(c=>`<p><strong>${escape(c.label)}</strong>: ${c.selected.map(id=>escape(c.options.find(o=>o.id===id)?.name || '')).join(', ') || 'Not chosen yet'}</p>`).join('')}</details>`).join('')}</div>${d.warnings.length?`<details class="source-warning"><summary>${d.warnings.length} choices or rules to check</summary><ul>${d.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`:''}`,button("Choices & level up","builder")):'';
+    const automatic=d.enabled?panel("Your ancestry & class features",`<p class="section-note">Features unlock at your level. Open the builder to choose options or level up.</p>${sortField("feature-sort",featureSort)}<div class="list">${[...d.features].sort((a,b)=>Order.compare(a,b,featureSort)).map(feature=>`<details class="list-card"><summary>${escape(feature.name)} <span class="muted">· ${escape(feature.parent)} · level ${feature.requiredLevel ?? feature.level ?? 1}</span></summary>${ruleContent(feature.details)}${d.choices.filter(c=>c.featureId===feature.id).map(c=>`<p><strong>${escape(c.label)}</strong>: ${c.selected.map(id=>escape(c.options.find(o=>o.id===id)?.name || '')).join(', ') || 'Not chosen yet'}</p>`).join('')}</details>`).join('')}</div>${d.warnings.length?`<details class="source-warning"><summary>${d.warnings.length} choices or rules to check</summary><ul>${d.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`:''}`,button("Choices & level up","builder")):'';
     byId("pane-features").innerHTML = automatic+renderCollection("features", "Additional features", "Keep extra feats, background rules and custom features within reach.", "features");
   }
 
@@ -465,7 +509,7 @@
     if(values().enabled){
       openDialog("Combat adjustments",`<p class="section-note">Armour class ${values().armorClass}, speed ${values().speed} ft and Block ${values().blockMaximum} come from your choices and equipped gear. Add situational or custom bonuses here.</p><div class="form-grid">${numberField("Additional armour class","build.adjustments.ac",{min:-1000})}${numberField("Additional speed (ft)","build.adjustments.speed",{min:-1000})}${numberField("Additional Block maximum","build.adjustments.block",{min:-1000})}${numberField("Additional Block check","build.adjustments.blockCheck",{min:-1000})}${numberField("Additional initiative bonus","combat.initiativeBonus",{min:-1000})}${numberField("Proficiency total override","combat.proficiencyOverride",{min:-1000})}${numberField("Passive Perception override","combat.passivePerceptionOverride",{min:-1000})}</div>`,button("Done","done","","button-primary"));return;
     }
-    openDialog("Combat values", `<div class="form-grid">${numberField("Armour class", "combat.armorClass")}${numberField("Speed (ft)", "combat.speed")}${numberField("Additional initiative bonus", "combat.initiativeBonus", {min: -1000, max: 1000})}${numberField("Proficiency total override", "combat.proficiencyOverride", {min: -1000, max: 1000, placeholder: State.proficiencyBonus(character.level)})}${numberField("Passive Perception override", "combat.passivePerceptionOverride", {min: -1000, max: 1000})}</div><p class="section-note">Initiative includes your Dexterity modifier. Vara proficiency normally rises every three levels. Passive Perception is 10 plus your Perception check bonus. Clear either override to use its calculated value.</p>`, button("Done", "done", "", "button-primary"));
+    openDialog("Combat values", `<div class="form-grid">${numberField("Armour class", "combat.armorClass")}${numberField("Speed (ft)", "combat.speed")}${numberField("Additional initiative bonus", "combat.initiativeBonus", {min: -1000, max: 1000})}${numberField("Proficiency total override", "combat.proficiencyOverride", {min: -1000, max: 1000, placeholder: State.proficiencyBonus(character.level)})}${numberField("Passive Perception override", "combat.passivePerceptionOverride", {min: -1000, max: 1000})}</div><p class="section-note">Initiative includes your Dexterity modifier. Varis proficiency normally rises every three levels. Passive Perception is 10 plus your Perception check bonus. Clear either override to use its calculated value.</p>`, button("Done", "done", "", "button-primary"));
   }
 
   function castingDialog() {
@@ -492,8 +536,11 @@
     catalogKind = kind;
     catalogLimit = 30;
     const allowed = kind === "spells" ? ["spells"] : kind === "inventory" ? ["items"] : ["classes", "feats", "races", "backgrounds"];
-    const groups = [...new Set(catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules").map(entry => entry.group).filter(Boolean))].sort();
-    openDialog("Add " + (kind === "inventory" ? "equipment" : kind), `<div class="catalog-search"><label class="field"><span>Search rules</span><input id="catalog-query" type="search" placeholder="Search by name or rule text" autocomplete="off"></label><label class="field"><span>Group</span><select id="catalog-group"><option value="">All groups</option>${groups.map(group => `<option>${escape(group)}</option>`).join("")}</select></label></div><p class="section-note" id="catalog-count"></p><div class="catalog-results" id="catalog-results"></div>`, button("Close", "close-dialog"));
+    const groups = [...new Set(catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules").map(entry => entry.group).filter(Boolean))].sort((a,b)=>Order.compareGroups(kind,a,b));
+    const preferences = catalogPreferences[kind];
+    const levels = [...new Set(catalog.filter(entry=>allowed.includes(entry.section)).map(Order.level).filter(level=>level!==null))].sort((a,b)=>a-b);
+    const ordering = sortField("catalog-sort",preferences.sort,kind!=='inventory'&&levels.length>0) + (kind==='spells'?`<label class="field"><span>Spell level</span><select id="catalog-level"><option value="">All levels</option>${levels.map(level=>`<option value="${level}" ${String(level)===preferences.level?'selected':''}>${level===0?'Level 0 / cantrips':'Level '+level}</option>`).join('')}</select></label>`:'');
+    openDialog("Add " + (kind === "inventory" ? "equipment" : kind), `<div class="catalog-search"><label class="field"><span>Search rules</span><input id="catalog-query" type="search" placeholder="Search by name or rule text" autocomplete="off"></label><label class="field"><span>Group</span><select id="catalog-group"><option value="">All groups</option>${groups.map(group => `<option>${escape(group)}</option>`).join("")}</select></label>${ordering}</div><p class="section-note" id="catalog-count"></p><div class="catalog-results" id="catalog-results"></div>`, button("Close", "close-dialog"));
     renderCatalogResults();
   }
 
@@ -502,9 +549,10 @@
     const query = byId("catalog-query").value.toLowerCase().trim();
     const group = byId("catalog-group").value;
     const words = query.split(/\s+/).filter(Boolean);
-    const results = catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules" && (!group || entry.group === group) && words.every(word => entry.searchText.includes(word))).sort((a, b) => a.name.localeCompare(b.name));
+    const preferences = catalogPreferences[catalogKind];
+    const results = catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules" && (!group || entry.group === group) && (catalogKind!=='spells'||!preferences.level||String(Order.level(entry))===preferences.level) && words.every(word => entry.searchText.includes(word))).sort((a, b) => Order.compare(a,b,preferences.sort));
     byId("catalog-count").textContent = `${results.length} matching ${results.length === 1 ? "rule" : "rules"}`;
-    byId("catalog-results").innerHTML = results.slice(0, catalogLimit).map(entry => `<article class="catalog-result"><div><h3>${escape(entry.name)}</h3><p class="list-card-meta">${escape(entry.group || entry.sectionTitle)}</p></div><div class="entry-actions">${button("Read", "catalog-read", `data-entry-id="${escape(entry.entryId)}"`, "button-small")}${button("Add", "add-catalog", `data-entry-id="${escape(entry.entryId)}" aria-label="Add ${escape(entry.name)}"`, "button-primary button-small")}</div></article>`).join("") + (results.length > catalogLimit ? button("Show more", "catalog-more", "", "full-width") : "") + (!results.length ? `<p class="empty-state">No matching rules. Try another name or group.</p>` : "");
+    byId("catalog-results").innerHTML = results.slice(0, catalogLimit).map(entry => `<article class="catalog-result"><div><h3>${escape(entry.name)}</h3><p class="list-card-meta">${escape(entry.group || entry.sectionTitle)}${Order.level(entry)!==null?' · '+entryLevelLabel(entry):''}</p></div><div class="entry-actions">${button("Read", "catalog-read", `data-entry-id="${escape(entry.entryId)}"`, "button-small")}${button("Add", "add-catalog", `data-entry-id="${escape(entry.entryId)}" aria-label="Add ${escape(entry.name)}"`, "button-primary button-small")}</div></article>`).join("") + (results.length > catalogLimit ? button("Show more", "catalog-more", "", "full-width") : "") + (!results.length ? `<p class="empty-state">No matching rules. Try another name or group.</p>` : "");
   }
 
   function itemEditor(list, index) {
@@ -532,7 +580,7 @@
     const blob = new Blob([State.exportCharacter(character)], {type: "application/json"});
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    const name = (character.name || "Vara-character").normalize("NFKD").replace(/[^a-zA-Z0-9_-]+/g, "-").replace(/^-|-$/g, "").slice(0, 80) || "Vara-character";
+    const name = (character.name || "Varis-character").normalize("NFKD").replace(/[^a-zA-Z0-9_-]+/g, "-").replace(/^-|-$/g, "").slice(0, 80) || "Varis-character";
     link.href = url;
     link.download = name + ".json";
     document.body.append(link);
@@ -585,6 +633,12 @@
   }
 
   const actions = {
+    "casting-configure"(){flushAndPersist();renderSpells();},
+    "enable-casting"(){character=globalThis.CharacterCasting.activate(character,values().casting);commit();render();},
+    "disable-casting"(){character.build.casting={...character.build.casting,enabled:false};commit();render();},
+    "casting-spend"(target){try{const level=Number(target.closest('.casting-pool').querySelector('[data-cast-level]')?.value||0)||undefined;character=globalThis.CharacterCasting.spend(character,values().casting,target.dataset.poolId,{level});commit();render();}catch(error){notify(error.message);}},
+    "casting-whole"(target){try{const level=Number(target.closest('.casting-pool').querySelector('[data-cast-level]')?.value||0)||undefined;character=globalThis.CharacterCasting.spend(character,values().casting,target.dataset.poolId,{level,whole:true});commit();render();}catch(error){notify(error.message);}},
+    "casting-restore"(target){try{character=globalThis.CharacterCasting.change(character,values().casting,target.dataset.poolId,1);commit();render();}catch(error){notify(error.message);}},
     builder() { if(Wizard)Wizard.start(character,false); },
     identity() {if(character.build?.enabled && Wizard)Wizard.start(character,false);else identityDialog();},
     combat: combatDialog,
@@ -706,6 +760,9 @@
     if(Wizard?.handleChange(target))return;
     if (target.id === "backup-input") { importBackup(target.files[0]); return; }
     if (target.id === "catalog-group") { catalogLimit = 30; renderCatalogResults(); return; }
+    if (target.id === "catalog-sort" || target.id === "catalog-level") { catalogPreferences[catalogKind][target.id==='catalog-sort'?'sort':'level']=target.value; catalogLimit=30; renderCatalogResults(); return; }
+    if (target.id === "spell-sort" || target.id === "spell-filter") { if(target.id==='spell-sort')spellSort=target.value;else spellFilter=target.value; renderSpells(); return; }
+    if (target.id === "feature-sort") { featureSort=target.value; renderFeatures(); return; }
     if (target.id === "health-pool") { healthAdjustment.pool = target.value; return; }
     if (target.id === "character-picker") { selectCharacter(target.value); return; }
     if (target.dataset.path) {
@@ -746,6 +803,7 @@
   window.addEventListener("pagehide", flushAndPersist);
   document.addEventListener("visibilitychange", () => { if (document.hidden) flushAndPersist(); });
   load();
+  character = Rules.reconcile(character);
   if (loader) await withSections(referenceSections(library), () => {});
   if(character.build?.enabled)healthAdjustment.pool='auto';
   render();

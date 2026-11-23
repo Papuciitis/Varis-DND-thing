@@ -66,12 +66,24 @@ def hashed_file(output_dir, folder, stem, suffix, content):
 
 def build(output_dir):
     sections = compile_data(ROOT / "data")
+    metadata = compile_character_rules(sections)
+    # Reuse explicit author levels, without guessing from spell costs or prose.
+    archetype_levels = {(item["className"].casefold(), item["name"].casefold()): item["minLevel"]
+                       for item in metadata["archetypes"] if item["minLevelSource"] == "explicit"}
+    for section in sections:
+        if section["key"] == "classes":
+            for entry in section["entries"]:
+                parent = re.sub(r" archetypes?$", "", entry["group"], flags=re.IGNORECASE)
+                required = archetype_levels.get((parent.casefold(), entry["name"].casefold()))
+                if required is not None:
+                    entry["requiredLevel"] = required
     # Escape '<' so text in a rule can never close its containing script.
     payload = json.dumps(sections, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
     payload = payload.replace("<", r"\u003c").replace("\u2028", r"\u2028").replace("\u2029", r"\u2029")
-    mechanics = json.dumps(compile_character_rules(sections), ensure_ascii=False, allow_nan=False, separators=(",", ":"))
+    mechanics = json.dumps(metadata, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
     mechanics = mechanics.replace("<", r"\u003c").replace("\u2028", r"\u2028").replace("\u2029", r"\u2029")
-    effects = (ROOT / "web" / "character-effects.js").read_text(encoding="utf-8")
+    effects = "".join((ROOT / "web" / name).read_text(encoding="utf-8") for name in
+                      ("character-effects.js", "character-equipment.js", "character-casting.js", "character-rules.js"))
     rules_version = "catalog-" + hashlib.sha256((payload + mechanics + effects).encode("utf-8")).hexdigest()[:12]
     catalog_script = (
         f"<script>globalThis.DND_CATALOG={payload};\n"
@@ -88,9 +100,9 @@ def build(output_dir):
             "count": len(section["entries"]), "url": hashed_file(
                 output_dir, "data", section["key"], "json", json_text(section))})
     write_page(output_dir / "data/catalog-manifest.json", json_text(manifest))
-    pages = (("index.html", "styles.css", ("app.js",)),
-             ("character.html", "character.css", ("character-state.js", "character-effects.js",
-              "character-equipment.js", "character-rules.js", "character-builder.js", "character.js")))
+    pages = (("index.html", "styles.css", ("entry-order.js", "app.js")),
+             ("character.html", "character.css", ("entry-order.js", "character-state.js", "character-effects.js",
+              "character-equipment.js", "character-casting.js", "character-rules.js", "character-builder.js", "character.js")))
     assets = {}
     for page, stylesheet, scripts in pages:
         normal = (ROOT / "web" / page).read_text(encoding="utf-8")

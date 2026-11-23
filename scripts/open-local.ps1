@@ -53,7 +53,7 @@ try {
     $buildScript = Join-Path $repoRoot 'build.py'
     $requirements = Join-Path $repoRoot 'requirements.txt'
     if (-not (Test-Path -LiteralPath $buildScript -PathType Leaf) -or -not (Test-Path -LiteralPath $requirements -PathType Leaf)) {
-        throw 'The launcher must stay inside the Vara DnD repository, with build.py and requirements.txt beside its scripts folder.'
+        throw 'The launcher must stay inside the Varis DnD repository, with build.py and requirements.txt beside its scripts folder.'
     }
 
     $venvDirectory = Join-Path $repoRoot '.venv'
@@ -113,7 +113,7 @@ for line in Path(sys.argv[1]).read_text(encoding='utf-8').splitlines():
 }
 catch {
     Write-Host ''
-    Write-Host 'Vara DnD could not open.' -ForegroundColor Red
+    Write-Host 'Varis DnD could not open.' -ForegroundColor Red
     Write-Host $_.Exception.Message
     exit 1
 }

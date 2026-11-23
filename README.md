@@ -1,6 +1,6 @@
-# Vara DnD compendium and character sheet
+# Varis DnD compendium and character sheet
 
-A rules reference and editable character sheet for the Vara DnD table. One YAML catalog builds both a hosted website that loads rules by section and portable pages that work directly from disk.
+A rules reference and editable character sheet for the Varis DnD table. One YAML catalog builds both a hosted website that loads rules by section and portable pages that work directly from disk.
 
 ## Open locally on Windows
 
@@ -50,7 +50,15 @@ Use the character picker to keep multiple characters. Saved-sheet edits autosave
 
 Open **More** for **Save backup** and **Load backup**. Save backup downloads the selected character as JSON; keep backups outside the repository. Load backup moves a character between page locations, browsers, or devices, including an optional move to a standalone copy. The launcher keeps the existing `site/character.html` location, so this update does not require moving local saves. Backups include a format version and rules fingerprint. Invalid or unsupported backups leave the current character intact; a different rules fingerprint prompts a rules review. If the browser cannot save, keep the page open and use Save backup to preserve your work.
 
-Builder-enabled characters automatically apply supported fixed passive modifiers from their race, class and selected features. Equipped armor and shields calculate AC, movement and Block values; equipped weapons supply attacks from the character's abilities, training and Vara weapon properties. Base scores and manual extra bonuses remain editable, and manual attacks can accompany generated attacks. Conditional abilities, active powers, spell costs, unresolved rules and nested upgrades with unimplemented prerequisites remain readable rules to apply manually.
+Builder-enabled characters automatically apply supported fixed passive modifiers from their race, class and selected features. Equipped armor and shields calculate AC, movement and Block values; equipped weapons supply attacks from the character's abilities, training and Varis weapon properties. Base scores and manual extra bonuses remain editable, and manual attacks can accompany generated attacks. Conditional abilities, active powers, additional spell costs and effects, unresolved rules and nested upgrades with unimplemented prerequisites remain readable rules to apply manually.
+
+The **Spells** tab initializes class casting resources from the Varis rules. Wizard, Sorcerer and Druid use their distinct printed slot tables; Occultist uses a shared pool whose slots have one casting level. Cleric tracks each full slot's remaining spell levels separately. Set **Maximum full-slot level** from your table's ruling before using Cleric slots: the imported source supplies slot counts but does not specify that maximum. Bard casting spends existing rest dice, and Sorcerer gains Metamagic points from level 4.
+
+Class capacities update with level and supported feature choices while preserving spent uses. Reviewed fixed bonuses, including the Occultist slot reward, Court mage, Oathspeaker and Wildmage slot increases, apply automatically. Separate archetype casting systems, such as Graymage, Evoker and arcane focus pools, still need manual trackers. Known-spell and cantrip counts are guidance for choosing spells; the sheet does not choose or prepare spells for you. Wizard's class-granted spellbook count is not a maximum on copied spells.
+
+Existing characters with manual spell slots or custom resources keep those trackers until you choose **Use class slots**. Activation carries over spending from unambiguous matching slot rows and retains the manual trackers separately. Cleric's aggregate rows and unmatched custom resources require a manual review of spent uses. **Use manual trackers** switches automatic class tracking off without deleting its spending history.
+
+Recovery follows each source. A long rest restores Occultist slots, Cleric full slots and Sorcerer Metamagic points. The imported Wizard, Sorcerer and Druid rules do not state a general long-rest slot reset, so their slot recovery remains manual. Use **Restore 1** only when the relevant recovery rule allows it; distributed Druid recovery, Wizard Arcane recovery and rolled Metamagic recovery still need the player to resolve the rule shown under **Spell recovery rules**.
 
 Automatic HP starts with the maximum class hit die plus the Constitution modifier and other applicable modifiers at level 1. Later levels add a recorded hit-die roll or the fixed average, plus the Constitution modifier and applicable modifiers. Missing recorded rolls use the average with a warning. **Manual HP** remains available. Changes to maximum health preserve existing wounds rather than healing the character.
 
@@ -58,7 +66,9 @@ Automatic damage passes through **Arcane Health → Temp HP → HP**; manual poo
 
 ## Use the compendium
 
-The compendium index groups sections by use. Choose a section to browse its entries or use **Search all rules** to find a name or phrase across the book. Spell filters include tradition/group and level. Open a result to read its stats and expand the features you need. The address of an entry can be bookmarked. The monster manual contains workbook reference drafts; linked summons retain the current spell's rules and embedded statistics as the priority.
+The compendium index groups sections by use. Choose a section to browse its entries or use **Search all rules** to find a name or phrase across the book. Spell filters include tradition/group and level. Spells default to numeric level order, with cantrips first, in the reader, the sheet's spell picker and the saved spell list. **Sort by** also offers descending level or A–Z; saved spells can be filtered by level. Archetype and unlocked feature lists use level order, while monster browsing defaults to Challenge order. Search results default to relevance. Changing display order preserves preparations and rule links.
+
+Open a result to read its stats and expand the features you need. The address of an entry can be bookmarked. The monster manual contains workbook reference drafts; linked summons retain the current spell's rules and embedded statistics as the priority.
 
 ## Rules sources
 
@@ -103,7 +113,7 @@ git branch --show-current
 git pull --ff-only
 ```
 
-Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The character sheet was merged in PR #2 at `d7090bc`, character automation in PR #3 at `f7869b2`, and the compendium data and monster foundation in PR #4 at `419fc5b`. The character presentation update is on `codex/character-sheet-layout`, based on that updated `main`.
+Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The character sheet was merged in PR #2 at `d7090bc`, character automation in PR #3 at `f7869b2`, the compendium data and monster foundation in PR #4 at `419fc5b`, and the character presentation update in PR #5 at `57f4d99`. The casting resources and ordering changes are on `codex/spell-resources-ordering`, based on that merged `main`, and await review.
 
 For a new source change, create a branch from the version you want to change, edit the relevant `data/` or `web/` files, run the launcher and inspect the result:
 
@@ -120,6 +130,6 @@ The JavaScript checks use Node 24 and read the built catalog, so build before ru
 
 ## GitHub Pages
 
-The phone addresses are [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html) and the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). Pages updates after changes reach `main` and its deployment succeeds. The character presentation update in this branch awaits review.
+The phone addresses are [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html) and the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). Pages updates after changes reach `main` and its deployment succeeds. The presentation update is merged; the casting resources and ordering changes in `codex/spell-resources-ordering` await review and are not published by updating the branch alone.
 
 Select **GitHub Actions** under the repository's Pages settings. The workflow installs Python 3.12 and Node 24, runs the Python checks, builds the site, and runs the JavaScript checks against that build. A successful run uploads a downloadable **vara-dnd-site** artifact containing the root pages, generated data and assets, and optional standalone copies. Extract the whole artifact and open `character.html` or `index.html` for direct disk use. Alternatively, the two pages in `offline/` can be used on their own. Keep the root pages, `assets/`, and `data/` together for either direct disk use or HTTP hosting. Pages deployment is limited to `main`; pull requests are validated without deployment.

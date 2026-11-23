@@ -18,6 +18,7 @@
   function create({rules, show, onFinish, onCancel = () => {}, renderRule = value => `<p>${escape(typeof value === "string" ? value : JSON.stringify(value))}</p>`}) {
     let draft = null, step = 0, open = false, isNew = false, itemToAdd = "";
     const metadata = rules.metadata || {};
+    const order = globalThis.EntryOrder;
     const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
     const items = (rules.catalog || []).flatMap(section => section.key === "items" ? (section.entries || []).map(entry => ({...entry,entryId:JSON.stringify([section.key,entry.group || "",entry.name])})) : []);
     const weaponGroups = [...new Set(items.filter(entry => entry.details?.damage && entry.details?.type).map(entry => entry.group))].sort();
@@ -38,18 +39,19 @@
       )}${race ? `<div class="list-card"><h3>${escape(race.name)}</h3><p>${escape(race.size)} · ${escape(race.speed ?? "Unspecified")} ft speed</p>${details("About this ancestry",race.description)}${details("Ancestry training",race.proficiencies)}${race.notes ? `<p class="muted">${escape(race.notes)}</p>` : ""}</div>` : ""}`;
     }
 
-    function classStep() {
+    function classStep(derived) {
       const cls = selectedClass();
       let html = `<p>Choose your class, then an archetype for each slot your current level has unlocked.</p>${field("Class",select("build.classId",classes,draft.build.classId,"Choose a class"))}`;
       if (!cls) return html;
       html += `<div class="list-card"><h3>${escape(cls.name)}</h3><p>Hit die ${escape(cls.hitDie || "unspecified")} · Saves: ${escape((cls.saves || []).map(code => names[code] || code).join(", "))}</p>${details("Class description",cls.description)}${details("Class training",cls.proficiencies)}${cls.notes ? `<p class="muted">${escape(cls.notes)}</p>` : ""}</div>`;
-      const slots = (cls.archetypeLevels || []).filter(level => level <= draft.level);
+      html += castingPreview(derived);
+      const slots = (cls.archetypeLevels || []).filter(level => level <= draft.level).sort((a,b)=>a-b);
       if (!slots.length) html += `<p class="muted">${cls.archetypeLevels?.length ? `Your first archetype slot opens at level ${escape(cls.archetypeLevels[0])}.` : "This source has no specified archetype slots."}</p>`;
       html += grid(slots.map((level,index) => {
         const current = draft.build.archetypes[index] || "";
-        const eligible = archetypes.filter(item => item.className.toLowerCase() === cls.name.toLowerCase() && item.minLevel <= level);
+        const eligible = archetypes.filter(item => item.className.toLowerCase() === cls.name.toLowerCase() && item.minLevel <= level).sort((a,b)=>order.compare(a,b,'level-asc'));
         const selected = archetypes.find(item => item.id === current);
-        const choices = eligible.map(item => option(item.id,item.name+(item.status ? ` (${item.status})` : ""),item.id === current,draft.build.archetypes.some((id,slot) => slot !== index && id === item.id))).join("");
+        const choices = eligible.map(item => option(item.id,item.name+` · level ${item.minLevel}`+(item.status ? ` (${item.status})` : ""),item.id === current,draft.build.archetypes.some((id,slot) => slot !== index && id === item.id))).join("");
         return `<div>${field(`Level ${level} archetype`,`<select data-builder-path="build.archetypes.${index}">${option("","Choose an archetype",!current)}${selected && !eligible.includes(selected) ? option(current,selected.name+" — review eligibility",true,true) : ""}${choices}</select>`)}${selected ? details(`${selected.name}: source details`,selected.description || selected.status || selected.features?.map(feature => ({name:feature.name,details:feature.details}))) : ""}${selected?.minLevelSource === "parent fallback" ? '<p class="muted">Starting level is provisional; review the unfinished source.</p>' : ""}</div>`;
       }).join(""));
       return html;
@@ -86,9 +88,9 @@
         const options = derived.raceSkillOptions || (restricted.length ? restricted : allSkills);
         html += `<fieldset><legend>Ancestry skills</legend>${skillChoices("raceSkills",derived.raceSkillCount,options)}</fieldset>`;
       }
-      html += derived.features.map(feature => {
+      html += [...derived.features].sort((a,b)=>order.compare(a,b,'level-asc')).map(feature => {
         const groups = derived.choices.filter(group => group.featureId === feature.id || (feature.choices || []).some(own => own.id === group.id));
-        return `<section class="list-card"><h3>${escape(feature.name)}</h3><p class="muted">${escape(feature.parent)} · Level ${escape(feature.level || 1)}</p>${details("Read feature rules",feature.details)}${groups.map(group => {
+        return `<section class="list-card"><h3>${escape(feature.name)}</h3><p class="muted">${escape(feature.parent)} · Level ${escape(feature.requiredLevel ?? feature.level ?? 1)}</p>${details("Read feature rules",feature.details)}${groups.map(group => {
           const selected = draft.build.choices[group.id] || [];
           return `<fieldset><legend>${escape(group.label === "minitrait_list" ? "Traits" : group.label)} — choose ${group.count}</legend>${grid(Array.from({length:group.count},(_,index) => field(`Selection ${index+1}`,`<select data-builder-choice="${escape(group.id)}" data-builder-choice-index="${index}">${option("","Choose an option",!selected[index])}${group.options.map(item => option(item.id,item.name,item.id === selected[index],selected.some((id,other) => id === item.id && other !== index))).join("")}</select>`)).join(""))}${group.options.filter(item => selected.includes(item.id)).map(item => details(item.name,item.details)).join("")}</fieldset>`;
         }).join("")}</section>`;
@@ -98,7 +100,7 @@
     }
 
     function equipmentStep() {
-      let html = `<p>Add your starting equipment from the Vara catalog. Equip the items you use; armor, shields and weapons contribute to the final preview.</p><div class="row">${field("Catalog equipment",`<select data-builder-item><option value="">Choose equipment…</option>${items.map(item => option(item.entryId,`${item.name} · ${item.group}`,item.entryId === itemToAdd)).join("")}</select>`)}<button type="button" data-action="builder-add-item">Add equipment</button></div>`;
+      let html = `<p>Add your starting equipment from the Varis catalog. Equip the items you use; armor, shields and weapons contribute to the final preview.</p><div class="row">${field("Catalog equipment",`<select data-builder-item><option value="">Choose equipment…</option>${items.map(item => option(item.entryId,`${item.name} · ${item.group}`,item.entryId === itemToAdd)).join("")}</select>`)}<button type="button" data-action="builder-add-item">Add equipment</button></div>`;
       html += draft.inventory.map((row,index) => {
         const entry = items.find(item => item.entryId === row.entryId), weapon = entry?.details?.damage || entry?.details?.["AC bonus"];
         return `<section class="list-card"><div class="row"><h3>${escape(row.name)}</h3><button type="button" data-action="builder-remove-item" data-builder-index="${index}" aria-label="Remove ${escape(row.name)}">Remove</button></div>${grid(
@@ -112,6 +114,13 @@
       return html;
     }
 
+    function castingPreview(derived) {
+      const casting = derived.casting;
+      if (!casting?.profile) return "";
+      const rows=casting.pools.map(pool=>`<li>${escape(pool.label)}: ${pool.max??'set maximum level on the Spells tab'}${pool.kind==='occult'?' at spell level '+pool.level:pool.kind==='full'&&pool.max!==null?' spell levels':''}</li>`).join('');
+      return `<section class="list-card class-casting-preview"><h3>Class casting capacity</h3>${casting.maxCastLevel!==null?`<p>Maximum spell level ${casting.maxCastLevel}</p>`:''}<ul>${rows}</ul>${casting.needsMigration?'<p class="muted">Your manual trackers are preserved. Activate class slots on the Spells tab to use automatic tracking.</p>':''}</section>`;
+    }
+
     function review(derived) {
       const health = draft.build.health, sides = Number(derived.cls?.hitDie?.match(/d(\d+)/i)?.[1]) || 1000;
       let html = `<p>Review ${escape(draft.name || "your character")} before saving. Unfinished selections can be saved and completed later.</p><div class="builder-preview">${grid([
@@ -121,6 +130,7 @@
         (health.hpMode === "manual" ? field("Base maximum HP",textInput("build.health.baseHP",health.baseHP,"number",'min="1"'),"Ancestry and feature HP bonuses are added to this base.") : "")+
         field("Base rest dice pool",textInput("build.health.baseRestDice",health.baseRestDice,"number",'min="0"'),"Enter the pool granted by your table; selected bonuses are added."));
       if (health.hpMode === "rolled" && draft.level > 1) html += `<fieldset><legend>Recorded ${escape(derived.cls?.hitDie || "hit die")} rolls</legend><p class="muted">Enter the die result before Constitution. Missing rolls use the fixed average in this preview.</p>${grid(Array.from({length:draft.level-1},(_,index) => field(`Level ${index+2}`,textInput(`build.health.rolls.${index}`,health.rolls?.[index] ?? "","number",`min="1" max="${sides}" inputmode="numeric"`))).join(""))}</fieldset>`;
+      html += castingPreview(derived);
       html += `<h3>Equipped attacks</h3>${derived.attacks.length ? derived.attacks.map(attack => `<div class="list-card"><strong>${escape(attack.name)}</strong><p>${escape(signed(attack.bonus))} to hit · ${escape(attack.damage)} · Block DC ${escape(attack.blockDC)}</p>${attack.notes ? `<p class="muted">${escape(attack.notes)}</p>` : ""}</div>`).join("") : '<p class="muted">No equipped weapon attacks yet.</p>'}`;
       const raceSkills = new Set((draft.build.raceSkills || []).filter(skill => (derived.raceSkillOptions || allSkills).includes(skill)));
       const warnings = [...new Set([!derived.race ? "Choose an ancestry." : "",!derived.cls ? "Choose a class." : "",
@@ -134,7 +144,7 @@
       const derived = rules.derive(draft);
       const body = [ancestry,classStep,abilitiesStep,featuresStep,equipmentStep,review][step](derived);
       const nav = `<nav class="builder-steps row" aria-label="Character creation steps">${steps.map((name,index) => `<button type="button" data-action="builder-step" data-builder-step="${index}"${index === step ? ' aria-current="step"' : ""}>${index+1}. ${escape(name)}</button>`).join("")}</nav>`;
-      show(`${step+1} of ${steps.length} · ${steps[step]}`,`<div class="builder-flow" style="display:grid;gap:1rem">${nav}<progress value="${step+1}" max="6" aria-label="Character creation progress" style="width:100%">${step+1} of 6</progress>${body}<p class="muted">Vara house rules · Source descriptions retain draft and unresolved mechanics.</p></div>`,
+      show(`${step+1} of ${steps.length} · ${steps[step]}`,`<div class="builder-flow" style="display:grid;gap:1rem">${nav}<progress value="${step+1}" max="6" aria-label="Character creation progress" style="width:100%">${step+1} of 6</progress>${body}<p class="muted">Varis house rules · Source descriptions retain draft and unresolved mechanics.</p></div>`,
         `<button type="button" data-action="builder-cancel">Cancel</button><button type="button" data-action="builder-back"${step === 0 ? " disabled" : ""}>Back</button>${step < steps.length-1 ? '<button type="button" class="primary" data-action="builder-next">Next</button>' : '<button type="button" class="primary" data-action="builder-finish">Save character</button>'}`);
     }
 
