@@ -15,6 +15,7 @@ SECTIONS = {
     "spells": "Spells",
     "conditions": "Conditions",
     "backgrounds": "Backgrounds",
+    "monsters": "Monster manual",
     "design-notes": "Design notes",
 }
 
@@ -127,10 +128,55 @@ def unwrapped(data, key):
     return mapping(data[key], key)
 
 
+def apply_summon_links(document, sections):
+    """Attach references only; imported creatures never replace a spell's mechanics."""
+    if mapping(document, "summon links document").keys() != {"summon_links"}:
+        raise ValueError("expected only summon_links")
+    spells = {(entry["group"], entry["name"]): entry for entry in sections["spells"]["entries"]}
+    monsters = {}
+    for entry in sections["monsters"]["entries"]:
+        if entry["name"] in monsters:
+            raise ValueError(f"ambiguous monster name {entry['name']!r}")
+        monsters[entry["name"]] = entry
+    seen = set()
+    for record in sequence(document["summon_links"], "summon_links"):
+        record = mapping(record, "summon link")
+        if record.keys() - {"spell", "group", "summons", "source_ref"}:
+            raise ValueError("unknown summon link fields")
+        identity = (record.get("group", ""), name_text(record.get("spell"), "spell"))
+        if identity not in spells:
+            raise ValueError(f"Unknown spell {identity!r}")
+        if identity in seen:
+            raise ValueError(f"duplicate summon link for {identity!r}")
+        seen.add(identity)
+        summons = sequence(record.get("summons"), "summons")
+        if not summons:
+            raise ValueError("summons must not be empty")
+        linked = set()
+        for summon in summons:
+            summon = mapping(summon, "summon")
+            if summon.keys() - {"monster", "label", "notes"}:
+                raise ValueError("unknown summon fields")
+            monster = name_text(summon.get("monster"), "monster")
+            if monster not in monsters:
+                raise ValueError(f"Unknown monster {monster!r}")
+            if monster in linked:
+                raise ValueError(f"duplicate monster {monster!r}")
+            linked.add(monster)
+        details = mapping(spells[identity]["details"], "spell details")
+        if "summons" in details:
+            raise ValueError(f"spell {identity!r} already defines summons")
+        details["summons"] = summons
+        if record.get("source_ref"):
+            details["summon_source"] = name_text(record["source_ref"], "source_ref")
+
+
 def compile_data(data_dir: Path) -> list[dict]:
     """Build entries in source order, reporting the filename on any invalid record."""
     sections = {key: {"key": key, "title": title, "entries": []} for key, title in SECTIONS.items()}
     seen = set()
+    summon_document = None
+    has_summon_document = False
     files = sorted(path for path in data_dir.rglob("*")
                    if path.is_file() and path.suffix.lower() in (".yml", ".yaml"))
     if not files:
@@ -139,6 +185,10 @@ def compile_data(data_dir: Path) -> list[dict]:
         path = file.relative_to(data_dir).as_posix()
         try:
             data = yaml.load(file.read_text(encoding="utf-8-sig"), Loader=RulesLoader)
+            if path == "summon-links.yaml":
+                summon_document = data
+                has_summon_document = True
+                continue
             for section, group, name, details in source_records(path, data):
                 if section not in sections:
                     raise ValueError(f"unknown section {section!r}")
@@ -156,4 +206,9 @@ def compile_data(data_dir: Path) -> list[dict]:
         except (KeyError, ValueError, TypeError, yaml.YAMLError) as exc:
             raise ValueError(f"{path}: {exc}") from exc
     sections["classes"]["entries"].sort(key=lambda entry: entry["group"] != "Base class")
+    if has_summon_document:
+        try:
+            apply_summon_links(summon_document, sections)
+        except (KeyError, ValueError, TypeError) as exc:
+            raise ValueError(f"summon-links.yaml: {exc}") from exc
     return list(sections.values())

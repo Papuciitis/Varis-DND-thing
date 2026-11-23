@@ -158,7 +158,7 @@ entries:
         * Silver blade dust - create 1 vial of silver blade dust for ap. When applied to a weapon, for the next 2d4 attacks, any damage it deals cannot be healed until after the wounded creature takes a short rest. When applied to a bolt or arrow, grant it the cursed damage effect and cause it to deal 3d8 extra necrotic damage.
         * Crystal powder - create 2d3 pouches of crystal powder for 1 AP. They can be thrown either as a flare into the air, or struck at the ground within 30 feet, creating a 15 ft sphere of dust at the point of impact, revealing invisible creatures. Once thrown they sparkle for 2d3 rounds. If fired from a launcher weapon, blinds targets on a critical hit for 2d3 rounds.
       * Tool preparation - do any of the following:
-        * Potion of the cat - create 1 potion of the cat for 1 AP. When consumed it grants the following effects for 3 hours: 60 feet of darkvision and gain 4 dice of the cat. A dice of the cat is a 1d4 that can be used to grant a bonus to an attack, a dexterity save, or a charisma save.
+        * Potion of the cat - create 1 potion of the cat for 1 AP. When consumed it grants the following effects for 3 hours: 60 feet of darkvision and gain 4 dice of the cat. A die of the cat is a 1d4 that can be used to grant a bonus to an attack, a dexterity save, or a charisma save.
         * Barbed ammunition - Modify 2d3 +wisdom bonus pieces of ammunition to deal an extra 1d6 damage, apply bleed on a critical, and have a 1d10<3 chance to apply bleed on other unblocked hits. A bolt cannot be modified by this more than once.
         * Exotic ammunition - modify 1d3 + wisdom bonus pieces of special ammunition, either arrows, bullets, or bolts for 1 AP. The ammunition ignores resistance, and deals 1d8 extra damage of your choice: fire, lightning, acid, or sonic. A piece of ammunition cannot be modified in this way more than once.
         * Specialized bolt - modify 1 piece of ammunition for 1 AP to expand its critical range by 3.
@@ -359,14 +359,14 @@ entries:
     body: |-
       At 7th ranger level, choose one monster slayer lodge to belong to (Subject to GM):
 
-      * Axe-brothers - You can spend 2 rest dice while under focus to increase a melee attacks damage dealt by 3d6 damage, and boost all it's damage dice by 1 dice size category. This is increased by 1d6 and a further size boost if it is against an enemy of choice.
+      * Axe-brothers - You can spend 2 rest dice while under focus to increase a melee attacks damage dealt by 3d6 damage, and boost all its damage dice by 1 dice size category. This is increased by 1d6 and a further size boost if it is against an enemy of choice.
       * Cult of steel - You can wield weapons 1 size category larger than your normal wielding limit, but while doing so you have 1 less reaction per round. Gain medium armor proficiency, or heavy if already proficient. Reduce bulk by 1.
       * Owlseye - You gain 120 ft of darkvision, and a +1 bonus to perception and arcana checks. While under the effects of focus, you have echosight at 90 ft range. Learn 1 minor and 1 major hex of choice. Upgrade one hex you know once. You can use wisdom as the casting modifier for hexes. Gain +1 max rest dice.
       * Snakescale - Gain a +1 bonus to dexterity, +1 bonus to ac, +5 movement speed, and +1 to block checks. Choose one:
         * Two fang method - You can perform the same maneuver with two light weapons you wield by spending a bonus action and an action.
         * Hydra style - You can choose to allow your off-hand weapon attacks to scale with wisdom, and to add your wisdom bonus to your off-hand weapon damage.
         * Lying in wait - You have a +1 bonus to d20 rolls while hidden, or when having stood still for at least a round.
-      * Thunder servants - You gain a +1 bonus to arcana and religion checks. You can spend 2 rest dice as an action to invoke the the aspect of storm and make a weapon attack. The attack requires 2 extra instance of block to negate, and deals 3d8 extra lightning damage. The lightning damage is halved on a block. On a critical strike, the target is stunned for 2d3 rounds. This ability has a 1d4<2 cooldown chance dice when used. The damage is increased to 6d8 when exposed to the elements during a storm (Subject to GM.)
+      * Thunder servants - You gain a +1 bonus to arcana and religion checks. You can spend 2 rest dice as an action to invoke the aspect of storm and make a weapon attack. The attack requires 2 extra instance of block to negate, and deals 3d8 extra lightning damage. The lightning damage is halved on a block. On a critical strike, the target is stunned for 2d3 rounds. This ability has a 1d4<2 cooldown chance dice when used. The damage is increased to 6d8 when exposed to the elements during a storm (Subject to GM.)
       * Wolfsfang - You gain 60 ft of darkvision, keen scent, and a +2 bonus to insight and survival checks. You have an extra attack.
   - heading: Target dissection
     body: |-
@@ -477,7 +477,7 @@ entries:
       * Extra spell points - If you have at least one spell point, increase your maximum by 1.
       * Extra ki - If you have Ki, increase your maximum Ki by 1.
       * Extra minor focus - choose an extra minor focus magic upgrade.
-      * Focus channeling - if you have Ki, you can spend 2 ki instead, or 1 ki and and 3 rest dice to cast a spell you know, casting it at 5th level.
+      * Focus channeling - if you have Ki, you can spend 2 ki instead, or 1 ki and 3 rest dice to cast a spell you know, casting it at 5th level.
       * General skill - Gain proficiency with 2 languages, 1 tool, 1 weapon group, 1 skill of choice, medium armor, and heavy shields.
       * Greater hex - Learn 1 major hex. Upgrade a hex. Upgrade a hex again.
       * Mana refinement - Gain +2 max AP. You can spend up to 3 AP when using mana tincture. When you do so, produce 1d4+1 mana tinctures instead.
@@ -492,7 +492,7 @@ entries:
     body: |-
       At 9th nomad level, either choose an extra wandering art mastery upgrade, or gain the following based on your wandering art choice:
 
-      * Hex mysteries - Learn a greater hex. upgrade every hex you know once. +1 to initiative.
+      * Hex mysteries - Learn a greater hex. Upgrade every hex you know once. +1 to initiative.
       * Occult focus - Learn a level 5 occult spell. You can cast it once per long rest while in focus. Uses wisdom or dexterity as the casting modifier, and the casting modifier is increased by 1. The spell is cast at 1/2 your character level (rounded up.)
       * Ki mysticism - +1 max Ki. Learn either an arcane, occult, or mystic cantrip and upgrade it twice. It can be cast while you have at least 1 Ki.
       * Expanded magic awareness - Learn a level 1, level 2, level 3, and level 4 spell. Each spell must be of a different class of magic. Gain a +1 bonus to arcana checks.

@@ -45,7 +45,7 @@ entries:
     Attacks & actions:
 
     * Wraith touch attack +8 - unblockable, 3d8 cold damage. Paralyze for 1d3 rounds on crit.
-    * Suppress - target in range makes wisdom save. on failure they have disadvantage on d20 rolls for 1d4 rounds.
+    * Suppress - target in range makes wisdom save. On failure they have disadvantage on d20 rolls for 1d4 rounds.
     * Seek - Immediately know the path to your target.
     * Fade - Become invisible until dispelled or making an attack.
     * Apparate - Teleport 100 ft. Increases to 300 ft when invisible.
@@ -171,7 +171,7 @@ entries:
   effect: |-
     As an action when below 4 HP or about to die, or as a reaction when being reduced to 0 HP, bless an ally within 30 ft, at the cost of losing 2 death save slots.
 
-    The affected ally is granted a temporary extra level (subject to the GM). and feat, which lasts until long rest.
+    The affected ally is granted a temporary extra level (subject to the GM) and feat, which lasts until long rest.
 - name: Vermin-form
   group: Occult spells
   lvl: '6'

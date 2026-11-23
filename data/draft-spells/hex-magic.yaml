@@ -261,7 +261,7 @@ entries:
     * You can add the following to the list of valid targets: Target 5 ft area within 15 ft of range.
     * You are no longer required to move in order to maintain the runes effect. The runes effect is however lost if you move further than 60 ft from the target.
     * When casting the hex, make an initial arcana check. If it is a success, the effect is suppressed (negated) for as long as you maintain concentration.
-    * You can take 1d2 damage to fatigue to cast the rune instead of a rest dice.
+    * You can take 1d2 damage to fatigue to cast the rune instead of a rest die.
     * You can cast it on a caster or creature originating a spell or magical effect. When doing so, you can instead spend an action, or bonus and move action to try and end the spell or effect. The target can make an arcana check vs your arcana check to try and negate it.
 - name: Rune of Njorn
   group: Major hexes
@@ -374,11 +374,11 @@ entries:
   effect: Spend 1 rest die, and create a semi-illusory decoy of yourself at the target tile within range.
     It lasts for 2d6 rounds, has a -3 to skill checks and saves, and deals 1/2 damage, cannot cast spells
     or hexes that are higher than lvl 2, has 0 rest dice, takes x3 damage, and behaves as you choose on
-    your turn, but does not share vision or perception with the you.
+    your turn, but does not share vision or perception with you.
   upgrades: |-
     * Grant the decoy +20 max HP. Repeatable.
     * Increase duration by 2d6 rounds. Repeatable.
-    * The decoy shares vision and perception, and has 1 rest die. Repeatable to grant an extra rest dice.
+    * The decoy shares vision and perception, and has 1 rest die. Repeatable to grant an extra rest die.
   draft_note: The casting line specifies bonus action and action, but the effect specifies bonus action.
     The action cost needs an author ruling.
 - name: Hex of death
@@ -410,7 +410,7 @@ entries:
   cooldown: 1d12 >10
   target: 10 ft surface tile
   range: 30 ft
-  effect: As a bonus action, spend a rest dice and sign a greater rune of Yjs at a target 10 ft square
+  effect: As a bonus action, spend a rest die and sign a greater rune of Yjs at a target 10 ft square
     area within range. Creatures within the area that died within 1 round are revived to 0hp. All creatures
     within the area are healed for 2d10 health and are allowed to remake another save vs an ongoing effect.
   upgrades: '* Increase healing by 1d10, and increase duration within which a target can be revived by
@@ -425,7 +425,7 @@ entries:
   cooldown: 1d12 >10
   target: 10 ft surface tile
   range: 30 ft
-  effect: As a bonus action, spend a rest dice and sign a greater rune of Wotan to channel at a target
+  effect: As a bonus action, spend a rest die and sign a greater rune of Wotan to channel at a target
     10 ft square area within range. Creatures within the area must make a dexterity save, taking a full
     4d10 + casting bonus lightning damage on a failure and half on a success.
   upgrades: |-

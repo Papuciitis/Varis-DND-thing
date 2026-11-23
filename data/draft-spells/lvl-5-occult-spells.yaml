@@ -52,7 +52,7 @@ entries:
     As a full round action, undergo a bestial transformation, which lasts 1 hour and grants the following benefits:
 
     * Abandoned by the light - You have disadvantage on d20 rolls during the day.
-    * Bestial claws - Your unarmed attacks deal an extra 2d6 slashing damage and can be used to climb and clink to surfaces. +1 to unarmed attacks.
+    * Bestial claws - Your unarmed attacks deal an extra 2d6 slashing damage and can be used to climb and cling to surfaces. +1 to unarmed attacks.
     * Bestial strength - You gain a +2 bonus to strength and constitution, you gain 1d6 temporary health at the start of each of your turns.
     * Cats eyes - Gain darkvision at a range of 300 ft and gain advantage on dexterity saves.
     * Great leap - You gain a jump distance of 90 ft and take no fall damage. Gain a +10 bonus to movement speed.
@@ -72,7 +72,7 @@ entries:
   range: 30 ft
   duration: permanent
   effect: |-
-    As a reaction to a creature making a promise or deal, force it to make two wisdom saves by spending a rest dice.
+    As a reaction to a creature making a promise or deal, force it to make two wisdom saves by spending a rest die.
 
     If it fails either, it is bound to execute the promise. If the promise is completed, you and the target both gain 3d10 arcane health.
 

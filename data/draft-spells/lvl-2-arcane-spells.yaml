@@ -101,7 +101,7 @@ entries:
     * Crawling cold - Make a crack of ice travel down a path of your choice up to as long as twice the range of the spell. Creatures that cross the path of ice at least once take 2d6 + casting bonus cold damage, halved on a strength save. On a failed strength save, creatures affected are hobbled for 1d4 rounds. Tiles along the path of the ice become difficult terrain.
     * Frost-mail - Conjure an enchanted armor of ice on a target creature which lasts 1d4 minutes. The armor requires medium or heavy armor proficiency. It can overlap their existing armor. The target takes 1d6 cold damage and 2 temporary block, as they are enchanted. For the duration of the armor, the target gains cold and fire damage resistance, and grants them a +4 bonus to checks and saves made to retain their footing, avoid being moved, avoid being knocked prone. Per spell level above 2nd, the frost-mail also grants a +1 bonus to AC.
     * Nullpoint - Cause heat collapse at a point within twice the range of the spell. Creatures take 1d6 cold damage per your casting modifier at the target point, and 1d6 less per 5 ft of distance from the point. Affected creatures can make a constitution save to halve the damage. If a large or smaller creature at the tile directly on top of the target point critically fails the save, it is frozen solid.
-    * Cryomancy crystal - Conjure a cryomancy crystal at target area within range, which lasts until melted or destroyed. Cryomancy spells and ice magic spells (subject to the GM). cast within 10 ft of the crystal are increased by 1 spell level. Sigils, runes, and arcane script based magic within 20 ft of the cryomancy crystal gains a +1 bonus to their effect DC. A cryomancy crystal occupies the middle of a 5 ft tile and counts as a small ice object with 20 hp.
+    * Cryomancy crystal - Conjure a cryomancy crystal at target area within range, which lasts until melted or destroyed. Cryomancy spells and ice magic spells (subject to the GM) cast within 10 ft of the crystal are increased by 1 spell level. Sigils, runes, and arcane script based magic within 20 ft of the cryomancy crystal gains a +1 bonus to their effect DC. A cryomancy crystal occupies the middle of a 5 ft tile and counts as a small ice object with 20 hp.
     * Rip energy - Cause creatures in a cone to make a wisdom save. Creatures that fail the save take 2d6 cold damage and 2d6 necrotic damage, and have the ongoing durations of their spells or spell effects reduced by 1 unit (rounds, turns, minutes, etc) for 1 minute.
   higher_levels: Per level above 2nd, increase damage dealt by 1d6, durations by 1 instance (rounds or
     minutes,) and range increased by 10 ft.
@@ -118,7 +118,7 @@ entries:
 
     * Flame aura - Enchant target creature within reach. For the next minute, creatures that enter within 5 ft of the enchanted creature or start their turn within 5 ft must make a constitution save, taking 2d6 fire damage on a failed and half on a success. For the duration, the target reduces fire and cold damage taken by 2d4.
     * Fireweave - As a reaction, either redirect a fire damage dealing effect (ray, spell attack, or projectile) targeting you or a creature within 5 ft of you by attempting to contest it with an arcana check. On a successful check, you can retarget the spell to your liking (subject to the GM. Should typically not allow more than 180 degree change in trajectory.)
-    * Chaotic fire wisps - Remain stationary and project flaming wisps from your palm in a 25 ft cone, blasting 1d4 + 1 chaotic fire wisps, each dealing 1d8 + casting bonus damage. roll 1d3 for each wisp, on a 2 or 3 you can control where it lands, but on a 1 it is chaotic (Subject to gm.) You may make a concentration check to attempt to maintain this spell, repeating it again on the next turn so long as you now do not move and maintain concentration.
+    * Chaotic fire wisps - Remain stationary and project flaming wisps from your palm in a 25 ft cone, blasting 1d4 + 1 chaotic fire wisps, each dealing 1d8 + casting bonus damage. Roll 1d3 for each wisp, on a 2 or 3 you can control where it lands, but on a 1 it is chaotic (Subject to gm.) You may make a concentration check to attempt to maintain this spell, repeating it again on the next turn so long as you now do not move and maintain concentration.
     * Pyromantic flame - Conjure a chaotic arcane fire rune in your palm. For the next 1d4+2 rounds, you can retain the rune and while holding it, launch flame in a 15 ft ray, forcing creatures to take 2d6 + casting bonus fire damage, making a dex save to try and halve it, but taking double damage on a critical failure.
     * Emberscar- Cause a 4d4 + casting bonus worth of 5 ft tiles to ignite in a drawn line of your choice, starting from a tile within 5 ft of you. The path cannot overlap itself. Creatures on the path take 1d6 fire when it is cast, and the surfaces become difficult terrain that deals 1 fire damage to creatures walking through it.
     * Molten projectile - Make a 40/80 ft spell attack vs a target creature, dealing 3d6 + casting bonus fire damage to it. On a critical strike, it explodes, splashing all creatures within 10 ft with 3d6 fire damage, and half on a successful dexterity save.
@@ -219,7 +219,7 @@ entries:
   duration: special
   range: 30 feet
   effect: 'As an action, cause a creature within 30 feet to be cursed. The creature must make a wisdom
-    save. On a failure, they are made either: blind, mute, or deaf. The effect lasts for for 1 hour. On
+    save. On a failure, they are made either: blind, mute, or deaf. The effect lasts for 1 hour. On
     a critical failure, the effect becomes permanent, and it can no longer be dismissed, but can still
     be dispelled by other magic.'
 - name: Lesser skeleton
@@ -271,7 +271,7 @@ entries:
 
     Creatures that fail strength based checks made to break the conjured restraints take a level of fatigue.
 
-    A metal key is required to cast this spell. Once cast, the key will can be used to unlock any restraints or barriers created by the spell. A single turn of the key will completely undo them all. The restraints cannot be dismissed, but they can be dispelled.
+    A metal key is required to cast this spell. Once cast, the key can be used to unlock any restraints or barriers created by the spell. A single turn of the key will completely undo them all. The restraints cannot be dismissed, but they can be dispelled.
 - name: Moonsickness
   group: Arcane spells
   lvl: '2'
@@ -292,7 +292,7 @@ entries:
   duration: special
   range: special
   effect: |-
-    As an action, target an area within 40 feet. On your next turn, you can make a spell attack against a creature within 60 feet of the targeted point as a bonus action, dealing 4d6 + casting bonus lightning damage. the damage cannot be blocked.
+    As an action, target an area within 40 feet. On your next turn, you can make a spell attack against a creature within 60 feet of the targeted point as a bonus action, dealing 4d6 + casting bonus lightning damage. The damage cannot be blocked.
 
     if you do not make the attack, you must make a concentration check. On a failure, you take 2d6 lightning damage.
 

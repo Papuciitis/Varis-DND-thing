@@ -135,7 +135,7 @@ entries:
 
     4. Range check: Make a second arcana checks vs the DC of the circle, determining the range that the conjuration can reach to search for the target object:
 
-    * Critical failure - Spell fizzles unless previous check was at least a success.Otherwise treat as failure.
+    * Critical failure - Spell fizzles unless previous check was at least a success. Otherwise treat as failure.
     * Failure - Spells range is limited to a maximum of 1 mile.
     * Success - Spells range can be global.
     * Critical success - Spells range can be planar.

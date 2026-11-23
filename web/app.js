@@ -6,18 +6,25 @@
   const trail = byId("trail");
   const search = byId("search");
   const picker = byId("section-picker");
-  const sections = globalThis.DND_CATALOG || [];
-  const sectionByKey = new Map(sections.map(s => [s.key, s]));
+  const portable = globalThis.DND_CATALOG;
+  const catalog = globalThis.DndCatalog || {
+    ready: Promise.resolve(portable || []),
+    loadSection: key => Promise.resolve((portable || []).find(section => section.key === key)),
+    loadAll: () => Promise.resolve(portable || [])
+  };
+  const sections = [];
+  const sectionByKey = new Map();
+  const loadedSections = new Set();
+  const sectionRequests = new Map();
   const perPage = 24;
   const collate = new Intl.Collator("en", {numeric: true, sensitivity: "base"});
   const families = [
     ["Characters", ["classes", "races", "backgrounds", "feats"]],
     ["Magic & equipment", ["spells", "items", "weapon-rules"]],
-    ["At the table", ["rules", "conditions", "design-notes"]]
+    ["At the table", ["rules", "conditions", "monsters", "design-notes"]]
   ];
-  const assigned = new Set(families.flatMap(([, keys]) => keys));
-  const other = sections.filter(s => !assigned.has(s.key));
-  if (other.length) families.push(["More sections", other.map(s => s.key)]);
+  let initialized = false;
+  let initializing;
 
   function el(tag, className, content) {
     const node = document.createElement(tag);
@@ -55,18 +62,20 @@
     return value || (/\bcantrips?\b/i.test(entry.group) ? "0" : "");
   }
   const levelLabel = value => "Level " + value;
-  const all = sections.flatMap(section => section.entries.map(entry => {
-    const name = norm(entry.name);
-    const lead = norm([entry.name, entry.group, section.title].join(" "));
-    const body = norm(JSON.stringify(entry.details) ?? "").replace(/\\n/g, " ");
-    return {section, entry, name, lead, text: lead + " " + body};
-  }));
-  const dataBySection = new Map(sections.map(s => [s.key, all.filter(item => item.section === s)]));
+  let all = [];
+  const dataBySection = new Map();
   function browseGroup(section, name) {
     return section.key === "classes" ? name.replace(/ archetype$/i, " archetypes") : name;
   }
   const groupsBySection = new Map();
-  for (const section of sections) {
+  function indexSection(section) {
+    dataBySection.set(section.key, section.entries.map(entry => {
+      const name = norm(entry.name);
+      const lead = norm([entry.name, entry.group, section.title].join(" "));
+      const body = norm(JSON.stringify(entry.details) ?? "").replace(/\\n/g, " ");
+      return {section, entry, name, lead, text: lead + " " + body};
+    }));
+    all = sections.flatMap(section => dataBySection.get(section.key) || []);
     const groups = new Map();
     for (const entry of section.entries) {
       const group = browseGroup(section, entry.group);
@@ -74,6 +83,45 @@
     }
     groupsBySection.set(section.key, [...groups].sort(([a], [b]) =>
       Number(b === "Base class") - Number(a === "Base class") || collate.compare(a, b)));
+  }
+  function initialize() {
+    if (initialized) return Promise.resolve();
+    if (initializing) return initializing;
+    initializing = Promise.resolve(catalog.ready).then(manifest => {
+      sections.push(...manifest);
+      for (const section of sections) {
+        sectionByKey.set(section.key, section);
+        if (!globalThis.DndCatalog || catalog.isLoaded?.(section.key) || section.entries.length || section.count === 0) {
+          loadedSections.add(section.key);
+          indexSection(section);
+        }
+      }
+      const assigned = new Set(families.flatMap(([, keys]) => keys));
+      const other = sections.filter(section => !assigned.has(section.key));
+      if (other.length) families.push(["More sections", other.map(section => section.key)]);
+      for (const [family, keys] of families) {
+        const group = el("optgroup");
+        group.label = family;
+        for (const key of keys) {
+          const section = sectionByKey.get(key);
+          if (section) group.append(new Option(section.title, section.key));
+        }
+        if (group.childElementCount) picker.append(group);
+      }
+      initialized = true;
+    }).catch(error => { initializing = null; throw error; });
+    return initializing;
+  }
+  function loadSection(key) {
+    if (loadedSections.has(key)) return Promise.resolve(sectionByKey.get(key));
+    if (sectionRequests.has(key)) return sectionRequests.get(key);
+    const request = Promise.resolve().then(() => catalog.loadSection(key)).then(section => {
+      loadedSections.add(key);
+      indexSection(section);
+      return section;
+    }).finally(() => sectionRequests.delete(key));
+    sectionRequests.set(key, request);
+    return request;
   }
   function matching(items, query) {
     const q = norm(query);
@@ -119,7 +167,7 @@
       if (!members.length) continue;
       const shelf = el("section", "shelf");
       shelf.append(el("h2", "", family));
-      for (const s of members) shelf.append(panelLink(s.title, s.entries.length, {section: s.key}));
+      for (const s of members) shelf.append(panelLink(s.title, s.count ?? s.entries.length, {section: s.key}));
       grid.append(shelf);
     }
     reader.append(header, grid);
@@ -188,12 +236,17 @@
     const level = params.level || "";
     const filter = params.filter || "";
     const grouped = groups.filter(([name]) => name);
-    const groupedView = grouped.length > 1 && !group && !level && !filter && !params.browse;
+    const baseClassView = section.key === "classes" && !group && !level && !filter && !params.browse;
+    const groupedView = section.key !== "classes" && grouped.length > 1 && !group && !level && !filter && !params.browse;
     const parts = [[section.title, group ? base : null]];
     if (group) parts.push([cap(group), null]);
     crumbs(parts);
     const head = el("header", "index-heading");
     head.append(heading(group ? cap(group) : section.title));
+    if (baseClassView) {
+      head.append(el("p", "index-intro", "Choose a class to read its features and archetypes."));
+      head.append(link("Browse all class entries →", {...base, browse: "all"}, "text-link"));
+    }
     reader.append(head);
     const form = el("form", "filters");
     form.setAttribute("role", "search");
@@ -215,7 +268,7 @@
       event.preventDefault();
       setFilter(input.value, true);
     });
-    if (grouped.length > 1) {
+    if (grouped.length > 1 && !baseClassView) {
       const [field, select] = labelledSelect("Group", "group");
       select.append(new Option("All groups", ""));
       for (const [title] of grouped) select.append(new Option(cap(title), title));
@@ -252,8 +305,9 @@
       }
     } else {
       const rows = dataBySection.get(section.key).filter(({entry}) =>
+        (!baseClassView || entry.group === "Base class") &&
         (!group || browseGroup(section, entry.group) === group) && (!level || spellLevel(entry) === level));
-      reader.append(resultList(matching(rows, filter), params));
+      reader.append(resultList(matching(rows, filter), baseClassView ? {...params, group: "Base class"} : params));
     }
   }
   function globalResults(params) {
@@ -407,6 +461,7 @@
     const chapters = [];
     for (const [key, item] of Object.entries(value)) {
       if ((key === "name" && item === entry.name) || (key === "group" && item === entry.group)) continue;
+      if (key === "summons") continue;
       if (key === "sections" && isSections(item)) { chapters.push(...item); continue; }
       if (key === "draft_note" && plain(item)) {
         const note = el("aside", "draft-note");
@@ -459,11 +514,7 @@
   function classLinks(section, entry) {
     const nav = el("nav", "related");
     nav.setAttribute("aria-label", "Related class entries");
-    if (entry.group === "Base class") {
-      const groupName = entry.name + " archetypes";
-      const group = groupsBySection.get(section.key).find(([name]) => norm(name) === norm(groupName));
-      if (group) nav.append(link("Browse " + groupName, {section: section.key, group: group[0]}, "related-link"));
-    } else {
+    if (entry.group !== "Base class") {
       const parent = section.entries.find(e => e.group === "Base class" &&
         norm(browseGroup(section, entry.group)) === norm(e.name + " archetypes"));
       if (parent) nav.append(link("Base class · " + cap(parent.name), entryRoute(section, parent), "related-link"));
@@ -475,6 +526,121 @@
       if (other) nav.append(link(cap(other.name), entryRoute(section, other), "related-link"));
     }
     return nav;
+  }
+  function classArchetypes(section, entry) {
+    if (entry.group !== "Base class") return null;
+    const children = section.entries.filter(child => norm(browseGroup(section, child.group)) === norm(entry.name + " archetypes"))
+      .sort((a, b) => collate.compare(a.name, b.name));
+    if (!children.length) return null;
+    const block = el("section", "class-archetypes");
+    block.append(el("h2", "", cap(entry.name) + " archetypes"));
+    const list = el("ul", "archetype-list");
+    for (const child of children) {
+      const item = el("li");
+      item.append(link(cap(child.name), entryRoute(section, child)));
+      list.append(item);
+    }
+    block.append(list);
+    return block;
+  }
+  function monsterBlock(entry, depth = 2) {
+    const block = el("div", "stat-block");
+    const value = entry.details || {};
+    const known = new Set(["name", "group", "meta", "size", "type", "alignment", "abilities", "traits", "actions", "bonus_actions", "reactions", "legendary_actions", "notes", "source_ref", "status", "description", "desc"]);
+    if (value.status) block.append(el("p", "monster-status", value.status));
+    const meta = value.meta || [value.size, value.type, value.alignment].filter(Boolean).join(" · ");
+    if (meta) block.append(plain(meta) ? el("p", "monster-meta", meta) : renderValue(meta, depth));
+    const statLabels = {ac: "Armor class", hp: "Hit points", block: "Block", speed: "Speed", cr: "Challenge"};
+    const stats = el("dl", "stats monster-stats");
+    for (const [key, title] of Object.entries(statLabels)) {
+      known.add(key);
+      if (value[key] == null || value[key] === "") continue;
+      const item = el("div");
+      const description = el("dd");
+      description.append(renderValue(value[key], depth + 1));
+      item.append(el("dt", "", title), description);
+      stats.append(item);
+    }
+    if (stats.childElementCount) block.append(stats);
+    const abilities = el("dl", "stats monster-abilities");
+    for (const [key, title] of Object.entries({str:"Strength", dex:"Dexterity", con:"Constitution", int:"Intelligence", wis:"Wisdom", cha:"Charisma"})) {
+      if (value.abilities?.[key] == null) continue;
+      const item = el("div");
+      const score = el("dd");
+      score.append(renderValue(value.abilities[key], depth + 1));
+      item.append(el("dt", "", title), score);
+      abilities.append(item);
+    }
+    if (abilities.childElementCount) block.append(abilities);
+    if (value.description || value.desc) block.append(prose(value.description || value.desc));
+    for (const key of ["traits", "actions", "bonus_actions", "reactions", "legendary_actions"]) {
+      if (value[key]?.length) block.append(textField(key, value[key], depth));
+    }
+    for (const [key, item] of Object.entries(value)) {
+      if (!known.has(key) && item != null && item !== "") block.append(textField(key, item, depth));
+    }
+    if (value.notes?.length) block.append(textField("notes", value.notes, depth));
+    if (value.source_ref) block.append(textField("source_ref", value.source_ref, depth));
+    return block;
+  }
+  function summonPicker(entry) {
+    const references = entry.details?.summons;
+    if (!Array.isArray(references) || !references.length) return null;
+    const section = sectionByKey.get("monsters");
+    const block = el("section", "summon-picker");
+    block.setAttribute("aria-label", "Summoned creatures");
+    block.append(el("h2", "", "Summoned creatures"));
+    const tools = el("div", "summon-controls");
+    const previous = el("button", "button-link", "Previous");
+    const next = el("button", "button-link", "Next");
+    previous.type = next.type = "button";
+    const count = el("span", "summon-position");
+    count.setAttribute("aria-live", "polite");
+    tools.append(previous, count, next);
+    const track = el("div", "summon-track");
+    track.tabIndex = 0;
+    track.setAttribute("role", "region");
+    track.setAttribute("aria-label", "Creature stat blocks; swipe or use Previous and Next");
+    const cards = references.map(reference => {
+      const card = el("article", "summon-card");
+      const monster = section?.entries.find(candidate => norm(candidate.name) === norm(reference.monster));
+      const title = el("h3", "summon-title");
+      if (monster) title.append(link(reference.label || cap(monster.name), entryRoute(section, monster)));
+      else title.textContent = reference.label || reference.monster;
+      card.append(title);
+      if (reference.notes) card.append(prose(reference.notes));
+      if (monster) card.append(monsterBlock(monster, 4));
+      else card.append(el("p", "state-message", "This creature's stat block is not available yet."));
+      track.append(card);
+      return card;
+    });
+    let index = 0;
+    function update(nextIndex) {
+      index = Math.max(0, Math.min(cards.length - 1, nextIndex));
+      previous.disabled = index === 0;
+      next.disabled = index === cards.length - 1;
+      count.textContent = (index + 1) + " of " + cards.length;
+    }
+    function move(delta) {
+      update(index + delta);
+      track.scrollTo({left: cards[index].offsetLeft ?? index * track.clientWidth, behavior: "smooth"});
+    }
+    previous.addEventListener("click", () => move(-1));
+    next.addEventListener("click", () => move(1));
+    track.addEventListener("scroll", () => {
+      const step = cards[1]?.offsetLeft || track.clientWidth;
+      if (step) update(Math.round(track.scrollLeft / step));
+    });
+    track.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        move(event.key === "ArrowLeft" ? -1 : 1);
+      }
+    });
+    update(0);
+    if (cards.length > 1) block.append(tools);
+    block.append(track);
+    return block;
   }
   function showEntry(section, entry) {
     const base = {section: section.key};
@@ -489,7 +655,14 @@
       if (links.childElementCount) header.append(links);
     }
     reader.append(header);
-    details(entry);
+    if (section.key === "classes") {
+      const archetypes = classArchetypes(section, entry);
+      if (archetypes) reader.append(archetypes);
+    }
+    if (section.key === "monsters") reader.append(monsterBlock(entry));
+    else details(entry);
+    const summons = summonPicker(entry);
+    if (summons) reader.append(summons);
     const footer = el("footer", "entry-footer");
     if (entry.source) {
       const source = el("p", "source-file", "Source file ");
@@ -498,45 +671,84 @@
     }
     if (footer.childElementCount) reader.append(footer);
   }
-  function draw() {
+  let drawVersion = 0;
+  function loading(title) {
+    reader.replaceChildren();
+    reader.className = "";
+    reader.setAttribute("aria-busy", "true");
+    crumbs([]);
+    reader.append(heading(title), el("p", "state-message", "Loading rules…"));
+  }
+  function loadError(section) {
+    reader.replaceChildren();
+    reader.className = "";
+    crumbs([]);
+    reader.append(heading("Rules unavailable"), el("p", "state-message", "We could not load " + (section?.title || "the compendium") + ". Check your connection and try again."));
+    const retry = el("button", "button-link", initialized ? "Try again" : "Reload compendium");
+    retry.type = "button";
+    retry.addEventListener("click", () => initialized ? draw() : location.reload());
+    reader.append(retry);
+    if (location.protocol === "file:") {
+      const message = el("p", "state-message", "For browsing downloaded files, use the ");
+      const offline = el("a", "text-link", "offline compendium");
+      offline.href = "offline/index.html";
+      message.append(offline, document.createTextNode("."));
+      reader.append(message);
+    }
+  }
+  async function draw() {
+    const version = ++drawVersion;
     const oldInput = document.activeElement?.id;
     const selection = oldInput === "section-search" ? [document.activeElement.selectionStart, document.activeElement.selectionEnd] : null;
     const params = Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
-    const section = sectionByKey.get(params.section);
-    reader.replaceChildren();
-    reader.className = "";
-    byId("announcement").textContent = "";
-    picker.value = section?.key || "";
-    if (search.value.trim() !== (params.q || "")) search.value = params.q || "";
-    if (params.q) {
-      globalResults(params);
-    } else if (section && params.entry) {
-      const entry = section.entries.find(e => e.name === params.entry && (!params.group || e.group === params.group));
-      if (entry) {
-        reader.className = "article";
-        showEntry(section, entry);
-      } else {
-        crumbs([[section.title, {section: section.key}], ["Entry unavailable", null]]);
-        reader.append(heading("Entry unavailable"), link("Browse " + section.title, {section: section.key}, "text-link"));
+    let section;
+    try {
+      if (!initialized) loading("Loading compendium");
+      await initialize();
+      if (version !== drawVersion) return false;
+      section = sectionByKey.get(params.section);
+      picker.value = section?.key || "";
+      if (search.value.trim() !== (params.q || "")) search.value = params.q || "";
+      const required = params.q ? (sectionByKey.has(params.scope) ? [params.scope] : sections.map(item => item.key)) : section ? [section.key] : [];
+      if (required.some(key => !loadedSections.has(key))) {
+        loading(params.q ? "Loading search" : "Loading " + section.title.toLowerCase());
+        await Promise.all(required.map(loadSection));
+        if (version !== drawVersion) return false;
       }
-    } else if (section) directory(section, params);
-    else if (params.section) {
-      crumbs([["Section unavailable", null]]);
-      reader.append(heading("Section unavailable"), link("Open the compendium index", {}, "text-link"));
-    } else home();
-    if (selection && byId(oldInput)) {
-      byId(oldInput).focus({preventScroll: true});
-      byId(oldInput).setSelectionRange(...selection);
+      const entry = section && params.entry ? section.entries.find(e => e.name === params.entry && (!params.group || e.group === params.group)) : null;
+      if (!params.q && entry?.details?.summons?.length && sectionByKey.has("monsters") && !loadedSections.has("monsters")) {
+        loading("Loading summoned creatures");
+        await loadSection("monsters");
+        if (version !== drawVersion) return false;
+      }
+      reader.replaceChildren();
+      reader.className = "";
+      byId("announcement").textContent = "";
+      if (params.q) globalResults(params);
+      else if (section && params.entry) {
+        if (entry) {
+          reader.className = "article";
+          showEntry(section, entry);
+        } else {
+          crumbs([[section.title, {section: section.key}], ["Entry unavailable", null]]);
+          reader.append(heading("Entry unavailable"), link("Browse " + section.title, {section: section.key}, "text-link"));
+        }
+      } else if (section) directory(section, params);
+      else if (params.section) {
+        crumbs([["Section unavailable", null]]);
+        reader.append(heading("Section unavailable"), link("Open the compendium index", {}, "text-link"));
+      } else home();
+      if (selection && byId(oldInput)) {
+        byId(oldInput).focus({preventScroll: true});
+        byId(oldInput).setSelectionRange(...selection);
+      }
+    } catch (error) {
+      if (version !== drawVersion) return false;
+      loadError(section);
+    } finally {
+      if (version === drawVersion) reader.setAttribute("aria-busy", "false");
     }
-  }
-  for (const [family, keys] of families) {
-    const group = el("optgroup");
-    group.label = family;
-    for (const key of keys) {
-      const section = sectionByKey.get(key);
-      if (section) group.append(new Option(section.title, section.key));
-    }
-    if (group.childElementCount) picker.append(group);
+    return true;
   }
   picker.addEventListener("change", () => openFilters({section: picker.value}));
   function searchAll() {
@@ -556,8 +768,7 @@
   });
   window.addEventListener("hashchange", () => {
     const keepFocus = document.activeElement === search;
-    draw();
-    if (!keepFocus) reader.focus({preventScroll: true});
+    draw().then(rendered => { if (rendered && !keepFocus) reader.focus({preventScroll: true}); });
     window.scrollTo(0, 0);
   });
   let closedForPrint = [];

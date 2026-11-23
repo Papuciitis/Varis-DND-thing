@@ -17,7 +17,7 @@ entries:
     * An animal companion has their hp increased by 1d10.
     * Allows the caster to speak with the animal companion while in sight of one another
     * The caster can cast other spells with a range of self or touch, as though the animal companion was the caster.
-    * The caster may dismiss the animal companion during a rest by spending a rest dice.
+    * The caster may dismiss the animal companion during a rest by spending a rest die.
 
     While the companion remains linked to the caster, the spell slot used is locked, and cannot be regained until the companion is either dismissed, or slain.
   higher_levels: If cast with a 2nd level spell slot, the animal companion can also take a feat (subject
@@ -168,7 +168,7 @@ entries:
   components: Verbal, Material (Bow and arrow)
   duration: instantaneous
   range: special
-  effect: As part of casting this spell, fire an arrow from a bow as a single attack attack. The shot
+  effect: As part of casting this spell, fire an arrow from a bow as a single attack. The shot
     suffers no range penalty, gains a +1 bonus to hit, deals an extra 1d6 damage, and the target has disadvantage
     on any block check against it. If this kills or knocks the target unconscious, the spell slot is not
     spent.

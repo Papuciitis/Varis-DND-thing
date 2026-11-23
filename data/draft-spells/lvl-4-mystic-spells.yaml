@@ -16,7 +16,7 @@ entries:
 
     When learning the spell, do one of the following:
 
-    * Pick a large beast who's form to take learn.
+    * Pick a large beast whose form to take learn.
     * Pick 2 medium beasts whose forms to learn.
     * Pick a medium and small beast whose forms to learn.
 
@@ -24,7 +24,7 @@ entries:
 
     You can end the effect at will.
   higher_levels: Per level above 4th, grant the beast form a +2 bonus to ability scores, grant it a +3
-    to a favored skill, and and extend the duration by 1 hour.
+    to a favored skill, and extend the duration by 1 hour.
 - name: Necrofungus
   group: Mystic spells
   lvl: '4'

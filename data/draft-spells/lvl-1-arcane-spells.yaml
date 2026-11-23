@@ -217,8 +217,8 @@ entries:
     As an action, conjure a tiny flying elemental wisp. It can be immediately told to either:
 
     * Follow a creature - if you can see the creature, or are keenly aware of them, the wisp will pursue it at a speed of 25 feet per round for 1d12 minutes.
-    * Bother a creature - If you can see the creature, or are keenly aware of them, the wisp will pursue the creature at a speed of 60 feet per round for 1 minute, and once it reaches it, the creature must make a dexterity save every round, for the next 1d6 rounds. On a failure, the creature is distracted for that round, and must remake any concentration concentration check.
-    * Protect a creature - If you can see the creature, or are keenly aware of them. the wisp will pursue the creature at a speed of 60 feet per round. Once it is reached, they can grant disadvantage to one incoming attack per turn.
+    * Bother a creature - If you can see the creature, or are keenly aware of them, the wisp will pursue the creature at a speed of 60 feet per round for 1 minute, and once it reaches it, the creature must make a dexterity save every round, for the next 1d6 rounds. On a failure, the creature is distracted for that round, and must remake any concentration check.
+    * Protect a creature - If you can see the creature, or are keenly aware of them, the wisp will pursue the creature at a speed of 60 feet per round. Once it is reached, they can grant disadvantage to one incoming attack per turn.
 
     A wisp cannot make any other actions. A creature can attempt to target the wisp with an attack. The wisp is always aware of its target, has an AC of 20, and an HP of 4. The wisp automatically fails all saves.
   higher_levels: When cast from a 2nd level spell slot, when told to bother a creature, the wisp will
@@ -232,7 +232,7 @@ entries:
   components: verbal, somatic, material (medium skeleton or decaying corpse)
   range: '15'
   effect: |-
-    As an action, animate an medium undead skeleton. The skeleton is subservient to you and can understand your commands, but cannot speak. The skeleton has the following stats:
+    As an action, animate a medium undead skeleton. The skeleton is subservient to you and can understand your commands, but cannot speak. The skeleton has the following stats:
 
     Type: medium undead, humanoid
 

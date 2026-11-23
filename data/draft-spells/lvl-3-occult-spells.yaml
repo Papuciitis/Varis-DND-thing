@@ -98,7 +98,7 @@ entries:
   effect: |-
     As an action, force a creature within 15 feet to make a wisdom save. On a failure, the target takes 4d8 + casting bonus psychic damage. On a success, they take half. If this kills the target, they are raised as a servant wisp for the caster.
 
-    A servant wisp can has an AC of 10, 2 health, a float speed of 20 feet, and can carry around one light object or tend to one simple task that the caster wishes, or can be used in place of an HP component of up to 1d4 HP in a spell.
+    A servant wisp has an AC of 10, 2 health, a float speed of 20 feet, and can carry around one light object or tend to one simple task that the caster wishes, or can be used in place of an HP component of up to 1d4 HP in a spell.
 
     A servant wisp can be consumed by the caster or an ally as an action to restore 1 rest die. Doing so also requires a successful charisma save, for creatures other than the caster. If the creature died on a critical failure, the wisp restores 1d2 rest dice and can be used up as a component of blood worth up to 1d8 HP.
 - name: Steal essence

@@ -132,7 +132,7 @@ entries:
   effect: |-
     As a full round action, conjure a greater elemental. Upon conjuration, make an arcana check vs its AC. On a success, it is your ally and recognizes you as having given it the gift of life. On a failure, it is impulsive, but will still take your orders for the next 3d4 turns.
 
-    Doing so requires you to lock a rest dice, preventing it from further use. The rest dice is restored once the elemental is dispelled or destroyed.
+    Doing so requires you to lock a rest die, preventing it from further use. The rest die is restored once the elemental is dispelled or destroyed.
   Greater elemental: |-
     Type: Large, Elemental, Golem
 
@@ -228,7 +228,7 @@ entries:
 
     * The target takes 7d8 psychic damage. If this reduces a target to 0 HP, they are cursed beset by a permanent reality illusion of your choice (subject to the GM).
     * The target acts and behaves as you desire for the next 1d6 turns. On critical failure, this becomes minutes.
-    * The target spends 6 hours in a mental realm of your making with you, in which you can choose to interact with the target as you wish (subject to the GM). and can result in applying the confused, shocked, sickened, weakened, and afraid condition for 1d4 hours afterwards. The entire experience lasts 1 turn in the real world.
+    * The target spends 6 hours in a mental realm of your making with you, in which you can choose to interact with the target as you wish (subject to the GM), and can result in applying the confused, shocked, sickened, weakened, and afraid condition for 1d4 hours afterwards. The entire experience lasts 1 turn in the real world.
 - name: Necrofex
   group: Arcane spells
   lvl: '6'
@@ -353,12 +353,12 @@ entries:
     * Inferno - Ignite any tile of choice in the area.
     * Labyrinthine - You can alter the terrain, causing it to weave, fold, and reform to create a maze of the caster's choosing.
     * Obscurity - The area is obscured by a fog, smoke, or mist of the caster's choice, obscuring vision beyond 10 ft. The caster can choose to swap two creatures that are lost in the obscured area places, or to transpose a creature from one place to another( so long as they are isolated in the mist ) as an action.
-    * Overgrowth - The flora and plant life of the domain grow rapidly and crackle with light.The area becomes difficult terrain for all creatures that are not the casters allies. The caster can spend an action or bonus action to cause all creatures within a 30 ft area of the zone to become snared, requiring a strength save as an action to break free, and taking 3d6 + casting bonus force damage if already snared within the target area.
+    * Overgrowth - The flora and plant life of the domain grow rapidly and crackle with light. The area becomes difficult terrain for all creatures that are not the casters allies. The caster can spend an action or bonus action to cause all creatures within a 30 ft area of the zone to become snared, requiring a strength save as an action to break free, and taking 3d6 + casting bonus force damage if already snared within the target area.
     * Reforming landscape - The caster can spend a full round action to reform the layout and inanimate structure of a 50 ft area within the affected area.
     * Rune scape - The area is completely transfected by arcane runes that twist and weave. All conjuration, illusion, enchantment, or divination spells that are cast within the area are increased by 1 level, and creatures hostile to the caster have a -2 penalty to saves vs spells.
     * Shielded domain - The realm is enveloped in a bubble of force, preventing the outside world from reaching in or vice versa. This does not apply to living creatures or their attire and belongings. This can prevent cave-ins, exposure to the vacuum, flooding, or similar events.
-    * Storm - The area causes an aurora above, a storm to quickly gather, and 4d8 damage lightning bolts to strike randomly within the affected zone at the start of every round (subject to the GM). and a great wind reduces movement speed by half for all creatures within. The caster can spend an action to force a creature to be struck by a lightning bolt, taking half damage on a successful save.
-    * Unstable domain - All teleportation and blink effects within the area automatically fail or misfire. Portals created within the area are wildly off (subject to the GM). and the area itself becomes a teleportation anchor, pulling in objects from elsewhere, depending on nearby conjuration magic peculiarities (subject to the GM). The caster can pull an object or from one area to another within the area as an action. This causes no damage.
+    * Storm - The area causes an aurora above, a storm to quickly gather, and 4d8 damage lightning bolts to strike randomly within the affected zone at the start of every round (subject to the GM), and a great wind reduces movement speed by half for all creatures within. The caster can spend an action to force a creature to be struck by a lightning bolt, taking half damage on a successful save.
+    * Unstable domain - All teleportation and blink effects within the area automatically fail or misfire. Portals created within the area are wildly off (subject to the GM), and the area itself becomes a teleportation anchor, pulling in objects from elsewhere, depending on nearby conjuration magic peculiarities (subject to the GM). The caster can pull an object or from one area to another within the area as an action. This causes no damage.
     * Wrinkled time - Time passes faster within the area. For every turn outside, three turns occur within.
 - name: Summon cosmic trigon
   group: Arcane spells
@@ -406,7 +406,7 @@ entries:
 
     A caster can choose to disregard arcane intuition to misfire a teleportation circle, though this is almost never a good idea (subject to the GM).
 
-    An teleportation circle linked to another circle must be of the same size.
+    A teleportation circle linked to another circle must be of the same size.
 - name: Tap the All-Mind
   group: Arcane spells
   lvl: '6'
@@ -426,7 +426,7 @@ entries:
 
     * A-wherness - You have the ability to gain a 100 ft birds-eye view, or a map layout view of any area where arcana is allowed to permeate, within a range of 1000 feet. You can choose any of the following: To see through material up to 15 feet, examine the concentration of any school or class of magic, examine the concentration of life, heat, kinds of material, or movement. When maintained, you can move the perspective by the spells range. You can also do this at a 1000 ft view with a mile range, or a mile high view at a 10 mile range.
     * B-ond - You can request to speak with a representative of any group that also has access to the all-mind (subject to the GM.) or to request to know how to reach them, which the all-mind provides (subject to the GM).
-    * C-now - You may ask a question that echoes in the vast chaos of the all-mind, and have it be answered as best as possible by another entity that has tapped it (subject to the GM). but in exchange for another answer request by that entity. Not answering properly throws you into d-consciousness exposure.
+    * C-now - You may ask a question that echoes in the vast chaos of the all-mind, and have it be answered as best as possible by another entity that has tapped it (subject to the GM), but in exchange for another answer request by that entity. Not answering properly throws you into d-consciousness exposure.
     * N-runes - You may perceive and read arcane notes left behind by other entities that have access to the all-mind, or you can attempt to delete a note (subject to the GM). A note can be attached to a location, creature, object, or can be timed by the author. The caster may choose to describe a magical items properties automatically in a note when doing so, and can make any note they create have structured rules-based behavior in terms of content and appearance (subject to the GM). They cannot exceed in size more than a 2 ft square.
 
     D-consciousness exposure: Lose the all-mind exposure condition, make a concentration check. Roll a d8 and gain the corresponding condition, and double its duration on a failed roll:

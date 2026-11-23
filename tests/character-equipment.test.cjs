@@ -247,12 +247,10 @@ test('equipping a zero-quantity item does not replace usable armor', () => {
   assert.deepEqual(plain(result.inventory.map(row => row.equipped)), [true, false]);
 });
 
-const builtCatalog = path.join(root, 'site', 'index.html');
+const builtCatalog = path.join(root, 'site', 'data', 'catalog-manifest.json');
 test('built catalog smoke derives real armor, shield and weapon records', {skip: !fs.existsSync(builtCatalog)}, () => {
   assert.equal(typeof browser.CharacterEquipment?.derive, 'function');
-  const match = fs.readFileSync(builtCatalog, 'utf8').match(/globalThis\.DND_CATALOG=(.*);\r?\n/);
-  assert.ok(match, 'built catalog must contain its compiled data');
-  const real = JSON.parse(match[1]);
+  const real = require('./helpers/catalog.cjs')();
   const items = real.find(section => section.key === 'items').entries;
   const gear = ['Plated armor suit', 'Tower shield', 'Dagger'].map(name => carried(items.find(entry => entry.name === name)));
   const result = browser.CharacterEquipment.derive({inventory: gear}, real, context());

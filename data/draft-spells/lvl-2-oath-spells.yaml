@@ -27,7 +27,7 @@ entries:
   effect: |-
     As an action, enchant a cloak, causing it to emanate light in a 30 ft radius, and granting a +1 bonus to AC to the wielder. The wielder of the cloak bestows disadvantage on melee attacks of opportunity made against the wielder.
 
-    Upcast: When cast using a 3rd level spell slot, if the caster is the wearer of the cloak, they can leap up to 60 feet by spending a rest dice as an action.
+    Upcast: When cast using a 3rd level spell slot, if the caster is the wearer of the cloak, they can leap up to 60 feet by spending a rest die as an action.
 - name: Cloak of mist
   group: Oath spells
   lvl: '2'
@@ -127,7 +127,7 @@ entries:
   duration: combat
   range: 80 feet
   effect: |-
-    As an action, enchant a bell or gong, and as a bonus action point to a creature within 80 feet. The creature must make a wisdom saving throw. on a failure, they are enchanted. You can toll the bell as a bonus action to do one of the following:
+    As an action, enchant a bell or gong, and as a bonus action point to a creature within 80 feet. The creature must make a wisdom saving throw. On a failure, they are enchanted. You can toll the bell as a bonus action to do one of the following:
 
     * The creature must spend an action groveling on its turn, or takes 1d8 psychic damage.
     * The creature must flee combat when possible, or it must make a wisdom save, becoming shocked until the start of their next turn on a failure.

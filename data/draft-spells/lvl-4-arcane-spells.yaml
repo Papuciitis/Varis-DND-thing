@@ -59,7 +59,7 @@ entries:
     * You can use any spell granted ability that would require you to use an action, move action, or bonus action as a free action instead once per round.
     * You can cast 1 extra cantrip as a free action once per round. Has a 1d3=1 cooldown chance.
     * You gain a +4 bonus to checks made to interact with magical artifacts or energies.
-    * You can spend a rest dice to detect magic in a 15 ft cone, highlighting schools of magic used. This cone can be moved and lasts up to 1 minute.
+    * You can spend a rest die to detect magic in a 15 ft cone, highlighting schools of magic used. This cone can be moved and lasts up to 1 minute.
     * You gain a +2 bonus to strength while wielding it.
   higher_levels: Per slot level used above 4th, grant an extra upgrade.
 - name: Arcfire
@@ -218,7 +218,7 @@ entries:
   duration: instant.
   range: 40 ft
   effect: |-
-    As an action, force a creature within range to make a wisdom or constitution save. On a failure, the target is entranced and remains still for 1 minute. Flying targets fall. For the duration, attacks against the target have advantage and it automatically fails dexterity and wisdom saves. While under this effect, the target is immune to psychic damage damage and other enchantment spells and effects.
+    As an action, force a creature within range to make a wisdom or constitution save. On a failure, the target is entranced and remains still for 1 minute. Flying targets fall. For the duration, attacks against the target have advantage and it automatically fails dexterity and wisdom saves. While under this effect, the target is immune to psychic damage and other enchantment spells and effects.
 
     If the target is attacked, the effect ends, and the target is shaken for 1 round.
 
@@ -298,7 +298,7 @@ entries:
   duration: instant.
   range: self, 400 ft.
   effect: As a full round action, teleport to an area within the structure you are in (subject to the
-    GM). up to a range of 500 ft. You can grab a creature or object to try and pull it with you, if it
+    GM), up to a range of 500 ft. You can grab a creature or object to try and pull it with you, if it
     is not attached to a far larger structure.
   higher_levels: At 5th level, range is increased to 2000 ft. At 6th level, you can transpose an object
     that is large or smaller( that you are aware of) to an adjacent location instead. Fails if the object
