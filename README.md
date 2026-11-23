@@ -33,7 +33,9 @@ Both outputs use the same rule definitions. The JSON and HTML are generated view
 
 ## Use and back up characters
 
-Use **New character** to open the six-step builder:
+The main sheet groups health and Block separately, with prominent current/max HP and compact secondary pools. Desktop puts ability scores in a side column; phones use a vertical layout and bottom tabs. Expand Death saves, Rest dice, Damage options, or Block & recovery rules when needed.
+
+Open **More**, then **New character**, to open the six-step builder:
 
 1. **Ancestry:** enter the character's details and level, then choose a race.
 2. **Class:** choose a class and the archetypes available at that level.
@@ -46,7 +48,7 @@ The builder works on a separate draft. **Cancel** discards its changes; nothing 
 
 Use the character picker to keep multiple characters. Saved-sheet edits autosave in the current browser on the current device. Storage depends on the page location and browser profile: a hosted page, a local file, a moved file, or another device may have separate saves. There is no account or automatic cross-device sync. Clearing browser data can remove saves.
 
-Use **Save backup** to download the selected character as JSON, and keep backups outside the repository. Use **Load backup** to move a character between page locations, browsers, or devices, including an optional move to a standalone copy. The launcher keeps the existing `site/character.html` location, so this update does not require moving local saves. Backups include a format version and rules fingerprint. Invalid or unsupported backups leave the current character intact; a different rules fingerprint prompts a rules review. If the browser cannot save, keep the page open and use **Save backup** to preserve your work.
+Open **More** for **Save backup** and **Load backup**. Save backup downloads the selected character as JSON; keep backups outside the repository. Load backup moves a character between page locations, browsers, or devices, including an optional move to a standalone copy. The launcher keeps the existing `site/character.html` location, so this update does not require moving local saves. Backups include a format version and rules fingerprint. Invalid or unsupported backups leave the current character intact; a different rules fingerprint prompts a rules review. If the browser cannot save, keep the page open and use Save backup to preserve your work.
 
 Builder-enabled characters automatically apply supported fixed passive modifiers from their race, class and selected features. Equipped armor and shields calculate AC, movement and Block values; equipped weapons supply attacks from the character's abilities, training and Vara weapon properties. Base scores and manual extra bonuses remain editable, and manual attacks can accompany generated attacks. Conditional abilities, active powers, spell costs, unresolved rules and nested upgrades with unimplemented prerequisites remain readable rules to apply manually.
 
