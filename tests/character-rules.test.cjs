@@ -10,7 +10,7 @@ const enginePath = path.join(root, 'web/character-rules.js');
 function setup() {
   assert.ok(fs.existsSync(enginePath), 'A rules engine must derive choices without permanently stacking bonuses');
   const context = vm.createContext({crypto: require('node:crypto').webcrypto});
-  for (const name of ['character-state.js', 'character-effects.js', 'character-equipment.js', 'character-rules.js']) {
+  for (const name of ['character-state.js', 'character-effects.js', 'character-equipment.js', 'character-casting.js', 'character-rules.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, 'web', name), 'utf8'), context);
   }
   const catalog = require('./helpers/catalog.cjs')();
@@ -55,6 +55,27 @@ test('level and parent class gate archetype features without deleting stored sel
   assert.ok(!rules.derive(c).features.some(f=>f.id==='a4'));
   c.level=4;let d=rules.derive(c);assert.ok(d.features.some(f=>f.id==='a4'));assert.ok(d.features.some(f=>f.id==='f4'));
   c.level=1;assert.ok(!rules.derive(c).features.some(f=>f.id==='a4'));assert.equal(c.build.archetypes[0],'arch');
+});
+
+test('real later archetypes expose effective feature unlocks without replacing source levels or stable IDs',()=>{
+  const {State,context}=setup();
+  const manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8'));
+  const metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8'));
+  const before=JSON.stringify(metadata);
+  const rules=context.CharacterRules.create(metadata,require('./helpers/catalog.cjs')());
+  for(const [className,archetypeName,featureName] of [['Sorcerer','Evoker','Evoker dice'],['Barbarian','Fury','Strife']]){
+    const cls=metadata.classes.find(item=>item.name===className),arch=metadata.archetypes.find(item=>item.name===archetypeName);
+    const source=arch.features.find(item=>item.name===featureName);
+    assert.equal(arch.minLevel,9);assert.equal(source.level,5);
+    const c=rules.enable(State.normalizeCharacter({level:9}));c.build.classId=cls.id;c.build.archetypes=['',arch.id];
+    const feature=rules.derive(c).features.find(item=>item.id===source.id);
+    assert.ok(feature,featureName+' is available when its archetype unlocks');
+    assert.equal(feature.requiredLevel,9);
+    assert.equal(feature.level,5,'the original source fallback remains unchanged');
+    assert.equal(feature.id,source.id);
+    c.level=8;assert.ok(!rules.derive(c).features.some(item=>item.id===source.id));
+  }
+  assert.equal(JSON.stringify(metadata),before,'derivation must not rewrite shared source metadata');
 });
 
 test('equipped armor and weapons use effective ancestry scores and disappear when unequipped',()=>{

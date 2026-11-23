@@ -11,7 +11,7 @@ function setup() {
   const file = path.join(root, 'web/character-builder.js');
   assert.ok(fs.existsSync(file), 'The character creator must provide a six-step draft wizard');
   const context = vm.createContext({crypto:require('node:crypto').webcrypto});
-  for (const name of ['character-state.js','character-effects.js','character-equipment.js','character-rules.js','character-builder.js']) {
+  for (const name of ['entry-order.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js']) {
     vm.runInContext(fs.readFileSync(path.join(root,'web',name),'utf8'),context);
   }
   const metadata = {
@@ -25,6 +25,17 @@ function setup() {
   return {builder,rules,State:context.CharacterState,shows,finished,cancelled,catalog};
 }
 const input=(builderPath,value,type='text')=>({dataset:{builderPath},value,type});
+
+test('feature and eligible archetype views use unlock levels before names',()=>{
+  const {builder,rules,State,shows}=setup();
+  rules.metadata.classes[0].features=[{id:'late',name:'A later feature',level:4,details:'Later',choices:[]},{id:'early',name:'Z first feature',level:1,details:'Early',choices:[]}];
+  rules.metadata.archetypes.reverse();
+  const c=rules.enable(State.createCharacter());c.level=7;c.build.classId='fighter';builder.start(c);
+  builder.handleAction('builder-step',{dataset:{builderStep:'3'}});
+  assert.ok(shows.at(-1)[1].indexOf('Z first feature')<shows.at(-1)[1].indexOf('A later feature'));
+  builder.handleAction('builder-step',{dataset:{builderStep:'1'}});
+  assert.ok(shows.at(-1)[1].indexOf('Early archetype')<shows.at(-1)[1].indexOf('Later archetype'));
+});
 
 test('wizard edits an isolated draft, preserves typing focus and cancels without saving',()=>{
   const {builder,State,shows,finished,cancelled}=setup();const c=State.createCharacter(),before=plain(c);

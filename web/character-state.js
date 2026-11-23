@@ -195,6 +195,16 @@
       }
       build.adjustments = record(build.adjustments, "Builder adjustments");
       for (const key of ["ac", "speed", "block", "blockCheck"]) build.adjustments[key] = integer(build.adjustments[key], key + " adjustment", 0, -limit);
+      if (build.casting !== undefined) {
+        const casting = build.casting = record(build.casting, "Casting settings");
+        if (casting.enabled !== undefined) casting.enabled = boolean(casting.enabled, "Automatic casting resources");
+        if (casting.maxSlotLevel != null) casting.maxSlotLevel = integer(casting.maxSlotLevel, "Maximum full-slot level", 1, 1, 20);
+        casting.spent = record(casting.spent, "Spent casting resources");
+        for (const key of Object.keys(casting.spent)) casting.spent[key] = integer(casting.spent[key], "Spent casting resource");
+        casting.exhausted = record(casting.exhausted, "Spent full slots");
+        for (const key of Object.keys(casting.exhausted)) casting.exhausted[key] = boolean(casting.exhausted[key], "Full slot exhaustion");
+        if (casting.migrationWarnings !== undefined) casting.migrationWarnings = array(casting.migrationWarnings, "Casting migration notes").map(value=>text(value,"Casting migration note"));
+      }
       build.health = record(build.health, "Health settings");
       const health = build.health;
       health.baseHP = integer(health.baseHP, "Base maximum HP", source.resources.hp.max);
@@ -235,7 +245,7 @@
     } catch {
       throw new Error("This file is not valid JSON. Choose a character sheet exported as JSON.");
     }
-    if (!envelope || envelope.format !== format) throw new Error("This file is not a Vara character sheet.");
+    if (!envelope || envelope.format !== format) throw new Error("This file is not a Varis character sheet.");
     if (!Number.isInteger(envelope.version) || envelope.version < 1) throw new Error("The file has an invalid character sheet version.");
     if (envelope.version > version) throw new Error("This file uses a newer character sheet version (" + envelope.version + ").");
     const value = record(envelope.character, "Saved character");

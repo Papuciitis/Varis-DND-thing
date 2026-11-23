@@ -209,6 +209,100 @@ class CharacterRulesTests(unittest.TestCase):
         after = next(item for item in self.catalog(sections)["classes"] if item["name"] == "Fighter")
         self.assertEqual(before["features"], after["features"])
 
+    def test_casting_profiles_exist_for_only_the_six_source_spellcasting_classes(self):
+        classes = self.catalog()["classes"]
+        self.assertEqual({item["name"] for item in classes if item.get("casting")},
+                         {"Bard", "Cleric", "Druid", "Occultist", "Sorcerer", "Wizard"})
+        self.assertTrue(all(item.get("casting") is None for item in classes
+                            if item["name"] in {"Alchemist", "Barbarian", "Fighter", "Monk", "Ranger", "Rogue"}))
+
+    def test_wizard_casting_exports_its_actual_slots_and_spellbook_rule(self):
+        casting = self.entry("classes", "Wizard").get("casting")
+        self.assertIsNotNone(casting, "Wizard slot tables must reach the character metadata")
+        self.assertEqual((casting["tradition"], casting["mode"]), ("arcane", "leveled"))
+        first = casting["progression"][0]
+        self.assertEqual(first["slots"], [{"level": 1, "max": 1}])
+        self.assertEqual(first["cantrips"], 1)
+        self.assertIsNone(first["knownSpells"])
+        self.assertEqual(casting["progression"][4]["slots"],
+                         [{"level": 1, "max": 3}, {"level": 2, "max": 2}, {"level": 3, "max": 1}])
+        self.assertEqual(casting["startingSpellbook"],
+                         {"base": 2, "ability": "int", "spellLevel": 1, "perAdditionalClassLevel": 1})
+        self.assertTrue(any("prepared" in warning.lower() for warning in casting["warnings"]))
+        self.assertIn("Spell slots by level", casting["sourceHeadings"])
+        self.assertTrue(any(item["name"] == "Arcane recovery" for item in casting["recovery"]))
+
+    def test_sorcerer_slots_and_metamagic_points_follow_separate_source_rules(self):
+        casting = self.entry("classes", "Sorcerer").get("casting")
+        self.assertIsNotNone(casting, "Sorcerer slot tables must reach the character metadata")
+        self.assertEqual(casting["progression"][0]["slots"], [{"level": 1, "max": 2}])
+        self.assertEqual(casting["progression"][1]["slots"], [{"level": 1, "max": 3}, {"level": 2, "max": 1}])
+        self.assertEqual(casting["progression"][1]["knownSpells"], 4)
+        self.assertEqual([row["cantrips"] for row in casting["progression"]], [2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5])
+        points = casting["pointResources"]
+        self.assertEqual(len(points), 1)
+        self.assertEqual((points[0]["id"], points[0]["minLevel"], points[0]["capacity"]),
+                         ("metamagic", 4, {"ability": "cha", "proficiency": True}))
+        self.assertIn("1d4+1", points[0]["recovery"][0]["details"])
+
+    def test_druid_casting_exports_slots_known_counts_and_original_recovery(self):
+        casting = self.entry("classes", "Druid").get("casting")
+        self.assertIsNotNone(casting, "Druid slot tables must reach the character metadata")
+        self.assertEqual((casting["tradition"], casting["mode"]), ("mystic", "leveled"))
+        third = casting["progression"][2]
+        self.assertEqual((third["slots"], third["knownSpells"], third["cantrips"]),
+                         ([{"level": 1, "max": 2}, {"level": 2, "max": 1}], 7, 2))
+        self.assertEqual(len(casting["progression"]), 12)
+        self.assertIn("combined spell level equal to 1/2 your druid level", casting["recovery"][0]["details"])
+
+    def test_occultist_separates_class_slot_count_from_character_slot_level(self):
+        occultist = self.entry("classes", "Occultist")
+        casting = occultist.get("casting")
+        self.assertIsNotNone(casting, "Occultist uses its own shared-level pool, not generic slots")
+        self.assertEqual((casting["tradition"], casting["mode"]), ("occult", "occult"))
+        self.assertEqual([row["slotCount"] for row in casting["progression"]], [2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7])
+        self.assertEqual(casting["slotLevelRule"], {"basis": "characterLevel", "divisor": 2, "rounding": "up"})
+        self.assertEqual((casting["progression"][4]["knownSpells"], casting["progression"][4]["cantrips"]), (6, 2))
+        reward = next(option for feature in occultist["features"] if feature["name"] == "Mark & reward"
+                      for group in feature["choices"] if group["label"] == "Reward"
+                      for option in group["options"] if option["name"] == "+2 max occult slots.")
+        self.assertEqual(casting["modifiers"], [{"optionId": reward["id"], "resource": "occultSlots", "amount": 2}])
+
+    def test_cleric_full_slot_counts_do_not_invent_a_maximum_slot_level(self):
+        casting = self.entry("classes", "Cleric").get("casting")
+        self.assertIsNotNone(casting, "Cleric full slots require distinct metadata")
+        self.assertEqual((casting["tradition"], casting["mode"]), ("oath", "full"))
+        self.assertEqual([row["slotCount"] for row in casting["progression"]], [2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5])
+        self.assertIsNone(casting["slotLevelRule"])
+        self.assertTrue(all(row["slots"] == [] for row in casting["progression"]))
+        self.assertTrue(any("maximum" in warning.lower() and "level" in warning.lower() for warning in casting["warnings"]))
+        self.assertIn("reducing the slots overall level", casting["recovery"][0]["details"])
+
+    def test_bard_uses_rest_dice_and_does_not_receive_an_invented_slot_pool(self):
+        casting = self.entry("classes", "Bard").get("casting")
+        self.assertIsNotNone(casting, "Bard casting consumes existing rest dice")
+        self.assertEqual((casting["tradition"], casting["mode"]), ("any", "rest-dice"))
+        self.assertTrue(all(row["slots"] == [] and row["slotCount"] is None for row in casting["progression"]))
+        self.assertEqual((casting["progression"][0]["knownSpells"], casting["progression"][-1]["knownSpells"]), (2, 8))
+        self.assertEqual(casting["maxCastLevelRule"], {"basis": "characterLevel", "divisor": 2, "rounding": "up"})
+        self.assertTrue(any("rounding" in warning.lower() for warning in casting["warnings"]))
+
+    def test_unconditional_archetype_slot_modifiers_reference_real_feature_ids(self):
+        catalog = self.catalog()
+        def feature_id(archetype_name, feature_name):
+            archetype = next(item for item in catalog["archetypes"] if item["name"] == archetype_name)
+            return next(item["id"] for item in archetype["features"] if item["name"] == feature_name)
+        for class_name, expected in (
+            ("Wizard", [{"featureId": feature_id("Court mage", "Extra spell slots"), "resource": "eachSlotLevel", "amount": 1}]),
+            ("Cleric", [{"featureId": feature_id("Oathspeaker", "Extra spell slot"), "resource": "fullSlots", "amount": 1}]),
+            ("Sorcerer", [{"featureId": feature_id("Wildmage", f"Raw power {roman}"), "resource": "slot", "level": level, "amount": 1}
+                          for level, roman in enumerate(("I", "II", "III", "IV"), 1)]),
+        ):
+            casting = next(item for item in catalog["classes"] if item["name"] == class_name).get("casting")
+            self.assertIsNotNone(casting)
+            self.assertEqual(casting["modifiers"], expected)
+            self.assertTrue(any("archetype" in warning.lower() for warning in casting["warnings"]))
+
 
 if __name__ == "__main__":
     unittest.main()

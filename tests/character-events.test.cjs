@@ -19,7 +19,7 @@ function boot(options={}){
   setTimeout(fn,ms){const id=++serial;timers.set(id,{fn,ms});return id;},
   clearTimeout(id){timers.delete(id);},
   localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v)},
-  DND_CATALOG:catalog,DND_RULES_VERSION:'test-rules'};
+  DND_CATALOG:catalog,DND_CHARACTER_RULES:options.metadata||{},DND_RULES_VERSION:'test-rules'};
  function fire(target,type,extra={}){const e={target,type,preventDefault(){},...extra};for(let n=target;n;n=n.parent)for(const l of n.listeners?.[type]||[])l(e);}
  function camel(s){return s.replace(/-([a-z])/g,(_,c)=>c.toUpperCase());}
  class E{
@@ -56,13 +56,101 @@ function boot(options={}){
    async loadBuilder(){requests.push('builder');return {};},
    async loadSection(key){requests.push(key);if(options.delay)await options.delay(key);const section=sections.find(item=>item.key===key);section.entries=catalog.find(item=>item.key===key).entries;loaded.add(key);return section;}};
  }
- const g=vm.createContext(context);for(const name of ['character-state.js','character-effects.js','character-equipment.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
+ const g=vm.createContext(context);for(const name of ['entry-order.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
  const q=(selector)=>{const n=document.querySelector(selector);assert(n,'missing control '+selector);return n;};
  const field=p=>q('[data-path="'+p+'"]');const action=(act,extra='')=>q('[data-action="'+act+'"]'+extra);
  function set(n,v,change=true){if(n.type==='checkbox')n.checked=v;else n.value=v;fire(n,'input');if(change)fire(n,'change');}
  function flush(){for(const [k,t] of [...timers])if(t.ms<=500){timers.delete(k);t.fn();}}
  return {q,field,action,fire,set,flush,downloads,document,context,requests};
 }
+
+test('spell views and slot rows sort by numeric level without changing saved edit targets',()=>{
+ storage.clear();const base=boot();
+ const all=catalog.find(s=>s.key==='spells').entries;
+ const inferred=e=>e.details.lvl??(/cantrip/i.test(e.group)?0:null);
+ const chosen=[all.find(e=>String(inferred(e))==='6'),all.find(e=>String(inferred(e))==='0'),all.find(e=>String(inferred(e))==='1')];
+ const seed=base.context.CharacterState.normalizeCharacter({id:'ordered',spells:chosen.map((e,i)=>({id:'spell'+i,name:e.name,entryId:JSON.stringify(['spells',e.group,e.name])})),spellSlots:[{level:3,current:1,max:2},{level:1,current:2,max:4},{level:2,current:3,max:3}]});
+ storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));const h=boot();
+ const names=()=>h.q('#pane-spells').querySelectorAll('.list-card-title').map(e=>e.textContent);
+ assert.deepEqual(names(),[chosen[1].name,chosen[2].name,chosen[0].name]);
+ assert.deepEqual(h.q('#pane-spells').querySelectorAll('[data-slot-index]').map(e=>Number(e.dataset.slotIndex)),[1,2,0]);
+ h.set(h.q('#spell-sort'),'name');assert.deepEqual(names(),chosen.map(e=>e.name).sort((a,b)=>a.localeCompare(b)));
+ h.set(h.field('spellSlots.1.current'),1);h.flush();assert.equal(saved().characters[0].spellSlots.find(s=>s.level===1).current,1);
+ assert.deepEqual(saved().characters[0].spells.map(e=>e.id),['spell0','spell1','spell2']);
+ storage.clear();
+});
+
+test('spell picker defaults to level order and supports level filters and A-Z',()=>{
+ storage.clear();const h=boot();h.action('catalog','[data-kind="spells"]').click();
+ assert.equal(h.q('#catalog-sort').value,'level-asc');assert.ok(h.q('#catalog-level'));
+ h.set(h.q('#catalog-level'),'2');
+ const rows=h.q('#catalog-results').querySelectorAll('[data-action="add-catalog"]');assert.ok(rows.length);
+ for(const row of rows){const id=JSON.parse(row.dataset.entryId);const e=catalog.find(s=>s.key===id[0]).entries.find(e=>e.name===id[2]&&e.group===id[1]);assert.equal(Number(e.details.lvl),2);}
+ h.set(h.q('#catalog-sort'),'name');assert.equal(h.q('#catalog-level').value,'2');
+ storage.clear();
+});
+
+test('spell groups agree with the reader and zero-level hexes are not labelled cantrips',()=>{
+ storage.clear();const base=boot();const spells=catalog.find(section=>section.key==='spells').entries;
+ const selected=[spells.find(rule=>rule.group==='Greater hexes'),spells.find(rule=>rule.group==='Arcane cantrips')];assert(selected.every(Boolean));
+ const seed=base.context.CharacterState.normalizeCharacter({id:'zero-labels',spells:selected.map((rule,index)=>({id:'zero'+index,name:rule.name,entryId:JSON.stringify(['spells',rule.group,rule.name])}))});
+ storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));const h=boot();
+ const meta=h.q('#pane-spells').querySelectorAll('.list-card-meta').map(node=>node.textContent);
+ assert(meta.some(text=>text.includes('Greater hexes · Level 0')));assert(meta.some(text=>text.includes('Arcane cantrips · Cantrip')));
+ assert.equal(h.q('#spell-filter').querySelectorAll('option').find(node=>node.value==='0').textContent,'Level 0 / cantrips');
+ h.action('catalog','[data-kind="spells"]').click();
+ assert.deepEqual(h.q('#catalog-group').querySelectorAll('option').slice(1).map(node=>node.textContent),['Arcane cantrips','Arcane spells','Mystic cantrips','Mystic spells','Oath cantrips','Oath spells','Occult cantrips','Occult spells','Minor hexes','Major hexes','Greater hexes']);
+ assert.equal(h.q('#catalog-level').querySelectorAll('option').find(node=>node.value==='0').textContent,'Level 0 / cantrips');
+ h.set(h.q('#catalog-group'),'Greater hexes');
+ const hexMeta=h.q('#catalog-results').querySelectorAll('.list-card-meta');assert(hexMeta.length);assert(hexMeta.every(node=>node.textContent==='Greater hexes · Level 0'));
+ h.set(h.q('#catalog-group'),'Arcane cantrips');assert(h.q('#catalog-results').querySelectorAll('.list-card-meta').every(node=>node.textContent==='Arcane cantrips · Cantrip'));
+ storage.clear();
+});
+
+test('class summary uses the singular label for one cantrip',()=>{
+ storage.clear();const base=boot();const manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8'));
+ const metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8'));const occultist=metadata.classes.find(row=>row.name==='Occultist');assert(occultist);
+ const seed=base.context.CharacterState.normalizeCharacter({id:'one-cantrip',level:1,build:{enabled:true,classId:occultist.id}});
+ storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));const h=boot({metadata});
+ const summary=h.q('#class-casting').querySelector('.section-note').textContent;assert.match(summary,/\b1 cantrip\b/);assert.doesNotMatch(summary,/\b1 cantrips\b/);
+ storage.clear();
+});
+
+test('class slots are initialized from real progression, spend safely and keep legacy manual rows',()=>{
+ storage.clear();const base=boot();
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8'));
+ const metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8'));
+ const wizard=metadata.classes.find(c=>c.name==='Wizard');
+ const seed=base.context.CharacterState.normalizeCharacter({id:'caster',level:5,build:{enabled:true,classId:wizard.id}});
+ storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));let h=boot({metadata});
+ const pools=()=>h.q('#class-casting').querySelectorAll('.casting-pool');
+ assert.deepEqual(pools().map(n=>n.querySelector('[data-casting-current]').textContent),['3','2','1']);
+ const firstId=pools()[0].dataset.poolId;h.action('casting-spend').click();
+ assert.equal(saved().characters[0].build.casting.spent[firstId],1);assert.equal(pools()[0].querySelector('[data-casting-current]').textContent,'2');
+ h=boot({metadata});assert.equal(pools()[0].querySelector('[data-casting-current]').textContent,'2');
+ const legacy=base.context.CharacterState.normalizeCharacter({id:'legacy',level:5,build:{enabled:true,classId:wizard.id},spellSlots:[{level:1,current:1,max:2}]});
+ storage.set(key,JSON.stringify({version:1,activeId:legacy.id,characters:[legacy]}));h=boot({metadata});
+ assert.equal(h.q('#class-casting').querySelectorAll('.casting-pool').length,0);h.action('enable-casting').click();
+ assert.equal(pools()[0].querySelector('[data-casting-current]').textContent,'2');
+ assert.equal(saved().characters[0].spellSlots[0].current,1);assert.equal(saved().characters[0].spellSlots[0].max,2);
+ storage.clear();
+});
+
+test('Cleric whole-slot casting respects the chosen spell level and features sort by grant level',()=>{
+ storage.clear();const base=boot();
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8'));
+ const metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8'));
+ const cleric=metadata.classes.find(c=>c.name==='Cleric');
+ const seed=base.context.CharacterState.normalizeCharacter({id:'cleric',level:5,build:{enabled:true,classId:cleric.id,casting:{maxSlotLevel:3}}});
+ storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));const h=boot({metadata});
+ h.action('casting-spend').click();
+ const available=()=>h.q('#class-casting').querySelector('[data-casting-current]').textContent;
+ assert.equal(available(),'2');h.q('#class-casting').querySelector('[data-cast-level]').value='3';h.action('casting-whole').click();
+ assert.equal(available(),'2');assert.match(h.q('#toast').textContent,/Not enough/);
+ const levels=h.q('#pane-features').querySelectorAll('summary').map(n=>n.textContent.match(/· level (\d+)/)?.[1]).filter(Boolean).map(Number);
+ assert.ok(levels.length);assert.deepEqual(levels,[...levels].sort((a,b)=>a-b));assert.equal(h.q('#feature-sort').value,'level-asc');
+ storage.clear();
+});
 
 test('hosted character starts with core rules, lazily opens spells, and restores saved rule references',async()=>{
  storage.clear();

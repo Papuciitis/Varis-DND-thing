@@ -90,9 +90,9 @@ test('backup rules fingerprint falls back to the envelope while character value 
 for (const [label, input, message] of [
   ['non-text input', {}, /JSON character file/],
   ['malformed JSON', '{', /not valid JSON/],
-  ['null', 'null', /not a Vara/],
-  ['wrong format', '{"format":"other","version":1,"character":{"name":"A"}}', /not a Vara/],
-  ['missing format', '{"version":1,"character":{"name":"A"}}', /not a Vara/],
+  ['null', 'null', /not a Varis/],
+  ['wrong format', '{"format":"other","version":1,"character":{"name":"A"}}', /not a Varis/],
+  ['missing format', '{"version":1,"character":{"name":"A"}}', /not a Varis/],
   ...[undefined, 0, -1, 1.5, '1'].map(version => [
     'invalid version ' + JSON.stringify(version),
     JSON.stringify({...envelope({name: 'A'}), version}),

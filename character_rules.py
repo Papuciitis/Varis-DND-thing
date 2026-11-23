@@ -302,6 +302,167 @@ def _casting(features):
     return result
 
 
+def _casting_quantity(value):
+    """A dash in a source capacity table denotes no slots, not an unknown rule."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    if text in ("-", "—", "–"):
+        return 0
+    if text.isdigit():
+        return int(text)
+    raise ValueError(f"Unrecognized casting-table quantity {value!r}")
+
+
+def _casting_metadata(name, details, progression, features):
+    kinds = {"Wizard": ("arcane", "leveled"), "Sorcerer": ("arcane", "leveled"),
+             "Druid": ("mystic", "leveled"), "Cleric": ("oath", "full"),
+             "Occultist": ("occult", "occult"), "Bard": ("any", "rest-dice")}
+    if name not in kinds:
+        return None
+    tradition, mode = kinds[name]
+    sections = _sections(details)
+    bodies = {heading: body for heading, body, _ in sections}
+    result = {"tradition": tradition, "mode": mode, "progression": [], "slotLevelRule": None,
+              "maxCastLevelRule": None, "startingSpellbook": None, "recovery": [],
+              "pointResources": [], "modifiers": [], "warnings": [],
+              "sourceHeadings": ["Class progression"] if progression else []}
+    primary = {row["level"]: row["values"] for row in progression}
+    table = next(((heading, body) for heading, body, _ in sections
+                  if isinstance(body, dict) and any(re.fullmatch(r"Level \d+(?: slots)?", column, re.I)
+                                                   for column in body.get("columns", []))), None)
+    slot_rows = {}
+    if table:
+        heading, body = table
+        result["sourceHeadings"].append(heading)
+        slot_rows = {int(row[0]): dict(zip(body["columns"][1:], row[1:])) for row in body["rows"]}
+    cantrip_grants = []
+    if name == "Sorcerer":
+        # Its initial cantrips and the recurring ASI cantrip are separate grants.
+        cantrip_text = _text(bodies.get("Cantrips", ""))
+        start = re.search(r"know (\d+) arcane cantrips", cantrip_text, re.I)
+        if start:
+            cantrip_grants.append((1, int(start.group(1))))
+        for feature in features:
+            if feature["name"].lower() == "ability score improvement" and re.search(
+                    r"learn an extra cantrip", _text(feature["details"]), re.I):
+                cantrip_grants.append((feature["level"], 1))
+    occult_counts, occult_known, occult_cantrips = None, None, None
+    if mode == "occult":
+        spell_text = _text(bodies.get("Spellcasting", ""))
+        slot_start = re.search(r"You have (\d+) occult slots", spell_text, re.I)
+        increase = re.search(r"increases by (\d+).*?\(lvl ([\d, ]+)\)", spell_text, re.I)
+        if not slot_start or not increase:
+            raise ValueError("Occultist slot-count source is not recognized")
+        occult_counts = (int(slot_start.group(1)), int(increase.group(1)),
+                         [int(value) for value in re.findall(r"\d+", increase.group(2))])
+        known_start = re.search(r"start with (" + COUNT_PATTERN + r") known occultist spells", spell_text, re.I)
+        if known_start and re.search(r"learn a new spell every occultist level", spell_text, re.I):
+            occult_known = _number(known_start.group(1))
+        cantrip_text = _text(bodies.get("Cantrips", ""))
+        cantrip_start = re.search(r"start with (\d+) occult cantrip", cantrip_text, re.I)
+        if cantrip_start:
+            occult_cantrips = (int(cantrip_start.group(1)), _explicit_levels("Cantrips", cantrip_text))
+        result["slotLevelRule"] = {"basis": "characterLevel", "divisor": 2, "rounding": "up"}
+        result["sourceHeadings"].extend(["lvl 1 / Spellcasting", "lvl 1 / Cantrips"])
+    # The published house-rule progression ends at 12; prose-only Occultist uses
+    # the same supported range, without extrapolating future class levels.
+    levels = sorted(slot_rows or primary) or list(range(1, 13))
+    for level in levels:
+        values = {**primary.get(level, {}), **slot_rows.get(level, {})}
+        slots = []
+        for column, raw in slot_rows.get(level, {}).items():
+            slot_level = re.fullmatch(r"Level (\d+)(?: slots)?", column, re.I)
+            if slot_level:
+                maximum = _casting_quantity(raw)
+                if maximum:
+                    slots.append({"level": int(slot_level.group(1)), "max": maximum})
+        known = _casting_quantity(values.get("Spells known", values.get("Talent spells")))
+        cantrips = _casting_quantity(values.get("Cantrips known", values.get("Cantrips")))
+        count = _casting_quantity(values.get("Full Spell slots"))
+        if name == "Sorcerer":
+            cantrips = sum(amount for grant_level, amount in cantrip_grants if grant_level <= level)
+        if occult_counts:
+            start, amount, increases = occult_counts
+            count = start + amount * sum(grant_level <= level for grant_level in increases)
+            known = occult_known + level - 1 if occult_known is not None else None
+            if occult_cantrips:
+                start, increases = occult_cantrips
+                cantrips = start + sum(grant_level <= level for grant_level in increases)
+        result["progression"].append({"level": level, "slots": slots, "slotCount": count,
+                                      "knownSpells": known, "cantrips": cantrips})
+    recovery_names = {"Wizard": ("Arcane recovery",), "Sorcerer": ("Spellcasting",),
+                      "Druid": ("Spellcasting and cantrips",), "Cleric": ("Spellcasting",),
+                      "Occultist": ("Spellcasting", "Dark ritual"), "Bard": ()}[name]
+    result["recovery"] = [{"name": heading, "details": bodies[heading]} for heading in recovery_names if heading in bodies]
+    if name == "Wizard":
+        result["sourceHeadings"].extend(["Spellcasting", "Cantrips"])
+        text = _text(bodies.get("Spellcasting", ""))
+        book = re.search(r"spell book with (\d+) level (\d+) spells", text, re.I)
+        if book and re.search(r"equal to your intelligence bonus", text, re.I) and re.search(r"add 1 more arcane spell", text, re.I):
+            result["startingSpellbook"] = {"base": int(book.group(1)), "ability": "int", "spellLevel": int(book.group(2)),
+                                           "perAdditionalClassLevel": 1}
+        result["warnings"].append("The Wizard source references a prepared-spell count but supplies no prepared-count column.")
+    elif name == "Cleric":
+        result["warnings"].append("Cleric full-slot counts are specified, but their numeric maximum slot level is not; set it manually from your table's ruling.")
+    elif name == "Bard":
+        result["sourceHeadings"].append("Magical talent")
+        result["maxCastLevelRule"] = {"basis": "characterLevel", "divisor": 2, "rounding": "up"}
+        result["warnings"].append("Bard spell learning is capped at half Bard level without a stated rounding rule; its casting cap explicitly rounds up.")
+    elif name == "Sorcerer":
+        result["sourceHeadings"].extend(["Cantrips", "Ability score improvement", "Metamagic"])
+        text = _text(bodies.get("Metamagic", ""))
+        if re.search(r"maximum number of metamagic points.*?charisma bonus \+ your proficiency bonus", text, re.I):
+            result["pointResources"].append({"id": "metamagic", "name": "Metamagic points", "minLevel": min(_explicit_levels("Metamagic", text)),
+                                              "capacity": {"ability": "cha", "proficiency": True},
+                                              "recovery": [{"name": "Metamagic", "details": bodies["Metamagic"]}]})
+    unmodeled = {"Wizard": "Other archetype pools, including arcane focus points and arcane essence dice, require separate tracking.",
+                 "Sorcerer": "Separate archetype and innate-magic reserves, including Graymage, Evoker and dream spell slots, require manual tracking; only listed base-slot modifiers are included.",
+                 "Druid": "Additional circle and archetype casting pools are not included in the base slot table.",
+                 "Cleric": "Other archetype casting points, extra spells known and capacity reductions require manual tracking unless listed as modifiers.",
+                 "Occultist": "Other archetype casting reserves and pending slot costs require manual tracking unless listed as modifiers.",
+                 "Bard": "Feature and archetype casting reserves and increases to talent spells known require manual tracking."}
+    result["warnings"].append(unmodeled[name])
+    if name in ("Wizard", "Sorcerer", "Druid"):
+        result["warnings"].append("The base source describes specific slot-recovery methods without stating a general full-slot reset on long rest.")
+    result["sourceHeadings"] = list(dict.fromkeys([*result["sourceHeadings"], *recovery_names]))
+    return result
+
+
+def _casting_modifiers(result):
+    """Attach reviewed capacity grants by the exact source feature/option ID."""
+    classes = {item["name"]: item for item in result["classes"]}
+    occultist = classes.get("Occultist")
+    if occultist and occultist["casting"]:
+        for feature in occultist["features"]:
+            if feature["name"] != "Mark & reward":
+                continue
+            for group in feature["choices"]:
+                for option in group["options"]:
+                    if group["label"] == "Reward" and option["details"] == "+2 max occult slots.":
+                        occultist["casting"]["modifiers"].append({"optionId": option["id"], "resource": "occultSlots", "amount": 2})
+    for archetype in result["archetypes"]:
+        parent = classes.get(archetype["className"])
+        if not parent or not parent["casting"]:
+            continue
+        for feature in archetype["features"]:
+            resource, slot_level = None, None
+            text = _text(feature["details"])
+            if archetype["name"] == "Court mage" and feature["name"] == "Extra spell slots" and "1 extra spell slot per every level of slot that you can cast" in text:
+                resource = "eachSlotLevel"
+            elif archetype["name"] == "Oathspeaker" and feature["name"] == "Extra spell slot" and "an extra full cleric spell slot" in text:
+                resource = "fullSlots"
+            elif archetype["name"] == "Wildmage" and re.fullmatch(r"Raw power (?:I|II|III|IV)", feature["name"]):
+                match = re.search(r"an extra level (\d+) spell slot", text)
+                if match:
+                    resource, slot_level = "slot", int(match.group(1))
+            if resource:
+                modifier = {"featureId": feature["id"], "resource": resource, "amount": 1}
+                if slot_level is not None:
+                    modifier["level"] = slot_level
+                parent["casting"]["modifiers"].append(modifier)
+
+
 def _notes(details):
     return "\n".join(str(details[key]) for key in ("draft_note", "notes", "note") if details.get(key))
 
@@ -325,7 +486,8 @@ def _class(entry_id, entry):
         if table and prose and table != prose:
             warnings.append("Ability score improvement levels differ between progression table and feature prose; review the source.")
     return {"id": entry_id, "entryId": entry_id, "name": entry["name"], **_profile(details),
-            "castingAbilities": _casting(features), "archetypeLevels": table_levels or prose_levels,
+            "castingAbilities": _casting(features), "casting": _casting_metadata(entry["name"], details, progression, features),
+            "archetypeLevels": table_levels or prose_levels,
             "progression": progression, "features": features, "description": details.get("description", details.get("Description", "")),
             "notes": notes, "warnings": warnings}
 
@@ -380,4 +542,5 @@ def compile_character_rules(sections):
                                      "status": str(details.get("status", "")), "notes": notes,
                                      "description": details.get("description", ""),
                                      "warnings": [] if explicit else ["No explicit starting level; using the parent's earliest archetype level. Review source status."]})
+    _casting_modifiers(result)
     return result
