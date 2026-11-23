@@ -33,7 +33,9 @@ Both outputs use the same rule definitions. The JSON and HTML are generated view
 
 ## Use and back up characters
 
-Use **New character** to open the six-step builder:
+The main sheet groups health and Block separately, with prominent current/max HP and compact secondary pools. Desktop puts ability scores in a side column; phones use a vertical layout and bottom tabs. Expand Death saves, Rest dice, Damage options, or Block & recovery rules when needed.
+
+Open **More**, then **New character**, to open the six-step builder:
 
 1. **Ancestry:** enter the character's details and level, then choose a race.
 2. **Class:** choose a class and the archetypes available at that level.
@@ -46,7 +48,7 @@ The builder works on a separate draft. **Cancel** discards its changes; nothing 
 
 Use the character picker to keep multiple characters. Saved-sheet edits autosave in the current browser on the current device. Storage depends on the page location and browser profile: a hosted page, a local file, a moved file, or another device may have separate saves. There is no account or automatic cross-device sync. Clearing browser data can remove saves.
 
-Use **Save backup** to download the selected character as JSON, and keep backups outside the repository. Use **Load backup** to move a character between page locations, browsers, or devices, including an optional move to a standalone copy. The launcher keeps the existing `site/character.html` location, so this update does not require moving local saves. Backups include a format version and rules fingerprint. Invalid or unsupported backups leave the current character intact; a different rules fingerprint prompts a rules review. If the browser cannot save, keep the page open and use **Save backup** to preserve your work.
+Open **More** for **Save backup** and **Load backup**. Save backup downloads the selected character as JSON; keep backups outside the repository. Load backup moves a character between page locations, browsers, or devices, including an optional move to a standalone copy. The launcher keeps the existing `site/character.html` location, so this update does not require moving local saves. Backups include a format version and rules fingerprint. Invalid or unsupported backups leave the current character intact; a different rules fingerprint prompts a rules review. If the browser cannot save, keep the page open and use Save backup to preserve your work.
 
 Builder-enabled characters automatically apply supported fixed passive modifiers from their race, class and selected features. Equipped armor and shields calculate AC, movement and Block values; equipped weapons supply attacks from the character's abilities, training and Vara weapon properties. Base scores and manual extra bonuses remain editable, and manual attacks can accompany generated attacks. Conditional abilities, active powers, spell costs, unresolved rules and nested upgrades with unimplemented prerequisites remain readable rules to apply manually.
 
@@ -101,7 +103,7 @@ git branch --show-current
 git pull --ff-only
 ```
 
-Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The character sheet was merged in PR #2 at `d7090bc`, and character automation was merged in PR #3 at `f7869b2`. The current layout and data work is on `codex/compendium-layout-data`, created from the updated `main` with that automation included.
+Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The character sheet was merged in PR #2 at `d7090bc`, character automation in PR #3 at `f7869b2`, and the compendium data and monster foundation in PR #4 at `419fc5b`. The character presentation update is on `codex/character-sheet-layout`, based on that updated `main`.
 
 For a new source change, create a branch from the version you want to change, edit the relevant `data/` or `web/` files, run the launcher and inspect the result:
 
@@ -118,6 +120,6 @@ The JavaScript checks use Node 24 and read the built catalog, so build before ru
 
 ## GitHub Pages
 
-The phone addresses are [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html) and the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). Pages updates after changes reach `main` and its deployment succeeds. The layout and data changes described here are branch work; this documentation does not establish that they are live at those addresses.
+The phone addresses are [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html) and the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). Pages updates after changes reach `main` and its deployment succeeds. The character presentation update in this branch awaits review.
 
 Select **GitHub Actions** under the repository's Pages settings. The workflow installs Python 3.12 and Node 24, runs the Python checks, builds the site, and runs the JavaScript checks against that build. A successful run uploads a downloadable **vara-dnd-site** artifact containing the root pages, generated data and assets, and optional standalone copies. Extract the whole artifact and open `character.html` or `index.html` for direct disk use. Alternatively, the two pages in `offline/` can be used on their own. Keep the root pages, `assets/`, and `data/` together for either direct disk use or HTTP hosting. Pages deployment is limited to `main`; pull requests are validated without deployment.
