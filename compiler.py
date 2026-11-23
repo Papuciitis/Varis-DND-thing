@@ -9,6 +9,7 @@ SECTIONS = {
     "rules": "Rules of play",
     "classes": "Classes",
     "items": "Items",
+    "magic-items": "Magic items",
     "weapon-rules": "Weapon rules",
     "feats": "Feats",
     "races": "Races",

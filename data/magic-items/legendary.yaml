@@ -1,0 +1,1458 @@
+section: magic-items
+entries:
+- type: Wondrous item
+  desc: |-
+    While wearing this black garnet phoenix-feather amulet, you are immune to necrotic damage. Once every seven days, when damage reduces your HP to 0, you may immediately manifest a shadow form for 1 minute. Your unconscious body becomes an immovable, untargetable shadow-veiled object: it takes no damage, receives no healing or other effects and makes no death saves. An action and a DC 30 Strength check can move it 10 feet.
+
+    You control the shadow using your current statistics, features and resources. It has a separate 100-point shadow-health pool, resistance to damage other than force, psychic and radiant, and cannot move more than 60 feet from your body. Its copied equipment disappears with it and cannot create permanent objects or extra resource uses. Damage to it affects only shadow health; it receives no additional Temp HP or Arcane Health. When the minute ends with shadow health remaining, it returns to your body and restores HP equal to that remaining pool, capped at your HP maximum. If shadow health reaches 0 first, the amulet is destroyed, your body becomes vulnerable again, and you immediately record two failed death saves. The form cannot be activated again from the same reduction to 0 HP.
+  conversion_notes: Defined the shadow as a separate health pool rather than stacking it with Varis Temp HP/Arcane
+    Health, shared all expended resources with the original, and made the transition back to Varis death saves explicit.
+  name: Death's shadow
+  group: Legendary
+  id: mi-legendary-002
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 36000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A2:D2
+  original_5e: 'This black garnet amulet is carved into the shape of a bird''s skull and is adorned with several
+    dark feathers. At its center is a single phoenix feather that serves as a catalyst for this strange talisman''s
+    necrotic magic. While wearing this amulet, you are immune to necrotic damage. Shadow Form. When you are reduced
+    to 0 hit points while wearing this amulet, a shadowy version of yourself rises from your unconscious body. You
+    control this form, which has your equipment and statistics. It has 100 temporary hit points and resistance to
+    all damage that isn''t force, psychic, or radiant. The shadow form can''t move more than 60 feet from your body.
+    The shadow vanishes after 1 minute or when it falls to 0 temporary hit points. If the shadow survives for the
+    duration, it returns to your body and causes you to regain a number of hit points equal to the shadow''s remaining
+    number of temporary hit points. If the shadow is defeated, the amulet is destroyed and you immediately fail
+    2 death saving throws. While your shadow form is defending you, your unconscious body is covered by an impenetrable
+    veil of shadow. While covered in this way, you can''t be interacted with: you are immune to all damage, don''t
+    make death saving throws, can’t regain hit points, and can’t be affected by spells or magical effects. A creature
+    can use an action to make a DC 30 Strength check, moving the covered body up to 10 feet on a success. Once this
+    property has been used, it can''t be used again until 7 days have passed.'
+  source_name: Death's shadow
+  source_price: 36000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: glaive
+  magic_bonus: '3'
+  desc: A +3 Varis glaive; its enhancement adds to attacks, weapon damage and block DC. When an unblocked strike
+    reduces a hostile Small or larger creature to 0 HP, gain 1d10 temporary HP for 1 minute. These follow the normal
+    nonstacking Temp HP rule. The blade glows green and stores the rolled amount. Your next unblocked melee strike
+    with it before the minute ends adds that much necrotic damage, then the glow ends; a new kill replaces the stored
+    amount rather than stacking it. Undead reduced to 0 HP by the glaive cannot be reanimated. Once per turn, your
+    first unblocked melee strike against a Prone target maximizes only the glaive's base weapon damage dice, before
+    critical dice and other riders.
+  conversion_notes: Inherited Varis glaive properties and maneuvers, added enhancement to block DC, and clarified
+    unblocked-strike, nonstacking Temp HP and base-dice maximization timing.
+  name: Crypt Keeper Glaive
+  group: Legendary
+  id: mi-legendary-003
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 28000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A3:D3
+  original_5e: You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you use the glaive
+    to reduce a Small or larger creature that is hostile toward you to 0 hit points, roll a d10. You gain temporary
+    hit points equal to the number you roll. In addition, the glaive’s blade begins to glow with a sickly green
+    haze whenever you gain temporary hit points in this way. While glowing, the first successful melee attack you
+    make with the glaive deals extra necrotic damage equal to the number of temporary hit points you gained. Once
+    you deal this bonus damage, the haze fades. The haze and any remaining temporary hit points are lost after 1
+    minute. Undead creatures killed by this weapon cannot be raised from the dead again. 6 feet under. The first
+    time on your turn that you land a successful melee attack with this weapon against a creature that is prone,
+    the weapon’s damage die is maximized.
+  source_name: Crypt Keeper Glaive
+  source_price: 28000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Greataxe
+  magic_bonus: '3'
+  desc: |-
+    A +3 Varis Greataxe that deals force instead of slashing damage. Its enhancement adds to attack, weapon damage and block DC. A bonus action manifests or dismisses its prismatic blade. It sheds bright light for 15 feet and dim light for 15 more; a bonus action changes each radius by 5 feet, to a minimum of 10 and maximum of 30. An unblocked strike against an aberration or undead adds 1d12 radiant damage.
+
+    Destructive glyph. Spend 1 minute carving one glyph into the suspended diamond. Choose death, terror, pain or sleep. The next unblocked strike against a creature consumes the glyph and forces a DC 17 Wisdom save; aberrations and undead have disadvantage. On a failure: death deals 10d10 necrotic damage; terror prevents the target willingly approaching you and imposes disadvantage on its attacks while it sees you; pain makes it Incapacitated; sleep makes it Unconscious until damaged or another creature uses an action to wake it. Terror, pain and sleep last 1 minute, with a new Wisdom save at the end of each target turn to end the effect. On a successful initial save, death deals half damage and the other glyphs have no effect. The glyph's damage cannot be separately blocked. You can prepare a glyph once every 12 hours and hold only one at a time.
+  conversion_notes: Replaced an unavailable high-level Symbol dependency with four fully defined single-target glyphs.
+    Retained the twelve-hour preparation limit, species disadvantage and light controls; integrated the force Greataxe
+    with Varis Block.
+  name: Realmswarden Greataxe
+  group: Legendary
+  id: mi-legendary-004
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 34000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A4:D4
+  original_5e: 'This ancient stone axe hilt is intricately carved. At its center is a gap that houses a single,
+    perfect diamond that''s magically suspended in place and glows with an uncanny energy. While grasping the hilt,
+    you can use a bonus action to cause a wide blade of pure prismatic light to radiate from the axe''s head, or
+    make the blade disappear. The axe''s blade emits bright light in a 15-foot radius and dim light for an additional
+    15 feet. You gain a +3 bonus to attack and damage rolls made with this magic weapon, which deals force damage
+    instead of slashing damage. When you hit an aberration or undead with it, that target takes an extra 1d12 radiant
+    damage. While the blade persists, you can use a bonus action to expand or reduce its radius of bright and dim
+    light by 5 feet each, to a maximum of 30 feet each or a minimum of 10 feet each. The light that comes from the
+    diamond at the axe''s center and forms the blade can be wrought to create powerful, destructive glyphs. Over
+    the course of 1 minute, you can trace a glyph onto the surface of the axe, starting with the gem at its center,
+    to recreate the effects of the symbol spell (save DC 17) with the following changes: The glyph you create as
+    part of the spell exists on the axe and moves with it. The glyph can only be triggered when you hit a creature
+    with the axe. The spell only affects the target that triggered the glyph. Aberrations and undead have disadvantage
+    on the saving throw to resist the spell''s effects. Once this property of the axe has been used, it can''t be
+    used again until 12 hours have passed. You can only have one glyph on the axe in this way at a time.'
+  damage: 1d12 force
+  source_name: Realmswarden Greataxe
+  source_price: 34000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: trident
+  magic_bonus: '3'
+  desc: |-
+    A +3 Varis trident with a retrieval chain. Add its enhancement to attacks, weapon damage and block DC. It has Throw 20/60 if its base version has no throwing range. A bonus action retrieves it into a free hand from within 60 feet along an unobstructed chain. An unblocked thrown strike adds 1d8 lightning damage.
+
+    Stormcall. Immediately after an unblocked strike, once per dawn, call lightning on the struck creature and all other creatures within 5 feet of it. Each makes a DC 16 Dexterity save, taking 6d10 lightning damage on a failure or half on a success. This magical area cannot be blocked, you are immune to its damage, and it fails if the target is sheltered from the sky. Creatures submerged in water or wearing metal armor have disadvantage; Soaked applies normally and does not create a second disadvantage.
+
+    Impale and haul. As a Varis maneuver, replace one Attack-action attack and spend a bonus action or move action to make a thrown attack against a creature no more than one size larger than you. On an unblocked strike, resolve normal damage and make a Strength (Athletics) check contested by its Strength (Athletics). Winning pulls it up to 20 feet toward you without passing through obstacles.
+  conversion_notes: Added Varis maneuver cost, an explicit retrieval distance and chain path, unblocked-strike triggers
+    and area Block handling. Soaked and metal armor use one disadvantage rather than stacking penalties.
+  name: Storm Thrower Harpoon (trident)
+  group: Legendary
+  id: mi-legendary-005
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 28000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A5:D5
+  original_5e: This weapon has a +3 bonus to attack and damage rolls made with this magical weapon. The trident
+    has a chain attached to its handle that can be used to retrieve the weapon once it’s been thrown using a bonus
+    action. When you hit with a ranged attack using this weapon, it deals an additional 1d8 lightning damage. In
+    addition, this trident acts as a conduit for the sky’s ferocious power. Immediately after hitting a creature
+    with the trident, you can call down a bolt of lightning upon it, forcing it and all creatures within 5 feet
+    to make a DC 16 Dexterity saving throw. On a failed save, creatures take 6d10 lightning damage, or half as much
+    on a success. Creatures have disadvantage on the saving throw if they’re submerged in water or wearing metal
+    armor. You are immune to the lightning damage caused by this effect. This ability fails if the creatures are
+    obstructed from the sky. Once you use this ability, you cannot do so again until the next dawn. Impale. You
+    can use your action to try to impale and pull a creature toward you. If your target is a creature that is no
+    more than one size larger than you, you can make a ranged weapon attack against it using the trident. If you
+    hit, you can attempt to pull the impaled creature toward you by making a Strength (Athletics) check contested
+    by the target’s Strength (Athletics) check. If you succeed, you can pull the creature up to 20 feet toward you.
+  source_name: Storm Thrower Harpoon (trident)
+  source_price: 28000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Dagger
+  magic_bonus: '3'
+  desc: A +3 Varis Dagger that deals slashing instead of piercing damage. Add its enhancement to attacks, weapon
+    damage and block DC. Once per dawn, use an action while holding it to gain the Varis Ethereal condition for
+    up to 1 minute. You can end this state without an action on your turn. While ethereal in this way, you may make
+    one Spirit Cleaver melee attack against a creature you can see on your original plane, with advantage. This
+    is an explicit exception to Ethereal's inability to attack and ends the ethereal state immediately after that
+    attack. The target may Block normally. If the attack was an unblocked strike that legally applies one of your
+    existing Sneak Attack features, and leaves a living nonconstruct, nonundead target at 75 HP or fewer, it must
+    make a DC 17 Constitution save or die. The dagger grants no Sneak Attack feature of its own. Expiry or emergence
+    inside solid material uses the current Ethereal rule.
+  conversion_notes: Replaced Etherealness with the system's Ethereal condition plus a precise one-attack exception.
+    Preserved the assassination threshold without granting a nonexistent class feature, and required an unblocked
+    Sneak Attack strike.
+  name: Spirit Cleaver (dagger)
+  group: Legendary
+  id: mi-legendary-006
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 34000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A6:D6
+  original_5e: 'This dark metal blade can slip between a person and their spirit to sever their connection to one
+    another. You gain a +3 bonus to attack and damage rolls made with this magic weapon, which deals slashing damage
+    instead of piercing damage. While holding this weapon, you can use an action to cast the etherealness spell
+    from it with the following changes: While on the Ethereal Plane, you can attack targets that you can see on
+    the plane you originated from with the spirit cleaver. These attacks are made with advantage. If a target has
+    75 hit points or fewer after taking Sneak Attack damage in this way and isn''t a construct or undead, it must
+    succeed on a DC 17 Constitution saving throw or die. The spell has a duration of 1 minute, but ends early if
+    you attack a creature on the plane you originated from with the spirit cleaver. Once this property of the weapon
+    has been used, it can''t be used again until the next dawn.'
+  damage: 1d4s
+  source_name: Spirit Cleaver (dagger)
+  source_price: 34000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: glaive
+  magic_bonus: '3'
+  desc: |-
+    A +3 Varis glaive with Balanced added to its normal properties. Add its enhancement to attacks, weapon damage and block DC. An elf or half-elf is proficient with this particular weapon; other wielders use their normal weapon training. While attuned, gain advantage on Charisma checks to interact with fey. An unblocked strike strips its target of fire and cold resistance and immunity until the end of your next turn; other defenses remain.
+
+    Kelren, the elven king of Imfe Mythse, speaks from within the glaive. It has Intelligence 14, Wisdom 15, Charisma 16, hearing and darkvision to 120 feet, understands Elvish and Sylvan, and speaks telepathically with its wielder. He is stern, honest and dedicated to protecting natural ecosystems from fiends and unnatural devastation. He can refuse initial attunement to a creature actively destroying those ecosystems or knowingly serving fiends, but does not control the wielder's actions or remove an already-earned class feature.
+  conversion_notes: Converted 5e finesse to Varis Balanced, made species training local to this weapon, specified
+    the unblocked resistance-stripping trigger and retained the sentient king's purpose and communication.
+  name: Glaive of the Revenant King
+  group: Legendary
+  id: mi-legendary-007
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 34000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A7:D7
+  original_5e: This long-lost silver glaive once belonged to an elven king. Its impeccable elven make lets it be
+    swung nimbly, despite its size. This weapon has the finesse property. In addition, you gain a +3 bonus to attack
+    and damage rolls made with this magic weapon. Sentience. The glaive is a sentient weapon of chaotic good alignment,
+    with an Intelligence of 14, a Wisdom of 15, and a Charisma of 16. It has hearing and darkvision out to a range
+    of 120 feet. The weapon communicates telepathically with its wielder and can speak, read, and understand Elvish
+    and Sylvan. Personality. The glaive is inhabited by the spirit of Kelren, the elven king of Imfe Mythse. His
+    life's mission to rid his kingdom of demons, fiends, and other unwelcome ilk lives on inside the weapon. He
+    seeks to rebalance the flow and seasons of nature, eager to destroy anything that threatens to change the natural
+    ecosystems of the world. Kelren is stern, but honest. He may share stories of his kingdom from time to time
+    if an anecdote serves to further his ambitions. A character who he deems unworthy of wielding the blade, such
+    as a weak or evil creature, may be denied the ability to attune to the weapon. Elven Kinship. You are considered
+    proficient with this weapon if you are an elf or half-elf. In addition, while attuned to this weapon, you have
+    advantage on Charisma checks made to interact with fey creatures. Energy Nullification. If you hit a target
+    with this weapon that is either resistant or immune to cold or fire damage, that target loses that resistance
+    or immunity until the end of your next turn.
+  properties:
+  - versatile 2d4
+  - reach I
+  - balanced
+  source_name: Glaive of the Revenant King
+  source_price: 34000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Greatsword
+  magic_bonus: '1'
+  desc: |-
+    A +1 Varis Greatsword. Two willing friendly creatures can jointly attune during one long rest; it then grants +2 instead, while counting against each creature's attunement limit. Set its inventory Magic bonus to +2 while jointly attuned. The enhancement adds to attacks, weapon damage and block DC.
+
+    A bonus-action command splits it into two Varis Scimitars or joins the blades in your hands. Each separated blade has Throw 20/60 and deals piercing damage when thrown. One adds 1d6 fire and the other 1d6 cold damage to each unblocked strike; the combined Greatsword adds both. Each attuned creature can use the command from anywhere on the same plane to summon one separated blade into a free hand, or both as the Greatsword if neither is held by the other attuned creature. A creature holding a blade can allow its recall without an action. Record split blades as Scimitars with the same enhancement; one physical blade cannot occupy two inventories.
+
+    Once per dawn per attuned creature, use an action while holding a blade to sheath yourself in fire or frost for 10 minutes. Fire grants cold resistance and frost grants fire resistance. When a creature within 5 feet makes an unblocked melee strike against you, it takes 2d8 fire or cold damage respectively. This shield needs no concentration and ends when you dismiss it or lose attunement.
+  conversion_notes: Replaced Fire Shield with a complete item power. Mapped split and joined states to current weapons,
+    accounted for Block and shared ownership, and preserved the special two-creature long-rest bond.
+  name: Love's Embrace (Greatsword)
+  group: Legendary
+  id: mi-legendary-008
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 16000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A8:D8
+  original_5e: You gain a +1 bonus to attack and damage rolls made with this magic weapon. This weapon can be attuned
+    to by two friendly creatures together over the course of a long rest. If the weapon is attuned to by two creatures
+    in this way, the weapon’s attack and damage bonus becomes +2 instead. This greatsword is made of two long scimitars
+    that are held together by a powerful, unidentifiable magic. You can speak the weapon’s command word using a
+    bonus action to separate it into a pair of scimitars or recombine them into the greatsword. If you are not already
+    holding it when you speak the weapon’s command word and are on the same plane of existence as it, you can choose
+    to summon either one or both scimitars to your hand as individual blades or as the combined greatsword. The
+    scimitars have the thrown property with a normal range of 20 feet and a long range of 60 feet when separated.
+    The scimitars deal piercing damage when thrown. Each scimitar also has its own elemental effect — either fire
+    or cold — that inflicts an extra 1d6 fire or 1d6 cold damage with each strike, depending on which sword you
+    hit with. When you hit with an attack using the greatsword, the target takes both fire and cold bonus damage
+    from the attack. Each attuned creature can cast the fire shield spell once at 4th level without expending a
+    spell slot. You do not need material or somatic components when casting it in this way. Once you cast this spell,
+    you cannot cast it again until the following dawn.
+  source_name: Love's Embrace (Greatsword)
+  source_price: 16000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: |-
+    An attuned arcane caster may use Ogden Fellweaver's tome as an arcane focus and, if they have a spellbook feature, as that spellbook. When attunement ends, its written contents vanish.
+
+    Absorb knowledge. Once while its absorption is ready, when a visible creature within 60 feet finishes casting a level 1–6 spell, use a reaction while holding the book to make an Intelligence (Arcana) check against DC 10 + that spell's actual casting level. On success its current Varis rule is recorded. You can learn or prepare it only if your class permits its tradition, level and preparation method; the tome neither grants a new tradition nor bypasses a class's known-spell limit. Incompatible notation remains readable historical information but cannot cast the spell. Absorption becomes ready again after a number of dawns equal to that level, whether the check succeeded or failed.
+
+    Shift knowledge. Once per dawn at the end of a short rest, a character who prepares spells from a spellbook may replace up to three prepared spells with other eligible spells in this tome. This does not create prepared casting for a class that knows spells instead. Unknown knowledge: once per dawn, use an action holding it to gain proficiency in one skill or tool until the next dawn; if already proficient, double your proficiency contribution instead, never more than twice.
+
+    Curse. You are unwilling to part with it and, if you use a spellbook, compelled to use this one. Preparing a spell from another book deals unblockable psychic damage equal to its level for each spell prepared. An effect that explicitly ends curses permits you to end attunement; merely hiding or dropping the tome does not.
+  conversion_notes: Removed 5e Wizard-list assumptions. Absorption now respects Varis traditions, level-six ceiling
+    and actual class preparation/known-spell systems; clarified cooldown on failure and preserved the spellbook
+    curse.
+  name: Tome of Lost Knowledge
+  group: Legendary
+  id: mi-legendary-009
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 24000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A9:D9
+  original_5e: This gold-trimmed book's cover is embossed with a portrait of Ogden Fellweaver, a legendary wizard
+    infamous for his ill-gotten knowledge. If you can attune to this item, you can use it as a spellbook and an
+    arcane focus. If your attunement to the book ends, anything written in the book disappears. Absorb Knowledge.
+    Immediately after a creature that you can see within 60 feet of you casts a spell of 1st level or higher, you
+    can use your reaction to make an Intelligence (Arcana) check. The DC equals 10 + the spell's level. On a success,
+    the spell is magically added to the book in your own notation. You must be holding the book to use this property.
+    If the added spell is a wizard spell and of a spell level you can prepare, you can prepare this spell just like
+    your other spells. If the spell is not a wizard spell, its notation is garbled and impossible to use. Once this
+    property has been used, it can't be used again until a number of days equal to the spell's level have passed.
+    Shift Knowledge. While using this book as your spellbook, you can replace up to 3 spells from your prepared
+    list of spells when you finish a short rest. Once this property has been used, it can't be used again until
+    the next dawn. Unknown Knowledge. While holding the book, you can use an action to channel its hidden knowledge.
+    When you do, you gain proficiency in one skill or tool of your choice until the next dawn. If you're already
+    proficient in the chosen skill or tool, your proficiency bonus is doubled, instead. Once this property has been
+    used, it can't be used again until the next dawn. Curse. This book is cursed, and becoming attuned to it extends
+    the curse to you. As long as you remain cursed, you are unwilling to part with the book, keeping it within reach
+    at all times. In addition, you are compelled to use this book as your spellbook. Each time you prepare a spell
+    from another spellbook, you take psychic damage equal to the spell's level.
+  source_name: Tome of Lost Knowledge
+  source_price: 24000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Ammunition
+  desc: |-
+    This elemental quiver displays at most five arrows or bolts. As a bonus action create one elemental piece; it can create five each of air, earth, fire and water between dawns. Only you receive its magic, which fades at the end of the turn a piece leaves the quiver. The ordinary weapon attack and Block still apply. Air ignores long-range disadvantage, adds 1d6 thunder on an unblocked strike, and ends a magical cloud or atmospheric effect of level 3 or lower that its path crosses. Earth adds 2d6 bludgeoning on an unblocked strike and forces a DC 15 Strength save or pushes the target 10 feet away. Fire adds 1d6 fire on an unblocked strike; hit, miss or Block, it explodes at the target's position, requiring creatures within 5 feet to make a DC 15 Dexterity save or take another 1d6 fire. Water ignores underwater attack penalties, adds 2d6 piercing on an unblocked strike (3d6 against a creature made of fire), and extinguishes mundane flames within 10 feet of impact.
+
+    As a bonus action press a compatible pair to create a hybrid; each of the following four hybrids can be created once between dawns, separately from elemental quotas. Ice (air/water): an unblocked strike adds 3d6 cold and forces a DC 15 Constitution save; failure Paralyzes for 1 minute, with a new save at each turn's end (it can make these recovery saves despite being Paralyzed), while success halves speed until the end of its next turn. Cold resistance or immunity automatically succeeds; taking fire damage ends paralysis. Magma (earth/fire): an unblocked strike adds 3d6 fire; hit, miss or Block, creatures in a 20-foot-radius sphere at impact make a DC 15 Constitution save or gain 1 Fatigue. Fire resistance or immunity automatically succeeds. Ooze (earth/water): impact coats a 10-foot square for 1 minute; it is difficult terrain, and creatures there on impact or entering or ending a turn there make one DC 15 Dexterity save per turn or fall Prone. Smoke (air/fire): impact creates a heavily obscured 20-foot-radius smoke sphere for 1 minute; strong wind disperses it. Hybrid area effects cannot be blocked. Pressing incompatible pairs spends no quota and creates nothing.
+  conversion_notes: Replaced Exhaustion levels with Fatigue and undefined Grease/Smoke dependencies with complete
+    areas. Distinguished attack riders from impact explosions that still occur on a miss or Block; retained separate
+    elemental and hybrid quotas.
+  name: Quiver of Elemental Chaos
+  group: Legendary
+  id: mi-legendary-010
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 16000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A10:D10
+  original_5e: 'This quiver has a lid with 5 holes in it and has depictions of the Elemental Planes on its side.
+    It has 4 buttons along its top that correspond to each of the four elements: Air, Earth, Fire, and Water. Elemental
+    Ammunition. The quiver can have up to 5 arrows or bolts on display at a time, which appear through the holes
+    in its lid. You can press one of the quiver''s buttons using a bonus action to cause it to create and display
+    1 elemental arrow or bolt. The type of arrow or bolt depends on the button you press. The quiver can produce
+    up to 5 of each type of ammunition in this way each day. Any arrow or bolt created by this quiver is magical
+    and has the following properties based on its element. The ammunition is only magical for you, and any arrow
+    or bolt removed from the quiver loses its magic at the end of the turn. Air Ammunition. This ammunition is weightless
+    and whistles softly as it moves. This piece of ammunition can be fired at its long range without disadvantage
+    and deals an extra 1d6 thunder damage to any target it hits. In addition, any magical atmospheric effect that
+    the arrow passes through cast at 3rd level or lower, such as a fog cloud or stinking cloud, is dispelled. Earth
+    Ammunition. This ammunition carries an uncanny force behind it and turns to stone at its end. When you hit with
+    a ranged attack using this ammunition, the target takes an extra 2d6 bludgeoning damage and must succeed on
+    a DC 15 Strength saving throw or be pushed 10 feet away from you. Fire Ammunition. This ammunition has tongues
+    of fire licking up its side and spews embers at the slightest movement. When shot, it erupts into a plume of
+    white-hot flame. This piece of ammunition deals an extra 1d6 fire damage to any target it hits. Hit or miss,
+    the ammunition explodes. The target and each creature within 5 feet of it must succeed on a DC 15 Dexterity
+    saving throw or take 1d6 fire damage. Water Ammunition. This ammunition has a silky texture and glitters with
+    watery reflections. A ranged attack made with this ammunition ignores the normal penalties of underwater fighting
+    and deals an extra 2d6 piercing damage to any target it hits, or 3d6 piercing damage if the target is made of
+    fire. In addition, any nonmagical flames within 10 feet of this ammunition''s point of impact are extinguished
+    when it hits. Paraelemental Ammuntion. You can press two compatible elemental buttons at the same time as a
+    bonus action to create a paraelemental arrow or bolt: a hybrid piece of ammunition. Water and Air create Ice,
+    Fire and Earth create Magma, Earth and Water create Ooze, and Air and Fire create Smoke. This ammunition appears
+    from a special compartment in the quiver''s lid. The quiver can create 1 of each type of paraelemental ammunition
+    each day. A non-compatible combination, such as Fire and Water or Air and Earth, has no effect. Ice Ammunition.
+    This special piece of frosted ammunition is cold to the touch and casts off snowflakes when it moves. When you
+    hit with a ranged attack using this ammunition, the target takes an extra 3d6 cold damage and must make a DC
+    15 Constitution saving throw. On a failed save, the target is paralyzed for 1 minute. On a success, the target''s
+    speed is halved until the end of its next turn. A creature with resistance or immunity to cold damage automatically
+    succeeds on the saving throw. A paralyzed target can make another Constitution saving throw at the end of each
+    of its turns. On a success, the effect ends. The effect ends early if the paralyzed target takes fire damage.
+    Magma Ammunition. This special piece of glimmering ammunition is warm to the touch and flakes off in sooty pieces.
+    When you hit with a ranged attack using this ammunition, the target takes an extra 3d6 fire damage. Hit or miss,
+    the area in a 20-foot sphere centered on the point of impact becomes unbearably hot until the end of the turn.
+    Each creature within the area must succeed on a DC 15 Constitution saving throw or gain 1 level of Exhaustion
+    from the sudden flash of heat. A creature with resistance or immunity to fire damage automatically succeeds
+    on the saving throw. Ooze Ammunition. This special piece of sticky ammunition gives off a faint, alchemical
+    odor. This ammunition creates a unique grease spell (save DC 15) at the point of impact. This version of the
+    spell covers a 20-foot square area, and any creature that starts its turn prone in the area takes 1d6 acid damage.
+    Smoke Ammunition. This special piece of black ammunition feels smooth like coal to the touch and releases a
+    faint wisp of smoke that quickly dissipates. This ammunition creates the effects of a unique fog cloud spell
+    (2nd-level version) at the point of impact. This version of the spell is pitch black and heavily obscures the
+    area.'
+  source_name: Quiver of Elemental Chaos
+  source_price: 16000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Greatsword
+  magic_bonus: '3'
+  desc: 'A +3 Varis Greatsword. Manifest or dismiss its blue force blade once on your turn without spending an action.
+    It deals force instead of slashing damage, and the enhancement adds to attacks, weapon damage and block DC.
+    It holds 3 charges and restores all charges at dawn. Immediately after an unblocked strike deals damage to a
+    creature, spend 1 charge to force a Constitution save against DC 8 + your proficiency bonus + your Strength
+    modifier. On failure choose one effect: it cannot regain HP for 1 minute; it is Blinded for 1 minute; it cannot
+    cast spells until the end of its next turn; or you regain HP equal to the force damage this strike actually
+    dealt. The target repeats the save at the end of each turn to end a lasting effect. A creature can have only
+    one lasting Void Blade effect at a time, with a new effect replacing the old; the instant healing does not occupy
+    this limit. Healing respects your HP maximum and any rule reducing healing.'
+  conversion_notes: Added the Varis Greatsword profile and enhancement to block DC, clarified the missing charge
+    trigger as an unblocked damaging strike, and distinguished instant siphon healing from the blade's nonstacking
+    timed debuffs.
+  name: Void Blade (Greatsword)
+  group: Legendary
+  id: mi-legendary-011
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 34000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A11:D11
+  original_5e: 'At first glance, it appears as only the hilt of a greatsword. With a mental command of its wielder
+    the sword will ignite in a brilliant flash of blue energy. The Void Blade is a +3 greatsword, that deals force
+    damage in place of its normal slashing damage. The blade has 3 charges which replenish each dawn. Once you have
+    damaged a creature with the blade, you can expend a charge. The target must make a Constitution saving throw.
+    If they fail, you pick one of the following effects to take effect on them. A creature can have only one negative
+    effect from this blade active on them at a time and they can remake their saving throws at the end of each of
+    their turns. If they succeed, the effect ends. The DC for the Consitution saving throw is equal to 8+proficiency
+    bonus+ your Strength modifier. Effects may be: the creatures loses ability to regain hit points for 1 minute;
+    the target creature becomes blind for 1 minute; the target cannot cast spells until end of its next turn; you
+    siphon the damage inflicted upon the target, healing yorself by the amount of force damage your attack did.'
+  source_name: Void Blade (Greatsword)
+  source_price: 34000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Longsword
+  magic_bonus: '1'
+  desc: 'A +1 Varis Longsword; add the enhancement to attack, damage and block DC. Each unblocked strike adds 1d6
+    necrotic damage. Once per short rest, before one attack, let the blade phase through intervening objects and
+    creatures: that attack ignores half, three-quarter and total cover within its normal reach, but you must know
+    the target''s location, attack unseen targets with disadvantage, and cannot pass a magical barrier that forbids
+    planar travel. The target may Block normally. Separately, use an action to flash light in a 5-foot radius; other
+    creatures there make a DC 13 Constitution save or become Blinded until the start of their next turn. After the
+    flash, roll 1d4; it recharges after that many dawns. Phasing and flash have separate recharge trackers.'
+  conversion_notes: Kept the two distinct recharge schedules and completed the flash's missing action cost. Phasing
+    bypasses cover rather than Block or reach; necrotic damage now requires an unblocked strike.
+  name: Dawn's Strife (Longsword)
+  group: Legendary
+  id: mi-legendary-012
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 4000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A12:D12
+  original_5e: "This damascus blade was the pinnacle of a craftswoman's heart, a conduit of hope more powerful than\
+    \ dawn. However, consumed with the anguish of losing a loved one by their own hand, the original essence of\
+    \ the blade was tarnished by its creator. Discarded to the wayside, this beacon now struggles to find coexistence\
+    \ within the tides of darkness, less it be consumed by them...\n- You have a +1 bonus to attack and damage rolls\
+    \ made with this magic weapon.\n- On a successful hit you add 1D6 Necrotic Damage to the roll\n- Once per short\
+    \ rest you can have your blade ignore 3/4 Cover and Full Cover for an attack as the blade phases through any\
+    \ objects or allies in the way of your target. \nSimilarly you can use this feature to instead shine a bright\
+    \ light within 5ft of the Wielder. All Creatures within this radius must succeed a DC 13 Constitution Saving\
+    \ Throw or be blinded until the start of their next turn. This secondary feature recharges every 1d4 Dawns.\
+    \ Proficiency with a longsword allows you to add your proficiency bonus to the attack roll for any attack you\
+    \ make with it."
+  source_name: Dawn's Strife (Longsword)
+  source_price: 4000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Greatsword
+  desc: A Varis Greatsword carved from obsidian. You need Strength 20 to attack with it; below that score you can
+    carry it but cannot wield it as a weapon. Before your first attack with it on each of your turns, choose a whole
+    number from 0 up to half your current AC, rounded down. Reduce your AC by that number until the start of your
+    next turn, and add that number to that one attack's attack roll, damage and block DC. You cannot use this exchange
+    again that turn even if the attack misses or is blocked, and it cannot reduce AC below 0. Other attacks do not
+    gain the bonus. A creature reduced to 0 HP by its unblocked strike turns into obsidian; it remains a corpse
+    if killed and an unconscious stone body if merely knocked out. Ending the transformation takes an effect that
+    reverses petrification; the transformation alone does not heal, kill or duplicate the creature.
+  conversion_notes: Converted the AC sacrifice into an explicit one-attack Varis tradeoff with matching block DC
+    and fixed timing. Defined what the otherwise ambiguous zero-HP obsidian transformation does to lethal versus
+    nonlethal targets.
+  name: Talon of the First Brute (Greatsword)
+  group: Legendary
+  id: mi-legendary-013
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 4000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A13:D13
+  original_5e: This sword has an obsidian blade an the following properties. The sword is unnaturally heavy, requiring
+    a Strenght ability score of 20 or higher in order to wield it. The first time you attack with the sword on each
+    of your turns, you can add up to half of your Armor Class to the sword's attack and damage bonus, losing that
+    amount of Armor Class until the start of your next turn. Whenever you use the sword to reduce a creature to
+    0 hit poins, its body turns into obsidian.
+  source_name: Talon of the First Brute (Greatsword)
+  source_price: 4000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Greatsword
+  magic_bonus: '2'
+  desc: |-
+    A +2 Varis Greatsword; its enhancement adds to attack, weapon damage and block DC. Twice per long rest, use a bonus action to teleport to a visible empty space within 30 feet. Until the start of your next turn you gain the Varis Ethereal condition, including its inability to attack or physically interact; you may end that condition early without an action. While held, a bonus-action command makes its blade shed bright light for 20 feet and dim light for 20 more, or extinguishes it.
+
+    The sword has 3 charges, all restored when you finish a long rest. Use an action and spend charges for one power: sickening ray (1 charge), make a ranged spell attack using Charisma and proficiency against a creature within 60 feet; on a hit deal 2d8 poison damage and it makes a DC 15 Constitution save or suffers disadvantage on attacks and ability checks until the end of its next turn. Darkness (2 charges), create a 15-foot-radius sphere within 60 feet for 10 minutes; ordinary sight and darkvision cannot see through it, and a level 3 or higher magical light ends it. Curse (3 charges), touch one creature; it makes a DC 15 Wisdom save or subtracts 1d4 from attacks and saves for 1 minute, repeating the save at each turn's end. The ray cannot be blocked. Darkness and curse require your concentration and end if the sword is sheathed, dropped or disarmed; you can maintain only one concentration effect in total. These are item powers, not extra class slots.
+  conversion_notes: Replaced Light, Ray of Sickness, Darkness and Bestow Curse dependencies with defined powers.
+    Gave the shadow form Varis Ethereal restrictions and kept one shared concentration limit and long-rest charge
+    recovery.
+  name: Duskbringer (Greatsword)
+  group: Legendary
+  id: mi-legendary-014
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A14:D14
+  original_5e: 'Add +2 to all Attack and Damage rolls made with this greatsword. As a bonus action you can slip
+    into the shadows and reaapear in any aviable space within 30 ft. that you can see. When you reappear your physical
+    form remains as an intangible shadow figure until your next turn. You can use this feature twice per long rest.
+    You can cast Light cantrip at will while holding this sword. The target is always this sword and the light emits
+    from the blade. This sword holds 3 charges. As an action you can expend these charges to cast spells from the
+    list: (1 charge) Ray of Sickness; (2 charges) Darkness; (3 charges) Bestow Curse. The sword acts as a conduit
+    and holds the concentration of these spells unless disarmed, dropped or the sword is sheathed. You can still
+    only have one concentration spell active at a time. It regains charges after you finish a long rest. You use
+    charisma as your spell cast modifier. Saving throws are a target of 15. '
+  source_name: Duskbringer (Greatsword)
+  source_price: 10000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: 'A perfectly smooth stone cube exactly one inch along every edge. Its dimensions and right angles do not
+    change with ordinary heat, cold or pressure, making it a reliable reference square: gain advantage on a tool
+    check whose sole purpose is checking a one-inch dimension or right angle against the cube. It has no bonus to
+    attacks, AC, Block or spellcasting, cannot move itself, and is not indestructible. Deliberately chipping or
+    reshaping it ends the magical precision; it remains an ordinary damaged stone.'
+  conversion_notes: Preserved the joke item's exact precision and authored one narrow usable tool interaction without
+    inventing an unrelated legendary combat power.
+  name: Perfectly Square Stone
+  group: Legendary
+  id: mi-legendary-015
+  rarity: Legendary
+  attunement: 'No'
+  price: 1000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A15:D15
+  original_5e: This 1 by 1 inch cube of stone is unnaturally perfect. It is exactly one inch in every dimension
+    and its faces are perfectly smooth.
+  source_name: Perfectly Square Stone
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Longbow
+  magic_bonus: '3'
+  desc: A +3 Varis Longbow; its enhancement adds to attack, weapon damage and block DC. An attuned archer of elven
+    or half-elven ancestry can ready it to create one silver magical arrow as part of each attack, so it needs no
+    carried ammunition for those attacks. An arrow vanishes after impact or at the end of the turn, and cannot be
+    sold or stockpiled. While aiming or wielding it, your darkvision becomes at least 120 feet. You see visible
+    magical illusions within 120 feet as translucent images and recognize their true visible subjects, but this
+    does not reveal ordinary disguises, invisible creatures or hidden objects. You also sense the location and faint/moderate/overwhelming
+    strength of fiends, undead and active cursed objects within 120 feet, blocked by total cover. Gain advantage
+    on attack rolls against demons. These senses and the ammunition require the elven ancestry bond; other attuned
+    wielders receive only the +3 bow.
+  conversion_notes: Mapped the bow to Varis weapon training and Block, defined evil-aura sensing by creature/effect
+    type rather than alignment, and clarified illusion limits and nonstockpilable generated ammunition.
+  name: Ari'thalas, Bow of the Silverwing (longbow)
+  group: Legendary
+  id: mi-legendary-016
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 30000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A16:D16
+  original_5e: |-
+    You have a +3 bonus to attack and damage rolls made with this magic weapon.
+
+    When an attuned archer of elven descent readies Ari'thalas, a silver arrow appears ready to be fired.  The arrows carry the enchantment of the bow and never need to be replenished.
+    The archer gains advantage on attack rolls against demons.
+    The archer’s eyes glow a bright silver when they aim the bow as the God of Archers touches them with his grace.  Their darkvision increases to 120 feet and can see through illusions within 120 feet. In addition the archer can detect evil auras and their strength within 120 feet.
+  source_name: Ari'thalas, Bow of the Silverwing (longbow)
+  source_price: 30000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Potion
+  desc: |-
+    Drink this luminous tear as an action, consuming it. If initiative is not in progress and no hostile creature has attacked, damaged or pursued you in the last minute, immediately gain the benefits that your current rules explicitly grant on completing a long rest, including Fatigue recovery and class features that explicitly recover then. It does not advance time, complete crafting, recover resources whose rules do not state long-rest recovery, or resolve an interrupted quest.
+
+    Otherwise, for 1 minute your speed doubles, you gain +2 AC and advantage on Dexterity saves, and on each of your turns you gain one additional restricted action usable only for one weapon attack, Dash, Disengage or interacting with one object. You are immune to fear and gain temporary HP equal to your highest ability modifier, minimum 1, at the start of each turn; these replace rather than stack with existing Temp HP. No concentration is needed. When the minute ends, you are Winded until the end of your next turn. Repeated tears cannot stack the buff, add more restricted actions or refresh it beyond 1 minute from the most recent dose.
+  conversion_notes: Replaced Heroism/Haste with a complete Varis combat effect and defined the combat boundary.
+    Instant long rest applies only recovery the current class actually grants, preserving known gaps in general
+    slot recovery.
+  name: Angel's Tear (Potion)
+  group: Legendary
+  id: mi-legendary-017
+  rarity: Legendary
+  attunement: 'No'
+  price: 1000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A17:D17
+  original_5e: The tear glows a bright white light. When you drink this tear outside of combat, you gain the benefits
+    of a long rest. If you drink it while fighting, you instead gain the effects of the spells Heroism (using your
+    highest ability modifier as your spellcasting ability modifier) and Haste for 1 minute (no concentration required).
+  source_name: Angel's Tear (Potion)
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Greatsword
+  magic_bonus: '4'
+  desc: Sir Eggbert is a sentient +4 Varis Greatsword. Add its enhancement to attack rolls, weapon damage and block
+    DC, using the current Greatsword's properties and maneuvers. Attacks with it have advantage against constructs,
+    including warforged. Sir Eggbert has Intelligence 16, Wisdom 10 and Charisma 12, sees and hears to 60 feet,
+    and speaks Common aloud or telepathically to its attuned wielder. Once per round while you hold it, it may make
+    an Intelligence-based skill check for information it can itself perceive, using +3 Intelligence and +6 proficiency,
+    for a total of +9. It cannot replace your physical actions, cast spells, make extra attacks, or give you its
+    proficiency bonus on your own rolls.
+  conversion_notes: Completed the source's missing sentient ability scores and senses, preserved its unusual +4
+    enhancement and +6 personal proficiency, and separated its own knowledge checks from the wielder's Varis actions
+    and training.
+  name: Sir Eggbert (Greatsword)
+  group: Legendary
+  id: mi-legendary-018
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 26000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A18:D18
+  original_5e: Sir Eggbert is a sentient weapon that can do INT based checks and has +6 proficiency. It is +4 Greatsword,
+    with 2d6 damage, and has advantage on attacks agains constructs and warforged.
+  source_name: Sir Eggbert (Greatsword)
+  source_price: 26000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: Carry this concealed wallet to collect a supernatural bounty. When damage you deal kills a hostile creature,
+    roll 2d6 and multiply the result by its recorded Challenge rating; that many gold pieces appear in the wallet,
+    rounding down to a whole coin. A creature without a Challenge rating pays no bounty. You must deal the actual
+    killing damage; assisting, ordering a kill or finishing a creature already dead grants nothing. A given creature
+    can pay only once even if revived, and summoned, fabricated or deliberately farmed helpless creatures pay nothing.
+    Carrying several Slayer wallets does not multiply the same bounty. Coins are real and remain after leaving the
+    wallet.
+  conversion_notes: Kept the source's Challenge-based payout instead of inventing a level-to-CR rule. Defined killing
+    ownership, fractional CR, repeat deaths and nonstacking anti-duplication boundaries so the economy effect works
+    with the current monster references.
+  name: Wallet of the Slayer
+  group: Legendary
+  id: mi-legendary-019
+  rarity: Legendary
+  attunement: 'No'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A19:D19
+  original_5e: A small item, easy to conceal, imbued with a dark magic, that awards its holder with coin as reward
+    for the taking of a life. The forces behind magic are widely unknown, making it difficult to trace the origins
+    of this strange accessory. Player must deliver the damage that kills creature. GP awarded = Creature's Challenge
+    Rating x 2d6
+  source_name: Wallet of the Slayer
+  source_price: 10000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: Use an action to stick both magical googly eyes to one nonmagical, unattended inanimate object no larger
+    than Large. The object becomes sentient, grows a mouth and speaks one language you know. It has Intelligence
+    10, Wisdom 10 and Charisma 10 and perceives with normal sight and hearing to 60 feet from the eyes. Its personality
+    reflects its material, function and experiences; it is an independent creature, not a servant compelled to obey
+    you. Its existing body gains no extra movement, attacks, limbs, spellcasting or magic-item powers. It retains
+    its ordinary object AC, HP, damage thresholds and resistances; if the body has no recorded HP, use 5 for Tiny,
+    10 for Small, 20 for Medium or 40 for Large. Removing either eye as an action or destroying the object ends
+    the animation. Reattaching the same pair to the same intact object restores its memories. One pair animates
+    only one object at a time.
+  conversion_notes: Preserved subjective sentience and item-themed personality while supplying missing size, senses,
+    scores, durability and removal mechanics; prevented the eyes from granting undefined animated-object attacks.
+  name: Googly Eyes of Sentience
+  group: Legendary
+  id: mi-legendary-020
+  rarity: Legendary
+  attunement: 'No'
+  price: 3000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A20:D20
+  original_5e: When you apply the Googly Eyes of Sentience to any inanimate object or creation, it gains the capacity
+    to feel, percieve, and experience subjectively. The creation survives, and perhaps, thrives, until both googly
+    eyes are removed or their body destroyed. While some creations have ability to move, most do not. A mouth forms
+    naturally and all creations speak one language of their creator's choosing. While a creation's attitude is not
+    set in stone (unless they're a boulder) the item may impact the personality. For instance, a lemon may have
+    a sour disposition, a sofa can be quite relaxed, and a compass has a strong sense of direction.
+  source_name: Googly Eyes of Sentience
+  source_price: 3000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: While attuned and holding this gnomish pipe, your Wisdom increases by 1, to a maximum of 20. As an action,
+    name a nonmagical weapon in the current Varis catalog and blow smoke into its shape. It lasts for five rounds,
+    and you can maintain only one smoke weapon; making another dismisses the first. On each of your turns, use a
+    bonus action to move it up to 30 feet while keeping it within 30 feet of you, then make one melee spell attack
+    against a creature within 5 feet of it, using your proficiency bonus and Wisdom modifier. An unblocked strike
+    deals the chosen weapon's one-handed base damage dice plus Wisdom; a two-handed-only weapon uses its normal
+    base dice. Use block DC 8 + proficiency bonus + Wisdom modifier. It gains no weapon maneuvers, magic enhancement,
+    ammunition, riders or extra attacks. Smoke passes through porous barriers but not airtight walls, and cannot
+    move objects or occupy hands. The pipe consumes a pinch of ordinary smoking herb per creation.
+  conversion_notes: Defined smoke control, attack and Block rather than granting an entire copied weapon rules package.
+    Preserved five-round duration, Wisdom attacks and the +1 Wisdom cap while excluding unspecified maneuver and
+    extra-attack duplication.
+  name: Pipe of Smoke Shaping
+  group: Legendary
+  id: mi-legendary-021
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A21:D21
+  original_5e: |-
+    Blowing smoke rings is neat, but gnomes have taken the art to a whole next level. Every gnome tinkerer worth their weight has their own secret design for a pipe. This is one such pipe.
+    The pipe gives +1 to Wisdom Max 20
+    This pipe looks and functions like a normal pipe. As an action, you can speak the name of a weapon, take a draw on the pipe, and then blow the smoke out of your mouth. Doing this will cause the smoke to form into the shape of the spoken weapon. The smoke construct follows your commands. It can move through porous objects. You use your bonus action to control the smoke construct. The construct can move up to 30 feet away from you. Deals the same damage as the weapon summoned. You use your wisdom modifier as your attack/damage modifier. The smoke construct lasts 5 rounds.
+  source_name: Pipe of Smoke Shaping
+  source_price: 10000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Longsword
+  magic_bonus: '2'
+  desc: |-
+    Bloodthirster is an ordinary Varis Longsword until attuned. While attuned it grants +2 to attack, weapon damage and block DC. After an unblocked strike damages a hostile creature, gain temporary HP equal to half the damage actually dealt, rounded down; these replace rather than add to other Temp HP and last until your next long rest.
+
+    Curse. You cannot willingly end attunement or be forced to drop it by ordinary persuasion. An effect that explicitly removes an item's curse permits attunement to end. Feed it by personally killing a hostile Small or larger living creature with its blade; summoned creatures and helpless creatures deliberately sacrificed for feeding do not count. If seven consecutive days pass without feeding, at the next dawn roll d100. On 01–14 you take 1d8 + 2 unblockable necrotic damage. Increase this chance by 14 percentage points at each following dawn, to 98% on the seventh hungry dawn and 100% afterward. Feeding resets both the seven-day grace period and hunger chance. Hunger damages HP through the normal Varis health-pool order and can reduce you to 0 HP.
+  conversion_notes: Retained the escalating source curse and permanent bond, completed its missing post-seventh-day
+    ceiling and damage type, and converted lifesteal into nonstacking Varis temporary HP after unblocked damage.
+  name: Bloodthirster (Longsword)
+  group: Legendary
+  id: mi-legendary-022
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 23000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A22:D22
+  original_5e: 'Unearthed near the marshes of Kaladoun, the Bloodthirster is thought to have belonged to a powerful
+    soulstealer named Frax Van Itt. The wielder of this dangerous weapon is forever bound to the blade and its thirst
+    for the blood. Unattuned it is just a normal Longsword. When attuned, you can''t unattune from the weapon. While
+    attuned you get +2 to attacks and damage. When you damage an enemy, you gain temporary hitpoints of the amount
+    of the half of damage dealt by you. If the person has not killed small or larger creature in the last 7 days,
+    next day weapon has 14 % chance to take away 1d8+2 hit points from the wielder. On the second day it is 28 %
+    and every next day till 7th day, the chance increases by 14 %. '
+  source_name: Bloodthirster (Longsword)
+  source_price: 23000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: hand-axe
+  magic_bonus: '3'
+  desc: A +3 Varis hand-axe blessed by Gulen Rockfire against the undead. Add its enhancement to attack, weapon
+    damage and block DC. It gains Throw 20/60 if its base profile lacks a throwing range. After each thrown attack
+    it returns to your hand immediately after resolving damage; if the hand is occupied it lands safely at your
+    feet. An unblocked strike against undead adds one additional copy of the axe's base damage dice, before critical
+    dice. An undead with Challenge rating lower than 2 that takes damage from an unblocked strike must make a DC
+    15 Constitution save or be destroyed. Undead without a Challenge rating do not qualify for instant destruction.
+    Other creatures take the ordinary enchanted axe damage.
+  conversion_notes: Inherited the current Hand axe profile rather than fixed 5e dice, retained the extra undead
+    weapon die and low-CR destruction, and specified its return and Constitution save with Varis Block handling.
+  name: Azuredge (Hand axe)
+  group: Legendary
+  id: mi-legendary-023
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 34000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A23:D23
+  original_5e: Gulen Rockfire, Slayer of Undead, crafted this powerful throwing axe expressly for reinforcing his
+    claim to his namesake. Blessed by a cross-section of gods, this weapon does phenomenal damage against creatures
+    unwisely rebelling against their deceased status, and can potentially destroy them in a single blow. Azuredge
+    is an enchanted throwing axe +3 which returns to the hand of the wielder, and it can be used in melee combat
+    as well. The weapon deals 1d6+3 points of damage, and the weapon deals 2d6 +3 points of damage to the undead
+    and undead under CR 2 must make saving throw of DC 15 or be destroyed instantly.
+  source_name: Azuredge (Hand axe)
+  source_price: 34000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Longsword
+  magic_bonus: '2'
+  desc: 'A +2 Varis Longsword in its default form. Its enhancement adds to attacks, weapon damage and block DC.
+    As a bonus action, speak its Celestial command to manifest a crackling blade and choose one current Varis profile:
+    Greatsword, Longsword, Longspear (the lance form) or Rapier. Use that profile''s damage dice, group, properties,
+    maneuvers and required hands, changing all of its weapon damage to lightning. The form lasts until changed or
+    dismissed with another bonus action. A dismissed blade is only a metal hilt and cannot make weapon attacks.
+    Training is checked for the chosen form, so knowing one form does not grant proficiency in the others. Change
+    the inventory base item to the chosen form when using automatic attack calculations; the +2 enhancement remains
+    the same.'
+  conversion_notes: Converted a free-form energy blade into four exact Varis weapon profiles, preserved +2 and lightning
+    damage, and stated form-specific training, hand requirements and the inventory edit needed for automatic attacks.
+  name: 'Brillian Lance '
+  group: Legendary
+  id: mi-legendary-024
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 24000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A24:D24
+  original_5e: This strange metal rod resembles the hilt of large sword. When in hand you can feel a slight current
+    humming through the metal. It can be activated via keyword in celestial, upon which it emits a crackling blade
+    of energy. You gain +2 bonus to attack and damage rolls made with this magic weapon. When activated as a bonus
+    action, you can choose for this weapon to take the form of a greatsword, longsword, lance or rapier. This weapon
+    always deals lightning damage.
+  damage: 1d8 lightning
+  source_name: 'Brillian Lance '
+  source_price: 24000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Potion
+  desc: 'Drink the potion as an action, consuming it. Eleanor''s preserved insight permanently increases your Intelligence
+    score and its maximum by 3. You also permanently have disadvantage on Charisma saves. This is one combined magical
+    alteration: an effect capable of removing a permanent curse may end both the Intelligence increase and the Charisma
+    drawback together, never only the drawback. Further doses of Eleanor''s Sagacity have no effect on a creature
+    already altered by it. Record the score and maximum changes on the sheet; the potion does not grant spells known,
+    class levels or proficiency.'
+  conversion_notes: Preserved the permanent +3 Intelligence tradeoff, made duplicate doses nonstacking and coupled
+    removal of benefit and drawback to avoid an indefinite consumable ability-score loop.
+  name: Eleanor's Sagacity (potion)
+  group: Legendary
+  id: mi-legendary-025
+  rarity: Legendary
+  attunement: 'No'
+  price: 50000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A25:D25
+  original_5e: Eleanor was recognized for her authority, diplomacy and political sagacity — a legend in ballads
+    even in her own time. After her death, some part of her soul was put away, to use when needed in tough descisions.
+    When the potion is consumed Your Intelligence score increases by 3, as does your Intelligence maximum but you
+    gain disadvantage on Charisma saving throws.
+  source_name: Eleanor's Sagacity (potion)
+  source_price: 50000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Sling
+  magic_bonus: '3'
+  desc: A +3 Varis Sling. Add its enhancement to attack, weapon damage and block DC and use its current ammunition,
+    range and maneuvers. Once per short rest, use a bonus action to grow poisonous quills on your arms until the
+    end of your turn. While quilled, replace one attack of your Attack action with a quill strike against an adjacent
+    creature or a creature within 20 feet. Make a weapon attack using Dexterity and proficiency if trained with
+    this sling; a quill's block DC is 8 + the same bonuses. On an unblocked strike it deals 1d8 piercing damage
+    plus Dexterity, and the target makes a DC 16 Constitution save or suffers disadvantage on attacks and ability
+    checks for 1 minute. It repeats that save at the end of each turn to end the poison. This quill is not a sling
+    attack, gains no +3 enchantment and does not consume ammunition.
+  conversion_notes: Used the Varis Sling profile and turned the undefined one-turn quills into an Attack-action
+    replacement with an explicit poison duration and repeat save. Distinguished its independent quill damage from
+    the sling enhancement.
+  name: Ricochet (sling)
+  group: Legendary
+  id: mi-legendary-026
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 23000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A26:D26
+  original_5e: 'Ricochet was an enchanted sling that once belonged to an elven monk. The sling''s name was earned
+    during one faithful event when the monk was pursued by an arcane archer through weeping and twisting catacombs.
+    Filled with resolve, the monk aimed at the archer''s moving silhouette and fired the sling using all his strength.
+    The bullet bounced off the catacombs'' wall and ricocheted down the stone hall, hitting the pursuer in the middle
+    of his chest. Ricochet had a +3 to attack and damage rolls and allowed its wielder as bonus action, once per
+    short rest, to make poisonous quills on his arms for one turn, which wielder could use in melee or in range
+    of 20 feet. Quills dealt 1d8 damage and target has to make DC 16 Constitution save, if failed, target was poisoned
+    for 1 minute. '
+  source_name: Ricochet (sling)
+  source_price: 23000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: war hammer
+  desc: |-
+    Worldforger is a precision smithing hammer using the Varis war hammer's group and maneuvers, but it deals 1d4 bludgeoning damage one-handed or 1d6 two-handed. Attacks have a +2 magic bonus, but this bonus does not increase damage. If trained, use twice your proficiency bonus instead of once for its attacks and block DC; do not double any ability modifier. Its block DC also receives the +2 attack enhancement. Record these attack-only and doubled-proficiency adjustments manually rather than using a general damage enchantment.
+
+    It has 2 charges, regaining both on a long rest. Immediately after an unblocked strike, spend 1 charge to add 4d6 fire damage to that strike. Alternatively, use an action and both charges to make a wall of fire within 120 feet: a line up to 60 feet long, 20 feet high and 1 foot thick, or a ring up to 20 feet across and 20 feet high. It lasts 1 minute with concentration. Creatures in its space when formed make a DC 16 Dexterity save, taking 5d8 fire damage on failure or half on success. Choose one side: a creature entering the wall or ending its turn within 10 feet on that side takes 5d8 fire, once per turn, with no save. The area cannot be blocked. You have advantage on Constitution saves to maintain concentration on this wall. The hammer also serves as smith's tools, but grants no training you lack.
+  conversion_notes: Preserved the source's attack-only +2, doubled proficiency and reduced forging-hammer dice.
+    Replaced Wall of Fire with a complete item power, including saves, concentration and one-per-turn area damage.
+  name: Worldforger (War-hammer)
+  group: Legendary
+  id: mi-legendary-027
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 40000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A27:D27
+  original_5e: Augut, The Master Forger, creator of divine weapons once lost his hammer. It was made for precision
+    and forging, not for damage. It gives +2 to attack rolls, and instead adding your proficiency modifier, you
+    double it. It deals 1d4 (or 1d6 if holding it with two hands) bludgeoning damage and it has 2 charges. You can
+    use one charge to heat the weapon up and it deals extra 4d6 fire damage to the target. You can use two charges
+    to cast wall of fire at 4th level and you have advantage on concentration checks for this spell. You regain
+    charges after long rest.
+  damage: 1d4b
+  properties:
+  - versatile 1d6
+  source_name: Worldforger (War-hammer)
+  source_price: 40000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: 'Attuning to Voli''s Eye replaces one of your eyes; the lost natural eye does not regrow merely by ending
+    attunement. While using the implant you have disadvantage on ranged attack rolls, but retain ordinary vision
+    through your remaining eye. Once per long rest, use an action to discharge lightning in a 100-foot-long, 5-foot-wide
+    line from you. Creatures in it make a Dexterity save against DC 8 + your proficiency bonus + your Wisdom modifier,
+    taking 10d6 lightning damage on a failure or half on a success. The lightning ignites unattended flammable objects
+    and cannot be blocked. This is an item power: it costs no class slot and does not teach a spell. Removing the
+    implant ends its power; magically restoring the sacrificed eye requires an effect that regrows a lost body part.'
+  conversion_notes: Replaced a fifth-level 5e Lightning Bolt with a self-contained line, damage and save scaled
+    by the source's Wisdom/proficiency. Preserved the permanent eye cost and ranged-attack drawback.
+  name: Voli's Eye
+  group: Legendary
+  id: mi-legendary-028
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 12000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A28:D28
+  original_5e: This eye from ancient times are infused with cracling energy and to use it, you need to attune to
+    it. When you are attuning, you must sacrife one of your eyes, by that, you now have disadvantage on all ranged
+    attacks. While attuned, you can use this eye as an action to shoot out a lightning bolt spell at 5th level.
+    Your spell modifier is your wisdom modifier + proficiency. After using this ability, you must finish long rest,
+    to regain this ability.
+  source_name: Voli's Eye
+  source_price: 12000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: Once per long rest, blow Icebreaker as an action. Every creature within 120 feet, including you, loses all
+    damage resistances and immunities for 1 minute and immediately loses its current temporary HP. Arcane Health,
+    HP, Block and temporary Block remain. A creature that loses cold immunity this way takes 4d6 fire damage after
+    the immunity is suppressed. Every creature made primarily of glass, ice or crystal within 200 feet takes 4d12
+    force damage; a creature meeting both conditions takes both effects. These magical pulses cannot be blocked.
+    Nonmagical ice within 200 feet cracks and begins melting; a wall thins by up to 1 foot and becomes difficult
+    terrain, rather than creating an unspecified avalanche. After blowing it, make a DC 17 Constitution save; on
+    failure you cannot speak or supply verbal spell components for one day. This temporary silence prevents neither
+    breathing nor nonverbal actions. Resistances gained during the minute are also suppressed until the minute ends.
+  conversion_notes: Explicitly separated Temp HP from Varis Arcane Health and Block, completed the silence and ice
+    effects, and stated the timing of immunity loss before damage. Preserved the indiscriminate friendly-fire pulse.
+  name: Icebreaker (horn)
+  group: Legendary
+  id: mi-legendary-029
+  rarity: Legendary
+  attunement: 'No'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A29:D29
+  original_5e: Icebreaker can be blown using an action. Upon doing so, any creature withing 120 feet (including
+    the user) loses their damage immunities and resistances for 1 minute. The affected creatures also lose any temporary
+    HP they currently have. Any creature within 120 feet that temporarily loses their cold immunity due to this
+    item takes 4d6 fire damage. Any ice within 200 feet begins melting and shattering, if there are creatures made
+    of glass, ice or crystal, they take 4d12 force damage). After using the horn, user must make DC 17 Constitution
+    saving throw or is silenced for 1 day. Horn can't be used again until the next long rest.
+  source_name: Icebreaker (horn)
+  source_price: 20000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: While wearing the sand-wreathed robe, gain +1 AC and +1 to all saving throws. It is clothing and can be
+    worn over one suit of armor; it adds no armor proficiency, Block instances or reduction. When an adjacent creature
+    makes an unblocked melee strike against you, use your reaction to lash it with blighted roots for 1d6 magical
+    bludgeoning damage. The lash occurs after the incoming damage, is not an attack and cannot be blocked. Multiple
+    Cleansing Sands robes do not stack.
+  conversion_notes: Placed the robe's defensive bonuses alongside Varis armor rather than giving it a separate AC
+    formula, and defined the retaliatory reaction as an unblocked-strike trigger with automatic magical damage.
+  name: Robe of The Clensing Sands
+  group: Legendary
+  id: mi-legendary-030
+  rarity: Legendary
+  attunement: 'No'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A30:D30
+  original_5e: These intricately designed robes from far off sands have found themselves far from home. Infused
+    with the residual energy of a felled corruption that threatened an ancient wood, these robes have begun to cleanse
+    the corruption. Only time will tell if the effort will be successful. You gain +1 to AC and Saving Throws as
+    an evershifting layer of sand protects you from harm. Whenever you are hit by a melee attack you can use your
+    reaction to have the Robe deal 1d6 Magical Bludgeoning damage as partly blighted roots lash out at your attacker.
+  source_name: Robe of The Clensing Sands
+  source_price: 20000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Armor
+  base_item: Plated armor suit
+  magic_bonus: '4'
+  desc: |-
+    By default this is a +4 Varis Plated armor suit; the source armor profile can be edited to another existing suit before awarding it. The enchantment adds +4 AC, and while attuned you also gain +4 to all saves. Keep that suit's Bulk, Slow, Block, Protection and reductions. Against an effect that normally deals half damage on a successful save, you instead take no damage on success and half damage on failure.
+
+    Last-second escape. When an unblocked critical strike would deal damage to you, the armor automatically negates all of that strike's damage and damage-dependent riders. You still suffer any effect that does not require damage. Immediately afterward the plot enchantment burns out permanently: remove its +4 AC, +4 saves and special saving-throw protection; it becomes the ordinary chosen armor. While you remain attuned to the burnt-out armor, your Wisdom score is reduced by 3, to a minimum of 1, reflecting dread at your story's apparent end. You can end attunement normally during a short rest. The single critical escape does not recharge, and repairing the ordinary armor does not restore its magic.
+  conversion_notes: Resolved the source's unspecified burnout trigger and contradictory half-damage wording into
+    one finite legendary escape. Preserved Varis armor Bulk/Block instead of substituting a 5e armor formula and
+    specified how its -3 Wisdom aftermath ends.
+  name: Armor of The Plot (Light, Medium or Heavy)
+  group: Legendary
+  id: mi-legendary-031
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 50000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A31:D31
+  original_5e: Overcome all odds, especially when those odds are firmly against you. The wearer of this armor can
+    stave off death for as long as they wear the Armor of The Plot. Defying all expectations and reality situations
+    for which lesser armors would surely fail those that don them, the Armor of  The Plot allows those wearer to
+    continue driving the story. This armor gives +4 to AC and +4 to all saves. Negates "half damage" on failed save.
+    When critically hit, negates all damage, but in super cool way that makes it look like the wielder may be in
+    trouble, however avoids harm at the last second.   The armor will lose all stats and become a basic armor of
+    the type assigned by the wearer's proficencies. In this state, the wearer recieves a -3 to Wisdom, as they are
+    distracted by the knowledge that their journey is surely coming to an end.
+  source_name: Armor of The Plot (Light, Medium or Heavy)
+  source_price: 50000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: At the end of attunement choose one skill or tool proficiency. While you wear the gloves, you gain that
+    proficiency. If already proficient through another permanent source, double the proficiency contribution to
+    its checks instead; it cannot exceed twice your normal proficiency bonus. You may change the choice when you
+    finish a short rest. The gloves cannot choose an ability score, saving throw, weapon group, armor type, language,
+    class feature or spell tradition, and removing them immediately removes their benefit.
+  conversion_notes: Made the source's open-ended proficiency choice explicit and playable for skills/tools without
+    silently granting Varis armor, Block, save or class training. Defined expertise stacking and a short-rest reassignment
+    window.
+  name: Proficiency Gloves
+  group: Legendary
+  id: mi-legendary-032
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 5000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A32:D32
+  original_5e: Whilst wearing these gloves, you can take one additional proficiency of your choosing. If you are
+    already proficient in it, you double it.
+  source_name: Proficiency Gloves
+  source_price: 5000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Heavy crossbow
+  desc: Use the current Varis Heavy crossbow's training, required hands, loading actions and Block rules, with range
+    100/400 feet. It fires one physical Short sword instead of a bolt. Make one ranged weapon attack using Dexterity.
+    Every creature intersected by the straight line from you to the declared target, including the target, compares
+    that same attack roll to its own AC and may Block independently. On an unblocked strike a creature takes the
+    ammunition sword's base weapon dice as slashing damage plus your Dexterity modifier if trained. The sword's
+    numeric magic enhancement applies only once to that attack, damage and block DC; add any sword rider only if
+    its wording permits thrown/projectile use, and attunement powers require your own attunement. The fired sword
+    lands at the line's endpoint; recover it normally. No extra ammo, duplicated sword, ordinary melee maneuver
+    or second attack is created.
+  conversion_notes: Replaced undefined spinning-sword attacks with one Varis line attack, individual Blocks, explicit
+    ammunition recovery and ranged damage. Restricted inherited sword powers to applicable wording and attunement
+    rather than blindly copying every melee ability.
+  name: Crossbow That Shoots Rotating Swords
+  group: Legendary
+  id: mi-legendary-033
+  rarity: Legendary
+  attunement: 'No'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A33:D33
+  original_5e: This heavy crossbow shoots rotating swords in range (100/400). Whenever you make an attack roll with
+    this crossbow that shoots rotating swords, you use a shortsword for ammunition, instead of bolt, keeping shortswords
+    abilities. Every creature that stand between you and the target and whose AC is lower than your attack roll
+    (even if you wouldn't hit the original target) takes also damage. Each sword deals it's damage and you add your
+    dexterity modifier to calculate the slashing damage.
+  damage: 1d6s
+  properties:
+  - range 100/400
+  - two-handed
+  - reload III
+  source_name: Crossbow That Shoots Rotating Swords
+  source_price: 10000 GP
+  source_attunement: 'No'
+  source_rarity: Legendary
+- type: Armor
+  base_item: Metal breastplate
+  desc: Use the current Varis Metal breastplate's AC, Bulk, Slow, Block and Protection. While attuned and wearing
+    it, double your final Strength, Dexterity and Constitution modifiers for checks, saves, attack modifiers, ability
+    damage, HP calculations, movement and armor calculations that explicitly use those modifiers. Your underlying
+    scores and their maxima do not change, so score prerequisites still use the actual score. Negative modifiers
+    also double. Apply this doubling once after determining each modifier and before adding proficiency or other
+    flat bonuses; it does not double proficiency, class level, armor AC, magic enhancement or a separately added
+    modifier a second time. Changes to maximum HP preserve existing wounds rather than healing you. It also gives
+    you an impressive but mechanically irrelevant six-pack. Record the doubled modifier adjustments in manual sheet
+    bonuses and remove them when the armor is removed.
+  conversion_notes: Preserved the source's deliberately extreme modifier doubling but defined its order, negative
+    values, prerequisites, wound preservation and manual bookkeeping. Inherited Varis breastplate Bulk/Block instead
+    of a 5e breastplate formula.
+  name: Breastplate of Swoleness
+  group: Legendary
+  id: mi-legendary-034
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 50000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A34:D34
+  original_5e: When equipped, this shiny piece of armor will instantly double the strength, constitution and dexterity
+    modifiers, and of course, will grow a sick six pack on the wearer.
+  source_name: Breastplate of Swoleness
+  source_price: 50000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Scroll
+  desc: 'This chaotic single-use scroll needs no attunement. Use an action to read it while touching one creature
+    within 5 feet or aiming at a visible creature within 60 feet. With Intelligence 25 or higher you understand
+    it automatically; otherwise make a DC 26 Intelligence check. Failure consumes the scroll and deals 3d7 unblockable
+    psychic damage to you. Success consumes the scroll and lets you choose one result: the target makes a DC 17
+    Dexterity save, taking 3d7 radiant or necrotic damage on failure and half on success; a willing target regains
+    3d7 HP; or a willing target gains 3d7 temporary HP for 1 hour. Roll each d7 by rolling d8 and rerolling 8. The
+    damaging pulse cannot be blocked; healing follows current rules and Temp HP does not stack. After a successful
+    use, you also add +42 to one initiative roll you make within the next minute, then that benefit ends. There
+    is no hidden statistic awaiting a future ruling. Its price remains the source''s joke quote, so the seller must
+    state an actual asking price before a trade.'
+  conversion_notes: 'Authored complete mechanics from the source''s intentionally unfinished joke: resolved ambiguous
+    attunement as No, defined the 3d7 outcomes and failure, and assigned the mysterious +42 to one initiative roll.
+    Retained the Intelligence barrier and exact joke source price.'
+  name: What (scroll)
+  group: Legendary
+  id: mi-legendary-035
+  rarity: Legendary
+  attunement: 'No'
+  price: I dunno GP
+  source_ref: Magic item generator.xlsx — Legendary!A35:D35
+  original_5e: |-
+    You need an INT score of 25 to understand and use this item. If used without the required INT score, roll an intelligence check (DC 26). (When used, caster can choose to deal either radiant or necrotic damage or heal/give temporary hitpoints using that what is written)
+    - 3d7
+    - healing damage
+    -bruh
+    - +42 on a not yet revealed stat
+    -♡
+  source_attunement: Yesssno
+  source_name: What (scroll)
+  source_price: I dunno GP
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Great-club
+  magic_bonus: '3'
+  desc: A +3 Varis Great-club; add its enhancement to attack, weapon damage and block DC and use its current training,
+    properties and maneuvers. After an unblocked strike, roll Strength (Athletics). The struck creature makes a
+    Strength save against that rolled total or is pushed up to 30 feet directly away from you. If a solid barrier
+    stops it before that distance, it takes an additional 3d8 bludgeoning damage once, regardless of how many obstacles
+    it meets. This collision damage cannot be separately blocked. Three times between dawns, use an action to propel
+    one unattended object weighing 1–5 lb from within 60 feet along a straight line up to 90 feet. The first creature
+    in its path makes a Dexterity save against DC 8 + proficiency bonus + Dexterity modifier. On failure it and
+    the object take 3d8 bludgeoning damage; on success the object continues to the next creature. An object that
+    meets a wall stops and takes the damage. This catapult effect cannot be blocked.
+  conversion_notes: Inherited the Varis Great-club and Block rules, preserved the unusual rolled Athletics save
+    DC, and replaced Catapult with a complete three-use object projectile power.
+  name: Legendary Bat
+  group: Legendary
+  id: mi-legendary-036
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 30000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A36:D36
+  original_5e: This is the strongest baseball bat in history. It's a +3 Greatclub. When you hit an enemy with this
+    bat, they must succeed on a STR saving throw against your athletics check or be pushed 30 ft away from you.
+    If they are thrown against a wall or something similiar, they take additional 3d8 Bludgeoning damage. 3 times
+    per day you can cast "Catapult" as 1st level spell (DC is 8 + DEX modifier + prof)
+  source_name: Legendary Bat
+  source_price: 30000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  desc: A one-handed magical pistol requiring a free hand to reload. Load one ordinary metal shot and a powder charge
+    as an action. While loaded, use an action to fire in a 15-foot cone, consuming the shot and powder. Each creature
+    in the cone makes a DC 6 Dexterity save, taking 6d6 + 6 piercing and 6d6 radiant damage on a failure, or no
+    damage on a success. Roll the two damage pools once for all targets. This is a save-based magical blast, not
+    an attack roll or a weapon maneuver; it gains no ability, proficiency, magic-weapon attack bonus, critical hit
+    or Sneak Attack damage, and cannot be blocked. Its DC is always exactly 6 and cannot be increased. It cannot
+    fire underwater or while its powder is wet. Record its loaded state and resolve its blast manually rather than
+    using an ordinary attack-row calculation.
+  conversion_notes: Kept the source's fixed low DC and exceptionally high cone damage. Defined its missing loading,
+    ammunition and action rules and excluded attack-roll bonuses and Block from the save-based blast.
+  name: Boomstick (pistol)
+  group: Legendary
+  id: mi-legendary-037
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A37:D37
+  original_5e: The least precise weapon you can get, but it does hella damage. Attacks made with this weapon are
+    15 ft. cones. Each creature in the cone has to succeed on a DC 6 DEX save or take 6d6+6 piercing damage plus
+    6d6 radiant damage or no damage by succeeding. The DC can't be increased by any means.
+  source_name: Boomstick (pistol)
+  source_price: 20000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Ring
+  desc: 'While wearing this attuned ring, you can understand beasts and speak to them in a manner they understand.
+    Add twice your proficiency bonus to Animal Handling and Nature checks instead of once; if you lacked proficiency,
+    the ring grants it for these two skills while worn. Choose one beast-domain effect when attuning: Root snare,
+    Swarming flock or Hunter''s trail. Twice per long rest, on initiative count 20 after resolving other effects
+    at that count, use the chosen effect if you are conscious. Root snare: a visible creature within 60 feet makes
+    a DC 16 Strength save or becomes Snared by roots until count 20 next round. Swarming flock: creatures of your
+    choice in a 10-foot-radius sphere within 60 feet make a DC 16 Dexterity save, taking 3d6 piercing damage on
+    failure or half on success; this area cannot be blocked. Hunter''s trail: you and up to three willing creatures
+    within 30 feet immediately move up to 15 feet without provoking opportunity attacks. The ring uses no action
+    or reaction at count 20, but grants only one such effect per round. Reattunement during a short rest can change
+    the chosen domain.'
+  conversion_notes: Replaced unrestricted copying of absent monster lair actions with three fully defined beast-domain
+    options, retained count-20 timing and twice-per-long-rest uses, and specified proficiency doubling.
+  name: Exalted Band of the Fell Beast
+  group: Legendary
+  id: mi-legendary-038
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 25000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A38:D38
+  original_5e: The ring gives you double proficiency on animal handling and nature checks, you can speak with animals
+    freely and you can choose one lair action from any beast who has it and use it on initiative 20, twice per long
+    rest
+  source_name: Exalted Band of the Fell Beast
+  source_price: 25000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: 'Once per dawn, use an action while holding the heart to target one creature you can see within 60 feet.
+    It makes a DC 15 Wisdom save. On failure it is cursed with supernatural misery: it cannot gain temporary HP
+    and subtracts 1d4 from Charisma checks. At each following dawn it repeats the Wisdom save, with the DC increasing
+    by 1 per dawn to a maximum of 20. Track successes and failures across these dawn saves; the initial failed application
+    does not count. Each failed dawn save deals 3d6 unblockable psychic damage and adds 1 Fatigue. On the third
+    accumulated failure the curse ends in a collapse: it takes a further 6d6 psychic damage and is Incapacitated
+    for 1 minute. On the fifth accumulated success it ends harmlessly. An effect that explicitly removes curses
+    ends it immediately. A creature can bear only one Misery Heart curse at a time, and a failed initial application
+    does not increase an existing curse''s counters.'
+  conversion_notes: Replaced the source's open-ended self-destruction instruction with a defined supernatural curse,
+    psychic damage, Fatigue and collapse. Added an action, range, recharge, DC ceiling and explicit outcome for
+    both original counter thresholds.
+  name: The Misery Heart
+  group: Legendary
+  id: mi-legendary-039
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 30000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A39:D39
+  original_5e: Target must succeed against a DC 15 WIS save or fall into bleakest depression. Every day they must
+    make DC 15 WIS save (+1 per day). After 3 failures they try to commit suicide, on 5 saves they are free from
+    depression and break the spell.
+  source_name: The Misery Heart
+  source_price: 30000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: 'While attuned and wearing the helm, if you stand in dim light or darkness you can use a bonus action to
+    teleport up to 60 feet to a visible unoccupied space also in dim light or darkness. You must see the destination
+    with a sense that perceives its actual location; imagining a shadow behind a wall is insufficient. This does
+    not grant darkvision, additional attacks or an Ethereal state. Curse: a faint darkness clings to you. In bright
+    light you have disadvantage on Charisma checks, and creatures using sight to find or track you have advantage
+    on Perception checks. Ordinary darkness from the curse does not hide you or satisfy shadowstep''s lighting requirement.
+    An effect that removes curses permits ending attunement; otherwise you are unwilling to remove the helm. The
+    shadowstep itself has no daily use limit.'
+  conversion_notes: Preserved the unlimited bonus-action shadowstep and bright-light curse. Specified actual lighting,
+    vision, noninteracting curse aura and curse removal to avoid a self-created teleport loophole.
+  name: Helm of Shadowsteps
+  group: Legendary
+  id: mi-legendary-040
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 15000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A40:D40
+  original_5e: This helm gives you the ability to step from one shadow into another. When you are in dim light or
+    darkness, as a bonus action you can teleport up to 60 feet to an unoccupied space you can see that is also in
+    dim light or darkness. This helm is cursed. A faint aura of darkness surrounds you at all times. While in bright
+    light, you have disadvantage on Charisma checks and enemies seeking you gain advantage on Perception checks
+  source_name: Helm of Shadowsteps
+  source_price: 15000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: While holding this attuned reality-stone, gain +2 to your spell attack rolls and spell save DCs; this does
+    not increase weapon block DC or grant a new spell tradition. Once per dawn, use an action to create a programmed
+    audiovisual illusion within 120 feet, fitting inside a 30-foot cube. Describe its repeated sequence and one
+    visible or audible trigger. It remains dormant until triggered, plays for up to 5 minutes, then resets after
+    10 minutes; it lasts until the next dawn. A creature touching it recognizes the illusion. A creature can use
+    an action to inspect it with Intelligence (Investigation) against DC 17; success sees through it. Its sound
+    is no louder than a shouting crowd and it cannot deal damage or force behavior. Immediately after creation,
+    make a DC 20 Intelligence check. On success you may make one nonmagical object in the illusion physically real
+    for 1 minute. It fits within the cube, cannot appear inside a creature, animate, create a creature or soul,
+    provide spell components, reproduce a magic item or create currency. It can support weight and provide cover
+    but cannot directly deal damage. At the minute's end it disappears and supported creatures fall normally. Only
+    one programmed illusion from this stone can exist at a time.
+  conversion_notes: Replaced Programmed Illusion with complete trigger, area, investigation and duration rules.
+    Defined the source's reality option as a temporary nonmagical object with explicit physical limits.
+  name: Aether
+  group: Legendary
+  id: mi-legendary-041
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A41:D41
+  original_5e: Reality and Illusion infused into a stone. Your Spell save DC and your spell attack bonus rise by
+    +2. 1/day you can cast "Programmed illusion" DC 17. Roll a DC 20 INT check after casting. If you succeed, you
+    can choose to make the illusion real for 1 minute.
+  source_name: Aether
+  source_price: 20000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Shield
+  base_item: Heater shield
+  magic_bonus: '3'
+  desc: 'A +3 Varis Heater shield. Its +3 enhancement increases AC; keep the shield''s normal Block, Bolster and
+    Bash rules. When a spell you personally cast restores a creature''s HP using rolled healing dice, that creature
+    also gains temporary HP equal to the HP it actually regained after caps, disease and other reductions. These
+    temporary HP last until its next long rest and do not stack. Item powers, passive regeneration and rest-die
+    healing do not trigger the shield. Three times between dawns, use a bonus action to ward a willing creature
+    within 30 feet for 1 minute. Before a creature targets the warded creature with an attack or harmful single-target
+    effect, it must make a DC 15 Wisdom save; on failure it must choose a different legal target or waste that attack/effect.
+    Area effects are unaffected. The ward ends if its beneficiary attacks, damages another creature or uses a harmful
+    effect. Curse: whenever you intentionally kill a creature or order a killing that is carried out while attuned,
+    take unblockable psychic damage equal to one d6 per character level. The curse applies once for each creature
+    killed; an effect that removes curses allows you to end attunement.'
+  conversion_notes: Replaced absent Cure Wounds/Healing Word names with dice-based spell healing, preserving the
+    healing-to-Temp-HP identity within Varis rules. Replaced Sanctuary with an explicit ward and retained the lethal-command
+    curse and level-scaled cost.
+  name: Paradiso (Shield)
+  group: Legendary
+  id: mi-legendary-042
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 30000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A42:D42
+  original_5e: A shield imbued with the shining light of heaven. It's a Shield +3. Whenever you heal a creature
+    using "Cure Wounds" or "Healing Word", they additionally gain as much temporary hit points as you healed them.
+    3/day you can cast "Sanctuary". Curse. Every time you kill or order to kill a creature, you get your level x
+    d6 psychic damage.
+  source_name: Paradiso (Shield)
+  source_price: 30000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Armor
+  base_item: Plated armor suit
+  desc: This oversized suit uses the Varis Plated armor suit profile, including its Bulk, Slow, Block, Protection
+    and damage reductions. It weighs 120 lb while unattuned and 15 lb while worn by its attuned owner. The reduced
+    carried weight does not remove the suit's Bulk, Slow, training or other armor requirements; magic supports its
+    mass without making its plates flexible. It grants no AC enhancement beyond the base suit. Unattuned creatures
+    can still wear it if able to bear its weight. Ending attunement restores the full weight immediately; it does
+    not cause automatic damage or pin the wearer in place, but ordinary encumbrance consequences apply.
+  conversion_notes: Mapped the plate to Varis armor and separated carried weight from Bulk and Slow so a lightened
+    heavy suit retains the system's defensive tradeoffs. Preserved the exact 120/15 lb contrast.
+  name: Angel Plate (Plate armor)
+  group: Legendary
+  id: mi-legendary-043
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A43:D43
+  original_5e: This massive set of Plate Armor seems too heavy for a normal person to war (Weight 120 pounds). With
+    oversized pauldrons that lead into a very thick back plate offering excellent protection at the cost of the
+    weight you'd have to carry. To a person, who is attuned, however this armor is as light as feather (15 pounds).
+    The thick back will unfurl into large metal wings, giving the wearer a fly speed of 30 ft, if the weare is not
+    flying they can use a bonus action on their turn to give themselves half cover, using their large wings as protection.
+    If the wearer has a strength score of less than 15, their movement speed is reduced by 10.
+  source_name: Angel Plate (Plate armor)
+  source_price: 20000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: War Maul
+  desc: |-
+    A +1 Varis War Maul. Use the current maul's weapon group, properties and maneuvers; its enhancement adds to attacks, weapon damage and block DC. Each unblocked strike adds 1d6 cold damage. While attuned, gain darkvision to 60 feet; if you already have at least 60 feet, increase it to 120 feet; if you already have at least 120 feet, retain that range and see through magical darkness within it instead. These are alternatives based on your vision without this maul, not a repeated upgrade loop.
+
+    Shadow burst. Once per long rest, immediately after an unblocked melee strike with it, spend a bonus action to choose up to your proficiency bonus in visible creatures within 30 feet. Each makes a DC 17 Wisdom save or becomes Blinded and Deafened until the end of your next turn. The shadow burst deals no damage and does not require a second attack. A successful Block against the triggering strike prevents this activation and spends no use or bonus action.
+  conversion_notes: Inherited the Varis War Maul's base dice rather than importing 5e maul dice, preserved the +1
+    and cold rider, and defined the source's darkvision tiers without recursive upgrades. The bonus-action shadow
+    burst now requires an unblocked strike and uses current Blinded/Deafened rules.
+  name: Shadow Maul
+  group: Legendary
+  id: mi-legendary-044
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 15000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A44:D44
+  original_5e: This maul gives +1 bonus to attack and damage rolls and deals 2d6 bludgeoning damage plus 1d6 cold
+    damage. While attuned to this item, the weilder has Darkvision up to 60 feet, if the weilder already has darkvision
+    of 60 feet, the darkvision extends to 120 feet, if the wielder already has darkvision up to 120 feet, they can
+    see within magical darkness. Once per long rest, upon making a successful melee attack against a creature, you
+    may use your Bonus Action to cause a burst of shadow to shoot from the head of your maul. Select a number of
+    targets you can see within 30 feet of you, equal to your proficiency bonus. Those targets must make a DC 17
+    Wisdom Saving Throw or be Blindead and Deafened as shadows meld around their heads. This effect lasts until
+    the end of your next turn.
+  magic_bonus: '1'
+  source_name: Shadow Maul
+  source_price: 15000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Armor
+  base_item: Metal breastplate
+  desc: |-
+    Use a Varis Metal breastplate with Base AC 16 instead of 15, retaining its Bulk, Slow, Block and Protection. While attuned and wearing it, your walking speed increases by 10 feet. You gain a flying speed equal to that adjusted walking speed, but cannot hover: if you end your turn in midair without another support, you fall normally. The armor replaces missing arms, hands, legs and feet with functional arcane prostheses while worn; it does not permanently regrow them. It cannot be removed against your will while you are conscious, although this does not prevent destroying it or ending its magic.
+
+    Propulsion charge. If you fly at least 20 feet in a straight line toward a creature on your turn and immediately make a melee weapon attack against it, that attack's unblocked strike adds 1d8 force damage and pushes it up to 10 feet directly away from you. The movement cannot pass through obstacles; a successful Block negates both the extra damage and push. This applies once per turn and does not grant another attack. Ordinary weapons, their training and Block DC remain in use; the armor grants no separate gauntlet weapon.
+  conversion_notes: Converted the source's free Dexterity AC formula into Base AC 16 with the current medium armor's
+    Bulk and Block. Preserved +10 walking speed, nonhovering flight, functional limbs and anti-removal magic; defined
+    the charge's unblocked-strike timing and once-per-turn limit.
+  name: Arcane Propulsion Armor (Medium armor)
+  group: Legendary
+  id: mi-legendary-045
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A45:D45
+  original_5e: The wearer gains AC of 16 plus your Dex modifier. The wearer's walking speed increases by 10 feet.
+    This armor replaces any missing limbs and functions identically to them, additionally, the armor can't be removed
+    from the wearer against their will. The wearer has flying speed equal to their walking speed. The wearer falls
+    if they end their turn in the air and nothing else is holding them aloft. If the wearer flies atleast 20 feet
+    in a straight line towards a target and makes a melee attack against it, the target is pushed up to 10 feet
+    back and takes an additional 1d8 Force damage.
+  Base AC: '16'
+  source_name: Arcane Propulsion Armor (Medium armor)
+  source_price: 20000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: Press these wings against your bare back for 1 minute to attach them; while attuned they fuse gently to
+    your skin and can be removed by carefully pulling at their base for 1 minute. When a creature you can see has
+    moved at least 5 feet this turn and declares an attack against you, use your reaction before its attack roll
+    to fly up to 20 feet to an empty space. This movement does not provoke opportunity attacks. If it leaves you
+    outside that attack's reach or range, the attacker can choose another legal target or lose that attack; otherwise
+    it resolves normally against your new position. The wings do not grant a standing flying speed or hovering.
+    If the reaction ends in midair without support, you fall after the triggering attack is resolved.
+  conversion_notes: Preserved reactive twenty-foot flight rather than inventing unrestricted flight. Completed attack
+    timing, reach revalidation, visibility, attachment and unsupported-air movement.
+  name: Faerie Wings
+  group: Legendary
+  id: mi-legendary-046
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 15000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A46:D46
+  original_5e: Wings grown upon the back of fey lords and ladies and shed every winter, faerie wings are sometimes
+    gifted to mortals by those same lords and ladies. A creature can apply these wings to their bare back, causing
+    the wings to fuse to their back. The wings can be removed by gently pulling on their base for 1 minute. When
+    a creature moves and makes an attack against you while wearing these wings, you can use your reaction to fly
+    20 feet. This flying does not provoke attacks of opportunity.
+  source_name: Faerie Wings
+  source_price: 15000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Armor
+  base_item: Plated armor suit
+  magic_bonus: '3'
+  desc: A +3 Varis Plated armor suit; its enhancement increases AC while the armor retains its normal Bulk, Slow,
+    Block, Protection and reductions. While attuned and wearing it, you have resistance to damage dealt by a dragon's
+    breath weapon, regardless of that breath's damage type, and you are immune to fear caused by a dragon's Frightful
+    Presence. This grants neither general fear immunity nor resistance to the dragon's ordinary attacks or separately
+    cast spells. You can speak, read and understand Draconic. You understand the basic literal meaning of spoken
+    or written language you perceive, but not secret codes, unspoken intent, names used as passwords, or hidden
+    messages; you do not gain the ability to speak those other languages.
+  conversion_notes: Inherited the Varis plate profile and made breath resistance, dragon-specific fear immunity
+    and basic comprehension precise without broadening them into universal resistance or fluency.
+  name: Delphyne's Armor (Plate)
+  group: Legendary
+  id: mi-legendary-047
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A47:D47
+  original_5e: You have a +3 bonus to AC while wearing this armor, a resistance to dragon breath weapons, and an
+    immunity to the Frightful Presence of Dragons. You can speak draconic and comprehend the basic meaning of all
+    languages.
+  source_name: Delphyne's Armor (Plate)
+  source_price: 20000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Weapon
+  base_item: Longsword
+  magic_bonus: '2'
+  damage: 2d6s
+  properties:
+  - two-handed
+  - balanced
+  desc: 'A +2 Varis Longsword altered to deal 2d6 slashing damage and require two hands. Replace its normal Versatile
+    property with Balanced; keep its weapon group and maneuvers. Its enhancement adds to attack, weapon damage and
+    block DC. It can qualify for an existing Sneak Attack feature''s weapon requirement because of Balanced, but
+    grants no Sneak Attack feature itself. It has 5 charges, restoring 2 on a short rest and all on a long rest,
+    never exceeding 5. Spend 1 charge as a bonus action for wind stride: for 1 minute, your movement provokes no
+    opportunity attacks, and once during the minute you can give one weapon attack advantage and add 1d8 force damage
+    on its unblocked strike; your speed also rises by 30 feet for that turn. Spend 1 charge as an action for a 10-foot-radius
+    wind sphere centered on you for 10 minutes with concentration: it extinguishes mundane flames, disperses gases,
+    makes the area difficult terrain for other creatures and imposes disadvantage on ranged attacks passing through
+    it. Spend 3 charges as an action to choose up to five visible creatures within 30 feet. Make one melee spell
+    attack against each using proficiency and Strength or Dexterity; each unblocked strike deals 6d10 force damage
+    instead of normal weapon damage, at block DC 8 + that attack bonus. The +2 weapon enhancement does not apply
+    to these spell attacks. Then teleport to a visible empty space within 5 feet of one target, or remain in place
+    if none is safe. This power grants no additional normal attack, weapon rider or Sneak Attack damage.'
+  conversion_notes: Converted finesse to Balanced and authored complete Zephyr Strike, Warding Wind and Steel Wind
+    Strike powers with distinct Varis Block interactions. Added explicit physical damage/property overrides and
+    capped charge recovery without changing the short/long-rest schedule.
+  name: Tornado Maker (longsword)
+  group: Legendary
+  id: mi-legendary-048
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A48:D48
+  original_5e: 'This longsword is +2 longsword and deals 2d6 slashing damage, it has two-handed and finesse properties.
+    The sword holds 5 charges, one charge can be used to cast Zephyr Strike as bonus action or Warding Wind as action.  You
+    can spend 3 charges to cast Steel Wind Strike as an action. You regain 2 charges per short rest and 5 charges
+    per long rest. This weapon can also be used with sneak attacks. '
+  source_name: Tornado Maker (longsword)
+  source_price: 20000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary
+- type: Wondrous item
+  desc: 'While wearing this attuned bracelet, after one spell you personally cast kills one or more hostile creatures,
+    total those creatures'' recorded Challenge ratings. If the total is at least 15, restore one already-expended
+    spell slot of a level you can normally cast, up to level 5. The restored slot must belong to an existing slot-based
+    casting pool; an Occultist slot returns at that pool''s actual level only if that level is 5 or lower, and a
+    Cleric can instead restore up to five spent spell levels within one existing full slot, without exceeding its
+    maximum. The same casting restores at most one slot or one Cleric portion, regardless of the number killed.
+    Creatures without a Challenge rating, summoned creatures and creatures killed on an earlier casting do not contribute.
+    Damage over time from one spell is one casting: its kills are totaled when that spell ends, not repeatedly each
+    round. This restores spent capacity only; it grants no new slots, known spells, Metamagic, rest dice or other
+    resources. Creature deaths from item powers do not trigger it.'
+  conversion_notes: Retained the combined-CR threshold and level-five recovery ceiling while mapping recovery to
+    Varis ordinary, Occultist and Cleric casting pools. Prevented repeated counting of one spell's ongoing kills
+    and excluded unrelated resource systems.
+  name: Death's Siphon (Bracelet)
+  group: Legendary
+  id: mi-legendary-049
+  rarity: Legendary
+  attunement: 'Yes'
+  price: 15000 GP
+  source_ref: Magic item generator.xlsx — Legendary!A49:D49
+  original_5e: This bracelet allows you to morph life essnece into magical energy when dealing a killing blow through
+    magic. Whenever you use a spell to kill any number of creatures with a combined CR of 15 or higher, you regain
+    one spell slot of any level up to 5.
+  source_name: Death's Siphon (Bracelet)
+  source_price: 15000 GP
+  source_attunement: 'Yes'
+  source_rarity: Legendary

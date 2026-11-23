@@ -1,0 +1,34 @@
+section: rules
+entries:
+  - name: Using converted magic items
+    group: Magic items
+    description: |-
+      The Magic items collection contains the converted Varis versions of the campaign workbook's items. Use the converted description as the playable rule. Original 5e text and conversion notes are reference material, not additional effects. These conversion conventions apply only to this collection; a specific item can override them.
+
+      Unless its description says otherwise, a worn item functions while worn, a held item while held, and a weapon while wielded. An activation requiring an action, bonus action, or reaction uses that action type. You must be able to use the action and meet the item's stated trigger. Merely equipping an item does not activate its powers.
+
+      Items retain their listed charge limits, consumable uses, command words, curses, and recharge times. Dawn, dusk, once per day, and a rest are distinct: the default Varis short rest takes one day and the default long rest takes one week. A charge recovery cannot exceed the item's maximum charges. A once-per-day power becomes available after 24 hours unless the item names dawn, dusk, or another reset.
+  - name: Magic item attunement
+    group: Magic items
+    description: |-
+      You can be attuned to at most three magic items at once. Spend one short rest in contact with one item to attune to it, meeting any requirement in its description. You can voluntarily end an attunement during a short rest. Attunement also ends when you die or remain more than 100 feet from the item for 24 consecutive hours. A curse can prevent voluntarily ending attunement or removing the item, as its description states.
+
+      An item marked as requiring attunement grants its magical benefits only to its attuned user. An unattuned weapon, suit of armor, or shield still functions as its mundane base item, without its enchantment bonus or powers. An item that does not require attunement can be used by any creature that meets its stated conditions. Attunement does not grant weapon, armor, shield, or spell proficiency.
+  - name: Magic items and Block
+    group: Magic items
+    description: |-
+      A magic weapon retains the damage, training, properties, and maneuvers of its named Varis base weapon. Its enhancement bonus applies to attack rolls, damage rolls, and the weapon attack's Block DC. An item that grants a bonus only to one of these affects only that value. A magic armor or shield enhancement improves AC; it does not also grant Block instances or Protection unless its description explicitly says so.
+
+      A damage rider that requires an unblocked strike applies only after the attack hits and its damage is not negated by a successful Block. The rider is part of that attack for Block unless the item explicitly makes it unblockable. A successful Block prevents the attached on-strike condition as well. An effect explicitly triggered by an attack roll, a hit before Block, or a successful Block uses that printed trigger instead.
+
+      Resolve saving-throw areas and other powers according to their own description. An effect that calls only for a saving throw is not a weapon attack and cannot be stopped by spending Block. Temporary Block, temporary HP, Arcane Health, Fatigue, and rest dice use their existing Varis rules.
+  - name: Casting and tracking item powers
+    group: Magic items
+    description: |-
+      Use an item's printed save DC or attack bonus. If a converted item explicitly uses your item save DC and provides no fixed value, choose Intelligence, Wisdom, or Charisma when you first attune to it or first use it if no attunement is required. Your item save DC is 8 + your proficiency bonus + that ability modifier; your item spell attack bonus is your proficiency bonus + that modifier. Keep the choice until the attunement ends, or until your next long rest for an item that needs no attunement.
+
+      An item power spends only the action, charges, uses, and other costs stated by that item. It does not spend your class spell slots unless it explicitly says so, and it does not teach you a spell. A named spell reference uses the current Varis spell entry; a self-contained power uses its own complete description. Use its listed duration and concentration requirements. Gaining a power resembling a higher-level 5e spell does not create a new class slot or a seventh-or-higher spell level.
+
+      Identical benefits from multiple copies of the same item do not stack; use the strongest active instance. Different items stack unless their descriptions or a general rule say otherwise. You must choose which mutually exclusive armor or shield you are using.
+
+      Track attunement, charges, daily uses, conditional bonuses, curses, summons, and durations manually. The character sheet can derive supported base-weapon attacks, armor and shield statistics, and listed enhancement bonuses. Read the item's rules before applying any additional ability.

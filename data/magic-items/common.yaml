@@ -1,0 +1,1021 @@
+section: magic-items
+entries:
+- name: Scroll of Message
+  group: Common
+  id: mi-common-002
+  type: Scroll
+  rarity: Common
+  attunement: 'No'
+  price: 20 GP
+  desc: As an action, read and consume this scroll to whisper a message of up to 25 words to one creature you can
+    see within 120 feet. Only that creature hears it and it can immediately whisper a reply of up to 25 words that
+    only you hear. No spell slot, known spell, or concentration is required.
+  conversion_notes: The workbook supplies a name only. Authored a self-contained single-use communication power
+    rather than importing an absent 5e spell.
+  source_ref: Magic item generator.xlsx — Common!A2:D2
+  original_5e: No description supplied in workbook.
+  source_name: Scroll of Message
+  source_price: 20 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Scroll of Color Spray
+  group: Common
+  id: mi-common-003
+  type: Scroll
+  rarity: Common
+  attunement: 'No'
+  price: 120 GP
+  desc: As an action, read and consume this scroll to release dazzling colors in a 15-foot cone. Creatures in the
+    cone make a DC 13 Constitution save. On a failure, a creature is Blinded until the end of your next turn. A
+    sightless creature is unaffected. This is a magical visual effect and deals no damage.
+  conversion_notes: The workbook supplies a name only. Authored a fixed-DC visual power using the Varis Blinded
+    condition.
+  source_ref: Magic item generator.xlsx — Common!A3:D3
+  original_5e: No description supplied in workbook.
+  source_name: Scroll of Color Spray
+  source_price: 120 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Scroll of Goodberry
+  group: Common
+  id: mi-common-004
+  type: Scroll
+  rarity: Common
+  attunement: 'No'
+  price: 120 GP
+  desc: As an action, read and consume this scroll to create ten berries in your hand. A creature can use an action
+    to eat one berry, recovering 1 HP. Eating at least one provides a day of nourishment. Uneaten berries lose their
+    magic after 24 hours. The berries cannot restore rest dice, Fatigue, Block, or Arcane Health.
+  conversion_notes: The workbook supplies a name only. Authored a bounded healing and nourishment effect without
+    assuming an absent spell.
+  source_ref: Magic item generator.xlsx — Common!A4:D4
+  original_5e: No description supplied in workbook.
+  source_name: Scroll of Goodberry
+  source_price: 120 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Scroll of Detect Evil and Good
+  group: Common
+  id: mi-common-005
+  type: Scroll
+  rarity: Common
+  attunement: 'No'
+  price: 120 GP
+  desc: As an action, read and consume this scroll. For 10 minutes, while concentrating, you sense whether an aberration,
+    celestial, elemental, fey, fiend, or undead is within 30 feet and know its direction. You also sense ground
+    or objects consecrated or desecrated by divine magic. The sense does not reveal alignment, identity, invisibility,
+    or a creature behind 1 foot of stone, 1 inch of metal, or a thin sheet of lead.
+  conversion_notes: The workbook supplies a name only. Authored a self-contained creature-type and consecration
+    sense; alignment is not treated as a detectable statistic.
+  source_ref: Magic item generator.xlsx — Common!A5:D5
+  original_5e: No description supplied in workbook.
+  source_name: Scroll of Detect Evil and Good
+  source_price: 120 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Phasing Bow
+  group: Common
+  id: mi-common-006
+  type: Weapon
+  rarity: Common
+  attunement: 'No'
+  price: 1500 GP
+  desc: Use the Longbow entry, including its training, range, properties, and maneuvers. This magic bow has 5 charges
+    and regains all charges at dawn. When making a ranged attack, spend 1 charge to ignore cover, including total
+    cover, unless the obstruction is lead or more than 1 foot thick. Effects preventing ethereal travel stop this
+    arrow. On an unblocked strike, deal an extra 2d6 force damage. Alternatively, as a bonus action spend 3 charges
+    and fire an arrow at a visible point within normal range. If it hits a solid surface, teleport to the nearest
+    unoccupied space beside that point.
+  conversion_notes: Kept charge economy and dawn recovery. Uses Varis Longbow statistics and makes the damage rider
+    require an unblocked strike.
+  source_ref: Magic item generator.xlsx — Common!A6:D6
+  original_5e: This flexible bow is made from the chitinous legs of a phase spider and retains some of its ethereal
+    properties. The bow has 5 charges and regains all expended charges daily at dawn. When you make a ranged attack
+    roll with this magic bow, you can expend 1 of its charges to cause the arrow to slip partially into the Ethereal
+    Plane. When you do, the target of the attack gains no benefit from cover, including total cover, as long as
+    the cover isn't made of lead or more than 1 foot thick. If you hit, the target takes an extra 2d6 force damage.
+    Any effect that blocks travel through the Ethereal Plane also blocks the arrow. Alternatively, you can speak
+    the bow's command word as a bonus action to expend 3 of its charges and fire an arrow at a point you can see
+    within the weapon's normal range. When the arrow hits a solid surface, you vanish from your location and reappear
+    in an unoccupied space nearest to that point.
+  base_item: Longbow
+  source_name: Phasing Bow
+  source_price: 1500 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Forecaster's Cloak
+  group: Common
+  id: mi-common-007
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 500 GP
+  desc: While wearing this warm, fur-lined cloak, use an action to open it and speak its command word. Harmless
+    sensory effects inside the cloak depict the weather expected at your present location during the next 8 hours.
+    The display lasts 1 minute or until you close the cloak. It does not protect against weather, predict supernatural
+    interference, or forecast another location.
+  conversion_notes: Utility power retains its action, forecast window, and duration; no combat conversion is needed.
+  source_ref: Magic item generator.xlsx — Common!A7:D7
+  original_5e: This warm, fur-lined cloak creates illusory representations of the impending weather. While wearing
+    this cloak, you can use an action to open it and speak its command word to create a harmless, sensory effect
+    within the cloak that represents what the weather will be at your location for the next 8 hours. This effect
+    persists for 1 minute or until you close the cloak.
+  source_name: Forecaster's Cloak
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Merry Berry
+  group: Common
+  id: mi-common-008
+  type: Potion
+  rarity: Common
+  attunement: 'No'
+  price: 60 GP
+  desc: This berry tastes like shortbread. When properly cooked and eaten, it grants advantage for 24 hours on Intelligence
+    or Wisdom checks relying on smell or taste and checks using cooking tools. Raw or overcooked berries grant no
+    mechanical benefit. Preparing an edible berry takes ordinary cooking time and equipment; no check is needed
+    under normal conditions. Eating more berries refreshes the duration and does not stack the benefit.
+  conversion_notes: Kept the sensory and cooking benefits; clarified preparation and non-stacking so it is usable
+    without a new cooking subsystem.
+  source_ref: Magic item generator.xlsx — Common!A8:D8
+  original_5e: 'This small fruit is highly sought after by cooks and sweet-lovers everywhere, both for its flavor
+    as well as its unique sensory-enhancing properties. Eating a berry raw yields a taste and texture like that
+    of a rich shortbread: the perfect way to end a day of adventure or travel. Cooking the berry, whether it be
+    in a cuisine or simply roasted over a campfire, brings out more uncommon effects. When properly cooked, a creature
+    that eats the fruit gains advantage on all Wisdom and Intelligence checks based on smell or taste for the next
+    24 hours, as well as advantage on ability checks using cook’s utensils. Overcooking the fruit not only cooks
+    out the berry’s benefits, but also results in a soggy and overall bland dish.'
+  source_name: Merry Berry
+  source_price: 60 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Squasher
+  group: Common
+  id: mi-common-009
+  type: Weapon
+  rarity: Common
+  attunement: 'No'
+  price: 100 GP
+  desc: Use the Great-club entry for this durable magical squash, including its damage and properties. A Druid is
+    trained with it and may use Wisdom instead of Strength for its attack roll, damage modifier, and attack Block
+    DC. Other users use the normal Great-club rules. It grants no enhancement bonus.
+  conversion_notes: Assigned a definite Varis base weapon and applied its Wisdom substitution consistently to Block
+    DC.
+  source_ref: Magic item generator.xlsx — Common!A9:D9
+  original_5e: This enormous squash is strangely durable and makes for a functional magic weapon. Druids wielding
+    squasher are proficient with the weapon and can use their Wisdom modifier for the weapon’s attack and damage
+    rolls instead of Strength.
+  base_item: Great-club
+  source_name: Squasher
+  source_price: 100 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Dress of Many Pockets
+  group: Common
+  id: mi-common-010
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 100 GP
+  desc: The dress has six magical pockets. As a bonus action while wearing it, make any number appear or disappear
+    anywhere on the dress. Each holds one parcel no larger than 4 inches in any dimension and no heavier than 2
+    pounds. Hidden contents remain distributed inside the dress and retain their weight. Retrieve or stow an item
+    using the normal object interaction. If the dress is destroyed, its contents fall into its space.
+  conversion_notes: Retained six-pocket capacity and bonus-action shifting; clarified weight and destruction without
+    creating an extradimensional storage exploit.
+  source_ref: Magic item generator.xlsx — Common!A10:D10
+  original_5e: This dress has six pockets that can be magically shown or hidden. While wearing the dress, you can
+    use a bonus action to cause any number of its pockets to appear or vanish from it. The pockets can be located
+    anywhere on the dress, and needn't be in the same place each time they appear. Each pocket is large enough for
+    a small parcel, measuring no more than 4 inches in any dimension and weighing no more than 2 pounds. While a
+    pocket is hidden, its contents are magically moved to the inside of the dress and evenly distributed throughout
+    it so as to not affect its delicate appearance.
+  source_name: Dress of Many Pockets
+  source_price: 100 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Freerunner's Armor (light armor)
+  group: Common
+  id: mi-common-011
+  type: Armor
+  rarity: Common
+  attunement: 'No'
+  price: 500 GP
+  desc: Use Leather armor, including its Base AC and normal Varis armor rules. Once on each of your turns, when
+    you long jump onto or beside a non-slippery wall, you may travel along the wall for the remaining distance of
+    that jump and jump again from it. Every foot traveled costs movement, and the second jump must follow the normal
+    jump limits. If you end this movement unsupported, you fall.
+  conversion_notes: Selected a concrete light-armor base and made wall running consume movement rather than grant
+    free distance.
+  source_ref: Magic item generator.xlsx — Common!A11:D11
+  original_5e: While wearing this armor, you feel light on your feet and agile. When you make a long jump onto or
+    alongside a wall or similar surface that isn't slippery for the first time on your turn, you can move along
+    that wall for the length of the jump during the move. While on that surface, you can make a second jump, provided
+    you have the movement to do so.
+  base_item: Leather armor
+  source_name: Freerunner's Armor (light armor)
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Leatherbeard
+  group: Common
+  id: mi-common-012
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 150 GP
+  desc: 'Use an action to put on or remove this leather mask. While worn it creates an illusory beard of a chosen
+    color and style, up to 2 feet long. A creature examining it can identify the illusion with a DC 10 Intelligence
+    (Investigation) check. After each uninterrupted 7-day period worn, roll d100: the beard becomes real on 25 or
+    lower, then 50 or lower after the next period, then 75, then automatically after the fourth. When it becomes
+    real, the mask is destroyed. The real beard grows further only if you can naturally grow one.'
+  conversion_notes: Resolved the cumulative 25-percent timing explicitly while keeping the original illusion and
+    transformation.
+  source_ref: Magic item generator.xlsx — Common!A12:D12
+  original_5e: This leather mask sits over your mouth and chin and can be worn or removed using an action. While
+    wearing the mask, you grow an illusory beard. You choose the color and style of the beard each time you wear
+    the mask. The beard can be up to 2 feet long. A DC 10 Intelligence (Investigation) check reveals the beard is
+    an illusion. For every 7 consecutive days that pass in which you do not remove the mask, there is a cumulative
+    25 percent chance that the beard becomes real. When it does, the mask is destroyed. The real beard doesn't continue
+    to grow unless you can already naturally grow a beard.
+  source_name: Leatherbeard
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Smash Potatoes
+  group: Common
+  id: mi-common-013
+  type: Potion
+  rarity: Common
+  attunement: 'No'
+  price: 30 GP
+  desc: Eat one potato as an action. For 1 hour your ordinary unarmed damage die is 1d4 if it was smaller; retain
+    the normal ability modifier and training rules. It does not improve an unarmed die already 1d4 or larger. Each
+    additional potato eaten extends the duration by 1 hour, to a maximum of three potatoes before your next long
+    rest.
+  conversion_notes: Kept the source consumption limit and long-rest recovery; Varis long rests take a week, and
+    the item does not change that.
+  source_ref: Magic item generator.xlsx — Common!A13:D13
+  original_5e: This hearty root vegetable is grown by the clerics and champions of a god of war and combat, whose
+    strength is said to make its way onto the Material Plane through their gardens. Eating one of these vaguely
+    fist-shaped potatoes will cause your hands to itch for the thrill of combat. Eating a potato increases your
+    unarmed damage to 1d4 for 1 hour. Each additional eaten potato increases the duration by 1 hour. You can eat
+    up to 3 potatoes before needing to finish a long rest to benefit from them again. If you already have an unarmed
+    combat die that is 1d4 or higher, this vegetable has no effect but is nevertheless delicious.
+  source_name: Smash Potatoes
+  source_price: 30 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Griffon Coinpouch
+  group: Common
+  id: mi-common-014
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 150 GP
+  desc: This 6-inch purse holds up to 1,000 coins and always weighs 1 pound while intact. Coins removed from it
+    are clean and shiny. Other objects do not receive the weight reduction. At the GM's discretion it may contain
+    a cryptic written warning; that note grants no compulsory prediction or mechanical bonus.
+  conversion_notes: Coin storage and weight remain unchanged. The optional story note has no imported combat mechanic.
+  source_ref: Magic item generator.xlsx — Common!A14:D14
+  original_5e: 'This stylized purse is sewn and stitched in the style of the griffon''s saddlebag, a classic treasure
+    and character from children''s stories and legends. The purse is 6 inches across and holds up to 1,000 coins.
+    Coins taken from the purse are miraculously clean and shiny, as if freshly minted. The bag always weighs 1 pound,
+    regardless of the number of coins within it. At the GM''s discretion, a small slip of parchment can be found
+    folded among the coins inside. The parchment can have anything on it, although it usually carries enigmatic
+    warnings or peculiar words of guidance. You can write your own notes or roll a d8 and consult the table below
+    to determine what the parchment says: d8 Message 1 Falling rocks play to the rhythm of catastrophe. 2 Whether
+    or not you succeed, you can certainly try. 3 Draughts are meant to be drunk. 4 Strength in numbers. 5 Acid,
+    fire, and diamonds can solve most problems. 6 Not all strangers are trustworthy. 7 Asking for directions is
+    not a sign of weakness. 8 Keep on adventuring.'
+  source_name: Griffon Coinpouch
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Cleaning Cube
+  group: Common
+  id: mi-common-015
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 20 GP
+  desc: As an action, place this dehydrated 2-inch cube in at least 1 gallon of water. It becomes a soapy 1-foot
+    cube weighing 6 pounds for 8 hours. It moves 1 foot per round and can climb any surface, including ceilings,
+    cleaning ordinary dirt without harming the surface. It obeys simple spoken cleaning commands, hears and has
+    blindsight to 60 feet, and cannot speak or read. It is a magical object with AC 10, 10 HP, and resistance to
+    all damage. At 0 HP it dehydrates instead of being destroyed; rehydrating restores its HP. Squeezing it as an
+    action dehydrates it early. It cannot attack or block. It harmlessly holds stray coins and gems until removed
+    as an action or it dehydrates.
+  conversion_notes: Kept the object statistics and cleaning role; explicitly excluded creature actions and Block
+    checks.
+  source_ref: Magic item generator.xlsx — Common!A15:D15
+  original_5e: This Tiny, sentient piece of an enchanted gelatinous cube is harmlessly soapy, instead of acidic,
+    and enjoys cleaning the surfaces it travels across. When found, the cleaning cube is a dehydrated, 2-inch cube.
+    While dehydrated, the cube is inanimate and its weight is negligible. You can place the dehydrated cube in 1
+    or more gallons of water as an action, causing it to animate and grow in size to become a 1-foot cube that weighs
+    6 pounds. The rehydrated cube moves slowly while animated in this way, methodically cleaning objects and surfaces
+    it comes into contact with. The cube remains hydrated for up to 8 hours, but can be squeezed as an action (as
+    if it were a sponge) to dehydrate it again early. The cleaning cube is considered a magical object and is not
+    a creature. It has a speed of 1 foot and can climb difficult surfaces, including upside down on ceilings, without
+    needing to make an ability check. It has AC 10, 10 hit points, and resistance to all damage. The cube dehydrates
+    when it drops to 0 hit points, but regains all its hit points when hydrated again. Sentience. The cleaning cube
+    is a sentient unaligned item with an Intelligence of 1, a Wisdom of 6, and a Charisma of 1. It has hearing and
+    blindsight out to a range of 60 feet. It can't speak or read, but obeys your commands as best as it can understand
+    them. Personality. The cleaning cube is happiest finding and dissolving dirt and other grime, and enjoys the
+    feeling of moving across clean, polished surfaces. It doesn't concern itself with combat, preferring to continue
+    its cleaning instead of involving itself in confrontation. If the cube finds a stray coin, gemstone, or other
+    similar small item out of place while it cleans, it will absorb and clean the item until it's removed by a creature
+    as an action or until it becomes dehydrated once again.
+  source_name: Cleaning Cube
+  source_price: 20 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Rope Caster (hand crossbow)
+  group: Common
+  id: mi-common-016
+  type: Weapon
+  rarity: Common
+  attunement: 'No'
+  price: 10 GP
+  desc: Use the Hand crossbow's attack training and range, but this device fires only rope and deals no damage.
+    Load a length of rope as a bonus action. Make a ranged attack against a willing creature or an unattended object.
+    On a hit, if sufficient rope reaches and encircles the target, the rope ties around it and leaves the excess
+    hanging. A willing creature gains a secure harness and no condition. Against an unwilling creature the rope
+    falls harmlessly away. A creature within reach can use an action and a DC 10 Strength or Dexterity check to
+    release a tied object.
+  conversion_notes: Preserved the non-damaging infiltration use; it cannot impose an undefined restrained condition
+    or enable weapon maneuvers. The generated profile suppresses ordinary damage and crossbow maneuvers; its bonus-action
+    rope loading replaces normal Reload.
+  source_ref: Magic item generator.xlsx — Common!A16:D16
+  original_5e: This magic weapon is a favorite among infiltrators. Its firing mechanism has no string, unlike other
+    crossbows. Instead, this weapon can only be loaded with rope. As a bonus action, you can load a length of rope
+    into the crossbow. When you do, individual strands from the rope magically latch onto the weapon's limbs and
+    pull the mechanism taut. You can make a ranged attack with the crossbow to fire the rope at a willing creature
+    or an object within range that isn't being worn or carried. If it hits, the target takes no damage from the
+    attack but is bound by the rope. If the rope is long enough, it magically wraps around the target in a single
+    loop and securely ties itself, leaving the remaining rope to hang from the knot. If the target is a willing
+    creature, the rope ties itself around the creature's chest or waist as a harness but does not restrain them.
+    If the attack hits an unwilling creature, the rope falls harmlessly to the ground without being tied. A creature
+    can use its action to make a DC 10 Strength or Dexterity check, releasing a bound object within its reach on
+    a success.
+  base_item: Hand crossbow
+  damage: '-'
+  properties:
+  - range 30/60
+  - light
+  maneuvers: []
+  source_name: Rope Caster (hand crossbow)
+  source_price: 10 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Invisible wand
+  group: Common
+  id: mi-common-017
+  type: Wand
+  rarity: Common
+  attunement: 'No'
+  price: 5 GP
+  desc: This wand can serve as an arcane focus if your class permits such a focus. The wand itself is Invisible.
+    While held by an Invisible creature it becomes visible, without ending that creature's invisibility. It provides
+    no spell, spell-slot, attack, or save-DC bonus.
+  conversion_notes: Retained the focus and reversed visibility gimmick; no slot-system conversion is required.
+  source_ref: Magic item generator.xlsx — Common!A17:D17
+  original_5e: This arcane focus is invisible. Don't lose track of it. If the creature holding the wand is invisible,
+    the wand becomes visible.
+  source_name: Invisible wand
+  source_price: 5 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Ring of The Rodent
+  group: Common
+  id: mi-common-018
+  type: Ring
+  rarity: Common
+  attunement: 'Yes'
+  price: 100 GP
+  desc: While attuned and wearing this ring, add +2 to Stealth checks and understand and speak simple ideas with
+    ordinary rats. Rats are not compelled to obey, become friendlier, or know anything beyond their experience.
+  conversion_notes: Kept the fixed skill bonus and made animal speech usable without referring to an external spell.
+  source_ref: Magic item generator.xlsx — Common!A18:D18
+  original_5e: This ring gives +2 to stealth checks and you can speak with rats.
+  source_name: Ring of The Rodent
+  source_price: 100 GP
+  source_attunement: 'Yes'
+  source_rarity: Common
+- name: Arctic Smite (Battleaxe)
+  group: Common
+  id: mi-common-019
+  type: Weapon
+  rarity: Common
+  attunement: 'Yes'
+  price: 1000 GP
+  desc: Use the Battle axe entry. When you roll a natural 20 with this magic axe, each Medium enemy within 10 feet
+    of the target makes a DC 15 Dexterity save. On a failure it takes 1d8 cold damage and is Paralyzed until the
+    start of its next turn; on a success it takes 1d4 cold damage. This burst is a separate magical effect and cannot
+    be blocked. It does not require the initial weapon strike to be unblocked.
+  conversion_notes: The source explicitly triggers on a natural 20, so kept that hit trigger separate from its area
+    damage. Uses the printed Varis Paralyzed condition and Battleaxe base.
+  source_ref: Magic item generator.xlsx — Common!A19:D19
+  original_5e: The cold steel of this axe's blade shines like cracked ice. Trailing behind this blade when held
+    is an aura of arcane snow that glows a dim blue. The runes etched in the handle also seem to be older than the
+    languages spoken or written today. When you croll a natural 20 when attacking with this weapon, arcane ice bursts
+    from your weapon. All medium size enemy creatures within 10ft. of the tageted creature must make a dexterity
+    saving throw (DC 15). If they fail, they take 1d8 cold damage and are frozen, paralyzing them until their next
+    turn. If they succeed, they only take 1d4 cold damage.
+  base_item: Battle axe
+  source_name: Arctic Smite (Battleaxe)
+  source_price: 1000 GP
+  source_attunement: 'Yes'
+  source_rarity: Common
+- name: Close Quarters Bow (Shortbow 50/150)
+  group: Common
+  id: mi-common-020
+  type: Weapon
+  rarity: Common
+  attunement: 'No'
+  price: 300 GP
+  desc: Use the Short bow entry, but its range is 50/150 feet. While holding it in both hands, gain +1 AC from its
+    small shield; this does not grant a shield's Block, Bolster, Brace, or bash properties. As an action, make one
+    Strength-based melee attack using your Short bow training. On an unblocked strike it deals 1d4 piercing damage
+    plus your Strength modifier if trained. Its Block DC is 8 + applicable proficiency + applicable Strength modifier.
+  conversion_notes: Rebuilt the attached shield and melee bash with explicit Varis training, Block DC, and unblocked-damage
+    timing.
+  source_ref: Magic item generator.xlsx — Common!A20:D20
+  original_5e: When you have this bow equipped in 2 hands, the small metal shield grants you a +1 bonus to your
+    AC. As an action you can bash the shield on this bow into an enemy. Make a Melee attack roll. You use your Strength
+    modifier for the attack. On a successful attack you deal 1d4 Piercing damage.
+  base_item: Short bow
+  properties:
+  - range 50/150
+  - two-handed
+  - reload I
+  - crit range+
+  source_name: Close Quarters Bow (Shortbow 50/150)
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Luxurious Satin Bedroll
+  group: Common
+  id: mi-common-021
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 300 GP
+  desc: The bedroll remains comfortably warm or cool in ordinary climates but grants no protection against damaging
+    heat, cold, fire, or cold damage. When you complete a long rest sleeping in it, recover one additional spent
+    rest die, up to your normal maximum. It does not shorten the rest, restore health directly, or grant a die above
+    your maximum.
+  conversion_notes: Converted hit-die recovery into rest-die recovery while retaining the long-rest trigger and
+    ordinary cap.
+  source_ref: Magic item generator.xlsx — Common!A21:D21
+  original_5e: The interior of this thin bedroll is always at the perfect temperature to sleep no matter which climate
+    you are in. However, the soft pillows and fabrics of the bedroll do not protect you against extreme heat (Fire
+    damage) or extreme cold (Frost damage). When sleeping in this bedroll during a long rest, you feel well rested
+    and you regain one extra hit die on top of the usual you regain.
+  source_name: Luxurious Satin Bedroll
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Unlucky Bastard (Longsword)
+  group: Common
+  id: mi-common-022
+  type: Weapon
+  rarity: Common
+  attunement: 'Yes'
+  price: 300 GP
+  desc: 'Use the Longsword entry while attuned. A natural 20 is not a critical hit: resolve it as an ordinary attack
+    against AC. On a natural 1, the attack instead hits and deals 3d8 + your applicable Strength modifier slashing
+    damage, or 3d10 + that modifier if held in two hands. This exceptional hit can still be blocked using the weapon''s
+    normal Block DC. All other rolls use ordinary Varis Longsword training and maneuvers.'
+  conversion_notes: Preserved the reversed luck effect but separated hitting from an unblocked strike and retained
+    Varis training rules.
+  source_ref: Magic item generator.xlsx — Common!A22:D22
+  original_5e: |-
+    While Attuned to this weapon a Natural Twenty does not count as a Critical Hit, just a normal hit if it still matches the Target's AC. On a Natural One, this weapon hits the Target and deals 3d8+Str, or 3d10+Str if wielded with two hands.
+    Proficiency with a longsword allows you to add your proficiency bonus to the attack roll for any attack you make with it.
+  base_item: Longsword
+  source_name: Unlucky Bastard (Longsword)
+  source_price: 300 GP
+  source_attunement: 'Yes'
+  source_rarity: Common
+- name: Failed Poison (Potion)
+  group: Common
+  id: mi-common-023
+  type: Potion
+  rarity: Common
+  attunement: 'No'
+  price: 75 GP
+  desc: 'One dose can be drunk as an action, placed in food or drink, or applied to one weapon or piece of ammunition
+    as an action. A coating lasts 1 minute or until an unblocked strike delivers it. A DC 15 Intelligence check
+    identifies the mixture. Roll d20 when delivered; it replaces the poison''s usual effect. Unless listed otherwise,
+    effects last 1 minute. 1: gain 15 temporary HP. 2: gain darkvision 60 feet and blindsight 10 feet for 1 hour.
+    3: become Enraged. 4: maximum HP falls by 5 for 1 hour, minimum 1; current HP cannot exceed it. 5: become unconscious
+    and Incapacitated for 1 minute, ending on damage. 6: become Confused for 1d4 minutes. 7: Intelligence and Wisdom
+    become 20 for 1 minute if lower; learn that you were poisoned. 8: immunity to poison damage and Poisoned for
+    24 hours. 9: resistance to one randomly selected damage type for 1 hour. 10: vulnerability to one randomly selected
+    damage type for 1 hour. 11: DC 3 Constitution save or 6d10 poison damage; success takes none. 12: DC 10 Constitution
+    save or Poisoned for 1 minute. 13: DC 12 Constitution save or Poisoned for 1 minute, then immune to this mixture
+    for 24 hours. 14: recover 1d4 HP. 15: remove one Fatigue and restore one spent Block, without counting as a
+    rest. 16: cannot knowingly speak a lie. 17: cannot knowingly tell the truth, but may remain silent. 18: become
+    Charmed by the nearest creature you can see and try to help it without self-harm. 19: DC 12 Constitution save
+    or 1d4 poison damage and Poisoned for 1 minute. 20: no effect. For random damage types roll d12: acid, bludgeoning,
+    cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing. These effects do not stack
+    with another dose of this mixture.'
+  conversion_notes: Rebuilt incomplete references to a parent poison, alignment changes, rage, and instant short
+    rests. Uses Varis conditions and bounded resource recovery; retained all twenty possible outcomes.
+  source_ref: Magic item generator.xlsx — Common!A23:D23
+  original_5e: "A character must succeed on a DC 15 INT check to see that it is actually a failed poison. The poison\
+    \ is applied normally, but when the target would be affected, roll a d20 and use that effect instead. \n\n1-\
+    \ The victim gains 15 temporary HP.\n2- The victim gains darkvision for 60 feet and blindsight for 10 feet.\n\
+    3- The victim's alignment becomes chaotic evil for 1 minute. They fly into an uncontrollable rage, attacking\
+    \ everything nearby with a berserker-like rage activated. They will have no memory of this.\n4- The victim's\
+    \ max HP is decreased by 5 for 1 hour.\n5- The victim falls unconscious for 1 minute.\n6- The victim hallucinates\
+    \ for 1d4 minutes.\n7- The victim gains an INT and WIS stat of 20 for 1 minute. They know exactly what you just\
+    \ tried to do.\n8- The victim becomes immune to all poisons for 24 hours.\n9- The victim gains resistance to\
+    \ a random damage type.\n10- The victim gains vulnerability to a random damage type.\n11- The victim must make\
+    \ a DC 3 CON save, taking 6d10 poison damage on a failed save.\n12- The victim must make a DC 10 CON save, becoming\
+    \ poisoned for 1 minute on a failed save.\n13- The poison acts normally, but it grants immunity to that poison\
+    \ for 24 hours if it would become poisoned.\n14- The poison acts normally, but it gives HP instead of dealing\
+    \ damage.\n15- The victim acts as if it just took a short rest.\n16- The victim speaks nothing but the truth\
+    \ uncontrollably for 1 minute.\n17- The victim talks constantly for 1 minute, but cannot speak the truth.\n\
+    18- The victim's alignment becomes lawful good for 1 minute, causing them to join the righteous and aid the\
+    \ good in any way they can. They have no memory of this time.\n19- The poison acts normally.\n20- The poison\
+    \ does nothing.\n"
+  source_name: Failed Poison (Potion)
+  source_price: 75 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Spiked Chain (Morningstar)
+  group: Common
+  id: mi-common-024
+  type: Weapon
+  rarity: Common
+  attunement: 'No'
+  price: 300 GP
+  desc: This nonmagical chain uses morningstar training but deals 2d4 piercing damage and has Reach I, allowing
+    attacks within 10 feet including adjacent targets. It grants no enhancement bonus. Replace one attack using
+    the normal maneuver cost (bonus action or move action) with either Chain grapple or Trip. After an unblocked
+    strike against a creature at most one size larger, the target makes its choice of Strength (Athletics) or Dexterity
+    (Acrobatics) check against 8 + your proficiency bonus if trained + your applicable Strength or Dexterity modifier.
+    Failure on Chain grapple makes it Grappled by you while you hold the chain. As an action on later turns, repeat
+    the check; failure also makes it Pinned. At the start of its turn while held, it takes 1d4 piercing damage plus
+    your applicable Strength modifier. The target can use an action to repeat the check and end both conditions
+    on a success; releasing the chain also ends them. Failure on Trip instead makes it Prone.
+  conversion_notes: Converted free grapple/trip riders into paid Varis maneuvers and replaced restrained with explicit
+    Grappled/Pinned conditions and escape timing.
+  source_ref: Magic item generator.xlsx — Common!A24:D24
+  original_5e: "This is a non-magical weapon.  \n\nThe spiked chain does 2d4 + strength piercing damage. \n\nA spiked\
+    \ chain has reach, so you can strike opponents 10 feet away with it. In addition, unlike most other weapons\
+    \ with reach, it can be used against an adjacent foe. \n\nGrapple Attack: Upon a successful hit you can attempt\
+    \ to grab your opponent with the chain (he must be no more than one size larger than you). Opponent then makes\
+    \  Strength (athletics) or Dexterity (acrobatics) check (the target chooses the ability to use), against the\
+    \ grapple DC (8 + Prof + Str or Dex), if he fails he is  grappled. If the opponent does not free himself before\
+    \ your next action you can sustain the grapple if he doesn't make the DC a second time he is restrained. Each\
+    \ succeeding round your opponent is grappled or restrained he takes an additional 1d4+strength piercing damage.\
+    \ \n\nOr\n\nTrip Attack: Upon a successful hit you can attempt to trip your opponent with the chain (he must\
+    \ be no more than one size larger than you). Opponent then makes a Strength (athletics) or Dexterity (acrobatics)\
+    \ check (the target chooses the ability to use) against the trip DC (8 + Prof + Str or Dex), if he fails he\
+    \ is prone"
+  base_item: morningstar
+  damage: 2d4p
+  properties:
+  - reach I
+  maneuvers:
+  - Chain grapple: Attack > If unblocked strike > target Strength (Athletics) or Dexterity (Acrobatics) versus 8
+      + applicable proficiency + applicable Strength or Dexterity modifier > If failure > Grappled. See item for
+      sustained binding.
+  - Trip: Attack > If unblocked strike > target Strength (Athletics) or Dexterity (Acrobatics) versus 8 + applicable
+      proficiency + applicable Strength or Dexterity modifier > If failure > Prone.
+  source_name: Spiked Chain (Morningstar)
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: The Stick of Usefulness
+  group: Common
+  id: mi-common-025
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 1000 GP
+  desc: Anyone holding this stick can use a bonus action to transform it into a quarterstaff, spear, club, crowbar,
+    shovel, wood saw, 10-foot ladder, or 50-foot rope. It remains one intact object and retains that form until
+    transformed again. Weapon forms use the current corresponding Varis weapon entry, count as magical, and grant
+    no enhancement bonus. They grant no proficiency. The rope and ladder must be unoccupied and untied before transforming.
+  conversion_notes: Uses current Varis weapon forms and training; clarified transformations to prevent occupied
+    rope or ladder hazards becoming unspecified damage.
+  source_ref: Magic item generator.xlsx — Common!A25:D25
+  original_5e: "The Stick of Usefulness can be used by anyone who picks it up, with no attunement required. \n\n\
+    As a bonus action you may shift the object into any of the following forms: A quarterstaff, spear, club, crowbar,\
+    \ shovel, wood saw, 10' ladder, or 50' of rope. \n\nThe object stays in that form until the wielder uses a bonus\
+    \ action to change it into a different form. \n\nAny of the weapon forms have no bonuses to hit or to damage,\
+    \ but they do count as magical weapons for determining what targets can be hit by them. "
+  source_name: The Stick of Usefulness
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: A Modest Knife (Dagger)
+  group: Common
+  id: mi-common-026
+  type: Weapon
+  rarity: Common
+  attunement: 'No'
+  price: 100 GP
+  desc: Use the Dagger entry. This intentionally plain silvered dagger has a waterproof compartment in its sheath
+    for a small document, a glass cutter in its threaded pommel, a small grease pan, and 5 feet of fine wire. These
+    are ordinary tools, granting no check bonus or proficiency. Drawing a stored item or preparing a tool uses the
+    normal object interaction. The silvering does not grant an enhancement bonus.
+  conversion_notes: Assigned the current Dagger mechanics while retaining the nonmagical concealed-tool utility.
+  source_ref: Magic item generator.xlsx — Common!A26:D26
+  original_5e: 'Fine enough to be carried by a lesser courtier, but plain enough to pass without comment in a simple
+    tavern, this unadorned silvered knife is intentionally unremarkable (when it''s sheated). Keen eyes will note,
+    but few will realize that hte sheath conceals a water-proof compartment, or that there is secondary space for
+    documents inside. The threaded pommel, which has a glass cutter on its impolite side, should be tightened frequently.
+    The small pan of grease and the spool with five feet of fine piano wire concealed beneath it can rattle when
+    it''s lose. '
+  base_item: Dagger
+  source_name: A Modest Knife (Dagger)
+  source_price: 100 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Pillar Boots
+  group: Common
+  id: mi-common-027
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 300 GP
+  desc: These boots hold 2 charges, increasing to 4 while worn by a character of level 11 or higher. Recover 1 charge
+    after each long rest, never exceeding the current maximum. As a bonus action while standing on natural earth
+    or stone, spend one or more charges. The ground in a 5-foot radius around you rises 5 feet per charge, carrying
+    creatures and unattended objects on it. It cannot rise through a ceiling, displace a structure, or crush a creature;
+    stop before an obstruction. The raised terrain is difficult terrain and can be climbed. It remains for 1 minute,
+    then lowers safely over one round.
+  conversion_notes: Kept the level scaling and week-long-rest recovery; added duration and safe terrain limits absent
+    from the source.
+  source_ref: Magic item generator.xlsx — Common!A27:D27
+  original_5e: Its leather made from natural elements, these boots belonged to an elven archer who preferred to
+    keep their distance in battle. Unfortunately, that didn't work out well for them. This item holds a maximum
+    of 2 charges that replenishes 1 charge every long rest. The boots also gain 2 additional charges at level 11.
+    As a bonus action, you can expend 1 or more charges to activate the emerald in the heel of these boots. As long
+    you are standing on a natural element, all terain within 5ft. radius of you raises 5ft. per charge expended.
+    The raised terrain is climbable but is considered rough terrain.
+  source_name: Pillar Boots
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Traveler's Flask
+  group: Common
+  id: mi-common-028
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 5 GP
+  desc: This double-ended flask holds one pint. Ordinary liquid poured through the blue cap becomes refreshingly
+    cool; through the red cap it becomes comfortably warm. It cannot freeze, boil, ignite, deal damage, neutralize
+    poison, or alter the magic of a potion.
+  conversion_notes: Preserved the temperature utility and defined its non-damaging limits.
+  source_ref: Magic item generator.xlsx — Common!A28:D28
+  original_5e: This double-sided iron flask adjusts the temperature of liquids poured from it. Any liquid poured
+    from the blue-capped side becomes refreshingly cool. Any liquid poured from the red-capped side becomes soothingly
+    warm.
+  source_name: Traveler's Flask
+  source_price: 5 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Tinkerer's Glasses
+  group: Common
+  id: mi-common-029
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 20 GP
+  desc: While wearing these glasses, you can use tinkering tools as though proficient, adding your proficiency bonus
+    where that training is applicable. You also have advantage on Intelligence (Investigation) checks to understand
+    a machine or mechanical device. Existing proficiency does not double.
+  conversion_notes: Retained the tool training and investigation benefit with explicit non-stacking proficiency.
+  source_ref: Magic item generator.xlsx — Common!A29:D29
+  original_5e: While weraing these multi-lensed glasses, you gain profeciency in tinkerer's tools and have advantage
+    on investigation checks on understanding a machine to mechanical devices.
+  source_name: Tinkerer's Glasses
+  source_price: 20 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Alchemical Reagent Set
+  group: Common
+  id: mi-common-030
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 40 GP
+  desc: 'This reagent kit has three spoons and nine vials: two empty and seven holding purple flan, gold dust, mummy
+    dust, granite dust, residuum, acid, and ammonia. Each filled vial has three doses. If trained with alchemist
+    supplies, spend an action and one dose on an accessible object: purple flan bubbles on a non-cursed magic item
+    and withers on a cursed one; it can instead sample a potion and visibly exhibit one obvious effect. Residuum
+    is attracted to active magic and enchanted objects. Gold dust corrodes in contact with a harmful magical effect.
+    Mummy dust smokes near restorative or radiant magic and grows near necrotic magic. Granite dust reveals oil,
+    moisture, and fingerprints. Acid and ammonia test acidity. These tests reveal only those reactions, not full
+    item rules, command words, or how to end a curse. Residuum accounts for 30 GP of the kit''s listed price.'
+  conversion_notes: Made the tests actionable and finite while replacing undefined positive/negative energy with
+    restorative/radiant/necrotic magic.
+  source_ref: Magic item generator.xlsx — Common!A30:D30
+  original_5e: |-
+    This kit of alchemical reagants is used to test the properties of items and objects you might find.
+
+    It includes three spoons, lead, silver, and aluminum, nine glass vials; two are empty, the other seven are filled with filled with Purple Flan (a living slime not dissimilar to slime molds and ochre jelly), gold dust, mummy dust, granite dust, residuum (without it the kit is worth 10 gp), acid, and ammonia.
+
+    If you have proficiency with an alchemist supplies, you can use an action, to pour a portion of a vial (each having enough for three doses) on a targeted item to determine its properties.
+
+    Purple Flan reacts to magical items, seeming to boil when touching a non-cursed one but withering away upon touching a cursed one. It will consume small amounts of potion and be subject to its effects.
+    Residuum reacts to magic in general, being attracted to already cast spells and to enchanted items.
+    Gold dust is unreactive in general, and is generally used to detect the presence of negative magical effects, as it will only corrode in their presence.
+    Mummy dust evaporates into smoke when exposed to positive energy, and seems to grow upon exposure to negative energy.
+    Granite Dust is attracted to oil and wet surfaces and can be used to dust for fingerprints or detect moisture.
+    Acid and ammonia are used to test the general pH of materials.
+  source_name: Alchemical Reagent Set
+  source_price: 40 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Potion of Guidance
+  group: Common
+  id: mi-common-031
+  type: Potion
+  rarity: Common
+  attunement: 'No'
+  price: 25 GP
+  desc: Drink this single dose as an action. Within the next minute, add 1d4 to one ability or skill check you make,
+    declaring its use before the d20 roll. The potion then ends. Multiple doses do not stack.
+  conversion_notes: Added an explicit activation, duration, and use timing to the source one-check bonus.
+  source_ref: Magic item generator.xlsx — Common!A31:D31
+  original_5e: When used, adds 1d4 to next ability check.
+  source_name: Potion of Guidance
+  source_price: 25 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Thoughts & Prayers (brass knuckles)
+  group: Common
+  id: mi-common-032
+  type: Weapon
+  rarity: Common
+  attunement: 'No'
+  price: 50 GP
+  desc: These two magical brass knuckles are Light weapons. Each deals 1d4 damage and uses Strength for attacks
+    and damage. Use your proficiency bonus if trained with unarmed attacks or clubs. The knuckle in your main hand
+    deals psychic damage and the off-hand knuckle deals radiant damage. Each attack can be blocked at DC 8 + applicable
+    proficiency + applicable Strength modifier. An off-hand attack follows normal Varis two-weapon timing and does
+    not add the ability modifier to damage unless a feature permits it. They grant no enhancement bonus.
+  conversion_notes: Converted the pair to explicit Varis attack, Block, training, and off-hand rules without creating
+    a free second attack.
+  source_ref: Magic item generator.xlsx — Common!A32:D32
+  original_5e: These brass knuckles deal 1d4 damage, they have light property and main hand brass knuckle deals
+    psychic damage and off-hand knuckle deals radiant damage.
+  source_name: Thoughts & Prayers (brass knuckles)
+  source_price: 50 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Multitool (tools)
+  group: Common
+  id: mi-common-033
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 40 GP
+  desc: This compact mechanical tool serves as thieves' tools for disarming traps and opening locks, and as weaver's
+    tools or jeweler's tools for appropriate work. It grants neither proficiency nor a numerical bonus. It cannot
+    replace raw materials, a workshop, or larger specialized machinery.
+  conversion_notes: Ordinary tool substitution works unchanged; clarified that possessing the kit does not grant
+    training.
+  source_ref: Magic item generator.xlsx — Common!A33:D33
+  original_5e: The multitool is a set of small metal blades, surfaces and pokers. It acts as thieves' for the purposes
+    of trap disarming/lock opening and weaver's tools and jeweler's tools, and they will work as normal tools for
+    related checks.
+  source_name: Multitool (tools)
+  source_price: 40 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Wine of Nightshade
+  group: Common
+  id: mi-common-034
+  type: Potion
+  rarity: Common
+  attunement: 'No'
+  price: 4 GP per glass
+  desc: One glass can be drunk as an action. When brewed, make an alchemy or appropriate cooking check. On a result
+    below 12, the drinker makes a DC 12 Constitution save or is Poisoned for 1d6 minutes. On 12-17, the drinker
+    gains +1 to Constitution saves for 1d10 rounds. On 18 or higher, the drinker instead has advantage on Constitution
+    saves for 1d10 rounds. Multiple glasses do not stack; use the latest duration and best benefit. Purchased wine
+    has a preparation result determined by the GM.
+  conversion_notes: Resolved the overlapping DC 18 bands and converted turns to explicit rounds; kept the Varis
+    Poisoned condition.
+  source_ref: Magic item generator.xlsx — Common!A34:D34
+  original_5e: This cheap wine is prepared from mandrake or belladonna. It is often used as a pain remedy, and is
+    easy and cheap to manufacture. If it's badly made (DC under 12), it act's as poison, with which you need to
+    make DC 12 constitution save, or be poisoned for 1d6 minutes. If it's decently made (DC 12 - 18) it gives +1
+    to constitution saving throws for 1d10 turns. If it's greatly made (DC 18+), it gives advantage to constitution
+    saving throws for 1d10 turns.
+  source_name: Wine of Nightshade
+  source_price: 4 GP per glass
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Utility Harness
+  group: Common
+  id: mi-common-035
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 5 GP
+  desc: This mundane harness carries up to 10 pounds of gear distributed across the body. That gear counts as 5
+    pounds for carrying-capacity calculations. It does not reduce the bulk of worn armor, grant extra item interactions,
+    or reduce weight outside its 10-pound load.
+  conversion_notes: Kept the carrying-weight benefit and distinguished it from Varis armor Bulk.
+  source_ref: Magic item generator.xlsx — Common!A35:D35
+  original_5e: A standard harness is capable of 10 lbs worth of gear. Gear carried in this manner is distributed
+    over the body in such a way as to be less cumbersome and only counts as 5 lbs of gear for purposes of encumbrance.
+  source_name: Utility Harness
+  source_price: 5 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Protective Basket Hilt
+  group: Common
+  id: mi-common-036
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 150 GP
+  desc: Fit this hilt to one compatible handheld weapon during 10 minutes of work. While you wield that weapon,
+    creatures have disadvantage on checks and attack rolls made specifically to disarm you of it. It grants no AC,
+    Block, damage, or enhancement bonus.
+  conversion_notes: Retained the anti-disarm property and specified installation and scope.
+  source_ref: Magic item generator.xlsx — Common!A36:D36
+  original_5e: 'You can combine this hilt with any weapon what would use a hilt. When applied, enemies have disadvantage
+    on rolls made against you in purpose to disarm you. '
+  source_name: Protective Basket Hilt
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Jaw Trap
+  group: Common
+  id: mi-common-037
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 150 GP
+  desc: Use an action to arm and place this mundane trap on a stable surface. A creature stepping on its pressure
+    plate makes a DC 18 Dexterity save. On a failure it takes 2d4 piercing damage and is Snared while caught; it
+    takes another 2d4 piercing damage at the start of each of its turns. A caught creature or adjacent helper can
+    use an action to make a DC 14 Strength check. Three successes, not necessarily consecutive, open it and end
+    the condition. An adjacent creature can instead use an action and a DC 18 Dexterity check with suitable tools
+    to disarm it; failure triggers it against that creature. After it is opened it can be reset.
+  conversion_notes: Replaced undefined trapped status with Snared, clarified damage timing, and made the three required
+    escape successes cumulative.
+  source_ref: Magic item generator.xlsx — Common!A37:D37
+  original_5e: 'Jaw Trap is spring loaded mechanism that smashes two pieces of serrated metal together to trap the
+    foot, or limb caught in the trap when a small metal plate gets pressure put on it. If stepped on it, character
+    must make DC 18 Dexterity saving throw to not get trapped or disarm it. It takes 3 successes of DC 14 Strength
+    check, to get out of it. If you are trapped, your movement speed is 0 and every turn it deals 2d4 piercing damage. '
+  source_name: Jaw Trap
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Portable Leg Snare
+  group: Common
+  id: mi-common-038
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 25 GP
+  desc: Use an action to set this mundane snare on a stable surface. A searching creature finds it with DC 20 Perception
+    or DC 15 Investigation. An adjacent creature can disarm it with an action and a DC 15 Dexterity check using
+    suitable tools. A creature stepping into it makes a DC 15 Dexterity save or becomes Snared. While caught, its
+    attack rolls and block checks have disadvantage and attacks against it have advantage. It can use an action
+    to make a DC 15 Strength or Dexterity check, escaping on a success. After 5 rounds holding a creature, the snare
+    breaks and frees it.
+  conversion_notes: Replaced 5e restrained with Snared plus the explicitly retained attack/block penalties and five-round
+    breakage.
+  source_ref: Magic item generator.xlsx — Common!A38:D38
+  original_5e: It can be tough to spot, but if someone is looking for it, they will probably find it. To find it
+    Perception DC 20; Investigation DC 15; Disarm DC 15. When stepped on it, the character must make DC 15 Dexterity
+    saving throw, on failed save creature becomes restrained and must make a DC 15 Strength or Dexterity check as
+    an action to get out of it. After 5 turns, if someone is restrained, the snare breaks and creature is no longer
+    restrained.
+  source_name: Portable Leg Snare
+  source_price: 25 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Shekel Ring
+  group: Common
+  id: mi-common-039
+  type: Ring
+  rarity: Common
+  attunement: 'No'
+  price: 1 SP
+  desc: This small golden band bears minting marks certifying a value of 1 SP. It is mundane jewelry and grants
+    no magical effect, attunement, or statistical bonus.
+  conversion_notes: The source is an ordinary currency ring; preserved that identity rather than inventing a magic
+    bonus.
+  source_ref: Magic item generator.xlsx — Common!A39:D39
+  original_5e: The shekel ring is a small golden band worth 1 silver piece. In order to confirm its worth, these
+    rings are marked with minting marks on the inside and out.
+  source_name: Shekel Ring
+  source_price: 1 SP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Hypnotic Pendant
+  group: Common
+  id: mi-common-040
+  type: Wondrous item
+  rarity: Common
+  attunement: 'Yes'
+  price: 500 GP
+  desc: While attuned and wearing this shiny pendant, you are proficient in Performance. If already proficient,
+    add twice your proficiency bonus to Performance checks instead. This does not stack with another effect that
+    already doubles proficiency and does not itself charm, fascinate, or hypnotize a creature.
+  conversion_notes: Kept the precise skill benefit and distinguished the item name from the Varis Hypnotized condition.
+  source_ref: Magic item generator.xlsx — Common!A40:D40
+  original_5e: A hypnotic pendant is a shiny pendant, usually gold painted (or some equivalent). When attuned to
+    it, gives proficiency in performance checks, if you are already proficient, you double your proficiency.
+  source_name: Hypnotic Pendant
+  source_price: 500 GP
+  source_attunement: 'Yes'
+  source_rarity: Common
+- name: Elf Whistle
+  group: Common
+  id: mi-common-041
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 10 GP
+  desc: Use an action to blow the whistle. Elves within 1 mile can hear it and determine its direction with a DC
+    10 Perception check, using passive Perception if applicable. A result of 20 or higher also estimates its distance.
+    Most other common ancestries cannot hear its pitch; a creature with appropriate high-frequency hearing may hear
+    it at the GM's discretion. The sound confers no command, charm, or language comprehension.
+  conversion_notes: The ancestry-specific signal retains its range and checks without adding a spell effect.
+  source_ref: Magic item generator.xlsx — Common!A41:D41
+  original_5e: When the whistle is blown, any elf within a one mile radius that succeeds at a DC 10 perception check
+    (rolled or passive) hears the whistle and can determine its direction. With a DC 20 perception check, the elf
+    can also accurately estimate the approximate distance that the sound came from. The sound is too high pitched
+    for most other common races to hear, but many creatures and monsters can easily detect the sound, including
+    direction and approximate distance.
+  source_name: Elf Whistle
+  source_price: 10 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Healing Powder
+  group: Common
+  id: mi-common-042
+  type: Potion
+  rarity: Common
+  attunement: 'No'
+  price: 25 GP
+  desc: 'As an action, apply one dose of this herbal powder to yourself or a creature within reach. The target recovers
+    1d4 HP, up to its maximum. This is alchemical healing: the Diseased healing reduction applies, and a healing
+    die may be forgone to remove Bleeding if the current Bleeding rule permits it. The dose is consumed.'
+  conversion_notes: Made the source healing an explicit single-use alchemical application using Varis healing and
+    Bleeding rules.
+  source_ref: Magic item generator.xlsx — Common!A42:D42
+  original_5e: Healing Powder is a tribal drug made from Broc Flower and Xander Root. When applied, creature regains
+    1d4 Hit Points.
+  source_name: Healing Powder
+  source_price: 25 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: Bat's balls
+  group: Common
+  id: mi-common-043
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 350 GP
+  desc: 'While carrying this charm, nonmagical penalties cannot reduce a flying speed you already possess, but it
+    does not grant flight, negate inability to move, prevent falling, or override magic or conditions. Once per
+    dawn, as a bonus action roll d100. On 96-100, a harmless swarm of bats appears around you for 1 minute, obscuring
+    your outline: ranged attacks against you from more than 10 feet have disadvantage. The bats cannot attack, carry
+    objects, or block, and disperse if you become incapacitated. On any other result nothing appears.'
+  conversion_notes: Resolved the source 5-percent/95-100 mismatch to 96-100 and replaced an undefined swarm stat
+    block and unlimited retries with a bounded self-contained power.
+  source_ref: Magic item generator.xlsx — Common!A43:D43
+  original_5e: Nothing can affect your standard flying speed. There is 5 % (roll d100 (95-100) is a success) chance
+    to spawn a swarm of bats as a bonus action.
+  source_name: Bat's balls
+  source_price: 350 GP
+  source_attunement: 'No'
+  source_rarity: Common
+- name: A Kazoo
+  group: Common
+  id: mi-common-044
+  type: Wondrous item
+  rarity: Common
+  attunement: 'No'
+  price: 1000 GP
+  desc: This shiny kazoo has glowing green runes. It has 3 uses and regains all uses at dawn. As a bonus action,
+    expend a use and play a mocking note at one creature within 60 feet that can hear you. The target makes a DC
+    12 Wisdom save. On a failure it takes 1d4 psychic damage and its next attack before the end of its next turn
+    has disadvantage. This is a magical sound effect and cannot be blocked. A deafened creature is unaffected.
+  conversion_notes: Replaced the absent Vicious Mockery reference with a complete low-power effect; retained three
+    daily bonus-action uses.
+  source_ref: Magic item generator.xlsx — Common!A44:D44
+  original_5e: I mean, it's a kazoo, that's pretty much it. It has cool green glowing runes, make doot noise and
+    is shiny. You can cast Vicious Mockery 3 times per day as a bonus action.
+  source_name: A Kazoo
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Common

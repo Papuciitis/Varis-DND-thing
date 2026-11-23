@@ -1,0 +1,1687 @@
+section: magic-items
+entries:
+- id: mi-very-rare-002
+  type: Weapon
+  base_item: Dagger
+  desc: |-
+    A starmetal dagger using the Varis Dagger's damage, properties, training, and maneuvers. As an action, set it orbiting 1d4 feet from you, or seize and wield or stow it. While it orbits, taking the Attack action lets you spend a bonus action to make one dagger attack against a creature within 10 feet, using your normal dagger attack, damage ability, and Block DC. It returns to orbit after the attack. This attack can be blocked normally.
+
+    While it orbits, reduce damage from each ranged weapon attack that reaches you by 1d10 + 4, after any Block check. If reduced to 0, its missile falls at your feet. Another creature can spend an action to seize it with an attack against AC 24 or a DC 24 Dexterity (Acrobatics) check; a successful seizure ends the orbit.
+  conversion_notes: Orbital strikes use the current dagger and Block rules; missile reduction is applied only to
+    damage remaining after Block. Seizing the blade is an object interaction rather than an unblockable damaging
+    attack.
+  name: Starmetal Sliver (dagger)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 24000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A2:D2
+  original_5e: This slim blade was forged using strange, unearthly metals from a meteorite. When you use an action
+    to toss this magic dagger into the air, it orbits your body at a distance of 1d4 feet. Another creature can
+    use an action to grasp the dagger to separate it from you, either by making a successful attack roll against
+    AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and either wield or
+    stow the dagger. When you take the Attack action while the dagger is orbiting you, you can use a bonus action
+    to cause the dagger to attack a target within 10 feet of you. The dagger uses your attack roll and ability score
+    modifier to damage rolls. Immediately after the attack, the dagger returns to orbit you. In addition, the dagger
+    creates a small gravitational field that wards off harm. While the dagger orbits you, when you are hit by a
+    ranged weapon attack, the damage you take from the attack is reduced by 1d10 + 4. If the damage is reduced to
+    0, the missile slows to a stop without hitting you and falls to the ground at your feet.
+  source_name: Starmetal Sliver (dagger)
+  source_price: 24000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-003
+  type: Weapon
+  base_item: Longbow
+  desc: |-
+    This phase-spider bow uses the Varis Longbow's damage, properties, training, and maneuvers. It holds 5 charges and regains all expended charges at dawn. Before a ranged attack roll, spend 1 charge to phase its arrow through cover, including total cover, provided you know the target's location. Lead, material thicker than 1 foot, or an effect preventing ethereal travel stops the arrow. The attack still rolls against AC and can be blocked. On an unblocked strike, add 2d6 force damage.
+
+    As a bonus action, spend 3 charges to shoot an unoccupied point on a solid surface you can see within the bow's normal range. Teleport with carried equipment to the nearest unoccupied space beside that point. This teleport makes no attack and deals no damage.
+  conversion_notes: Cover penetration does not bypass Block or reveal hidden creatures. The teleport is a distinct
+    bonus-action power and the force rider requires an unblocked strike.
+  name: Phasing Bow (longbow)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 26000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A3:D3
+  original_5e: This flexible bow is made from the chitinous legs of a phase spider and retains some of its ethereal
+    properties. The bow has 5 charges and regains all expended charges daily at dawn. When you make a ranged attack
+    roll with this magic bow, you can expend 1 of its charges to cause the arrow to slip partially into the Ethereal
+    Plane. When you do, the target of the attack gains no benefit from cover, including total cover, as long as
+    the cover isn't made of lead or more than 1 foot thick. If you hit, the target takes an extra 2d6 force damage.
+    Any effect that blocks travel through the Ethereal Plane also blocks the arrow. Alternatively, you can speak
+    the bow's command word as a bonus action to expend 3 of its charges and fire an arrow at a point you can see
+    within the weapon's normal range. When the arrow hits a solid surface, you vanish from your location and reappear
+    in an unoccupied space nearest to that point.
+  source_name: Phasing Bow (longbow)
+  source_price: 26000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-004
+  type: Wondrous item
+  desc: |-
+    While wearing this feathered cloak, increase Constitution by 2, to a maximum of 20; gain poison resistance and advantage on saves against disease and poison. As a bonus action, transform it into vulture wings for 1 minute, gaining a flying speed of 60 feet. While transformed, an unblocked melee weapon strike against a creature missing HP deals an extra 1d6 necrotic damage. Regain the wing power at dusk.
+
+    Curse: attuning binds the cloak to you. You refuse to remove or surrender it, and ordinary food becomes tasteless although it sustains you. Whenever you reduce a creature within 5 feet to 0 HP, make a DC 13 Wisdom save; automatically succeed for constructs, undead, and plants. On failure, forfeit your remaining action, bonus action, and move action to feast. Repeat the save at the start of each turn; success ends the compulsion. A curse-removing effect ends the binding.
+  conversion_notes: Feeding explicitly consumes Varis action types. The necrotic rider requires an unblocked strike;
+    the original curse and dusk recovery remain.
+  name: Carrion Shroud
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 30000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A4:D4
+  original_5e: 'This ruffled cloak of dull feathers and down grants you the resilience and cunning of a ravenous
+    vulture. When you move while wearing this cloak, small, tattered feathers drift from the cloak that vanish when
+    they touch the ground. While wearing the cloak, your Constitution score increases by 2 to a maximum of 20, you
+    have advantage on saving throws against disease and poison, and you have resistance against poison damage. In
+    addition, while wearing the cloak, you can speak its command word as a bonus action to cause it to transform
+    into a pair of sickly vulture wings for 1 minute. While the cloak is transformed, you gain a a flying speed
+    of 60 feet, and when you hit a creature that''s missing any of its hit points with a melee weapon attack, that
+    creature takes an extra 1d6 necrotic damage. This property of the cloak can''t be used again until the next
+    dusk. Curse. This cloak is cursed, and becoming attuned to it extends the curse to you until you are targeted
+    by the remove curse spell. As long as you remain cursed, you are unwilling to part with the cloak, keeping it
+    worn at all times. The cloak gives you an insatiable hunger for flesh, and while traditional food can sustain
+    you, you no longer enjoy the smell or taste of it. While cursed, whenever you reduce a creature within 5 feet
+    of you to 0 hit points, you''re forced to make a DC 13 Wisdom saving throw. If the creature is a construct,
+    undead, or plant, you automatically succeed on this saving throw. On a failed save, you are overcome with the
+    urge to tear into the creature''s flesh and feast: sacrificing any additional movement, action, or bonus action
+    you had left on your turn. You can repeat this saving throw at the start of each of your following turns, ending
+    your need to feast on a success.'
+  source_name: Carrion Shroud
+  source_price: 30000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-005
+  type: Weapon
+  base_item: Rapier
+  magic_bonus: '2'
+  desc: |-
+    As a bonus action, form or dismiss a circulating sand blade from this quartz hourglass hilt. While formed, it is a Varis Rapier with +2 to attack rolls, damage, and Block DC.
+
+    While holding the hilt, use an action to choose one power, each available once per dawn. Quicken: touch a willing creature; for up to 1 minute while you concentrate, it gains +10 feet speed, +2 AC, advantage on Dexterity saves, and one additional move action on each turn. The extra action cannot attack or cast. When this ends, the creature is Winded until the end of its next turn. Delay: choose up to three creatures you can see within 60 feet. Each makes a DC 16 Wisdom save. On failure, for up to 1 minute while you concentrate, its speed is halved, AC is reduced by 2, it cannot react, and each turn it must forfeit either its bonus action or move action. Repeat the save at the end of each turn. You have advantage on Constitution saves to maintain either power.
+  conversion_notes: Haste and slow references are replaced by explicit Varis action effects, rather than importing
+    extra 5e actions or spell-slot levels. Enhancement includes Block DC.
+  name: Timepiercer (rapier)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 26000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A5:D5
+  original_5e: This item appears to be a sword hilt that has a small hole on either end of it. The hilt is made
+    of clear quartz and contains an hourglass with sand inside it. Despite the holes on the hilt, the sand never
+    seems to flow out of the hourglass. You can speak the hilt’s command word as a bonus action to cause it to form
+    a thin blade of sand. The hourglass spills sand from the bottom of the hilt that circulates up and around to
+    form the blade and guard of the rapier before returning to the hourglass again through the hole at the top.
+    You can speak the hilt’s command word again as a bonus action to cause all the sand to return to the hourglass.
+    While the blade is formed, you gain a +2 bonus to attack and damage rolls made with this magic weapon. While
+    holding the hilt, you can use an action to cast either the haste or slow spell (save DC 16) from it. You have
+    advantage on Constitution saving throws you make in order to maintain concentration on a spell cast in this
+    way. Once a spell has been cast using the hilt, it can’t be used to cast that spell again until the next dawn.
+    The sands in the hourglass move quickly while you concentrate on a haste spell cast in this way, or more slowly
+    when you concentrate on a slow spell.
+  source_name: Timepiercer (rapier)
+  source_price: 26000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-006
+  type: Wondrous item
+  desc: |-
+    This eyepiece holds 5 charges and regains 1d4 + 1 at dawn. As a reaction at the end of another creature's turn, spend 1 charge and target that creature if you can see it within 60 feet. Choose Past or Future.
+
+    Past teleports the target to the space it occupied at the start of that turn, or the nearest unoccupied space if occupied. A willing target accepts; an unwilling target resists with a DC 16 Charisma save. This changes position only, without reversing damage, costs, actions, or other events.
+
+    Future lets a willing target immediately move up to half its speed without provoking opportunity attacks. Its speed is then halved until the end of its next turn. This grants movement only, not another action.
+  conversion_notes: The reaction has an explicit end-of-turn trigger. Time reversal moves the target without rewinding
+    resources or actions, and Future supplies movement without duplicating a move action.
+  name: Chronomancer's Eyepiece
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 12000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A6:D6
+  original_5e: This singular lens lets you faintly see and command the flow of time around a target. The eyepiece
+    has 5 charges and regains 1d4 + 1 expended charges daily at dawn. While wearing the eyepiece, you can expend
+    1 charge as a reaction at the end of another creature's turn to speak either of the eyepiece's two command words
+    to warp the flow of time around that creature. You must be able to see the target, and it must be within 60
+    feet of you. Past. If the target is willing, it is teleported back to the space it was at the beginning of its
+    turn. If another creature or object is occupying the space, the target is teleported to nearest unoccupied space
+    instead. An unwilling target must succeed on a DC 16 Charisma saving throw or be teleported in this way against
+    its will. Future. If the target is willing, it can immediately choose to move again, up to half its speed, without
+    provoking opportunity attacks. After a target moves in this way, its speed is halved until the end of its next
+    turn.
+  source_name: Chronomancer's Eyepiece
+  source_price: 12000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-007
+  type: Weapon
+  base_item: Longspear
+  magic_bonus: '2'
+  desc: |-
+    This lance uses the Varis Longspear and grants +2 to attack rolls, damage, and Block DC. It holds 4 charges and regains 1d4 at dawn. As an action, spend 1 charge to surround yourself with wind for 1 minute. During it, you can Disengage as a bonus action. Spend a second charge without an action to extend this benefit to your current mount; that benefit ends if you dismount. The wind ends if you become unconscious or stop wielding the lance.
+
+    Once per dawn, use an action to release a thunder burst in a 15-foot cube adjacent to you. Creatures inside make DC 16 Constitution saves, taking 4d8 thunder damage and being pushed 10 feet away on failure, or half damage without movement on success. This area power is resolved by saves and cannot be blocked.
+  conversion_notes: The unavailable thunderwave reference becomes a complete area power. Lance enhancement raises
+    Block DC, and the original wind charges remain separate from the dawn burst. The lance is mapped to the current
+    Longspear base.
+  name: Hurricane Lance
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A7:D7
+  original_5e: You gain a +2 bonus to attack and damage rolls made with this magic weapon. The lance has 4 charges
+    and regains 1d4 expended charges each day at dawn. You can expend 1 charge as an action to surround yourself
+    with a flurry of wind that lasts for 1 minute. While surrounded by this wind, you can take the Disengage action
+    using a bonus action. You can expend a second charge of the weapon (no action required) while surrounded by
+    the wind to extend the effect to any mount you’re currently riding. If you dismount or are forced off your mount,
+    the effect fades from it. The effect ends early if you fall unconscious or are no longer wielding the lance.
+    In addition, you can use the lance to cast the thunderwave spell at 3rd level (save DC 16). Once this property
+    of the lance has been used, it can’t be used again until the following dawn.
+  source_name: Hurricane Lance
+  source_price: 10000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-008
+  type: Weapon
+  desc: |-
+    A matched Varis Dagger (Hour) and Short sword (Minute), sharing one attunement. Wield each using its own base weapon, training, and maneuvers. Holding one lets you spend an action to learn the distance and direction to the other on the same plane. Competing attunement is resolved by opposed Intelligence (Arcana) checks; a tie preserves the current bearer. The winner controls the pair and cannot be displaced this way for 24 hours.
+
+    While holding both, each grants +1 to attack rolls, damage, and Block DC, and you gain +1 AC. On Hour's unblocked natural-20 strike, the target's speed is halved, it cannot react, and it must forfeit its bonus action or move action on its next turn; this ends at the end of your next turn. On Minute's unblocked natural-20 strike, gain +10 feet speed, +2 AC, and one extra move action until the start of your next turn, with no ending penalty. As an action, lay both down to point north and display the local time as clock hands, with 12 facing north.
+  conversion_notes: The pair retains a shared attunement and separate weapon bases. Brief haste/slow effects are
+    written in Varis actions and cannot grant extra attack actions; both enhancements include Block DC.
+  name: Hour (Dagger) and Minute (Shortsword)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A8:D8
+  original_5e: 'These two magical weapons are bound by a powerful force. Despite there being two weapons, you only
+    need to attune to one of them to use their properties. While holding one of the weapons, you can use an action
+    to determine the distance and direction of the other paired weapon as long as you''re on the same plane of existence.
+    If you attune to one of the weapons while another creature is attuned to the other, you are each aware of the
+    other creature''s attunement and must make an Intelligence (Arcana) check contested by the other creature''s
+    Intelligence (Arcana) check. The creature that wins the contest remains attuned to the item, and for the next
+    24 hours, its attunement cannot be broken by another creature attempting to attune to the other weapon. The
+    creature that loses the contest is no longer attuned to the weapon. While holding both weapons in either hand,
+    you gain several benefits: You gain a +1 bonus to attack and damage rolls made with these magic weapons. Your
+    perception of time is slightly quickened: allowing you to dodge attacks that would have normally hit you. You
+    gain a +1 bonus to AC. When you roll a 20 on an attack roll using Hour (the dagger) against a creature, that
+    creature is under the effects of the slow spell until the end of your next turn. When you roll a 20 on an attack
+    roll using Minute (the shortsword), you''re under the effects of the haste spell until the start of your next
+    turn. When the effect ends, you don''t suffer the normal effects of the spell ending. In addition, you can use
+    an action to lay the two weapons down on the ground. When you do, they magically point north before spinning
+    around to align and tell the current time. When they do, 12:00 is always facing north.'
+  source_name: Hour (Dagger) and Minute (Shortsword)
+  source_price: 10000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-009
+  type: Weapon
+  base_item: Longbow
+  desc: |-
+    This gilded bow uses the Varis Longbow and deals an extra 1d4 force damage on each unblocked strike. Once per short or long rest, when you see a creature casting within 60 feet, use a reaction to lose 30 current HP and fire a force arrow to interrupt it. You must have more than 30 HP; this loss bypasses Block, Arcane Health, Temp HP, resistance, and damage reduction.
+
+    A spell of Varis level 3 or lower fails automatically. Against a level 4-6 spell, make a check using a mental ability chosen at attunement, adding proficiency, against DC 12 + spell level; success interrupts it. Interrupted spells spend their costs. If interrupted, the caster makes a DC 16 save using its casting ability, taking 30 force damage on failure or 15 on success. The interrupt arrow is resolved by these checks and saves, without an attack roll or Block check.
+  conversion_notes: Automatic interruption is reduced to the lower half of Varis's six spell levels, with a check
+    for higher levels. The life cost is actual HP loss and cannot be paid by renewable secondary pools.
+  name: Bow of the Spelldrinker
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 7000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A9:D9
+  original_5e: This gilded bow creates hazy illusions of the cosmos when drawn. Attacks made with this magic bow
+    deal an extra 1d4 force damage to any target hit by it. When you see a creature casting a spell within 60 feet
+    of you while holding this bow, you can use your reaction to draw from your own life force and attempt to counter
+    it. When you do, you lose 30 hit points and fire a magical arrow of pure force from the bow toward the creature.
+    If the creature is casting a spell of 5th level or lower, its spell fails and has no effect. In addition, the
+    target must make a DC 16 saving throw, using its spellcasting modifier. On a failed save, the creature takes
+    30 force damage as the magic is ripped from them. On a successful save, the creature takes half as much force
+    damage. Once this property has been used, it can't be used again until you finish a short or long rest.
+  source_name: Bow of the Spelldrinker
+  source_price: 7000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-010
+  type: Wondrous item
+  desc: |-
+    As an action, summon two spectral arms attached to your torso for 1 minute. They manipulate unattended objects, open unlocked containers, draw or stow accessible items, or pour a vial, but cannot wield weapons, shields, or spell components. Each carries up to 10 pounds and does not grant additional actions or equipment slots.
+
+    The bracers hold 5 charges and regain 1d4 + 1 at dawn. While arms are active, spend 1 charge and a bonus action for two unarmed attacks: proficiency + 3 to hit, reach 5 feet, 1d4 + 3 magical bludgeoning damage, Block DC 11 + proficiency. Each attack is blockable normally. Alternatively, spend 1 charge when summoning to double each arm's capacity and extend their duration to 5 minutes.
+  conversion_notes: Extra arms do not multiply Varis actions or shield benefits. Their attacks receive a defined
+    Block DC and fixed ability-equivalent +3 modifier.
+  name: Fourarm Bracers
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 12000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A10:D10
+  original_5e: These bracers can summon another pair of spectral arms below your existing ones. These arms can be
+    summoned as an action and last for up to 1 minute before disappearing. While active, you can use the arms to
+    manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or
+    pour the contents out of a vial. Each arm can carry up to 10 pounds. The arms stay attached to your torso at
+    all times and cannot be moved to other parts of your body, but can be turned around to face the opposite direction.
+    In addition, the gems adorning the bracers can amplify the arms’ strength for short bursts. The gems have a
+    total of 5 charges and recharge 1d4+1 expended charges each day at dawn. By uttering the bracers’ command word
+    using a bonus action and expending 1 charge, you can empower the arms to immediately make two unarmed melee
+    attacks. The arms have a +3 bonus to attack and damage rolls and use your proficiency bonus when making the
+    attacks. Each strike does 1d4 magical bludgeoning damage upon a successful hit. Alternatively, you can expend
+    1 charge to double the arms’ carrying capacity and increase their duration to 5 minutes instead.
+  source_name: Fourarm Bracers
+  source_price: 12000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-011
+  type: Wondrous item
+  desc: While wearing this platinum helm, gain +1 AC and +1 to saving throws. If you possess a breath-weapon feature,
+    once per dawn you can replace one use with a holy blue breath, spending its normal action and resource. Use
+    your breath's normal area, save ability, DC, and number of damage dice. Hostile creatures take radiant damage
+    instead of its usual damage, with the breath's normal successful-save result. Hostile fiends and undead have
+    disadvantage on that save. Friendly creatures in the area instead regain HP equal to a roll of those damage
+    dice, without modifiers. A creature chooses whether to accept this healing. The helm does not itself grant a
+    breath weapon.
+  conversion_notes: The original alignment-based disadvantage is replaced with the explicit fiend/undead categories.
+    The helm uses the bearer's existing Varis breath feature and does not create an extra racial resource.
+  name: Helm of the Platinum Dragon
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 3000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A11:D11
+  original_5e: This magical platinum helmet has been blessed by a powerful, holy dragon. While wearing this helmet,
+    you gain a +1 bonus to AC and saving throws, and when you use your breath weapon, you can choose to exhale a
+    holy blue plume of healing energy instead. When you do, this breath weapon deals radiant damage, evil-aligned
+    hostile creatures within the area have disadvantage on the saving throw, and any friendly creatures in the area
+    regain a number of hit points equal to your breath weapon's damage dice instead. This property of the helm can't
+    be used again until the next dawn.
+  source_name: Helm of the Platinum Dragon
+  source_price: 3000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-012
+  type: Wondrous item
+  desc: |-
+    This warhorn holds 4 charges and regains 1d4 at dawn. Its sound carries 300 feet. As an action, spend 1 charge to summon one loyal Large war elk in an unoccupied space within 30 feet. A previous elk from this horn vanishes. It remains until killed, dismissed as an action, or your attunement ends. It has AC 14, HP 37, speed 60 feet, Strength 18, Dexterity 12, Constitution 16, Intelligence 6, Wisdom 12, Charisma 8; saves use these modifiers. It acts after you, obeys spoken commands, and takes one action and one move action each turn. Its antlers attack at +6, reach 5 feet, dealing 2d6 + 4 piercing damage, Block DC 14. If ridden it supplies movement and cannot attack on that turn.
+
+    Alternatively, spend 1 charge and an action for a spectral stampede in a 60-foot-long, 15-foot-wide line. Each creature makes a DC 15 Dexterity save, taking 4d10 force damage and falling Prone on failure, or half damage without falling on success. This save-based area damage cannot be blocked.
+  conversion_notes: Find steed and giant elk references are replaced by a complete companion stat block and action
+    limits. The stampede uses the current Prone condition.
+  name: Horn of the Wild Hunt
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 3000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A12:D12
+  original_5e: 'This large, spiraling warhorn has 4 charges and regains 1d4 expended charges daily at dawn. You
+    can use an action to expend 1 charge and blow the horn, summoning a war elk as if you had cast the find steed
+    spell. A war elk uses the same statistics as a giant elk with the following changes: its size is Large, it has
+    AC 14 (hide barding), and has 37 hit points. The steed disappears if your attunement to the horn ends. Alternatively,
+    you can use an action to expend 1 of the horn''s charges to speak its command word and then blow the horn. When
+    you do, a spectral stampede of elk trample the area in a line 60 feet long and 15 feet wide that extends from
+    you in a direction you choose. Each creature in the line must make a DC 15 Dexterity saving throw. On a failed
+    save, a creature takes 4d10 force damage and is knocked prone. On a successful save, a creature takes half as
+    much damage and isn''t knocked prone. When you blow the horn, it emits a deep, rumbling tone that is audible
+    300 feet away.'
+  source_name: Horn of the Wild Hunt
+  source_price: 3000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-013
+  type: Wondrous item
+  desc: |-
+    Turn this key in empty air as an action. Over 1 minute, a spectral doorway appears and remains for 24 hours, leading to an extradimensional dwelling with up to twenty furnished 20-foot rooms, food and beds for twenty guests, and an additional library. Only creatures you name can enter; you can open, close, or dismiss the doorway as an action while within 30 feet. It cannot be used to enter another plane or bypass a barrier in the surrounding world. When dismissed or expired, occupants and their possessions appear safely beside the entrance; created food, furnishings, and copied library books vanish outside it.
+
+    A creature can spend 1 hour researching one topic in the library. Make an Intelligence (History, Arcana, Nature, or Religion) check: DC 12 for common lore, 16 for specialist knowledge, or 20 for rare historical records. Success supplies a truthful useful lead about that topic, never a creature's present private thoughts or unknowable future. The key becomes usable again 24 hours after its doorway closes.
+  conversion_notes: The seventh-level mansion reference is replaced by a self-contained dwelling and research procedure.
+    Library DCs and exit behavior are defined for immediate play.
+  name: Archivist's Key
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 1000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A13:D13
+  original_5e: This magical key is one of several made by a secret order of historians and archivists. While holding
+    the key, you can use an action to twist the key, as if you were unlocking a door. When you do, a magical, spectral
+    door slowly appears in front of you over the course of 1 minute, duplicating the effect of the magnificent mansion
+    spell with the following change. The dwelling always includes a large library that magically includes copies
+    of books, scrolls, maps, and more. The library does not count toward the total amount of space created by the
+    spell. Its contents are strangely organized and seemingly change each time the key is used. A creature can visit
+    the library and attempt to uncover a piece of knowledge, such as ancient poetry, the history of a forgotten
+    kingdom, or the family lineage of a tyrannical king. The GM determines the checks and DCs needed to locate a
+    given piece of information. For example, a book of foreign nursery rhymes may be easy to find, but a copy of
+    necromantic research documents would be extremely difficult, if not impossible. When the spell ends, the key
+    can't be used this way again for 24 hours.
+  source_name: Archivist's Key
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-014
+  type: Weapon
+  base_item: Greataxe
+  magic_bonus: '2'
+  desc: 'This Varis Greataxe grants +2 to attack rolls, damage, and Block DC, and an extra 1d4 cold damage on each
+    unblocked strike. Once per dawn, use an action to emit a winter howl. Other creatures within 15 feet take 1d6
+    cold damage and make DC 16 Strength saves. On failure, ice encases the creature for up to 1 minute: it is Snared,
+    cannot block, and cannot take actions, bonus actions, or reactions. At the end of each turn it may repeat the
+    Strength save, despite the ice, ending it on success. Any damaging attack against it shatters the ice after
+    that attack resolves and deals an extra 1d6 cold damage. The howl''s area damage is save-based and cannot be
+    blocked.'
+  conversion_notes: Rather than using Varis Paralyzed, which forbids the stated recovery saves, the ice defines
+    its own action loss and explicitly allows the repeat save. Enhancement includes Block DC.
+  name: Winter's Howl (greataxe)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 7000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A14:D14
+  original_5e: This greataxe has +2 bonus to attacks and each hit deals additional 1d4 cold damage. Once per day
+    you can use 1 charge of Howl of Winter, which as an action causes the axe to emit a chilling howl, freezing
+    the air around you. All creatures within 15ft radius suffer 1d6 cold damage and must succeed on a strenght save
+    DC 16. On a fail, they become paralysed in a pillar of ice for 1 minute. At the end of each of its turns, a
+    frozen target can make another strenght save ending the effect on a success. Attacking the frozen creatures
+    ends the paralysis effect and deals additional 1d6 cold damage.
+  source_name: Winter's Howl (greataxe)
+  source_price: 7000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-015
+  type: Weapon
+  base_item: Heavy crossbow
+  desc: |-
+    Use a Varis Heavy crossbow's damage, properties, training, and maneuvers. Its critical range is 19-20; this does not stack with another critical-range increase. If its attack roll misses AC, deal half of one roll of the weapon's base damage dice, rounded down, with no modifiers. The target may block this glancing shot against the attack's normal Block DC. A shot that hits AC but is blocked does not also become a glancing shot.
+
+    Keep a personal engineering mastery rating, initially 0. Whenever you would spend actions on this crossbow's Reload, first roll d6. On a result of 6 minus mastery or higher, reload instantly. After such a success, attempt a DC 16 Wisdom (Perception) check; success raises mastery by 1, maximum 5. At mastery 5 the reload is always instant. Mastery belongs to that wielder and this crossbow only.
+  conversion_notes: The 5e Loading property becomes the Varis Reload process. Miss damage still permits Block, and
+    successful Block never triggers a second packet of damage. Engineering progress is explicitly bounded.
+  name: Gearwork Crossbow
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 3000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A15:D15
+  original_5e: |-
+    This crossbow is equipped with the latest in Gnome engineering, including a fitted looking glass to target your enemies and a series of levers and pulleys to help load and reload, though the working of which are a maze of steel and string. This weapon scores a critical hit on a 19 or a 20. Additionally, when a ranged attack with this crossbow misses, the player can still roll damage die – dealing damage equal to half of the number rolled with no modifier.
+    When this crossbow must be loaded roll a d6, on a 6 the player can ignore the loading property for this turn. On a success the player can make a DC16 perception to check to see if they better understand the working of how to load the crossbow, on a pass the next time a d6 roll is made to load the crossbow – the loading property is ignored by a 5 or a 6. This effect can continue until the player has achieved a complete mastery of the workings of this crossbow, and can always ignore the loading property.
+  source_name: Gearwork Crossbow
+  source_price: 3000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-016
+  type: Weapon
+  base_item: Greatsword
+  desc: |-
+    This Varis Greatsword glows blue-green within 15 feet of a pool of water, shedding dim light for 10 feet. While wielding it, gain a swimming speed of 30 feet and breathe underwater.
+
+    Once per long rest, use an action to create a wall of water within 60 feet, either 30 feet long, 10 feet high and 1 foot thick, or a ring 20 feet across and 10 feet high. It remains up to 1 minute while you concentrate. Its space is difficult terrain. Ranged weapon attacks crossing it have disadvantage; fire damage passing through it is halved. It does not stop creatures or other damage. A 5-foot section struck by cold damage freezes for the remaining duration, becoming an opaque barrier with AC 12 and 15 HP; destroying it opens that section. The water vanishes when the power ends.
+  conversion_notes: Wall of Water becomes a self-contained concentration power compatible with Varis movement, attack,
+    and object rules. The sword keeps its current mundane base.
+  name: Krakeblade (Greatsword)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 4000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A16:D16
+  original_5e: A massive sword that is able to be wielded fluidly despite its size and weight. Much like the kraken
+    itself.  It draws its power from the domain of the kraken. While within 15ft. of a pool of water it glows in
+    a blue-green color and casts dim light in this color out to 10 ft. The weilder while holding the sword gains
+    a swim speed of 30ft., and can breathe underwater. Additionaly, once per long rest the weilder can cast Wall
+    of Water.
+  source_name: Krakeblade (Greatsword)
+  source_price: 4000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-017
+  type: Wondrous item
+  desc: |-
+    This owlbear-hide cloak has two grasping cloth arms. As a bonus action, use them to draw or stow one object in an unlocked, accessible container within 5 feet; the object must fit through the opening. The cloak can carry one object of up to 50 pounds in each arm, but cannot wield weapons or shields, use items, cast spells, or bypass locks. Carrying something in its arms does not grant you extra actions.
+
+    While at least one arm is empty, you can instead use a bonus action for one claw attack at +7 to hit, reach 5 feet, dealing 1d8 + 5 magical slashing damage on an unblocked strike, Block DC 15. This is the cloak's attack and cannot deliver your weapon maneuvers or Sneak Attack.
+  conversion_notes: The arm attack gains an explicit damage type and Block DC. Accessible-container and carrying
+    limits prevent the cloak from creating unlimited storage access or additional equipment slots.
+  name: Owlbear Cloak
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 1000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A17:D17
+  original_5e: This cloak is made of the hide of an owlbear and has been infused with fey wild magic. The arms of
+    the cloak can be used to draw or stow a weapon or item as a bonus action regardless of the size of the item
+    and regardless of what type of container the item is stowed in. This does not superceed locked containers and
+    the container must be within 5 feet of the user of this cloak. The cloak can hold, but not use or manipulate
+    items. So long as the cloak has one free hand, it can make a melee attack as a bonus action. Attack +7 to hit,
+    reach 5ft., one target. Hit 1d8+5 magical damage
+  source_name: Owlbear Cloak
+  source_price: 1000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-018
+  type: Ring
+  desc: While wearing this ring and having at least 1 current HP, regain 1d6 HP every 10 minutes. This does not
+    restore Arcane Health, Temp HP, Block, or rest dice, and cannot raise you from 0 HP. Apply Diseased and other
+    healing modifiers normally. If you lose a body part, it regrows to full function after 1d6 + 1 days of continuous
+    wear while you remain at 1 HP or more throughout; falling to 0 HP restarts that regrowth period. The ring does
+    not remove curses, disease, Fatigue, or magical replacements.
+  conversion_notes: Regeneration is assigned specifically to HP in the system's multiple health pools; healing conditions
+    still apply. Limb-regrowth continuity is explicitly tracked.
+  name: Ring of Regeneration
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 2000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A18:D18
+  original_5e: While wearing this ring, you regain 1d6 Hit Points every 10 minutes, provided that you have atleast
+    1 hit point. If you lose a body part, the ring causes the missing part to regrow to full functionality after
+    1d6+1 days if you have at least 1 hit point the whole time.
+  source_name: Ring of Regeneration
+  source_price: 2000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-019
+  type: Ring
+  desc: |-
+    This ring stores up to 6 soul charges, initially 0. Gain 1 when you kill or materially assist in killing a hostile creature with a character level or Challenge of at least 1; harmless captive or summoned creatures grant none. As a bonus action, spend charges for one power: 1 charge grants advantage on Intimidation checks for 1 hour; 2 charges cloak you in shadow for 1 hour, granting +1 AC and advantage on Stealth checks, but no invisibility; 6 charges empower your next three unblocked weapon strikes within 10 minutes, each dealing an extra 3d6 necrotic damage. A new activation replaces the same power's previous duration or strikes.
+
+    Curse: when beginning a long rest with stored charges, make a Wisdom save against DC 13 + stored charges. On failure, that rest provides no recovery; charges remain. Removing the ring does not end this curse. A curse-removing effect does.
+  conversion_notes: Attack empowerment is consumed by unblocked strikes. The missing shadow duration is set to 1
+    hour, kill-farming is excluded, and the curse's DC is expressed from its original scaling formula.
+  name: The Black Seal (ring)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 1500 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A19:D19
+  original_5e: 'The ring can hold 6 charges. You gain 1 charge whenever you kill (or actively assist in the killing
+    of) a creature. As a bonus action you can activate one of the effects by spending charges. The effects are:
+    (1 charge) You surrond yourself in an ominous aura that grants you advantage on Intimidation checks for 1 hour
+    ; (2 charges) cloaks your body in darkness, grants +1 to your AC and you gain advantage on all Stealth checks;
+    (6 charges) Imbues your next 3 melee and or ranged weapon attacks within 10 minutes with 3d6 Necrotic Damage.
+    Curse : If there is one charge in the ring and you take a long rest, make a Wisdom saving throw (DC 14). On
+    a failure you do not gain the benefits of the rest as your dreams are filled with the visions of the souls.
+    THe DC increases by one for every extra charge the ring has.'
+  source_name: The Black Seal (ring)
+  source_price: 1500 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-020
+  type: Weapon
+  base_item: Spear
+  magic_bonus: '2'
+  desc: |-
+    This Varis Spear grants +2 to attack rolls, damage, and Block DC, with Throw 20/60. Twice per dawn, after an unblocked strike, speak its command word without an additional action. The target makes a DC 14 Constitution save; on failure it takes 2d4 + 2 radiant damage and is Blinded until the end of its next turn; on success it suffers neither effect.
+
+    Once per round, after an unblocked thrown strike, you may teleport with carried equipment to an unoccupied space within 5 feet of that target, without an action. The spear remains where the attack left it; you can retrieve it using an available object interaction. If no adjacent space is free, you cannot teleport.
+  conversion_notes: Both strike-triggered powers require penetration of Block, and teleportation places the wielder
+    beside the target rather than inside its occupied space. Enhancement includes Block DC.
+  name: Spear of Shifting Sands (20/60)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 8000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A20:D20
+  original_5e: This is +2 Spear. When you successfully hit a creature with this weapon, you can speak a command
+    word which invokes the essence of desert sun as part of your attack. The creature has to make a Constitution
+    saving throw (DC 14). On a failed save they take 2d4+2 Radiant damage and are blinded until the end of their
+    next turn. On a successful save they take no damage. You can use this feature twice per day. After making a
+    successful ranged attack against a creature with this spear you can instantly teleport to its location. This
+    is a free action that is part of the attack and can be used once per round.
+  properties: Versatile 1d8, Balanced, Throw 20/60
+  source_name: Spear of Shifting Sands (20/60)
+  source_price: 8000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-021
+  type: Weapon
+  base_item: Hand crossbow
+  desc: This magical Varis Hand crossbow retains its normal damage, properties, maneuvers, and Reload rules. Its
+    weapon damage is radiant instead of piercing. It can fire fitted silvered stakes in place of bolts. When a silvered
+    stake makes an unblocked strike, add 1d6 piercing damage against an ordinary target, or 2d6 radiant damage instead
+    against an undead target. A stake is consumed by the shot; the bonus requires actual silvered ammunition. These
+    additional dice are part of the same attack and a successful Block prevents them.
+  conversion_notes: The hand crossbow uses Varis Reload rather than 5e Loading. The ambiguous damage blessing is
+    defined as a radiant base-damage conversion and the silvered rider requires an unblocked strike.
+  name: Crucibow (Hand crossbow)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 2000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A21:D21
+  original_5e: The crucibow is magical hand crossbow which blesses stakes fired from it with radiant damage. When
+    loaded with a silvered dart it deals another 1d6 piercing damage, or if the target is undead another 2d6 radiant
+    damage.
+  damage: 1d4 radiant
+  source_name: Crucibow (Hand crossbow)
+  source_price: 2000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-022
+  type: Armor
+  base_item: Plated leather armor
+  magic_bonus: '2'
+  desc: |-
+    The default converted suit is Varis Plated leather armor with its normal Bulk, Block, Slow, and Protection properties, and +2 AC. While worn, gain slashing resistance, bludgeoning vulnerability, and advantage on checks or saves to resist or escape Grappled.
+
+    Three times per dawn, use an action to become amorphous slime with your carried equipment for 1 minute. You retain your HP, AC, and slime defenses, can pass through openings at least 1 inch wide, and have advantage on grapple checks. You cannot use equipment, attack with weapons, activate items, or cast spells in this form. You can end it as a bonus action; it also ends at 0 HP. Re-form in the nearest free space large enough for your body. A newly created variant may use another specifically named Varis armor as its base, retaining that armor's properties and the same +2 AC.
+  conversion_notes: The any-armor source receives a concrete default with current armor/Block properties. Grapples
+    use Varis checks, and ending a narrow-space transformation has a defined safe placement.
+  name: Slime armor (Any type)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 5000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A22:D22
+  original_5e: 'It is +2 armor. Your armor constantly secretes a thin layer of slime. Whilst wearing it you gain:
+    resistance to slashing damage; vulnerable to bludgeoning damage; advantage on saves against being grappled.
+    3 times in a day you can, as an action, you and your equipment become gooey amorphous slime for 1 minute, or
+    until you drop to 0 hitpoints, you cannot use any equipment or cast spells, however you gain advantage when
+    grappling, while in this form, you can move through a space as narrow as 1 inch wide.'
+  source_name: Slime armor (Any type)
+  source_price: 5000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-023
+  type: Ring
+  desc: While wearing this ring, gain advantage on Wisdom (Insight) checks to recognize your own emotions, motives,
+    remembered decisions, or internal compulsions. This does not reveal unknown external facts, automatically identify
+    a curse, undo altered memories, or replace a saving throw. Once per short rest, you can spend 1 minute in reflection
+    to identify whether an emotion you currently feel began through a magical influence; learn only yes or no, without
+    learning its source or ending the effect.
+  conversion_notes: The original self-directed Insight benefit is given an explicit use and a limited reflection
+    power so it remains usable without importing a 5e skill interpretation.
+  name: Ring of Introspection
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 300 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A23:D23
+  original_5e: While wearing this ring, you have a deep understanding of yourself. You have advantage on Insight
+    checks against yourself.
+  source_name: Ring of Introspection
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-024
+  type: Ammunition
+  desc: 'This single arrow has living wings in place of fletching. When fired from a bow, add +3 to the shot''s
+    attack roll and Block DC, without adding damage. It uses that bow''s damage, range, training, and applicable
+    properties. You can instead throw it at range 20/60: a proficient ranged weapon attack using Dexterity, dealing
+    1d4 piercing damage plus Dexterity, with Block DC 8 + proficiency + Dexterity + 3. Its +3 attack bonus applies
+    to this throw too. A creature not proficient with bows gains neither proficiency nor ability bonuses. It cannot
+    turn around total cover or target an unknown location. After a shot or throw it becomes a normal spent arrow;
+    its enchantment is consumed.'
+  conversion_notes: Homing raises Block DC consistently with magic weapons, and the otherwise unspecified throw
+    and recovery rules are explicitly defined. The arrow is a single-use ammunition effect.
+  name: Living Arrow
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 100 GP per piece
+  source_ref: Magic item generator.xlsx — Very Rare!A24:D24
+  original_5e: This arrow has tiny wings in place of fletching and when it is fired from a bow or thrown, it homes
+    in on its target (+3 to hit)
+  source_name: Living Arrow
+  source_price: 100 GP per piece
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-025
+  type: Weapon
+  base_item: javelin
+  desc: |-
+    This flying dart uses Dexterity for proficient attacks and damage, has range 45/90, and deals 1d4 piercing damage plus the applicable ability modifier and 3 force damage. Add +3 to its attack roll and Block DC. It ignores half and three-quarters cover but not total cover. On an unblocked strike that damages a creature, regain 1 HP, or 2 HP if that strike was a critical hit. This healing cannot exceed maximum HP and is subject to effects that reduce healing.
+
+    As part of each throw, you may return the dart to an empty hand after the attack resolves. If separated from it, use a bonus action to call it from within 200 feet on the same plane; it flies to you only if a path wide enough for the dart exists. Its homing does not waive normal training or allow additional attacks.
+  conversion_notes: The source dart receives explicit Varis attack and Block formulas and a defined remote-recall
+    cost. The javelin reference is a picker fallback; the printed dart damage and range override that base.
+  name: Volantes Vitaelum (Dart) (45/90)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 800 GP per piece
+  source_ref: Magic item generator.xlsx — Very Rare!A25:D25
+  original_5e: This dart deals additonal +3 Force damage. As you throw this dart it seems to become alive and fly
+    on its own. You recieve a +3 bonus on ranged weapon attack rolls made with this weapon. Because it flies on
+    its own, it ignores both half-cover and three-quarters cover. As part of your attack, you can make the dart
+    fly back to your empty hand. You can call the bird back to you from up to 200ft. Every time you deal damage
+    to creature with this weapon you heal 1 hitpoint. When you critical hit a creature you heal 2 points instead.
+  damage: 1d4p + 3 force
+  properties: Agile, Light, Throw 45/90
+  maneuvers: []
+  source_name: Volantes Vitaelum (Dart) (45/90)
+  source_price: 800 GP per piece
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+  manual_attack: 'Yes'
+- id: mi-very-rare-026
+  type: Potion
+  desc: Drink this potion as an action. A living creature other than a construct is cured of its current diseases,
+    including the Diseased condition. For the next 48 hours it has advantage on Constitution saves and may change
+    all damage of each damaging spell it casts to radiant damage. Choose before rolling that spell's damage; this
+    does not change saves, other effects, casting costs, or damage from magic items. The extract has no effect on
+    a construct. An undead drinker instead takes 5 radiant damage, gains none of the benefits, and consumes the
+    potion.
+  conversion_notes: Disease removal uses Varis Diseased and spell conversion applies to the current six-level magic
+    systems without changing their costs or other effects.
+  name: Divim Extract (potion)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 300 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A26:D26
+  original_5e: A creature can use its action to drink this potion. A creature that drinks this potion is cured of
+    any disease. This potion has no effect on constructs. If the creature is undead, this potion deals 5 radiant
+    damage instead. If the creature is not a construct or undead, for next 48 hours it has advantage on Constitution
+    saving throws, and any damage it deals from spells becomes radiant damage.
+  source_name: Divim Extract (potion)
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-027
+  type: Potion
+  desc: |-
+    Drink this foul root potion as an action. For 8 hours, roll 2d20 whenever you begin casting a spell. If neither die is 1 or 2, cast normally and double the spell's rolled damage, after adding its normal modifiers, before resistance or vulnerability. Healing, secondary conditions, and later independent damage rolls are not doubled; for ongoing spells, double only the first damage roll.
+
+    If either die is 1 or 2, the spell fails after its normal costs are spent. Roll d6 for a root surge: 1, you take 2d6 force damage; 2, gain 1 Fatigue; 3, you become Soaked; 4, teleport to the nearest unoccupied space 10 feet in a random compass direction; 5, you and creatures within 5 feet gain 1d6 Arcane Health for 1 minute; 6, you shed bright light 20 feet for 1 hour and cannot become Invisible during it. Multiple doses do not stack.
+  conversion_notes: The unavailable wild-magic table is replaced by a complete six-result Varis table. Damage doubling
+    is limited to the spell's first damage roll to prevent indefinite multipliers.
+  name: Dai Root Potion
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 600 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A27:D27
+  original_5e: 'The stench of this thick brown liquid rivals the armpits of the most vile orc in the tribe. After
+    drinking this potion you gain the following effects for 8 hours: all  damage spells you successfully cast deal
+    double damage; everytime you cast a spell roll 2d20 outside the attack roll. If either d20 roll is a 1 or 2
+    the spell does not cast. Instead roll on the wild magic table.'
+  source_name: Dai Root Potion
+  source_price: 600 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-028
+  type: Potion
+  desc: |-
+    Drink as an action. One hour later, you lay 3d4 eggs, hatching into loyal chickens after 10 minutes. Each has AC 10, HP 1, speed 20 feet, no effective attack, and obeys simple empathic instructions to follow, wait, or move to a visible place. They cannot perform skilled tasks or carry more than 1 pound. Throwing a chicken at range 30/60 is an improvised ranged attack for 1d4 bludgeoning damage, Block DC 8 + your Dexterity modifier; the chicken dies or flees after impact.
+
+    Each properly fed, sheltered chicken lays one restorative egg at dawn. Eating an egg takes 1 minute and restores one spent rest die up to the eater's normal maximum. A creature benefits from at most one such egg between dawns, regardless of the number of chickens. An egg loses this restorative magic at the next dawn. Eating a cooked chicken provides a meal and restores 1 HP, without restoring rest dice.
+  conversion_notes: Hit-die restoration becomes Varis rest-die restoration. Explicit dawn limits and egg expiry
+    prevent an unlimited stockpile from bypassing the system's long rest cadence; chicken damage becomes bludgeoning.
+  name: Potion of Chicken
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 600 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A28:D28
+  original_5e: 'When you drink this effervescent yellow potion your stomach and intestines gurgle and cramp.  After
+    1 hour you lay 3d4 eggs, each of which hatches soon thereafter producing an adorable fluffy chicken.  The chickens
+    are loyal to you and follow you around where ever you go.  You maintain a rudimentary empathetic link to the
+    chickens, and can instruct them to wait, follow, or to go to a place you can point at.  However these and any
+    more complex commands are hindered by the fact that they are chickens.  A chicken can be thrown (range 30/60)
+    dealing 1d4 chicken damage on a hit, tho the chicken becomes most upset with you.  A chicken can be eaten to
+    regain hit points, but why would you do that, you monster!  If kept happy and well cared for, each chicken will
+    lay 1 egg at dawn.  These eggs are delicious and eating one restores one spent hit die to the character who
+    eats it.  '
+  source_name: Potion of Chicken
+  source_price: 600 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-029
+  type: Wondrous item
+  desc: |-
+    Danion's skull-shaped bottle bears the warning DO NOT DRINK. Its sealed cork or glass requires an action and DC 20 Strength check to open or break while enchanted. Removing its enchantment makes it ordinary glass. While a hostile fiend, undead, or creature that has deliberately killed an innocent in the last day is within 30 feet, the liquid vibrates and sheds dim red light 10 feet.
+
+    Opening it consumes the contents and releases 2d6 hostile ooze trackers in free spaces within 15 feet. Each has AC 12, HP 22, speed and swim 30 feet, Strength 14, Dexterity 14, Constitution 14, other scores 3; it can move through 1-inch gaps, has acid resistance, and ignores Prone. It acts after the opener, moving toward the nearest creature and making one pseudopod attack: +4 to hit, reach 5 feet, 2d6 acid damage, Block DC 12. On an unblocked strike the target is Grappled until it escapes with an action and DC 12 Strength check or the ooze dies. The trackers remain until destroyed; they obey no one.
+  conversion_notes: Alignment detection becomes an explicit creature/deed trigger. Slithering trackers are replaced
+    by a complete local stat block, so the trap needs no external monster manual.
+  name: Bottle of Concentrated Malice
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 1000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A29:D29
+  original_5e: |-
+    A clear glass bottle in the shape of a human skull. It is filled with a black fluid with shimmering red wisps moving through it. The bottle is magically sealed. While the magic is active, it requires a DC20 strength check in order to open the cork or to smash it open. Removing the magic makes the bottle function like a normal one. A tag on the bottle, written in Common, reads:
+
+    "Milking the evil out of a creature is not something I would ever like to do again.
+
+    You have no idea what I went through to make this.
+
+    Please handle with care. This shouldn't need to be said, but DO NOT DRINK! I mean it. Do not even try to open it."
+
+    - Master Ranger Danion
+
+    When an evil aligned creature is within 30 feet of the bottle, the fluid inside starts to vibrate and emit a dim red light out to 10 feet.
+    If the bottle is opened, the fluid instantly expands to multiple times its original volume. From the fluid spawns 2d6 slithering trackers that are hostile to all creatures in the area that they can see.
+  source_name: Bottle of Concentrated Malice
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-030
+  type: Wondrous item
+  desc: While wearing this amulet, your maximum number of attuned magic items increases by one, from three to four
+    under the collection's normal rules. The amulet does not itself require attunement. Only one Amulet of Attunement
+    can benefit you. If you remove it while attuned to four items, choose one of those items immediately; its attunement
+    ends. This does not lift a curse or allow you to choose an item whose curse specifically prevents ending its
+    attunement; choose another item instead. If all four are so bound, this amulet cannot be removed until one binding
+    is ended.
+  conversion_notes: The extra slot is tied to the adopted three-item Varis collection rule and nonstacking/removal
+    behavior is defined explicitly.
+  name: Amulet of Attunement
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 1000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A30:D30
+  original_5e: While wearing this amulet, you can attune to one more item then normal.
+  source_name: Amulet of Attunement
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-031
+  type: Wondrous item
+  desc: |-
+    This steel circlet grants +1 AC while worn, even without attunement. If attuned, use an action to choose or extinguish one light mode: a 60-foot cone of bright light, a 120-foot cone of dim light, or a flash in a 20-foot cone. The continuous modes remain until changed or removed and are illumination, not sunlight.
+
+    Each creature in the flash makes a DC 15 Constitution save. On failure it is Blinded until the end of its next turn. After making that save, successfully or otherwise, a creature is immune to this circlet's flash for 24 hours. The flash is a save-based effect, not a weapon attack, and Block does not prevent it.
+  conversion_notes: Light modes receive an action cost, and the flash's original immunity is made unambiguous for
+    both successful and failed saves. Daylight brightness does not import a sunlight property.
+  name: Dverger Circlet
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 3000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A31:D31
+  original_5e: 'This damascan steel circlet has light blue gem embed in it. While unattuned the circlet gives +1
+    to AC. When attuned you can speak 3 of its command words to light the gem. The gem can make three types of light
+    sources, 20 feet blinding light - when creature is hit in 20 feet cone, the creature must make DC 15 CON save,
+    if the creature fails, it''s blinded for 1 turn, the same creature can''t be blinded more than once and/or if
+    the creature saved from it once, it can''t be blinded again for next 24 hours; 60 feet light - makes 60 feet
+    long cone as bright as daylight; 120 feet dim light - makes 120 feet long dim light cone. '
+  source_name: Dverger Circlet
+  source_price: 3000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-032
+  type: Wondrous item
+  desc: |-
+    Within any three consecutive days, cast a total of 40 spell levels of transformation magic within 5 feet of this seed to awaken it. Count each paid spell level once; cantrips count 0, and free item effects count 0. Transformation magic must physically alter a creature, object, or material. A DC 16 Intelligence (Nature) check reveals the need for transformation magic, DC 18 reveals the 40-level requirement, and DC 22 reveals the growth category. A power allowing speech with plants reduces these DCs by 2.
+
+    Roll d12 when acquired, hidden until growth. Five days after awakening it reaches full size. Results 1-3 grow a 20-foot square of grass, 4-6 a 15-foot square of flowers, 7-9 a 10-foot square of bushes, 10-12 a tree. Once per dawn its harvest supplies one benefit: 1 flax, strong rope or cloth worth 5 GP; 2 blackroot, one ingested poison dose (DC 14 Constitution, Sickened 1 hour); 3 mugwort, one antidote ending one mundane poison; 4 daisy, a poultice restoring 1d6 HP after 10 minutes; 5 powderpuff, one contact poison dose (DC 14 Constitution, Incapacitated until end of next turn); 6 Selune's Tear, burn a flower to consult a harmless ancestral spirit for one truthful local-history answer; 7 blueberries, a nourishing meal for four; 8 honeysuckle, tea granting advantage on the next disease save within 24 hours; 9 forester's bane, a 10-foot patch that Snares a hostile entrant until an action and DC 14 Strength check; 10 hiexel, smoke-wood obscuring a 10-foot radius for 10 minutes when burned; 11 phandar, strong timber worth 10 GP; 12 domesticated Gulthias, one loyal blight immediately and another every three years.
+
+    A blight has AC 13, HP 18, speed 20 feet, Strength 14, Dexterity 12, Constitution 12, mental scores 6; it acts after you, with one move action and a branch attack (+4, reach 5 feet, 1d6 + 2 bludgeoning, Block DC 12). It obeys simple commands from those who awakened the seed. A second blight does not multiply your actions; each follows the same action limit. Harvests spoil after 24 hours and cannot reproduce the enchanted plant. Fire can permanently destroy the plant; otherwise it has ordinary botanical needs and lifespan.
+  conversion_notes: The original botanical lore is condensed into twelve distinct usable harvests. Missing poison,
+    ghost, and blight mechanics receive complete bounded Varis effects, without introducing external spell schools
+    or stat blocks.
+  name: Ancient seed
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 600 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A32:D32
+  original_5e: "This seed has been dorment for millenia. It's hard to tell what it does or how it grows, but when\
+    \ you put it close to your ear, you are sure that you can hear some kind of tiny whispers. \nTo activate it,\
+    \ in 3 day period you have to use atleast combined 40 levels of transmutation spells near it (in 5 feet radius\
+    \ from it). Druids can make Nature check, on DC 16, they know that they have to use transmutation spells for\
+    \ something, on DC 18, they know that they have to use 40 levels combined to make it grow into one of 4 plant\
+    \ types. On DC 22 they know what kind of plant they will grow - grasses, flowers, bushes, trees. Using speaking\
+    \ with plants spell, the DC gets lowered by 2. When aquired, GM or player rolls d12, to see what kind of plant\
+    \ he will get(player does not know). The plant is fully grown in 5 days, reagrdless of its type. Plants can\
+    \ be destroyed forever with fire, but after that they live like normal plants.\nGrasses (They grow in 20x20\
+    \ feet area):\n1 - Flax. It was commonly cultivated for its fibers, which were also known as flax, as well as\
+    \ for its seeds. The fibers of this plant were commonly cultivated for use in textiles, being used to make linen.\
+    \ Elf wizards often wore sashes made from flax fibers that were woven into an intricate knotwork. Some were\
+    \ known to wrap flax fibers around the end of torches in place of cloth. The seeds of this plant could be pressed\
+    \ into a substance known as linseed oil. Wizards used flax seeds as a material component for the Enlarge spell.\n\
+    2 - Blackroot. It was an herb that could be distilled to create a poison used in the Underdark. The herb caused\
+    \ paralyzation. One could be become immune to the poison by ingesting small quantities of it over a long period\
+    \ of time. Blackroot could be distilled into notoriously thick alcoholic blackroot beer. One tankard of it was\
+    \ considered to be almost a full meal.\n3 - Mugwort. It was a common fast-growing weed often disliked by farmers\
+    \ and gardeners, but useful to druids and potion-makers. Mugwort plants often grew back within mere days after\
+    \ being cut. It is used tto brew a powerful anti-toxin called the Elixir of Silvanus - a powerful curative potion\
+    \ that could cure even the most lethal poisons. \nFlowers (They grow in 15x15 feet area): \n4 - Daisy. Daisy\
+    \ plants could be used to create healing poultices. \n5 - Powderpuff. It was a small white flower with bluish\
+    \ leaves that grew in the polar regions. It was a triple-stemmed plant with small bluish-green leaves. The flowers\
+    \ were white and small and highly poisonous. Any bruise caused the flowers to secrete a potent poison that could\
+    \ penetrate the skin and leave a creature in a catatonic state for ten days. The flowers could be dried and\
+    \ powdered to produce an explosive substance akin to smokepowder, but only about half as potent.\n6 -  Selûne's\
+    \ Tear. It was a flower that grew in the Swamp on the Coast. It could function as a spell component when burned,\
+    \ allowing the summoning of a ghost. Summoned ghost is friendly to the creatures which used the transmutation\
+    \ to activate the seed. Selûne's Tears had green leaves and dark blue flowers. \nBushes (They grow in 10x10\
+    \ feet area):\n7 - Blueberries. They were a common type of berry in the world that grew on bushes. Blueberries\
+    \ were one of the many types of edible berries in the world that could be used as material components for the\
+    \ spell goodberry. Some used blueberries in the treatment of certain medical conditions, such as dropsy and\
+    \ typhoid.\n8 - Honeysuckle. The scent of these shrubs was one of many that saurials used to communicate emotions.\
+    \ The scent of honeysuckle expressed an emotion of tendernesss or concern. The petals of honeysuckles were commonly\
+    \ mixed with those of roses when making Lotus Cheese. Honeysuckles could be used to help treat liver, spleen,\
+    \ and respiratory disorders. Unicorns were fond of the taste of honeysuckles.\n9 - Domesticated Forester's Bane.\
+    \ This plant was largely green to dark green. Its leaves were tough and broad, with sinewy ribs that radiated\
+    \ 5​ to ​7 feet from the bushy center. Within this center was three to six purple stalks with saw-toothed edges.\
+    \ Any leaves or stalks removed would regrow within two to eight weeks. Overall their bodies measured up to 15 feet\
+    \ in a radius. Whenever a creature stepped on or near the leaves of this plant, they would snap shut around\
+    \ them. The saw-toothed edges on the plant's stalks then gradually sawed away at the trapped prey. But because\
+    \ it's domesticated it will not attack the creatures which used the transmutation to activate the seed. \nWithin\
+    \ the center of this bush grew large, plump berries that had a sweet smell to them. These berries were typically\
+    \ bright yellow, golden, greenish, or white. They were said to be very delicious and rich in protein.\nTrees:\n\
+    10 - Hiexel. Trees usually grew about 30 feet tall. They had sparse branches that curved to make an overall\
+    \ oval shape. They had silver-green bark. The wood itself was green. Hiexel produced a great quantity of smoke\
+    \ when burned, so it was useful in cooking and signal fires. Hiexel bark was used in bookbinding and as a sealant\
+    \ in buildings. The wood was unstable and so was not useful in construction or crafting.\n11 - Phandar. Trees\
+    \ grew about 60 feet tall, had numerous curving branches sprouting from a knobby trunk. The branches faced away\
+    \ from the wind, meaning that a group of phandars almost always pointed the same direction. Phandar leaves were\
+    \ triangular and mottled green. Phandar trees were said to resemble ropers. Because of its strength, phandar\
+    \ wood was an excellent building material. It was also used in the crafting of bows, tools, and weapon handles.\
+    \ Its multicolored grains made it prized in jewelry making.\n12 - Domesticated Gulthias tree. Gulthias tree\
+    \ grew about 50 feet tall and it was a plant infused with supernatural evil, capable of spreading corruption\
+    \ to nearby plant life and generating malevolent creatures known as blights. But, because it's domesticated,\
+    \ it can't corrupt nearby plant life, it still generates blights - first one right after the tree is grown,\
+    \ and then every 3 years new blight is born. They are friendly to creatures, which used the transmutation magic\
+    \ to make the seed activate. They are neutral to everyone else unless attacked or commanded to attack. They\
+    \ listen to simple commands of friendly creatures and try to complete them as best as they can. From Gulthias\
+    \ tree 1 of 4 blights can be born: Needle blight, Tree blight, Twig blight, Vine blight."
+  source_name: Ancient seed
+  source_price: 600 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-033
+  type: Weapon
+  base_item: halberd
+  magic_bonus: '3'
+  desc: |-
+    This Varis halberd requires Strength 13 and a Cleric level or an oath-magic archetype to attune. It deals piercing rather than its base damage type and grants +3 to attack rolls, damage, and Block DC. Its other properties and maneuvers remain those of its base halberd.
+
+    It holds 3 charges. As a bonus action, spend 1 charge to create black mist in a 10-foot radius centered on the weapon for 1 minute. It moves with the weapon and heavily obscures its area: sight through it fails. Against a target hidden by the mist, a sight-dependent creature follows the current Blinded targeting and attack restrictions; nonvisual senses still work. It does not grant you special sight or prevent nonvisual targeting. Wind cannot disperse it. You can end it without an action. Regain 1d3 expended charges after a long rest.
+  conversion_notes: The unavailable Paladin-class prerequisite is translated to Cleric/oath magic. Mist receives
+    an activation cost, preserves the wielder's lack of automatic sight, and +3 enhancement includes Block DC. Mist
+    uses current Blinded targeting restrictions rather than importing only an attack disadvantage.
+  name: Blackmist (Halberd)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 18000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A33:D33
+  original_5e: This was the weapon of Dominique Harl, a sightless paladin who frequently traveled Faerûn. When attacked,
+    Dominique would unleash the black mist that is this halberd's namesake. This often gave him the advantage, for
+    he lived in darkness all his life, seeing only with the inner light of faith. Dominique eventually fell, his
+    body found in a dark forest, slain by a creature of the night even more at home in the shadows than he. It is
+    a +3 Halberd (1d10+3) and deals piercing damage. To use it, you need strength of atleast 13 and to have atleast
+    1 level in Paladin. The weapon has 3 charges, spending one charge, around the weapon black mist appears in 10
+    feet sphere and its area is heavily obscured. It lasts for 1 minute and it can't be dispersed by strong wind
+    or wind like abilities. It can be only dispersed at will by the wielder. You regain 1d3 charges after long rest.
+  damage: 1d12p
+  source_name: Blackmist (Halberd)
+  source_price: 18000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-034
+  type: Wondrous item
+  desc: These gauntlets are made from the hands of the ogre Takkok. While wearing them, your Strength score is 19
+    if it would otherwise be lower. They do not add 19 to your score, raise an existing score of 19 or higher, or
+    change its maximum. Use the resulting modifier for Strength-based attacks, damage, Block checks where Strength
+    is allowed, armor Bulk calculations, carrying, and other Strength checks or saves. Removing the gauntlets immediately
+    restores the score you would have without them.
+  conversion_notes: The fixed score is retained and its application to Varis Strength-based Block and Bulk is explicit.
+    It is a score floor rather than an additive bonus.
+  name: Hands of Takkok
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 8000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A34:D34
+  original_5e: "Gauntlets of Ogre Power: Hands of Takkok\nThe Hands of Takkok are exactly that: ogre's very hands.\
+    \ He lost them when he attacked a strange man crossing the Spine of the World. The mysterious man turned out\
+    \ to be a mage of incredible power, and he used Takkok's hands to create this pair of ogre skin gauntlets. These\
+    \ gauntlets set wearers strength to 19, if it's already 19 or more, gauntlets don't give any effect. "
+  source_name: Hands of Takkok
+  source_price: 8000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-035
+  type: Weapon
+  base_item: Dagger
+  magic_bonus: '2'
+  desc: |-
+    This serrated Varis Dagger grants +2 to attack rolls, damage, and Block DC. An unblocked strike against a creature unaware of you before initiative and before its first turn is a critical hit. A blocked attack does not become a critical strike.
+
+    If a critical strike kills a creature, each other hostile creature within 10 feet makes a DC 15 Constitution save. On failure, until the end of its next turn it cannot willingly move closer to you and has disadvantage on attacks while it can see you. Success grants immunity to this dagger's fear power for 24 hours; failure does not grant immunity.
+  conversion_notes: Surprise is defined by initiative and awareness. The fear effect is fully written without a
+    foreign condition label; criticals and fear require an unblocked killing strike. Enhancement includes Block
+    DC.
+  name: Talion's Brutalizer (dagger)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 12000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A35:D35
+  original_5e: 'This serated dagger was used to brutally damage enemies and scare them off, when they see how brutal
+    it is. It gives +2 to attack and damage rolls. If you attack a surprised creature, it is an automatic critical
+    strike. If you kill the creature with a critical strike, all other creatures in 10 feet radius must make DC
+    15 constitution save. If failed, the creatures are feared for the next turn and they don''t become immune to
+    it after that, if succeeded, creatures don''t get feared and are immune to this ability from this dagger for
+    next 24 hours. '
+  source_name: Talion's Brutalizer (dagger)
+  source_price: 12000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-036
+  type: Weapon
+  base_item: glaive
+  magic_bonus: '1'
+  desc: This flawless Varis glaive grants +1 to attack rolls, damage, and Block DC. Whenever an unblocked strike
+    with it deals damage, record that damage after reductions. Until the end of your next turn, each damage event
+    from another glaive you can see is capped at one less than the recorded amount, minimum 0. This affects only
+    damage dealt by the other glaive's attack, including its attached riders, not independent spells or abilities.
+    If you deal damage again, replace the previous cap with the new value. The effect ends for a creature while
+    its glaive is outside your sight. Multiple True Glaives do not recursively reduce one another; each applies
+    its own current cap once.
+  conversion_notes: The source's comparative-damage rule becomes a definite damage cap with a duration, refresh
+    rule, visibility requirement, and no recursive damage loop. Enhancement includes Block DC.
+  name: The True Glaive (glaive)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 3500 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A36:D36
+  original_5e: This flawless steel-bladed glaive is the archetype of all glaives, and all other glaives bow before
+    it. It gives +1 to attack and damage rolls. When you deal damage with this weapon, no other glaive within your
+    line of sight can deal an equal or greater amount of damage until the end of your next turn.
+  source_name: The True Glaive (glaive)
+  source_price: 3500 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-037
+  type: Wondrous item
+  desc: |-
+    This pint refills with strong magical beer whenever held upright. As a bonus action, drink to enter a borrowed rage for 1 minute: gain +2 to Strength-based melee damage and advantage on Strength checks and saves, but cannot cast or concentrate on spells. It ends early if you become unconscious. It does not stack with another rage and does not restore or spend a class rage resource. Creatures immune or resistant to poison or disease taste ordinary beer and gain none of this rage.
+
+    After a drink, roll 1d6 + 1 days as your safe interval. Drinking for another rage before that interval ends requires a DC 15 Constitution save. On failure, the rage does not begin and you fall unconscious for 1d12 hours, ending early if you take damage or a creature spends an action waking you. Ordinary pouring produces nonmagical beer and cannot be stockpiled for rage effects.
+  conversion_notes: The first-level Barbarian reference becomes a complete standalone rage, and repeated-drink timing
+    and awakening are defined without requiring 5e class rules.
+  name: Anmik's Never Ending Pint
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 1200 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A37:D37
+  original_5e: The pint is a drinking pint with a metal bottom and wooden rim. It is enchanted to fill with magical
+    alcohol, coming from the metal bottom, and stopping at the wooden rim. This alcohol, if consumed as a bonus
+    action, will trigger a 1st level barbarian's rage. It is not advised to consume this alcohol more than once
+    in 1d6+1 days, but if consumed in that time period, character must make DC 15 Constitution save, if failed,
+    character falls unconscious for 1d12 hours. The effect does not trigger to creatures who are immune and/or resistant
+    to poison or disease and it tastes like simple beer.
+  source_name: Anmik's Never Ending Pint
+  source_price: 1200 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-038
+  type: Weapon
+  base_item: war hammer
+  desc: This Varis war hammer uses its normal damage, properties, training, and maneuvers. Its melee attacks deal
+    double damage to Large or larger unattended objects and structures, after adding the attack's normal modifiers
+    and before object resistances. Against a construct, an unblocked melee strike deals an extra 1d8 bludgeoning
+    damage instead. Construct creatures use their ordinary AC and Block; being a construct does not also make them
+    an unattended object for double damage. These two benefits never apply to the same target.
+  conversion_notes: Structural destruction and anti-construct damage are distinguished so the doubled-object rule
+    cannot multiply creature damage. The construct rider requires an unblocked strike.
+  name: Demolisher (War-hammer)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 1000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A38:D38
+  original_5e: This hammer was designed to shake the core of even the strongest structures. All of your melee attacks
+    against large objects or structures deal double damage. Your melee attacks against creatures of the construct
+    type deal an additional 1d8 weapon damage.
+  source_name: Demolisher (War-hammer)
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-039
+  type: Wondrous item
+  desc: Once per long rest, play this flute as an action to summon one crab swarm in a free space within 30 feet.
+    It has AC 11, HP 6d4, walking and swimming speed 20 feet, Strength 10, Dexterity 12, Constitution 10, other
+    scores 2. It can share spaces and pass through openings at least 1 inch wide. It acts immediately after you.
+    As a bonus action on your turn, command it to move once and attack one creature in its space; otherwise it stays
+    and Dodges. Its claws attack at +4, dealing 1d6 piercing damage, Block DC 12. It has no reactions, cannot operate
+    equipment, and occupies one 5-foot space. It disappears at 0 HP or when you next finish a long rest. Summoning
+    another swarm ends the first.
+  conversion_notes: The crab swarm receives a complete attack, Block DC, initiative, and command procedure so it
+    works without external creature rules.
+  name: Crab Flute
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 800 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A39:D39
+  original_5e: 'As an action you can blow in this flute, to play Crab RaveTM and it summons a swarm of crabs 30
+    feet from you. Swarm has 6d4 HP, AC of 11, speed of 20 feet and deals 1d6 damage. You can control swarm as a
+    bonus action. Once you use this feature you can''t use it till long rest and any summoned crabs dissapear. '
+  source_name: Crab Flute
+  source_price: 800 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-040
+  type: Wondrous item
+  desc: |-
+    This necklace has five runestones, initially charged. When damage would reach you after a Block check, use a reaction and discharge one or more charged stones. Roll 1d6 for each discharged stone and reduce that one damage event by the total, minimum 0, before applying it to Arcane Health, Temp HP, or HP. This is damage reduction, not another Block, and can reduce save-based or otherwise unblockable damage. Unused reduction is lost.
+
+    While all five stones are charged, shed bright light for 5 feet and dim light for another 5 feet. After a long rest, if at least one stone was spent, roll d20: on 11-20 recharge all five; on 1-10 no stone recharges and you may try after the next long rest. You need not spend the last stone to become eligible for recovery.
+  conversion_notes: Reduction is placed after Block but before health pools. The ambiguous all-stones recovery condition
+    is replaced by a definite long-rest roll for any spent stones, preventing permanent partial-charge lockout.
+  name: Necklace of Runestone
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 16000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A40:D40
+  original_5e: This necklace is made of 5 runestones. Your runestones can absorb threatening attacks against you.
+    Whenever you take damage from an attack, hazard, or spell, you can use a reaction to expend any number of runestones,
+    rolling 1d6 per charged runestone. You subtract the total rolled from the damage inflicted by the attack, hazard,
+    or spell. If you have 5 unused runestones, you emit bright light in a 5 foot radius and dim light for an additional
+    5 feet. After spending all your runestones on a long rest roll a d20, if it's 10 or below, runestones are inactive
+    and you can try again in next long rest.
+  source_name: Necklace of Runestone
+  source_price: 16000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-041
+  type: Wondrous item
+  desc: While wearing these glasses, spend an action examining one magical object within reach and expend one of
+    three uses. Learn its activation instructions, charges remaining, attunement requirement, and all deliberately
+    activated powers and passive benefits it grants its wearer. The floating instructions are visible only to you.
+    You also learn whether it is cursed, but not how to remove the curse. This examination does not trigger the
+    item, establish attunement, reveal a hidden creature's identity, or remove safeguards. Regain all three uses
+    after a long rest.
+  conversion_notes: Identify is replaced with a complete item-reading procedure rather than requiring an unavailable
+    external spell. Curse information and activation boundaries are explicit.
+  name: Glasses of Identification
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 4000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A41:D41
+  original_5e: 'Wearing these glasses allows the user to see magical items as they truly are. The proper instructions
+    to activate the object appear like floating words before the wearer of these glasses. The glasses may be used
+    to cast identify three times per long rest. '
+  source_name: Glasses of Identification
+  source_price: 4000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-042
+  type: Potion
+  desc: |-
+    Drink as an action. Gibbering mouths appear on your body for 1d4 + 1 rounds. Once on each turn, use a bonus action to make a proficient melee attack using Strength or Dexterity, reach 5 feet, dealing 2d6 piercing damage plus that ability modifier; Block DC is 8 + proficiency + that modifier. On an unblocked strike that kills a creature no larger than you, its remains are absorbed.
+
+    Until the potion ends, gain one of the consumed creature's nonmagical movement speeds, one damage resistance, or a +2 bonus to your lowest ability score, maximum 20; choose one available benefit when absorbed. A new absorption replaces the previous benefit. You cannot copy legendary actions, spellcasting, item effects, immunities, or abilities that create further creatures. Equipment and valuables fall in its space rather than being absorbed. The effect ends if you become unconscious.
+  conversion_notes: The undefined copied-stat priority is replaced with a bounded choice of traits. The mouth attack
+    receives Varis training and Block DC, and absorption cannot copy an entire spell or monster subsystem.
+  name: Gibbering Ichor (potion)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 750 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A42:D42
+  original_5e: The thick fluid of this potion is in constant motion, and eyes seem to appear and dissolve within
+    it. After drinking it as an action, gibbering mouths appear across your body, and you gain a bites melee attack
+    as bonus action which deals 2d6 piercing damage. The effect lasts for 1d4+1 rounds. If you kill a creature with
+    your bites attack, it is absorbed into you, and you gain one of the creatures stats for remaining rounds (special
+    abilites->resistances->speed->your lowest ability score->your highest ability score).
+  source_name: Gibbering Ichor (potion)
+  source_price: 750 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-043
+  type: Armor
+  base_item: Plated armor suit
+  desc: |-
+    Read this paper scroll as an action while not wearing another suit of armor. It folds around you as a Varis Plated armor suit, with that suit's normal AC, Bulk, Block, Slow, and Protection properties, and grants 6d6 temporary HP. The scroll is consumed. You use normal armor training and Strength/Bulk calculations; the paper does not waive them.
+
+    Track the temporary HP granted by this suit. Damage spends Arcane Health first as normal, then these temporary HP before HP. The suit is destroyed when its own temporary HP reach 0, when you remove it, or when you replace those temporary HP with another temporary-HP source. It grants no additional armor benefit after destruction. Resting does not restore its temporary HP, and healing cannot repair them.
+  conversion_notes: Plate becomes the specific Varis Plated armor suit and retains its Block/Bulk properties. Destruction
+    follows the armor's own nonstacking temporary-HP pool, closing replacement-pool ambiguity.
+  name: Origami Armor (plate)(scroll)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 5000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A43:D43
+  original_5e: You can use an action to read this scroll, which causes it to fold itself into a suit of paper plate
+    armor. The armor functions like normal plate armor in all ways and also gives 6d6 temporary hit points, but
+    is destroyed after your temporary hitpoints are used.
+  source_name: Origami Armor (plate)(scroll)
+  source_price: 5000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-044
+  type: Wondrous item
+  desc: While wearing these gloves, use an action to extinguish nonliving, nonmagical heat sources you can see within
+    60 feet, affecting up to three adjacent 5-foot cubes. Examples include flames, hot coals, and heated stone.
+    You cannot target a creature, its body heat, an actively cast spell, or the sun. Gain 5 temporary HP for each
+    cube containing substantial heat that is actually cooled, maximum 15 temporary HP per activation. These temporary
+    HP replace rather than add to other temporary HP and last 1 hour. The same cooled material cannot grant temporary
+    HP again until it has been reheated by another source. While any temporary HP from these gloves remain, you
+    automatically withstand ordinary environmental cold; this does not grant cold-damage resistance or immunity.
+  conversion_notes: The malformed source volume is defined as three 5-foot cubes, with a 15-HP nonstacking cap and
+    no creature-heat targeting. Cold-environment protection is separated from cold damage.
+  name: Gloves of Warmth Funneling
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 4000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A44:D44
+  original_5e: Attuned creature can target as an action a nonliving source of heat within 60 feet of itself that
+    it can see. Gloves then extinguishes up to 15 square feet cube of the source, gaining 5 temporary hit points
+    for each 5 foot square affected. Also, if you have gained temporary hitpoints this way, you don't suffer from
+    cold environment.
+  source_name: Gloves of Warmth Funneling
+  source_price: 4000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-045
+  type: Weapon
+  desc: A linked pair consisting of a Varis smiths hammer and Sickle. Wield them using their individual base properties,
+    training, damage, maneuvers, and normal off-hand costs. While you wield both, whenever one scores an unblocked
+    strike, roll its damage normally, then divide that damage equally among the struck creature and every other
+    hostile creature you can see within 20 feet of it. Only creatures you actually identify as hostile count; hidden
+    or unknown creatures do not. Divide the total damage after the attack roll and original target's Block result,
+    rounding each share down and giving any remainder to the struck target. Apply each recipient's resistance, vulnerability,
+    and reduction to its own share. The redistributed damage cannot be blocked separately, and does not itself trigger
+    another redistribution, weapon rider, or on-hit power.
+  conversion_notes: The pair uses Varis off-hand rules and individual weapon bases. Distribution order, visibility,
+    rounding, Block, and recursion are explicit; one attack does not generate multiple weapon-hit triggers.
+  name: The Means of Destruction (Hammer and sickle)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 3000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A45:D45
+  original_5e: Dual wielded hammer and sickle. All damage dealt by these weapons is divided equally among all hostile
+    creatures within 20 ft of the target.
+  source_name: The Means of Destruction (Hammer and sickle)
+  source_price: 3000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-046
+  type: Weapon
+  base_item: halberd
+  magic_bonus: '2'
+  desc: This Varis halberd grants +2 to attack rolls, damage, and Block DC. It holds 3 charges and regains all spent
+    charges after a long rest. When a creature you can see within 30 feet takes damage from a hostile creature's
+    attack, you may spend a reaction and 1 charge to reap the attacker's allies. Choose up to two hostile creatures
+    you can see within 60 feet with the lowest current HP among eligible targets; ties are your choice. Deal necrotic
+    damage equal to the triggering attack's damage actually received, capped at 30 total, split as evenly as possible
+    between them. If there is one target it takes the whole amount. Each makes a DC 16 Constitution save, taking
+    half its share on success. This damage cannot be blocked and does not count as a weapon strike or trigger the
+    halberd again.
+  conversion_notes: The reaction triggers on actual damage after Block and reduction, and weakest means current
+    HP. A 30-damage ceiling and Constitution save bound copied boss damage; reflected damage cannot recurse.
+  name: Night Harvest (Halberd)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 24000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A46:D46
+  original_5e: Thin the herd. This is +2 Halberd, which gives +2 to attack and damage rolls. Halberd has 3 charges.
+    You can use one charge as reaction when someone has attacked your ally in 30 feet radius, to deal the same amount
+    of damage splitted to two weakest enemies in 60 feet from you. When all charges are used, you regain charges
+    after long rest.
+  source_name: Night Harvest (Halberd)
+  source_price: 24000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-047
+  type: Potion
+  desc: Drink this elixir as an action to restore up to 5 expended Metamagic points in your existing Sorcerer Metamagic
+    pool, never exceeding its current maximum. The entire potion is consumed even if fewer than 5 points were missing.
+    A creature without that Sorcerer resource gains no benefit. It does not restore rest dice, ordinary spell slots,
+    Cleric full-slot levels, Occultist slots, or a different class's named point pool, and cannot grant a Metamagic
+    pool before the class feature unlocks.
+  conversion_notes: The 5e sorcery-point resource is specifically mapped to Varis Sorcerer Metamagic points and
+    respects their feature unlock and maximum.
+  name: Elixir of Sorcery (potion)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 1200 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A47:D47
+  original_5e: When you drink this potion, you regain 5 sorcery points. If you use it when you have used less than
+    5 sorcery points, you still use the full potion, regaining your maximum sorcery points avaiable. If you are
+    not an sorcerer, you don't gain any additional effects.
+  source_name: Elixir of Sorcery (potion)
+  source_price: 1200 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-048
+  type: Weapon
+  base_item: Dagger
+  magic_bonus: '2'
+  desc: 'This Round Table dagger bears an elven prayer for the departed. Use the Varis Dagger with +2 to attack
+    rolls, damage, and Block DC. Three times per long rest, use an action to project a soul-draining tether at a
+    creature you can see within 60 feet. It makes a DC 16 Constitution save, taking 4d8 necrotic damage on failure
+    or half on success. On a failed save, you may concentrate for up to 1 minute: while the target stays within
+    60 feet and your sight, use an action on a later turn to deal another 4d8 necrotic damage; the target repeats
+    the save at the end of each of its turns, ending the tether on success. Each time this power deals damage, regain
+    HP equal to half the damage actually received, rounded down. Constructs and undead are immune. This save-based
+    power cannot be blocked.'
+  conversion_notes: The external Enervation reference becomes a complete single-target channel with explicit saves,
+    actions, healing, and duration. The dagger's enhancement raises Block DC.
+  name: The Order's blade (dagger)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 30000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A48:D48
+  original_5e: Blade is a dagger bestowed to the Knights by The Round Table. It's possible the blade has been passed
+    down from generation to generation alike the Knight title. On blade there is an inscription in elven what says
+    - "Release the souls of the faithful departed from the pains of the bottomless pit. Free them from the mouth
+    of the lion, lest hell swallow them up, lest they fall into darkness. This, in iron, and pass over from death
+    to life, the blood of the souls of his sacrifice to the salvation of the human souls to come." This dagger gives
+    +2 to attack and damage rolls, and three times per long rest you can cast Enervation spell as 5th level spell.
+  source_name: The Order's blade (dagger)
+  source_price: 30000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-049
+  type: Weapon
+  desc: |-
+    A two-handed martial ranged weapon: range 80/240, capacity 6, Reload III to refill, dealing 1d12 lightning damage. A wielder proficient with martial ranged weapons adds proficiency and Dexterity to attacks, Dexterity to damage, and uses Block DC 8 + proficiency + Dexterity; without training add neither. Each shot consumes one loaded bullet or electrum coin. Reloading spends an action and loads up to six such pieces. It grants no mundane musket maneuvers beyond a normal attack.
+
+    If at least five shots remain, spend an action and five loaded pieces to launch a lightning ball at a point within 80 feet. Creatures within 10 feet make DC 15 Dexterity saves, taking 5d12 lightning damage on failure or half on success. This replaces all attacks from that action, makes no weapon attack, and cannot be blocked. The ball cannot benefit from weapon-hit riders or an attack's damage bonuses.
+  conversion_notes: The musket has a complete Varis attack/training/Block profile and Reload III. The source's extra
+    4d12 plus base shot becomes one explicit 5d12 save-based blast, avoiding duplicate attack damage.
+  name: IL-98 Arc Induction Lance (musket)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A49:D49
+  original_5e: An experimental (directed-energy) weapon, it fields a weaponized Lightning stone system that releases
+    a focused stream of arcing lightning, which has devastating effect on the flesh of human. The Induction Lance
+    can fire six shots before needing to be reloaded. It deals 1d12 lightning damage. You can spend 5 shots to shoot
+    out a ball of lightning, which on impact deals extra 4d12 lighting damage in 10 feet sphere, creatures must
+    make a DC 15 Dexterity save, to halve the damage. You can reload this rifle with bullets or electrum coins and
+    reloading spends an action.
+  base_item: Heavy crossbow
+  damage: 1d12 lightning
+  properties: Two-handed, Range 80/240, Capacity 6, Reload III
+  maneuvers: []
+  weapon_type: martial
+  weapon_group: firearms
+  source_name: IL-98 Arc Induction Lance (musket)
+  source_price: 20000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-050
+  type: Wondrous item
+  desc: |-
+    While wearing these arcane gloves, when you cast a leveled spell using your own class resource, you may resolve its printed higher-level scaling as though cast one spell level higher, to a maximum of Varis level 6. Pay the ordinary cost of the level you actually cast, and obey all other prerequisites, components, concentration, and action costs. This does not teach spells, unlock a higher spell list, improve cantrips, increase a spell's DC, or enhance item-cast effects. If the spell has no printed higher-level benefit, there is no benefit. Multiple free-level effects do not stack; use the highest.
+
+    Your successful unarmed attacks against unattended objects are critical hits. Roll the normal unarmed damage dice twice, if any; flat damage is not doubled. This does not apply to constructs or other creatures.
+  conversion_notes: Free upcasting is constrained to Varis's six-level ceiling and existing printed scaling, preventing
+    new spell access or resource recursion. Object criticals do not import a 5e damage formula.
+  name: Manifester Gloves
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 20000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A50:D50
+  original_5e: Gloves are a combination of adamantine and arcane technology and design. These pair of gloves are
+    built and designed for the specific purpose of focusing and manifesting arcane energies that pass through the
+    hands. On the hands of a arcane user it magnifies their powers. For a non-arcane user, it deals bigger damage
+    to objects. When attuned to this item, your spells are casted 1 level higher, spending the current spell slot
+    and unarmed melee attacks on objects always critically strike.
+  source_name: Manifester Gloves
+  source_price: 20000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-051
+  type: Wondrous item
+  desc: When this stone is first introduced, fix one ancestry or creature subtype as its target; write that choice
+    with the item. While uncovered, it emits an alluring aura within 60 feet. A targeted creature entering the aura
+    for the first time between dawns makes a DC 18 Wisdom save. On failure, it is compelled for 1 hour to approach
+    the stone by a safe visible route and remain within 5 feet, touching or admiring it when able. It does not walk
+    into obvious lethal danger, attack other creatures, surrender valuables, or abandon immediate self-defense.
+    It can repeat the save after taking damage and at the end of each minute; success ends the compulsion and grants
+    immunity until the next dawn. On an initial success it gains the same immunity. A closed lead-lined container
+    suppresses the aura. The stone cannot compel creatures immune to charm.
+  conversion_notes: The external high-level Sympathy reference becomes an explicit aura with range, timing, saves,
+    safety limits, and suppression. Its target is a fixed editable item property rather than an unresolved GM choice
+    during use.
+  name: Stone of Sympathy
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 60000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A51:D51
+  original_5e: An eclectic art collector, Pierre l'Avenezars, is rumored to possess several of the Stones of Sympathy.
+    Just what he plans to do with the stones is unknown. Stone of Sympathy radiates a permanent Sympathy (DC 18)
+    effect that affects a certain race or subtype of creature, including intelligent creatures (DM's choice). Affected
+    creatures need to make a DC 18 Wisdom Saving throw, on failed save creatures feel elated and pleased to be in
+    the area or desire to touch or to possess the Stone. The compulsion to stay in the area of the stone or to touch
+    it is overpowering.
+  source_name: Stone of Sympathy
+  source_price: 60000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-052
+  type: Weapon
+  desc: |-
+    A two-handed martial rifle: range 100/300, capacity 1, Reload III. A trained martial-ranged wielder adds proficiency and Dexterity to attacks, Dexterity to damage, and uses Block DC 8 + proficiency + Dexterity; an untrained wielder adds neither. The rifle deals 3d10 piercing damage against Large or smaller targets, or 3d10 bludgeoning against Huge or larger ones. Its damage ignores resistance, but immunity becomes resistance rather than being completely bypassed. It can be blocked normally. Reloading costs an action and one rifle round.
+
+    If an unblocked shot kills a Large or smaller target, the bullet continues along the same line to the first other creature before the original shot's maximum range. That creature makes a Dexterity save against the shot's Block DC, taking 1d10 bludgeoning damage on failure or none on success. This secondary damage cannot continue again, carry weapon riders, or be blocked. A Huge or larger first target shatters the bullet, preventing continuation.
+  conversion_notes: The firearm receives complete Varis training, Reload, and Block rules. Absolute immunity bypass
+    is softened to resistance; the follow-through has an explicit save and cannot chain indefinitely.
+  name: Ron 50 (rifle)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 25000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A52:D52
+  original_5e: With this rifle foe’s have no weak spots, even if they appear to have none. The damage dealt by this
+    rifle ignores resistances and immunities. It has range of 100/300. It deals 3d10 piercing damage to large or
+    smaller enemies. If target get's killed, the bullet travels further to it's maximum distance, if another enemy
+    is hit, that enemy suffers 1d10 bludgeoning damage. If the first target is huge or larger, the 3d10 damage is
+    bludgeoning instead and bullet shatters. Rifle has only 1 shot, and has to be reloaded as an action.
+  base_item: Heavy crossbow
+  damage: 3d10p
+  properties: Two-handed, Range 100/300, Capacity 1, Reload III
+  maneuvers: []
+  weapon_type: martial
+  weapon_group: firearms
+  source_name: Ron 50 (rifle)
+  source_price: 25000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-053
+  type: Weapon
+  base_item: two-handed war hammer
+  damage: 1d10b
+  desc: |-
+    This two-handed heavy martial hammer requires Strength 16 and Dexterity 14 to wield effectively. It deals 1d10 bludgeoning damage plus the normal trained Strength modifier. Use the Varis two-handed war hammer's training and other applicable properties; no additional magic enhancement is granted. If you lack the required scores, attacks have disadvantage and you cannot use its heavy swing.
+
+    Heavy swing: spend your action, bonus action, and half your current movement speed to make one melee attack, replacing all other attacks from that action. On an unblocked strike, deal 3d10 bludgeoning damage plus the normal damage modifier instead of 1d10, and the target makes a Strength save against DC 8 + proficiency + Strength modifier, falling Prone on failure. The attack's Block DC remains the weapon's normal Block DC. This is a single weapon maneuver; other replacements cannot be nested inside it.
+  conversion_notes: The source heavy swing is written as a Varis maneuver with explicit action costs and an unblocked-strike
+    rider. Damage and Block formulas use current training rather than importing 5e weapon stats.
+  name: Akion War-Hammer
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 12000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A53:D53
+  original_5e: 'This weapon was made for strongest northern people. To wield it, you must have atleast Stength of
+    16 and Dexterity of 14. It''s attributes are heavy, two-handed. It deals 1d10 damage as an attack, but you can
+    make heavy swing attack spending an action, bonus action and half of your movement speed which deals 3d10 damage
+    and target must make 8+STR+Prof Strength saving throw, if failed, target is knocked prone. '
+  properties: Two-handed, Inaccurate, Unwieldy
+  source_name: Akion War-Hammer
+  source_price: 12000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-054
+  type: Wondrous item
+  desc: Only a construct can attune to this arcane memory module. While attuned and carrying or installing it, increase
+    your Intelligence score by 1 and your Intelligence maximum by 2. Apply the maximum increase first; this does
+    not set Intelligence to that maximum. These bonuses end when attunement ends, including any resulting changes
+    to checks, saves, spell DCs, and class resources derived from Intelligence. It does not restore expended resources
+    or grant additional spellcasting features. Multiple copies cannot benefit the same creature.
+  conversion_notes: The original construct restriction is retained, and the score/maximum relationship is explicit
+    for Varis derived statistics. Resource recalculation does not heal or refill pools.
+  name: Dewicated Wam
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 25000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A54:D54
+  original_5e: To attune to this item, you must be a construct. When attuned, your maximum intelligence increases
+    by 2 and your intelligence score increases by 1.
+  source_name: Dewicated Wam
+  source_price: 25000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-055
+  type: Wondrous item
+  desc: |-
+    While attuned and wearing this helmet, gain necrotic and poison resistance and immunity to fear effects. At each dawn after a full day worn, gain +1 Constitution from this helmet, maximum +4; this bonus can raise Constitution above its normal maximum by up to 4. Increases to maximum HP preserve existing wounds rather than healing you.
+
+    Curse: at each such dawn make a Wisdom save, initially DC 12, increasing by 2 at each later dawn worn. On failure take 2d8 psychic damage and lose the helmet's accumulated Constitution bonus. Each later failed save during the same binding deals an additional 2d8 psychic damage. The bonus may begin accumulating again on later days; failure does not reset the rising DC or damage. Removing the helmet does not reset those counters or end the binding. A curse-removing effect ends it, removes its bonuses, and resets the counters for a later binding.
+  conversion_notes: Daily Constitution gain and curse progression are fully timed, and HP changes preserve wounds
+    under Varis sheet conventions. The source's stacking failure damage persists through removal rather than inviting
+    resets.
+  name: Death Knight's Helmet
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 30000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A55:D55
+  original_5e: 'Knight''s Stamina: When attuned to this helmet you have resistance to Necrotic and Posion damage
+    and are immune to being frightened. You gain a +1 bonus to your Constitution score every day up to a maximum
+    of +4. Curse: Death''s Call: Every day you wear this helmet you make a Wisdom saving throw (DC 12). The DC increases
+    by 2 every day you wear this helmet. On a failed save you take 2d8 Psychic damage and you lose all COnstitution
+    bonuses from this item. The following time you fail, the damage increases by 2d8, this effect stacks.'
+  source_name: Death Knight's Helmet
+  source_price: 30000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-056
+  type: Staff
+  base_item: Quarterstaff
+  desc: |-
+    This staff can be wielded as a Varis Quarterstaff. While attuned and holding it, you can cast a leveled spell you know and could normally cast through one of your own class's spellcasting features, replacing only its spell-slot or rest-die casting payment with blood. Its actual spell level cannot exceed your normally available level or Varis level 6. Spend 1d10 current HP per spell level before resolving the spell, rolled separately for each level. You must retain at least 1 HP after paying; otherwise the casting fails without paying or casting. This HP loss bypasses Block, Arcane Health, Temp HP, resistance, and reduction, and cannot be redirected or refunded by that spell. All other component, action, concentration, feature, and non-slot costs still apply.
+
+    You can use blood casting at most once on each of your turns and at most three times between short or long rests. Cantrips cannot be blood-cast, and this staff does not grant spells or spellcasting to a noncaster.
+  conversion_notes: Blood casting is mapped to existing Varis spell resources and limited to three uses per rest.
+    The cost is unavoidable actual HP loss, paid before casting, preventing renewable secondary pools or same-spell
+    refunds.
+  name: Staff of Blood Magic
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 25000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A56:D56
+  original_5e: A crazy mage created this staff before he used up all his blood to cast his very last spell. With
+    this staff you can cast spells without using spell slots. If you do so, you lose 1d10 HP per spell level after
+    casting a spell.
+  source_name: Staff of Blood Magic
+  source_price: 25000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-057
+  type: Wondrous item
+  desc: |-
+    Once per dawn, press this six-button orb as an action and roll 6d6. The most frequent face selects the result; on a tie roll one further d6 until it shows a tied face. If all six original dice differ, use the homunculus result instead. Random points are chosen by rolling d8 for compass direction and d4 times 5 feet for distance, choosing the nearest legal space.
+
+    1: create 200 ordinary gold pieces in an adjacent free space. 2: a point within 20 feet explodes; creatures within 10 feet make DC 15 Dexterity saves, taking 6d6 fire damage on failure or half on success. 3: a random creature within 20 feet makes a DC 15 Constitution save; on failure it becomes a harmless chicken for 1 minute, unable to attack, cast, or activate items, retaining its HP and mental scores; taking damage ends the form. 4: create one Potion of healing restoring 2d6 HP as an action. 5: summon 1d4 harmless flumphs (AC 12, HP 4, fly 30 feet) for 1 hour; they are friendly and refuse combat. 6: create a temporary Uncommon item chosen by rolling uniformly among this collection's Uncommon entries, excluding effects that create permanent valuables or creatures; it vanishes at the next dawn and cannot be sold for lasting payment.
+
+    All-six-different: create a loyal Tiny homunculus (AC 13, HP 10, speed 20 feet, fly 30 feet, all scores 10). It understands you, obeys simple commands, carries up to 10 pounds, and acts after you with one action and move action; it cannot attack, cast, or activate items. You can have only one orb homunculus; creating another dismisses the previous one. The potion and gold are permanent; unused potions do not multiply other orb uses.
+  conversion_notes: Tie handling and every external spell, creature, and loot reference receive complete rules.
+    The Uncommon result is temporary to contain unlimited permanent-item generation, while the original gold windfall
+    remains.
+  name: Transmuters Orb
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 5000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A57:D57
+  original_5e: A golden orb with 6 buttons on it. Depending on the order the buttons are pressed in, a different
+    effect is produced by the orb. As an action, you can use it, roll 6d6, the most commonly rolled number determines
+    the effect that the orb produces. 1. 200 gp appears in an adject square. 2. Fireball is cast in a random sqaure
+    within 20 ft. 3. Polymorph is cast on a random creature within 20 feet. 4. A random magical potion is produced.
+    5. The orb summons 1d4 Flumphs. 6. An uncommon magic item is produced. 1,2,3,4,5,6. A homunculus is summoned.
+    It is loyal to the person holding the orb. You can use the orb once per day.
+  source_name: Transmuters Orb
+  source_price: 5000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-058
+  type: Weapon
+  desc: |-
+    A one-handed single-shot martial firearm, range 60/100, capacity 1, Reload III. Reloading costs an action and one platinum piece, which is consumed when fired. While loading, name copper, silver, electrum, gold, or platinum. Make a ranged attack with Dexterity, adding proficiency only if trained with martial ranged weapons. Block DC is 8 + proficiency + Dexterity for a trained wielder; an untrained wielder adds neither modifier.
+
+    On an unblocked strike, deal force damage equal to the number of physical coins of the named type personally carried by the target, maximum 60. Coins in extradimensional spaces or carried by another creature do not count. Do not add an ability damage bonus. The target's currency is not spent or stolen. If it carries none of that type, the shot deals 0 damage. Resistance, immunity, and reduction apply normally. Counting coins is part of resolving the power and does not reveal their denominations before you choose.
+  conversion_notes: The unusual currency damage is preserved with a defined 60-damage ceiling and complete Varis
+    training, Reload, and Block rules. It counts carried coins rather than abstract wealth.
+  name: Pay to Win
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A58:D58
+  original_5e: A single shot firearm with a special function. Load one Platinum Piece into the chamber and whisper
+    a type of coin. You may then make a ranged attack (60/100) against a target of your choice. On a hit the target
+    takes an amount of force damage equal to the number of specified coins in their inventory.
+  base_item: Hand crossbow
+  damage: Coin count force (maximum 60)
+  properties: Range 60/100, Capacity 1, Reload III
+  maneuvers: []
+  weapon_type: martial
+  weapon_group: firearms
+  source_name: Pay to Win
+  source_price: 10000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+  manual_attack: 'Yes'
+- id: mi-very-rare-059
+  type: Weapon
+  base_item: Longsword
+  magic_bonus: '1'
+  desc: |-
+    Only a Rogue can attune to this Varis Longsword. It grants +1 to attack rolls, damage, and Block DC, and +1 to your Charisma score, without raising your score maximum. You can apply your existing Sneak Attack feature with this weapon when that feature's other targeting, training, frequency, and advantage requirements are met; the sword grants no Sneak Attack dice by itself.
+
+    Once per long rest, use a bonus action to prepare a wrathful strike for up to 1 minute while you concentrate. Your next unblocked melee strike with the sword deals an extra 1d6 psychic damage, ending the preparation. The target makes a Wisdom save against DC 8 + proficiency + Charisma modifier. On failure, for up to 1 minute it cannot willingly move closer to you and has disadvantage on attacks while it can see you. It repeats the save at the end of each turn, ending the fear on success. Maintaining the fear requires your concentration.
+  conversion_notes: Wrathful Smite becomes a self-contained Varis strike power with an explicit save and concentration.
+    Sneak Attack uses the existing class feature, and enhancement includes Block DC.
+  name: Avenger (Longsword)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: Yes (by rogue)
+  price: 6000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A59:D59
+  original_5e: This longsword is infused with deity's favor, which allows you to smite those who defy your agenda.
+    This longsword gives +1 to attack and damage rolls. It gives +1 to your Charisma score. You can use Sneak Attack
+    feature with this longsword. Once per long rest, you can cast wrathful smite spell. Spellcasting modifier is
+    8 + proficiency bonus + Charisma modifier
+  source_name: Avenger (Longsword)
+  source_price: 6000 GP
+  source_attunement: Yes (by rogue)
+  source_rarity: Very Rare
+- id: mi-very-rare-060
+  type: Wondrous item
+  desc: |-
+    This implant is placed at the base of your neck during attunement and removed safely during a short rest when attunement ends. While attuned, you do not need ordinary material components for your own spells. You still need every component with a stated price and every component consumed by a spell, even if no price is printed; you also retain other casting costs and implement prerequisites.
+
+    At character level 6, your own spells no longer need somatic components. At character level 10, they no longer need verbal components. These benefits do not change a spell's action, concentration, target, visibility of its effects, or susceptibility to interruption. Casting without components is not automatically undetectable to magical senses. The implant cannot cast or activate a spell on your behalf.
+  conversion_notes: The source's levels 10 and 15 are translated to levels 6 and 10 within Varis's level-12 cap.
+    Both costly and consumed components remain required, matching the custom spell economy.
+  name: Cerebral Implant
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 6000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A60:D60
+  original_5e: During attunement, this item is implanted into the base of your neck. While attuned, you are able
+    to manipulate magical energies with your brainwaves and do not need material components for spells except for
+    those with a cost that are consumed. At 10th level, your spells no longer need somatic components, and at 15th
+    level they no longer need verbal components
+  source_name: Cerebral Implant
+  source_price: 6000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-061
+  type: Weapon
+  base_item: Longsword
+  damage: 2d6s
+  desc: |-
+    This Varis Longsword is two-handed and Balanced instead of using its normal handling properties; it deals 2d6 slashing damage. It retains its base training and maneuvers, but any inherited one-handed option is unavailable. It qualifies for your existing Sneak Attack feature when its other conditions are satisfied. It holds 3 charges, regaining 1 after a short rest or all after a long rest, never more than its maximum.
+
+    Spend 1 charge as a bonus action for a wind stride lasting up to 1 minute while you concentrate. Your movement does not provoke opportunity attacks. Once before it ends, gain advantage on one sword attack; on an unblocked strike it deals an extra 1d8 force damage, then you can move an additional 30 feet that turn. Alternatively, spend 1 charge and an action to create warding wind within 10 feet of you for up to 1 minute while you concentrate. It moves with you, extinguishes small nonmagical flames, disperses ordinary fog or gas, makes its area difficult terrain for other creatures, and imposes disadvantage on ranged weapon attacks passing through it. You cannot sustain both powers simultaneously.
+  conversion_notes: Finesse becomes Varis Balanced, with explicit two-handed damage. Zephyr Strike and Warding Wind
+    become complete local powers and the damage rider requires an unblocked strike.
+  name: Cloud Splitter (longsword)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'No'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A61:D61
+  original_5e: 'This longsword deals 2d6 slashing damage, it has two-handed and finesse properties. The sword holds
+    3 charges, one charge can be used to cast Zephyr Strike as bonus action or Warding Wind as action.  You regain
+    1 charge per short rest and 3 charges per long rest. This weapon can also be used with sneak attacks. '
+  properties: Balanced, Two-handed
+  source_name: Cloud Splitter (longsword)
+  source_price: 10000 GP
+  source_attunement: 'No'
+  source_rarity: Very Rare
+- id: mi-very-rare-062
+  type: Wondrous item
+  desc: While attuned and wearing this circlet, it has a maximum number of charges equal to your Intelligence modifier
+    + Wisdom modifier + Charisma modifier, minimum 1. Recalculate that maximum when those scores change without
+    restoring spent charges. After you fail a save against an effect that would charm, frighten, or stun you, spend
+    1 charge without an action to turn that failed save into a success. Resolve the original effect's successful-save
+    result; this does not automatically end a condition when that result would not do so. It cannot be used if the
+    effect allows no saving throw. Regain all expended charges after a long rest. Copies share neither charges nor
+    a second chance on the same save.
+  conversion_notes: The source's combined mental modifiers become a nonnegative tracked maximum, with a minimum
+    usable charge. The automatic success follows the actual Varis effect's successful-save outcome.
+  name: Circlet of Iron Will
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A62:D62
+  original_5e: While attuned to this circlet, you can steel your mind against effects that remove your mental agency.
+    If you fail a saving throw to resist being charmed, frightened or stunned, you can choose to succeed instead.
+    You can use this feature as many times as your Wisdom, Inteligence and Charisma modifier combined. Your charges
+    regain after long rest.
+  source_name: Circlet of Iron Will
+  source_price: 10000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-063
+  type: Weapon
+  base_item: Greatsword
+  desc: |-
+    Wield this as a Varis Greatsword. Once per long rest, use an action to target up to four creatures you can see within 60 feet. Each makes a DC 16 Constitution save. If any fail, divide necrotic damage equal to three times your character level among the failed targets as evenly as possible; assign any remainder one point at a time in an order you choose. Successful targets take none. This is save-based damage and cannot be blocked. Resistance, immunity, and reduction apply separately to each share.
+
+    Record the total HP actually lost by those creatures, excluding Temp HP and Arcane Health lost. Regain that many HP now, up to your maximum, or store that amount in the sword instead. As a bonus action while holding it, spend any or all stored vitality to restore the same amount of your HP, subject to healing reductions. The sword can store at most three times your character level. Stored vitality expires when you begin your next long rest. You cannot both heal and store the same damage.
+  conversion_notes: The source drain receives rounding, damage-resolution, storage-cap, and spending rules. Healing
+    is based on actual HP removed, preventing resistance or renewable secondary pools from generating excess healing.
+  name: Vigor Thief (Greatsword)
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 10000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A63:D63
+  original_5e: While wielding this weapon, you can use an action to target up to four creatures within 60 feet that
+    you can see. These targets must each succeed a constitution saving throw (DC 16). You deal necrotic damage equal
+    to three times your character level, spread out equally among all targets that fail their save. If all targets
+    succeed on their saving throw, no damage is dealt. You can choose to transfer the damage to your hit points,
+    not exceeding your maximum amount or you can store it in this weapon and use it later till long rest. You can
+    use this feature once per long rest.
+  source_name: Vigor Thief (Greatsword)
+  source_price: 10000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare
+- id: mi-very-rare-064
+  type: Wondrous item
+  desc: 'While attuned and wearing this jeweled headband, increase Intelligence and its maximum by 2. Apply the
+    maximum increase first; the headband does not set your score to the maximum. Choose one Intelligence-based skill
+    you are proficient in when attuning: Arcana, History, Investigation, Nature, or Religion. Double your proficiency
+    bonus on checks with that skill; this does not stack with another effect that already doubles proficiency. You
+    also gain advantage on Intelligence ability checks and Intelligence-based skill checks, including that selected
+    skill. The advantage does not apply to Intelligence attack rolls, saves, spell DCs, or concentration checks.
+    Ending attunement removes the score and skill benefits without restoring any spent resource.'
+  conversion_notes: Expertise is written as proficiency doubling with a required trained skill and nonstacking rule.
+    Intelligence check advantage is explicitly separated from saves and spell attacks under Varis.
+  name: Headband of Vast Intelligence
+  group: Very Rare
+  rarity: Very Rare
+  attunement: 'Yes'
+  price: 18000 GP
+  source_ref: Magic item generator.xlsx — Very Rare!A64:D64
+  original_5e: This intricate gold headband is decorated with several small blue and deep purple gemstones. The
+    headband grants the wearer bonus +2 to Intelligence score and increases by 2 Intelligence score maximum. You
+    gain expertise in one of Intelligence based skills (arcana, history, investigation, nature, religion) and you
+    always roll with advantage any Intelligence based skill (Including base Intelligence checks)
+  source_name: Headband of Vast Intelligence
+  source_price: 18000 GP
+  source_attunement: 'Yes'
+  source_rarity: Very Rare

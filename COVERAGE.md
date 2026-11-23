@@ -1,6 +1,6 @@
 # Rules coverage and source reconciliation
 
-The starting point was the 400-entry reader at commit `2dc5d2f`. The comparison covered all 137 pages in the D&D 5e+ capture. Five pages in that capture ended mid-entry. The original draft supplied the missing ends of the backgrounds, feats, playable races, level 6 Arcane spells, and hexes pages. The current branch also adds the reviewed workbook creature references, bringing the catalog to 1,288 entries.
+The starting point was the 400-entry reader at commit `2dc5d2f`. The comparison covered all 137 pages in the D&D 5e+ capture. Five pages in that capture ended mid-entry. The original draft supplied the missing ends of the backgrounds, feats, playable races, level 6 Arcane spells, and hexes pages. Reviewed workbook creature references brought the catalog to 1,288 entries. The separate campaign magic-item conversion adds 300 items and four shared item rules, bringing the catalog to 1,592 entries.
 
 ## Coverage by section
 
@@ -11,16 +11,19 @@ The starting point was the 400-entry reader at commit `2dc5d2f`. The comparison 
 | Backgrounds | 0 | 116 | Background proficiencies and features, through Zealot. |
 | Monster manual | 0 | 20 | Workbook creature reference drafts with source ranges and status notes. Current spell rules and embedded creature statistics retain priority. |
 | Items | 133 | 271 | The Git weapons plus equipment, materials, consumables, magic items, 22 armor entries and eight shields. |
+| Magic items | 0 | 300 | All six rarity tabs of the campaign's Magic item generator workbook, converted for Varis with editable rules and preserved source text. |
 | Weapon rules | 91 | 105 | Fourteen additional properties or maneuvers. A weapon or feature must grant an option for it to apply. |
 | Feats | 103 | 156 | Draft-only feats and resource conversions. Matching and renamed feats use their Git definitions. |
 | Races | 13 | 14 | Thirteen existing races gained descriptions. Shadowling has a complete entry and 15 origin choices. |
 | Conditions | 44 | 47 | Psychosis, Acid Exposure and Chilled were added. Distracted and Burning gained missing text. |
-| Rules of play | 0 | 23 | Combat, blocking, armor, character creation, recovery and weapon use now have table references. |
+| Rules of play | 0 | 27 | Combat, blocking, armor, character creation, recovery and weapon use, plus four common rules for converted magic items. |
 | Design notes | 1 | 5 | The proposed skill list and design material sit alongside the existing maneuver prototype. |
 
 Entries include rules overviews, supplements, and explicitly unfinished records. A section's entry count consequently differs from its number of playable options in some cases.
 
 The YAML is the rules source. The compiler validates and combines it; the build writes a manifest, separate versioned section JSON files, builder metadata, and a portable catalog script. The hosted reader loads sections on demand. On local file URLs, the root pages load `data/portable-catalog.js` without JSON requests, preserving the existing launcher page and save location. Optional standalone pages in `site/offline/` embed the same catalog and metadata. Splitting delivery does not create another rules definition.
+
+The campaign magic items live separately under `data/magic-items/`. Source IDs and original workbook fields remain traceable while converted names, prices, rarity and effects can be edited. See [magic item conversion and editing](docs/magic-items.md).
 
 ## Rules reconciled
 

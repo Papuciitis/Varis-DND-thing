@@ -1,0 +1,1585 @@
+section: magic-items
+entries:
+- name: Antitoxin
+  group: Uncommon
+  id: mi-uncommon-002
+  type: Potion
+  rarity: Uncommon
+  attunement: 'No'
+  price: 50 GP
+  desc: As an action, administer one dose to yourself or a creature within reach. End the Poisoned condition and
+    ongoing poison effects on that creature, including a poison's continuing damage, but not unrelated disease,
+    a curse, or damage already suffered. The dose is consumed.
+  conversion_notes: Kept the source broad poison cure and supplied the missing dose, action, and scope.
+  source_ref: Magic item generator.xlsx — Uncommon!A2:D2
+  original_5e: Removes all posions from the creature when applied.
+  source_name: Antitoxin
+  source_price: 50 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Scroll of Plant Growth
+  group: Uncommon
+  id: mi-uncommon-003
+  type: Scroll
+  rarity: Uncommon
+  attunement: 'No'
+  price: 453 GP
+  desc: 'As an action, read and consume this scroll. Choose ordinary plants in a 100-foot-radius area centered at
+    a point you can see within 150 feet. They become thick growth for 1 hour: each foot of movement through the
+    area costs 4 feet of movement. You may leave paths and spaces unaffected. This does not animate plants, trap
+    creatures outright, or affect creatures made of plants. Alternatively, spend 8 hours reading it over farmland
+    to double the ordinary harvest of plants within a half-mile for one year; this consumes the same scroll.'
+  conversion_notes: The workbook supplies a name only. Authored a complete terrain or cultivation power without
+    assuming an imported Plant Growth spell.
+  source_ref: Magic item generator.xlsx — Uncommon!A3:D3
+  original_5e: No description supplied in workbook.
+  source_name: Scroll of Plant Growth
+  source_price: 453 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Cloak of Elvenkind
+  group: Uncommon
+  id: mi-uncommon-004
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 5000 GP
+  desc: While attuned and wearing this cloak with its hood raised, you have advantage on Stealth checks to hide,
+    and creatures have disadvantage on sight-based Perception checks to find you. Raise or lower the hood as an
+    action. The cloak does not make you Invisible and cannot let you hide while clearly observed without cover or
+    concealment.
+  conversion_notes: The workbook supplies a name only. Authored a bounded concealment effect using Varis skill checks
+    rather than assuming an external item definition.
+  source_ref: Magic item generator.xlsx — Uncommon!A4:D4
+  original_5e: No description supplied in workbook.
+  source_name: Cloak of Elvenkind
+  source_price: 5000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Robe of Useful Items
+  group: Uncommon
+  id: mi-uncommon-005
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 13200 GP
+  desc: 'This robe bears twelve removable patches: two daggers, two bullseye lanterns, two 10-foot poles, two 50-foot
+    hemp ropes, two 10-foot ladders, one sack, and one wooden door up to 10 feet high and wide. While attuned and
+    wearing the robe, use an action to detach one patch. It becomes the corresponding ordinary object in an unoccupied
+    space within reach, permanently consuming the patch. The door can fill an existing opening but cannot cut through
+    a wall. Weapon patches use the current Varis Dagger rules and grant no proficiency or enhancement. The robe
+    does not regrow patches.'
+  conversion_notes: The workbook supplies a name only. Authored a finite, explicit patch list instead of importing
+    an unspecified random table.
+  source_ref: Magic item generator.xlsx — Uncommon!A5:D5
+  original_5e: No description supplied in workbook.
+  source_name: Robe of Useful Items
+  source_price: 13200 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Cactus Mace
+  group: Uncommon
+  id: mi-uncommon-006
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 500 GP
+  desc: Use the mace entry. On the first unblocked strike you make with it on each of your turns, the target takes
+    an extra 1d4 piercing damage from regrowing cactus needles. The weapon is magical but grants no enhancement
+    bonus.
+  conversion_notes: Converted first-hit bonus damage to an unblocked-strike rider and uses the current Mace properties
+    and maneuvers.
+  source_ref: Magic item generator.xlsx — Uncommon!A6:D6
+  original_5e: This magical weapon’s head is an enchanted cactus that rapidly regrows its missing needles. The first
+    target hit by this weapon on each of your turns takes an extra 1d4 piercing damage from the attack.
+  base_item: mace
+  source_name: Cactus Mace
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Weaving Wasp Needles (up to 20 darts)
+  group: Uncommon
+  id: mi-uncommon-007
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 350 GP per Pair
+  desc: Each needle is a magical throwing weapon using javelin training, 1d4 piercing damage, Agile, Light, and
+    thrown range 20/60 feet. They also function as weaver's tools. A needle that makes an unblocked strike against
+    a Large or smaller creature orbits it for 1 minute or until it falls to 0 HP. If both needles orbit the same
+    creature, that creature becomes Snared, its attacks and block checks have disadvantage, and attacks against
+    it have advantage. The binding ends when either orbit ends, when you release it with a bonus-action command,
+    or when the creature or an adjacent helper uses an action and succeeds on a DC 13 Strength check. After a pair
+    binds a creature, that pair cannot bind again until dawn. As an action, command the pair to mend a simple tear
+    in 1 minute or craft a simple garment during a short rest, given adequate material. Another action ends the
+    task.
+  conversion_notes: Converted restrained to explicit Varis Snared and attack/Block penalties. Kept pair-specific
+    dawn recovery and the source short-rest crafting time. Varis has no Dart entry, so supplied a 1d4 thrown profile
+    with javelin training and no inherited javelin maneuvers.
+  source_ref: Magic item generator.xlsx — Uncommon!A7:D7
+  original_5e: This pair of dark, chiseled throwing needles are linked by a magical bond. A needle that hits a Large
+    or smaller creature flies around it for 1 minute or until the creature falls to 0 hit points. If both needles
+    fly around the same creature, they spin a magical thread that binds and restrains it. The creature is restrained
+    until freed or until you take a bonus action to speak the needles' command word to release it. A creature can
+    use its action to make a DC 13 Strength check, freeing itself or another creature within its reach on a success.
+    Once the needles restrain a creature in this way, this property can't be used again until the next dawn. In
+    addition, you can use the needles as a set of weaver's tools. These magical needles can act on their own to
+    either mend a simple tear or craft a simple garment given the proper materials in 1 minute or over the course
+    of a short rest, respectively. As an action, you can speak the needles' other command word, followed by a description
+    of the task, to cause them to spring to life and begin sewing and crafting. Uttering this command word again
+    causes them to stop early and fall to the ground.
+  base_item: javelin
+  damage: 1d4p
+  properties:
+  - agile
+  - light
+  - throw 20/60
+  maneuvers: []
+  source_name: Weaving Wasp Needles (up to 20 darts)
+  source_price: 350 GP per Pair
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Great Owl's Shroud
+  group: Uncommon
+  id: mi-uncommon-008
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 3000 GP
+  desc: While attuned and wearing this cloak, it has 10 charges and regains all charges at dawn. When taking the
+    Attack action, replace any number of your attacks, spending 1 charge each, with magical feather attacks at +5
+    to hit, range 30/120 feet, Block DC 13. On an unblocked strike a feather deals 2d4 + 3 force damage and vanishes.
+    Once per dawn, when you fall, use a reaction to slow your descent to 60 feet per round for 1 minute; you take
+    no falling damage if you land during this time. This affects only you.
+  conversion_notes: Replaced the absent Feather Fall spell with complete falling rules and gave the ranged item
+    attacks an explicit Varis Block DC.
+  source_ref: Magic item generator.xlsx — Uncommon!A8:D8
+  original_5e: This draping shoulder cloak flutters softly while worn, even if there isn't a breeze. The cloak has
+    10 charges and regains all expended charges daily at dawn. When you take the Attack action while wearing this
+    garment, you can replace one or more of your attacks with a special ranged spell attack using the cloak, expending
+    1 of its charges for each attack you replace. When you do, you flourish the cloak and release a barrage of magical
+    feathers that fly toward the target. You have a +5 bonus to attack rolls made with the cloak, which have a normal
+    range of 30 feet and a long range of 120 feet. On a hit, the target takes 2d4 + 3 force damage. After the attack,
+    the feathers vanish. In addition, you can use a reaction when you fall to cast the feather fall spell from the
+    cloak, targeting only yourself. Once this property of the cloak has been used, it can't be used again until
+    the next dawn.
+  source_name: Great Owl's Shroud
+  source_price: 3000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Ambitious Medic's Box
+  group: Uncommon
+  id: mi-uncommon-009
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 3000 GP
+  desc: This 3-pound box can be used without attunement. From dawn to dusk, its sun compartment contains a medical
+    kit with 10 uses. As an action spend a use to stabilize a dying creature within reach, ending the need for death
+    saves until it takes damage or another effect makes it dying again; it gains no HP. The kit refreshes at dusk.
+    From dusk to dawn, the moon compartment contains three steins, a pipe refilled with tobacco at dusk, and a flask.
+    Once per dusk, as an action command the flask to make up to 4 gallons of beer, 1 gallon of wine, or 8 ounces
+    of spirits; it pours at up to 1 gallon per minute. At dawn the compartment shuts and removed box equipment returns;
+    consumed contents do not. While attuned, you may open either half at any time and gain Medicine proficiency,
+    or double proficiency on Medicine checks if already trained. This does not stack with another doubling effect.
+  conversion_notes: Replaced the external healer-kit dependency with an explicit stabilization action; kept dawn/dusk
+    compartments and the attunement-only skill benefit.
+  source_ref: Magic item generator.xlsx — Uncommon!A9:D9
+  original_5e: This wooden box has two halves which are magically locked by ornamental clasps that can only be opened
+    during certain times of the day. The box is 1 foot wide, 2 feet long, and weighs 3 pounds. You can open and
+    use the box as normal, as described below, even if you aren't attuned to it. The left side is locked by a metal
+    clasp decorated with a sun. From dawn until dusk, you can open the left side of the box, which contains the
+    same contents and functions identically to a healer's kit. Each day at dusk, the left side of the box magically
+    closes and regains all expended uses of its healer's kit. The right side is locked by a metal clasp decorated
+    with a moon smoking a pipe. From dusk until dawn, you can open the right side of the box, which contains three
+    pewter steins, a flask, and a wooden pipe. While holding the flask, you can use an action to speak its command
+    word followed by either "beer", "wine", or "whiskey". When you do, the flask magically fills with up to 4 gallons
+    of beer, 1 gallon of wine, or 8 ounces of liquor, depending on the chosen drink, which can be poured out as
+    an action, up to 1 gallon per minute. Once this property of the flask has been used, it can't be used again
+    until the next dusk. The wooden pipe is magically refilled with tobacco daily at dusk. Each day at dawn, the
+    right side of the box magically closes, and anything removed from the box is magically returned to it. While
+    attuned to the box, you are proficient in the Medicine skill and can open either side of the box at any time.
+    If you're already proficient in the Medicine skill, your proficiency bonus is doubled for any ability check
+    you make that uses that skill.
+  source_name: Ambitious Medic's Box
+  source_price: 3000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Mimicloak
+  group: Uncommon
+  id: mi-uncommon-010
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 750 GP
+  desc: While wearing this cloak, speak its command word as a bonus action to change its style, color, and apparent
+    quality. It remains a cloak of the same weight. You have advantage on checks to escape Grappled or physical
+    restraints. Once per turn, when you use an action to attempt such an escape, its toothed fabric deals 1d10 piercing
+    damage to the creature or object holding you, whether the check succeeds or fails. This reactive magical bite
+    cannot be blocked and does not harm restraints you are not actually held by.
+  conversion_notes: Applied the escape benefit to current Grappled rules and bounded repeated bite damage to one
+    paid escape attempt per turn.
+  source_ref: Magic item generator.xlsx — Uncommon!A10:D10
+  original_5e: This strange cloak is made using the enchanted remains of a young mimic. While wearing it, you can
+    use a bonus action to speak its command word to change the style, color, and apparent quality of the cloak.
+    The garment's weight doesn't change. Regardless of its appearance, the cloak can't be anything but a cloak with
+    these properties. While wearing this cloak, you have advantage on ability checks made to escape from a grapple.
+    Whenever you make an ability check to escape a grapple or free yourself of restraints, the creature or object
+    holding you takes 1d10 piercing damage as the cloak's fabric magically splits into a toothed maw to bite it.
+  source_name: Mimicloak
+  source_price: 750 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Kraken's Whip
+  group: Uncommon
+  id: mi-uncommon-011
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1000 GP
+  desc: Use the whip entry. As an action, one visible creature within 10 feet makes its choice of a DC 13 Strength
+    or Dexterity save. On failure it takes 1d4 + 2 bludgeoning damage and is Grappled by the tentacle. At the end
+    of each of its turns it takes another 1d4 + 2 bludgeoning damage. It or an adjacent helper may use an action
+    to repeat the save, ending the grapple on success. You cannot attack with this whip while it holds a creature.
+    Release it at any time without an action; dropping the whip also releases it. Moving a held creature costs twice
+    the usual movement, and it must remain within 10 feet. The initial save-based power cannot be blocked.
+  conversion_notes: Kept the paid grapple power while replacing ambiguous dragging beyond reach with explicit held
+    range and movement cost.
+  source_ref: Magic item generator.xlsx — Uncommon!A11:D11
+  original_5e: This whip is made using the shrunken tentacle of a great sea creature. It still writhes slightly
+    on its own. As an action, you can force a creature you can see within 10 feet of you to make a DC 13 Strength
+    or Dexterity saving throw (their choice). On a failure, the creature is grappled by the whip’s tentacle and
+    takes 1d4+2 bludgeoning damage. The affected target or another creature can use an action to reattempt the saving
+    throw, escaping the grapple upon a success. While grappled, the creature takes 1d4+2 bludgeoning damage at the
+    end of each of its subsequent turns. You can’t use the whip to attack while grappling a creature with it in
+    this way. While holding the whip, you can end the grapple at any time (no action required), and your movement
+    speed is halved when you move more than 10 feet away from the grappled creature as you drag it along behind
+    you.
+  base_item: whip
+  source_name: Kraken's Whip
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Eye of the Bookwurm
+  group: Uncommon
+  id: mi-uncommon-012
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 500 GP
+  desc: As a bonus action while holding this glass sphere, speak its command word and a word or phrase. For the
+    next hour, that exact word or phrase is highlighted green wherever you can already see it in writing. Change
+    the search phrase with another bonus action during that hour. After the hour ends, the eye cannot activate again
+    until dawn. It does not translate, reveal hidden writing, or let you read unseen pages.
+  conversion_notes: Kept the search effect and one-hour daily window; clarified that it enhances visible text rather
+    than supplies remote sight.
+  source_ref: Magic item generator.xlsx — Uncommon!A12:D12
+  original_5e: This small, glass sphere is enchanted with weak divination magics to help you find specific words
+    or phrases in writing. It has a stylized iris etched into the glass. You can use a bonus action to speak the
+    eye’s command word aloud, followed by the word or phrase you’re searching for. The word or phrase magically
+    appears and floats within the sphere. By holding the eye in a free hand, your vision becomes magically enhanced
+    to subconsciously highlight the word or phrase you searched for in a green light wherever you see it. Once you’ve
+    used the eye’s ability for the first time, you can change the word or phrase as many times as you like for the
+    next hour, after which the item can’t be used again until the following dawn.
+  source_name: Eye of the Bookwurm
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Dagger of the Ogre Mage (shortsword)
+  group: Uncommon
+  id: mi-uncommon-013
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 2000 GP
+  desc: Use the Short sword entry with a +1 bonus to attack rolls, damage, and Block DC. Its hollow hilt holds up
+    to three scrolls recording current Varis cantrips. A scroll installed for 1 minute activates a gem; while attuned,
+    you may cast that cantrip at will, following its printed action, components, concentration, and effect. Use
+    your existing spellcasting ability or Intelligence if you have none; attacks add proficiency and saves use DC
+    8 + proficiency + that modifier. The weapon serves as its focus and can provide somatic gestures, but does not
+    waive costly components. The scroll survives and removal deactivates the gem. After you cast a damaging cantrip
+    this way, choose one of its damage types to replace the sword's piercing damage for 1 minute; you may end the
+    change freely.
+  conversion_notes: Restricted the reusable-scroll mechanism to actual Varis cantrips and added +1 to Block DC consistently;
+    retained the source ability fallback.
+  source_ref: Magic item generator.xlsx — Uncommon!A13:D13
+  original_5e: This blade was once used as a dagger by an ogre, but is nevertheless large enough to be a shortsword.
+    You gain a +1 bonus to attack and damage rolls made with this magic weapon. This blade’s hilt is hollow and
+    can hold up to 3 cantrip spell scrolls. Cantrip scrolls left within the compartment for 1 minute activate one
+    of the three clear gems adorning its grip. Once activated, you can cast these cantrips at will using your spellcasting
+    modifier. If you don’t have a spellcasting modifier, use your Intelligence modifier instead. You have proficiency
+    with these cantrips. Cantrips cast from the blade use the weapon as an arcane focus and allow you to perform
+    any somatic components with the weapon instead of requiring a free hand. Scrolls contained within the sword
+    are not destroyed after using them in this way. When you cast a cantrip using the sword that deals damage, the
+    sword’s damage type changes to match the cantrip’s for 1 minute or until you end it early (no action required).
+  base_item: Short sword
+  magic_bonus: '1'
+  source_name: Dagger of the Ogre Mage (shortsword)
+  source_price: 2000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Ring of Volleys
+  group: Uncommon
+  id: mi-uncommon-014
+  type: Ring
+  rarity: Uncommon
+  attunement: 'No'
+  price: 500 GP
+  desc: While wearing this ring and loading or drawing a bow or crossbow, you may create one magical arrow or bolt
+    in place of ordinary ammunition. It vanishes if not immediately fired or immediately after hitting or missing.
+    It grants no enhancement bonus, extra attack, faster reload, or special ammunition effect.
+  conversion_notes: Kept unlimited ordinary magical ammunition while preserving current weapon reload and attack
+    costs.
+  source_ref: Magic item generator.xlsx — Uncommon!A14:D14
+  original_5e: While wearing this ring, you can choose to summon a nocked arrow or bolt whenever you draw a bow
+    or crossbow. The ammunition is magical. An arrow or bolt vanishes if you don’t fire it right away and disappears
+    right after it hits or misses.
+  source_name: Ring of Volleys
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Camper's Respite
+  group: Uncommon
+  id: mi-uncommon-015
+  type: Rod
+  rarity: Uncommon
+  attunement: 'No'
+  price: 800 GP
+  desc: This 3-pound rod has a brazier and ground spike. Use a bonus-action command to light or extinguish a torch-like
+    magical flame. As an action place it upside down in a clear 5-foot square and command it to unfold over 1 minute
+    into an immobile tent. Its interior is an extradimensional room 15 feet square and 10 feet high, with a comfortable
+    dry atmosphere and a smokeless central fireplace controlled by the first command. The entrance fits Medium or
+    smaller creatures. The tent lasts 12 hours, until dismissed as an action, or until reduced to 0 HP (AC 13, 20
+    HP, immune to poison and psychic damage). At the end, everything inside is safely moved to the nearest unoccupied
+    spaces and it becomes a rod. It cannot unfold again for 12 hours. It does not shorten the time required for
+    a rest.
+  conversion_notes: Kept the extradimensional shelter statistics and cooldown; clarified that its 12-hour duration
+    does not automatically complete a Varis one-day short rest.
+  source_ref: Magic item generator.xlsx — Uncommon!A15:D15
+  original_5e: This rod weighs 3 pounds and has an iron brazier at its top and spike at its base. You can use a
+    bonus action while holding the rod to speak its first command word and create a magical flame at its top. While
+    lit, this rod functions as a burning torch. You can use a bonus action to speak its command word again to extinguish
+    the flame. You can use an action to place the rod's brazier upside down on the ground in an unoccupied space
+    and speak its second command word. When you do, the spike at the rod's other end begins to glow from within,
+    revealing its subtle design as a tent. Over the course of 1 minute, the rod expands and magically unfurls a
+    canvas from its top, creating a 5-foot-square opaque tent in its space with an entrance large enough for a Medium
+    or smaller creature to comfortably fit. You choose the style, color, and quality of the tent each time you use
+    this property. Regardless of its appearance, the tent can't be anything but a tent. Inside the tent is a square
+    extradimensional dwelling, 15 feet on a side and 10 feet high, with the enlarged camper's respite supporting
+    it at its center. The walls and ceiling are made of the same canvas as the tent, but the floor is made of smooth
+    stone. The rod's enlarged brazier functions as a magical fireplace that can be lit or extinguished by speaking
+    the rod's first command word. This fire gives off light and heat like a normal fire, but doesn't require oxygen
+    or create smoke. The atmosphere inside the space is comfortable and dry, regardless of the weather outside.
+    The tent is immobile and remains for up to 12 hours, until you use an action to speak its second command word
+    again to dismiss it, or until the tent collapses. Dealing 20 damage to the tent (AC 13) causes it to collapse.
+    The tent is immune to poison and psychic damage. The tent reverts to a rod at the end of its duration, and anything
+    inside the tent is forced into the nearest unoccupied space. When the tent becomes a rod again, this property
+    of the rod can't be used again for 12 hours.
+  source_name: Camper's Respite
+  source_price: 800 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Alchemist's Potion Belt
+  group: Uncommon
+  id: mi-uncommon-016
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 300 GP
+  desc: 'This belt holds two potion bottles in resizing stoppers. Attach a bottle as an action. While wearing it,
+    you may drink one attached potion as a bonus action instead of the potion''s normal action; all its other rules
+    still apply. This does not allow administering it to another creature. Whenever you roll a natural 1 on a Dexterity
+    save or are struck by a critical hit, roll d20: on a 1, one attached bottle chosen randomly shatters and its
+    contents are lost.'
+  conversion_notes: Retained the potion action conversion and breakage risk while preserving the potion's underlying
+    effects and consumption limits.
+  source_ref: Magic item generator.xlsx — Uncommon!A16:D16
+  original_5e: This enchanted belt has two stoppers that magically resize to fit the mouth of any kind of bottle.
+    The belt can carry up to two potions in this way. The belt can be worn comfortably around your waist or across
+    your chest as a bandolier. While wearing the belt, any potion carried on it seems to magically unstopper and
+    spring to your hand, allowing you to drink it as a bonus action. You can attach a bottle to the belt using an
+    action. When you roll a 1 on a Dexterity saving throw or are hit by a critical hit, roll a d20. On a 1, one
+    of the bottles on the belt is shattered and destroyed.
+  source_name: Alchemist's Potion Belt
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Frostbitten Buckler (shield)
+  group: Uncommon
+  id: mi-uncommon-017
+  type: Shield
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 1000 GP
+  desc: Use the Buckler entry. While attuned, the shield has 3 charges and regains all charges at dawn. When a visible
+    creature hits you with a melee attack, use a reaction and spend 1 charge to deal 2d4 cold damage to it. This
+    magical retaliation cannot be blocked and can trigger even if you successfully block the original hit. After
+    resolving that attack, gain temporary HP equal to the cold damage actually dealt, lasting 1 minute. Temporary
+    HP follow the normal non-stacking rule.
+  conversion_notes: Preserved the source on-hit trigger and separated it from blocking; converted temporary health
+    to the current pool and kept Buckler defense.
+  source_ref: Magic item generator.xlsx — Uncommon!A17:D17
+  original_5e: This icy shield has 3 charges and regains all of them each day at dawn. When a creature you can see
+    hits you with a melee attack, you can expend 1 of the shield’s charges as a reaction to deal 2d4 cold damage
+    to the attacking creature. After the attack, you gain that same amount of cold damage as temporary hit points
+    that last for up to 1 minute.
+  base_item: Buckler
+  source_name: Frostbitten Buckler (shield)
+  source_price: 1000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Tub of Churning and Fermentation
+  group: Uncommon
+  id: mi-uncommon-018
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 150 GP
+  desc: 'This lidded tub holds 2 gallons of liquid or 1 cubic foot of material. Place suitable ordinary ingredients
+    inside, secure the lid, and name a plausible processed food or drink. The lid locks for 10 minutes, then opens
+    to reveal that product: milk can become butter, cheese, or yogurt; apples can become cider; fruit can become
+    wine; cabbage can become sauerkraut; cucumbers and vinegar can become pickles. No missing ingredient, magical
+    potion, poison, or increased mass is created. It can process one batch per dawn.'
+  conversion_notes: Preserved the food-processing utility and dawn recovery; defined its limits so it does not manufacture
+    arbitrary magical reagents.
+  source_ref: Magic item generator.xlsx — Uncommon!A18:D18
+  original_5e: This squat wooden and ceramic tub has a screw-on lid that fits snuggly around its base. The tub can
+    hold up to 2 gallons of liquid or 1 cubic foot of material within it. You can leave a liquid or other perishable
+    in the tub and secure the lid before saying the name of the end result you’d like the contents to turn into.
+    If you say the name of a possible result, the tub clicks lightly before locking its lid shut for 10 minutes.
+    After 10 minutes, the tub gives a second, louder click as the lid unlocks. The contents of the tub will have
+    been stirred, processed, or otherwise fermented in such a way to generate the commanded end product. Adding
+    extra ingredients into the tub can impact the end result’s flavor. Once the tub has been used in this way, it
+    can’t be used again until the following dawn. Example Ingredient Potential Outcome Milk Butter Milk Cheese Milk
+    Yogurt Vinegar, Cucumbers Pickles Apples Hard Cider Assorted Fruits Wine Cabbage Sauerkraut
+  source_name: Tub of Churning and Fermentation
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Venombane Armor
+  group: Uncommon
+  id: mi-uncommon-019
+  type: Armor
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 1000 GP
+  desc: Use Leather armor. While attuned and wearing it, webs cannot apply Grappled, Snared, or Pinned to you, and
+    you may move through webbing as difficult terrain. Whenever you take poison damage, you may use your reaction
+    to reduce that instance by 1d8 + your Constitution modifier, minimum reduction 0. This does not remove Poisoned
+    or grant general poison immunity.
+  conversion_notes: Mapped caught-in-webs to current movement conditions and retained reaction-based damage reduction.
+  source_ref: Magic item generator.xlsx — Uncommon!A19:D19
+  original_5e: This leather armor absorbs poison and allows you to traverse webbed areas more easily. While you’re
+    wearing this armor, you can’t be caught in webs of any sort and can move through webs as if they were difficult
+    terrain. In addition, when you take poison damage while wearing this armor, you can use your reaction to reduce
+    the damage by 1d8 + your Constitution modifier.
+  base_item: Leather armor
+  source_name: Venombane Armor
+  source_price: 1000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Griffon Component Pack
+  group: Uncommon
+  id: mi-uncommon-020
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 500 GP
+  desc: This component pouch can hold the ordinary material components you carry. Once per dawn, as an action put
+    coins into it equal to 5 GP plus the printed value of one material component for a spell you know, then name
+    that component. The coins become that component if it is an ordinary component available in the campaign. Unique
+    relics, living beings, souls, and components with no stated monetary value cannot be fabricated. For such a
+    request, only the extra 5 GP is consumed and a note identifies the nearest available lead instead. This does
+    not waive components being consumed by casting.
+  conversion_notes: Retained paid component conversion and optional lead fallback while excluding undefined-value
+    objects and spell-cost bypasses.
+  source_ref: Magic item generator.xlsx — Uncommon!A20:D20
+  original_5e: This sling bag or belt pouch is stylized in the fashion of the legendary griffon's saddlebag, a classic
+    motif in children's fiction. The bag is big enough to hold all the components a mage would need to cast their
+    spells. As an action, you can place an amount of coins equal to 5gp plus the exact worth of a component you
+    need for a spell you know in the bag and speak its command word, followed by the name of the needed component.
+    When you do, the coins disappear from the bag and are replaced by the material component needed for the spell.
+    Once this property of the bag has been used, it can't be used again until the next dawn. At the GM's discretion,
+    the bag may consume only the additional 5gp and leave a note that describes the nearest person or place that
+    can help you find the named component.
+  source_name: Griffon Component Pack
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Badge of the Savant
+  group: Uncommon
+  id: mi-uncommon-021
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 200 GP
+  desc: When created, choose one current spell tradition for this badge. While affixed to a Wizard's spellbook,
+    halve the gold and copying time required to copy spells of that tradition. Multiple badges for the same tradition
+    do not stack. To attach or remove a badge, use an action and expend one spell slot of level 1 plus the number
+    of other badges already on the book, to a maximum of level 6. A book can bear at most six badges. The badge
+    grants no spells known, slot capacity, prepared spells, or access to another tradition.
+  conversion_notes: Replaced 5e schools with current spell traditions and capped the mounting slot cost and badge
+    count to the Varis six-level spell system.
+  source_ref: Magic item generator.xlsx — Uncommon!A21:D21
+  original_5e: A badge of the savant is a platinum bookplate that can be magically affixed to a wizard's spellbook.
+    Each badge features a design that represents a different school of magic. While a badge is attached to the cover
+    of your spellbook, the gold and time you must spend to copy a spell of that badge's school of magic into your
+    spellbook is halved. You can collect multiple of these plates and fit them onto the cover of your spellbook,
+    allowing you to gain this benefit for multiple schools of magic at once. You can use an action to attach or
+    remove a badge from a spellbook by expending a spell slot of a level equal to 1 plus the number of badges already
+    on the book (a maximum of a 9th level spell slot).
+  source_name: Badge of the Savant
+  source_price: 200 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Ring of Healer's Heroism
+  group: Uncommon
+  id: mi-uncommon-022
+  type: Ring
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 300 GP
+  desc: While attuned and wearing this ring, when you spend an action to restore HP to another creature, gain temporary
+    HP equal to your spellcasting ability modifier, minimum 0. If you have no spellcasting ability, choose Intelligence,
+    Wisdom, or Charisma when attuning. Until the end of your next turn you cannot gain Shaken, Afraid, or Terrified
+    from fear effects. Existing fear conditions are suppressed for that time and then resume for their remaining
+    duration. Temporary HP do not stack.
+  conversion_notes: Converted frightened immunity to the current three fear conditions and supplied a mental-ability
+    fallback.
+  source_ref: Magic item generator.xlsx — Uncommon!A22:D22
+  original_5e: When you use an action to restore hit points to a creature other than yourself while wearing this
+    winged ring, you become infused with heroism. You gain temporary hit points equal to your spellcasting modifier,
+    and until the end of your next turn, you are immune to being frightened.
+  source_name: Ring of Healer's Heroism
+  source_price: 300 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Chromacloth (sling)
+  group: Uncommon
+  id: mi-uncommon-023
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 500 GP
+  desc: 'This cloth can be worn or used as a Sling. Change its color as an action: red is fire, yellow lightning,
+    green poison, blue cold. While worn, it grants resistance against one instance of its color''s damage; after
+    it reduces damage, that protective property cannot work again until dawn. Changing color does not refresh it.
+    As a Sling, use current training, properties, and maneuvers, but its ammunition deals the color''s damage type
+    instead of bludgeoning. It grants no enhancement bonus.'
+  conversion_notes: Retained one protective use per dawn and typed sling damage, with current Varis base statistics.
+  source_ref: Magic item generator.xlsx — Uncommon!A23:D23
+  original_5e: 'This silken cloth is enchanted using a unique blend of abjuration and evocation magic, allowing
+    it to be used for a number of purposes. At any one time it can be one of four colors: red, yellow, green, or
+    blue. You can change the chromacloth’s color to another one as an action. You can wear the chromacloth as a
+    headband or wrap to gain resistance to the damage type associated with the cloth’s color. Once the cloth reduces
+    damage taken in this way, it can’t do so again until the following dawn. Alternatively, the cloth can be fashioned
+    to be an effective sling. Ammunition fired from the sling deals damage of a type matching the cloth’s color
+    instead of bludgeoning. Refer to the table below for a reference of the chromacloth’s associated colors and
+    damage types: Color Damage type Red Fire Yellow Lightning Green Poison Blue Cold'
+  base_item: Sling
+  source_name: Chromacloth (sling)
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Fine Mustache
+  group: Uncommon
+  id: mi-uncommon-024
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 5 GP
+  desc: 'As an action, attach this glorious false mustache to your upper lip. The first time a creature within 10
+    feet sees it, that creature makes a DC 10 Wisdom save. On a failure it is compelled to offer one sincere-sounding
+    compliment at its next safe opportunity. This cannot force speech while unable to speak or interrupt a hostile
+    action. The first compliment causes the mustache to fall off and ends the compulsion. A creature that succeeds
+    is unaffected by this mustache for 24 hours. Curse: the falling-off effect always occurs when anyone compliments
+    it, including its wearer.'
+  conversion_notes: Supplied a save and limited behavior for the source undefined social compulsion while retaining
+    its comic curse.
+  source_ref: Magic item generator.xlsx — Uncommon!A24:D24
+  original_5e: |-
+    A glorious fake mustache that sticks to your upper lip. The mustache compels people to compliment on it's quality.
+
+    Curse: Whenever someone compliments the mustache it falls off of your lip.
+  source_name: Fine Mustache
+  source_price: 5 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Gnome Double Bolt
+  group: Uncommon
+  id: mi-uncommon-025
+  type: Ammunition
+  rarity: Uncommon
+  attunement: 'No'
+  price: 5 GP per bolt
+  desc: Load this folded double bolt using the crossbow's normal reload procedure. It is consumed when fired, splitting
+    into two ordinary bolts. Spend one attack to make two separate attack rolls with that crossbow against one target
+    or two targets within 5 feet of one another. Each bolt resolves its own Block check and normal weapon damage.
+    The pair shares the enhancement bonus of the firing weapon but cannot duplicate another special ammunition effect.
+    The bolts cannot be reassembled.
+  conversion_notes: Kept the exceptional two-projectile attack and made each attack independently blockable; it
+    does not waive Reload.
+  source_ref: Magic item generator.xlsx — Uncommon!A25:D25
+  original_5e: Two bolts tactically designed to fold to properly fit inside the barrel of a normal crossbow. When
+    fired, the bolts unfold, becoming two bolts fired with one action. Roll two separate attack rolls and two separate
+    damage rolls for each bolt. The bolts may both hit one target. Or hit 2 separate targets within 5 feet of each
+    other. Bolts cannot be put back together and becomes as 2 seperate bolts.
+  source_name: Gnome Double Bolt
+  source_price: 5 GP per bolt
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Bag of Goodberries
+  group: Uncommon
+  id: mi-uncommon-026
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 150 GP
+  desc: This pouch contains 1d10 + 1 magical berries when found. Eating a berry takes an action and restores 1 HP;
+    one berry also supplies one day of nourishment. At the end of the owner's long rest, all berries created by
+    the pouch vanish, whether inside or outside it, and the pouch refills with 1d10 + 1 berries. Otherwise picked
+    berries lose their magic after 24 hours. Berries cannot restore rest dice or other pools.
+  conversion_notes: Replaced the absent Goodberry spell with complete berry effects while retaining the source week-long-rest
+    refill.
+  source_ref: Magic item generator.xlsx — Uncommon!A26:D26
+  original_5e: A small burlap bag filled with 1d10+1 goodberries from the “Goodberry” spell. At the end of a long
+    rest all berries inside or outside the pouch disappear and pouch refills with 1d10+1 goodberries.
+  source_name: Bag of Goodberries
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Mask of Divoc
+  group: Uncommon
+  id: mi-uncommon-027
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 20 GP
+  desc: While properly wearing this mask over nose and mouth, you have resistance to poison damage caused by inhaling
+    gas, smoke, or airborne toxins. It does not protect against swallowed or injected poison, Poisoned without damage,
+    suffocation, or a missing breathable atmosphere.
+  conversion_notes: Preserved the inhalation-only damage resistance and distinguished it from blanket condition
+    immunity.
+  source_ref: Magic item generator.xlsx — Uncommon!A27:D27
+  original_5e: 'By wearing this mask, you gain resistance to poison damage which you get by inhaling. '
+  source_name: Mask of Divoc
+  source_price: 20 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Shadowglass Daggers
+  group: Uncommon
+  id: mi-uncommon-028
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 150 GP
+  desc: Each Shadowglass Dagger uses the current Dagger entry. On an unblocked strike it deals the normal 1d4 piercing
+    damage plus an extra 1d4 necrotic damage; add normal ability modifiers only once. Its blade leaves no visible
+    puncture or cut on cloth or skin, but the attack and damage are otherwise perceptible. This appearance does
+    not bypass armor, Block, resistance, or physical barriers. It is magical and grants no enhancement bonus.
+  conversion_notes: Kept internal-wound flavor and typed rider while explicitly preserving Varis defenses.
+  source_ref: Magic item generator.xlsx — Uncommon!A28:D28
+  original_5e: These Daggers deal 1d4 + 1d4 necrotic damage. These daggers pass through cloth and skin leaving no
+    visible wound. All damage taken is internal.
+  base_item: Dagger
+  source_name: Shadowglass Daggers
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Stone of Healing
+  group: Uncommon
+  id: mi-uncommon-029
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 10 GP
+  desc: As an action, strike a creature within reach with this stone. Against an unwilling creature, make a Strength-based
+    improvised weapon attack; a willing creature may allow the hit. On an unblocked strike roll 1d4 bludgeoning
+    damage, apply it, then restore 1d4 HP independently, up to the target's maximum. A successful Block prevents
+    both effects. The stone is reusable, but cannot heal a creature immune to the stone's bludgeoning damage or
+    one that took no damage from the strike.
+  conversion_notes: Made damage-before-healing timing explicit and prevented infinite safe healing through damage
+    immunity.
+  source_ref: Magic item generator.xlsx — Uncommon!A29:D29
+  original_5e: This dull gray stone is roughly the size of a fist. When a creature is struck with this stone, that
+    creature takes 1d4 bludgeoning damage and is healed for 1d4 health points.
+  source_name: Stone of Healing
+  source_price: 10 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Lockmelter
+  group: Uncommon
+  id: mi-uncommon-030
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 50 GP
+  desc: 'As a bonus action, insert this single-use key into a reachable lock and turn it. Acid destroys the key
+    and damages the lock so its original key no longer opens it. Roll 4d4 once: increase the DC to pick that lock
+    by the result and reduce the DC to force it open by the same result, minimum DC 0. Magical wards and separate
+    bars remain unaffected.'
+  conversion_notes: Kept the unusual paired DC change and defined single-use and nonmagical-lock scope.
+  source_ref: Magic item generator.xlsx — Uncommon!A30:D30
+  original_5e: You can use a bonus action to put this key in a lock and turn it, causing acidic liquid in the key
+    to pour into the lock. The acid destroys the key itself and the inner workings of the lock, making it harder
+    to open by picking it but making it easier to open with force. A lock that has been destroyed in this way can
+    no longer be opened by its key. Roll 4d4. The DC for picking hte lock is increased by this amount while DC for
+    pening the lock with brute force is lowered by this amount.
+  source_name: Lockmelter
+  source_price: 50 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Goodberry sapling
+  group: Uncommon
+  id: mi-uncommon-031
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 50 GP
+  desc: Plant this sapling in fertile ground. After 1d6 days it becomes a 5-foot-cube bush and starts growing 1d4
+    magical berries each dawn, to a maximum of 20 on the bush. Eating a picked berry takes an action, restores 1
+    HP, and supplies one day of nourishment. Picked berries lose magic after 24 hours. Whenever the final berry
+    is picked, roll d20; on a 1 the bush becomes dormant until watered with Feywild water. It needs ordinary plant
+    care and cannot grow while uprooted.
+  conversion_notes: Replaced the absent Goodberry reference with complete effects and kept daily growth distinct
+    from long-rest recovery.
+  source_ref: Magic item generator.xlsx — Uncommon!A31:D31
+  original_5e: You can plant this sapling in any type of fertile ground. Over the course of a few days a bush roughly
+    the size of a 5ft cube grows. The bush grows Goodberries which have the exact same properties as stated in the
+    spell Goodberry. Goodberries grow 1d6 days after planting the sapling. Every day 1d4 berries grow on the bush
+    to a maximum of 20 berries. When a berry has been plucked it lasts for 24 hours after which it loses it's properties.
+    If all the berries are picked from the bush, roll a d20. On a 1 the bush will no longer grow any berries. The
+    berries will only start growing again if the bush is watered with water from the Feywild.
+  source_name: Goodberry sapling
+  source_price: 50 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Euphloria (Shield)
+  group: Uncommon
+  id: mi-uncommon-032
+  type: Shield
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 1000 GP
+  desc: Use the Heater shield entry. While attuned, use a bonus-action command to transform the shield into butterfly
+    wings or back. In wing form it grants no AC or other shield properties. You descend at 30 feet per round, can
+    glide horizontally up to 30 feet each round using movement, and have disadvantage on Dexterity saves. Landing
+    while the wings are active prevents falling damage. They grant no upward flight. When a wind spell you cast
+    would push a creature, you may instead apply that push to yourself in the opposite direction, to a maximum of
+    30 feet per casting or 60 feet per round for an ongoing levelled wind spell. This uses the spell's printed action
+    and does not create an additional casting.
+  conversion_notes: Chose a definite Varis shield base and replaced absent Gust references with a bounded interaction
+    with current wind magic.
+  source_ref: Magic item generator.xlsx — Uncommon!A32:D32
+  original_5e: As a bonus action, you can speak the command word, which causes this shield to transform into set
+    of butterfly wings on your back, losing the additional AC, what shield gives, or vice versa. When butterfly
+    wings are out you can reduce your rate of descent to 30 feet per round. While descending you can also move laterally
+    up 30 feet per round. You make Dexterity saving throws with disadvantage. When casting the Gust spell, you can
+    push yourself in the opposite direction  up to 30 feet. When casting the Gust of Wind spell, and on each of
+    your turns that spell is active you can push yourself in the opposite direction up to 60 feet.
+  base_item: Heater shield
+  source_name: Euphloria (Shield)
+  source_price: 1000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Coin of Returning
+  group: Uncommon
+  id: mi-uncommon-033
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 5 GP
+  desc: This marked coin has a face value of 1 GP. As a bonus action, call it into your empty hand from within 20
+    feet. It teleports only if not worn, held, or carried by an unwilling creature and if no effect prevents teleportation.
+    It cannot pass out of a sealed extradimensional space.
+  conversion_notes: Added activation and possession limits to the source undefined recall so it remains a trick
+    coin rather than automatic theft.
+  source_ref: Magic item generator.xlsx — Uncommon!A33:D33
+  original_5e: A 1 GP worth gold coin that you can summon back to your hand as long as it is within 20 feet of you.
+  source_name: Coin of Returning
+  source_price: 5 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Cutting Chalk
+  group: Uncommon
+  id: mi-uncommon-034
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 15 GP
+  desc: One stick draws up to 3 feet of ordinary-strength line on a solid surface. Drawing takes an action per foot.
+    Afterward, a sharp tap triggers the line, cutting through up to 1 inch of stone or softer material, one-quarter
+    inch of glass, or one-eighth inch of steel. It cannot affect living flesh or tougher material. A double-strength
+    line uses twice as much chalk and cuts twice as deep with a pop audible 30 feet away. A half-strength line uses
+    half as much chalk and only etches, except that tempered glass shatters. One box contains 1d4 + 1 sticks; an
+    exhausted stick becomes mundane chalk.
+  conversion_notes: Preserved material limits and consumption while supplying an explicit drawing rate.
+  source_ref: Magic item generator.xlsx — Uncommon!A34:D34
+  original_5e: This electric blue piece of chalk tingles to the touch. Usually found in small wooden boxes with
+    1d4 +1 pieces, this chalk allows you to cut through nearly any material but is harmless to flesh. Each stick
+    of chalk is able to draw a line 3 feet in length before the magic runs out, and it becomes mundane chalk again.
+    After drawing a line, circle, or other shape, any mild but sharp impact (such as flicking with fingers) will
+    cause the deposited chalk to instantly cut into the surface. A normal line of the chalk will cut through up
+    to 1 inch of stone or softer material, a quarter inch of glass, or an eighth inch of steel. Anything tougher
+    is not affected. A darker line can be drawn to cut twice as deep, but uses the chalk twice as fast, and doing
+    so makes an audible pop that can be easily heard 30 feet away. A lighter line may be drawn using half as much
+    chalk, but will only etch the surface of the material, and will cause tempered glass to shatter.
+  source_name: Cutting Chalk
+  source_price: 15 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Dragon's Tooth Dagger
+  group: Uncommon
+  id: mi-uncommon-035
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1500 GP
+  desc: Use the Dagger entry. This magical green-dragon tooth grants +1 to attack rolls, weapon damage, and Block
+    DC. On an unblocked strike it deals an additional 1d4 poison damage. Apply the normal Dagger training, range,
+    and maneuvers.
+  conversion_notes: Added enhancement to Varis Block DC and made the poison an unblocked-strike rider.
+  source_ref: Magic item generator.xlsx — Uncommon!A35:D35
+  original_5e: "Made from the tooth of a green dragon, this weapon still retains a trace of its poisonous capabilities.\
+    \ \nYou have a +1 bonus to attack and damage rolls made with this magic weapon. On a successful hit, add 1d4\
+    \ poison damage \nProficiency with a dagger allows you to add your proficiency bonus to the attack roll for\
+    \ any attack you make with it."
+  base_item: Dagger
+  magic_bonus: '1'
+  source_name: Dragon's Tooth Dagger
+  source_price: 1500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Cool Rock
+  group: Uncommon
+  id: mi-uncommon-036
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: Worth 5 CP (Cost - endless)
+  desc: The first time a creature touches this ordinary-sized rock, it makes a DC 10 Wisdom save. On failure it
+    believes the rock is exceptionally cool and interesting for 24 hours, even after releasing it. This belief does
+    not compel purchase, obedience, protection of the rock, or self-harm. Success prevents this rock from affecting
+    it for 24 hours. The rock remains worth 5 CP as ordinary stone regardless of its owner's opinion.
+  conversion_notes: Bound the source indefinite subjective enchantment with a save and duration while retaining
+    its joke and lack of practical power.
+  source_ref: Magic item generator.xlsx — Uncommon!A36:D36
+  original_5e: Item is in fact a small rock that when someone touches or picks up believes the rock to be the “coolest”
+    thing ever. This is still in effect after the person stops touching it. Other than this it seems to be a normal
+    rock.
+  source_name: Cool Rock
+  source_price: Worth 5 CP (Cost - endless)
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Book of Endless Pages
+  group: Uncommon
+  id: mi-uncommon-037
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 300 GP
+  desc: While attuned, this book provides as many blank pages as you need without growing thicker or heavier; pages
+    cannot be removed without becoming blank ordinary paper. Spend 10 minutes to choose a command word and seal
+    it. Speaking the word while touching it seals or unseals it without an action. While sealed, it cannot be opened
+    by mundane force; its contents survive and cannot be read through the cover. A successful magic-suppression
+    effect against a level-3 enchantment temporarily allows opening it. It remains subject to destruction, and ending
+    attunement does not erase its contents.
+  conversion_notes: Preserved endless writing and password sealing but replaced absolute indestructible closure
+    with an explicit magical ward level.
+  source_ref: Magic item generator.xlsx — Uncommon!A37:D37
+  original_5e: A leather-bound book of blank pages that never seem to run out. While attuned to the book, you may
+    spend 10 minutes to seal the book and choose a command word that may be used to seal and unseal it at will.
+    While sealed, the book can not be opened my any means. Although anyone who speaks the command word may unseal
+    the book, only you know this command word unless you share it with others or another creature reads your thoughts.
+    This item functions as a normal book, except, when you attempt to turn to what you think is the last page, another
+    page magically appears in the book. Despite constantly growing pages, the book does not grow in thickness.
+  source_name: Book of Endless Pages
+  source_price: 300 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Smoking Pipe of Intention
+  group: Uncommon
+  id: mi-uncommon-038
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 400 GP
+  desc: This pipe has 3 charges and regains all charges at dawn. As an action while holding it, say "You don't say?"
+    and expend 1 charge to fill and light it with vanilla-scented tobacco. Inhaling grants +2 to Wisdom (Insight)
+    checks for 30 minutes. Additional uses refresh the duration without stacking the bonus. The pipe does not create
+    other drugs or protect against smoke.
+  conversion_notes: Kept the three-charge dawn economy and fixed Insight bonus with explicit activation.
+  source_ref: Magic item generator.xlsx — Uncommon!A38:D38
+  original_5e: |-
+    This ornately carved pipe is made of an unknown wood and depicts a bearded man in deep thought.
+
+    When a creature speak the command words "You don't say?" whilst holding the pipe, it is immediately filled with vanilla flavored tobacco that ignites.  Inhaling from the magically lit pipe gives a creature +2 to Wisdom(Insight) rolls for the next 30 minutes. The pipe has 3 charges and any spent charges are regained at dawn.
+  source_name: Smoking Pipe of Intention
+  source_price: 400 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Rat Catcher (Javelin) (30/120)
+  group: Uncommon
+  id: mi-uncommon-039
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 800 GP
+  desc: Use the javelin entry with thrown range 30/120 feet. On an unblocked thrown strike, the target makes a DC
+    14 Strength save. On failure its speed is reduced by 10 feet, minimum 0, and it cannot speak for 1d4 rounds.
+    This prevents verbal spell components but does not otherwise prevent actions or apply Snared. The magical binding
+    ends early if a creature within reach spends an action to pull the javelin free.
+  conversion_notes: Converted the hit rider to an unblocked strike and replaced the source mixed check/save wording
+    with an explicit save and duration. Preserved its source 1d6 damage and 30/120 thrown range as explicit profile
+    overrides.
+  source_ref: Magic item generator.xlsx — Uncommon!A39:D39
+  original_5e: Its effects are limited, blocking all speech and as such only affecting spells with verbal components.
+    It deals 1d6 Piercing damage and when thrown it can entangle a target on hit if DC 14 strenght check was a failure,
+    reducing their movement speed by 10 ft and blocking their ability to speak for 1d4 rounds.
+  base_item: javelin
+  damage: 1d6p
+  properties:
+  - balanced
+  - throw 30/120
+  source_name: Rat Catcher (Javelin) (30/120)
+  source_price: 800 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Porcupine (Mace)
+  group: Uncommon
+  id: mi-uncommon-040
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1750 GP
+  desc: Use the mace entry with a +1 bonus to attack rolls, weapon damage, and Block DC. Before each attack choose
+    whether its base 1d6 damage is bludgeoning or piercing. On a critical unblocked strike, replace that base damage
+    with 1d6 bludgeoning plus 1d6 piercing; apply other critical modifiers only once and add the usual flat modifiers
+    once.
+  conversion_notes: Resolved the critical-damage replacement and applied the enhancement to Varis Block DC.
+  source_ref: Magic item generator.xlsx — Uncommon!A40:D40
+  original_5e: 'A deadly magical weapon, bristling with fiendish spikes are used by the strongest of the northmen,
+    to fight back the dead spirits of overworld. This mace gives +1 to attack and damage rolls and you can choose
+    what kind of damage you will deal: 1d6 bludgeoning or 1d6 piercing damage. On critical hit you always deal 1d6
+    bludgeoning + 1d6 piercing damage.'
+  base_item: mace
+  magic_bonus: '1'
+  source_name: Porcupine (Mace)
+  source_price: 1750 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Feather of Falling
+  group: Uncommon
+  id: mi-uncommon-041
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 100 GP
+  desc: While falling, use your reaction to drop this single-use feather. It is consumed. For up to 1 minute you
+    descend at 60 feet per round and take no falling damage if you land before the effect ends. The feather grants
+    no flight or horizontal movement and affects only you.
+  conversion_notes: Kept the source reaction, descent rate, and duration with an explicit safe-landing result.
+  source_ref: Magic item generator.xlsx — Uncommon!A41:D41
+  original_5e: While falling, you can drop this feather as a reaction. It plummets to the ground and is destroyed
+    on impact, while you descend 60 feet per round for up to 1 minute.
+  source_name: Feather of Falling
+  source_price: 100 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Grenade of sacrifice
+  group: Uncommon
+  id: mi-uncommon-042
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1250 GP
+  desc: As an action, arm this single-use grenade by drawing blood with its edge, suffering 1d4 damage directly
+    to HP; this cost cannot be reduced, redirected to another pool, or paid with temporary HP. As part of the same
+    action, throw it to a visible point within 40 feet. It detonates at the start of your next turn. Every creature
+    within 10 feet makes a DC 15 Dexterity save, taking 5d6 fire damage on failure or half on success. This explosion
+    cannot be blocked. Before detonation an adjacent creature can use an action to throw it up to 40 feet again.
+  conversion_notes: Defined the blood sacrifice, arm-and-throw action, and delayed blast so the new health pools
+    cannot erase the cost.
+  source_ref: Magic item generator.xlsx — Uncommon!A42:D42
+  original_5e: 'A sacrifice is a small price to pay for tactical victory. The grenade resembled octahedron, it was
+    all black, with sharp edges, but there was not a visible arming mechanism. Grenade was armed when its wielder
+    drawed some of his blood with it (1d4). When sacrifice has been made, grenade had a blue glow to it. It has
+    a range of 40 feet and blew up at the start of your next turn. When it blows up, each creature in 10 feet radius
+    has to make DEX 15 saving throw. If failed, grenade dealt 5d6 fire damage, or half if succeded. '
+  source_name: Grenade of sacrifice
+  source_price: 1250 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Lodestone Tankard
+  group: Uncommon
+  id: mi-uncommon-043
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 50 GP
+  desc: This stone tankard holds 1 pint. It weighs 1 pound empty and increases proportionally as filled, to 50 pounds
+    when full. Spilling or drinking contents reduces its weight immediately. It grants no extra damage die or forced
+    movement; use ordinary improvised-object rules if wielded.
+  conversion_notes: Kept the liquid-dependent weight and prevented weight alone from creating an unspecified damage
+    mechanic.
+  source_ref: Magic item generator.xlsx — Uncommon!A43:D43
+  original_5e: Created for dwarf drinking games and gnome pranks, this carved stone tankard holds up to 1 pint.
+    It weighs only 1 pound when empty, but 50 pounds when completely full.
+  source_name: Lodestone Tankard
+  source_price: 50 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Wand of Relieved Burdens
+  group: Uncommon
+  id: mi-uncommon-044
+  type: Wand
+  rarity: Uncommon
+  attunement: 'No'
+  price: 3500 GP
+  desc: 'This wand holds 7 charges and regains 1d6 + 1 charges at dawn, up to 7. As an action, touch a willing creature
+    and spend 1 charge to transfer one of its following conditions to yourself for the remaining duration: Blinded,
+    Charmed, Deafened, Paralyzed, Poisoned, Stunned, Shaken, Afraid, or Terrified. You may instead transfer one
+    level of Fatigue. The transferred effect uses its original remaining duration and recovery rules; it cannot
+    be transferred if you are immune to it. If the final charge is spent, roll d20; on a 1 the wand is destroyed.'
+  conversion_notes: Mapped 5e frightened to current fear states and exhaustion levels to one Fatigue per use rather
+    than the unrelated Varis Exhausted condition.
+  source_ref: Magic item generator.xlsx — Uncommon!A44:D44
+  original_5e: This wand has 7 charges. While holding it, you can use an action to expend 1 of its charges and touch
+    a creature with the wand. If the creature is blinded, charmed, deafened, exhausted, frightened, paralyzed, poisoned,
+    or stunned, the condition is removed from the creature and transferred to you. You suffer the condition for
+    the remainder of its duration or until removed. The wand regains 1d6 + 1 expended charges daily at dawn. If
+    you expend the wand’s last charge, roll a d20. On a 1, the wand crumbles to dust and is destroyed…
+  source_name: Wand of Relieved Burdens
+  source_price: 3500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Princesse's Flute
+  group: Uncommon
+  id: mi-uncommon-045
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 500 GP
+  desc: Once per long rest, play this flute as an action. Songbirds and other bird-like creatures that can hear
+    it within 120 feet make a DC 14 Charisma save. On failure they are drawn toward you when safe and have disadvantage
+    on attacks against you for 1 minute. They repeat the save at the end of each of their turns, ending the effect
+    on success. The song does not compel self-harm or prevent attacking others. The long-rest recovery retains the
+    current week-long rest duration.
+  conversion_notes: Added clear initial and repeated saves to the source charm-like effect without importing a different
+    condition.
+  source_ref: Magic item generator.xlsx — Uncommon!A45:D45
+  original_5e: As an action you can play this flute. Your song attracts songbirds and bird-like creatures in 120
+    feet and they have disadvantage when attacking you for 1 minute. They have to make Charisma 14 saving throw,
+    to snap out of it. You can use flute once per long rest in this way.
+  source_name: Princesse's Flute
+  source_price: 500 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Boots of Wellfitting
+  group: Uncommon
+  id: mi-uncommon-046
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 750 GP
+  desc: While wearing these comfortable fitted boots, you have advantage on Strength and Dexterity saves against
+    effects that would make you Prone. They do not help against a contested check, voluntary movement, or an effect
+    that offers no save.
+  conversion_notes: The save benefit works unchanged with the current Prone condition; clarified the distinction
+    between checks and saves.
+  source_ref: Magic item generator.xlsx — Uncommon!A46:D46
+  original_5e: Boots magically wrap around your foot, and makes you feel really comfortable and stable. You have
+    advantage on Strength and Dexterity saving throws made against effects that would knock you prone.
+  source_name: Boots of Wellfitting
+  source_price: 750 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Gloves of Sign Language
+  group: Uncommon
+  id: mi-uncommon-047
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 800 GP
+  desc: While attuned and wearing these gloves, you may replace a spell's verbal components with visible hand signs.
+    You must have one free hand and be able to move it; if the spell already has somatic components, the same free
+    hand can perform both. This bypasses inability to speak and silence but not restraints preventing gestures.
+    Spell actions, material components, slots, and concentration remain unchanged.
+  conversion_notes: Converted component substitution explicitly without importing free spellcasting or bypassing
+    the new class resource systems.
+  source_ref: Magic item generator.xlsx — Uncommon!A47:D47
+  original_5e: You can use somatic components instead of verbal ones for your spells.
+  source_name: Gloves of Sign Language
+  source_price: 800 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Band of the Full Beast
+  group: Uncommon
+  id: mi-uncommon-048
+  type: Ring
+  rarity: Uncommon
+  attunement: 'No'
+  price: 600 GP
+  desc: While wearing this ring, you have advantage on Animal Handling checks involving an ordinary beast whose
+    behavior is motivated by hunger. It does not feed the beast, stop an attack automatically, affect creatures
+    without animal minds, or compel obedience.
+  conversion_notes: Kept the hunger-specific check benefit and distinguished its flavor from an automatic domination
+    power.
+  source_ref: Magic item generator.xlsx — Uncommon!A48:D48
+  original_5e: Carved bone and antler encircle the finger of those in need to tame a beast's savagery. With hand
+    outstretched the ringbearer can halt a ravenous beast in it's tracks, enveloping the animal in the warm serene
+    feel of a full belly and sated hunger. While wearing this ring you have advantage on animal handling checks,
+    if the target animal is motivated by hunger.
+  source_name: Band of the Full Beast
+  source_price: 600 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Reading Spectacles
+  group: Uncommon
+  id: mi-uncommon-049
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 600 GP
+  desc: While wearing these spectacles, you understand the literal meaning of any visible written language. They
+    do not reveal invisible or obscured text, decipher a cipher, translate symbolic magical diagrams into spell
+    knowledge, or allow you to speak or write the language. Reading takes its normal time.
+  conversion_notes: Preserved universal reading with explicit limits on ciphers, spell learning, and hidden writing.
+  source_ref: Magic item generator.xlsx — Uncommon!A49:D49
+  original_5e: These simple spectacles always appear slightly smudged. While wearing the spectacles you can read
+    any language.
+  source_name: Reading Spectacles
+  source_price: 600 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Circuit Breaker (club)
+  group: Uncommon
+  id: mi-uncommon-050
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1200 GP
+  desc: Use the club entry with a +1 bonus to attack rolls, damage, and Block DC. Against a construct, double the
+    weapon attack's bludgeoning damage after rolling and adding its normal flat modifiers, before the target applies
+    resistance or reduction. Do not double damage from separate spells, poisons, or other added damage types. A
+    successful Block still prevents its blockable damage.
+  conversion_notes: Defined what doubles against constructs and preserved Varis Block and enhancement rules.
+  source_ref: Magic item generator.xlsx — Uncommon!A50:D50
+  original_5e: It takes a lot to upset a group of artificers, but when they get mad, everyone's gonna know about
+    it. This club gives +1 to attack and damage rolls. When attacking constructs, it deals double damage.
+  base_item: club
+  magic_bonus: '1'
+  source_name: Circuit Breaker (club)
+  source_price: 1200 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Arondight (Short-sword)
+  group: Uncommon
+  id: mi-uncommon-051
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1200 GP
+  desc: Use the Short sword entry. This silver-coated magical weapon grants +1 to attack rolls, damage, and Block
+    DC. Its grim reputation has no mechanical curse unless a separate campaign effect explicitly gives it one.
+  conversion_notes: Kept the source actual +1 silver weapon and separated rumored curse from an invented compulsory
+    penalty.
+  source_ref: Magic item generator.xlsx — Uncommon!A51:D51
+  original_5e: It is the sword of a good knight. It is sometimes considered a cursed weapon as its ended the lives
+    of many Knights, humans and beasts. It's a +1 silver coated short-sword, which gives +1 to attack and damage
+    rolls.
+  base_item: Short sword
+  magic_bonus: '1'
+  source_name: Arondight (Short-sword)
+  source_price: 1200 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Ring of Shadows (ring)
+  group: Uncommon
+  id: mi-uncommon-052
+  type: Ring
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 3000 GP
+  desc: While attuned and wearing this flat-black ring in dim light or darkness, gain +5 to Stealth checks. The
+    faint mist around you gives no concealment in bright light and does not make you Invisible. You can remove the
+    ring voluntarily. A successful dispelling effect cast at Varis level 5 or 6 against the ring also releases its
+    attachment; it is otherwise difficult to pull off an unwilling wearer.
+  conversion_notes: Preserved the conditional Stealth bonus and wearer removal while expressing the named dispelling
+    interaction as an enchantment level.
+  source_ref: Magic item generator.xlsx — Uncommon!A52:D52
+  original_5e: 'This cool, flat-black ring seems to be made of a glassy-metallic substance that is always cool to
+    the touch, no matter where one may find oneself. Once attuned, the wearer has subtle dark mist surronding him.
+    The ring can be removed with dispel magic spell casted at 5th level or by the wearer. The ring grants the wearer
+    +5 to Stealth skill checks, if the wearer is in shadows or darkness. '
+  source_name: Ring of Shadows (ring)
+  source_price: 3000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Grappling Hook Launcher
+  group: Uncommon
+  id: mi-uncommon-053
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 600 GP
+  desc: Load this launcher with a grappling hook and rope as an action. Fire it as an action to anchor on a visible
+    suitable surface at range 50/150 feet, using Dexterity and adding proficiency if trained with crossbows. The
+    anchoring target has AC 12 if broad and stable, AC 15 if narrow, or AC 18 if small or awkward; long range imposes
+    disadvantage. Success secures the hook if the rope reaches; it does no creature damage and cannot grapple a
+    creature. It supports normal rope climbing but does not reel you in. Reloading requires an action.
+  conversion_notes: Replaced an unspecified GM attack DC with concrete anchor difficulties and kept the original
+    range, training, and reload.
+  source_ref: Magic item generator.xlsx — Uncommon!A53:D53
+  original_5e: 'This device looks like a crossbow with a thick stock and no prod. It uses a strong internal spring
+    to launch a grappling hook long distances. The hook is attached to a rope that is mounted underneath the stock,
+    that uncoils when fired. The launcher has range of 50/150 and you add your dexterity bonus to attacks, if you
+    are proficient with crossbows, you add proficiency. When used, you make ranged attack and the DC is determined
+    by the GM. Reloading launcher takes an action. '
+  source_name: Grappling Hook Launcher
+  source_price: 600 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Mellow-leaf Wine
+  group: Uncommon
+  id: mi-uncommon-054
+  type: Potion
+  rarity: Uncommon
+  attunement: 'No'
+  price: 80 GP per glass
+  desc: Drink one glass as an action to gain advantage on Constitution saves for 10 minutes. Drinking additional
+    glasses refreshes the duration without stacking the benefit. It does not itself cure Poisoned or remove poison
+    damage already suffered.
+  conversion_notes: Kept the source broad Constitution-save advantage and duration; clarified the countervenom flavor
+    is not a separate cure.
+  source_ref: Magic item generator.xlsx — Uncommon!A54:D54
+  original_5e: It is strong, a bright blue, extremely fizzy and a potent counter venom. The Elves do indeed create
+    more of this wine than the others, selling for a very good price within their own nation. Outside of this territory
+    it tends to get given as a gift or brought back by traders who where given a bottle as part of a deal. Connoisseurs
+    confirm its value. Glass of it gives advantage on constitution saving throws for 10 minutes.
+  source_name: Mellow-leaf Wine
+  source_price: 80 GP per glass
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Bladed Cloak
+  group: Uncommon
+  id: mi-uncommon-055
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1000 GP
+  desc: While worn, this heavy bladed cloak grants +1 AC. Its concealed blade is a magical Light melee weapon dealing
+    1d6 slashing damage, using Strength for attacks and damage and Club training. It scores critical hits on natural
+    19-20; Block DC is 8 + applicable proficiency + applicable Strength modifier. As an action plus a bonus action
+    and half your movement for the turn, make one separate blade attack against every other creature within 5 feet.
+    Each attack resolves its own Block check and damage. This sweep cannot be combined with an extra Attack action's
+    attacks.
+  conversion_notes: Rebuilt the blade as a complete Varis attack and retained all three sweep costs and separate
+    defenses.
+  source_ref: Magic item generator.xlsx — Uncommon!A55:D55
+  original_5e: A thick and heavy cloak which gives +1 to your AC, with a silver outline with a hidden blade in the
+    outline that comes out if you spin or swing, treated as a light weapon that deals 1d6 slashing damage and it
+    critically strikes on 19 and 20. You can spend action, bonus action and half of your movement to spin the cloak
+    around yourself and attack all creatures adjacent to you.
+  source_name: Bladed Cloak
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Angel's Tear amulet
+  group: Uncommon
+  id: mi-uncommon-056
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 5000 GP
+  desc: While attuned and wearing this glowing amulet, you have advantage on saves against disease and Poisoned,
+    resistance to poison damage, and advantage on death saves that actually require a roll. It does not cancel automatic
+    failed death saves or restore HP.
+  conversion_notes: Kept the defensive properties while distinguishing rolled death saves from automatic failures
+    in the new system.
+  source_ref: Magic item generator.xlsx — Uncommon!A56:D56
+  original_5e: The amulet in a shape of a tear, gives out light blue glow once attuned to it. When attuned, character
+    gets advantage on saving throws against disease and being poisoned, and you have resistance to poison damage,
+    and advantage on death saving throws.
+  source_name: Angel's Tear amulet
+  source_price: 5000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Gloves of Reciprocity
+  group: Uncommon
+  id: mi-uncommon-057
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 2500 GP
+  desc: While attuned and wearing these gloves, after you miss an attack or fail an ability check or save, but before
+    its consequences resolve, add a bonus equal to the number of allies you can see within 30 feet, maximum +5.
+    If the new total succeeds, resolve it as success. You can use this a number of times equal to your proficiency
+    bonus and regain all uses after a long rest. It does not change a natural die result or cancel an automatic
+    failure.
+  conversion_notes: Kept the retroactive ally bonus and source long-rest recovery, with explicit natural-roll and
+    automatic-failure limits.
+  source_ref: Magic item generator.xlsx — Uncommon!A57:D57
+  original_5e: If you miss with an attack roll or fail an ability check or a saving throw, you can draw on your
+    bonds of reciprocity to gain a bonus to the roll equal to the number of allies you can see within 30 feet of
+    you (maximum bonus of +5). You can use this trait a number of times equal to your proficiency bonus, and you
+    regain all expended uses when you finish a long rest.
+  source_name: Gloves of Reciprocity
+  source_price: 2500 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Hidden Spring Sheath
+  group: Uncommon
+  id: mi-uncommon-058
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 300 GP
+  desc: Strap this sheath to a forearm and load it with one dagger or similarly sized handheld object. Once on your
+    turn, if your hand is empty, draw that object with a wrist flick without an action. Loading the sheath requires
+    an action. A creature searching your person finds it with a DC 14 Investigation check. It grants no extra attack
+    or concealment after drawing.
+  conversion_notes: Retained free drawing while bounding repeated object cycling and defining reload time.
+  source_ref: Magic item generator.xlsx — Uncommon!A58:D58
+  original_5e: This device is attached to the forearm via two leather staps. With a flick of the wrist it's spring
+    loaded action pops your dagger (or similar object) into the hand of the user as a free action. The dagger is
+    usually hidden and with a DC 14 Investigation check, you can find it on person.
+  source_name: Hidden Spring Sheath
+  source_price: 300 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Susuk needle
+  group: Uncommon
+  id: mi-uncommon-059
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 2000 GP
+  desc: 'When attuning to this spirit-enchanted needle, it painlessly embeds in your body. Roll 1d4 once: reduce
+    your maximum HP by that amount, minimum maximum HP 1, while attuned. Gain +1 to Charisma ability checks, skill
+    checks, saves, and Charisma-based attack rolls; it does not increase your Charisma score, damage, spell DC,
+    or proficiency. Ending attunement removes the needle and restores the lost maximum HP without healing current
+    wounds.'
+  conversion_notes: Clarified the ambiguous Charisma-roll bonus and applied the HP cost through the new system's
+    maximum-health rules.
+  source_ref: Magic item generator.xlsx — Uncommon!A59:D59
+  original_5e: The creature implants a metal needle in the creatures body while attuning. This needle is enchanted
+    with a strong spirit to implant the needle without wound. The needle will make the creature more attractive
+    in the others eyes. You lose 1d4 of your maximum hit points, while gaining +1 to Charisma rolls.
+  source_name: Susuk needle
+  source_price: 2000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Dry Oil
+  group: Uncommon
+  id: mi-uncommon-060
+  type: Potion
+  rarity: Uncommon
+  attunement: 'No'
+  price: 150 GP
+  desc: One vial dries up to 1 gallon of unattended liquid on contact. Alternatively, as an action coat one weapon
+    or one piece of ammunition. The coating lasts 2 hours or until its next unblocked strike against a creature.
+    That creature makes a Constitution save against 8 + the total attack bonus used for that strike. On failure
+    it gains 1 Fatigue from dehydration; success prevents it. The coating is then consumed. It grants no bonus damage
+    and cannot dry the blood inside a creature without a delivered strike.
+  conversion_notes: Converted exhaustion to Fatigue and made delivery require an unblocked strike, retaining the
+    source unusual attack-bonus-based DC.
+  source_ref: Magic item generator.xlsx — Uncommon!A60:D60
+  original_5e: Dry Oil is an alchemical solution that, when in contact with a liquid or a solution such as blood,
+    causes that liquid to dry (desiccate) rapidly. One vial can dry a single gallon of liquid, but it is far more
+    useful when coating a weapon.  One weapon of any size can be coated per vial. Items coated in Dry Oil continue
+    to be coated either until 2 hours have elapsed or until they strike an opponent. When a weapon coated with Dry
+    Oil strikes a creature, that creature becomes dehydrated and suffers one level of exhaustion unless it succeeds
+    on a constitution saving throw equal to 8+attack modifier.
+  source_name: Dry Oil
+  source_price: 150 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Mist Pellet
+  group: Uncommon
+  id: mi-uncommon-061
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 150 GP for one or 1250 GP for a bag
+  desc: 'As an action throw and shatter one pellet at a point within 60 feet. It creates a stationary 20-foot-radius
+    sphere of dense silvery mist for 1 minute. The area is heavily obscured: sight cannot pass through it, sight-based
+    Perception fails, and creatures relying on sight use the current Blinded targeting restrictions while looking
+    through it. Wind strong enough to disperse fog clears it in one round. It deals no damage and does not stop
+    physical movement. A purchased bag contains 2d4 pellets.'
+  conversion_notes: Replaced the absent Fog Cloud dependency with complete area, sight, duration, and wind rules.
+  source_ref: Magic item generator.xlsx — Uncommon!A61:D61
+  original_5e: A Mist Pellet is a small silverish pellet an inch in diameter and mist can be seen swirling inside
+    it. A full bag weighs about 1 pound. When thrown (or broken) it releases a cloud of silvery mist. These usually
+    can be found in bags containing 2d4 of them. A Mist Pellet can be thrown at a range up to 60 feet and creates
+    a cloud of mist as the Fog Cloud spell centered on the square where it was thrown. The mist lasts for 1 minute
+    unless dispelled.
+  source_name: Mist Pellet
+  source_price: 150 GP for one or 1250 GP for a bag
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Can Trip (consumable)
+  group: Uncommon
+  id: mi-uncommon-062
+  type: Potion
+  rarity: Uncommon
+  attunement: 'No'
+  price: 750 GP
+  desc: As an action, consume one dose of this green residuum powder. Make a DC 12 Constitution save. On failure
+    you fall unconscious and Incapacitated for 1d6 days while dreaming; success avoids the coma. The coma cannot
+    be ended early by ordinary waking or magic that merely ends sleep, though you can be fed and cared for. At the
+    end of the coma, choose and learn one current Varis cantrip, using Intelligence as your casting ability if you
+    have none and its printed action and components. A successful save grants no cantrip. A creature can gain only
+    one cantrip ever from this powder; later doses can cause the same coma without a benefit.
+  conversion_notes: Resolved the source ambiguous unwilling consumption and success result, bounded the permanent
+    reward, and tied it to current cantrips rather than an external list.
+  source_ref: Magic item generator.xlsx — Uncommon!A62:D62
+  original_5e: This powder shimmers in green when light shines on it. Although most residuum powders aren't meant
+    for consumption, this one is specially made for those who seek thrill. When consumed, unwillingly character
+    must make DC 12 Constitution save, your body falls unconscious for 1d6 days and your mind starts seeing dreams
+    about magical weave. No spells can cure this. After your trip in your dreams ends, you can learn any cantrip
+    from spell list. You can do this once. If consumed again, you again fall unconscious for 1d6 days and your mind
+    is again seeing dreams, with no other benefits.
+  source_name: Can Trip (consumable)
+  source_price: 750 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Gyorm Shell
+  group: Uncommon
+  id: mi-uncommon-063
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 200 GP
+  desc: As an action, throw this spiked hovering shell using Dexterity with range 20/60 feet, adding proficiency
+    if trained with thrown weapons. On an unblocked strike it deals 1d6 piercing damage and hovers in front of the
+    target for 1 minute. While hovering, that target's ranged attacks have disadvantage. It can remove the shell
+    with an action and a DC 12 Strength check, or an adjacent creature can grasp it as an action if the target allows
+    it. The shell then falls inert and can be thrown again; only one creature can be affected by this shell at once.
+  conversion_notes: Supplied an explicit duration and removal method to the source indefinite ranged-attack penalty
+    and used Block for the initial strike.
+  source_ref: Magic item generator.xlsx — Uncommon!A63:D63
+  original_5e: This shell features spikes on its exterior and magical hovering flight. You can throw this shell
+    (20/60) to a target, dealing 1d6 piercing damage. When creature is hit, the shell hovers infront of the target,
+    giving disadvantage to ranged attacks.
+  source_name: Gyorm Shell
+  source_price: 200 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Kab-Ar (dagger)
+  group: Uncommon
+  id: mi-uncommon-064
+  type: Weapon
+  rarity: Uncommon
+  attunement: 'No'
+  price: 1000 GP
+  desc: Use the Dagger entry. On an unblocked strike, the target makes a DC 14 Constitution save. On failure it
+    takes an extra 1d4 slashing damage. Once on your turn after that failed save, you may spend a bonus action to
+    drive the dagger further with one additional melee attack against the same target. That attack uses the same
+    attack bonus and Block DC and deals 1d4 piercing damage plus its normal applicable flat modifiers instead of
+    normal weapon damage. This extra attack cannot trigger another drive attack.
+  conversion_notes: Made both damage riders and the bonus attack obey Varis Block, with an explicit one-follow-up
+    limit.
+  source_ref: Magic item generator.xlsx — Uncommon!A64:D64
+  original_5e: This serrated military dagger is used by fiercest soldiers. When attacking with this dagger, creature
+    hit must make a DC 14 constitution saving throw, if failed, the target must take extra 1d4 slashing damage and
+    if failed wielder as bonus action can push the dagger further and make an extra attack dealing extra 1d4 piercing
+    damage.
+  base_item: Dagger
+  source_name: Kab-Ar (dagger)
+  source_price: 1000 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon
+- name: Ring of Healing
+  group: Uncommon
+  id: mi-uncommon-065
+  type: Ring
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 1200 GP
+  desc: While attuned and wearing this ring, once per round when you or an ally you can see within 30 feet scores
+    a critical unblocked weapon strike against a hostile creature, that attacker recovers 2d6 HP, up to its maximum.
+    The hostile creature must present a genuine threat; attacks against harmless captives, conjured allies, or objects
+    cannot trigger it. The healing follows current Diseased and Bleeding rules.
+  conversion_notes: Added a range and one-per-round limit to an unspecified party-wide trigger and prevented manufactured
+    critical-hit healing loops.
+  source_ref: Magic item generator.xlsx — Uncommon!A65:D65
+  original_5e: When you or your ally critically strikes a creature, the one who rolled regains 2d6 health
+  source_name: Ring of Healing
+  source_price: 1200 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Shadecast Ring
+  group: Uncommon
+  id: mi-uncommon-066
+  type: Ring
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 5500 GP
+  desc: While attuned, this ring holds 4 charges and regains 1d4 charges at midnight, to a maximum of 4. As a bonus
+    action, spend 2 charges to teleport to an unoccupied space you can see within 40 feet. Each extra charge increases
+    range by 10 feet. If this spends the last charge, make a DC 15 Constitution save. On failure take 1d6 necrotic
+    damage; on success your next unblocked strike before the next midnight deals an extra 1d6 necrotic damage. This
+    bonus cannot stack with another depletion of the same ring.
+  conversion_notes: Kept midnight recovery and the risk/reward depletion rule, with a clear duration and unblocked-strike
+    rider.
+  source_ref: Magic item generator.xlsx — Uncommon!A66:D66
+  original_5e: This ring seems to hold swirling arcane shadoes trapped within its gem. Being extremely cold to the
+    touch. It's bearer will often shudder at its chilling embrace. The ring holds a maximum of 4 charges that replenish
+    1d4 charges every midnight. Once attuned, you can as bonus action expend 2 charges to briefly surround yourself
+    in shadows and teleport up to 40 feet to an unoccupied space that you can see. You may add an extra 10 ft for
+    each additional charge expended. When the ring is completly drained of charges, you must make a CON saving throw
+    (DC 15). If failed, you take 1d6 necrotic damage, if you succeed, you deal additional 1d6 Necrotic damage on
+    next successful hit.
+  source_name: Shadecast Ring
+  source_price: 5500 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Amulet of Death Sense
+  group: Uncommon
+  id: mi-uncommon-067
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'Yes'
+  price: 3000 GP
+  desc: While attuned and wearing this amulet, use an action to sense deaths in a 30-foot radius. You learn whether
+    any creatures died there in the last 24 hours and each dead creature's type, but not identity, location of a
+    moved corpse, cause of death, or current afterlife. You have a number of uses equal to 1 + proficiency bonus
+    + Wisdom modifier, minimum 1, and regain all uses at dawn.
+  conversion_notes: Retained the death-sense range and information while supplying the source missing recovery timing
+    and minimum uses.
+  source_ref: Magic item generator.xlsx — Uncommon!A67:D67
+  original_5e: As an action, you become aware if any creatures have died in a 30 foot area around you in the last
+    24 hours. You do not know how they died, but you know what type of creature they were. You can use this ability
+    1 + prof + Wisdom modifier.
+  source_name: Amulet of Death Sense
+  source_price: 3000 GP
+  source_attunement: 'Yes'
+  source_rarity: Uncommon
+- name: Voodoo Doll
+  group: Uncommon
+  id: mi-uncommon-068
+  type: Wondrous item
+  rarity: Uncommon
+  attunement: 'No'
+  price: 6000 GP
+  desc: As an action, shape this doll to resemble one humanoid you can see within 60 feet. For 1 minute, while that
+    target remains within 60 feet, you may target it with your attacks or spells by targeting the doll. Each effect
+    still consumes its normal action, attack, slot, or other resource and resolves against the real target's AC,
+    Block, saves, resistances, and immunities. A damaging effect deals half its normal damage to the linked creature;
+    it does not damage both. The doll cannot redirect an area effect or bypass a spell's target restrictions. If
+    you incorporate a personal possession of that target while shaping it, the target has disadvantage on saves
+    against effects delivered through the doll. Only one link can exist per doll; breaking sight does not end it,
+    but range or duration does.
+  conversion_notes: Defined proxy targeting without importing an object's AC or bypassing Varis Block; retained
+    the one-minute sympathetic link and personal-possession save penalty.
+  source_ref: Magic item generator.xlsx — Uncommon!A68:D68
+  original_5e: This old fashioned Voodoo Doll allows you as an action to modify it, to resemble a humanoid creature
+    you can see within 60 feet. For 1 minute, while the doll resembles this creature, you can target the creature
+    with spells or melee/ranged weapon attacks by targeting the doll instead. The creature takes half damage from
+    effects targeting in this way. If you modify your doll with a possession of the target, the creature has disadvantage
+    on saving throws when the doll is attacked by  an action which needs them.
+  source_name: Voodoo Doll
+  source_price: 6000 GP
+  source_attunement: 'No'
+  source_rarity: Uncommon

@@ -187,6 +187,18 @@ td p + p { margin-top: .4rem !important; }
 .entry-footer { border-top: 1px solid var(--line); padding-top: .8rem; margin-top: 1.8rem; }
 .source-file { color: var(--muted); font-size: .75rem; margin: .3rem 0 0; overflow-wrap: anywhere; }
 .source-file code { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.magic-tools { margin: .5rem 0 1.2rem; }
+.magic-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: .8rem 0; }
+.magic-actions button { cursor: pointer; min-height: 44px; }
+.magic-editor { margin: 1rem 0; border: 1px solid var(--line); border-radius: 4px; padding: .7rem 1rem; background: #f5f6ed; }
+.magic-editor > summary { cursor: pointer; font: 600 .95rem var(--sans); color: var(--green); }
+.magic-field { display: grid; gap: .35rem; margin-top: .8rem; font: 500 .88rem var(--sans); }
+.magic-field input, .magic-field textarea { box-sizing: border-box; width: 100%; border: 1px solid #b8c2ae; border-radius: 3px; padding: .65rem; background: white; color: #25372c; font: 400 1rem/1.5 var(--sans); }
+.magic-field textarea { resize: vertical; }
+.magic-advanced { margin-top: .9rem; }
+.magic-advanced > summary { cursor: pointer; }
+.magic-provenance { margin-top: 1rem; color: var(--muted); }
+.magic-provenance summary { font-size: 1rem; }
 .state-message { color: var(--muted); margin: 1rem 0; }
 .monster-meta { color: var(--muted); font-style: italic; margin: 0 0 1rem; }
 .monster-status { width: fit-content; padding: .2rem .6rem; border: 1px solid #d9c899; border-radius: 3px; color: #74591e; font-size: .84rem; }
@@ -236,7 +248,7 @@ td p + p { margin-top: .4rem !important; }
 }
 @media print {
   :root, .article { background: white; color: black; }
-  .masthead, #trail, .skip-link, .chapter-jump, .filters, .pagination, .entry-footer .text-link { display: none; }
+  .masthead, #trail, .skip-link, .chapter-jump, .filters, .pagination, .entry-footer .text-link, .magic-tools, .magic-editor { display: none; }
   .page, .article { display: block; width: auto; max-width: none; border: 0; box-shadow: none; padding: 0; margin: 0; }
   .table-scroll { overflow: visible; }
   .chapter, td, th { break-inside: auto; }

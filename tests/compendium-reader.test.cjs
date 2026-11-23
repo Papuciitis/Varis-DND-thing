@@ -17,6 +17,7 @@ const classData = [...baseNames.map(name => entry(name, 'Base class')), entry('B
 
 function boot(data = {classes: classData}, initial = '', options = {}) {
   let document;
+  const downloads=[],objectUrls=new Map();
   class Node {
     constructor(tag = '') { this.localName = tag; this.children = []; this.parentNode = null; this.listeners = {}; this.attributes = {}; this.className = ''; this.value = ''; this._text = ''; this.scrollLeft = 0; this.clientWidth = 500; }
     get textContent() { return this._text + this.children.map(node => node.textContent).join(''); }
@@ -31,7 +32,7 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
     getAttribute(name) { return this.attributes[name] ?? null; }
     addEventListener(type, fn) { (this.listeners[type] ||= []).push(fn); }
     dispatch(type, extra = {}) { for (const listener of this.listeners[type] || []) listener({target: this, preventDefault() {}, ...extra}); }
-    click() { if (!this.disabled) this.dispatch('click'); }
+    click() { if (!this.disabled) {if(this.localName==='a'&&this.download)downloads.push({name:this.download,blob:objectUrls.get(this.href)});this.dispatch('click');} }
     focus() { document.activeElement = this; }
     select() {}
     setSelectionRange(start, end) { this.selectionStart = start; this.selectionEnd = end; }
@@ -71,19 +72,67 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
     async loadAll() { await Promise.all(sections.filter(s => !loaded.has(s.key)).map(s => loader.loadSection(s.key))); return sections; }
   };
   const context = vm.createContext({console, document, window, location, URLSearchParams, Intl, DndCatalog: loader,
+    Blob,setTimeout:fn=>fn(),URL:{createObjectURL(blob){const url='blob:test-'+objectUrls.size;objectUrls.set(url,blob);return url;},revokeObjectURL(url){objectUrls.delete(url);}},
+    localStorage: {getItem:key=>options.storage?.get(key) || null,setItem:(key,value)=>{if(options.storageFailure)throw new Error('Storage unavailable');if(options.storage)options.storage.set(key,value);}},
     history: {replaceState(_state, _title, hash) { location.hash = hash; }},
     Option: function Option(name, value) { const node = new Node('option'); node.textContent = name; node.value = value; return node; }
   });
   if (options.manifestGlobal) context.DND_CATALOG = sections;
   if (options.portable) { context.DND_CATALOG = sections; sections.forEach(s => { s.entries = data[s.key]; }); delete context.DndCatalog; }
   vm.runInContext(orderSource, context, {filename:'entry-order.js'});
+  vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/magic-items.js'),'utf8'),context,{filename:'magic-items.js'});
   vm.runInContext(source, context, {filename: 'app.js'});
   const reader = document.getElementById('reader');
-  return {document, reader, calls, sections, get hash() { return location.hash; }, async route(hash) { location.hash = hash; window.dispatch('hashchange'); await settle(); }, async change(id, value) { const select = document.getElementById(id); assert(select, 'Missing '+id); select.value = value; select.dispatch('change'); window.dispatch('hashchange'); await settle(); }, link(text) { return reader.querySelectorAll('a').find(n => n.textContent === text); }};
+  return {document, reader, calls, sections, downloads, get hash() { return location.hash; }, async route(hash) { location.hash = hash; window.dispatch('hashchange'); await settle(); }, async change(id, value) { const select = document.getElementById(id); assert(select, 'Missing '+id); select.value = value; select.dispatch('change'); window.dispatch('hashchange'); await settle(); }, link(text) { return reader.querySelectorAll('a').find(n => n.textContent === text); }};
 }
 
 const names = h => h.reader.querySelectorAll('.result-name').map(node => node.textContent);
 const leveledSpells = [entry('Alpha third', 'Arcane', {lvl:'3'}), entry('Zeta first', 'Arcane', {level:1}), entry('Élan first', 'Arcane', {lvl:'1'}), entry('Beta second', 'Mystic', {lvl:'2'}), entry('Zing', 'Arcane cantrips', {description:'A cantrip'}), entry('A missing', 'Arcane', {description:'No stated spell level'})];
+
+test('magic item browsing filters converted rules, hides original comparisons and saves item edits',async()=>{
+  const storage=new Map();
+  const items=[{...entry('Ember blade','Rare',{id:'ember',type:'Weapon',rarity:'Rare',desc:'An unblocked strike deals fire damage.',original_5e:'Obsolete healing surge wording.',conversion_notes:'Convert surge to rest dice.',source_name:'Workbook blade',source_price:'100 gp',source_ref:'Rare!A2:F2'}),source:'magic-items/rare.yaml'},
+    {...entry('Frost ring','Uncommon',{id:'frost',type:'Ring',rarity:'Uncommon',desc:'Cold resistance.'}),source:'magic-items/uncommon.yaml'}];
+  const h=boot({'magic-items':items},'',{storage});await h.route('#section=magic-items');
+  assert.equal(h.document.getElementById('group'),null);
+  assert.deepEqual(h.reader.querySelectorAll('.panel-name').map(node=>node.textContent),['Uncommon','Rare']);
+  await h.route('#section=magic-items&browse=all');
+  assert.deepEqual(names(h),['Ember blade','Frost ring']);assert(h.document.getElementById('magic-rarity'));assert(h.document.getElementById('magic-type'));
+  await h.change('magic-rarity','Rare');assert.deepEqual(names(h),['Ember blade']);
+  await h.route('#section=magic-items&filter=surge');assert.deepEqual(names(h),[]);
+  await h.route('#section=magic-items&entry=Ember+blade&group=Rare');
+  const original=h.reader.querySelectorAll('.magic-provenance').find(node=>node.querySelector('summary').textContent==='Original 5e text');assert(original);assert.equal(!!original.open,false);
+  const edit=h.reader.querySelector('.magic-editor'),form=edit.querySelector('form');
+  assert.equal(h.reader.querySelectorAll('.magic-provenance').length,3);
+  const sourceBlock=h.reader.querySelectorAll('.magic-provenance').find(node=>node.querySelector('summary').textContent==='Source workbook');assert(sourceBlock);assert.equal(!!sourceBlock.open,false);assert(sourceBlock.textContent.includes('Workbook blade'));
+  assert.equal(form.querySelectorAll('label').some(node=>/^Source /.test(node.querySelector('span')?.textContent || '')),false);
+  const description=form.querySelectorAll('label').find(node=>node.querySelector('span')?.textContent==='Converted rules');assert(description);
+  description.querySelector('textarea').value='A converted fire burst.';form.dispatch('submit');await settle();
+  assert(h.reader.textContent.includes('A converted fire burst.'));assert.equal(storage.size,1);
+  await h.route('#section=magic-items&filter=burst');assert.deepEqual(names(h),['Ember blade']);
+});
+
+test('source export validates and saves the unsaved editor draft before downloading its complete collection',async()=>{
+  const storage=new Map(),items=['One','Two'].map((name,index)=>({...entry(name,'Rare',{id:'item-'+index,desc:'Original converted rules.',source_name:name,original_5e:'Workbook original.'}),source:'magic-items/rare.yaml'}));
+  const h=boot({'magic-items':items},'',{storage});await h.route('#section=magic-items&entry=One&group=Rare');
+  const form=h.reader.querySelector('.magic-editor').querySelector('form');
+  const field=title=>form.querySelectorAll('label').find(node=>node.querySelector('span')?.textContent===title).querySelector(title==='Converted rules'?'textarea':'input');
+  const exportButton=form.querySelectorAll('button').find(node=>node.textContent==='Export source file');
+  field('Name').value='Campaign version';field('Converted rules').value='Unsaved converted burst.';exportButton.click();
+  assert.equal(h.downloads.length,1);assert.equal(h.downloads[0].name,'rare.yaml');assert.equal(storage.size,1);
+  const exported=JSON.parse(await h.downloads[0].blob.text());assert.equal(exported.entries.length,2);assert.equal(exported.entries[0].name,'Campaign version');assert.equal(exported.entries[0].desc,'Unsaved converted burst.');assert.equal(exported.entries[0].source_name,'One');assert.equal(exported.entries[1].name,'Two');
+  field('Name').value='';exportButton.click();assert.equal(h.downloads.length,1);assert.match(form.textContent,/Each item needs a name/);
+  field('Name').value='Two';exportButton.click();assert.equal(h.downloads.length,1);assert.match(form.textContent,/already has this name/);
+});
+
+test('source export recovers current editor changes when browser storage cannot save',async()=>{
+  const item={...entry('One','Rare',{id:'one',desc:'Original rules.'}),source:'magic-items/rare.yaml'};
+  const h=boot({'magic-items':[item]},'',{storageFailure:true});await h.route('#section=magic-items&entry=One&group=Rare');
+  const form=h.reader.querySelector('.magic-editor').querySelector('form');
+  form.querySelectorAll('label').find(node=>node.querySelector('span')?.textContent==='Converted rules').querySelector('textarea').value='Recovered current rules.';
+  form.querySelectorAll('button').find(node=>node.textContent==='Export source file').click();
+  assert.equal(h.downloads.length,1);assert.equal(JSON.parse(await h.downloads[0].blob.text()).entries[0].desc,'Recovered current rules.');assert.match(form.textContent,/Source file exported.*could not save/);
+});
 
 test('hex source tiers order within level zero without changing their spell level', async () => {
   const spells = [entry('B greater','Greater hexes',{lvl:'0'}),entry('Z minor','Minor hexes',{lvl:'0'}),entry('A major','Major hexes',{lvl:'0'}),entry('B minor','Minor hexes',{lvl:'0'}),entry('Z cantrip','Arcane cantrips',{lvl:'0'}),entry('A cantrip','Mystic cantrips',{lvl:'0'}),entry('A first','Arcane spells',{lvl:'1'}),entry('A unknown','Magic rules')];

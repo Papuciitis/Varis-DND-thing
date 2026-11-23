@@ -20,7 +20,8 @@
     const metadata = rules.metadata || {};
     const order = globalThis.EntryOrder;
     const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
-    const items = (rules.catalog || []).flatMap(section => section.key === "items" ? (section.entries || []).map(entry => ({...entry,entryId:JSON.stringify([section.key,entry.group || "",entry.name])})) : []);
+    const itemEntries = () => (rules.catalog || []).flatMap(section => ["items","magic-items"].includes(section.key) ? (section.entries || []).map(entry => ({...entry,entryId:globalThis.MagicItems?.entryId(section.key,entry) || JSON.stringify([section.key,entry.group || "",entry.name])})) : []);
+    let items=itemEntries();
     const weaponGroups = [...new Set(items.filter(entry => entry.details?.damage && entry.details?.type).map(entry => entry.group))].sort();
     const allSkills = Object.keys(globalThis.CharacterRules?.skillAbilities || {});
     const details = (title, value) => value ? `<details class="builder-rule"><summary>${escape(title)}</summary><div class="rule-body">${renderRule(value)}</div></details>` : "";
@@ -105,6 +106,7 @@
         const entry = items.find(item => item.entryId === row.entryId), weapon = entry?.details?.damage || entry?.details?.["AC bonus"];
         return `<section class="list-card"><div class="row"><h3>${escape(row.name)}</h3><button type="button" data-action="builder-remove-item" data-builder-index="${index}" aria-label="Remove ${escape(row.name)}">Remove</button></div>${grid(
           field("Equipped",`<input type="checkbox" data-builder-gear="equipped" data-builder-index="${index}"${row.equipped ? " checked" : ""}>`)+
+          (globalThis.MagicItems?.requiresAttunement(entry)?field("Attuned",`<input type="checkbox" data-builder-gear="attuned" data-builder-index="${index}"${row.attuned?" checked":""}>`):"")+
           field("Quantity",`<input type="number" min="0" value="${escape(row.quantity)}" data-builder-gear="quantity" data-builder-index="${index}">`)+
           field("Magic bonus",`<input type="number" min="-100" max="100" value="${escape(row.magicBonus || 0)}" data-builder-gear="magicBonus" data-builder-index="${index}">`)+
           (weapon ? field("Weapon or shield training",`<select data-builder-gear="weaponTraining" data-builder-index="${index}">${option("","Use class and chosen groups",!row.weaponTraining)}${option("proficient","Proficient",row.weaponTraining === "proficient")}${option("untrained","Untrained",row.weaponTraining === "untrained")}</select>`)+field("Two-handed grip",`<input type="checkbox" data-builder-gear="twoHanded" data-builder-index="${index}"${row.twoHanded ? " checked" : ""}>`,"Changes Versatile damage where the weapon has that property.")+field("Off-hand weapon",`<input type="checkbox" data-builder-gear="offHand" data-builder-index="${index}"${row.offHand ? " checked" : ""}>`) : "")
@@ -205,8 +207,8 @@
       if (data.builderGear !== undefined) {
         const row = draft.inventory[Number(data.builderIndex)], key = data.builderGear;
         if (!row) return true;
-        if (key === "equipped") draft = globalThis.CharacterEquipment?.equip ? globalThis.CharacterEquipment.equip(draft,Number(data.builderIndex),target.checked) : draft;
-        else if (["twoHanded","offHand"].includes(key)) row[key] = !!target.checked;
+        if (key === "equipped") draft = globalThis.CharacterEquipment?.equip ? globalThis.CharacterEquipment.equip(draft,Number(data.builderIndex),target.checked,rules.catalog) : draft;
+        else if (["twoHanded","offHand","attuned"].includes(key)) row[key] = !!target.checked;
         else if (["quantity","magicBonus"].includes(key) && Number.isInteger(Number(target.value))) row[key] = Number(target.value);
         else if (key === "weaponTraining" && ["","proficient","untrained"].includes(target.value)) row[key] = target.value;
         return true;
@@ -215,6 +217,7 @@
     }
 
     function start(character, fresh = false) {
+      items=itemEntries();
       draft = rules.enable(copy(character)); step = 0; open = true; isNew = !!fresh; itemToAdd = ""; render(); return true;
     }
     function cancel() { if (!open) return false; open = false; draft = null; onCancel(); return true; }
@@ -229,7 +232,7 @@
         const value = Number(target?.dataset?.builderStep); if (Number.isInteger(value) && value >= 0 && value < steps.length) step = value;
       } else if (action === "builder-add-item") {
         const entry = items.find(item => item.entryId === itemToAdd);
-        if (entry) draft.inventory.push({id:uid(),name:entry.name,entryId:entry.entryId,quantity:1,equipped:false,notes:""});
+        if (entry) draft.inventory.push({id:uid(),name:entry.name,entryId:entry.entryId,quantity:1,equipped:false,notes:"",...(globalThis.MagicItems?.inventoryFields(entry) || {})});
       } else if (action === "builder-remove-item") {
         const index = Number(target?.dataset?.builderIndex); if (Number.isInteger(index) && index >= 0 && index < draft.inventory.length) draft.inventory.splice(index,1);
       } else if (action === "builder-finish") {

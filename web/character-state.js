@@ -100,6 +100,7 @@
       if (kind === "inventory") {
         row.quantity = integer(row.quantity, label + " quantity", 1);
         row.equipped = boolean(row.equipped, label + " equipped");
+        if(row.attuned !== undefined)row.attuned=boolean(row.attuned,label+" attuned");
       } else if (kind === "spells") {
         row.prepared = boolean(row.prepared, label + " prepared");
       }

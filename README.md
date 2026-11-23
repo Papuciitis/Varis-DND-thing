@@ -93,6 +93,12 @@ See [the coverage comparison](COVERAGE.md) for counts and source reconciliation,
 
 The `draft-` directory names identify where material came from. Use the compiled entry to look up the current wording.
 
+## Campaign magic items
+
+**Magic items** is a separate collection of all 300 items from the campaign workbook, rewritten for the Varis system. The displayed description contains the converted rules. Original 5e text, source cells and conversion notes are available separately for comparison. Search and filter by rarity or item type, open an item, and expand **Edit this item** to adjust it.
+
+The six editable rarity files, original workbook, source snapshot, and shared conversion conventions are tracked under `data/magic-items/`. Page edits save in the current browser. Use **Export item edits** for a portable backup, or **Export source file** to replace that item's complete source collection and commit the edited rules. Rebuild after changing a source file. See [magic item conversion and editing](docs/magic-items.md) for the workflow and automation limits.
+
 The Windows launcher handles rebuilding. For a manual build with Python 3.12 or newer, run from the repository root:
 
 ```sh
@@ -113,7 +119,7 @@ git branch --show-current
 git pull --ff-only
 ```
 
-Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The character sheet was merged in PR #2 at `d7090bc`, character automation in PR #3 at `f7869b2`, the compendium data and monster foundation in PR #4 at `419fc5b`, and the character presentation update in PR #5 at `57f4d99`. The casting resources and ordering changes are on `codex/spell-resources-ordering`, based on that merged `main`, and await review.
+Commit or stash unfinished work before pulling or changing branches. `git pull --ff-only` updates the current branch; it does not switch branches. The character sheet was merged in PR #2 at `d7090bc`, character automation in PR #3 at `f7869b2`, the compendium data and monster foundation in PR #4 at `419fc5b`, the character presentation update in PR #5 at `57f4d99`, and casting resources and ordering in PR #6 at `5002bf2`.
 
 For a new source change, create a branch from the version you want to change, edit the relevant `data/` or `web/` files, run the launcher and inspect the result:
 
@@ -130,6 +136,6 @@ The JavaScript checks use Node 24 and read the built catalog, so build before ru
 
 ## GitHub Pages
 
-The phone addresses are [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html) and the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). Pages updates after changes reach `main` and its deployment succeeds. The presentation update is merged; the casting resources and ordering changes in `codex/spell-resources-ordering` await review and are not published by updating the branch alone.
+The phone addresses are [the character sheet on GitHub Pages](https://papuciitis.github.io/Varis-DND-thing/character.html) and the [compendium alongside it](https://papuciitis.github.io/Varis-DND-thing/). Pages updates after changes reach `main` and its deployment succeeds. Publishing a feature branch alone does not update the hosted page.
 
 Select **GitHub Actions** under the repository's Pages settings. The workflow installs Python 3.12 and Node 24, runs the Python checks, builds the site, and runs the JavaScript checks against that build. A successful run uploads a downloadable **vara-dnd-site** artifact containing the root pages, generated data and assets, and optional standalone copies. Extract the whole artifact and open `character.html` or `index.html` for direct disk use. Alternatively, the two pages in `offline/` can be used on their own. Keep the root pages, `assets/`, and `data/` together for either direct disk use or HTTP hosting. Pages deployment is limited to `main`; pull requests are validated without deployment.

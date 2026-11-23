@@ -1,0 +1,209 @@
+section: magic-items
+entries:
+- type: Wondrous item
+  desc: |-
+    An intelligent griffon-faced courier bag, with Intelligence 13, Wisdom 15 and Charisma 16. It sees and hears within 60 feet, speaks Common and griffon speech, and communicates telepathically with its wearer. It weighs 3 lb and holds up to 500 lb in 64 cubic feet. Retrieving a particular stored object takes an action. A breathing creature inside has 10 minutes of air, divided by the number of breathing occupants. Only an artifact can puncture the bag; a puncture returns it to its astral maker for repairs rather than permanently destroying it.
+
+    Superior holding. Placing another extradimensional container inside this bag, or vice versa, destroys the other container and moves its contents into this bag. Excess contents are scattered on the Astral Plane. Nesting two Griffon's Saddlebags returns both and all their contents to the astral forge.
+
+    Magic courier. The bag can offer delivery contracts naming a destination, deadline, payment and courier reward. Reaching the destination makes the named item appear for its recipient. If payment is not placed in the bag within 1 hour, the delivered item vanishes. Completed payment produces the agreed courier reward. The bag knows only what the contract states. It can refuse new contracts or magical services after deliberate betrayal, but must release the party's previously stored possessions. You may sell a genuine magic item to its astral forge for half its listed source price; an item without a price requires an agreed offer before transfer.
+
+    Astral services. The bag has 8 charges and regains 1d6 + 2 charges at dawn, up to 8. Spend 1 charge and an action to detect magical creatures, items and effects within 30 feet for 10 minutes, with concentration; their locations and broad magical purpose become apparent, but not a hidden curse. Spend 1 charge and 10 minutes handling an item to learn its powers, activation, charges and attunement requirements. Spend 5 charges and 10 minutes naming a person, place or object to receive a truthful account of one significant legend associated with it; this gives information, not a guaranteed answer to an unknown puzzle. These services are item powers and spend no class spell resource.
+
+    Courier unlocks. Completing one delivery unlocks flight (3 charges, action, touch, flying speed 60 feet for 10 minutes with concentration) and blink (3 charges, bonus action, teleport yourself 30 feet to a visible empty space). Completing three deliveries also unlocks dimension door (4 charges, action, teleport yourself and one willing adjacent creature up to 500 feet to a place you can describe; an occupied destination wastes the charges and leaves both at the origin), divination (4 charges, 10 minutes, receive a truthful brief omen about a proposed course within seven days) and secret chest (4 charges, action, store or retrieve one touched chest of up to 12 cubic feet in the forge; its contents count against the bag's capacity). Completing five deliveries also unlocks ethereal travel (7 charges, action, you and up to three willing creatures within 10 feet gain the Varis Ethereal condition for 1 hour), astral mansion (7 charges, action, create a visible door within 30 feet to a safe 24-hour shelter for twelve creatures, with food, water and beds; occupants return to the door when it ends), and plane shift (7 charges, action, you and up to seven willing adjacent creatures travel to a known named location on another plane, arriving at its nearest safe empty space). A service cannot create another permanent magic item or duplicate a courier reward.
+  conversion_notes: Replaced unavailable 5e spell dependencies with complete item powers and charge costs. Specified
+    holding capacity, air, retrieval, sale acceptance and unlock milestones. Astral services use Varis concentration
+    and Ethereal rather than importing a separate spell-slot system.
+  name: The Griffon's Saddlebag
+  group: Artifact
+  id: mi-artifact-002
+  rarity: Artifact
+  attunement: 'No'
+  price: 170000 GP
+  source_ref: Magic item generator.xlsx — Artifact!A2:D2
+  original_5e: 'These leather bags have the stylized face of a griffon on their front and appear across the multiverse
+    in strange locations. One may be found in the belly of a dragon, while another in the limbs of a great tree.
+    Regardless of where it’s found, a Griffon’s Saddlebag is typically discovered by an adventurer with a destiny.
+    The saddlebags are made by a great, six-armed griffon on the Astral Plane. Believed by some to be a demigod
+    of pocket dimensions and craftsmen everywhere, the griffon is a patron of artificers and creators across the
+    multiverse. The griffon creates magical items in its great forge using materials collected from various planes
+    of existence to add to its collection. While no one knows exactly how to contact the griffon, it has a knack
+    for knowing what items are needed by whom. Superior Holding. This 1-foot-wide bag always weighs 3 pounds, regardless
+    of what’s inside it. It functions as a bag of holding that can only be pierced by another artifact. Placing
+    a bag of holding, handy haversack, portable hole, or similar item inside the extradimensional space created
+    by the saddlebag, or vice versa, destroys the extradimensional item but leaves the saddlebag unharmed. Any item
+    stored within the other extradimensional space is magically moved to the space within the saddlebag instead.
+    If doing so overloads the bag, random contents from either space are scattered in the Astral Plane. Magic Courier.
+    At the GM’s discretion, the saddlebag’s beak opens up to reveal a letter. The magical script can be read by
+    all creatures with an Intelligence score of 4 or higher. The note is a delivery request or similar that includes
+    the name of an item as well as either specific or vague descriptions of a person or place. At the bottom of
+    the letter is a price listed in coins or other form of payment, as well as a date or time depending on its urgency.
+    If the saddlebag is brought to the described person or place within the allotted time, it dispenses the magical
+    item into the hand of the appropriate recipient. If the payment isn’t received by the bag within 1 hour of dispensing
+    the magic item, the item vanishes and is lost. After receiving the payment for an item in this way, the bag’s
+    beak reopens to dispense a reward for the courier. Sell Magic Items. The saddlebag has a connection to the griffon’s
+    forge on the Astral Plane. Depending on the magic item, you can sell a magic item to the saddlebag for half
+    the cost of its base price. Spells. The saddlebag has 8 charges and regains 1d6 + 2 expended charges daily at
+    dawn. While wearing the saddlebag, you can expend 1 or more of its charges to cast the following spells from
+    it: detect magic (1 charge), identify (1 charge), or legend lore (5 charges). Additional Spells. At the GM’s
+    discretion, such as after reaching certain milestones or completing Magic Courier quests, the saddlebag may
+    offer the following additional spells that can be cast from it: blink (3 charges), dimension door (4 charges),
+    divination (4 charges), etherealness (7 charges), fly (3 charges), magnificent mansion (7 charges), plane shift
+    (7 charges), or secret chest (4 charges). Sentience. The saddlebag is a sentient chaotic neutral bag with an
+    Intelligence of 13, a Wisdom of 15, and a Charisma of 16. It has hearing and normal vision out to a range of
+    60 feet. The bag can speak, read, and understand Common. When in the presence of only creatures it trusts, the
+    bag’s beak moves when it speaks. Otherwise, the bag communicates telepathically with its wearer. The bag can
+    speak and communicate with griffons. Personality. The bag’s purpose is to carry, collect, and deliver magic
+    items. Different bags have different personalities, but they are for the most part largely pleasant to talk
+    to. Their voices are bird-like and are filled with occasional coos and squawks, and their stitched eyes widen,
+    squint, and move expressively. If the bag’s wearer or allies fail to fulfill Magic Courier quests, it may stop
+    offering its magic to them. If it does, their items may be lost or inaccessible within the bag, or potentially
+    spat out. While the bag provides the names of item recipients and delivery locations, it doesn’t know any more
+    information than what was provided to it by the astral griffon. Regardless, it does its best to help its wearer
+    and allies find the specified person or location on the letter. Destroying the Griffon’s Saddlebag. While there
+    is no way to permanently destroy the saddlebag, piercing it with an artifact returns it to its place of origin
+    for repair before it’s returned to the multiverse in a new location. Placing a Griffon’s Saddlebag inside the
+    extradimensional space created by another Griffon’s Saddlebag returns both items to their place of origin and
+    sends all the items stored within them to the griffon’s forge on the Astral Plane.'
+  source_name: The Griffon's Saddlebag
+  source_price: 170000 GP
+  source_attunement: 'No'
+  source_rarity: Artifact
+- type: Weapon
+  base_item: Greatsword
+  magic_bonus: '3'
+  desc: |-
+    A +3 Greatsword. Use the current Varis Greatsword's damage, weapon group, properties and maneuvers. Its +3 enhancement adds to attack rolls, weapon damage and block DC. In its chipped form, each unblocked strike also deals 1d8 radiant damage.
+
+    Moonlight form. While attuned, use a bonus action to transform the blade or return it to its chipped form. The transformed blade sheds dim green light for 30 feet, and its additional radiant damage becomes 3d8. The form lasts until dismissed, dropped for 1 minute, or attunement ends.
+
+    Radiant techniques. While transformed, replace one attack of your Attack action with one of the following techniques. Each technique costs your bonus action or move action, like a Varis weapon maneuver. Swing: make a ranged weapon attack using your Greatsword attack modifier against a creature within 60 feet; on an unblocked strike it takes the sword's normal slashing damage and 3d8 radiant damage. Pillar: creatures in a 30-foot-long, 5-foot-wide line make a Dexterity save against 8 + your proficiency bonus + your Strength modifier + 3, taking 3d8 radiant and 2d6 bludgeoning damage on a failure, or half on a success. Thrust: the same save and damage in a 60-foot-long, 5-foot-wide line, using piercing instead of bludgeoning. Slam: creatures of your choice within 10 feet of you make that save, taking 3d8 radiant and 2d6 bludgeoning damage on a failure or half on a success. The save-based techniques are magical areas and cannot be blocked. They do not also make an ordinary weapon attack.
+
+    Empower. Once per turn when a moonlight attack or technique deals damage, you may expend a spell slot of level 1–6, or spend that many spell levels from a Cleric full slot, adding 2d8 radiant damage per level spent to that one attack or technique. A class resource that is not a spell slot cannot pay this cost. For a multi-target technique roll the extra dice once for all affected targets; a successful save halves this damage too.
+  conversion_notes: Inherited the current Greatsword rather than 5e damage or proficiency. Turned the four cinematic
+    attacks into explicit Varis maneuvers with action costs, areas, saves and Block handling. Capped slot empowerment
+    at the system's sixth spell level and specified Cleric full-slot spending.
+  name: Holy Moonlight Greatsword
+  group: Artifact
+  id: mi-artifact-003
+  rarity: Artifact
+  attunement: 'Yes'
+  price: 100000 GP
+  source_ref: Magic item generator.xlsx — Artifact!A3:D3
+  original_5e: "When unattuned this weapon looks like a claymore with chips and notches in it, once attuned you\
+    \ may use a bonus action to transform the blade into its secondary form. In it's secondary form this blade transforms\
+    \ from its broken shape into a beautiful great-sword that glows a soft green, the blade is almost translucent\
+    \ and is covered in lovely carvings. \n\nIn its secondary form you may swing, slash, stab, or slam this blade\
+    \ to cause different effects.\n\nSwinging the blade horizontally causes a quick moving slice of radiance to\
+    \ travel in the direction you swung.\n\nSlashing the blade vertical from the ground up will cause a fast traveling\
+    \ pillar of radiant energy to fly in the direction you slashed \n\nStabbing the blade will send a quick moving\
+    \ arrow of radiance in the direction you attacked and pierce through anything\n\nSlamming the blade into the\
+    \ ground will cause a wave of radiance to splash in all directions \n\nAll attacks done in this way do 3d8 radiant\
+    \ damage along with 2d6 of slashing, bludgeoning, or piercing damage depending on the strike. You may increase\
+    \ the blades damage by 2d8 when using the strikes by expending a 1st level spell slot any spell slot above 1st\
+    \ level increases another 2d8.\n\nThe blade naturally is a +3 great sword in it's altered form or not and does\
+    \ 1d8 radiant, 2d6 slashing damage in its original form and 3d8 radiant, 2d6 slashing damage in its secondary\
+    \ form\n\nProficiency with a greatsword allows you to add your proficiency bonus to the attack roll for any\
+    \ attack you make with it."
+  source_name: Holy Moonlight Greatsword
+  source_price: 100000 GP
+  source_attunement: 'Yes'
+  source_rarity: Artifact
+- type: Weapon
+  base_item: Short sword
+  magic_bonus: '1'
+  desc: |-
+    Gloom is a shadow-bladed Short sword from the hidden Thane of Shadows. Use the current Varis Short sword's damage, group, properties and maneuvers. While attuned, manifest or dismiss its blade without spending an action, once on each of your turns. Dormant Gloom grants +1 to attacks, weapon damage and block DC. Each unblocked strike deals an additional 1d4 cold damage. On an unblocked critical strike the target makes a DC 10 Constitution save or is Stunned until the end of its next turn. A successful save grants immunity to Gloom's stun for 24 hours.
+
+    Umbral embrace. After you have remained attuned for seven consecutive nights and reached character level 5, Gloom awakens at the next midnight. Its enhancement becomes +2 and cold rider becomes 1d6; edit its inventory Magic bonus to +2. The critical-strike save becomes DC 15. It gains Throw 20/60 while awakened. Before a thrown attack, you may merge with the blade. On an unblocked strike you teleport to an empty space adjacent to the target and grasp Gloom; on a miss or successful Block you remain in place and the weapon falls at the target's feet.
+
+    Numbing frost. While awakened, use an action to make a ranged spell attack against a creature within 60 feet, using your proficiency bonus and Intelligence modifier. On a hit it takes 1d8 cold damage, increasing to 2d8 at level 5 and 3d8 at level 9, and its speed falls by 10 feet until the start of your next turn. This ray cannot be blocked. You can use it a number of times equal to your proficiency bonus, regaining all uses at midnight after feeding Gloom.
+
+    Hunger. Awakening also binds its hunger to you. It is fed when you reduce a hostile, living creature with at least 1 maximum HP to 0 HP with an unblocked Gloom strike; conjured creatures and creatures deliberately bred or helplessly sacrificed for this purpose do not feed it. After feeding, it can go a number of days equal to your Intelligence modifier, minimum one, without feeding again. At each subsequent midnight it consumes one available rest die. If none remain, it rejects you, breaks attunement and deals 1d10 unblockable psychic damage per character level. You can never attune to it again. Rest dice already consumed remain spent until recovered by a rule that normally restores them. Ending attunement voluntarily before rejection ends the hunger but loses the awakened bond; a later bond must satisfy the seven-night requirement anew.
+  conversion_notes: Replaced hit-die loss with rest-die spending, original level-17 scaling with the twelve-level
+    system's 1/5/9 thresholds, and an unspecified awakening milestone with a fixed condition. Added Varis attack-block
+    distinctions, explicit hunger targets and timing, and mapped inherited Short sword enhancements to block DC.
+  name: Gloom (Shortsword)
+  group: Artifact
+  id: mi-artifact-004
+  rarity: Artifact
+  attunement: 'Yes'
+  price: 80000 GP
+  source_ref: Magic item generator.xlsx — Artifact!A4:D4
+  original_5e: "This extraordinary artifact was forged, in eons past, within the ever elusive walls of the Thane\
+    \ of Shadows. The Thane is a pocket Shadow dimension that, for a brief time, grants a select few admittance\
+    \ within its umbral walls as well as access to its priceless riches and knowledge. This immeasurable bounty\
+    \ has been accumulated by its countless previous visitors, who in return, must leave within the Thane, something\
+    \ within of great valuable to themselves. These select visitors are all beings who study, worship or are in\
+    \ some way tied to the essence of shadow.  This \"path\" to the Thane unfolds only when very specific conditions,\
+    \ astrological movements and chronological markers align. After this brief interlude, the connection expires\
+    \ and the Thane seals its entry once more, continuing on its march throughout the infinite planes of the multiverse.\n\
+    \nAt first glance, Gloom appears to be nothing more that a rune etched, leather wrapped adamantine handle befitting\
+    \ a long dagger, or even a short sword. A careless inspection may lead someone to disregard it as nothing more\
+    \ than an ornate handle with a shattered blade. In reality, the blade itself is a razor thin, physical manifestation\
+    \ of living shadow. This flat, two dimensional blade bleeds into existence from its adamantine handle with a\
+    \ mere thought from its attuned wielder. Once manifested, the blade continues to bleed shadow as it slices through\
+    \ most things with uncanny ease.\n\nDormant Attuned State:\nThe wielder gains a +1 bonus to attack and damage\
+    \ rolls.\nThis blade deals an additional 1d4 cold damage, as the tendrils of darkness bleeding from the blade\
+    \ drain the warmth from the target.\nWhenever a creature is struck with a Critical Hit, the target must make\
+    \ a DC 10 Constitution saving throw or become stunned until the end of the following round, (this is in addition\
+    \ to the Critical Hit damage). On a success, they are immune to being stunned by this effect for the next 24\
+    \ hours.\nGloom's Umbral Embrace\nIn its fully awakened form, after prolonged attunement, (ex: a number of milestones/character\
+    \ levels decided by the player and DM, or reaching the next tier of play), the bond between Gloom's bleeding\
+    \ shadows and the darkness within the wielder becomes deeper and leads to a symbiotic relationship of sorts.\
+    \ The wielder is granted greater access to the items dark magics, and in exchange the artifact uses the wielder\
+    \ to feed on the darkness born from the demise of his foes. Gloom wants to be fed at all times, but the wielder's\
+    \ bond and partial mastery over the blade allows for a degree of control. The artifact's hunger can be held\
+    \ at bay for a number of days equal to the wielder's Intelligence modifier.  Every night, at the \"witching\
+    \ hour\", the wielder feels the darkness being drawn from him as the blade feeds on the energy from foes slain,\
+    \ recharging it's dark energies.\n\nExalted Gloom:\nThe attack and damage bonus increase to a +2 .\nThe blade's\
+    \ cold damage also increases to 1d6.\nIf struck with a Critical Hit, the target must now make a DC 15 Constitution\
+    \ saving throw or become stunned until the end of the following round. On a success, they are immune to being\
+    \ stunned by this effect for the next 24 hours.\nRidding the Shadows: When Gloom is thrown at a target, but\
+    \ before it hits, the wielder can choose to transmute his form and become one with the blade's shadows.\nThe\
+    \ wielder may then teleport along with Gloom and arrive instantly wherever the blade impacts, emerging adjacent\
+    \ to the target. If the attack misses the teleport fails and the blade's handle falls to the ground.  \nNumbing\
+    \ Frost: The wielder may channel Gloom's frigid shadows, targeting enemies within range.\nThe wielder may fling\
+    \ an icy tendril of shadow to a target within 60 ft.\nThe tendril has the same propertied as a ray of frost.\n\
+    This ability's damage increases based on the character's current level, (cold damage dealt is 1d8 at 1st, 2d8\
+    \ at 5th, 3d8 at 11th, and 4d8 at 17th).\nNumbing Frost may be a number of time equal to the wielder's proficiency\
+    \ modifier.\nGloom's Hunger: The blade's hunger must be sated. If the blade has not been fed within the allotted\
+    \ time, (this may be held at bay number of days equal to wielder's Intelligence modifier), the artifact begins\
+    \ to feed on the wielder.\nThe wielder looses one Hit Die daily for every day it has not been fed, after the\
+    \ aloted time.\nThese lost Hit Die cannot be used to heal during a short rest. If the Hit Die reach zero, the\
+    \ blade rejects the user and deems him unworthy to be his wielder, forcibly breaking their attunement bond.\n\
+    The forced un-attunement deals 1d10 of psychic damage per wielder's level, and may never be attuned to Gloom\
+    \ again. \nProficiency with a shortsword allows you to add your proficiency bonus to the attack roll for any\
+    \ attack you make with it."
+  source_name: Gloom (Shortsword)
+  source_price: 80000 GP
+  source_attunement: 'Yes'
+  source_rarity: Artifact
+- type: Wondrous item
+  desc: |-
+    A four-cornered mirror that records a creature's physical condition. Spend 1 minute looking into it to store a snapshot in one intact corner. Each corner holds one snapshot; overwrite or erase an existing snapshot by spending the same minute. A snapshot records identity, current and maximum HP, temporary HP, Arcane Health, Block and temporary Block, Fatigue, successful and failed death saves, conditions, severed body parts, expended rest dice, spell resources and other limited-use character resources. It does not record possessions, level, experience, money, prepared choices or learned information.
+
+    Restore. While within 5 feet of the living or dead recorded creature, use an action to name its snapshot and smash the corresponding corner. The corner and snapshot are destroyed. The target must be willing, or must have been willing when the snapshot was made and be unable to choose now. It returns to the recorded physical condition at its current location, including restoring life if its soul is willing and free. Maximum HP cannot exceed its current character-sheet maximum, and each restored resource is capped by its current capacity. Disease, curses and conditions recorded in the snapshot return as well. Effects gained afterward end unless their source is an ongoing external area or a curse attached to an item the creature still carries. The restoration cannot change another creature or return a missing soul against its will.
+
+    A corner can be used only once. Breaking the fourth corner destroys the mirror. Broken corners cannot be repaired or restored by the mirror itself. Recording, erasing or restoring a snapshot creates no objects, duplicates no wealth, reverses no experience and never raises character level. An artifact-level crafting quest is required to make a new mirror; no ordinary class spell or copied blueprint produces one automatically.
+  conversion_notes: Replaced the undefined 5e Wish crafting dependency with artifact crafting and defined snapshots
+    for Varis health, Block, Fatigue, rest dice and casting resources. Restricted restoration to the recorded creature's
+    physical state, preventing equipment, wealth, level and experience duplication while retaining four one-use
+    restorations.
+  name: Mirror of Restoration
+  group: Artifact
+  id: mi-artifact-005
+  rarity: Artifact
+  attunement: 'No'
+  price: 60000 GP
+  source_ref: Magic item generator.xlsx — Artifact!A5:D5
+  original_5e: 'When a user peers into it, it makes a near-replica "save" of they current condition, including hit
+    points, level, experience, equipment, etc. The mirror corners can be deliberately smashed to restore the user
+    to their current condition, but also destroying that corner and losing 1 save. Once all 4 corners are smashed,
+    the Mirror is destroyed. "Saves"can be erased in case they want to create more up-to-date replica. Mirror can
+    store up to 4 saves. They can 4 different saves from one character, or one save from 4 different characters.
+    Crafting it requires the Wish spell. '
+  source_name: Mirror of Restoration
+  source_price: 60000 GP
+  source_attunement: 'No'
+  source_rarity: Artifact

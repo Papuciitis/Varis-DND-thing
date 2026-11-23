@@ -21,6 +21,7 @@
     document.getElementById("save-status").textContent = "Autosaves on this device";
   }
   const State = globalThis.CharacterState;
+  for(const section of globalThis.DND_CATALOG || [])globalThis.MagicItems?.apply(section);
   const Rules = globalThis.CharacterRules.create(globalThis.DND_CHARACTER_RULES || {}, globalThis.DND_CATALOG || []);
   const Order = globalThis.EntryOrder;
   const storageKey = "vara.character-sheets.v1";
@@ -37,9 +38,10 @@
   let dialogGeneration = 0;
   const entries = new Map();
   function refreshCatalog() {
+    for(const section of globalThis.DND_CATALOG || [])globalThis.MagicItems?.apply(section);
     catalog = (globalThis.DND_CATALOG || []).flatMap(section => section.entries.map(entry => ({
-    ...entry, section: section.key, sectionTitle: section.title, entryId: JSON.stringify([section.key, entry.group, entry.name]),
-    searchText: (entry.name + " " + entry.group + " " + JSON.stringify(entry.details)).toLowerCase()
+    ...entry, section: section.key, sectionTitle: section.title, entryId: globalThis.MagicItems?.entryId(section.key,entry) || JSON.stringify([section.key, entry.group, entry.name]),
+    searchText: (entry.name + " " + entry.group + " " + JSON.stringify(section.key==="magic-items" && globalThis.MagicItems ? globalThis.MagicItems.searchable(entry) : entry.details)).toLowerCase()
     })));
     entries.clear();
     for (const entry of catalog) entries.set(entry.entryId, entry);
@@ -403,7 +405,7 @@
     const actions = button("Add from rules", "catalog", `data-kind="${kind}"`, "button-primary") + button("Add custom", "add-item", `data-list="${list}"`);
     const body = items.length ? `<div class="list">${items.map(({item,index,rule}) => {
       let toggle = "";
-      if (list === "inventory") toggle = `<div class="inline-fields"><label class="check-label"><input type="checkbox" data-path="inventory.${index}.equipped" ${item.equipped ? "checked" : ""}>Equipped</label>${numberField("Quantity", `inventory.${index}.quantity`)}</div>`;
+      if (list === "inventory") toggle = `<div class="inline-fields"><label class="check-label"><input type="checkbox" data-path="inventory.${index}.equipped" ${item.equipped ? "checked" : ""}>Equipped</label>${globalThis.MagicItems?.requiresAttunement(rule)?`<label class="check-label"><input type="checkbox" data-path="inventory.${index}.attuned" ${item.attuned?'checked':''}>Attuned</label>`:''}${numberField("Quantity", `inventory.${index}.quantity`)}</div>`;
       if (list === "spells") toggle = `<label class="check-label"><input type="checkbox" data-path="spells.${index}.prepared" ${item.prepared ? "checked" : ""}>Readied / prepared</label>`;
       const details = rule?.details || {};
       const meta = [rule?.group, entryLevelLabel(rule), details.casting, details.range].filter(value => typeof value === "string" && value).join(" · ");
@@ -529,13 +531,20 @@
     if (!entry) return notify("This rule is unavailable in the current compendium.");
     const route = new URLSearchParams({section: entry.section, entry: entry.name, group: entry.group});
     const footer = (canAdd ? button("Add to character", "add-catalog", `data-entry-id="${escape(entryId)}"`, "button-primary") + button("Back to rules", "catalog", `data-kind="${catalogKind}"`) : "") + `<a class="button button-quiet" href="index.html#${escape(route)}" target="_blank" rel="noopener">Open in compendium</a>`;
-    openDialog(entry.name, `<p class="list-card-meta">${escape([entry.sectionTitle, entry.group].filter(Boolean).join(" · "))}</p><div class="detail-content">${ruleContent(entry.details)}</div><p class="section-note">Source · ${escape(entry.source)}</p>`, footer);
+    let visible=entry.details, comparison="";
+    if(entry.section==="magic-items" && globalThis.MagicItems){
+      visible=globalThis.MagicItems.searchable(entry);delete visible.id;
+      comparison=Object.entries(entry.details).filter(([key])=>/^(?:original_|conversion_notes$)/.test(key)).map(([key,value])=>`<details><summary>${escape(key==="original_5e"?"Original 5e text":labelize(key))}</summary>${ruleContent(value)}</details>`).join("");
+      const source=Object.fromEntries(Object.entries(entry.details).filter(([key])=>/^source_/.test(key)).map(([key,value])=>[key.replace(/^source_/,""),value]));
+      if(Object.keys(source).length)comparison+=`<details><summary>Source workbook</summary>${ruleContent(source)}</details>`;
+    }
+    openDialog(entry.name, `<p class="list-card-meta">${escape([entry.sectionTitle, entry.group].filter(Boolean).join(" · "))}</p><div class="detail-content">${ruleContent(visible)}${comparison}</div><p class="section-note">Source · ${escape(entry.source)}</p>`, footer);
   }
 
   function openCatalog(kind) {
     catalogKind = kind;
     catalogLimit = 30;
-    const allowed = kind === "spells" ? ["spells"] : kind === "inventory" ? ["items"] : ["classes", "feats", "races", "backgrounds"];
+    const allowed = kind === "spells" ? ["spells"] : kind === "inventory" ? ["items", "magic-items"] : ["classes", "feats", "races", "backgrounds"];
     const groups = [...new Set(catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules").map(entry => entry.group).filter(Boolean))].sort((a,b)=>Order.compareGroups(kind,a,b));
     const preferences = catalogPreferences[kind];
     const levels = [...new Set(catalog.filter(entry=>allowed.includes(entry.section)).map(Order.level).filter(level=>level!==null))].sort((a,b)=>a-b);
@@ -545,7 +554,7 @@
   }
 
   function renderCatalogResults() {
-    const allowed = catalogKind === "spells" ? ["spells"] : catalogKind === "inventory" ? ["items"] : ["classes", "feats", "races", "backgrounds"];
+    const allowed = catalogKind === "spells" ? ["spells"] : catalogKind === "inventory" ? ["items", "magic-items"] : ["classes", "feats", "races", "backgrounds"];
     const query = byId("catalog-query").value.toLowerCase().trim();
     const group = byId("catalog-group").value;
     const words = query.split(/\s+/).filter(Boolean);
@@ -639,8 +648,8 @@
     "casting-spend"(target){try{const level=Number(target.closest('.casting-pool').querySelector('[data-cast-level]')?.value||0)||undefined;character=globalThis.CharacterCasting.spend(character,values().casting,target.dataset.poolId,{level});commit();render();}catch(error){notify(error.message);}},
     "casting-whole"(target){try{const level=Number(target.closest('.casting-pool').querySelector('[data-cast-level]')?.value||0)||undefined;character=globalThis.CharacterCasting.spend(character,values().casting,target.dataset.poolId,{level,whole:true});commit();render();}catch(error){notify(error.message);}},
     "casting-restore"(target){try{character=globalThis.CharacterCasting.change(character,values().casting,target.dataset.poolId,1);commit();render();}catch(error){notify(error.message);}},
-    builder() { if(Wizard)Wizard.start(character,false); },
-    identity() {if(character.build?.enabled && Wizard)Wizard.start(character,false);else identityDialog();},
+    builder() { if(Wizard)return withSections((globalThis.DND_CATALOG || []).filter(section=>section.key==="magic-items").map(section=>section.key),()=>Wizard.start(character,false),true); },
+    identity() {if(character.build?.enabled && Wizard)return actions.builder();else identityDialog();},
     combat: combatDialog,
     casting: castingDialog,
     "close-dialog": closeDialog,
@@ -648,7 +657,7 @@
     export: exportBackup,
     import() { byId("backup-input").click(); },
     print() { window.print(); },
-    new() { persist(); if(Wizard && Rules.metadata.classes?.length){Wizard.start(State.createCharacter(),true);return;} character = State.createCharacter(); library.push(character); commit(); activeTab = "sheet"; render(); identityDialog(); },
+    new() { persist(); if(Wizard && Rules.metadata.classes?.length){return withSections((globalThis.DND_CATALOG || []).filter(section=>section.key==="magic-items").map(section=>section.key),()=>Wizard.start(State.createCharacter(),true),true);} character = State.createCharacter(); library.push(character); commit(); activeTab = "sheet"; render(); identityDialog(); },
     resource(target) { changeResource(target.dataset.key, Number(target.dataset.delta)); },
     health(target) {
       const amount = Number(byId("health-amount").value);
@@ -690,7 +699,7 @@
     condition() { return withSections(["conditions"], () => openDialog("Add condition", `<label class="field"><span>Condition or temporary effect</span><input id="condition-name" type="text" list="condition-options" maxlength="120" placeholder="Choose or type a condition"></label><datalist id="condition-options">${catalog.filter(entry => entry.section === "conditions").map(entry => `<option value="${escape(entry.name)}"></option>`).join("")}</datalist>`, button("Add condition", "save-condition", "", "button-primary")), true); },
     "save-condition"() { const name = byId("condition-name").value.trim(); if (!name) return notify("Enter a condition name."); if (!character.conditions.includes(name)) character.conditions.push(name); closeDialog(); commit(); render(); },
     "remove-condition"(target) { character.conditions.splice(Number(target.dataset.index), 1); commit(); render(); },
-    catalog(target) { const kind = target.dataset.kind; return withSections(kind === "spells" ? ["spells"] : kind === "inventory" ? ["items"] : ["classes", "feats", "races", "backgrounds"], () => openCatalog(kind), true); },
+    catalog(target) { const kind = target.dataset.kind; return withSections(kind === "spells" ? ["spells"] : kind === "inventory" ? ["items", ...((globalThis.DND_CATALOG || []).some(section=>section.key==="magic-items")?["magic-items"]:[])] : ["classes", "feats", "races", "backgrounds"], () => openCatalog(kind), true); },
     "catalog-more"() { catalogLimit += 30; renderCatalogResults(); },
     "catalog-read"(target) { readRule(target.dataset.entryId, true); },
     "read-rule"(target) { readRule(target.dataset.entryId); },
@@ -700,7 +709,7 @@
       const list = catalogKind;
       if (list !== "inventory" && character[list].some(item => item.entryId === entry.entryId)) return notify("This rule is already on your character sheet.");
       const item = {id: uid(), entryId: entry.entryId, name: entry.name, notes: ""};
-      if (list === "inventory") Object.assign(item, {quantity: 1, equipped: false});
+      if (list === "inventory") Object.assign(item, {quantity: 1, equipped: false}, globalThis.MagicItems?.inventoryFields(entry) || {});
       if (list === "spells") item.prepared = false;
       character[list].push(item);
       commit(); render();
@@ -737,7 +746,7 @@
     const previous = getPath(path);
     if (previous === value || (previous == null && value === 0 && path.startsWith("training.skillBonuses."))) return;
     setPath(path, value);
-    if(character.build?.enabled && /^inventory\.\d+\.equipped$/.test(path))character=globalThis.CharacterEquipment.equip(character,Number(path.split('.')[1]),value);
+    if(character.build?.enabled && /^inventory\.\d+\.equipped$/.test(path))character=globalThis.CharacterEquipment.equip(character,Number(path.split('.')[1]),value,Rules.catalog);
     if(character.build?.enabled){character=Rules.reconcile(character);computed=null;}
     scheduleSave();
     refreshCalculations();

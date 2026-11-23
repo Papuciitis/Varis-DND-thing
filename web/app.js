@@ -19,9 +19,14 @@
   const perPage = 24;
   const order = globalThis.EntryOrder;
   const collate = new Intl.Collator("en", {numeric: true, sensitivity: "base"});
+  const rarityOrder=["common","uncommon","rare","very rare","legendary","artifact"];
+  const compareRarity=(a,b)=>{
+    const rank=value=>{const index=rarityOrder.indexOf(String(value).toLowerCase());return index<0?99:index;};
+    return rank(a)-rank(b)||collate.compare(a,b);
+  };
   const families = [
     ["Characters", ["classes", "races", "backgrounds", "feats"]],
-    ["Magic & equipment", ["spells", "items", "weapon-rules"]],
+    ["Magic & equipment", ["spells", "items", "magic-items", "weapon-rules"]],
     ["At the table", ["rules", "conditions", "monsters", "design-notes"]]
   ];
   let initialized = false;
@@ -70,10 +75,11 @@
   }
   const groupsBySection = new Map();
   function indexSection(section) {
+    globalThis.MagicItems?.apply(section);
     dataBySection.set(section.key, section.entries.map(entry => {
       const name = norm(entry.name);
       const lead = norm([entry.name, entry.group, section.title].join(" "));
-      const body = norm(JSON.stringify(entry.details) ?? "").replace(/\\n/g, " ");
+      const body = norm(JSON.stringify(section.key === "magic-items" && globalThis.MagicItems ? globalThis.MagicItems.searchable(entry) : entry.details) ?? "").replace(/\\n/g, " ");
       return {section, entry, name, lead, text: lead + " " + body};
     }));
     all = sections.flatMap(section => dataBySection.get(section.key) || []);
@@ -82,7 +88,7 @@
       const group = browseGroup(section, entry.group);
       groups.set(group, (groups.get(group) || 0) + 1);
     }
-    groupsBySection.set(section.key, [...groups].sort(([a], [b]) => order.compareGroups(section, a, b)));
+    groupsBySection.set(section.key, [...groups].sort(([a], [b]) => section.key==="magic-items"?compareRarity(a,b):order.compareGroups(section, a, b)));
   }
   function initialize() {
     if (initialized) return Promise.resolve();
@@ -264,7 +270,7 @@
     const sort = selectedSort(params, kind, filter);
     const grouped = groups.filter(([name]) => name);
     const baseClassView = section.key === "classes" && !group && !level && !filter && !params.browse;
-    const groupedView = !["classes", "spells", "monsters"].includes(section.key) && grouped.length > 1 && !group && !level && !filter && !params.browse;
+    const groupedView = !["classes", "spells", "monsters"].includes(section.key) && grouped.length > 1 && !group && !level && !filter && !params.browse && !params.rarity && !params.type;
     const parts = [[section.title, group ? base : null]];
     if (group) parts.push([cap(group), null]);
     crumbs(parts);
@@ -275,6 +281,11 @@
       head.append(link("Browse all class entries", {...base, browse: "all"}, "text-link"));
     }
     reader.append(head);
+    if (section.key === "magic-items" && globalThis.MagicItems) {
+      head.append(el("p", "index-intro", "Converted for the Varis rules. Browse the collection or open an item to edit its rules."));
+      head.append(link("Using converted magic items",{section:"rules",group:"Magic items",entry:"Using converted magic items"},"text-link"));
+      reader.append(globalThis.MagicItems.toolbar(section, () => {indexSection(section);draw();}));
+    }
     const form = el("form", "filters");
     form.setAttribute("role", "search");
     form.setAttribute("aria-label", "Filter " + section.title);
@@ -295,7 +306,7 @@
       event.preventDefault();
       setFilter(input.value, true);
     });
-    if (grouped.length > 1 && !baseClassView) {
+    if (grouped.length > 1 && !baseClassView && section.key!=="magic-items") {
       const [field, select] = labelledSelect("Group", "group");
       select.append(new Option("All groups", ""));
       for (const [title] of grouped) select.append(new Option(cap(title), title));
@@ -314,6 +325,18 @@
         form.append(field);
       }
     }
+    if (section.key === "magic-items") {
+      for (const [key, title] of [["rarity", "Rarity"], ["type", "Item type"]]) {
+        const values = [...new Set(section.entries.map(entry => String(entry.details?.[key] || "")).filter(Boolean))].sort(key==="rarity"?compareRarity:collate.compare);
+        if (!values.length) continue;
+        const [field, select] = labelledSelect(title, "magic-" + key);
+        select.append(new Option("All " + (key === "rarity" ? "rarities" : "types"), ""));
+        values.forEach(value => select.append(new Option(cap(value), value)));
+        select.value = params[key] || (key==="rarity"?group:"");
+        select.addEventListener("change", () => openFilters({...params,[key]:select.value,...(key==="rarity"?{group:""}:{}),page:"",browse:"all"}));
+        form.append(field);
+      }
+    }
     if (kind) form.append(sortControl(params, kind, filter));
     reader.append(form);
     if (!section.entries.length) {
@@ -322,7 +345,7 @@
     }
     if (groupedView) {
       const groupsHead = el("div", "subhead");
-      groupsHead.append(el("h2", "", "Browse by group"), link("Browse all " + countText(section.entries.length), {...base, browse: "all"}, "text-link"));
+      groupsHead.append(el("h2", "", section.key==="magic-items"?"Browse by rarity":"Browse by group"), link("Browse all " + countText(section.entries.length), {...base, browse: "all"}, "text-link"));
       reader.append(groupsHead);
       const grid = el("div", "groups");
       for (const [title, n] of grouped) grid.append(panelLink(cap(title), n, {...base, group: title}));
@@ -334,7 +357,8 @@
     } else {
       const rows = dataBySection.get(section.key).filter(({entry}) =>
         (!baseClassView || entry.group === "Base class") &&
-        (!group || browseGroup(section, entry.group) === group) && (!level || entryLevel(entry) === level));
+        (!group || browseGroup(section, entry.group) === group) && (!level || entryLevel(entry) === level) &&
+        (section.key !== "magic-items" || ((!params.rarity || entry.details?.rarity === params.rarity) && (!params.type || entry.details?.type === params.type))));
       reader.append(resultList(matching(rows, filter, sort), baseClassView ? {...params, group: "Base class"} : params));
     }
   }
@@ -483,7 +507,8 @@
   }
   const statKeys = new Set(["damage", "type", "types", "size", "speed", "lvl", "level", "casting", "casting_time",
     "range", "duration", "components", "cooldown", "target", "weight", "cost", "attribute_bonuses", "tradition", "school", "status",
-    "prerequisite", "prerequisites", "requirements", "save", "base ac", "ac bonus", "current_rules"]);
+    "prerequisite", "prerequisites", "requirements", "save", "base ac", "ac bonus", "current_rules", "rarity", "attunement",
+    "price", "base_item", "magic_bonus"]);
   function details(entry) {
     const value = entry.details;
     if (plain(value) || Array.isArray(value) || isTable(value)) {
@@ -493,8 +518,17 @@
     const stats = el("dl", "stats");
     const intro = fragment();
     const chapters = [];
+    const provenance = [];
+    const sourceFields = {};
     for (const [key, item] of Object.entries(value)) {
       if ((key === "name" && item === entry.name) || (key === "group" && item === entry.group)) continue;
+      if (key === "id") continue;
+      if (entry.source?.startsWith("magic-items/") && /^(?:original_|source_|conversion_notes$)/.test(key)) {
+        if(/^source_/.test(key)){sourceFields[key.replace(/^source_/,"")]=item;continue;}
+        const block=el("details","chapter magic-provenance");
+        block.append(el("summary","",key === "original_5e" ? "Original 5e text" : label(key)),renderValue(item,3,label(key)));
+        provenance.push(block);continue;
+      }
       if (key === "summons") continue;
       if (key === "sections" && isSections(item)) { chapters.push(...item); continue; }
       if (key === "draft_note" && plain(item)) {
@@ -512,8 +546,18 @@
         stats.append(stat);
       } else chapters.push({heading: label(key), body: item});
     }
+    if(Object.keys(sourceFields).length){
+      const block=el("details","chapter magic-provenance");
+      block.append(el("summary","","Source workbook"),renderValue(sourceFields,3,"Source workbook"));
+      provenance.push(block);
+    }
     if (stats.childElementCount) reader.append(stats);
     reader.append(intro);
+    if(provenance.length) {
+      // The converted rules lead; source comparisons stay closed until requested.
+      for(const item of chapters)reader.append(textField(item.heading,item.body,2));
+      reader.append(...provenance);return;
+    }
     const long = chapters.length > 4 || (chapters.length > 1 && JSON.stringify(chapters).length > 4200);
     if (!long) {
       for (const item of chapters) reader.append(textField(item.heading, item.body, 2));
@@ -690,6 +734,12 @@
       if (links.childElementCount) header.append(links);
     }
     reader.append(header);
+    if (section.key === "magic-items" && globalThis.MagicItems) {
+      header.append(globalThis.MagicItems.editor(section, entry, updated => {
+        indexSection(section);
+        if(updated && location.hash !== href(entryRoute(section,updated)))openFilters(entryRoute(section,updated));else draw();
+      }));
+    }
     if (section.key === "classes") {
       const archetypes = classArchetypes(section, entry);
       if (archetypes) reader.append(archetypes);

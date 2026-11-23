@@ -15,7 +15,7 @@
   function entriesFrom(catalog) {
     return (catalog || []).flatMap(section => (section.entries || []).map(entry => ({
       ...entry, section: section.key,
-      entryId: JSON.stringify([section.key, entry.group || "", entry.name])
+      entryId: globalThis.MagicItems?.entryId(section.key,entry) || JSON.stringify([section.key, entry.group || "", entry.name])
     })));
   }
 
@@ -35,17 +35,22 @@
     return category(row);
   }
 
-  function equip(character, index, on) {
+  function equip(character, index, on, catalog = []) {
     const result = globalThis.CharacterState?.normalizeCharacter
       ? globalThis.CharacterState.normalizeCharacter(character) : clone(character);
     const inventory = result.inventory || [];
     if (!Number.isInteger(index) || !inventory[index]) return result;
     const selected = inventory[index];
     selected.equipped = Boolean(on) && number(selected.quantity, 1) > 0;
-    const kind = savedCategory(selected);
+    const available=entriesFrom(catalog);
+    const kindOf=row=>{
+      const entry=available.find(entry=>entry.entryId===row.entryId);
+      return entry ? category(globalThis.MagicItems?.equipment(entry,catalog) || entry) : savedCategory(row);
+    };
+    const kind = kindOf(selected);
     if (selected.equipped && (kind === "armor" || kind === "shield")) {
       inventory.forEach((row, other) => {
-        if (other !== index && savedCategory(row) === kind) row.equipped = false;
+        if (other !== index && kindOf(row) === kind) row.equipped = false;
       });
     }
     return result;
@@ -132,10 +137,10 @@
     const baseDamageMod = trained && (!row.offHand || context.offHandAbilityDamage) ? mods[damageAbility] : 0;
     if (overdraw) warn(entry.name + ": Overdraw uses Strength for damage here; its interaction with normal ability damage is unresolved. Choose a damage ability to override it.");
     let damage = String(entry.details.damage || "-");
-    const versatile = props.match(/\bversatile\s+(\d+d\d+[bps]?)/i);
+    const versatile = props.match(/\bversatile\s+(\d+d\d+)(\s+(?:bludgeoning|piercing|slashing|acid|cold|fire|force|lightning|necrotic|poison|psychic|radiant|thunder)\b|[bps]\b)?/i);
     if (row.twoHanded && versatile) {
-      const type = damage.match(/[bps]$/i)?.[0] || "";
-      damage = versatile[1] + (/[bps]$/i.test(versatile[1]) ? "" : type);
+      const suffix = damage.match(/^\s*\d+d\d+(.*)$/i)?.[1] || "";
+      damage = versatile[1] + (versatile[2] || suffix);
     }
     const dc = props.match(/(?:^|[,;])\s*dc\s*([+-]+)/i)?.[1] || "";
     const dcBonus = [...dc].reduce((sum, sign) => sum + (sign === "+" ? 1 : -1), 0);
@@ -184,10 +189,12 @@
     const trained = row.weaponTraining === "proficient" || (row.weaponTraining !== "untrained" && defenseTrained(entry, context));
     const ability = abilities.includes(row.attackAbility) ? row.attackAbility : "str";
     const damageAbility = abilities.includes(row.damageAbility) ? row.damageAbility : ability;
-    const bonus = (trained ? number(context.proficiency) + mods[ability] : 0) + number(row.magicBonus);
+    // Converted shield enchantments improve AC; printed special Bash boosts remain manual.
+    const magic = entry.section === "magic-items" ? 0 : number(row.magicBonus);
+    const bonus = (trained ? number(context.proficiency) + mods[ability] : 0) + magic;
     return {
       name: (row.name || entry.name) + " bash", bonus,
-      damage: damageText(bash, (trained ? mods[damageAbility] : 0) + number(row.magicBonus)),
+      damage: damageText(bash, (trained ? mods[damageAbility] : 0) + magic),
       blockDC: 8 + bonus, properties: props,
       notes: "Reaction after a melee attack misses you or is blocked. " + (row.notes || ""),
       maneuvers: [], inventoryId: row.id, entryId: entry.entryId, ability, trained
@@ -199,16 +206,25 @@
     const mods = Object.fromEntries(abilities.map(ability => [ability, modifier(scores[ability])]));
     const warnings = [];
     const warn = note => { if (!warnings.includes(note)) warnings.push(note); };
-    const entries = new Map(entriesFrom(catalog).filter(entry => entry.section === "items").map(entry => [entry.entryId, entry]));
+    const entries = new Map(entriesFrom(catalog).filter(entry => ["items","magic-items"].includes(entry.section))
+      .map(entry => [entry.entryId,entry]));
+    if((character.inventory || []).filter(row=>row.attuned && number(row.quantity,1)>0 && globalThis.MagicItems?.requiresAttunement(entries.get(row.entryId))).length>3)warn("More than three magic items are marked attuned. Check your limit: the default is three, and a specific item can increase it.");
     const active = [];
     for (const row of character.inventory || []) {
       if (!row.equipped || number(row.quantity, 1) <= 0) continue;
-      const entry = entries.get(row.entryId);
-      if (!entry) {
+      const source = entries.get(row.entryId);
+      if (!source) {
         warn((row.name || "Custom item") + ": no matching equipment rule; keep custom effects and attacks in their manual fields.");
         continue;
       }
-      active.push({entry, row});
+      const entry = globalThis.MagicItems?.equipment(source,catalog,row) || source;
+      const unattuned=entry.section === "magic-items" && globalThis.MagicItems?.requiresAttunement(entry) && !row.attuned;
+      const manualAttack = entry.section === "magic-items" && !unattuned
+        && /^(?:yes|true)$/i.test(String(entry.details?.manual_attack || "").trim());
+      active.push({entry, row:unattuned?{...row,magicBonus:0}:row, manualAttack});
+      if(unattuned)warn((row.name || entry.name)+": not attuned; use only the mundane base item's statistics.");
+      if(manualAttack)warn((row.name || entry.name) + ": calculate its attack manually from the item rules; no automatic weapon attack is added. Apply its special magic effects manually.");
+      else if(entry.section === "magic-items")warn((row.name || entry.name) + ": apply its special magic effects and attunement requirements from the item rules manually. Supported base equipment and the entered magic bonus are automatic.");
     }
     const armors = active.filter(gear => category(gear.entry) === "armor");
     const shields = active.filter(gear => category(gear.entry) === "shield");
@@ -232,7 +248,7 @@
     }
     const strengthPermitted = (armor && /^(medium|heavy) armor$/i.test(armor.entry.group))
       || (shield && /^heavy shields?$/i.test(shield.entry.group));
-    const attacks = active.filter(gear => category(gear.entry) === "weapon")
+    const attacks = active.filter(gear => category(gear.entry) === "weapon" && !gear.manualAttack)
       .flatMap(gear => weaponAttacks(gear, context, mods, warn));
     if (shield) {
       const bash = shieldAttack(shield, context, mods);
