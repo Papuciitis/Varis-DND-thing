@@ -1,0 +1,92 @@
+# Imported read-only from dnd spreadsheet.xlsx; SHA-256: 5f713b3ee425f374d3cc9e5288fe80ad6d111f3cc0a05e42052ce1897680b571
+# Existing Git spell and background rules take priority.
+summon_links:
+- spell: Animate skull
+  group: Arcane spells
+  summons:
+  - monster: animated skull
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M24
+- spell: Create skeleton
+  group: Arcane spells
+  summons:
+  - monster: animated skeleton
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M29
+- spell: Create undead
+  group: Arcane spells
+  summons:
+  - monster: raised undead
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M40
+- spell: Animate arcane golem
+  group: Arcane spells
+  summons:
+  - monster: animated golem
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M57
+- spell: Create undead warrior
+  group: Arcane spells
+  summons:
+  - monster: undead warrior
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M63
+- spell: Summon elemental
+  group: Arcane spells
+  summons:
+  - monster: summoned arcane elemental
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M73
+- spell: Raise zombies
+  group: Arcane spells
+  summons:
+  - monster: shambling undead
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M98
+- spell: Skeletal servant
+  group: Arcane spells
+  summons:
+  - monster: skeleton servant
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M117
+- spell: Summon greater elemental
+  group: Arcane spells
+  summons:
+  - monster: greater ice elemental
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  - monster: greater fire elemental
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  - monster: greater wind elemental
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  - monster: greater lightning elemental
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  - monster: greater crystal elemental
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M126
+- spell: Summon cosmic trigon
+  group: Arcane spells
+  summons:
+  - monster: cosmic trigon
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M139
+- spell: Mud servant
+  group: Occult spells
+  summons:
+  - monster: mud golem
+    notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
+      priority where they differ.
+  source_ref: dnd spreadsheet.xlsx / spells!M327

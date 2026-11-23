@@ -264,7 +264,7 @@ entries:
       * Spell-weaving - Requires ring arcane focus. Your spell focus can be used to store an extra prepared spell. Effectively, you can prepare 1 extra spell of any level you can cast. It has +1 max arcane focus points.
       * Staff of light - Requires staff arcane focus. You can spend 1 rest die or arcane focus point to do the following maneuvers with your staff:
         * Force push - As an action, choose creatures in up to a 25 ft cone. They must make a constitution save. One a failure, they are pushed back 15 ft and fall prone. On a success, they are pushed back 5 ft.
-        * Illuminate - As an action, cause arcane light to flow out of your staff and fill a 60 ft area around you. All creatures within it immediately remake saves vs ongoing spell effects or curses, invisible creatures must make a wisdom save to not lose invisibility, and illusion effects are disrupted for the duration. lasts 3 turns.
+        * Illuminate - As an action, cause arcane light to flow out of your staff and fill a 60 ft area around you. All creatures within it immediately remake saves vs ongoing spell effects or curses, invisible creatures must make a wisdom save to not lose invisibility, and illusion effects are disrupted for the duration. Lasts 3 turns.
         * Hold - As an action or reaction, cause a creature, 5 ft sphere, or medium or large object in motion within 30 ft to be suspended until the start of your next turn. Negates fall damage. Can be used on an area to grant attacks passing through disadvantage.
       * Shield ring - Requires ring arcane focus. You can spend 1 rest die or 1 AP while wearing your arcane focus to gain a +6 bonus to a save vs a spell or magical ability, or to a block check vs a magical attack.
       * Spectral assault - Requires spear arcane focus. You can spend 1 arcane focus point or 1 rest die to make a sweeping line on a surface emit spectral spears and strike at creatures within the area. Effects a number of tiles equal to your intelligence modifier + 2 (min 1) and can either project the line outwards from your melee range, or parallel to you within a 15 ft radius. All creatures within the areas affected must make a dexterity save, taking a copy of your spear attack on a failure.
@@ -291,7 +291,7 @@ entries:
       * Commoners
       * Travelers, Sailors and explorers
   - heading: Grand arcane focus.
-    body: At 6th wizard level, your arcane focus gains a permanent +1 bonus on top of other previous bonuses.This bonus
+    body: At 6th wizard level, your arcane focus gains a permanent +1 bonus on top of other previous bonuses. This bonus
       transfers across different arcane focuses. Your arcane focus also has a +1 maximum arcane focus points. It regains
       1 arcane focus point per rest.
 # https://sites.google.com/view/dnd5plus/home/classes/wizard-x/scholar
@@ -325,12 +325,12 @@ entries:
     body: |-
       Starting at 2nd wizard level, you gain a number of arcane essence dice equal to your intelligence bonus (min 1.)
 
-      You can spend arcane essence dice interchangeably with rest dice when using rest dice consuming items, abilities, or spells who's effects are tagged with your chosen school of magic. All arcane essence dice are regained during a long rest.
+      You can spend arcane essence dice interchangeably with rest dice when using rest dice consuming items, abilities, or spells whose effects are tagged with your chosen school of magic. All arcane essence dice are regained during a long rest.
   - heading: Arcane scholar trait
     body: |-
       Starting at 3rd wizard level, choose 2 upgrades:
 
-      * Arcana focus - You gain expertise with arcana. gain a +1 bonus to another intelligence based skill of your choice.
+      * Arcana focus - You gain expertise with arcana. Gain a +1 bonus to another intelligence based skill of your choice.
       * Arcana manipulation - Your arcane essence dice maximum is increased by 1.
       * Casting focus - You gain 1 extra recovery point at the start of each rest.
       * Down-casting method - Choose a 2nd level arcane spell. Add it to your spell book if you do not have it already. You can down-cast it using a 1st level spell slot, but reducing damage, duration, and range by half.
@@ -362,7 +362,7 @@ entries:
         * Negate perception - You can spend 1 rest die to cause nearby creatures to ignore you so long as you do not move. This lasts until you move.
         * Telepathy - You can speak with creatures telepathically up to 500 feet away, so long as you are aware of them. You gain resistance to psychic damage.
       * ( Evocation )
-        * Autoauraphagy - You can choose to spend 1 rest die and take 1d4 damage to fatigue to cast a 3rd level or lower spell without expending a spell slot. The spell is cast at it's lowest possible level. If it is an evocation spell, the fatigue damage is reduced to 1d2.
+        * Autoauraphagy - You can choose to spend 1 rest die and take 1d4 damage to fatigue to cast a 3rd level or lower spell without expending a spell slot. The spell is cast at its lowest possible level. If it is an evocation spell, the fatigue damage is reduced to 1d2.
         * Energy manipulation - Choose a damage type: fire, cold, acid, lightning, or force. When dealing spell or cantrip damage of that type, increase it by 1d4.
         * Energy infusion - Choose a damage type: fire, cold, lightning, force, or sonic. Weapons you wield can deal an additional 1d6 damage of that kind, and ammunition you fire can deal 1d4 extra damage of that kind.
         * Power projection - You can spend 1 rest die to increase your casting attributes by +2 for 1 hour.
@@ -447,7 +447,7 @@ entries:
       At 5th wizard level, your personal spell book becomes a project onto itself. You can modify your spell books in 3 of the following ways:
 
       * Inscribed cantrip - Learn a cantrip specific to your spell book. You may cast it while wielding the spell book.
-      * Immediate spell compartment - You may lock a spell into the the book until next rest, allowing you to cast it at the lowest possible level once without expending a spell slot, but forbidding you from preparing it yourself. When casting it, roll a 1d20. On a 20, you may cast it again.
+      * Immediate spell compartment - You may lock a spell into the book until next rest, allowing you to cast it at the lowest possible level once without expending a spell slot, but forbidding you from preparing it yourself. When casting it, roll a 1d20. On a 20, you may cast it again.
       * Defense aura - You gain a +1 bonus to AC while wielding the tome.
       * Emergency ward - You can choose to expend 1 arcane note or 2 levels worth of spell slots to gain an instance of block as a reaction while in possession of the spell book.
       * Entangled belonging - You can conjure your spell book to your possession as a bonus action. If you are in another plane, or blocked from teleportation magic, this effect is nullified.

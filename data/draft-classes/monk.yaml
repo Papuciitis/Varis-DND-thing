@@ -82,7 +82,7 @@ entries:
       * Dark teachings - Gain an occult cantrip. Use wisdom as the casting modifier. Reduce incoming psychic and necrotic damage by 1.
       * Devotion - Gain a +2 bonus to constitution, you gain 1 reroll for any dice roll, which is refreshed every long rest.
       * Eternal pupil - Choose one of arcana, nature, history, medicine, religion, or handle animal. Either gain proficiency, or if already proficient, gain expertise in the chosen skill. Learn three extra languages.
-      * Healers gift - You can spend a rest die to heal yourself or a creature you touch as a bonus action for 1d10 + 1 health. all other healing you apply is increased by 1 HP per dice.
+      * Healers gift - You can spend a rest die to heal yourself or a creature you touch as a bonus action for 1d10 + 1 health. All other healing you apply is increased by 1 HP per dice.
       * Hex discipline - Learn 2 minor hexes, or if you already know at least 2 minor hexes, learn 1 major hex. Upgrade 1 hex you know.
       * Moon worship - You can immediately impose disadvantage to the roll of a creature within 30 ft, twice per rest.
       * Mystic warrior - Gain proficiency with light shields. Gain an oath or mystic cantrip. Use wisdom as the casting modifier.
@@ -95,7 +95,7 @@ entries:
       * Way of fire - Gain resistance to bleed and fire damage. Your weapons ignite property values are increased by 1 dice size category, and fire damage you deal is increased by 1.
       * Way of iron - treat weapons that are not two-handed as light. Treat all other light weapons as agile. Increase range of thrown weapons by 30/60.
       * Way of water- You can make an unarmed strike as a bonus action. Gain a +1 bonus to dexterity.
-      * Way of wind - Your movement speed is increased by 10 feet. Gain proficiency with acrobatics. if already proficient, gain expertise. If already expert, gain resistance to fall damage.
+      * Way of wind - Your movement speed is increased by 10 feet. Gain proficiency with acrobatics. If already proficient, gain expertise. If already expert, gain resistance to fall damage.
       * Way of the mountain - Your rest dice maximum is increase by 1. You can spend 2 rest dice to cause all bludgeoning, force, or sonic damage dealing attacks until the start of your next turn to have a chance of stunning the target. After all attacks are made, all targets hit by the damage that did not block damage must make a constitution save (DC 8 + 1/2 monk level + number of valid unblocked attacks + the highest of your dex or str bonus) to not become stunned for 1 round.
   - heading: Ability score improvement
     body: |-
@@ -106,7 +106,7 @@ entries:
     body: At 2nd level, you add your wisdom modifier to block checks. While not wearing light or heavier armor, you gain
       2 block at the start of combat.
   - heading: Meditation
-    body: At 2nd level, when you spend only one rest die or less during a short rest, you restore 1 extra rest dice.
+    body: At 2nd level, when you spend only one rest die or less during a short rest, you restore 1 extra rest die.
   - heading: Monk training
     body: |-
       At 3rd monk level, choose one ability:
@@ -146,7 +146,7 @@ entries:
   group: Monk archetypes
   sections:
   - heading: Greater flurry
-    body: At 5th monk level, you may use flurry and spend an extra rest dice to grant an extra attack. The extra rest dice
+    body: At 5th monk level, you may use flurry and spend an extra rest die to grant an extra attack. The extra rest dice
       is refunded alongside the original if the first attack lands.
   - heading: Martial techniques
     body: |-
@@ -200,7 +200,7 @@ entries:
     body: |-
       At 5th monk level, you may take 1 damage to fatigue, lose 1 instance of block or spend 1 rest die to gain a 1d4 bonus to a save.
 
-      You regain 1 extra rest dice during a rest if you start the rest at 0 rest dice.
+      You regain 1 extra rest die during a rest if you start the rest at 0 rest dice.
   - heading: Disciple insights
     body: |-
       At 6th monk level, choose 2 upgrades:
@@ -224,7 +224,7 @@ entries:
 
       * Gain 6 temporary rest dice that last for 1 hour.
       * Gain a +1d4 bonus to saves for 1 hour.
-      * Gain a +1d4 bonus to block block checks for 1 hour.
+      * Gain a +1d4 bonus to block checks for 1 hour.
 
       After this time, you lose all your remaining rest dice.
 # https://sites.google.com/view/dnd5plus/home/classes/monk-x/brawler
@@ -259,7 +259,7 @@ entries:
   - heading: Brawlers strength
     body: At 6th monk level, your rest dice maximum is increased by 2.
   - heading: Raw flurry
-    body: At 6th monk level, you can spend 1 extra rest dice when using flurry to increase the number of extra attacks it
+    body: At 6th monk level, you can spend 1 extra rest die when using flurry to increase the number of extra attacks it
       grants by 1.
 # https://sites.google.com/view/dnd5plus/home/classes/monk-x/hex-warrior
 - name: Hex warrior
@@ -308,7 +308,7 @@ entries:
       \ control, stabilize or activate a portal or magical gateway, or force a target creature within 30 ft to make a wisdom\
       \ save, becoming dimensionally anchored for 2d3 rounds on a failure, not being allowed to use blink, teleportation,\
       \ or displacement spells and abilities.\n  * Ki acceleration - You can spend 1 Ki to accelerate a projectile or spell\
-      \ projectile being fired or thrown by you or an ally within 10 ft, or if it's path intersects a 10 ft radius sphere\
+      \ projectile being fired or thrown by you or an ally within 10 ft, or if its path intersects a 10 ft radius sphere\
       \ centered on you. When you do so, you double its range, and then double it again, and you can make it gain +4d8 force\
       \ damage.\n  * Ki-link - You can spend 1 Ki to link to an item or creature you can touch. You innately know the direction\
       \ towards and distance to (roughly) the linked target, or which plane they are in. You can only link to up to as many\
@@ -350,7 +350,7 @@ entries:
       \ an hour if at 2 Ki or more.\n* Ki fist - So long as you have at least 1 KI, your unarmed attacks are treated as\
       \ magical and deal +1 force damage. You can spend 1 KI when hitting a target (before block is made) to either: enhance\
       \ the attack to deal 6d6 extra sonic damage, or directly deal 5d6 sonic damage to the target with no block.\n  * Hypersonic\
-      \ fist - When you use Ki fist, you can spend an extra rest dice to cause it to deal half the sonic and fire damage\
+      \ fist - When you use Ki fist, you can spend an extra rest die to cause it to deal half the sonic and fire damage\
       \ in a 20 ft cone behind the target, requiring creatures to make a dexterity save, taking half-damage on a success.\
       \ You can instead spend a ki point to make the after-effect area be a sphere centered around the target. You are immune\
       \ from this effect.\n  * Ki flurry - When using flurry while unarmed and with at least 1 Ki, you gain an extra attack.\n\
@@ -442,7 +442,7 @@ entries:
       * Immense soul -> Greater soul - The penalty to detection spells is increased to -2, but the healing and temporary health bonus is increased to 1d6, and the damage bonus is increased to 1d8.
       * Psychic aura -> Psychic domain - Your psychic aura range is doubled, you gain a +2 bonus to wisdom, and you gain telepathy and awareness of presences at a range of 300 ft.
   - heading: Clear spirit
-    body: At 11th monk level, your rest dice maximum is increased by 1. You regain 1 extra rest dice every rest.
+    body: At 11th monk level, your rest dice maximum is increased by 1. You regain 1 extra rest die every rest.
   - heading: Final teaching
     body: |-
       At 12th monk level, learn a level 6 occult, mystic, or oath spell. You can spend 6 rest dice to cast it, using wisdom as the casting modifier. Upgrade the spell in one of the following ways:
@@ -596,7 +596,7 @@ entries:
     body: |-
       At 9th monk level choose one way to upgrade flurry:
 
-      * Thunderous onslaught method - You can spend an extra rest dice when using flurry before making any attacks, instead making a number of magical attacks equal to the number of attacks you would otherwise get with your flurry +1d3. For each attack, roll a 1d4 > 2 chance dice. On a success, deal your unarmed strike damage to the target and ignore block conditions. These cannot crit. This has a cooldown chance of 1d4>3 upon use.
+      * Thunderous onslaught method - You can spend an extra rest die when using flurry before making any attacks, instead making a number of magical attacks equal to the number of attacks you would otherwise get with your flurry +1d3. For each attack, roll a 1d4 > 2 chance dice. On a success, deal your unarmed strike damage to the target and ignore block conditions. These cannot crit. This has a cooldown chance of 1d4>3 upon use.
       * Blinking flurry - In place of an attack granted by flurry (if made before all attacks are made, flurry attacks can be weaved in between non-flurry attacks) you can blink up to 25 ft without provoking reactions. The range is increased by any bonuses to melee weapon or attack reach you have.
       * Destructive resonance - When using flurry before an attack action, you can cause the target to take 1d3 extra sonic damage per other damage dice taken from all attacks, including the flurry attacks. This has a cooldown chance of 1d3>2 after use and disables flow while on cooldown (returning any temporary block once the ability is regained.)
       * Explosive fists - When using flurry before making any attacks, your unarmed attacks deal an extra 1d6 fire or force damage (your choice when choosing the ability) that cannot be blocked, in a 10 ft outward cone originating from the recipient of your unarmed attack.

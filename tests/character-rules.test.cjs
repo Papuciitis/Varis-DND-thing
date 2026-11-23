@@ -13,7 +13,7 @@ function setup() {
   for (const name of ['character-state.js', 'character-effects.js', 'character-equipment.js', 'character-rules.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, 'web', name), 'utf8'), context);
   }
-  const catalog = JSON.parse(fs.readFileSync(path.join(root, 'site/index.html'), 'utf8').match(/globalThis\.DND_CATALOG=(.*?);(?=\s*globalThis\.DND_RULES_VERSION=)/s)[1]);
+  const catalog = require('./helpers/catalog.cjs')();
   const metadata = {
     races: [{id:'dwarf',name:'Dwarf',speed:25,size:'medium',abilityBonuses:{con:2},abilityChoices:[],traits:[{id:'hearty',name:'Test hearty trait',level:1,details:'',choices:[]}],proficiencies:[]},
       {id:'human',name:'Human',speed:30,size:'medium',abilityBonuses:{},abilityChoices:[{id:'human-score',count:1,amount:2,options:['str','dex'],repeat:false,label:'Ability bonus',alternatives:[{count:2,amount:1,options:['str','dex'],repeat:false,label:'Two scores'}]}],traits:[],proficiencies:[]}],

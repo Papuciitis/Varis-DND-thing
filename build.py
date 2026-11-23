@@ -1,4 +1,4 @@
-"""Build the standalone Open D&D compendium and character sheet from the same YAML."""
+"""Build a modular website and explicit portable copies from the same YAML."""
 
 import argparse
 import hashlib
@@ -32,18 +32,18 @@ def render_page(page, stylesheet, scripts, catalog_script):
     )
     # Move inline scripts to the end of the body. Browsers ignore defer on inline scripts.
     inline = [catalog_script]
-    for name in ("catalog.js", *scripts):
+    for name in ("catalog-loader.js", *scripts):
         pattern = rf'<script\b[^>]*\bsrc=["\'](?:\./)?{re.escape(name)}["\'][^>]*>\s*</script>'
         template = inline_asset(template, pattern, "", name, page)
-        if name != "catalog.js":
-            source = (web / name).read_text(encoding="utf-8")
-            inline.append(f"<script>\n{source}\n</script>")
+        source = (web / name).read_text(encoding="utf-8")
+        inline.append(f"<script>\n{source}\n</script>")
     if template.count("</body>") != 1:
         raise ValueError(f"Expected one closing body tag in web/{page}")
     return template.replace("</body>", "\n".join(inline) + "\n</body>")
 
 
 def write_page(path, html):
+    path.parent.mkdir(parents=True, exist_ok=True)
     temp = tempfile.NamedTemporaryFile(dir=path.parent, delete=False, suffix=".tmp")
     try:
         with temp:
@@ -51,6 +51,17 @@ def write_page(path, html):
         os.replace(temp.name, path)
     finally:
         Path(temp.name).unlink(missing_ok=True)
+
+
+def json_text(value):
+    return json.dumps(value, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
+
+
+def hashed_file(output_dir, folder, stem, suffix, content):
+    digest = hashlib.sha256(content.encode("utf-8")).hexdigest()[:12]
+    relative = f"{folder}/{stem}.{digest}.{suffix}"
+    write_page(output_dir / relative, content)
+    return relative
 
 
 def build(output_dir):
@@ -67,13 +78,32 @@ def build(output_dir):
         f"globalThis.DND_RULES_VERSION='{rules_version}';\n"
         f"globalThis.DND_CHARACTER_RULES={mechanics};</script>"
     )
-    index = render_page("index.html", "styles.css", ("app.js",), catalog_script)
-    sheet = render_page("character.html", "character.css", ("character-state.js", "character-effects.js", "character-equipment.js", "character-rules.js", "character-builder.js", "character.js"), catalog_script)
     output_dir.mkdir(parents=True, exist_ok=True)
-    write_page(output_dir / "index.html", index)
-    write_page(output_dir / "character.html", sheet)
+    # Loaded only on file: URLs, keeping old localStorage locations usable.
+    write_page(output_dir / "data/portable-catalog.js", catalog_script.removeprefix("<script>").removesuffix("</script>"))
+    manifest = {"version": rules_version, "sections": [], "builder": hashed_file(
+        output_dir, "data", "character-rules", "json", mechanics)}
+    for section in sections:
+        manifest["sections"].append({"key": section["key"], "title": section["title"],
+            "count": len(section["entries"]), "url": hashed_file(
+                output_dir, "data", section["key"], "json", json_text(section))})
+    write_page(output_dir / "data/catalog-manifest.json", json_text(manifest))
+    pages = (("index.html", "styles.css", ("app.js",)),
+             ("character.html", "character.css", ("character-state.js", "character-effects.js",
+              "character-equipment.js", "character-rules.js", "character-builder.js", "character.js")))
+    assets = {}
+    for page, stylesheet, scripts in pages:
+        normal = (ROOT / "web" / page).read_text(encoding="utf-8")
+        for name in (stylesheet, "catalog-loader.js", *scripts):
+            if name not in assets:
+                source = (ROOT / "web" / name).read_text(encoding="utf-8")
+                asset = Path(name)
+                assets[name] = hashed_file(output_dir, "assets", asset.stem, asset.suffix[1:], source)
+            normal = normal.replace(f'"{name}"', f'"{assets[name]}"')
+        write_page(output_dir / page, normal)
+        write_page(output_dir / "offline" / page, render_page(page, stylesheet, scripts, catalog_script))
     (output_dir / ".nojekyll").touch()
-    print(f"Built {output_dir.name}/index.html and {output_dir.name}/character.html")
+    print(f"Built {output_dir.name}/ with section data and offline/ portable copies")
     for section in sections:
         print(f"  {section['title']}: {len(section['entries'])}")
 

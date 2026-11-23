@@ -136,7 +136,7 @@ entries:
   effect: |-
     As an action, speak a rune of light into being upon a creature, which dims to imperceptibility in 1 turn, but remains for a day. Such a rune is invisible to mortals, but perceptible by eldritch, undead, profane, psychic, or celestial entities. The target gains a single 1d8 dice of light, which lasts for a day or until used.
 
-    A dice of light an be used to be granted as a bonus to a save vs an eldritch, undead, profane, psychic, or elemental creatures abilities, in place of a rest dice, or as a bonus to a skill check made to seek safety, or to reduce incoming damage by the amount rolled from the dice.
+    A die of light can be granted as a bonus to a save vs an eldritch, undead, profane, psychic, or elemental creatures abilities, in place of a rest die, or as a bonus to a skill check made to seek safety, or to reduce incoming damage by the amount rolled from the dice.
 - name: Sanctuary
   group: Oath spells
   lvl: '1'

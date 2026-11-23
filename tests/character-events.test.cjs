@@ -6,13 +6,13 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),asse
 const crypto=require('node:crypto').webcrypto;
 const root=path.resolve(__dirname,'..');
 const web=path.join(root,'web');
-const catalog=JSON.parse(fs.readFileSync(path.join(root,'site','index.html'),'utf8').match(/globalThis\.DND_CATALOG=(.*?);(?=\s*(?:globalThis\.DND_RULES_VERSION=|<\/script>))/s)[1]);
+const catalog=require('./helpers/catalog.cjs')();
 const source=fs.readFileSync(path.join(web,'character.html'),'utf8');
 const decode=s=>s.replace(/&(amp|quot|#39|lt|gt);/g,(_,v)=>({amp:'&',quot:'"', '#39':"'", lt:'<',gt:'>'}[v]));
 const storage=new Map();const key='vara.character-sheets.v1';const saved=()=>JSON.parse(storage.get(key));
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 const voids=new Set('img br hr input area base col embed link meta param source track wbr'.split(' '));
-function boot(){
+function boot(options={}){
  let downloads=[],blobData=new Map(),timers=new Map(),serial=0,document;
  const context={console,crypto,URLSearchParams,Blob,Date,Uint32Array,
   URL:{createObjectURL(blob){const u='blob:'+crypto.randomUUID();blobData.set(u,blob);return u;},revokeObjectURL(u){blobData.delete(u);}},
@@ -48,13 +48,48 @@ function boot(){
  }
  function parse(src,root){const stack=[root];for(const match of src.matchAll(/<[^>]+>|[^<]+/gs)){const v=match[0];if(v.startsWith('<!'))continue;if(v.startsWith('</')){stack.pop();continue;}if(v[0]!=='<'){stack.at(-1)._text=(stack.at(-1)._text||'')+decode(v);continue;}const tag=v.match(/^<([\w-]+)/)[1].toLowerCase(),attrs={};for(const m of v.slice(tag.length+1,-1).matchAll(/([-\w:]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s]+)))?/g)){attrs[m[1]]=decode(m[2]??m[3]??m[4]??'');}const n=new E(tag,attrs);stack.at(-1).append(n);if(!voids.has(tag)&&!v.endsWith('/>'))stack.push(n);}}
  document=new E('document');parse(source,document);document.body=document.querySelector('body');document.createElement=t=>new E(t);document.activeElement=document.body;context.document=document;context.window=new E('window');context.window.print=()=>{};
+ const requests=[];
+ if(options.lazy){
+  const sections=catalog.map(section=>({...section,entries:[]}));const loaded=new Set();
+  context.DND_CATALOG=sections;
+  context.DndCatalog={ready:Promise.resolve(sections),version:'test-rules',isLoaded:key=>loaded.has(key),
+   async loadBuilder(){requests.push('builder');return {};},
+   async loadSection(key){requests.push(key);if(options.delay)await options.delay(key);const section=sections.find(item=>item.key===key);section.entries=catalog.find(item=>item.key===key).entries;loaded.add(key);return section;}};
+ }
  const g=vm.createContext(context);for(const name of ['character-state.js','character-effects.js','character-equipment.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
  const q=(selector)=>{const n=document.querySelector(selector);assert(n,'missing control '+selector);return n;};
  const field=p=>q('[data-path="'+p+'"]');const action=(act,extra='')=>q('[data-action="'+act+'"]'+extra);
  function set(n,v,change=true){if(n.type==='checkbox')n.checked=v;else n.value=v;fire(n,'input');if(change)fire(n,'change');}
  function flush(){for(const [k,t] of [...timers])if(t.ms<=500){timers.delete(k);t.fn();}}
- return {q,field,action,fire,set,flush,downloads,document,context};
+ return {q,field,action,fire,set,flush,downloads,document,context,requests};
 }
+
+test('hosted character starts with core rules, lazily opens spells, and restores saved rule references',async()=>{
+ storage.clear();
+ const h=boot({lazy:true});await delay(0);
+ assert.deepEqual(h.requests,['builder','classes','races','items']);
+ assert.equal(h.q('.sheet-shell').inert,false);
+ h.action('catalog','[data-kind="spells"]').click();await delay(0);
+ assert.equal(h.requests.at(-1),'spells');assert.match(h.q('#catalog-count').textContent,/matching/);
+ h.document.querySelector('[data-action="add-catalog"]').click();h.action('close-dialog').click();
+ assert.equal(saved().characters[0].spells.length,1);
+ const reopened=boot({lazy:true});await delay(0);
+ assert.ok(reopened.requests.includes('spells'));
+ assert.doesNotMatch(reopened.q('#pane-spells').textContent,/missing from this rules snapshot|has not loaded/);
+ assert.ok(!reopened.requests.includes('monsters'));
+ storage.clear();
+});
+
+test('a delayed rule picker cannot replace a newer character dialog',async()=>{
+ storage.clear();let resolve;
+ const pending=new Promise(done=>{resolve=done;});
+ const h=boot({lazy:true,delay:key=>key==='spells'?pending:Promise.resolve()});await delay(0);
+ h.action('catalog','[data-kind="spells"]').click();
+ h.action('identity').click();assert.equal(h.q('#dialog-title').textContent,'Edit character');
+ resolve();await delay(0);
+ assert.equal(h.q('#dialog-title').textContent,'Edit character');
+ storage.clear();
+});
 test('character controls, backups and concurrent saves (DOM simulation)', {timeout:30000}, async()=>{
  let h=boot();const set=(p,v)=>h.set(h.field(p),v),act=(...args)=>h.action(...args).click(),direct=(name,v)=>h.set(h.q('#'+name),v);const cur=()=>{const s=saved();return s.characters.find(x=>x.id===s.activeId);};
  h.set(h.q('#character-name'),'Naura of Druva',false);h.flush();assert.equal(cur().name,'Naura of Druva');h=boot();assert.equal(h.q('#character-name').value,'Naura of Druva');

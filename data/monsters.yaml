@@ -1,0 +1,599 @@
+# Imported read-only from dnd spreadsheet.xlsx; SHA-256: 5f713b3ee425f374d3cc9e5288fe80ad6d111f3cc0a05e42052ce1897680b571
+# Existing Git spell and background rules take priority.
+section: monsters
+entries:
+- name: animated skull
+  group: Workbook reference creatures
+  meta: small undead
+  cr: 1/4
+  ac: '12'
+  block: '-'
+  hp: 1d4+1
+  speed: 30ft, float
+  abilities:
+    str: '7'
+    dex: '12'
+    con: '10'
+    int: '12'
+    wis: '10'
+    cha: '9'
+  traits:
+  - name: Traits
+    description: darkvision
+  actions:
+  - name: Bite +3
+    description: 1d4+3 p, DC 12
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - CR preserves the displayed d/m fraction; Excel stored this cell as a date serial.
+  source_ref: dnd spreadsheet.xlsx / creatures!A2:P2
+- name: animated skeleton
+  group: Workbook reference creatures
+  meta: medium undead, humanoid
+  cr: 1/2
+  ac: '12'
+  block: 2 / +4
+  hp: 1d8+1
+  speed: 30ft
+  abilities:
+    str: '16'
+    dex: '14'
+    con: '10'
+    int: '8'
+    wis: '8'
+    cha: '5'
+  traits:
+  - name: Traits
+    description: darkvision 120ft, cold resistance, piercing resistance
+  properties: 'Peon: is proficient with simple weapons and light armor and shields'
+  actions:
+  - name: Claw +5
+    description: 1d4 +3s, DC 13
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - CR preserves the displayed d/m fraction; Excel stored this cell as a date serial.
+  source_ref: dnd spreadsheet.xlsx / creatures!A3:P3
+- name: raised undead
+  group: Workbook reference creatures
+  meta: medium undead, humanoid
+  cr: '1'
+  ac: 10 + dex
+  block: '-'
+  hp: 1d8 + 3
+  abilities:
+    str: 12 + 1d6
+    dex: 8 + 1d6
+    con: 8 + 1d6
+    int: 6 + 1d4
+    wis: 6 + 1d4
+    cha: 6 + 1d4
+  traits:
+  - name: Traits
+    description: darkvision 60ft, undead fortitude
+  properties: 'Proficient minion: if a raised undead retains 1 random proficiency from its past life,
+    and the caster can grant it proficiency with one skill that the caster is proficient with.'
+  actions:
+  - name: Claw +5
+    description: '1d4 +2s, DC 14; Bite +5: 1d6 +3p, lethal, deadly, DC 13'
+  status: Incomplete draft
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - The source does not provide speed.
+  source_ref: dnd spreadsheet.xlsx / creatures!A4:P4
+- name: animated golem
+  group: Workbook reference creatures
+  meta: medium construct
+  cr: '3'
+  ac: '14'
+  block: 1 / +3
+  hp: 3d8 + 8
+  speed: 20ft
+  abilities:
+    str: '14'
+    dex: '14'
+    con: '14'
+    int: '9'
+    wis: '8'
+    cha: '7'
+  traits:
+  - name: Traits
+    description: athletics +4, perception +1, construct immunities
+  properties: 'Resistant: has resistance to non-magical physical damage'
+  actions:
+  - name: Slam +5
+    description: 1d8 +4b. DC 15.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A5:P5
+- name: undead warrior
+  group: Workbook reference creatures
+  meta: medium undead, humanoid
+  cr: '4'
+  block: 3 / +5
+  hp: 4d8 + 12
+  speed: 30ft
+  abilities:
+    str: '16'
+    dex: '16'
+    con: '16'
+    int: '10'
+    wis: '8'
+    cha: '8'
+  traits:
+  - name: Traits
+    description: undead immunities, darkvision 100ft, cold resistance, fire resistance, +3 to perception
+      survival and athletics.
+  properties: 'Warrior proficiencies: Is proficient with light and medium armor, all shields, and all
+    weapons | Extra attack: the undead warrior can make two attack actions when attacking.|Extra reaction:
+    the undead warrior can make an extra reaction per round.'
+  actions:
+  - name: Claw +6
+    description: 1d4 + 3 s, DC 16
+  - name: Blade +6
+    description: 1d8 +3s
+  status: Incomplete draft
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - The source does not provide AC.
+  source_ref: dnd spreadsheet.xlsx / creatures!A6:P6
+- name: summoned arcane elemental
+  group: Workbook reference creatures
+  meta: medium elemental
+  cr: '3'
+  ac: '14'
+  block: 3 / +5
+  hp: 4d8 + 12
+  speed: 30ft
+  abilities:
+    str: '14'
+    dex: '16'
+    con: '16'
+    int: '14'
+    wis: '13'
+    cha: '13'
+  traits:
+  - name: Traits
+    description: regeneration 3, elemental immunities
+  properties: 'Elemental knowledge: A summoned arcane elemental has a +5 bonus to nature, insight, and
+    athletics, and can speak with creatures that communicate in primordial.'
+  actions:
+  - name: Melee +6
+    description: 1d6 + 3 damage of its elemental kind, DC 16
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A7:P7
+- name: shambling undead
+  group: Workbook reference creatures
+  meta: medium undead, humanoid
+  cr: '2'
+  ac: '10'
+  block: '-'
+  hp: 2d6
+  speed: 20ft
+  abilities:
+    str: '10'
+    dex: '10'
+    con: '10'
+    int: '6'
+    wis: '6'
+    cha: '6'
+  traits:
+  - name: Traits
+    description: undead immunities, keen scent, piercing damage resistance
+  properties: 'Cannibalism: Can consume a corpse to extend lifetime by 1 day and restore 1d8 health.|
+    Unnatural life: When reaching 0HP while receiving less than 12 damage, the undead has a 1 in 4 chance
+    to remain at 3HP.'
+  actions:
+  - name: Claw +1
+    description: 1d6 slashing, deadly, lethal.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A8:P8
+- name: skeleton servant
+  group: Workbook reference creatures
+  meta: medium undead, humanoid
+  cr: '4'
+  ac: '16'
+  block: 2 / +5
+  hp: 4d8 + 8
+  speed: 30ft
+  abilities:
+    str: '14'
+    dex: '14'
+    con: '14'
+    int: '9'
+    wis: '9'
+    cha: '9'
+  traits:
+  - name: Traits
+    description: skeletal immunities, darkvision 300ft
+  properties: 'Skeletal reconstitution: when destroyed, roll 1d4. On a 1, reassemble at 1/2 HP and restore
+    1 block.'
+  actions:
+  - name: Claw +5
+    description: 1d4+3 s.
+  - name: Blade +5
+    description: 1d8+3 s, bleeding critical.
+  - name: Spear +5
+    description: 1d6+3 p, reach / stab
+  - name: Short bow +5
+    description: 1d4 + 3 p, swift.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A9:P9
+- name: manaworm
+  group: Workbook reference creatures
+  meta: tiny elemental, aberration
+  cr: '1'
+  ac: '13'
+  block: '-'
+  hp: 1d6 + 1
+  speed: 25ft, float
+  abilities:
+    str: '7'
+    dex: '16'
+    con: '12'
+    int: '3'
+    wis: '5'
+    cha: '3'
+  traits:
+  - name: Traits
+    description: immune to spells below 3rd level, aurasight
+  properties: 'Collective arcanotrophy: 3 mana worms can spend 1 action each to attempt dispell magic
+    on a target within 5ft of all mana worms, rolling a collective +11 arcana check.On a success, the
+    target takes 1 damage to fatigue.| Stacking: Mana worms can cluster up to 4 in a single tile.'
+  actions:
+  - name: Action
+    description: Leech +5, 1d4 +1 psychic damage, dispell target on critical strike.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A10:P10
+- name: corridor crawler
+  group: Workbook reference creatures
+  meta: medium beast, aberration
+  cr: '4'
+  ac: '16'
+  block: '2'
+  hp: 4d8 +16
+  speed: 25ft, wallclimb
+  abilities:
+    str: '14'
+    dex: '16'
+    con: '18'
+    int: '2'
+    wis: '6'
+    cha: '5'
+  traits:
+  - name: Traits
+    description: acid immunity, poison immunity, necrotic resistance, lifesense, keen scent
+  properties: 'Corpse eater: Can consume a dead creature, restoring 2d8+4 hp and gaining an equal amount
+    of temporary hp.|Chitinous: reduce incomig physical and fire damage by 2d8 while above half hp|Rapid
+    mutation: Consuming a corpse or creature grants the corridor crawler a feat. It can only have one
+    such feat at a time.'
+  actions:
+  - name: Bite +7
+    description: 1d6 +3 piercing, 1d8 + 4 acid damage, poison and illness on critical.
+  - name: Acid spit +5
+    description: 2d6 + 4 acid damage,30ft ranged.
+  - name: Consume animal
+    description: eat an adjacent small creature. A medium creature is a full round action, and large creatures
+      require 4 full rounds and permanently increase size by 1 size category and give double rewards.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A11:P11
+- name: False wisp
+  group: Workbook reference creatures
+  meta: small elemental, aberration
+  cr: '2'
+  ac: '14'
+  status: Incomplete draft
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - The source does not provide HP, speed, actions.
+  source_ref: dnd spreadsheet.xlsx / creatures!A12:P12
+- name: greater ice elemental
+  group: Workbook reference creatures
+  meta: large elemental, humanoid
+  cr: '6'
+  ac: '18'
+  block: 4 / +6
+  hp: 6d12 + 27
+  speed: 25ft, waterwalking, icemeld
+  abilities:
+    str: '16'
+    dex: '16'
+    con: '16'
+    int: '11'
+    wis: 14(+4)
+    cha: 16(+4)
+  traits:
+  - name: Traits
+    description: cold immunity, elemental immunities, physical resistance, +5 to composure and athletics
+  properties: 'Ice manipulator: Can use a bonus, movement, or regular action to shape or grow ice in a
+    5ft area within 20ft.| Icy constitution: So long as it remains in an environment with snow or moisture
+    in the air, it has regeneration 5 and always gainst 1 block at the start of combat.'
+  actions:
+  - name: Ice touch +7
+    description: 2d6 +5 cold damage, DC 15, spike
+  - name: Frost breath
+    description: As an action, bellow frost in a 20ft cone, creating difficult snowy terrain, freezing
+      small items in place, and dealing 3d8 cold damage to creatures that fail a constitution or dexterity
+      save.
+  - name: Ice rune
+    description: enchant an ally creature with a rune of ice for 10 minutes. The target becomes immune
+      to cold damage.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A13:P13
+- name: greater fire elemental
+  group: Workbook reference creatures
+  meta: large elemental, humanoid
+  cr: '6'
+  ac: '18'
+  block: 2 / +8
+  hp: 6d8 + 15
+  speed: 40ft, float
+  abilities:
+    str: '14'
+    dex: 18(+4)
+    con: '15'
+    int: '11'
+    wis: 12(+4)
+    cha: '14'
+  traits:
+  - name: Traits
+    description: fire immunity, elemental immunities, immune to non-magical physical damage, +5 to accrobatics
+  properties: 'Fire manipulator: Can use a bonus action to suppress or cause an object to ignire.|Conduit:
+    A fire elemental grants a +1 bonus to arcana checks made by creatures within 20ft. This effect does
+    not stack.|Native to flame: has regeneration 2 while standing in a tile that is on fire.'
+  actions:
+  - name: Fire touch +8
+    description: 2d8 +6 fire damage, DC 16, swift, burning critical, reach.
+  - name: Burn-walk
+    description: As a bonus action or action, blink to a point within 50ft and leave a narrow trail of
+      smoke, does not provoke reactions.
+  - name: Fire rune
+    description: can enchant a creature within 15ft as an action, granting them fire immunity for 10 minutes.
+  - name: Empower evocation
+    description: as an action or reaction, empower an evocation spell cast within 20ft, increasing it
+      by 1 level.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A14:P14
+- name: greater wind elemental
+  group: Workbook reference creatures
+  meta: large elemental, humanoid
+  cr: '6'
+  ac: '22'
+  hp: 6d4 + 6
+  speed: 50ft, fly
+  abilities:
+    str: '12'
+    dex: 22(+4)
+    con: '12'
+    int: '14'
+    wis: '12'
+    cha: '14'
+  traits:
+  - name: Traits
+    description: physical immunity, fire and cold resistance, elemental immunities. echosight 200ft.
+  properties: 'Resonate: Can spend a bonus action to enter a resonant state, lasting until the elemental
+    chooses to dispell it. While in this state, the elemental is hobbled, there is a passive background
+    hum everywhere, and blink and teleportation effects within 30ft automatically fail.'
+  actions:
+  - name: 2x Slam +10
+    description: 1d4 + 8 force, DC 17, combo on crit
+  - name: Gust
+    description: Dispell clouds and mists within 15ft
+  - name: windbinding
+    description: Can cast the minor windbinding cantrip, allowing the use of any effect.
+  - name: Windfall
+    description: causes a powerful gust, enough to provide decent tailwing to a structure or vessel within
+      50ft. Can be used to push a boat.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A15:P15
+- name: greater lightning elemental
+  group: Workbook reference creatures
+  meta: large elemental, humanoid
+  cr: '6'
+  ac: '19'
+  block: 3 / +4
+  hp: 6d6 + 6
+  speed: 40ft, 30ft jump, wallwalk
+  abilities:
+    str: '14'
+    dex: '20'
+    con: 14(+4)
+    int: '16'
+    wis: '14'
+    cha: 12(+4)
+  traits:
+  - name: Traits
+    description: immunity to non-magical physical damage, cold damage immunity, fire damage immunity,
+      elemental immunities, meshmeld
+  properties: 'Conjealed heart: Critical strikes on the elemental ignore resistances and immunities.;Evasion:
+    ignore partial dex save effect'
+  actions:
+  - name: 3x Lightning strike +10
+    description: 1d12 + 6 lightning, DC 20, reach II, stuns on critical.
+  - name: Recharge
+    description: 10 times per rest, can restore 1 charge to a magical item or spell effect within 10ft.
+  - name: Lightning leap
+    description: As an action and bonus action, strike at a creature within 40ft and blink next to them.
+      The target must also make a constitution save, becoming stunned for a round on a failure.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A16:P16
+- name: greater crystal elemental
+  group: Workbook reference creatures
+  meta: large elemental, humanoid
+  cr: '6'
+  ac: '16'
+  block: 3 / +6
+  hp: 6d8 + 18
+  speed: 30ft
+  abilities:
+    str: '16'
+    dex: '14'
+    con: '16'
+    int: '14'
+    wis: '14'
+    cha: '14'
+  traits:
+  - name: Traits
+    description: elemental immunities, fire and cold resistance, advantage on saves vs spells, sonic weakness
+  properties: 'Crystal heart: All critical strikes that hit a lightning elemental have their damage multiplier
+    increased by 1.'
+  actions:
+  - name: Crystal fists +7
+    description: '2d4 + 6 b, pummel, slam, spike, lunge.;Counter-resonate: 3 times per rest, can attempt
+      to dispell a magic effect within 15ft as a full round action.'
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - 'Source review: Crystal heart refers to a lightning elemental; the intended subject is unresolved.'
+  source_ref: dnd spreadsheet.xlsx / creatures!A17:P17
+- name: cosmic trigon
+  group: Workbook reference creatures
+  meta: lage elemental, eldritch
+  cr: '8'
+  ac: '18'
+  block: '-'
+  hp: 10d8 + 40
+  speed: 40ft, fly
+  abilities:
+    str: '18'
+    dex: '18'
+    con: '18'
+    int: '18'
+    wis: '18'
+    cha: '18'
+  traits:
+  - name: Traits
+    description: elemental immunities, resistance to non-enchanted physical damage, resistance to spell
+      damage, true-sight 200ft, Immune to psychic, immune to necrotic, immune to fire
+  properties: 'Mage-eater: When a cosmic trigon slays a spellcaster, it can break one rule of choice of
+    one of their ongoing spells.|Arcanoentropovore: When a spell is broken or distorted within 20ft of
+    the cosmic trigon, it restores 1d10 HP.'
+  actions:
+  - name: Energy beam
+    description: As an action, deal 8d8 radiant damage in a 100ft line.
+  - name: Overloading resonance
+    description: As an action, cause an 20ft sphere area within 200ft to detonate, dealing 8dforce sonic
+      damage to all creatures within range.
+  - name: Stasis
+    description: Cause all moving small or large objects to stop in a 20ft area around the cosmic trigon
+      as a reaction, creatures movements are interrupted, ranged attacks are interrupted, and collapsing
+      structures are dampened. Deals 2d8 cold damage to creatures caught in the effect.
+  - name: Drain magic
+    description: Cause a magical object or item within 80ft to acquire a -1 penalty as an action and take
+      2d8 radiant damage.
+  - name: Self-reconstruct
+    description: As an action heal 5d10 health.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - 'Source review: Overloading resonance has malformed damage notation ''8dforce sonic''; its dice and
+    save are unresolved.'
+  source_ref: dnd spreadsheet.xlsx / creatures!A18:P18
+- name: baseline eidolon
+  group: Workbook reference creatures
+  meta: small cosmic beast
+  cr: '5'
+  ac: '18'
+  block: 2 / +10
+  hp: 5d12+15
+  speed: 30ft, fly
+  abilities:
+    str: '16'
+    dex: '18'
+    con: 17(+3)
+    int: '12'
+    wis: 14(+3)
+    cha: '9'
+  traits:
+  - name: Traits
+    description: immune to charm and sleep, immune to domination or compulsion effects.
+  properties: 'eternally summoned: a lesser eidolon is a small shard of the true creature, and thus it
+    simply dematerializes when reduced to 0 HP, and is not considered dead.'
+  actions:
+  - name: Native spell caster
+    description: An eidolon knows 2 cantrips of choice, though these can vary based on the instance of
+      the eidolon.
+  - name: Attack + 6
+    description: 2d6 + 3, considered magical.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A19:P19
+- name: mud golem
+  group: Workbook reference creatures
+  meta: small humanoid, elemental, construct
+  cr: 1/2
+  ac: '9'
+  block: 3 / +2
+  hp: 3d4
+  speed: 20ft
+  abilities:
+    str: '9'
+    dex: '9'
+    con: '9'
+    int: '9'
+    wis: '12'
+    cha: '8'
+  traits:
+  - name: Traits
+    description: poison & psychic immune, resist to cold & necrotic, vulnerable to fire.
+  properties: 'Pittiful existence: bonus and prof with insight ( +5 )|Toiler: bonus and prof with athletics
+    and str checks made to toil  ( +3 )'
+  actions:
+  - name: Slam +1
+    description: 1d6 bludgeoning. DC 9.
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  - CR preserves the displayed d/m fraction; Excel stored this cell as a date serial.
+  source_ref: dnd spreadsheet.xlsx / creatures!A20:P20
+- name: arcane imp
+  group: Workbook reference creatures
+  meta: small humanoid fiend elemental
+  cr: '2'
+  ac: '16'
+  block: 1 / +3
+  hp: 3d6 + 6
+  speed: 30ft, fly
+  abilities:
+    str: '9'
+    dex: '16'
+    con: '16'
+    int: '14'
+    wis: '11'
+    cha: '10'
+  traits:
+  - name: Traits
+    description: resistance to magical damage
+  properties: 'Arcane nature: Knows 3 arcane or occult cantrips, gains proficiency with arcana and a +7
+    bonus to arcana checks.'
+  actions:
+  - name: Claw +6
+    description: 1d6+4, DC 14, magical
+  notes:
+  - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
+    where they differ.
+  source_ref: dnd spreadsheet.xlsx / creatures!A21:P21

@@ -92,7 +92,7 @@ entries:
       \ While at 0 bulk (after any reductions) you gain a +2 bonus to all block checks and dexterity saves.\n    * Combat\
       \ roll - When subject to an attack, or a strength or dexterity save, you can spend a reaction to gain 1 of the following:\
       \ either a +1d4 bonus to AC against the attack, the next block check, or the save. At the end of this, move 5 ft without\
-      \ provoking a reaction.\n    * Modify constraints - You can modify a piece of armor during a rest to reduce both it's\
+      \ provoking a reaction.\n    * Modify constraints - You can modify a piece of armor during a rest to reduce both its\
       \ AC and bulk by 1. This can be repaired during a short rest, and cannot be applied to a piece of armor more than\
       \ once.\n* Weapon expertise - Choose a weapon group you are proficient with and gain a +1 bonus to all damage dealt\
       \ by weapons in that group.\n  * Counter - When a maneuver is used against you that requires a block check or a save,\
@@ -139,7 +139,7 @@ entries:
       \ expertise - Increase the damage dice of any thrown area of effect item or bomb-like thrown weapon you use by 1 size\
       \ category.\n  * Poison preparation - When you apply poison to a weapon or trap, it gains the following benefits,\
       \ if applicable: damage dealt is increased by 1d4, duration is increased by 1 turn, DC is increased by 1.\n    * Toxin\
-      \ preparation - Any oil, poison or similar substance that you apply to a weapon or ammunition has it's damage dice,\
+      \ preparation - Any oil, poison or similar substance that you apply to a weapon or ammunition has its damage dice,\
       \ if any, increased by 1 size category.\n  * Siege engineering - Gain a +1d4 bonus on all checks made to reload, repair,\
       \ or prime siege equipment and mounted ranged equipment. Weapons with the Capacity property can now be fully reloaded\
       \ as a bonus and move action.\n    * Bolt preparation - You can spend 1 rest die during a short rest to prepare 1d6\
@@ -248,13 +248,13 @@ entries:
     body: |-
       At 4th level, gain two upgrades from the list of abilities below:
 
-      * Hobbling shot - Make a ranged basic attack with disadvantage. On a hit, the target must make a constitution save. If the target fails, it's movement is halved. On a critical failure, the target is made prone. Can be done with any ranged weapon. Cannot be performed if your attacks are already subject to disadvantage.
+      * Hobbling shot - Make a ranged basic attack with disadvantage. On a hit, the target must make a constitution save. If the target fails, its movement is halved. On a critical failure, the target is made prone. Can be done with any ranged weapon. Cannot be performed if your attacks are already subject to disadvantage.
       * Multi shot - as a single ranged bow attack, target two different targets, requiring only one attack roll which incurs disadvantage. Doing so is a weapon maneuver and requires spending an extra bonus action to execute.
       * Focused shot - When making a ranged attack, you can spend one rest die to cause the attack to deal 3d6 extra damage and ignore secondary range penalties. This damage increases by 1d6 per character level above 5th.
       * Cone of arrows - As an action, you can spend 1 rest die to fire up to 1d4 + your dexterity modifier (min 3) arrows in a cone in front of you. The range is equal to half the weapons first range increment. Up to as many enemies in the cone as arrows fired must make a dexterity save. On a failure, they take your weapon damage.
       * Intercept - As a reaction, you can make a ranged attack against a flying object or similar projectile. The AC for a thrown object is 14, whereas for another bolt or arrow it is 20 (Subject to GM) knocking it out of the air and preventing its attack/trajectory.
       * Pincushion - As an attack, spend a rest die to gain advantage against the target. If the attack lands, gain advantage on all following ranged attacks against the target until the end of your next turn.
-      * Distracting shot - Apply disadvantage to a ranged attack. On a hit, the target must make a wisdom save. The dc is DEX based. If the target fails, the target is distracted and gains disadvantage on it's next attack until your next turn. Cannot be performed if your attacks are already subject to disadvantage.
+      * Distracting shot - Apply disadvantage to a ranged attack. On a hit, the target must make a wisdom save. The dc is DEX based. If the target fails, the target is distracted and gains disadvantage on its next attack until your next turn. Cannot be performed if your attacks are already subject to disadvantage.
       * Skyshot - As an action, create a high arching ranged shot against a target within half the first range increment of the weapon. The target must make a dexterity save. On a failure, they take an instant critical hit. The DC is dex based.
       * Powershot — Attacks with Overdraw apply Strength to damage as usual and deal an extra 1d6 damage. Windup attacks with ranged weapons deal an extra 1d3 damage per action spent.
 
@@ -272,7 +272,7 @@ entries:
       * Dexterous routine - Reduce the reload property of weapons you wield by 1. During a rest, you can spend 1 rest die to modify a crossbow, granting it 3 routine points. A routine point can be spent to treat a critical failure on an attack roll as just a miss. You can spend 1 routine point to grant an attack with the weapon advantage.
       * Ammunition expert - Special bolts, arrows, or other forms of ammunition that deal additional damage, or have a DC based effect, gain a +1 bonus to instances of damage, and a +1 bonus to any associated DC. You may spend a rest die during a short rest to create one of the following:
         * 1d4+1 elemental bolts or arrows - each deals 1d6 extra damage that is either fire, cold, acid, or lightning damage.
-        * 1d8 sharpened bolts or arrows - each has it's critical range increased by 2.
+        * 1d8 sharpened bolts or arrows - each has its critical range increased by 2.
         * 1d6 barbed bolts or arrows - each has a -1 penalty to hit and applies an instance of bleed when the attack roll is a (20 - dexterity bonus) or higher.
         * 2d4 broadhead bolts or arrows - each has a -1 penalty to hit and has its damage dice increased by 1 size category.
         * 1d10 balanced bolts or arrows - each has a +1 bonus to hit.
@@ -358,7 +358,7 @@ entries:
   sections:
   - heading: Tactical dice
     body: |-
-      At 4th fighter level, gain a number of tactical dice equal to your fighter level. A tactical dice can be used to add to on of the following for either yourself or an ally within 10 ft as a free action:
+      At 4th fighter level, gain a number of tactical dice equal to your fighter level. A tactical die can be added to one of the following for either yourself or an ally within 10 ft as a free action:
 
       * the DC of a block check from an attack by you or an ally within 10 ft
       * the DC of a maneuver of you or an ally within 10 ft
@@ -539,7 +539,7 @@ entries:
       At 7th fighter level, choose an upgrade:
 
       * Band of sword - When using Stand your ground!, you now also grant affected allies and yourself advantage to their attack until the start of your next turn.
-      * Band of shields - You can spend an extra rest dice when using Stand your ground! to increase the block granted by 1.
+      * Band of shields - You can spend an extra rest die when using Stand your ground! to increase the block granted by 1.
       * Band of heroes - When using Stand your ground! you also grant allies the ability to immediately reroll against all fear, subjugation or compulsion, and curse/hex effects. You gain a +1 bonus to persuasion and checks.
       * Iron brother - When using your own block check to block for an ally, gain a +3 bonus to the block check. Gain a +1 bonus to all other block checks.
       * Peak vitality - Your second wind ability restores 1 extra dice of HP per rest dice spent, and has its healing dice increased by 1 size category. Gain +1 to constitution and gain an extra death save slot.

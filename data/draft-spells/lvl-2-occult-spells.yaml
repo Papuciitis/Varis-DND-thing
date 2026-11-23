@@ -148,7 +148,7 @@ entries:
   duration: concentration
   range: 15 feet
   effect: As an action, raise an undead humanoid creature as an occult ghoul, or grant an occult ghoul
-    more power. The occult ghoul obeys your commands until you lose concentration on the spell. if you
+    more power. The occult ghoul obeys your commands until you lose concentration on the spell. If you
     willingly dismiss the spell, the occult ghoul must make a death saving throw vs your spell DC and
     die on a failure.
 - name: Sangrila
@@ -263,7 +263,7 @@ entries:
 
     On a failure, you may invade the dreams of the target creature. You remain asleep for the duration of this spell and the target cannot awake by its own means for the duration of the spell.
 
-    In all other regards, this is like another world, where you may cast spells as usual, though none of your items traverse with you, unless otherwise stated. The targets ability to control the dreamscape is subject to the GM, but the caster may expend a rest dice to cause any change in the dream realm equivalent to the casters highest possible spell level + 2 (subject to the GM).
+    In all other regards, this is like another world, where you may cast spells as usual, though none of your items traverse with you, unless otherwise stated. The targets ability to control the dreamscape is subject to the GM, but the caster may expend a rest die to cause any change in the dream realm equivalent to the casters highest possible spell level + 2 (subject to the GM).
 
     The target can make a wisdom save in the spell to recognize the caster as an outsider the first time they are encountered. If either the target or the caster is reduced to 0 HP in the dream, they remain in a nightmarish limbo for the remainder of the spells maximum possible duration, and the other may awake, if possible.
 - name: Draconic sacrifice ritual

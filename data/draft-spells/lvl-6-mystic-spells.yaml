@@ -12,7 +12,7 @@ entries:
   effect: |-
     As an action, grant another ally a spark from your own magic, costing you 1 rest die in the process. Revive them if they have died within the last 2d4 minutes, heal them for 3d10 HP, and grant them 3d10 temporary HP. Restore 2 rest dice to them.
 
-    If cast on a lesser elemental (subject to the GM). allow them to become a first-generation Ginasi.
+    If cast on a lesser elemental (subject to the GM), allow them to become a first-generation Ginasi.
 - name: Elder rune of binding
   group: Mystic spells
   lvl: '6'
@@ -231,4 +231,4 @@ entries:
 
     * Cold touch attack +5 - DC 16 block, 2d4 + casting bonus cold damage. Paralyze for 1 round on crit.
     * Beguile - Cause an unaware medium or smaller creature within 30 ft to make a DC 18 wisdom save. On a failure, the creature is convinced of a fact of the dark spirits or caster's choice.
-    * Haunt - As a reaction to a spell, wand, or scroll being cast or a rest dice being used, lose 1d6 HP to force the target to make a DC 18 concentration check. On a failure, it loses the action.
+    * Haunt - As a reaction to a spell, wand, or scroll being cast or a rest die being used, lose 1d6 HP to force the target to make a DC 18 concentration check. On a failure, it loses the action.

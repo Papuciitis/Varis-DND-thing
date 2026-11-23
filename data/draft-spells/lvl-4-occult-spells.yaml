@@ -55,7 +55,7 @@ entries:
   duration: concentration
   range: 5 ft
   effect: |-
-    As an action, tap the soul of dead, once-sentient, small or larger creature within range which has died within 6 rounds, or who's soul still lingers here. Doing so requires access to the creatures remains, and requires the creature make a charisma save vs the spells DC + 1. On a failure, you can grasp their spirit in your hand and hold on to it for as long as you maintain concentration.
+    As an action, tap the soul of dead, once-sentient, small or larger creature within range which has died within 6 rounds, or whose soul still lingers here. Doing so requires access to the creatures remains, and requires the creature make a charisma save vs the spells DC + 1. On a failure, you can grasp their spirit in your hand and hold on to it for as long as you maintain concentration.
 
     Innately, for as long as you maintain concentration on the spell, you can choose to end the spell and do one of the following:
 

@@ -122,7 +122,7 @@ entries:
 
     For the duration you can speak and address all creatures within clearly.
 
-    You can end the spell prematurely and spend 1 extra rest dice to cast a 4th or lower level spell of choice on all creatures that can hear within the area, applying its effect to all creatures within the area, or to extend to the entire 150 radius area.
+    You can end the spell prematurely and spend 1 extra rest die to cast a 4th or lower level spell of choice on all creatures that can hear within the area, applying its effect to all creatures within the area, or to extend to the entire 150 radius area.
 
     Losing concentration abruptly deals 3d8 sonic damage to all creatures and deafens for 1d4 rounds.
 - name: 'Power word: Banish'
@@ -136,7 +136,7 @@ entries:
   effect: |-
     As an action, force an undead, demonic, fiendish, infernal, eldritch, or cosmic creature to make a wisdom or charisma save and take 6d6 force damage. On a failure, it is banished to either the ethereal plane or is discorporated to its domain of origin.
 
-    On a critical failure, the entity is forbidden from entering the point location of casting in this plane or realm at a range of 5d20 miles (subject to the GM). for a year.
+    On a critical failure, the entity is forbidden from entering the point location of casting in this plane or realm at a range of 5d20 miles (subject to the GM) for a year.
 - name: 'Power word: Dream'
   group: Oath spells
   lvl: '6'

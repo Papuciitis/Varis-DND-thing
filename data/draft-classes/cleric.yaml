@@ -128,7 +128,7 @@ entries:
 
       Sign - You gain proficiency with insight. If you already had proficiency with insight, you gain expertise instead. If you already had expertise, gain proficiency with a skill of choice.
 
-      Blessing - You gain advantage on all checks made to detect illusions. You can end any enchantment spell affecting you as a bonus action by spending a number of rest dice equal to it's level (minimum of 1.)
+      Blessing - You gain advantage on all checks made to detect illusions. You can end any enchantment spell affecting you as a bonus action by spending a number of rest dice equal to its level (minimum of 1.)
   - heading: Oath of the lore keeper
     body: |-
       "Pursue knowledge, preserve the lore, understand."
@@ -236,7 +236,7 @@ entries:
     body: |-
       At 6th cleric level, choose one ability from the list below:
 
-      * Burning might - The melee weapon used for Might retains power after it's attack. For the following 2d4 turns, the weapon deals an amount of extra fire damage equal to the number of turns remaining. Gain proficiency with smiths tools.
+      * Burning might - The melee weapon used for Might retains power after its attack. For the following 2d4 turns, the weapon deals an amount of extra fire damage equal to the number of turns remaining. Gain proficiency with smiths tools.
       * Exemplar - Gain an extra templar blessing and trait. Gain +1 to an ability score of your choice.
       * Un-flinching- Your insight, perception, investigation, and religion checks gain a +2 bonus. You gain 5 save rerolls per long rest.
       * Vessel — Regain 2 favor points whenever you finish a rest. Your rest dice maximum increases by 1.
@@ -356,7 +356,7 @@ entries:
       * Oathseal scribe - You can create an oathseal by spending a rest die during a rest. An oathseal can be broken to restore 1d4 spell levels to a spell slot of choice. Gain a +2 bonus to checks made to read and decipher ancient, sacred, or arcane texts.
       * Light wielder - Choose a weapon group you are proficient with. You can enchant 1 weapon of this group during a rest by spending 1 rest die. The enchanted weapon deals an extra 1d6 radiant damage. You can only have one such weapon enchantment and it lasts until long rest and can be renewed during a long rest.
       * Fire speaker - You gain resistance to fire damage and can change the damage type of any spell to fire. Banish costs only 1 rest die to cast on fire and ice elementals and other fire/ice based entities (subject to GM)
-      * Thunder caller - You can spend 1 extra rest dice when using banish to increase the damage dice by 1d8 and the range to 50 feet. While there is a storm above (Subject to GM,) this is always applied at no rest dice cost, and the damage is further increased by 1d8.
+      * Thunder caller - You can spend 1 extra rest die when using banish to increase the damage dice by 1d8 and the range to 50 feet. While there is a storm above (Subject to GM,) this is always applied at no rest dice cost, and the damage is further increased by 1d8.
       * Radiant one - Banish costs 1 less rest dice when you are exposed to radiant light or sunlight. Banish deals 2d8 extra radiant damage. Your rest dice maximum is increased by 1.
       * Mountain walker - You gain 1 extra block at the start of combat. +7 max HP. Gain a +3 bonus to block checks. You do not suffer from the environmental hazards of low air.
   - heading: Read the lore
@@ -411,7 +411,7 @@ entries:
       * Devotee of order - Your rest dice maximum is increased by 2. You are immune to madness effects. Excludes taking other devotee of X traits.
       * Devotee of strength - You gain a +1 bonus to all physical attributes. Whenever you resist a fear, terror, or compulsion effect, regain 1 rest die.
       * Devotee of war - Damage dealing paladin powers you have deal an extra dice of damage. Gain proficiency with medium armor. If already proficient, gain proficiency with heavy armor. Excludes taking other devotee of X traits.
-      * Greater banish- Requires the banish paladin ability. Extend it's range by 5dft, add +1 bonus to its religion check roll, and deal an extra 1d10 damage to its valid creatures. Can be taken multiple times.
+      * Greater banish- Requires the banish paladin ability. Extend its range by 5dft, add +1 bonus to its religion check roll, and deal an extra 1d10 damage to its valid creatures. Can be taken multiple times.
       * Greater bless - Requires the bless paladin ability. Increase bonus by +1 and reduce rest dice cost by 1.
       * Greater cleanse - Requires the cleanse paladin ability. Gain a +1 bonus to its religion check roll, and deal an extra 1d10 damage to valid targets and increase compulsion effect on undead by 1d4 rounds. Can be taken multiple times.
       * Greater smite - Requires the smite paladin ability. Increase its damage by 1d8 radiant damage. Can be taken multiple times.
@@ -452,7 +452,7 @@ entries:
       At 8th cleric level, choose one upgrade from the list below:
 
       * Anointed one - White arcana is now expanded to include all divination spells. You now possess a faint halo effect which may be revealed or hidden at will, sheds a light at a 20 ft radius, grants immunity from blindness and deafness. Learn a white arcana spell.
-      * At peace - White arcana is now expanded to include spells that remote, grant immunity from, allow rerolls for, or grant protection from negative conditions but do not directly deal damage (Subject to GM.) You are immune to fear, compulsion, and charm effects. Gain a +2 bonus to insight checks. You restore 1 extra rest dice every rest.
+      * At peace - White arcana is now expanded to include spells that remote, grant immunity from, allow rerolls for, or grant protection from negative conditions but do not directly deal damage (Subject to GM.) You are immune to fear, compulsion, and charm effects. Gain a +2 bonus to insight checks. You restore 1 extra rest die every rest.
       * Shield-priest - White arcana is now expanded to include spells that grant block, temporary block, or increases to ability scores. Gain proficiency with large shields. Gain proficiency with medium armor. If already proficient, gain proficiency with heavy armor. If already proficient with heavy armor, learn an extra white arcana spell of a level you can cast. You gain +1 temporary block at the start of combat.
       * Wise one - White arcana is now expanded to include spells that grant awareness of evil or danger (subject to gm.) Learn 3 extra cleric or white arcana spells. Your rest dice maximum is increased by 1.
       * Saving spirit - White arcana is now expanded to include all spells that have the ability to revive a fallen creature. Learn one such spell (specifically revive, not cleric or white arcana. It can be of any class of magic.) Gain a +1 bonus to all saves, including death saves.

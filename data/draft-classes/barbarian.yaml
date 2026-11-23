@@ -334,7 +334,7 @@ entries:
       * Battle hardened - Your number of battle dice is increased by 2. Gain 2 extra barbarian traits (barbarian 2) upgrades.
       * Beast king - You gain a +3 bonus to all handle animal checks. Your contender bonus applies to beasts and animals. Your hand weapon, bite, unarmed, claw, horn, and tail based attacks deal an extra 1d10 damage. You gain 100 ft of darkvision. You gain 20 ft of echosight.
       * Belligerent combat - Every time you land a hit on a creature with a melee attack, you may force them to make a strength or dexterity save as a free action, being moved 5 ft away from you on a failure. DC is equal to 12 + your strength bonus + prof bonus. Your other weapon maneuver DCs are increased by 1. +1 strength.
-      * Blood oath of battle - You lose 1 death save slot. Your max HP is increased by 12. You gain an extra rest dice. You can ignore up to 1 point of fatigue damage per rest.
+      * Blood oath of battle - You lose 1 death save slot. Your max HP is increased by 12. You gain an extra rest die. You can ignore up to 1 point of fatigue damage per rest.
       * Booming command - when you successfully intimidate a creature, you can force them to immediately make a command that is not self-hurtful or harms their loved ones (subject to GM.) Creatures that are shaken or afraid of you have their duration increased by 2 units (rounds, minutes, hours)
       * Fiendish bargaining - You may spend a rest die or 2 other class resources (battle dice, alchemy points, bardic inspiration dice) during a rest to attain an occult spell (max level equal to your character (max level of (character level - 1) / 2, rounded up), which uses your constitution or strength as the casting attribute. Only one such spell can be known at a time. Casting it requires a number of rest dice equal or class resource dice equal to its level, or you must take 1d6 necrotic damage per level of the spell. You can only do so up to as many times as your wisdom mod (min 1) per long rest.
       * Heretic lord - You lose 2 max HP to gain the knowledge of the runes of a forbidden primordial flame of chaos. During a rest you can spend 3 rest dice to apply the rune to a weapon of war. One who wields them and has knowledge of primordial chaos fire (such as yourself, subject to gm) has them deal an extra 2d8 fire damage. You can spend a battle die or rest dice to deal double its value as radiant damage to the target. This must be done before the attack roll is made. Gain a +3 bonus to religion checks.
@@ -417,7 +417,7 @@ entries:
       * Bestial speed - When transformed, you gain a +2 bonus to dexterity, +1 bonus to AC, and +10 bonus to jump distance and movement speed.
       * Bestial strength - When transformed, increase the strength bonus gained by a further +2. +10 max HP.
       * Clawed beast - When transformed, you gain a claws for your unarmed attacks, which deal your unarmed damage +1d10 necrotic damage. The necrotic damage is cursed (cannot be healed until rest.) The claw attack is swift (can be made as bonus action.) You have disadvantage with weapon attacks while transformed. Gain a +1 bonus to natural attacks.
-      * Dark conduit - Learn an occult, mystic, and oath spell. They must be 2nd, 3rd, and 4th level. While transformed, you may cast them by spending 1d4 HP per spell level as a movement action or a bonus action, using your constitution or wisdom bonus as the the casting modifier. While not transformed, you can cast them but at 1d8 HP per spell level instead.
+      * Dark conduit - Learn an occult, mystic, and oath spell. They must be 2nd, 3rd, and 4th level. While transformed, you may cast them by spending 1d4 HP per spell level as a movement action or a bonus action, using your constitution or wisdom bonus as the casting modifier. While not transformed, you can cast them but at 1d8 HP per spell level instead.
       * False deer cult - While transformed, you can consume a medium or smaller corpse as a full round action to heal 3d10 health. You gain a +3 bonus to saves vs diseases and curses while transformed, and a +1 bonus when not.
       * Horned warrior - When transformed, you grow horns, allowing you to make a strength based horn attack as a free action when entering an enemies range and attacking for the first time, dealing 1d12 + STR bludgeoning damage on a success, with a block DC of 12 + str + prof. Gain a +3 bonus to saves vs effects that would move, push, or force you to be prone. Gain a +2 bonus to handle animal while transformed.
       * Primal fangs - When transformed, you gain a 1d8 bite attack, or increase your innate bite attack by 2 dice size categories. So long as you have not moved, you can make one bite attack as a free action once per turn.
@@ -442,7 +442,7 @@ entries:
   sections:
   - heading: Storm aspect
     body: |-
-      At 9th barbarian level, you gain a storm aspect which can be invoked, having base damage and a special effect, and who's mastery also grants you additional permanent boon.
+      At 9th barbarian level, you gain a storm aspect which can be invoked, having base damage and a special effect, and whose mastery also grants you additional permanent boon.
 
       Aspects:
 

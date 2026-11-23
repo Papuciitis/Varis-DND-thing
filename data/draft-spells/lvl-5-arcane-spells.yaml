@@ -202,7 +202,7 @@ entries:
     * Suffocate - Force a creature within range to take 1d4 damage to fatigue and 2d12 necrotic damage, become winded, and become deafened. On a successful constitution save, the target takes half damage. On a critical failure, the target is exhausted for the duration.
   higher_levels: At 5th level, sky leap can affect all allies within 10 ft of you, suffocate deals 2d12
     extra damage, and wind walls area is doubled. At 6th level, you can choose to attempt to calm a storm
-    instead, making a DC 22 arcana check (subject to the GM). to attempt to reduce the severity of weather.
+    instead, making a DC 22 arcana check (subject to the GM) to attempt to reduce the severity of weather.
 - name: Hemomancy touch
   group: Arcane spells
   lvl: '5'
@@ -340,7 +340,7 @@ entries:
     * Golem hands - The siege golem has 2 crude arms and hands that can be used to either interact, or make a +10 3d8 + casting bonus bludgeoning damage. Can throw medium and smaller creatures up to 20 ft.
     * Shielding dome - The siege golem grants its pilot full cover.
     * Arcane turret - You can sacrifice a crossbow you can use to cause it to meld with the golem, allowing it to make a +6 crossbow attack once per turn and reload automatically.
-    * Furnace engine - You can sacrifice a flammable material, a flask of oil or similar substance, or a fire affinity item (subject to the GM). when casting the spell to increase the siege golems STR bonus to +12 and give it a 40 ft jump distance.
+    * Furnace engine - You can sacrifice a flammable material, a flask of oil or similar substance, or a fire affinity item (subject to the GM) when casting the spell to increase the siege golems STR bonus to +12 and give it a 40 ft jump distance.
     * Shielded aura - You can sacrifice a magical artifact (A wand, soulgem, black page) to grant the golem charges equal to the quality or quantity of charges in the item (min 1. max 6.) Can spend 1 charge as a reaction to grant all creatures within 10 ft +5 to saves and 1d10 temporary health for 1 turn (for only the turn which the reaction interrupted)
 
     After the spell's duration, it becomes inert and inoperable except by arcane means.
@@ -439,6 +439,6 @@ entries:
 
     * 1, 2, 3, 4 - nothing additional happens.
     * 5, 6 - Damage structures and objects, but not creatures, around yourself and the targets location in a 10 ft radius.
-    * 7, 8 - Blink, conjuration, and teleportation effects in a 100 ft area flicker and fail (subject to the GM). for 2d4 rounds.
+    * 7, 8 - Blink, conjuration, and teleportation effects in a 100 ft area flicker and fail (subject to the GM) for 2d4 rounds.
     * 9 - You lose 1 rest die, or 1d4 fatigue if at 0 rest dice.
     * 10 - The creature is blinked in time for a duration up to a year ( subject to the GM. ) If the target succeeds the save, you become the new target of the spell.

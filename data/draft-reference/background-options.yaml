@@ -357,7 +357,7 @@ entries:
       insight, intimidation.'
     Mana-burned: Your rest dice maximum is reduced by 1. This cannot reduce your maximum rest dice below 1.
     Arcane adaptation: Reduce all incoming lightning, psychic, radiant, and force damage by 1 (min 1).
-    Energy conductor: If you take one or more dice of of lightning, psychic, radiant, or force damage, you
+    Energy conductor: If you take one or more dice of lightning, psychic, radiant, or force damage, you
       can regain 1 rest die. You can do so a number of times equal to your Constitution bonus + your Charisma
       bonus, but the threshold for the ability to trigger is increased by 1 die every time. This threshold
       is reset after a rest.

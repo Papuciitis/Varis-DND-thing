@@ -1,0 +1,41 @@
+# Rules review decisions
+
+The YAML under `data/` remains the rules source. The existing Git rule takes precedence over a matching draft rule, as described in [README](../README.md#rules-sources) and [COVERAGE](../COVERAGE.md). This review records decisions still needed; it does not supply missing rules or change balance.
+
+The text cleanup audited the 66 existing YAML files and 1,268 compiled entries. It corrected contextual apostrophes, duplicated words, singular *die*, obvious grammar, sentence capitalization, and missing spaces. Entry names, groups, feature headings, option labels, numeric values, and stat fields were preserved. All cantrip files were left unchanged at the author's request. UTF-8 decoding found no replacement characters or common mojibake, so no encoding replacement was needed.
+
+## Rules and source gaps
+
+| File and entry | Decision needed |
+| --- | --- |
+| [`conditions.yaml`](../data/conditions.yaml), **Fatigue** | Supply penalties for levels 6 and 7 on the existing ten-level scale. The draft's eight-level scale does not establish these values. |
+| [`draft-classes/alchemist.yaml`](../data/draft-classes/alchemist.yaml), **Alchemist / 3rd archetype** | Choose level 9 or 10: the original feature and progression table disagree. |
+| [`draft-classes/ranger.yaml`](../data/draft-classes/ranger.yaml), **Ranger / Progression** | Confirm the level 9 proficiency bonus printed as +8, between +4 at level 8 and +5 at level 10. |
+| [`draft-classes/wizard.yaml`](../data/draft-classes/wizard.yaml), **Artificer**; [`draft-classes/occultist.yaml`](../data/draft-classes/occultist.yaml), **Soulsealer**; [`draft-classes/bard.yaml`](../data/draft-classes/bard.yaml), **Muse caller / True expression** | Supply the absent features or effect. These records cannot establish playable mechanics from names alone. |
+| [`draft-classes/occultist.yaml`](../data/draft-classes/occultist.yaml), **Incanter**, **Schemer**, **Devotee**, **Shadow mage**, and the extra ritual/Spellblade options | Establish the marked occult-slot capacities, recovery amounts, and costs. Retain the existing slot system; the old draft's spell-point quantities do not establish a conversion. |
+| [`draft-classes/cleric.yaml`](../data/draft-classes/cleric.yaml), **Oathspeaker / Greater banish** | Resolve the malformed range increment `5dft` and confirm the prerequisite reference to the “banish paladin ability.” Correcting the unit or class reference would select a rule. |
+| [`draft-classes/alchemist.yaml`](../data/draft-classes/alchemist.yaml), **Alchemy methods / Auto-still modification**, **Powder-keeper / Explosion sigil** | Confirm whether “during a test” means a rest, and whether “spend carve or inscribe” omits a time or resource cost. |
+| [`draft-classes/druid.yaml`](../data/draft-classes/druid.yaml), **Wildshaper / Horns**, **Quickened shift** | Confirm whether the joined “Jaws of death” and “Salamander breath” text represents separate selectable options. Splitting these bullets changes builder option identities and choices. |
+| [`draft-reference/feats.yaml`](../data/draft-reference/feats.yaml), **More mystic spells known** | Confirm whether its prerequisite should require occult or mystic casting; the spell-level ceiling explicitly refers to mystic casting. |
+| [`draft-reference/armor-and-shields.yaml`](../data/draft-reference/armor-and-shields.yaml), shields with **Brace** or **Repel** | Define the effect, trigger, action cost, and meaning of the supplied ratings. Neither source defines how to use these shield properties. |
+| [`draft-spells/lvl-1-mystic-spells.yaml`](../data/draft-spells/lvl-1-mystic-spells.yaml), **Animal companion**, **Healing wish** | Supply Animal companion's second-level alternative ending in `<>`; specify Healing wish's duration. |
+| [`draft-spells/lvl-3-arcane-spells.yaml`](../data/draft-spells/lvl-3-arcane-spells.yaml), **Animate arcane golem**, **Miasma cloud**, **Override undead** | Reconcile one action versus four full-round actions for the golem. Supply the cloud's missing movement distance after “can move over.” Override undead stops at “force an undead”; its higher-level text refers to cloud damage instead. Supply the actual effect and scaling. |
+| [`draft-spells/lvl-3-oath-spells.yaml`](../data/draft-spells/lvl-3-oath-spells.yaml), **Favor the gods / The Shepherd** | Resolve “or two three creatures”: specify the number of targets and rest dice restored by the full-round option. Its separate casting-cost conflict also remains marked. |
+| [`draft-spells/hex-magic.yaml`](../data/draft-spells/hex-magic.yaml), **Decoy hex**, **Rune of Savat**, **Ward hex**; [`lvl-3-oath-spells.yaml`](../data/draft-spells/lvl-3-oath-spells.yaml), **Favor the gods**; [`lvl-5-occult-spells.yaml`](../data/draft-spells/lvl-5-occult-spells.yaml), **Outer dark invocation** | Choose the conflicting initial casting costs recorded in each entry's `draft_note`. Subsequent actions described by an effect remain separate. |
+| [`draft-spells/lvl-1-arcane-spells.yaml`](../data/draft-spells/lvl-1-arcane-spells.yaml), **Assume Image**, **Call of the banshee**, **Mind spike**, **Sleep**; [`lvl-4-occult-spells.yaml`](../data/draft-spells/lvl-4-occult-spells.yaml), **Command lesser being**; [`lvl-5-occult-spells.yaml`](../data/draft-spells/lvl-5-occult-spells.yaml), **Burn karmic aura**; [`lvl-6-oath-spells.yaml`](../data/draft-spells/lvl-6-oath-spells.yaml), **Power word: Order** | Supply the event that permits each reaction. |
+| [`draft-spells/lvl-3-mystic-spells.yaml`](../data/draft-spells/lvl-3-mystic-spells.yaml), **Enchantment of the moon**; [`lvl-4-oath-spells.yaml`](../data/draft-spells/lvl-4-oath-spells.yaml), **Power word: Messenger** | Choose the spell levels: the page grouping and Type line disagree (3 versus 2, and 4 versus 6, respectively). Also reconcile the moon enchantment's “1 week” duration with “the rest of the night.” |
+| [`draft-spells/lvl-6-oath-spells.yaml`](../data/draft-spells/lvl-6-oath-spells.yaml), **Power word: Fear** | Supply the ordinary failed-save result; only success and critical failure are described. |
+| [`draft-spells/lvl-6-arcane-spells.yaml`](../data/draft-spells/lvl-6-arcane-spells.yaml), **Teleportation circle** | Complete the opening “As a” phrase and confirm it agrees with the six-full-round-action casting field. |
+
+Cantrip decisions are deferred. Existing unresolved examples remain **arcane hex** (30 ft stat line versus 60 ft effect) and **minor geomancy** (action versus bonus-action wording), both in [`spells/arcane_cantrips.yaml`](../data/spells/arcane_cantrips.yaml). **lesser ethurgy** remains the existing Git name for the draft's Lesser Wind Binding; no elemental utility, name, effect, or upgrade was changed.
+
+## Balance proposals for a separate review
+
+These are review topics, not adopted changes or a finding that an ability is automatically invalid:
+
+| File and entry | Question for the author |
+| --- | --- |
+| [`draft-classes/alchemist.yaml`](../data/draft-classes/alchemist.yaml), **Experimenter / Midal shortcut alchemy** | The source already says “needs better balancing.” Decide whether its gold cost and repeatable item modifications fit the table's intended economy and stacking limits. |
+| [`draft-spells/lvl-6-arcane-spells.yaml`](../data/draft-spells/lvl-6-arcane-spells.yaml), **Subdomain / Wrinkled time** | Confirm whether three internal turns per external turn also multiply attacks, resource recovery, spell durations, and effects crossing the boundary. State any limits explicitly before changing its strength. |
+
+For future renames, update saved-choice migration and the passive-effect registry together. `character_rules.py` derives feature and option IDs from the current names; `web/character-effects.js` matches parent, feature, and option names. A cosmetic rename can therefore remove a saved selection or stop a passive effect from applying. Prose and rules changes should continue to be made in YAML, with generated pages rebuilt afterward.

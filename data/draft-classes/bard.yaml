@@ -345,7 +345,7 @@ entries:
       You may choose to instead reconsider an exhausted memory mark, changing its impression to that of another and making it unexhausted.
   - heading: Empathic magic
     body: |-
-      Starting at 8th level, you may exhaust and remove a memory mark to cast a spell that you know, taking 1d2 points of fatigue in the process. the kind of spells you can cast must have at least one of the schools corresponding to the expended memory mark. If the spell contains both schools, the fatigue cost is reduced to 1. The level of the spell cast is equal to the highest level of spell you can cast:
+      Starting at 8th level, you may exhaust and remove a memory mark to cast a spell that you know, taking 1d2 points of fatigue in the process. The kind of spells you can cast must have at least one of the schools corresponding to the expended memory mark. If the spell contains both schools, the fatigue cost is reduced to 1. The level of the spell cast is equal to the highest level of spell you can cast:
 
       * fracture - cast an illusion or charm spell without spending spell slots.
       * tension - cast a transmutation or necromancy spell without spending spell slots.

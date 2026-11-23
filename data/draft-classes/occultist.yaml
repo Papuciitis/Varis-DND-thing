@@ -158,7 +158,7 @@ entries:
       * Soul farming - When you slay a small or larger sentient creature, you gain a soul point. You can spend soul points interchangeably with rest dice. Your maximum soul points is equal to your wisdom or charisma bonus, whichever is higher. Trading soul points for occult slots is pending.
   - heading: The Flesh
     body: |-
-      An unknown vast stillborn entity, sealed in a secret realm, who has been robbed of its soul. It lies in eternal coma, but it's form still dreams and reaches out to those who understand it.
+      An unknown vast stillborn entity, sealed in a secret realm, who has been robbed of its soul. It lies in eternal coma, but its form still dreams and reaches out to those who understand it.
 
       Ritual: You must remove or be missing a body part.
 
@@ -183,7 +183,7 @@ entries:
       * The hunger - You gain lifesight, you can perceive living creatures and lifeforce as a slightly colored aura.
   - heading: The Moth God
     body: |-
-      In the in-between spaces that lie at the foundations of the archetypal realm exists an entity that gladly accepts the flame over and over again. Among it's sparse followers claim it is not native to creation itself.
+      In the in-between spaces that lie at the foundations of the archetypal realm exists an entity that gladly accepts the flame over and over again. Among its sparse followers claim it is not native to creation itself.
 
       Ritual: Burn a sacred text or book, 10 black pages or a black scroll, or an arcane spellbook with at least 10 spell levels worth of spells.
 
@@ -419,14 +419,14 @@ entries:
       * Shadow cloak mastery - The range of shadow cloak is increased to 140 ft, and all creatures affected must also make a wisdom save at the start of their round to not become distracted by whisps of darkness.
         * Shielded by shadow - while in magical darkness or while in the plane of shadow your AC, block checks, and saves gain a +1 bonus.
         * Eavesdrop - While in the shadow cloak area, you can attempt to listen in on the surface thoughts of any creature within the area, and are made aware of all other creatures within the area of effect.
-        * True nocturnal - You can function normally with a mere 1 hour of sleep. You recover one extra rest dice and SMP during a short rest.
+        * True nocturnal - You can function normally with a mere 1 hour of sleep. You recover one extra rest die and SMP during a short rest.
       * Darkwarp mastery - The rest dice cost of darkwarp is reduced by 1, and can be performed as either a bonus action or move action.
         * Shadow flight - While in darkness, you can spend 2 rest dice as an action to launch yourself as a shadowy whisp at the target location within 400 ft. You must merely be aware of the location and do not require a direct line of sight, as the whisp form can maneuver with perfect precision. While in magical darkness or in the plane of shadow, the cost is reduced by 1 rest die.
         * Anti-photosynthesis - While in magical darkness or the plane of shadow, you have regeneration 1.
         * Forced transfer - You can spend 4 rest dice as an action to force a creature in the material or shadow plane to make an intelligence save. On a failure, they are transported to the other plane.
       * Dark-flame magic - You gain +1 max SMP. You can use SMP to cast evocation spells that deal fire or necrotic damage. Fire damage dealt these spells is changed to necrotic damage, and the Burning condition is changed to dark-flame, which deals 1d8 necrotic damage until dispelled or until they take radiant damage.
         * Dark-flame mastery - The dark-flame condition you apply now deals 1d10 necrotic damage at the start of creatures rounds.
-          * Dire dark-flame - The dark-flame condition you apply now deals 1d12 necrotic damage. and can no longer be dispelled with radiant damage if it is less than 20.
+          * Dire dark-flame - The dark-flame condition you apply now deals 1d12 necrotic damage and can no longer be dispelled with radiant damage if it is less than 20.
         * Weave dark-flame - You may spend 1 rest die to imbue dark-flame into a weapon, granting it an extra 1d8 necrotic damage on hit, and causing it to apply the dark-flame condition on a critical hit.
   - heading: Secret shadow mage art
     body: |-

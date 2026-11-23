@@ -152,7 +152,7 @@ entries:
     body: |-
       At 4th rogue level choose 2 upgrades:
 
-      * Proper assassination - The rest rest dice cost of assassinate is refunded if your next attack reduces the target to 0 health.
+      * Proper assassination - The rest dice cost of assassinate is refunded if your next attack reduces the target to 0 health.
       * Essence eater - If you slay a creature with your assassinate attack, you gain 1d8 arcane health.
       * Reflexes - You can spend a bonus action to grant yourself a +1 bonus to AC and dexterity saves until the start of your next turn.
       * Stalker - Attacking out of stealth deals an additional 1d6 damage. You gain a +1 bonus to stealth checks. You gain darkvision.
@@ -193,7 +193,7 @@ entries:
       * Coup-de-grace - The crit range of your light one-handed slashing or piercing weapons is increased by 1.
       * Dirty strike - You can make a special attack either unarmed, with a knife/dagger, a light bludgeoning weapon, or with a fist weapon as a bonus action once per round. On a success, if unblocked, the target must make a constitution save (DC 10 + your rogue level) to not gain one of the following negative conditions: blinded, deafened, shaken, shocked, winded, or sickened for 1 turn.
       * Dive strike - You do not suffer fall damage when landing on a creature and attacking them. The recipient of a such an attack has disadvantage on their block check and the attack benefits from your sneak attack damage.
-      * Draw-shot - You can make a crossbow, wand, or thrown weapon attack as you swap to them or equip them. this cannot be done more than once per turn.
+      * Draw-shot - You can make a crossbow, wand, or thrown weapon attack as you swap to them or equip them. This cannot be done more than once per turn.
       * Driven edge - After a successful unblocked attack with a two-handed or versatile weapon, you can spend 2 bonus actions to make it deal its damage again.
       * Engarde - After a successful block or disarm, you may make an attack as either a reaction or bonus action.
       * Feinting leap - Once per turn you can make a feinting leap, dash up to 10 feet. This provokes attacks of opportunity, and if it misses you may respond with a melee attack as a free action.
@@ -269,7 +269,7 @@ entries:
       * Greater hex - Learn an extra greater hex.
       * Special darkness - Gain 2 extra hex upgrades. Can be applied to the same hex.
       * Personal hex - Gain a necromancy or illusion cantrip, or a cantrip that creates darkness or obscures. Use dexterity as the casting modifier. Gain a +1 bonus to dexterity. Upgrade the cantrip once.
-      * Signature greater hex - Choose an arcane, oath, or occult level 1 spell. Reduce its range, if it has any, by half, reduce all damage dealt by by 1 dice, and grant it a 1d10 > 8 cooldown chance dice. Use dexterity or wisdom as the casting attribute, but reduce DC or block DC by 1. This counts as a hex and the spell is upcast by 1 per hex upgrade applied.
+      * Signature greater hex - Choose an arcane, oath, or occult level 1 spell. Reduce its range, if it has any, by half, reduce all damage dealt by 1 dice, and grant it a 1d10 > 8 cooldown chance dice. Use dexterity or wisdom as the casting attribute, but reduce DC or block DC by 1. This counts as a hex and the spell is upcast by 1 per hex upgrade applied.
       * Sneak attack hex - You can apply sneak attack to hex or cantrip damage, so long as it involves spell attacks that have advantage, or if the effect has a save and the targets have disadvantage. In case of multiple targets, each takes 1 dice of sneak attack damage. Can only trigger once per turn.
       * Rapid hex - When you cast a cooldown hex, immediately roll the cooldown cast once upon casting.
 # https://sites.google.com/view/dnd5plus/home/classes/rogue-x/thief

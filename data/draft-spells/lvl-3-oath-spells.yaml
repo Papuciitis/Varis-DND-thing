@@ -91,7 +91,7 @@ entries:
     Invoke the favor of a divine aspect. Upon first learning the spell, choose 3 aspect affinity upgrades which can be evoked as a bonus action:
 
     * The Hunter - Double the range of all your ranged attacks. +2 bonus to checks made to follow tracks.
-    * The Thunderer - When learning this,, pick either weapon, spell, or unarmed (includes bites, claws, and breath attacks.) When cast, when you use the chosen category to deal damage, it deals an extra 1d6 lightning damage.
+    * The Thunderer - When learning this, pick either weapon, spell, or unarmed (includes bites, claws, and breath attacks.) When cast, when you use the chosen category to deal damage, it deals an extra 1d6 lightning damage.
     * The Sage - Your spells have a 1d8 chance dice when cast. On a 1, their spell slots are not expended.
     * The Smith - Choose one when invoking: The next check involved in creating, enchanting, or repairing an item structure or construct gains a +2d3 bonus, OR double the amount of consumables or generic items being created.
     * The Fisher - Gain a +1d6 bonus to checks made to take care, maintain, and feed yourself and your allies during a rest.
@@ -99,7 +99,7 @@ entries:
     * The Scribe - Scrolls you cast have a 1d4=1 chance dice to not be consumed. Wands you carry restore 1 charge when cast.
     * The Raven - You gain a +2 bonus to intelligence checks, and can speak up to 4 languages of choice spoken by creatures that have encountered ravens in this plane.
     * The Lion - Gain a +1 bonus to strength, dexterity, and charisma, and gain advantage on saves vs enchantment and fear effects. Restore 1 block when casting.
-    * The Serpent - Gain a +2 bonus to deception and sleight of hand checks. Creatures you meaningfully deceive (subject to the GM). while under this effect do not perceive you casting illusion and enchantment spells for the duration of this effect.
+    * The Serpent - Gain a +2 bonus to deception and sleight of hand checks. Creatures you meaningfully deceive (subject to the GM) while under this effect do not perceive you casting illusion and enchantment spells for the duration of this effect.
     * The Eternal Flame - When reduced to 0 HP, stay conscious for 1 additional round. Fire damage you deal is increased by 2, and you gain resistance to fire damage.
     * The Champion - You gain a +1 to AC, block checks, and physical saves for the duration. You can reroll a d20 roll you make on your turn, up to a number of total times equal to your casting modifier.
     * The Owl - Gain a +2 bonus to wisdom for the duration. Gain 100 ft of darkvision, echosight, and tremorsense for the duration.
@@ -145,7 +145,7 @@ entries:
   range: self
   duration: 1 hour
   effect: |-
-    As an action, tap within by spending a rest dice, roll a 1d4 per 4 wisdom, gaining that many soul dice for the next hour. You can spend up to as many dice as your wisdom bonus (min 1) as a free action to gain one of the following effects a number of times equal to the soul dice spent:
+    As an action, tap within by spending a rest die, roll a 1d4 per 4 wisdom, gaining that many soul dice for the next hour. You can spend up to as many dice as your wisdom bonus (min 1) as a free action to gain one of the following effects a number of times equal to the soul dice spent:
 
     * Increase weapon damage by 1d6.
     * Increase a skill check by 1d4.

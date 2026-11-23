@@ -1,6 +1,25 @@
 "use strict";
 
-(() => {
+(async () => {
+  const loader = globalThis.DndCatalog;
+  if (loader) {
+    document.querySelector(".sheet-shell").inert = true;
+    document.querySelector(".app-header").inert = true;
+    document.getElementById("save-status").textContent = "Loading character rules…";
+    try {
+      globalThis.DND_CATALOG = await loader.ready;
+      const [metadata] = await Promise.all([loader.loadBuilder(), ...["classes", "races", "items"].map(key => loader.loadSection(key))]);
+      globalThis.DND_CHARACTER_RULES = metadata;
+      globalThis.DND_RULES_VERSION = loader.version;
+    } catch (error) {
+      const main = document.querySelector(".sheet-shell");
+      main.inert = false;
+      main.innerHTML = '<section class="panel"><h1>Character rules could not load</h1><p id="load-error"></p><p><a class="button" href="character.html">Retry</a> <a class="button" href="offline/character.html">Open portable copy</a></p></section>';
+      document.getElementById("load-error").textContent = error.message;
+      return;
+    }
+    document.getElementById("save-status").textContent = "Autosaves on this device";
+  }
   const State = globalThis.CharacterState;
   const Rules = globalThis.CharacterRules.create(globalThis.DND_CHARACTER_RULES || {}, globalThis.DND_CATALOG || []);
   const storageKey = "vara.character-sheets.v1";
@@ -13,11 +32,37 @@
     Deception: "cha", Intimidation: "cha", Performance: "cha", Persuasion: "cha"
   };
   const resourceNames = {hp: "Hit points", arcaneHealth: "Arcane Health", tempHP: "Temporary HP", block: "Block", tempBlock: "Temp Block"};
-  const catalog = (globalThis.DND_CATALOG || []).flatMap(section => section.entries.map(entry => ({
+  let catalog;
+  let dialogGeneration = 0;
+  const entries = new Map();
+  function refreshCatalog() {
+    catalog = (globalThis.DND_CATALOG || []).flatMap(section => section.entries.map(entry => ({
     ...entry, section: section.key, sectionTitle: section.title, entryId: JSON.stringify([section.key, entry.group, entry.name]),
     searchText: (entry.name + " " + entry.group + " " + JSON.stringify(entry.details)).toLowerCase()
-  })));
-  const entries = new Map(catalog.map(entry => [entry.entryId, entry]));
+    })));
+    entries.clear();
+    for (const entry of catalog) entries.set(entry.entryId, entry);
+  }
+  refreshCatalog();
+  function withSections(keys, continuation, dialogRequest = false) {
+    if (!loader || keys.every(key => loader.isLoaded(key))) return continuation();
+    const generation = dialogRequest ? ++dialogGeneration : null;
+    notify("Loading rules…");
+    return Promise.all(keys.map(key => loader.loadSection(key))).then(() => {
+      refreshCatalog();
+      notify("Rules loaded.");
+      if (!dialogRequest || generation === dialogGeneration) return continuation();
+    }).catch(error => notify(error.message + " Try the action again to retry."));
+  }
+  function referenceSections(characters) {
+    const keys = new Set();
+    for (const sheet of characters) for (const list of [sheet.spells, sheet.features, sheet.inventory]) {
+      for (const item of list || []) {
+        try { const key = JSON.parse(item.entryId)[0]; if (globalThis.DND_CATALOG.some(section => section.key === key)) keys.add(key); } catch {}
+      }
+    }
+    return [...keys];
+  }
   const byId = id => document.getElementById(id);
   const escape = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[char]));
   const signed = value => Number(value) >= 0 ? "+" + Number(value) : String(value);
@@ -323,7 +368,9 @@
 
   function referenceActions(item, list, index) {
     const found = item.entryId && entries.has(item.entryId);
-    const missing = item.entryId && !found ? `<p class="source-warning">This rule is missing from this rules snapshot. Your saved name and notes are preserved.</p>` : "";
+    let pending = false;
+    try { pending = loader && !loader.isLoaded(JSON.parse(item.entryId)[0]); } catch {}
+    const missing = item.entryId && !found ? `<p class="source-warning">${pending ? "This rule has not loaded yet. Try adding from rules to retry." : "This rule is missing from this rules snapshot. Your saved name and notes are preserved."}</p>` : "";
     return missing + `<div class="entry-actions">${found ? button("Read rule", "read-rule", `data-entry-id="${escape(item.entryId)}"`, "button-small") : ""}${button("Edit", "edit-item", `data-list="${list}" data-index="${index}"`, "button-quiet button-small")}</div>`;
   }
 
@@ -394,6 +441,7 @@
   }
 
   function openDialog(title, content, footer = "") {
+    dialogGeneration++;
     byId("dialog-title").textContent = title;
     byId("dialog-body").innerHTML = content;
     byId("dialog-footer").innerHTML = '<p class="dialog-message" id="dialog-message" role="status" aria-live="polite"></p>' + footer;
@@ -401,6 +449,7 @@
   }
 
   function closeDialog() {
+    dialogGeneration++;
     if(Wizard?.isOpen()){Wizard.cancel();return;}
     byId("editor-dialog").close();
   }
@@ -496,6 +545,7 @@
     try {
       if (file.size > 5 * 1024 * 1024) throw new Error("This file is too large. Choose a character JSON backup smaller than 5 MB.");
       const imported = State.importCharacter(await file.text());
+      if (loader) await withSections(referenceSections([imported]), () => {});
       persist();
       imported.id = uid();
       library.push(imported);
@@ -581,10 +631,10 @@
     "add-item"(target) { addItem(target.dataset.list); },
     "edit-item"(target) { itemEditor(target.dataset.list, Number(target.dataset.index)); },
     remove(target) { character[target.dataset.list].splice(Number(target.dataset.index), 1); if (target.dataset.close) closeDialog(); commit(); render(); },
-    condition() { openDialog("Add condition", `<label class="field"><span>Condition or temporary effect</span><input id="condition-name" type="text" list="condition-options" maxlength="120" placeholder="Choose or type a condition"></label><datalist id="condition-options">${catalog.filter(entry => entry.section === "conditions").map(entry => `<option value="${escape(entry.name)}"></option>`).join("")}</datalist>`, button("Add condition", "save-condition", "", "button-primary")); },
+    condition() { return withSections(["conditions"], () => openDialog("Add condition", `<label class="field"><span>Condition or temporary effect</span><input id="condition-name" type="text" list="condition-options" maxlength="120" placeholder="Choose or type a condition"></label><datalist id="condition-options">${catalog.filter(entry => entry.section === "conditions").map(entry => `<option value="${escape(entry.name)}"></option>`).join("")}</datalist>`, button("Add condition", "save-condition", "", "button-primary")), true); },
     "save-condition"() { const name = byId("condition-name").value.trim(); if (!name) return notify("Enter a condition name."); if (!character.conditions.includes(name)) character.conditions.push(name); closeDialog(); commit(); render(); },
     "remove-condition"(target) { character.conditions.splice(Number(target.dataset.index), 1); commit(); render(); },
-    catalog(target) { openCatalog(target.dataset.kind); },
+    catalog(target) { const kind = target.dataset.kind; return withSections(kind === "spells" ? ["spells"] : kind === "inventory" ? ["items"] : ["classes", "feats", "races", "backgrounds"], () => openCatalog(kind), true); },
     "catalog-more"() { catalogLimit += 30; renderCatalogResults(); },
     "catalog-read"(target) { readRule(target.dataset.entryId, true); },
     "read-rule"(target) { readRule(target.dataset.entryId); },
@@ -679,7 +729,7 @@
     if (Object.hasOwn(keys, event.key)) { event.preventDefault(); switchTab(tabs[keys[event.key]].dataset.tab, true); }
   });
   byId("editor-dialog").addEventListener("cancel", () => {if(Wizard?.isOpen())Wizard.cancel();else flushAndPersist();});
-  byId("editor-dialog").addEventListener("close", () => { flushAndPersist(); render(); });
+  byId("editor-dialog").addEventListener("close", () => { dialogGeneration++; flushAndPersist(); render(); });
   let printDetails = [];
   window.addEventListener("beforeprint", () => {
     printDetails = [...document.querySelectorAll("details:not([open])")];
@@ -692,7 +742,12 @@
   window.addEventListener("pagehide", flushAndPersist);
   document.addEventListener("visibilitychange", () => { if (document.hidden) flushAndPersist(); });
   load();
+  if (loader) await withSections(referenceSections(library), () => {});
   if(character.build?.enabled)healthAdjustment.pool='auto';
   render();
   persist();
+  if (loader) {
+    document.querySelector(".sheet-shell").inert = false;
+    document.querySelector(".app-header").inert = false;
+  }
 })();
