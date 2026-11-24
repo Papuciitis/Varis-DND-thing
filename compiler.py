@@ -14,6 +14,7 @@ SECTIONS = {
     "feats": "Feats",
     "races": "Races",
     "spells": "Spells",
+    "geomancy-review": "Geomancy spell review",
     "conditions": "Conditions",
     "backgrounds": "Backgrounds",
     "monsters": "Monster manual",

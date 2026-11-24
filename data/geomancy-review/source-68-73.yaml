@@ -1,0 +1,358 @@
+section: geomancy-review
+entries:
+- name: Unstoppable Force
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action, 1 bonus action, and movement
+  range: 60 feet
+  components: V, S
+  duration: Instantaneous
+  classes: Druid, Ranger, Sorcerer, Wizard
+  description: You transform into a living mountain and charge at a creature you can see within range. The creature
+    must make a Strength saving throw, taking 5d10 bludgeoning damage and being knocked prone on a failed save,
+    or half as much damage and not being knocked prone on a successful one.
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d10
+    for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 68
+- name: Wind's Gale
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action
+  range: 120 feet
+  components: V, S
+  duration: Instantaneous
+  classes: Cleric, Druid, Sorcerer, Warlock, Wizard
+  description: A line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose. Each
+    creature that starts its turn in the line must succeed on a Strength saving throw against your spellcasting
+    DC or be pushed 15 feet away from you in a direction following the line. Any creature in the line must spend
+    2 feet of movement for every 1 foot it moves when moving closer to you. The gust disperses gas or vapor, and
+    it extinguishes candles, torches, and similar unprotected flames in the area. It causes protected flames, such
+    as those of lanterns, to dance wildly and has a 50 percent chance to extinguish them.
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the length of the line increases
+    by 10 feet, and the width of the line increases by 5 feet for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 68
+  source_notes: The printed duration is Instantaneous, although the rules also refer to creatures starting turns
+    in the line. Preserved for review without choosing a duration.
+- name: Crystal Mirror
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 action
+  range: Self
+  components: V, S
+  duration: Concentration, up to 1 minute
+  classes: Sorcerer, Wizard
+  description: You create a large, flat crystal mirror that floats in the air in front of you. Any spell of 4th
+    level or lower cast at you from the mirror's direction is reflected back at the caster. If the spell can't target
+    the caster, it simply fails.
+  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the spell level, which can
+    be reflected, increases by 1 for each slot level above 7th.
+  source_ref: draft2.pdf / PDF page 69
+- name: Dunesurge
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 action
+  range: 120 feet
+  components: V, S
+  duration: Instantaneous
+  classes: Cleric, Druid, Sorcerer, Warlock, Wizard
+  description: You create a swirling vortex of sand at a point you can see within range. Each creature in a 20-foot-radius
+    sphere centered on that point must make a Constitution saving throw. A creature takes 10d6 slashing damage on
+    a failed save, or half as much damage on a successful one. The vortex lasts for the duration, and any creature
+    that ends its turn in the vortex takes 4d6 slashing damage.
+  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the radius of the sphere increases
+    by 5 feet, and the damage increases by 2d6 for each slot level above 7th.
+  source_ref: draft2.pdf / PDF page 69
+  source_notes: The printed duration is Instantaneous, but the vortex also lasts for the duration and deals end-of-turn
+    damage. The source conflict is not resolved here.
+- name: Lithic Echoes
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 action
+  range: Self (30-foot radius)
+  components: V, S, M (a small stone flute)
+  duration: Instantaneous
+  classes: Bard, Druid, Sorcerer, Wizard
+  description: Inspired by the echoes that resonate within stone structures, you cause the ground and walls around
+    you to echo with a haunting melody. Each creature within a 30-foot radius must make a Wisdom saving throw or
+    be frightened until the end of its next turn.
+  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the range increases by 5 feet
+    for each slot level above 7th.
+  source_ref: draft2.pdf / PDF page 69
+- name: Geosync
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 bonus action
+  range: Self
+  components: V, S
+  duration: Up to 1 minute
+  classes: Druid, Ranger, Sorcerer, Warlock, Wizard
+  description: You become one with the earth, gaining the ability to move through nonmagical, unworked earth and
+    stone as if it was air. While moving in this way, you do not disturb the material you move through. You also
+    gain tremorsense out to a range of 30 feet. The spell ends if you end your turn inside a stone object or surface.
+  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the duration increases by 1
+    minute for each slot level above 7th.
+  source_ref: draft2.pdf / PDF page 69
+- name: Geomantic Unity
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 10 minutes (Ritual)
+  range: Self
+  components: V, S, M (a handful of soil)
+  duration: 1 hour
+  classes: Cleric, Druid, Ranger, Wizard
+  description: 'You form a deep connection with the land around you, merging your consciousness with the natural
+    world. For the duration, you gain the ability to manipulate natural features within a 1-mile radius of your
+    location. You can cause the following effects:
+
+
+    Alter Terrain. You can raise or lower the terrain, creating hills, ditches, or flat land. The maximum height
+    or depth is 10 feet per minute. This does not affect buildings or other structures.
+
+
+    Divert Water. You can change the course of rivers or streams, or dry them up entirely. You can also create springs
+    in places where water is close to the surface.
+
+
+    Grow Vegetation. You can cause plants to grow rapidly. This can create thickets or clearings in forests, or
+    cause crops to grow in fields. The plants grow naturally and require suitable conditions to survive.
+
+
+    You have no control over animals, weather, or any unnatural constructs within the area. Any changes you make
+    using this spell are permanent and occur naturally, though they may be startling or disruptive to those who
+    witness them.'
+  higher_levels: 'When you cast this spell using a spell slot of 8th level or higher, the radius of your control
+    extends to 2 miles, and the speed at which you can alter terrain doubles.
+
+
+    When you cast this spell using a 9th level spell slot, the radius of your control extends to 3 miles, and the
+    speed at which you can alter terrain triples. Additionally, you gain the ability to cause minor seismic activity,
+    such as tremors, within the area of your control. These tremors aren''t strong enough to cause damage but can
+    be used to create distractions or unsettle creatures in the area.'
+  source_ref: draft2.pdf / PDF page 70
+- name: Neodrakite Net
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 action
+  range: 60 feet
+  components: V, S, M (a net woven with threads infused with neodrakite worth at least 500 gp, which the spell consumes)
+  duration: Concentration, up to 1 minute
+  classes: Artificer, Wizard
+  description: 'You create a shimmering net of rare earth elements and hurl it at a creature that you can see within
+    range. The target must succeed on a Strength saving throw or be restrained for the duration. The net has no
+    effect on creatures that are formless, or creatures that are Huge size or larger. The restrained creature can
+    use its action to make a Strength check against your spell save DC.
+
+
+    Once ensnared, the neodrakite in the net begins to contract, exerting a crushing force on the restrained creature.
+    At the start of each of its turns, the restrained creature takes 2d6 bludgeoning damage and the DC to escape
+    the net increases by 1. The restrained creature can use its action to make a Strength check against the current
+    DC. On a success, it frees itself.'
+  higher_levels: 'When you cast this spell using a spell slot of 8th level or higher, the size of the creature that
+    the net can restrain increases by one size category for each slot level above 7th. At 9th level, the net can
+    restrain Gargantuan creatures.
+
+
+    Additionally, the damage dealt at the start of the restrained creature''s turns increases by 1d6 for each slot
+    level above 7th.'
+  source_ref: draft2.pdf / PDF page 70
+  source_notes: The spell-list index on PDF page 40 calls this Neodymium Net; the body heading and material text
+    on page 70 say Neodrakite Net. The printed higher-level size wording is retained.
+  listed_as: Neodymium Net
+- name: Petalrage
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 action
+  range: 60 feet
+  components: V, S, M (radiant flowers worth atleast 500 gp, which the spell consumes)
+  duration: Instantaneous
+  classes: Cleric, Druid, Ranger
+  description: You create a burst of blossoming energy that explodes at a point you can see within range. Each creature
+    in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A creature takes 12d6
+    radiant damage on a failed save, or half as much damage on a successful one. The radiant energy is so potent
+    that it continues to burn the target for 1d6 radiant damage at the start of each of its turns for the next minute.
+  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the radius of the sphere increases
+    by 5 feet, and the damage increases by 2d6 for each slot level above 7th.
+  source_ref: draft2.pdf / PDF page 70
+- name: Stone's Aegis
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 action
+  range: Self
+  components: V, S, M (atleast 50 pounds of stone)
+  duration: Concentration, up to 1 minute
+  classes: Cleric, Druid, Ranger, Sorcerer, Wizard
+  description: You are surrounded by a protective barrier of swirling stones. The barrier provides you with a +5
+    bonus to AC and deals 2d6 bludgeoning damage to any creature that hits you with a melee attack. The barrier
+    moves with you, remaining centered on you and hedging out creatures that end their turn within 5 feet of you.
+    They must succeed on a Dexterity saving throw or take 2d6 bludgeoning damage.
+  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the bonus to AC increases by
+    1, and the damage dealt to creatures that hit you with a melee attack increases by 1d6 for each slot level above
+    7th.
+  source_ref: draft2.pdf / PDF page 71
+- name: Thorn Spitter
+  group: 7th level
+  level: 7
+  school: geomorphy
+  casting: 1 bonus action
+  range: 20 feet
+  components: V, S
+  duration: Concentration, up to 1 minute
+  classes: Cleric, Druid, Ranger, Warlock
+  description: You summon a plant that spits thorns at a creature within 60 feet radius of the plant, dealing 4d10
+    piercing damage.
+  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the damage increases by 1d10
+    for each slot level above 7th.
+  source_ref: draft2.pdf / PDF page 71
+  source_notes: The original spell does not provide a plant statblock, attack roll or save, attack cadence, or complete
+    control rules. Those omissions are preserved here; the separately converted monster option is an adaptation.
+  summon_label: Related monster option (converted)
+  summons:
+  - monster: Thorn Spitter
+- name: Elemental Surge
+  group: 8th level
+  level: 8
+  school: geomorphy
+  casting: 1 action
+  range: 30 feet
+  components: V, S, M (a crystal worth at least 100 gp)
+  duration: Instantaneous
+  classes: Cleric, Druid, Sorcerer, Wizard
+  description: You touch a crystal and cause it to radiate a brilliant light. Each creature of your choice that
+    you can see within range regains hit points equal to 8d8 + your spellcasting ability modifier, and it is freed
+    from any curse, disease, poison, blindness, or deafness.
+  higher_levels: When you cast this spell using a spell slot of 9th level, the healing increases by 1d8 for each
+    slot level above 8th.
+  source_ref: draft2.pdf / PDF page 72
+- name: Geomorph's Wisdom
+  group: 8th level
+  level: 8
+  school: geomorphy
+  casting: 10 minutes (Ritual)
+  range: Touch
+  components: V, S, M (a diamond encrusted trowel worth at least 5,000 gp, which the spell consumes)
+  duration: Concentration, up to 1 hour
+  classes: Cleric, Druid, Ranger, Wizard
+  description: You touch the ground and imbue it with the power to reshape itself according to your will. For the
+    duration, you can use your action to cause the land within a 500-foot radius of you to alter its form, creating
+    new geographical features such as hills, valleys, rivers, or even small mountains. The extent of the change
+    is up to you, but the land must end up as a natural formation.
+  higher_levels: When you cast this spell using a 9th level spell slot, the duration is 8 hours, and the radius
+    of land you can affect increases to 1,000 feet. Additionally, you can create more dramatic geographical features,
+    such as a large mountain, a deep chasm, or a wide river.
+  source_ref: draft2.pdf / PDF page 72
+- name: Geomorph's Stone Sentence
+  group: 8th level
+  level: 8
+  school: geomorphy
+  casting: 1 action
+  range: 60 feet
+  components: V, S
+  duration: Instantaneous
+  classes: Druid, Sorcerer, Wizard
+  description: 'You point at a creature you can see within range and attempt to turn it into stone. The target must
+    make a Constitution saving throw. On a failed save, the creature is instantly petrified, its form becoming a
+    lifeless, solid statue. If the creature has 100 hit points or fewer, it is instantly killed as its entire form
+    is converted into stone.
+
+
+    If the creature has more than 100 hit points, it takes 10d10 necrotic damage as parts of its body begin to turn
+    to stone, and it is restrained. The creature must make another Constitution saving throw at the end of its next
+    turn. If it fails, it is petrified. If it succeeds, the spell ends and the creature is no longer restrained.
+
+
+    A creature petrified by this spell remains in its stony state until freed by the greater restoration spell or
+    other magic. Additionally, if the creature has 200 hit points or fewer, it is instantly killed and turned to
+    stone. If the creature has more than 200 hit points, it is restrained and must make the additional Constitution
+    saving throws as described above.'
+  source_ref: draft2.pdf / PDF page 72
+  source_notes: The source gives both immediate petrification and a delayed-save procedure, and both 100-HP and
+    200-HP instant-death thresholds. All conflicting text is retained for review; no threshold or procedure is selected.
+  listed_as: Geomorpher's Stone Sentence
+- name: Petrified Resilience
+  group: 8th level
+  level: 8
+  school: geomorphy
+  casting: 1 action
+  range: 60 feet
+  components: V, S, M (a staff made from petrified wood worth at least 500 gp)
+  duration: Concentration, up to 1 minute
+  classes: Druid, Sorcerer, Wizard
+  description: 'You channel the ancient power of Geomorphy through your staff, causing it to resonate with a deep,
+    earthy energy. Choose a target you can see within range. The target must make a Constitution saving throw. On
+    a failed save, the target suffers the following effects for the duration:
+
+
+    The target takes 2d10 necrotic damage at the start of each of its turns as its body begins to harden and petrify.
+
+
+    The target has disadvantage on Strength-based weapon attack rolls due to the increasing weight and stiffness
+    of its body.
+
+
+    Additionally, all allies within range receive a protective earth shield, reducing the damage they take by 15%.
+    The deflected damage is dealt to the target.'
+  higher_levels: When you cast this spell using a 9th level spell slot, the necrotic damage increases to 4d10, and
+    the damage reduction increases to 20%.
+  source_ref: draft2.pdf / PDF page 73
+- name: Prism Break's Gem Eruption
+  group: 8th level
+  level: 8
+  school: geomorphy
+  casting: 1 action
+  range: 120 feet
+  components: V, S, M (a gemstone worth at least 500 gp)
+  duration: Instantaneous
+  classes: Druid, Sorcerer, Wizard
+  description: 'You point at a location within range and cause a brilliant gem to erupt from the ground. All creatures
+    within a 20-foot radius of the gem must make a Constitution saving throw. On a failed save, a creature takes
+    8d10 radiant damage as they are bombarded with a dazzling array of refracted light, and they are blinded until
+    the end of their next turn. On a successful save, a creature takes half as much damage and isn''t blinded.
+
+
+    The gem remains after the spell ends and can be used as a spellcasting focus. Additionally, the area within
+    a 20-foot radius of the gem is brightly illuminated by refracted light for 1 minute, creating difficult visual
+    conditions for creatures sensitive to light.'
+  higher_levels: When you cast this spell using a spell slot of 9th level, the radius of the dazzling light and
+    the area of effect increases to 30 feet, and the damage increases to 10d10 radiant damage. Furthermore, creatures
+    that fail their saving throw are blinded until the end of their next two turns.
+  source_ref: draft2.pdf / PDF page 73
+- name: Rock Tomb
+  group: 8th level
+  level: 8
+  school: geomorphy
+  casting: 1 reaction, which you take when you are hit by an attack
+  range: 60 feet
+  components: V, S, M (a small piece of stone)
+  duration: Until the end of the attacker's next turn
+  classes: Cleric, Druid, Ranger, Sorcerer, Wizard
+  description: When you are hit by an attack, you can use your reaction to encase the attacker in rock, restraining
+    them until the end of their next turn. The attacker must make a Strength saving throw against your spell save
+    DC. On a failed save, the attacker is restrained by the rock tomb. On a successful save, the attacker is not
+    restrained.
+  higher_levels: When you cast this spell using a spell slot of 9th level, the duration increases. The rock tomb
+    now lasts until the end of the attacker's second turn after being encased. Additionally, the attacker takes
+    4d8 bludgeoning damage upon being encased, regardless of the saving throw result.
+  source_ref: draft2.pdf / PDF page 73
+- name: Rockpause
+  group: 8th level
+  level: 8
+  school: geomorphy
+  casting: 1 hour (Ritual)
+  range: Touch
+  components: V, S, M (a gemstone worth at least 500 gp)
+  duration: Until dispelled
+  classes: Cleric, Druid, Ranger, Wizard
+  description: You touch a willing creature, and it enters a state of suspended animation. Time ceases to flow for
+    it, and it doesn't age.
+  higher_levels: When you cast this spell using a spell slot of 9th level, the creature is also immune to all attacks.
+  source_ref: draft2.pdf / PDF page 73

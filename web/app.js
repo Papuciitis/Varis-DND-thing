@@ -30,7 +30,7 @@
   };
   const families = [
     ["Characters", ["classes", "races", "backgrounds", "feats"]],
-    ["Magic & equipment", ["spells", "items", "magic-items", "weapon-rules"]],
+    ["Magic & equipment", ["spells", "geomancy-review", "items", "magic-items", "weapon-rules"]],
     ["At the table", ["rules", "conditions", "monsters", "design-notes"]]
   ];
   let initialized = false;
@@ -148,6 +148,7 @@
       collate.compare(a.entry.group, b.entry.group) || collate.compare(a.section.title, b.section.title));
   }
   function orderKind(section, group = "") {
+    if (section?.key === "geomancy-review") return "geomancy-review";
     if (["spells", "monsters"].includes(section?.key)) return section.key;
     if (section?.key === "classes" && / archetypes$/i.test(group) && section.entries.some(entry =>
       browseGroup(section, entry.group) === group && order.level(entry) != null)) return "classes";
@@ -177,6 +178,14 @@
     h.id = "entry-title";
     document.title = name + " · Varis DnD";
     return h;
+  }
+  function geomancyNotice() {
+    const note = el("aside", "geomancy-review-note");
+    note.setAttribute("aria-label", "Source draft for review");
+    note.append(el("strong", "", "Source draft · awaiting adaptation"));
+    note.append(el("p", "", "The complete Homebrewery Geomorphy list, kept here for V. to review. Original levels, spell slots and rules are preserved; these entries are not part of the current character spell list. Entries missing source descriptions are marked."));
+    note.append(link("Current spell rules", {section: "spells"}, "text-link"));
+    return note;
   }
   function crumbs(parts) {
     trail.replaceChildren();
@@ -307,8 +316,9 @@
     const kind = orderKind(section, group);
     const sort = selectedSort(params, kind, filter);
     const grouped = groups.filter(([name]) => name);
-    const compareEntries = ["races", "feats", "backgrounds"].includes(section.key);
-    const listView = compareEntries && (params.view === "list" || section.key === "races" && params.view !== "pages");
+    const review = section.key === "geomancy-review";
+    const compareEntries = ["races", "feats", "backgrounds", "geomancy-review"].includes(section.key);
+    const listView = compareEntries && (params.view === "list" || ["races", "geomancy-review"].includes(section.key) && params.view !== "pages");
     const monsterList = section.key === "monsters" && monsterViews && params.view !== "pages";
     const itemHome = section.key === "items" && !category && !group && !filter && !params.browse;
     const magicHome = section.key === "magic-items" && magicCategories && !category && !group && !filter && !params.browse && !params.rarity && !params.type;
@@ -327,6 +337,7 @@
       head.append(link("Browse all class entries", {...base, browse: "all"}, "text-link"));
     }
     reader.append(head);
+    if (review) reader.append(geomancyNotice());
     if (section.key === "spells") {
       const extraGroups = grouped.filter(([name]) => !order.magicClass(name));
       if (extraGroups.length) {
@@ -335,6 +346,7 @@
         for (const [name] of extraGroups) extra.append(link(cap(name), {...base, group: name}, "related-link"));
         head.append(extra);
       }
+      head.append(link("Geomancy spell review", {section: "geomancy-review"}, "text-link"));
     }
     if (section.key === "magic-items" && globalThis.MagicItems) {
       head.append(el("p", "index-intro", "Treasured finds and curious creations for the Varis rules."));
@@ -417,7 +429,7 @@
       select.value = magicClass;
       select.addEventListener("change", () => openFilters({...params, group: select.value, browse: "all", page: ""}));
       secondary.append(field);
-    } else if (grouped.length > 1 && !baseClassView && section.key !== "magic-items" && !itemHome) {
+    } else if (grouped.length > 1 && !baseClassView && section.key !== "magic-items" && !itemHome && !review) {
       const [field, select] = labelledSelect("Group", "group");
       select.append(new Option("All groups", ""));
       for (const [title] of grouped) select.append(new Option(cap(title), title));
@@ -425,12 +437,12 @@
       select.addEventListener("change", () => openFilters({...params, group: select.value, browse: "all", page: ""}));
       secondary.append(field);
     }
-    if (section.key === "spells") {
+    if (section.key === "spells" || review) {
       const levels = [...new Set(section.entries.map(entryLevel).filter(Boolean))].sort(collate.compare);
       if (levels.length) {
-        const [field, select] = labelledSelect("Spell level", "spell-level");
+        const [field, select] = labelledSelect(review ? "Source level" : "Spell level", "spell-level");
         select.append(new Option("All levels", ""));
-        for (const l of levels) select.append(new Option(levelLabel(l), l));
+        for (const l of levels) select.append(new Option(review && l === "0" ? "Cantrips" : levelLabel(l), l));
         select.value = level;
         select.addEventListener("change", () => openFilters({...params, level: select.value, browse: "all", page: ""}));
         form.append(field);
@@ -1029,6 +1041,7 @@
       if (links.childElementCount) header.append(links);
     }
     reader.append(header);
+    if (section.key === "geomancy-review") reader.append(geomancyNotice());
     let itemEditor;
     if (section.key === "magic-items" && globalThis.MagicItems) {
       itemEditor = globalThis.MagicItems.editor(section, entry, updated => {

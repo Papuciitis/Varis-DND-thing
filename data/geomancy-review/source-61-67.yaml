@@ -1,0 +1,477 @@
+section: geomancy-review
+entries:
+- name: Geochemical Golem
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 10 minutes (Ritual)
+  range: 30 feet
+  components: V, S, M (a mixture of rare earth elements worth at least 1,000 gp, which the spell consumes)
+  duration: Concentration, up to 1 hour
+  classes: Artificer, Wizard
+  description: 'You draw upon the surrounding earth and rare earth elements, shaping and infusing them with arcane
+    energy to create a Geochemical Golem. This golem acts as an ally and follows your commands, fighting on your
+    behalf.
+
+
+    The Geochemical Golem is designed for combat and possesses unique abilities derived from the rare earth elements
+    used in its creation. It can attack, defend, and perform complex tasks as directed.
+
+
+    The Geochemical Golem remains in this form for the duration of the spell or until it drops to 0 hit points,
+    at which point it crumbles back into the earth. If the golem is ever more than 100 feet away from you, it continues
+    to follow the last command you gave it.
+
+
+    Elemental Infusion (page 62): You can customize the golem''s abilities based on the situation and your preference.
+    You need to have atleast full worth of one element, to gain the effect. You can combine and mix the elements,
+    if you want to.
+
+
+    Basic combination: You can combine up to two different elements for the base casting cost of the spell. The
+    total cost would be the sum of the individual elements chosen.
+
+
+    Advanced combination: For additional element beyond two, you can add a third element for an additional 400 gp,
+    the forth element for an additional 2000 gp.
+
+    '
+  higher_levels: 'When you cast this spell using a spell slot of 6th level, the duration is 8 hours. When you cast
+    this spell using a 7th-level spell slot, the duration is 1 day.
+
+
+    When you cast this spell using an 8th-level spell slot, the duration is 15 days.
+
+
+    When you cast this spell using a 9th-level spell slot, the duration is a month and a day.
+
+
+    You don''t need to concentrate on this spell after 1 hour, when you cast it at higher levels.
+
+    '
+  source_ref: draft2.pdf / PDF pages 61-62
+  source_notes: The source creature block is printed on page 61; the material effects and appearance variations
+    are printed on page 62. The existing Geochemical Golem and material reference pages are separately converted
+    options, not replacements for this original spell text. The relationship between the source's 1,000 gp minimum
+    mixture and summed material prices is not clarified in the original.
+  summon_label: Related monster option (converted)
+  summons:
+  - monster: Geochemical Golem
+- name: Geomantic Harmony
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 10 minutes (Ritual)
+  range: Self
+  components: V, S, M (a handful of soil)
+  duration: 10 minutes
+  classes: Cleric, Druid, Ranger, Wizard
+  description: 'You form a deep connection with the land, gaining the ability to communicate with it and ask it
+    three questions. The land can provide information about its history, current state, and any significant events
+    that have occurred on it.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, you can ask an additional question
+    for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 63
+- name: Geomorpher's Stone Servant
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 hour
+  range: Touch
+  components: V, S, M (a gemstone worth at least 500 gp, which the spell consumes)
+  duration: Until dispelled
+  classes: Druid, Sorcerer, Wizard
+  description: 'You touch a Large or smaller nonmagical stone or a collection of stones that fits within a 5-foot
+    cube. The target gains a semblance of life and intelligence, becoming a stone servant under your control.
+
+
+    The stone servant follows your commands to the best of its ability. It can perform simple tasks for you, such
+    as carrying items, cleaning, mending, building, breaking, or digging. The servant can''t attack, but it can
+    use its action to defend itself or others.
+
+
+    The stone servant remains in this form until it drops to 0 hit points, at which point it reverts to its original
+    stone form, or until you dismiss it as an action. If the stone servant is ever more than 60 feet away from you,
+    it stops obeying your commands and does nothing until you come within 60 feet of it again.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the Stone Servants health increases
+    by 10 hit points for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 63
+  source_notes: The source Stone Servant creature block on the same page includes a Slam attack despite the spell
+    text explicitly prohibiting attacks. Both source statements are retained separately; the current monster option
+    uses the noncombat interpretation.
+  summon_label: Related monster option (converted)
+  summons:
+  - monster: Stone Servant
+- name: Lithic Luminary
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: Touch
+  components: V, S, M (a diamond worth at least 500 gp)
+  duration: 1 hour
+  classes: Druid, Paladin, Wizard
+  description: 'You touch a point on the ground, causing it to become a beacon of earthen energy. For the duration,
+    you and your allies within 30 feet of the beacon have advantage on saving throws against spells and other magical
+    effects.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the range increases by 5 feet
+    for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 64
+  source_notes: The source lists Touch range but describes higher levels as increasing range; it does not clarify
+    whether this means the beacon's 30-foot effect radius.
+- name: Rockrise
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: Touch
+  components: V, S, M (a piece of stone, worth at least 100 gp)
+  duration: 1 hour
+  classes: Wizard
+  description: 'You touch a piece of stone and cause it to grow and expand rapidly up to 5 feet cube. The stone
+    can be shaped into any form you desire, such as a wall, a bridge, or a simple weapon. The object created has
+    a number of hit points equal to your level plus spellcasting modifier times ten and armor class of 10 plus your
+    spellcasting modifier.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the object gains an additional
+    10 hit points and additional point for armor class for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 64
+  source_notes: The original does not parenthesize the hit-point formula; its wording is preserved without choosing
+    an order of operations.
+- name: Petal's Fountain
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: 60 feet
+  components: V, S, M (a blossom from a healing plant, worth at least 100 gp)
+  duration: Instantaneous
+  classes: Cleric, Druid, Paladin
+  description: 'You cause flowers to bloom in a 30-foot radius. Each creature in the area regains hit points equal
+    to 2d8 + your spellcasting ability modifier.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the healing increases by 1d8
+    for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 64
+- name: Sand's Whirlwind
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: 150 feet
+  components: V, S
+  duration: Concentration, up to 1 minute
+  classes: Druid, Sorcerer, Wizard
+  description: 'You create a whirlwind of sand in a 20-foot radius. Each creature in the area must make a Strength
+    saving throw or be restrained by the whirlwind and take 4d10 slashing damage every turn. A creature can use
+    its action to make a Strength check against your spell save DC to free itself.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d10
+    for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 64
+- name: Sounds of Stone
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: Self (30-foot radius)
+  components: V, S, M (a small stone instrument)
+  duration: Instantaneous
+  classes: Bard, Druid, Sorcerer, Wizard
+  description: 'Inspired by the diverse sounds that stones can produce, you create a symphony of stone sounds that
+    confuses and disorients your enemies. Each creature within a 30-foot radius must make a Wisdom saving throw
+    or be confused (as per the Confusion spell) until the end of its next turn.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the range increases by 5 feet
+    for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 64
+- name: Stone's Invulnerability
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: Touch
+  components: V, S, M (fine stone and obsidian powder 250 GP worth)
+  duration: Instantaneous
+  classes: Wizard
+  description: 'You touch a willing creature, except yourself, and imbue them with the invulnerability of stone,
+    giving them immunity to all damage for the duration.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, you can target an additional
+    creature for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 64
+  source_notes: The original lists Instantaneous duration but grants immunity for the duration; no finite protective
+    interval is specified.
+- name: Tectonic Erosion
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: 60 feet
+  components: V, S, M (a handful of sand or soil)
+  duration: Concentration, up to 1 minute
+  classes: Druid, Sorcerer, Wizard
+  description: 'You call upon the relentless forces of geological erosion, directing them against your enemies.
+    Choose a point you can see within range. The ground in a 10-foot radius centered on that point becomes a swirling
+    vortex of sand, soil, and stone. Each creature in the area must make a Constitution saving throw. On a failed
+    save, the creature''s armor (if any) is rapidly eroded by the abrasive elements, reducing its AC by 1 for the
+    duration of the spell.
+
+
+    At the start of each of your turns while you maintain concentration on this spell, you can choose to move the
+    vortex up to 20 feet in any direction. Any creature in the vortex''s path must make the Constitution saving
+    throw or have their AC further reduced by 1.
+
+
+    This spell has no effect on creatures not wearing armor, and the AC reduction does not stack. The effects of
+    the spell end if you lose concentration or when the spell''s duration expires, at which point any reduced AC
+    returns to normal.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the AC loss increases by 1
+    for each slot level above 5th.
+  source_ref: draft2.pdf / PDF page 65
+  source_notes: The source both permits AC to be further reduced by repeated exposure and says the AC reduction
+    does not stack; this conflict is preserved for review.
+- name: Wind's Embrace
+  group: 5th level
+  level: 5
+  school: geomorphy
+  casting: 1 action
+  range: Self
+  components: V, S
+  duration: Concentration, up to 1 minute
+  classes: Cleric, Druid, Paladin, Sorcerer, Warlock, Wizard
+  description: 'You create a protective barrier of wind around yourself. The barrier deflects any ranged attacks
+    and lessens the damage of all melee attacks by half.
+
+    '
+  higher_levels: 'When you cast this spell using a spell slot of 6th level, the duration is 10 minutes.
+
+
+    When you cast this spell using a 7th-level spell slot, the duration is 30 minutes.
+
+
+    When you use an 8th-level spell slot, the duration is 1 hour.
+
+
+    When you use a 9th-level spell slot, the duration is 4 hours and a minute.
+
+
+    You need to still keep concentration for this amount of time.
+
+    '
+  source_ref: draft2.pdf / PDF page 65
+- name: Bloomheal
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action
+  range: Touch
+  components: V, S, M (an emerald worth at least 500 gp)
+  duration: Concentration, up to 1 hour
+  classes: Cleric, Druid
+  description: 'You touch a creature and stimulate its natural healing ability. The target regains 4d8+15 hit points.
+    For the duration of the spell, the target regains 1 hit point at the start of each of its turns (10 hit points
+    each minute). The target''s severed body members (fingers, legs, tails, and so on), if any, are restored after
+    2 minutes. If you have the severed part and hold it to the stump, the spell instantaneously causes the limb
+    to knit to the stump.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the healing increases by 1d8
+    + 5 for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 66
+- name: Crystal Prison
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action
+  range: 60 feet
+  components: V, S
+  duration: Concentration, up to 1 minute
+  classes: Sorcerer, Wizard
+  description: 'You create a prison of sharp crystals around a creature that you can see within range. The target
+    must make a Dexterity saving throw or be trapped inside the prison. While trapped, the creature is restrained
+    and takes 4d6 piercing damage at the start of each of its turns.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d6
+    for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 66
+- name: Highland's Rise
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 minute
+  range: 500 feet
+  components: V, S, M (a piece of mountain rock, worth at least 500 gp)
+  duration: Permanent
+  classes: Druid, Wizard
+  description: 'You cause a mountain to rise from the ground at a point you can see. The mountain can be up to 100
+    feet tall and 100 feet wide. The mountain is permanent and cannot be dispelled, but it can be destroyed by normal
+    means.
+
+    '
+  higher_levels: 'When you cast this spell using a spell slot of 7th level, the mountain can be up to 200 feet tall
+    and 200 feet wide.
+
+
+    When you use an 8th-level spell slot, the mountain can be up to 300 feet tall and 300 feet wide.
+
+
+    When you use a 9th-level spell slot, the mountain can be up to 400 feet tall and 400 feet wide. Additionally,
+    the mountain becomes more resilient, gaining resistance to damage from non-magical attacks and spells of 5th
+    level or lower.
+
+    '
+  source_ref: draft2.pdf / PDF page 66
+- name: Geomorph's Foresight
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 10 minutes (Ritual)
+  range: Touch
+  components: V, S, M (a small piece of the geographical feature)
+  duration: Instantaneous
+  classes: Cleric, Druid, Ranger, Wizard
+  description: 'You touch a geographical feature such as a river, mountain, or forest, and gain a vision of its
+    natural progression up to 100 years into the future. This includes changes such as erosion, growth, the shifting
+    of river courses, and other natural transformations. The vision is accurate unless acted upon by significant
+    outside forces. This spell does not account for magical alterations or dramatic events such as earthquakes or
+    floods unless they are a natural and predictable part of the feature''s development.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the foresight extends an additional
+    100 years into the future for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 66
+- name: Geomorph's Transendance
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action, 1 bonus action, and movement
+  range: Self
+  components: V, S, M (a handful of soil)
+  duration: Concentration, up to 10 minutes
+  classes: Druid, Ranger, Sorcerer, Wizard
+  description: 'You merge with the earth, becoming a colossal elemental of stone and plant. Your size becomes Huge,
+    you gain a Strength score of 24, and you gain the Siege Monster trait, dealing double damage to objects and
+    structures. You can make two slam attacks as an action, each dealing 3d10 bludgeoning damage. You can also cast
+    once the Earth''s Grasp and Geospheric Bastion spells as bonus actions without expending spell slots and using
+    concentration.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d10
+    for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 67
+  source_notes: The body heading reads Geomorph's Transendance; the page-40 spell index reads Geomorph's Transcendance.
+    The sentence about bonus-action spells says without expending spell slots and using concentration; the source
+    does not clarify whether concentration is required or waived for those spells.
+  listed_as: Geomorph's Transcendance
+- name: Litholife Burst
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 reaction, which you take when you take damage
+  range: Self
+  components: V, S
+  duration: Instantaneous
+  classes: Cleric, Druid, Ranger, Warlock
+  description: 'YWhen you take damage, you can use your reaction to heal yourself for a number of hit points equal
+    to your spellcasting ability modifier.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the healing increases by 5
+    hit points for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 67
+  source_notes: The source paragraph begins with the apparent typographical error YWhen, preserved here.
+- name: Peakforce
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action
+  range: Self
+  components: V, S
+  duration: Concentration, up to 1 minute
+  classes: Cleric, Druid, Warlock, Wizard
+  description: 'You channel the strength of the mountains, your size doubles in all dimensions, your current health
+    is multiplied by four and your weight is multiplied by eight. This growth increases your size by one category.
+    If there isn''t enough room for you to double your size, you attain the maximum possible size in the space available.
+    Your weapons also grow to match your new size. While these weapons are enlarged, your attacks with them deal
+    1d4 extra damage.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the extra damage increases
+    by 1d4 for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 67
+  source_notes: The original multiplies current health but does not specify how to restore current or maximum HP
+    when the spell ends.
+- name: Petalguard
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 reaction, which you take when you or a creature within 60 feet of you takes damage
+  range: 60 feet
+  components: V, S, M (a blossom)
+  duration: 1 round
+  classes: Cleric, Druid
+  description: 'You create a barrier of blossoming flowers around a creature. The creature gains resistance to all
+    damage until the start of your next turn.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the duration increases by 1
+    round for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 67
+- name: Stone Sentinel
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action
+  range: 30 feet
+  components: V, S
+  duration: 8 hour
+  classes: Druid, Ranger, Wizard
+  description: 'You cause a stone statue to rise from the ground in an unoccupied space you can see within range.
+    The statue provides half cover to anyone behind it and can be commanded to move up to 30 feet as a bonus action
+    on your turn.
+
+    '
+  higher_levels: 'When you cast this spell using a spell slot of 7th level, the duration is 1 day.
+
+
+    When you use an 8th-level spell slot, the duration is 1 month.
+
+
+    When you use a 9th-level spell slot, the duration is 1 year and a day.
+
+    '
+  source_ref: draft2.pdf / PDF page 67
+- name: Stone's Simphony
+  group: 6th level
+  level: 6
+  school: geomorphy
+  casting: 1 action
+  range: Self
+  components: V, S, M (a small stone instrument)
+  duration: 1 round
+  classes: Bard, Druid, Sorcerer, Wizard
+  description: 'Drawing from the harmonious sounds that stones can produce, you play a symphony that inspires your
+    allies. Each ally within a 30-foot radius gains advantage on attack rolls, saving throws, and ability checks
+    until the end of your next turn.
+
+    '
+  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the range increases by 5 feet
+    for each slot level above 6th.
+  source_ref: draft2.pdf / PDF page 67
+  source_notes: The body heading reads Stone's Simphony; the page-40 spell index reads Stone's Simphony as well.
+  listed_as: Stone's Symphony

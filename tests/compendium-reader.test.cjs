@@ -97,6 +97,24 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
 
 const names = h => h.reader.querySelectorAll('.result-name, .monster-list-name').map(node => node.textContent);
 
+test('Geomancy source review stays separate and supports numeric source levels and expandable reading', async () => {
+  const sourceSpells = [entry('Genesis','11th level',{level:11,description:'Original demiplane rules.'}),entry('Breeze Whisper','Cantrips',{level:0,description:'Original cantrip rules.'}),entry('Worldshaper','10th level',{level:10,description:'Original world rules.'}),entry('Thorn Spitter','7th level',{level:7,description:'Original plant rules.'})];
+  const h = boot({spells:[entry('Current spell','Arcane spells',{lvl:1})],'geomancy-review':sourceSpells});
+  await h.route('#section=geomancy-review');
+  assert.match(h.reader.querySelector('.geomancy-review-note').textContent,/Source draft.*awaiting adaptation/);
+  assert(h.reader.querySelector('.comparison-list'));
+  assert.deepEqual(names(h),['Breeze Whisper','Thorn Spitter','Worldshaper','Genesis']);
+  assert.deepEqual(h.document.getElementById('spell-level').children.map(n=>n.value),['','0','7','10','11']);
+  await h.change('spell-level','0');
+  assert.deepEqual(names(h),['Breeze Whisper']);
+  await h.route('#section=geomancy-review&entry=Genesis&group=11th+level');
+  assert(h.reader.querySelector('.geomancy-review-note'));
+  assert.match(h.reader.textContent,/Original demiplane rules/);
+  await h.route('#section=spells');
+  assert.deepEqual(names(h),['Current spell']);
+  assert.equal(h.link('Geomancy spell review').href,'#section=geomancy-review');
+});
+
 test('monster type and fractional CR filters combine with search and preserve display settings', async () => {
   const h = boot({monsters:[
     entry('Ash wolf','Wilderness',{meta:'Medium beast, unaligned',cr:'1/4',hp:'11'}),

@@ -577,6 +577,9 @@ td p + p { margin-top: .4rem !important; }
 }
 
 .monster-material-infusions { border-top: 1px solid var(--monster-rule); padding-top: .3rem; }
+.geomancy-review-note { margin: 0 0 1.25rem; padding: .85rem 1rem; border-left: 3px solid #a67c35; background: #a67c3510; border-radius: 0 .35rem .35rem 0; }
+.geomancy-review-note strong { font-size: .9rem; color: var(--accent, #794f22); }
+.geomancy-review-note p { max-width: 70ch; margin: .35rem 0; line-height: 1.55; font-size: .92rem; }
 .monster-infusion-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; }
 .monster-infusion-active { columns: 2; column-gap: 1.5rem; }
 .monster-infusion-active > li { break-inside: avoid; }
