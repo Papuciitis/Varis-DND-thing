@@ -9,11 +9,26 @@
     ?? collate.compare(a.name || "", b.name || "");
 
   function classDirectory(section, {el, link, entryRoute}) {
+    const descriptions = {
+      alchemist: "Experiment, transform, and prepare for the unexpected.",
+      barbarian: "Meet danger with strength and unrestrained fury.",
+      bard: "Shape the moment through music, magic, and inspiration.",
+      cleric: "Call on divine power to protect and prevail.",
+      druid: "Draw strength from the living world.",
+      fighter: "Master weapons, tactics, and the art of battle.",
+      monk: "Turn discipline and movement into a weapon.",
+      occultist: "Explore forbidden knowledge and otherworldly power.",
+      ranger: "Track your quarry and thrive beyond civilization.",
+      rogue: "Find your opening with skill and precision.",
+      sorcerer: "Channel the magic that lives within you.",
+      wizard: "Study, prepare, and command the arcane."
+    };
     const list = el("ul", "class-directory");
     const classes = section.entries.filter(entry => normalize(entry.group) === "base class")
       .sort((a, b) => compare(a, b, "name"));
     for (const entry of classes) {
       const item = el("li", "class-card");
+      item.setAttribute("data-class", normalize(entry.name));
       item.append(link(cap(entry.name), entryRoute(section, entry), "result-name class-name"));
       const family = normalize(entry.name + " archetype");
       const children = section.entries.filter(child => normalize(child.group).replace(/s$/, "") === family)
@@ -33,6 +48,7 @@
         disclosure.append(summary, archetypes);
         item.append(disclosure);
       } else item.append(el("span", "result-meta", "No archetypes in this catalog"));
+      if (descriptions[normalize(entry.name)]) item.append(el("p", "class-blurb", descriptions[normalize(entry.name)]));
       list.append(item);
     }
     return list;

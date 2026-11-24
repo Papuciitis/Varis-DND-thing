@@ -1,18 +1,20 @@
 /* The playable sheet uses a light, ink-on-paper palette in both system themes. */
 :root {
   color-scheme: light;
-  --paper: #f3f1ec;
-  --sheet: #fffefb;
-  --paper-shade: #eeebe4;
-  --ink: #292724;
-  --quiet: #68635c;
-  --line: #ded9d0;
+  --paper: #f6f2e9;
+  --sheet: #fffdf8;
+  --paper-shade: #eee8dc;
+  --ink: #292f29;
+  --quiet: #62675c;
+  --line: #dcd5c6;
   --strong-line: #b8afa2;
-  --red: #842d3e;
-  --red-dark: #682235;
+  --red: #7a2b3b;
+  --red-dark: #652132;
+  --green: #19392f;
+  --gold: #ba995a;
   --red-tint: #f5e9ec;
-  --serif: "Crimson Text", Georgia, "Times New Roman", serif;
-  --sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Segoe UI", system-ui, Arial, sans-serif;
   --shadow: 0 2px 5px rgb(56 40 25 / 5%);
   font: 100%/1.5 var(--sans);
 }
@@ -488,7 +490,7 @@ body:has(dialog[open]) { overflow: hidden; }
   .combat-strip { grid-template-columns: repeat(6,minmax(0,1fr)); }
   .combat-stat { min-height: 86px; }
   .toast { bottom: 1rem; }
-  .pane, .panel, .detail-section { scroll-margin-top: 4.2rem; }
+  .sheet-content, .pane, .panel, .detail-section { scroll-margin-top: 4.2rem; }
 }
 @media (min-width: 900px) {
   .sheet-layout { display: grid; grid-template-columns: 280px minmax(0,1fr); align-items: start; gap: 1.15rem; }
@@ -530,7 +532,172 @@ body:has(dialog[open]) { overflow: hidden; }
   .casting-pool { grid-template-columns: minmax(0,1fr) auto minmax(16rem,auto); }
   .casting-controls { grid-column: auto; justify-content: end; }
 }
+/* One book, two tools: shared identity and a quieter play surface. */
+.header-inner, .sheet-shell { width: min(100%,1250px); padding-inline: clamp(1.05rem,4.7vw,4rem); }
+.app-header { background: var(--green); color: var(--sheet); border-top: 0; border-bottom: 1px solid #315247; }
+.header-inner { min-height: 76px; padding-block: .65rem; gap: .5rem 1rem; }
+.brand, .brand:hover { color: var(--sheet); font-size: 1.25rem; letter-spacing: .035em; }
+.brand-mark { width: 1.9rem; height: 2.15rem; background: transparent; color: #dfc486; border: 1px solid var(--gold); border-radius: 2px 2px 10px 10px; font-size: 1.4rem; }
+.brand-subtitle { color: #d1d9cd; font-size: .8rem; }
+.rules-link { color: #f5eedc; text-decoration-color: #779286; font-weight: 600; }
+.app-header .character-picker, .app-header .sheet-menu > summary { background: #264738; border-color: #60796a; color: var(--sheet); }
+.app-header .character-picker option { background: var(--sheet); color: var(--ink); }
+.app-header .sheet-menu[open] > summary { background: #345849; }
+.sheet-menu-content { color: var(--ink); }
+.character-banner { grid-template-columns: minmax(0,1fr) auto; gap: .35rem 1rem; padding-block: .15rem .7rem; margin-block: 1rem .65rem; }
+.character-title:first-child { grid-column: auto; }
+.character-title input.character-name { min-height: 38px; font-size: clamp(1.45rem,3.6vw,2.25rem); }
+.character-subtitle { font-size: .86rem; }
+.banner-tools { grid-column: auto; justify-content: flex-end; max-width: 15rem; }
+.banner-tools .save-status { flex-basis: 100%; text-align: right; font-size: .78rem; }
+.banner-tools .text-button { font-size: .8rem; min-height: 32px; }
+.sheet-layout { display: flex; flex-direction: column; gap: .8rem; }
+.main-panel { display: contents; }
+.main-panel > .combat-strip { order: 0; }
+.main-panel > .vital-layout { order: 1; }
+.main-panel > .attacks-panel { order: 2; }
+.ability-panel { order: 3; gap: .55rem; }
+.main-panel > .overview-secondary { order: 4; }
+.main-panel > .panel:not(.attacks-panel) { order: 5; }
+.panel { padding: 1rem; border-radius: 5px; box-shadow: none; }
+.panel-heading { margin-bottom: .65rem; }
+.panel-title, .panel-heading h2 { font-size: 1.3rem; color: var(--green); }
+.combat-strip { gap: 0; padding-block: .25rem; border-block: 1px solid var(--line); background: var(--sheet); border-radius: 4px; }
+.combat-stat { min-height: 64px; padding: .4rem .25rem; border: 0; border-radius: 0; background: transparent; gap: .1rem; }
+.combat-stat:not(:last-child) { border-right: 1px solid var(--line); }
+.combat-value { font-size: 1.65rem; }
+.combat-label { font-size: .8rem; }
+.combat-stat.inspiration-toggle { font-size: .8rem; }
+.vital-layout { gap: .8rem; }
+.health-panel { border-top: 2px solid var(--red); }
+.health-card { border: 0; padding: 0; background: transparent; }
+.health-card .resource-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.health-card .resource-reading { justify-content: flex-start; padding-block: 0 .4rem; }
+.health-card .resource-value input { font-size: 3.3rem; min-height: 62px; }
+.health-card .resource-max strong { font: 600 1.6rem/1.2 var(--serif); color: var(--quiet); }
+.health-card .resource-max-label { font-size: .75rem; }
+.resource-max { min-width: 2.25rem; }
+.resource-max strong { font: 600 1.15rem/1.2 var(--serif); }
+.resource-adjusters .counter-button { border-color: transparent; background: transparent; }
+.resource-adjusters .counter-button:hover { background: var(--paper-shade); }
+.ward-pools .resource-card, .defence-pools .resource-card { padding: .1rem 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; }
+.ward-pools .resource-label, .defence-pools .resource-label { font-size: .83rem; }
+.ward-pools .meter, .defence-pools .meter { display: none; }
+.quick-health { margin-top: .6rem; gap: .4rem; }
+.quick-health .button-primary { color: var(--red-dark); background: #f6e9eb; border-color: #d6b5bd; }
+.defence-actions { display: grid; grid-template-columns: 1fr auto; gap: .35rem; margin-top: .55rem; }
+.defence-actions .button-quiet { grid-column: 1/-1; justify-self: start; padding-inline: 0; min-height: 32px; }
+.combat-actions { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+.combat-actions .button { flex: 1 1 auto; }
+.block-check { margin-block: .45rem .2rem; }
+.quiet-disclosure { border: 0; margin-top: .2rem; }
+.quiet-disclosure > summary { min-height: 38px; padding-block: .5rem; color: var(--quiet); font: 500 .84rem/1.4 var(--sans); cursor: pointer; }
+.quiet-disclosure[open] > summary { color: var(--red-dark); }
+.quiet-disclosure .form-grid { padding-block: .35rem .6rem; }
+.quiet-disclosure .section-note { margin-block: .4rem; }
+.health-panel .damage-options { position: static; border: 0; margin-block: .2rem; }
+.health-panel .damage-options summary { font-size: .8rem; min-height: 34px; }
+.ability { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: .45rem .15rem; background: transparent; gap: 0; }
+.ability .ability-label { font-size: .78rem; }
+.ability .ability-mod { min-height: 44px; font-size: 1.8rem; padding: .1rem; }
+.ability-total { order: 2; color: var(--quiet); font-size: .8rem; }
+.abilities-grid { gap: .2rem .5rem; }
+.save-row.play-row, .skill-row.play-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .5rem; padding-block: .15rem; border-bottom: 1px solid #e7e1d6; }
+.play-row .skill-name { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; font-size: .9rem; }
+.training-mark { display: inline-block; width: .45rem; height: .45rem; border: 1px solid #9d9e91; border-radius: 50%; flex: 0 0 auto; }
+.training-mark.trained { background: var(--red); border-color: var(--red); }
+.training-mark.expert { outline: 1px solid var(--red); outline-offset: 2px; }
+.play-row .skill-ability { margin-left: auto; font-size: .7rem; }
+.skill-settings-row { display: grid; grid-template-columns: minmax(0,1fr) 4rem; gap: .4rem; align-items: end; margin-block: .4rem; }
+.skill-settings-row .bonus-input { max-width: 100%; }
+.disclosure.panel { padding-block: 0; border-radius: 4px; }
+.disclosure.panel > summary { min-height: 50px; padding-block: .85rem; font-size: 1.1rem; }
+.disclosure.panel[open] { padding-bottom: .6rem; }
+.attacks-panel .list-card, .pane > .panel .list-card { padding: .7rem 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; }
+.attacks-panel .list { gap: 0; }
+.attack-name { font-size: 1.12rem; }
+.list-card-meta, .section-note { color: var(--quiet); line-height: 1.5; }
+.gear-search { margin-block: .1rem 1rem; }
+.gear-search input { width: 100%; border-color: var(--line); }
+.gear-group + .gear-group { margin-top: 1.3rem; }
+.gear-group-title { display: flex; align-items: baseline; gap: .5rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); color: var(--green); font-size: 1rem; }
+.gear-group-title > span { font: 400 .8rem var(--sans); color: var(--quiet); }
+.gear-panel .gear-item.list-card { padding: 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.gear-item > summary { display: flex; align-items: center; gap: .75rem; min-height: 62px; padding: .65rem .1rem; cursor: pointer; list-style: none; }
+.gear-item > summary::-webkit-details-marker { display: none; }
+.gear-item > summary::before { content: '›'; color: var(--red); font-size: 1.2rem; width: .6rem; flex: 0 0 auto; }
+.gear-item[open] > summary::before { transform: rotate(90deg); }
+.gear-item-name { display: grid; min-width: 0; gap: .1rem; }
+.gear-item .list-card-title { font: 600 1.03rem/1.3 var(--serif); }
+.gear-item-status { font: 400 .78rem/1.4 var(--sans); color: var(--quiet); }
+.gear-quantity { margin-left: auto; flex-shrink: 0; color: var(--quiet); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.gear-item-body { padding: .1rem 1.4rem .7rem; }
+.gear-item-body .inline-fields { align-items: center; }
+.gear-item-body .field { flex: 0 1 6rem; }
+.gear-item-body .entry-actions { margin-top: .55rem; }
+.gear-item-body > p { margin-top: .5rem; font-size: .9rem; }
+.inventory-print { display: none; }
+.builder-equipment-picker { display: grid; gap: .65rem; }
+.builder-equipment-filters { display: grid; grid-template-columns: minmax(0,1fr); gap: .65rem; }
+.builder-equipment-preview { padding: .85rem; border-left: 2px solid var(--gold); background: var(--paper-shade); }
+.builder-equipment-preview h3 { color: var(--green); }
+#builder-equipment-count { margin: 0; color: var(--quiet); font-size: .84rem; }
+@media (max-width: 759px) {
+  .header-inner { min-height: 0; gap: .3rem .75rem; padding-block: .5rem; }
+  .brand-subtitle { display: block; font-size: .72rem; }
+  .brand { font-size: 1.05rem; }
+  .brand-mark { width: 1.6rem; height: 1.9rem; }
+  .rules-link { font-size: .78rem; }
+  .top-tools .character-picker, .top-tools .sheet-menu > summary { min-height: 38px; font-size: .84rem; }
+  .character-banner { gap: .25rem .65rem; margin-top: .7rem; }
+  .character-title input.character-name { font-size: 1.35rem; }
+  .banner-tools { max-width: 7rem; }
+  .banner-tools .save-status { display: block; font-size: .72rem; line-height: 1.3; text-wrap: balance; }
+  .banner-tools .button { padding-inline: .5rem; min-height: 38px; font-size: .8rem; }
+  .character-subtitle { font-size: .78rem; }
+  .combat-stat { min-height: 54px; }
+  .combat-value { font-size: 1.4rem; }
+  .combat-label { font-size: .75rem; }
+  .panel { padding: .85rem; }
+  .defence-actions { grid-template-columns: 1fr auto auto; }
+  .defence-actions .button-quiet { grid-column: auto; justify-self: stretch; padding-inline: .4rem; min-height: 44px; font-size: .75rem; }
+  .gear-panel .panel-tools { width: 100%; margin: .15rem 0; }
+  .gear-panel .panel-tools .button { min-height: 40px; }
+  .gear-item-body { padding-inline: .8rem .1rem; }
+}
+@media (min-width: 740px) {
+  .vital-layout { grid-template-columns: minmax(0,1.08fr) minmax(0,1fr); }
+  .vital-layout > .panel { height: 100%; }
+  .builder-equipment-filters { grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); }
+}
+@media (min-width: 760px) {
+  .top-tools { width: auto; }
+  .tabs { margin-bottom: .8rem; }
+  .tab-button { min-height: 44px; padding: .5rem 1rem; }
+  .combat-stat { min-height: 70px; }
+}
+@media (min-width: 900px) and (max-width: 1149px) {
+  .sheet-layout { display: flex; align-items: stretch; }
+  .main-panel { display: contents; }
+  .ability-panel { order: 3; }
+  .abilities-grid { grid-template-columns: repeat(6,minmax(0,1fr)); }
+}
+@media (min-width: 1150px) {
+  .sheet-layout { display: grid; grid-template-columns: 14.25rem minmax(0,1fr); gap: 1rem; align-items: start; }
+  .main-panel { display: grid; order: 1; gap: .8rem; }
+  .main-panel > .combat-strip, .main-panel > .vital-layout, .main-panel > .overview-secondary, .main-panel > .panel { order: initial; }
+  .ability-panel { order: 0; }
+  .abilities-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .ability-panel .panel { padding: .8rem; }
+  .combat-stat { min-height: 70px; }
+}
 @media print {
+  .gear-search, #owned-gear-groups { display: none !important; }
+  .inventory-print { display: block !important; }
+  .gear-print-group + .gear-print-group { margin-top: .8rem; }
+  .gear-print-group > h3 { margin-bottom: .4rem; border-bottom: 1px solid var(--line); }
+  .gear-print-item { margin-block: .4rem; break-inside: avoid; }
+  .gear-print-item p { font-size: .9rem; }
   @page { margin: 1.2cm; }
   :root { font-size: 10pt; }
   body, .panel, .resource-card, .ability, .combat-stat, .list-card { background: white; color: black; }

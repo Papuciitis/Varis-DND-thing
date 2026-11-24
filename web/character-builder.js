@@ -16,7 +16,7 @@
   };
 
   function create({rules, show, onFinish, onCancel = () => {}, renderRule = value => `<p>${escape(typeof value === "string" ? value : JSON.stringify(value))}</p>`}) {
-    let draft = null, step = 0, open = false, isNew = false, itemToAdd = "";
+    let draft = null, step = 0, open = false, isNew = false, itemToAdd = "", itemQuery = "", itemCategory = "";
     const metadata = rules.metadata || {};
     const order = globalThis.EntryOrder;
     const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
@@ -100,8 +100,62 @@
       return html;
     }
 
+    function equipmentCategory(item) {
+      const shelf = category => category === "weapons" ? "weapons" : category === "armor-shields" ? "armor" : ["consumables", "scrolls"].includes(category) ? "consumables" : "gear";
+      if (item.section === "magic-items" && globalThis.MagicCategories) return shelf(globalThis.MagicCategories.category(item));
+      if (item.section === "items" && globalThis.ItemViews) return shelf(globalThis.ItemViews.category(item));
+      const category = globalThis.MagicCategories?.category(item);
+      const type = String(item.details?.type || "").toLowerCase();
+      const group = String(item.group || "").toLowerCase();
+      if (category === "weapons" || item.details?.damage || /weapon|ammunition/.test(type)) return "weapons";
+      if (category === "armor-shields" || item.details?.["AC bonus"] || /armor|armour|shield/.test(type + " " + group)) return "armor";
+      if (["consumables","scrolls"].includes(category) || /potion|scroll|consumable|food|drink/.test(type + " " + group)) return "consumables";
+      return "gear";
+    }
+
+    function matchingEquipment() {
+      const words = itemQuery.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      return items.filter(item => (!itemCategory || equipmentCategory(item) === itemCategory) && words.every(word => `${item.name} ${item.group} ${item.details?.type || ""}`.toLowerCase().includes(word)));
+    }
+
+    function equipmentCount() {
+      const count = matchingEquipment().length;
+      return `${count} matching ${count === 1 ? "item" : "items"}`;
+    }
+
+    function equipmentOptions() {
+      const matching = matchingEquipment();
+      const selected = items.find(item => item.entryId === itemToAdd);
+      return option("", matching.length ? "Choose equipment" : "No matching equipment", !itemToAdd) +
+        (selected && !matching.includes(selected) ? option(selected.entryId, `${selected.name} · selected`, true) : "") +
+        matching.map(item => option(item.entryId, `${item.name} · ${item.group}`, item.entryId === itemToAdd)).join("");
+    }
+
+    function equipmentPreview() {
+      const selected = items.find(item => item.entryId === itemToAdd);
+      if (!selected) return '<p class="muted">Choose an item to preview its rules before adding it.</p>';
+      const profile = globalThis.MagicItems?.equipment(selected, rules.catalog) || selected;
+      const summary = [selected.group, profile.details?.damage, profile.details?.["AC bonus"] ? `AC ${profile.details["AC bonus"]}` : ""].filter(Boolean);
+      return `<h3>${escape(selected.name)}</h3><p class="muted">${escape(summary.join(" · "))}</p>${details("Item rules", selected.details)}`;
+    }
+
+    function refreshEquipmentPicker() {
+      const select = globalThis.document?.getElementById("builder-equipment-options");
+      if (!select) { render(); return; }
+      select.innerHTML = equipmentOptions();
+      const count = globalThis.document.getElementById("builder-equipment-count");
+      if (count) count.textContent = equipmentCount();
+      const preview = globalThis.document.getElementById("builder-equipment-preview");
+      if (preview) preview.innerHTML = equipmentPreview();
+      const add = globalThis.document.getElementById("builder-add-equipment");
+      if (add) add.disabled = !itemToAdd;
+    }
+
     function equipmentStep() {
-      let html = `<p>Add your starting equipment from the Varis catalog. Equip the items you use; armor, shields and weapons contribute to the final preview.</p><div class="row">${field("Catalog equipment",`<select data-builder-item><option value="">Choose equipment…</option>${items.map(item => option(item.entryId,`${item.name} · ${item.group}`,item.entryId === itemToAdd)).join("")}</select>`)}<button type="button" data-action="builder-add-item">Add equipment</button></div>`;
+      let html = `<p>Choose equipment, preview its rules, then add it to your character.</p><section class="builder-equipment-picker">${grid(
+        field("Find equipment", `<input type="search" data-builder-item-query value="${escape(itemQuery)}" placeholder="Name or equipment type" autocomplete="off">`) +
+        field("Category", `<select data-builder-item-category>${[["","All equipment"],["weapons","Weapons & ammunition"],["armor","Armor & shields"],["consumables","Consumables"],["gear","Other gear"]].map(([value,label]) => option(value,label,itemCategory === value)).join("")}</select>`)
+      )}<p class="muted" id="builder-equipment-count">${equipmentCount()}</p><div class="row builder-equipment-filters">${field("Catalog equipment",`<select id="builder-equipment-options" data-builder-item>${equipmentOptions()}</select>`)}<button type="button" id="builder-add-equipment" data-action="builder-add-item"${itemToAdd ? "" : " disabled"}>Add equipment</button></div><div class="builder-equipment-preview" id="builder-equipment-preview">${equipmentPreview()}</div></section>`;
       html += draft.inventory.map((row,index) => {
         const entry = items.find(item => item.entryId === row.entryId), weapon = entry?.details?.damage || entry?.details?.["AC bonus"];
         return `<section class="list-card"><div class="row"><h3>${escape(row.name)}</h3><button type="button" data-action="builder-remove-item" data-builder-index="${index}" aria-label="Remove ${escape(row.name)}">Remove</button></div>${grid(
@@ -175,6 +229,8 @@
       if (!open || !target?.dataset) return false;
       const data = target.dataset, index = Number(data.builderChoiceIndex);
       if (data.builderPath !== undefined) return setPath(data.builderPath,target);
+      if (data.builderItemQuery !== undefined) { itemQuery = String(target.value || ""); return true; }
+      if (data.builderItemCategory !== undefined) { itemCategory = ["","weapons","armor","consumables","gear"].includes(target.value) ? target.value : ""; return true; }
       if (data.builderItem !== undefined) { itemToAdd = items.some(item => item.entryId === target.value) ? target.value : ""; return true; }
       if (data.builderMode !== undefined || data.builderAbility !== undefined) {
         const id = data.builderMode ?? data.builderAbility, choice = selectedRace()?.abilityChoices?.find(item => item.id === id);
@@ -224,11 +280,20 @@
         const profile=globalThis.MagicItems?.equipment(entry,rules.catalog) || entry;
         return group && profile.details?.damage && profile.details?.type ? [group] : [];
       }))].sort();
-      draft = rules.enable(copy(character)); step = 0; open = true; isNew = !!fresh; itemToAdd = ""; render(); return true;
+      draft = rules.enable(copy(character)); step = 0; open = true; isNew = !!fresh; itemToAdd = ""; itemQuery = ""; itemCategory = ""; render(); return true;
     }
     function cancel() { if (!open) return false; open = false; draft = null; onCancel(); return true; }
-    function handleInput(target) { return update(target); }
-    function handleChange(target) { const handled = update(target); if (handled && target.dataset.builderItem === undefined) render(); return handled; }
+    function handleInput(target) {
+      const handled = update(target);
+      if (handled && target.dataset.builderItemQuery !== undefined && globalThis.document?.getElementById("builder-equipment-options")) refreshEquipmentPicker();
+      return handled;
+    }
+    function handleChange(target) {
+      const handled = update(target);
+      if (handled && ["builderItem", "builderItemQuery", "builderItemCategory"].some(key => target.dataset[key] !== undefined)) refreshEquipmentPicker();
+      else if (handled) render();
+      return handled;
+    }
     function handleAction(action, target) {
       if (!open || !action?.startsWith("builder-")) return false;
       if (action === "builder-cancel") return cancel();

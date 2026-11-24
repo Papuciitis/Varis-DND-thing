@@ -21,15 +21,15 @@ Original text, source locations, repairs and donor references remain available i
 
 ## Add and edit on the webpage
 
-The manual starts as an expandable list. Each creature row shows its name, challenge and creature type; open several rows to compare their compact parchment statblocks. Bodies are loaded when a row is first expanded. Use the creature-type category strip or **Creature type** filter, then combine **Challenge rating**, source group, text search and sort order. Challenge choices include fractions, exact ratings, ranges and **Unrated / unknown**. Unknown challenge is kept separate from CR 0. **Display → Pages** retains the ordinary linked results view. Monster pages, expanded rows and the live editor preview share the same statblock presentation.
+The manual starts as an expandable list. Each creature row shows its name, challenge and creature type; open several rows to compare their compact parchment statblocks. Bodies load when first expanded. Search and **Challenge rating** lead the filters; open **Creature type** for type chips and **More filters** for source group, display and sort. Applied filters can be removed individually. Challenge choices include fractions, exact ratings, ranges and **Unrated / unknown**. Unknown challenge is separate from CR 0. **Display** offers a linked Pages view. Monster pages, expanded rows and the live editor preview share the same statblock presentation.
 
-Open **Monster manual**, then **Add your monster statblock**. Enter identity, defenses and abilities, and add named traits, actions, reactions or legendary/lair effects. The adjacent preview updates while you type. **Save monster** adds it to browsing and search. Open any existing creature and choose **Edit statblock** or **Duplicate monster**. Cancel closes the draft without changing the saved creature.
+Open **Monster manual**, then **Create monster**. Enter identity, defenses and abilities, and add named traits, actions, reactions or legendary/lair effects. The adjacent preview updates while you type; phones offer **Edit** and **Preview** views. **Save monster** adds it to browsing and search. Open an existing creature and expand **Monster tools** to edit or duplicate it. Cancel closes the draft without changing the saved creature.
 
 Edits save in the current browser and at the current page location. They do not automatically sync to another browser, device or hosted page. Export a backup before clearing browser data. If browser storage fails, the current in-memory edits remain exportable and the page reports the problem.
 
 For changes that should become part of the repository:
 
-1. Use **Save YAML file** and select `data/monsters/custom.yaml`. Supported browsers write the selected file directly; other browsers download it instead. The first save opens a file picker. A later save in the same page session writes that selected file again.
+1. Open the collection **Tools**, then use **Save YAML file** and select `data/monsters/custom.yaml`. Supported browsers write the selected file directly; other browsers download it instead. The first save opens a file picker. A later save in the same page session writes that selected file again.
 2. Alternatively, **Export custom.yaml** downloads the same document. Place it at `data/monsters/custom.yaml`.
 3. Run `Open-Vara-DnD.cmd` or `python build.py`, then refresh the page.
 4. Commit the edited YAML and any intended source changes to share them through Git.

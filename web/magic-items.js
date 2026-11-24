@@ -162,8 +162,11 @@
     const result=node("button",text,"button-link"); result.type="button"; result.addEventListener("click",action); return result;
   }
   function toolbar(section, changed) {
-    const wrap=node("section",undefined,"magic-tools");
-    wrap.setAttribute("aria-label","Magic item backups");
+    const wrap=node("details",undefined,"magic-tools collection-tools");
+    wrap.setAttribute("aria-label","Magic item tools");
+    wrap.append(node("summary","Item tools"));
+    wrap.open=!!storageError;
+    const content=node("div",undefined,"magic-tools-content");
     const status=node("p",storageError || "Item edits save in this browser. Export a backup to use them elsewhere.","state-message");
     status.setAttribute("role","status");
     const controls=node("div",undefined,"magic-actions");
@@ -178,7 +181,7 @@
       input.value="";
     });
     controls.append(button("Import item edits",() => input.click()),input);
-    wrap.append(controls,status);return wrap;
+    content.append(controls,status);wrap.append(content);return wrap;
   }
   function editor(section, entry, changed) {
     const wrap=node("details",undefined,"magic-editor");
@@ -223,11 +226,17 @@
       return section.entries.find(item=>id(item)===id(entry));
     }
     const actions=node("div",undefined,"magic-actions");
-    const saveButton=node("button","Save changes","button-link");saveButton.type="submit";
-    actions.append(saveButton,button("Discard changes",() => {wrap.open=false;changed();}),button("Restore source version",() => {
+    const saveButton=node("button","Save changes","button-link button-primary");saveButton.type="submit";
+    actions.append(saveButton,button("Discard changes",() => {wrap.open=false;changed();}));
+    const sourceTools=node("details",undefined,"magic-source-tools");
+    sourceTools.append(node("summary","Source tools"));
+    const sourceActions=node("div",undefined,"magic-actions");
+    const restore=button("Restore source version",() => {
       if(!globalThis.confirm("Restore this item's original converted rules?"))return;
       reset(entry);apply(section);changed();
-    }),button("Export source file",() => {
+    });
+    restore.className="button-link button-danger";
+    sourceActions.append(button("Export source file",() => {
       try {
         const updated=saveDraft();
         download((entry.source || "magic-items.yaml").split("/").at(-1),sourceCollection(section,entry.source));
@@ -235,6 +244,9 @@
         changed(updated);
       }catch(error){status.textContent=error.message;}
     }));
+    const resetActions=node("div",undefined,"magic-reset-actions");
+    resetActions.append(restore);
+    sourceTools.append(sourceActions,node("p","Export source file saves your current edits and includes every item from this source. Replace the matching file under data/magic-items and rebuild to keep the changes in Git.","state-message"),resetActions);
     form.addEventListener("submit",event => {
       event.preventDefault();try {
         const updated=saveDraft();
@@ -242,7 +254,7 @@
         changed(updated);
       }catch(error){status.textContent=error.message;}
     });
-    form.append(actions,node("p","Export source file saves your current edits and includes every item from this source. Replace the matching file under data/magic-items and rebuild to keep the changes in Git.","state-message"));
+    form.append(actions,sourceTools);
     wrap.append(form);return wrap;
   }
   globalThis.MagicItems={id,entryId,apply,save,reset,backup,importBackup,sourceCollection,equipment,inventoryFields,requiresAttunement,searchable,toolbar,editor,

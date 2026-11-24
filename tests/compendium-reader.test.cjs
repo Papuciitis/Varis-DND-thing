@@ -86,7 +86,7 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
   if (options.manifestGlobal) context.DND_CATALOG = sections;
   if (options.portable) { context.DND_CATALOG = sections; sections.forEach(s => { s.entries = data[s.key]; }); delete context.DndCatalog; }
   vm.runInContext(orderSource, context, {filename:'entry-order.js'});
-  for (const name of ['magic-categories.js', 'item-views.js', 'browse-views.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',name),'utf8'),context,{filename:name});
+  for (const name of ['magic-categories.js', 'item-views.js', 'browse-views.js', 'rule-presentation.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',name),'utf8'),context,{filename:name});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/magic-items.js'),'utf8'),context,{filename:'magic-items.js'});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/monster-editor.js'),'utf8'),context,{filename:'monster-editor.js'});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/monster-views.js'),'utf8'),context,{filename:'monster-views.js'});
@@ -105,7 +105,8 @@ test('monster type and fractional CR filters combine with search and preserve di
   ]});
   await h.route('#section=monsters');
   assert.equal(h.reader.querySelectorAll('.monster-disclosure').length,3);
-  await h.change('monster-type','beast'); assert.deepEqual(names(h),['Ash wolf','Ash mystery']);
+  const beastChip = h.reader.querySelectorAll('.monster-type-chip').find(chip => chip.textContent === 'Beast');
+  await h.route(beastChip.href); assert.deepEqual(names(h),['Ash wolf','Ash mystery']);
   await h.change('monster-cr','1/4'); assert.deepEqual(names(h),['Ash wolf']);
   const search=h.document.getElementById('section-search');search.value='ash';search.dispatch('input');await settle();
   assert.equal(new URLSearchParams(h.hash.slice(1)).get('cr'),'1/4');
@@ -129,12 +130,58 @@ test('expandable monster rows render on first open, expand independently, and re
   assert(h.reader.querySelectorAll('a').some(link=>link.textContent==='Open monster page'));
 });
 
+test('monster browse keeps active filters visible and removes one without resetting the others', async () => {
+  const h = boot({monsters:[entry('Ash wolf','Wilderness',{meta:'Medium beast',cr:'1/4'}),entry('Ash dragon','Dragons',{meta:'Large dragon',cr:'5'})]});
+  await h.route('#section=monsters&type=beast&cr=1%2F4&group=Wilderness&view=pages');
+  assert.equal(h.document.getElementById('monster-type'), null, 'Type chips are the single creature-type control');
+  assert.match(h.reader.querySelector('.creature-type-picker').querySelector('summary').textContent, /Beast/);
+  assert.equal(h.reader.querySelector('.advanced-filters').open, true);
+  const activeType = h.reader.querySelectorAll('.monster-type-chip').find(chip => chip.getAttribute('aria-current') === 'true');
+  assert.equal(activeType.textContent, 'Beast');
+  const removeType = h.reader.querySelector('.applied-filters').querySelectorAll('a').find(link => link.getAttribute('aria-label') === 'Remove filter: Beast');
+  await h.route(removeType.href);
+  const parameters = new URLSearchParams(h.hash.slice(1));
+  assert.equal(parameters.get('type'), null);
+  assert.equal(parameters.get('cr'), '1/4');
+  assert.equal(parameters.get('group'), 'Wilderness');
+  assert.equal(parameters.get('view'), 'pages');
+  assert.deepEqual(names(h), ['Ash wolf']);
+});
+
+test('magic reader presents source wording before its editor and avoids redundant category metadata', async () => {
+  const text = 'As an action, deal 2d6 fire damage. The target makes a Strength save against DC 14.';
+  const item = {...entry('Cinder spear','Rare',{id:'cinder',type:'Weapon',base_item:'Spear',rarity:'Rare',desc:text}),source:'magic-items/rare.yaml'};
+  const h = boot({'magic-items':[item]});
+  await h.route('#section=magic-items&category=weapons&browse=all');
+  const result = h.reader.querySelector('.result');
+  assert.equal(result.querySelector('.rarity-badge').textContent, 'Rare');
+  assert.equal(result.querySelector('.result-meta').textContent, 'Spear');
+  await h.route('#section=magic-items&entry=Cinder+spear&group=Rare');
+  assert.equal(h.reader.querySelector('.rule-description').textContent, text);
+  assert(h.reader.querySelectorAll('.rule-key').some(term => term.textContent === '2d6'));
+  const children = h.reader.children;
+  assert(children.findIndex(child => child.className === 'rule-description') < children.findIndex(child => child.className === 'magic-editor'));
+});
+
+test('clearing all monster filters preserves the selected layout and order', async () => {
+  const h = boot({monsters:[entry('Ash wolf','Wilderness',{meta:'Medium beast',cr:'1/4'}),entry('Ash dragon','Dragons',{meta:'Large dragon',cr:'5'})]});
+  await h.route('#section=monsters&type=beast&cr=1%2F4&group=Wilderness&filter=ash&page=2&view=pages&sort=challenge-desc');
+  await h.route(h.link('Clear all').href);
+  const parameters = new URLSearchParams(h.hash.slice(1));
+  for (const key of ['type','cr','group','filter','page']) assert.equal(parameters.get(key), null);
+  assert.equal(parameters.get('section'), 'monsters');
+  assert.equal(parameters.get('view'), 'pages');
+  assert.equal(parameters.get('sort'), 'challenge-desc');
+  assert(h.reader.querySelector('.results'));
+  assert.deepEqual(names(h), ['Ash dragon','Ash wolf']);
+});
+
 test('monster authoring refreshes the catalog, persists, exports YAML, and leaves Cancel unchanged', async () => {
   const storage = new Map();
   const original = {...entry('City guard', 'Guards', {ac:'12', hp:'20', abilities:{dex:'14'}, actions:[{name:'Spear', description:'Attack +3; Block DC 11.'}]}), source:'monsters/guards.yaml'};
   const h = boot({monsters:[original]}, '', {storage});
   await h.route('#section=monsters');
-  h.reader.querySelectorAll('button').find(button => button.textContent === 'Add your monster statblock').click();
+  h.reader.querySelectorAll('button').find(button => button.textContent === 'Create monster').click();
   let dialog = h.document.querySelector('dialog');
   const input = (title, root=dialog) => root.querySelectorAll('label').find(label => label._text === title).querySelector('input');
   input('Name').value = 'Lantern wisp';

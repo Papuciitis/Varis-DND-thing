@@ -89,6 +89,7 @@
   let spellSort = "level-asc";
   let spellFilter = "";
   let featureSort = "level-asc";
+  let gearQuery = "";
   const catalogPreferences = {spells:{sort:"level-asc",level:""},inventory:{sort:"name",level:""},features:{sort:"name",level:""}};
   const healthAdjustment = {pool: "hp", amount: 1};
   const expanded = new Set();
@@ -285,6 +286,10 @@
     byId("character-subtitle").textContent = ["Level " + character.level, character.className || "Choose a class", character.ancestry].filter(Boolean).join(" · ");
     document.title = (character.name || "Character sheet") + " · Varis DnD";
     byId("character-picker").innerHTML = library.map(item => `<option value="${escape(item.id)}" ${item.id === character.id ? "selected" : ""}>${escape(item.name || "Unnamed character")}</option>`).join("");
+    const built = !!character.build?.enabled;
+    byId("edit-build").textContent = built ? "Edit build" : "Build character";
+    byId("edit-build").className = "button button-small" + (built ? " button-quiet" : " button-primary");
+    byId("edit-identity").hidden = built;
     if (!storageAvailable) byId("save-status").textContent = "Use Save backup to keep changes";
   }
 
@@ -303,6 +308,12 @@
     const totals = {armorClass:d.armorClass, initiative:signed(d.initiative), speed:d.speed + " ft", proficiency:signed(proficiency()),passivePerception:passivePerception()};
     document.querySelectorAll("[data-combat-value]").forEach(node => { node.textContent = totals[node.dataset.combatValue]; });
     document.querySelectorAll("[data-effective-score]").forEach(node=>{node.textContent=d.abilities[node.dataset.effectiveScore];});
+    document.querySelectorAll("[data-pool-maximum]").forEach(node=>{node.textContent=character.resources[node.dataset.poolMaximum].max;});
+    document.querySelectorAll("[data-training-save], [data-training-skill]").forEach(node=>{
+      const rank=node.dataset.trainingSave?Number(!!d.saves[node.dataset.trainingSave]):d.skillRanks[node.dataset.trainingSkill]||0;
+      node.className="training-mark"+(rank?" trained":"")+(rank===2?" expert":"");
+      node.setAttribute("aria-label",rank===2?"Expertise":rank?"Proficient":"Untrained");
+    });
     const attacks=byId("derived-attacks");if(attacks)attacks.innerHTML=derivedAttacks();
     document.querySelectorAll("[data-resource-meter]").forEach(node => {
       const pool = character.resources[node.dataset.resourceMeter];
@@ -329,24 +340,30 @@
     return `<section class="resource-card ${key === "hp" ? "health-card" : ""}" data-pool="${key}"><h3 class="resource-label">${resourceNames[key]}</h3>
       <div class="resource-reading">
       <label class="resource-value"><span class="sr-only">Current ${resourceNames[key]}</span><input type="number" inputmode="numeric" min="0" max="1000000" data-path="resources.${key}.current" value="${resource.current}"></label>
-      <span class="resource-divider" aria-hidden="true">/</span><label class="resource-max"><span class="resource-max-label">max</span><input type="number" inputmode="numeric" min="0" max="1000000" data-path="resources.${key}.max" value="${resource.max}" aria-label="Maximum ${resourceNames[key]}" ${values().enabled && ["hp","block"].includes(key)?'readonly':''}></label>
+      <span class="resource-divider" aria-hidden="true">/</span><span class="resource-max"><span class="resource-max-label">maximum</span><strong data-pool-maximum="${key}">${resource.max}</strong></span>
       <div class="resource-adjusters">${button("−", "resource", `data-key="${key}" data-delta="-1" aria-label="Decrease ${resourceNames[key]}"`, "counter-button")}${button("+", "resource", `data-key="${key}" data-delta="1" aria-label="Increase ${resourceNames[key]}"`, "counter-button")}</div></div>
       <div class="meter" aria-hidden="true"><span class="meter-fill" data-resource-meter="${key}" style="width:${percentage}%"></span></div></section>`;
   }
 
+  function poolSettings(keys) {
+    return `<details class="quiet-disclosure" data-expanded="pools-${keys[0]}" ${expanded.has("pools-"+keys[0])?'open':''}><summary>Set pool maximums</summary><div class="form-grid">${keys.map(key=>numberField(resourceNames[key],`resources.${key}.max`,values().enabled&&["hp","block"].includes(key)?{readonly:"readonly"}:{})).join("")}</div>${values().enabled?'<p class="section-note">HP and Block maximums follow your build. Use Edit build or combat adjustments to change them.</p>':''}</details>`;
+  }
+
   function abilityPanel() {
     const d=values();
-    const abilities = `<div class="abilities-grid">${Object.entries(abilityNames).map(([key, name]) => `<div class="ability"><label class="ability-label" for="ability-${key}">${escape(name)}${d.enabled?' base':''}</label><input id="ability-${key}" class="ability-score" type="number" inputmode="numeric" min="0" max="100" data-path="abilities.${key}" value="${character.abilities[key]}">${d.enabled?`<span class="muted">Total <strong data-effective-score="${key}">${d.abilities[key]}</strong></span>`:''}${button(signed(State.abilityModifier(d.abilities[key])), "roll", `data-ability-roll="${key}" data-label="${escape(name)} check" data-bonus="${State.abilityModifier(d.abilities[key])}" aria-label="Roll ${escape(name)} check"`, "ability-mod")}</div>`).join("")}</div>`;
+    const abilities = `<div class="abilities-grid">${Object.entries(abilityNames).map(([key, name]) => `<div class="ability"><span class="ability-label">${escape(name)}</span>${button(signed(State.abilityModifier(d.abilities[key])), "roll", `data-ability-roll="${key}" data-label="${escape(name)} check" data-bonus="${State.abilityModifier(d.abilities[key])}" aria-label="Roll ${escape(name)} check"`, "ability-mod")}<span class="ability-total">Score <strong data-effective-score="${key}">${d.abilities[key]}</strong></span></div>`).join("")}</div><details class="quiet-disclosure" data-expanded="ability-edit" ${expanded.has("ability-edit")?'open':''}><summary>Adjust base scores</summary><div class="form-grid">${Object.entries(abilityNames).map(([key,name])=>numberField(name,`abilities.${key}`,{max:100})).join("")}</div></details>`;
     const saves = Object.entries(abilityNames).map(([key, name]) => {
       const bonus = State.abilityModifier(d.abilities[key]) + (d.saves[key] ? proficiency() : 0) + (d.saveBonuses[key] || 0);
-      return `<div class="save-row"><label class="check-label"><input type="checkbox" data-path="training.saves.${key}" ${d.saves[key] ? "checked" : ""} ${d.saves[key]&&!character.training.saves[key]?'disabled':''}>${name}</label><input class="bonus-input" type="number" inputmode="numeric" data-path="training.saveBonuses.${key}" value="${character.training.saveBonuses?.[key] || 0}" aria-label="Additional ${name} save bonus" min="-1000" max="1000">${button(signed(bonus), "roll", `data-save-roll="${key}" data-label="${name} saving throw" data-bonus="${bonus}" aria-label="Roll ${name} saving throw"`, "skill-bonus")}</div>`;
+      return `<div class="save-row play-row"><span class="skill-name"><span class="training-mark ${d.saves[key]?'trained':''}" data-training-save="${key}" aria-label="${d.saves[key]?'Proficient':'Untrained'}"></span>${name}</span>${button(signed(bonus), "roll", `data-save-roll="${key}" data-label="${name} saving throw" data-bonus="${bonus}" aria-label="Roll ${name} saving throw"`, "skill-bonus")}</div>`;
     }).join("");
+    const saveSettings=Object.entries(abilityNames).map(([key,name])=>`<div class="save-row"><label class="check-label"><input type="checkbox" data-path="training.saves.${key}" ${d.saves[key]?'checked':''} ${d.saves[key]&&!character.training.saves[key]?'disabled':''}>${name}</label><input class="bonus-input" type="number" inputmode="numeric" data-path="training.saveBonuses.${key}" value="${character.training.saveBonuses?.[key]||0}" aria-label="Additional ${name} save bonus" min="-1000" max="1000"></div>`).join("");
     const skillRows = Object.entries(skills).map(([name, ability]) => {
       const rank = d.skillRanks[name] || 0;
       const bonus = State.abilityModifier(d.abilities[ability]) + rank * proficiency() + (d.skillBonuses[name] || 0);
-      return `<div class="skill-row"><span class="skill-name">${escape(name)}<small class="skill-ability">${ability.toUpperCase()}</small></span><select class="training-select" data-path="training.skills.${escape(name)}" data-number="true" aria-label="${escape(name)} training"><option value="0" ${rank === 0 ? "selected" : ""}>Untrained</option><option value="1" ${rank === 1 ? "selected" : ""}>Proficient</option><option value="2" ${rank === 2 ? "selected" : ""}>Expertise</option></select><input class="bonus-input" type="number" inputmode="numeric" min="-1000" max="1000" data-path="training.skillBonuses.${escape(name)}" value="${character.training.skillBonuses?.[name] || 0}" aria-label="Additional ${escape(name)} bonus">${button(signed(bonus), "roll", `data-skill-roll="${escape(name)}" data-label="${escape(name)}" data-bonus="${bonus}" aria-label="Roll ${escape(name)}"`, "skill-bonus")}</div>`;
+      return `<div class="skill-row play-row"><span class="skill-name"><span class="training-mark ${rank?'trained':''} ${rank===2?'expert':''}" data-training-skill="${escape(name)}" aria-label="${rank===2?'Expertise':rank?'Proficient':'Untrained'}"></span>${escape(name)}<small class="skill-ability">${ability.toUpperCase()}</small></span>${button(signed(bonus), "roll", `data-skill-roll="${escape(name)}" data-label="${escape(name)}" data-bonus="${bonus}" aria-label="Roll ${escape(name)}"`, "skill-bonus")}</div>`;
     }).join("");
-    return `<aside class="ability-panel">${panel("Ability scores", abilities)}<details class="panel disclosure" data-expanded="saves" ${expanded.has("saves") ? "open" : ""}><summary>Saving throws</summary><p class="section-note">Select proficient saves. The adjustment field adds feature or situational bonuses.</p>${saves}</details><details class="panel disclosure" data-expanded="skills" ${expanded.has("skills") ? "open" : ""}><summary>Skills</summary><p class="section-note">Includes the draft's proposed Stamina, Instinct, and Mechanism skills. Set training and any additional bonus.</p><div class="skill-list">${skillRows}</div></details></aside>`;
+    const skillSettings=Object.entries(skills).map(([name])=>{const rank=d.skillRanks[name]||0;return `<div class="skill-settings-row"><label class="field"><span>${escape(name)}</span><select class="training-select" data-path="training.skills.${escape(name)}" data-number="true" aria-label="${escape(name)} training"><option value="0" ${rank===0?'selected':''}>Untrained</option><option value="1" ${rank===1?'selected':''}>Proficient</option><option value="2" ${rank===2?'selected':''}>Expertise</option></select></label><input class="bonus-input" type="number" inputmode="numeric" min="-1000" max="1000" data-path="training.skillBonuses.${escape(name)}" value="${character.training.skillBonuses?.[name]||0}" aria-label="Additional ${escape(name)} bonus"></div>`;}).join("");
+    return `<aside class="ability-panel">${panel("Ability scores", abilities)}<details class="panel disclosure" data-expanded="saves" ${expanded.has("saves") ? "open" : ""}><summary>Saving throws</summary>${saves}<details class="quiet-disclosure"><summary>Adjust save training</summary>${saveSettings}</details></details><details class="panel disclosure" data-expanded="skills" ${expanded.has("skills") ? "open" : ""}><summary>Skills</summary><div class="skill-list">${skillRows}</div><details class="quiet-disclosure"><summary>Adjust skill training</summary><p class="section-note">Training and additional bonuses.</p>${skillSettings}</details></details></aside>`;
   }
 
   function derivedAttacks() {
@@ -369,17 +386,19 @@
     const stats = [["armorClass", d.armorClass, "Armour class"], ["initiative", signed(initiative), "Initiative"], ["speed", d.speed + " ft", "Speed"], ["proficiency", signed(proficiency()), "Proficiency"], ["passivePerception", passivePerception(), "Passive Perception"]];
     const combatStrip = `<div class="combat-strip">${stats.map(([key, value, label]) => `<div class="combat-stat"><span class="combat-value" data-combat-value="${key}">${escape(value)}</span><span class="combat-label">${label}</span></div>`).join("")}<label class="combat-stat check-label inspiration-toggle"><input type="checkbox" data-path="inspiration" ${character.inspiration ? "checked" : ""}>Inspiration</label></div>`;
     const resources = `<div class="health-pools">${resourceCard("hp")}</div>`;
-    const wards = `<div class="ward-pools">${resourceCard("arcaneHealth")}${resourceCard("tempHP")}</div>`;
+    const wardKeys=["arcaneHealth","tempHP"], activeWards=wardKeys.filter(key=>character.resources[key].current||character.resources[key].max), unusedWards=wardKeys.filter(key=>!activeWards.includes(key));
+    const wards = `<div class="ward-pools">${activeWards.map(resourceCard).join("")}</div><details class="quiet-disclosure" data-expanded="extra-health" ${expanded.has("extra-health")?'open':''}><summary>Health pools & maximums</summary>${unusedWards.length?`<div class="ward-pools">${unusedWards.map(resourceCard).join("")}</div>`:''}${poolSettings(["hp",...wardKeys])}</details>`;
     const pools=d.enabled?["auto","hp","arcaneHealth","tempHP"]:["hp","arcaneHealth","tempHP"];
     const quickHealth = `<div class="quick-health"><label class="field"><span>Health pool</span><select id="health-pool">${pools.map(key=>`<option value="${key}" ${healthAdjustment.pool===key?'selected':''}>${key==='auto'?'Automatic damage order':resourceNames[key]}</option>`).join('')}</select></label><label class="field"><span>Amount</span><input id="health-amount" type="number" inputmode="numeric" min="1" max="1000000" value="${healthAdjustment.amount}"></label>${button("Damage","health",'data-sign="-1"','button-danger')}${button("Heal","health",'data-sign="1"','button-primary')}</div>${d.enabled?`<details class="damage-options" data-expanded="damage-options" ${expanded.has("damage-options")?'open':''}><summary>Damage options</summary><p class="section-note">Damage uses Arcane Health, then Temporary HP, then HP. For healing, choose the pool to restore.</p><div class="form-grid"><label class="field"><span>Damage type (for reduction)</span><select id="damage-type"><option value="">Untyped / already adjusted</option>${['bludgeoning','piercing','slashing','fire','cold','acid','lightning','sonic','poison','necrotic','radiant','psychic','force'].map(t=>`<option>${t}</option>`).join('')}</select></label><label class="check-label"><input id="damage-half" type="checkbox">Apply half damage (resistance)</label></div></details>`:''}`;
-    const blocks = `<div class="defence-pools">${resourceCard("block")}${resourceCard("tempBlock")}</div><div class="entry-actions defence-actions">${button("Use 1 Block", "resource", 'data-key="block" data-delta="-1"', "button-primary")}${button("Use 2 Blocks", "resource", 'data-key="block" data-delta="-2"')}${button("Grant Temp Block", "grant-temp")}</div>`;
+    const temporaryBlock=character.resources.tempBlock.current||character.resources.tempBlock.max;
+    const blocks = `<div class="defence-pools">${resourceCard("block")}${temporaryBlock?resourceCard("tempBlock"):''}</div><div class="entry-actions defence-actions">${button("Use Block", "resource", 'data-key="block" data-delta="-1"', "button-primary")}${button("Use 2", "resource", 'data-key="block" data-delta="-2"')}${button("Grant Temp Block", "grant-temp", "", "button-quiet")}</div><details class="quiet-disclosure" data-expanded="block-settings" ${expanded.has("block-settings")?'open':''}><summary>Pool adjustments</summary>${temporaryBlock?'':`<div class="defence-pools">${resourceCard("tempBlock")}</div>`}${poolSettings(["block","tempBlock"])}</details>`;
     const rest = `<div class="form-grid">${field("Rest die size", "restDice.die", "text", {placeholder: "d6"})}${numberField("Rest dice available", "restDice.current")}${d.enabled?numberField("Base rest dice maximum", "build.health.baseRestDice"):numberField("Rest dice maximum", "restDice.max")}</div><div class="entry-actions">${button("Spend 1 rest die", "resource", 'data-key="restDice" data-delta="-1"')}${button("Recover 1 rest die", "resource", 'data-key="restDice" data-delta="1"')}</div>`;
     const marks = Array.from({length:d.deathSaveSlots+1},(_,n)=>[n,String(n)]);
     const deathSaves = `<div class="form-grid">${selectField("Successes", "deathSaves.successes", marks, "", true)}${selectField("Failures", "deathSaves.failures", marks, "", true)}</div>`;
     const conditionChips = character.conditions.length ? `<div class="condition-chips">${character.conditions.map((condition, index) => `<span class="pill">${escape(condition)}${button("×", "remove-condition", `data-index="${index}" aria-label="Remove ${escape(condition)}"`, "button-quiet button-small")}</span>`).join("")}</div>` : `<p class="section-note">No conditions recorded.</p>`;
-    const defence = blocks + (d.enabled?`<p class="block-check">Block check <strong>${signed(d.blockCheck)}</strong><span>${escape(d.gear.blockCheckAbility?.toUpperCase())}</span></p><div class="entry-actions rest-actions">${button("Start combat","start-combat",'aria-label="Roll initiative and start combat"')}${button("End combat","end-combat")}${button("Short rest","short-rest")}${button("Long rest","long-rest")}</div>`:"") + `<details class="rules-hint" data-expanded="recovery" ${expanded.has("recovery")?'open':''}><summary>Block & recovery rules</summary><p class="section-note">Each Block attempt is spent even if its defence check fails. Temp Block is spent before regular Block; keep the higher grant and track its expiry. Adjust Arcane Health according to the effect's rules.</p>${d.enabled?`<p class="section-note">${escape(d.hpExplanation)}. Rests recover Block and Fatigue; apply other recovery from the relevant feature.</p>${numberField("Fatigue", "build.health.fatigue", {max:10})}`:""}</details>`;
+    const defence = blocks + (d.enabled?`<p class="block-check">Block check <strong>${signed(d.blockCheck)}</strong><span>${escape(d.gear.blockCheckAbility?.toUpperCase())}</span></p><div class="entry-actions combat-actions">${button("Start combat","start-combat",'aria-label="Roll initiative and start combat"')}${button("End combat","end-combat")}</div>`:"") + `<details class="quiet-disclosure rules-hint" data-expanded="recovery" ${expanded.has("recovery")?'open':''}><summary>Rest & recovery</summary>${d.enabled?`<div class="entry-actions rest-actions">${button("Short rest","short-rest")}${button("Long rest","long-rest")}</div>`:''}<p class="section-note">Each Block attempt is spent even if its defence check fails. Temp Block is spent before regular Block; keep the higher grant and track its expiry. Adjust Arcane Health according to the effect's rules.</p>${d.enabled?`<p class="section-note">${escape(d.hpExplanation)}. Rests recover Block and Fatigue; apply other recovery from the relevant feature.</p>${numberField("Fatigue", "build.health.fatigue", {max:10})}`:""}</details>`;
     const secondary = `<div class="overview-secondary"><details class="panel disclosure" data-expanded="death-saves" ${expanded.has("death-saves")?'open':''}><summary>Death saves</summary>${deathSaves}</details><details class="panel disclosure" data-expanded="rest-dice" ${expanded.has("rest-dice")?'open':''}><summary>Rest dice</summary>${rest}</details></div>`;
-    byId("pane-sheet").innerHTML = `<div class="sheet-layout"><div class="main-panel">${combatStrip}<div class="vital-layout">${panel("Health", resources + quickHealth + wards, "", "health-panel")}${panel("Block & defence", defence, button("Edit combat", "combat", "", "button-quiet button-small"), "defence-panel")}</div>${secondary}${panel("Attacks & actions", `<div class="list" id="derived-attacks">${derivedAttacks()}</div>` + renderAttacks() + textArea("Known manoeuvres", "maneuvers"), character.attacks.length ? button("Add attack", "add-attack", "", "button-small") : "")}${panel("Class resources", renderCustomResources(), button("Add resource", "add-resource", "", "button-small"))}${panel("Conditions", conditionChips, button("Add condition", "condition", "", "button-small"))}</div>${abilityPanel()}</div>`;
+    byId("pane-sheet").innerHTML = `<div class="sheet-layout"><div class="main-panel">${combatStrip}<div class="vital-layout">${panel("Health", resources + quickHealth + wards, "", "health-panel")}${panel("Block & defence", defence, button("Adjust", "combat", "", "button-quiet button-small"), "defence-panel")}</div>${panel("Attacks & actions", `<div class="list" id="derived-attacks">${derivedAttacks()}</div>` + renderAttacks() + `<details class="quiet-disclosure"><summary>Known manoeuvres</summary>${textArea("Known manoeuvres", "maneuvers")}</details>`, character.attacks.length ? button("Add attack", "add-attack", "", "button-small") : "", "attacks-panel")}${secondary}${panel("Class resources", renderCustomResources(), button("Add resource", "add-resource", "", "button-small"))}${panel("Conditions", conditionChips, button("Add condition", "condition", "", "button-small"))}</div>${abilityPanel()}</div>`;
   }
 
   function referenceActions(item, list, index) {
@@ -455,10 +474,51 @@
     return panel("Class casting · "+values().cls.name,body+'</div>');
   }
 
+  function gearGroup(item, rule) {
+    if(rule?.section==="magic-items") {
+      const category=rule.magicCategory || globalThis.MagicCategories?.category(rule);
+      return category==="weapons"?"Weapons":category==="armor-shields"?"Armor & shields":["consumables","scrolls"].includes(category)?"Consumables":"Miscellaneous";
+    }
+    if(rule?.section==="items" && globalThis.ItemViews) {
+      const category=globalThis.ItemViews.category(rule);
+      return category==="weapons"?"Weapons":category==="armor-shields"?"Armor & shields":category==="consumables"?"Consumables":"Miscellaneous";
+    }
+    const details=rule?.details || {}, text=[rule?.group,details.type,item.name].join(" ").toLowerCase();
+    if(details.damage || /\b(?:weapons?|ammunition|heavy arms|light arms|simple arms)\b/.test(text))return "Weapons";
+    if(/\b(?:armou?r|shields?)\b/.test(text) || details["AC bonus"])return "Armor & shields";
+    if(/\b(?:potions?|consumables?|scrolls?|rations?|food)\b/.test(text))return "Consumables";
+    return "Miscellaneous";
+  }
+
+  function printInventoryRows() {
+    if(!character.inventory.length)return '<p>Your pack is empty.</p>';
+    return ["Weapons","Armor & shields","Consumables","Miscellaneous"].map(group=>{
+      const members=character.inventory.map(item=>({item,rule:entries.get(item.entryId)})).filter(({item,rule})=>gearGroup(item,rule)===group);
+      if(!members.length)return "";
+      return `<section class="gear-print-group"><h3>${group}</h3>${members.map(({item,rule})=>`<article class="gear-print-item"><h4 class="gear-print-name">${escape(item.name)}</h4><p>${[`Quantity ${item.quantity}`,item.equipped?'Equipped':'',globalThis.MagicItems?.requiresAttunement(rule)&&item.attuned?'Attuned':''].filter(Boolean).join(' · ')}</p>${item.notes?`<p class="preserve-lines">${escape(item.notes)}</p>`:''}</article>`).join("")}</section>`;
+    }).join("");
+  }
+
+  function gearRows() {
+    const query=gearQuery.trim().toLowerCase();
+    const rows=character.inventory.map((item,index)=>({item,index,rule:entries.get(item.entryId)})).map(row=>({...row,group:gearGroup(row.item,row.rule)}));
+    const filtered=rows.filter(({item,rule,group})=>[item.name,item.notes,rule?.group,group].join(" ").toLowerCase().includes(query));
+    if(!filtered.length)return `<p class="section-note">${rows.length?'No equipment matches your search.':'Your pack is empty. Add equipment from the rules or create a custom item.'}</p>`;
+    return ["Weapons","Armor & shields","Consumables","Miscellaneous"].map(group=>{
+      const members=filtered.filter(row=>row.group===group);
+      if(!members.length)return "";
+      return `<section class="gear-group"><h3 class="gear-group-title">${group}<span>${members.length}</span></h3><div class="gear-list">${members.map(({item,index,rule})=>{
+        const key="gear-"+item.id, attunes=globalThis.MagicItems?.requiresAttunement(rule);
+        return `<details class="gear-item list-card" data-expanded="${escape(key)}" ${expanded.has(key)?'open':''}><summary><span class="gear-item-name"><span class="list-card-title">${escape(item.name)}</span><span class="gear-item-status">${[item.equipped?'Equipped':'',attunes&&item.attuned?'Attuned':'',rule?.group].filter(Boolean).map(escape).join(' · ')}</span></span><span class="gear-quantity" aria-label="Quantity ${item.quantity}">×${item.quantity}</span></summary><div class="gear-item-body"><div class="inline-fields"><label class="check-label"><input type="checkbox" data-path="inventory.${index}.equipped" ${item.equipped?'checked':''}>Equipped</label>${attunes?`<label class="check-label"><input type="checkbox" data-path="inventory.${index}.attuned" ${item.attuned?'checked':''}>Attuned</label>`:''}${numberField("Quantity",`inventory.${index}.quantity`)}</div>${item.notes?`<p class="preserve-lines">${escape(item.notes)}</p>`:''}${referenceActions(item,"inventory",index)}</div></details>`;
+      }).join("")}</div></section>`;
+    }).join("");
+  }
+
   function renderGear() {
     const money = `<div class="currency-grid">${numberField("Gold", "coins.gold")}${numberField("Silver", "coins.silver")}${numberField("Copper", "coins.copper")}</div>`;
     const training = `<div class="form-grid">${[["Weapons", "weapons"], ["Armour", "armor"], ["Tools", "tools"], ["Languages", "languages"]].map(([label, key]) => textArea(label, "proficiencies." + key, 2)).join("")}</div>`;
-    byId("pane-gear").innerHTML = renderCollection("inventory", "Equipment", values().enabled?"Equip armor, a shield and weapons to update your defences and attacks. Custom effects can use manual adjustments.":"Use Build character to enable equipment calculations, or keep tracking this manual sheet.", "inventory") + panel("Coin purse", money) + panel("Proficiencies & languages", training);
+    const tools=button("Add from rules","catalog",'data-kind="inventory"',"button-primary button-small")+button("Add custom","add-item",'data-list="inventory"',"button-quiet button-small");
+    byId("pane-gear").innerHTML = panel("Equipment",`<label class="field gear-search"><span class="sr-only">Find owned equipment</span><input type="search" id="owned-gear-search" placeholder="Find equipment in your pack" value="${escape(gearQuery)}" autocomplete="off"></label><div id="owned-gear-groups">${gearRows()}</div><div class="inventory-print" id="print-inventory">${printInventoryRows()}</div>`,tools,"gear-panel") + panel("Coin purse", money) + `<details class="panel disclosure" data-expanded="gear-training" ${expanded.has("gear-training")?'open':''}><summary>Proficiencies & languages</summary>${training}</details>`;
   }
 
   function renderFeatures() {
@@ -483,6 +543,7 @@
   }
 
   function switchTab(tab, focus) {
+    const changed=activeTab!==tab;
     if (tab === "spells") renderSpells();
     activeTab = tab;
     document.querySelectorAll("[data-tab]").forEach(button => {
@@ -492,6 +553,7 @@
       if (selected && focus) button.focus();
     });
     document.querySelectorAll(".pane").forEach(pane => { pane.hidden = pane.id !== "pane-" + tab; });
+    if(changed)byId("sheet-content").scrollIntoView?.({block:"start",behavior:"instant"});
   }
 
   function openDialog(title, content, footer = "") {
@@ -772,6 +834,7 @@
     if(Wizard?.handleInput(event.target))return;
     if (event.target.id === "catalog-query") { catalogLimit = 30; renderCatalogResults(); return; }
     if (event.target.id === "health-amount") { healthAdjustment.amount = event.target.value; return; }
+    if (event.target.id === "owned-gear-search") { gearQuery=event.target.value;byId("owned-gear-groups").innerHTML=gearRows();return; }
     applyInput(event.target);
   });
   document.addEventListener("change", event => {
@@ -786,7 +849,7 @@
     if (target.id === "character-picker") { selectCharacter(target.value); return; }
     if (target.dataset.path) {
       applyInput(target, true);
-      if(character.build?.enabled && (target.dataset.path.startsWith('inventory.') || target.dataset.path==='level')) {persist();render();}
+      if(target.dataset.path.startsWith('inventory.') || character.build?.enabled && target.dataset.path==='level') {persist();render();}
     }
   });
   document.addEventListener("click", event => {
@@ -812,6 +875,8 @@
   byId("editor-dialog").addEventListener("close", () => { dialogGeneration++; flushAndPersist(); render(); });
   let printDetails = [];
   window.addEventListener("beforeprint", () => {
+    flushAndPersist();
+    byId("print-inventory").innerHTML=printInventoryRows();
     printDetails = [...document.querySelectorAll("details:not([open])")];
     printDetails.forEach(details => { details.open = true; });
   });

@@ -175,7 +175,7 @@
   function heading(name) {
     const h = el("h1", "", name);
     h.id = "entry-title";
-    document.title = name + " · Open D&D";
+    document.title = name + " · Varis DnD";
     return h;
   }
   function crumbs(parts) {
@@ -201,12 +201,23 @@
     crumbs([]);
     const header = el("header", "index-heading");
     header.append(heading("Rules compendium"));
+    header.append(el("p", "index-intro home-intro", "Build a character, discover your next spell, or find the rule your table needs."));
     const grid = el("div", "shelves");
+    const familyCopy = {
+      "Characters": "Find your ancestry, calling, and the talents that make them yours.",
+      "Magic & equipment": "Spells, treasured finds, and the tools of an adventurer.",
+      "At the table": "Keep the story moving with rules and creatures close at hand."
+    };
     for (const [family, keys] of families) {
       const members = keys.map(k => sectionByKey.get(k)).filter(Boolean);
       if (!members.length) continue;
       const shelf = el("section", "shelf");
-      shelf.append(el("h2", "", family));
+      shelf.setAttribute("data-family", family);
+      const title = el("header", "shelf-heading");
+      title.append(el("span", "family-emblem"), el("h2", "", family));
+      title.firstElementChild.setAttribute("aria-hidden", "true");
+      if (familyCopy[family]) title.append(el("p", "", familyCopy[family]));
+      shelf.append(title);
       for (const s of members) shelf.append(panelLink(s.title, s.count ?? s.entries.length, {section: s.key}));
       grid.append(shelf);
     }
@@ -243,9 +254,16 @@
       a.append(el("span", "result-name", cap(entry.name)));
       const info = [!params.section ? section.title : "", params.group === entry.group ? "" : entry.group];
       if (section.key === "magic-items") {
+        const rarity = String(entry.details?.rarity || entry.group || "");
+        if (rarity) {
+          const badge = el("span", "rarity-badge rarity-" + norm(rarity).replace(/\s+/g,"-"), cap(rarity));
+          a.append(badge);
+          if (info.at(-1) === entry.group) info.pop();
+        }
         const category = magicCategories?.categories.find(item => item.key === magicCategories.category(entry));
-        if (category) info.push(category.title);
-        if (entry.details?.type) info.push(entry.details.type);
+        if (category && params.category !== category.key) info.push(category.title);
+        const itemType = entry.details?.base_item || entry.details?.type;
+        if (itemType && !["weapon", "wondrous item", "armor"].includes(norm(itemType))) info.push(itemType);
       }
       const level = section.key === "monsters" ? "" : entryLevel(entry);
       if (level && !info.some(s => /cantrip/i.test(s) && level === "0")) info.push(levelLabel(level));
@@ -319,31 +337,44 @@
       }
     }
     if (section.key === "magic-items" && globalThis.MagicItems) {
-      head.append(el("p", "index-intro", "Converted for the Varis rules. Browse the collection or open an item to edit its rules."));
-      head.append(link("Using converted magic items",{section:"rules",group:"Magic items",entry:"Using converted magic items"},"text-link"));
-      reader.append(globalThis.MagicItems.toolbar(section, () => {indexSection(section);draw();}));
+      head.append(el("p", "index-intro", "Treasured finds and curious creations for the Varis rules."));
+      const tools = globalThis.MagicItems.toolbar(section, () => {indexSection(section);draw();});
+      tools.querySelector(".magic-tools-content")?.append(link("Using converted magic items",{section:"rules",group:"Magic items",entry:"Using converted magic items"},"text-link"));
+      reader.append(tools);
     }
     if (section.key === "monsters" && globalThis.MonsterEditor) {
-      head.append(el("p", "index-intro", "Browse creature statblocks, add your own monster, or edit an existing creature for your table."));
-      head.append(link("Monster conversion and editing", {section:"rules", group:"Monsters", entry:"Using converted monsters"}, "text-link"));
-      reader.append(globalThis.MonsterEditor.toolbar(section, updated => {
+      head.append(el("p", "index-intro", "Creatures, rivals, and unexpected encounters for your table."));
+      const tools = globalThis.MonsterEditor.toolbar(section, updated => {
         indexSection(section);
         if (updated) openFilters(entryRoute(section, updated)); else draw();
-      }));
+      });
+      tools.querySelector(".utility-menu-content")?.append(link("Monster conversion and editing", {section:"rules", group:"Monsters", entry:"Using converted monsters"}, "text-link"));
+      reader.append(tools);
     }
+    let creatureTypes;
     if (section.key === "monsters" && monsterViews) {
       const types = el("nav", "monster-type-nav");
       types.setAttribute("aria-label", "Creature types");
       const available = new Set(section.entries.flatMap(entry => monsterViews.metadata(entry).types));
       for (const [value, title] of [["", "All monsters"], ...[...new Set([...monsterViews.types, "object", "unknown"])].filter(type => available.has(type)).map(type => [type, monsterViews.titles[type] || cap(type)])]) {
         const control = link("", {...params, type:value, page:"", browse:"all"}, "monster-type-chip");
-        control.append(el("span", "monster-type-mark", value ? title.slice(0,2).toUpperCase() : "ALL"), el("span", "", title));
+        control.append(el("span", "", title));
         if ((params.type || "") === value) control.setAttribute("aria-current", "true");
         types.append(control);
       }
-      reader.append(types);
+      creatureTypes = el("details", "creature-type-picker");
+      const selectedType = monsterViews.titles[params.type] || (params.type ? cap(params.type) : "All creatures");
+      creatureTypes.append(el("summary", "", "Creature type: " + selectedType), types);
     }
     const form = el("form", "filters");
+    const monsterFilters = section.key === "monsters";
+    if (monsterFilters) form.classList.add("monster-filters");
+    const advanced = monsterFilters ? el("details", "advanced-filters") : null;
+    const secondary = monsterFilters ? el("div", "advanced-filter-fields") : form;
+    if (advanced) {
+      advanced.append(el("summary", "", "More filters"), secondary);
+      advanced.open = Boolean(group || params.view === "pages" || params.sort && params.sort !== "challenge-asc");
+    }
     form.setAttribute("role", "search");
     form.setAttribute("aria-label", "Filter " + section.title);
     const box = el("label", "local-search");
@@ -369,7 +400,7 @@
       for (const item of itemViews.categories) select.append(new Option(item.title, item.key));
       select.value = category?.key || "";
       select.addEventListener("change", () => openFilters({...params, category: select.value, group: "", view: "", page: "", browse: ""}));
-      form.append(field);
+      secondary.append(field);
     }
     if (compareEntries || section.key === "monsters" || category?.key === "weapons" && !group) {
       const [field, select] = labelledSelect("Display", "entry-view");
@@ -377,7 +408,7 @@
       for (const [value, text] of options) select.append(new Option(text, value));
       select.value = section.key === "monsters" ? monsterList ? "list" : "pages" : compareEntries ? listView ? "list" : "pages" : weaponTree ? "tree" : "pages";
       select.addEventListener("change", () => openFilters({...params, view: select.value, page: "", browse: "all"}));
-      form.append(field);
+      secondary.append(field);
     }
     if (section.key === "spells") {
       const [field, select] = labelledSelect("Class of magic", "group");
@@ -385,14 +416,14 @@
       for (const name of order.magicClasses) select.append(new Option(name, name));
       select.value = magicClass;
       select.addEventListener("change", () => openFilters({...params, group: select.value, browse: "all", page: ""}));
-      form.append(field);
+      secondary.append(field);
     } else if (grouped.length > 1 && !baseClassView && section.key !== "magic-items" && !itemHome) {
       const [field, select] = labelledSelect("Group", "group");
       select.append(new Option("All groups", ""));
       for (const [title] of grouped) select.append(new Option(cap(title), title));
       select.value = group;
       select.addEventListener("change", () => openFilters({...params, group: select.value, browse: "all", page: ""}));
-      form.append(field);
+      secondary.append(field);
     }
     if (section.key === "spells") {
       const levels = [...new Set(section.entries.map(entryLevel).filter(Boolean))].sort(collate.compare);
@@ -425,14 +456,8 @@
         form.append(field);
       }
     }
-    if (kind) form.append(sortControl(params, kind, filter));
+    if (kind) secondary.append(sortControl(params, kind, filter));
     if (section.key === "monsters" && monsterViews) {
-      const [typeField, typeSelect] = labelledSelect("Creature type", "monster-type");
-      typeSelect.append(new Option("All types", ""));
-      const types = [...new Set(section.entries.flatMap(entry => monsterViews.metadata(entry).types))].sort(collate.compare);
-      for (const type of types) typeSelect.append(new Option(monsterViews.titles[type] || cap(type), type));
-      typeSelect.value = params.type || "";
-      typeSelect.addEventListener("change", () => openFilters({...params, type:typeSelect.value, page:"", browse:"all"}));
       const [crField, crSelect] = labelledSelect("Challenge rating", "monster-cr");
       crSelect.append(new Option("All CRs", ""));
       const values = new Map();
@@ -441,9 +466,25 @@
       for (const [value, title] of [["0-1","CR 0–1"],["2-5","CR 2–5"],["6-10","CR 6–10"],["11-16","CR 11–16"],["17+","CR 17+"],["unknown","Unrated / unknown"]]) crSelect.append(new Option(title, value));
       crSelect.value = params.cr || "";
       crSelect.addEventListener("change", () => openFilters({...params, cr:crSelect.value, page:"", browse:"all"}));
-      form.append(typeField, crField);
+      form.append(crField);
     }
+    if (advanced) form.append(advanced);
     reader.append(form);
+    if (creatureTypes) reader.append(creatureTypes);
+    if (monsterFilters) {
+      const applied = el("nav", "applied-filters");
+      applied.setAttribute("aria-label", "Applied filters");
+      for (const [key, text] of [["type", params.type && (monsterViews?.titles[params.type] || cap(params.type))], ["cr", params.cr && "CR " + params.cr], ["group", group], ["filter", filter]]) {
+        if (!text) continue;
+        const remove = link(text + " ×", {...params, [key]: "", page:""}, "applied-filter");
+        remove.setAttribute("aria-label", "Remove filter: " + text);
+        applied.append(remove);
+      }
+      if (applied.childElementCount) {
+        applied.append(link("Clear all", {...params, type:"", cr:"", group:"", filter:"", page:""}, "text-link"));
+        reader.append(applied);
+      }
+    }
     if (!section.entries.length) {
       reader.append(el("p", "state-message", "This section has no entries yet."));
       return;
@@ -705,7 +746,12 @@
     const chapters = [];
     const provenance = [];
     const sourceFields = {};
-    for (const [key, item] of Object.entries(value)) {
+    const statPriority = ["casting", "casting_time", "damage", "range", "duration", "cooldown", "base_item", "rarity", "attunement", "price", "type", "category"];
+    const orderedFields = Object.entries(value).sort(([a], [b]) => {
+      const rank = key => { const position = statPriority.indexOf(key); return position < 0 ? statPriority.length : position; };
+      return rank(a) - rank(b);
+    });
+    for (const [key, item] of orderedFields) {
       if ((key === "name" && item === entry.name) || (key === "group" && item === entry.group)) continue;
       if (key === "id") continue;
       if (entry.source?.startsWith("magic-items/") && /^(?:original_|source_|conversion_notes$)/.test(key)) {
@@ -723,7 +769,11 @@
         intro.append(note);
         continue;
       }
-      if (/^(?:desc|description)$/i.test(key) && plain(item)) { intro.append(prose(item)); continue; }
+      if (/^(?:desc|description)$/i.test(key) && plain(item)) {
+        if (entry.source?.startsWith("magic-items/") && globalThis.RulePresentation) globalThis.RulePresentation.appendDescription(intro, String(item ?? ""), entry);
+        else intro.append(prose(item));
+        continue;
+      }
       if (statKeys.has(key.toLowerCase()) && (plain(item) || Array.isArray(item) && item.every(plain))) {
         const stat = el("div");
         const val = el("dd");
@@ -978,11 +1028,12 @@
       if (links.childElementCount) header.append(links);
     }
     reader.append(header);
+    let itemEditor;
     if (section.key === "magic-items" && globalThis.MagicItems) {
-      header.append(globalThis.MagicItems.editor(section, entry, updated => {
+      itemEditor = globalThis.MagicItems.editor(section, entry, updated => {
         indexSection(section);
         if(updated && location.hash !== href(entryRoute(section,updated)))openFilters(entryRoute(section,updated));else draw();
-      }));
+      });
     }
     if (section.key === "monsters" && globalThis.MonsterEditor) {
       header.append(globalThis.MonsterEditor.editor(section, entry, updated => {
@@ -996,6 +1047,7 @@
     }
     if (section.key === "monsters") reader.append(monsterBlock(entry));
     else details(entry);
+    if (itemEditor) reader.append(itemEditor);
     const summons = summonPicker(entry);
     if (summons) reader.append(summons);
     const footer = el("footer", "entry-footer");

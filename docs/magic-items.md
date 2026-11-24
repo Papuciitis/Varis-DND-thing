@@ -36,9 +36,9 @@ Conversions use current Varis base equipment and maneuvers, Block and unblocked-
 
 ## Editing in the page
 
-Open **Magic items**, choose an item, and use **Edit item** to change its converted rules. Page edits are saved in this browser, so the item can be adjusted during play. Original workbook text remains available for comparison. Editing the page cannot directly commit a file to Git.
+Open **Magic items**, choose an item, and expand **Edit this item** below its rules to change the converted text. Long descriptions use smaller paragraphs and emphasized mechanics while preserving the original wording and numerical values. Page edits are saved in this browser, so the item can be adjusted during play. Original workbook text remains available for comparison. Editing the page cannot directly commit a file to Git.
 
-Use the page's backup export and import controls to move browser edits between devices. Export the item's complete source collection when an edit should become the shared rule, replace the corresponding file under `data/magic-items/`, rebuild, then commit that source file. Source export first validates and saves the current form, then includes all entries from that source file with their current edits. It uses JSON syntax that is also valid YAML. Keep the file's existing `.yaml` name.
+Open **Item tools** for backup export and import to move browser edits between devices. In an item's editor, open **Source tools** and export the complete source collection when an edit should become the shared rule, replace the corresponding file under `data/magic-items/`, rebuild, then commit that source file. Source export first validates and saves the current form, then includes all entries from that source file with their current edits. It uses JSON syntax that is also valid YAML. Keep the file's existing `.yaml` name.
 
 Character equipment uses a converted item's `base_item`, explicit damage and property overrides, and `magic_bonus` for supported attacks, AC, and weapon Block DC. Mark required attunement before its magical statistics apply. Custom weapon type and group preserve the correct training requirements. Shield enhancements improve AC; any special Bash bonuses remain manual.
 

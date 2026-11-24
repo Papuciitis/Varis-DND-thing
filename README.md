@@ -33,7 +33,7 @@ Both outputs use the same rule definitions. The JSON and HTML are generated view
 
 ## Use and back up characters
 
-The main sheet groups health and Block separately, with prominent current/max HP and compact secondary pools. Desktop puts ability scores in a side column; phones use a vertical layout and bottom tabs. Expand Death saves, Rest dice, Damage options, or Block & recovery rules when needed.
+The main sheet groups health and Block separately, with prominent current/max HP and compact secondary pools. Desktop puts ability scores in a side column; phones place attacks after health and defence and keep bottom tabs in reach. Base scores, training, pool maximums and recovery controls expand when needed. Gear is grouped into compact equipment rows; search your pack and expand an item to adjust quantity, equipment or attunement.
 
 Open **More**, then **New character**, to open the six-step builder:
 
@@ -41,10 +41,10 @@ Open **More**, then **New character**, to open the six-step builder:
 2. **Class:** choose a class and the archetypes available at that level.
 3. **Abilities:** enter base ability scores and allocate the race's ability bonuses.
 4. **Features:** read trait and feature rules, choose available options, and select skills.
-5. **Equipment:** add items and equip armor, a shield and weapons for the preview.
+5. **Equipment:** search or filter the catalog, preview an item, then add armor, a shield and weapons.
 6. **Review:** check the resulting sheet, choose an HP method, review incomplete selections, and use **Save character**.
 
-The builder works on a separate draft. **Cancel** discards its changes; nothing is applied to the saved character before **Save character**. Reopen **Build character** to change choices or raise the level and select newly available features. Existing manual characters remain manual until you open the builder and save its changes.
+The builder works on a separate draft. **Cancel** discards its changes; nothing is applied to the saved character before **Save character**. Reopen **Edit build** to change choices or raise the level and select newly available features. Existing manual characters remain manual until you open **Build character** and save its changes.
 
 Use the character picker to keep multiple characters. Saved-sheet edits autosave in the current browser on the current device. Storage depends on the page location and browser profile: a hosted page, a local file, a moved file, or another device may have separate saves. There is no account or automatic cross-device sync. Clearing browser data can remove saves.
 
@@ -102,7 +102,7 @@ The `draft-` directory names identify where material came from. Use the compiled
 
 **Magic items** is a separate collection of all 300 items from the campaign workbook, rewritten for the Varis system. Browse seven reviewed categories: weapons/ammunition, armor/shields, wearables/jewelry, staves/wands/rods, scrolls, potions/consumables, and miscellaneous. Combine category, rarity, item type, and text filters, including category-word searches. The character sheet's equipment picker offers the same magic categories. The displayed description contains the converted rules; original 5e text, source cells and conversion notes remain separate comparisons. Open an item and expand **Edit this item** to adjust its category or rules.
 
-The six editable rarity files, original workbook, source snapshot, and shared conversion conventions are tracked under `data/magic-items/`. Page edits save in the current browser. Use **Export item edits** for a portable backup, or **Export source file** to replace that item's complete source collection and commit the edited rules. Rebuild after changing a source file. See [magic item conversion and editing](docs/magic-items.md) for the workflow and automation limits.
+The six editable rarity files, original workbook, source snapshot, and shared conversion conventions are tracked under `data/magic-items/`. Page edits save in the current browser. Open **Item tools** for backup import/export. Within an item's editor, **Source tools** contains **Export source file** for replacing that item's complete source collection and committing the edited rules. Rebuild after changing a source file. See [magic item conversion and editing](docs/magic-items.md) for the workflow and automation limits.
 
 The Windows launcher handles rebuilding. For a manual build with Python 3.12 or newer, run from the repository root:
 

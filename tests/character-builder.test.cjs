@@ -11,7 +11,7 @@ function setup(extraSections = []) {
   const file = path.join(root, 'web/character-builder.js');
   assert.ok(fs.existsSync(file), 'The character creator must provide a six-step draft wizard');
   const context = vm.createContext({crypto:require('node:crypto').webcrypto});
-  for (const name of ['entry-order.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js']) {
+  for (const name of ['entry-order.js','item-views.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js']) {
     vm.runInContext(fs.readFileSync(path.join(root,'web',name),'utf8'),context);
   }
   const metadata = {
@@ -22,7 +22,7 @@ function setup(extraSections = []) {
   const catalog=[{key:'items',entries:[{name:'Dagger',group:'Light blades',details:{damage:'1d4',type:'simple',properties:'light, versatile'}}]},...extraSections];
   const rules=context.CharacterRules.create(metadata,catalog),shows=[],finished=[],cancelled=[];
   const builder=context.CharacterBuilder.create({rules,show:(...args)=>shows.push(args),onFinish:(...args)=>finished.push(args),onCancel:()=>cancelled.push(true),renderRule:value=>'<p>'+String(value).replace(/</g,'&lt;')+'</p>'});
-  return {builder,rules,State:context.CharacterState,shows,finished,cancelled,catalog};
+  return {builder,rules,State:context.CharacterState,shows,finished,cancelled,catalog,context};
 }
 const input=(builderPath,value,type='text')=>({dataset:{builderPath},value,type});
 
@@ -92,6 +92,84 @@ test('equipment controls add, equip, configure and remove gear in the draft',()=
   const c=finished[0][0];assert.equal(c.inventory.length,1);assert.equal(c.inventory[0].equipped,true);assert.equal(c.inventory[0].twoHanded,true);assert.equal(c.inventory[0].weaponTraining,'proficient');
   builder.start(c);builder.handleAction('builder-step',{dataset:{builderStep:'4'}});builder.handleAction('builder-remove-item',{dataset:{builderIndex:'0'}});
   builder.handleAction('builder-step',{dataset:{builderStep:'5'}});builder.handleAction('builder-finish',{});assert.equal(finished[1][0].inventory.length,0);assert.equal(c.inventory.length,1);
+});
+
+test('equipment search combines with categories and previews the selected item without losing its identity',()=>{
+  const extras={key:'magic-items',entries:[
+    {name:'Moon knife',group:'Rare',details:{id:'moon-knife',type:'Weapon',base_item:'Dagger',damage:'1d4 force'}},
+    {name:'Oak shield',group:'Uncommon',details:{id:'oak-shield',type:'Shield','AC bonus':2}},
+    {name:'Amber potion',group:'Common',details:{id:'amber-potion',type:'Potion'}},
+    {name:'Rope',group:'Common',details:{id:'rope',type:'Wondrous item'}}
+  ]};
+  const {builder,State,shows,finished}=setup([extras]);
+  builder.start(State.createCharacter());builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
+  const html=()=>shows.at(-1)[1];
+  const options=()=>html().match(/<select id="builder-equipment-options"[^>]*>(.*?)<\/select>/s)[1];
+  assert.match(html(),/5 matching items/);
+  builder.handleChange({dataset:{builderItemCategory:''},value:'weapons'});
+  assert.match(html(),/2 matching items/);assert.match(options(),/Dagger/);assert.match(options(),/Moon knife/);assert.doesNotMatch(options(),/Oak shield/);
+  builder.handleChange({dataset:{builderItemQuery:''},value:'moon'});
+  assert.match(html(),/1 matching item</);assert.match(options(),/Moon knife/);assert.doesNotMatch(options(),/>Dagger/);
+  const id=JSON.stringify(['magic-items','','moon-knife']);
+  builder.handleChange({dataset:{builderItem:''},value:id});
+  assert.match(html(),/id="builder-equipment-preview"><h3>Moon knife<\/h3>/);assert.match(html(),/1d4 force/);
+  builder.handleChange({dataset:{builderItemCategory:''},value:'armor'});
+  assert.match(html(),/0 matching items/);assert.match(options(),/Moon knife · selected/);
+  builder.handleAction('builder-add-item',{});
+  builder.handleAction('builder-step',{dataset:{builderStep:'5'}});builder.handleAction('builder-finish',{});
+  assert.equal(finished[0][0].inventory[0].entryId,id);
+  assert.equal(finished[0][0].inventory[0].name,'Moon knife');
+});
+
+test('equipment picker escapes search text and resets filters when another draft starts',()=>{
+  const {builder,State,shows}=setup();builder.start(State.createCharacter());
+  builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
+  builder.handleChange({dataset:{builderItemQuery:''},value:'"><script>bad</script>'});
+  assert.match(shows.at(-1)[1],/value="&quot;&gt;&lt;script&gt;bad&lt;\/script&gt;"/);
+  assert.doesNotMatch(shows.at(-1)[1],/<script>/);
+  assert.match(shows.at(-1)[1],/No matching equipment/);
+  builder.cancel();builder.start(State.createCharacter());builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
+  assert.match(shows.at(-1)[1],/1 matching item</);assert.match(shows.at(-1)[1],/data-builder-item-query value=""/);
+});
+
+test('equipment filters reuse compendium shelves for ordinary consumables and explicit magic categories',()=>{
+  const builtCatalog=require('./helpers/catalog.cjs')();
+  const mosa=builtCatalog.find(section=>section.key==='items').entries.find(entry=>entry.name.toLowerCase()==='vial of mosa');
+  assert(mosa,'The built ordinary catalog must include Vial of mosa');
+  const ordinary={key:'items',entries:[mosa,
+    {name:'Component pouch charge',group:'Arcane consumables and magical components',details:{}},
+    {name:'Test ammunition',group:'Ammunition',details:{type:'ammunition'}}
+  ]};
+  const magic={key:'magic-items',entries:[
+    {name:'Wearable blade',group:'Rare',details:{id:'wearable-blade',category:'wearables',type:'Weapon',damage:'1d4'}},
+    {name:'Protective scroll',group:'Rare',details:{id:'protective-scroll',category:'scrolls',type:'Wondrous item'}}
+  ]};
+  const {builder,State,shows}=setup([ordinary,magic]);builder.start(State.createCharacter());
+  builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
+  const options=()=>shows.at(-1)[1].match(/<select id="builder-equipment-options"[^>]*>(.*?)<\/select>/s)[1];
+  builder.handleChange({dataset:{builderItemCategory:''},value:'consumables'});
+  assert.match(options(),/Vial of mosa/i);assert.match(options(),/Component pouch charge/);assert.match(options(),/Protective scroll/);
+  assert.doesNotMatch(options(),/Wearable blade|Test ammunition/);
+  builder.handleChange({dataset:{builderItemCategory:''},value:'gear'});
+  assert.match(options(),/Wearable blade/);assert.match(options(),/Test ammunition/);assert.doesNotMatch(options(),/Vial of mosa|Protective scroll/i);
+});
+
+test('live equipment search refreshes only picker results and leaves typing focus intact',()=>{
+  const {builder,State,shows,context}=setup();builder.start(State.createCharacter());
+  builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
+  const query={dataset:{builderItemQuery:''},value:'dag'};
+  const nodes=Object.fromEntries(['builder-equipment-options','builder-equipment-count','builder-equipment-preview','builder-add-equipment'].map(id=>[id,{}]));
+  context.document={activeElement:query,getElementById:id=>nodes[id]};
+  const count=shows.length;
+  assert.equal(builder.handleInput(query),true);
+  assert.equal(shows.length,count,'Search must not replace the dialog while typing');
+  assert.equal(context.document.activeElement,query);
+  assert.match(nodes['builder-equipment-options'].innerHTML,/Dagger/);
+  assert.equal(nodes['builder-equipment-count'].textContent,'1 matching item');
+  query.value='no such equipment';builder.handleInput(query);
+  assert.equal(shows.length,count);assert.equal(nodes['builder-equipment-count'].textContent,'0 matching items');
+  assert.match(nodes['builder-equipment-options'].innerHTML,/No matching equipment/);
+  assert.equal(nodes['builder-add-equipment'].disabled,true);
 });
 
 test('weapon proficiency groups use equipment families for embedded and later-loaded magic catalogs',()=>{

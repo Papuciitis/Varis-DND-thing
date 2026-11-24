@@ -56,7 +56,7 @@ function boot(options={}){
    async loadBuilder(){requests.push('builder');return {};},
    async loadSection(key){requests.push(key);if(options.delay)await options.delay(key);const section=sections.find(item=>item.key===key);section.entries=catalog.find(item=>item.key===key).entries;loaded.add(key);return section;}};
  }
- const g=vm.createContext(context);for(const name of ['entry-order.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
+ const g=vm.createContext(context);for(const name of ['entry-order.js','magic-categories.js','item-views.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
  const q=(selector)=>{const n=document.querySelector(selector);assert(n,'missing control '+selector);return n;};
  const field=p=>q('[data-path="'+p+'"]');const action=(act,extra='')=>q('[data-action="'+act+'"]'+extra);
  function set(n,v,change=true){if(n.type==='checkbox')n.checked=v;else n.value=v;fire(n,'input');if(change)fire(n,'change');}
@@ -77,6 +77,83 @@ test('spell views and slot rows sort by numeric level without changing saved edi
  h.set(h.q('#spell-sort'),'name');assert.deepEqual(names(),chosen.map(e=>e.name).sort((a,b)=>a.localeCompare(b)));
  h.set(h.field('spellSlots.1.current'),1);h.flush();assert.equal(saved().characters[0].spellSlots.find(s=>s.level===1).current,1);
  assert.deepEqual(saved().characters[0].spells.map(e=>e.id),['spell0','spell1','spell2']);
+ storage.clear();
+});
+
+test('play values stay readable while secondary ability and training adjustments remain functional',()=>{
+ storage.clear();const h=boot();
+ assert.equal(h.q('.ability').querySelector('input'),null);
+ assert(h.field('abilities.str').closest('details'));
+ assert(h.field('training.skills.Athletics').closest('details'));
+ assert(h.field('resources.hp.max').closest('details'));
+ h.set(h.field('abilities.str'),18);h.set(h.field('training.skills.Athletics'),2);h.flush();
+ assert.equal(h.q('[data-effective-score="str"]').textContent,'18');
+ assert.equal(h.q('[data-training-skill="Athletics"]').getAttribute('aria-label'),'Expertise');
+ assert.equal(Number(h.q('[data-skill-roll="Athletics"]').dataset.bonus),8);
+ assert.equal(saved().characters[0].abilities.str,18);
+ storage.clear();
+});
+
+test('owned equipment search groups rows without changing their saved edit targets',()=>{
+ storage.clear();const base=boot();const dagger=catalog.find(section=>section.key==='items').entries.find(entry=>entry.name==='Dagger');assert(dagger);
+ const seed=base.context.CharacterState.normalizeCharacter({id:'grouped-gear',inventory:[
+  {id:'bedroll',name:'Bedroll',quantity:1,notes:'Dry canvas'},
+  {id:'dagger',name:dagger.name,entryId:JSON.stringify(['items',dagger.group,dagger.name]),quantity:1}
+ ]});storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));const h=boot();
+ assert.deepEqual(h.q('#owned-gear-groups').querySelectorAll('.list-card-title').map(node=>node.textContent),['Dagger','Bedroll']);
+ const search=h.q('#owned-gear-search');h.set(search,'weapon',false);
+ assert.deepEqual(h.q('#owned-gear-groups').querySelectorAll('.list-card-title').map(node=>node.textContent),['Dagger']);
+ h.set(h.field('inventory.1.quantity'),3);h.flush();
+ assert.deepEqual(saved().characters[0].inventory.map(item=>[item.id,item.quantity]),[['bedroll',1],['dagger',3]]);
+ h.set(h.q('#owned-gear-search'),'not present',false);assert.match(h.q('#owned-gear-groups').textContent,/No equipment matches/);
+ h.set(h.q('#owned-gear-search'),'',false);assert.equal(h.q('#owned-gear-groups').querySelectorAll('.gear-item').length,2);
+ storage.clear();
+});
+
+test('changing sheet tabs starts at the content while routine redraws preserve the reading position',()=>{
+ storage.clear();const h=boot();const positions=[];h.q('#sheet-content').scrollIntoView=options=>positions.push(options.block);
+ h.q('[data-tab="gear"]').click();assert.deepEqual(positions,['start']);
+ h.set(h.field('coins.gold'),4);h.flush();assert.deepEqual(positions,['start']);
+ h.q('[data-tab="sheet"]').click();assert.deepEqual(positions,['start','start']);
+ storage.clear();
+});
+
+test('printing includes all owned equipment and notes independently of search and closed item rows',()=>{
+ storage.clear();const base=boot();
+ const seed=base.context.CharacterState.normalizeCharacter({id:'print-pack',inventory:[
+  {id:'bedroll',name:'Bedroll',quantity:1,notes:'Keep the dry canvas folded.'},
+  {id:'potion',name:'Custom potion',quantity:3,notes:'Use only after resting.'}
+ ]});storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));const h=boot();
+ h.set(h.q('#owned-gear-search'),'bedroll',false);
+ assert.equal(h.q('#owned-gear-groups').querySelectorAll('.gear-item').length,1);
+ assert.equal(h.q('.gear-item').open,false);
+ h.fire(h.context.window,'beforeprint');
+ const printed=h.q('#print-inventory');
+ assert.deepEqual(printed.querySelectorAll('.gear-print-name').map(node=>node.textContent),['Custom potion','Bedroll']);
+ assert(printed.textContent.includes('Quantity 3'));
+ assert(printed.textContent.includes('Keep the dry canvas folded.'));
+ assert(printed.textContent.includes('Use only after resting.'));
+ assert.equal(printed.querySelectorAll('details').length,0,'print notes must not depend on disclosure state');
+ h.fire(h.context.window,'afterprint');
+ assert.equal(h.q('#owned-gear-search').value,'bedroll');
+ assert.equal(h.q('#owned-gear-groups').querySelectorAll('.gear-item').length,1);
+ assert.deepEqual(saved().characters[0].inventory.map(item=>item.id),['bedroll','potion']);
+ storage.clear();
+});
+
+test('owned catalog equipment shares compendium categories including Vial of mosa and source materials',()=>{
+ storage.clear();const base=boot();const items=catalog.find(section=>section.key==='items').entries;
+ const category=entry=>base.context.ItemViews.category(entry);
+ const mosa=items.find(entry=>entry.name.toLowerCase()==='vial of mosa');assert(mosa);
+ const samples=[[mosa,'Consumables'],...[
+  ['weapons','Weapons'],['armor-shields','Armor & shields'],['items','Miscellaneous'],['materials','Miscellaneous'],['plants-fungi','Miscellaneous']
+ ].map(([key,group])=>{const entry=items.find(item=>category(item)===key);assert(entry,key);return [entry,group];})];
+ const seed=base.context.CharacterState.normalizeCharacter({id:'catalog-groups',inventory:samples.map(([entry],index)=>({id:'category-'+index,name:entry.name,entryId:JSON.stringify(['items',entry.group,entry.name]),quantity:1}))});
+ storage.set(key,JSON.stringify({version:1,activeId:seed.id,characters:[seed]}));const h=boot();
+ for(const [index,[entry,expected]] of samples.entries()){
+  const row=h.q('[data-expanded="gear-category-'+index+'"]');
+  assert.equal(row.closest('.gear-group').querySelector('.gear-group-title').textContent.replace(/\d+$/,''),expected,entry.name);
+ }
  storage.clear();
 });
 
