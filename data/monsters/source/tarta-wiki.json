@@ -1,0 +1,403 @@
+{
+  "wiki": "https://tarta.fandom.com/wiki/Tarta_Wiki",
+  "category": "https://tarta.fandom.com/wiki/Category:Stats",
+  "retrieved": "2026-11-24",
+  "license": "CC-BY-SA unless otherwise noted on the source page",
+  "method": "Rendered DOM extraction of portable infoboxes and numbered combat abilities; source facts retained separately from reviewed adaptations.",
+  "coverage": {
+    "allpages_links_checked": 69,
+    "stat_category_pages": 13,
+    "complete_age_statblocks": "Only adult dragons and Aurumathar have numerical statblocks. Age-category CR/size summaries are not additional playable statblocks.",
+    "uncategorized": "Yudith Zephia has partial NPC statistics in prose and describes Loki, Willow and Hands without full companion statblocks."
+  },
+  "entries": [
+    {
+      "page": "Aetherium Alloy dragon",
+      "url": "https://tarta.fandom.com/wiki/Aetherium_Alloy_dragon",
+      "title": "Adult Aetherium Alloy dragon",
+      "cr": "24",
+      "fields": {
+        "type": "Gargantuan, Dragon, Neutral",
+        "armor_class": "22",
+        "hit_points": "350 (20d20 + 140)",
+        "speed": "40 ft., fly 100 ft., burrow 40 ft.",
+        "saving_throws": "Dex +6, Con +15, Wis +11, Cha +13",
+        "skills": "Perception +16, Arcana +11, History +11",
+        "senses": "Blindsight 120 ft., Darkvision 240 ft., passive Perception 26",
+        "languages": "Common, Draconic, Celestial, Infernal",
+        "challenge_rating": "24 (62,000 XP)",
+        "damage_immunities": "Fire, Radiant, Poison; Bludgeoning, Piercing and Slashing from Nonmagical Atacks",
+        "condition_immunities": "Poisoned, Paralyzed"
+      },
+      "abilities": {
+        "str": "30",
+        "dex": "10",
+        "con": "28",
+        "int": "19",
+        "wis": "21",
+        "cha": "24"
+      },
+      "ability_rules": [
+        "Heat Resistant: Immune to fire damage and extreme heat conditions",
+        "Magical Stability: Immune to spells or effect that would alter its form or enchantments",
+        "Radiation Aura: Emits a magical aura in 30-foot radius. Creatures within the aura have disadvantage on saving throws and attack rolls.",
+        "Aether Breath: Exhales a beam of shimmering, iridescent energy in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 21 Dexterity saving throw, taking 20d6 radiant damage on a failed save, or half as much damage on a successful one.",
+        "Magical Pulse (Legendary): The Aetherium Alloy Dragon releases a pulse of magical energy that radiates outward in a 60-foot radius. Each creature in this area (excluding the dragon itself) must make a DC 19 Constitution saving throw. On a failed save, a creature takes 3d10 radiant damage and is slowed (as per the slow spell) for 1 minute. A creature affected by this can make another Constitution saving throw at the end of each of its turns to end the effect."
+      ],
+      "combat_lore": "In combat, they use their Aether Breath and Radiation Aura to devastating effect, controlling the battlefield with their magical prowess. They prefer to use their intellect and magical abilities over brute force, often outmaneuvering their opponents with strategic planning."
+    },
+    {
+      "page": "Aurumathar",
+      "url": "https://tarta.fandom.com/wiki/Aurumathar",
+      "title": "Aurumathar",
+      "cr": "33",
+      "fields": {
+        "type": "Colossal, Dragon, True Neutral",
+        "armor_class": "25 (Natural Armor)",
+        "hit_points": "800 (40d20 + 400)",
+        "speed": "60 ft., fly 150 ft., teleport (unlimited)",
+        "saving_throws": "Dex +10, Con +18, Wis +16, Cha +17",
+        "skills": "Arcana +16, History +16, Perception +16, Insight +16",
+        "senses": "Blindsight 120 ft., True Sight 240 ft., passive Perception 36",
+        "languages": "All, telepathy 120 ft.",
+        "damage_immunities": "All nonmagical damage; Fire, Radiant, Poison",
+        "condition_immunities": "Charmed, Paralyzed, Petrified, Poisoned"
+      },
+      "abilities": {
+        "str": "30",
+        "dex": "14",
+        "con": "30",
+        "int": "26",
+        "wis": "26",
+        "cha": "28"
+      },
+      "ability_rules": [],
+      "combat_lore": "In battle, Aurumathar is a force of nature, wielding the powers of Aetherium Alloy to manipulate magical energies. The dragon rarely engages in physical combat, preferring to use its mastery over magic to outwit and overpower adversaries.",
+      "source_general_challenge": "33 (203,000 XP)"
+    },
+    {
+      "page": "Cerithal Stone dragon",
+      "url": "https://tarta.fandom.com/wiki/Cerithal_Stone_dragon",
+      "title": "Adult Cerithal Stone dragon",
+      "cr": "17",
+      "fields": {
+        "type": "Gargantuan, Dragon, True Neutral",
+        "armor_class": "21 (Natural Armor)",
+        "hit_points": "310 (23d12 + 147)",
+        "speed": "30 ft., climb 30 ft., fly 70 ft",
+        "saving_throws": "Dex +5, Con +12, Wis +8, Cha +9",
+        "skills": "Perception +13, Stealth +5",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 23",
+        "languages": "Common, Draconic, Terran",
+        "challenge_rating": "17 (18,000 XP)",
+        "damage_immunities": "Poison",
+        "condition_immunities": "Poisoned"
+      },
+      "abilities": {
+        "str": "27",
+        "dex": "10",
+        "con": "24",
+        "int": "14",
+        "wis": "17",
+        "cha": "18"
+      },
+      "ability_rules": [
+        "Difficult Terrain Creation: The Cerithal Stone Dragon can turn the ground in a 60-foot radius into difficult terrain as a bonus action. The effect lasts for 1 minute.",
+        "Rocky Breath: Exhales a cone of jagged rocks in a 60-foot cone. Each creature in that area must make a DC 19 Dexterity saving throw, taking 14d6 bludgeoning damage on a failed save, or half as much damage on a successful one.",
+        "Stone Spike (Legendary): The Cerithal Stone Dragon uses its deep connection with the earth to cause a sharp stone spike to erupt from the ground at a point it can see within 60 feet. This spike targets one creature that the dragon can see at that location.bThe targeted creature must make a Dexterity saving throw (DC 19). On a failed save, the creature takes 4d10 piercing damage and is restrained by the stone spike. On a successful save, the creature takes half damage and is not restrained. A restrained creature can use its action to make a Strength check (DC 19) on its turn to break free from the spike. After the attack, the spike remains as a 5-foot-tall obstacle in the terrain, potentially providing cover or hindering movement."
+      ],
+      "combat_lore": "In combat, a Cerithal Stone Dragon uses its mastery over stone to control the battlefield. It can create barriers, pitfalls, and spires of rock to challenge and confound its enemies. Its rocky breath weapon is a devastating force, capable of decimating entire areas."
+    },
+    {
+      "page": "Dyspraxium Salt dragon",
+      "url": "https://tarta.fandom.com/wiki/Dyspraxium_Salt_Dragon",
+      "title": "Adult Dyspraxium Salt dragon",
+      "cr": "17",
+      "fields": {
+        "type": "Huge, Dragon, Chaotic Neutral",
+        "armor_class": "18 (Natural Armor)",
+        "hit_points": "229 (17d12 + 119)",
+        "speed": "30 ft., fly 70 ft., swim 40 ft.",
+        "saving_throws": "Dex +7, Con +11, Wis +7, Cha +9",
+        "skills": "Perception +12, Stealth +7",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 22",
+        "languages": "Common, Draconic, Aquan",
+        "challenge_rating": "17 (18,000 XP)",
+        "damage_resistances": "Acid, Cold",
+        "condition_immunities": "Paralyzed, Petrified"
+      },
+      "abilities": {
+        "str": "24",
+        "dex": "14",
+        "con": "23",
+        "int": "16",
+        "wis": "15",
+        "cha": "18"
+      },
+      "ability_rules": [],
+      "combat_lore": "In combat, they make use of their phasing abilities to disorient and confuse opponents. Their phasing breath adds an element of unpredictability, affecting both the physical and ethereal planes. They are adept at striking from unexpected angles, using their incorporeal movement to their advantage."
+    },
+    {
+      "page": "Erbion Essence dragon",
+      "url": "https://tarta.fandom.com/wiki/Erbion_Essence_dragon",
+      "title": "Adult Erbion Essence dragon",
+      "cr": "16",
+      "fields": {
+        "type": "Huge, Dragon, Lawful Good",
+        "armor_class": "18 (Natural Armor)",
+        "hit_points": "225 (18d12 + 90)",
+        "speed": "30 ft., fly 60 ft.",
+        "saving_throws": "Dex +6, Con +10, Wis +9, Cha +11",
+        "skills": "Perception +14, Medicine +9",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 24",
+        "languages": "Common, Draconic, Celestial",
+        "challenge_rating": "16 (15,000 XP)",
+        "damage_immunities": "Necrotic"
+      },
+      "abilities": {
+        "str": "21",
+        "dex": "12",
+        "con": "20",
+        "int": "17",
+        "wis": "18",
+        "cha": "22"
+      },
+      "ability_rules": [],
+      "combat_lore": "In battle, Erbion Essence Dragons focus on protecting their allies and restoring balance. They use their healing breath and aura to support allies while using their physical prowess to defend against threats, especially those that harm the natural world."
+    },
+    {
+      "page": "Euralite Gem dragon",
+      "url": "https://tarta.fandom.com/wiki/Euralite_Gem_dragon",
+      "title": "Adult Euralite Gem dragon",
+      "cr": "16",
+      "fields": {
+        "type": "Huge, Dragon, Neutral Good",
+        "armor_class": "19 (Natural Armor)",
+        "hit_points": "228 (19d12 + 114)",
+        "speed": "30 ft., fly 70 ft.",
+        "saving_throws": "Dex +7, Con +10, Wis +7, Cha +10",
+        "skills": "Perception +12, Insight +7",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 22",
+        "languages": "Common, Draconic",
+        "challenge_rating": "16 (15,000 XP)",
+        "damage_immunities": "Radiant"
+      },
+      "abilities": {
+        "str": "21",
+        "dex": "14",
+        "con": "20",
+        "int": "18",
+        "wis": "15",
+        "cha": "20"
+      },
+      "ability_rules": [],
+      "combat_lore": "In combat, they utilize their radiant breath and light burst abilities to disorient and subdue foes, preferring to incapacitate rather than kill. They are strategic, using their illuminating presence to create advantages on the battlefield."
+    },
+    {
+      "page": "Holmara Rock dragon",
+      "url": "https://tarta.fandom.com/wiki/Holmara_Rock_dragon",
+      "title": "Adult Holmara Rock dragon",
+      "cr": "18",
+      "fields": {
+        "type": "Huge, Dragon, Neutral",
+        "armor_class": "20 (Natural Armor)",
+        "hit_points": "250 (20d12 + 120)",
+        "speed": "30 ft., climb 30 ft., fly 60 ft.",
+        "saving_throws": "Dex +5, Con +12, Wis +8, Cha +7",
+        "skills": "Perception +13, Athletics +13",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 23",
+        "languages": "Common, Draconic, Terran",
+        "challenge_rating": "18 (20,000 XP)",
+        "damage_resistances": "Bludgeoning, Piercing and Slashing from Nonmagical Attacks"
+      },
+      "abilities": {
+        "str": "27",
+        "dex": "10",
+        "con": "24",
+        "int": "14",
+        "wis": "17",
+        "cha": "16"
+      },
+      "ability_rules": [],
+      "combat_lore": "In combat, they use their strength and resilience to their advantage, withstanding significant damage while dealing powerful blows. Their earthquake breath can reshape the battlefield, creating difficult terrain and disorienting foes."
+    },
+    {
+      "page": "Lanthara Crystal dragon",
+      "url": "https://tarta.fandom.com/wiki/Lanthara_Crystal_dragon",
+      "title": "Adult Lanthara Crystal dragon",
+      "cr": "14",
+      "fields": {
+        "type": "Huge, Dragon, Lawful Good",
+        "armor_class": "18 (Natural Armor)",
+        "hit_points": "221 (17d12 + 119)",
+        "speed": "30 ft., fly 80 ft.",
+        "saving_throws": "Dex +5, Con +10, Wis +7, Cha +8",
+        "skills": "Perception +12, Arcana +8",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 22",
+        "languages": "Common, Draconic, Celestial",
+        "challenge_rating": "14 (11,500 XP)",
+        "damage_immunities": "Radiant"
+      },
+      "abilities": {
+        "str": "21",
+        "dex": "10",
+        "con": "20",
+        "int": "17",
+        "wis": "14",
+        "cha": "16"
+      },
+      "ability_rules": [],
+      "combat_lore": "In combat, these dragons use their radiant breath and reflective scales to dazzling and disorientating effect. They are strategic and prefer to disable or neutralize opponents rather than cause unnecessary harm."
+    },
+    {
+      "page": "Neodrakite dragon",
+      "url": "https://tarta.fandom.com/wiki/Neodrakite_dragon",
+      "title": "Adult Neodrakite dragon",
+      "cr": "15",
+      "fields": {
+        "type": "Huge, Dragon, Neutral",
+        "armor_class": "19 (Natural Armor)",
+        "hit_points": "230 (20d12 + 100)",
+        "speed": "40 ft., fly 80 ft.",
+        "saving_throws": "Dex +7, Con +10, Wis +7, Cha +9",
+        "skills": "Perception +12, Stealth +7",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 22",
+        "languages": "Common, Draconic",
+        "challenge_rating": "15 (13,000 XP)",
+        "damage_immunities": "Lightning"
+      },
+      "abilities": {
+        "str": "23",
+        "dex": "14",
+        "con": "20",
+        "int": "16",
+        "wis": "15",
+        "cha": "19"
+      },
+      "ability_rules": [
+        "Magnetic Field Manipulation: The Neodrakite Dragon can manipulate magnetic fields within a 60-foot radius. It can use this ability to disarm metal-wielding foes (STR save DC 18) or to attract/repel metallic objects.",
+        "Metal Attraction/Repulsion Breath: The dragon exhales a magnetic pulse in a 60-foot cone. Each creature in that area must make a DC 18 Dexterity saving throw. On a failed save, a creature takes 12d6 lightning damage and is pulled towards the dragon if it is wearing metal, or pushed away if it is not, ending up prone.",
+        "Magnetic Pull (Legendary): The dragon can magically pull a creature wearing or holding metal up to 30 feet towards itself."
+      ],
+      "combat_lore": "In battle, Neodrakite Dragons are strategic and calculated. They use their magnetic pull to disarm foes and control the battlefield, creating zones of intense magnetic force. Their breath weapon, a concentrated burst of magnetic energy, can both damage and disorient opponents."
+    },
+    {
+      "page": "Samarkium Ore dragon",
+      "url": "https://tarta.fandom.com/wiki/Samarkium_Ore_dragon",
+      "title": "Adult Samarkium Ore dragon",
+      "cr": "13",
+      "fields": {
+        "type": "Huge, Dragon, Neutral Evil",
+        "armor_class": "18 (Natural Armor)",
+        "hit_points": "204 (17d12 + 102)",
+        "speed": "40 ft., fly 60 ft.",
+        "saving_throws": "Dex +6, Con +10, Wis +6, Cha +9",
+        "skills": "Perception +11, Stealth +6",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 21",
+        "languages": "Common, Draconic",
+        "challenge_rating": "13 (10,000 XP)",
+        "damage_immunities": "Poison",
+        "condition_immunities": "Poisoned"
+      },
+      "abilities": {
+        "str": "22",
+        "dex": "12",
+        "con": "21",
+        "int": "15",
+        "wis": "13",
+        "cha": "18"
+      },
+      "ability_rules": [],
+      "combat_lore": "In combat, these dragons rely heavily on their ability to manipulate toxic gases. They use their poisonous breath and noxious clouds to disorient and weaken foes before engaging in physical combat with their powerful tails and claws."
+    },
+    {
+      "page": "Terbithal Resin dragon",
+      "url": "https://tarta.fandom.com/wiki/Terbithal_Resin_dragon",
+      "title": "Adult Terbithal Resin dragon",
+      "cr": "19",
+      "fields": {
+        "type": "Huge, Dragon, Neutral Good",
+        "armor_class": "20 (Natural Armor)",
+        "hit_points": "264 (23d12 +115)",
+        "speed": "30 ft., fly 80 ft.",
+        "saving_throws": "Dex +6, Con +12, Wis +8, Cha +10",
+        "skills": "Perception +13, Nature +9",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 23",
+        "languages": "Common, Draconic, Sylvan",
+        "challenge_rating": "19 (22,000 XP)",
+        "damage_immunities": "Radiant",
+        "condition_immunities": "Blinded, Deafened"
+      },
+      "abilities": {
+        "str": "26",
+        "dex": "12",
+        "con": "25",
+        "int": "18",
+        "wis": "16",
+        "cha": "20"
+      },
+      "ability_rules": [],
+      "combat_lore": "In combat, they use their blinding breath to disorient and neutralize threats rather than to harm. They are strategic, using their abilities to protect the forest and its denizens, and only engage in direct combat as a last resort."
+    },
+    {
+      "page": "Thulmara Dust dragon",
+      "url": "https://tarta.fandom.com/wiki/Thulmara_Dust_dragon",
+      "title": "Adult Thulmara Dust dragon",
+      "cr": "16",
+      "fields": {
+        "type": "Huge, Dragon, Chaotic Neutral",
+        "armor_class": "19 (Natural Armor)",
+        "hit_points": "237 (19d12 + 114)",
+        "speed": "40 ft., fly 80 ft.",
+        "saving_throws": "Dex +7, Con +11, Wis +6, Cha +8",
+        "skills": "Perception +11, Stealth +7",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 21",
+        "languages": "Common, Draconic, Giant",
+        "challenge_rating": "16 (15,000 XP)",
+        "damage_immunities": "Cold"
+      },
+      "abilities": {
+        "str": "23",
+        "dex": "14",
+        "con": "22",
+        "int": "15",
+        "wis": "13",
+        "cha": "17"
+      },
+      "ability_rules": [],
+      "combat_lore": "In battle, they use their chilling aura and frost breath to dominate the battlefield, creating zones of extreme cold. They are adept at using the icy terrain to their advantage, striking swiftly and then fading back into the blizzard."
+    },
+    {
+      "page": "Ytriun Metal dragon",
+      "url": "https://tarta.fandom.com/wiki/Ytriun_Metal_dragon",
+      "title": "Adult Ytriun Metal dragon",
+      "cr": "17",
+      "fields": {
+        "type": "Huge, Dragon, True Neutral",
+        "armor_class": "19 (Natural Armor)",
+        "hit_points": "243 (18d12 + 108)",
+        "speed": "40 ft., fly 70 ft.",
+        "saving_throws": "Dex +6, Con +12, Wis +8, Cha +10",
+        "skills": "Perception +13, Stealth +6",
+        "senses": "Blindsight 60 ft., Darkvision 120 ft., passive Perception 23",
+        "languages": "Common, Draconic, Forge Cant",
+        "challenge_rating": "17 (18,000 XP)",
+        "damage_immunities": "Fire"
+      },
+      "abilities": {
+        "str": "25",
+        "dex": "10",
+        "con": "23",
+        "int": "16",
+        "wis": "14",
+        "cha": "19"
+      },
+      "ability_rules": [
+        "Heat Aura: Any creature that starts its turn within 10 feet of the dragon takes 2d6 fire damage.",
+        "Fire Breath: Exhales fire in a 60-foot cone. Each creature in that area must make a DC 19 Dexterity saving throw, taking 13d6 fire damage on a failed save, or half as much damage on a successful one.",
+        "Molten Metal Surge (Legendary): The Ytriun Metal Dragon channels its fiery essence into the metallic components of its body, causing them to superheat and become molten. With a roar, the dragon then sends a surge of molten metal towards a target or area it can see within 60 feet. The dragon chooses either one creature or a 10-foot-radius area within range. If a creature is targeted, it must make a Dexterity saving throw (DC 19). On a failed save, the creature takes 4d10 fire damage and is coated in molten metal. While coated, the creature takes an additional 2d10 fire damage at the start of each of its turns. The molten metal hardens and falls off after 1 minute or can be removed early by taking an action to scrape it off or douse it in water. If an area is targeted, the molten metal creates a hazardous terrain in a 10-foot radius. Any creature that enters the area or starts its turn there takes 2d10 fire damage."
+      ],
+      "combat_lore": "In combat, Ytriun Metal Dragons use their heat aura and fire breath to control the battlefield, creating zones of searing heat. They are formidable in close combat, using their strength and the intense heat they radiate to overpower enemies."
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+section: rules
+entries:
+- name: Homebrewery summon control
+  group: Tarta Homebrewery - Summoning features
+  description: The creature shares your initiative and acts immediately after your turn. On your turn you may give
+    it one verbal command without spending an action; it follows that order using its own movement and actions.
+    Without an order it Dodges and avoids hazards. It cannot create or command further summons unless the creating
+    effect expressly permits it. Each spell states its own active-creature limit, range and duration. Dismiss a
+    creature as an action unless its spell says otherwise.
+  source_ref: draft2.pdf / PDF page 8, 26, 59-78
+  source_original:
+    feature: Homebrewery summon control
+    page: 8, 26, 59-78
+  conversion_notes:
+  - Optional converted Homebrewery feature module. It is not automatically granted to every character or silently
+    substituted for an existing current class feature.
+  - Shared initiative, free verbal commands and Dodge defaults are explicit common timing completions for source
+    summons that omit those rules. Specific spell restrictions take priority.
+- name: Master of the Land
+  group: Tarta Homebrewery - Summoning features
+  description: Optional Geomorphy Specialist feature, source level 15. Once per long rest, use an action and expend
+    a tier-3-or-higher spell slot to create one Earth Elemental Servant in a visible unoccupied space within 60
+    feet. It is friendly and obeys your commands. The creature shares your initiative and acts immediately after
+    your turn. On your turn you may give it one verbal command without spending an action; it follows that order
+    using its own movement and actions. Without an order it Dodges and avoids hazards. It cannot create or command
+    further summons unless the creating effect expressly permits it. Each spell states its own active-creature limit,
+    range and duration. Dismiss a creature as an action unless its spell says otherwise. It lasts 1 hour, until
+    0 HP, or action dismissal. Only one servant from this feature may be active; using it again after recovery ends
+    the previous instance. Natural earth-shaping benefits in the source are separate from this summon module.
+  source_ref: draft2.pdf / PDF page 8
+  source_original:
+    feature: Master of the Land
+    page: 8
+  conversion_notes:
+  - Optional converted Homebrewery feature module. It is not automatically granted to every character or silently
+    substituted for an existing current class feature.
+  summons:
+  - monster: Earth Elemental Servant
+- name: Primordial Geomancy
+  group: Tarta Homebrewery - Summoning features
+  description: Optional Circle of the Geomorpher feature, source level 14. Once per long rest, use an action to
+    raise a ring of standing stones in a 60-foot radius around you. Up to four Primordial Terra Titans emerge in
+    visible unoccupied spaces on earth or stone in the ring. The creature shares your initiative and acts immediately
+    after your turn. On your turn you may give it one verbal command without spending an action; it follows that
+    order using its own movement and actions. Without an order it Dodges and avoids hazards. It cannot create or
+    command further summons unless the creating effect expressly permits it. Each spell states its own active-creature
+    limit, range and duration. Dismiss a creature as an action unless its spell says otherwise. Each Titan lasts
+    1 hour or until 0 HP, dismissal or the ring being ended by your action. One ring per caster; Titans cannot create
+    other Titans. While in the ring, friendly creatures have resistance to all damage, and healing spells they cast
+    restore the maximum possible rolled amount. As a bonus action while in the ring, you may become a Gargantuan
+    stone form for the remaining duration, with Strength 30, resistance to all damage and an action Slam dealing
+    4d10 bludgeoning plus Strength modifier (melee attack uses Strength plus proficiency; reach 15 feet; Block DC
+    8 + that attack bonus). Retain other statistics and equipment has no independent effect while merged. This personal
+    form is not a fifth summoned creature. End it as a bonus action; leaving the ring ends the form.
+  source_ref: draft2.pdf / PDF page 26
+  source_original:
+    feature: Primordial Geomancy
+    page: 26
+  conversion_notes:
+  - Optional converted Homebrewery feature module. It is not automatically granted to every character or silently
+    substituted for an existing current class feature.
+  - Summoned Titans and the personal stone form are kept separate. Attack modifier, reach, ending the ring, merged
+    equipment and one-ring limit complete source omissions. This high-power optional feature retains the source
+    four-Titan and protective-aura concept.
+  summons:
+  - monster: Primordial Terra Titan
+- name: Stone's Illusion
+  group: Tarta Homebrewery - Summoning features
+  description: Optional Earthbound Illusionist feature, source level 13. As an action create one illusory stone
+    duplicate of yourself in a visible unoccupied space within 30 feet. It has your appearance, size and copied
+    ability scores and AC, but only 1 HP. The creature shares your initiative and acts immediately after your turn.
+    On your turn you may give it one verbal command without spending an action; it follows that order using its
+    own movement and actions. Without an order it Dodges and avoids hazards. It cannot create or command further
+    summons unless the creating effect expressly permits it. Each spell states its own active-creature limit, range
+    and duration. Dismiss a creature as an action unless its spell says otherwise. It can move and perform harmless
+    gestures, but cannot attack, cast spells, use magical items or create creatures. It lasts 1 minute, until 0
+    HP, or until more than 60 feet from you. One active duplicate; creating another ends the first. Its attacks
+    and spell effects are purely visual and cause no damage or conditions.
+  source_ref: draft2.pdf / PDF page 34
+  source_original:
+    feature: Stone's Illusion
+    page: 34
+  conversion_notes:
+  - Optional converted Homebrewery feature module. It is not automatically granted to every character or silently
+    substituted for an existing current class feature.
+  - One HP, one-minute duration and one-active-copy limit are explicit completions. Unlike Rockplica this illusion
+    never grants extra combat actions.
+  summons:
+  - monster: Stone illusion duplicate
+- name: Geomorphic Form
+  group: Tarta Homebrewery - Summoning features
+  description: Optional Circle of the Geomorpher feature, source level 6. When spending an existing Wild Shape use,
+    you may choose an earth elemental with CR no greater than your druid level divided by three, rounded down. Use
+    the existing Wild Shape duration, uses, HP/form handling and action cost of your current class; this feature
+    grants no extra uses. The linked creatures are form choices, not simultaneous summons. Legendary, lair, summoning
+    and material-creation abilities are unavailable in this form. A creature with no attacks remains nonattacking.
+    If your current class has no Wild Shape feature, this module does not grant it.
+  source_ref: draft2.pdf / PDF page 13
+  source_original:
+    feature: Geomorphic Form
+    page: 13
+  conversion_notes:
+  - Optional converted Homebrewery feature module. It is not automatically granted to every character or silently
+    substituted for an existing current class feature.
+  - Connects all 26 printed elemental blocks without replacing current Wild Shape rules or adding a new duplicate
+    earth-elemental chassis. Source level gate is retained as an optional module requirement.
+  summons:
+  - monster: Dirt Mite
+  - monster: Stone Sprite
+  - monster: Clay Imp
+  - monster: Pebble Gnome
+  - monster: Moonflyer
+  - monster: Boulder Guardian
+  - monster: Crystal Sprite
+  - monster: Granite Striker
+  - monster: Magnetite Guardian
+  - monster: Gravel Giggler
+  - monster: Obsidian Shard
+  - monster: Stone Strider
+  - monster: Quartz Quasher
+  - monster: Obsidian Obliterator
+  - monster: Granite Goliath
+  - monster: Diamond Devastator
+  - monster: Obsidian Monolith
+  - monster: Sand Shambler
+  - monster: Gemstone Goliath
+  - monster: Obsidian Oaf
+  - monster: Voidstone Wanderer
+  - monster: Runic Sentinel
+  - monster: Earthen Guardian
+  - monster: Great Iron
+  - monster: Whirlwind Sand Elemental
+  - monster: Primordial Terra Titan
+  summon_label: Elemental form options

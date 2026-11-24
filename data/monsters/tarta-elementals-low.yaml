@@ -1,0 +1,1058 @@
+section: monsters
+entries:
+- name: Dirt Mite
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-dirt-mite
+  size: Tiny
+  type: elemental
+  alignment: neutral
+  meta: Tiny earth elemental, neutral
+  cr: '0'
+  ac: '11'
+  hp: '2'
+  block: 0 pool / +0 check
+  speed: 10 ft., burrow 10 ft.
+  abilities:
+    str: '3'
+    dex: '11'
+    con: '10'
+    int: '2'
+    wis: '10'
+    cha: '4'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: tremorsense 30 ft., passive Perception 10
+  languages: understands Terran but cannot speak
+  traits: &id001
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +0 to hit; reach 5 ft.; one target; Block DC 8. Unblocked strike: 1 piercing damage.'
+  source_ref: draft2.pdf / PDF page 14
+  original_5e:
+    name: Dirt Mite
+    meta: Tiny earth elemental, neutral
+    ac: 11 (natural armor)
+    hp: 2 (1d4)
+    speed: 10 ft., burrow 10 ft.
+    abilities:
+      str: '3'
+      dex: '11'
+      con: '10'
+      int: '2'
+      wis: '10'
+      cha: '4'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: tremorsense 30 ft., passive Perception 10
+    languages: understands Terran but cannot speak
+    cr: '0'
+    traits: *id001
+    actions:
+    - name: Bite
+      description: 'Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.'
+    xp: '10'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  xp: '10'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Stone Sprite
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-stone-sprite
+  size: Tiny
+  type: elemental
+  alignment: neutral
+  meta: Tiny earth elemental, neutral
+  cr: 1/8
+  ac: '12'
+  hp: '7'
+  block: 2 pool / +2 check
+  speed: 20 ft., fly 20 ft.
+  abilities:
+    str: '6'
+    dex: '14'
+    con: '10'
+    int: '6'
+    wis: '12'
+    cha: '8'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Terran
+  traits: &id002
+  - name: Stone Camouflage
+    description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+  actions:
+  - name: Pebble
+    description: 'Ranged attack: +4 to hit; range 30/120 ft.; one target; Block DC 12. Unblocked strike: 1d4 + 2
+      bludgeoning damage.'
+  source_ref: draft2.pdf / PDF page 14
+  original_5e:
+    name: Stone Sprite
+    meta: Tiny earth elemental, neutral
+    ac: 12 (natural armor)
+    hp: 7 (3d4)
+    speed: 20 ft., fly 20 ft.
+    abilities:
+      str: '6'
+      dex: '14'
+      con: '10'
+      int: '6'
+      wis: '12'
+      cha: '8'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 11
+    languages: Terran
+    cr: 1/8
+    traits: *id002
+    actions:
+    - name: Pebble
+      description: 'Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 4 (1d4 + 2) bludgeoning
+        damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '25'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  xp: '25'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Clay Imp
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-clay-imp
+  size: Small
+  type: elemental
+  alignment: neutral
+  meta: Small earth elemental, neutral
+  cr: 1/4
+  ac: '11'
+  hp: '21'
+  block: 0 pool / +0 check
+  speed: 20 ft., burrow 20 ft.
+  abilities:
+    str: '8'
+    dex: '10'
+    con: '10'
+    int: '6'
+    wis: '12'
+    cha: '8'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Terran
+  traits: &id003
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  actions:
+  - name: Slam
+    description: 'Melee attack: +2 to hit; reach 5 ft.; one target; Block DC 10. Unblocked strike: 1d4 + 1 bludgeoning
+      damage.'
+  source_ref: draft2.pdf / PDF page 14
+  original_5e:
+    name: Clay Imp
+    meta: Small earth elemental, neutral
+    ac: 11 (natural armor)
+    hp: 21 (6d6)
+    speed: 20 ft., burrow 20 ft.
+    abilities:
+      str: '8'
+      dex: '10'
+      con: '10'
+      int: '6'
+      wis: '12'
+      cha: '8'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 11
+    languages: Terran
+    cr: 1/4
+    traits: *id003
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '50'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  xp: '50'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Pebble Gnome
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-pebble-gnome
+  size: Small
+  type: elemental
+  alignment: neutral
+  meta: Small earth elemental, neutral
+  cr: 1/2
+  ac: '13'
+  hp: '22'
+  block: 2 pool / +2 check
+  speed: 20 ft., burrow 20 ft.
+  abilities:
+    str: '8'
+    dex: '14'
+    con: '12'
+    int: '10'
+    wis: '14'
+    cha: '10'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 14
+  languages: Terran
+  traits: &id004
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: Stone Camouflage
+    description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+  actions:
+  - name: Slam
+    description: 'Melee attack: +4 to hit; reach 5 ft.; one target; Block DC 12. Unblocked strike: 1d6 + 2 bludgeoning
+      damage.'
+  source_ref: draft2.pdf / PDF page 15
+  original_5e:
+    name: Pebble Gnome
+    meta: Small earth elemental, neutral
+    ac: 13 (natural armor)
+    hp: 22 (5d6 + 5)
+    speed: 20 ft., burrow 20 ft.
+    abilities:
+      str: '8'
+      dex: '14'
+      con: '12'
+      int: '10'
+      wis: '14'
+      cha: '10'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 14
+    languages: Terran
+    cr: 1/2
+    traits: *id004
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) bludgeoning damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    skills: Stealth +6, Perception +4
+    xp: '100'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  skills: Stealth +6, Perception +4
+  xp: '100'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Moonflyer
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-moonflyer
+  size: Small
+  type: elemental
+  alignment: neutral
+  meta: Small earth elemental, neutral
+  cr: '3'
+  ac: '13'
+  hp: '33'
+  block: 4 pool / +4 check
+  speed: 20 ft., burrow 20 ft., fly 5 ft. (hover)
+  abilities:
+    str: '8'
+    dex: '18'
+    con: '15'
+    int: '6'
+    wis: '14'
+    cha: '10'
+  damage_immunities: poison, psychic
+  condition_immunities: Blinded, Deafened, Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 14
+  languages: Terran, Celestial, Deep Speech
+  traits:
+  - &id005
+    name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - &id006
+    name: Moonlit
+    description: The elemental sheds dim light in a 30-foot radius. Bright light the aura touches is reduced to
+      dim light.
+  actions:
+  - name: Slam
+    description: 'Melee attack: +4 to hit; reach 5 ft.; one target; Block DC 12. Unblocked strike: 1d6 + 2 bludgeoning
+      damage.'
+  - name: Moonlight (Recharge 5-6)
+    description: 'Ranged spell attack: +4 to hit; range 60 ft.; one target; Block DC 12. Unblocked strike: 5d6 radiant
+      damage. If the target is a creature, it makes a DC 12 Constitution save. On a failure, its attack rolls have
+      disadvantage until the start of its next turn. At the start of the elemental''s turn while Moonlight is expended,
+      roll 1d6; it recharges on 5 or 6.'
+  source_ref: draft2.pdf / PDF page 15
+  original_5e:
+    name: Moonflyer
+    meta: Small earth elemental, neutral
+    ac: 13 (natural armor)
+    hp: 33 (8d6 + 5)
+    speed: 20 ft., burrow 20 ft., fly 5 ft. (hover)
+    abilities:
+      str: '8'
+      dex: '18'
+      con: '15'
+      int: '6'
+      wis: '14'
+      cha: '10'
+    damage_immunities: poison, psychic
+    condition_immunities: Blinded, Deafened, Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 14
+    languages: Terran, Celestial, Deep Speech
+    cr: '3'
+    traits:
+    - *id005
+    - *id006
+    - name: Gleam
+      description: The elemental becomes heavily obscured, with its space filled by bright light, and gains resistance
+        to radiant damage for 1 minute. It can use this feature once per long rest.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) bludgeoning damage.'
+    - name: Moonlight (Recharge 5-6)
+      description: 'Ranged Spell Attack: +4 to hit, range 60 ft., one target. Hit: 18 (5d6) radiant damage. If the
+        target is a creature, it must succeed on a DC 12 Constitution saving throw or have disadvantage on any attack
+        rolls it makes before the start of its next turn.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    skills: Perception +8
+    xp: '700'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  skills: Perception +8
+  bonus_actions:
+  - name: Gleam (1/long rest)
+    description: For 1 minute, the elemental is heavily obscured in its brightly lit space and has resistance to
+      radiant damage.
+  source_completion:
+    decisions:
+    - Gleam has a printed 1-minute duration and once-per-long-rest limit but no activation. It is assigned a bonus
+      action; the immunity/resistance and obscuration effects are unchanged.
+    - Moonlight uses the printed Recharge 5-6 as a d6 roll at the start of its turn. The Constitution-save rider
+      applies only after an unblocked strike.
+  xp: '700'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Boulder Guardian
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-boulder-guardian
+  size: Medium
+  type: elemental
+  alignment: neutral
+  meta: Medium earth elemental, neutral
+  cr: '1'
+  ac: '15'
+  hp: '34'
+  block: 0 pool / +0 check
+  speed: 30 ft., climb 20 ft., burrow 20 ft.
+  abilities:
+    str: '16'
+    dex: '10'
+    con: '18'
+    int: '2'
+    wis: '12'
+    cha: '6'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 13
+  languages: Terran
+  traits: &id007
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: Stone Camouflage
+    description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+  actions:
+  - name: Multiattack
+    description: Make one Slam attack and one Swipe attack.
+  - name: Slam
+    description: 'Melee attack: +5 to hit; reach 5 ft.; one target; Block DC 13. Unblocked strike: 1d4 bludgeoning
+      damage.'
+  - name: Swipe
+    description: 'Melee attack: +5 to hit; reach 5 ft.; one target; Block DC 13. Unblocked strike: 2d6 + 4 slashing
+      damage.'
+  source_ref: draft2.pdf / PDF page 16
+  original_5e:
+    name: Boulder Guardian
+    meta: Medium earth elemental, neutral
+    ac: The source Armor Class line is visually damaged; its numeric value is not recoverable.
+    hp: 34 (4d8 + 16)
+    speed: 30 ft., climb 20 ft., burrow 20 ft.
+    abilities:
+      str: '16'
+      dex: '10'
+      con: '18'
+      int: '2'
+      wis: '12'
+      cha: '6'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 13
+    languages: Terran
+    cr: '1'
+    traits: *id007
+    actions:
+    - name: Multiattack
+      description: 'The elemental makes two attacks: one with its slam and one with its swipe.'
+    - name: Slam
+      description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d4) bludgeoning damage.'
+    - name: Swipe
+      description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '200'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  source_completion:
+    decisions:
+    - AC is unreadable in the rendered PDF. Use AC 15 natural armor as a playable completion for this CR 1 rocky
+      guardian.
+    - The source Slam says 8 (1d4), an inconsistent mean and dice expression. Retain the explicit 1d4; preserve
+      the printed 8 in original_5e rather than adding unprinted damage.
+  xp: '200'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Crystal Sprite
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-crystal-sprite
+  size: Tiny
+  type: elemental
+  alignment: neutral
+  meta: Tiny earth elemental, neutral
+  cr: '1'
+  ac: '14'
+  hp: '27'
+  block: 3 pool / +3 check
+  speed: 30 ft., fly 30 ft. (hover); burrow 30 ft.
+  abilities:
+    str: '6'
+    dex: '16'
+    con: '10'
+    int: '12'
+    wis: '14'
+    cha: '12'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 14
+  languages: Terran
+  traits: &id008
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: Crystal Camouflage
+    description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+  actions:
+  - name: Crystal Shard
+    description: 'Ranged attack: +6 to hit; range 30/120 ft.; one target; Block DC 14. Unblocked strike: 1d6 + 4
+      piercing damage.'
+  source_ref: draft2.pdf / PDF page 16
+  original_5e:
+    name: Crystal Sprite
+    meta: Tiny earth elemental, neutral
+    ac: 14 (natural armor)
+    hp: 27 (6d4 + 12)
+    speed: 30 ft., fly 30 ft. (hover)
+    abilities:
+      str: '6'
+      dex: '16'
+      con: '10'
+      int: '12'
+      wis: '14'
+      cha: '12'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 14
+    languages: Terran
+    cr: '1'
+    traits: *id008
+    actions:
+    - name: Crystal Shard
+      description: 'Ranged Weapon Attack: +6 to hit, range 30/120 ft., one target. Hit: 7 (1d6 + 4) piercing damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    skills: Acrobatics +6, Perception +4
+    xp: '200'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  skills: Acrobatics +6, Perception +4
+  xp: '200'
+  source_completion:
+    decisions:
+    - Earth Glide is printed but no burrow speed accompanies it. Add burrow 30 ft., equal to its printed walking
+      speed, so the trait has a complete movement procedure. Original movement remains in original_5e.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Granite Striker
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-granite-striker
+  size: Small
+  type: elemental
+  alignment: neutral
+  meta: Small earth elemental, neutral
+  cr: 1/4
+  ac: '13'
+  hp: '15'
+  block: 2 pool / +2 check
+  speed: 20 ft., burrow 20 ft.
+  abilities:
+    str: '10'
+    dex: '14'
+    con: '14'
+    int: '4'
+    wis: '12'
+    cha: '6'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Terran
+  traits: &id009
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: Crystal Camouflage
+    description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+  - name: Pack Tactics
+    description: The elemental has advantage on an attack roll against a creature if at least one of the elemental's
+      allies is within 5 feet of the creature and the ally is not incapacitated.
+  actions:
+  - name: Granite Peck
+    description: 'Melee attack: +4 to hit; reach 5 ft.; one target; Block DC 12. Unblocked strike: 1d6 + 2 piercing
+      damage.'
+  source_ref: draft2.pdf / PDF page 17
+  original_5e:
+    name: Granite Striker
+    meta: Small earth elemental, neutral
+    ac: 13 (natural armor)
+    hp: 15 (2d6 + 8)
+    speed: 20 ft., burrow 20 ft.
+    abilities:
+      str: '10'
+      dex: '14'
+      con: '14'
+      int: '4'
+      wis: '12'
+      cha: '6'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 11
+    languages: Terran
+    cr: 1/4
+    traits: *id009
+    actions:
+    - name: Granite Peck
+      description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '50'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  xp: '50'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Magnetite Guardian
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-magnetite-guardian
+  size: Medium
+  type: elemental
+  alignment: neutral
+  meta: Medium earth elemental, neutral
+  cr: '1'
+  ac: '16'
+  hp: '40'
+  block: 0 pool / -1 check
+  speed: 20 ft., burrow 20 ft.
+  abilities:
+    str: '14'
+    dex: '8'
+    con: '14'
+    int: '6'
+    wis: '10'
+    cha: '6'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 10
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  actions:
+  - name: None
+    description: This elemental is purely defensive and cannot make attacks.
+  source_ref: draft2.pdf / PDF page 17
+  original_5e:
+    name: Magnetite Guardian
+    meta: Medium earth elemental, neutral
+    ac: 16 (natural armor)
+    hp: 40 (9d8)
+    speed: 20 ft., burrow 20 ft.
+    abilities:
+      str: '14'
+      dex: '8'
+      con: '14'
+      int: '6'
+      wis: '10'
+      cha: '6'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 10
+    languages: Terran
+    cr: '1'
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+        does not disturb the material it moves through.
+    - name: Magnetic Defense
+      description: The Magnetite Guardian can use its reaction to impose disadvantage on the attack roll of one
+        creature it can see that is within 30 feet of it, provided the attack is made with a weapon made of metal.
+    actions:
+    - name: None
+      description: The Magnetite Guardian is a purely defensive creature and does not have the ability to make attacks.
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '200'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  reactions:
+  - name: Magnetic Defense
+    description: When a creature it can see within 30 feet makes an attack with a metal weapon, impose disadvantage
+      on that triggering attack roll.
+  source_completion:
+    decisions:
+    - Magnetic Defense is presented under Reactions. It affects only the triggering metal-weapon attack, using the
+      source 30-foot sight requirement. The explicitly attackless design is preserved.
+  xp: '200'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Gravel Giggler
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-gravel-giggler
+  size: Tiny
+  type: elemental
+  alignment: neutral
+  meta: Tiny earth elemental, neutral
+  cr: 1/8
+  ac: '13'
+  hp: '7'
+  block: 2 pool / +2 check
+  speed: 20 ft., burrow 20 ft.
+  abilities:
+    str: '6'
+    dex: '14'
+    con: '10'
+    int: '6'
+    wis: '10'
+    cha: '14'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 10
+  languages: Terran
+  traits: &id010
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: False Appearance
+    description: While motionless, the elemental is indistinguishable from an ordinary pebble.
+  actions:
+  - name: Pebble Toss
+    description: 'Ranged attack: +4 to hit; range 20/60 ft.; one target; Block DC 12. Unblocked strike: 1d4 + 2
+      bludgeoning damage.'
+  source_ref: draft2.pdf / PDF page 18
+  original_5e:
+    name: Gravel Giggler
+    meta: Tiny earth elemental, neutral
+    ac: Visually clipped Armor Class line; visible ending is 3 (natural armor).
+    hp: 7 (3d4)
+    speed: 20 ft., burrow 20 ft.
+    abilities:
+      str: '6'
+      dex: '14'
+      con: '10'
+      int: '6'
+      wis: '10'
+      cha: '14'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 10
+    languages: Terran
+    cr: 1/8
+    traits: *id010
+    actions:
+    - name: Pebble Toss
+      description: 'Ranged Weapon Attack: +4 to hit, range 20/60 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '25'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  source_completion:
+    decisions:
+    - The clipped AC line is completed as 13 natural armor, consistent with the visible trailing 3 and the neighboring
+      small earth-elemental profiles.
+  xp: '25'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Obsidian Shard
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-obsidian-shard
+  size: Small
+  type: elemental
+  alignment: neutral
+  meta: Small earth elemental, neutral
+  cr: 1/4
+  ac: '13'
+  hp: '18'
+  block: 2 pool / +2 check
+  speed: 20 ft., climb 20 ft., burrow 10 ft.
+  abilities:
+    str: '8'
+    dex: '14'
+    con: '12'
+    int: '2'
+    wis: '4'
+    cha: '4'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 10
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: Stone Camouflage
+    description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+  actions:
+  - name: Shard
+    description: 'Ranged attack: +4 to hit; range 30/60 ft.; one target; Block DC 12. Unblocked strike: 1d6 + 2
+      piercing damage. If the target is a creature, it makes a DC 11 Constitution save, taking an additional 2d4
+      slashing damage on a failure.'
+  source_ref: draft2.pdf / PDF page 18
+  original_5e:
+    name: Obsidian Shard
+    meta: Small earth elemental, neutral
+    ac: 13 (natural armor)
+    hp: 18 (4d6 + 4)
+    speed: 20 ft., climb 20 ft., burrow 10 ft.
+    abilities:
+      str: '8'
+      dex: '14'
+      con: '12'
+      int: '2'
+      wis: '4'
+      cha: '4'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 10
+    languages: Terran
+    cr: 1/4
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+        does not disturb the material it moves through.
+    - name: Stone Camouflage
+      description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+    - name: Shard Throw
+      description: The elemental can throw a shard of its body at an enemy. This is a ranged attack with a range
+        of 30/60 ft.
+    actions:
+    - name: Shard
+      description: 'Ranged Weapon Attack: +4 to hit, range 30/60 ft., one target. Hit: 5 (1d6 + 2) piercing damage.
+        If the target is a creature, it must succeed on a DC 11 Constitution saving throw or take 5 (2d4) slashing
+        damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '50'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  source_completion:
+    decisions:
+    - The duplicate Shard Throw property is folded into the Shard action so range and attack rules appear once.
+      Its conditional save occurs only after an unblocked strike.
+  xp: '50'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Stone Strider
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-stone-strider
+  size: Medium
+  type: elemental
+  alignment: neutral
+  meta: Medium earth elemental, neutral
+  cr: '1'
+  ac: '14'
+  hp: '37'
+  block: 1 pool / +1 check
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '17'
+    dex: '13'
+    con: '17'
+    int: '3'
+    wis: '14'
+    cha: '8'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 12
+  languages: Terran
+  traits: &id011
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: Stone Camouflage
+    description: The elemental has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+  - name: Pack Tactics
+    description: The elemental has advantage on an attack roll against a creature if at least one of the elemental's
+      allies is within 5 feet of the creature and the ally is not incapacitated.
+  actions:
+  - name: Slam
+    description: 'Melee attack: +5 to hit; reach 5 ft.; one target; Block DC 13. Unblocked strike: 2d6 + 4 bludgeoning
+      damage.'
+  source_ref: draft2.pdf / PDF page 19
+  original_5e:
+    name: Stone Strider
+    meta: Medium earth elemental, neutral
+    ac: 14 (natural armor)
+    hp: 37 (5d8 + 15)
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '17'
+      dex: '13'
+      con: '17'
+      int: '3'
+      wis: '14'
+      cha: '8'
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 12
+    languages: Terran
+    cr: '1'
+    traits: *id011
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '200'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  xp: '200'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Quartz Quasher
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-quartz-quasher
+  size: Medium
+  type: elemental
+  alignment: neutral
+  meta: Medium earth elemental, neutral
+  cr: '2'
+  ac: '14'
+  hp: '58'
+  block: 2 pool / +2 check
+  speed: 30 ft., climb 30 ft., burrow 30 ft.
+  abilities:
+    str: '18'
+    dex: '14'
+    con: '15'
+    int: '4'
+    wis: '12'
+    cha: '5'
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: tremorsense 60 ft., passive Perception 11
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+      does not disturb the material it moves through.
+  - name: Quartz Armor
+    description: A creature that lands an unblocked melee strike against the elemental takes 1d10 slashing damage
+      from sharp quartz shards. This automatic damage cannot be Blocked. This damage also applies when a creature
+      fails its attempt to escape the elemental's Constrict grapple.
+  actions:
+  - name: Crystal Slam
+    description: 'Melee attack: +6 to hit; reach 5 ft.; one target; Block DC 14. Unblocked strike: 2d8 + 5 bludgeoning
+      damage.'
+  - name: Constrict
+    description: 'Melee attack: +6 to hit; reach 5 ft.; one target; Block DC 14. Unblocked strike: 2d8 + 4 bludgeoning
+      damage. The target is Grappled (escape DC 16) and Pinned until that grapple ends. As an action, the target
+      can attempt a DC 16 Strength (Athletics) or Dexterity (Acrobatics) check to escape; a failed attempt triggers
+      Quartz Armor. While grappling a target, the elemental cannot use Constrict or Crystal Slam against another
+      target.'
+  source_ref: draft2.pdf / PDF page 19
+  original_5e:
+    name: Quartz Quasher
+    meta: Medium earth elemental, neutral
+    ac: 14 (natural armor)
+    hp: 58 (9d8 + 18)
+    speed: 30 ft., climb 30 ft., burrow 30 ft.
+    abilities:
+      str: '18'
+      dex: '14'
+      con: '15'
+      int: '4'
+      wis: '12'
+      cha: '5'
+    damage_immunities: Visually damaged value; poison selected as an explicit completion.
+    condition_immunities: Visually damaged value; visible tail includes ...poisoned, prone; full selected profile
+      documented in source_completion.
+    senses: tremorsense 60 ft., passive Perception 11
+    languages: Terran
+    cr: '2'
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental
+        does not disturb the material it moves through.
+    - name: Quartz Armor
+      description: When hit by a melee attack, the attacker takes 5 (1d10) slashing damage from sharp quartz shards.
+    actions:
+    - name: Crystal Slam
+      description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.'
+    - name: Constrict
+      description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 13 (2d8 + 4) bludgeoning damage.
+        The target is grappled (escape DC 16) and restrained until the grapple ends. If the target attempts and
+        fails to escape the grapple, the Quartz Armor ability is triggered. While grappling a target, the elemental
+        cannot use its Constrict or Crystal Slam on another target.'
+    damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+    xp: '450'
+  conversion_notes:
+  - Converted from the Tarta Homebrewery export. Printed AC, HP, CR, ability scores and attack/save modifiers are
+    retained except for explicitly identified source completions.
+  - Natural armor alone grants no equipment training or extra Block. The Block pool is the nonnegative Dexterity
+    modifier; checks use the signed Dexterity modifier. Each ordinary attack lists Block DC 8 plus its printed attack
+    bonus.
+  - Ordinary attack damage and attached strike riders require an unblocked strike. Saving-throw-only and automatic
+    damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
+    are preserved only in original_5e.
+  damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
+  source_completion:
+    decisions:
+    - 'Damaged immunity labels/values are completed using the recurring earth-elemental profile: poison damage immunity
+      and Paralyzed, Petrified, Poisoned and Prone condition immunity.'
+    - Constrict retains the source escape DC 16 and replaces restrained with current Pinned. The source does not
+      specify an escape ability; use an action with Strength (Athletics) or Dexterity (Acrobatics). No Multiattack
+      is added.
+    - Quartz Armor contact damage follows an unblocked melee strike; its explicitly printed failed-escape trigger
+      remains automatic. The printed damage mean 5 is omitted in favor of 1d10.
+  xp: '450'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features

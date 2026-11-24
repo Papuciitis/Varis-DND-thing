@@ -10,7 +10,9 @@ test('the built monster manual includes every supplied creature and the editor c
   const section = builtCatalog().find(section => section.key === 'monsters');
   const expected = new Map([
     ['monsters/template.yaml',12], ['monsters/steel-dragons.yaml',4],
-    ['monsters/chronica.yaml',66], ['monsters/smash-and-grab.yaml',10]
+    ['monsters/chronica.yaml',66], ['monsters/smash-and-grab.yaml',10],
+    ['monsters/tarta-wiki.yaml',13], ['monsters/tarta-elementals-low.yaml',13],
+    ['monsters/tarta-elementals-high.yaml',13], ['monsters/tarta-summons.yaml',9]
   ]);
   const context = vm.createContext({localStorage:{getItem:()=>null}});
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../web/monster-editor.js'), 'utf8'), context);
@@ -25,8 +27,8 @@ test('the built monster manual includes every supplied creature and the editor c
       assert(entry.details.ac && entry.details.hp && entry.details.block, entry.name + ' lacks defenses');
     }
   }
-  assert.equal(section.entries.length, 112);
-  assert.equal(new Set(section.entries.map(entry => entry.name.toLowerCase())).size, 112);
+  assert.equal(section.entries.length, 160);
+  assert.equal(new Set(section.entries.map(entry => entry.name.toLowerCase())).size, 160);
 });
 
 test('built Chronica profiles expose six numeric ability scores with traceable reconstruction status', () => {

@@ -86,3 +86,28 @@ test('multiattack is an action and imported spell replacements become linked com
  const {views,helpers}=setup(),block=views.statblock(entry({multiattack:'The source permits repeated physical attacks: Claw (2x).',actions:[{name:'Claw (2x)',description:'Make two claw attacks as one Attack action, each +4 to hit.'},{name:'Burning Hands (4x)',description:'Existing Vara alternative: Cone of fire (Arcane spells).\n\nEnormous repeated spell text.'}],traits:[{name:'Control Flames',description:'Existing Vara alternative: minor pyromancy (Arcane cantrips).\n\nRepeated pyromancy.'},{name:'Fire Bolt',description:'Existing Vara alternative: minor pyromancy (Arcane cantrips).\n\nRepeated pyromancy.'}],spell_references:[{source_spell:'Burning Hands',name:'Cone of fire',group:'Arcane spells',level:'1'},{name:'minor pyromancy',group:'Arcane cantrips',level:'0'}]}),helpers),body=block.byClass('monster-stat-body')[0];
  assert.match(body.byClass('monster-stat-actions')[0].textContent,/ActionsMultiattack/);assert.doesNotMatch(body.textContent,/Enormous|Repeated pyromancy|Claw \(2x\)/);assert.match(body.textContent,/4 uses/);assert.equal(body.all('a').filter(node=>node.textContent==='minor pyromancy').length,1);assert.match(body.all('a').find(node=>node.textContent==='Cone of fire').href,/section=spells/);
 });
+
+test('golem infusion selections cap at four, calculate costs and bonuses, and never alter source stats',()=>{
+ const {views,helpers}=setup(),options=[
+  {name:'Lanthara Crystal',cost_gp:400,effect:'Armor Class +2.'},
+  {name:'Holmara Rock',cost_gp:400,effect:'Melee attack and damage +2.'},
+  {name:'Euralite Gem',cost_gp:150,effect:'Bright light.'},
+  {name:'Samarkium Ore',cost_gp:250,effect:'Poison cloud.'},
+  {name:'Erbion Essence',cost_gp:450,effect:'Touch healing.'}
+ ],source=entry({ac:'16 (natural armor)',material_options:options,material_rules:'Up to four different materials.'}),before=JSON.stringify(source),block=views.statblock(source,helpers),section=block.byClass('monster-material-infusions')[0],inputs=section.all('input'),summary=()=>section.byClass('monster-infusion-configuration')[0].textContent;
+ assert.equal(inputs.length,5);assert.match(summary(),/Base golem.*1,000 gp/);assert.doesNotMatch(summary(),/Poison cloud|Touch healing/);
+ const links=section.all('a');assert.equal(links.length,5);const route=new URLSearchParams(links[0].href.slice(1));assert.equal(route.get('section'),'rules');assert.equal(route.get('entry'),'Lanthara Crystal');assert.equal(route.get('group'),'Tarta Homebrewery - Materials');
+ const change=(index,checked)=>{inputs[index].checked=checked;inputs[index].events.change();};
+ change(0,true);assert.match(summary(),/Configured Armor Class 18/);assert.doesNotMatch(summary(),/Melee attack and damage \+2/);
+ change(1,true);assert.match(summary(),/melee attack rolls, Block DCs and damage \+2/);assert.match(summary(),/Creation materials: 1,000 gp/);
+ change(2,true);assert.match(summary(),/Creation materials: 1,400 gp/);
+ change(3,true);assert.match(summary(),/Creation materials: 3,600 gp/);assert.equal(inputs[4].disabled,true);
+ change(4,true);assert.equal(inputs[4].checked,false);assert.doesNotMatch(summary(),/Touch healing/);
+ change(0,false);assert.equal(inputs[4].disabled,false);assert.match(summary(),/Armor Class unchanged/);change(4,true);assert.match(summary(),/Touch healing/);assert.match(summary(),/Creation materials: 3,650 gp/);
+ assert.equal(JSON.stringify(source),before);assert.match(block.byClass('monster-stat-lead')[0].textContent,/Armor Class 16/);assert.equal(block.byClass('monster-additional-rule').length,0);
+});
+
+test('summon creator links lead to the controlling spell or feature without implying self spellcasting',()=>{
+ const {views,helpers}=setup(),block=views.statblock(entry({summoned_by:[{name:'Geochemical Golem',section:'spells',group:'Geomorphy spells'},{name:'Primordial Geomancy',section:'rules',group:'Tarta Homebrewery - Summoning features'}]}),helpers),creation=block.byClass('monster-creation-links')[0];
+ assert.equal(creation.tag,'details');assert.equal(creation.open,false);assert.equal(creation.all('a').length,2);const routes=creation.all('a').map(link=>new URLSearchParams(link.href.slice(1)));assert.equal(routes[0].get('section'),'spells');assert.equal(routes[1].get('section'),'rules');assert.equal(block.byClass('monster-stat-spellcasting').length,0);assert.equal(block.byClass('monster-additional-rule').length,0);
+});

@@ -1,0 +1,936 @@
+section: monsters
+entries:
+- name: Earth Elemental Servant
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-earth-elemental-servant
+  meta: Large elemental, neutral
+  size: Large
+  type: elemental
+  alignment: neutral
+  cr: '10'
+  ac: 17 (natural armor)
+  hp: 126 (12d10 + 60)
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '20'
+    dex: '8'
+    con: '20'
+    int: '5'
+    wis: '10'
+    cha: '5'
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Siege Monster
+    description: The elemental deals double damage to objects and structures.
+  actions:
+  - name: Multiattack
+    description: Make two Slam attacks. Each is a separate blockable attack.
+  - name: Slam
+    description: 'Melee attack +8; reach 10 ft.; one target; Block DC 16. Unblocked strike: 14 (2d8 + 5) bludgeoning
+      damage.'
+  - name: Unstoppable Force (Recharge 5-6)
+    description: Move up to 30 feet in a straight line, passing through creatures without ending in an occupied
+      space. Each creature in the path makes a DC 16 Dexterity save, taking 28 (8d6) bludgeoning damage and falling
+      Prone on a failure, or half damage without falling Prone on a success. Then make one Slam against a Prone
+      creature within reach. The area save cannot be Blocked; the follow-up Slam can be Blocked normally. After
+      use, roll a d6 at the start of each of its turns, recharging on 5-6.
+  source_ref: draft2.pdf / PDF page 8
+  original_5e:
+    name: Earth Elemental Servant
+    page: 8
+    meta: Large elemental, neutral
+    ac: 17 (natural armor)
+    hp: 126 (12d10 + 60)
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '20'
+      dex: '8'
+      con: '20'
+      int: '5'
+      wis: '10'
+      cha: '5'
+    damage_vulnerabilities: thunder
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: exhaustion, paralyzed, petrified, poisoned, unconscious
+    senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+    languages: Terran
+    cr: '10'
+    xp: 5,900
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Siege Monster
+      description: The elemental deals double damage to objects and structures.
+    actions:
+    - name: Multiattack
+      description: The elemental makes two slam attacks.
+    - name: Slam
+      description: 'Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.'
+    - name: Unstoppable Force (Recharge 5-6)
+      description: The elemental charges up to 30 feet in a straight line and can move through creatures in its
+        path. Each creature in the elemental's path must make a DC 16 Dexterity saving throw. On a failed save,
+        a creature takes 28 (8d6) bludgeoning damage and is knocked prone. On a successful save, a creature takes
+        half as much damage and is not knocked prone. The elemental can then make one slam attack against a prone
+        creature.
+    parent_feature: 'Master of the Land, Artificer Geomorphy Specialist level 15: action, expend a spell slot of
+      level 3 or higher, summon within 60 ft.; friendly and obeys commands; remains 1 hour, until 0 HP or dismissed
+      as an action; once per long rest.'
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - The final Slam of Unstoppable Force must still be within reach. Recharge 5-6 means a d6 at the start of each
+    turn while expended. Source exhaustion immunity is presented as current Fatigue immunity. Source CR 10 is retained
+    rather than recalculated.
+  block: 0 pool / -1 check
+  damage_vulnerabilities: thunder
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+  languages: Terran
+  xp: 5,900
+  condition_immunities: Fatigue; Paralyzed; Petrified; Poisoned; Unconscious
+  summoned_by:
+  - name: Master of the Land
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Resilient Plant
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-resilient-plant
+  meta: Huge plant, unaligned
+  size: Huge
+  type: plant
+  alignment: unaligned
+  cr: '0'
+  ac: 20 (natural armor)
+  hp: 200 + controller spellcasting modifier (minimum 1)
+  speed: 0 ft.
+  abilities:
+    str: '1'
+    dex: '1'
+    con: '22'
+    int: '1'
+    wis: '3'
+    cha: '1'
+  traits:
+  - name: False Appearance
+    description: While the resilient plant remains motionless, it is indistinguishable from an ordinary, inanimate
+      plant.
+  - name: Regeneration
+    description: The resilient plant regains 10 hit points at the start of its turn if it has at least 1 hit point.
+  - name: Rooted barrier
+    description: It cannot move, take actions, bonus actions or reactions. It provides cover and blocks passage
+      according to its occupied space; it makes no attacks. It still has a turn for Regeneration.
+  actions:
+  - name: None
+    description: Cannot take actions. This is a stationary created plant, not a combat attacker.
+  source_ref: draft2.pdf / PDF page 59
+  original_5e:
+    name: Resilient Plant
+    page: 59
+    meta: Huge plant, unaligned
+    ac: 20 (natural armor)
+    hp: 200 (24d12 + 48 + spellcasting modifier)
+    speed: 0 ft.
+    abilities:
+      str: '1'
+      dex: '1'
+      con: '22'
+      int: '1'
+      wis: '3'
+      cha: '1'
+    damage_resistances: bludgeoning, piercing and slashing from magical attacks
+    damage_immunities: poison, psychic; bludgeoning, piercing and slashing from nonmagical attacks
+    condition_immunities: blinded, deafened, exhaustion, frightened, paralyzed, petrified, poisoned, unconscious
+    senses: blindsight 30 ft. (blind beyond this radius), passive Perception 6
+    languages: —
+    cr: '0'
+    xp: '10'
+    traits:
+    - name: False Appearance
+      description: While the resilient plant remains motionless, it is indistinguishable from an ordinary, inanimate
+        plant.
+    - name: Regeneration
+      description: The resilient plant regains 10 hit points at the start of its turn if it has at least 1 hit point.
+    actions:
+    - name: None
+      description: The resilient plant cannot take actions or move. It serves purely as a barrier or cover.
+    notes: The resilient plant is stationary and cannot move from the spot it was grown. It follows the commands
+      of the spellcaster who grew it, providing cover and blocking passage as directed.
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - The source printed 200 HP and also added an undefined spellcasting modifier in its dice expression. Current
+    maximum and initial HP are 200 plus the controller's spellcasting ability modifier (minimum 1). The inconsistent
+    original dice expression is archived, not used to reroll HP.
+  - Source stationary/actionless restriction takes precedence over the generic summoned-ally command convention.
+    Cover and passage blocking are fixed by placement; commanding it does not allow movement.
+  - Bloomguard's parent spell resolves its duration. Source CR 0 and XP are preserved even though this is exceptionally
+    resilient stationary cover.
+  block: 0 pool / -5 check
+  damage_resistances: bludgeoning, piercing and slashing from magical attacks
+  damage_immunities: poison, psychic; bludgeoning, piercing and slashing from nonmagical attacks
+  senses: blindsight 30 ft. (blind beyond this radius), passive Perception 6
+  languages: —
+  xp: '10'
+  condition_immunities: Blinded; Deafened; Fatigue; Shaken, Afraid and Terrified; Paralyzed; Petrified; Poisoned;
+    Unconscious
+  summoned_by:
+  - name: Bloomguard
+    section: spells
+    group: Geomorphy spells
+- name: Awakened Earth
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-awakened-earth
+  meta: Colossal elemental, unaligned
+  size: Colossal
+  type: elemental
+  alignment: unaligned
+  cr: '5'
+  ac: 15 (natural armor)
+  hp: 75 + controller spellcasting modifier (minimum 1)
+  speed: 0 ft.; burrow 30 ft. within its anchored area only
+  abilities:
+    str: '20'
+    dex: '8'
+    con: '15'
+    int: '3'
+    wis: '10'
+    cha: '1'
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: False Appearance
+    description: While the awakened earth remains motionless, it is indistinguishable from an ordinary, inanimate
+      area of ground.
+  - name: Anchored ground
+    description: Occupies the 50-foot-radius area selected by Earth's Awakening. It cannot leave or translate that
+      area. Burrowing manipulates ground inside this same boundary; it does not move the entire area or grant reach
+      beyond it.
+  actions:
+  - name: Multi-Assault
+    description: Once as its action, make one Slam attack against each chosen creature standing on its anchored
+      ground. Resolve a separate attack roll and Block for each target. This replaces the one-target Slam action;
+      it does not grant an additional action.
+  - name: Slam
+    description: 'Melee attack +8; reach 5 ft. from a point of its anchored ground; one target; Block DC 16. Unblocked
+      strike: 4d10 bludgeoning damage. Add only damage increases expressly granted by the parent Earth''s Awakening
+      spell.'
+  - name: Break control
+    description: Make a Strength check against its controller's spell save DC. On a success, end the controller's
+      control; the animated area remains anchored and lasts only for the parent spell's remaining duration. It may
+      choose this action independently instead of following an order or Dodging; the controller cannot prevent the
+      attempt with a command. The GM decides whether the elemental attempts it.
+  source_ref: draft2.pdf / PDF page 60
+  original_5e:
+    name: Awakened Earth
+    page: 60
+    meta: Colossal elemental, unaligned
+    ac: 15 (natural armor)
+    hp: 75 (10d12 + 20 + spellcasting modifier)
+    speed: 0 ft., burrow 30 ft.
+    abilities:
+      str: '20'
+      dex: '8'
+      con: '15'
+      int: '3'
+      wis: '10'
+      cha: '1'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: exhaustion, paralyzed, petrified, poisoned, unconscious
+    senses: tremorsense 60 ft., passive Perception 10
+    languages: understands the languages of its creator but cannot speak
+    cr: '5'
+    xp: 1,800
+    traits:
+    - name: False Appearance
+      description: While the awakened earth remains motionless, it is indistinguishable from an ordinary, inanimate
+        area of ground.
+    - name: Multi-Assault
+      description: Once per turn, creature can attack all creatures who is standing on Awakened Earth with Slam
+        attack.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 4d10 bludgeoning damage.'
+    notes: The awakened earth is stationary and cannot move from the spot it was summoned. It can, however, burrow
+      and manipulate the ground within its reach. It follows the commands of the spellcaster who awakened it.
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - 'Source stationary language wins over unrestricted travel: burrow 30 ft. works only inside the original anchored
+    50-foot-radius footprint.'
+  - The printed 75 HP is retained as the base, adding the source spellcasting-ability modifier once (minimum total
+    1); the source dice expression is archived. Multi-Assault uses one action and one separate attack per selected
+    target standing on the area.
+  - The parent spell permits the summon to break control with a Strength check. Timing is completed as its action;
+    this is not an extra attack or a saving throw for targets.
+  block: 0 pool / -1 check
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  senses: tremorsense 60 ft., passive Perception 10
+  languages: understands the languages of its creator but cannot speak
+  xp: 1,800
+  condition_immunities: Fatigue; Paralyzed; Petrified; Poisoned; Unconscious
+  summoned_by:
+  - name: Earth's Awakening
+    section: spells
+    group: Geomorphy spells
+- name: Geochemical Golem
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-geochemical-golem
+  meta: Large elemental, unaligned
+  size: Large
+  type: elemental
+  alignment: unaligned
+  cr: '5'
+  ac: 16 (natural armor)
+  hp: '80'
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '18'
+    dex: '10'
+    con: '16'
+    int: '6'
+    wis: '10'
+    cha: '5'
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: Elemental Infusion
+    description: The golem can be imbued with specific elemental properties, granting additional abilities such
+      as leaving a trail of difficult terrain, emitting a noxious cloud, or radiating intense heat. The specific
+      abilities are determined by the rare earth elements used in the casting.
+  - name: Earth Glide
+    description: The golem can burrow through nonmagical, unworked earth and stone without disturbing the material
+      it moves through.
+  actions:
+  - name: Slam
+    description: 'Melee attack +7; reach 5 ft.; one target; Block DC 15. Unblocked strike: 2d8 + 4 bludgeoning damage,
+      plus only the damage increases granted by its selected materials.'
+  - name: Geochemical Blast
+    description: 'Ranged spell attack +6; range 60 ft.; one target; Block DC 14. Unblocked strike: 3d6 acid or fire
+      damage (choose when attacking), plus any selected-material rider. Material riders attached to this attack
+      require an unblocked strike.'
+  source_ref: draft2.pdf / PDF page 61
+  original_5e:
+    name: Geochemical Golem
+    page: 61
+    meta: Large elemental, unaligned
+    ac: 16 (natural armor)
+    hp: 80 (10d10 + 30)
+    speed: 30 ft.
+    abilities:
+      str: '18'
+      dex: '10'
+      con: '16'
+      int: '6'
+      wis: '10'
+      cha: '5'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: exhaustion, paralyzed, petrified, poisoned
+    senses: darkvision 60 ft., passive Perception 10
+    languages: understands the languages of its creator but cannot speak
+    cr: '5'
+    xp: 1,800
+    traits:
+    - name: Elemental Infusion
+      description: The golem can be imbued with specific elemental properties, granting additional abilities such
+        as leaving a trail of difficult terrain, emitting a noxious cloud, or radiating intense heat. The specific
+        abilities are determined by the rare earth elements used in the casting.
+    - name: Earth Glide
+      description: The golem can burrow through nonmagical, unworked earth and stone without disturbing the material
+        it moves through.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 2d8 + 4 bludgeoning damage.'
+    - name: Geochemical Blast
+      description: 'Ranged Spell Attack: +6 to hit, range 60 ft., one target. Hit: 3d6 acid or fire damage.'
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - Earth Glide is given burrow 30 ft. to match its printed walking speed; the source omitted a burrow number.
+  - Apply only the materials actually bought and chosen for Geochemical Golem. The linked parent spell/material
+    collection supplies the twelve infusion options, prices, combination rules and their documented timing completions.
+    Infusions modify this one base creature; they do not create additional summons or actions.
+  - Natural Block remains the base Dexterity value even when a material raises AC. Material increases to melee attack
+    bonus also raise that attack's Block DC by the same amount.
+  block: 0 pool / +0 check
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  senses: darkvision 60 ft., passive Perception 10
+  languages: understands the languages of its creator but cannot speak
+  xp: 1,800
+  condition_immunities: Fatigue; Paralyzed; Petrified; Poisoned
+  summoned_by:
+  - name: Geochemical Golem
+    section: spells
+    group: Geomorphy spells
+  material_options:
+  - name: Neodrakite
+    group: Tarta Homebrewery - Materials
+    cost_gp: 300
+    effect: As an action, the golem creates a magnetic pulse affecting metallic objects within 10 feet. It may move
+      unattended metal objects up to 10 feet toward or away from itself. A creature holding a targeted metal item
+      makes a DC 14 Strength save; on failure, it drops one such item in its space. The pulse does not move or damage
+      the creature. This saving-throw-only effect cannot be Blocked. Only loose handheld objects weighing at most
+      50 pounds each may be moved; anchored objects, structures and worn armor are unaffected. A held weapon uses
+      the printed disarm save.
+  - name: Cerithal Stone
+    group: Tarta Homebrewery - Materials
+    cost_gp: 200
+    effect: Each ground space the golem leaves while moving becomes difficult terrain until the start of its next
+      turn. The trail occupies the spaces the golem occupied; overlapping trail spaces do not multiply movement
+      costs. It affects creatures on the ground, not flying creatures.
+  - name: Lanthara Crystal
+    group: Tarta Homebrewery - Materials
+    cost_gp: 400
+    effect: Increase the golem's Armor Class by 2 while this infusion is present. The ordinary Geochemical Golem
+      AC 16 becomes AC 18. This does not add Block, armor training or damage reduction.
+  - name: Samarkium Ore
+    group: Tarta Homebrewery - Materials
+    cost_gp: 250
+    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 poison damage. This automatic
+      cloud affects allies as well as enemies, permits no save, does not itself apply Poisoned, and cannot be Blocked.
+  - name: Euralite Gem
+    group: Tarta Homebrewery - Materials
+    cost_gp: 150
+    effect: The golem sheds bright light in a 20-foot radius and dim light for another 20 feet. It causes no damage.
+  - name: Gadolix Shard
+    group: Tarta Homebrewery - Materials
+    cost_gp: 350
+    effect: Each unblocked Slam strike by the golem deals an additional 1d8 fire damage. The fire is part of the
+      blockable attack, so a successful Block negates this rider with the Slam.
+  - name: Ytriun Metal
+    group: Tarta Homebrewery - Materials
+    cost_gp: 300
+    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 fire damage. This automatic
+      heat affects allies and enemies, permits no save, and cannot be Blocked.
+  - name: Erbion Essence
+    group: Tarta Homebrewery - Materials
+    cost_gp: 450
+    effect: As an action once on its turn, the golem touches itself or an ally and restores 1d8 HP to that creature,
+      up to its maximum HP. It cannot use this action more than once during the same turn.
+  - name: Thulmara Dust
+    group: Tarta Homebrewery - Materials
+    cost_gp: 200
+    effect: At the start of the golem's turn, enemies within 10 feet have their movement speeds reduced by 10 feet,
+      to a minimum of 0, until the start of the golem's next turn. This speed reduction does not stack with itself.
+      It is not the old slow spell and does not grant a saving throw or a separate condition.
+  - name: Holmara Rock
+    group: Tarta Homebrewery - Materials
+    cost_gp: 400
+    effect: Add +2 to the golem's melee attack rolls and melee damage rolls. Its ordinary Slam becomes +9 to hit,
+      Block DC 17, and 2d8 + 6 bludgeoning damage. This does not improve ranged attacks, saving-throw DCs, Armor
+      Class or Block checks.
+  - name: Dyspraxium Salt
+    group: Tarta Homebrewery - Materials
+    cost_gp: 350
+    effect: As a bonus action once on its turn, the golem becomes incorporeal until the end of that turn. During
+      its movement, it may pass through creatures and objects as difficult terrain. It must finish in an unoccupied
+      space outside solid matter. If it ends inside solid matter, it takes 5 force damage that cannot be Blocked
+      and moves to the nearest unoccupied space outside that matter. This does not otherwise grant damage resistance
+      or immunity.
+  - name: Terbithal Resin
+    group: Tarta Homebrewery - Materials
+    cost_gp: 300
+    effect: After an unblocked Geochemical Blast strike, its target makes a DC 14 Constitution save. On failure,
+      the target is Blinded until the end of its next turn; on success, it is not Blinded. The Blast's ordinary
+      damage is unchanged. A successful Block against the Blast prevents both its damage and this rider.
+  material_rules: Base statistics below have no infusions. Choose one to four distinct materials when casting. Component
+    cost is at least 1,000 gp or the material subtotal, whichever is greater, plus 400 gp for a third material and
+    a further 2,000 gp for a fourth. Only selected effects apply; the same material never stacks with itself. The
+    configuration panel previews these optional changes.
+- name: Stone Servant
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-stone-servant
+  meta: Large construct, unaligned
+  size: Large
+  type: construct
+  alignment: unaligned
+  cr: '4'
+  ac: 15 (natural armor)
+  hp: '86'
+  speed: 30 ft.
+  abilities:
+    str: '15'
+    dex: '13'
+    con: '16'
+    int: '3'
+    wis: '13'
+    cha: '1'
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: Immutable Form
+    description: The golem is immune to any spell or effect that would alter its form.
+  - name: Magic Resistance
+    description: The golem has advantage on saving throws against spells and other magical effects.
+  - name: Noncombat servant
+    description: Cannot make attacks, opportunity attacks, cast spells or activate offensive magic items. It can
+      carry, clean, mend, build, break unattended objects, dig or defend without attacking. Beyond 60 feet from
+      its controller, it stops and does nothing until within 60 feet again.
+  actions:
+  - name: Work or Help
+    description: Perform one mundane task or take the current Help action on a nonattack task within reach. Work
+      obeys normal ability checks, object durability and tool requirements; it grants no automatic success.
+  - name: Guard
+    description: Take Dodge, or position its body as cover for another creature using normal cover rules. Guard
+      does not make an attack or automatically redirect damage.
+  source_ref: draft2.pdf / PDF page 63
+  original_5e:
+    name: Stone Servant
+    page: 63
+    meta: Large construct, unaligned
+    ac: 15 (natural armor)
+    hp: 86 (8d10 + 42)
+    speed: 30 ft.
+    abilities:
+      str: '15'
+      dex: '13'
+      con: '16'
+      int: '3'
+      wis: '13'
+      cha: '1'
+    damage_immunities: Poison, Psychic; Bludgeoning, Piercing and Slashing from Nonmagical Attacks That Are Not
+      Adamantine
+    condition_immunities: Charmed, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned
+    senses: Darkvision 120 ft., passive Perception 11
+    languages: Understands the languages of its creator but cannot speak
+    cr: '4'
+    xp: 1,100
+    traits:
+    - name: Immutable Form
+      description: The golem is immune to any spell or effect that would alter its form.
+    - name: Magic Resistance
+      description: The golem has advantage on saving throws against spells and other magical effects.
+    - name: Magic Weapons
+      description: The golem's weapon attacks are magical.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: (1d8 + 2) bludgeoning damage.'
+    parent_spell_restriction: 'Geomorpher''s Stone Servant: The servant cannot attack, but it can use its action
+      to defend itself or others.'
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - The parent spell explicitly says the servant cannot attack. That restriction takes precedence over the contradictory
+    Slam/Magic Weapons block. Offensive Slam and Magic Weapons are archived, not usable by this summoned version.
+    Work/Help/Guard complete its utility role without offensive actions.
+  - Source CR 4 is retained for provenance, not a promise of combat threat; this is a nonattacking utility servant.
+    No equipment or spell slots are copied or created.
+  block: 1 pool / +1 check
+  damage_immunities: Poison, Psychic; Bludgeoning, Piercing and Slashing from Nonmagical Attacks That Are Not Adamantine
+  senses: Darkvision 120 ft., passive Perception 11
+  languages: Understands the languages of its creator but cannot speak
+  xp: 1,100
+  condition_immunities: Charmed; Fatigue; Shaken, Afraid and Terrified; Paralyzed; Petrified; Poisoned
+  summoned_by:
+  - name: Geomorpher's Stone Servant
+    section: spells
+    group: Geomorphy spells
+- name: Colossal Sand Golem
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-colossal-sand-golem
+  meta: Huge elemental, neutral
+  size: Huge
+  type: elemental
+  alignment: neutral
+  cr: '16'
+  ac: 17 (natural armor)
+  hp: '200'
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '24'
+    dex: '8'
+    con: '21'
+    int: '6'
+    wis: '11'
+    cha: '5'
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: Sand Form
+    description: Can move through a 1-inch-wide space without squeezing. A creature that touches it or lands an
+      unblocked melee strike against it while within 5 feet takes 14 (4d6) slashing damage; this automatic contact
+      damage cannot be Blocked.
+  - name: Engulf
+    description: It can enter and stop in a hostile creature's space. The first time it enters a creature's space
+      on a turn, that creature makes a DC 18 Dexterity save. On a failure it takes 14 (4d6) slashing damage; if
+      Large or smaller and no other creature is engulfed, it is also engulfed. On a success it takes no damage and
+      is moved to an adjacent unoccupied space of its choice. An engulfed creature cannot breathe, is Pinned, moves
+      with the golem, and takes 56 (16d6) slashing damage at the start of each golem turn. It can use an action
+      for a DC 18 Strength check, escaping into an adjacent unoccupied space on a success. An adjacent ally can
+      use its action for the same check to pull it free. Engulf ends immediately if the golem reaches 0 HP or is
+      dismissed. Saving-throw-only and ongoing automatic damage cannot be Blocked.
+  actions:
+  - name: Multiattack
+    description: Make two Slam attacks, resolving each attack roll and Block separately.
+  - name: Slam
+    description: 'Melee attack +12; reach 10 ft.; one target; Block DC 20. Unblocked strike: 3d8 + 7 bludgeoning
+      damage.'
+  - name: Sandstorm (Recharge 5-6)
+    description: Each other creature within 60 feet makes a DC 18 Constitution save, taking 22 (4d10) bludgeoning
+      damage on a failure, or half on a success. The area is heavily obscured until the start of its next turn.
+      This saving-throw-only effect cannot be Blocked. After use, roll a d6 at the start of each of its turns, recharging
+      on 5-6.
+  source_ref: draft2.pdf / PDF page 78
+  original_5e:
+    name: Colossal Sand Golem
+    page: 78
+    meta: Huge elemental, neutral
+    ac: 17 (natural armor)
+    hp: '200'
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '24'
+      dex: '8'
+      con: '21'
+      int: '6'
+      wis: '11'
+      cha: '5'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: exhaustion, paralyzed, petrified, poisoned, unconscious
+    senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+    languages: understands the languages of its creator but cannot speak
+    cr: '16'
+    xp: 15,000
+    traits:
+    - name: Sand Form
+      description: The golem can move through a space as narrow as 1 inch wide without squeezing. A creature that
+        touches the golem or hits it with a melee attack while within 5 feet of it takes 14 (4d6) slashing damage.
+        In addition, the golem can enter a hostile creature's space and stop there. The first time it enters a creature's
+        space on a turn, that creature takes 14 (4d6) slashing damage and is engulfed by the golem. The engulfed
+        creature cannot breathe, is restrained, and takes 56 (16d6) slashing damage at the start of each of the
+        golem's turns. When the golem moves, the engulfed creature moves with it. The golem can only have one creature
+        engulfed at a time.
+    actions:
+    - name: Multiattack
+      description: The golem makes two slam attacks.
+    - name: Slam
+      description: 'Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 19 (3d8 + 7) bludgeoning damage.'
+    - name: Sandstorm (Recharge 5-6)
+      description: The golem magically creates a swirling sandstorm in a 60-foot radius centered on itself. Each
+        creature in that area must make a DC 18 Constitution saving throw, taking 22 (4d10) bludgeoning damage on
+        a failed save, or half as much damage on a successful one. The sandstorm lasts until the start of the golem's
+        next turn. The area within the sandstorm is heavily obscured.
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - Source name Colossal Sand Golem retains the actual printed size Huge. Source Slam's printed 19 and 3d8+7 are
+    preserved despite their different mathematical average.
+  - The source engulf had no save, size bound or escape procedure. Completed with DC 18 Dexterity to avoid, Large-or-smaller
+    engulf, one occupant, and an action DC 18 Strength escape/rescue. Current Pinned replaces restrained. Successful
+    avoidance moves the creature outside the occupied space; dismissal/0 HP releases the occupant.
+  - The passive contact trait remains triggered by touching or a melee hit as printed. Sandstorm now explicitly
+    excludes the golem itself; other creatures use the printed save and damage. Parent Sandsoverign defines summon
+    lifetime and count limits.
+  - Use printed Slam dice 3d8 + 7 without the inconsistent printed average 19; original text remains archived. Sand
+    Form retaliation requires an unblocked melee strike or direct contact.
+  block: 0 pool / -1 check
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+  languages: understands the languages of its creator but cannot speak
+  xp: 15,000
+  condition_immunities: Fatigue; Paralyzed; Petrified; Poisoned; Unconscious
+  summoned_by:
+  - name: Sandsoverign
+    section: spells
+    group: Geomorphy spells
+- name: Thorn Spitter
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-thorn-spitter
+  meta: Medium plant, unaligned
+  size: Medium
+  type: plant
+  alignment: unaligned
+  cr: '2'
+  ac: 12 (natural armor)
+  hp: 27 (5d8 + 5)
+  speed: 0 ft.
+  abilities:
+    str: '15'
+    dex: '14'
+    con: '13'
+    int: '6'
+    wis: '12'
+    cha: '7'
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: Rooted summon
+    description: Cannot move from its summoned space. It can still take actions and reactions, but has only the
+      attacks listed here.
+  actions:
+  - name: Thorn Spit
+    description: 'Make one ranged spell attack using its controller''s spell attack bonus; range 60 ft.; one creature;
+      Block DC 8 + that spell attack bonus. Unblocked strike: 4d10 piercing damage. Apply only the damage scaling
+      expressly granted by the linked current Thorn Spitter spell. This action makes one attack, not one attack
+      against every creature in range.'
+  source_ref: draft2.pdf / PDF page 71
+  original_5e:
+    spell_name: Thorn Spitter
+    level: '7'
+    casting_time: 1 bonus action
+    range: 20 feet
+    components: V, S
+    duration: Concentration, up to 1 minute
+    classes: Cleric, Druid, Ranger, Warlock
+    effect: You summon a plant that spits thorns at a creature within 60 feet radius of the plant, dealing 4d10
+      piercing damage.
+    higher_levels: When cast with an 8th-level slot or higher, damage increases by 1d10 for each slot level above
+      7th.
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - The source supplies a persistent plant and damage but no defenses, ability scores, hit resolution or attack
+    frequency. Use the existing Rootbound Stalker chassis as an explicitly selected completion, with speed 0 and
+    only Thorn Spit. CR 2 is provisional; source does not print a creature CR.
+  - Controller spell attack bonus is used directly; do not add the plant's Dexterity or proficiency again. The current
+    parent spell defines its supported level/resource scaling.
+  block: 2 pool / +2 check
+  senses: darkvision 60 ft., passive Perception 13
+  languages: understands its controller's languages but cannot speak
+  damage_vulnerabilities: fire
+  damage_resistances: piercing from nonmagical attacks
+  condition_immunities: Charmed; Shaken, Afraid and Terrified
+  source_completion:
+    baseline: Rootbound Stalker / data/monsters/template.yaml
+    fields: AC 12, HP 27 (5d8+5), six scores 15/14/13/6/12/7, defensive traits and senses from the existing plant;
+      speed set to 0 for a rooted spitter.
+    attack: Source 4d10 damage retained. Missing resolution completed as one caster-bonus ranged spell attack per
+      action, range 60 ft.
+    challenge: Provisional CR 2 estimate for stationary 27 HP plant with one 4d10 ranged attack; not a source CR.
+  summoned_by:
+  - name: Thorn Spitter
+    section: spells
+    group: Geomorphy spells
+- name: Rockplica duplicate
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-rockplica-duplicate
+  meta: Controller-sized construct, unaligned
+  size: Same as controller
+  type: construct
+  alignment: unaligned
+  cr: Varies
+  ac: Controller's AC when created
+  hp: Half the controller's maximum HP when created (round down; minimum 1)
+  block: Shares the controller's remaining Block points and Block check; no second pool
+  speed: Controller's movement speeds when created
+  abilities:
+    str: Controller STR when created
+    dex: Controller DEX when created
+    con: Controller CON when created
+    int: Controller INT when created
+    wis: Controller WIS when created
+    cha: Controller CHA when created
+  senses: Controller's ordinary senses when created; no independently created magic items or ongoing spell effects
+  languages: Controller's spoken languages when created; can provide verbal components
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: Shared finite resources
+    description: Copies the controller's available action options at creation, subject to their ordinary requirements.
+      Any spell slot, MP, HP cost, item charge, ammunition or limited-use resource is spent from the controller's
+      existing supply. It creates no extra items, ammunition, slots, charges or class-feature uses. Costs cannot
+      be paid if that controller resource is unavailable. Its spell actions use the controller's current spell attack
+      and save DC. Concentration is shared with the controller. Because Rockplica already uses that concentration,
+      the duplicate cannot cast a spell that requires concentration. Block points are shared with the controller,
+      not copied into a second pool.
+  - name: Bound duplicate
+    description: Cannot move farther than 30 feet from its controller; if forced beyond that distance, it disappears.
+      It ends at 0 HP, when the parent Rockplica spell ends, or when dismissed by its controller as an action. Each
+      controller has only one; creating another ends the old duplicate. It cannot create another duplicate or summon
+      through a copied action.
+  actions:
+  - name: Copied action
+    description: Take one action available to the controller when created, using that action's printed attack bonus,
+      Block DC, damage and save DC. Attacks and their riders require an unblocked strike; saving-throw-only effects
+      cannot be Blocked. Pay all costs from the controller's shared finite resources. No extra action, bonus action
+      or reaction is gained.
+  source_ref: draft2.pdf / PDF page 57
+  original_5e:
+    spell_name: Rockplica
+    level: '4'
+    casting_time: 1 action
+    range: Self
+    components: V, S
+    duration: Concentration, up to 1 minute
+    classes: Artificer, Sorcerer, Wizard
+    effect: You create a stone duplicate of yourself. The duplicate has half your hit points and can perform any
+      action you can, but it cannot move more than 30 feet from you. The duplicate disappears when it reaches 0
+      hit points or when the spell ends.
+    higher_levels: When cast with a 5th-level slot or higher, the duplicate gains 10 hit points for each slot level
+      above 4th.
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - This is a controller-dependent summon template. Replace each controller field with the actual creating character's
+    value when summoned; no independent six-score profile or XP reward is invented.
+  - For missing template defenses, use a snapshot of the controller's AC, size, movement speeds, ordinary senses,
+    six ability scores and base Block pool/check. Ongoing spell effects and equipment inventory are not copied.
+    It has its own HP but shares remaining Block with the controller; it grants no extra copy of finite resources.
+  - The source half-your-HP wording is completed as half maximum HP at creation, rounded down to minimum 1. The
+    parent spell adds only its expressly granted HP scaling.
+  - Copied actions share the controller's finite resources and cannot recursively create duplicates/summons. These
+    are explicit limits completing the source's otherwise unlimited action-copy wording.
+  - The duplicate may provide verbal components, but shares the controller’s concentration and cannot cast concentration
+    spells while Rockplica already occupies that concentration. Remaining Block is one shared pool; casting the
+    spell does not refill it.
+  summoned_by:
+  - name: Rockplica
+    section: spells
+    group: Geomorphy spells
+- name: Stone illusion duplicate
+  group: Tarta Homebrewery - Summons
+  id: homebrewery-stone-illusion-duplicate
+  meta: Controller-sized construct, unaligned
+  size: Same as controller
+  type: construct
+  alignment: unaligned
+  cr: Varies
+  ac: Controller's AC when created
+  hp: '1'
+  block: Controller's base Block pool and check when created; separate remaining pool
+  speed: Controller's walking speed when created
+  abilities:
+    str: Controller STR when created
+    dex: Controller DEX when created
+    con: Controller CON when created
+    int: Controller INT when created
+    wis: Controller WIS when created
+    cha: Controller CHA when created
+  senses: Controller's ordinary senses when created; no independently created magic items or ongoing spell effects
+  languages: understands its controller's languages but cannot speak
+  traits:
+  - name: Summoned ally
+    description: A summoned ally shares its controller's initiative and acts immediately after the controller. On
+      the controller's turn, a free verbal command specifies its movement and action. Without a command, it takes
+      Dodge and avoids obvious hazards. It has only its listed actions and one normal action, bonus action and reaction;
+      no extra actions are created by an instruction.
+  - name: Noncombat illusion
+    description: Cannot attack, make opportunity attacks, cast spells or activate offensive magic items. It can
+      move, distract, take Dodge or Help on a nonattack task.
+  - name: Bound duplicate
+    description: Created within 30 feet of its controller. Crumbles if more than 60 feet away, reduced to 0 HP,
+      dismissed, or after 1 minute. A controller can have only one Stone illusion duplicate; creating another ends
+      the previous one.
+  actions:
+  - name: Distract or Help
+    description: Perform a harmless visible distraction or use Help for a nonattack ability check within reach,
+      subject to ordinary task requirements. It causes no damage and creates no additional spellcasting.
+  source_ref: draft2.pdf / PDF page 34
+  original_5e:
+    feature: Stone's Illusion
+    class: Earthbound Illusionist rogue, level 13
+    text: At 13th level, you can use your action to create an illusory duplicate of yourself made of stone. The
+      duplicate appears in an unoccupied space you can see within 30 feet of you. The duplicate can move and act
+      as you direct, but it cannot attack or cast spells. If the duplicate is more than 60 feet away from you, it
+      crumbles to dust.
+  conversion_notes:
+  - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
+    below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless explicitly
+    controller-scaled.
+  - Use the current Dexterity-derived Block pool and check. Natural armor grants no equipment training or extra
+    Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked strike;
+    saving-throw-only and automatic effects cannot be Blocked.
+  - 'Source summon initiative and command timing are completed consistently: share the controller''s initiative,
+    act immediately afterward, receive a free verbal command on its turn, and Dodge without orders. Parent feature/spell
+    duration, range, resource cost and dismissal rules still apply.'
+  - This is a controller-dependent summon template. Replace each controller field with the actual creating character's
+    value when summoned; no independent six-score profile or XP reward is invented.
+  - For missing template defenses, use a snapshot of the controller's AC, size, walking speed, ordinary senses,
+    six ability scores and base Block pool/check. Ongoing spell effects and equipment inventory are not copied.
+    It has its own HP and remaining Block; it grants no extra copy of the controller's resources.
+  - The source gives no duration, HP or instance cap. Completed as 1 HP, 1 minute, one instance per controller,
+    and voluntary dismissal as an action. The source no-attack/no-spell restriction and 60-foot separation limit
+    are retained.
+  summoned_by:
+  - name: Stone's Illusion
+    section: rules
+    group: Tarta Homebrewery - Summoning features

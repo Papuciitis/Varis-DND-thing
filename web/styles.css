@@ -548,3 +548,39 @@ td p + p { margin-top: .4rem !important; }
   .monster-stat-body { grid-template-columns: minmax(0,1fr); gap: 0; }
   .monster-combat-column { border: 0; padding: 0; }
 }
+/* Local golem configurations keep the twelve optional infusions out of base traits. */
+.monster-material-infusions { margin-top: .85rem; }
+.monster-infusion-intro { margin: .25rem 0 .6rem; font-size: .9rem; }
+.monster-infusion-configuration { padding: .65rem .75rem; margin-bottom: .5rem; background: #ddc99530; border-left: 3px solid #a67c35; }
+.monster-infusion-summary-title { display: block; font-size: .94rem; }
+.monster-infusion-cost, .monster-infusion-changes { margin: .3rem 0 0; font-size: .89rem; }
+.monster-infusion-active { margin: .5rem 0 0; padding-left: 1.1rem; font-size: .88rem; }
+.monster-infusion-active li + li { margin-top: .35rem; }
+.monster-infusion-picker > summary, .monster-infusion-rules > summary { cursor: pointer; padding-block: .4rem; color: var(--monster-red); font-weight: 600; }
+.monster-infusion-options { padding: 0; margin: 0; border: 0; min-width: 0; }
+.monster-infusion-option { padding: .6rem 0; border-top: 1px solid #b9a37766; }
+.monster-infusion-option-heading { display: grid; grid-template-columns: 2.2rem minmax(0,1fr) auto; gap: .4rem; align-items: center; }
+.monster-infusion-toggle { display: flex; align-items: center; justify-content: center; min-width: 2.2rem; min-height: 2.2rem; cursor: pointer; }
+.monster-infusion-choice { width: 1.15rem; height: 1.15rem; margin: .2rem; accent-color: #8c2520; cursor: pointer; }
+.monster-infusion-choice:disabled { cursor: default; opacity: .45; }
+.monster-infusion-choice:focus-visible { outline: 2px solid #8c2520; outline-offset: 3px; }
+.monster-parchment :is(.monster-material-link,.monster-creation-link) { color: #8c2520; text-decoration: underline; text-decoration-color: #8c252066; text-underline-offset: .16em; }
+.monster-parchment :is(.monster-material-link,.monster-creation-link):hover { text-decoration-color: currentColor; }
+.monster-parchment :is(.monster-material-link,.monster-creation-link):focus-visible { outline: 2px solid #8c2520; outline-offset: 3px; }
+.monster-material-link { font-weight: 700; }
+.monster-infusion-price { font-size: .8rem; white-space: nowrap; }
+.monster-infusion-effect { margin: .3rem 0 0 2.6rem; font-size: .86rem; line-height: 1.45; }
+.monster-infusion-rules > :not(summary) { font-size: .88rem; }
+@media print {
+  .monster-infusion-picker { display: none; }
+  .monster-infusion-configuration { break-inside: avoid; }
+}
+
+.monster-material-infusions { border-top: 1px solid var(--monster-rule); padding-top: .3rem; }
+.monster-infusion-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; }
+.monster-infusion-active { columns: 2; column-gap: 1.5rem; }
+.monster-infusion-active > li { break-inside: avoid; }
+@media (max-width: 700px) {
+  .monster-infusion-options { grid-template-columns: minmax(0,1fr); }
+  .monster-infusion-active { columns: 1; }
+}

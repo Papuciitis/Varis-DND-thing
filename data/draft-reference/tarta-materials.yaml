@@ -1,0 +1,599 @@
+section: rules
+entries:
+- name: Neodrakite
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 300 gp.
+  sections:
+  - heading: Golem infusion
+    body: As an action, the golem creates a magnetic pulse affecting metallic objects within 10 feet. It may move
+      unattended metal objects up to 10 feet toward or away from itself. A creature holding a targeted metal item
+      makes a DC 14 Strength save; on failure, it drops one such item in its space. The pulse does not move or damage
+      the creature. This saving-throw-only effect cannot be Blocked. Only loose handheld objects weighing at most
+      50 pounds each may be moved; anchored objects, structures and worn armor are unaffected. A held weapon uses
+      the printed disarm save.
+  - heading: Weapon infusion
+    body: As an action while wielding the infused weapon, create a magnetic pulse affecting metallic objects within
+      10 feet. Move unattended metal objects up to 10 feet toward or away from you. A creature holding a targeted
+      metal item makes a DC 16 Strength save; on failure, it drops one such item in its space. The pulse does not
+      move or damage the creature and cannot be Blocked. Only loose handheld objects weighing at most 50 pounds
+      each may be moved; anchored objects, structures and worn armor are unaffected. A held weapon uses the printed
+      disarm save.
+  - heading: Bastion aura
+    body: As an action while within 20 feet of your Bastion, create the weapon infusion magnetic pulse centered
+      on the Bastion, with a 20-foot radius and DC 16 Strength save. Unattended metal objects move up to 10 feet
+      toward or away from the Bastion; holders that fail drop one targeted metal item in their space. The pulse
+      does not move creatures and cannot be Blocked. Only loose handheld objects weighing at most 50 pounds each
+      may be moved; anchored objects, structures and worn armor are unaffected. A held weapon uses the printed disarm
+      save.
+  source_golem_option:
+    selectable: true
+    cost_gp: 300
+    effect: As an action, the golem creates a magnetic pulse affecting metallic objects within 10 feet. It may move
+      unattended metal objects up to 10 feet toward or away from itself. A creature holding a targeted metal item
+      makes a DC 14 Strength save; on failure, it drops one such item in its space. The pulse does not move or damage
+      the creature. This saving-throw-only effect cannot be Blocked. Only loose handheld objects weighing at most
+      50 pounds each may be moved; anchored objects, structures and worn armor are unaffected. A held weapon uses
+      the printed disarm save.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 300
+      effect: Allows the Golem to pull or push metallic objects within a 10-foot radius
+    weapon_infusion: Metallic objects within 10 feet are pulled or repelled. Creatures holding these objects must
+      succeed on a DC 16 Strength saving throw or be disarmed.
+    bastion_aura: Metallic objects within 20 feet are pulled or repelled. Creatures holding these objects must succeed
+      on a DC 16 Strength saving throw or be disarmed.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source omitted magnetic activation and object displacement. Use an action for each pulse, a 10-foot object
+    displacement, and a dropped held item rather than forced movement of the holder. The golem uses DC 14; Earthwarden
+    applications preserve DC 16.
+  - Magnetic movement is limited to loose handheld objects up to 50 pounds each, excluding structures, anchored
+    objects and worn armor. This completes the source object-size omission without moving vehicles or fortifications.
+- name: Cerithal Stone
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 200 gp.
+  sections:
+  - heading: Golem infusion
+    body: Each ground space the golem leaves while moving becomes difficult terrain until the start of its next
+      turn. The trail occupies the spaces the golem occupied; overlapping trail spaces do not multiply movement
+      costs. It affects creatures on the ground, not flying creatures.
+  - heading: Weapon infusion
+    body: After an unblocked strike with the infused weapon, ground within 5 feet of the struck target becomes difficult
+      terrain until the start of your next turn. Overlapping areas do not multiply movement costs.
+  - heading: Bastion aura
+    body: Ground within 20 feet of the Bastion is difficult terrain for the Bastion's duration. Overlapping difficult
+      terrain does not multiply movement costs.
+  source_golem_option:
+    selectable: true
+    cost_gp: 200
+    effect: Each ground space the golem leaves while moving becomes difficult terrain until the start of its next
+      turn. The trail occupies the spaces the golem occupied; overlapping trail spaces do not multiply movement
+      costs. It affects creatures on the ground, not flying creatures.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 200
+      effect: Leaves a trail of difficult terrain.
+    weapon_infusion: Weapon strikes make a 5-foot radius area difficult terrain.
+    bastion_aura: Ground in a 20-foot radius becomes difficult terrain.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source omitted trail and weapon-terrain persistence. Use the occupied ground spaces and a duration until
+    the creator's next turn. The Bastion terrain lasts while the Bastion does.
+- name: Lanthara Crystal
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 400 gp.
+  sections:
+  - heading: Golem infusion
+    body: Increase the golem's Armor Class by 2 while this infusion is present. The ordinary Geochemical Golem AC
+      16 becomes AC 18. This does not add Block, armor training or damage reduction.
+  - heading: Weapon infusion
+    body: The infused weapon emits bright light in a 20-foot radius and dim light for another 20 feet while wielded.
+      This is illumination, not radiant damage.
+  - heading: Bastion aura
+    body: The Bastion sheds bright light in a 40-foot radius for its duration. It causes no radiant damage.
+  source_golem_option:
+    selectable: true
+    cost_gp: 400
+    effect: Increase the golem's Armor Class by 2 while this infusion is present. The ordinary Geochemical Golem
+      AC 16 becomes AC 18. This does not add Block, armor training or damage reduction.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 400
+      effect: Enhances the golem's density, increasing its Armor Class by 2.
+    weapon_infusion: Weapon emits bright light in a 20-foot radius and dim light for an additional 20 feet.
+    bastion_aura: Bastion illuminates a 40-foot radius.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source Bastion gives a radius without a light category; bright light supplies a defined illumination effect.
+    Extra AC is not additional Block.
+- name: Samarkium Ore
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 250 gp.
+  sections:
+  - heading: Golem infusion
+    body: At the start of the golem's turn, each other creature within 5 feet takes 1d6 poison damage. This automatic
+      cloud affects allies as well as enemies, permits no save, does not itself apply Poisoned, and cannot be Blocked.
+  - heading: Weapon infusion
+    body: After an unblocked strike with the infused weapon, the struck creature makes a DC 16 Constitution save.
+      On failure, it takes an additional 1d6 poison damage and becomes Poisoned until the end of its next turn.
+      On success, neither rider applies. The save does not allow a Block against the poison after an unblocked strike.
+  - heading: Bastion aura
+    body: A creature that starts its turn within 20 feet of the Bastion makes a DC 16 Constitution save. On failure,
+      it takes 1d6 poison damage and is Poisoned until the end of that turn; on success, neither effect applies.
+      Allies and enemies are affected. This saving-throw-only effect cannot be Blocked.
+  source_golem_option:
+    selectable: true
+    cost_gp: 250
+    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 poison damage. This automatic
+      cloud affects allies as well as enemies, permits no save, does not itself apply Poisoned, and cannot be Blocked.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 250
+      effect: Emits a noxious cloud, dealing 1d6 poison Damage to creatures in 5 feet radius.
+    weapon_infusion: Struck creatures make a DC 16 Constitution saving throw or take an additional 1d6 poison damage
+      and are poisoned until the end of their next turn.
+    bastion_aura: Creatures within 20 feet make a DC 16 Constitution saving throw at the start of their turn or
+      take 1d6 poison damage and are poisoned for the turn.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source golem cloud omitted its trigger and save. Resolve it automatically at the start of the golem's turn,
+    without adding a Poisoned rider that the golem source does not grant. The Bastion phrase for the turn means
+    until the end of the affected creature's current turn.
+- name: Euralite Gem
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 150 gp.
+  sections:
+  - heading: Golem infusion
+    body: The golem sheds bright light in a 20-foot radius and dim light for another 20 feet. It causes no damage.
+  - heading: Weapon infusion
+    body: The wielded infused weapon sheds bright light in a 20-foot radius and dim light for another 20 feet. It
+      causes no damage.
+  - heading: Bastion aura
+    body: The Bastion sheds bright light in a 20-foot radius and dim light for another 20 feet for its duration.
+      It causes no damage.
+  source_golem_option:
+    selectable: true
+    cost_gp: 150
+    effect: The golem sheds bright light in a 20-foot radius and dim light for another 20 feet. It causes no damage.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 150
+      effect: Grants the golem the ability to emit bright light in a 20-foot radius and dim light for an additional
+        20 feet.
+    weapon_infusion: Weapon illuminates surroundings.
+    bastion_aura: Bastion glows, illuminating surroundings.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The weapon and Bastion source omit light radii. Use the golem's printed 20-foot bright plus 20-foot dim illumination
+    for both.
+- name: Gadolix Shard
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 350 gp.
+  sections:
+  - heading: Golem infusion
+    body: Each unblocked Slam strike by the golem deals an additional 1d8 fire damage. The fire is part of the blockable
+      attack, so a successful Block negates this rider with the Slam.
+  - heading: Weapon infusion
+    body: Each unblocked strike with the infused weapon deals an additional 1d8 fire damage. This is part of that
+      blockable attack.
+  - heading: Bastion aura
+    body: A creature that starts its turn within 20 feet of the Bastion takes 1d8 fire damage. This automatic aura
+      affects allies and enemies, permits no save, and cannot be Blocked.
+  source_golem_option:
+    selectable: true
+    cost_gp: 350
+    effect: Each unblocked Slam strike by the golem deals an additional 1d8 fire damage. The fire is part of the
+      blockable attack, so a successful Block negates this rider with the Slam.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 350
+      effect: Radiates intense heat, dealing extra 1d8 fire damage with Slam attack.
+    weapon_infusion: Weapon deals an additional 1d8 fire damage.
+    bastion_aura: Creatures within 20 feet take 1d8 fire damage at the start of their turn.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+- name: Ytriun Metal
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 300 gp.
+  sections:
+  - heading: Golem infusion
+    body: At the start of the golem's turn, each other creature within 5 feet takes 1d6 fire damage. This automatic
+      heat affects allies and enemies, permits no save, and cannot be Blocked.
+  - heading: Weapon infusion
+    body: At the start of your turn while wielding the infused weapon, each other creature within 5 feet of you
+      takes 1d6 fire damage. This automatic heat affects allies and enemies, permits no save, and cannot be Blocked.
+  - heading: Bastion aura
+    body: A creature that starts its turn within 20 feet of the Bastion takes 1d6 fire damage. This automatic heat
+      affects allies and enemies, permits no save, and cannot be Blocked.
+  source_golem_option:
+    selectable: true
+    cost_gp: 300
+    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 fire damage. This automatic
+      heat affects allies and enemies, permits no save, and cannot be Blocked.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 300
+      effect: Grants the golem the ability to radiate heat, dealing 1d6 fire damage to creatures within 5 feet at
+        the start of each of the golem's turns.
+    weapon_infusion: Creatures within 5 feet at the start of your turn take 1d6 fire damage.
+    bastion_aura: Creatures within 20 feet take 1d6 fire damage at the start of their turn.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The golem and weapon heat exclude the originating golem or wielder itself; they do not exempt nearby allies.
+- name: Erbion Essence
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 450 gp.
+  sections:
+  - heading: Golem infusion
+    body: As an action once on its turn, the golem touches itself or an ally and restores 1d8 HP to that creature,
+      up to its maximum HP. It cannot use this action more than once during the same turn.
+  - heading: Weapon infusion
+    body: As a bonus action once on your turn while wielding the infused weapon, touch a creature and restore 1d8
+      HP to it, up to its maximum HP.
+  - heading: Bastion aura
+    body: An ally of the Bastion's creator that starts its turn within 20 feet of the Bastion regains 1d8 HP, up
+      to its maximum HP. The creator counts as an ally of itself for this effect. A creature benefits from this
+      Bastion's healing only once per turn.
+  source_golem_option:
+    selectable: true
+    cost_gp: 450
+    effect: As an action once on its turn, the golem touches itself or an ally and restores 1d8 HP to that creature,
+      up to its maximum HP. It cannot use this action more than once during the same turn.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 450
+      effect: Enhances the golem's healing capabilities, allowing it to heal itself or an ally within touch range
+        for 1d8 hit points once per turn.
+    weapon_infusion: Once per turn, as a bonus action, touch to heal a creature for 1d8 hit points.
+    bastion_aura: Allies within 20 feet heal 1d8 hit points at the start of their turn.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source golem healing omitted an action cost. Use an action on its own turn, keeping the once-per-turn limit.
+    Healing does not raise HP above the recipient's maximum.
+- name: Thulmara Dust
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 200 gp.
+  sections:
+  - heading: Golem infusion
+    body: At the start of the golem's turn, enemies within 10 feet have their movement speeds reduced by 10 feet,
+      to a minimum of 0, until the start of the golem's next turn. This speed reduction does not stack with itself.
+      It is not the old slow spell and does not grant a saving throw or a separate condition.
+  - heading: Weapon infusion
+    body: After an unblocked strike with the infused weapon, the struck creature makes a DC 16 Constitution save.
+      On failure, its movement speeds are reduced by 10 feet, to a minimum of 0, until the end of its next turn.
+      On success, the rider does not apply. Repeated applications do not stack.
+  - heading: Bastion aura
+    body: A creature that starts its turn within 20 feet of the Bastion makes a DC 16 Constitution save. On failure,
+      its movement speeds are reduced by 10 feet, to a minimum of 0, until the end of that turn; on success, the
+      rider does not apply. Allies and enemies are affected. Repeated applications do not stack.
+  source_golem_option:
+    selectable: true
+    cost_gp: 200
+    effect: At the start of the golem's turn, enemies within 10 feet have their movement speeds reduced by 10 feet,
+      to a minimum of 0, until the start of the golem's next turn. This speed reduction does not stack with itself.
+      It is not the old slow spell and does not grant a saving throw or a separate condition.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 200
+      effect: Grants the golem the ability to emit a chilling aura, slowing enemies within 10 feet by 10 feet of
+        movement until the start of the golem's next turn.
+    weapon_infusion: Struck creatures make a DC 16 Constitution saving throw or have their speed reduced by 10 feet
+      until the end of their next turn.
+    bastion_aura: Creatures within 20 feet make a DC 16 Constitution saving throw at the start of their turn or
+      have their speed reduced by 10 feet for the turn.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source golem aura omitted its trigger; use the start of the golem's turn. The precise printed 10-foot reduction
+    is retained rather than converting it to Hobbled, whose current effects are different.
+- name: Holmara Rock
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 400 gp.
+  sections:
+  - heading: Golem infusion
+    body: Add +2 to the golem's melee attack rolls and melee damage rolls. Its ordinary Slam becomes +9 to hit,
+      Block DC 17, and 2d8 + 6 bludgeoning damage. This does not improve ranged attacks, saving-throw DCs, Armor
+      Class or Block checks.
+  - heading: Weapon infusion
+    body: Each unblocked strike with the infused weapon deals an additional 1d6 bludgeoning damage. This is part
+      of that blockable attack.
+  - heading: Bastion aura
+    body: Allies of the Bastion's creator within 20 feet gain +1 to attack rolls and attack damage rolls. The creator
+      counts as its own ally. The bonus ends immediately on leaving the aura and does not stack with another instance
+      of this same Bastion effect.
+  source_golem_option:
+    selectable: true
+    cost_gp: 400
+    effect: Add +2 to the golem's melee attack rolls and melee damage rolls. Its ordinary Slam becomes +9 to hit,
+      Block DC 17, and 2d8 + 6 bludgeoning damage. This does not improve ranged attacks, saving-throw DCs, Armor
+      Class or Block checks.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 400
+      effect: Enhances the golem's physical strength, adding +2 to its melee attack and damage rolls.
+    weapon_infusion: Weapon deals an additional 1d6 bludgeoning damage.
+    bastion_aura: Allies within 20 feet gain a +1 bonus to attack and damage rolls.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source golem's strength wording grants the printed +2 melee attack/damage bonus, not an additional increase
+    to its Strength score. The ordinary +7 Slam becomes +9, so its ordinary Block DC becomes 17.
+- name: Dyspraxium Salt
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 350 gp.
+  sections:
+  - heading: Golem infusion
+    body: As a bonus action once on its turn, the golem becomes incorporeal until the end of that turn. During its
+      movement, it may pass through creatures and objects as difficult terrain. It must finish in an unoccupied
+      space outside solid matter. If it ends inside solid matter, it takes 5 force damage that cannot be Blocked
+      and moves to the nearest unoccupied space outside that matter. This does not otherwise grant damage resistance
+      or immunity.
+  - heading: Weapon infusion
+    body: Once on your turn while wielding the infused weapon, you may move up to 10 feet through creatures and
+      objects as difficult terrain. This uses your movement and is not a teleport. You must finish in an unoccupied
+      space outside solid matter; if you do not, take 5 force damage that cannot be Blocked and move to the nearest
+      unoccupied space outside that matter. No other resistance or immunity is granted.
+  - heading: Bastion aura
+    body: Once on its turn, an ally of the Bastion's creator that is within 20 feet of the Bastion may move up to
+      10 feet through creatures and objects as difficult terrain, using its movement. The creator counts as its
+      own ally. It must finish in an unoccupied space outside solid matter; otherwise it takes 5 force damage that
+      cannot be Blocked and moves to the nearest unoccupied space outside that matter. This grants no other resistance
+      or immunity.
+  source_golem_option:
+    selectable: true
+    cost_gp: 350
+    effect: As a bonus action once on its turn, the golem becomes incorporeal until the end of that turn. During
+      its movement, it may pass through creatures and objects as difficult terrain. It must finish in an unoccupied
+      space outside solid matter. If it ends inside solid matter, it takes 5 force damage that cannot be Blocked
+      and moves to the nearest unoccupied space outside that matter. This does not otherwise grant damage resistance
+      or immunity.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 350
+      effect: Grants the golem the ability to temporarily become incorporeal, allowing it to move through other
+        creatures and objects as if they were difficult terrain.
+    weapon_infusion: Once per turn, become incorporeal, moving through objects and creatures as difficult terrain
+      for 10 feet.
+    bastion_aura: Allies within 20 feet can move through objects and creatures as difficult terrain for up to 10
+      feet once per turn.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source golem omitted activation and duration; use a bonus action until the end of its own turn. All three
+    contexts require an unoccupied exit; the 5 force damage and nearest-space displacement complete an otherwise
+    undefined end-inside-matter outcome. No general incorporeal damage defenses are inferred.
+- name: Terbithal Resin
+  group: Tarta Homebrewery - Materials
+  description: A rare material with distinct Geochemical Golem, infused-weapon and Geomorphic Bastion applications.
+    Its Geochemical Golem component costs 300 gp.
+  sections:
+  - heading: Golem infusion
+    body: After an unblocked Geochemical Blast strike, its target makes a DC 14 Constitution save. On failure, the
+      target is Blinded until the end of its next turn; on success, it is not Blinded. The Blast's ordinary damage
+      is unchanged. A successful Block against the Blast prevents both its damage and this rider.
+  - heading: Weapon infusion
+    body: After an unblocked strike with the infused weapon, the struck creature makes a DC 16 Constitution save.
+      On failure, it is Blinded until the end of its next turn; on success, it is not Blinded.
+  - heading: Bastion aura
+    body: An enemy that starts its turn within 20 feet of the Bastion makes a DC 16 Constitution save. On failure,
+      it is Blinded until the end of that turn; on success, it is not Blinded. This saving-throw-only effect cannot
+      be Blocked.
+  source_golem_option:
+    selectable: true
+    cost_gp: 300
+    effect: After an unblocked Geochemical Blast strike, its target makes a DC 14 Constitution save. On failure,
+      the target is Blinded until the end of its next turn; on success, it is not Blinded. The Blast's ordinary
+      damage is unchanged. A successful Block against the Blast prevents both its damage and this rider.
+  source_ref: draft2.pdf / PDF pages 28 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    golem_infusion:
+      cost_gp: 300
+      effect: Enhances the golem's Geochemical Blast, adding a blinding effect on a failed Constitution saving throw.
+    weapon_infusion: Struck creatures make a DC 16 Constitution saving throw or are blinded until the end of their
+      next turn.
+    bastion_aura: Enemies within 20 feet make a DC 16 Constitution saving throw at the start of their turn or are
+      blinded for the turn.
+  conversion_notes:
+  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
+    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
+    Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
+  - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
+    innate traits of a material dragon. Current rest durations apply whenever a source feature refers to a short
+    or long rest.
+  - The source golem omitted its Constitution save DC and blindness duration. Use DC 14 and the end of the target's
+    next turn, matching the source weapon rider's timing. A hit-dependent blinding rider requires an unblocked strike
+    under the current rules.
+- name: Geochemical Golem infusion options
+  group: Tarta Homebrewery - Materials
+  description: Configure one Geochemical Golem when casting its creating spell. These infusions alter that golem;
+    each selected material does not create another creature.
+  sections:
+  - heading: Choose the infusion context
+    body: A golem uses only the Golem infusion section of each selected material. Geomorphic Infusion and Geomorphic
+      Bastion are separate level-18 Earthwarden features with their own Weapon infusion and Bastion aura sections.
+      Their effects are not automatically added to the golem or to a material dragon.
+  - heading: Materials and total cost
+    body: 'Choose one to four different materials. Add their listed gp costs. The consumed mixture costs the greater
+      of 1,000 gp or that sum, plus 400 gp if a third material is selected, plus another 2,000 gp if a fourth material
+      is selected. This is one consumed material expenditure for the creating spell. Two materials add no combination
+      surcharge. Each chosen material must be present at its full listed value; repeating a material does not stack
+      its effect. Example: Neodrakite (300 gp) and Lanthara Crystal (400 gp) cost 1,000 gp total; adding Erbion
+      Essence (450 gp) raises the total to 1,550 gp; adding Holmara Rock (400 gp) raises it to 3,950 gp.'
+  - heading: Duration and changes
+    body: The chosen infusions last for this golem's lifetime and end when it is destroyed, dismissed or its creating
+      spell ends. Choose them during creation; they cannot be swapped later without creating another golem and paying
+      that spell's material cost. Material prices here describe the consumed spell components, not a general market
+      price for equipment.
+  - heading: Rules shared by infusion effects
+    body: The ordinary Geochemical Golem's infusion save DC is 14. The Earthwarden weapon and Bastion save DC is
+      16 where printed. Attacks and their attached damage or condition riders require an unblocked strike. Automatic
+      aura damage and saving-throw-only effects cannot be Blocked. A source that says allies or enemies uses that
+      restriction; otherwise damaging auras affect allies as well as enemies, excluding the originating golem or
+      weapon wielder itself. Identical named bonuses or terrain effects do not stack.
+  - heading: Earthwarden weapon and Bastion use
+    body: A character with the Earthwarden level-18 Geomorphic Infusion feature can infuse one weapon with one chosen
+      material during a short or long rest. That infusion lasts until this feature changes it or the character ceases
+      to possess it. Geomorphic Bastion is an action creating an inanimate stone structure 10 feet in diameter and
+      up to 30 feet tall. It lasts 10 minutes or until the creator dismisses it as a bonus action. Its aura is the
+      Bastion aura of the material infused into the creator's weapon when it is formed. After forming a Bastion,
+      finish a long rest before using that feature again. Current short- and long-rest durations apply. The Bastion
+      is an object, not a summoned creature.
+  source_ref: draft2.pdf / PDF pages 28, 61 and 62
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    elemental_infusion: You can customize the golem's abilities based on the situation and your preference. You
+      need to have atleast full worth of one element, to gain the effect. You can combine and mix the elements,
+      if you want to.
+    basic_combination: You can combine up to two different elements for the base casting cost of the spell. The
+      total cost would be the sum of the individual elements chosen.
+    advanced_combination: For additional element beyond two, you can add a third element for an additional 400 gp,
+      the forth element for an additional 2000 gp.
+    spell_materials: A mixture of rare earth elements worth at least 1,000 gp, which the spell consumes.
+    geomorphic_bastion: As an action, you can command the earth to form a towering bastion of stone. This structure
+      stands 10 feet in diameter and reaches up to 30 feet in height, serving as a vantage point or protective barrier.
+      The bastion remains for 10 minutes or until you dismiss it as a bonus action. If your weapon is infused with
+      a rare-earth material, the bastion emanates an aura reflecting that material's properties. After manifesting
+      the bastion, you must complete a long rest before using this feature again.
+  conversion_notes:
+  - Resolve the source's summed component prices versus its 1,000 gp spell-material minimum using max(1,000, sum
+    of selected costs), then add the printed combination surcharges. This avoids charging the minimum twice and
+    never permits a mixture below the spell's printed minimum.
+  - Choose at least one and at most four distinct materials. The source supplies surcharge rules only through the
+    fourth material; no larger combination is inferred.
+  - Duration, no duplicate stacking and no changing the selection on an existing golem are explicit completions
+    of omitted source limits.
+  - The source weapon infusion has no end condition. Treat it as one chosen material on one weapon until replaced
+    by the feature or lost. Golem-only component prices are not imposed on the class feature because its source
+    specifies no cost.
+  - No creature statblock is assigned to the Bastion. Its geometric shape and duration are retained; resolving object
+    damage uses the table's ordinary object rules.
+- name: Moissanite
+  group: Tarta Homebrewery - Materials
+  description: Moissanite supplies the reflective theme of the paladin's Earth's Embrace feature. It is not one
+    of the twelve Geochemical Golem infusion choices and has no component price in this source.
+  sections:
+  - heading: Earth's Embrace
+    body: A paladin with this level-15 source feature can use a reaction when the paladin or another creature within
+      30 feet would take damage. The protected creature gains resistance to all damage against that triggering damage
+      and until the start of the paladin's next turn. After applying all reductions, resistance and other prevention,
+      an attacker responsible for the triggering damage takes damage of the same type equal to half the damage actually
+      dealt to the protected creature, rounded down. Damage from an environmental source without an attacker is
+      not reflected. This automatic reflected damage cannot be Blocked or reflected again by Earth's Embrace. The
+      feature has three uses, all restored after a short or long rest; use current rest durations.
+  - heading: Material context
+    body: This record documents the source class feature. Carrying a moissanite gem does not grant the reaction,
+      and this entry does not add a thirteenth Geochemical Golem material option. No general purchase price or dragon
+      trait is supplied.
+  source_ref: draft2.pdf / PDF page 32
+  source_attribution: The Tarta Guide - The Homebrewery, author nerak, draft2.pdf. User-provided Homebrewery export.
+  source_original:
+    earths_embrace: At 15th level, your bond with the earth's gemstones allows you to harness the reflective properties
+      of moissanite to shield your allies. When you or a creature within 30 feet of you takes damage, you can use
+      your reaction to envelop the target in a shimmering shield of refractive energy. The protected creature gains
+      resistance to all damage until the start of your next turn. Additionally, the attacker takes damage equal
+      to half the damage dealt to the protected creature. You can use this ability 3 times per short or long rest.
+  conversion_notes:
+  - Resolve the reaction before the triggering damage so the new resistance protects against that damage as well
+    as subsequent damage before the next turn.
+  - Reflected damage equals half the actual damage suffered after prevention, rounded down, and has the triggering
+    damage's type. No reflection occurs after a successful Block that prevents all triggering damage.
+  - The source omitted reflection type, rounding and loops. Retain the triggering type, round down, and forbid this
+    feature from reflecting its own reflection again.

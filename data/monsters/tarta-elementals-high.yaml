@@ -1,0 +1,1385 @@
+section: monsters
+entries:
+- name: Obsidian Obliterator
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-obsidian-obliterator
+  meta: Large elemental, neutral
+  size: Large
+  type: elemental
+  alignment: neutral
+  cr: '3'
+  xp: '700'
+  ac: 16 (natural armor)
+  hp: '75'
+  speed: 25 ft., burrow 25 ft.
+  abilities:
+    str: '20'
+    dex: '10'
+    con: '16'
+    int: '3'
+    wis: '11'
+    cha: '6'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 10
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Obsidian Spikes
+    description: When the elemental takes damage from an unblocked melee strike, the attacker takes 2d6 piercing
+      damage. This automatic retaliation cannot be Blocked.
+  actions:
+  - name: Spike Launch
+    description: 'Ranged attack +7, range 30/90 ft., one target; Block DC 15. Unblocked strike: 3d6 + 5 piercing
+      damage. A creature struck makes a DC 14 Constitution save; on failure its movement speed is halved until the
+      end of its next turn.'
+  source_ref: draft2.pdf / PDF page 20
+  original_5e:
+    name: Obsidian Obliterator
+    meta: Large earth elemental, neutral
+    cr: '3'
+    xp: '700'
+    ac: 16 (natural armor)
+    hp: 75 (10d10 + 15)
+    speed: 25 ft., burrow 25 ft.
+    abilities:
+      str: '20'
+      dex: '10'
+      con: '16'
+      int: '3'
+      wis: '11'
+      cha: '6'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 10
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Obsidian Spikes
+      description: When the Obsidian Obliterator is hit by a melee attack, the attacker takes 7 (2d6) piercing damage.
+    actions:
+    - name: Spike Launch
+      description: 'Ranged Weapon Attack: +7 to hit, range 30/90 ft., one target. Hit: 15 (3d6 + 5) piercing damage.
+        If the target is a creature, it must succeed on a DC 14 Constitution saving throw or have its movement speed
+        halved.'
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 20. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Spike Launch's missing duration is completed as ending at the end of the struck creature's next turn; repeated
+    applications do not stack. Obsidian Spikes follows the unblocked-strike damage rule.
+  block: 0 pool / +0 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Granite Goliath
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-granite-goliath
+  meta: Large elemental, neutral
+  size: Large
+  type: elemental
+  alignment: neutral
+  cr: '4'
+  xp: '1100'
+  ac: 17 (natural armor)
+  hp: '110'
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '22'
+    dex: '8'
+    con: '19'
+    int: '5'
+    wis: '12'
+    cha: '7'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  actions:
+  - name: Ground Pound
+    description: 'Each other creature within 10 feet makes a DC 16 Strength save. Failure: 3d8 + 5 bludgeoning damage
+      and Prone. Success: half damage and no Prone. This saving-throw-only effect cannot be Blocked.'
+  source_ref: draft2.pdf / PDF page 20
+  original_5e:
+    name: Granite Goliath
+    meta: Large earth elemental, neutral
+    cr: '4'
+    xp: '1100'
+    ac: 17 (natural armor)
+    hp: 110 (13d10 + 39)
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '22'
+      dex: '8'
+      con: '19'
+      int: '5'
+      wis: '12'
+      cha: '7'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 11
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Granite Guard
+      description: When the Granite Goliath is targeted by a direct attack or spell, it can use its reaction to
+        gain resistance to that damage type until the end of its next turn.
+    actions:
+    - name: Ground Pound
+      description: All creatures within 10 ft. must make a DC 16 Strength saving throw or be knocked prone and take
+        14 (3d8 + 5) bludgeoning damage. On a successful save, they take half damage and aren't knocked prone.
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 20. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Granite Guard is a reaction. Against a mixed-damage trigger choose one damage type; resistance does not stack.
+    Ground Pound excludes the acting elemental itself.
+  block: 0 pool / -1 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  reactions:
+  - name: Granite Guard
+    description: When directly targeted by a damaging attack or spell, use a reaction before resolving the damage
+      to gain resistance to one damage type that effect deals. It lasts until the end of the elemental's next turn.
+      Merely being inside an area effect does not trigger it.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Diamond Devastator
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-diamond-devastator
+  meta: Huge elemental, neutral
+  size: Huge
+  type: elemental
+  alignment: neutral
+  cr: '5'
+  xp: '1800'
+  ac: 18 (natural armor)
+  hp: '137'
+  speed: 30 ft., burrow 30 ft., swim 40 ft.
+  abilities:
+    str: '23'
+    dex: '10'
+    con: '20'
+    int: '6'
+    wis: '13'
+    cha: '8'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Hold Breath
+    description: The elemental can hold its breath for 15 minutes.
+  actions:
+  - name: Refractive Ray
+    description: 'Ranged attack +8, range 60 ft., one target; Block DC 16. Unblocked strike: 4d10 radiant damage.'
+  source_ref: draft2.pdf / PDF page 21
+  original_5e:
+    name: Diamond Devastator
+    meta: Huge earth elemental, neutral
+    cr: '5'
+    xp: '1800'
+    ac: 18 (natural armor)
+    hp: 137 (15d12 + 45)
+    speed: 30 ft., burrow 30 ft., swim 40 ft.
+    abilities:
+      str: '23'
+      dex: '10'
+      con: '20'
+      int: '6'
+      wis: '13'
+      cha: '8'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 11
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Hold Breath
+      description: The elemental can hold its breath for 15 minutes.
+    - name: Diamond Defense
+      description: When the Diamond Devastator is hit by an attack, it can reflect the damage back, dealing the
+        attacker half the damage it took.
+    actions:
+    - name: Refractive Ray
+      description: 'Ranged Spell Attack: +8 to hit, range 60 ft., one target. Hit: 22 (4d10) radiant damage.'
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 21. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - 'Diamond Defense had no resource cost. Completion: a reaction reflects half of post-mitigation damage as radiant
+    damage, rounded down; reflection cannot recurse. Refractive Ray is a self-contained creature power, not a spell
+    requiring a slot.'
+  block: 0 pool / +0 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  reactions:
+  - name: Diamond Defense
+    description: When the elemental takes damage from an unblocked attack, it may use its reaction to deal the attacker
+      radiant damage equal to half the damage actually suffered, rounded down. This automatic reflection cannot
+      be Blocked and cannot trigger another damage-reflection ability.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Obsidian Monolith
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-obsidian-monolith
+  meta: Huge elemental, neutral
+  size: Huge
+  type: elemental
+  alignment: neutral
+  cr: '6'
+  xp: '2300'
+  ac: 18 (natural armor)
+  hp: '152'
+  speed: 25 ft., burrow 25 ft.
+  abilities:
+    str: '24'
+    dex: '8'
+    con: '21'
+    int: '5'
+    wis: '14'
+    cha: '9'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 12
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Obsidian Aura
+    description: At the start of its turn, each other creature within 10 feet takes 3d6 fire damage. This automatic
+      damage cannot be Blocked.
+  - name: Siege Monster
+    description: The elemental deals double damage to objects and structures.
+  actions:
+  - name: Lava Burst
+    description: Choose a point the elemental can see within 60 feet. Each creature in a 10-foot-radius sphere centered
+      there makes a DC 17 Dexterity save, taking 8d6 fire damage on failure, or half on success. This saving-throw-only
+      effect cannot be Blocked.
+  source_ref: draft2.pdf / PDF page 21
+  original_5e:
+    name: Obsidian Monolith
+    meta: Huge earth elemental, neutral
+    cr: '6'
+    xp: '2300'
+    ac: 18 (natural armor)
+    hp: 152 (16d12 + 48)
+    speed: 25 ft., burrow 25 ft.
+    abilities:
+      str: '24'
+      dex: '8'
+      con: '21'
+      int: '5'
+      wis: '14'
+      cha: '9'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 12
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Obsidian Aura
+      description: At the start of each of its turns, the Obsidian Monolith deals 10 (3d6) fire damage to any creature
+        within 10 feet of it.
+    - name: Siege Monster
+      description: The elemental deals double damage to objects and structures.
+    actions:
+    - name: Lava Burst
+      description: The Obsidian Monolith targets a point it can see within 60 feet. Each creature in a 10-foot radius
+        sphere centered on that point must make a DC 17 Dexterity saving throw, taking 28 (8d6) fire damage on a
+        failed save, or half as much damage on a successful one.
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 21. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  block: 0 pool / -1 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Sand Shambler
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-sand-shambler
+  meta: Medium elemental, neutral
+  size: Medium
+  type: elemental
+  alignment: neutral
+  cr: '3'
+  xp: '700'
+  ac: 13 (natural armor)
+  hp: '52'
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '14'
+    dex: '16'
+    con: '16'
+    int: '1'
+    wis: '10'
+    cha: '6'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Charmed, Afraid, Paralyzed, Petrified, Poisoned, Prone
+  senses: tremorsense 60 ft., passive Perception 12
+  languages: —
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Sand Form
+    description: The elemental can enter and stop in a hostile creature's space, and move through a space 1 inch
+      wide without squeezing. A creature that touches it or damages it with an unblocked melee strike while within
+      5 feet takes 1d6 slashing damage. This automatic damage cannot be Blocked.
+  actions:
+  - name: Slam
+    description: 'Melee attack +5, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d6 + 3 bludgeoning damage.'
+  - name: Sandstorm (Recharge 5-6)
+    description: Each other creature within 15 feet makes a DC 14 Constitution save, taking 4d6 slashing damage
+      on failure, or half on success. The area within 15 feet is heavily obscured until the start of the elemental's
+      next turn. This saving-throw-only effect cannot be Blocked.
+  source_ref: draft2.pdf / PDF page 22
+  original_5e:
+    name: Sand Shambler
+    meta: Medium earth elemental, neutral
+    cr: '3'
+    xp: '700'
+    ac: 13 (natural armor)
+    hp: 52 (7d8 + 21)
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '14'
+      dex: '16'
+      con: '16'
+      int: '1'
+      wis: '10'
+      cha: '6'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Charmed, frightened, Paralyzed, Petrified, Poisoned, Prone
+    senses: tremorsense 60 ft., passive Perception 12
+    languages: —
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Sand Form
+      description: The Sand Shambler can enter a hostile creature's space and stop there. It can move through a
+        space as narrow as 1 inch wide without squeezing. A creature that touches the Sand Shambler or hits it with
+        a melee attack while within 5 feet of it takes 3 (1d6) slashing damage.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage.'
+    - name: Sandstorm (Recharge 5-6)
+      description: The Sand Shambler creates a swirling sandstorm in a 15-foot radius around itself. Each creature
+        in that area must make a DC 14 Constitution saving throw, taking 14 (4d6) slashing damage on a failed save,
+        or half as much damage on a successful one. The area becomes heavily obscured until the start of the Sand
+        Shambler's next turn.
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 22. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Source frightened immunity maps to current Afraid. Sandstorm does not harm its acting elemental. Sand Form contact
+    damage is automatic, while its melee-strike trigger requires an unblocked strike.
+  block: 3 pool / +3 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Gemstone Goliath
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-gemstone-goliath
+  meta: Medium elemental, neutral
+  size: Medium
+  type: elemental
+  alignment: neutral
+  cr: '4'
+  xp: '1100'
+  ac: 16 (natural armor)
+  hp: '75'
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '18'
+    dex: '10'
+    con: '16'
+    int: '6'
+    wis: '10'
+    cha: '10'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 10
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  actions:
+  - name: Slam
+    description: 'Melee attack +5, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d6 + 3 bludgeoning damage.'
+  - name: Prismatic Burst (Recharge 5-6)
+    description: 'Each other creature within 15 feet makes a DC 15 Dexterity save. Failure: 4d6 radiant damage and
+      Blinded until the end of that creature''s next turn. Success: half damage, no Blinded. This saving-throw-only
+      effect cannot be Blocked.'
+  source_ref: draft2.pdf / PDF page 22
+  original_5e:
+    name: Gemstone Goliath
+    meta: Medium earth elemental, neutral
+    cr: '4'
+    xp: '1100'
+    ac: 16 (natural armor)
+    hp: 75 (10d8 + 30)
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '18'
+      dex: '10'
+      con: '16'
+      int: '6'
+      wis: '10'
+      cha: '10'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 10
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Prismatic Defense
+      description: When the Gemstone Goliath is targeted by a spell that deals damage, it can use its reaction to
+        gain resistance to one of the spell's damage types until the end of its next turn.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage.'
+    - name: Prismatic Burst (Recharge 5-6)
+      description: The Gemstone Goliath emits a burst of prismatic energy in a 15-foot radius. Each creature in
+        that area must make a DC 15 Dexterity saving throw. On a failed save, a creature takes 14 (4d6) radiant
+        damage and is blinded until the end of its next turn. On a successful save, a creature takes half damage
+        and isn't blinded.
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 22. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  block: 0 pool / +0 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  reactions:
+  - name: Prismatic Defense
+    description: When directly targeted by a damaging spell, use a reaction before resolving its damage to gain
+      resistance to one of that spell's damage types until the end of the elemental's next turn. Merely being included
+      in an area is not direct targeting.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Obsidian Oaf
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-obsidian-oaf
+  meta: Medium elemental, neutral
+  size: Medium
+  type: elemental
+  alignment: neutral
+  cr: '3'
+  xp: '700'
+  ac: 15 (natural armor)
+  hp: '52'
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '16'
+    dex: '10'
+    con: '16'
+    int: '6'
+    wis: '10'
+    cha: '6'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., passive Perception 10
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  actions:
+  - name: Slam
+    description: 'Melee attack +5, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d6 + 3 bludgeoning damage.'
+  - name: Shard Spray (Recharge 5-6)
+    description: Each creature in a 15-foot cone makes a DC 14 Dexterity save, taking 4d6 slashing damage on failure,
+      or half on success. This saving-throw-only effect cannot be Blocked.
+  source_ref: draft2.pdf / PDF page 23
+  original_5e:
+    name: Obsidian Oaf
+    meta: Medium earth elemental, neutral
+    cr: '3'
+    xp: '700'
+    ac: 15 (natural armor)
+    hp: 52 (7d8 + 21)
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '16'
+      dex: '10'
+      con: '16'
+      int: '6'
+      wis: '10'
+      cha: '6'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., passive Perception 10
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage.'
+    - name: Shard Spray (Recharge 5-6)
+      description: The Obsidian Oaf can use its action to spray shards of obsidian in a 15-foot cone. Each creature
+        in that area must make a DC 14 Dexterity saving throw, taking 14 (4d6) slashing damage on a failed save,
+        or half as much damage on a successful one.
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 23. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  block: 0 pool / +0 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Voidstone Wanderer
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-voidstone-wanderer
+  meta: Medium elemental, true neutral
+  size: Medium
+  type: elemental
+  alignment: true neutral
+  cr: '4'
+  xp: '1100'
+  ac: 15 (natural armor)
+  hp: '85'
+  speed: 25 ft., burrow 25 ft.
+  abilities:
+    str: '18'
+    dex: '10'
+    con: '18'
+    int: '6'
+    wis: '16'
+    cha: '1'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Charmed, Afraid, Paralyzed, Petrified, Poisoned, Prone, Unconscious
+  senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 13
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Aura of Emptiness
+    description: Other creatures within 10 feet have disadvantage on Charisma checks and Charisma saves.
+  actions:
+  - name: Slam
+    description: 'Melee attack +5, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d6 + 3 bludgeoning damage.'
+  - name: Void Pull (Recharge 5-6)
+    description: 'One creature the elemental can see within 30 feet makes a DC 15 Charisma save. Failure: pull it
+      up to 20 feet in a straight line toward the elemental, stopping in the nearest available space if blocked
+      by solid terrain. If it ends that pull within 5 feet, it takes 2d6 + 3 bludgeoning damage. Success: no pull
+      or damage. This saving-throw-only effect cannot be Blocked.'
+  source_ref: draft2.pdf / PDF page 23
+  original_5e:
+    name: Voidstone Wanderer
+    meta: Medium earth elemental, true neutral
+    cr: '4'
+    xp: '1100'
+    ac: 15 (natural armor)
+    hp: 85 (10d8 + 40)
+    speed: 25 ft., burrow 25 ft.
+    abilities:
+      str: '18'
+      dex: '10'
+      con: '18'
+      int: '6'
+      wis: '16'
+      cha: '-2'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Charmed, frightened, Paralyzed, Petrified, Poisoned, Prone, Unconscious
+    senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 13
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Aura of Emptiness
+      description: Creatures within 10 feet of the Voidstone Wanderer have disadvantage on Charisma checks and Charisma
+        saving throws.
+    actions:
+    - name: Slam
+      description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage.'
+    - name: Void Pull (Recharge 5-6)
+      description: The Voidstone Wanderer targets one creature it can see within 30 feet of it. The target must
+        succeed on a DC 15 Charisma saving throw or be pulled up to 20 feet in a straight line toward the Wanderer.
+        If the target ends this movement within 5 feet of the Wanderer, it takes 10 (2d6 + 3) bludgeoning damage.
+    printed_charisma: -2 (-6)
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 23. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Source Charisma -2 (-6) is an invalid negative ability score. Playable score is explicitly corrected to 1 (-5);
+    original value remains archived. Printed Slam and Void Pull modifiers remain fixed. Source frightened immunity
+    maps to current Afraid.
+  block: 0 pool / +0 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Runic Sentinel
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-runic-sentinel
+  meta: Large elemental, neutral
+  size: Large
+  type: elemental
+  alignment: neutral
+  cr: '5'
+  xp: '1800'
+  ac: 16 (natural armor)
+  hp: '130'
+  speed: 25 ft., burrow 20 ft.
+  abilities:
+    str: '22'
+    dex: '10'
+    con: '20'
+    int: '6'
+    wis: '16'
+    cha: '8'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 90 ft., tremorsense 90 ft., passive Perception 13
+  languages: Terran, Primordial
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Guardian's Vigil
+    description: The Runic Sentinel is always aware of intruders within 60 feet of it, regardless of barriers or
+      stealth. It cannot be surprised.
+  - name: Dormant Vigil
+    description: Before an encounter, the elemental may be dormant and melded into earth, invulnerable and unable
+      to act or move. When another creature comes within 20 feet, it awakens and becomes vulnerable to harm. It
+      cannot return to dormancy during combat.
+  - name: Mighty Blows
+    description: A creature damaged by an unblocked Slam makes a DC 16 Strength save or falls Prone.
+  - name: Cold Iron Vulnerability
+    description: After taking damage from an unblocked Cold Iron weapon strike, the elemental has disadvantage on
+      attack rolls, ability checks and saving throws for 1 minute. A new qualifying strike refreshes the duration.
+      Physical damage from Cold Iron uses the listed vulnerability instead of the nonmagical-physical resistance.
+  actions:
+  - name: Multiattack
+    description: Make two Slam attacks. Resolve a separate attack roll and Block opportunity for each.
+  - name: Slam
+    description: 'Melee attack +9, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d10 + 7 bludgeoning
+      damage. Mighty Blows applies to a creature damaged by the unblocked strike.'
+  - name: Hurl Rock (Recharge 5-6)
+    description: 'Ranged attack +9, range 60/180 ft., one target; Block DC 17. Unblocked strike: 3d10 + 5 bludgeoning
+      damage. After the attack resolves, the rock bursts at the target''s position whether the attack hit or was
+      Blocked. Each creature within 10 feet of that point makes a DC 16 Dexterity save, taking 3d6 bludgeoning damage
+      on failure, or half on success. This separate saving-throw burst cannot be Blocked.'
+  - name: Seismic Stomp (Recharge 6)
+    description: 'Each other creature within 20 feet makes a DC 16 Dexterity save. Failure: 4d10 bludgeoning damage
+      and Prone. Success: no damage or Prone. A solid ring of rock forms on the boundary of that 20-foot radius
+      and prevents ordinary ground movement across it until the end of the elemental''s third subsequent turn; flight,
+      burrowing and teleportation may cross it. This saving-throw-only effect cannot be Blocked.'
+  source_ref: draft2.pdf / PDF page 24
+  original_5e:
+    name: Runic Sentinel
+    meta: Large earth elemental, neutral
+    cr: '5'
+    xp: '1800'
+    ac: 16 (natural armor)
+    hp: 130 (14d10 + 52)
+    speed: 25 ft., burrow 20 ft.
+    abilities:
+      str: '22'
+      dex: '10'
+      con: '20'
+      int: '6'
+      wis: '16'
+      cha: '8'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 90 ft., tremorsense 90 ft., passive Perception 13
+    languages: Terran, Primordial
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Guardian's Vigil
+      description: The Runic Sentinel is always aware of intruders within 60 feet of it, regardless of barriers
+        or stealth. It cannot be surprised.
+    - name: Dormant Vigil
+      description: In its natural state, the Runic Sentinel remains dormant and melded with the earth, rendering
+        it invulnerable. When a creature approaches within 20 feet, the elemental awakens from its dormancy, becoming
+        active and vulnerable to harm.
+    - name: Mighty Blows
+      description: The Runic Sentinel's slam attacks are incredibly powerful. If a creature is hit by its slam attack,
+        it must succeed on a DC 16 Strength saving throw or be knocked prone.
+    - name: Cold Iron Vulnerability
+      description: The Runic Sentinel is vulnerable to Cold Iron. If struck by a weapon made of Cold Iron, it has
+        disadvantage on attack rolls, ability checks, and saving throws for 1 minute.
+    actions:
+    - name: Multiattack
+      description: The elemental makes two slam attacks.
+    - name: Slam
+      description: 'Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 18 (2d10 + 7) bludgeoning damage.'
+    - name: Hurl Rock (Recharge 5-6)
+      description: 'Ranged Weapon Attack: +9 to hit, range 60/180 ft., one target. Hit: 21 (3d10 + 5) bludgeoning
+        damage. The rock explodes on impact, dealing an additional 10 (3d6) bludgeoning damage to all creatures
+        within a 10-foot radius (Dexterity save DC 16 for half damage).'
+    - name: Seismic Stomp (Recharge 6)
+      description: The Runic Sentinel jumps and slams the ground, creating a shockwave. All creatures within 20
+        feet must make a DC 16 Dexterity saving throw or take 22 (4d10) bludgeoning damage and be knocked prone.
+        This also creates a ring of rock around the area, preventing creatures from entering or leaving the affected
+        area for 15 seconds.
+    damage_vulnerabilities: thunder; bludgeoning, piercing and slashing from Cold Iron weapons
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 24. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Dormant Vigil cannot be re-entered during combat, avoiding repeatable invulnerability. The source 15-second
+    rock ring becomes three rounds, ending at the end of the third subsequent Sentinel turn. Hurl Rock's impact
+    burst is separate from its blockable direct hit. Against Cold Iron physical attacks, the specific Cold Iron
+    vulnerability replaces generic nonmagical resistance rather than cancelling to normal damage.
+  block: 0 pool / +0 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  damage_vulnerabilities: thunder; bludgeoning, piercing and slashing from Cold Iron weapons
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Earthen Guardian
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-earthen-guardian
+  meta: Medium elemental, neutral
+  size: Medium
+  type: elemental
+  alignment: neutral
+  cr: '4'
+  xp: '1100'
+  ac: 16 (natural armor)
+  hp: '85'
+  speed: 25 ft., burrow 20 ft.
+  abilities:
+    str: '20'
+    dex: '10'
+    con: '18'
+    int: '4'
+    wis: '11'
+    cha: '7'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Charmed, Afraid, Paralyzed, Petrified, Poisoned, Prone, Unconscious
+  senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Iron Resilience
+    description: The Earthen Guardian has advantage on saving throws against spells and other magical effects.
+  actions:
+  - name: Multiattack
+    description: Make two Slam attacks. Resolve a separate attack roll and Block opportunity for each.
+  - name: Slam
+    description: 'Melee attack +8, reach 5 ft., one target; Block DC 16. Unblocked strike: 2d8 + 5 bludgeoning damage.'
+  - name: Uproot (Recharge 5-6)
+    description: 'Melee attack +8, reach 5 ft., one target; Block DC 16. Unblocked strike: no direct damage. On
+      an unblocked strike, throw the target up to 15 feet in a chosen direction and knock it Prone. Stop at the
+      first solid obstruction. If it collides with an object, it takes 1d6 bludgeoning damage for each full 5 feet
+      actually thrown. If thrown into another creature, the thrown target takes that collision damage and the other
+      creature makes a DC 16 Dexterity save, taking the same damage and falling Prone on failure, or neither on
+      success. The separate collision/save damage cannot be Blocked.'
+  source_ref: draft2.pdf / PDF page 24
+  original_5e:
+    name: Earthen Guardian
+    meta: Medium earth elemental, neutral
+    cr: '4'
+    xp: '1100'
+    ac: 16 (natural armor)
+    hp: 85 (10d8 + 40)
+    speed: 25 ft., burrow 20 ft.
+    abilities:
+      str: '20'
+      dex: '10'
+      con: '18'
+      int: '4'
+      wis: '11'
+      cha: '7'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Charmed, frightened, Paralyzed, Petrified, Poisoned, Prone, Unconscious
+    senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Protective Presence
+      description: When a friendly creature within 10 feet of the Earthen Guardian is attacked, the Guardian can
+        impose disadvantage on the attacker's roll, provided the attacker can see the Guardian.
+    - name: Iron Resilience
+      description: The Earthen Guardian has advantage on saving throws against spells and other magical effects.
+    actions:
+    - name: Multiattack
+      description: The Earthen Guardian makes two slam attacks.
+    - name: Slam
+      description: 'Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.'
+    - name: Uproot (Recharge 5-6)
+      description: 'Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: The target is thrown up to 15
+        feet in a direction of the Guardian''s choice and knocked prone. If a thrown target strikes an object, such
+        as a wall or floor, the target takes 3 (1d6) bludgeoning damage for every 5 feet it was thrown. If the target
+        is thrown at another creature, that creature must succeed on a DC 16 Dexterity saving throw or take the
+        same damage and be knocked prone.'
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 24. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Protective Presence had no printed action cost; it now uses a reaction before the attack roll. Uproot has no
+    direct damage; displacement/Prone requires an unblocked strike and collision damage uses actual travel in full
+    5-foot increments. Source frightened immunity maps to current Afraid.
+  block: 0 pool / +0 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  reactions:
+  - name: Protective Presence
+    description: When another friendly creature within 10 feet is targeted by an attack, use a reaction before the
+      roll to impose disadvantage on that attack, provided the attacker can see the elemental.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Great Iron
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-great-iron
+  meta: Huge elemental, neutral
+  size: Huge
+  type: elemental
+  alignment: neutral
+  cr: '5'
+  xp: '2300'
+  ac: 16 (natural armor)
+  hp: '85'
+  speed: 30 ft., burrow 20 ft.
+  abilities:
+    str: '18'
+    dex: '8'
+    con: '20'
+    int: '6'
+    wis: '10'
+    cha: '7'
+  damage_resistances: lightning; bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+  languages: Terran, Primordial, Giant
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Iron Resilience
+    description: The Great Iron has advantage on saving throws against spells and other magical effects.
+  - name: Metal Detection
+    description: The elemental senses the presence and type of metal within 240 feet. As an action, focus on one
+      detected metal object to learn its material properties and ordinary uses; this does not identify magical enchantments
+      unless they are evident from those properties.
+  - name: Mutable Slam
+    description: When the Great Iron makes a slam attack, it can choose for the attack to deal bludgeoning, piercing,
+      or slashing damage.
+  actions:
+  - name: Metallokinetic
+    description: 'Choose a metal object, weapon or piece of armor within 30 feet and one modifier: +1 or -1 to AC,
+      or +1 or -1 to attack rolls made with that item. The modifier applies only while the item is appropriately
+      wielded or worn, lasts 10 minutes, and a new use on that item replaces the old modifier rather than stacking.
+      This does not itself move, disarm or control the object.'
+  - name: Multiattack
+    description: Make two Slam attacks. Resolve a separate attack roll and Block opportunity for each.
+  - name: Slam
+    description: 'Melee attack +9, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d10 + 5 bludgeoning,
+      piercing or slashing damage (choose for each attack).'
+  - name: Hematoferrakinesis (Recharge 6)
+    description: 'Ranged attack +10, range 5 ft., one target; Block DC 18. Unblocked strike: no direct damage. A
+      creature struck makes a DC 16 Constitution save. Failure: lose 3d6 current HP and reduce its maximum HP by
+      the same amount; the elemental regains HP equal to the current HP actually lost, up to its maximum. Success:
+      no HP loss or healing. Reduced maximum HP cannot fall below 0; at 0 the creature dies. The maximum-HP reduction
+      is not restored by ordinary healing or rests; a magical effect explicitly restoring reduced maximum HP, or
+      a successful one-hour medical procedure using healer tools and a DC 16 Medicine check with a suitable blood
+      supply, ends the reduction. Ending it does not itself restore current HP.'
+  source_ref: draft2.pdf / PDF page 25
+  original_5e:
+    name: Great Iron
+    meta: Huge earth elemental, neutral
+    cr: '5'
+    xp: '2300'
+    ac: 16 (natural armor)
+    hp: 85 (10d8 + 40)
+    speed: 30 ft., burrow 20 ft.
+    abilities:
+      str: '18'
+      dex: '8'
+      con: '20'
+      int: '6'
+      wis: '10'
+      cha: '7'
+    damage_resistances: lightning; bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 10
+    languages: Terran, Primordial, Giant
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Emmission
+      description: 'Once per long rest, the Great Iron can temporarily enhance one of its core attributes: increasing
+        its ability scores, speed, hit points, Armor Class, or the range of its senses by one third of their current
+        value for 1 minute.'
+    - name: Iron Resilience
+      description: The Great Iron has advantage on saving throws against spells and other magical effects.
+    - name: Metallokinetic
+      description: As an action, the Great Iron can target a metal object or piece of armor within 30 feet. The
+        targeted item either grants its wielder or wearer a +1 bonus to AC or attack rolls, or imposes a -1 penalty,
+        as chosen by the Great Iron. This effect lasts for 10 minutes. A single item can only be affected by this
+        ability once at a time.
+    - name: Metal Detection
+      description: The Great Iron can sense the presence and type of any metal within 240 feet. Upon focusing on
+        a specific metal, it gains a detailed understanding of its properties, uses, and other pertinent information.
+    - name: Mutable Slam
+      description: When the Great Iron makes a slam attack, it can choose for the attack to deal bludgeoning, piercing,
+        or slashing damage.
+    actions:
+    - name: Multiattack
+      description: The Great Iron makes two slam attacks.
+    - name: Slam
+      description: 'Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 16 (2d10 + 5) bludgeoning, piercing
+        or slashing damage.'
+    - name: Hematoferrakinesis (Recharge 6)
+      description: 'Ranged Spell Attack: +10 to hit, reach 5 ft., one target. On a hit, if the target is a creature,
+        it must make a DC 16 Constitution saving throw or lose 3d6 hit points. These lost hit points can only be
+        restored through a restoration spell or a specialized medical procedure, such as a blood transfusion. The
+        Great Iron heals for the amount of hit points lost by the target.'
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 25. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - The source prints CR 5 but 2,300 XP; both are preserved as source campaign values. Emmission becomes one chosen
+    ability score or statistic, one third rounded down, bonus-action activation, with nonstacking fixed-baseline
+    scaling; its HP option becomes temporary HP to avoid permanent healing or HP-removal ambiguity. Focused Metal
+    Detection uses an action and does not automatically identify spells. Hematoferrakinesis retains the source ranged
+    spell attack at 5 feet; restoration-only HP loss becomes current and maximum HP reduction, with a DC 16 one-hour
+    healer-tools procedure supplying nonmagical recovery.
+  block: 0 pool / -1 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  bonus_actions:
+  - name: Emmission
+    description: 'Once per long rest, use a bonus action to enhance one option for 1 minute: one ability score,
+      one movement speed, Armor Class, or the range of one sense increases by one third of its unmodified value,
+      rounded down (minimum +1). Alternatively gain 28 temporary HP instead of changing maximum HP. Choose only
+      one option; it cannot stack with itself. If an ability score changes, apply its new modifier to checks/saves
+      using that score; a Strength change also adjusts Slam attack, damage and Block DC by the modifier difference,
+      and a Dexterity change adjusts initiative and natural Block. Other printed attack/save values stay fixed.
+      These changes end after 1 minute; any temporary HP from this power also expires then.'
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Whirlwind Sand Elemental
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-whirlwind-sand-elemental
+  meta: Large elemental, neutral
+  size: Large
+  type: elemental
+  alignment: neutral
+  cr: '4'
+  xp: '1100'
+  ac: 8 (natural armor)
+  hp: '80'
+  speed: 20 ft., burrow 20 ft.
+  abilities:
+    str: '19'
+    dex: '9'
+    con: '16'
+    int: '4'
+    wis: '8'
+    cha: '5'
+  damage_resistances: piercing and slashing from nonmagical attacks
+  damage_immunities: poison, bludgeoning
+  condition_immunities: Exhausted, Paralyzed, Petrified, Poisoned, Prone, Unconscious
+  senses: darkvision 60 ft., passive Perception 10
+  languages: Terran
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Berserk
+    description: At the start of its turn with 30 HP or fewer, roll 1d6; on 5 or 6 it becomes berserk. While berserk
+      its movement speeds increase by 10 feet, and it must use its movement and action to attack the nearest creature
+      it can see, using Slam/Multiattack if reachable. If no creature can be reached and attacked, attack a reachable
+      object instead; if none exists, move toward the nearest visible creature. Berserk ends when it rises above
+      30 HP or is destroyed. This specific behavior is not the current Enraged condition.
+  - name: Clumsy
+    description: Disadvantage on Dexterity saves; while berserk, it fails Dexterity saves automatically.
+  - name: Elastic Form
+    description: At the end of each of its turns, the elemental returns to its natural sandy form, ending effects
+      that transform its body or replace its physical form. This does not restore HP, end ordinary damage/conditions
+      unrelated to transformation, or undo death.
+  - name: Odsand
+    description: For each incoming attack damage roll that remains after an unsuccessful or unused Block, compare
+      its rolled dice total R before flat modifiers to its minimum possible total L and maximum H. If H exceeds
+      L and (R-L)/(H-L) is at most 0.10, replace R with H. If the fraction is at least 0.90, replace R with L. Otherwise
+      leave it unchanged. Apply flat modifiers and damage mitigation afterward. Fixed damage with H=L is unchanged;
+      no reroll or repeated reversal occurs.
+  - name: Sandstorm Aura
+    description: The area within 10 feet is difficult terrain for other creatures.
+  actions:
+  - name: Multiattack
+    description: Make two Slam attacks. Resolve a separate attack roll and Block opportunity for each.
+  - name: Slam
+    description: 'Melee attack +6, reach 5 ft., one target; Block DC 14. Unblocked strike: 2d8 + 4 bludgeoning damage.'
+  - name: Whirlwind (Recharge 5-6)
+    description: 'Each other creature within 15 feet makes a DC 15 Strength save. Failure: pull it straight toward
+      the elemental until within 5 feet or blocked by solid terrain; it takes 1d6 bludgeoning damage per full 5
+      feet actually pulled, then is thrown 15 feet vertically into the air. If that throw hits a solid obstruction,
+      it takes another 1d6 bludgeoning damage. Resolve its subsequent fall using the normal falling rules. Success:
+      no pull, throw or damage. This saving-throw-only effect cannot be Blocked.'
+  source_ref: draft2.pdf / PDF page 25
+  original_5e:
+    name: Whirlwind Sand Elemental
+    meta: Large earth elemental, neutral
+    cr: '4'
+    xp: '1100'
+    ac: 8 (natural armor)
+    hp: 80 (10d10 + 30)
+    speed: 20 ft., burrow 20 ft.
+    abilities:
+      str: '19'
+      dex: '9'
+      con: '16'
+      int: '4'
+      wis: '8'
+      cha: '5'
+    damage_resistances: piercing and slashing from nonmagical attacks
+    damage_immunities: poison, bludgeoning
+    condition_immunities: exhaustion, Paralyzed, Petrified, Poisoned, Prone, Unconscious
+    senses: darkvision 60 ft., passive Perception 10
+    languages: Terran
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Berserk
+      description: When the Whirlwind Shift starts its turn with 30 hit points or fewer, roll a d6. On a 5 or 6,
+        the elemental goes Berserk. Its speed increases by 10 feet and on each of its turns, it attacks the nearest
+        creature it can see. If no creature is near enough to move and attack, the elemental attacks an object.
+        Once the elemental goes berserk, it will continue to do so until it is destroyed or regained hit points
+        over 30.
+    - name: Clumsy
+      description: The Elemental has disadvantage on dexterity saving throws. While it's berserk, it fails them
+        automatically.
+    - name: Elastic Form
+      description: The Elemental's natural form is always that of shifting sands. Any effect or spell that alters
+        its form is temporary. At the end of each of its turns, the Elemental reverts to its original sandy form,
+        negating any transformation or change in its physical state.
+    - name: Odsand
+      description: 'When the Elemental is struck with force, it reacts unpredictably. If an attack''s damage roll
+        (before modifiers) is in the bottom 10% or top 10% of its potential range, reverse the damage: low rolls
+        become their maximum, and high rolls become their minimum.'
+    - name: Sandstorm Aura
+      description: Within 10 feet of the elemental, the area is considered difficult terrain due to swirling sands.
+    actions:
+    - name: Multiattack
+      description: The Earthen Guardian makes two slam attacks.
+    - name: Slam
+      description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) bludgeoning damage.'
+    - name: Whirlwind (Recharge 5-6)
+      description: The elemental creates a powerful gust of sandy wind in a 15-foot radius around itself. Each creature
+        in that area must make a DC 15 Strength saving throw. On a failure, a creature takes 3 (1d6) bludgeoning
+        damage for every 5 feet it is pulled towards the elemental and is then thrown 15 feet into the air. If a
+        thrown target strikes an object, such as a wall or floor, the target takes an additional 3 (1d6) bludgeoning
+        damage.
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 25. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Corrected source copied names Whirlwind Shift and Earthen Guardian to this elemental. Source exhaustion immunity
+    maps to current Exhausted. Odsand has an exact inclusive normalized 10% test, operates once per incoming attack
+    damage roll before flat modifiers, and does not alter fixed damage. Elastic Form ends body transformations only,
+    not all conditions or injury. Whirlwind uses actual pulled distance, stops before occupied spaces, and its unspecified
+    success outcome is no effect.
+  block: 0 pool / -1 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+- name: Primordial Terra Titan
+  group: Tarta Homebrewery - Earth elementals
+  id: homebrewery-primordial-terra-titan
+  meta: Large elemental, neutral
+  size: Large
+  type: elemental
+  alignment: neutral
+  cr: '7'
+  xp: '2900'
+  ac: 17 (natural armor)
+  hp: '136'
+  speed: 30 ft., burrow 30 ft.
+  abilities:
+    str: '20'
+    dex: '8'
+    con: '20'
+    int: '5'
+    wis: '10'
+    cha: '5'
+  damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison
+  condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+  senses: tremorsense 60 ft., passive Perception 10
+  languages: Terran, Primordial; understands Common but cannot speak it
+  traits:
+  - name: Earth Glide
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+      not disturb the material it moves through.
+  - name: Siege Monster
+    description: The elemental deals double damage to objects and structures.
+  - name: Immutable Form
+    description: The elemental is immune to any spell or effect that would alter its form.
+  - name: Magic Resistance
+    description: The elemental has advantage on saving throws against spells and other magical effects.
+  - name: Primordial Wisdom
+    description: Add +5 to initiative (total initiative modifier +4 with Dexterity -1). When a hostile creature
+      forces a reroll with disadvantage, add +5 to that specific reroll; this is not a blanket bonus to all rolls
+      made with disadvantage.
+  - name: Earth's Embrace
+    description: A creature that starts its turn Grappled by the elemental takes 3d6 bludgeoning damage. This automatic
+      damage cannot be Blocked. Use the normal current grapple procedure to establish Grappled; Slam does not automatically
+      grapple.
+  - name: Earth's Call
+    description: At the start of its turn while standing on earth or stone and above 0 HP, the elemental regains
+      10 HP, up to its maximum.
+  actions:
+  - name: Primordial Presence (3/rest)
+    description: As an action, the ground within 15 feet becomes difficult terrain for 1 minute. Each other creature
+      on that ground when activated makes a DC 15 Dexterity save or falls Prone. Three uses; recover all after a
+      short or long rest. This saving-throw-only effect cannot be Blocked.
+  - name: Multiattack
+    description: Make two Slam attacks. Resolve a separate attack roll and Block opportunity for each.
+  - name: Slam
+    description: 'Melee attack +8, reach 5 ft., one target; Block DC 16. Unblocked strike: 2d8 + 5 bludgeoning damage.'
+  - name: Seismic Shift (Every 2 rounds)
+    description: 'Each other creature within 30 feet makes a DC 17 Dexterity save. Failure: 4d6 bludgeoning damage
+      and Prone. Success: no damage or Prone. Objects and structures in the area take twice the same rolled damage; this replaces, rather than stacks with, Siege Monster. After using this action it
+      is unavailable on the elemental''s next turn and becomes available at the start of its following turn. This
+      saving-throw-only effect cannot be Blocked.'
+  source_ref: draft2.pdf / PDF page 26
+  original_5e:
+    name: Primordial Terra Titan
+    meta: Large elemental, neutral
+    cr: '7'
+    xp: '2900'
+    ac: 17 (natural armor)
+    hp: 136 (16d10 + 64)
+    speed: 30 ft., burrow 30 ft.
+    abilities:
+      str: '20'
+      dex: '8'
+      con: '20'
+      int: '5'
+      wis: '10'
+      cha: '5'
+    damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
+    damage_immunities: poison
+    condition_immunities: Paralyzed, Petrified, Poisoned, Prone
+    senses: tremorsense 60 ft., passive Perception 10
+    languages: Terran, Primordial; understands Common but cannot speak it
+    traits:
+    - name: Earth Glide
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
+        not disturb the material it moves through.
+    - name: Siege Monster
+      description: The elemental deals double damage to objects and structures.
+    - name: Immutable Form
+      description: The elemental is immune to any spell or effect that would alter its form.
+    - name: Magic Resistance
+      description: The elemental has advantage on saving throws against spells and other magical effects.
+    - name: Primordial Wisdom
+      description: Primordial Terra Titan has a +5 bonus to initiative rolls and when forced by a hostile creature
+        to reroll with disadvantage it has a +5 bonus to that roll.
+    - name: Earth's Embrace
+      description: Whenever a creature starts its turn grappled by the Primordial Terra Titan, it takes 10 (3d6)
+        bludgeoning damage as the Titan's body constricts and crushes it with earthen force.
+    - name: Primordial Presence (3/rest)
+      description: The elemental can cause the ground within 15 feet of it to become difficult terrain. Any creature
+        on the ground in this area when this ability is activated must make a DC 15 Dexterity saving throw or be
+        knocked prone. The elemental can use this ability three times, regaining uses after a short or long rest.
+    - name: Earth's Call
+      description: At the start of each of its turn, the Primordial Terra Titan heals for 10 hit points if it's
+        standing on earth or stone.
+    - name: Primordial Roar
+      description: As bonus action, the Primordial Terra Titan lets out a deafening roar. Each creature within 60
+        feet of the Titan that can hear it must succeed on a DC 15 Wisdom saving throw or be frightened until the
+        end of their turn.
+    actions:
+    - name: Multiattack
+      description: The elemental makes two slam attacks.
+    - name: Slam
+      description: 'Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.'
+    - name: Seismic Shift (Every 2 rounds)
+      description: The Primordial Terra Titan stomps the ground, causing a localized earthquake. All creatures within
+        30 feet must make a DC 17 Dexterity saving throw or be knocked prone and take 15 (4d6) bludgeoning damage.
+        Structures in the area take double damage.
+  conversion_notes:
+  - Converted from The Tarta Guide - The Homebrewery (draft2.pdf), PDF page 26. Fixed printed HP and printed attack/save
+    modifiers are retained. Inconsistent HP dice, printed averages and source wording remain in Original source
+    statblock; attacks use printed damage dice instead of contradictory means.
+  - Uses current Vara Block and named conditions. Ordinary attack damage and on-strike riders require an unblocked
+    strike; automatic and saving-throw-only damage cannot be Blocked. Natural armor grants no extra Block or equipment
+    proficiency.
+  - 'Recharge X-Y: roll 1d6 at the start of each turn while expended and recover on a result in that range. All
+    recharge abilities begin available. Printed rest uses follow current Vara rest durations.'
+  - Primordial Presence activation and duration are completed as action and 1 minute. Roar ends at the end of each
+    affected creature's next turn. Earth's Call cannot revive from 0 HP. Seismic Shift starts available, then skips
+    one own turn between uses; its unspecified successful-save outcome is no effect, and structural damage is doubled
+    once rather than quadrupled with Siege Monster. The source printed average 15 for 4d6 is discarded in favor
+    of its dice.
+  block: 0 pool / -1 check
+  block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
+    blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
+    armor grants no extra Block or armor training.
+  bonus_actions:
+  - name: Primordial Roar
+    description: Each other creature within 60 feet that can hear the elemental makes a DC 15 Wisdom save or becomes
+      Afraid until the end of that creature's next turn. Use the current Afraid condition, including repeated-fear
+      escalation.
+  summoned_by:
+  - name: Geomorphic Form
+    section: rules
+    group: Tarta Homebrewery - Summoning features
+  - name: Primordial Geomancy
+    section: rules
+    group: Tarta Homebrewery - Summoning features

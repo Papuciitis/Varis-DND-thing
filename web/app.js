@@ -754,13 +754,13 @@
     for (const [key, item] of orderedFields) {
       if ((key === "name" && item === entry.name) || (key === "group" && item === entry.group)) continue;
       if (key === "id") continue;
-      if (entry.source?.startsWith("magic-items/") && /^(?:original_|source_|conversion_notes$)/.test(key)) {
+      if ((entry.source?.startsWith("magic-items/") || /(?:^|\/)tarta-/.test(entry.source || "")) && /^(?:original_|source_|conversion_notes$)/.test(key)) {
         if(/^source_/.test(key)){sourceFields[key.replace(/^source_/,"")]=item;continue;}
         const block=el("details","chapter magic-provenance");
         block.append(el("summary","",key === "original_5e" ? "Original 5e text" : label(key)),renderValue(item,3,label(key)));
         provenance.push(block);continue;
       }
-      if (key === "summons") continue;
+      if (key === "summons" || key === "summon_label") continue;
       if (key === "minitrait_list") { intro.append(traitChildren(item, 2)); continue; }
       if (key === "sections" && isSections(item)) { chapters.push(...item); continue; }
       if (key === "draft_note" && plain(item)) {
@@ -933,8 +933,9 @@
     if (!Array.isArray(references) || !references.length) return null;
     const section = sectionByKey.get("monsters");
     const block = el("section", "summon-picker");
-    block.setAttribute("aria-label", "Summoned creatures");
-    block.append(el("h2", "", "Summoned creatures"));
+    const summonTitle = entry.details?.summon_label || "Summoned creatures";
+    block.setAttribute("aria-label", summonTitle);
+    block.append(el("h2", "", summonTitle));
     const tools = el("div", "summon-controls");
     const previous = el("button", "button-link", "Previous");
     const next = el("button", "button-link", "Next");

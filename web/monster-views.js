@@ -94,6 +94,20 @@
     }
     return d;
   }
+  // Optional infusion choices describe a local configuration; source stats remain intact.
+  function materialConfiguration(options,selected=[]){
+    const wanted=new Set(Array.from(selected,normalize)),seen=new Set();
+    const chosen=(Array.isArray(options)?options:[]).filter(option=>{
+      const key=normalize(option?.name);if(!key||seen.has(key)||!wanted.has(key))return false;seen.add(key);return true;
+    }).slice(0,4);
+    const costs=chosen.map(option=>Number(option.cost_gp??String(option.cost??"0").replace(/[^0-9.]/g,"")));
+    const knownCosts=costs.every(cost=>Number.isFinite(cost)&&cost>=0);
+    const subtotal=costs.reduce((sum,cost)=>sum+(Number.isFinite(cost)?cost:0),0);
+    const surcharge=(chosen.length>=3?400:0)+(chosen.length>=4?2000:0);
+    return{chosen,subtotal,cost:Math.max(1000,subtotal)+surcharge,knownCosts,
+      armorBonus:chosen.some(option=>normalize(option.name)==="lanthara crystal")?2:0,
+      meleeBonus:chosen.some(option=>normalize(option.name)==="holmara rock")?2:0};
+  }
   function statblock(entry,helpers={}){
     const el=helpers.el||((tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=String(text);return node;});
     const depth=helpers.depth||2,heading=level=>"h"+Math.min(6,Math.max(2,level));
@@ -105,7 +119,7 @@
     function fold(parent,title,value,className="monster-stat-note"){
       if(!present(value))return;const disclosure=el("details",className);disclosure.append(el("summary","",title),renderValue(value,title));parent.append(disclosure);
     }
-    const d=presentation(entry.details),meta=metadata(entry),known=new Set(["id","name","group","meta","size","type","alignment","abilities","ability_modifiers","ability_score_status","notes","description","desc","source_ref","spell_references","status","cr","challenge","challenge_rating","xp","height","weight","hp_max_variant","spellcasting","spell_slots","limited_spell_uses","metamagic"]);
+    const d=presentation(entry.details),meta=metadata(entry),known=new Set(["id","name","group","meta","size","type","alignment","abilities","ability_modifiers","ability_score_status","notes","description","desc","source_ref","spell_references","status","cr","challenge","challenge_rating","xp","height","weight","hp_max_variant","spellcasting","spell_slots","limited_spell_uses","metamagic","material_options","material_rules","summoned_by"]);
     const block=el("article","stat-block monster-parchment");block.setAttribute("aria-label",entry.name+" statblock");
     const header=el("header","monster-stat-header");if(helpers.showTitle!==false)header.append(el(heading(depth),"monster-stat-name",cap(entry.name)));if(meta.summary)header.append(el("p","monster-stat-meta",meta.summary));if(d.status)header.append(el("p","monster-stat-status",d.status));block.append(header);
     const body=el("div","monster-stat-body"),lead=el("div","monster-stat-lead");
@@ -173,8 +187,50 @@
         for(const[field,value]of Object.entries(record))if(!["name","description","desc"].includes(field)&&present(value))compact(row,label(field),value,"monster-rule-extra");section.append(row);
       }body.append(section);
     }
+    if(Array.isArray(d.material_options)&&d.material_options.length){
+      const options=d.material_options.filter(option=>object(option)&&present(option.name));
+      const section=el("section","monster-stat-section monster-material-infusions");
+      section.append(el(heading(depth+1),"monster-section-heading","Material Infusions"));
+      section.append(el("p","monster-infusion-intro","Choose the materials used to create this golem. The configuration lists changes to its base statistics."));
+      const summary=el("div","monster-infusion-configuration");summary.setAttribute("aria-live","polite");summary.setAttribute("aria-atomic","true");
+      const picker=el("details","monster-infusion-picker");picker.append(el("summary","","Choose up to four materials"));
+      const fieldset=el("fieldset","monster-infusion-options");fieldset.append(el("legend","sr-only","Golem material infusions"));
+      const selected=new Set(),controls=[];
+      function replace(parent,...nodes){if(parent.replaceChildren)parent.replaceChildren(...nodes);else{parent.children=[];parent.append(...nodes);}}
+      function redraw(){
+        const config=materialConfiguration(options,selected),content=[];
+        content.push(el("strong","monster-infusion-summary-title",config.chosen.length?"Selected configuration":"Base golem — no infusions selected"));
+        content.push(el("p","monster-infusion-cost","Creation materials: "+(config.knownCosts?config.cost.toLocaleString("en-US")+" gp":"cost needs review")));
+        if(config.chosen.length){
+          const changes=el("p","monster-infusion-changes"),baseAC=String(d.ac??"").match(/^\s*(\d+)/)?.[1];
+          changes.append(el("span","",config.armorBonus?"Configured Armor Class "+(baseAC?Number(baseAC)+config.armorBonus:"base + "+config.armorBonus)+"; ":"Armor Class unchanged; "));
+          changes.append(el("span","",config.meleeBonus?"melee attack rolls, Block DCs and damage +"+config.meleeBonus+".":"melee attacks unchanged."));
+          content.push(changes);
+          const active=el("ul","monster-infusion-active");for(const option of config.chosen){const row=el("li");row.append(el("strong","",option.name+": "),el("span","",option.effect||"See the material rules."));active.append(row);}content.push(active);
+        }
+        replace(summary,...content);
+        for(const {input,key}of controls){input.checked=selected.has(key);input.disabled=selected.size>=4&&!input.checked;}
+      }
+      for(const option of options){
+        const row=el("div","monster-infusion-option"),top=el("div","monster-infusion-option-heading"),input=el("input","monster-infusion-choice"),key=normalize(option.name);
+        input.type="checkbox";input.setAttribute("aria-label","Add "+option.name+" infusion");
+        controls.push({input,key});input.addEventListener("change",()=>{if(input.checked){if(selected.size<4)selected.add(key);else input.checked=false;}else selected.delete(key);redraw();});
+        const name=helpers.link?helpers.link(option.name,{section:"rules",entry:option.name,group:option.group||"Tarta Homebrewery - Materials"},"monster-material-link"):el("strong","",option.name);
+        const price=option.cost_gp!=null?Number(option.cost_gp).toLocaleString("en-US")+" gp":option.cost||"Cost not recorded";
+        const toggle=el("label","monster-infusion-toggle");toggle.append(input);top.append(toggle,name,el("span","monster-infusion-price",price));row.append(top,el("p","monster-infusion-effect",String(option.effect||"See the material rules.").split(/(?<=\.)\s+/)[0]));fieldset.append(row);
+      }
+      picker.append(fieldset);section.append(summary,picker);
+      if(present(d.material_rules))fold(section,"Infusion costs and limits",d.material_rules,"monster-infusion-rules");
+      redraw();body.append(section);
+    }
     const notes=el("div","monster-stat-notes"),sourceNotes=el("details","monster-provenance monster-source-notes");sourceNotes.append(el("summary","","Sources and conversion notes"));
     if(d.description||d.desc||d.height||d.weight)fold(notes,"Description and lore",[d.description||d.desc,d.height&&"Height: "+d.height,d.weight&&"Weight: "+d.weight].filter(Boolean).join("\n\n"));
+    if(Array.isArray(d.summoned_by)&&d.summoned_by.length){
+      const creation=el("details","monster-stat-note monster-creation-links");creation.append(el("summary","","Creation and control"));
+      const list=el("ul","monster-creation-list");
+      for(const reference of d.summoned_by){if(!reference?.name)continue;const row=el("li");row.append(helpers.link?helpers.link(reference.name,{section:reference.section||"spells",entry:reference.name,group:reference.group},"monster-creation-link"):el("strong","",reference.name));list.append(row);}
+      creation.append(list);notes.append(creation);
+    }
     if(d.hp_max_variant)fold(notes,"Optional hit points",d.hp_max_variant);
     if(d.limited_spell_uses)fold(notes,"Spell use rules",d.limited_spell_uses);
     if(present(d.notes))fold(notes,"Notes",d.notes);
@@ -186,12 +242,12 @@
     }
     if(sourceNotes.children.length>1)notes.append(sourceNotes);
     if(Array.isArray(d.spell_references)&&d.spell_references.length){const spells=el("details","monster-stat-note monster-spell-references");spells.append(el("summary","","Current spell rules"));const list=el("ul","monster-spell-list");for(const reference of d.spell_references){const row=el("li");if(helpers.link)row.append(helpers.link(reference.name,{section:"spells",entry:reference.name,group:reference.group},"monster-spell-link"));else row.append(el("strong","",reference.name));if(reference.source_spell&&normalize(reference.source_spell)!==normalize(reference.name))row.append(el("span",""," (replaces "+reference.source_spell+")"));for(const[key,value]of Object.entries(reference))if(!["name","group","source_spell"].includes(key)&&present(value))fold(row,label(key),value);list.append(row);}spells.append(list);notes.append(spells);}
-    const overview=el("div","monster-overview-column"),combat=el("div","monster-combat-column");
-    for(const child of Array.from(body.children)){const left=["monster-stat-lead","monster-score-grid","monster-score-status","monster-stat-secondary","monster-stat-spellcasting"].some(name=>String(child.className).split(" ").includes(name));(left?overview:combat).append(child);}
+    const overview=el("div","monster-overview-column"),combat=el("div","monster-combat-column"),configurations=[];
+    for(const child of Array.from(body.children)){if(String(child.className).split(" ").includes("monster-material-infusions")){configurations.push(child);continue;}const left=["monster-stat-lead","monster-score-grid","monster-score-status","monster-stat-secondary","monster-stat-spellcasting"].some(name=>String(child.className).split(" ").includes(name));(left?overview:combat).append(child);}
     // append() moves real DOM nodes; replaceChildren also supports lightweight test renderers.
     if(body.replaceChildren)body.replaceChildren(overview,combat);
     else {body.children=[];body.append(overview,combat);}
-    block.append(body);if(notes.children?.length||notes.childElementCount)block.append(notes);return block;
+    block.append(body,...configurations);if(notes.children?.length||notes.childElementCount)block.append(notes);return block;
   }
   const expanded=new Set();
   function expandableList(rows,helpers){
@@ -203,5 +259,5 @@
       item.addEventListener("toggle",()=>{if(item.open){expanded.add(key);render();}else expanded.delete(key);});item.append(summary,body);if(expanded.has(key)){item.open=true;render();}list.append(item);
     }return list;
   }
-  globalThis.MonsterViews=Object.freeze({presentation,types,titles,metadata,matches,challenge,ability,statblock,expandableList});
+  globalThis.MonsterViews=Object.freeze({presentation,materialConfiguration,types,titles,metadata,matches,challenge,ability,statblock,expandableList});
 })();
