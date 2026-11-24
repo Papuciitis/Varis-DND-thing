@@ -108,6 +108,6 @@ test('golem infusion selections cap at four, calculate costs and bonuses, and ne
 });
 
 test('summon creator links lead to the controlling spell or feature without implying self spellcasting',()=>{
- const {views,helpers}=setup(),block=views.statblock(entry({summoned_by:[{name:'Geochemical Golem',section:'spells',group:'Geomorphy spells'},{name:'Primordial Geomancy',section:'rules',group:'Tarta Homebrewery - Summoning features'}]}),helpers),creation=block.byClass('monster-creation-links')[0];
+ const {views,helpers}=setup(),block=views.statblock(entry({summoned_by:[{name:'Summon elemental',section:'spells',group:'Arcane spells'},{name:'Tarta creature options',section:'rules',group:'Tarta Homebrewery - Creature options'}]}),helpers),creation=block.byClass('monster-creation-links')[0];
  assert.equal(creation.tag,'details');assert.equal(creation.open,false);assert.equal(creation.all('a').length,2);const routes=creation.all('a').map(link=>new URLSearchParams(link.href.slice(1)));assert.equal(routes[0].get('section'),'spells');assert.equal(routes[1].get('section'),'rules');assert.equal(block.byClass('monster-stat-spellcasting').length,0);assert.equal(block.byClass('monster-additional-rule').length,0);
 });

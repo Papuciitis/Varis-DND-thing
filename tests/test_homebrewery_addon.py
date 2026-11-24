@@ -33,7 +33,7 @@ class HomebreweryAddonTests(unittest.TestCase):
                     self.assertIn(reference['monster'], self.monsters, e['name'])
                     if 'tarta-' in e['source']:
                         forward += 1
-        self.assertEqual(forward, 36)
+        self.assertEqual(forward, 35)
         for e in self.monsters.values():
             for reference in e['details'].get('summoned_by', []):
                 targets = self.catalog[reference['section']]['entries']
@@ -50,27 +50,34 @@ class HomebreweryAddonTests(unittest.TestCase):
             self.assertEqual(option['effect'], target['details']['source_golem_option']['effect'])
         self.assertNotIn('Moissanite', [o['name'] for o in options])
         self.assertEqual(golem['ac'], '16 (natural armor)')
+        configuration = next(e for e in self.catalog['rules']['entries'] if e['name'] == 'Geochemical Golem infusion options')['details']
+        live_rules = ' '.join(section['body'] for section in configuration['sections'])
+        self.assertNotIn('creating spell', live_rules)
+        self.assertNotIn("spell's material cost", live_rules)
+        self.assertIn('optional construction budget', live_rules)
 
-    def test_completed_spells_use_supported_tiers_and_explicit_limits(self):
-        spells = [e for e in self.catalog['spells']['entries'] if e['source'] == 'draft-spells/tarta-homebrewery-summons.yaml']
-        self.assertEqual(len(spells), 10)
-        for e in spells:
-            self.assertLessEqual(int(e['details']['lvl']), 6)
-            self.assertGreaterEqual(int(e['details']['lvl']), 1)
-            self.assertTrue(e['details']['conversion_notes'])
-        by_name = {e['name']: e['details'] for e in spells}
-        self.assertIn('one', by_name['Sandsoverign']['effect'].lower())
-        self.assertIn('cannot attack', by_name["Geomorpher's Stone Servant"]['effect'])
-        self.assertIn('shared', by_name['Rockplica']['effect'])
-        self.assertIn('not duplicated', by_name['Rockplica']['effect'])
-        self.assertNotIn('summons', by_name["Nature's Grasp"])
-        self.assertNotIn('summons', by_name['Stone Sentinel'])
-        self.assertNotIn('summons', by_name['Treetimber'])
+    def test_no_new_geomorphy_spells_or_player_feature_modules_are_published(self):
+        spells = self.catalog['spells']['entries']
+        self.assertEqual(len(spells), 439)
+        self.assertFalse(any(e['group'] in ['Geomorphy spells', 'Geomancy spells'] for e in spells))
+        self.assertFalse(any(e['source'] == 'draft-spells/tarta-homebrewery-summons.yaml' for e in spells))
+        self.assertFalse(any(e['source'] == 'draft-reference/tarta-summoning-features.yaml' for e in self.catalog['rules']['entries']))
+
+    def test_creature_option_menu_references_all_thirty_five_standalone_profiles(self):
+        options = next(e for e in self.catalog['rules']['entries'] if e['name'] == 'Tarta creature options')
+        names = {reference['monster'] for reference in options['details']['summons']}
+        expected = {e['name'] for e in self.monsters.values() if e['source'] in [
+            'monsters/tarta-elementals-low.yaml', 'monsters/tarta-elementals-high.yaml', 'monsters/tarta-summons.yaml']}
+        self.assertEqual(names, expected)
+        self.assertEqual(len(names), 35)
+        self.assertEqual(options['details']['summon_label'], 'Creature options')
+        for name in expected:
+            self.assertNotIn('summoned_by', self.monsters[name]['details'])
 
     def test_duplicate_resources_and_independent_concentration_are_bounded(self):
         duplicate = self.monsters['Rockplica duplicate']['details']
         text = ' '.join(row['description'] for row in duplicate['traits'])
-        self.assertIn('cannot cast a spell that requires concentration', text)
+        self.assertIn('concentration', text)
         self.assertIn('Block points are shared', text)
         self.assertIn('verbal components', duplicate['languages'])
         self.assertIn('movement speeds', duplicate['speed'])

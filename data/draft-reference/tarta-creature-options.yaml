@@ -1,0 +1,51 @@
+section: rules
+entries:
+- name: Tarta creature options
+  group: Tarta Homebrewery - Creature options
+  description: Choose these as standalone monsters, NPCs, companions or possible summon forms when an existing rule
+    or the GM allows it. Each has its own monster page and editable statblock. This collection does not grant a
+    new spell, summoning power, class feature or extra character resource. For a controlled companion, use the existing
+    effect’s activation, resource cost, control limits and duration; otherwise the creature acts as an ordinary
+    independent monster. Variable duplicate templates require a selected model creature's profile.
+  summon_label: Creature options
+  summons:
+  - monster: Dirt Mite
+  - monster: Stone Sprite
+  - monster: Clay Imp
+  - monster: Pebble Gnome
+  - monster: Moonflyer
+  - monster: Boulder Guardian
+  - monster: Crystal Sprite
+  - monster: Granite Striker
+  - monster: Magnetite Guardian
+  - monster: Gravel Giggler
+  - monster: Obsidian Shard
+  - monster: Stone Strider
+  - monster: Quartz Quasher
+  - monster: Obsidian Obliterator
+  - monster: Granite Goliath
+  - monster: Diamond Devastator
+  - monster: Obsidian Monolith
+  - monster: Sand Shambler
+  - monster: Gemstone Goliath
+  - monster: Obsidian Oaf
+  - monster: Voidstone Wanderer
+  - monster: Runic Sentinel
+  - monster: Earthen Guardian
+  - monster: Great Iron
+  - monster: Whirlwind Sand Elemental
+  - monster: Primordial Terra Titan
+  - monster: Earth Elemental Servant
+  - monster: Resilient Plant
+  - monster: Awakened Earth
+  - monster: Geochemical Golem
+  - monster: Stone Servant
+  - monster: Colossal Sand Golem
+  - monster: Thorn Spitter
+  - monster: Rockplica duplicate
+  - monster: Stone illusion duplicate
+  source_ref: draft2.pdf / PDF pages 8, 14-26, 59-63, 71, 78; duplicate templates pages 34 and 57
+  conversion_notes:
+  - The original creating-spell names and class context remain historical source notes inside each monster. They
+    are not published as new player spells or features. The 32 printed creatures and three completed templates remain
+    independent monster options.

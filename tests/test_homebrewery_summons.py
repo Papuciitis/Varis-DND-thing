@@ -1,4 +1,4 @@
-"""Regression coverage for source preservation and completed summon boundaries."""
+"""Regression coverage for independent creature options and archived summon sources."""
 from pathlib import Path
 import unittest
 
@@ -35,8 +35,13 @@ class HomebrewerySummonsTests(unittest.TestCase):
             self.assertEqual(entry['abilities'], entry['original_5e']['abilities'])
         self.assertEqual(self.by_name['Colossal Sand Golem']['size'], 'Huge')
         self.assertIn('24d12 + 48 + spellcasting modifier', self.by_name['Resilient Plant']['original_5e']['hp'])
-        self.assertEqual(self.by_name['Resilient Plant']['hp'], '200 + controller spellcasting modifier (minimum 1)')
-        self.assertEqual(self.by_name['Awakened Earth']['hp'], '75 + controller spellcasting modifier (minimum 1)')
+        for name, hp in [('Resilient Plant', '200'), ('Awakened Earth', '75')]:
+            entry = self.by_name[name]
+            self.assertEqual(entry['hp'], hp)
+            vitality = next(row['description'] for row in entry['traits'] if row['name'] == 'Controller-linked vitality (optional)')
+            self.assertIn('existing effect or the GM', vitality)
+            self.assertIn("controller's spellcasting ability modifier", vitality)
+            self.assertIn('minimum total 1', vitality)
 
     def test_defensive_servant_does_not_expose_archived_offensive_slam(self):
         entry = self.by_name['Stone Servant']
@@ -67,7 +72,12 @@ class HomebrewerySummonsTests(unittest.TestCase):
         self.assertEqual(self.by_name['Resilient Plant']['speed'], '0 ft.')
         self.assertEqual(self.by_name['Thorn Spitter']['speed'], '0 ft.')
         self.assertIn('Rootbound Stalker', self.by_name['Thorn Spitter']['source_completion']['baseline'])
-        self.assertIn('controller\'s spell attack bonus', self.by_name['Thorn Spitter']['actions'][0]['description'])
+        thorn_attack = self.by_name['Thorn Spitter']['actions'][0]['description']
+        self.assertIn('Ranged spell attack +4', thorn_attack)
+        self.assertIn('Block DC 12', thorn_attack)
+        self.assertIn('existing effect or the GM', thorn_attack)
+        self.assertIn("controller's spell attack bonus instead of +4", thorn_attack)
+        self.assertIn('Block DC 8 + that spell attack bonus', thorn_attack)
 
     def test_duplicate_templates_do_not_invent_ability_profiles_or_free_resources(self):
         for name in ['Rockplica duplicate', 'Stone illusion duplicate']:
@@ -76,13 +86,57 @@ class HomebrewerySummonsTests(unittest.TestCase):
             self.assertEqual(entry['cr'], 'Varies')
             self.assertTrue(all(str(score).startswith('Controller ') for score in entry['abilities'].values()))
             self.assertNotIn('xp', entry)
+            setup = next(row['description'] for row in entry['traits'] if row['name'] == 'Template setup')
+            self.assertIn('model creature', setup)
+            self.assertIn('may be an NPC', setup)
+            self.assertIn('does not itself place this creature', setup)
         rock = ' '.join(row['description'] for row in self.by_name['Rockplica duplicate']['traits'])
-        self.assertIn('controller\'s existing supply', rock)
+        self.assertIn("model creature's existing supply", rock)
         self.assertIn('cannot create another duplicate or summon', rock)
+        self.assertIn('no independent concentration capacity', rock)
+        self.assertIn('already maintaining concentration', rock)
+        self.assertIn('without ending it normally', rock)
+        self.assertNotIn('Because Rockplica already', rock)
+        self.assertNotIn('parent Rockplica spell', rock)
         illusion = ' '.join(row['description'] for row in self.by_name['Stone illusion duplicate']['traits'])
         self.assertIn('Cannot attack', illusion)
         self.assertIn('cast spells', illusion)
         self.assertIn('60 feet', illusion)
+        self.assertIn('if none are specified, use 1 minute', illusion)
+        self.assertEqual(self.by_name['Stone illusion duplicate']['hp'], '1')
+
+    def test_monsters_do_not_require_removed_creation_spells_or_features(self):
+        for entry in self.entries:
+            with self.subTest(monster=entry['name']):
+                self.assertNotIn('summoned_by', entry)
+                control = next(row['description'] for row in entry['traits'] if row['name'] == 'Optional controlled companion')
+                self.assertIn('existing effect or the GM', control)
+                self.assertIn('Without an assigned controller, it acts independently', control)
+                self.assertIn('grants no ability to create or summon it', control)
+                live = yaml.safe_dump({key: value for key, value in entry.items() if key not in {'original_5e', 'conversion_notes', 'source_ref', 'source_completion'}})
+                self.assertNotIn('Geomorphy spells', live)
+                self.assertNotIn('linked current', live)
+                self.assertNotRegex(live, r'parent.{0,35}spell')
+        earth = self.by_name['Awakened Earth']
+        control_break = next(row['description'] for row in earth['actions'] if row['name'] == 'Break control')
+        self.assertIn('While controlled', control_break)
+        self.assertIn('control DC assigned by the GM', control_break)
+        self.assertIn('unavailable when it is already independent', control_break)
+        servant = next(row['description'] for row in self.by_name['Stone Servant']['traits'] if row['name'] == 'Noncombat servant')
+        self.assertIn('An independent servant has no controller-distance restriction', servant)
+
+    def test_material_variants_configure_a_monster_without_granting_a_spell(self):
+        golem = self.by_name['Geochemical Golem']
+        self.assertEqual(len(golem['material_options']), 12)
+        self.assertTrue(all(option['name'] and option['effect'] for option in golem['material_options']))
+        rules = golem['material_rules']
+        self.assertIn('When configuring or creating a golem', rules)
+        self.assertIn('one to four distinct materials', rules)
+        self.assertIn('grants no crafting or spellcasting ability', rules)
+        self.assertNotIn('when casting', rules)
+        infusion = next(row['description'] for row in golem['traits'] if row['name'] == 'Elemental Infusion')
+        self.assertIn('unconfigured golem has none', infusion)
+        self.assertNotIn('used in the casting', infusion)
 
 
 if __name__ == '__main__':

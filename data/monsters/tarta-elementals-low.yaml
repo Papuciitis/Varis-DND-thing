@@ -64,10 +64,6 @@ entries:
     damage cannot be Blocked. Source attack dice are retained; conflicting printed damage means and HP dice expressions
     are preserved only in original_5e.
   xp: '10'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Stone Sprite
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-stone-sprite
@@ -135,10 +131,6 @@ entries:
     are preserved only in original_5e.
   damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
   xp: '25'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Clay Imp
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-clay-imp
@@ -206,10 +198,6 @@ entries:
     are preserved only in original_5e.
   damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
   xp: '50'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Pebble Gnome
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-pebble-gnome
@@ -281,10 +269,6 @@ entries:
   damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
   skills: Stealth +6, Perception +4
   xp: '100'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Moonflyer
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-moonflyer
@@ -383,10 +367,6 @@ entries:
     - Moonlight uses the printed Recharge 5-6 as a d6 roll at the start of its turn. The Constitution-save rider
       applies only after an unblocked strike.
   xp: '700'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Boulder Guardian
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-boulder-guardian
@@ -471,10 +451,6 @@ entries:
     - The source Slam says 8 (1d4), an inconsistent mean and dice expression. Retain the explicit 1d4; preserve
       the printed 8 in original_5e rather than adding unprinted damage.
   xp: '200'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Crystal Sprite
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-crystal-sprite
@@ -550,10 +526,6 @@ entries:
     decisions:
     - Earth Glide is printed but no burrow speed accompanies it. Add burrow 30 ft., equal to its printed walking
       speed, so the trait has a complete movement procedure. Original movement remains in original_5e.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Granite Striker
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-granite-striker
@@ -626,10 +598,6 @@ entries:
     are preserved only in original_5e.
   damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
   xp: '50'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Magnetite Guardian
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-magnetite-guardian
@@ -710,10 +678,6 @@ entries:
     - Magnetic Defense is presented under Reactions. It affects only the triggering metal-weapon attack, using the
       source 30-foot sight requirement. The explicitly attackless design is preserved.
   xp: '200'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Gravel Giggler
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-gravel-giggler
@@ -787,10 +751,6 @@ entries:
     - The clipped AC line is completed as 13 natural armor, consistent with the visible trailing 3 and the neighboring
       small earth-elemental profiles.
   xp: '25'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Obsidian Shard
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-obsidian-shard
@@ -875,10 +835,6 @@ entries:
     - The duplicate Shard Throw property is folded into the Shard action so range and attack rules appear once.
       Its conditional save occurs only after an unblocked strike.
   xp: '50'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Stone Strider
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-stone-strider
@@ -951,10 +907,6 @@ entries:
     are preserved only in original_5e.
   damage_resistances: bludgeoning, piercing, and slashing from nonmagical attacks
   xp: '200'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Quartz Quasher
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-quartz-quasher
@@ -1052,7 +1004,3 @@ entries:
     - Quartz Armor contact damage follows an unblocked melee strike; its explicitly printed failed-escape trigger
       remains automatic. The printed damage mean 5 is omitted in favor of 1d10.
   xp: '450'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features

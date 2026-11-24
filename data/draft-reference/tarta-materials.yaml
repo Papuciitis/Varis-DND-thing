@@ -46,8 +46,8 @@ entries:
     bastion_aura: Metallic objects within 20 feet are pulled or repelled. Creatures holding these objects must succeed
       on a DC 16 Strength saving throw or be disarmed.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -88,8 +88,8 @@ entries:
     weapon_infusion: Weapon strikes make a 5-foot radius area difficult terrain.
     bastion_aura: Ground in a 20-foot radius becomes difficult terrain.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -124,8 +124,8 @@ entries:
     weapon_infusion: Weapon emits bright light in a 20-foot radius and dim light for an additional 20 feet.
     bastion_aura: Bastion illuminates a 40-foot radius.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -165,8 +165,8 @@ entries:
     bastion_aura: Creatures within 20 feet make a DC 16 Constitution saving throw at the start of their turn or
       take 1d6 poison damage and are poisoned for the turn.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -202,8 +202,8 @@ entries:
     weapon_infusion: Weapon illuminates surroundings.
     bastion_aura: Bastion glows, illuminating surroundings.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -239,8 +239,8 @@ entries:
     weapon_infusion: Weapon deals an additional 1d8 fire damage.
     bastion_aura: Creatures within 20 feet take 1d8 fire damage at the start of their turn.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -275,8 +275,8 @@ entries:
     weapon_infusion: Creatures within 5 feet at the start of your turn take 1d6 fire damage.
     bastion_aura: Creatures within 20 feet take 1d6 fire damage at the start of their turn.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -313,8 +313,8 @@ entries:
     weapon_infusion: Once per turn, as a bonus action, touch to heal a creature for 1d8 hit points.
     bastion_aura: Allies within 20 feet heal 1d8 hit points at the start of their turn.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -357,8 +357,8 @@ entries:
     bastion_aura: Creatures within 20 feet make a DC 16 Constitution saving throw at the start of their turn or
       have their speed reduced by 10 feet for the turn.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -397,8 +397,8 @@ entries:
     weapon_infusion: Weapon deals an additional 1d6 bludgeoning damage.
     bastion_aura: Allies within 20 feet gain a +1 bonus to attack and damage rolls.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -448,8 +448,8 @@ entries:
     bastion_aura: Allies within 20 feet can move through objects and creatures as difficult terrain for up to 10
       feet once per turn.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -491,8 +491,8 @@ entries:
     bastion_aura: Enemies within 20 feet make a DC 16 Constitution saving throw at the start of their turn or are
       blinded for the turn.
   conversion_notes:
-  - This profile has three separate applications. Owning the material does not grant all three effects. The creating
-    Geochemical Golem spell or Earthwarden feature determines which application is active.
+  - This profile has three separate applications. Owning the material does not grant all three effects. A configured
+    golem uses its Golem infusion; weapon and Bastion applications require their existing feature or GM permission.
   - A weapon rider requires an unblocked strike. Saving-throw-only and automatic damage cannot be Blocked. Current
     Poisoned and Blinded conditions apply; the printed source save DCs remain fixed.
   - The source weapon and Bastion effects belong to the level-18 Earthwarden features; they are not automatically
@@ -503,25 +503,26 @@ entries:
     under the current rules.
 - name: Geochemical Golem infusion options
   group: Tarta Homebrewery - Materials
-  description: Configure one Geochemical Golem when casting its creating spell. These infusions alter that golem;
-    each selected material does not create another creature.
+  description: Optional material configurations for one standalone Geochemical Golem. Each selected material modifies
+    that creature; it does not create another creature or grant a spell.
   sections:
   - heading: Choose the infusion context
     body: A golem uses only the Golem infusion section of each selected material. Geomorphic Infusion and Geomorphic
       Bastion are separate level-18 Earthwarden features with their own Weapon infusion and Bastion aura sections.
       Their effects are not automatically added to the golem or to a material dragon.
   - heading: Materials and total cost
-    body: 'Choose one to four different materials. Add their listed gp costs. The consumed mixture costs the greater
+    body: 'For a material-configured variant, choose one to four different materials. Add their listed gp costs. The optional construction budget is the greater
       of 1,000 gp or that sum, plus 400 gp if a third material is selected, plus another 2,000 gp if a fourth material
-      is selected. This is one consumed material expenditure for the creating spell. Two materials add no combination
+      is selected. These source prices are configuration benchmarks; they do not grant a creation or casting ability. Two materials add no combination
       surcharge. Each chosen material must be present at its full listed value; repeating a material does not stack
       its effect. Example: Neodrakite (300 gp) and Lanthara Crystal (400 gp) cost 1,000 gp total; adding Erbion
       Essence (450 gp) raises the total to 1,550 gp; adding Holmara Rock (400 gp) raises it to 3,950 gp.'
   - heading: Duration and changes
-    body: The chosen infusions last for this golem's lifetime and end when it is destroyed, dismissed or its creating
-      spell ends. Choose them during creation; they cannot be swapped later without creating another golem and paying
-      that spell's material cost. Material prices here describe the consumed spell components, not a general market
-      price for equipment.
+    body: The chosen infusions last for this golem's lifetime and end when it is destroyed or otherwise removed.
+      Choose them when configuring the creature. Later changes require the GM's agreement or an existing rule;
+      selecting a material does not grant a way to create, dismiss or rebuild a golem. If an existing effect creates
+      the creature, use that effect's duration and costs. Material prices are optional configuration benchmarks,
+      not general market prices for equipment.
   - heading: Rules shared by infusion effects
     body: The ordinary Geochemical Golem's infusion save DC is 14. The Earthwarden weapon and Bastion save DC is
       16 where printed. Attacks and their attached damage or condition riders require an unblocked strike. Automatic
@@ -565,6 +566,8 @@ entries:
     specifies no cost.
   - No creature statblock is assigned to the Bastion. Its geometric shape and duration are retained; resolving object
     damage uses the table's ordinary object rules.
+  - Material prices are optional construction/configuration benchmarks, not a new casting cost or spell access requirement.
+    The source weapon and Bastion contexts are reference adaptations and do not grant a class feature.
 - name: Moissanite
   group: Tarta Homebrewery - Materials
   description: Moissanite supplies the reflective theme of the paladin's Earth's Embrace feature. It is not one

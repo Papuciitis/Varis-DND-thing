@@ -227,7 +227,7 @@ test('spell groups agree with the reader and zero-level hexes are not labelled c
  assert(meta.some(text=>text.includes('Greater hexes · Level 0')));assert(meta.some(text=>text.includes('Arcane cantrips · Cantrip')));
  assert.equal(h.q('#spell-filter').querySelectorAll('option').find(node=>node.value==='0').textContent,'Level 0 / cantrips');
  h.action('catalog','[data-kind="spells"]').click();
- assert.deepEqual(h.q('#catalog-group').querySelectorAll('option').slice(1).map(node=>node.textContent),['Arcane cantrips','Arcane spells','Mystic cantrips','Mystic spells','Oath cantrips','Oath spells','Occult cantrips','Occult spells','Minor hexes','Major hexes','Greater hexes','Geomorphy spells']);
+ assert.deepEqual(h.q('#catalog-group').querySelectorAll('option').slice(1).map(node=>node.textContent),['Arcane cantrips','Arcane spells','Mystic cantrips','Mystic spells','Oath cantrips','Oath spells','Occult cantrips','Occult spells','Minor hexes','Major hexes','Greater hexes']);
  assert.equal(h.q('#catalog-level').querySelectorAll('option').find(node=>node.value==='0').textContent,'Level 0 / cantrips');
  h.set(h.q('#catalog-group'),'Greater hexes');
  const hexMeta=h.q('#catalog-results').querySelectorAll('.list-card-meta');assert(hexMeta.length);assert(hexMeta.every(node=>node.textContent==='Greater hexes · Level 0'));

@@ -2,7 +2,7 @@
 
 Source: `draft2.pdf`, metadata title **The Tarta Guide - The Homebrewery**, author `nerak`, 79 PDF pages. Page references below are physical PDF pages, not the Fandom wiki. Inspected 24 November 2026.
 
-This records the original source inventory and gaps. **Implementation update:** all 32 printed blocks and three partial summon templates are now converted in the add-on, with explicit repairs documented in `docs/tarta-conversion-decisions.md`. The Tarta wiki dragons remain a separate 13-profile collection and are now completed too. Statements below about missing source rules describe the original PDF, not unresolved playable fields.
+This records the original source inventory and gaps. **Implementation update:** all 32 printed blocks and three partial summon templates are now converted in the add-on, with explicit repairs documented in `docs/tarta-conversion-decisions.md`. The Tarta wiki dragons remain a separate 13-profile collection and are now completed too. Statements below about missing source rules describe the original PDF, not unresolved playable fields. **Scope correction:** the conversion publishes standalone monsters/options, not the PDF's spell list or player class features. All spell names, spell levels and creating procedures below are historical source context only. Browse the converted entries through **Tarta creature options** in `data/draft-reference/tarta-creature-options.yaml` or the Monster manual.
 
 ## Additional Earth Elementals (26 full statblocks)
 
@@ -55,7 +55,7 @@ Page 26 also supplies the level-14 **Primordial Geomancy** feature: an action ra
 
 Six further full statblocks occur outside the additional-elemental list. Total: **32 unique printed full statblocks** in this PDF.
 
-| PDF page | Creature | Printed CR | Creation/control source | Important rules or gaps |
+| PDF page | Creature | Printed CR | Archived creation/control source | Original source rules or gaps |
 | ---: | --- | ---: | --- | --- |
 | 8 | Earth Elemental Servant | 10 | Artificer level 15, Master of the Land | Action plus 3rd-level-or-higher slot; visible unoccupied space within 60 feet; friendly and obeys; 1 hour, 0 HP, or action dismissal; once per long rest. Initiative and command cost unspecified. |
 | 59 | Resilient Plant | 0 | Bloomguard, 5th-level spell | Touch a plant, seed worth 100 gp (consumption is not stated). Regeneration 10/turn. Explicitly stationary, no actions, intended as cover/barrier. Instantaneous base duration conflicts with finite higher-slot durations. |
@@ -64,7 +64,7 @@ Six further full statblocks occur outside the additional-elemental list. Total: 
 | 63 | Stone Servant | 4 | Geomorpher's Stone Servant, 5th-level spell | 1-hour casting; touch stone(s) within a 5-foot cube; consumed 500 gp gemstone; until dispelled/0 HP/action dismissal. Beyond 60 feet stops obeying and does nothing. Spell forbids attacks, but creature block includes Slam. |
 | 78 | Colossal Sand Golem | 16 | Sandsoverign, 9th-level spell | Spell grants control of sand within 1 mile and an action to form the golem. Spell says instantaneous and permanent inanimate creations; golem duration, limit, command timing, dismissal and concentration are not specified. Creature is explicitly **Huge**, despite its name. |
 
-The last spell title is printed **Sandsoverign**; retain that source alias if the public title is corrected to Sandsovereign. Do not silently treat the word Colossal in the creature's name as its mechanical size.
+The source spell title is printed **Sandsoverign**. It is retained in archived provenance only; there is no new public spell entry or spell alias. Do not silently treat the word Colossal in the creature's name as its mechanical size.
 
 ## Material profiles and their contexts
 
@@ -133,9 +133,9 @@ All 79 physical pages were visually checked: pages 1–13 and 27–38 for class 
 ## Review priorities
 
 1. Import the 32 unique printed blocks with source-page references, keeping intentionally nonattacking designs intact.
-2. Link the six summons outside the druid list, plus Primordial Geomancy, to their exact creating spell or feature. Keep creature rules distinct from controller duration, range and slot scaling.
+2. Offer all 35 converted Homebrewery creatures/templates as standalone monster choices. Keep source creation spells/features archived rather than publishing new player spells, slot scaling or class modules. A GM or existing effect supplies companion duration and control.
 3. Store the twelve material configurations once per rules context; avoid creating twelve duplicate base golems. Up to four material choices do not imply four simultaneous independent summons.
-4. Resolve Stone Servant's attack prohibition versus Slam, Awakened Earth's movement/control, Bloomguard's duration, and Sandsoverign's golem lifespan/limit before calling the conversions complete. The Sand Golem's automatic engulf also lacks an escape procedure, save and size limit; Geochemical Golem has Earth Glide but no numerical burrow speed.
+4. Resolve creature-level conflicts: Stone Servant's noncombat role, Awakened Earth's anchored movement/control, Sand Golem's escape/save/size limits and Geochemical Golem's missing burrow speed. Source-only creating-spell durations and player costs are not part of the standalone creature add-on.
 5. Complete the three partial creature-like creations with explicitly documented custom rules or keep them clearly marked as partial. Do not invent offense for the defensive-only Magnetite Guardian or Resilient Plant.
 6. Preserve existing current-system spell rules as authoritative during conversion rather than replacing them wholesale with the PDF's older spell-slot/level progression.
 

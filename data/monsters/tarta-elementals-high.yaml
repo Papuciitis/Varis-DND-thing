@@ -83,10 +83,6 @@ entries:
   block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
     blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
     armor grants no extra Block or armor training.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Granite Goliath
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-granite-goliath
@@ -171,10 +167,6 @@ entries:
     description: When directly targeted by a damaging attack or spell, use a reaction before resolving the damage
       to gain resistance to one damage type that effect deals. It lasts until the end of the elemental's next turn.
       Merely being inside an area effect does not trigger it.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Diamond Devastator
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-diamond-devastator
@@ -262,10 +254,6 @@ entries:
     description: When the elemental takes damage from an unblocked attack, it may use its reaction to deal the attacker
       radiant damage equal to half the damage actually suffered, rounded down. This automatic reflection cannot
       be Blocked and cannot trigger another damage-reflection ability.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Obsidian Monolith
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-obsidian-monolith
@@ -352,10 +340,6 @@ entries:
   block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
     blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
     armor grants no extra Block or armor training.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Sand Shambler
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-sand-shambler
@@ -447,10 +431,6 @@ entries:
   block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
     blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
     armor grants no extra Block or armor training.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Gemstone Goliath
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-gemstone-goliath
@@ -540,10 +520,6 @@ entries:
     description: When directly targeted by a damaging spell, use a reaction before resolving its damage to gain
       resistance to one of that spell's damage types until the end of the elemental's next turn. Merely being included
       in an area is not direct targeting.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Obsidian Oaf
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-obsidian-oaf
@@ -623,10 +599,6 @@ entries:
   block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
     blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
     armor grants no extra Block or armor training.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Voidstone Wanderer
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-voidstone-wanderer
@@ -717,10 +689,6 @@ entries:
   block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
     blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
     armor grants no extra Block or armor training.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Runic Sentinel
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-runic-sentinel
@@ -849,10 +817,6 @@ entries:
     blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
     armor grants no extra Block or armor training.
   damage_vulnerabilities: thunder; bludgeoning, piercing and slashing from Cold Iron weapons
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Earthen Guardian
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-earthen-guardian
@@ -956,10 +920,6 @@ entries:
   - name: Protective Presence
     description: When another friendly creature within 10 feet is targeted by an attack, use a reaction before the
       roll to impose disadvantage on that attack, provided the attacker can see the elemental.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Great Iron
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-great-iron
@@ -1097,10 +1057,6 @@ entries:
       using that score; a Strength change also adjusts Slam attack, damage and Block DC by the modifier difference,
       and a Dexterity change adjusts initiative and natural Block. Other printed attack/save values stay fixed.
       These changes end after 1 minute; any temporary HP from this power also expires then.'
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Whirlwind Sand Elemental
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-whirlwind-sand-elemental
@@ -1233,10 +1189,6 @@ entries:
   block_rules: Spend 1 Block after an attack hits and before damage. A successful check against its Block DC negates
     blockable damage and unblocked-strike riders. Saving-throw-only and automatic damage cannot be Blocked. Natural
     armor grants no extra Block or armor training.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
 - name: Primordial Terra Titan
   group: Tarta Homebrewery - Earth elementals
   id: homebrewery-primordial-terra-titan
@@ -1293,9 +1245,10 @@ entries:
     description: 'Melee attack +8, reach 5 ft., one target; Block DC 16. Unblocked strike: 2d8 + 5 bludgeoning damage.'
   - name: Seismic Shift (Every 2 rounds)
     description: 'Each other creature within 30 feet makes a DC 17 Dexterity save. Failure: 4d6 bludgeoning damage
-      and Prone. Success: no damage or Prone. Objects and structures in the area take twice the same rolled damage; this replaces, rather than stacks with, Siege Monster. After using this action it
-      is unavailable on the elemental''s next turn and becomes available at the start of its following turn. This
-      saving-throw-only effect cannot be Blocked.'
+      and Prone. Success: no damage or Prone. Objects and structures in the area take twice the same rolled damage;
+      this replaces, rather than stacks with, Siege Monster. After using this action it is unavailable on the elemental''s
+      next turn and becomes available at the start of its following turn. This saving-throw-only effect cannot be
+      Blocked.'
   source_ref: draft2.pdf / PDF page 26
   original_5e:
     name: Primordial Terra Titan
@@ -1376,10 +1329,3 @@ entries:
     description: Each other creature within 60 feet that can hear the elemental makes a DC 15 Wisdom save or becomes
       Afraid until the end of that creature's next turn. Use the current Afraid condition, including repeated-fear
       escalation.
-  summoned_by:
-  - name: Geomorphic Form
-    section: rules
-    group: Tarta Homebrewery - Summoning features
-  - name: Primordial Geomancy
-    section: rules
-    group: Tarta Homebrewery - Summoning features
