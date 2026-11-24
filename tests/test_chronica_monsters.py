@@ -29,17 +29,39 @@ class ChronicaMonstersTests(unittest.TestCase):
         self.assertEqual(len({row["folder"] for row in self.source["monsters"]}), 14)
         self.assertEqual(len(self.by_name), len(self.entries))
 
-    def test_modifier_fields_never_become_ability_scores(self):
+    def test_numeric_scores_preserve_every_recorded_modifier(self):
         for entity in self.source["monsters"]:
             actual = self.by_name[entity["name"]]
             stats = IMPORTER.fields(entity)
             for ability, sid in IMPORTER.ABILITY_IDS.items():
                 raw = IMPORTER.first(stats, sid)
                 if raw:
-                    self.assertEqual(actual["abilities"][ability],
-                                     f"{int(raw):+d} modifier (score not recorded)")
-        self.assertEqual(self.by_name["Boar"]["abilities"]["str"], "+1 modifier (score not recorded)")
+                    self.assertEqual((int(actual["abilities"][ability]) - 10) // 2, int(raw))
+                    self.assertEqual(actual["source_ability_scores"]["original_modifiers"][ability], raw)
+        self.assertEqual(self.by_name["Boar"]["abilities"]["str"], "13")
         self.assertIn("0 pool / +0 check", self.by_name["Boar"]["block"])
+
+    def test_all_profiles_have_usable_scores_and_honest_provenance(self):
+        statuses = set()
+        for entry in self.entries:
+            self.assertEqual(set(entry["abilities"]), set(IMPORTER.ABILITY_IDS))
+            self.assertTrue(all(str(value).isdigit() and int(value) >= 1 for value in entry["abilities"].values()))
+            provenance = entry["source_ability_scores"]
+            self.assertTrue(provenance["source"])
+            self.assertTrue(provenance["profile"])
+            statuses.add(entry["ability_score_status"])
+            self.assertEqual(entry["ability_score_status"] == "reconstructed", provenance["method"] == "reconstructed")
+        self.assertEqual(statuses, {"sourced", "reconstructed"})
+
+    def test_source_headers_and_known_identity_fields_are_promoted_without_guessed_challenge(self):
+        target = {}
+        IMPORTER.promote_headers(target, "", "Senses darkvision 60 ft.\nLanguages Common\nChallenge 3")
+        self.assertEqual(target, {"senses": "darkvision 60 ft.", "languages": "Common"})
+        boar = self.by_name["Boar"]
+        self.assertEqual(boar["type"], "beast")
+        self.assertEqual(boar["size"], "Medium")
+        self.assertTrue(any(entry["cr"] == "Unrated" for entry in self.entries))
+        self.assertTrue(all(entry.get("senses") and entry.get("languages") for entry in self.entries))
 
     def test_missing_blocks_are_existing_identified_alternatives(self):
         self.assertEqual(len(self.fills), 11)

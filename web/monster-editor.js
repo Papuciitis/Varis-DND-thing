@@ -112,6 +112,7 @@
   ];
   const actionFields=[["traits","Traits"],["actions","Actions"],["bonus_actions","Bonus actions"],["reactions","Reactions"],["legendary_actions","Legendary actions"],["mythic_actions","Mythic actions"],["lair_actions","Lair actions"],["regional_effects","Regional effects"]];
   function preview(entry){
+    if(globalThis.MonsterViews){const block=globalThis.MonsterViews.statblock(entry);block.classList.add("monster-editor-preview");return block;}
     const wrap=node("article",undefined,"monster-editor-preview stat-block"),d=entry.details||{};wrap.append(node("h2",entry.name||"Your monster"));if(d.meta)wrap.append(node("p",d.meta,"monster-meta"));const stats=node("dl",undefined,"stats monster-stats");
     for(const[key,title]of[["ac","Armor class"],["hp","Hit points"],["block","Block"],["speed","Speed"],["cr","Challenge"]])if(d[key]!=null&&d[key]!==""){const field=node("div");field.append(node("dt",title),node("dd",String(d[key])));stats.append(field);}wrap.append(stats);
     if(d.abilities){const scores=node("dl",undefined,"stats monster-abilities");for(const[key,value]of Object.entries(d.abilities)){const field=node("div");field.append(node("dt",key.toUpperCase()),node("dd",String(value)));scores.append(field);}wrap.append(scores);}

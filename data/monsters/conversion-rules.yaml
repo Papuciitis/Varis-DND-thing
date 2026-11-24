@@ -17,8 +17,16 @@ entries:
   - heading: Missing source data
     body: >-
       Incomplete mechanics use fitting existing rules or statblocks, identified in conversion notes and
-      replacement sources. Chronica ability modifiers remain modifiers when an exact ability score was
-      never recorded. The original text remains available for comparison.
+      replacement sources. Chronica's playable ability scores use matching published profiles where available;
+      otherwise reconstructed scores preserve the original modifiers. Reconstructed scores are labelled, and
+      the source panels explain their method. The original text remains available for comparison.
+  - heading: Find and compare monsters
+    body: >-
+      Monster manual starts as an expandable list. Open several creatures to compare their statblocks.
+      Creature type, Challenge rating, source group and text search can be combined. Challenge choices include
+      exact fractions, numeric ranges, and Unrated / unknown; an unknown challenge is not CR 0.
+      Display can switch to ordinary Pages. Expanded rows, creature pages and the editor preview use the
+      same parchment statblock layout, with two columns on wide screens and one on phones.
   - heading: Add or edit a monster
     body: >-
       Open Monster manual and choose Add your monster statblock, or open a creature and use Edit statblock

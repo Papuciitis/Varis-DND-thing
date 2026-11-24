@@ -29,6 +29,19 @@ test('the built monster manual includes every supplied creature and the editor c
   assert.equal(new Set(section.entries.map(entry => entry.name.toLowerCase())).size, 112);
 });
 
+test('built Chronica profiles expose six numeric ability scores with traceable reconstruction status', () => {
+  const entries=builtCatalog().find(section=>section.key==='monsters').entries.filter(entry=>entry.source==='monsters/chronica.yaml');
+  assert.equal(entries.length,66);
+  for (const entry of entries) {
+    for (const key of ['str','dex','con','int','wis','cha']) {
+      const value=entry.details.abilities[key];
+      assert(/^\d+$/.test(String(value)) && Number(value)>=1,entry.name+' '+key+': '+value);
+    }
+    assert(['sourced','reconstructed'].includes(entry.details.ability_score_status),entry.name);
+    assert(entry.details.source_ability_scores,entry.name+' missing score provenance');
+  }
+});
+
 test('converted spell references navigate to existing current spells', () => {
   const catalog = builtCatalog();
   const monsters = catalog.find(section => section.key === 'monsters').entries;

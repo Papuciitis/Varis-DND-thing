@@ -1,5 +1,6 @@
 # Imported read-only from dnd spreadsheet.xlsx; SHA-256: 5f713b3ee425f374d3cc9e5288fe80ad6d111f3cc0a05e42052ce1897680b571
 # Existing Git spell and background rules take priority.
+# Missing fields are completed below with explicit source_completion provenance.
 section: monsters
 entries:
 - name: animated skull
@@ -83,6 +84,18 @@ entries:
     where they differ.
   - The source does not provide speed.
   source_ref: dnd spreadsheet.xlsx / creatures!A4:P4
+  speed: 30 ft.
+  source_completion:
+    original_missing_fields:
+    - speed
+    donors:
+    - fields:
+      - speed
+      source: data/draft-spells/lvl-1-arcane-spells.yaml / Create skeleton
+      link: '#section=spells&group=Arcane+spells&entry=Create+skeleton'
+    note: The linked Create undead spell also omits movement. Use the existing Create skeleton walking
+      speed for this humanoid undead reference variant. All rolled abilities, HP, AC, Block, attacks and
+      original source notes are retained; Create undead remains authoritative for its summoned creature.
 - name: animated golem
   group: Workbook reference creatures
   meta: medium construct
@@ -141,6 +154,18 @@ entries:
     where they differ.
   - The source does not provide AC.
   source_ref: dnd spreadsheet.xlsx / creatures!A6:P6
+  ac: 13 (unarmored; 10 + DEX modifier)
+  source_completion:
+    original_missing_fields:
+    - ac
+    donors:
+    - fields:
+      - ac
+      source: data/draft-spells/lvl-1-arcane-spells.yaml / Create skeleton / AC 10 + dex
+      link: '#section=spells&group=Arcane+spells&entry=Create+skeleton'
+    note: The linked Create undead warrior omits AC. Apply the existing unarmored undead formula 10 +
+      Dexterity modifier to the preserved DEX 16, giving 13. Armor proficiency does not imply equipped
+      armor; no equipment is added. Known warrior statistics and source identity remain unchanged.
 - name: summoned arcane elemental
   group: Workbook reference creatures
   meta: medium elemental
@@ -302,6 +327,59 @@ entries:
     where they differ.
   - The source does not provide HP, speed, actions.
   source_ref: dnd spreadsheet.xlsx / creatures!A12:P12
+  hp: '4'
+  speed: Fly 25 ft. while following; fly 60 ft. while bothering or protecting
+  abilities:
+    str: '1'
+    dex: '28'
+    con: '10'
+    int: '13'
+    wis: '14'
+    cha: '11'
+  block: 9 / +9 check
+  actions:
+  - name: Follow a creature
+    description: 'Use the existing Conjure minor wisp behavior: follow a creature the controlling caster
+      can see or is keenly aware of, flying 25 feet per round for 1d12 minutes.'
+  - name: Bother a creature
+    description: 'Use the existing Conjure minor wisp behavior: pursue a creature the controlling caster
+      can see or is keenly aware of at 60 feet per round for 1 minute. On reaching it, the target makes
+      a Dexterity save against the controlling caster''s spell save DC each round for 1d6 rounds; failure
+      Distracts it for that round and forces it to remake any concentration check.'
+  - name: Protect a creature
+    description: 'Use the existing Conjure minor wisp behavior: pursue the assigned creature at 60 feet
+      per round, then impose disadvantage on one incoming attack per turn. These three behaviors are the
+      wisp''s only chosen actions. It always knows its assigned target and automatically fails all saving
+      throws, as specified by the current spell.'
+  source_completion:
+    original_missing_fields:
+    - hp
+    - speed
+    - abilities
+    - block
+    - actions
+    donors:
+    - fields:
+      - hp
+      - speed
+      - actions
+      source: data/draft-spells/lvl-1-arcane-spells.yaml / Conjure minor wisp
+      link: '#section=spells&group=Arcane+spells&entry=Conjure+minor+wisp'
+    - fields:
+      - abilities
+      source: Basic Rules 2014 / Will-o'-Wisp / six ability scores only
+      link: https://www.dndbeyond.com/monsters/17060-will-o-wisp
+    - fields:
+      - block
+      source: data/draft-reference/combat.yaml / Block and Making a block check; published wisp DEX 28
+      link: '#section=rules&group=Combat&entry=Block'
+    note: The workbook gives only name, type, CR 2 and AC 14; all remain unchanged. HP, movement and non-damaging
+      behaviors use the existing current Conjure minor wisp profile. That spell has no six-score array,
+      so the published CR 2 Will-o'-Wisp supplies only those missing attributes; none of its attacks,
+      life drain, immunities or undead type are imported. Current DEX-based Block gives nine instances
+      and +9 with no armor training. When actually casting Conjure minor wisp, its own AC 20, tiny size
+      and action restrictions take priority; this completed False wisp remains a separate workbook reference
+      variant, with its original CR rather than a newly calculated balance rating.
 - name: greater ice elemental
   group: Workbook reference creatures
   meta: large elemental, humanoid
@@ -407,6 +485,18 @@ entries:
   - Workbook reference variant. The existing spell's rules and embedded creature statistics take priority
     where they differ.
   source_ref: dnd spreadsheet.xlsx / creatures!A15:P15
+  block: 6 / +6 check
+  source_completion:
+    original_missing_fields:
+    - block
+    donors:
+    - fields:
+      - block
+      source: data/draft-spells/lvl-6-arcane-spells.yaml / Summon greater elemental / Greater elemental
+      link: '#section=spells&group=Arcane+spells&entry=Summon+greater+elemental'
+    note: The current linked Summon greater elemental explicitly supplies six Block and a +6 Block check.
+      That also matches the current modifier for numeric DEX 22; the workbook's parenthetical +4 is inconsistent
+      but is preserved verbatim in abilities. No other elemental statistics are replaced.
 - name: greater lightning elemental
   group: Workbook reference creatures
   meta: large elemental, humanoid

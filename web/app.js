@@ -21,6 +21,7 @@
   const itemViews = globalThis.ItemViews;
   const magicCategories = globalThis.MagicCategories;
   const browseViews = globalThis.BrowseViews;
+  const monsterViews = globalThis.MonsterViews;
   const collate = new Intl.Collator("en", {numeric: true, sensitivity: "base"});
   const rarityOrder=["common","uncommon","rare","very rare","legendary","artifact"];
   const compareRarity=(a,b)=>{
@@ -275,6 +276,7 @@
     }
   }
   function directory(section, params) {
+    if (section.key === "monsters") reader.className = "monster-manual";
     const base = {section: section.key};
     const categoryViews = section.key === "items" ? itemViews : section.key === "magic-items" ? magicCategories : null;
     const category = categoryViews?.categories.find(item => item.key === params.category);
@@ -289,6 +291,7 @@
     const grouped = groups.filter(([name]) => name);
     const compareEntries = ["races", "feats", "backgrounds"].includes(section.key);
     const listView = compareEntries && (params.view === "list" || section.key === "races" && params.view !== "pages");
+    const monsterList = section.key === "monsters" && monsterViews && params.view !== "pages";
     const itemHome = section.key === "items" && !category && !group && !filter && !params.browse;
     const magicHome = section.key === "magic-items" && magicCategories && !category && !group && !filter && !params.browse && !params.rarity && !params.type;
     const weaponTree = section.key === "items" && category?.key === "weapons" && !group && params.view !== "pages";
@@ -328,6 +331,18 @@
         if (updated) openFilters(entryRoute(section, updated)); else draw();
       }));
     }
+    if (section.key === "monsters" && monsterViews) {
+      const types = el("nav", "monster-type-nav");
+      types.setAttribute("aria-label", "Creature types");
+      const available = new Set(section.entries.flatMap(entry => monsterViews.metadata(entry).types));
+      for (const [value, title] of [["", "All monsters"], ...[...new Set([...monsterViews.types, "object", "unknown"])].filter(type => available.has(type)).map(type => [type, monsterViews.titles[type] || cap(type)])]) {
+        const control = link("", {...params, type:value, page:"", browse:"all"}, "monster-type-chip");
+        control.append(el("span", "monster-type-mark", value ? title.slice(0,2).toUpperCase() : "ALL"), el("span", "", title));
+        if ((params.type || "") === value) control.setAttribute("aria-current", "true");
+        types.append(control);
+      }
+      reader.append(types);
+    }
     const form = el("form", "filters");
     form.setAttribute("role", "search");
     form.setAttribute("aria-label", "Filter " + section.title);
@@ -356,11 +371,11 @@
       select.addEventListener("change", () => openFilters({...params, category: select.value, group: "", view: "", page: "", browse: ""}));
       form.append(field);
     }
-    if (compareEntries || category?.key === "weapons" && !group) {
+    if (compareEntries || section.key === "monsters" || category?.key === "weapons" && !group) {
       const [field, select] = labelledSelect("Display", "entry-view");
-      const options = compareEntries ? [["pages", "Pages"], ["list", "Expandable list"]] : [["tree", "Weapon groups"], ["pages", "Pages"]];
+      const options = section.key === "monsters" ? [["list", "Expandable list"], ["pages", "Pages"]] : compareEntries ? [["pages", "Pages"], ["list", "Expandable list"]] : [["tree", "Weapon groups"], ["pages", "Pages"]];
       for (const [value, text] of options) select.append(new Option(text, value));
-      select.value = compareEntries ? listView ? "list" : "pages" : weaponTree ? "tree" : "pages";
+      select.value = section.key === "monsters" ? monsterList ? "list" : "pages" : compareEntries ? listView ? "list" : "pages" : weaponTree ? "tree" : "pages";
       select.addEventListener("change", () => openFilters({...params, view: select.value, page: "", browse: "all"}));
       form.append(field);
     }
@@ -411,6 +426,23 @@
       }
     }
     if (kind) form.append(sortControl(params, kind, filter));
+    if (section.key === "monsters" && monsterViews) {
+      const [typeField, typeSelect] = labelledSelect("Creature type", "monster-type");
+      typeSelect.append(new Option("All types", ""));
+      const types = [...new Set(section.entries.flatMap(entry => monsterViews.metadata(entry).types))].sort(collate.compare);
+      for (const type of types) typeSelect.append(new Option(monsterViews.titles[type] || cap(type), type));
+      typeSelect.value = params.type || "";
+      typeSelect.addEventListener("change", () => openFilters({...params, type:typeSelect.value, page:"", browse:"all"}));
+      const [crField, crSelect] = labelledSelect("Challenge rating", "monster-cr");
+      crSelect.append(new Option("All CRs", ""));
+      const values = new Map();
+      for (const entry of section.entries) { const meta = monsterViews.metadata(entry); if (meta.challenge !== null && !values.has(meta.challenge)) values.set(meta.challenge, meta.cr); }
+      for (const [, cr] of [...values].sort(([a],[b])=>a-b)) crSelect.append(new Option("CR " + cr, cr));
+      for (const [value, title] of [["0-1","CR 0–1"],["2-5","CR 2–5"],["6-10","CR 6–10"],["11-16","CR 11–16"],["17+","CR 17+"],["unknown","Unrated / unknown"]]) crSelect.append(new Option(title, value));
+      crSelect.value = params.cr || "";
+      crSelect.addEventListener("change", () => openFilters({...params, cr:crSelect.value, page:"", browse:"all"}));
+      form.append(typeField, crField);
+    }
     reader.append(form);
     if (!section.entries.length) {
       reader.append(el("p", "state-message", "This section has no entries yet."));
@@ -460,9 +492,18 @@
         (!baseClassView || entry.group === "Base class") &&
         (!group || (magicClass ? order.magicClass(entry) === magicClass : browseGroup(section, entry.group) === group)) && (!level || entryLevel(entry) === level) &&
         (!category || categoryViews.category(entry) === category.key) &&
-        (section.key !== "magic-items" || ((!params.rarity || entry.details?.rarity === params.rarity) && (!params.type || entry.details?.type === params.type))));
+        (section.key !== "magic-items" || ((!params.rarity || entry.details?.rarity === params.rarity) && (!params.type || entry.details?.type === params.type))) &&
+        (section.key !== "monsters" || !monsterViews || monsterViews.matches(entry, params)));
       const matches = matching(rows, filter, sort);
-      if (matches.length && (listView && browseViews || weaponTree && itemViews)) {
+      if (matches.length && monsterList) {
+        const count = countText(matches.length); byId("announcement").textContent = count;
+        reader.append(el("p", "result-count", count), monsterViews.expandableList(matches, {
+          el, link, entryRoute, renderDetails:(entry, body)=>body.append(monsterBlock(entry)),
+          editor:(currentSection, entry)=>globalThis.MonsterEditor?.editor(currentSection, entry, updated=>{
+            indexSection(currentSection); if (updated) openFilters(entryRoute(currentSection, updated)); else draw();
+          })
+        }));
+      } else if (matches.length && (listView && browseViews || weaponTree && itemViews)) {
         const count = countText(matches.length);
         byId("announcement").textContent = count;
         reader.append(el("p", "result-count", count));
@@ -775,6 +816,7 @@
     return block;
   }
   function monsterBlock(entry, depth = 2) {
+    if (monsterViews) return monsterViews.statblock(entry, {el, renderValue, link, prose, depth, showTitle:true});
     const block = el("div", "stat-block");
     const value = entry.details || {};
     const known = new Set(["id", "name", "group", "meta", "size", "type", "alignment", "abilities", "traits", "actions", "bonus_actions", "reactions", "legendary_actions", "mythic_actions", "lair_actions", "regional_effects", "spell_references", "notes", "source_ref", "status", "description", "desc"]);
@@ -919,6 +961,7 @@
     return nav;
   }
   function showEntry(section, entry) {
+    if (section.key === "monsters" && monsterViews) reader.classList.add("monster-page");
     const base = {section: section.key};
     const parts = [[section.title, base]];
     const categoryViews = section.key === "items" ? itemViews : section.key === "magic-items" ? magicCategories : null;
@@ -929,6 +972,7 @@
     crumbs(parts);
     const header = el("header", "entry-heading");
     header.append(heading(cap(entry.name)), entryNavigation(section, entry));
+    if (section.key === "monsters" && monsterViews) header.querySelector("h1")?.classList.add("sr-only");
     if (section.key === "classes") {
       const links = classLinks(section, entry);
       if (links.childElementCount) header.append(links);

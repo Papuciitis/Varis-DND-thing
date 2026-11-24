@@ -89,12 +89,45 @@ function boot(data = {classes: classData}, initial = '', options = {}) {
   for (const name of ['magic-categories.js', 'item-views.js', 'browse-views.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,'../web',name),'utf8'),context,{filename:name});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/magic-items.js'),'utf8'),context,{filename:'magic-items.js'});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/monster-editor.js'),'utf8'),context,{filename:'monster-editor.js'});
+  vm.runInContext(fs.readFileSync(path.join(__dirname,'../web/monster-views.js'),'utf8'),context,{filename:'monster-views.js'});
   vm.runInContext(source, context, {filename: 'app.js'});
   const reader = document.getElementById('reader');
   return {document, reader, calls, sections, downloads, get hash() { return location.hash; }, async route(hash) { location.hash = hash; window.dispatch('hashchange'); await settle(); }, async change(id, value) { const select = document.getElementById(id); assert(select, 'Missing '+id); select.value = value; select.dispatch('change'); window.dispatch('hashchange'); await settle(); }, link(text) { return reader.querySelectorAll('a').find(n => n.textContent === text); }};
 }
 
-const names = h => h.reader.querySelectorAll('.result-name').map(node => node.textContent);
+const names = h => h.reader.querySelectorAll('.result-name, .monster-list-name').map(node => node.textContent);
+
+test('monster type and fractional CR filters combine with search and preserve display settings', async () => {
+  const h = boot({monsters:[
+    entry('Ash wolf','Wilderness',{meta:'Medium beast, unaligned',cr:'1/4',hp:'11'}),
+    entry('Ash dragon','Dragons',{meta:'Large dragon, neutral',cr:'5',hp:'100'}),
+    entry('Ash mystery','Wilderness',{meta:'Small beast',hp:'8'})
+  ]});
+  await h.route('#section=monsters');
+  assert.equal(h.reader.querySelectorAll('.monster-disclosure').length,3);
+  await h.change('monster-type','beast'); assert.deepEqual(names(h),['Ash wolf','Ash mystery']);
+  await h.change('monster-cr','1/4'); assert.deepEqual(names(h),['Ash wolf']);
+  const search=h.document.getElementById('section-search');search.value='ash';search.dispatch('input');await settle();
+  assert.equal(new URLSearchParams(h.hash.slice(1)).get('cr'),'1/4');
+  assert.equal(new URLSearchParams(h.hash.slice(1)).get('type'),'beast');
+  await h.change('entry-view','pages');assert(h.reader.querySelector('.results'));assert.deepEqual(names(h),['Ash wolf']);
+  await h.change('monster-cr','unknown');assert.deepEqual(names(h),['Ash mystery']);
+  await h.route('#section=monsters&type=dragon&cr=2-5');assert.deepEqual(names(h),['Ash dragon']);
+});
+
+test('expandable monster rows render on first open, expand independently, and remember opened entries', async () => {
+  const h=boot({monsters:[entry('Wolf','Beasts',{meta:'Medium beast',hp:'11',abilities:{str:'12'},actions:[{name:'Bite',description:'Bite rules'}]}),entry('Bear','Beasts',{meta:'Large beast',hp:'34',actions:[{name:'Claw',description:'Claw rules'}]})]});
+  await h.route('#section=monsters');assert.equal(h.reader.querySelectorAll('.monster-parchment').length,0);
+  let rows=h.reader.querySelectorAll('.monster-disclosure');rows[0].open=true;rows[0].dispatch('toggle');
+  assert.equal(h.reader.querySelectorAll('.monster-parchment').length,1);
+  rows[1].open=true;rows[1].dispatch('toggle');assert.equal(h.reader.querySelectorAll('.monster-parchment').length,2);
+  assert(rows[0].open&&rows[1].open);
+  await h.change('entry-sort','challenge-desc');
+  rows=h.reader.querySelectorAll('.monster-disclosure');assert(rows.every(row=>row.open));
+  assert.equal(h.reader.querySelectorAll('.monster-parchment').length,2);
+  assert.match(h.reader.textContent,/12 \(\+1\)/);
+  assert(h.reader.querySelectorAll('a').some(link=>link.textContent==='Open monster page'));
+});
 
 test('monster authoring refreshes the catalog, persists, exports YAML, and leaves Cancel unchanged', async () => {
   const storage = new Map();
@@ -111,7 +144,7 @@ test('monster authoring refreshes the catalog, persists, exports YAML, and leave
   dialog.querySelector('form').dispatch('submit');
   await h.route(h.hash);
   assert.match(h.reader.textContent, /Lantern wisp/);
-  assert.match(h.reader.textContent, /Hit points7/);
+  assert.match(h.reader.textContent, /Hit Points\s*7/);
   await h.route('#section=monsters');
   assert.deepEqual(names(h), ['Lantern wisp', 'City guard']);
   h.reader.querySelectorAll('button').find(button => button.textContent === 'Export custom.yaml').click();
@@ -301,7 +334,7 @@ test('monster challenge ordering respects fractions and keeps unknown challenge 
   await h.route('#section=monsters'); assert.deepEqual(names(h), ['Z small','B beast','A giant','A unknown']);
   assert.equal(h.document.getElementById('entry-sort').value, 'challenge-asc');
   await h.change('entry-sort','challenge-desc'); assert.deepEqual(names(h), ['A giant','B beast','Z small','A unknown']);
-  assert(h.reader.querySelectorAll('.result-meta').some(node=>node.textContent.includes('CR 1/4')));
+  assert(h.reader.querySelectorAll('.monster-list-cr').some(node=>node.textContent.includes('CR 1/4')));
 });
 
 test('free-text feat requirements and class progression never become guessed directory levels', async () => {
@@ -414,7 +447,7 @@ test('summon picker reads canonical monsters on demand and navigates cards', asy
   assert.equal(buttons[0].disabled, true); buttons[1].click(); assert.equal(buttons[1].disabled, true); assert.equal(buttons[0].disabled, false);
   assert.doesNotMatch(cards[1].textContent, /Armor class|Strength/);
   await h.route('#section=monsters&entry=Wolf&group=Beasts');
-  assert.match(h.reader.textContent, /Canonical bite rules/); assert.match(h.reader.textContent, /Armor class13/);
+  assert.match(h.reader.textContent, /Canonical bite rules/); assert.match(h.reader.textContent, /Armor Class\s*13/);
 });
 
 test('portable catalog fallback and rules prose render safely', async () => {

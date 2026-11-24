@@ -1,0 +1,288 @@
+{
+  "schema": 1,
+  "ability_order": [
+    "str",
+    "dex",
+    "con",
+    "int",
+    "wis",
+    "cha"
+  ],
+  "note": "Published six-score profiles whose computed modifiers match the campaign's six recorded modifiers. A matching profile recovers a defensible source selection, not proof of which exact score was originally entered in Chronica. Keep campaign AC/HP/actions wherever edited.",
+  "same_name_profiles": {
+    "Atropal": {
+      "scores": [
+        24,
+        15,
+        30,
+        24,
+        22,
+        28
+      ],
+      "source": "https://www.dandwiki.com/wiki/Atropal_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Atropal_(5e_Creature)",
+      "cr": "30",
+      "meta": "Huge undead (titan), lawful evil",
+      "senses": "blindsight 120 ft., darkvision 120 ft., truesight 120 ft., passive Perception 25",
+      "languages": "Abyssal, Celestial, Infernal; telepathy 1,000 ft.",
+      "matching_evidence": "All six modifiers, HP 792 (48d12+480), AC 18, speed and named powers match. Campaign additionally lists Common; preserve it."
+    },
+    "Nightcrawler": {
+      "scores": [
+        28,
+        10,
+        22,
+        18,
+        18,
+        16
+      ],
+      "source": "https://www.dandwiki.com/wiki/Nightcrawler_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Nightcrawler_(5e_Creature)",
+      "cr": "19",
+      "meta": "Gargantuan undead (nightshade), chaotic evil",
+      "senses": "blindsight 30 ft., darkvision 120 ft., tremorsense 60 ft., passive Perception 28",
+      "languages": "Undercommon, telepathy 100 ft.",
+      "matching_evidence": "All six modifiers, HP264(16d20+96), AC18 and spell/attack rows match. Campaign passive Perception26 differs; keep recorded26."
+    },
+    "Nightshade Zombie": {
+      "scores": [
+        16,
+        12,
+        16,
+        11,
+        13,
+        12
+      ],
+      "source": "https://www.dandwiki.com/wiki/Nightshade_Zombie_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Nightshade_Zombie_(5e_Creature)",
+      "cr": "5",
+      "meta": "Medium undead (nightshade), lawful evil",
+      "senses": "darkvision 60 ft., passive Perception 14",
+      "languages": "the languages it knew in life",
+      "matching_evidence": "All six modifiers, HP75(10d8+30), AC14, spell/attack rows match. Preserve campaign language wording."
+    },
+    "Dread Specter": {
+      "scores": [
+        1,
+        21,
+        18,
+        10,
+        15,
+        16
+      ],
+      "source": "https://www.dandwiki.com/wiki/Dread_Specter_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Dread_Specter_(5e_Creature)",
+      "cr": "12",
+      "meta": "Medium undead, chaotic evil",
+      "senses": "darkvision 60 ft., passive Perception 12",
+      "languages": "understands all languages it knew in life but can't speak",
+      "matching_evidence": "All six modifiers, HP127(15d8+60), AC15, Life Drain14d8/DC16 match."
+    },
+    "Death Giant": {
+      "scores": [
+        24,
+        10,
+        23,
+        14,
+        14,
+        16
+      ],
+      "source": "https://www.dandwiki.com/wiki/Death_Giant_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Death_Giant_(5e_Creature)",
+      "cr": "9",
+      "meta": "Huge giant, neutral evil",
+      "senses": "darkvision 120 ft., passive Perception 16",
+      "languages": "Common, Giant, Primordial",
+      "matching_evidence": "All six modifiers, HP150(12d12+72), AC17(splint), attacks and Release Soul match."
+    },
+    "Death Titan": {
+      "scores": [
+        27,
+        10,
+        25,
+        16,
+        16,
+        20
+      ],
+      "source": "https://www.dandwiki.com/wiki/Death_Titan_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Death_Titan_(5e_Creature)",
+      "cr": "21",
+      "meta": "Gargantuan giant, neutral evil",
+      "senses": "darkvision 120 ft., passive Perception 20",
+      "languages": "Common, Giant, Primordial",
+      "matching_evidence": "All six modifiers, HP280(16d20+112), AC18, attacks and Release Soul match. Campaign greatsword replaces donor greataxe; preserve campaign weapon."
+    },
+    "Blood Boar": {
+      "scores": [
+        18,
+        10,
+        17,
+        2,
+        9,
+        5
+      ],
+      "source": "https://www.dandwiki.com/wiki/Blood_Boar_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Blood_Boar_(5e_Creature)",
+      "cr": "4",
+      "meta": "Large beast, unaligned",
+      "senses": "passive Perception 9",
+      "languages": "None",
+      "matching_evidence": "All six modifiers, AC14, 40ft speed, Berserk/Charge and acid Tusks match. Donor HP68 differs from campaign107; preserve campaignHP."
+    },
+    "Dread Rat": {
+      "scores": [
+        14,
+        16,
+        15,
+        4,
+        11,
+        7
+      ],
+      "source": "https://www.dandwiki.com/wiki/Dread_Rat_(5e_Creature)",
+      "archive": "https://a.osmarks.net/content/dandwiki_en_all_maxi_2021-03/A/Dread_Rat_(5e_Creature)",
+      "cr": "1",
+      "meta": "Large beast, unaligned",
+      "senses": "darkvision 60 ft., passive Perception 12",
+      "languages": "None",
+      "matching_evidence": "All six modifiers, HP22(3d10+6), AC13, lore and attacks match."
+    },
+    "Grootslang": {
+      "scores": [
+        24,
+        13,
+        18,
+        19,
+        14,
+        9
+      ],
+      "source": "https://www.5esrd.com/gamemastering/monsters-foes/mythological-and-historical-figures/grootslang/",
+      "publisher": "EN Publishing / Mythological Figures & Maleficent Monsters (2020), Mike Myler and Russ Morrissey",
+      "cr": "8",
+      "meta": "Gargantuan monstrosity, neutral evil",
+      "senses": "blindsight 30 ft., darkvision 60 ft., passive Perception 15",
+      "languages": "Common",
+      "matching_evidence": "All six modifiers, HP145(10d20+40), AC15, movement, traits, attacks and Swallow text match."
+    },
+    "Kongamato": {
+      "scores": [
+        18,
+        15,
+        14,
+        3,
+        13,
+        6
+      ],
+      "source": "https://spiralworlds.com/bestiary/dragon/monster-kongamato/",
+      "source_locator": "second Kongamato block, Large beast CR3, lines121-149 of retrieved page; ignore unrelated Huge CR18 block above",
+      "cr": "3",
+      "meta": "Large beast, unaligned",
+      "senses": "passive Perception 13",
+      "languages": "None",
+      "matching_evidence": "All six modifiers, HP52(7d10+14), AC14, 15ft/fly60, Flyby/KeenSight/Swoop/Soar and attacks match."
+    }
+  },
+  "compatible_donors": {
+    "Dire Boar": {
+      "baseline": "Giant Boar (2014 SRD)",
+      "scores": [
+        17,
+        10,
+        16,
+        2,
+        7,
+        5
+      ],
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g",
+      "reason": "All six recorded modifiers match this published animal profile. Use as explicit matching donor, not a claim that original exact scores were recorded."
+    },
+    "Krenshar": {
+      "baseline": "Wolf (2014 SRD)",
+      "scores": [
+        12,
+        15,
+        12,
+        3,
+        12,
+        6
+      ],
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-w",
+      "reason": "All six recorded modifiers match the Wolf, as do AC13/HP2d8+2 and bite2d4+2. Label published-profile alternative; keep campaign monstrosity identity."
+    },
+    "Dire Krenshar": {
+      "baseline": "Giant Hyena (2014 SRD)",
+      "scores": [
+        16,
+        14,
+        14,
+        2,
+        12,
+        7
+      ],
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g",
+      "reason": "All six modifiers and bite2d6+3 match published GiantHyena; campaignHP/AC modified. Explicit matching donor, not exact-original claim."
+    }
+  },
+  "unresolved": [
+    "Marrashi",
+    "Dragazhar",
+    "Balckspawn Stalker",
+    "Girtablilu",
+    "Canyon Viper",
+    "Ogre Ghoul"
+  ],
+  "rejected_profiles": {
+    "Bloodboar (Jon Brazer)": {
+      "scores": [
+        16,
+        11,
+        14,
+        2,
+        9,
+        5
+      ],
+      "source": "https://5esrd.old.opengamingnetwork.com/database/creature/bloodboar/",
+      "reason": "Does not match campaign STR/CON; same-name Dandwiki profile does."
+    },
+    "Marrash (GM Binder)": {
+      "scores": [
+        12,
+        18,
+        14,
+        10,
+        14,
+        12
+      ],
+      "source": "https://www.gmbinder.com/share/-M7f47TK_Ra9Zwr7U0Gm",
+      "reason": "Only DEX/CON modifiers match; not an exact campaign profile."
+    },
+    "Girtablilu (World Anvil)": {
+      "scores": [
+        18,
+        16,
+        18,
+        10,
+        14,
+        12
+      ],
+      "source": "https://www.worldanvil.com/block/632980",
+      "reason": "STR/DEX/CON/CHA modifiers differ; not campaign profile."
+    },
+    "Nightcrawler (Skip's Guide)": {
+      "scores": [
+        28,
+        10,
+        24,
+        20,
+        20,
+        18
+      ],
+      "source": "https://www.gmbinder.com/share/-L3ZcUuXVydFYZAHPAg-",
+      "reason": "CON/INT/WIS/CHA modifiers differ; exact Dandwiki profile recovered instead."
+    }
+  },
+  "mechanics_recovered_from_matching_originals": {
+    "Nightcrawler Summon Undead": "Actual matching Dandwiki block: source quantities appear within60ft, controlled bynightcrawler, disappear after1hour/on summonerdeath/actiondismiss. Prior1minute substitute can be replaced with actualsource.",
+    "Atropal Summon Nightcrawler": "Actual matching Dandwiki block: one Nightcrawler within60ft, obeyssummoner/cannotbecontrolledbyothers, vanishesat0HP or summonerdeath; source has no onehour durationcap.",
+    "Grootslang Constrict": "Actual matching source says up toTWO constricted targets, not GiantConstrictorSnake donor's one; escapeDC18 and restraineduntilgrappleends."
+  }
+}

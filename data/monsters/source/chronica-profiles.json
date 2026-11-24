@@ -1,0 +1,302 @@
+{
+  "schema": 1,
+  "ability_order": [
+    "str",
+    "dex",
+    "con",
+    "int",
+    "wis",
+    "cha"
+  ],
+  "note": "Published ability profiles selected only when all six modifiers match the campaign record. Source AC, HP and actions retain campaign modifications. Compatible donors are explicit replacements, not claims about the unknown original score.",
+  "profiles": {
+    "Boar": {
+      "profile": "Boar",
+      "scores": [
+        13,
+        11,
+        12,
+        2,
+        9,
+        5
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-b",
+      "meta": "Medium beast, unaligned",
+      "senses": "passive Perception 9",
+      "languages": "—",
+      "cr": "1/4"
+    },
+    "Dire Boar": {
+      "profile": "Giant Boar",
+      "scores": [
+        17,
+        10,
+        16,
+        2,
+        7,
+        5
+      ],
+      "method": "compatible_donor",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g",
+      "meta": "Large beast, unaligned",
+      "senses": "passive Perception 8",
+      "languages": "—",
+      "cr": "2"
+    },
+    "Bandit": {
+      "profile": "Bandit",
+      "scores": [
+        11,
+        12,
+        12,
+        10,
+        10,
+        10
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+      "meta": "Medium humanoid (any race), any non-lawful alignment",
+      "senses": "passive Perception 10",
+      "languages": "any one language (usually Common)",
+      "cr": "1/8"
+    },
+    "Thug": {
+      "profile": "Thug",
+      "scores": [
+        15,
+        11,
+        14,
+        10,
+        10,
+        11
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+      "meta": "Medium humanoid (any race), any non-good alignment",
+      "senses": "passive Perception 10",
+      "languages": "any one language (usually Common)",
+      "cr": "1/2"
+    },
+    "Hyena": {
+      "profile": "Hyena",
+      "scores": [
+        11,
+        13,
+        12,
+        2,
+        12,
+        5
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-h",
+      "meta": "Medium beast, unaligned",
+      "senses": "passive Perception 13",
+      "languages": "—",
+      "cr": "0"
+    },
+    "Gnoll Spearmen": {
+      "profile": "Gnoll",
+      "scores": [
+        14,
+        12,
+        11,
+        6,
+        10,
+        7
+      ],
+      "method": "compatible_donor",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g",
+      "meta": "Medium humanoid (gnoll), chaotic evil",
+      "senses": "darkvision 60 ft., passive Perception 10",
+      "languages": "Gnoll",
+      "cr": "1/2"
+    },
+    "Gnoll Ranger": {
+      "profile": "Gnoll",
+      "scores": [
+        14,
+        12,
+        11,
+        6,
+        10,
+        7
+      ],
+      "method": "compatible_donor",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g",
+      "meta": "Medium humanoid (gnoll), chaotic evil",
+      "senses": "darkvision 60 ft., passive Perception 10",
+      "languages": "Gnoll",
+      "cr": "1/2"
+    },
+    "Shadow": {
+      "profile": "Shadow",
+      "scores": [
+        6,
+        14,
+        13,
+        6,
+        10,
+        8
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-s",
+      "meta": "Medium undead, chaotic evil",
+      "senses": "darkvision 60 ft., passive Perception 10",
+      "languages": "—",
+      "cr": "1/2"
+    },
+    "Wraith": {
+      "profile": "Wraith",
+      "scores": [
+        6,
+        16,
+        16,
+        12,
+        14,
+        15
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-w",
+      "meta": "Medium undead, neutral evil",
+      "senses": "darkvision 60 ft., passive Perception 12",
+      "languages": "languages it knew in life",
+      "cr": "5"
+    },
+    "Specter": {
+      "profile": "Specter",
+      "scores": [
+        1,
+        14,
+        11,
+        10,
+        10,
+        11
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-s",
+      "meta": "Medium undead, chaotic evil",
+      "senses": "darkvision 60 ft., passive Perception 10",
+      "languages": "understands languages it knew in life but cannot speak",
+      "cr": "1"
+    },
+    "Scorpion": {
+      "profile": "Scorpion",
+      "scores": [
+        2,
+        11,
+        8,
+        1,
+        8,
+        2
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-s",
+      "meta": "Tiny beast, unaligned",
+      "senses": "blindsight 10 ft., passive Perception 9",
+      "languages": "—",
+      "cr": "0"
+    },
+    "Giant Scorpion": {
+      "profile": "Giant Scorpion",
+      "scores": [
+        15,
+        13,
+        15,
+        1,
+        9,
+        3
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g",
+      "meta": "Large beast, unaligned",
+      "senses": "blindsight 60 ft., passive Perception 9",
+      "languages": "—",
+      "cr": "3"
+    },
+    "Ghoul": {
+      "profile": "Ghoul",
+      "scores": [
+        13,
+        15,
+        10,
+        7,
+        10,
+        6
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g",
+      "meta": "Medium undead, chaotic evil",
+      "senses": "darkvision 60 ft., passive Perception 10",
+      "languages": "Common",
+      "cr": "1"
+    },
+    "Zombie": {
+      "profile": "Zombie",
+      "scores": [
+        13,
+        6,
+        16,
+        3,
+        6,
+        5
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-z",
+      "meta": "Medium undead, neutral evil",
+      "senses": "darkvision 60 ft., passive Perception 8",
+      "languages": "understands languages it knew in life but cannot speak",
+      "cr": "1/4"
+    },
+    "Skeleton": {
+      "profile": "Skeleton",
+      "scores": [
+        10,
+        14,
+        15,
+        6,
+        8,
+        5
+      ],
+      "method": "published_profile",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-s",
+      "meta": "Medium undead, lawful evil",
+      "senses": "darkvision 60 ft., passive Perception 9",
+      "languages": "understands languages it knew in life but cannot speak",
+      "cr": "1/4"
+    },
+    "Sword Guard": {
+      "profile": "Guard",
+      "scores": [
+        13,
+        12,
+        12,
+        10,
+        11,
+        10
+      ],
+      "method": "compatible_donor",
+      "source": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters",
+      "meta": "Medium humanoid (any race), any alignment",
+      "senses": "passive Perception 12",
+      "languages": "any one language (usually Common)"
+    },
+    "Raguch the Ogrillion": {
+      "profile": "Half-Ogre",
+      "scores": [
+        17,
+        10,
+        14,
+        7,
+        9,
+        10
+      ],
+      "method": "compatible_donor",
+      "source": "https://www.aidedd.org/dnd/monstres.php?vo=half-ogre",
+      "meta": "Large giant, any chaotic alignment",
+      "senses": "darkvision 60 ft., passive Perception 9",
+      "languages": "Common, Giant",
+      "publication": "Monster Manual (2014), p. 238"
+    }
+  }
+}

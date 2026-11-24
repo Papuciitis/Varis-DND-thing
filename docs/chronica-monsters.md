@@ -33,7 +33,11 @@ These substitutions identify complete published alternatives. They do not invent
 
 ## Conversion decisions
 
-Chronica's six ability fields contain **modifiers**, including values such as `+1` and `-3`. Those values are not treated as ability scores. The imported statblock displays the exact recorded modifier and states that an exact score was not recorded. Fully blank blocks use the published alternative's six scores.
+Chronica's original six ability fields contain **modifiers**, including values such as `+1` and `-3`. The playable blocks now use six numerical scores. Thirty-eight profiles use sourced scores: 22 matching published profiles, seven explicitly identified compatible donor profiles, and nine complete SRD stand-ins for otherwise blank records. The remaining 28 use user-authorized reconstruction: choose the lower score that produces the recorded modifier, with a minimum score of 1. Every recorded modifier is checked against the resulting score; combat modifiers are preserved.
+
+Reconstructed blocks show **Reconstructed scores**. Every profile records its method, donor or reconstruction note, and original modifiers in `source_ability_scores`; the untouched source values remain in `original_5e`. A compatible donor is an identified replacement, not a claim that the unknown original exact score was recovered. The two score manifests are `chronica-profiles.json` and `chronica-score-research.json`.
+
+Printed senses and languages are promoted from source notes into ordinary stat fields. Known size, creature type and alignment are extracted from the source or selected published profile. Without a recorded Perception skill, an untrained passive Perception default is explicitly identified rather than granting proficiency. Unprovided languages remain **Not recorded** and unknown challenge remains **Unrated**, separate from CR 0. An ability-only compatible donor does not grant its challenge rating.
 
 Source AC, HP, speed and attack modifiers remain fixed creature statistics. Block is added from the recorded Dexterity modifier, with explicitly identified current armor Block and Protection where equipment is supplied. Natural armor grants neither armor training nor extra Block. Ordinary attacks identify their Block DC; damage and attached attack riders require an unblocked strike. Saving-throw-only effects do not use Block.
 

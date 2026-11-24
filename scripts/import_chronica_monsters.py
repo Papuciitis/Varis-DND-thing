@@ -1,7 +1,8 @@
 """Rebuild every campaign creature from the sanitized Chronica export.
 
-The export stores ability MODIFIERS, not scores. No exact score is invented.
-Reviewed replacements live separately in source/chronica-fills.json.
+The export stores ability MODIFIERS, not scores. Published profiles and explicit
+user-authorized reconstructions provide playable scores while retaining provenance.
+Reviewed replacements live separately under data/monsters/source/.
 """
 from __future__ import annotations
 
@@ -19,6 +20,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data/monsters/source/chronica-monsters.json"
 FILLS = ROOT / "data/monsters/source/chronica-fills.json"
+PROFILES = ROOT / "data/monsters/source/chronica-profiles.json"
+RESEARCH = ROOT / "data/monsters/source/chronica-score-research.json"
 SRD = "https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf"
 BASIC = "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/"
 ABILITY_IDS = dict(zip(("str", "dex", "con", "int", "wis", "cha"), range(98557, 98563)))
@@ -154,6 +157,91 @@ def ability_text(modifier):
     return f"{value:+d} modifier (score not recorded)"
 
 
+def published_profiles():
+    profiles = json.loads(PROFILES.read_text(encoding="utf-8"))["profiles"]
+    research = json.loads(RESEARCH.read_text(encoding="utf-8"))
+    for category, method in (("same_name_profiles", "published_profile"), ("compatible_donors", "compatible_donor")):
+        for name, raw in research[category].items():
+            profile = deepcopy(raw)
+            profile["method"] = method
+            profile.setdefault("profile", profile.get("donor", profile.get("published_name", name)))
+            profiles[name] = profile
+    return profiles
+
+
+def promote_headers(entry, description, notes):
+    """Recover actual printed headers before considering an external donor."""
+    text = description + "\n" + notes
+    for label, key in (("Senses", "senses"), ("Languages?", "languages")):
+        found = re.search(r"(?:^|\n)\s*" + label + r"\s*:?\s*(.+?)(?=\n|\bLanguages?\b|\bChallenge\b|\bCR\b|$)", text, re.I)
+        if found and not entry.get(key):
+            value = found[1].strip(" ,;:")
+            entry[key] = "—" if re.fullmatch(r"[-—–]+", value) else value
+    if not entry.get("senses"):
+        senses = [line.strip(" ,;") for line in text.splitlines() if re.match(r"^(?:blindsight|darkvision|tremorsense|truesight|passive perception)\b", line, re.I)]
+        if senses:
+            entry["senses"] = ", ".join(senses)
+
+
+def resolve_scores(entry, entity, stats, profiles, fill):
+    raw_modifiers = {ability: first(stats, sid) for ability, sid in ABILITY_IDS.items() if first(stats, sid)}
+    profile = profiles.get(entity["name"])
+    if profile:
+        scores = [int(value) for value in profile.get("scores", profile.get("abilities", []))]
+        if len(scores) != 6:
+            raise ValueError("Published profile requires six scores: " + entity["name"])
+        method = profile["method"]
+        provenance = {"method": method, "profile": profile["profile"], "source": profile["source"],
+            "note": "Selected existing published scores; all six modifiers match the campaign. This does not claim the unrecorded original exact score was recovered."}
+        for key in ("archive", "matching_evidence"):
+            if profile.get(key):
+                provenance[key] = profile[key]
+        for key in ("cr", "meta", "size", "type", "alignment", "senses", "languages", "skills"):
+            if key == "cr" and method == "compatible_donor":
+                continue
+            if profile.get(key) and not entry.get(key):
+                entry[key] = deepcopy(profile[key])
+        if profile.get("meta") and not re.match(r"^(?:Tiny|Small|Medium|Large|Huge|Gargantuan)\b", str(entry.get("meta", "")), re.I):
+            entry["source_original_meta"] = entry.get("meta", "")
+            entry["meta"] = profile["meta"]
+    elif raw_modifiers:
+        if len(raw_modifiers) != 6:
+            raise ValueError("Partial modifier record needs a reviewed donor: " + entity["name"])
+        scores = [max(1, 2 * number(raw_modifiers[ability]) + 10) for ability in ABILITY_IDS]
+        method = "reconstructed"
+        provenance = {"method": method, "profile": "Compatible playable scores", "source": entity["source_ref"] if "source_ref" in entity else entry["source_ref"],
+            "note": "User-authorized reconstruction: choose the lower valid score for each recorded modifier (minimum 1). These are playable replacements, not claims about unrecorded original scores."}
+    else:
+        scores = [int(entry["abilities"][ability]) for ability in ABILITY_IDS]
+        method = "srd_standin"
+        provenance = {"method": method, "profile": fill["baseline"], "source": fill["source"], "note": fill["reason"]}
+    if any(score < 1 for score in scores):
+        raise ValueError("Creature scores must be positive: " + entity["name"])
+    for ability, score in zip(ABILITY_IDS, scores):
+        if ability in raw_modifiers and (score - 10) // 2 != number(raw_modifiers[ability]):
+            raise ValueError(f"Published score changes recorded {ability} modifier for {entity['name']}")
+    entry["abilities"] = {ability: str(score) for ability, score in zip(ABILITY_IDS, scores)}
+    entry["ability_score_status"] = "reconstructed" if method == "reconstructed" else "sourced"
+    provenance["original_modifiers"] = raw_modifiers
+    entry["source_ability_scores"] = provenance
+    entry["conversion_notes"][1] = ("The six ability fields are numerical scores. " + provenance["note"]
+        + " Original modifier-only values remain in source_ability_scores and original_5e. Current condition names use data/conditions.yaml; source durations, DCs and escape methods remain specific creature rules.")
+
+
+def promote_identity(entry):
+    """Make printed size and creature type usable without reinterpreting free text."""
+    meta = str(entry.get("meta", ""))
+    size = re.search(r"\b(tiny|small|medium|large|huge|gargantuan)\b", meta, re.I)
+    if size and not entry.get("size"):
+        entry["size"] = size[1].capitalize()
+    kinds = re.findall(r"\b(aberration|beast|celestial|construct|dragon|elemental|fey|fiend|giant|humanoid|monstrosity|ooze|plant|undead)\b", meta, re.I)
+    if kinds and not entry.get("type"):
+        entry["type"] = "/".join(dict.fromkeys(kind.lower() for kind in kinds))
+    alignment = re.search(r"\b(?:(?:lawful|neutral|chaotic)\s+(?:good|neutral|evil)|unaligned|neutral)\b", meta, re.I)
+    if alignment and not entry.get("alignment"):
+        entry["alignment"] = alignment[0].lower()
+
+
 def source_attack(row):
     name, attack, distance, damage, kind = (row + [""] * 5)[:5]
     text = []
@@ -239,7 +327,7 @@ def feature(row):
     return {"name": row[0], "description": description}
 
 
-def convert(entity, fills, reviews, catalog):
+def convert(entity, fills, reviews, catalog, profiles):
     name = entity["name"]
     stats = fields(entity)
     description = plain_html(entity.get("description", ""))
@@ -261,6 +349,7 @@ def convert(entity, fills, reviews, catalog):
         entry["description"] = current_text(description)
     if notes:
         entry["additional_rules"] = current_text(notes)
+    promote_headers(entry, description, notes)
     for sid, field in DEFENSE_IDS.items():
         if first(stats, sid):
             entry[field] = current_text("; ".join(nonempty(stats[sid])))
@@ -299,6 +388,15 @@ def convert(entity, fills, reviews, catalog):
     entry["conversion_notes"].extend(review.get("notes", []))
     if review.get("sources"):
         entry["replacement_sources"] = review["sources"]
+    resolve_scores(entry, entity, stats, profiles, fill)
+    if not entry.get("cr"):
+        entry["cr"] = "Unrated"
+    if not entry.get("senses"):
+        wisdom = (int(entry["abilities"]["wis"]) - 10) // 2
+        entry["senses"] = f"passive Perception {10 + wisdom} (untrained default; special senses not recorded)"
+        entry["source_general_stats"] = {"senses": "Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense is invented."}
+    if not entry.get("languages"):
+        entry["languages"] = "Not recorded"
     # Compute DEX-only natural Block without inventing armor training/equipment.
     dex = first(stats, 98558)
     modifier = number(dex) if dex else (number(entry["abilities"].get("dex", "10"), 10) - 10) // 2
@@ -419,6 +517,7 @@ def convert(entity, fills, reviews, catalog):
     limited = [row["name"] for row in entry["actions"] if row["name"] in named_spells and re.search(r"\(\d+x\)", row["name"], re.I)]
     if limited:
         entry["limited_spell_uses"] = "; ".join(limited) + ". Each activation uses the current replacement spell's casting time and spends one printed use. These are separate source use pools, not spell slots."
+    promote_identity(entry)
     return {k: v for k, v in entry.items() if v not in ("", [], {})}
 
 
@@ -427,7 +526,8 @@ def build(source=SOURCE, fills=FILLS, output=None):
     reviewed = json.loads((ROOT / "data/monsters/source/chronica-review.json").read_text(encoding="utf-8"))
     replacements = json.loads(Path(fills).read_text(encoding="utf-8"))
     catalog = spell_catalog(ROOT / "data")
-    entries = [convert(entity, replacements, reviewed, catalog) for entity in source_data["monsters"]]
+    profiles = published_profiles()
+    entries = [convert(entity, replacements, reviewed, catalog, profiles) for entity in source_data["monsters"]]
     if len({entry["id"] for entry in entries}) != len(entries):
         raise ValueError("Duplicate Chronica entity ID")
     document = {"section": "monsters", "entries": entries}
