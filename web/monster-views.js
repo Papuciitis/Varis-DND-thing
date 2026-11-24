@@ -173,7 +173,7 @@
         for(const[field,value]of Object.entries(record))if(!["name","description","desc"].includes(field)&&present(value))compact(row,label(field),value,"monster-rule-extra");section.append(row);
       }body.append(section);
     }
-    const notes=el("div","monster-stat-notes"),sourceNotes=el("details","monster-provenance");sourceNotes.append(el("summary","","Sources and conversion notes"));
+    const notes=el("div","monster-stat-notes"),sourceNotes=el("details","monster-provenance monster-source-notes");sourceNotes.append(el("summary","","Sources and conversion notes"));
     if(d.description||d.desc||d.height||d.weight)fold(notes,"Description and lore",[d.description||d.desc,d.height&&"Height: "+d.height,d.weight&&"Weight: "+d.weight].filter(Boolean).join("\n\n"));
     if(d.hp_max_variant)fold(notes,"Optional hit points",d.hp_max_variant);
     if(d.limited_spell_uses)fold(notes,"Spell use rules",d.limited_spell_uses);

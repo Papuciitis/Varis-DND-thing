@@ -229,8 +229,13 @@ test('monster sources remain collapsed and obsolete source rules are excluded fr
   const monster = {...entry('Ash bird', 'Beasts', {hp:'9', actions:[{name:'Peck', description:'An unblocked strike deals fire damage.'}], original_5e:'Legacy spellslots', replacement_sources:[{name:'Donor beast', source:'https://example.test/rules'}]}), source:'monsters/ash.yaml'};
   const h = boot({monsters:[monster]});
   await h.route('#section=monsters&entry=Ash+bird&group=Beasts');
-  const sources = h.reader.querySelectorAll('.monster-provenance');
+  const wrapper = h.reader.querySelector('.monster-source-notes');
+  assert(wrapper, 'Source panels share a collapsed wrapper');
+  assert(!wrapper.open);
+  const sources = wrapper.querySelectorAll('.monster-provenance');
   assert.equal(sources.length, 2); assert(sources.every(block => !block.open));
+  assert.match(wrapper.textContent, /Legacy spellslots/);
+  assert.match(wrapper.textContent, /Donor beast/);
   await h.route('#q=Legacy+spellslots&scope=monsters'); assert.deepEqual(names(h), []);
   await h.route('#q=unblocked+strike&scope=monsters'); assert.deepEqual(names(h), ['Ash bird']);
 });
