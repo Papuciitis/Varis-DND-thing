@@ -531,3 +531,20 @@ td p + p { margin-top: .4rem !important; }
 .class-card[data-class="rogue"] { --emblem: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m15%203%206%200%200%206L9%2021l-6-6ZM6%2012l6%206M3%2021l4-4%22%2F%3E%3C%2Fsvg%3E"); }
 .class-card[data-class="sorcerer"] { --emblem: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m12%202%203%207%207%203-7%203-3%207-3-7-7-3%207-3ZM19%202v4M17%204h4%22%2F%3E%3C%2Fsvg%3E"); }
 .class-card[data-class="wizard"] { --emblem: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%206C8%203%204%204%202%205v14c3-1%207-1%2010%201%203-2%207-2%2010-1V5c-2-1-6-2-10%201Zm0%200v14%22%2F%3E%3C%2Fsvg%3E"); }
+
+/* Keep spell lists compact and recognizably interactive inside parchment. */
+.monster-casting-list { margin: .35rem 0; line-height: 1.55; break-inside: avoid; }
+.monster-parchment a.monster-spell-link { color: #8c2520; text-decoration: underline; text-decoration-color: #8c252066; text-underline-offset: .16em; font-weight: 600; }
+.monster-parchment a.monster-spell-link:hover { color: #50130e; text-decoration-color: currentColor; }
+.monster-parchment a.monster-spell-link:focus-visible { outline: 2px solid #8c2520; outline-offset: 3px; }
+
+/* Deliberate reading order: statistics and spell lists beside properties and actions. */
+.monster-stat-body { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 1.8rem; columns: auto; }
+.monster-combat-column { border-left: 1px solid #caae7644; padding-left: .9rem; min-width: 0; }
+.monster-overview-column { min-width: 0; }
+.monster-editor-preview-host .monster-stat-body, .summon-card .monster-stat-body { grid-template-columns: minmax(0,1fr); }
+.monster-editor-preview-host .monster-combat-column, .summon-card .monster-combat-column { border: 0; padding: 0; }
+@media (max-width: 700px) {
+  .monster-stat-body { grid-template-columns: minmax(0,1fr); gap: 0; }
+  .monster-combat-column { border: 0; padding: 0; }
+}

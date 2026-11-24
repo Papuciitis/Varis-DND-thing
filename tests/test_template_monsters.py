@@ -43,9 +43,10 @@ class TemplateMonsterTests(unittest.TestCase):
         self.assertIn('16771-adult-red-dragon', str(dragon['replacement_sources']))
         self.assertEqual(dragon['block'], '0 / +0 check')
 
-    def test_missing_jobafo_actions_have_named_donor_without_fake_cr(self):
+    def test_jobafo_has_named_donor_and_explicit_provisional_cr(self):
         jobafo = self.entries['Jobafo']
-        self.assertEqual(jobafo['cr'], 'Unrated')
+        self.assertEqual(jobafo['cr'], '7')
+        self.assertIn('provisional Vara encounter estimate', str(jobafo['conversion_notes']))
         self.assertIn('5194867-aboleth', str(jobafo['replacement_sources']))
         self.assertIn('Dominate Mind', str(jobafo['actions']))
         self.assertIn('69', jobafo['original_5e'])

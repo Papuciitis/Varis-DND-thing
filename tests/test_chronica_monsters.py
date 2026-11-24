@@ -53,14 +53,16 @@ class ChronicaMonstersTests(unittest.TestCase):
             self.assertEqual(entry["ability_score_status"] == "reconstructed", provenance["method"] == "reconstructed")
         self.assertEqual(statuses, {"sourced", "reconstructed"})
 
-    def test_source_headers_and_known_identity_fields_are_promoted_without_guessed_challenge(self):
+    def test_source_headers_and_reviewed_estimates_complete_identity(self):
         target = {}
         IMPORTER.promote_headers(target, "", "Senses darkvision 60 ft.\nLanguages Common\nChallenge 3")
         self.assertEqual(target, {"senses": "darkvision 60 ft.", "languages": "Common"})
         boar = self.by_name["Boar"]
         self.assertEqual(boar["type"], "beast")
         self.assertEqual(boar["size"], "Medium")
-        self.assertTrue(any(entry["cr"] == "Unrated" for entry in self.entries))
+        self.assertTrue(all(re.fullmatch(r"\d+(?:/\d+)?", entry["cr"]) for entry in self.entries))
+        self.assertEqual(self.by_name["Camelfolk female sorcerer - Papaya"]["cr"], "3")
+        self.assertIn("provisional Vara encounter estimate", str(self.by_name["Camelfolk female sorcerer - Papaya"]["conversion_notes"]))
         self.assertTrue(all(entry.get("senses") and entry.get("languages") for entry in self.entries))
 
     def test_missing_blocks_are_existing_identified_alternatives(self):

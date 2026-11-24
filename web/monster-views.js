@@ -60,7 +60,40 @@
   }
   const fieldLabels={ac:"Armor Class",hp:"Hit Points",block:"Block",speed:"Speed",saving_throws:"Saving Throws",skills:"Skills",damage_vulnerabilities:"Damage Vulnerabilities",vulnerabilities:"Vulnerabilities",damage_resistances:"Damage Resistances",resistances:"Resistances",damage_immunities:"Damage Immunities",immunities:"Immunities",condition_immunities:"Condition Immunities",senses:"Senses",languages:"Languages",proficiency_bonus:"Proficiency Bonus",cr:"Challenge",spell_save_dc:"Spell Save DC",spell_attack:"Spell Attack",casting_ability:"Casting Ability",damage_reduction:"Damage Reduction"};
   const label=key=>fieldLabels[key]||cap(String(key).replace(/_/g," "));
-  const actionFields=[["traits","Traits"],["actions","Actions"],["bonus_actions","Bonus Actions"],["reactions","Reactions"],["legendary_actions","Legendary Actions"],["mythic_actions","Mythic Actions"],["lair_actions","Lair Actions"],["regional_effects","Regional Effects"]];
+  const actionFields=[["traits","Monster Properties"],["actions","Actions"],["bonus_actions","Bonus Actions"],["reactions","Reactions"],["legendary_actions","Legendary Actions"],["mythic_actions","Mythic Actions"],["lair_actions","Lair Actions"],["regional_effects","Regional Effects"]];
+  // Normalize imported shapes for play without altering editable source records.
+  function presentation(source){
+    const d=JSON.parse(JSON.stringify(source||{}));
+    const records=value=>Array.isArray(value)?value:object(value)?Object.entries(value).map(([name,description])=>({name,description})):present(value)?String(value).split(/\|+/).map(text=>{const match=text.trim().match(/^([^:.]{1,90})[:.]\s+([\s\S]+)$/);return match?{name:match[1],description:match[2]}:{name:"",description:text.trim()};}):[];
+    d.traits=[...records(d.traits),...records(d.properties)];delete d.properties;
+    d.actions=records(d.actions);
+    if(d.multiattack){
+      if(!d.actions.some(row=>/multiattack/i.test(row.name||""))){
+        const repeated=d.actions.filter(row=>/\(\d+x\)/i.test(row.name||"")&&!/^Existing Vara alternative:/i.test(row.description||""));
+        const text=String(d.multiattack).startsWith("The source permits repeated physical attacks:")?repeated.map(row=>{const m=row.name.match(/^(.*?)\s*\((\d+)x\)/i);return `Make ${m[2]} ${m[1]} attacks as one Attack action.`;}).join(" ")+" Other attacks are alternatives.":d.multiattack;
+        d.actions.unshift({name:"Multiattack",description:text});
+      }
+      for(const row of d.actions){
+        if(!/multiattack/i.test(row.name||"")&&/\(\d+x\)/i.test(row.name||"")&&!/^Existing Vara alternative:/i.test(row.description||"")){
+          row.name=row.name.replace(/\s*\(\d+x\)/i,"");
+          row.description=String(row.description||"").replace(/^Make \w+ .*? attacks as one Attack action, each /i,"Attack ").replace(/Each unblocked strike deals /i,"Unblocked strike: ");
+        }
+      }delete d.multiattack;
+    }
+    const extra=(typeof d.additional_rules==="string"?d.additional_rules:"").split(/\n+/).filter(line=>line.trim()&&!/^\s*(?:Senses|Languages|Challenge|CR)\s*:?\s+/i.test(line));
+    if(extra.length){if(/Human names:|Dwarf names:/i.test(extra.join(" "))){d.description=[d.description,extra.join("\n")].filter(Boolean).join("\n\n");}else d.additional_rules=extra.join("\n");}
+    if(typeof d.additional_rules==="string"&&(!extra.length||/Human names:|Dwarf names:/i.test(extra.join(" "))))delete d.additional_rules;
+    if(/^\d+$/.test(String(d.speed||"")))d.speed+=" ft.";
+    if(typeof d.senses==="string")d.senses=d.senses.replace(/ \(untrained default; special senses not recorded\)/g,"");
+    const seen=new Set();
+    for(const key of ["traits","actions","bonus_actions","reactions","legendary_actions","lair_actions"]){
+      if(!d[key])continue;
+      d[key]=records(d[key]).filter(row=>{if(typeof row.description==="string")row.description=row.description.replace(/Existing SRD [^.]+ supplies [^.]+\./g,"").trim();
+        row.name=String(row.name||"").replace(/\s*[–—-]\s*(?:existing )?[^–—]+ alternative$/i,"");
+        const signature=normalize(row.name)+"|"+normalize(row.description);if(seen.has(signature))return false;seen.add(signature);return true;});
+    }
+    return d;
+  }
   function statblock(entry,helpers={}){
     const el=helpers.el||((tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=String(text);return node;});
     const depth=helpers.depth||2,heading=level=>"h"+Math.min(6,Math.max(2,level));
@@ -72,7 +105,7 @@
     function fold(parent,title,value,className="monster-stat-note"){
       if(!present(value))return;const disclosure=el("details",className);disclosure.append(el("summary","",title),renderValue(value,title));parent.append(disclosure);
     }
-    const d=entry.details||{},meta=metadata(entry),known=new Set(["id","name","group","meta","size","type","alignment","abilities","ability_modifiers","ability_score_status","notes","description","desc","source_ref","spell_references","status","cr","challenge","challenge_rating","xp"]);
+    const d=presentation(entry.details),meta=metadata(entry),known=new Set(["id","name","group","meta","size","type","alignment","abilities","ability_modifiers","ability_score_status","notes","description","desc","source_ref","spell_references","status","cr","challenge","challenge_rating","xp","height","weight","hp_max_variant","spellcasting","spell_slots","limited_spell_uses","metamagic"]);
     const block=el("article","stat-block monster-parchment");block.setAttribute("aria-label",entry.name+" statblock");
     const header=el("header","monster-stat-header");if(helpers.showTitle!==false)header.append(el(heading(depth),"monster-stat-name",cap(entry.name)));if(meta.summary)header.append(el("p","monster-stat-meta",meta.summary));if(d.status)header.append(el("p","monster-stat-status",d.status));block.append(header);
     const body=el("div","monster-stat-body"),lead=el("div","monster-stat-lead");
@@ -83,25 +116,81 @@
     const secondary=el("div","monster-stat-secondary");
     for(const key of Object.keys(fieldLabels).filter(key=>!["ac","hp","block","speed","cr"].includes(key))){known.add(key);if(present(d[key]))compact(secondary,label(key),d[key]);}
     if(meta.cr||present(d.xp))compact(secondary,"Challenge",[meta.cr,present(d.xp)?"("+d.xp+" XP)":""].filter(Boolean).join(" "));body.append(secondary);
+    const refs=Array.isArray(d.spell_references)?d.spell_references:[],spellRows=new Map();
+    function linked(text){
+      const span=el("span","monster-rule-description"),names=[...new Set(refs.flatMap(ref=>[ref.name,ref.source_spell]).filter(Boolean))].sort((a,b)=>b.length-a.length);
+      if(!helpers.link||!names.length){span.append(el("span","",text));return span;}
+
+      // Match literal spell names; punctuation in titles has no regex meaning.
+      let cursor=0;const lower=text.toLowerCase();
+      while(cursor<text.length){let best=null;
+        for(const name of names){let at=lower.indexOf(name.toLowerCase(),cursor);while(at>=0&&((at>0&&/[a-z]/i.test(text[at-1]))||/[a-z]/i.test(text[at+name.length]||"")))at=lower.indexOf(name.toLowerCase(),at+1);if(at>=0&&(!best||at<best.at))best={at,name};}
+        if(!best){span.append(el("span","",text.slice(cursor)));break;}
+        if(best.at>cursor)span.append(el("span","",text.slice(cursor,best.at)));
+        const ref=refs.find(ref=>[ref.name,ref.source_spell].some(name=>normalize(name)===normalize(best.name)));
+        span.append(helpers.link(text.slice(best.at,best.at+best.name.length),{section:"spells",entry:ref.name,group:ref.group},"monster-spell-link"));cursor=best.at+best.name.length;
+      }return span;
+    }
+    for(const key of ["traits","actions","bonus_actions","reactions"]){
+      d[key]=(d[key]||[]).filter(row=>{
+        const match=String(row.description||"").match(/^Existing Vara alternative: (.+?) \(([^)]+)\)\./);
+        if(!match)return true;
+        const ref=refs.find(ref=>normalize(ref.name)===normalize(match[1])&&normalize(ref.group)===normalize(match[2]));if(!ref)return true;
+        const uses=String(row.name||"").match(/\((\d+x|[^)]*(?:day|rest)[^)]*)\)/i)?.[1]||"";
+        const label=uses?uses.replace(/^(\d+)x$/,"$1 uses"):String(ref.level)==="0"?"At will":"";
+        const signature=normalize(ref.name)+"|"+label;
+        if(!spellRows.has(signature))spellRows.set(signature,{ref,label});return false;
+      });
+    }
+    const casting=d.spellcasting,innate=(d.traits||[]).filter(row=>/spellcasting/i.test(row.name||""));
+    d.traits=(d.traits||[]).filter(row=>!/spellcasting/i.test(row.name||""));
+    const innateLines=typeof d.additional_rules==="string"?d.additional_rules.split("\n"):[];
+    const castingLines=innateLines.filter(line=>/cast the following spells|^At will:|^\d+\/day|^\*/i.test(line.trim()));
+    if(castingLines.length){const remaining=innateLines.filter(line=>!castingLines.includes(line)).join("\n");if(remaining)d.additional_rules=remaining;else delete d.additional_rules;}
+
+    if(refs.length||casting||innate.length){
+      const section=el("section","monster-stat-section monster-stat-spellcasting");section.append(el(heading(depth+1),"monster-section-heading","Spellcasting"));
+      for(const row of innate)section.append(linked(row.description||""));
+      for(const line of castingLines){const row=el("div","monster-casting-list");row.append(linked(line));section.append(row);}
+      if(object(casting)){
+        if(casting.description)section.append(linked(casting.description));
+        if(casting.ability)compact(section,"Casting ability",casting.ability);
+        if(casting.cantrips?.length)(()=>{const row=el("div","monster-casting-list");row.append(el("strong","","At will: "),linked(casting.cantrips.join(", ")));section.append(row);})();
+        for(const [level,names]of Object.entries(casting.spells||{})){const row=el("div","monster-casting-list");row.append(el("strong","",`Level ${level}: `),linked(names.join(", ")));section.append(row);}
+        const slots=casting.slots||d.spell_slots;if(slots)compact(section,"Spell slots",Object.entries(slots).map(([level,count])=>`Level ${level}: ${count}`).join("; "));
+      }else if(casting)section.append(linked(String(casting)));
+      for(const {ref,label}of spellRows.values()){const row=el("div","monster-casting-list");if(label)row.append(el("strong","",label+": "));row.append(linked(ref.name));section.append(row);}
+      if(!casting&&!castingLines.length){const used=new Set([...spellRows.values()].map(row=>normalize(row.ref.name)));const other=[...new Map(refs.filter(ref=>!used.has(normalize(ref.name))).map(ref=>[normalize(ref.name),ref])).values()];if(other.length){const row=el("div","monster-casting-list");row.append(linked(other.map(ref=>ref.name).join(", ")));section.append(row);}}
+      if(d.metamagic)compact(section,"Metamagic",d.metamagic);
+      body.append(section);
+    }
     for(const[key,title]of actionFields){known.add(key);if(!present(d[key]))continue;
-      const section=el("section","monster-stat-section monster-stat-"+key);if(key!=="traits")section.append(el(heading(depth+1),"monster-section-heading",title));
+      const section=el("section","monster-stat-section monster-stat-"+key);section.append(el(heading(depth+1),"monster-section-heading",title));
       const records=Array.isArray(d[key])?d[key]:object(d[key])?Object.entries(d[key]).map(([name,description])=>({name,description})):[d[key]];
       for(const record of records){if(!object(record)){section.append(renderValue(record,title));continue;}const row=el("div","monster-named-rule"),name=record.name??"",description=record.description??record.desc;
         if(name){const strong=el("strong","monster-rule-name");strong.append(el("em","",String(name).replace(/\.$/,"")+". "));row.append(strong);}
-        if(present(description))row.append(typeof description==="string"?el("span","monster-rule-description",description):renderValue(description,title));
+        if(present(description))row.append(typeof description==="string"?linked(description):renderValue(description,title));
         for(const[field,value]of Object.entries(record))if(!["name","description","desc"].includes(field)&&present(value))compact(row,label(field),value,"monster-rule-extra");section.append(row);
       }body.append(section);
     }
-    const notes=el("div","monster-stat-notes");
-    if(d.description||d.desc)fold(notes,"Description and lore",d.description||d.desc);
+    const notes=el("div","monster-stat-notes"),sourceNotes=el("details","monster-provenance");sourceNotes.append(el("summary","","Sources and conversion notes"));
+    if(d.description||d.desc||d.height||d.weight)fold(notes,"Description and lore",[d.description||d.desc,d.height&&"Height: "+d.height,d.weight&&"Weight: "+d.weight].filter(Boolean).join("\n\n"));
+    if(d.hp_max_variant)fold(notes,"Optional hit points",d.hp_max_variant);
+    if(d.limited_spell_uses)fold(notes,"Spell use rules",d.limited_spell_uses);
     if(present(d.notes))fold(notes,"Notes",d.notes);
     if(present(d.block_rules)){known.add("block_rules");fold(notes,"How this creature blocks",d.block_rules);}
     for(const[key,value]of Object.entries(d)){
-      if(provenance(key)){known.add(key);fold(notes,key==="original_5e"?"Original source statblock":label(key),value,"monster-provenance");}
+      if(provenance(key)){known.add(key);fold(sourceNotes,key==="original_5e"?"Original source statblock":label(key),value,"monster-provenance");}
       if(known.has(key)||!present(value))continue;
-      const section=el("section","monster-stat-section monster-additional-rule");section.append(el(heading(depth+1),"monster-section-heading",label(key)),renderValue(value,label(key)));body.append(section);
+      const section=el("section","monster-stat-section monster-additional-rule");section.append(el(heading(depth+1),"monster-section-heading",label(key)),(typeof value==="string"?linked(value):renderValue(value,label(key))));body.append(section);
     }
+    if(sourceNotes.children.length>1)notes.append(sourceNotes);
     if(Array.isArray(d.spell_references)&&d.spell_references.length){const spells=el("details","monster-stat-note monster-spell-references");spells.append(el("summary","","Current spell rules"));const list=el("ul","monster-spell-list");for(const reference of d.spell_references){const row=el("li");if(helpers.link)row.append(helpers.link(reference.name,{section:"spells",entry:reference.name,group:reference.group},"monster-spell-link"));else row.append(el("strong","",reference.name));if(reference.source_spell&&normalize(reference.source_spell)!==normalize(reference.name))row.append(el("span",""," (replaces "+reference.source_spell+")"));for(const[key,value]of Object.entries(reference))if(!["name","group","source_spell"].includes(key)&&present(value))fold(row,label(key),value);list.append(row);}spells.append(list);notes.append(spells);}
+    const overview=el("div","monster-overview-column"),combat=el("div","monster-combat-column");
+    for(const child of Array.from(body.children)){const left=["monster-stat-lead","monster-score-grid","monster-score-status","monster-stat-secondary","monster-stat-spellcasting"].some(name=>String(child.className).split(" ").includes(name));(left?overview:combat).append(child);}
+    // append() moves real DOM nodes; replaceChildren also supports lightweight test renderers.
+    if(body.replaceChildren)body.replaceChildren(overview,combat);
+    else {body.children=[];body.append(overview,combat);}
     block.append(body);if(notes.children?.length||notes.childElementCount)block.append(notes);return block;
   }
   const expanded=new Set();
@@ -114,5 +203,5 @@
       item.addEventListener("toggle",()=>{if(item.open){expanded.add(key);render();}else expanded.delete(key);});item.append(summary,body);if(expanded.has(key)){item.open=true;render();}list.append(item);
     }return list;
   }
-  globalThis.MonsterViews=Object.freeze({types,titles,metadata,matches,challenge,ability,statblock,expandableList});
+  globalThis.MonsterViews=Object.freeze({presentation,types,titles,metadata,matches,challenge,ability,statblock,expandableList});
 })();

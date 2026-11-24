@@ -442,6 +442,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/4 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -491,6 +493,7 @@ entries:
       - ''
       '98587':
       - ''
+  cr: 1/4
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -505,7 +508,6 @@ entries:
       int: '+1'
       wis: '-1'
       cha: '+0'
-  cr: Unrated
   senses: passive Perception 9 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -582,6 +584,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 5 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/building / entity 16348
   original_5e:
     description: ''
@@ -668,6 +672,7 @@ entries:
   immunities: Piercing
   resistances: Poison
   saving_throws: DEX +7; WIS +6; Acrobatics +6; Perception +6
+  cr: '5'
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -682,7 +687,6 @@ entries:
       int: '+1'
       wis: '+3'
       cha: '0'
-  cr: Unrated
   senses: passive Perception 13 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -917,6 +921,7 @@ entries:
 - name: Dragazhar
   group: Chronica · Enemies/forest/night
   id: chronica-15903
+  meta: Medium dragon
   ac: '14'
   hp: 4d8+8
   speed: 10 ft;fly 50 ft
@@ -941,6 +946,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/forest/night / entity 15903
   original_5e:
     description: The night hunter is a malicious bat with velvet black fur, orange or red eyes and a long tail with
@@ -1004,6 +1011,9 @@ entries:
     wizards.
   height: Wingspan 7 feet
   weight: 10-15 pounds
+  cr: '2'
+  type: dragon
+  size: Medium
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -1018,7 +1028,6 @@ entries:
       int: '-2'
       wis: '0'
       cha: '-2'
-  cr: Unrated
   senses: passive Perception 10 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -1031,6 +1040,7 @@ entries:
 - name: Balckspawn Stalker
   group: Chronica · Enemies/forest/night
   id: chronica-15902
+  meta: Medium monstrosity
   ac: '13'
   hp: 8d8+8
   speed: 30 ft climb 30 ft
@@ -1067,6 +1077,8 @@ entries:
   - Source spelling 'Balckspawn' is retained so saved campaign names remain searchable. Empty linked ability IDs
     do not identify a rule; no unidentified feature was silently imported. Missing web-object and half-on-save details
     use existing SRD Giant Spider / black dragon breath conventions.
+  - CR 3 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/forest/night / entity 15902
   original_5e:
     description: ''
@@ -1132,6 +1144,9 @@ entries:
       '98646': []
   height: 6 - 8 feet
   weight: 5000 pounds
+  cr: '3'
+  type: monstrosity
+  size: Medium
   replacement_sources:
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-b
@@ -1149,7 +1164,6 @@ entries:
       int: '-2'
       wis: '+1'
       cha: '-1'
-  cr: Unrated
   senses: passive Perception 11 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -1214,6 +1228,8 @@ entries:
   - The source Rage text requires an unrecorded barbarian level to determine damage and uses. It is replaced in
     full by the existing official Berserker Bloodied Frenzy trait; its bloodied state also replaces the Rage prerequisite
     on the printed Bite. The original class Rage remains in the source comparison.
+  - CR 4 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: 'Chronica Tales of Custead pt.2 / Mercenary group #1 - The Shieldwrights / entity 15892'
   original_5e:
     description: ''
@@ -1310,6 +1326,7 @@ entries:
   saving_throws: STR +6; DEX +2; CON +6; INT 0; WIS -1; CHA 0
   height: 8 feet 9 inches
   weight: 588 pounds
+  cr: '4'
   replacement_sources:
   - https://www.dndbeyond.com/monsters/4904621-berserker
   ability_score_status: reconstructed
@@ -1326,7 +1343,6 @@ entries:
       int: '0'
       wis: '-1'
       cha: '0'
-  cr: Unrated
   senses: passive Perception 9 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -1353,10 +1369,7 @@ entries:
     cha: '16'
   traits:
   - name: Food storage
-    description: 'The source humps allow food storage for days equal to Constitution score and water for half that
-      time. For this trait''s missing exact score, use the published Camel''s Constitution 14 (+2), matching the
-      campaign modifier: 14 days without food and 7 days without water before deprivation applies. This is an explicitly
-      selected Camel baseline for storage capacity, not a claim that Papaya''s original exact score was recorded.'
+    description: Can survive 14 days without food and 7 days without water before deprivation applies.
   - name: Control Flames
     description: 'Existing Vara alternative: minor pyromancy (Arcane cantrips).
 
@@ -1394,23 +1407,17 @@ entries:
       modifier. Ordinary attack damage and riders require an unblocked strike; the spell''s explicit exceptions
       take priority (including unblockable Harm damage and Acid bolt''s on-hit ongoing acid). Saving-throw-only
       effects cannot be Blocked. A printed (Nx) is a source use limit, not extra castings in one action.'
-  - name: Heart of Fire (Azer Heated Body alternative)
+  - name: Heart of Fire
     description: A creature touching Papaya, or landing an unblocked melee strike against her while within 5 ft.,
-      takes 5 (1d10) fire damage. This is the existing Azer Heated Body trait, replacing a fireburst formula based
-      on an unrecorded sorcerer level. The contact damage has no separate attack roll.
+      takes 5 (1d10) fire damage. This contact damage has no separate attack roll.
   - name: Fire in the Veins
     description: you gain resistance to fire damage. In addition spells you cast ignore resistance to fire damage.
-  - name: Twinned Spell (current Metamagic alternative)
-    description: 'Use the current Vara Sorcerer Metamagic pool: maximum 6 MP (printed CHA +3 plus attack/save proficiency
-      +3); regain 1d4+1 spent MP each rest and all spent MP after a long rest. For a spell that targets one creature,
-      spend 3 MP using the existing Enchantment option to target one additional creature within that spell''s range.
-      Reduce the cost by 1 for an Enchantment spell. The source 6x label becomes this existing six-point pool; it
-      grants neither six casts per action nor six free extra targets.'
-  - name: Flash Recall (current quick-casting alternative)
-    description: When casting a known current spell, spend 2 MP to cast it as a bonus action instead of an action,
-      using the current Sorcerer Metamagic Divination option. Reduce the cost by 1 for a Divination spell. It shares
-      the six-point MP pool above. This replaces an unprepared-spell feature that depends on an unrecorded spellbook
-      and spell-slot system; it does not grant any additional spell knowledge.
+  - name: Twinned Spell
+    description: When casting a spell that targets one creature, spend 3 MP to target one additional creature within
+      the spell's range. Reduce the cost by 1 for an Enchantment spell.
+  - name: Flash Recall
+    description: When casting a known spell, spend 2 MP to cast it as a bonus action instead of an action. Reduce
+      the cost by 1 for a Divination spell. Shares the same Metamagic pool.
   actions:
   - name: Battleaxe
     description: 'Attack +4 to hit; Block DC 12. Reach/range: 5 ft. Unblocked strike: 1d8+1 (1d10+1) Slashing.'
@@ -1518,6 +1525,8 @@ entries:
     a complete fire-themed alternative. Her current Metamagic options use the printed current class formula and
     share one six-point pool. Food storage uses the published Camel Constitution 14 as an explicit capacity baseline
     compatible with her +2 modifier, without claiming that exact source score is known.
+  - CR 3 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -1620,8 +1629,8 @@ entries:
   saving_throws: STR +1; DEX -1; CON +5; INT +1; WIS +1; CHA +6
   height: 8 feet 10 inches
   weight: 388 pounds
-  metamagic: 6 MP maximum; restore 1d4+1 each rest and all after a long rest. Uses existing current Sorcerer MP
-    formula and recovery, with printed CHA +3 and proficiency +3.
+  metamagic: 6 MP maximum; restore 1d4+1 MP each rest and all MP after a long rest.
+  cr: '3'
   replacement_sources:
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-a
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-c
@@ -1640,7 +1649,6 @@ entries:
       int: '+1'
       wis: '+1'
       cha: '+3'
-  cr: Unrated
   senses: passive Perception 11 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -1837,6 +1845,8 @@ entries:
   - Drion has no recorded fighter level. Second Wind uses the existing Champion NPC's fixed 20 HP recovery; Rallying
     Cry uses the existing Knight Leadership action. The single-use Action Surge recharge uses the complete base
     SRD feature. No fighter level is inferred from attack bonuses or HP.
+  - CR 3 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: 'Chronica Tales of Custead pt.2 / Mercenary group #1 - The Shieldwrights / entity 15891'
   original_5e:
     description: ''
@@ -1941,6 +1951,7 @@ entries:
   armor_rules: 'Existing equipment alternative: Plated armor suit for the source''s adamantine plate. Block 2, Protection
     3, Physical reduction 2, Bulk 9, Slow 4. Fixed creature AC 18 and speed 35 ft. are retained as printed monster
     statistics, rather than recalculated as a player build.'
+  cr: '3'
   replacement_sources:
   - data/draft-reference/armor-and-shields.yaml
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters
@@ -1961,7 +1972,6 @@ entries:
       int: '0'
       wis: '0'
       cha: '0'
-  cr: Unrated
   senses: passive Perception 10 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -2111,6 +2121,8 @@ entries:
   - Both printed 1x Channel Divinity options share the existing single base Channel Divinity pool and SRD short/long-rest
     recharge, rather than receiving independent unlimited uses. Destroy Undead uses the already printed spell DC
     14 and source CR 1/2 threshold; no cleric level is inferred.
+  - CR 3 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -2220,6 +2232,7 @@ entries:
   saving_throws: STR +2; DEX -2; CON +3; INT 0; WIS +6; CHA +4
   height: 8 feet 3 inches
   weight: 588 pounds
+  cr: '3'
   replacement_sources:
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/classes
   ability_score_status: reconstructed
@@ -2236,7 +2249,6 @@ entries:
       int: '0'
       wis: '+3'
       cha: '+1'
-  cr: Unrated
   senses: passive Perception 13 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -2359,6 +2371,8 @@ entries:
   - 'Existing alternative: The campaign record has modifiers, AC, HP and speed but no attacks. Published Ogre attacks
     are used unchanged as explicit alternatives; their attack values are not recalculated to pretend they were recorded
     in the campaign. Source: https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-o'
+  - CR 2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: 'Chronica Tales of Custead pt.2 / Mercenary group #2 / entity 15886'
   original_5e:
     description: ''
@@ -2398,6 +2412,7 @@ entries:
     reason: The campaign record has modifiers, AC, HP and speed but no attacks. Published Ogre attacks are used
       unchanged as explicit alternatives; their attack values are not recalculated to pretend they were recorded
       in the campaign.
+  cr: '2'
   senses: darkvision 60 ft., passive Perception 9
   source_original_meta: Giant
   ability_score_status: sourced
@@ -2414,7 +2429,6 @@ entries:
       int: '-2'
       wis: '-1'
       cha: '0'
-  cr: Unrated
   block: 0 pool / +0 check
   block_rules: Spend 1 Block after an attack hits, before damage. On a successful check against its Block DC, negate
     blockable damage and unblocked-strike effects. Natural armor alone grants no training or extra Block. Saving-throw-only
@@ -2471,6 +2485,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -2526,6 +2542,7 @@ entries:
   resistances: Poison
   height: 6 feet 2 inches
   weight: 230 pounds
+  cr: 1/2
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -2540,7 +2557,6 @@ entries:
       int: '0'
       wis: '+3'
       cha: '0'
-  cr: Unrated
   senses: passive Perception 13 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -2806,6 +2822,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -2914,6 +2932,7 @@ entries:
   saving_throws: CON +4; CHA +5
   height: 6 ft
   weight: 200 pounds
+  cr: '2'
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -2928,7 +2947,6 @@ entries:
       int: '+1'
       wis: '0'
       cha: '+2'
-  cr: Unrated
   senses: passive Perception 10 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -4471,6 +4489,8 @@ entries:
     DCs and escape methods remain specific creature rules.
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/gnolls / entity 15910
   original_5e:
     description: Gnolls are feral, hyena-headed humanoids that attack without warning, slaughtering their victims
@@ -4544,6 +4564,7 @@ entries:
     and devouring their flesh.
   height: 7 feet - 7 feet 6 inches
   weight: 280-320 pounds
+  cr: 1/2
   senses: darkvision 60 ft., passive Perception 10
   languages: Gnoll
   source_original_meta: Humanoid
@@ -4561,7 +4582,6 @@ entries:
       int: '-2'
       wis: '+0'
       cha: '-2'
-  cr: Unrated
   block: 1 pool / +1 check
   block_rules: Spend 1 Block after an attack hits, before damage. On a successful check against its Block DC, negate
     blockable damage and unblocked-strike effects. Natural armor alone grants no training or extra Block. Saving-throw-only
@@ -4601,6 +4621,8 @@ entries:
     DCs and escape methods remain specific creature rules.
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/gnolls / entity 15911
   original_5e:
     description: ''
@@ -4655,6 +4677,7 @@ entries:
       '98648': []
       '98647': []
       '98646': []
+  cr: 1/2
   senses: darkvision 60 ft., passive Perception 10
   languages: Gnoll
   source_original_meta: Humanoid
@@ -4672,7 +4695,6 @@ entries:
       int: '-2'
       wis: '+0'
       cha: '-2'
-  cr: Unrated
   block: 1 pool / +1 check
   block_rules: Spend 1 Block after an attack hits, before damage. On a successful check against its Block DC, negate
     blockable damage and unblocked-strike effects. Natural armor alone grants no training or extra Block. Saving-throw-only
@@ -4706,6 +4728,8 @@ entries:
     DCs and escape methods remain specific creature rules.
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/gnolls / entity 15913
   original_5e:
     description: ''
@@ -4762,6 +4786,7 @@ entries:
       - ''
       '98646':
       - ''
+  cr: 1/2
   ability_score_status: sourced
   source_ability_scores:
     method: compatible_donor
@@ -4776,7 +4801,6 @@ entries:
       int: '-4'
       wis: '+1'
       cha: '-2'
-  cr: Unrated
   senses: passive Perception 11 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -4822,6 +4846,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/gnolls / entity 15915
   original_5e:
     description: ''
@@ -4878,6 +4904,7 @@ entries:
       '98647': []
       '98646': []
   resistances: Falling of mount
+  cr: '2'
   replacement_sources:
   - https://www.dndbeyond.com/sheet-pdfs/Morberis_163063989.pdf
   ability_score_status: reconstructed
@@ -4894,7 +4921,6 @@ entries:
       int: '-1'
       wis: '+0'
       cha: '-2'
-  cr: Unrated
   senses: passive Perception 10 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -4943,6 +4969,8 @@ entries:
     DCs and escape methods remain specific creature rules.
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Enemies/gnolls / entity 15914
   original_5e:
     description: ''
@@ -5003,6 +5031,7 @@ entries:
       '98648': []
       '98647': []
       '98646': []
+  cr: '2'
   ability_score_status: sourced
   source_ability_scores:
     method: compatible_donor
@@ -5017,7 +5046,6 @@ entries:
       int: '-4'
       wis: '+1'
       cha: '-2'
-  cr: Unrated
   senses: passive Perception 11 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -7861,6 +7889,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 3 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -7933,6 +7963,7 @@ entries:
   immunities: Poison; Charmed; Poisoned; Fatigue; Lightning
   resistances: Thunder
   vulnerabilities: Cold
+  cr: '3'
   replacement_sources:
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g
   ability_score_status: reconstructed
@@ -7949,7 +7980,6 @@ entries:
       int: '-5'
       wis: '-5'
       cha: '-4'
-  cr: Unrated
   languages: Not recorded
   block: 2 pool / +2 check
   block_rules: Spend 1 Block after an attack hits, before damage. On a successful check against its Block DC, negate
@@ -8956,6 +8986,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/4 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Dastow city guards / entity 15877
   original_5e:
     description: ''
@@ -9027,6 +9059,7 @@ entries:
     Ram Fields Kirnenelyn Bottletank Jaqtien Holaralei
 
     Claudia Black Glarbog Goldenmantle Claunelyn Sheparalei'
+  cr: 1/4
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -9041,7 +9074,6 @@ entries:
       int: '0'
       wis: '0'
       cha: '+1'
-  cr: Unrated
   senses: passive Perception 10 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -9078,6 +9110,8 @@ entries:
     DCs and escape methods remain specific creature rules.
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/4 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Dastow city guards / entity 15879
   original_5e:
     description: ''
@@ -9120,6 +9154,7 @@ entries:
       - ''
       '98587':
       - ''
+  cr: 1/4
   senses: passive Perception 12
   languages: any one language (usually Common)
   source_original_meta: Humanoid
@@ -9137,7 +9172,6 @@ entries:
       int: '+0'
       wis: '+0'
       cha: '+0'
-  cr: Unrated
   block: 1 pool / +1 check
   block_rules: Spend 1 Block after an attack hits, before damage. On a successful check against its Block DC, negate
     blockable damage and unblocked-strike effects. Natural armor alone grants no training or extra Block. Saving-throw-only
@@ -9170,6 +9204,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 1/2 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and
+    control effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Dastow city guards / entity 15878
   original_5e:
     description: ''
@@ -9237,6 +9273,7 @@ entries:
     Ram Fields Kirnenelyn Bottletank Jaqtien Holaralei
 
     Claudia Black Glarbog Goldenmantle Claunelyn Sheparalei'
+  cr: 1/2
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -9251,7 +9288,6 @@ entries:
       int: '+0'
       wis: '-1'
       cha: '+0'
-  cr: Unrated
   senses: passive Perception 9 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -9305,6 +9341,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 4 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Dastow city guards / entity 15908
   original_5e:
     description: ''
@@ -9383,6 +9421,7 @@ entries:
   saving_throws: STR +8; CON +6
   height: 6 feet + 1d10 inches
   weight: 170 pounds + (rolled height x 1d4)
+  cr: '4'
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -9397,7 +9436,6 @@ entries:
       int: '+1'
       wis: '+1'
       cha: '+1'
-  cr: Unrated
   senses: passive Perception 11 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -9438,6 +9476,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 3 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / Dastow city guards / entity 15907
   original_5e:
     description: 'The black orcs are among the strongest, biggest and most disciplined breeds of orcs, and get their
@@ -9541,6 +9581,7 @@ entries:
   saving_throws: CON +6; WIS +3
   height: 6 feet 6 inches + 2d6 inches
   weight: 200 pounds + (rolled inches x 4d4)
+  cr: '3'
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -9555,7 +9596,6 @@ entries:
       int: '+1'
       wis: '+1'
       cha: '+1'
-  cr: Unrated
   senses: passive Perception 11 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -10459,6 +10499,8 @@ entries:
     X–Y is a d6 roll at the start of the creature's turn.
   - The omitted type of the life-draining 3d6 Gorge/ongoing Bite rider uses necrotic damage from the existing SRD
     Wraith Life Drain alternative; source dice and full healing are retained.
+  - CR 5 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / The Fuckening Start / entity 26564
   original_5e:
     description: Nearly ten feet tall, this muscular humanoid has seen better days. Once an ogre, time and becoming
@@ -10542,6 +10584,7 @@ entries:
   immunities: poison; poisoned; blinded; charmed
   resistances: necrotic; bludgeoning NM; piercing NM; slashing NM
   saving_throws: STR +4; DEX +1; CON +9; INT +1; WIS +1; CHA -3
+  cr: '5'
   replacement_sources:
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monster-stat-blocks-g
   - https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters
@@ -10560,7 +10603,6 @@ entries:
       int: '+1'
       wis: '+1'
       cha: '-3'
-  cr: Unrated
   block: 1 pool / +1 check
   block_rules: Spend 1 Block after an attack hits, before damage. On a successful check against its Block DC, negate
     blockable damage and unblocked-strike effects. Natural armor alone grants no training or extra Block. Saving-throw-only
@@ -11503,6 +11545,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 4 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   source_ref: Chronica Tales of Custead pt.2 / The Fuckening Start / entity 25845
   original_5e:
     description: ''
@@ -11583,6 +11627,7 @@ entries:
   languages: Orc, Giant, but can't speak
   immunities: poison; poisoned
   saving_throws: STR +5; DEX -2; CON +4; INT -4; WIS +0; CHA -3
+  cr: '4'
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -11597,7 +11642,6 @@ entries:
       int: '-4'
       wis: '-2'
       cha: '-3'
-  cr: Unrated
   block: 0 pool / -2 check
   block_rules: Spend 1 Block after an attack hits, before damage. On a successful check against its Block DC, negate
     blockable damage and unblocked-strike effects. Natural armor alone grants no training or extra Block. Saving-throw-only
@@ -11787,6 +11831,8 @@ entries:
     source durations, DCs and escape methods remain specific creature rules.'
   - Short rest takes one day and long rest takes one week by default. Printed per-day uses remain per-day. Recharge
     X–Y is a d6 roll at the start of the creature's turn.
+  - CR 5 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -11853,6 +11899,7 @@ entries:
       - ''
   vulnerabilities: Cold; Water
   height: 10 feet 2 inches
+  cr: '5'
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -11867,7 +11914,6 @@ entries:
       int: '+0'
       wis: '+0'
       cha: '+0'
-  cr: Unrated
   senses: passive Perception 10 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense
@@ -11969,6 +12015,8 @@ entries:
     X–Y is a d6 roll at the start of the creature's turn.
   - 'Existing alternative: Only the campaign Imp''s missing AC, hit points and speed are supplied by the published
     Imp; its recorded modifiers, attacks and creature type remain unchanged. Source: https://www.dndbeyond.com/monsters/16933-imp'
+  - CR 1 is a provisional Vara encounter estimate based on this converted creature's HP, defenses, attacks and control
+    effects; validate against party performance in play.
   - Spell references below select existing Vara alternatives. Their current printed spell rules take priority over
     imported 5e spell prose, ranges, damage, levels and durations. Retain printed monster use limits and attack/save
     modifiers; cast alternatives at their printed level rather than obsolete 7th–9th-level upcasts.
@@ -12038,6 +12086,7 @@ entries:
     source: https://www.dndbeyond.com/monsters/16933-imp
     reason: Only the campaign Imp's missing AC, hit points and speed are supplied by the published Imp; its recorded
       modifiers, attacks and creature type remain unchanged.
+  cr: '1'
   ability_score_status: reconstructed
   source_ability_scores:
     method: reconstructed
@@ -12052,7 +12101,6 @@ entries:
       int: '-3'
       wis: '-2'
       cha: '+3'
-  cr: Unrated
   senses: passive Perception 8 (untrained default; special senses not recorded)
   source_general_stats:
     senses: Standard passive-check total 10 + recorded Wisdom modifier; no perception training or special sense

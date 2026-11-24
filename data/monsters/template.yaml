@@ -738,7 +738,7 @@ entries:
   group: Creature template monsters
   id: template-jobafo
   meta: Large aberration, chaotic evil
-  cr: Unrated
+  cr: '7'
   ac: 16 (natural armor)
   hp: 75 (10d12 + 10)
   speed: 45 ft., climb 20 ft.
@@ -787,6 +787,7 @@ entries:
     description: data/draft-reference/additional-weapon-terms.yaml / Expose and data/conditions.yaml / exposed
   status: Converted with an existing Aboleth action profile; encounter difficulty unassessed
   conversion_notes:
+  - CR 7 is a provisional Vara encounter estimate for its defenses, control abilities and action economy; validate in play.
   - The source gives no actions, an undefined cleverness joke, an undefined weak spot, and joke CR 69. Existing
     Aboleth actions and Probing Telepathy provide an attributed playable alternative; their printed values
     are not recalculated or invented. No weak-spot rule is invented. Source defenses and ability scores are

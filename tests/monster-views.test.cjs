@@ -76,3 +76,13 @@ test('encounter objects omit inapplicable abilities while creatures and scored o
   assert.equal(views.statblock(entry({abilities:{}}),helpers).byClass('monster-score-grid').length,1);
   assert.equal(views.statblock(entry({type:'Object'}),helpers).byClass('monster-score-grid').length,1);
 });
+
+test('import cleanup unifies properties, removes duplicated summary and moves lore out of combat',()=>{
+  const {views,helpers}=setup(),source=entry({properties:'Corpse eater: Restore 2d8 HP.|Chitinous: Reduce damage by 2d8.',additional_rules:'Senses darkvision 60 ft.\nLanguages Common\nChallenge 4 (1,100 XP)',height:'6 feet',weight:'500 pounds'}),before=JSON.stringify(source),block=views.statblock(source,helpers),body=block.byClass('monster-stat-body')[0];
+  assert.equal(body.byClass('monster-stat-traits').length,1);assert.match(body.textContent,/Monster PropertiesCorpse eater/);assert.match(body.textContent,/Chitinous/);assert.doesNotMatch(body.textContent,/Additional rules|500 pounds|6 feet|\|/);assert.match(block.byClass('monster-stat-notes')[0].textContent,/500 pounds/);assert.equal(JSON.stringify(source),before);
+});
+
+test('multiattack is an action and imported spell replacements become linked compact use pools',()=>{
+ const {views,helpers}=setup(),block=views.statblock(entry({multiattack:'The source permits repeated physical attacks: Claw (2x).',actions:[{name:'Claw (2x)',description:'Make two claw attacks as one Attack action, each +4 to hit.'},{name:'Burning Hands (4x)',description:'Existing Vara alternative: Cone of fire (Arcane spells).\n\nEnormous repeated spell text.'}],traits:[{name:'Control Flames',description:'Existing Vara alternative: minor pyromancy (Arcane cantrips).\n\nRepeated pyromancy.'},{name:'Fire Bolt',description:'Existing Vara alternative: minor pyromancy (Arcane cantrips).\n\nRepeated pyromancy.'}],spell_references:[{source_spell:'Burning Hands',name:'Cone of fire',group:'Arcane spells',level:'1'},{name:'minor pyromancy',group:'Arcane cantrips',level:'0'}]}),helpers),body=block.byClass('monster-stat-body')[0];
+ assert.match(body.byClass('monster-stat-actions')[0].textContent,/ActionsMultiattack/);assert.doesNotMatch(body.textContent,/Enormous|Repeated pyromancy|Claw \(2x\)/);assert.match(body.textContent,/4 uses/);assert.equal(body.all('a').filter(node=>node.textContent==='minor pyromancy').length,1);assert.match(body.all('a').find(node=>node.textContent==='Cone of fire').href,/section=spells/);
+});
