@@ -4,6 +4,8 @@ from pathlib import Path
 
 import yaml
 
+from geomancy_review import DECISIONS_PATH, SNAPSHOT_DIRECTORY, apply_geomancy_review
+
 
 SECTIONS = {
     "rules": "Rules of play",
@@ -247,6 +249,8 @@ def compile_data(data_dir: Path) -> list[dict]:
     summon_document = None
     has_summon_document = False
     monster_overrides = []
+    geomancy_snapshots = []
+    geomancy_decisions = None
     files = sorted(path for path in data_dir.rglob("*")
                    if path.is_file() and path.suffix.lower() in (".yml", ".yaml"))
     if not files:
@@ -255,6 +259,14 @@ def compile_data(data_dir: Path) -> list[dict]:
         path = file.relative_to(data_dir).as_posix()
         try:
             data = yaml.load(file.read_text(encoding="utf-8-sig"), Loader=RulesLoader)
+            if path.startswith(SNAPSHOT_DIRECTORY):
+                geomancy_snapshots.append((path, data))
+                continue
+            if path == DECISIONS_PATH:
+                if data is None:
+                    raise ValueError("review decisions document must not be empty")
+                geomancy_decisions = data
+                continue
             if path == "summon-links.yaml":
                 summon_document = data
                 has_summon_document = True
@@ -284,4 +296,5 @@ def compile_data(data_dir: Path) -> list[dict]:
             apply_summon_links(summon_document, sections)
         except (KeyError, ValueError, TypeError) as exc:
             raise ValueError(f"summon-links.yaml: {exc}") from exc
+    apply_geomancy_review(geomancy_snapshots, geomancy_decisions, sections)
     return list(sections.values())

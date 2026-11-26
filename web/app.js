@@ -22,6 +22,7 @@
   const magicCategories = globalThis.MagicCategories;
   const browseViews = globalThis.BrowseViews;
   const monsterViews = globalThis.MonsterViews;
+  const geomancyReview = globalThis.GeomancyReview;
   const collate = new Intl.Collator("en", {numeric: true, sensitivity: "base"});
   const rarityOrder=["common","uncommon","rare","very rare","legendary","artifact"];
   const compareRarity=(a,b)=>{
@@ -158,7 +159,10 @@
     const options = query ? [["relevance", "Relevance"]] : [];
     if (kind === "spells") options.push(["magic-asc", "Class of magic, level, name"]);
     if (kind === "monsters") options.push(["challenge-asc", "Challenge: low to high"], ["challenge-desc", "Challenge: high to low"]);
-    else if (kind) options.push(["level-asc", "Level: low to high"], ["level-desc", "Level: high to low"]);
+    else if (kind) {
+      const label = kind === "geomancy-review" ? "Source level" : "Level";
+      options.push(["level-asc", label + ": low to high"], ["level-desc", label + ": high to low"]);
+    }
     options.push(["name", "Name: A–Z"]);
     return options;
   }
@@ -179,11 +183,14 @@
     document.title = name + " · Varis DnD";
     return h;
   }
-  function geomancyNotice() {
+  function geomancyNotice(section) {
     const note = el("aside", "geomancy-review-note");
     note.setAttribute("aria-label", "Source draft for review");
-    note.append(el("strong", "", "Source draft · awaiting adaptation"));
-    note.append(el("p", "", "The complete Homebrewery Geomorphy list, kept here for V. to review. Original levels, spell slots and rules are preserved; these entries are not part of the current character spell list. Entries missing source descriptions are marked."));
+    const hasDrafts = section?.entries.some(entry => geomancyReview?.conversion(entry));
+    note.append(el("strong", "", hasDrafts ? "Rewritten drafts · awaiting V.'s review" : "Source draft · awaiting adaptation"));
+    note.append(el("p", "", hasDrafts
+      ? "Proposed Varis conversions, with V.'s feedback and the original source spells alongside them. These drafts await approval and remain outside the current spell lists and character sheet."
+      : "The complete Homebrewery Geomorphy list, kept here for V. to review. Original levels, spell slots and rules are preserved; these entries are not part of the current character spell list. Entries missing source descriptions are marked."));
     note.append(link("Current spell rules", {section: "spells"}, "text-link"));
     return note;
   }
@@ -277,6 +284,11 @@
       const level = section.key === "monsters" ? "" : entryLevel(entry);
       if (level && !info.some(s => /cantrip/i.test(s) && level === "0")) info.push(levelLabel(level));
       if (section.key === "monsters" && order.challenge(entry) != null) info.push("CR " + entry.details.cr);
+      if (section.key === "geomancy-review" && geomancyReview?.isReview(entry)) {
+        a.append(geomancyReview.badge(entry, el));
+        const draft = geomancyReview.conversion(entry);
+        if (draft) info.push((draft.name !== entry.name ? draft.name + " · " : "") + geomancyReview.draftLabel(entry));
+      }
       a.append(el("span", "result-meta", info.filter(Boolean).map(cap).join(" · ")));
       li.append(a);
       list.append(li);
@@ -317,6 +329,7 @@
     const sort = selectedSort(params, kind, filter);
     const grouped = groups.filter(([name]) => name);
     const review = section.key === "geomancy-review";
+    if (review && geomancyReview) params = {...params, review: geomancyReview.selectedStatus(section.entries, params)};
     const compareEntries = ["races", "feats", "backgrounds", "geomancy-review"].includes(section.key);
     const listView = compareEntries && (params.view === "list" || ["races", "geomancy-review"].includes(section.key) && params.view !== "pages");
     const monsterList = section.key === "monsters" && monsterViews && params.view !== "pages";
@@ -337,7 +350,22 @@
       head.append(link("Browse all class entries", {...base, browse: "all"}, "text-link"));
     }
     reader.append(head);
-    if (review) reader.append(geomancyNotice());
+    if (review) {
+      reader.append(geomancyNotice(section));
+      if (geomancyReview && section.entries.some(entry => geomancyReview.isReview(entry))) {
+        const choices = el("nav", "geomancy-review-statuses");
+        choices.setAttribute("aria-label", "Review progress");
+        const counts = [{key: "all", label: "All source spells", count: section.entries.length}, ...geomancyReview.counts(section.entries)];
+        for (const {key, label, count} of counts) {
+          if (!count && key !== "all") continue;
+          const choice = link(label + " (" + count + ")", {...params, review: key,
+            proposed: ["all", "draft"].includes(key) ? params.proposed : "", page: ""}, "geomancy-status-link");
+          if (params.review === key) choice.setAttribute("aria-current", "true");
+          choices.append(choice);
+        }
+        reader.append(choices);
+      }
+    }
     if (section.key === "spells") {
       const extraGroups = grouped.filter(([name]) => !order.magicClass(name));
       if (extraGroups.length) {
@@ -448,6 +476,22 @@
         form.append(field);
       }
     }
+    if (review && geomancyReview && section.entries.some(entry => geomancyReview.isReview(entry))) {
+      const [statusField, statusSelect] = labelledSelect("Review status", "review-status");
+      statusSelect.append(new Option("All source spells", "all"));
+      for (const [key, label] of geomancyReview.statuses) statusSelect.append(new Option(label, key));
+      statusSelect.value = params.review;
+      statusSelect.addEventListener("change", () => openFilters({...params, review: statusSelect.value,
+        proposed: ["all", "draft"].includes(statusSelect.value) ? params.proposed : "", page: ""}));
+      form.append(statusField);
+      const [classField, classSelect] = labelledSelect("Proposed class of magic", "review-magic-class");
+      classSelect.append(new Option("All proposed classes", ""));
+      for (const name of geomancyReview.classes) classSelect.append(new Option(name, name));
+      classSelect.value = params.proposed || "";
+      classSelect.addEventListener("change", () => openFilters({...params, proposed: classSelect.value,
+        review: classSelect.value && !["all", "draft"].includes(params.review) ? "draft" : params.review, page: ""}));
+      form.append(classField);
+    }
     if (section.key === "magic-items") {
       if (magicCategories) {
         const [field, select] = labelledSelect("Category", "magic-category");
@@ -546,7 +590,8 @@
         (!group || (magicClass ? order.magicClass(entry) === magicClass : browseGroup(section, entry.group) === group)) && (!level || entryLevel(entry) === level) &&
         (!category || categoryViews.category(entry) === category.key) &&
         (section.key !== "magic-items" || ((!params.rarity || entry.details?.rarity === params.rarity) && (!params.type || entry.details?.type === params.type))) &&
-        (section.key !== "monsters" || !monsterViews || monsterViews.matches(entry, params)));
+        (section.key !== "monsters" || !monsterViews || monsterViews.matches(entry, params)) &&
+        (!review || !geomancyReview || geomancyReview.matches(entry, params)));
       const matches = matching(rows, filter, sort);
       if (matches.length && monsterList) {
         const count = countText(matches.length); byId("announcement").textContent = count;
@@ -560,7 +605,7 @@
         const count = countText(matches.length);
         byId("announcement").textContent = count;
         reader.append(el("p", "result-count", count));
-        reader.append(listView ? browseViews.expandableList(matches, {el, link, entryRoute, renderDetails: details}) : weaponDirectory(matches));
+        reader.append(listView ? (review && geomancyReview ? geomancyReview : browseViews).expandableList(matches, {el, link, entryRoute, renderDetails: details}) : weaponDirectory(matches));
       } else reader.append(resultList(matches, baseClassView ? {...params, group: "Base class"} : params));
     }
   }
@@ -747,7 +792,11 @@
     "range", "duration", "components", "cooldown", "target", "weight", "cost", "attribute_bonuses", "tradition", "school", "status",
     "prerequisite", "prerequisites", "requirements", "save", "base ac", "ac bonus", "current_rules", "rarity", "attunement",
     "price", "base_item", "magic_bonus", "category"]);
-  function details(entry, target = reader) {
+  function details(entry, target = reader, original = false) {
+    if (!original && geomancyReview?.isReview(entry)) {
+      geomancyReview.renderEntry(entry, target, {el, link, renderOriginal: (source, body) => details(source, body, true)});
+      return;
+    }
     const value = entry.details;
     if (plain(value) || Array.isArray(value) || isTable(value)) {
       target.append(renderValue(value, 2, entry.name));
@@ -1041,7 +1090,7 @@
       if (links.childElementCount) header.append(links);
     }
     reader.append(header);
-    if (section.key === "geomancy-review") reader.append(geomancyNotice());
+    if (section.key === "geomancy-review") reader.append(geomancyNotice(section));
     let itemEditor;
     if (section.key === "magic-items" && globalThis.MagicItems) {
       itemEditor = globalThis.MagicItems.editor(section, entry, updated => {
