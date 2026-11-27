@@ -10,6 +10,8 @@
 .slate-content{min-height:0;min-width:0;overflow-y:auto;overflow-x:hidden;padding:18px;flex:1;scrollbar-width:thin;scrollbar-color:#bccba9 transparent;overscroll-behavior:contain}
 .slate-content>.inspector-section{padding:0;border:0}
 .slate-content>.inspector-section>summary{font-size:17px}
+.token-quick-actions{display:flex;justify-content:flex-end;margin:-7px 0 12px}
+.token-quick-actions #delete-token{margin:0;font-size:12px;min-height:34px;padding:6px 10px}
 .slate-content .panel-heading{padding:0 0 14px}
 .slate-content .panel-heading .eyebrow{font-size:9px}
 .slate-content .panel-heading h2{font-size:21px;margin-top:7px}

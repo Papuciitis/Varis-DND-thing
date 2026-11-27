@@ -250,7 +250,7 @@ $('token-form').onsubmit=async event=>{
   if(view.self.role==='dm')Object.assign(fields,{kind:$('token-kind').value,ownerId:$('token-owner').value || null,hidden:$('token-hidden').checked});
   await command({type:'token.update',id:selected,...fields});
 };
-$('delete-token').onclick=async()=>{if(selected && confirm('Remove this token from the scene?'))await command({type:'token.delete',id:selected});};
+$('delete-token').onclick=()=>tokenTools.removeToken(selected);
 for(const id of ['add-token','mobile-add-token'])$(id).onclick=()=>{tokenPlacement=null;$('add-dialog').showModal();};
 $('new-token-form').onsubmit=async event=>{event.preventDefault();const id=crypto.randomUUID(),kind=$('new-token-kind').value,hp=Number($('new-token-hp').value),s=view.scene;
   const token={id,name:$('new-token-name').value,kind,maxHp:hp,hp,color:kind==='monster'?'#a35450':'#337c89',x:Math.min(325,s.width-25),y:Math.min(525,s.height-25)};
@@ -316,6 +316,7 @@ $('import-campaign').onchange=async()=>{
 };
 document.addEventListener('keydown',event=>{
   if(/INPUT|TEXTAREA|SELECT/.test(event.target.tagName) || document.querySelector('dialog[open]'))return;
+  if(event.key==='Delete' && event.target===$('map-canvas') && view?.self.role==='dm'){event.preventDefault();tokenTools.removeToken(selected);return;}
   const tools={v:'select',h:'pan',m:'measure',r:'reveal',c:'conceal',a:'template'},tool=tools[event.key.toLowerCase()];
   const button=tool && document.querySelector(`[data-tool="${tool}"]`);if(view && button && !button.hidden)button.click();
 });

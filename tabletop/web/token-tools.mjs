@@ -38,6 +38,16 @@ export class TokenTools {
   }
   token(id=this.getSelected()) {return this.getView()?.scene.tokens.find(token=>token.id===id);}
   setConnected(value) {const resumed=value && !this.connected;this.connected=value;this.render();if(resumed)this.sources.pull();}
+  async removeToken(id=this.getSelected()) {
+    const view=this.getView(),token=this.token(id);
+    if(!token || view.self.role!=='dm' || !this.connected || this.removingToken)return;
+    if(!confirm('Remove "'+token.name+'" from this scene?'))return;
+    this.removingToken=id;this.removeButton.disabled=true;
+    try{
+      const next=await this.command({type:'token.delete',id});
+      if(next && this.getView()?.id===view.id && this.getView()?.self.id===view.self.id)this.sources.unlink(id);
+    }finally{this.removingToken=null;this.render();}
+  }
   async saveStats(id,patch) {
     const before=this.token(id);if(!before?.canEditStats)return;
     const next=await this.command({type:'token.stats',id,...patch});
@@ -230,6 +240,9 @@ export class TokenTools {
     document.querySelector('.selected-heading').after(this.sidebar.element);
     this.sidebar.linkerHost.append(this.sourceControls);
     this.sourceControls.open=false;
+    this.tokenQuickActions=el('div','token-quick-actions');this.removeButton=$('delete-token');
+    this.removeButton.className='button secondary danger';this.removeButton.title='Remove token (Delete when the map is focused)';
+    this.tokenQuickActions.append(this.removeButton);this.sidebar.element.before(this.tokenQuickActions);
     this.tokenSettings=el('details','token-settings');this.tokenSettings.id='token-settings';
     this.tokenSettings.append(el('summary','','Token settings'),$('token-form'),this.resourceSection);
     this.sidebar.element.after(this.tokenSettings);
@@ -353,7 +366,7 @@ export class TokenTools {
   showMenu({tokenId,templateIds=[],preview=false,x,y,point}) {
     const view=this.getView();if(!view)return;
     const token=this.token(tokenId),items=[],dm=view.self.role==='dm';
-    const action=(text,callback)=>{const node=button(text,()=>{this.menu.hidden=true;callback();},'menu-action');node.setAttribute('role','menuitem');items.push(node);};
+    const action=(text,callback,danger=false)=>{const node=button(text,()=>{this.menu.hidden=true;callback();},'menu-action');if(danger)node.classList.add('danger');node.setAttribute('role','menuitem');items.push(node);};
     if(preview)action('Clear spell preview',()=>{this.board.templatePreview=null;this.board.draw();this.updateTemplateControls();});
     const areas=templateIds.map(id=>view.scene.templates.find(area=>area.id===id)).filter(Boolean);
     for(const area of areas){
@@ -368,7 +381,10 @@ export class TokenTools {
         action('Link character',()=>this.openLinker('character',token.id));
         action('Link monster',()=>this.openLinker('monster',token.id));
       }
-      if(dm)action(token.hidden?'Show to players':'Hide from players',()=>this.command({type:'token.update',id:token.id,hidden:!token.hidden}));
+      if(dm){
+        action(token.hidden?'Show to players':'Hide from players',()=>this.command({type:'token.update',id:token.id,hidden:!token.hidden}));
+        action('Remove token',()=>this.removeToken(token.id),true);
+      }
       action('Center on token',()=>this.board.center(token));
     }else{
       if(dm)action('Add token here',()=>this.onAdd(point));
@@ -395,6 +411,8 @@ export class TokenTools {
   render() {
     const view=this.getView(),token=this.token();this.dock.hidden=!token;
     this.sidebar.render(token,this.connected);this.tokenSettings.hidden=!token;
+    this.tokenQuickActions.hidden=!token || view?.self.role!=='dm';
+    this.removeButton.disabled=!this.connected || !!this.removingToken;
     this.sidebar.abilities.hidden=!token?.canViewStats || !token.statblock;
     if(token){
       if(this.sourceTokenId!==token.id){this.sourceTokenId=token.id;this.sourceControls.open=false;}

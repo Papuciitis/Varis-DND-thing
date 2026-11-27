@@ -183,6 +183,10 @@ operator of the server.
 
 Right-click a token or its bars to inspect it, adjust your HP, configure bars,
 center the map or begin a measurement. DM menus also control visibility.
+The GM can remove a selected token using **Remove token** near the top of the
+Token tab, **Remove token** in its right-click menu, or **Delete** while the map
+has keyboard focus. Removal asks for confirmation and keeps the source sheet or
+compendium entry intact.
 Right-clicking empty map space offers placement, measurement and fog actions.
 Touch users can hold the map or use the token's **Actions** button.
 

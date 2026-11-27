@@ -76,6 +76,32 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.getByLabel('Your nickname').fill('Nauris');
     await dm.getByRole('button',{name:'Create your table'}).click();
     await dm.locator('#game-status').filter({hasText:'Local preview connected'}).waitFor();
+    // Removal stays available with Token settings collapsed, and both the
+    // context menu and focused-map Delete key perform the same confirmed action.
+    const deletionService=[...rooms.values()][0];
+    const disposable=async name=>{
+      await dm.locator('#add-token').click();await dm.locator('#new-token-name').fill(name);
+      await dm.getByRole('button',{name:'Place token',exact:true}).click();
+      await dm.locator('#selected-name').filter({hasText:name}).waitFor();
+      return (await deletionService.read()).scene.tokens.find(t=>t.name===name).id;
+    };
+    const buttonDelete=await disposable('Remove button test');
+    assert.equal(await dm.locator('#token-settings').evaluate(node=>node.open),false);
+    assert(await dm.locator('#delete-token').isVisible(),'Remove token must be visible without expanding Token settings.');
+    dm.once('dialog',dialog=>dialog.dismiss());await dm.locator('#delete-token').click();
+    assert((await deletionService.read()).scene.tokens.some(t=>t.id===buttonDelete));
+    dm.once('dialog',dialog=>dialog.accept());await dm.locator('#delete-token').click();
+    await dm.locator('#tokens-list [data-token-id="'+buttonDelete+'"]').waitFor({state:'hidden'});
+    const contextDelete=await disposable('Context removal test');
+    await dm.locator('#zoom-fit').click();
+    const removeRect=await dm.locator('#map-canvas').boundingBox(),removeZoom=Math.min((removeRect.width-40)/1600,(removeRect.height-110)/1000);
+    await dm.mouse.click(removeRect.x+(removeRect.width-1600*removeZoom)/2+325*removeZoom,removeRect.y+(removeRect.height-1000*removeZoom)/2+10+525*removeZoom,{button:'right'});
+    dm.once('dialog',dialog=>dialog.accept());await dm.getByRole('menuitem',{name:'Remove token',exact:true}).click();
+    await dm.locator('#tokens-list [data-token-id="'+contextDelete+'"]').waitFor({state:'hidden'});
+    const keyboardDelete=await disposable('Keyboard removal test');
+    await dm.locator('#map-canvas').focus();dm.once('dialog',dialog=>dialog.accept());await dm.keyboard.press('Delete');
+    await dm.locator('#tokens-list [data-token-id="'+keyboardDelete+'"]').waitFor({state:'hidden'});
+    assert.equal((await deletionService.read()).scene.tokens.length,3);
     await dm.locator('#invite-open').click();
     const invitation=await dm.locator('#invite-link').inputValue();
     assert(!invitation.includes('key='));
@@ -85,6 +111,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.getByLabel('Your nickname').fill('Daniels');
     await player.getByRole('button',{name:'Join the party'}).click();
     await player.locator('#game-status').filter({hasText:'Local preview connected'}).waitFor();
+    assert.equal(await player.locator('#delete-token').isVisible(),false);
     assert.equal(await player.getByRole('button',{name:'Reveal fog',exact:true}).isVisible(),false);
     assert.equal(await player.locator('#tokens-list').getByText('Watchtower guardian',{exact:true}).count(),0);
     const id=[...rooms.keys()][0],service=rooms.get(id),stored=await service.read();
@@ -253,6 +280,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     const tokenPoint=await mapPoint(player,275,525);
     await player.mouse.click(tokenPoint.x,tokenPoint.y,{button:'right'});
     await player.getByRole('menuitem',{name:'Adjust HP',exact:true}).waitFor();
+    assert.equal(await player.getByRole('menuitem',{name:'Remove token',exact:true}).count(),0);
     await player.screenshot({path:path.join(output,'tabletop-context-menu.png')});
     await player.keyboard.press('Escape');
     const guardian=stored.scene.tokens.find(t=>t.hidden);
@@ -365,6 +393,17 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     assert.equal(await playerInitiative.locator('input').first().inputValue(),String(initiative));
     assert.equal(await initiativeRow(player,guardian.id).locator('button').count(),1);
     assert.equal(await initiativeRow(player,guardian.id).locator('button').isVisible(),false);
+    // Removing a linked character removes its turn entry and keeps the source
+    // character sheet and the other participants' current turn intact.
+    const activeBeforeRemoval=(await service.view(dmAccess)).scene.combat.activeId;
+    await dm.locator('#campaign-tab-table').click();
+    await dm.locator('#tokens-list [data-token-id="'+ranger.id+'"]').click();
+    dm.once('dialog',dialog=>dialog.accept());await dm.locator('#delete-token').click();
+    await dm.locator('#tokens-list [data-token-id="'+ranger.id+'"]').waitFor({state:'hidden'});
+    const afterRemoval=await service.view(dmAccess);
+    assert(!afterRemoval.scene.combat.order.includes(ranger.id));
+    assert.equal(afterRemoval.scene.combat.activeId,activeBeforeRemoval);
+    assert(await dm.evaluate(id=>JSON.parse(localStorage.getItem('vara.character-sheets.v1')).characters.some(c=>c.id===id),ranger.statblock.sourceId));
     await dm.locator('#campaign-tab-turns').click();
     await dm.locator('.initiative-section').evaluate(el=>el.scrollIntoView({block:'start'}));
     await dm.screenshot({path:path.join(output,'tabletop-initiative.png')});
@@ -431,6 +470,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       sidebarLinking:true,savedCharacterDiscovery:true,exactCharacterLink:true,compactSheet:true,compactSheetPrivacy:true,
       visibleAttackCards:true,attackSourceRefresh:true,attackPrivacy:true,linkedTokenSizes:true,manualInitiative:true,explicitInitiativeRoll:true,initiativeTurnPreservation:true,
       campaignTabs:true,dataSlateTabs:true,largerLeftLog:true,campaignChat:true,privateAndSharedNotes:true,
+      visibleTokenRemoval:true,contextTokenRemoval:true,keyboardTokenRemoval:true,tokenRemovalKeepsSource:true,
       monsterCompendiumDrag:true,characterCompendiumDrag:true,independentMonsterInstances:true,playerCompendiumPrivacy:true,combinedHealth:true,utilityAbilityScores:true,
       spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:13,pageErrors:errors};
     await fsp.writeFile(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));

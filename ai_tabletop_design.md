@@ -24,6 +24,8 @@ is collapsed. Dice and messages belong together on the left and need readable te
 The GM can browse monster templates and locally saved characters on the right.
 Drag-and-drop from that list onto the map is a primary placement path. Keep a
 click/touch alternative. Each placed monster has independent encounter resources.
+Keep GM token removal visible without expanding settings, with a matching
+right-click action. Removing an encounter token must preserve its source sheet.
 Player compendium views list their controllable campaign characters and summons;
 they must not expose another player's private sheet or hidden GM creatures.
 
