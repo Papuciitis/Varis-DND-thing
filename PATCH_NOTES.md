@@ -1,5 +1,12 @@
 # Patch notes
 
+## 2026-11-27 - Token condition markers and adjustable panels
+
+- Conditions now appear directly on affected tokens as a segmented colored ring and compact markers underneath. Stack counts update live; hover for names, or click to expand the selected token's condition details. Crowded lists use a more-effects marker, and HP bars stay beneath the condition markers.
+- The bottom Conditions block starts collapsed into a compact summary. Expand it for named effects, reminders and individual full-rule descriptions.
+- Campaign, reference and utility panels can collapse independently. Side panels retain labelled reopening rails, and the utility header remains accessible.
+- Drag the reference panel's left border to resize it. Keyboard arrows also resize, and double-click resets its width. Layout preferences survive reopening this browser; the map retains usable space and mobile drawers continue to work.
+
 ## 2026-11-27 - Tabletop conditions and custom effects
 
 - The GM can open Conditions from a token's right-click menu or its bottom utility tray, including for private player characters. The picker contains all 47 published conditions with their full rules.

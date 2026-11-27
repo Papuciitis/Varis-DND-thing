@@ -307,7 +307,13 @@ and [asset billing](https://developers.cloudflare.com/workers/static-assets/bill
 
 ## Checks and current limits
 
-Right-click a token and choose **Conditions**, or use its bottom utility tray.
+Affected tokens show a colored, segmented ring and small condition markers directly
+underneath them. Markers show stack counts; hover for a full name and click to
+select the token and expand its condition information. They stay visible when
+the token is unselected, including for private player sheets. At small scales a
+**+N** marker opens any effects that do not fit. Resource bars sit below the markers.
+
+Right-click a token and choose **Conditions**, or expand its bottom Conditions row.
 The GM can add, remove or set stacks of any published condition, even on a private
 player character. Conditions and their counts are public; HP and other private
 attributes stay protected. Click a badge to read its source rules. Badges wrap
@@ -333,6 +339,13 @@ contextual targets, saving throws to remove or escalate conditions, and ending
 triggers remain manual. Their source text and reminders are available in the
 condition controls. Only explicitly stacked rules multiply; repeated Hobbled or
 Chilled does not repeatedly reduce speed. Fatigue 6 and 7 have no printed penalty.
+
+Collapse the campaign or reference panel using the chevron in its heading; use
+the labelled edge rail to reopen it. The utility heading has its own collapse
+button. The reference panel's left border can be dragged wider or narrower;
+arrow keys resize it, and double-click resets its width. These choices are saved
+in this browser. Narrow screens keep their existing drawers, and opening a token
+condition marker restores the utility details even if they were collapsed.
 
 Build the site, then run the existing Python and JavaScript suites and:
 

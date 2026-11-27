@@ -274,13 +274,20 @@ export class TokenTools {
     };
   }
   mountConditions() {
-    this.conditionTray=el('section','condition-tray');this.conditionTray.id='token-conditions';
+    this.conditionTray=el('details','condition-tray');this.conditionTray.id='token-conditions';
     this.conditionTray.setAttribute('aria-label','Selected token conditions');
+    const summary=el('summary','condition-summary');summary.id='condition-summary';this.conditionCount=el('span','condition-summary-count');this.conditionDots=el('span','condition-summary-dots');this.conditionDots.setAttribute('aria-hidden','true');this.conditionStatus=el('span','condition-summary-status');
+    summary.append(el('strong','','Conditions'),this.conditionCount,this.conditionDots,this.conditionStatus);
     const heading=el('div','condition-tray-heading');this.conditionMovement=el('span','condition-movement');
     this.conditionButton=button('Conditions',()=>this.openConditions(this.getSelected()));
     heading.append(this.conditionMovement,this.conditionButton);this.conditionBadges=el('div','condition-badges');this.conditionBadges.setAttribute('aria-live','polite');
     this.conditionNotes=el('div','condition-notes');this.conditionDetails=el('details','condition-effect-details');this.conditionDetails.append(el('summary','','Effects & reminders'),this.conditionNotes);
-    this.conditionTray.append(heading,this.conditionBadges,this.conditionDetails);this.dock.append(this.conditionTray);
+    this.conditionSources=el('div','condition-sources');const content=el('div','condition-tray-content');
+    content.append(heading,this.conditionBadges,this.conditionDetails,this.conditionSources);this.conditionTray.append(summary,content);this.dock.append(this.conditionTray);
+    this.conditionTray.addEventListener('toggle',()=>{
+      if(this.conditionTray.open && !this.conditionCatalog)loadReferences().then(({catalog})=>{this.conditionCatalog=catalog.find(section=>section.key==='conditions')?.entries || [];this.renderConditionTray(this.token());}).catch(error=>this.notify(error.message,true));
+    });
+    this.board.onConditions=id=>{this.selectToken(id);this.revealUtilities?.();this.conditionTray.open=true;};
     const {node,body}=dialog('Token conditions','conditions-dialog');this.conditionsDialog=node;
     this.conditionsTitle=el('h3');body.append(this.conditionsTitle,el('p','field-note','Conditions are visible to the table. The GM can reposition a token even when its movement is blocked.'));
     this.conditionSearch=field(body,'Find a condition',{type:'search',id:'condition-search'});this.conditionSearch.oninput=()=>this.renderConditionsDialog();
@@ -352,6 +359,9 @@ export class TokenTools {
   renderConditionTray(token) {
     this.conditionTray.hidden=!token;if(!token)return;
     const state=token.conditionState,dm=this.getView()?.self.role==='dm',rows=token.conditions || [];
+    this.conditionCount.textContent=rows.length?rows.length+' '+(rows.length===1?'effect':'effects'):'None';
+    this.conditionStatus.textContent=state?.blocked?'Movement blocked':token.canViewStats && typeof state?.speed==='number'?state.speed+' ft':'';
+    this.conditionDots.replaceChildren(...rows.slice(0,8).map(row=>{const dot=el('i','condition-dot condition-'+row.color);return dot;}));
     this.conditionButton.hidden=!dm && !rows.length;this.conditionButton.textContent=dm?'Conditions':'Condition rules';
     this.conditionButton.disabled=!Array.isArray(token.conditions);this.conditionButton.title=Array.isArray(token.conditions)?'':'Reopen the tabletop launcher to enable conditions.';
     this.conditionMovement.textContent=state?.blocked?'Movement blocked: '+state.reason:token.canViewStats && typeof state?.speed==='number'?'Movement: '+state.speed+' ft':'Conditions';
@@ -361,6 +371,18 @@ export class TokenTools {
     }));
     this.conditionNotes.replaceChildren(...(state?.notes || []).map(note=>el('p','',note)));
     this.conditionDetails.hidden=!(state?.notes || []).length;
+    const signature=JSON.stringify([token.id,rows,!!this.conditionCatalog]);
+    if(signature!==this.conditionSourceSignature){
+      this.conditionSourceSignature=signature;const entries=new Map((this.conditionCatalog || []).map(entry=>[entry.name.toLowerCase(),entry]));
+      const opened=new Set([...this.conditionSources.querySelectorAll('details[open]')].map(node=>node.dataset.conditionId));
+      this.conditionSources.replaceChildren(...rows.map(row=>{
+        const details=el('details','condition-source');details.dataset.conditionId=row.id;details.open=opened.has(row.id);
+        details.append(el('summary','',row.name+' ×'+row.stacks+' — rules'));
+        const source=entries.get((globalThis.CharacterConditions?.lookup(row.id)?.sourceName || row.name).toLowerCase())?.details;
+        const text=[source?.desc || source?.description,source?.special || source?.spec,row.notes].filter(Boolean).join('\n\n');
+        details.append(el('p','condition-rule-text',text || (row.blocksMovement?'Custom effect: movement becomes 0.':row.id.startsWith('custom:')?'Custom effect.':this.conditionCatalog?'Read the condition rules in the picker.':'Loading rules.')));return details;
+      }));
+    }
     if(this.conditionsDialog.open)this.renderConditionsDialog();
   }
   openDamage(id=this.getSelected()) {
@@ -378,7 +400,7 @@ export class TokenTools {
   }
   openLinker(kind,id=this.getSelected()) {
     if(!this.token(id)?.canEditStats)return;
-    this.sourceTokenId=id;this.characterSourceRow.hidden=kind!=='character';this.monsterSourceRow.hidden=kind!=='monster';
+    this.revealReference?.();this.sourceTokenId=id;this.characterSourceRow.hidden=kind!=='character';this.monsterSourceRow.hidden=kind!=='monster';
     this.sourceControls.hidden=false;this.sourceControls.open=true;this.sidebar.reading.open=true;
     document.body.classList.add('panels-open');
     this.loadSources();this.sourceControls.scrollIntoView({block:'nearest'});

@@ -1,6 +1,7 @@
 import {loadReferences} from './sources.mjs';
 import {characterStats,monsterStats,monsterId,monsterHP,SHEETS_KEY,MONSTERS_KEY} from './resources.mjs';
 import {snapToken} from './grid.mjs';
+import {PanelLayout} from './panel-layout.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
@@ -29,6 +30,7 @@ export class Slates {
     $('mobile-tools').before(this.campaignTrigger);
     const close=button('Close campaign',()=>{document.body.classList.remove('campaign-open');this.campaignTrigger.setAttribute('aria-expanded','false');},'campaign-close');
     party.prepend(close);
+    this.layout=new PanelLayout({tools});
     board.canvas.addEventListener('dragover',event=>{
       if(!this.connected || !event.dataTransfer.types.includes('application/x-vara-source'))return;
       event.preventDefault();event.dataTransfer.dropEffect=this.getView()?.self.role==='dm'?'copy':'move';board.canvas.classList.add('drop-ready');

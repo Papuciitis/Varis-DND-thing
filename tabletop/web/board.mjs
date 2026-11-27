@@ -1,6 +1,7 @@
 import {auxiliaryReadings,healthSummary,tokenBarsVisible,distanceLabel,tokenRadius} from './resources.mjs';
 import {templateGeometry,templateLabel,templateContains} from './templates.mjs';
 import {snapToken,tokenGridStep} from './grid.mjs';
+import {conditionMarkerLayout,conditionColor,conditionAbbreviation} from './condition-markers.mjs';
 
 export class MapBoard {
   constructor(canvas,{onSelect,onMove,onFog,onError,onContext}) {
@@ -8,6 +9,11 @@ export class MapBoard {
     this.measureUnit='ft';
     this.templateConfig={shape:'circle',size:20,width:5,coneAngle:60,unit:'ft'};
     this.tool='select';this.brush=1;this.enabled=false;this.camera=null;this.selected=null;
+    this.conditionNodes=new Map();
+    if(canvas.parentElement && canvas.ownerDocument){
+      this.conditionHost=canvas.ownerDocument.createElement('div');this.conditionHost.className='map-conditions';
+      this.conditionHost.setAttribute('aria-label','Token conditions');canvas.parentElement.append(this.conditionHost);
+    }
     this.observer=new ResizeObserver(()=>this.resize());this.observer.observe(canvas);
     canvas.addEventListener('pointerdown',e=>this.down(e));
     canvas.addEventListener('pointermove',e=>this.move(e));
@@ -74,14 +80,16 @@ export class MapBoard {
     this.onContext?.({tokenId:token?.id || null,templateIds,preview,x:e.clientX,y:e.clientY,point});this.draw();
   }
   canMove(t) {return this.enabled && (this.view.self.role==='dm' || t.ownerId===this.view.self.id && !t.conditionState?.blocked);}
+  bodyAt(p) {return [...this.view.scene.tokens].reverse().find(token=>Math.hypot(token.x-p.x,token.y-p.y)<tokenRadius(this.view.scene,token)*1.3);}
   hit(p) {
     const tokens=[...this.view.scene.tokens].reverse();
-    const body=tokens.find(token=>Math.hypot(token.x-p.x,token.y-p.y)<tokenRadius(this.view.scene,token)*1.3);
+    const body=this.bodyAt(p);
     if(body)return body;
     return tokens.find(token=>{
       const r=tokenRadius(this.view.scene,token);
       const bars=tokenBarsVisible(token,this.selected,this.hovered)?1+auxiliaryReadings(token).length:0,z=this.camera.z;
-      const halfWidth=(token.id===this.selected?78:72)/z,top=token.y+r+6/z;
+      const offset=conditionMarkerLayout(this.view.scene,token,this.camera)?.offset || 0;
+      const halfWidth=(token.id===this.selected?78:72)/z,top=token.y+r+(6+offset)/z;
       return bars && Math.abs(p.x-token.x)<=halfWidth && p.y>=top && p.y<=top+bars*26/z;
     });
   }
@@ -150,7 +158,7 @@ export class MapBoard {
   draw() {
     const ctx=this.ctx;if(!this.width || !this.height)return;
     ctx.setTransform(this.dpr,0,0,this.dpr,0,0);ctx.clearRect(0,0,this.width,this.height);
-    if(!this.view || !this.camera)return;
+    if(!this.view || !this.camera){this.conditionHost?.replaceChildren();this.conditionNodes?.clear();return;}
     const s=this.view.scene,c=this.camera,dm=this.view.self.role==='dm';
     ctx.save();ctx.translate(c.x,c.y);ctx.scale(c.z,c.z);
     ctx.fillStyle='#314735';ctx.fillRect(0,0,s.width,s.height);
@@ -175,6 +183,10 @@ export class MapBoard {
       ctx.shadowColor='#07160c99';ctx.shadowBlur=10/c.z;ctx.shadowOffsetY=3/c.z;
       ctx.beginPath();ctx.arc(t.x,t.y,r,0,Math.PI*2);ctx.fillStyle=t.color;ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
       ctx.strokeStyle=t.kind==='monster'?'#c08a6c':'#d0b87c';ctx.lineWidth=3/c.z;if(t.hidden)ctx.setLineDash([4/c.z,3/c.z]);ctx.stroke();ctx.setLineDash([]);
+      if(t.conditions?.length){
+        const ring=r+Math.min(4/c.z,r*.22),step=Math.PI*2/t.conditions.length,gap=t.conditions.length>1?Math.min(.12,step*.15):0;
+        t.conditions.forEach((condition,index)=>{ctx.beginPath();ctx.arc(t.x,t.y,ring,-Math.PI/2+index*step+gap/2,-Math.PI/2+(index+1)*step-gap/2);ctx.strokeStyle=conditionColor(condition);ctx.lineWidth=Math.min(3/c.z,r*.25);ctx.stroke();});
+      }
       ctx.fillStyle='#fff5d9';ctx.font=`bold ${Math.max(s.gridSize*.36*t.size,13/c.z)}px Georgia`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t.name.slice(0,1).toUpperCase(),t.x,t.y+1/c.z);
       if(t.id===this.selected || t.id===this.hovered || t.id===s.combat.activeId){
         const label=t.name+(t.hidden?' · hidden':'');ctx.font=`${10/c.z}px 'Segoe UI',sans-serif`;
@@ -187,9 +199,42 @@ export class MapBoard {
     if(this.measure){const {start,end}=this.measure;ctx.strokeStyle='#e8d194';ctx.lineWidth=2/c.z;ctx.setLineDash([5/c.z,4/c.z]);ctx.beginPath();ctx.moveTo(start.x,start.y);ctx.lineTo(end.x,end.y);ctx.stroke();ctx.setLineDash([]);
       const text=distanceLabel(s,start,end,this.measureUnit);ctx.font=`bold ${12/c.z}px 'Segoe UI'`;ctx.textAlign='center';ctx.fillStyle='#f0dfae';ctx.fillText(text,(start.x+end.x)/2,(start.y+end.y)/2-10/c.z);}
     ctx.restore();
+    this.drawConditionMarkers();
     this.drawResources();
     this.onMeasure?.(this.measure?distanceLabel(s,this.measure.start,this.measure.end,this.measureUnit):'');
     this.canvas.style.cursor=this.tool==='pan'?'grab':['reveal','conceal','measure'].includes(this.tool)?'crosshair':'default';
+  }
+  drawConditionMarkers(){
+    if(!this.conditionHost)return;
+    const scene=this.view.scene,active=new Set();
+    for(const original of scene.tokens){
+      const token=this.drag?.kind==='token' && this.drag.id===original.id?{...original,x:this.drag.x,y:this.drag.y}:original;
+      const layout=conditionMarkerLayout(scene,token,this.camera);if(!layout)continue;active.add(token.id);
+      let entry=this.conditionNodes.get(token.id);
+      if(!entry){const node=this.canvas.ownerDocument.createElement('div');node.className='map-token-conditions';node.dataset.tokenId=token.id;this.conditionHost.append(node);entry={node};this.conditionNodes.set(token.id,entry);}
+      const {node}=entry;node.style.left=layout.x+'px';node.style.top=layout.y+'px';node.style.width=layout.width+'px';
+      node.style.gridTemplateColumns='repeat('+layout.columns+', '+layout.size+'px)';node.style.gap=layout.gap+'px';
+      node.style.setProperty('--marker-size',layout.size+'px');node.style.setProperty('--marker-font',Math.max(7,Math.round(layout.size*.47))+'px');node.style.opacity=token.hidden?'.6':'1';
+      const signature=JSON.stringify([token.name,layout.visible,layout.overflow]);if(signature===entry.signature)continue;entry.signature=signature;
+      const make=(condition,overflow=0)=>{
+        const marker=this.canvas.ownerDocument.createElement('button');marker.type='button';marker.className='map-condition-marker';marker.dataset.tokenId=token.id;
+        if(condition){marker.dataset.conditionId=condition.id;marker.style.setProperty('--marker-color',conditionColor(condition));marker.textContent=condition.stacks>1?'×'+condition.stacks:conditionAbbreviation(condition);}
+        else {marker.dataset.overflow=overflow;marker.textContent='+'+overflow;}
+        const label=condition?condition.name+' ×'+condition.stacks:overflow+' more conditions';
+        marker.title=token.name+': '+label+' — show condition details';marker.setAttribute('aria-label',label+' for '+token.name);
+        marker.onpointerdown=event=>{
+          event.stopPropagation();const body=this.bodyAt(this.point(event));marker.ignoreClick=!!body && body.id!==token.id;
+          if(marker.ignoreClick){event.preventDefault();this.down(event);}
+        };
+        marker.onclick=event=>{event.stopPropagation();if(marker.ignoreClick){marker.ignoreClick=false;return;}this.selected=token.id;this.onSelect(token.id);this.onConditions?.(token.id);this.draw();};
+        marker.oncontextmenu=event=>{event.preventDefault();event.stopPropagation();const point=this.point(event),body=this.bodyAt(point);
+          if(body && body.id!==token.id){this.context(event);return;}this.selected=token.id;this.onSelect(token.id);this.onContext?.({tokenId:token.id,x:event.clientX,y:event.clientY,point});this.draw();};
+        marker.onpointerenter=()=>{this.hovered=token.id;this.draw();};marker.onpointerleave=()=>{this.hovered=null;this.draw();};
+        return marker;
+      };
+      node.replaceChildren(...layout.visible.map(condition=>make(condition)),...(layout.overflow?[make(null,layout.overflow)]:[]));
+    }
+    for(const [id,entry] of this.conditionNodes)if(!active.has(id)){entry.node.remove();this.conditionNodes.delete(id);}
   }
   drawResources() {
     const ctx=this.ctx,c=this.camera,s=this.view.scene;
@@ -197,7 +242,8 @@ export class MapBoard {
       const token=this.drag?.kind==='token' && this.drag.id===original.id?{...original,x:this.drag.x,y:this.drag.y}:original;
       if(!tokenBarsVisible(token,this.selected,this.hovered))continue;
       const health=healthSummary(token),bars=auxiliaryReadings(token);
-      const x=c.x+token.x*c.z,r=tokenRadius(s,token)*c.z,y=c.y+token.y*c.z+r+6;
+      const conditionOffset=conditionMarkerLayout(s,token,c)?.offset || 0;
+      const x=c.x+token.x*c.z,r=tokenRadius(s,token)*c.z,y=c.y+token.y*c.z+r+6+conditionOffset;
       const width=token.id===this.selected?156:144,left=x-width/2;
       ctx.save();ctx.globalAlpha=token.hidden ? .6 : 1;
       ctx.strokeStyle='#d4c18c';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y-6);ctx.lineTo(x,y);ctx.stroke();

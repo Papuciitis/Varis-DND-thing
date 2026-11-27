@@ -79,6 +79,37 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.getByLabel('Your nickname').fill('Nauris');
     await dm.getByRole('button',{name:'Create your table'}).click();
     await dm.locator('#game-status').filter({hasText:'Local preview connected'}).waitFor();
+    // All desktop panels collapse independently. A dragged/keyboard-adjusted
+    // reference width and collapsed choices survive reloading this browser.
+    const viewportSize=()=>dm.locator('#map-canvas').evaluate(node=>({width:node.clientWidth,height:node.clientHeight}));
+    const initialViewport=await viewportSize();
+    await dm.getByRole('button',{name:'Collapse campaign panel',exact:true}).click();
+    await dm.waitForFunction(width=>document.querySelector('#map-canvas').clientWidth>width+100,initialViewport.width);
+    await dm.getByRole('button',{name:'Expand campaign panel',exact:true}).click();
+    await dm.getByRole('button',{name:'Collapse reference panel',exact:true}).click();
+    await dm.waitForFunction(width=>document.querySelector('#map-canvas').clientWidth>width+100,initialViewport.width);
+    await dm.getByRole('button',{name:'Expand reference panel',exact:true}).click();
+    await dm.getByRole('button',{name:'Collapse utilities',exact:true}).click();
+    await dm.waitForFunction(height=>document.querySelector('#map-canvas').clientHeight>height+20,initialViewport.height);
+    await dm.getByRole('button',{name:'Expand utilities',exact:true}).click();
+    const referenceBefore=await dm.locator('#inspector').evaluate(node=>node.clientWidth),divider=await dm.locator('#reference-resizer').boundingBox();
+    await dm.mouse.move(divider.x+3,divider.y+150);await dm.mouse.down();await dm.mouse.move(divider.x-107,divider.y+150,{steps:6});await dm.mouse.up();
+    assert((await dm.locator('#inspector').evaluate(node=>node.clientWidth))>referenceBefore+90);
+    await dm.locator('#reference-resizer').focus();await dm.keyboard.press('ArrowRight');
+    const savedWidth=await dm.locator('#inspector').evaluate(node=>node.clientWidth);
+    const wideToggle=await dm.getByRole('button',{name:'Collapse reference panel',exact:true}).boundingBox();
+    assert(wideToggle && wideToggle.x+wideToggle.width<=1440,'The reference collapse control must stay reachable after resizing.');
+    await dm.getByRole('button',{name:'Collapse reference panel',exact:true}).click();
+    await dm.getByRole('button',{name:'Expand reference panel',exact:true}).click();
+    await dm.getByRole('button',{name:'Collapse campaign panel',exact:true}).click();
+    await dm.getByRole('button',{name:'Collapse utilities',exact:true}).click();
+    await dm.screenshot({path:path.join(output,'tabletop-panels-collapsed.png')});
+    await dm.reload();await dm.locator('#game-status').filter({hasText:'Local preview connected'}).waitFor();
+    await dm.getByRole('button',{name:'Expand campaign panel',exact:true}).waitFor();
+    await dm.getByRole('button',{name:'Expand utilities',exact:true}).waitFor();
+    assert(Math.abs((await dm.locator('#inspector').evaluate(node=>node.clientWidth))-savedWidth)<=1);
+    await dm.getByRole('button',{name:'Expand campaign panel',exact:true}).click();await dm.getByRole('button',{name:'Expand utilities',exact:true}).click();
+    await dm.locator('#reference-resizer').dblclick();
     // Removal stays available with Token settings collapsed, and both the
     // context menu and focused-map Delete key perform the same confirmed action.
     const deletionService=[...rooms.values()][0];
@@ -238,11 +269,25 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     assert.equal((await service.read()).scene.tokens.find(t=>t.id===token.id).size,.5);
     // The GM can apply public conditions without access to a player's private
     // sheet. Stacks sync in both directions and movement is checked by the server.
-    await dm.locator('#token-conditions').getByRole('button',{name:'Conditions',exact:true}).click();
+    const openConditionPicker=async page=>{
+      if(!await page.locator('#token-conditions').evaluate(node=>node.open))await page.locator('#condition-summary').click();
+      await page.locator('#token-conditions').getByRole('button',{name:'Conditions',exact:true}).click();
+    };
+    await openConditionPicker(dm);
     const conditionRow=id=>dm.locator('.condition-row[data-condition-id="'+id+'"]');
     await dm.locator('#condition-search').fill('Snared');
     await conditionRow('snared').getByRole('button',{name:'Add one Snared stack',exact:true}).click();
-    await player.locator('#token-conditions [data-condition-id="snared"]').waitFor();
+    assert.equal(await player.locator('#token-conditions').evaluate(node=>node.open),false);
+    await player.getByRole('button',{name:'Collapse utilities',exact:true}).click();
+    const otherToken=(await service.read()).scene.tokens.find(t=>t.id!==token.id && !t.hidden);
+    await player.locator('#tokens-list [data-token-id="'+otherToken.id+'"]').click();
+    const snaredMarker=player.locator('.map-condition-marker[data-token-id="'+token.id+'"][data-condition-id="snared"]');
+    await snaredMarker.waitFor();await snaredMarker.click();
+    await player.locator('#token-conditions .condition-badge[data-condition-id="snared"]').waitFor();
+    assert.equal(await player.locator('#token-conditions').evaluate(node=>node.open),true);
+    assert.equal(await player.getByRole('button',{name:'Collapse utilities',exact:true}).getAttribute('aria-expanded'),'true');
+    await player.locator('.condition-source[data-condition-id="snared"] > summary').click();
+    await player.locator('.condition-source[data-condition-id="snared"]').getByText('Cannot move.',{exact:true}).waitFor();
     await sheet.locator('.condition-chip').filter({hasText:'Snared'}).waitFor();
     await sheet.locator('[data-combat-value="speed"]').filter({hasText:'0 ft'}).waitFor();
     const snaredPosition=(await service.read()).scene.tokens.find(t=>t.id===token.id);
@@ -253,15 +298,16 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.locator('#map-canvas').focus();await dm.locator('#map-canvas').press('ArrowRight');
     await dm.locator('#save-status').filter({hasText:'All changes saved'}).waitFor();
     assert.equal((await service.read()).scene.tokens.find(t=>t.id===token.id).x,snaredPosition.x+25);
-    await dm.locator('#token-conditions').getByRole('button',{name:'Conditions',exact:true}).click();
+    await openConditionPicker(dm);
     await dm.locator('#condition-search').fill('Bleeding');
     const addBleeding=conditionRow('bleeding').getByRole('button',{name:'Add one Bleeding stack',exact:true});
     await addBleeding.click();await conditionRow('bleeding').getByLabel('Bleeding stacks',{exact:true}).waitFor();
     await dm.waitForFunction(()=>document.querySelector('.condition-row[data-condition-id="bleeding"] input')?.value==='1');
     await addBleeding.click();
-    await player.locator('#token-conditions [data-condition-id="bleeding"]').filter({hasText:'×2'}).waitFor();
+    await player.locator('#token-conditions .condition-badge[data-condition-id="bleeding"]').filter({hasText:'×2'}).waitFor();
+    await player.locator('.map-condition-marker[data-token-id="'+token.id+'"][data-condition-id="bleeding"]').filter({hasText:'×2'}).waitFor();
     await sheet.locator('.condition-chip').filter({hasText:'Bleeding ×2'}).waitFor();
-    assert.equal(await player.locator('#token-conditions [data-condition-id="bleeding"]').count(),1);
+    assert.equal(await player.locator('#token-conditions .condition-badge[data-condition-id="bleeding"]').count(),1);
     const badgeRects=await player.locator('#token-conditions .condition-badge').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};}));
     for(let i=0;i<badgeRects.length;i++)for(let j=i+1;j<badgeRects.length;j++){
       const a=badgeRects[i],b=badgeRects[j];assert(a.x+a.w<=b.x || b.x+b.w<=a.x || a.y+a.h<=b.y || b.y+b.h<=a.y,'Condition badges must not overlap.');
@@ -273,7 +319,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.locator('#condition-search').fill('Snared');
     await conditionRow('snared').getByRole('button',{name:'Remove',exact:true}).click();
     await sheet.locator('[data-combat-value="speed"]').filter({hasText:'30 ft'}).waitFor();
-    await player.locator('#token-conditions [data-condition-id="snared"]').waitFor({state:'hidden'});
+    await player.locator('#token-conditions .condition-badge[data-condition-id="snared"]').waitFor({state:'hidden'});
     await dm.locator('#condition-search').fill('Frostbite');
     await conditionRow('frostbite').getByRole('button',{name:'Add one Frostbite stack',exact:true}).click();
     await sheet.locator('.condition-chip').filter({hasText:'Frostbite'}).waitFor();
@@ -615,9 +661,10 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       diceAverageMonsterHP:true,editableMonsterInstances:true,zeroCapacityExtraHealth:true,gmAutomaticDamage:true,monsterOverridesSurviveRefresh:true,
       tinyQuarterPlacement:true,tinyKeyboardMovement:true,tinyBodySelection:true,
       conditionStacks:true,conditionBadgeLayout:true,customEffects:true,liveConditionSheets:true,privateSheetConditionAccess:true,conditionSaveFailures:true,zeroSpeedPlayerLock:true,gmForcedMovement:true,
+      tokenConditionMarkers:true,collapsibleConditions:true,collapsiblePanels:true,referenceBorderResize:true,persistentPanelLayout:true,
       visibleTokenRemoval:true,contextTokenRemoval:true,keyboardTokenRemoval:true,tokenRemovalKeepsSource:true,
       monsterCompendiumDrag:true,characterCompendiumDrag:true,independentMonsterInstances:true,playerCompendiumPrivacy:true,combinedHealth:true,utilityAbilityScores:true,
-      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:15,pageErrors:errors};
+      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:16,pageErrors:errors};
     await fsp.writeFile(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
   }catch(error){
     console.error(error);

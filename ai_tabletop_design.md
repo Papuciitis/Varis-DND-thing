@@ -19,6 +19,12 @@ Use tabs in both sidebars so unrelated tasks do not form one long column. Keep
 attacks visible as cards in the selected-token view, even if the abilities list
 is collapsed. Dice and messages belong together on the left and need readable text.
 
+Each slate can collapse independently. Desktop sidebars retain a narrow labelled
+rail for reopening; utilities retain the selected token's heading. Dragging the
+reference panel's left border changes its width, with arrow-key support and a
+double-click reset. Preserve room for the map and remember layout choices in this
+browser. Mobile keeps its campaign/reference drawers and a collapsible utility.
+
 ## Compendium and placement
 
 The GM can browse monster templates and locally saved characters on the right.
@@ -35,9 +41,14 @@ keep fog on the normal grid. Token bodies take click priority over nearby bars.
 
 ## Health and map overlays
 
-Map overlays appear on token selection or hover; they do not remain over every
-token continuously. Hover/selection never bypasses the viewer's access permissions.
-Player sharing remains explicit and revocable.
+Resource bars appear on token selection or hover. Public conditions remain visible
+on the token itself: a segmented colored ring and compact markers immediately
+underneath it, with stack counts. These markers do not depend on private HP access.
+Hover reveals full names; clicking a marker selects the token and expands its
+condition information. Wrap markers without overlap and use a bounded overflow
+marker for crowded lists at small scales. Place health bars below those markers.
+Hover/selection never bypasses the viewer's access permissions. Player sharing
+remains explicit and revocable.
 
 The fixed-width main health track uses red for HP, white for temporary HP, and
 light blue for arcane health. Capacity is max HP plus current temporary HP plus
@@ -65,8 +76,10 @@ Players retain manual editing of their own characters and summons.
 
 ## Implementation boundaries
 
-Conditions belong to the bottom utility tray and the token context menu. Use a
-single colored, wrapping badge per effect with a visible stack count. The standard
+Detailed conditions remain in a collapsible bottom utility section and the token
+context menu. Its closed state is a compact count/status summary. Expanded details
+include named badges, reminders and the full source rules. Use one wrapping badge
+per effect with a visible stack count. The standard
 picker uses the built 47-condition catalog and its original text. Custom effects
 remain separate: name, count, notes and an explicit movement-zero flag. A name such
 as Frozen never introduces a new standard rule.
