@@ -95,6 +95,12 @@ def _choice_count(text):
         match = re.search(r"\b(?:gain|learn)\s+(" + COUNT_PATTERN + r")\s+(?:upgrades?|abilities)\s+from\b", text, re.I)
     if not match:
         match = re.search(r"\bgain\s+(" + COUNT_PATTERN + r")\s+of the following\b", text, re.I)
+    if not match:
+        match = re.search(r"\b(?:modify|in)\b[^.\n]*?\bin\s+(" + COUNT_PATTERN + r")\s+of the following ways", text, re.I)
+    if not match:
+        match = re.search(r"\blearn\s+(" + COUNT_PATTERN + r")\s+special metamagics from the list", text, re.I)
+    if not match and re.search(r"\bchoose once ability\b", text, re.I):
+        return 1
     return _number(match.group(1)) if match else None
 
 
@@ -116,6 +122,19 @@ def _options(raw):
     return []
 
 
+def _repeat_limit(text):
+    """Recognize permission to repeat the pick, not repetition of its action."""
+    match = re.search(r"(?:can|may)\s+(?:be\s+)?(?:be\s+)?(?:taken|chosen|selected)\s+"
+                      r"(?:(?:up to|a maximum of)\s+)?(twice|three|two|four|five|six|\d+)(?:\s+times)?", text, re.I)
+    if match:
+        return 2 if match[1].lower() == "twice" else _number(match[1])
+    if re.search(r"(?:taken|chosen|selected) (?:an additional time|again)\b", text, re.I):
+        return 2
+    if re.search(r"\brepeatable\b|(?:take|taken|choose|chosen|select|selected)[^.\n]*multiple times", text, re.I):
+        return 100
+    return 1
+
+
 def _named_options(group_id, options):
     occurrences = {}
     result = []
@@ -124,10 +143,9 @@ def _named_options(group_id, options):
         occurrences[name] = occurrence + 1
         option = {"id": _id(group_id, name, occurrence), "name": name, "details": value}
         intro = re.split(r"(?m)^\s*\*\s", _text(value), maxsplit=1)[0]
-        if re.search(r"can be taken (?:twice|an additional time|again)\b", intro, re.I):
-            option["repeatLimit"] = 2
-        elif re.search(r"can be taken multiple times\b", intro, re.I):
-            option["repeatLimit"] = 100
+        repeat = _repeat_limit(intro)
+        if repeat > 1:
+            option["repeatLimit"] = repeat
         result.append(option)
     return result
 
@@ -207,6 +225,7 @@ def _tree_options(group_id, text):
     for offset, ((index, _, content), option) in enumerate(zip(nodes, options)):
         end = nodes[offset + 1][0] if offset + 1 < len(nodes) else len(lines)
         option["ownDetails"] = "\n".join([content, *lines[index + 1:end]]).rstrip()
+        option["repeatLimit"] = _repeat_limit(option["ownDetails"])
     return options
 
 
@@ -233,6 +252,9 @@ def _choices(feature_id, details, allow_plain=False):
         tree = isinstance(details, str) and re.search(r"\btree\b", re.split(r"(?m)^\s*\*\s", details)[0], re.I)
         result.append({"id": group_id, "label": label, "count": count,
                        "options": _tree_options(group_id, details) if tree else _named_options(group_id, options)})
+        if re.search(r"(?:take|choose|select) the same (?:one|option|upgrade) multiple times", intro.split("\n*", 1)[0], re.I):
+            for option in result[-1]["options"]:
+                option["repeatLimit"] = 100
     return result
 
 
@@ -311,7 +333,9 @@ def _features(entry_id, details, progression=(), default_level=1):
         levels = explicit or table_levels or [default_level]
         for level in levels:
             feature_id = _id(entry_id, "feature", name, occurrence, level)
-            allow_plain = name.lower() == "ability score improvement" or name == "Inspiration dice upgrade"
+            allow_plain = name.lower() == "ability score improvement" or name in {
+                "Inspiration dice upgrade", "Stormblade traits", "Power of light", "Experience",
+                "Elite sorcerer traits", "Spell book project", "Parody", "Secret metamagics", "Enemy of choice"}
             choices = _choices(feature_id, body, allow_plain)
             if name.lower() == "oath" and _choice_count(_text(body)):
                 oaths = []
@@ -625,12 +649,11 @@ def _spell_progressions(sections):
             if chunks:
                 for index, chunk in enumerate(chunks):
                     own = chunk.strip()
-                    repeat = 100 if re.search(r"(?:multiple times|repeatable)", own, re.I) else 1
-                    match = re.search(r"(?:taken|be taken) (twice|two|three|\d+)(?: times)?", own, re.I)
-                    if match:
-                        repeat = 2 if match[1].lower() == "twice" else _number(match[1])
-                    if re.search(r"taken again", own, re.I):
-                        repeat = max(repeat, 2)
+                    repeat = _repeat_limit(own)
+                    if entry["name"] == "Hex of Wotan" and "maximum cooldown dice of 1d12" in own:
+                        repeat = 5  # Source cooldown starts at d3: d4, d6, d8, d10, d12.
+                    elif entry["name"] == "Shielding rune" and "1d8 max" in own:
+                        repeat = 2  # Source bonus starts at d4.
                     choices.append({"id": entry_id + ":upgrade:" + str(index), "name": own,
                                     "details": own, "ownDetails": own, "repeatLimit": repeat})
             choice_clause = re.search(r"[^.\n]*(?:choose|pick)[^.\n]*upgrade[^.\n]*|[^.\n]*improved in one of two ways[^.\n]*", prefix, re.I)
@@ -701,6 +724,7 @@ def compile_character_rules(sections):
                 for option in group['options']:
                     option['levelNotes'] = _level_notes(option.get('ownDetails', option.get('details', '')))
     _extra_choice_grants(result)
+    _upgrade_choice_links(result)
     for owner in result['classes']:
         if owner['name'] == 'Occultist':
             for feature in owner['features']:
@@ -711,6 +735,177 @@ def compile_character_rules(sections):
                             option['featRestriction'] = 'no-ability-increase'
     _casting_modifiers(result)
     return result
+
+
+def _upgrade_choice_links(result):
+    """Reviewed permanent list grants, keyed to the option which earns them."""
+    owners = {owner["name"]: owner for owner in result["classes"] + result["archetypes"]}
+
+    def feature(owner, name):
+        return next((f for f in owners.get(owner, {}).get("features", []) if f["name"] == name), None)
+
+    for owner, name, count in (("Stormblade", "Storm aspect", 1),
+                               ("Stormblade", "Storm aspect invocation", 2), ("Scholar", "Arcane school", 1)):
+        source = feature(owner, name)
+        if source and not source["choices"]:
+            group_id = _id(source["id"], "choice", "Choose features")
+            source["choices"] = [{"id": group_id, "label": "Choose features", "count": count,
+                                  "options": _named_options(group_id, _bullet_options(source["details"], allow_plain=True))}]
+
+    # These headings describe prerequisites, not additional picks to purchase.
+    for owner, name, source_name, count in (("Stormblade", "Greater invocations", "Storm aspect invocation", 3),
+                                           ("Scholar", "Arcane school secret", "Arcane school", 1)):
+        target, source = feature(owner, name), feature(owner, source_name)
+        if not target or not source or not source["choices"]:
+            continue
+        group_id = _id(target["id"], "choice", "Choose features")
+        source_group = source["choices"][0]
+        options = []
+        for heading, body in _bullet_options(target["details"], allow_plain=True):
+            normalized = heading.strip(" ()").lower()
+            prerequisite = next((option for option in source_group["options"] if option["name"].lower() == normalized), None)
+            if not prerequisite:
+                continue
+            children = _named_options(group_id, _bullet_options("\n".join(body.splitlines()[1:]), allow_plain=True))
+            for child in children:
+                child["requiresChoice"] = {"groupId": source_group["id"], "optionId": prerequisite["id"]}
+            options.extend(children)
+        target["choices"] = [{"id": group_id, "label": "Choose features", "count": count, "options": options}]
+
+    for owner, name, source_owner, source_name in (
+        ("Warmage", "Improved warmage method", "Warmage", "Warmage method"),
+        ("Ascendant", "Finished path", "Ascendant", "Higher path"),
+        ("Ascended sorcerer", "Maturated sorcerer traits", "Sorcerer", "Innate magic"),
+    ):
+        target, source = feature(owner, name), feature(source_owner, source_name)
+        if not target or not source or not source["choices"]:
+            continue
+        group_id = target["choices"][0]["id"] if target["choices"] else _id(target["id"], "choice", "Choose features")
+        body = re.sub(r"(?m)^(\s*\*\s+Dispel energy\+\s+-)(?=\S)", r"\1 ", target["details"])
+        options = _named_options(group_id, _bullet_options(body))
+        source_group = source["choices"][0]
+        for option in options:
+            previous = option["name"].split(" -> ")[0].rstrip("+").lower()
+            prerequisite = next((item for item in source_group["options"] if item["name"].lower() == previous), None)
+            if prerequisite:
+                option["requiresChoice"] = {"groupId": source_group["id"], "optionId": prerequisite["id"]}
+                option["choiceModel"] = "passive-upgrade"
+        target["choices"] = [{"id": group_id, "label": "Current upgrades", "count": 0, "automatic": True,
+                              "options": [option for option in options if option.get("requiresChoice")]}]
+
+    def link(owner, feature_name, option_name, target_owner, target_name, count=1, progression=()):
+        source, target = feature(owner, feature_name), feature(target_owner, target_name)
+        if not source or not target or not target["choices"]:
+            return
+        for group in source["choices"]:
+            for option in group["options"]:
+                if option["name"] != option_name:
+                    continue
+                grant = {"groupId": target["choices"][0]["id"], "count": count}
+                if progression:
+                    grant["countByLevel"] = [{"level": 0, "count": 0},
+                                             *({"level": level, "count": amount} for level, amount in progression)]
+                option.setdefault("choiceGrants", []).append(grant)
+
+    for row in (
+        ("Bard", "Bardic traits", "Truly Inspiring", "Bard", "Inspiration dice upgrade", 1),
+        ("Brewer", "Brewer techniques", "Extra potion recipe", "Alchemist", "Alchemy methods", 1),
+        ("Experimenter", "Method of study", "Study design", "Alchemist", "Alchemy methods", 1),
+        ("Experimenter", "Special interest", "Alchemist extraordinaire", "Alchemist", "Alchemy methods", 2),
+        ("Experimenter", "Special interest", "Alchemist extraordinaire", "Experimenter", "Method of study", 1),
+        ("Warlord", "Warlord traits", "Battle hardened", "Barbarian", "Barbarian traits", 2),
+        ("Poet", "Forms of poetry", "Arcane display", "Bard", "Inspiration dice upgrade", 1),
+        ("Wildshaper", "Beast pact", "Pure form", "Wildshaper", "Wildshape traits", 1),
+        ("Knight", "Knightly circles", "Circle of the rose", "Fighter", "Fighting skills", 1),
+        ("Knight", "Knightly circles", "Steel lancer", "Fighter", "Fighting skills", 1),
+        ("Outrider", "Outrider experience", "Skirmish+", "Outrider", "Skirmish", 1),
+        ("Outrider", "Outrider experience", "Personal training", "Ranger", "Ranger training", 1),
+        ("Seeker", "Special training", "Extra minor focus", "Seeker", "Minor focus magic", 1),
+        ("Assassin", "Assassin skills", "Versatility", "Rogue", "Cunning", 2),
+        ("Brigand", "Brigand traits", "Hardened criminal", "Rogue", "Cunning", 2),
+        ("Monster slayer", "Monster slayer speciality", "Veteran monster slayer", "Monster slayer", "Monster slayer lodge", 1),
+        ("Monster slayer", "Monster slayer speciality", "Veteran monster slayer", "Monster slayer", "Monster slayer traits:", 1),
+        ("Monster slayer", "Monster slayer speciality", "Veteran monster slayer", "Monster slayer", "Enemy of choice", 1),
+        ("Brewer", "Brewer techniques", "Dilute product", "Brewer", "Brewer techniques", 1, [(5, 1), (6, 2)]),
+        ("Guardian", "Guardian traits", "Security", "Guardian", "Guardian traits", 1, [(8, 1), (9, 2)]),
+        ("Bannerlord", "Commanding traits", "Veteran", "Bannerlord", "Commanding traits", 1, [(12, 1)]),
+        ("Weapon master", "Master arts of the arms", "Wind-strike", "Weapon master", "Master arts of the arms", 1, [(9, 1)]),
+        ("Martial artist", "Martial techniques", "Wind-walker", "Martial artist", "Martial techniques", 1, [(6, 2), (7, 3)]),
+        ("Schemer", "Dark Schemes", "Underling master", "Schemer", "Dark Schemes", 1, [(7, 1)]),
+    ):
+        link(*row)
+
+    for owner, feature_name in (("Bard", "Bardic traits"), ("Bounty hunter", "Experience")):
+        source = feature(owner, feature_name)
+        if source:
+            for group in source["choices"]:
+                for index, option in enumerate(group["options"]):
+                    if owner == "Bard" and option["name"] in {
+                        "Deep past", "Expertise", "Extra proficiencies", "Jack of all trades",
+                        "Magical aptitude", "Martial skill", "Persona insight"}:
+                        option["choiceModel"] = "bard:" + option["name"]
+                    elif owner == "Bounty hunter":
+                        option["choiceModel"] = "experience:" + str(index)
+    source = feature("Seeker", "Special training")
+    if source:
+        for group in source["choices"]:
+            for option in group["options"]:
+                if option["name"] == "New tricks":
+                    option["choiceModel"] = "new-tricks"
+    source = feature("Sorcerer", "Innate magic")
+    if source:
+        for group in source["choices"]:
+            for option in group["options"]:
+                if option["name"] == "Arcane intuition":
+                    option["choiceModel"] = "sorcerer:Arcane intuition"
+    for owner, name, option_name in (("Wildshaper", "Beast pact", "Pure form"),
+                                    ("Outrider", "Outrider experience", "Personal training"),
+                                    ("Brigand", "Brigand traits", "Hardened criminal")):
+        source = feature(owner, name)
+        if source:
+            for group in source["choices"]:
+                for option in group["options"]:
+                    if option["name"] == option_name:
+                        option["grantsFeat"] = 1
+
+    parody = feature("Fool", "Parody")
+    if parody:
+        parody["choiceModel"] = "parody"
+    secrets = feature("Graymage", "Arcane secrets")
+    if secrets:
+        secrets["spellUpgradeText"] = "Gain a cantrip upgrade."
+    elite = feature("Ascended sorcerer", "Elite sorcerer traits")
+    if elite and elite["choices"]:
+        main = elite["choices"][0]
+        for option in main["options"]:
+            if option["name"] != "Cantrip mastery":
+                continue
+            option["choiceModel"] = "cantrip-mastery"
+            group_id = _id(option["id"], "choice", "Special cantrip upgrades")
+            elite["choices"].append({"id": group_id, "label": "Special cantrip upgrades", "count": 2,
+                "requiresChoice": {"groupId": main["id"], "optionId": option["id"]},
+                "options": _named_options(group_id, _bullet_options(option["details"], allow_plain=True))})
+            option["ownDetails"] = re.split(r"\n\s*\*", option["details"], maxsplit=1)[0]
+
+    bard = feature("Bard", "Inspiration dice upgrade")
+    if bard:
+        for group in bard["choices"]:
+            for option in group["options"]:
+                if option["name"] == "The inspiration dice is increased by 1 size category":
+                    option["repeatLimitByLevel"] = [{"level": 1, "count": 4}, {"level": 5, "count": 3}, {"level": 9, "count": 2}]
+
+    fool = feature("Fool", "Attributes of the fool")
+    if fool:
+        main = fool["choices"][0]
+        for option in main["options"]:
+            text = _text(option["details"])
+            group_id = _id(option["id"], "choice", "Minor trait")
+            children = _bullet_options(text, allow_plain=True)
+            if children:
+                option["ownDetails"] = re.split(r"\n\s*\*", text, maxsplit=1)[0]
+                fool["choices"].append({"id": group_id, "label": option["name"] + " minor trait", "count": 1,
+                    "requiresChoice": {"groupId": main["id"], "optionId": option["id"], "onlyChoice": True},
+                    "options": _named_options(group_id, children)})
 
 
 def _extra_choice_grants(result):

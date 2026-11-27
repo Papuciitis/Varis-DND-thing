@@ -394,7 +394,7 @@
   }
   function spellProgression(entry,d,level) {
     const profile=d.spellProgressions?.find(profile=>profile.entryId===globalThis.CharacterCasting.spellId(entry));if(!profile)return typeof entry.details?.upgrades==='string' && /spell level/i.test(entry.details.upgrades)?`<div data-current-upcast>${higherLevelRules(entry,level)}</div>`:'';
-    const chosen=profile.options.filter(option=>profile.selected.includes(option.id)),missing=Math.max(0,profile.levels.filter(level=>level<=character.level).length-profile.selected.length);
+    const chosen=profile.selected.map(id=>profile.options.find(option=>option.id===id)).filter(Boolean),missing=Math.max(0,profile.count-profile.selected.length);
     if(!profile.active.length && !chosen.length && !missing)return '';
     return `<details class="spell-progression"><summary>Current upgrades${missing?' · '+missing+' to choose':''}</summary>${profile.active.map(rule=>`<p>${escape(rule.text)}${rule.activeLevels.length>1?' (applies at levels '+rule.activeLevels.join(', ')+')':''}</p>`).join('')}${chosen.map(option=>`<p>${escape(option.name)}</p>`).join('')}${missing?`<p>Choose the remaining upgrades under Spells → Cantrip upgrades in Edit build.</p>`:''}</details>`;
   }
@@ -556,9 +556,22 @@
     byId("pane-gear").innerHTML = panel("Equipment",`<label class="field gear-search"><span class="sr-only">Find owned equipment</span><input type="search" id="owned-gear-search" placeholder="Find equipment in your pack" value="${escape(gearQuery)}" autocomplete="off"></label><div id="owned-gear-groups">${gearRows()}</div><div class="inventory-print" id="print-inventory">${printInventoryRows()}</div>`,tools,"gear-panel") + panel("Coin purse", money) + `<details class="panel disclosure" data-expanded="gear-training" ${expanded.has("gear-training")?'open':''}><summary>Proficiencies & languages</summary>${training}</details>`;
   }
 
+  function currentFeatureRules(feature,d) {
+    const groups=d.choices.filter(group=>group.featureId===feature.id);
+    if(!groups.length)return ruleContent(feature.details);
+    const intro=typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:feature.details?.desc || '';
+    const selected=groups.map(group=>[...new Set(group.selected)].map(id=>{
+      const option=group.options.find(item=>item.id===id);if(!option)return '';
+      const count=group.selected.filter(item=>item===id).length;
+      const notes=(d.featPlan?.sources || []).filter(source=>source.groupId===group.id && source.optionId===id).flatMap(source=>d.featPlan.notes[source.id] || []);
+      return `<section class="selected-feature-rule"><h4>${escape(option.name)}${count>1?' · Taken '+count+' times':''}</h4>${group.kind==='feat'?'':ruleContent(option.ownDetails ?? option.details)}${notes.length?`<ul>${notes.map(note=>`<li>${escape(note)}</li>`).join('')}</ul>`:''}</section>`;
+    }).join('')).join('');
+    return `${ruleContent(intro)}${selected}<details><summary>Full feature rules</summary>${ruleContent(feature.details)}</details>`;
+  }
+
   function renderFeatures() {
     const d=values();
-    const automatic=d.enabled?panel("Your ancestry & class features",`<p class="section-note">Features unlock at your level. Open the builder to choose options or level up.</p>${sortField("feature-sort",featureSort)}<div class="list">${d.features.filter(feature=>feature.parent!=='Cantrip').sort((a,b)=>Order.compare(a,b,featureSort)).map(feature=>`<details class="list-card"><summary>${escape(feature.name)} <span class="muted">· ${escape(feature.parent)} · level ${feature.requiredLevel ?? feature.level ?? 1}</span></summary>${ruleContent(feature.details)}${d.featPlan?.notes?.[feature.id]?.length?`<ul class="feat-decisions">${d.featPlan.notes[feature.id].map(note=>`<li>${escape(note)}</li>`).join('')}</ul>`:''}${d.choices.filter(c=>c.featureId===feature.id).map(c=>`<p><strong>${escape(c.label)}</strong>: ${c.selected.map(id=>escape(c.options.find(o=>o.id===id)?.name || '')).join(', ') || 'Not chosen yet'}</p>`).join('')}</details>`).join('')}</div>${d.warnings.length?`<details class="source-warning"><summary>${d.warnings.length} choices or rules to check</summary><ul>${d.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`:''}`,button("Choices & level up","builder")):'';
+    const automatic=d.enabled?panel("Your ancestry & class features",`<p class="section-note">Features unlock at your level. Open the builder to choose options or level up.</p>${sortField("feature-sort",featureSort)}<div class="list">${d.features.filter(feature=>feature.parent!=='Cantrip').sort((a,b)=>Order.compare(a,b,featureSort)).map(feature=>`<details class="list-card"><summary>${escape(feature.name)} <span class="muted">· ${escape(feature.parent)} · level ${feature.requiredLevel ?? feature.level ?? 1}</span></summary>${currentFeatureRules(feature,d)}${d.featPlan?.notes?.[feature.id]?.length?`<ul class="feat-decisions">${d.featPlan.notes[feature.id].map(note=>`<li>${escape(note)}</li>`).join('')}</ul>`:''}${d.choices.filter(c=>c.featureId===feature.id).map(c=>`<p><strong>${escape(c.label)}</strong>: ${c.selected.map(id=>escape(c.options.find(o=>o.id===id)?.name || '')).join(', ') || 'Not chosen yet'}</p>`).join('')}</details>`).join('')}</div>${d.warnings.length?`<details class="source-warning"><summary>${d.warnings.length} choices or rules to check</summary><ul>${d.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`:''}`,button("Choices & level up","builder")):'';
     byId("pane-features").innerHTML = automatic+renderCollection("features", "Additional features", "Keep extra feats, background rules and custom features within reach.", "features");
   }
 

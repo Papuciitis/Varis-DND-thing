@@ -18,6 +18,23 @@ The source metadata separates automatic cantrip improvements from selectable upg
 
 Spell level and character level are distinct. Call order's explicit spell-level improvements follow the casting selector. Other spell dice, areas, durations and upcast effects remain governed by the full spell rules.
 
+## Permanent upgrade lists
+
+Upgrade eligibility comes from the owned list, not the set of unused options. Selecting an upgrade cannot revoke the bonus slot which selected it. Feat and class grants work between the list's normal level milestones; all picks use the same prerequisite and repeat checks.
+
+| Source | Selection behavior |
+| --- | --- |
+| Bard inspiration | Starting and improvement-level picks, Truly Inspiring, Poet and Aspirant grants share one list. Die-size picks honor the current d12 ceiling. |
+| Bard traits | Follow-ups record expertise, mixed proficiencies, a chosen attribute, weapon training and granted cantrips. Deep past extends an owned eligible list; it cannot create an unowned class. Source-defined feat grants keep their own prerequisites. |
+| Fool | Minor traits belong to their selected top-level ability and require no other top-level ability. Parody learns its cantrip, records its casting ability and opens six special modifications. Its normal extra upgrade uses the spell's pool. |
+| Bounty hunter Experience | Three picks permit repetition. Each copy retains its own skill, language, tool, weapon, armor progression or spell choices, even when an earlier copy is removed. |
+| Stormblade / Scholar | Greater invocations and school secrets are gated by known invocations and the selected school. Category headings do not cost upgrade picks. |
+| Warmage / Ascendant / Ascended sorcerer | The printed automatic improvements follow each original owned ability. They are displayed as current upgrades, not independent ability purchases. |
+| Ascended sorcerer Cantrip mastery | Select an owned arcane cantrip, receive two ordinary upgrades and choose two special modifications. The repeatable additional-upgrade modification grants additional picks in the same canonical spell pool. |
+| Other reviewed permanent grants | Brewer, Experimenter, Warlord, Wildshaper, Knight, Outrider, Seeker, Assassin, Brigand and Monster slayer grants extend their source lists. Explicit later milestones remain conditional on owning the granting trait. |
+
+Finite repeat limits are recognized for both spell and class lists. Permission to repeat an action is not permission to select its upgrade repeatedly. Repeated selections remain visible on the sheet; numerical effects with conditional targets, created items, transformations or custom spell behavior still follow the printed rule. A lowered capacity deactivates excess saved selections without deleting them.
+
 ## Feat audit
 
 | Feat | Initial follow-up controls |

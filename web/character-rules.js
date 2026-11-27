@@ -8,19 +8,35 @@
   const mod = value => State.abilityModifier(value);
   const numeric = value => typeof value === "number" && Number.isFinite(value) ? value : 0;
 
+  // Allocate constrained bonus picks independently of click order. When a level
+  // adds an ordinary slot, an existing eligible pick can move into its bonus slot.
+  function placeChoice(group,optionId) {
+    if(!optionId || !group.options.some(option=>option.id===optionId))return null;
+    const slots=Array.from({length:group.count},(_,index)=>group.selectedSlots[index] || '');
+    if(slots.every(Boolean))return null;
+    const permits=(id,index)=>index<group.baseCount || !group.bonusSlots[index-group.baseCount]?.allowed || group.bonusSlots[index-group.baseCount].allowed.includes(id);
+    function place(id,visited) {
+      const available=slots.map((_,index)=>index).filter(index=>!visited.has(index) && permits(id,index));
+      for(const index of available)if(!slots[index]){slots[index]=id;return true;}
+      for(const index of available){visited.add(index);if(place(slots[index],visited)){slots[index]=id;return true;}}
+      return false;
+    }
+    return place(optionId,new Set())?slots:null;
+  }
+
   function permanentSpellUpgrades(raw) {
     if(typeof raw!=='string')return [];
     const grants=[];
     for(const text of raw.split(/(?<=[.!?])\s+|\n\n/)) {
       if(/temporar|as (?:an?|a bonus|a full.round) action|while wearing|until|one of the following|following benefits|causing|for \d+d?\d* (?:round|minute|hour)/i.test(text))continue;
-      let match=text.match(/upgrade (?:every|all) (hex(?:es)?(?: and cantrips?)?|cantrips?)(?: (?:that )?you know)?(?: (once|twice|three times))?/i);
+      let match=text.match(/upgrade (?:every|all) (hex(?:es)?(?: (?:and|or) cantrips?)?|cantrips?(?: (?:and|or) hex(?:es)?)?)(?: (?:that )?you know)?(?: (once|twice|three times))?/i);
       if(match){grants.push({kind:/hex/i.test(match[1])?/cantrip/i.test(match[1])?'both':'hex':'cantrip',all:true,amount:match[2]==='twice'?2:match[2]==='three times'?3:1});continue;}
       match=text.match(/upgrade (up to two|two|one|1|2|a|an) (cantrips?|hex(?:es)?)(?: or (?:a )?(cantrip|hex))?(?: (?:that )?you know| of choice)?(?: (?:by )?(one|two|three|1|2|3|once|twice)(?: times| steps)?)?/i);
       if(match){grants.push({kind:match[3]?'both':/hex/i.test(match[2])?'hex':'cantrip',count:/two|2/.test(match[1])?2:1,amount:/two|twice|2/.test(match[4] || '')?2:/three|3/.test(match[4] || '')?3:1,optional:/up to/.test(match[1])});continue;}
-      match=text.match(/(?:grant a cantrip you know one extra permanent upgrade|upgrade a hex again|gain (?:an? |one |two |2 )?(?:extra )?hex upgrades?)/i);
-      if(match){const levels=[...text.matchAll(/\b(\d+)(?:st|nd|rd|th)\b/g)].map(match=>Number(match[1]));grants.push({kind:/cantrip/i.test(match[0])?'cantrip':'hex',count:/two|2/.test(match[0])?2:1,amount:1,levels});}
+      match=text.match(/(?:grant a cantrip you know one extra permanent upgrade|upgrade a hex again|gain (?:an? |one |two |2 )?(?:extra )?(?:hex|cantrip) upgrades?)/i);
+      if(match){const levels=[...text.matchAll(/\b(\d+)(?:st|nd|rd|th)\b/g)].map(match=>Number(match[1]));grants.push({kind:/cantrip/i.test(match[0])?'cantrip':'hex',count:/two|2/.test(match[0])?2:1,amount:1,levels,repeat:levels.length>1});}
     }
-    return grants;
+    return grants.map(grant=>({...grant,repeat:grant.repeat || (grant.kind==='hex'?/same hex/i.test(raw):grant.kind==='cantrip'?/same cantrip/i.test(raw):/same (?:hex|cantrip)/i.test(raw))}));
   }
 
   function create(metadata = {}, catalog = []) {
@@ -93,18 +109,19 @@
       const profiles=(metadata.spellProgressions || []).filter(profile=>!featPlan.sacrificedSpells?.includes(profile.entryId) && known.some(row=>row.entryId===profile.entryId && (!row.classId || row.classId===cls?.id)));
       const upgradeSources=[];
       for(const feature of [...features]) {
-        upgradeSources.push({id:feature.id,name:feature.name,parent:feature.parent,level:feature.requiredLevel ?? feature.level ?? 1,text:typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:''});
-        for(const group of feature.choices || []) {const occurrences=new Map();for(const [index,id] of (build.choices[group.id] || []).entries()) {
-          const occurrence=occurrences.get(id) || 0;occurrences.set(id,occurrence+1);const item=group.options.find(option=>option.id===id);if(item)upgradeSources.push({id:group.id+':'+index+':'+id,name:item.name,parent:feature.parent,level:feature.requiredLevel ?? feature.level ?? 1,text:item.ownDetails ?? item.details,gate:{groupId:group.id,optionId:id,occurrence}});
+        upgradeSources.push({id:feature.id,name:feature.name,parent:feature.parent,level:feature.requiredLevel ?? feature.level ?? 1,text:feature.spellUpgradeText ?? (typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:'')});
+        for(const group of feature.choices || []) {const occurrences=new Map();for(const [index,id] of (group.automatic?group.options.map(option=>option.id):build.choices[group.id] || []).entries()) {
+          const occurrence=occurrences.get(id) || 0;occurrences.set(id,occurrence+1);const item=group.options.find(option=>option.id===id);if(item)upgradeSources.push({id:group.id+':'+index+':'+id,groupId:group.id,optionId:id,repeatable:(item.repeatLimit || 1)>1,name:item.name,parent:feature.parent,level:feature.requiredLevel ?? feature.level ?? 1,text:item.ownDetails ?? item.details,gate:{groupId:group.id,optionId:id,occurrence}});
         }}
       }
       const universal=[];
       for(const source of upgradeSources)for(const [index,grant] of permanentSpellUpgrades(source.text).entries()) {
         const eligible=profiles.filter(profile=>profile.options.length && (grant.kind==='both' || grant.kind===profile.kind));
         const amount=grant.levels?.length?grant.levels.filter(level=>level<=c.level).length:grant.count || 1;if(!amount || !eligible.length)continue;
-        const id=source.id+':spell-upgrade:'+index;
+        const previous=!source.repeatable && source.groupId && Object.keys(build.choices).find(key=>key.startsWith(source.groupId+':') && key.endsWith(':'+source.optionId+':spell-upgrade:'+index+':target'));
+        const id=previous?previous.slice(0,-':target'.length):source.id+':spell-upgrade:'+index;
         if(grant.all){for(const profile of eligible)universal.push({entryId:profile.entryId,featureId:source.id,requiresChoice:source.gate,count:grant.amount});continue;}
-        const groups=grant.all?[]:[{id:id+':target',label:'Choose '+grant.kind+' to upgrade',count:amount,optional:!!grant.optional,requiresChoice:source.gate,options:eligible.map(profile=>({id:profile.entryId,name:profile.name,details:'Grants '+grant.amount+' upgrade choice'+(grant.amount===1?'':'s')+' from this spell’s list. Choose the upgrades on the Spells step.',choiceGrants:[{groupId:profile.id,count:grant.amount}]}))}];
+        const groups=grant.all?[]:[{id:id+':target',label:'Choose '+grant.kind+' to upgrade',count:amount,optional:!!grant.optional,requiresChoice:source.gate,options:eligible.map(profile=>({id:profile.entryId,name:profile.name,repeatLimit:grant.repeat?amount:1,details:'Grants '+grant.amount+' upgrade choice'+(grant.amount===1?'':'s')+' from this spell’s list. Choose the upgrades on the Spells step.',choiceGrants:[{groupId:profile.id,count:grant.amount}]}))}];
         addFeature({id,name:source.name+' — spell upgrades',level:source.level,details:source.text,choices:groups,requiresSource:source.gate},source.parent);
       }
       for(const profile of profiles) {
@@ -160,20 +177,26 @@
         for(const sourceGroup of definitions) {
           const requirement=sourceGroup.requiresChoice;
           if(requirement && (resolved.get(requirement.groupId)?.selected.filter(id=>id===requirement.optionId).length || 0)<=(requirement.occurrence || 0)) continue;
+          if(requirement?.onlyChoice && resolved.get(requirement.groupId)?.selected.some(id=>id!==requirement.optionId))continue;
           if(sourceGroup.requiresPairedSet){const pair=[...resolved.values()].filter(group=>group.pairedSet===sourceGroup.requiresPairedSet);if(pair.length<2 || pair.some(group=>group.selected.length<group.count))continue;}
           const baseCount = (sourceGroup.countByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? sourceGroup.count)
             + (sourceGroup.additionalGrants || []).filter(grant=>grant.requiresChoice?(resolved.get(grant.requiresChoice.groupId)?.selected.filter(id=>id===grant.requiresChoice.optionId).length || 0)>(grant.requiresChoice.occurrence || 0):activeFeatures.has(grant.featureId)).reduce((total,grant)=>total+(grant.countByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? grant.count),0)
             + (grants.get(sourceGroup.id) || 0);
           const extra=(featPlan.grants || []).filter(grant=>grant.groupId===sourceGroup.id),limits=extra.flatMap(grant=>Array.from({length:grant.count},()=>grant));
           const gated=sourceGroup.requiresChoice && resolved.get(sourceGroup.requiresChoice.groupId),gateIndex=gated?.selectedSlots.indexOf(sourceGroup.requiresChoice.optionId),gateSource=gateIndex>=gated?.baseCount?gated.bonusSlots[gateIndex-gated.baseCount]?.source:'',gateLevel=(featPlan.effects || []).find(item=>item.sourceFeat===gateSource)?.level || 1;
-          const count=Math.min(sourceGroup.maxCount ?? Infinity,baseCount+limits.length),group={...sourceGroup,level:Math.max(sourceGroup.level || 1,gateLevel),count,bonusSlots:limits,baseCount};
-          const stored = (build.choices?.[group.id] || []).slice(0,count), counts = new Map();
+          const automatic=sourceGroup.automatic?sourceGroup.options.filter(option=>!option.requiresChoice || resolved.get(option.requiresChoice.groupId)?.selected.includes(option.requiresChoice.optionId)).map(option=>option.id):null;
+          const count=automatic?.length ?? Math.min(sourceGroup.maxCount ?? Infinity,baseCount+limits.length),group={...sourceGroup,level:Math.max(sourceGroup.level || 1,gateLevel),count,bonusSlots:limits,baseCount,options:sourceGroup.options.map(option=>({...option,repeatLimit:option.repeatLimitByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? option.repeatLimit}))};
+          const stored = automatic || (build.choices?.[group.id] || []).slice(0,count), counts = new Map();
           for(const [index,limit] of limits.entries())if(limit.autoSelect && baseCount+index<count && !stored[baseCount+index]){while(stored.length<=baseCount+index)stored.push('');stored[baseCount+index]=limit.autoSelect;}
           let selectedSlots = stored.map((id,index)=>{
             const option=group.options.find(item=>item.id===id), used=counts.get(id) || 0;
-            if(!option || used>=(option.repeatLimit || 1) || index>=baseCount && limits[index-baseCount]?.allowed && !limits[index-baseCount].allowed.includes(id)) return '';
+            if(!option || used>=(option.repeatLimit || 1)) return '';
+            if(option.requiresChoice && !resolved.get(option.requiresChoice.groupId)?.selected.includes(option.requiresChoice.optionId))return '';
             counts.set(id,used+1);return id;
           });
+          const misplaced=[];
+          selectedSlots=selectedSlots.map((id,index)=>{if(id && index>=baseCount && limits[index-baseCount]?.allowed && !limits[index-baseCount].allowed.includes(id)){misplaced.push(id);return '';}return id;});
+          for(const id of misplaced){const placed=placeChoice({...group,selectedSlots},id);if(placed)selectedSlots=placed;}
           // A tree can be chosen in either slot order, but every selected node
           // must retain its entire prerequisite chain. Imported saves use this
           // same validation, without deleting choices which are now inactive.
@@ -183,9 +206,10 @@
             selectedSlots=selectedSlots.map(id=>id && (group.options.find(option=>option.id===id).requires || []).every(required=>selectedSlots.includes(required)) ? id : '');
           } while(previous!==selectedSlots.join('\n'));
           const selected = selectedSlots.filter(Boolean);
-          const empty=Array.from({length:count},(_,index)=>index).find(index=>!selectedSlots[index]),limit=empty>=baseCount?limits[empty-baseCount]:null;
-          const options=group.options.map(option=>({...option,unavailableReason:(option.requires || []).filter(id=>!selected.includes(id)).map(id=>'Requires '+(group.options.find(item=>item.id===id)?.name || 'an earlier choice')).join('; ')+(limit?.allowed && !limit.allowed.includes(option.id)?' This extra selection must be an upgrade from its chosen list.':'')}));
-          next.set(group.id,{...group,options,selected,selectedSlots,invalid:stored.some((id,index)=>id && !selectedSlots[index])});
+          const origins=new Map();for(const [index,id] of stored.entries()){const indices=origins.get(id) || [];indices.push(index);origins.set(id,indices);}
+          const sourceSlots=selectedSlots.map(id=>id?origins.get(id)?.shift() ?? -1:-1);
+          const options=group.options.map(option=>({...option,unavailableReason:[...(option.requires || []).filter(id=>!selected.includes(id)).map(id=>'Requires '+(group.options.find(item=>item.id===id)?.name || 'an earlier choice')),...(option.requiresChoice && !resolved.get(option.requiresChoice.groupId)?.selected.includes(option.requiresChoice.optionId)?['Requires '+(definitions.find(group=>group.id===option.requiresChoice.groupId)?.options.find(item=>item.id===option.requiresChoice.optionId)?.name || 'an earlier choice')]:[]),...(!group.automatic && limits.some(limit=>limit.allowed) && selected.length<count && !placeChoice({...group,selectedSlots},option.id)?['This extra selection must be an upgrade from its chosen list.']:[])].join('; ')}));
+          next.set(group.id,{...group,options,selected,selectedSlots,sourceSlots,invalid:stored.some((id,index)=>id && !sourceSlots.includes(index))});
         }
         const nextSignature=JSON.stringify([...next].map(([id,group])=>[id,group.count,group.selectedSlots]));
         resolved=next;
@@ -193,7 +217,7 @@
         signature=nextSignature;
         grants=new Map();
         for(const group of resolved.values()) for(const id of group.selected) {
-          for(const grant of group.options.find(option=>option.id===id).choiceGrants || []) grants.set(grant.groupId,(grants.get(grant.groupId) || 0)+grant.count);
+          for(const grant of group.options.find(option=>option.id===id).choiceGrants || []) grants.set(grant.groupId,(grants.get(grant.groupId) || 0)+(grant.countByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? grant.count));
         }
       }
       for(const group of resolved.values())if(group.pairedSet)group.pairComplete=[...resolved.values()].filter(other=>other.pairedSet===group.pairedSet).every(other=>other.selected.length>=other.count);
@@ -340,7 +364,7 @@
       result.hpMaximum=Math.max(1,result.hpMaximum+rest.hpDelta);
       result.effects.occultSlots=numeric(result.effects.occultSlots)+rest.occultExtra;
       result.casting=globalThis.CharacterCasting?.derive(c,enabled?cls:null,{abilities,effects:result.effects,choices,features,proficiency,restMaximum:result.restMaximum}) || null;
-      result.spellProgressions=(metadata.spellProgressions || []).filter(profile=>features.some(feature=>feature.spellEntryId===profile.entryId)).map(profile=>({...profile,automatic:known.some(row=>row.entryId===profile.entryId && row.progressionMode!=='cypher')?profile.automatic:[],selected:choices.find(group=>group.spellEntryId===profile.entryId)?.selected || [],active:(known.some(row=>row.entryId===profile.entryId && row.progressionMode!=='cypher')?profile.automatic:[]).map(rule=>({...rule,activeLevels:rule.levels.filter(level=>level<=c.level)})).filter(rule=>rule.activeLevels.length)}));
+      result.spellProgressions=(metadata.spellProgressions || []).filter(profile=>features.some(feature=>feature.spellEntryId===profile.entryId)).map(profile=>({...profile,automatic:known.some(row=>row.entryId===profile.entryId && row.progressionMode!=='cypher')?profile.automatic:[],count:choices.find(group=>group.spellEntryId===profile.entryId)?.count || 0,selected:choices.find(group=>group.spellEntryId===profile.entryId)?.selected || [],active:(known.some(row=>row.entryId===profile.entryId && row.progressionMode!=='cypher')?profile.automatic:[]).map(rule=>({...rule,activeLevels:rule.levels.filter(level=>level<=c.level)})).filter(rule=>rule.activeLevels.length)}));
       result.progressionNotes=[];
       for(const feature of features)for(const note of feature.levelNotes || [])if(note.levels.some(level=>level<=c.level))result.progressionNotes.push({name:feature.parent+': '+feature.name,...note});
       for(const group of choices.filter(group=>group.kind!=='feat'))for(const option of group.options.filter(option=>group.selected.includes(option.id)))for(const note of option.levelNotes || [])if(note.levels.some(level=>level<=c.level))result.progressionNotes.push({name:group.parent+': '+option.name,...note});
@@ -419,7 +443,7 @@
       const level=input.build?.health?.fatigue || 0,sides={2:2,3:3,4:4,5:6,8:8,9:10,10:12}[level];
       return {amount:level===1?1:sides?rollDie(sides):0,notation:level===1?'1':sides?'1d'+sides:'',unresolved:level===6||level===7};
     }
-    return Object.freeze({metadata,catalog,derive,enable,reconcile,damage,heal,rest,startCombat,endCombat,fatiguePenalty});
+    return Object.freeze({metadata,catalog,derive,enable,reconcile,damage,heal,rest,startCombat,endCombat,fatiguePenalty,placeChoice});
   }
-  globalThis.CharacterRules=Object.freeze({create,skillAbilities});
+  globalThis.CharacterRules=Object.freeze({create,skillAbilities,placeChoice});
 })();

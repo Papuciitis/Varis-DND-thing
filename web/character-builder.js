@@ -89,18 +89,20 @@
     const optionRules = item => item.ownDetails ?? (item.eligibility?item.details?.description || item.details:item.details);
     const featGroup = group => group.kind==='feat' || /ability.score.improvement/i.test(group.featureName);
     function featBenefits(option,task,derived) {
-      if(!task.selected.includes(option.id))return '';
+      if(!task.selected.includes(option.id) && !derived.featPlan?.sources.some(source=>source.id===task.featureId))return '';
       const specification=task.kind==='feat' && option.name!=='Mana-refusal'?globalThis.CharacterEffects.benefitOptions(option):null,selected=draft.build.featBenefits[option.id] || [];
       let html=specification?`<fieldset class="builder-feat-benefits"><legend>Feat benefits${specification.count===2?' · choose two':''}</legend>${specification.note?`<p class="muted">${escape(specification.note)}</p>`:''}${specification.options.map(([key,label])=>`<label class="check-label"><input type="checkbox" data-builder-feat-benefit="${key}" data-feat-id="${escape(option.id)}" ${selected.includes(key)?'checked':''} ${!selected.includes(key)&&selected.length>=specification.count?'disabled':''}>${escape(label)}</label>`).join('')}</fieldset>`:'';
-      const feat=task.kind==='feat'?derived.features.find(feature=>feature.parent==='Feat' && feature.entryId===option.id && feature.id.startsWith(task.id+':')):derived.featPlan?.sources.find(source=>source.groupId===task.id && source.optionId===option.id),spec=feat && derived.featPlan?.specs[feat.id];
-      if(spec?.fields.length)html+=`<fieldset class="builder-feat-choices"><legend>${task.kind==='feat'?'Finish this feat':'Feature choices'}</legend>${spec.fields.map(choice=>Array.from({length:choice.count},(_,index)=>field(choice.label+(choice.count>1?' '+(index+1)+' / '+choice.count:''),choice.type==='text'?`<input type="text" data-builder-feat-choice data-feat-id="${escape(feat.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" value="${escape(draft.build.featChoices[feat.id]?.[choice.key]?.[index] || '')}">`:`<select data-builder-feat-choice data-feat-id="${escape(feat.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" ${choice.locked?'disabled':''}>${optionTag('',choice.optional?'Optional':'Choose…',!spec.values[choice.key]?.[index])}${choice.options.map(item=>optionTag(item.id,item.name,spec.values[choice.key]?.[index]===item.id,!choice.repeat && (spec.values[choice.key] || []).some((id,other)=>id===item.id && other!==index))).join('')}</select>`)).join('')).join('')}${spec.notes.map(note=>`<p class="muted">${escape(note)}</p>`).join('')}${spec.missing.length?`<p class="builder-notice">${spec.missing.length} follow-up choice${spec.missing.length===1?'':'s'} remaining.</p>`:''}</fieldset>`;
+      const sources=(derived.featPlan?.sources || []).filter(source=>task.kind==='feat'?source.parent==='Feat' && source.entryId===option.id && source.id.startsWith(task.id+':'):source.groupId===task.id && source.optionId===option.id || source.id===task.featureId);
+      for(const feat of sources){const spec=derived.featPlan.specs[feat.id];
+      if(spec?.fields.length)html+=`<fieldset class="builder-feat-choices"><legend>${task.kind==='feat'?'Finish this feat':'Feature choices'}${sources.length>1?' · Pick '+((feat.occurrence || 0)+1):''}</legend>${spec.fields.map(choice=>Array.from({length:choice.count},(_,index)=>field(choice.label+(choice.count>1?' '+(index+1)+' / '+choice.count:''),choice.type==='text'?`<input type="text" data-builder-feat-choice data-feat-id="${escape(feat.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" value="${escape(draft.build.featChoices[feat.id]?.[choice.key]?.[index] || '')}">`:`<select data-builder-feat-choice data-feat-id="${escape(feat.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" ${choice.locked?'disabled':''}>${optionTag('',choice.optional?'Optional':'Choose…',!spec.values[choice.key]?.[index])}${choice.options.map(item=>optionTag(item.id,item.name,spec.values[choice.key]?.[index]===item.id,!choice.repeat && (spec.values[choice.key] || []).some((id,other)=>id===item.id && other!==index))).join('')}</select>`)).join('')).join('')}${spec.notes.map(note=>`<p class="muted">${escape(note)}</p>`).join('')}${spec.missing.length?`<p class="builder-notice">${spec.missing.length} follow-up choice${spec.missing.length===1?'':'s'} remaining.</p>`:''}</fieldset>`;
+      }
       return html;
     }
     function tasks(derived, feats=false,upgrades=false) {
       const result=[];
       if(!feats && !upgrades && derived.cls?.skillChoice) result.push({id:'class-skills',label:'Class skills',count:derived.cls.skillChoice.count,selected:[...new Set(draft.build.skills)].filter(skill=>derived.cls.skillChoice.options.includes(skill)),skills:'skills',options:derived.cls.skillChoice.options});
       if(!feats && !upgrades && derived.raceSkillCount) result.push({id:'race-skills',label:'Ancestry skills',count:derived.raceSkillCount,selected:[...new Set(draft.build.raceSkills)].filter(skill=>(derived.raceSkillOptions || allSkills).includes(skill)),skills:'raceSkills',options:derived.raceSkillOptions || allSkills});
-      for(const group of derived.choices.filter(group=>group.count>0 && featGroup(group)===feats && !!group.spellEntryId===upgrades)) result.push({...group,label:group.kind==='feat'?`${group.parent}: ${group.label}`:group.featureName+(group.label==='Choose features'?'':` · ${group.label}`)});
+      for(const group of derived.choices.filter(group=>group.count>0 && !group.automatic && featGroup(group)===feats && !!group.spellEntryId===upgrades)) result.push({...group,label:group.kind==='feat'?`${group.parent}: ${group.label}`:group.featureName+(group.label==='Choose features'?'':` · ${group.label}`)});
       return result;
     }
     function stages(derived) {
@@ -417,11 +419,12 @@
       }
       else if(action==='builder-choose-option') {
         const group=rules.derive(draft).choices.find(group=>group.id===target.dataset.choiceId);
-        if(group){const slot=Array.from({length:group.count},(_,index)=>index).find(index=>!group.selectedSlots[index]);if(slot!==undefined)update({dataset:{builderChoice:group.id,builderChoiceIndex:String(slot)},value:target.dataset.optionId});}
+        const slots=group && rules.placeChoice(group,target.dataset.optionId);
+        if(slots){const candidate=copy(draft),values=candidate.build.choices[group.id] ||= [];for(const [index,id] of slots.entries())if(id)setSlot(values,index,id);const checked=rules.derive(candidate).choices.find(item=>item.id===group.id);if(checked?.selected.length===group.selected.length+1 && slots.every((id,index)=>!id || checked.selectedSlots[index]===id)){draft=candidate;if(target.dataset.optionId===group.featureId+':feat'){focusedTask=group.featureId+':feat-choice';focusedOption='';featureQuery='';}}}
       }
       else if(action==='builder-remove-choice') {
         const group=rules.derive(draft).choices.find(group=>group.id===target.dataset.choiceId),slot=Number(target.dataset.choiceSlot);
-        if(group && Number.isInteger(slot) && slot>=0 && slot<group.count && draft.build.choices[group.id])draft.build.choices[group.id][slot]='';
+        if(group && Number.isInteger(slot) && slot>=0 && slot<group.count && draft.build.choices[group.id])draft.build.choices[group.id][group.sourceSlots?.[slot] ?? slot]='';
       }
       else if(action==='builder-spell-workspace'){spellWorkspace=target.dataset.spellWorkspace==='upgrades'?'upgrades':'library';focusedTask='';focusedOption='';featureQuery='';}
       else if(action==='builder-spell-kind') {spellKind=target.dataset.spellKind==='cantrips'?'cantrips':'spells';spellLevel='';spellToAdd='';spellQuery='';spellLimit=48;}

@@ -1,5 +1,18 @@
 # Patch notes
 
+## 2026-11-28 - Upgrade lists and repeated picks
+
+- Fixed More upgrades invalidating its own selection after an upgrade was chosen. Bonus picks remain usable between normal level milestones and share the original list's prerequisites and repeat limits.
+- Constrained bonus picks can be filled in either order. Leveling reallocates existing eligible picks between ordinary and bonus slots, preserving the new ordinary choice instead of incorrectly restricting it to an older bonus list.
+- Connected additional permanent class and archetype grants to their actual lists, including Bard's Truly Inspiring, Poet's Arcane Display, and reviewed alchemist, martial, ranger and rogue traits. Level-specific conditional grants activate at their printed milestones.
+- Added Bard trait follow-ups for owned list choices, expertise, proficiencies, ability bonuses and cantrips. Sorcerer's Arcane intuition now uses its class spell grants rather than the similarly named elf trait's upgrade schedule.
+- Added missing permanent pickers for Bounty hunter Experience, Fool Parody and minor traits, Stormblade choices, Scholar's school secrets, Scribe's spell-book project and other explicit upgrade lists. Invocation and school upgrades require their corresponding original choices.
+- Warmage, Ascendant and Ascended sorcerer improvements now follow the abilities already owned. Their automatic upgrades do not create unrelated ability choices.
+- Added the two special Cantrip mastery picks and its actual cantrip-upgrade grants. Parody's extra cantrip upgrade also returns to the spell's existing pool.
+- Repeatable class picks keep separate follow-up answers, including after removing an earlier copy. Finite wording such as "up to three times" is honored; Bard inspiration and explicit hex die ceilings are checked. Explicit permission to apply both hex upgrades to the same hex works; separate level grants can target that hex again.
+- Character feature cards show current selections with their own rules and repeat counts; full source rules remain expandable. Spell cards count outstanding bonus upgrades as well as level grants, and retain repeated selections in their summaries.
+- Existing saved choice identities remain intact. Inactive picks and follow-up answers stay stored for restoration. Source interpretation questions are appended to points of interest; source game data is unchanged.
+
 ## 2026-11-27 — Cantrips, feat follow-ups and level progression
 
 - Cantrips can be selected from both their tab and the spell-level selector. The preview follows the active filter and starts with an unchosen spell; reopening a draft resets old filters.

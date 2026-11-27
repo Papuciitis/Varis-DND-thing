@@ -351,7 +351,7 @@
       } else if(feature.parent==='Shaman' && feature.name==='Spirit journey') {
         if(derived.skillRanks.Religion>=2)breakdown.push({label:'Shaman: Spirit journey (already expert in Religion)',amount:1});
       } else if(feature.parent==='Ascended sorcerer' && feature.name==='Maturated sorcerer traits') {
-        if(derived.choices.some(group=>group.parent==='Sorcerer' && group.featureName==='Innate magic' && group.options.some(option=>option.name==='Elder blood' && group.selected.includes(option.id))))breakdown.push({label:'Ascended sorcerer: Maturated Elder blood',amount:1});
+        if(!derived.choices.some(group=>group.featureId===feature.id && group.automatic) && derived.choices.some(group=>group.parent==='Sorcerer' && group.featureName==='Innate magic' && group.options.some(option=>option.name==='Elder blood' && group.selected.includes(option.id))))breakdown.push({label:'Ascended sorcerer: Maturated Elder blood',amount:1});
       } else addRule(feature.parent+': '+feature.name,feature.details,registry.get(key(feature.parent,feature.name))?.restDice || 0);
     }
     for(const group of derived.choices.filter(group=>group.kind!=='feat')) {
