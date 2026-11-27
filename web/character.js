@@ -378,13 +378,25 @@
     const choices=casting.castOptions(character,d,entry,item),key=character.id+':'+item.id;
     const selected=choices.find(choice=>choice.id===spellCastChoices.get(key)) || choices.find(choice=>choice.available) || choices[0];
     const info=casting.spellInfo(entry,d.casting?.profile?.tradition);
-    const modifier=State.abilityModifier(d.abilities[d.castingAbility] ?? 10);
-    const attackBonus=character.combat.spellAttackOverride ?? proficiency()+modifier+character.combat.spellAttackBonus;
-    const saveDC=character.combat.spellSaveOverride ?? 8+proficiency()+(d.cls?.name==='Wizard'?Math.max(0,modifier):modifier)+character.combat.spellSaveBonus;
-    const spellCheck=info.simpleAttack?`<p class="list-card-meta">${/spell attack/i.test(entry.details.effect)?'Spell attack '+signed(attackBonus):/save/i.test(entry.details.effect)?'Spell save DC '+saveDC:''}</p>`:'';
+    const modifier=State.abilityModifier(d.abilities[item.castingAbility || d.castingAbility] ?? 10);
+    const modifications=globalThis.CharacterFeats?.spellModifiers(character,d,entry) || {attack:0,save:0,notes:[]};
+    const attackBonus=(character.combat.spellAttackOverride ?? proficiency()+modifier+character.combat.spellAttackBonus+(d.effects.spellAttack || 0))+modifications.attack;
+    const saveDC=character.combat.spellSaveOverride ?? 8+proficiency()+(d.cls?.name==='Wizard' && !item.featSource?Math.max(0,modifier):modifier)+character.combat.spellSaveBonus;
+    const spellCheck=info.simpleAttack?`<p class="list-card-meta">${/spell attack/i.test(entry.details.effect)?'Spell attack '+signed(attackBonus):/save/i.test(entry.details.effect)?'Spell save DC '+(saveDC+modifications.save):''}</p>`:'';
     const quick=item.onBar ?? info.simpleAttack;
-    const emptyReason=d.cls?.name==='Wizard' && !info.cantrip && !item.prepared?'Prepare this spell before casting.':info.hex && d.casting?.profile?.tradition!=='any'?'Apply this hex’s listed costs using its feature or manual trackers.':'No compatible casting resource is configured.';
-    return `<div class="spell-use" data-spell-card="${escape(item.id)}">${spellCheck}<div class="spell-cast-controls">${choices.length?`<label class="field"><span>Casting level / resource</span><select data-spell-option data-spell-id="${escape(item.id)}">${choices.map(choice=>`<option value="${escape(choice.id)}" ${choice.id===selected?.id?'selected':''} ${choice.available?'':'disabled'}>${escape(choice.label)}</option>`).join('')}</select></label>${button(info.cantrip?'Cast cantrip':'Cast spell','cast-known-spell',`data-spell-id="${escape(item.id)}" ${selected?.available?'':'disabled'}`,'button-primary')}`:`<p class="section-note">${escape(emptyReason)}</p>`}</div><label class="check-label spell-pin"><input type="checkbox" data-path="spells.${index}.onBar" ${quick?'checked':''}>Quick action on main sheet</label></div>`;
+    const emptyReason=d.featPlan?.sacrificedSpells?.includes(item.entryId)?'Permanently sacrificed by Mana-refusal.':d.cls?.name==='Wizard' && !info.cantrip && !item.prepared?'Prepare this spell before casting.':info.hex && d.casting?.profile?.tradition!=='any'?'Apply this hex’s listed costs using its feature or manual trackers.':'No compatible casting resource is configured.';
+    return `<div class="spell-use" data-spell-card="${escape(item.id)}">${spellCheck}${spellProgression(entry,d,selected?.level)}${(d.effects.extraDamage || []).map(extra=>`<p class="section-note">Extra damage on damaging effects: ${escape(extra.dice)} ${escape(extra.type)}.</p>`).join('')}${modifications.notes.map(note=>`<p class="section-note">${escape(note)}</p>`).join('')}<div class="spell-cast-controls">${choices.length?`<label class="field"><span>Casting level / resource</span><select data-spell-option data-spell-id="${escape(item.id)}">${choices.map(choice=>`<option value="${escape(choice.id)}" ${choice.id===selected?.id?'selected':''} ${choice.available?'':'disabled'}>${escape(choice.label)}</option>`).join('')}</select></label>${button(info.cantrip?'Cast cantrip':'Cast spell','cast-known-spell',`data-spell-id="${escape(item.id)}" ${selected?.available?'':'disabled'}`,'button-primary')}`:`<p class="section-note">${escape(emptyReason)}</p>`}</div><label class="check-label spell-pin"><input type="checkbox" data-path="spells.${index}.onBar" ${quick?'checked':''}>Quick action on main sheet</label></div>`;
+  }
+
+  function higherLevelRules(entry,level) {
+    const raw=entry.details?.upgrades;if(typeof raw!=='string' || !/spell level/i.test(raw))return '';
+    return raw.split(/\n+|(?=At \d+(?:st|nd|rd|th) spell level)/i).map(text=>text.trim()).filter(text=>{const match=text.match(/^At (\d+)(?:st|nd|rd|th) spell level/i);return match && Number(match[1])<=level;}).map(text=>`<p class="section-note">${escape(text)}</p>`).join('');
+  }
+  function spellProgression(entry,d,level) {
+    const profile=d.spellProgressions?.find(profile=>profile.entryId===globalThis.CharacterCasting.spellId(entry));if(!profile)return typeof entry.details?.upgrades==='string' && /spell level/i.test(entry.details.upgrades)?`<div data-current-upcast>${higherLevelRules(entry,level)}</div>`:'';
+    const chosen=profile.options.filter(option=>profile.selected.includes(option.id)),missing=Math.max(0,profile.levels.filter(level=>level<=character.level).length-profile.selected.length);
+    if(!profile.active.length && !chosen.length && !missing)return '';
+    return `<details class="spell-progression"><summary>Current upgrades${missing?' · '+missing+' to choose':''}</summary>${profile.active.map(rule=>`<p>${escape(rule.text)}${rule.activeLevels.length>1?' (applies at levels '+rule.activeLevels.join(', ')+')':''}</p>`).join('')}${chosen.map(option=>`<p>${escape(option.name)}</p>`).join('')}${missing?`<p>Choose the remaining upgrades under Spells → Cantrip upgrades in Edit build.</p>`:''}</details>`;
   }
 
   function renderQuickSpells() {
@@ -468,7 +480,7 @@
     const castingAbility=values().castingAbility;
     const modifier = castingAbility ? State.abilityModifier(values().abilities[castingAbility]) : 0;
     const saveModifier = character.className.toLowerCase() === "wizard" ? Math.max(0, modifier) : modifier;
-    const spellAttack = combat.spellAttackOverride ?? proficiency() + modifier + combat.spellAttackBonus;
+    const spellAttack = combat.spellAttackOverride ?? proficiency() + modifier + combat.spellAttackBonus + (values().effects.spellAttack || 0);
     const spellSave = combat.spellSaveOverride ?? 8 + proficiency() + saveModifier + combat.spellSaveBonus;
     const casting = `<div class="combat-strip"><div class="combat-stat"><span class="combat-value">${castingAbility ? castingAbility.toUpperCase() : "—"}</span><span class="combat-label">Casting ability</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellAttackOverride != null ? signed(spellAttack) : "—"}</span><span class="combat-label">Spell attack</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellSaveOverride != null ? spellSave : "—"}</span><span class="combat-label">Save DC</span></div></div>`;
     const slots = character.spellSlots.length ? `<div class="list">${character.spellSlots.map((slot,index)=>({slot,index})).sort((a,b)=>a.slot.level-b.slot.level).map(({slot,index}) => `<div class="slot-row" data-slot-index="${index}">${numberField("Level", `spellSlots.${index}.level`, {min: 0, max: 20})}${numberField("Available", `spellSlots.${index}.current`)}${numberField("Maximum", `spellSlots.${index}.max`)}${button("−1", "resource", `data-key="slot:${slot.level}" data-delta="-1" aria-label="Spend a level ${slot.level} slot"`)}${button("Remove", "remove", `data-list="spellSlots" data-index="${index}"`, "button-quiet button-small")}</div>`).join("")}</div>` : `<p class="section-note">Add slots by level where your class uses them. Use named Class resources for occult slots, individual partial slots, or other spell costs.</p>`;
@@ -546,7 +558,7 @@
 
   function renderFeatures() {
     const d=values();
-    const automatic=d.enabled?panel("Your ancestry & class features",`<p class="section-note">Features unlock at your level. Open the builder to choose options or level up.</p>${sortField("feature-sort",featureSort)}<div class="list">${[...d.features].sort((a,b)=>Order.compare(a,b,featureSort)).map(feature=>`<details class="list-card"><summary>${escape(feature.name)} <span class="muted">· ${escape(feature.parent)} · level ${feature.requiredLevel ?? feature.level ?? 1}</span></summary>${ruleContent(feature.details)}${d.choices.filter(c=>c.featureId===feature.id).map(c=>`<p><strong>${escape(c.label)}</strong>: ${c.selected.map(id=>escape(c.options.find(o=>o.id===id)?.name || '')).join(', ') || 'Not chosen yet'}</p>`).join('')}</details>`).join('')}</div>${d.warnings.length?`<details class="source-warning"><summary>${d.warnings.length} choices or rules to check</summary><ul>${d.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`:''}`,button("Choices & level up","builder")):'';
+    const automatic=d.enabled?panel("Your ancestry & class features",`<p class="section-note">Features unlock at your level. Open the builder to choose options or level up.</p>${sortField("feature-sort",featureSort)}<div class="list">${d.features.filter(feature=>feature.parent!=='Cantrip').sort((a,b)=>Order.compare(a,b,featureSort)).map(feature=>`<details class="list-card"><summary>${escape(feature.name)} <span class="muted">· ${escape(feature.parent)} · level ${feature.requiredLevel ?? feature.level ?? 1}</span></summary>${ruleContent(feature.details)}${d.featPlan?.notes?.[feature.id]?.length?`<ul class="feat-decisions">${d.featPlan.notes[feature.id].map(note=>`<li>${escape(note)}</li>`).join('')}</ul>`:''}${d.choices.filter(c=>c.featureId===feature.id).map(c=>`<p><strong>${escape(c.label)}</strong>: ${c.selected.map(id=>escape(c.options.find(o=>o.id===id)?.name || '')).join(', ') || 'Not chosen yet'}</p>`).join('')}</details>`).join('')}</div>${d.warnings.length?`<details class="source-warning"><summary>${d.warnings.length} choices or rules to check</summary><ul>${d.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul></details>`:''}`,button("Choices & level up","builder")):'';
     byId("pane-features").innerHTML = automatic+renderCollection("features", "Additional features", "Keep extra feats, background rules and custom features within reach.", "features");
   }
 
@@ -747,8 +759,8 @@
         const result=globalThis.CharacterCasting.castSpell(character,values(),Rules.catalog,target.dataset.spellId,optionId);
         character=result.character;commit();render();
         const label=`${result.name}${result.level?' — level '+result.level:' — cantrip'}`;
-        const castingAbility=values().castingAbility;
-        if(globalThis.CharacterCasting.spellInfo(result.entry).simpleAttack && /\bspell attack\b/i.test(result.entry.details.effect || '')) roll(label+' attack; '+result.cost,character.combat.spellAttackOverride ?? proficiency()+State.abilityModifier(values().abilities[castingAbility] ?? 10)+character.combat.spellAttackBonus);
+        const row=character.spells.find(row=>row.id===target.dataset.spellId),castingAbility=row?.castingAbility || values().castingAbility,modifications=globalThis.CharacterFeats?.spellModifiers(character,values(),result.entry) || {attack:0};
+        if(globalThis.CharacterCasting.spellInfo(result.entry).simpleAttack && /\bspell attack\b/i.test(result.entry.details.effect || '')) roll(label+' attack; '+result.cost,(character.combat.spellAttackOverride ?? proficiency()+State.abilityModifier(values().abilities[castingAbility] ?? 10)+character.combat.spellAttackBonus+(values().effects.spellAttack || 0))+modifications.attack);
         else notify(label+' cast. '+result.cost+'. Resolve its effects from the spell rules.');
       }catch(error){notify(error.message);}
     },
@@ -887,7 +899,7 @@
     if(Wizard?.handleChange(target))return;
     if (target.id === "backup-input") { importBackup(target.files[0]); return; }
     if(target.id==='catalog-spell-all') {catalogSpellAll=!!target.checked;catalogLimit=30;renderCatalogResults();return;}
-    if(target.dataset.spellOption!==undefined) {spellCastChoices.set(character.id+':'+target.dataset.spellId,target.value);return;}
+    if(target.dataset.spellOption!==undefined) {spellCastChoices.set(character.id+':'+target.dataset.spellId,target.value);const row=character.spells.find(row=>row.id===target.dataset.spellId),entry=entries.get(row?.entryId),host=target.closest('[data-spell-card]').querySelector('[data-current-upcast]');if(entry && host){const choice=globalThis.CharacterCasting.castOptions(character,values(),entry,row).find(choice=>choice.id===target.value);host.innerHTML=higherLevelRules(entry,choice?.level || 0);}return;}
     if (target.id === "catalog-group" || target.id === "catalog-magic-category") { catalogLimit = 30; renderCatalogResults(); return; }
     if (target.id === "catalog-sort" || target.id === "catalog-level") { catalogPreferences[catalogKind][target.id==='catalog-sort'?'sort':'level']=target.value; catalogLimit=30; renderCatalogResults(); return; }
     if (target.id === "spell-sort" || target.id === "spell-filter") { if(target.id==='spell-sort')spellSort=target.value;else spellFilter=target.value; renderSpells(); return; }

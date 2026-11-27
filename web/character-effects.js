@@ -225,6 +225,7 @@
   const occultMarks = {
     "-5 ft movement speed": {speed: -5},
     "-1 to weapon attack rolls": {weaponAttack: -1},
+    "-1 to spell attack rolls": {spellAttack: -1},
     "-1 to AC": {ac: -1},
     "-1 to physical saves": {saveBonuses: physical(-1)},
     "-1 to mental saves": {saveBonuses: mental(-1)},
@@ -335,7 +336,7 @@
         const specification=benefitOptions(feature),benefits=new Set((character.build.featBenefits?.[feature.entryId] || []).filter(key=>specification?.options.some(([value])=>value===key)).slice(0,specification?.count || 0));
         if(feature.name==='Occult gnosis') {deathSaveDelta--;if(benefits.has('rest-die'))breakdown.push({label:'Feat: Occult gnosis',amount:1});if(benefits.has('occult-slot'))occultExtra++;if(benefits.has('death-bonus'))deathSaveBonus+=2;continue;}
         if(feature.name==='Madness magick') {if(benefits.has('learning-sacrifice'))breakdown.push({label:'Feat: Madness magick sacrifice',amount:2});continue;}
-        if(feature.name==='Mana-refusal') {if(benefits.has('cantrip-sacrifice')){if(benefits.has('defensive-rest')){breakdown.push({label:'Feat: Mana-refusal defensive upgrade',amount:1});deathSaveDelta++;hpDelta-=2;}if(benefits.has('spell-sacrifice'))breakdown.push({label:'Feat: Mana-refusal spell sacrifice',amount:2});}continue;}
+        if(feature.name==='Mana-refusal') {const spec=derived.featPlan?.specs?.[feature.id],values=spec?.values,upgrades=values?.['mana-upgrades'] || [];if(values?.['sacrificed-cantrip']?.length && values?.['sacrificed-upgrades']?.length){if(upgrades.includes('defensive-rest')){breakdown.push({label:'Feat: Mana-refusal defensive upgrade',amount:1});deathSaveDelta++;hpDelta-=2;}if(upgrades.includes('spell-sacrifice') && values['sacrificed-spell']?.length)breakdown.push({label:'Feat: Mana-refusal spell sacrifice',amount:2});}continue;}
         if(feature.name==='Oaths of might') {
           const oath=derived.choices.find(group=>group.featureName==='Oath');
           if(oath?.selected.length && !character.conditions.some(condition=>/broken.*oath|oath.*broken/i.test(condition)))addRule('Feat: '+feature.name,feature.details,0,true);
@@ -355,6 +356,7 @@
     }
     for(const group of derived.choices.filter(group=>group.kind!=='feat')) {
       const siblings=group.optionalSet?derived.choices.filter(other=>other.optionalSet===group.optionalSet):[];
+      if(group.pairComplete===false)continue;
       if(siblings.some(other=>other.selected.length<other.count))continue;
       for(const id of group.selected) {
         const option=group.options.find(option=>option.id===id);

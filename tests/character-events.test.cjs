@@ -56,7 +56,7 @@ function boot(options={}){
    async loadBuilder(){requests.push('builder');return {};},
    async loadSection(key){requests.push(key);if(options.delay)await options.delay(key);const section=sections.find(item=>item.key===key);section.entries=catalog.find(item=>item.key===key).entries;loaded.add(key);return section;}};
  }
- const g=vm.createContext(context);for(const name of ['entry-order.js','magic-categories.js','item-views.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-prerequisites.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
+ const g=vm.createContext(context);for(const name of ['entry-order.js','magic-categories.js','item-views.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-prerequisites.js','character-feats.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
  const q=(selector)=>{const n=document.querySelector(selector);assert(n,'missing control '+selector);return n;};
  const field=p=>q('[data-path="'+p+'"]');const action=(act,extra='')=>q('[data-action="'+act+'"]'+extra);
  function set(n,v,change=true){if(n.type==='checkbox')n.checked=v;else n.value=v;fire(n,'input');if(change)fire(n,'change');}
@@ -438,4 +438,24 @@ test('character controls, backups and concurrent saves (DOM simulation)', {timeo
  recovery.set(recovery.q('#character-name'),'Recovered with changes');recovery.flush();recovery.fire(recovery.context.window,'pagehide');
  recovery.action('export').click();assert.equal(JSON.parse(await recovery.downloads[0].blob.text()).character.name,'Recovered with changes');assert.equal(storage.get(key),damagedBytes);
  console.log('PASS — colliding same-character edits are preserved separately, subsequent edits target the copy, quota failure preserves prior bytes and supports export, partially invalid roster allows navigation/export and preserves original storage bytes.');
+});
+
+
+test('Druid can choose a third cantrip from the level selector, preview the next unchosen option and save it',()=>{
+ storage.clear();const base=boot(),manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8')),metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8')),State=base.context.CharacterState,Rules=base.context.CharacterRules.create(metadata,catalog),Casting=base.context.CharacterCasting;
+ let c=Rules.enable(State.normalizeCharacter({id:'druid-third',level:8}));c.build.classId=metadata.classes.find(cls=>cls.name==='Druid').id;c.build.raceId=metadata.races.find(race=>race.name==='Human').id;
+ const cantrips=Casting.spellSelection(c,Rules.derive(c),catalog).eligible.filter(entry=>Casting.spellInfo(entry).cantrip);assert.ok(cantrips.length>2);c.spells=cantrips.slice(0,2).map((entry,index)=>({id:'starting'+index,entryId:Casting.spellId(entry),name:entry.name,classId:c.build.classId,prepared:true}));c=Rules.reconcile(c);storage.set(key,JSON.stringify({version:1,activeId:c.id,characters:[c]}));const h=boot({metadata});
+ h.action('builder').click();h.q('[data-builder-step="Spells"]').click();assert.ok(h.q('[data-builder-spell-level]').querySelectorAll('option').some(item=>item.value==='0'));
+ h.set(h.q('[data-builder-spell-level]'),'0');assert.equal(h.q('[data-spell-kind="cantrips"]').getAttribute('aria-pressed'),'true');const learn=h.action('builder-learn-spell');assert.equal(learn.getAttribute('disabled'),null);assert.ok(!c.spells.some(row=>row.entryId===learn.dataset.entryId));const picked=learn.dataset.entryId;learn.click();assert.match(h.q('#dialog-body').textContent,/Cantrips.*3 \/ 3/);
+ h.q('[data-builder-step="Review"]').click();h.action('builder-finish').click();assert.ok(saved().characters[0].spells.some(row=>row.entryId===picked));
+ const reopened=boot({metadata});reopened.action('builder').click();reopened.q('[data-builder-step="Spells"]').click();reopened.q('[data-spell-kind="cantrips"]').click();assert.match(reopened.q('#dialog-body').textContent,/3 \/ 3/);reopened.action('builder-cancel').click();
+});
+
+test('equipment catalog and owned-item editor stay compact and edit the correct duplicate item',()=>{
+ storage.clear();const manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8')),metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8')),h=boot({metadata});h.action('new').click();h.q('[data-builder-step="Equipment"]').click();h.set(h.q('[data-builder-item-query]'),'Dagger',false);const preview=h.q('[data-action="builder-preview-item"]');preview.click();h.action('builder-add-item').click();h.action('builder-add-item').click();h.q('[data-equipment-view="inventory"]').click();const rows=h.q('[aria-label="Your equipment"]').querySelectorAll('[data-action="builder-edit-item"]');assert.equal(rows.length,2);rows[0].click();assert.equal(h.q('#dialog-body').querySelectorAll('[data-builder-gear="quantity"]').length,1);h.set(h.q('[data-builder-gear="quantity"]'),4);h.q('[data-builder-step="Review"]').click();h.action('builder-finish').click();assert.deepEqual(saved().characters.find(c=>c.inventory.length===2).inventory.map(row=>row.quantity),[4,1]);
+});
+
+
+test('spell-level improvements follow the selected casting level rather than character level',()=>{
+ storage.clear();const h0=boot(),entry=catalog.find(section=>section.key==='spells').entries.find(entry=>entry.name==='Call order'),c=h0.context.CharacterState.normalizeCharacter({id:'call-order-levels',level:12,spells:[{id:'call',name:entry.name,entryId:JSON.stringify(['spells',entry.group,entry.name]),prepared:true}],spellSlots:[{level:2,current:1,max:1},{level:3,current:1,max:1}]});storage.set(key,JSON.stringify({version:1,activeId:c.id,characters:[c]}));const h=boot();h.q('[data-tab="spells"]').click();const card=h.q('[data-spell-card="call"]');assert.equal(card.querySelector('[data-current-upcast]').textContent,'');h.set(card.querySelector('[data-spell-option]'),'manual:3');assert.match(card.querySelector('[data-current-upcast]').textContent,/3rd spell level/);assert.doesNotMatch(card.querySelector('[data-current-upcast]').textContent,/4th spell level/);
 });

@@ -589,6 +589,69 @@ def _race(entry_id, entry):
             "proficiencies": details.get("proficiencies", []), "notes": _notes(details)}
 
 
+def _level_notes(text):
+    """Keep explicit level-dependent clauses for the active-rule summary."""
+    if not isinstance(text, str):
+        return []
+    notes = []
+    for paragraph in re.split(r"\n\s*\n", text):
+        if not re.search(r"\b(?:at|reaching|every)\b.*?\blevel", paragraph, re.I):
+            continue
+        levels = sorted({int(n) for n in re.findall(r"\b(\d+)(?:st|nd|rd|th)\b", paragraph)})
+        if levels:
+            notes.append({"levels": levels, "text": paragraph.strip()})
+    return notes
+
+
+def _spell_progressions(sections):
+    profiles = []
+    for section in sections:
+        if section["key"] != "spells":
+            continue
+        for entry in section["entries"]:
+            details = entry["details"]
+            if not re.search(r"cantrip|hexes", entry["group"], re.I):
+                continue
+            raw = details.get("upgrades", "")
+            if not isinstance(raw, str) or not raw.strip():
+                continue
+            entry_id = _id("spells", entry["group"], entry["name"])
+            normalized = re.sub(r"(?<!\n)\s+\*\s+", "\n* ", raw)
+            if normalized.lstrip().startswith("*"):
+                normalized = "\n" + normalized.lstrip()
+            prefix = normalized.split("\n* ", 1)[0]
+            chunks = re.split(r"\n\s*\*\s+", normalized)[1:]
+            choices = []
+            if chunks:
+                for index, chunk in enumerate(chunks):
+                    own = chunk.strip()
+                    repeat = 100 if re.search(r"(?:multiple times|repeatable)", own, re.I) else 1
+                    match = re.search(r"(?:taken|be taken) (twice|two|three|\d+)(?: times)?", own, re.I)
+                    if match:
+                        repeat = 2 if match[1].lower() == "twice" else _number(match[1])
+                    if re.search(r"taken again", own, re.I):
+                        repeat = max(repeat, 2)
+                    choices.append({"id": entry_id + ":upgrade:" + str(index), "name": own,
+                                    "details": own, "ownDetails": own, "repeatLimit": repeat})
+            choice_clause = re.search(r"[^.\n]*(?:choose|pick)[^.\n]*upgrade[^.\n]*|[^.\n]*improved in one of two ways[^.\n]*", prefix, re.I)
+            levels = []
+            if choices and choice_clause:
+                levels = sorted({int(n) for n in re.findall(r"\b(\d+)(?:st|nd|rd|th)\b", choice_clause[0])})
+                if not levels and re.search(r"those levels", choice_clause[0], re.I):
+                    levels = sorted({int(n) for n in re.findall(r"\b(\d+)(?:st|nd|rd|th)\b", prefix)})
+            automatic = []
+            for paragraph in re.split(r"(?<=\.)\s+|\n\s*\n", prefix):
+                if re.search(r"(?:choose|pick).*upgrade|improved in one of two ways", paragraph, re.I):
+                    continue
+                schedule = sorted({int(n) for n in re.findall(r"\b(\d+)(?:st|nd|rd|th)\b", paragraph)})
+                if paragraph.strip():
+                    automatic.append({"levels": schedule or [1], "text": paragraph.strip()})
+            profiles.append({"id": entry_id + ":upgrades", "entryId": entry_id, "name": entry["name"],
+                             "kind": "hex" if "hexes" in entry["group"].lower() else "cantrip",
+                             "levels": levels, "options": choices, "automatic": automatic, "source": raw})
+    return profiles
+
+
 def compile_character_rules(sections):
     """Return portable, deterministic metadata using compendium entry identities."""
     result = {"races": [], "classes": [], "archetypes": []}
@@ -630,7 +693,22 @@ def compile_character_rules(sections):
                 for option in group["options"]:
                     if (race["name"], option["name"]) in (("Ginasi", "Distant descendant"), ("Shadowling", "Shadowling descendant")):
                         option["grantsFeat"] = 1
+    result['spellProgressions'] = _spell_progressions(sections)
+    for owner in result['classes'] + result['archetypes'] + result['races']:
+        for feature in owner.get('features', owner.get('traits', [])):
+            feature['levelNotes'] = _level_notes(feature.get('details', '').split('\n* ')[0] if isinstance(feature.get('details'), str) else '')
+            for group in feature.get('choices', []):
+                for option in group['options']:
+                    option['levelNotes'] = _level_notes(option.get('ownDetails', option.get('details', '')))
     _extra_choice_grants(result)
+    for owner in result['classes']:
+        if owner['name'] == 'Occultist':
+            for feature in owner['features']:
+                for group in feature['choices']:
+                    for option in group['options']:
+                        if option['name'] == 'Gain a feat that does not grant an increase to ability scores.':
+                            option['grantsFeat'] = 1
+                            option['featRestriction'] = 'no-ability-increase'
     _casting_modifiers(result)
     return result
 

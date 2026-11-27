@@ -792,3 +792,15 @@ body:has(dialog[open]) { overflow: hidden; }
 .builder-option-preview > button { flex: 0 0 auto; }
 .builder-feat-benefits { margin-top: .8rem; }
 .builder-feat-benefits .check-label { margin-top: .6rem; }
+
+/* Compact equipment and source-specific follow-up choices. */
+.modal:has(.builder-equipment-picker) { width: min(78rem,calc(100% - 1.4rem)); }
+.builder-equipment-picker > h2 { font: 700 1.45rem/1.2 var(--serif); }
+.builder-feat-choices { display: grid; gap: .7rem; margin: .8rem 0 0; min-width: 0; flex: 0 1 auto; }
+.builder-feat-choices select, .builder-feat-choices input { width: 100%; min-width: 0; }
+.builder-option-preview:has(.builder-feat-choices) { max-height: 44rem; overflow: auto; }
+.builder-added { color: var(--green); font-size: .85rem; }
+.spell-progression { margin-block: .5rem; font-size: .84rem; }
+.spell-progression > summary { cursor: pointer; color: var(--green); }
+.spell-progression p { margin-block: .5rem; }
+.feat-decisions { border-left: 2px solid var(--green); padding-left: 1.2rem; }

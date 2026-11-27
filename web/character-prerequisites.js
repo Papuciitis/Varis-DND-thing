@@ -20,7 +20,7 @@
     const casting=derived.casting?.profile;
     const row=casting?.progression.filter(row=>row.level<=level).at(-1);
     const maxSpell=casting?.mode==='leveled'?Math.max(0,...(row?.slots || []).map(slot=>slot.level)):casting?.mode==='full'?character.build?.casting?.maxSlotLevel ?? 0:Math.ceil(level/2);
-    const spells=character.spells.map(saved=>all.find(entry=>entry.section==='spells' && JSON.stringify(['spells',entry.group,entry.name])===saved.entryId)).filter(entry=>entry && (!entry.details?.lvl || Number(entry.details.lvl)<=maxSpell));
+    const spells=character.spells.filter(saved=>!saved.featSource || features.some(feature=>feature.id===saved.featSource) || derived.choices.some(group=>group.level<=level && group.kind!=='feat' && group.selected.some(id=>group.id+':'+id===saved.featSource))).map(saved=>all.find(entry=>entry.section==='spells' && JSON.stringify(['spells',entry.group,entry.name])===saved.entryId)).filter(entry=>entry && (!entry.details?.lvl || Number(entry.details.lvl)<=maxSpell));
     return {character,derived,catalog,level,abilities,features,options,spells,casting,row,
       race:normalize(derived.race?.name || character.ancestry),className:normalize(derived.cls?.name || character.className),
       background:normalize(derived.background?.name || character.background),
@@ -61,7 +61,7 @@
       });
       const result=candidates.some(entry=>{
         const probe={...facts.character,inventory:[{id:'prerequisite-probe',entryId:JSON.stringify(['items',entry.group,entry.name]),name:entry.name,quantity:1,equipped:true}]};
-        const gear=globalThis.CharacterEquipment.derive(probe,facts.catalog,{abilities:facts.abilities,proficiencies:facts.derived.proficiencies,weaponGroups:facts.character.build?.weaponGroups || [],proficiency:facts.derived.proficiency,raceSize:facts.derived.race?.size || 'medium'});
+        const gear=globalThis.CharacterEquipment.derive(probe,facts.catalog,{abilities:facts.abilities,proficiencies:facts.derived.proficiencies,weaponGroups:facts.derived.weaponGroups || facts.character.build?.weaponGroups || [],proficiency:facts.derived.proficiency,raceSize:facts.derived.race?.size || 'medium'});
         return /shield/.test(value)?gear.blockProficient:gear.attacks.some(attack=>attack.trained);
       });
       facts.weaponResults.set(value,result);return result;
@@ -114,7 +114,7 @@
       return known(hasSpell(facts,{traditions:allowedTraditions,cantrips,spells,pattern}));
     }
     if(/^ability to summon|^ability to summon or conjure|^ability to summon or bind/.test(text))return known(facts.spells.some(spell=>/summon|conjure|bind/i.test(spell.name+' '+String(spell.details.effect))) || /summon|conjure|bind/i.test(facts.ruleText));
-    if(text==='upgradeable cantrip')return known(facts.spells.some(spell=>globalThis.CharacterCasting.spellInfo(spell).cantrip && spell.details.upgrades));
+    if(text==='upgradeable cantrip')return known(facts.spells.some(spell=>globalThis.CharacterCasting.spellInfo(spell).cantrip && /\*/.test(String(spell.details.upgrades || ''))));
     if(text==='a damage dealing ability with a rest die cost or a per rest or long rest use count')return known(/damage/i.test(facts.ruleText) && /rest die|rest dice|per rest|per long rest/i.test(facts.ruleText));
     if(text==='ability to create or procure items during rest')return known(facts.facts.has('rest-crafting') || /during a? ?rest/i.test(facts.ruleText) && /create|craft|procure/i.test(facts.ruleText));
     if(text==='died' || text==='has died')return known(facts.facts.has('has-died'));

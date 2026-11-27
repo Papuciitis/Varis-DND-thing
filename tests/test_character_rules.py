@@ -25,6 +25,16 @@ class CharacterRulesTests(unittest.TestCase):
     def entry(self, kind, name):
         return next(item for item in self.catalog()[kind] if item["name"] == name)
 
+    def test_cantrip_progressions_separate_automatic_rules_and_upgrade_choices(self):
+        profiles = {profile["name"]: profile for profile in self.catalog()["spellProgressions"]}
+        self.assertEqual(profiles["Soulfire"]["levels"], [4, 7, 10])
+        self.assertEqual(len(profiles["Soulfire"]["options"]), 4)
+        self.assertEqual(profiles["Condemn"]["levels"], [5, 9])
+        self.assertEqual(profiles["Condemn"]["automatic"][0]["levels"], [4, 7, 10])
+        self.assertEqual(profiles["Bolster"]["options"], [])
+        self.assertEqual([rule["levels"] for rule in profiles["Bolster"]["automatic"]], [[5], [9]])
+        self.assertFalse(any(option["name"].startswith("At ") for profile in profiles.values() for option in profile["options"]))
+
     def test_catalog_keeps_all_source_identities_and_parent_associations(self):
         catalog = self.catalog()
         expected = {"races": [], "classes": [], "archetypes": []}

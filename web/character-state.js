@@ -190,6 +190,9 @@
         if(!['has-died','righteous-slaying','rest-crafting'].includes(value)) throw new Error('Unknown story qualification.');
         return value;
       });
+      build.choiceLocks=record(build.choiceLocks,'Permanent rule choices');for(const id of Object.keys(build.choiceLocks)){build.choiceLocks[id]=record(build.choiceLocks[id],'Permanent choice');for(const key of Object.keys(build.choiceLocks[id]))build.choiceLocks[id][key]=text(build.choiceLocks[id][key],'Permanent choice value');}
+      build.featChoices=record(build.featChoices,'Feat choices');
+      for(const id of Object.keys(build.featChoices)){build.featChoices[id]=record(build.featChoices[id],'Feat decisions');for(const key of Object.keys(build.featChoices[id]))build.featChoices[id][key]=array(build.featChoices[id][key],'Feat decision values').map(value=>text(value,'Feat decision'));}
       build.featBenefits=record(build.featBenefits,'Feat benefits');
       const benefitKeys=['spell','occult-slot','death-bonus','rest-die','learning-sacrifice','cantrip-sacrifice','defensive-rest','spell-sacrifice'];
       for(const id of Object.keys(build.featBenefits))build.featBenefits[id]=array(build.featBenefits[id],'Feat benefit choices').map(value=>{if(!benefitKeys.includes(value))throw new Error('Unknown feat benefit.');return value;});
