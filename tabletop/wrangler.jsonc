@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vara-tabletop-prototype",
+  "main": "server/worker.mjs",
+  "compatibility_date": "2026-11-27",
+  "workers_dev": true,
+  "send_metrics": false,
+  "assets": {
+    "directory": "../site",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "ROOMS", "class_name": "TabletopRoom" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["TabletopRoom"] }],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://papuciitis.github.io,http://localhost:8787,http://127.0.0.1:8787"
+  }
+}

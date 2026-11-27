@@ -1,0 +1,17 @@
+{
+  "name": "vara-tabletop-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/local.mjs",
+    "test": "node --test ../tests/tabletop-*.test.mjs",
+    "test:browser": "node qa/browser-qa.cjs",
+    "dev:cloudflare": "wrangler dev",
+    "check:cloudflare": "wrangler deploy --dry-run --outdir .wrangler/check",
+    "deploy:prototype": "wrangler deploy"
+  },
+  "dependencies": { "ws": "^8.18.3" },
+  "devDependencies": { "wrangler": "^4.0.0", "playwright": "^1.56.0" },
+  "engines": { "node": ">=22" }
+}

@@ -1,5 +1,9 @@
 # Varis DnD compendium and character sheet
 
+This feature branch also contains an isolated [tabletop prototype](docs/tabletop-prototype.md).
+Open `Open-Vara-Tabletop.cmd` to try it locally. It is not linked from the main
+compendium, and the prototype workflow does not deploy to GitHub Pages.
+
 A rules reference and editable character sheet for the Varis DnD table. One YAML catalog builds both a hosted website that loads rules by section and portable pages that work directly from disk.
 
 ## Open locally on Windows
