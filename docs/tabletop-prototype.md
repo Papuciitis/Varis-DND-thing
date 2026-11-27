@@ -44,6 +44,12 @@ Double-click `Open-Vara-Tabletop.cmd` **inside this prototype checkout**. The
 launcher builds the site, starts the preview in the background, and opens
 `http://127.0.0.1:8787/tabletop/`. It does not publish anything.
 
+The launcher also locates the installed prototype under
+`Documents/Vara-DnD/.task-tools/tabletop-prototype` when copied to Downloads.
+For a custom checkout location, set `VARA_TABLETOP_PROJECT` to its folder.
+`Open-Vara-Tabletop.cmd --locate` prints the resolved startup script without
+starting a server. Startup failures keep the window open and preserve the exit code.
+
 Use a regular browser window as the DM and a private/incognito window as a player.
 Create a game, choose **Invite players**, and open the invitation in the private
 window. Enter a nickname to join. Both windows must be on this computer for the
