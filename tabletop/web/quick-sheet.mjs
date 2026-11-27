@@ -11,6 +11,8 @@ export class QuickSheet {
     this.characterButton=button('Link character','sidebar-link-character',()=>onLink('character'));
     this.monsterButton=button('Link monster','sidebar-link-monster',()=>onLink('monster'));
     links.append(this.characterButton,this.monsterButton);
+    this.attacks=el('section','sheet-attacks');this.attacks.id='sheet-attacks';this.attacks.setAttribute('aria-label','Attacks');
+    this.attacks.append(el('h3','','Attacks'));this.attackList=el('div','sheet-attack-list');this.attacks.append(this.attackList);
     this.linkerHost=el('div');this.reading=el('details','quick-sheet');this.reading.id='quick-sheet';this.reading.open=true;
     this.reading.append(el('summary','','Abilities & actions'));this.body=el('div','quick-sheet-body');
     this.utilities=el('div','quick-sheet-utilities');
@@ -21,7 +23,7 @@ export class QuickSheet {
     this.stats=el('div','sheet-stat-strip');this.abilities=el('div','sheet-abilities');this.empty=el('p','field-note');
     this.notes=el('details','sheet-notes');this.notes.append(el('summary','','Notes'));this.notesText=el('p');this.notes.append(this.notesText);
     this.body.append(this.empty,this.stats,this.abilities,this.utilities,this.searchLabel,this.ruleList,this.notes);
-    this.reading.append(this.body);this.element.append(this.status,links,this.linkerHost,this.reading);
+    this.reading.append(this.body);this.element.append(this.status,links,this.linkerHost,this.attacks,this.reading);
   }
   render(token,connected) {
     this.element.hidden=!token;if(!token)return;
@@ -38,10 +40,20 @@ export class QuickSheet {
     if(signature===this.signature)return;
     const changed=this.token?.id!==token.id;this.token=token;this.signature=signature;
     if(changed)this.search.value='';
+    this.attacks.hidden=!visible || !(token.statblock?.type==='character' || token.statblock?.attacks?.length);
+    this.attackList.replaceChildren();
     for(const node of [this.stats,this.abilities,this.utilities,this.searchLabel,this.ruleList,this.notes])node.hidden=!visible;
     this.empty.hidden=visible && !!token.statblock;
     this.empty.textContent=!visible?'Only the owning player can grant access to these stats.':'Link a sheet to load abilities, actions and spells, or enter a custom statblock.';
     if(!visible){this.stats.replaceChildren();this.abilities.replaceChildren();this.ruleList.replaceChildren();this.notesText.textContent='';this.rules=[];return;}
+    this.attackList.replaceChildren(...(token.statblock?.attacks || []).map(attack=>{
+      const card=el('article','sheet-attack'),heading=el('div','sheet-attack-heading');
+      heading.append(el('strong','',attack.name),el('span','sheet-attack-bonus',(attack.bonus>=0?'+':'')+attack.bonus+' to hit'));
+      const values=el('div','sheet-attack-values');values.append(el('span','',attack.damage || 'Damage not set'));
+      if(attack.blockDC!==null && attack.blockDC!==undefined)values.append(el('span','sheet-attack-dc','Block DC '+attack.blockDC));
+      card.append(heading,values);if(attack.notes)card.append(el('p','sheet-attack-notes',attack.notes));return card;
+    }));
+    if(!this.attackList.childElementCount)this.attackList.append(el('p','field-note','Add attacks or equip a weapon in your character sheet to see them here.'));
     const stats=[['HP',token.hp+' / '+token.maxHp],['AC',token.resources.armorClass?.current ?? '-'],['Block',token.resources.block?.current ?? 0]];
     this.stats.replaceChildren(...stats.map(([label,value])=>{const item=el('div');item.append(el('span','',label),el('strong','',value));return item;}));
     this.abilities.replaceChildren(...abilities.map(key=>{

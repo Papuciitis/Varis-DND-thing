@@ -1,4 +1,4 @@
-import {readings,distanceLabel} from './resources.mjs';
+import {readings,distanceLabel,tokenRadius} from './resources.mjs';
 import {templateGeometry,templateLabel,templateContains} from './templates.mjs';
 
 export class MapBoard {
@@ -73,8 +73,9 @@ export class MapBoard {
   canMove(t) {return this.enabled && (this.view.self.role==='dm' || t.ownerId===this.view.self.id);}
   hit(p) {
     return [...this.view.scene.tokens].reverse().find(token=>{
-      if(Math.hypot(token.x-p.x,token.y-p.y)<this.view.scene.gridSize*token.size*.46)return true;
-      const bars=readings(token),z=this.camera.z,r=this.view.scene.gridSize*.35*token.size;
+      const r=tokenRadius(this.view.scene,token);
+      if(Math.hypot(token.x-p.x,token.y-p.y)<r*1.3)return true;
+      const bars=readings(token),z=this.camera.z;
       const halfWidth=(token.id===this.selected?66:58)/z,top=token.y+r+6/z;
       return bars.length && Math.abs(p.x-token.x)<=halfWidth && p.y>=top && p.y<=top+bars.length*21/z;
     });
@@ -158,7 +159,7 @@ export class MapBoard {
     ctx.strokeStyle='#8e977450';ctx.lineWidth=2/c.z;ctx.strokeRect(0,0,s.width,s.height);
     for(const token of s.tokens) {
       const t=this.drag?.kind==='token' && this.drag.id===token.id ? {...token,x:this.drag.x,y:this.drag.y}:token;
-      const r=s.gridSize*.35*t.size;
+      const r=tokenRadius(s,t);
       ctx.save();ctx.globalAlpha=t.hidden ? .55 : 1;
       if(t.id===s.combat.activeId || t.id===this.selected){ctx.beginPath();ctx.arc(t.x,t.y,r+7/c.z,0,Math.PI*2);ctx.strokeStyle=t.id===this.selected?'#e1c47e':'#9abf8c';ctx.lineWidth=2/c.z;ctx.stroke();}
       ctx.shadowColor='#07160c99';ctx.shadowBlur=10/c.z;ctx.shadowOffsetY=3/c.z;
@@ -185,7 +186,7 @@ export class MapBoard {
     for(const original of s.tokens){
       const token=this.drag?.kind==='token' && this.drag.id===original.id?{...original,x:this.drag.x,y:this.drag.y}:original;
       const bars=readings(token);if(!bars.length)continue;
-      const x=c.x+token.x*c.z,r=s.gridSize*.35*token.size*c.z,y=c.y+token.y*c.z+r+6;
+      const x=c.x+token.x*c.z,r=tokenRadius(s,token)*c.z,y=c.y+token.y*c.z+r+6;
       const width=token.id===this.selected?132:116,left=x-width/2;
       ctx.save();ctx.globalAlpha=token.hidden ? .6 : 1;
       ctx.strokeStyle='#d4c18c';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y-6);ctx.lineTo(x,y);ctx.stroke();

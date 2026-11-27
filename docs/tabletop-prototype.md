@@ -71,8 +71,14 @@ attributes. The returning player can relink their saved character.
 Every new guest receives a sample hero token. The DM can reassign any token in
 **Controlled by**, add creatures, and toggle **Hidden from players**. The DM
 edits stats for unassigned tokens; players edit their assigned characters/summons.
-Use the eye brushes to reveal/conceal map cells. **Start turns** follows token-list
-order; this is a manual turn tracker, not automated initiative calculation.
+Use the eye brushes to reveal/conceal map cells. In **Initiative**, enter a physical
+dice total in **Total**, or check **Bonus** and click **Roll d20**. Linked characters
+prefill their initiative bonus; the DM does not receive an unshared player bonus.
+Players change their own tokens; the DM can enter totals for any participant.
+**Start turns** uses the entered totals, highest first, without rolling dice.
+Unrolled tokens stay last; ties keep their existing order. Editing or rerolling
+a total immediately reorders the list while keeping the current creature's turn
+and round. Clear a total to mark it unrolled. Values remain until edited or cleared.
 The ruler supports **Feet**, **Meters** and **Squares**. The default map scale
 is 5 ft per square; the DM can change it under **Map & visibility**. Meter/feet
 conversions use 1 ft = 0.3048 m, rather than treating 5 ft as exactly 1.5 m.
@@ -112,6 +118,19 @@ If no characters appear, use **Create / open character sheet** in the picker.
 Create or import a character on that page, then return to the map; the saved
 character list refreshes automatically. Saves on another website or in a private
 browser window need to be imported into this browser's tabletop copy first.
+
+Character **Attacks** appear as visible sidebar cards with attack bonus, damage,
+range/reach notes and Block DC when supplied by an equipped weapon. Equipped
+weapon attacks and manually added sheet attacks update from the linked sheet.
+These cards stay visible when **Abilities & actions** is minimized, and follow
+the same private/shared access as the rest of the character.
+
+Linked sheets also set token size automatically. Character size uses an explicit
+sheet size when present, otherwise its ancestry. Monster size comes from its
+statblock. Tiny tokens use half a square; Small and Medium use one square;
+Large, Huge and Gargantuan use two, three and four squares respectively. Small
+tokens draw slightly smaller than Medium within the same square. Size is public
+on the map; it does not grant access to the underlying private stats.
 
 The sidebar's **Abilities & actions** panel shows a compact resource strip,
 ability scores, searchable expandable rules/actions and notes. Click its heading

@@ -32,6 +32,12 @@ function prose(value,depth=0) {
     .map(([key,item])=>key+': '+prose(item,depth+1)).join('\n');
   return '';
 }
+export function sizeStats(value) {
+  const name=String(value || '').match(/\b(tiny|small|medium|large|huge|gargantuan)\b/i)?.[1]?.toLowerCase() || 'medium';
+  return {sizeCategory:name[0].toUpperCase()+name.slice(1),size:{tiny:.5,small:1,medium:1,large:2,huge:3,gargantuan:4}[name]};
+}
+export const tokenRadius=(scene,token)=>scene.gridSize*token.size*(token.sizeCategory==='Small'?.28:.35);
+const signed=(value,limit=999)=>Math.max(-limit,Math.min(limit,Math.round(Number(value)||0)));
 export function characterStats(character,derived={},catalog=[]) {
   const hp=character.resources?.hp || {current:20,max:20},resources={};
   for (const key of ['tempHP','arcaneHealth','block','tempBlock']) {
@@ -49,8 +55,16 @@ export function characterStats(character,derived={},catalog=[]) {
       const body=prose(row.description || row.details) || prose(references.get(row.entryId)?.details);
       return row.name+': '+[body,text(row.notes)].filter(Boolean).join('\n').replace(/\n\s*\n/g,'\n');
     }).join('\n\n').slice(0,12000);
+  const attacks=[...(derived.attacks || []),...(character.attacks || [])].slice(0,64).map(attack=>({
+    name:text(attack.name).slice(0,80) || 'Attack',bonus:signed(attack.bonus),damage:text(attack.damage).slice(0,240),
+    blockDC:attack.blockDC==null?null:count(attack.blockDC),notes:text(attack.notes).slice(0,800)
+  }));
+  const dex=derived.abilities?.dex ?? character.abilities?.dex ?? 10;
   return {hp:Math.min(count(hp.current),Math.max(1,count(hp.max))),maxHp:Math.max(1,count(hp.max)),resources,
-    statblock:{type:'character',sourceId:character.id || '',abilities:derived.abilities || character.abilities || {},notes:text(character.notes).slice(0,4000),rules}};
+    ...sizeStats(character.size || character.combat?.size || derived.race?.size),
+    statblock:{type:'character',sourceId:character.id || '',abilities:derived.abilities || character.abilities || {},
+      attacks,initiativeBonus:signed(derived.initiative ?? Math.floor((dex-10)/2)+(Number(character.combat?.initiativeBonus)||0),99),
+      notes:text(character.notes).slice(0,4000),rules}};
 }
 export function monsterStats(entry,token=null) {
   const details=entry.details || entry,max=leadingNumber(details.hp);
@@ -64,8 +78,9 @@ export function monsterStats(entry,token=null) {
   for (const key of ABILITIES) {const value=leadingNumber(details.abilities?.[key]);if(value!==null)abilities[key]=value;}
   const rules=['traits','actions','bonus_actions','reactions','legendary_actions','lair_actions']
     .flatMap(key=>(Array.isArray(details[key])?details[key]:[]).map(row=>row.name+': '+text(row.description).replace(/\n\s*\n/g,'\n'))).join('\n\n').slice(0,12000);
-  return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,resources,
-    statblock:{type:'monster',sourceId:monsterId(entry),abilities,notes:text(details.description || details.desc || details.meta).slice(0,4000),rules}};
+  return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,resources,...sizeStats(details.size || details.meta),
+    statblock:{type:'monster',sourceId:monsterId(entry),abilities,initiativeBonus:signed(details.initiative ?? Math.floor(((abilities.dex ?? 10)-10)/2),99),
+      attacks:[],notes:text(details.description || details.desc || details.meta).slice(0,4000),rules}};
 }
 export const monsterId=entry=>entry._monsterEditorKey || (entry.details?.id?'id:'+entry.details.id:JSON.stringify([entry.source || '',entry.group || '',entry.name]));
 

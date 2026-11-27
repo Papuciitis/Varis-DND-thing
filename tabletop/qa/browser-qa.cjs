@@ -130,8 +130,10 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await sheet.locator('[data-path="resources.hp.current"]').waitFor();
     const characterId=await sheet.evaluate(()=>{
       const saved=JSON.parse(localStorage.getItem('vara.character-sheets.v1')),character=saved.characters.find(c=>c.id===saved.activeId);
-      Object.assign(character,{name:'Linked Scout',notes:'PRIVATE CHARACTER NOTE',abilities:{str:12,dex:16,con:14,int:10,wis:10,cha:10},
-        combat:{armorClass:15},features:[{id:'guardian-stance',name:'Guardian stance',notes:'Protect an ally standing beside you.'}],
+      Object.assign(character,{name:'Linked Scout',size:'Small',notes:'PRIVATE CHARACTER NOTE',abilities:{str:12,dex:16,con:14,int:10,wis:10,cha:10},
+        combat:{armorClass:15,initiativeBonus:1},features:[{id:'guardian-stance',name:'Guardian stance',notes:'Protect an ally standing beside you.'}],
+        attacks:[{id:'bow',name:'Scout longbow',bonus:7,damage:'1d8 + 3 piercing',notes:'Range 150/600 ft.'},
+          {id:'blade',name:'Private blade',bonus:6,damage:'1d6 + 3 slashing',notes:'Reach 5 ft.'}],
         resources:{hp:{current:17,max:30},tempHP:{current:5,max:10},arcaneHealth:{current:9,max:18}}});
       localStorage.setItem('vara.character-sheets.v1',JSON.stringify(saved));return character.id;
     });
@@ -140,12 +142,20 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.getByRole('button',{name:'Use this character',exact:true}).click();
     await player.locator('#toast').filter({hasText:'Character linked'}).waitFor();
     await player.locator('#sheet-link-status').filter({hasText:'Character linked'}).waitFor();
+    await player.locator('#sheet-attacks').getByText('Scout longbow',{exact:true}).waitFor();
+    assert.equal(await player.locator('.sheet-attack').count(),2);
+    await player.locator('#sheet-attacks').getByText('+7 to hit',{exact:true}).waitFor();
+    await player.locator('#selected-position').filter({hasText:'Small (1 square)'}).waitFor();
+    assert.equal(await player.getByLabel('Initiative bonus for Linked Scout',{exact:true}).inputValue(),'4');
+    assert.equal(await dm.getByLabel('Initiative bonus for Linked Scout',{exact:true}).inputValue(),'0');
     await player.locator('#sheet-rules summary').filter({hasText:'Guardian stance'}).click();
     await player.locator('#sheet-rules').getByText('Protect an ally standing beside you.',{exact:true}).waitFor();
     await player.locator('#quick-sheet > summary').click();
     assert.equal(await player.locator('.quick-sheet-body').isVisible(),false);
+    assert(await player.locator('#sheet-attacks').getByText('Scout longbow',{exact:true}).isVisible());
     await player.locator('#quick-sheet > summary').click();
     assert(await player.locator('.quick-sheet-body').isVisible());
+    await player.locator('#inspector').evaluate(el=>el.scrollTop=0);
     await player.screenshot({path:path.join(output,'tabletop-quick-sheet.png')});
     await player.locator('#token-dock').getByRole('button',{name:'Statblock',exact:true}).click();
     assert.equal(await player.locator('#statblock-hp').inputValue(),'17');
@@ -173,8 +183,20 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     assert(!JSON.stringify(await service.view(dmAccess)).includes('PRIVATE CHARACTER NOTE'));
     await player.locator('#share-token-stats').check();
     await dm.locator('#sheet-rules summary').filter({hasText:'Guardian stance'}).waitFor();
+    await dm.locator('#sheet-attacks').getByText('Private blade',{exact:true}).waitFor();
     await player.locator('#share-token-stats').uncheck();
     await dm.waitForFunction(()=>!document.querySelector('#sheet-rules').textContent.includes('Guardian stance'));
+    assert.equal(await dm.locator('#sheet-attacks').isVisible(),false);
+    assert(!(await dm.locator('#sheet-attacks').textContent()).includes('Private blade'));
+    // Source edits refresh visible attacks and public token size in both views.
+    await sheet.evaluate(()=>{
+      const saved=JSON.parse(localStorage.getItem('vara.character-sheets.v1')),character=saved.characters.find(c=>c.name==='Linked Scout');
+      character.size='Tiny';character.attacks[0].bonus=9;
+      localStorage.setItem('vara.character-sheets.v1',JSON.stringify(saved));
+    });
+    await player.locator('#sheet-attacks').getByText('+9 to hit',{exact:true}).waitFor();
+    await dm.locator('#selected-position').filter({hasText:'Tiny (0.5 squares)'}).waitFor();
+    assert.equal((await service.read()).scene.tokens.find(t=>t.id===token.id).size,.5);
     await sheet.close();
 
     // Ruler unit options and spell shapes work in the actual Canvas interface.
@@ -250,7 +272,32 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.locator('#quick-edit-statblock').click();
     await dm.locator('#statblock-dialog .dialog-heading').getByRole('button',{name:'Close',exact:true}).click();
     await dm.getByRole('button',{name:'Select and move',exact:true}).click();
+    // Initiative uses typed totals or a deliberate browser roll, never Start.
+    const initiativeRow=(page,tokenId)=>page.locator('[data-initiative-id="'+tokenId+'"]');
+    const playerInitiative=initiativeRow(player,token.id),dmInitiative=initiativeRow(dm,guardian.id);
+    assert.equal(await playerInitiative.locator('input').first().inputValue(),'');
+    await playerInitiative.getByLabel('Initiative total for Linked Scout',{exact:true}).fill('18');
+    await playerInitiative.getByLabel('Initiative total for Linked Scout',{exact:true}).blur();
+    await dm.waitForFunction(id=>document.querySelector('[data-initiative-id="'+id+'"] input').value==='18',token.id);
+    await dmInitiative.locator('input').first().fill('12');await dmInitiative.locator('input').first().blur();
+    const logsBeforeStart=(await service.read()).log.length;
     await dm.locator('#start-combat').click();await dm.locator('#round-label').filter({hasText:'Round 1'}).waitFor();
+    assert.equal((await service.read()).log.length,logsBeforeStart);
+    assert.equal((await service.view(dmAccess)).scene.combat.activeId,token.id);
+    await playerInitiative.getByLabel('Initiative total for Linked Scout',{exact:true}).fill('7');
+    await playerInitiative.getByLabel('Initiative total for Linked Scout',{exact:true}).blur();
+    await dm.waitForFunction(id=>document.querySelector('#initiative-list').firstElementChild.dataset.initiativeId===id,guardian.id);
+    assert.equal((await service.view(dmAccess)).scene.combat.activeId,token.id);
+    await playerInitiative.getByLabel('Initiative bonus for Linked Scout',{exact:true}).fill('3');
+    await playerInitiative.getByRole('button',{name:'Roll initiative for Linked Scout',exact:true}).click();
+    await dm.locator('#game-log').getByText(/Linked Scout rolled initiative:/).waitFor();
+    const initiative=(await service.read()).scene.tokens.find(t=>t.id===token.id).initiative;
+    assert(initiative>=4 && initiative<=23);
+    assert.equal(await playerInitiative.locator('input').first().inputValue(),String(initiative));
+    assert.equal(await initiativeRow(player,guardian.id).locator('button').count(),1);
+    assert.equal(await initiativeRow(player,guardian.id).locator('button').isVisible(),false);
+    await dm.locator('.initiative-section').evaluate(el=>el.scrollIntoView({block:'start'}));
+    await dm.screenshot({path:path.join(output,'tabletop-initiative.png')});
     await dm.locator('#inspector').evaluate(el=>el.scrollTop=0);
     await dm.screenshot({path:path.join(output,'tabletop-dm.png')});
     await player.screenshot({path:path.join(output,'tabletop-player.png')});
@@ -307,7 +354,8 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       privatePlayerStats:true,optionalBars:true,revocableReadOnlySharing:true,linkedCharacterRoundTrip:true,linkedMonsterStats:true,rightClickMenu:true,
       rulerUnits:['ft','m','squares'],sharedSpellAreas:['circle','cone','line','square'],mapUpload:true,campaignBackup:true,downloadStatus,campaignRestore:true,
       sidebarLinking:true,savedCharacterDiscovery:true,exactCharacterLink:true,compactSheet:true,compactSheetPrivacy:true,
-      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:9,pageErrors:errors};
+      visibleAttackCards:true,attackSourceRefresh:true,attackPrivacy:true,linkedTokenSizes:true,manualInitiative:true,explicitInitiativeRoll:true,initiativeTurnPreservation:true,
+      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:10,pageErrors:errors};
     await fsp.writeFile(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
   }catch(error){
     for(const [i,page] of browser.contexts().flatMap(c=>c.pages()).entries()){

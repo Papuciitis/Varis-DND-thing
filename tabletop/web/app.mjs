@@ -32,6 +32,7 @@ function status(state) {
   for(const id of ['add-token','mobile-add-token','apply-grid','reveal-all','conceal-all','start-combat','next-turn','end-combat','delete-token'])$(id).disabled=!connected;
   $('token-fields').disabled=!connected || !(view?.self.role==='dm' || view?.scene.tokens.find(token=>token.id===selected)?.ownerId===view?.self.id);
   tokenTools?.setConnected(connected);
+  if(view)renderCombat();
   saveStatus();
 }
 const client=new GameClient({onState:receive,onStatus:status});
@@ -130,6 +131,7 @@ function renderInspector() {
   $('selected-name').textContent=token?.name || 'Choose a token';
   $('selected-position').textContent=token?`Column ${Math.floor(token.x/view.scene.gridSize)+1} · Row ${Math.floor(token.y/view.scene.gridSize)+1}`:'Select one on the map or in the list.';
   $('selected-avatar').textContent=token?.name.slice(0,1).toUpperCase() || 'V';$('selected-avatar').style.backgroundColor=token?.color || '#355d48';
+  if(token)$('selected-position').textContent+=' · '+token.sizeCategory+' ('+token.size+' '+(token.size===1?'square':'squares')+')';
   $('token-form').hidden=!token || !(dm || token.ownerId===view.self.id);
   $('player-token-note').hidden=dm || !token;
   $('player-token-note').textContent=token?(token.ownerId===view.self.id?`Your token · ${token.hp ?? '?'} / ${token.maxHp ?? '?'} HP. Drag it on the map, or focus the map and use arrow keys.`:'This token is controlled by the DM or another player.'):'';
@@ -148,15 +150,50 @@ function renderInspector() {
   $('player-token-note').hidden=true;
   inspectorToken=token.id;$('token-fields').disabled=!connected || !(dm || token.ownerId===view.self.id);
 }
+const combatRows=new Map();
 function renderCombat() {
   const combat=view.scene.combat;
   $('round-label').textContent=combat.active?'Round '+combat.round:'Exploring';
   $('start-combat').hidden=combat.active;$('next-turn').hidden=!combat.active;$('end-combat').hidden=!combat.active;
-  const entries=combat.active?combat.order.map(id=>view.scene.tokens.find(t=>t.id===id)).filter(Boolean):[];
-  $('initiative-list').replaceChildren(...(entries.length?entries.map(t=>{const el=element('div','initiative-token'+(t.id===combat.activeId?' active':''));el.append(avatar(t),element('span','',t.name));if(t.id===combat.activeId)el.append(element('span','','Current'));return el;}):[element('p','empty-note','Track turns here when an encounter begins.')]));
+  const tokens=view.scene.tokens.filter(t=>!t.hidden),byId=new Map(tokens.map(t=>[t.id,t]));
+  const entries=[...combat.order.map(id=>byId.get(id)).filter(Boolean),...tokens.filter(t=>!combat.order.includes(t.id))];
+  const list=$('initiative-list'),ids=new Set(entries.map(t=>t.id));
+  for(const [id,row] of combatRows)if(!ids.has(id)){row.node.remove();combatRows.delete(id);}
+  list.querySelector('.empty-note')?.remove();
+  entries.forEach((t,index)=>{
+    let row=combatRows.get(t.id);
+    if(!row){
+      const node=element('div','initiative-token'),heading=element('div','initiative-heading'),name=element('span','initiative-name');
+      const badge=element('span','initiative-current','Current'),score=element('strong','initiative-score');
+      const controls=element('div','initiative-controls'),total=element('input'),bonus=element('input'),roll=element('button','button secondary','Roll d20');
+      node.dataset.initiativeId=t.id;total.type=bonus.type='number';total.min=-999;total.max=999;bonus.min=-99;bonus.max=99;
+      total.placeholder='—';total.step=bonus.step='1';
+      for(const [title,input] of [['Total',total],['Bonus',bonus]]){const label=element('label','',title);label.append(input);controls.append(label);}
+      roll.type='button';controls.append(roll);heading.append(avatar(t),name,score,badge);node.append(heading,controls);
+      total.onchange=()=>{if(total.checkValidity())command({type:'combat.set',id:t.id,value:total.value===''?null:Number(total.value)});else total.reportValidity();};
+      total.onkeydown=event=>{if(event.key==='Enter'){event.preventDefault();total.blur();}};
+      bonus.oninput=()=>{bonus.dataset.custom='true';};
+      roll.onclick=()=>{if(bonus.reportValidity())command({type:'combat.roll',id:t.id,modifier:Number(bonus.value)||0});};
+      row={node,heading,name,badge,score,controls,total,bonus,roll};combatRows.set(t.id,row);
+    }
+    const editable=view.self.role==='dm' || t.ownerId===view.self.id;
+    row.node.classList.toggle('active',combat.active && t.id===combat.activeId);row.name.textContent=t.name;
+    const icon=row.heading.querySelector('.token-avatar');icon.className='token-avatar '+t.kind;icon.textContent=t.name.slice(0,1).toUpperCase();icon.style.backgroundColor=t.color;
+    row.badge.hidden=!combat.active || t.id!==combat.activeId;row.controls.hidden=!editable;row.score.hidden=editable;
+    row.score.textContent=t.initiative ?? '—';row.score.title=t.initiative===null?'Waiting for an initiative total':'Initiative total';
+    row.total.setAttribute('aria-label','Initiative total for '+t.name);row.bonus.setAttribute('aria-label','Initiative bonus for '+t.name);
+    row.roll.setAttribute('aria-label','Roll initiative for '+t.name);
+    if(document.activeElement!==row.total)row.total.value=t.initiative ?? '';
+    const defaultBonus=String(t.statblock?.initiativeBonus ?? 0);
+    if(row.bonus.dataset.default!==defaultBonus){delete row.bonus.dataset.custom;row.bonus.dataset.default=defaultBonus;}
+    if(!row.bonus.dataset.custom && document.activeElement!==row.bonus)row.bonus.value=defaultBonus;
+    row.total.disabled=row.bonus.disabled=row.roll.disabled=!connected;
+    if(list.children[index]!==row.node)list.insertBefore(row.node,list.children[index] || null);
+  });
+  if(!entries.length)list.append(element('p','empty-note','Add a token to prepare initiative.'));
 }
 function renderLog() {
-  const signature=view.log.at(-1)?.id || '';if($('game-log').dataset.last===signature)return;$('game-log').dataset.last=signature;
+  const signature=JSON.stringify(view.log.slice(-15));if($('game-log').dataset.last===signature)return;$('game-log').dataset.last=signature;
   $('game-log').replaceChildren(...view.log.slice(-15).reverse().map(entry=>{
     const el=element('div','log-entry');
     if(entry.kind==='roll'){const heading=element('div','roll-heading');heading.append(element('strong','',entry.name+' · '+entry.formula),element('span','roll-total',entry.total));el.append(heading,element('div','roll-detail','['+entry.rolls.join(', ')+']'+(entry.modifier?' '+(entry.modifier>0?'+':'')+entry.modifier:'')));}

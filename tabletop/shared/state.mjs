@@ -82,8 +82,15 @@ function statblockFrom(raw) {
     if(value!==undefined && typeof value!=='string')throw new RoomError('Statblock text must be text.');
     return (value || '').replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g,'').slice(0,max);
   };
+  if(raw.attacks!==undefined && (!Array.isArray(raw.attacks) || raw.attacks.length>64))throw new RoomError('Use up to 64 attacks per sheet.');
+  const attacks=(raw.attacks || []).map(attack=>{
+    if(!attack || typeof attack!=='object')throw new RoomError('Invalid attack.');
+    return {name:label(attack.name,'Attack',80),bonus:whole(attack.bonus ?? 0,-999,999,'Attack bonus'),
+      damage:prose(attack.damage,240),notes:prose(attack.notes,800),
+      blockDC:attack.blockDC==null?null:whole(attack.blockDC,0,999999,'Block DC')};
+  });
   return {type:['character','monster','custom'].includes(raw.type)?raw.type:'custom',
-    sourceId:label(raw.sourceId,'',512),abilities,
+    sourceId:label(raw.sourceId,'',512),abilities,attacks,initiativeBonus:whole(raw.initiativeBonus ?? 0,-99,99,'Initiative bonus'),
     notes:prose(raw.notes,4000),rules:prose(raw.rules,12000)};
 }
 export const canEditStats = (token,actor) => token.ownerId ? token.ownerId===actor.id : actor.role==='dm';
@@ -108,12 +115,15 @@ export function tokenFrom(raw,scene) {
   const kind = ['hero','monster','npc','summon'].includes(raw.kind) ? raw.kind : 'hero';
   const barsCustomized=raw.barsCustomized===undefined ? !!raw.bars && !legacyBars(raw.bars) : flag(raw.barsCustomized);
   const barKind=raw.statblock?.type==='character'?'hero':raw.statblock?.type==='monster'?'monster':kind;
+  const size=numeric(raw.size ?? 1,.25,4,'Token size');
+  const sizeCategory=['Tiny','Small','Medium','Large','Huge','Gargantuan'].includes(raw.sizeCategory)?raw.sizeCategory:
+    size<1?'Tiny':size<2?'Medium':size<3?'Large':size<4?'Huge':'Gargantuan';
   return {
     id: typeof raw.id === 'string' && /^[a-z0-9-]{6,64}$/i.test(raw.id) ? raw.id : uid(),
     name:label(raw.name,'New token',40), kind, color,
     x:numeric(raw.x ?? 325,0,scene.width-1,'Token X'),
     y:numeric(raw.y ?? 525,0,scene.height-1,'Token Y'),
-    size:whole(raw.size ?? 1,1,4,'Token size'),
+    size,sizeCategory,initiative:raw.initiative==null?null:whole(raw.initiative,-999,999,'Initiative'),
     hp:whole(raw.hp ?? maxHp,0,maxHp,'HP'), maxHp,
     hidden:raw.hidden === undefined ? false : flag(raw.hidden),
     ownerId:typeof raw.ownerId === 'string' ? raw.ownerId : null,
@@ -144,12 +154,13 @@ export function project(room,actor) {
     return {...t,canViewStats:visible,canEditStats:editable};
   });
   const visibleIds = new Set(scene.tokens.map(t => t.id));
-  const activeId = scene.combat.order[scene.combat.index] || null;
+  const activeId = scene.combat.active ? scene.combat.order[scene.combat.index] || null : null;
   scene.combat = {...scene.combat,order:scene.combat.order.filter(id => visibleIds.has(id)),
     activeId:visibleIds.has(activeId) ? activeId : null};
   if (!dm) delete scene.combat.index;
   return {version:VERSION,id:room.id,name:room.name,revision:room.revision,savedAt:room.savedAt,
-    self:{id:actor.id,name:actor.name,role:actor.role},players:copy(room.players),scene,log:copy(room.log)};
+    self:{id:actor.id,name:actor.name,role:actor.role},players:copy(room.players),scene,
+    log:copy(room.log.filter(event=>dm || !event.tokenId || visibleIds.has(event.tokenId)))};
 }
 function tokenById(room,id) {
   const token = room.scene.tokens.find(t => t.id === id);
@@ -159,6 +170,19 @@ function tokenById(room,id) {
 export function addLog(room,event) {
   room.log.push({id:uid(),at:new Date().toISOString(),...event});
   room.log = room.log.slice(-60);
+}
+function orderCombat(scene) {
+  const combat=scene.combat,active=combat.order[combat.index];
+  const previous=new Map(combat.order.map((id,index)=>[id,index]));
+  const tokens=scene.tokens.filter(token=>!token.hidden);
+  tokens.sort((a,b)=>{
+    const score=(b.initiative ?? -Infinity)-(a.initiative ?? -Infinity);
+    return score || (previous.get(a.id) ?? scene.tokens.indexOf(a)+scene.tokens.length)-
+      (previous.get(b.id) ?? scene.tokens.indexOf(b)+scene.tokens.length);
+  });
+  combat.order=tokens.map(token=>token.id);
+  combat.index=active && combat.order.includes(active)?combat.order.indexOf(active):Math.min(combat.index,Math.max(0,combat.order.length-1));
+  if(!combat.order.length)combat.active=false;
 }
 function roll(formula) {
   if (typeof formula !== 'string') throw new RoomError('Enter dice such as 1d20 or 2d6+3.');
@@ -190,6 +214,18 @@ export function applyCommand(room,actor,command) {
     addLog(room,{kind:'roll',name:actor.name,...roll(command.formula)});
     return;
   }
+  if(command.type==='combat.set' || command.type==='combat.roll'){
+    const t=tokenById(room,command.id);
+    if(actor.role!=='dm' && t.ownerId!==actor.id)throw new RoomError('You can only change initiative for your own tokens.',403);
+    if(command.type==='combat.set'){
+      t.initiative=command.value===null?null:whole(command.value,-999,999,'Initiative');
+    }else{
+      const modifier=whole(command.modifier ?? 0,-99,99,'Initiative bonus');
+      t.initiative=roll('1d20'+(modifier>=0?'+':'')+modifier).total;
+      addLog(room,{kind:'system',tokenId:t.id,text:t.name+' rolled initiative: '+t.initiative});
+    }
+    orderCombat(scene);return;
+  }
   if (command.type === 'token.share') {
     const t=tokenById(room,command.id);
     if (!t.ownerId || t.ownerId!==actor.id) throw new RoomError('Only the player who owns this token can share its stats.',403);
@@ -211,24 +247,25 @@ export function applyCommand(room,actor,command) {
     const t=tokenById(room,command.id);
     if (!canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
     const fields={};
-    for (const key of ['hp','maxHp','resources','bars','barsCustomized','statblock']) if (key in command) fields[key]=command[key];
+    for (const key of ['hp','maxHp','resources','bars','barsCustomized','statblock','size','sizeCategory']) if (key in command) fields[key]=command[key];
     if('bars' in fields && !('barsCustomized' in fields))fields.barsCustomized=true;
     Object.assign(t,tokenFrom({...t,...fields},scene));return;
   }
   if (command.type === 'token.update') {
     const t=tokenById(room,command.id),dm=actor.role==='dm',fields={};
     if (!dm && t.ownerId!==actor.id) throw new RoomError('You can only edit your own tokens.',403);
-    const structural=['kind','size','hidden','ownerId'];
+    const structural=['kind','hidden','ownerId'];
     if (!dm && structural.some(key => key in command)) throw new RoomError('Only the DM can change token ownership and visibility.',403);
     const stats=['hp','maxHp','resources','bars','barsCustomized','statblock'];
     if (stats.some(key => key in command) && !canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
-    for (const key of ['name','color',...(dm?structural:[]),...stats]) if (key in command) fields[key]=command[key];
+    for (const key of ['name','color','size','sizeCategory',...(dm?structural:[]),...stats]) if (key in command) fields[key]=command[key];
     if('bars' in fields && !('barsCustomized' in fields))fields.barsCustomized=true;
     if (fields.ownerId && !room.players.some(p=>p.id===fields.ownerId)) throw new RoomError('Select a player who has joined the game.');
     // Reassignment must never expose the previous player's private character.
     const next={...t,...fields};
+    if('size' in fields && !('sizeCategory' in fields))delete next.sizeCategory;
     if (t.ownerId && 'ownerId' in fields && fields.ownerId!==t.ownerId) clearPrivateStats(next);
-    Object.assign(t,tokenFrom(next,scene));return;
+    Object.assign(t,tokenFrom(next,scene));orderCombat(scene);return;
   }
   requireDM(actor);
   switch (command.type) {
@@ -248,7 +285,7 @@ export function applyCommand(room,actor,command) {
       const t=tokenFrom(command.token || command,scene);
       if (scene.tokens.some(existing=>existing.id === t.id)) t.id=uid();
       if (t.ownerId && !room.players.some(p=>p.id===t.ownerId)) throw new RoomError('Select a player who has joined the game.');
-      scene.tokens.push(t); break;
+      scene.tokens.push(t);orderCombat(scene);break;
     }
     case 'token.delete': {
       tokenById(room,command.id);
@@ -280,7 +317,11 @@ export function applyCommand(room,actor,command) {
       }
       break;
     }
-    case 'combat.start': scene.combat={active:true,order:scene.tokens.filter(t=>!t.hidden).map(t=>t.id),index:0,round:1}; break;
+    case 'combat.start': {
+      orderCombat(scene);
+      if(!scene.combat.order.length)throw new RoomError('Add a visible token before starting initiative.');
+      Object.assign(scene.combat,{active:true,index:0,round:1});break;
+    }
     case 'combat.next': {
       if (!scene.combat.active || !scene.combat.order.length) throw new RoomError('Start initiative first.');
       scene.combat.index++;
