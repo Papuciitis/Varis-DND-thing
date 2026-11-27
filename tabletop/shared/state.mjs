@@ -1,3 +1,5 @@
+import {damagePlan} from '../web/damage.mjs';
+
 export const VERSION = 1;
 export const LIMITS = Object.freeze({players:12, tokens:128, cells:10000, image:1500000, backup:2000000,command:70000});
 
@@ -59,7 +61,9 @@ const legacyBars = bars => Array.isArray(bars) && bars.length===2 &&
 export function resourcesFrom(raw = {}) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new RoomError('Resources must be an object.');
   return Object.fromEntries(RESOURCE_KEYS.map(key => {
-    const pool=raw[key] ?? {},max=pool.max === null || key==='armorClass' ? null : whole(pool.max ?? 0,0,999999,'Resource maximum');
+    const pool=raw[key] ?? {};
+    let max=pool.max === null || key==='armorClass' ? null : whole(pool.max ?? 0,0,999999,'Resource maximum');
+    if(['tempHP','arcaneHealth'].includes(key) && max===0 && typeof pool.current==='number' && pool.current>0)max=whole(pool.current,0,999999,'Resource value');
     return [key,{current:whole(pool.current ?? (key==='armorClass'?10:0),0,max ?? 999999,'Resource value'),max}];
   }));
 }
@@ -71,6 +75,7 @@ export function barsFrom(raw = defaultBars()) {
       valueOnly:bar.valueOnly===undefined?false:flag(bar.valueOnly)};
   });
 }
+const MONSTER_OVERRIDES=['maxHp','armorClass','blockMax','tempBlockMax','ability.str','ability.dex','ability.con','ability.int','ability.wis','ability.cha','initiativeBonus','notes','rules'];
 function statblockFrom(raw) {
   if (raw == null) return null;
   if (typeof raw!=='object' || Array.isArray(raw)) throw new RoomError('Invalid statblock.');
@@ -89,9 +94,25 @@ function statblockFrom(raw) {
       damage:prose(attack.damage,240),notes:prose(attack.notes,800),
       blockDC:attack.blockDC==null?null:whole(attack.blockDC,0,999999,'Block DC')};
   });
-  return {type:['character','monster','custom'].includes(raw.type)?raw.type:'custom',
+  const result={type:['character','monster','custom'].includes(raw.type)?raw.type:'custom',
     sourceId:label(raw.sourceId,'',512),abilities,attacks,initiativeBonus:whole(raw.initiativeBonus ?? 0,-99,99,'Initiative bonus'),
     notes:prose(raw.notes,4000),rules:prose(raw.rules,12000)};
+  if(result.type==='monster'){
+    const overrides=raw.encounterOverrides ?? [];
+    if(!Array.isArray(overrides) || overrides.length>MONSTER_OVERRIDES.length || overrides.some(key=>!MONSTER_OVERRIDES.includes(key)))throw new RoomError('Invalid monster encounter overrides.');
+    result.encounterOverrides=[...new Set(overrides)];
+  }
+  return result;
+}
+function markMonsterEdits(before,next) {
+  if(before.statblock?.type!=='monster' || !before.statblock.sourceId || next.statblock?.type!=='monster' || before.statblock.sourceId!==next.statblock.sourceId)return next;
+  const overrides=new Set(before.statblock.encounterOverrides || []);
+  if(before.maxHp!==next.maxHp)overrides.add('maxHp');
+  for(const key of ['str','dex','con','int','wis','cha'])if(before.statblock.abilities?.[key]!==next.statblock.abilities?.[key])overrides.add('ability.'+key);
+  for(const key of ['initiativeBonus','notes','rules'])if(before.statblock[key]!==next.statblock[key])overrides.add(key);
+  if(before.resources.armorClass.current!==next.resources?.armorClass?.current && next.resources?.armorClass)overrides.add('armorClass');
+  for(const [key,label] of [['block','blockMax'],['tempBlock','tempBlockMax']])if(next.resources?.[key] && before.resources[key].max!==next.resources[key].max)overrides.add(label);
+  return {...next,statblock:{...next.statblock,encounterOverrides:[...overrides]}};
 }
 export const canEditStats = (token,actor) => token.ownerId ? token.ownerId===actor.id : actor.role==='dm';
 export const canViewStats = (token,actor) => canEditStats(token,actor) || (actor.role==='dm' && token.shareWithDM===true);
@@ -168,7 +189,7 @@ export function project(room,actor) {
   if (!dm) delete scene.combat.index;
   return {version:VERSION,id:room.id,name:room.name,revision:room.revision,savedAt:room.savedAt,
     self:{id:actor.id,name:actor.name,role:actor.role},players:copy(room.players),scene,
-    log:copy(room.log.filter(event=>dm || !event.tokenId || visibleIds.has(event.tokenId)))};
+    log:copy(room.log.filter(event=>(!event.privateTo || event.privateTo===actor.id) && (dm || !event.tokenId || visibleIds.has(event.tokenId))))};
 }
 function tokenById(room,id) {
   const token = room.scene.tokens.find(t => t.id === id);
@@ -263,7 +284,7 @@ export function applyCommand(room,actor,command) {
     const fields={};
     for (const key of ['hp','maxHp','resources','bars','barsCustomized','statblock','size','sizeCategory']) if (key in command) fields[key]=command[key];
     if('bars' in fields && !('barsCustomized' in fields))fields.barsCustomized=true;
-    Object.assign(t,tokenFrom({...t,...fields},scene));return;
+    Object.assign(t,tokenFrom(markMonsterEdits(t,{...t,...fields}),scene));return;
   }
   if (command.type === 'token.update') {
     const t=tokenById(room,command.id),dm=actor.role==='dm',fields={};
@@ -283,6 +304,15 @@ export function applyCommand(room,actor,command) {
   }
   requireDM(actor);
   switch (command.type) {
+    case 'token.damage': {
+      const token=tokenById(room,command.id);
+      if(!canEditStats(token,actor))throw new RoomError('Apply automatic damage to a GM-controlled token. Players adjust their own tokens.',403);
+      const amount=whole(command.amount,1,999999,'Damage'),plan=damagePlan(token,amount);
+      for(const pool of plan.pools)if(pool.key==='hp')token.hp=pool.after;else token.resources[pool.key].current=pool.after;
+      const spent=plan.pools.map(pool=>pool.label+' '+pool.spent).join(', ');
+      addLog(room,{kind:'damage',privateTo:actor.id,tokenId:token.id,text:token.name+': '+amount+' damage ('+spent+')'+(plan.remaining?'; '+plan.remaining+' excess damage.':'.')});
+      break;
+    }
     case 'note.save': {
       scene.notes ??= [];
       const index=command.id===undefined?-1:scene.notes.findIndex(note=>note.id===command.id);

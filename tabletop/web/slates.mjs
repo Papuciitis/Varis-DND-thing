@@ -1,5 +1,5 @@
 import {loadReferences} from './sources.mjs';
-import {characterStats,monsterStats,monsterId,SHEETS_KEY,MONSTERS_KEY} from './resources.mjs';
+import {characterStats,monsterStats,monsterId,monsterHP,SHEETS_KEY,MONSTERS_KEY} from './resources.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
@@ -157,7 +157,7 @@ export class Slates {
         body.append(el('p','',stats.sizeCategory+' · HP '+stats.hp+' / '+stats.maxHp+' · AC '+(stats.resources?.armorClass?.current ?? 10)));
         for(const attack of stats.statblock?.attacks || [])body.append(el('p','',attack.name+' · '+(attack.bonus>=0?'+':'')+attack.bonus+' · '+attack.damage));
         body.append(el('p','',stats.statblock?.rules || stats.statblock?.notes || 'Open the linked sheet for full details.'));
-      }catch(error){body.append(el('p','',error.message));}
+      }catch(error){body.append(el('p','',row.kind==='monster' && !monsterHP(row.entry.details?.hp)?'HP: '+row.entry.details?.hp+'\nSet maximum HP when placing this creature.':error.message));}
       details.append(body);const action=button(dm?'Place':'Select',()=>dm?this.place(row):this.selectToken(row.id));action.disabled=!this.connected;
       card.append(details,action);return card;
     }));
@@ -177,7 +177,15 @@ export class Slates {
       const references=await loadReferences();let stats,name;
       if(source.kind==='monster'){
         const entry=(await this.tools.sources.monsters()).find(entry=>monsterId(entry)===source.id);
-        if(!entry)throw new Error('This monster is no longer in the compendium.');stats=monsterStats(entry);name=entry.name;
+        if(!entry)throw new Error('This monster is no longer in the compendium.');
+        if(monsterHP(entry.details.hp))stats=monsterStats(entry);
+        else{
+          const input=prompt(entry.name+' HP: '+entry.details.hp+'\nEnter maximum HP for this encounter:','');
+          if(input===null)return;
+          const hp=Number(input);if(!Number.isInteger(hp) || hp<1 || hp>999999)throw new Error('Enter maximum HP as a whole number from 1 to 999999.');
+          stats=monsterStats({...entry,details:{...entry.details,hp}});stats.statblock.encounterOverrides=['maxHp'];
+        }
+        name=entry.name;
       }else if(source.kind==='character'){
         const entry=this.tools.sources.characters().find(entry=>entry.id===source.id);
         if(!entry)throw new Error('This saved character is no longer available.');

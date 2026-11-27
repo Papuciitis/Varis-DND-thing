@@ -280,6 +280,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     const tokenPoint=await mapPoint(player,275,525);
     await player.mouse.click(tokenPoint.x,tokenPoint.y,{button:'right'});
     await player.getByRole('menuitem',{name:'Adjust HP',exact:true}).waitFor();
+    assert.equal(await player.getByRole('menuitem',{name:'Apply damage',exact:true}).count(),0);
     assert.equal(await player.getByRole('menuitem',{name:'Remove token',exact:true}).count(),0);
     await player.screenshot({path:path.join(output,'tabletop-context-menu.png')});
     await player.keyboard.press('Escape');
@@ -300,7 +301,8 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     // DM monster links populate the same encounter statblock and resource bars.
     const manifest=JSON.parse(await fsp.readFile(path.join(site,'data/catalog-manifest.json'),'utf8'));
     const monsterCatalog=JSON.parse(await fsp.readFile(path.join(site,manifest.sections.find(s=>s.key==='monsters').url),'utf8'));
-    const sampleMonster=monsterCatalog.entries.find(entry=>/^\s*[1-9]\d*/.test(String(entry.details.hp)));
+    assert(monsterCatalog.entries.length>=215,'The prototype must include the recovered monsters from main.');
+    const sampleMonster=monsterCatalog.entries.find(entry=>/^\s*[1-9]\d*(?:\s*\(|\s*$)/.test(String(entry.details.hp)));
     await dm.locator('#sidebar-link-monster').click();
     await dm.locator('#link-monster-search').fill(sampleMonster.name);
     await dm.locator('#link-monster option').first().waitFor({state:'attached'});
@@ -341,6 +343,37 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.locator('#sheet-attacks').getByText('GM spear',{exact:true}).waitFor();
     const ranger=(await service.read()).scene.tokens.find(t=>t.name==='GM ranger');
     assert.equal(ranger.size,2);assert.equal(ranger.hp,13);assert.equal(ranger.x,825);
+    // The real Skeleton source uses dice-first notation: 2d8+4(13).
+    await dm.locator('#data-tab-compendium').click();await dm.locator('#compendium-kind').selectOption('monster');
+    await dm.locator('#compendium-search').fill('Skeleton');
+    const skeletonCard=dm.locator('.compendium-card').filter({has:dm.getByText('Skeleton',{exact:true})});
+    await skeletonCard.getByRole('button',{name:'Place',exact:true}).click();
+    await dm.locator('#toast').filter({hasText:'Skeleton placed and linked'}).waitFor();
+    assert.equal(await dm.locator('#dock-current-0').inputValue(),'13');
+    const skeleton=(await service.read()).scene.tokens.find(t=>t.name==='Skeleton');assert(skeleton);
+    await dm.locator('#quick-edit-statblock').click();
+    assert.equal(await dm.locator('#stat-str').isDisabled(),false);
+    await dm.locator('#statblock-hp').fill('20');await dm.locator('#statblock-max-hp').fill('30');await dm.locator('#stat-str').fill('18');
+    await dm.getByText('Resource values',{exact:true}).click();
+    await dm.locator('#stat-tempHP').fill('6');await dm.locator('#stat-arcaneHealth').fill('8');
+    await dm.getByRole('button',{name:'Save statblock',exact:true}).click();
+    await dm.locator('#toast').filter({hasText:'Encounter statblock saved'}).waitFor();
+    await dm.locator('#statblock-dialog .dialog-heading').getByRole('button',{name:'Close',exact:true}).click();
+    assert.equal(await dm.locator('#health-tempHP').inputValue(),'6');assert.equal(await dm.locator('#health-arcaneHealth').inputValue(),'8');
+    await dm.locator('#token-dock').getByRole('button',{name:'Actions',exact:true}).click();
+    await dm.getByRole('menuitem',{name:'Apply damage',exact:true}).click();
+    await dm.locator('#damage-amount').fill('25');
+    assert.equal(await dm.locator('#damage-preview .damage-preview-row').last().locator('strong').textContent(),'9');
+    await dm.locator('#damage-dialog').getByRole('button',{name:'Apply damage',exact:true}).click();
+    await dm.locator('#damage-dialog').waitFor({state:'hidden'});
+    assert.equal(await dm.locator('#dock-current-0').inputValue(),'9');
+    assert.equal(await dm.locator('#health-tempHP').inputValue(),'0');assert.equal(await dm.locator('#health-arcaneHealth').inputValue(),'0');
+    await dm.reload();await dm.locator('#game-status').filter({hasText:'Local preview connected'}).waitFor();
+    await dm.locator('#tokens-list [data-token-id="'+skeleton.id+'"]').click();
+    assert.equal(await dm.locator('#dock-current-0').inputValue(),'9');
+    assert.equal((await service.read()).scene.tokens.find(t=>t.id===skeleton.id).maxHp,30);
+    assert.equal((await service.read()).scene.tokens.find(t=>t.id===skeleton.id).statblock.abilities.str,18);
+    assert.equal(monsterCatalog.entries.find(e=>e.name==='Skeleton').details.hp,'2d8+4(13)');
     await player.locator('#data-tab-compendium').click();
     assert.equal(await player.locator('.compendium-card').count(),1);
     assert(!(await player.locator('#compendium-list').textContent()).includes('GM ranger'));
@@ -470,6 +503,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       sidebarLinking:true,savedCharacterDiscovery:true,exactCharacterLink:true,compactSheet:true,compactSheetPrivacy:true,
       visibleAttackCards:true,attackSourceRefresh:true,attackPrivacy:true,linkedTokenSizes:true,manualInitiative:true,explicitInitiativeRoll:true,initiativeTurnPreservation:true,
       campaignTabs:true,dataSlateTabs:true,largerLeftLog:true,campaignChat:true,privateAndSharedNotes:true,
+      diceAverageMonsterHP:true,editableMonsterInstances:true,zeroCapacityExtraHealth:true,gmAutomaticDamage:true,monsterOverridesSurviveRefresh:true,
       visibleTokenRemoval:true,contextTokenRemoval:true,keyboardTokenRemoval:true,tokenRemovalKeepsSource:true,
       monsterCompendiumDrag:true,characterCompendiumDrag:true,independentMonsterInstances:true,playerCompendiumPrivacy:true,combinedHealth:true,utilityAbilityScores:true,
       spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:13,pageErrors:errors};

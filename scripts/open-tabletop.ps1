@@ -22,7 +22,7 @@ $env:PORT = [string]$Port
 $dataFolder = Join-Path $projectRoot '.tabletop-data'
 New-Item -ItemType Directory -Path $dataFolder -Force | Out-Null
 $serverFile = Join-Path $projectRoot 'tabletop\server\local.mjs'
-$serverSources = @('tabletop\server\local.mjs', 'tabletop\server\room-service.mjs', 'tabletop\server\protocol.mjs', 'tabletop\shared\state.mjs')
+$serverSources = @('tabletop\server\local.mjs', 'tabletop\server\room-service.mjs', 'tabletop\server\protocol.mjs', 'tabletop\shared\state.mjs', 'tabletop\web\damage.mjs')
 $sourceFingerprint = (($serverSources | ForEach-Object { (Get-FileHash -LiteralPath (Join-Path $projectRoot $_)).Hash }) -join ':')
 $env:VARA_TABLETOP_SERVER_VERSION = $sourceFingerprint
 $previewPidFile = Join-Path $dataFolder 'preview.pid'

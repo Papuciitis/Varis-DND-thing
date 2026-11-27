@@ -2,6 +2,7 @@ import {utilityReadings,healthSummary,RESOURCE_NAMES,ABILITIES} from './resource
 import {LocalSources} from './sources.mjs';
 import {templateLabel} from './templates.mjs';
 import {QuickSheet} from './quick-sheet.mjs';
+import {damagePlan} from './damage.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
@@ -28,7 +29,7 @@ export class TokenTools {
   constructor({getView,getSelected,getServer,command,selectToken,board,notify,onAdd}) {
     Object.assign(this,{getView,getSelected,command,selectToken,board,notify,onAdd});this.connected=false;
     this.sources=new LocalSources({getView,getServer,notify,onChange:()=>this.refreshCharacterChoices(),onPull:(id,patch)=>command({type:'token.update',id,...patch})});
-    this.mountDock();this.mountInspector();this.mountStatblock();this.mountSidebar();this.mountRuler();this.mountTemplates();this.mountMenu();
+    this.mountDock();this.mountInspector();this.mountStatblock();this.mountDamage();this.mountSidebar();this.mountRuler();this.mountTemplates();this.mountMenu();
     // Identity remains in the inspector; resources have one larger editor below the map.
     $('token-hp').closest('.field-row').hidden=true;
     for(const id of ['token-kind','token-owner','token-hidden'])$(id).closest('label').setAttribute('data-dm','');
@@ -53,6 +54,7 @@ export class TokenTools {
     const next=await this.command({type:'token.stats',id,...patch});
     const after=next?.scene.tokens.find(token=>token.id===id);
     if(after){try{await this.sources.push(before,after);}catch(error){this.notify(error.message,true);}}
+    return after || null;
   }
   mountDock() {
     const panel=$('map-canvas').parentElement,viewport=el('div','map-viewport');
@@ -218,9 +220,9 @@ export class TokenTools {
       const resources={};
       for(const [key,row] of this.statResources)resources[key]={current:Number(row.current.value),max:key==='armorClass' || row.max.value===''?null:Number(row.max.value)};
       const abilities=Object.fromEntries([...this.statAbilities].filter(([,input])=>input.value!=='').map(([key,input])=>[key,Number(input.value)]));
-      const patch={hp:Number(this.statCurrent.value),maxHp:Number(this.statMax.value),resources,
+      const maximum=Number(this.statMax.value),patch={hp:Math.min(Number(this.statCurrent.value),maximum),maxHp:maximum,resources,
         statblock:{...token.statblock,type:token.statblock?.type || 'custom',abilities,notes:this.statNotes.value,rules:this.statRules.value}};
-      await this.saveStats(token.id,patch);
+      if(await this.saveStats(token.id,patch))this.notify(token.statblock?.type==='monster'?'Encounter statblock saved. The compendium is unchanged.':'Statblock saved.');
     };
     const adjustment=dialog('Adjust hit points','adjust-hp-dialog');this.adjustDialog=adjustment.node;
     const adjustForm=el('form');this.adjustMode=selectField(adjustForm,'Adjustment',[['damage','Damage HP'],['heal','Heal HP']],'hp-adjustment');
@@ -246,6 +248,42 @@ export class TokenTools {
     this.tokenSettings=el('details','token-settings');this.tokenSettings.id='token-settings';
     this.tokenSettings.append(el('summary','','Token settings'),$('token-form'),this.resourceSection);
     this.sidebar.element.after(this.tokenSettings);
+  }
+  mountDamage() {
+    const {node,body}=dialog('Apply damage','damage-dialog');this.damageDialog=node;
+    this.damageTitle=el('h3');body.append(this.damageTitle);
+    const form=el('form');this.damageAmount=field(form,'Damage amount',{type:'number',id:'damage-amount',min:1,max:999999,value:1});this.damageAmount.required=true;
+    form.append(el('p','field-note','Enter damage after Block, resistance and other reductions. Damage spends Arcane Health, then Temp HP, then HP.'));
+    this.damagePreview=el('div','damage-preview');this.damagePreview.id='damage-preview';this.damagePreview.setAttribute('aria-live','polite');form.append(this.damagePreview);
+    this.damageApply=el('button','button primary full','Apply damage');this.damageApply.type='submit';form.append(this.damageApply);body.append(form);
+    this.damageAmount.oninput=()=>this.renderDamage();
+    form.onsubmit=async event=>{
+      event.preventDefault();const before=this.token(this.damageToken),view=this.getView();
+      if(!this.connected || view?.self.role!=='dm' || !before?.canEditStats || this.damageBusy)return;
+      this.damageBusy=true;this.damageApply.disabled=true;
+      try{
+        const next=await this.command({type:'token.damage',id:before.id,amount:Number(this.damageAmount.value)});
+        const after=next?.scene.tokens.find(token=>token.id===before.id);
+        if(!after)return;
+        await this.sources.push(before,after);this.damageDialog.close();
+        const plan=damagePlan(before,Number(this.damageAmount.value));
+        this.notify('Damage applied: '+plan.pools.filter(pool=>pool.spent).map(pool=>pool.label+' '+pool.spent).join(', ')+(plan.remaining?'; '+plan.remaining+' excess.':'.'));
+      }catch(error){this.notify(error.message,true);}
+      finally{this.damageBusy=false;this.damageApply.disabled=!this.connected;}
+    };
+  }
+  openDamage(id=this.getSelected()) {
+    const token=this.token(id);if(this.getView()?.self.role!=='dm' || !token?.canEditStats || !this.connected)return;
+    this.damageToken=id;this.damageAmount.value=1;this.damageDialog.showModal();this.renderDamage();this.damageAmount.focus();this.damageAmount.select();
+  }
+  renderDamage() {
+    const token=this.token(this.damageToken);
+    if(!token?.canEditStats || this.getView()?.self.role!=='dm'){this.damageDialog.close();this.damagePreview.replaceChildren();return;}
+    this.damageTitle.textContent=token.name;this.damageApply.disabled=!this.connected || !!this.damageBusy;
+    if(!this.damageAmount.value || !this.damageAmount.checkValidity()){this.damagePreview.replaceChildren();return;}
+    const plan=damagePlan(token,Number(this.damageAmount.value)),heading=el('div','damage-preview-row');heading.append(el('strong','','Pool'),el('strong','','Before'),el('strong','','After'));
+    this.damagePreview.replaceChildren(heading,...plan.pools.map(pool=>{const row=el('div','damage-preview-row');row.append(el('span','',pool.label),el('span','',pool.before),el('strong','',pool.after));return row;}));
+    if(plan.remaining)this.damagePreview.append(el('p','field-note','Excess damage after reaching 0 HP: '+plan.remaining));
   }
   openLinker(kind,id=this.getSelected()) {
     if(!this.token(id)?.canEditStats)return;
@@ -330,6 +368,7 @@ export class TokenTools {
     const token=this.token(this.dialogToken);if(!token){if(this.dialog.open)this.dialog.close();return;}
     this.sheetTitle.textContent=token.name;
     this.sheetAccess.textContent=!token.canViewStats?'Private character stats. The owning player can choose to share with the DM.':token.canEditStats?'Your changes update this token and its bars.':'Shared with you for reading. The player controls edits.';
+    if(token.canEditStats && token.statblock?.type==='monster')this.sheetAccess.textContent='Edit this encounter instance. Changes stay with this token; the compendium template is unchanged.';
     this.statForm.hidden=!token.canViewStats;
     if(!token.canViewStats){this.statForm.reset();return;}
     if(!force && token.canEditStats && this.statForm.contains(document.activeElement))return;
@@ -343,11 +382,11 @@ export class TokenTools {
       row.current.disabled=!this.connected || !token.canEditStats || (key==='armorClass' && !!character?.build?.enabled);
       row.max.disabled=!this.connected || !token.canEditStats || key==='armorClass';
     }
-    for(const [key,input] of this.statAbilities){input.value=token.statblock?.abilities?.[key] ?? '';input.disabled=!this.connected || !token.canEditStats || !!link;}
+    for(const [key,input] of this.statAbilities){input.value=token.statblock?.abilities?.[key] ?? '';input.disabled=!this.connected || !token.canEditStats || linkedCharacter;}
     this.statNotes.value=token.statblock?.notes || '';this.statRules.value=token.statblock?.rules || '';
     for(const input of [this.statCurrent,this.statMax,this.statNotes,this.statRules])input.disabled=!this.connected || !token.canEditStats;
     this.statMax.disabled ||= !!character?.build?.enabled;
-    this.statNotes.disabled ||= !!link;this.statRules.disabled ||= !!link;
+    this.statNotes.disabled ||= linkedCharacter;this.statRules.disabled ||= linkedCharacter;
     this.statSave.hidden=!token.canEditStats;this.statSave.disabled=!this.connected;
   }
   mountMenu() {
@@ -376,6 +415,7 @@ export class TokenTools {
       this.selectToken(token.id);
       action(token.canViewStats?'Open statblock':'Character privacy',()=>this.openStatblock(token.id));
       if(token.canEditStats){
+        if(dm)action('Apply damage',()=>this.openDamage(token.id));
         action('Adjust HP',()=>{this.adjustToken=token.id;this.adjustDialog.showModal();this.adjustAmount.focus();this.adjustAmount.select();});
         action('Configure resource bars',()=>{this.tokenSettings.open=true;this.barDetails.open=true;document.body.classList.add('panels-open');this.resourceSection.scrollIntoView({block:'nearest'});});
         action('Link character',()=>this.openLinker('character',token.id));
@@ -410,6 +450,7 @@ export class TokenTools {
   }
   render() {
     const view=this.getView(),token=this.token();this.dock.hidden=!token;
+    if(this.damageDialog?.open)this.renderDamage();
     this.sidebar.render(token,this.connected);this.tokenSettings.hidden=!token;
     this.tokenQuickActions.hidden=!token || view?.self.role!=='dm';
     this.removeButton.disabled=!this.connected || !!this.removingToken;

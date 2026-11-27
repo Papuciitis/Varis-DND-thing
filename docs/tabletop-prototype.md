@@ -172,7 +172,27 @@ configuration and sharing are under the separate **Token settings** disclosure.
 Monster links read the compendium and browser monster edits. HP, AC, abilities
 and actions populate an encounter statblock. Resource damage remains specific to
 each token; it does not damage every creature using that monster template.
-Changing the source template updates maxima while preserving encounter damage.
+HP accepts printed totals before or after dice, such as `13 (2d8+4)` and
+`2d8+4(13)`. Dice-only HP uses its average, rounded down; `2d6` becomes 7 HP.
+Printed totals take precedence and source rules are not rewritten. If HP depends
+on a controller or another unresolved value, placement asks for encounter HP.
+
+The GM can edit monster maximum HP, scores, resource maxima, notes and rules in
+**Edit statblock**. Those choices persist with that token, including across reloads
+and campaign backups. Unmodified fields still update from the template; encounter
+overrides and current damage are preserved. Other instances and the compendium
+template stay unchanged. Linked player-character attributes stay on the full sheet.
+
+Temporary HP and Arcane Health with an initial maximum of zero automatically
+establish capacity when a positive amount is entered. A deliberately configured
+nonzero capacity still applies; increase that maximum when needed.
+
+Right-click a GM-controlled token and choose **Apply damage** (also available in
+the bottom **Actions** menu). Enter damage remaining after Block, resistance and
+other reductions. The preview shows **Arcane Health, then Temp HP, then HP**;
+applying damage spends those pools in that order and clamps HP at zero. AC and
+Block are not spent automatically. The pool breakdown is private to the GM.
+Player-controlled tokens retain manual owner editing and read-only DM sharing.
 
 Only the token's owning player can enable **Share this character / summon with
 the DM**. Shared stats are read-only for the DM. Private HP, resources, abilities,

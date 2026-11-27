@@ -35,6 +35,23 @@ const leadingNumber=value=>{
   const match=String(value ?? '').match(/^\s*(\d+(?:\.\d+)?)/);
   return match?count(match[1]):null;
 };
+export function monsterHP(value) {
+  const source=String(value ?? '').trim().replace(/\u2212/g,'-');
+  // Preserve the author's printed total, including intentionally fixed HP.
+  const printed=source.match(/^(\d+(?:\.\d+)?)(?:\s*\([^)]*\))?$/);
+  const valid=value=>Number.isFinite(value) && value>=1 && value<=999999?Math.floor(value):null;
+  if(printed)return valid(Number(printed[1]));
+  const suffix=source.match(/^(.+?)\s*\(\s*(\d+(?:\.\d+)?)\s*\)$/);
+  const formula=(suffix?suffix[1]:source).replace(/\s/g,'');
+  if(!/^[+-]?(?:\d*d\d+|\d+)(?:[+-](?:\d*d\d+|\d+))*$/i.test(formula) || !/d/i.test(formula))return null;
+  let total=0;
+  for(const term of formula.match(/[+-]?(?:\d*d\d+|\d+)/ig)){
+    const sign=term[0]==='-'?-1:1,body=term.replace(/^[+-]/,''),dice=/^(\d*)d(\d+)$/i.exec(body);
+    if(dice){const count=Number(dice[1] || 1),sides=Number(dice[2]);if(count<1 || count>10000 || sides<1 || sides>1000)return null;total+=sign*count*(sides+1)/2;}
+    else total+=sign*Number(body);
+  }
+  return valid(suffix?Number(suffix[2]):total);
+}
 const text=value=>typeof value==='string'?value:'';
 function prose(value,depth=0) {
   if(depth>5 || value==null)return '';
@@ -79,7 +96,10 @@ export function characterStats(character,derived={},catalog=[]) {
       notes:text(character.notes).slice(0,4000),rules}};
 }
 export function monsterStats(entry,token=null) {
-  const details=entry.details || entry,max=leadingNumber(details.hp);
+  const details=entry.details || entry,sourceId=monsterId(entry);
+  const sameSource=token?.statblock?.type==='monster' && token.statblock.sourceId===sourceId;
+  const overrides=new Set(sameSource?token.statblock.encounterOverrides || []:[]);
+  const max=overrides.has('maxHp')?token.maxHp:monsterHP(details.hp);
   if (!max) throw new Error('This monster has no numeric HP. Set its HP in the statblock first.');
   const resources={
     armorClass:{current:leadingNumber(details.ac) ?? 10,max:null},
@@ -88,12 +108,17 @@ export function monsterStats(entry,token=null) {
   };
   const abilities={};
   for (const key of ABILITIES) {const value=leadingNumber(details.abilities?.[key]);if(value!==null)abilities[key]=value;}
-  const rules=['traits','actions','bonus_actions','reactions','legendary_actions','lair_actions']
+  for(const key of ABILITIES)if(overrides.has('ability.'+key)){
+    if(token.statblock.abilities[key]===undefined)delete abilities[key];else abilities[key]=token.statblock.abilities[key];
+  }
+  if(overrides.has('armorClass'))resources.armorClass={...token.resources.armorClass};
+  for(const [key,marker] of [['block','blockMax'],['tempBlock','tempBlockMax']])if(overrides.has(marker))resources[key]={...token.resources[key]};
+  const rules=overrides.has('rules')?token.statblock.rules:['traits','actions','bonus_actions','reactions','legendary_actions','lair_actions']
     .flatMap(key=>(Array.isArray(details[key])?details[key]:[]).map(row=>row.name+': '+text(row.description).replace(/\n\s*\n/g,'\n'))).join('\n\n').slice(0,12000);
   return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,resources,...sizeStats(details.size || details.meta),
-    statblock:{type:'monster',sourceId:monsterId(entry),abilities,attacks:[],
-      initiativeBonus:signed(details.initiative ?? Math.floor(((abilities.dex ?? 10)-10)/2),99),
-      notes:text(details.description || details.desc || details.meta).slice(0,4000),rules}};
+    statblock:{type:'monster',sourceId,abilities,attacks:[],
+      initiativeBonus:overrides.has('initiativeBonus')?token.statblock.initiativeBonus:signed(details.initiative ?? Math.floor(((abilities.dex ?? 10)-10)/2),99),
+      notes:overrides.has('notes')?token.statblock.notes:text(details.description || details.desc || details.meta).slice(0,4000),rules,encounterOverrides:[...overrides]}};
 }
 export const monsterId=entry=>entry._monsterEditorKey || (entry.details?.id?'id:'+entry.details.id:JSON.stringify([entry.source || '',entry.group || '',entry.name]));
 
