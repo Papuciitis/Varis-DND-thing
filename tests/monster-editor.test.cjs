@@ -98,3 +98,12 @@ test('provenance survives direct and imported edits, and reserved metadata canno
   assert.deepEqual(copy(editor.customCollection().monster_overrides[0].entry.original_5e),{hp:20});assert.equal(editor.customCollection().monster_overrides[0].entry.source_ref,'Imported source');
   assert.throws(()=>editor.validate({...creature(),details:{source:'arbitrary.yaml'}}),/reserved/);
 });
+
+test('legacy browser edits inherit encounter themes and explicit changes survive exports and reloads',()=>{
+ const storage=new Map(),editor=boot(storage),source=creature();source.details.encounter_theme='Cities, guards & outlaws';const section={key:'monsters',entries:[source]};editor.apply(section);
+ const old=copy(section.entries[0]);delete old.details.encounter_theme;old.details.hp='50';editor.save(section,section.entries[0],old);
+ const fresh=boot(storage),reloaded={key:'monsters',entries:[copy(source)]};fresh.apply(reloaded);assert.equal(reloaded.entries[0].details.encounter_theme,'Cities, guards & outlaws');assert.equal(reloaded.entries[0].details.hp,'50');
+ fresh.save(reloaded,reloaded.entries[0],{...copy(reloaded.entries[0]),details:{...copy(reloaded.entries[0].details),encounter_theme:'Frozen wastes'}});
+ const exported=copy(fresh.customCollection());assert.equal(exported.monster_overrides[0].entry.encounter_theme,'Frozen wastes');assert.equal(exported.monster_overrides[0].target.group,'Humanoids');
+ assert.throws(()=>fresh.validate({...creature(),details:{encounter_theme:[]}}),/Theme/);
+});

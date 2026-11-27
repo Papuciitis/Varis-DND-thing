@@ -22,8 +22,9 @@ entries:
       the source panels explain their method. The original text remains available for comparison.
   - heading: Find and compare monsters
     body: >-
-      Monster manual starts as an expandable list. Open several creatures to compare their statblocks.
-      Creature type, Challenge rating, source group and text search can be combined. Challenge choices include
+      Monster manual starts with encounter theme and setting cards. Choose a theme for its expandable
+      creature list, or browse all monsters. Theme / setting, Creature type, Challenge rating and text search
+      can be combined. Source details remain in notes. Challenge choices include
       exact fractions, numeric ranges, and Unrated / unknown; an unknown challenge is not CR 0.
       Display can switch to ordinary Pages. Expanded rows, creature pages and the editor preview use the
       same parchment statblock layout, with two columns on wide screens and one on phones.

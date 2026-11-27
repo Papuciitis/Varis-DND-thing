@@ -129,3 +129,27 @@ test('summon creator links lead to the controlling spell or feature without impl
  const {views,helpers}=setup(),block=views.statblock(entry({summoned_by:[{name:'Summon elemental',section:'spells',group:'Arcane spells'},{name:'Tarta creature options',section:'rules',group:'Tarta Homebrewery - Creature options'}]}),helpers),creation=block.byClass('monster-creation-links')[0];
  assert.equal(creation.tag,'details');assert.equal(creation.open,false);assert.equal(creation.all('a').length,2);const routes=creation.all('a').map(link=>new URLSearchParams(link.href.slice(1)));assert.equal(routes[0].get('section'),'spells');assert.equal(routes[1].get('section'),'rules');assert.equal(block.byClass('monster-stat-spellcasting').length,0);assert.equal(block.byClass('monster-additional-rule').length,0);
 });
+
+test('theme overview mixes sources, shows exact counts and links directly to themed monster lists',()=>{
+ const {views,helpers}=setup(),sea=entry({encounter_theme:'Seas & coasts'}),second={...entry({encounter_theme:'Seas & coasts'}),name:'Crocshark',source:'other.yaml'},snow={...entry({encounter_theme:'Frozen wastes'}),name:'Frost Warden'},records=[sea,second,snow],before=JSON.stringify(records);
+ const groups=views.themesFor(records);assert.deepEqual(copy(groups.map(g=>[g.title,g.count])),[['Frozen wastes',1],['Seas & coasts',2]]);
+ const cards=views.themeDirectory(records,helpers);assert.equal(cards.children.length,2);assert.match(cards.children[1].textContent,/Seas & coasts2 monsters/);
+ const route=new URLSearchParams(cards.children[1].href.slice(1));assert.equal(route.get('theme'),'Seas & coasts');assert.equal(route.get('view'),'list');assert.equal(route.has('group'),false);
+ assert.equal(JSON.stringify(records),before);assert.equal(views.theme(entry()),'Other encounters');
+});
+
+test('theme filters intersect type and CR while overview remains separate from explicit lists and pages',()=>{
+ const {views}=setup(),source=entry({encounter_theme:'Seas & coasts',type:'beast',cr:'4'});
+ assert.equal(views.matches(source,{theme:'seas & coasts',type:'beast',cr:'2-5'}),true);
+ assert.equal(views.matches(source,{theme:'Frozen wastes'}),false);assert.equal(views.matches(source,{theme:'Seas & coasts',type:'dragon'}),false);assert.equal(views.matches(source,{theme:'Seas & coasts',cr:'6+'}),false);
+ assert.equal(views.isThemeOverview({}),true);assert.equal(views.isThemeOverview({view:'themes'}),true);
+ for(const params of [{theme:'Seas & coasts'},{filter:'wolf'},{cr:'2-5'},{type:'undead'},{group:'Legacy source'},{browse:'all'},{view:'pages'},{view:'list'},{sort:'name'}])assert.equal(views.isThemeOverview(params),false,JSON.stringify(params));
+ const block=views.statblock(source,setup().helpers);assert.doesNotMatch(block.byClass('monster-stat-body')[0].textContent,/Encounter theme|Seas & coasts/);
+});
+
+test('every built monster appears in exactly one of fifteen encounter themes',()=>{
+ const {views}=setup(),entries=require('./helpers/catalog.cjs')().find(section=>section.key==='monsters').entries,groups=views.themesFor(entries);
+ assert.equal(groups.length,15);assert.equal(groups.reduce((total,group)=>total+group.count,0),215);assert.equal(groups.some(group=>group.title==='Other encounters'),false);
+ assert.equal(groups.find(group=>group.title==='Dragons & their lairs').count,19);
+ assert.equal(new Set(groups.find(group=>group.title==='Tombs & restless dead').entries.map(entry=>entry.source)).size>1,true);
+});

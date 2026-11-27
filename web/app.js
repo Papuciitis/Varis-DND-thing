@@ -85,7 +85,7 @@
     if (section.key === "monsters") section.count = section.entries.length;
     dataBySection.set(section.key, section.entries.map(entry => {
       const name = norm(entry.name);
-      const lead = norm([entry.name, entry.group, section.title,
+      const lead = norm([entry.name, section.key === "monsters" && monsterViews ? monsterViews.theme(entry) : entry.group, section.title,
         section.key === "magic-items" ? magicCategories?.searchTerms(entry) || "" : ""].join(" "));
       const searchable = section.key === "magic-items" && globalThis.MagicItems ? globalThis.MagicItems.searchable(entry)
         : section.key === "monsters" && globalThis.MonsterEditor ? globalThis.MonsterEditor.searchable(entry) : entry.details;
@@ -268,7 +268,8 @@
       const li = el("li");
       const a = link("", entryRoute(section, entry), "result");
       a.append(el("span", "result-name", cap(entry.name)));
-      const info = [!params.section ? section.title : "", params.group === entry.group ? "" : entry.group];
+      const displayGroup = section.key === "monsters" && monsterViews ? monsterViews.theme(entry) : entry.group;
+      const info = [!params.section ? section.title : "", (section.key === "monsters" ? params.theme : params.group) === displayGroup ? "" : displayGroup];
       if (section.key === "magic-items") {
         const rarity = String(entry.details?.rarity || entry.group || "");
         if (rarity) {
@@ -333,18 +334,21 @@
     const compareEntries = ["races", "feats", "backgrounds", "geomancy-review"].includes(section.key);
     const listView = compareEntries && (params.view === "list" || ["races", "geomancy-review"].includes(section.key) && params.view !== "pages");
     const monsterList = section.key === "monsters" && monsterViews && params.view !== "pages";
+    const monsterHome = monsterList && monsterViews.isThemeOverview(params);
+    const monsterTheme = section.key === "monsters" ? params.theme || "" : "";
     const itemHome = section.key === "items" && !category && !group && !filter && !params.browse;
     const magicHome = section.key === "magic-items" && magicCategories && !category && !group && !filter && !params.browse && !params.rarity && !params.type;
     const weaponTree = section.key === "items" && category?.key === "weapons" && !group && params.view !== "pages";
     const baseClassView = section.key === "classes" && !group && !level && !filter && !params.browse;
     const groupedView = !compareEntries && !["classes", "spells", "monsters", "items", "magic-items"].includes(section.key) && grouped.length > 1 && !group && !level && !filter && !params.browse && !params.rarity && !params.type;
     const groupTitle = magicClass || cap(group);
-    const parts = [[section.title, group || category ? base : null]];
+    const parts = [[section.title, group || category || monsterTheme ? base : null]];
     if (category) parts.push([category.title, group ? {...base, category: category.key} : null]);
     if (group) parts.push([groupTitle, null]);
+    if (monsterTheme) parts.push([monsterTheme, null]);
     crumbs(parts);
     const head = el("header", "index-heading");
-    head.append(heading(group ? groupTitle : category?.title || section.title));
+    head.append(heading(monsterTheme || (group ? groupTitle : category?.title || section.title)));
     if (baseClassView) {
       head.append(el("p", "index-intro", "Choose a class to read its features and archetypes."));
       head.append(link("Browse all class entries", {...base, browse: "all"}, "text-link"));
@@ -390,6 +394,9 @@
       });
       tools.querySelector(".utility-menu-content")?.append(link("Monster conversion and editing", {section:"rules", group:"Monsters", entry:"Using converted monsters"}, "text-link"));
       reader.append(tools);
+    }
+    if (section.key === "monsters" && monsterViews && !monsterHome) {
+      head.append(link("Browse themes & settings", base, "text-link"));
     }
     let creatureTypes;
     if (section.key === "monsters" && monsterViews) {
@@ -444,10 +451,10 @@
     }
     if (compareEntries || section.key === "monsters" || category?.key === "weapons" && !group) {
       const [field, select] = labelledSelect("Display", "entry-view");
-      const options = section.key === "monsters" ? [["list", "Expandable list"], ["pages", "Pages"]] : compareEntries ? [["pages", "Pages"], ["list", "Expandable list"]] : [["tree", "Weapon groups"], ["pages", "Pages"]];
+      const options = section.key === "monsters" ? [["themes", "Theme overview"], ["list", "Expandable list"], ["pages", "Pages"]] : compareEntries ? [["pages", "Pages"], ["list", "Expandable list"]] : [["tree", "Weapon groups"], ["pages", "Pages"]];
       for (const [value, text] of options) select.append(new Option(text, value));
-      select.value = section.key === "monsters" ? monsterList ? "list" : "pages" : compareEntries ? listView ? "list" : "pages" : weaponTree ? "tree" : "pages";
-      select.addEventListener("change", () => openFilters({...params, view: select.value, page: "", browse: "all"}));
+      select.value = section.key === "monsters" ? monsterHome ? "themes" : monsterList ? "list" : "pages" : compareEntries ? listView ? "list" : "pages" : weaponTree ? "tree" : "pages";
+      select.addEventListener("change", () => openFilters(section.key === "monsters" && select.value === "themes" ? base : {...params, view: select.value, page: "", browse: "all"}));
       secondary.append(field);
     }
     if (section.key === "spells") {
@@ -457,7 +464,7 @@
       select.value = magicClass;
       select.addEventListener("change", () => openFilters({...params, group: select.value, browse: "all", page: ""}));
       secondary.append(field);
-    } else if (grouped.length > 1 && !baseClassView && section.key !== "magic-items" && !itemHome && !review) {
+    } else if (grouped.length > 1 && !baseClassView && !["magic-items", "monsters"].includes(section.key) && !itemHome && !review) {
       const [field, select] = labelledSelect("Group", "group");
       select.append(new Option("All groups", ""));
       for (const [title] of grouped) select.append(new Option(cap(title), title));
@@ -514,6 +521,13 @@
     }
     if (kind) secondary.append(sortControl(params, kind, filter));
     if (section.key === "monsters" && monsterViews) {
+      const [themeField, themeSelect] = labelledSelect("Theme / setting", "monster-theme");
+      themeField.classList.add("monster-theme-filter");
+      themeSelect.append(new Option("All themes & settings", ""));
+      for (const theme of monsterViews.themesFor(section.entries)) themeSelect.append(new Option(theme.title + " (" + theme.count + ")", theme.title));
+      themeSelect.value = monsterTheme;
+      themeSelect.addEventListener("change", () => openFilters({...params, theme:themeSelect.value, group:"", page:"", view:params.view === "pages" ? "pages" : "list", browse:"all"}));
+      form.append(themeField);
       const [crField, crSelect] = labelledSelect("Challenge rating", "monster-cr");
       crSelect.append(new Option("All CRs", ""));
       const values = new Map();
@@ -530,19 +544,26 @@
     if (monsterFilters) {
       const applied = el("nav", "applied-filters");
       applied.setAttribute("aria-label", "Applied filters");
-      for (const [key, text] of [["type", params.type && (monsterViews?.titles[params.type] || cap(params.type))], ["cr", params.cr && "CR " + params.cr], ["group", group], ["filter", filter]]) {
+      for (const [key, text] of [["theme", monsterTheme], ["type", params.type && (monsterViews?.titles[params.type] || cap(params.type))], ["cr", params.cr && "CR " + params.cr], ["group", group], ["filter", filter]]) {
         if (!text) continue;
         const remove = link(text + " ×", {...params, [key]: "", page:""}, "applied-filter");
         remove.setAttribute("aria-label", "Remove filter: " + text);
         applied.append(remove);
       }
       if (applied.childElementCount) {
-        applied.append(link("Clear all", {...params, type:"", cr:"", group:"", filter:"", page:""}, "text-link"));
+        applied.append(link("Clear all", {...params, theme:"", type:"", cr:"", group:"", filter:"", page:""}, "text-link"));
         reader.append(applied);
       }
     }
     if (!section.entries.length) {
       reader.append(el("p", "state-message", "This section has no entries yet."));
+      return;
+    }
+    if (monsterHome) {
+      const subhead = el("div", "subhead");
+      subhead.append(el("h2", "", "Browse by theme & setting"), link("Browse all " + countText(section.entries.length), {...base, browse:"all", view:"list"}, "text-link"));
+      reader.append(subhead, monsterViews.themeDirectory(section.entries, {el, link}));
+      byId("announcement").textContent = countText(section.entries.length) + " in " + monsterViews.themesFor(section.entries).length + " themes";
       return;
     }
     if (itemHome && itemViews) {
@@ -1054,7 +1075,7 @@
     const categoryViews = section.key === "items" ? itemViews : section.key === "magic-items" ? magicCategories : null;
     const category = categoryViews?.category(entry);
     const kind = orderKind(section, browseGroup(section, entry.group));
-    const siblings = section.entries.filter(candidate => candidate.group === entry.group &&
+    const siblings = section.entries.filter(candidate => (section.key === "monsters" && monsterViews ? monsterViews.theme(candidate) === monsterViews.theme(entry) : candidate.group === entry.group) &&
       (!category || categoryViews.category(candidate) === category)).slice()
       .sort((a, b) => order.compare(a, b, selectedSort({}, kind, "")));
     const index = siblings.indexOf(entry);
@@ -1079,7 +1100,8 @@
     const categoryViews = section.key === "items" ? itemViews : section.key === "magic-items" ? magicCategories : null;
     const category = categoryViews?.categories.find(item => item.key === categoryViews.category(entry));
     if (category) parts.push([category.title, {...base, category: category.key}]);
-    if (entry.group) parts.push([cap(entry.group), {...base, ...(category ? {category: category.key} : {}), group: entry.group}]);
+    if (section.key === "monsters" && monsterViews) parts.push([monsterViews.theme(entry), {...base, theme:monsterViews.theme(entry), view:"list"}]);
+    else if (entry.group) parts.push([cap(entry.group), {...base, ...(category ? {category: category.key} : {}), group: entry.group}]);
     parts.push([cap(entry.name), null]);
     crumbs(parts);
     const header = el("header", "entry-heading");

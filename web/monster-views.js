@@ -32,6 +32,7 @@
   }
   function matches(entry,filters={}){
     const meta=metadata(entry),type=normalize(filters.type);
+    if(filters.theme&&normalize(theme(entry))!==normalize(filters.theme))return false;
     if(type&&type!=="all"&&!meta.types.includes(type)&&normalize(meta.type)!==type)return false;
     const selection=normalize(filters.cr),number=meta.challenge;
     if(selection&&selection!=="all"){
@@ -47,6 +48,26 @@
     if(present(filters.crMin)){const low=challenge(filters.crMin);if(low===null||number===null||number<low)return false;}
     if(present(filters.crMax)){const high=challenge(filters.crMax);if(high===null||number===null||number>high)return false;}
     return true;
+  }
+  function theme(entry){
+    const value=entry?.details?.encounter_theme;
+    return typeof value==="string"&&value.trim()?value.trim():"Other encounters";
+  }
+  function themesFor(entries){
+    const groups=new Map(),collate=new Intl.Collator("en",{numeric:true,sensitivity:"base"});
+    for(const entry of entries){const title=theme(entry),key=normalize(title);if(!groups.has(key))groups.set(key,{title,entries:[]});groups.get(key).entries.push(entry);}
+    return [...groups.values()].sort((a,b)=>collate.compare(a.title,b.title)).map(group=>({...group,count:group.entries.length,entries:group.entries.slice().sort((a,b)=>collate.compare(a.name,b.name))}));
+  }
+  function isThemeOverview(params={}){
+    return !params.theme&&!params.group&&!params.filter&&!params.type&&!params.cr&&!params.browse&&!params.sort&&!['list','pages'].includes(params.view);
+  }
+  function themeDirectory(entries,helpers){
+    const {el,link}=helpers,grid=el("div","groups monster-themes");
+    for(const group of themesFor(entries)){
+      const card=link("",{section:"monsters",theme:group.title,view:"list"},"panel-link monster-theme-card");
+      card.append(el("span","panel-name",group.title),el("span","panel-count",group.count+" "+(group.count===1?"monster":"monsters")),el("span","panel-examples",group.entries.slice(0,3).map(entry=>cap(entry.name)).join(" · ")));
+      grid.append(card);
+    }return grid;
   }
   function ability(entry,key){
     const raw=entry?.details?.abilities?.[key],value=object(raw)?raw.score??raw.value:raw;
@@ -119,7 +140,7 @@
     function fold(parent,title,value,className="monster-stat-note"){
       if(!present(value))return;const disclosure=el("details",className);disclosure.append(el("summary","",title),renderValue(value,title));parent.append(disclosure);
     }
-    const d=presentation(entry.details),meta=metadata(entry),known=new Set(["id","name","group","meta","size","type","alignment","abilities","ability_modifiers","ability_score_status","notes","description","desc","source_ref","spell_references","status","cr","challenge","challenge_rating","xp","height","weight","hp_max_variant","spellcasting","spell_slots","limited_spell_uses","metamagic","material_options","material_rules","summoned_by"]);
+    const d=presentation(entry.details),meta=metadata(entry),known=new Set(["id","name","group","encounter_theme","meta","size","type","alignment","abilities","ability_modifiers","ability_score_status","notes","description","desc","source_ref","spell_references","status","cr","challenge","challenge_rating","xp","height","weight","hp_max_variant","spellcasting","spell_slots","limited_spell_uses","metamagic","material_options","material_rules","summoned_by"]);
     const block=el("article","stat-block monster-parchment");block.setAttribute("aria-label",entry.name+" statblock");
     const header=el("header","monster-stat-header");if(helpers.showTitle!==false)header.append(el(heading(depth),"monster-stat-name",cap(entry.name)));if(meta.summary)header.append(el("p","monster-stat-meta",meta.summary));if(d.status)header.append(el("p","monster-stat-status",d.status));block.append(header);
     const body=el("div","monster-stat-body"),lead=el("div","monster-stat-lead");
@@ -259,5 +280,5 @@
       item.addEventListener("toggle",()=>{if(item.open){expanded.add(key);render();}else expanded.delete(key);});item.append(summary,body);if(expanded.has(key)){item.open=true;render();}list.append(item);
     }return list;
   }
-  globalThis.MonsterViews=Object.freeze({presentation,materialConfiguration,types,titles,metadata,matches,challenge,ability,statblock,expandableList});
+  globalThis.MonsterViews=Object.freeze({presentation,materialConfiguration,types,titles,metadata,matches,challenge,ability,statblock,expandableList,theme,themesFor,themeDirectory,isThemeOverview});
 })();

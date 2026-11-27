@@ -19,6 +19,7 @@
       if(result.details[field]!=null&&(!Array.isArray(result.details[field])||result.details[field].some(row=>!object(row)||typeof row.name!=="string"||!row.name.trim()||typeof row.description!=="string")))throw new Error(field.replace(/_/g," ")+" must contain named descriptions.");
     if(result.details.abilities!=null&&!object(result.details.abilities))throw new Error("Ability scores must be a mapping.");
     for(const field of ["ac","hp","speed","block","cr"])if(result.details[field]!=null&&typeof result.details[field]==="object")throw new Error(field.toUpperCase()+" must be text or a number.");
+    if(result.details.encounter_theme!=null&&(typeof result.details.encounter_theme!=="string"||!result.details.encounter_theme.trim()))throw new Error("Theme / setting must be nonempty text.");
     return result;
   }
   function validateIdentities(next){
@@ -36,6 +37,7 @@
   function cleanEntry(entry){const result=clone(entry);delete result._monsterEditorKey;return result;}
   function keepProvenance(entry,original){
     const result=clone(entry);if(!original)return result;
+    if(!Object.hasOwn(result.details,"encounter_theme")&&original.details.encounter_theme)result.details.encounter_theme=original.details.encounter_theme;
     for(const key of Object.keys(result.details))if(provenance(key))delete result.details[key];
     for(const[key,value]of Object.entries(original.details||{}))if(provenance(key))result.details[key]=clone(value);
     return result;
@@ -44,7 +46,7 @@
     if(section?.key!=="monsters")return section;
     for(const entry of section.entries){const key=id(entry);if(!originals.has(key)&&!entry._monsterEditorKey)originals.set(key,cleanEntry(entry));}
     const result=[];
-    for(const [key,original]of originals){const row=changes.get(key),value=clone(row?.entry||original);if(row?.mode==="override"){value.source=original.source;value.monster_target=clone(row.target);for(const field of Object.keys(value.details))if(provenance(field))delete value.details[field];for(const [field,item]of Object.entries(original.details))if(provenance(field))value.details[field]=clone(item);}value._monsterEditorKey=key;result.push(value);}
+    for(const [key,original]of originals){const row=changes.get(key),value=clone(row?.entry||original);if(row?.mode==="override"){value.source=original.source;value.monster_target=clone(row.target);if(!Object.hasOwn(value.details,"encounter_theme")&&original.details.encounter_theme)value.details.encounter_theme=original.details.encounter_theme;for(const field of Object.keys(value.details))if(provenance(field))delete value.details[field];for(const [field,item]of Object.entries(original.details))if(provenance(field))value.details[field]=clone(item);}value._monsterEditorKey=key;result.push(value);}
     for(const [key,row]of changes)if(row.mode==="addition"&&!originals.has(key))result.push({...clone(row.entry),_monsterEditorKey:key});
     section.entries=result;return section;
   }
@@ -117,7 +119,8 @@
     menu.append(contents);wrap.append(menu);if(storageError){const warning=node("p",storageError,"state-message");warning.setAttribute("role","status");wrap.append(warning);}return wrap;
   }
   const scalarFields=[
-    ["meta","Creature summary","e.g. Medium humanoid, neutral"],["cr","Challenge","e.g. 2"],["ac","Armor class","e.g. 14"],["hp","Hit points","e.g. 32 (5d8 + 10)"],["block","Block pool / check","e.g. 3 / +5"],["speed","Speed","e.g. 30 ft., climb 20 ft."],["proficiency_bonus","Proficiency bonus","e.g. +2"],["saving_throws","Saving throws","e.g. STR +5, CON +4"],["skills","Skills","e.g. Perception +4"],["senses","Senses","e.g. darkvision 60 ft."],["languages","Languages","e.g. Common, Draconic"],["damage_resistances","Damage resistances","e.g. cold"],["damage_immunities","Damage immunities","e.g. poison"],["damage_vulnerabilities","Damage vulnerabilities",""],["condition_immunities","Condition immunities",""]
+    ["meta","Creature summary","e.g. Medium humanoid, neutral"],["cr","Challenge","e.g. 2"],["ac","Armor class","e.g. 14"],["hp","Hit points","e.g. 32 (5d8 + 10)"],["block","Block pool / check","e.g. 3 / +5"],["speed","Speed","e.g. 30 ft., climb 20 ft."],["proficiency_bonus","Proficiency bonus","e.g. +2"],["saving_throws","Saving throws","e.g. STR +5, CON +4"],["skills","Skills","e.g. Perception +4"],["senses","Senses","e.g. darkvision 60 ft."],["languages","Languages","e.g. Common, Draconic"],["damage_resistances","Damage resistances","e.g. cold"],["damage_immunities","Damage immunities","e.g. poison"],["damage_vulnerabilities","Damage vulnerabilities",""],["condition_immunities","Condition immunities",""],
+    ["encounter_theme","Theme / setting","e.g. Seas & coasts"]
   ];
   const actionFields=[["traits","Traits"],["actions","Actions"],["bonus_actions","Bonus actions"],["reactions","Reactions"],["legendary_actions","Legendary actions"],["mythic_actions","Mythic actions"],["lair_actions","Lair actions"],["regional_effects","Regional effects"]];
   function preview(entry){
@@ -140,7 +143,8 @@
     function field(parent,key,title,value,placeholder="",multiline=false){const label=node("label",title),input=node(multiline?"textarea":"input");input.value=value??"";if(placeholder)input.placeholder=placeholder;if(multiline)input.rows=4;label.append(input);parent.append(label);fields.set(key,input);return input;}
     const identity=node("fieldset");identity.append(node("legend","Basics"));field(identity,"name","Name",seed.name).required=true;field(identity,"group","Collection",seed.group).required=true;
     const combat=node("fieldset"),defenses=node("fieldset");combat.append(node("legend","Combat statistics"));defenses.append(node("legend","Senses and defenses"));
-    for(const[key,title,placeholder]of scalarFields){if(object(seed.details[key])||Array.isArray(seed.details[key]))continue;const parent=["meta","cr"].includes(key)?identity:["ac","hp","block","speed","proficiency_bonus"].includes(key)?combat:defenses;field(parent,key,title,seed.details[key],placeholder);}form.append(identity,combat,defenses);
+    for(const[key,title,placeholder]of scalarFields){if(object(seed.details[key])||Array.isArray(seed.details[key]))continue;const parent=["meta","cr","encounter_theme"].includes(key)?identity:["ac","hp","block","speed","proficiency_bonus"].includes(key)?combat:defenses;field(parent,key,title,seed.details[key],placeholder);}form.append(identity,combat,defenses);
+    const themeOptions=node("datalist");themeOptions.id="monster-theme-options";fields.get("encounter_theme").setAttribute("list",themeOptions.id);for(const title of [...new Set(section.entries.map(entry=>entry.details?.encounter_theme).filter(Boolean))].sort()){const option=node("option");option.value=title;themeOptions.append(option);}identity.append(themeOptions);
     const abilities=node("fieldset");abilities.append(node("legend","Ability scores"));for(const key of["str","dex","con","int","wis","cha"])field(abilities,"ability_"+key,key.toUpperCase(),seed.details.abilities?.[key]??"");form.append(abilities);
     const story=node("fieldset");story.append(node("legend","Description"));field(story,"description","Description and lore",seed.details.description||seed.details.desc||"","",true);form.append(story);
     for(const[key,title]of actionFields){const box=node("fieldset");box.append(node("legend",title));const rows=node("div");box.append(rows);const list=[];rowLists.set(key,list);
