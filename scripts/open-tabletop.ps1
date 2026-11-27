@@ -31,16 +31,33 @@ $existing = $false
 try { $health = Invoke-RestMethod -Uri "http://127.0.0.1:$Port/api/health" -TimeoutSec 2; $existing = $health.service -eq 'vara-tabletop' -and $health.mode -eq 'local' } catch {}
 if ($existing -and $health.build -ne $sourceFingerprint) {
   $trackedServer = $null
-  if (Test-Path -LiteralPath $previewPidFile) {
-    $previousServerId = 0
-    if ([int]::TryParse((Get-Content -LiteralPath $previewPidFile -Raw).Trim(), [ref]$previousServerId)) {
-      $candidate = Get-Process -Id $previousServerId -ErrorAction SilentlyContinue
-      if ($candidate -and $candidate.Path -eq $nodePath -and [Math]::Abs(($candidate.StartTime - (Get-Item -LiteralPath $previewPidFile).LastWriteTime).TotalSeconds) -lt 60) {
-        $trackedServer = $candidate
-      }
+  # The saved PID may be stale. Resolve the live listener and verify its exact
+  # entry script before stopping it; a Node process from another checkout stays.
+  try {
+    $listenerIds = @(Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction Stop |
+      Where-Object { $_.LocalAddress -in @('127.0.0.1', '0.0.0.0', '::') } |
+      Select-Object -ExpandProperty OwningProcess -Unique)
+  } catch {
+    $listenerPattern = '^\s*TCP\s+127\.0\.0\.1:' + $Port + '\s+\S+\s+LISTENING\s+(\d+)\s*$'
+    $listenerIds = @(& netstat.exe -ano -p TCP | ForEach-Object {
+      if ($_ -match $listenerPattern) { [int]$Matches[1] }
+    } | Select-Object -Unique)
+  }
+  $entryPath = [IO.Path]::GetFullPath($serverFile).Replace('/', '\')
+  $entryPattern = '(?:^|[\s"])' + [regex]::Escape($entryPath) + '(?=$|[\s"])'
+  foreach ($listenerId in $listenerIds) {
+    try {
+      $processInfo = Get-CimInstance -ClassName Win32_Process -Filter "ProcessId = $listenerId" -ErrorAction Stop
+      if (!$processInfo -or $processInfo.Name -ine 'node.exe') { continue }
+      $commandLine = ([string]$processInfo.CommandLine).Replace('/', '\')
+      if ($commandLine -notmatch $entryPattern) { continue }
+      $trackedServer = Get-Process -Id $listenerId -ErrorAction SilentlyContinue
+      if ($trackedServer) { break }
+    } catch {
+      # Missing process information is not authorization to stop another app.
     }
   }
-  if (!$trackedServer) { throw "An older preview is using port $Port. Close its server window, or run this script with -Port 8788." }
+  if (!$trackedServer) { throw "Port $Port has a preview from another checkout, or its process could not be verified. No process was stopped. Run this script with -Port 8788 if that preview should remain open." }
   Write-Output 'Restarting the preview to load updated game tools. Saved games are retained.'
   Stop-Process -Id $trackedServer.Id
   $trackedServer.WaitForExit(5000) | Out-Null

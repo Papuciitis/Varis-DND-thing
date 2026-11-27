@@ -148,7 +148,9 @@ npm start
 To stop a launcher-started local preview, inspect `.tabletop-data/preview.pid`
 and stop that specific process. Local games are retained after the process stops.
 Reopening the launcher detects backend source changes and restarts the tracked
-preview process when needed. A normal browser refresh loads updated map tools.
+preview process when needed. It finds the live port owner and verifies the exact
+prototype script before stopping it; a stale PID file does not block recovery.
+A normal browser refresh loads updated map tools.
 
 ## Separate online preview on Cloudflare Free
 
