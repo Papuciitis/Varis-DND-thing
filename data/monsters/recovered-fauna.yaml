@@ -1,0 +1,1255 @@
+# Recovered guardians, minor beasts and aquatic fauna.
+section: "monsters"
+entries:
+  -
+    name: "Forest Guardian"
+    group: "Recovered elemental guardians"
+    id: "recovered-forest-guardian"
+    meta: "Large elemental, neutral"
+    size: "Large"
+    type: "elemental"
+    alignment: "neutral"
+    cr: "4"
+    ac: "15"
+    hp: "85"
+    speed: "30 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "18"
+      dex: "12"
+      con: "16"
+      int: "6"
+      wis: "10"
+      cha: "8"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 10"
+    languages: "understands Sylvan but cannot speak"
+    traits:
+      -
+        name: "False Appearance"
+        description: "While motionless, it is indistinguishable from an ordinary tree."
+    actions:
+      -
+        name: "Slam"
+        description: "Melee attack: +6 to hit, reach 10 ft., one target; Block DC 14. Unblocked strike: 2d8 + 4 bludgeoning damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Forest Guardian (Oak Leaf Elemental)"
+      date: "2023-06-08"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Forest Guardian (Oak Leaf Elemental)"
+      date: "2023-06-08"
+      recorded_statistics:
+        ac: "15"
+        hp: "85"
+        speed: "30 ft."
+        scores:
+          - "18"
+          - "12"
+          - "16"
+          - "6"
+          - "10"
+          - "8"
+        cr: "4"
+        attack:
+          - "Slam"
+          - "6"
+          - "2d8 + 4 bludgeoning damage"
+          - "10"
+      recovered_summary: "Five elemental guardian profiles from the Elixir of the Elemental Grove discussion."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: >-
+      GPT discussion / 2023-06-08 / Forest Guardian (Oak Leaf Elemental); recovered summaries in the
+      2026-11-27 monster conversation
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Renamed from Forest Guardian (Oak Leaf Elemental) to a reusable enemy or species profile. Personal
+        names remain only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    damage_resistances: "piercing and slashing from nonmagical attacks"
+    damage_immunities: "poison"
+    condition_immunities: "Poisoned"
+  -
+    name: "Sea Guardian"
+    group: "Recovered elemental guardians"
+    id: "recovered-sea-guardian"
+    meta: "Large elemental, neutral"
+    size: "Large"
+    type: "elemental"
+    alignment: "neutral"
+    cr: "4"
+    ac: "17"
+    hp: "75"
+    speed: "20 ft., swim 50 ft."
+    block: "0 / +0 check"
+    abilities:
+      str: "17"
+      dex: "11"
+      con: "16"
+      int: "6"
+      wis: "10"
+      cha: "8"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 10"
+    languages: "understands Aquan but cannot speak"
+    traits:
+      -
+        name: "Amphibious"
+        description: "Can breathe air and water."
+    actions:
+      -
+        name: "Bite"
+        description: "Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d8 + 3 piercing damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Sea Guardian (Turtle Shell Elemental)"
+      date: "2023-06-08"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Sea Guardian (Turtle Shell Elemental)"
+      date: "2023-06-08"
+      recorded_statistics:
+        ac: "17"
+        hp: "75"
+        speed: "20 ft., swim 50 ft."
+        scores:
+          - "17"
+          - "11"
+          - "16"
+          - "6"
+          - "10"
+          - "8"
+        cr: "4"
+        attack:
+          - "Bite"
+          - "5"
+          - "2d8 + 3 piercing damage"
+          - "5"
+      recovered_summary: "Five elemental guardian profiles from the Elixir of the Elemental Grove discussion."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: >-
+      GPT discussion / 2023-06-08 / Sea Guardian (Turtle Shell Elemental); recovered summaries in the
+      2026-11-27 monster conversation
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +0. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Renamed from Sea Guardian (Turtle Shell Elemental) to a reusable enemy or species profile. Personal
+        names remain only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    damage_resistances: "bludgeoning, piercing and slashing from nonmagical attacks"
+    damage_immunities: "poison"
+    condition_immunities: "Poisoned"
+  -
+    name: "Sky Guardian"
+    group: "Recovered elemental guardians"
+    id: "recovered-sky-guardian"
+    meta: "Large elemental, neutral"
+    size: "Large"
+    type: "elemental"
+    alignment: "neutral"
+    cr: "3"
+    ac: "13"
+    hp: "65"
+    speed: "40 ft., fly 60 ft."
+    block: "3 / +3 check"
+    abilities:
+      str: "15"
+      dex: "17"
+      con: "14"
+      int: "6"
+      wis: "10"
+      cha: "8"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 10"
+    languages: "understands Auran but cannot speak"
+    traits:
+      []
+    actions:
+      -
+        name: "Talon"
+        description: "Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d6 + 3 slashing damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Sky Guardian (Diatryma Feather Elemental)"
+      date: "2023-06-08"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Sky Guardian (Diatryma Feather Elemental)"
+      date: "2023-06-08"
+      recorded_statistics:
+        ac: "13"
+        hp: "65"
+        speed: "40 ft., fly 60 ft."
+        scores:
+          - "15"
+          - "17"
+          - "14"
+          - "6"
+          - "10"
+          - "8"
+        cr: "3"
+        attack:
+          - "Talon"
+          - "5"
+          - "2d6 + 3 slashing damage"
+          - "5"
+      recovered_summary: "Five elemental guardian profiles from the Elixir of the Elemental Grove discussion."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: >-
+      GPT discussion / 2023-06-08 / Sky Guardian (Diatryma Feather Elemental); recovered summaries in the
+      2026-11-27 monster conversation
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +3. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Renamed from Sky Guardian (Diatryma Feather Elemental) to a reusable enemy or species profile.
+        Personal names remain only in collapsed source notes.
+      - "Legacy thunder resistance is expressed as sonic resistance in the current damage vocabulary."
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    damage_resistances: "sonic, lightning; bludgeoning, piercing and slashing from nonmagical attacks"
+    damage_immunities: "poison"
+    condition_immunities: "Poisoned"
+  -
+    name: "Earth Guardian"
+    group: "Recovered elemental guardians"
+    id: "recovered-earth-guardian"
+    meta: "Large elemental, neutral"
+    size: "Large"
+    type: "elemental"
+    alignment: "neutral"
+    cr: "5"
+    ac: "16"
+    hp: "95"
+    speed: "30 ft., burrow 30 ft."
+    block: "0 / -1 check"
+    abilities:
+      str: "20"
+      dex: "8"
+      con: "18"
+      int: "5"
+      wis: "10"
+      cha: "5"
+    proficiency_bonus: "+3"
+    senses: "darkvision 60 ft., tremorsense 60 ft., passive Perception 10"
+    languages: "Terran"
+    traits:
+      []
+    actions:
+      -
+        name: "Slam"
+        description: "Melee attack: +8 to hit, reach 10 ft., one target; Block DC 16. Unblocked strike: 2d8 + 5 bludgeoning damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Earth Guardian (Sequoia Bark Elemental)"
+      date: "2023-06-08"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Earth Guardian (Sequoia Bark Elemental)"
+      date: "2023-06-08"
+      recorded_statistics:
+        ac: "16"
+        hp: "95"
+        speed: "30 ft., burrow 30 ft."
+        scores:
+          - "20"
+          - "8"
+          - "18"
+          - "5"
+          - "10"
+          - "5"
+        cr: "5"
+        attack:
+          - "Slam"
+          - "8"
+          - "2d8 + 5 bludgeoning damage"
+          - "10"
+      recovered_summary: "Five elemental guardian profiles from the Elixir of the Elemental Grove discussion."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: >-
+      GPT discussion / 2023-06-08 / Earth Guardian (Sequoia Bark Elemental); recovered summaries in the
+      2026-11-27 monster conversation
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check -1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Renamed from Earth Guardian (Sequoia Bark Elemental) to a reusable enemy or species profile.
+        Personal names remain only in collapsed source notes.
+      - >-
+        Legacy thunder vulnerability becomes sonic vulnerability; unavailable legacy condition labels are
+        replaced by the current named conditions.
+      - "Does not import an undefined petrified/unconscious immunity as blanket immunity to current Incapacitated."
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    damage_resistances: "bludgeoning, piercing and slashing from nonmagical attacks"
+    damage_immunities: "poison"
+    damage_vulnerabilities: "sonic"
+    condition_immunities: "Exhausted, Paralyzed, Poisoned"
+  -
+    name: "Underground Guardian"
+    group: "Recovered elemental guardians"
+    id: "recovered-underground-guardian"
+    meta: "Large elemental, neutral"
+    size: "Large"
+    type: "elemental"
+    alignment: "neutral"
+    cr: "4"
+    ac: "14"
+    hp: "80"
+    speed: "30 ft., burrow 30 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "17"
+      dex: "13"
+      con: "16"
+      int: "8"
+      wis: "11"
+      cha: "10"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., tremorsense 60 ft., passive Perception 10"
+    languages: "understands Terran but cannot speak"
+    traits:
+      []
+    actions:
+      -
+        name: "Slam"
+        description: "Melee attack: +5 to hit, reach 10 ft., one target; Block DC 13. Unblocked strike: 2d8 + 3 bludgeoning damage."
+      -
+        name: "Tremor (3/day)"
+        description: >-
+          Creatures other than the guardian on ground within 10 ft.; DC 11 Dexterity save. Failure: 1d6
+          bludgeoning damage; Prone. Success: no damage or condition. Saving-throw-only damage cannot be
+          Blocked. The area becomes difficult terrain for 1 minute.
+      -
+        name: "Spore Thorns (3/day)"
+        description: >-
+          A 10-ft.-radius patch of ground within 30 ft.; DC 11 Dexterity save. Failure: 2d4 piercing damage;
+          Snared until the end of its next turn. Success: half damage and no Snared. Saving-throw-only damage
+          cannot be Blocked. The patch remains difficult terrain for 1 minute; creating another patch ends the
+          previous one.
+      -
+        name: "Shape earth"
+        description: >-
+          As an action, move or shape up to a 5-ft. cube of loose earth within 30 ft. Cannot move creatures,
+          cause damage, or undermine a structure. It remains until disturbed.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Underground Guardian (Zygom Spore Elemental)"
+      date: "2023-06-08"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Underground Guardian (Zygom Spore Elemental)"
+      date: "2023-06-08"
+      recorded_statistics:
+        ac: "14"
+        hp: "80"
+        speed: "30 ft., burrow 30 ft."
+        scores:
+          - "17"
+          - "13"
+          - "16"
+          - "8"
+          - "11"
+          - "10"
+        cr: "4"
+        attack:
+          - "Slam"
+          - "5"
+          - "2d8 + 3 bludgeoning damage"
+          - "10"
+      recovered_summary: "Five elemental guardian profiles from the Elixir of the Elemental Grove discussion."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: >-
+      GPT discussion / 2023-06-08 / Underground Guardian (Zygom Spore Elemental); recovered summaries in
+      the 2026-11-27 monster conversation
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Renamed from Underground Guardian (Zygom Spore Elemental) to a reusable enemy or species profile.
+        Personal names remain only in collapsed source notes.
+      - >-
+        The legacy mold earth, thaumaturgy, earth tremor and spike growth labels are completed as bounded
+        innate earth/spore powers; they are not added to character spell lists.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    damage_resistances: "bludgeoning, piercing and slashing from nonmagical attacks"
+    damage_immunities: "poison"
+    condition_immunities: "Poisoned"
+  -
+    name: "Golden Sow"
+    group: "Recovered farm fauna"
+    id: "recovered-golden-sow"
+    meta: "Medium beast, unaligned"
+    size: "Medium"
+    type: "beast"
+    alignment: "unaligned"
+    cr: "1/4"
+    ac: "10"
+    hp: "11 (2d8 + 2)"
+    speed: "30 ft."
+    block: "0 / -1 check"
+    abilities:
+      str: "13"
+      dex: "8"
+      con: "12"
+      int: "4"
+      wis: "9"
+      cha: "5"
+    proficiency_bonus: "+2"
+    senses: "passive Perception 9"
+    languages: "understands Common but cannot speak"
+    traits:
+      -
+        name: "Truffle Scent"
+        description: "Advantage on smell-based Wisdom (Perception) checks to find truffles."
+    actions:
+      -
+        name: "Tusk"
+        description: "Melee attack: +3 to hit, reach 5 ft., one target; Block DC 11. Unblocked strike: 2d4 + 1 slashing damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Golden Sow"
+      date: "2023-06-15"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Golden Sow"
+      date: "2023-06-15"
+      recorded_statistics:
+        ac: "10"
+        hp: "11 (2d8 + 2)"
+        speed: "30 ft."
+        scores:
+          - "13"
+          - "8"
+          - "12"
+          - "4"
+          - "9"
+          - "5"
+        cr: "1/4"
+        attack:
+          - "Tusk"
+          - "3"
+          - "2d4 + 1 slashing damage"
+      recovered_summary: "Domestic farm-animal designs. Emerald Twilight-Hen is a year-round egg layer, not a ritual creature."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2023-06-15 / Golden Sow; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "beast type and unaligned disposition"
+        - "current Block and complete attack format"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check -1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded farm-animal numbers are retained; omitted type/alignment use the fitting beast/unaligned
+        baseline. These are low-threat fauna rather than combat-trained NPCs.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+  -
+    name: "Ruby Dawn-Crier"
+    group: "Recovered farm fauna"
+    id: "recovered-ruby-dawn-crier"
+    meta: "Small beast, unaligned"
+    size: "Small"
+    type: "beast"
+    alignment: "unaligned"
+    cr: "1/8"
+    ac: "10"
+    hp: "7 (2d6)"
+    speed: "20 ft., fly 30 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "6"
+      dex: "13"
+      con: "8"
+      int: "2"
+      wis: "12"
+      cha: "6"
+    proficiency_bonus: "+2"
+    senses: "passive Perception 11"
+    languages: "understands Common but cannot speak"
+    traits:
+      -
+        name: "Early Riser"
+        description: "Advantage on Wisdom (Perception) checks during dawn."
+    actions:
+      -
+        name: "Peck"
+        description: "Melee attack: +3 to hit, reach 5 ft., one target; Block DC 11. Unblocked strike: 1d4 + 1 piercing damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Ruby Dawn-Crier"
+      date: "2023-06-15"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Ruby Dawn-Crier"
+      date: "2023-06-15"
+      recorded_statistics:
+        ac: "10"
+        hp: "7 (2d6)"
+        speed: "20 ft., fly 30 ft."
+        scores:
+          - "6"
+          - "13"
+          - "8"
+          - "2"
+          - "12"
+          - "6"
+        cr: "1/8"
+        attack:
+          - "Peck"
+          - "3"
+          - "1d4 + 1 piercing damage"
+      recovered_summary: "Domestic farm-animal designs. Emerald Twilight-Hen is a year-round egg layer, not a ritual creature."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2023-06-15 / Ruby Dawn-Crier; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "beast type and unaligned disposition"
+        - "current Block and complete attack format"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded farm-animal numbers are retained; omitted type/alignment use the fitting beast/unaligned
+        baseline. These are low-threat fauna rather than combat-trained NPCs.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+  -
+    name: "Emerald Twilight-Hen"
+    group: "Recovered farm fauna"
+    id: "recovered-emerald-twilight-hen"
+    meta: "Small beast, unaligned"
+    size: "Small"
+    type: "beast"
+    alignment: "unaligned"
+    cr: "0"
+    ac: "10"
+    hp: "5 (2d6 − 2)"
+    speed: "20 ft."
+    block: "0 / +0 check"
+    abilities:
+      str: "2"
+      dex: "10"
+      con: "8"
+      int: "2"
+      wis: "11"
+      cha: "5"
+    proficiency_bonus: "+2"
+    senses: "passive Perception 10"
+    languages: "understands Common but cannot speak"
+    traits:
+      -
+        name: "Twilight Layer"
+        description: "Advantage on Dexterity (Stealth) checks during twilight."
+    actions:
+      -
+        name: "Peck"
+        description: "Melee attack: +2 to hit, reach 5 ft., one target; Block DC 10. Unblocked strike: 1d4 − 2 piercing damage (minimum 1)."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Emerald Twilight-Hen"
+      date: "2023-06-16"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Emerald Twilight-Hen"
+      date: "2023-06-16"
+      recorded_statistics:
+        ac: "10"
+        hp: "5 (2d6 − 2)"
+        speed: "20 ft."
+        scores:
+          - "2"
+          - "10"
+          - "8"
+          - "2"
+          - "11"
+          - "5"
+        cr: "0"
+        attack:
+          - "Peck"
+          - "2"
+          - "1d4 − 2 piercing damage (minimum 1)"
+      recovered_summary: "Domestic farm-animal designs. Emerald Twilight-Hen is a year-round egg layer, not a ritual creature."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2023-06-16 / Emerald Twilight-Hen; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "beast type and unaligned disposition"
+        - "current Block and complete attack format"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +0. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded farm-animal numbers are retained; omitted type/alignment use the fitting beast/unaligned
+        baseline. These are low-threat fauna rather than combat-trained NPCs.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    description: "A gentle farm bird with emerald feathers and blue eggs. Valued for year-round laying."
+  -
+    name: "Gelatinous Leafhopper"
+    group: "Recovered aquatic fauna"
+    id: "recovered-gelatinous-leafhopper"
+    meta: "Small beast, unaligned"
+    size: "Small"
+    type: "beast"
+    alignment: "unaligned"
+    cr: "1/4"
+    ac: "12"
+    hp: "18 (4d6 + 4)"
+    speed: "20 ft., swim 20 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "6"
+      dex: "14"
+      con: "12"
+      int: "2"
+      wis: "10"
+      cha: "4"
+    proficiency_bonus: "+2"
+    senses: "blindsight 60 ft., passive Perception 10"
+    languages: "—"
+    traits:
+      -
+        name: "Amphibious"
+        description: "Can breathe air and water."
+      -
+        name: "Camouflage"
+        description: "Advantage on Dexterity (Stealth) checks to hide in aquatic or forest environments."
+      -
+        name: "Standing Leap"
+        description: "Can jump up to 20 ft. without a running start; jumping spends its movement."
+    actions:
+      -
+        name: "Sting"
+        description: >-
+          Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d4 + 2 piercing
+          damage. The target makes a DC 11 Constitution save, taking 2d6 poison damage on failure or half on
+          success. Both damage parts belong to the unblocked strike.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Gelatinous Leafhopper"
+      date: "2023-07-29"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Gelatinous Leafhopper"
+      date: "2023-07-29"
+      recorded_statistics:
+        speed: "Swim 20 ft., Jump 20 ft."
+        scores:
+          - "6"
+          - "14"
+          - "12"
+          - "2"
+          - "10"
+          - "4"
+        ac: "12"
+        hp: "18"
+      recovered_summary: "Jellyfish/leafbug/toad hybrid with Amphibious, aquatic/forest Camouflage and poison Sting."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2023-07-29 / Gelatinous Leafhopper; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - "The source's Jump 20 ft. is completed as a standing-jump feature plus a 20-ft. walking baseline; swim speed remains 20 ft."
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    skills: "Stealth +4"
+  -
+    name: "Crocshark"
+    group: "Recovered aquatic fauna"
+    id: "recovered-crocshark"
+    meta: "Medium beast, unaligned"
+    size: "Medium"
+    type: "beast"
+    alignment: "unaligned"
+    cr: "1"
+    ac: "14"
+    hp: "27 (5d8 + 5)"
+    speed: "20 ft., swim 40 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "16"
+      dex: "12"
+      con: "13"
+      int: "2"
+      wis: "12"
+      cha: "7"
+    proficiency_bonus: "+2"
+    senses: "darkvision 30 ft., passive Perception 11"
+    languages: "—"
+    traits:
+      -
+        name: "Amphibious"
+        description: "Can breathe air and water."
+      -
+        name: "Hold Breath"
+        description: "Can hold its breath for 30 minutes if a breathing hazard suppresses its normal respiration."
+    actions:
+      -
+        name: "Bite"
+        description: >-
+          Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d8 + 3 piercing
+          damage. A Large or smaller target is Grappled (escape DC 13: spend an action to make a Strength
+          (Athletics) or Dexterity (Acrobatics) check). The grapple ends if the grappler is Incapacitated or
+          the target leaves its reach. It cannot bite another target until it releases this grapple (free
+          action).
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Crocshark"
+      date: "2025-09-17"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Crocshark"
+      date: "2025-09-17"
+      recorded_statistics:
+        ac: "14"
+        hp: "27"
+        speed: "20 ft., swim 40 ft."
+        scores:
+          - "16"
+          - "12"
+          - "13"
+          - "2"
+          - "12"
+          - "7"
+        bite: "+5, 2d8+3; grapple escape DC 13"
+      recovered_summary: "Amphibious crocodile/shark ambush beast with Hold Breath 30 minutes; only one bite grapple at a time."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-09-17 / Crocshark; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+  -
+    name: "Quirkbeak"
+    group: "Recovered aquatic fauna"
+    id: "recovered-quirkbeak"
+    meta: "Tiny beast, unaligned"
+    size: "Tiny"
+    type: "beast"
+    alignment: "unaligned"
+    cr: "1/8"
+    ac: "12"
+    hp: "5 (2d4)"
+    speed: "20 ft., fly 40 ft., swim 20 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "6"
+      dex: "14"
+      con: "10"
+      int: "2"
+      wis: "12"
+      cha: "6"
+    proficiency_bonus: "+2"
+    senses: "darkvision 30 ft., passive Perception 13"
+    languages: "—"
+    traits:
+      -
+        name: "Keen Sight"
+        description: "Advantage on sight-based Wisdom (Perception) checks."
+    actions:
+      -
+        name: "Beak Peck"
+        description: "Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d4 + 1 piercing damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Quirkbeak"
+      date: "2025-09-17"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Quirkbeak"
+      date: "2025-09-17"
+      recorded_statistics:
+        ac: "12"
+        hp: "5"
+        scores:
+          - "6"
+          - "14"
+          - "10"
+          - "2"
+          - "12"
+          - "6"
+        cr: "1/8"
+      recovered_summary: "Accepted revised natural-beast version; the earlier monstrosity/CR 1 proposal was rejected."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-09-17 / Quirkbeak; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    skills: "Perception +3, Stealth +4"
+    bonus_actions:
+      -
+        name: "Mocking Squawk (1/day)"
+        description: >-
+          When threatened, choose one creature within 15 ft. that can hear it. DC 10 Wisdom save; failure
+          imposes disadvantage on the target's next attack before the end of its next turn.
+  -
+    name: "Scarabscorpion"
+    group: "Recovered desert fauna"
+    id: "recovered-scarabscorpion"
+    meta: "Small beast, unaligned"
+    size: "Small"
+    type: "beast"
+    alignment: "unaligned"
+    cr: "1/4"
+    ac: "13"
+    hp: "11 (2d6 + 4)"
+    speed: "30 ft., burrow 15 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "12"
+      dex: "13"
+      con: "14"
+      int: "2"
+      wis: "10"
+      cha: "5"
+    proficiency_bonus: "+2"
+    senses: "blindsight 10 ft., passive Perception 10"
+    languages: "—"
+    traits:
+      []
+    actions:
+      -
+        name: "Claw"
+        description: >-
+          Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d6 + 2 bludgeoning
+          damage. A Large or smaller target is Grappled (escape DC 12: spend an action to make a Strength
+          (Athletics) or Dexterity (Acrobatics) check). The grapple ends if the grappler is Incapacitated or
+          the target leaves its reach. It has two claws, each holding at most one target.
+      -
+        name: "Sting"
+        description: >-
+          Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d8 + 2 piercing
+          damage. DC 11 Constitution save; failure adds 2d6 poison damage, success adds no poison. The poison
+          is part of the strike.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Scarabscorpion"
+      date: "2025-09-17"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Scarabscorpion"
+      date: "2025-09-17"
+      recorded_statistics:
+        ac: "13"
+        hp: "11"
+        scores:
+          - "12"
+          - "13"
+          - "14"
+          - "2"
+          - "10"
+          - "5"
+      recovered_summary: "Burrowing beetle/crab/scorpion hybrid. Claw +4 grapples (escape 12); Sting +4 inflicts poison."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-09-17 / Scarabscorpion; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+

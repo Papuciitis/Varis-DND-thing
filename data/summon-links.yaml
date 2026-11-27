@@ -86,6 +86,9 @@ summon_links:
 - spell: Mud servant
   group: Occult spells
   summons:
+  - monster: Mud Servant
+    notes: Current spell-scaling profile with complete standalone defaults. Use the creating spell's
+      casting bonus, spell attack bonus and explicit Block DC instead of those defaults when summoned.
   - monster: mud golem
     notes: Workbook reference variant. The existing spell's rules and embedded creature statistics take
       priority where they differ.

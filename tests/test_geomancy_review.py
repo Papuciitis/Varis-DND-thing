@@ -53,7 +53,8 @@ class GeomancyReviewTests(unittest.TestCase):
 
     def test_source_high_levels_are_preserved_without_current_spell_grants(self):
         self.assertEqual(len(self.catalog['spells']['entries']), 439)
-        self.assertEqual(len(self.catalog['monsters']['entries']), 160)
+        original = [e for e in self.catalog['monsters']['entries'] if not e['source'].startswith('monsters/recovered-')]
+        self.assertEqual(len(original), 160)
         self.assertFalse(any(entry['source'].startswith('geomancy-review/') for entry in self.catalog['spells']['entries']))
         names = {entry['name']: entry['details'] for entry in self.entries}
         self.assertEqual(names["Worldshaper's Command"]['level'], '10')
