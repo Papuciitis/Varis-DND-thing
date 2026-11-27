@@ -1,4 +1,4 @@
-import {readings,RESOURCE_NAMES,ABILITIES} from './resources.mjs';
+import {utilityReadings,healthSummary,RESOURCE_NAMES,ABILITIES} from './resources.mjs';
 import {LocalSources} from './sources.mjs';
 import {templateLabel} from './templates.mjs';
 import {QuickSheet} from './quick-sheet.mjs';
@@ -37,7 +37,7 @@ export class TokenTools {
     $('token-kind').append(new Option('Summon','summon'));
   }
   token(id=this.getSelected()) {return this.getView()?.scene.tokens.find(token=>token.id===id);}
-  setConnected(value) {this.connected=value;this.render();if(value)this.sources.pull();}
+  setConnected(value) {const resumed=value && !this.connected;this.connected=value;this.render();if(resumed)this.sources.pull();}
   async saveStats(id,patch) {
     const before=this.token(id);if(!before?.canEditStats)return;
     const next=await this.command({type:'token.stats',id,...patch});
@@ -63,6 +63,25 @@ export class TokenTools {
       current.id='dock-current-'+index;title.htmlFor=current.id;
       const divider=el('span','resource-divider','/'),track=el('div','resource-track'),fill=el('span');track.append(fill);
       values.append(current,divider,maximum);form.append(title,values,track);this.dockBars.append(form);
+      if(index===0){
+        form.classList.add('health-resource');this.healthOverview=el('div','health-overview');
+        const shield=el('div','ac-shield');shield.setAttribute('aria-label','Armor class');this.healthAC=el('strong');shield.append(el('span','','AC'),this.healthAC);
+        const body=el('div','health-body'),heading=el('div','health-heading');this.healthTotal=el('strong');heading.append(el('span','','Combined health'),this.healthTotal);
+        this.healthTrack=el('div','health-track');this.healthTrack.id='combined-health';this.healthTrack.setAttribute('role','progressbar');this.healthTrack.setAttribute('aria-label','Combined health');
+        this.healthSegments=['hp','tempHP','arcaneHealth'].map(key=>{const node=el('span','health-segment '+key);this.healthTrack.append(node);return node;});
+        body.append(heading,this.healthTrack);this.healthOverview.append(shield,body);
+        const editors=el('div','health-editors'),hp=el('div');hp.append(title,values);editors.append(hp);this.healthExtras=new Map();
+        for(const [key,name] of [['tempHP','Temp HP'],['arcaneHealth','Arcane']]){
+          const label=el('label','health-extra '+key,name),input=el('input');input.type='number';input.id='health-'+key;input.min=0;input.max=999999;input.step=1;
+          input.setAttribute('aria-label',name+' current');label.append(input);editors.append(label);this.healthExtras.set(key,input);
+          input.onchange=()=>{
+            const token=this.token();if(!this.connected || !token?.canEditStats || !input.reportValidity())return;
+            const value=Number(input.value),pool=token.resources[key];
+            this.saveStats(token.id,{resources:{...token.resources,[key]:{current:value,max:pool.max===null?null:Math.max(value,pool.max)}}});
+          };
+        }
+        form.replaceChildren(this.healthOverview,editors);
+      }
       const save=()=>this.savePool(index,current,maximum);
       current.addEventListener('change',save);maximum.addEventListener('change',save);
       form.onsubmit=event=>{event.preventDefault();save();};
@@ -70,7 +89,7 @@ export class TokenTools {
     }
   }
   async savePool(index,current,maximum) {
-    const token=this.token(),bar=readings(token)[index];if(!bar || !token.canEditStats || !this.connected)return;
+    const token=this.token(),bar=utilityReadings(token)[index];if(!bar || !token.canEditStats || !this.connected)return;
     current.setCustomValidity('');maximum.setCustomValidity('');
     if(!current.reportValidity() || (bar.max!==null && !maximum.reportValidity()))return;
     const max=bar.max===null?null:Number(maximum.value),value=Number(current.value);
@@ -86,7 +105,12 @@ export class TokenTools {
     const section=el('section','inspector-section resource-settings');$('token-form').after(section);this.resourceSection=section;
     this.privateNote=el('p','field-note');section.append(this.privateNote);
     this.share=check(section,'Share this character / summon with the DM','share-token-stats');
-    this.share.onchange=async()=>{const token=this.token();if(token)await this.command({type:'token.share',id:token.id,enabled:this.share.checked});this.render();};
+    this.share.onchange=async()=>{
+      const token=this.token();if(!token || this.sharingToken)return;
+      const enabled=this.share.checked;this.sharingToken=token.id;this.share.disabled=true;
+      try{await this.command({type:'token.share',id:token.id,enabled});}
+      finally{this.sharingToken=null;this.render();}
+    };
     const details=el('details');details.append(el('summary','','Optional bars'));section.append(details);this.barDetails=details;
     const form=el('form');this.barInputs=[];
     for(let index=0;index<2;index++){
@@ -202,6 +226,7 @@ export class TokenTools {
   }
   mountSidebar() {
     this.sidebar=new QuickSheet({getLink:id=>this.sources.linkFor(id),onLink:kind=>this.openLinker(kind),onEdit:()=>this.openStatblock()});
+    this.sidebar.stats.remove();this.dock.append(this.sidebar.abilities);
     document.querySelector('.selected-heading').after(this.sidebar.element);
     this.sidebar.linkerHost.append(this.sourceControls);
     this.sourceControls.open=false;
@@ -370,6 +395,7 @@ export class TokenTools {
   render() {
     const view=this.getView(),token=this.token();this.dock.hidden=!token;
     this.sidebar.render(token,this.connected);this.tokenSettings.hidden=!token;
+    this.sidebar.abilities.hidden=!token?.canViewStats || !token.statblock;
     if(token){
       if(this.sourceTokenId!==token.id){this.sourceTokenId=token.id;this.sourceControls.open=false;}
       this.sourceControls.hidden=!token.canEditStats;
@@ -396,10 +422,20 @@ export class TokenTools {
     this.dockAccess.textContent=!token.canViewStats?'Private stats':token.canEditStats?'Your token':'Shared · read only';
     this.dockNote.textContent=!token.canViewStats?'Character stats belong to the player. They can share access with the DM.':'';
     this.dockNote.hidden=token.canViewStats;
-    this.privateNote.textContent=token.ownerId===view.self.id?'Your character stats are private. Sharing lets the DM read your statblock and bars.':!token.canViewStats?'The player has not shared this character’s stats.':token.canEditStats?'HP and enabled bars are shown directly beneath this token.':'The player shared this character for reading.';
-    this.share.closest('label').hidden=token.ownerId!==view.self.id;this.share.checked=token.shareWithDM===true;this.share.disabled=!this.connected;
+    this.privateNote.textContent=token.ownerId===view.self.id?'Your character stats are private. Sharing lets the DM read your statblock and bars.':!token.canViewStats?'The player has not shared this character’s stats.':token.canEditStats?'Health and enabled bars appear when this token is selected or hovered.':'The player shared this character for reading.';
+    this.share.closest('label').hidden=token.ownerId!==view.self.id;
+    if(this.sharingToken!==token.id)this.share.checked=token.shareWithDM===true;
+    this.share.disabled=!this.connected || this.sharingToken===token.id;
     this.barDetails.hidden=!token.canEditStats;
-    const bars=readings(token),link=this.sources.linkFor(token.id),character=link?.kind==='character'?this.sources.characters().find(character=>character.id===link.id):null;
+    const bars=utilityReadings(token),link=this.sources.linkFor(token.id),character=link?.kind==='character'?this.sources.characters().find(character=>character.id===link.id):null;
+    const health=healthSummary(token);this.healthOverview.hidden=!health;
+    this.healthAC.textContent=health?.armorClass ?? '';this.healthTotal.textContent=health?health.current+' / '+health.max:'';
+    this.healthTrack.setAttribute('aria-valuemin','0');this.healthTrack.setAttribute('aria-valuemax',String(health?.max || 1));this.healthTrack.setAttribute('aria-valuenow',String(health?.current || 0));
+    this.healthSegments.forEach((node,index)=>{node.style.width=(health?.segments[index].fraction || 0)*100+'%';node.style.background=health?.segments[index].color || '';});
+    for(const [key,input] of this.healthExtras){
+      if(!health || document.activeElement!==input)input.value=health?token.resources[key].current:'';
+      input.disabled=!this.connected || !token.canEditStats;
+    }
     this.poolFields.forEach((row,index)=>{
       const bar=bars[index];row.form.hidden=!bar;if(!bar){row.current.value='';row.maximum.value='';return;}
       row.title.textContent=bar.label;row.current.setAttribute('aria-label',bar.label+' current');row.maximum.setAttribute('aria-label',bar.label+' maximum');
@@ -408,7 +444,7 @@ export class TokenTools {
       row.current.disabled=!this.connected || !token.canEditStats || (bar.key==='armorClass' && !!character?.build?.enabled);
       row.maximum.disabled=!this.connected || !token.canEditStats || (bar.key==='hp' && !!character?.build?.enabled);
       row.maximum.hidden=bar.max===null;row.divider.hidden=bar.max===null;
-      row.fill.style.width=(bar.max?Math.min(100,bar.current/bar.max*100):100)+'%';row.fill.style.background=bar.color;
+      row.fill.style.width=(bar.max?Math.min(100,bar.current/bar.max*100):bar.current?100:0)+'%';row.fill.style.background=bar.color;
     });
     const changed=this.renderedToken!==token.id,editing=this.barForm.contains(document.activeElement);
     if(token.canEditStats && (!editing || changed)){

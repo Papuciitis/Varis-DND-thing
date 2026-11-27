@@ -1,6 +1,9 @@
 # FOR AI 
 # IMPORTANT
 
+For tabletop UI work, read [ai_tabletop_design.md](ai_tabletop_design.md) first.
+It records V and Nauris's desktop slate layout, compendium placement and health-display decisions.
+
 If modifying the data in /data, you must note your changes in data_tweaks_report.md
 The modification must not delete previous entries.
 

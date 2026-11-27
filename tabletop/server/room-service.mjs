@@ -24,6 +24,7 @@ export class RoomService {
     room.scene.distancePerSquare ??= 5;
     room.scene.distanceUnit ??= 'ft';
     room.scene.templates ??= [];
+    room.scene.notes ??= [];
     room.scene.tokens=room.scene.tokens.map(token=>tokenFrom(token,room.scene));
     return room;
   }

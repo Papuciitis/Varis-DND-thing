@@ -15,8 +15,9 @@ sheets to their tabletop tokens.
   credentials are excluded from player updates by the server.
 - Game changes save on the server; clients reconnect and request the latest state.
 - Campaign JSON exports provide a backup independent of the hosting provider.
-- Token HP and two optional resource bars appear beneath tokens and in a larger
-  panel at the bottom of the map. Bars and the token statblock use the same values.
+- Selected/hovered tokens show a combined health overlay with an AC shield and
+  configurable extra bars. The larger utility panel below the map edits the same
+  resources used by the linked statblock.
 - Player stats are private by default. The player can share read-only access with
   the DM and revoke it; other players do not receive those stats.
 - A high-contrast grid, feet/meters/squares ruler, right-click menus and shared
@@ -30,6 +31,23 @@ map on screen; it does not prevent a player from inspecting the underlying map
 image in browser tools. Hidden creature data is filtered separately on the server.
 
 ## Layout and isolation
+
+The desktop layout follows [ai_tabletop_design.md](../ai_tabletop_design.md):
+the left lobby slate holds **Table**, **Log**, **Notes** and **Turns** tabs; the
+right data slate holds **Token**, **Compendium** and GM **Scene** tabs; the bottom
+utility panel holds health, AC, resources and ability scores. The map stays central.
+Smaller screens use separate Campaign and Tools drawers for the two slates.
+
+**Log** contains larger dice results and campaign chat. Messages use the
+authenticated player's nickname. **Notes** lets the GM save private drafts,
+publish handouts to the party, and revoke publication; private drafts are omitted
+from player responses. Notes persist with the campaign and its backup.
+
+The GM's **Compendium** lists creature templates and characters saved in this
+browser. Drag an entry onto the map, or use **Place** at the current map center.
+The resulting token links to that source. Each monster placement keeps its own
+encounter HP and resource values. Players see only their controllable campaign
+characters and summons; dragging those moves the existing token.
 
 `tabletop/web/` contains an independent browser interface, built to
 `site/tabletop/`. `tabletop/shared/` owns validation, permissions and room state.
@@ -92,6 +110,18 @@ and values. AC can be shown as a single number; custom values can use a maximum
 or a blank maximum. The two bars can track Temp HP, Arcane Health, AC, Block,
 Temp Block or custom resources. The token and statblock share these values.
 
+The main health track has a fixed width: red HP, white temporary HP, and light-blue
+arcane health. Its capacity is maximum HP + current temporary HP + current arcane
+health; its filled total uses current HP plus those extra pools. Unused HP remains
+empty. AC appears as a shield at the left, never as a progress bar. Block and other
+enabled resources stay separate. Temp/arcane health and AC are not duplicated as
+additional bars when selected in the optional-bar settings. Changing the display
+does not change the rules for applying damage.
+
+Map overlays appear only when a token is selected or hovered, and only when that
+viewer has permission to read its stats. The bottom utility remains available
+for the selected token. Existing private/shared player-stat controls still apply.
+
 The initial bar presets are:
 
 | Token / linked sheet | Bar 2 | Bar 3 |
@@ -132,8 +162,8 @@ Large, Huge and Gargantuan use two, three and four squares respectively. Small
 tokens draw slightly smaller than Medium within the same square. Size is public
 on the map; it does not grant access to the underlying private stats.
 
-The sidebar's **Abilities & actions** panel shows a compact resource strip,
-ability scores, searchable expandable rules/actions and notes. Click its heading
+The sidebar's **Abilities & actions** panel shows searchable expandable
+rules/actions and notes. Ability scores are in the bottom utility. Click its heading
 to minimize it without losing the selected token or hiding the map. **Open
 character sheet** opens the exact linked character on the full sheet page.
 **Edit statblock** opens the larger editor. Token appearance, ownership, resource

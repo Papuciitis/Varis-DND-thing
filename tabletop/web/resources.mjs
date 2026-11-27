@@ -3,9 +3,21 @@ export const MONSTERS_KEY='vara.monsters.v1';
 export const RESOURCE_NAMES={tempHP:'Temp HP',arcaneHealth:'Arcane Health',armorClass:'AC',block:'Block',tempBlock:'Temp Block',custom1:'Custom resource 1',custom2:'Custom resource 2'};
 export const ABILITIES=['str','dex','con','int','wis','cha'];
 
+export function healthSummary(token) {
+  if(!token?.canViewStats || token.hp===null)return null;
+  const hp=Math.max(0,Number(token.hp)||0),maximum=Math.max(1,Number(token.maxHp)||1);
+  const temporary=Math.max(0,Number(token.resources?.tempHP?.current)||0),arcane=Math.max(0,Number(token.resources?.arcaneHealth?.current)||0);
+  const max=maximum+temporary+arcane;
+  return {current:hp+temporary+arcane,max,armorClass:token.resources?.armorClass?.current ?? 10,
+    segments:[{key:'hp',label:'HP',value:hp,color:'#bd4946'},{key:'tempHP',label:'Temp HP',value:temporary,color:'#f4f2ed'},
+      {key:'arcaneHealth',label:'Arcane health',value:arcane,color:'#9bd7ec'}].map(segment=>({...segment,fraction:segment.value/max}))};
+}
+export const tokenBarsVisible=(token,selected,hovered)=>!!token?.canViewStats && token.hp!==null && (token.id===selected || token.id===hovered);
+export const auxiliaryReadings=token=>readings(token).filter(bar=>!['hp','tempHP','arcaneHealth','armorClass'].includes(bar.key));
+export const utilityReadings=token=>{const all=readings(token);return all.length?[all[0],...auxiliaryReadings(token)]:[];};
 export function readings(token) {
   if (!token?.canViewStats || token.hp===null) return [];
-  return [{key:'hp',label:'HP',current:token.hp,max:token.maxHp,color:'#729c65'},
+  return [{key:'hp',label:'HP',current:token.hp,max:token.maxHp,color:'#bd4946'},
     ...(token.bars || []).filter(bar=>bar.enabled).map((bar,index)=>({
       key:bar.resource,label:bar.label,...token.resources[bar.resource],
       max:bar.valueOnly || !token.resources[bar.resource].max?null:token.resources[bar.resource].max,color:index?'#8f89bf':'#5f9cba'
@@ -79,8 +91,9 @@ export function monsterStats(entry,token=null) {
   const rules=['traits','actions','bonus_actions','reactions','legendary_actions','lair_actions']
     .flatMap(key=>(Array.isArray(details[key])?details[key]:[]).map(row=>row.name+': '+text(row.description).replace(/\n\s*\n/g,'\n'))).join('\n\n').slice(0,12000);
   return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,resources,...sizeStats(details.size || details.meta),
-    statblock:{type:'monster',sourceId:monsterId(entry),abilities,initiativeBonus:signed(details.initiative ?? Math.floor(((abilities.dex ?? 10)-10)/2),99),
-      attacks:[],notes:text(details.description || details.desc || details.meta).slice(0,4000),rules}};
+    statblock:{type:'monster',sourceId:monsterId(entry),abilities,attacks:[],
+      initiativeBonus:signed(details.initiative ?? Math.floor(((abilities.dex ?? 10)-10)/2),99),
+      notes:text(details.description || details.desc || details.meta).slice(0,4000),rules}};
 }
 export const monsterId=entry=>entry._monsterEditorKey || (entry.details?.id?'id:'+entry.details.id:JSON.stringify([entry.source || '',entry.group || '',entry.name]));
 

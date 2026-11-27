@@ -1,4 +1,4 @@
-import {readings,distanceLabel,tokenRadius} from './resources.mjs';
+import {auxiliaryReadings,healthSummary,tokenBarsVisible,distanceLabel,tokenRadius} from './resources.mjs';
 import {templateGeometry,templateLabel,templateContains} from './templates.mjs';
 
 export class MapBoard {
@@ -10,6 +10,7 @@ export class MapBoard {
     this.observer=new ResizeObserver(()=>this.resize());this.observer.observe(canvas);
     canvas.addEventListener('pointerdown',e=>this.down(e));
     canvas.addEventListener('pointermove',e=>this.move(e));
+    canvas.addEventListener('pointerleave',()=>{if(!this.drag){this.hovered=null;this.draw();}});
     canvas.addEventListener('pointerup',e=>this.up(e));
     canvas.addEventListener('pointercancel',()=>{clearTimeout(this.longPress);this.drag=null;this.stroke=null;this.draw();});
     canvas.addEventListener('wheel',e=>{e.preventDefault();this.zoom(e.deltaY>0 ? .9 : 1.1,e.offsetX,e.offsetY);},{passive:false});
@@ -75,9 +76,9 @@ export class MapBoard {
     return [...this.view.scene.tokens].reverse().find(token=>{
       const r=tokenRadius(this.view.scene,token);
       if(Math.hypot(token.x-p.x,token.y-p.y)<r*1.3)return true;
-      const bars=readings(token),z=this.camera.z;
-      const halfWidth=(token.id===this.selected?66:58)/z,top=token.y+r+6/z;
-      return bars.length && Math.abs(p.x-token.x)<=halfWidth && p.y>=top && p.y<=top+bars.length*21/z;
+      const bars=tokenBarsVisible(token,this.selected,this.hovered)?1+auxiliaryReadings(token).length:0,z=this.camera.z;
+      const halfWidth=(token.id===this.selected?78:72)/z,top=token.y+r+6/z;
+      return bars && Math.abs(p.x-token.x)<=halfWidth && p.y>=top && p.y<=top+bars*26/z;
     });
   }
   down(e) {
@@ -185,15 +186,25 @@ export class MapBoard {
     const ctx=this.ctx,c=this.camera,s=this.view.scene;
     for(const original of s.tokens){
       const token=this.drag?.kind==='token' && this.drag.id===original.id?{...original,x:this.drag.x,y:this.drag.y}:original;
-      const bars=readings(token);if(!bars.length)continue;
+      if(!tokenBarsVisible(token,this.selected,this.hovered))continue;
+      const health=healthSummary(token),bars=auxiliaryReadings(token);
       const x=c.x+token.x*c.z,r=tokenRadius(s,token)*c.z,y=c.y+token.y*c.z+r+6;
-      const width=token.id===this.selected?132:116,left=x-width/2;
+      const width=token.id===this.selected?156:144,left=x-width/2;
       ctx.save();ctx.globalAlpha=token.hidden ? .6 : 1;
       ctx.strokeStyle='#d4c18c';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y-6);ctx.lineTo(x,y);ctx.stroke();
+      ctx.fillStyle='#183227';ctx.strokeStyle='#d4c18c';ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(left+26,y);ctx.lineTo(left+26,y+16);ctx.lineTo(left+13,y+26);ctx.lineTo(left,y+16);ctx.closePath();ctx.fill();ctx.stroke();
+      ctx.fillStyle='#fffce9';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font="700 13px 'Segoe UI'";ctx.fillText(health.armorClass,left+13,y+9);
+      ctx.font="8px 'Segoe UI'";ctx.fillText('AC',left+13,y+20);
+      const trackLeft=left+30,trackWidth=width-30;ctx.fillStyle='#102019';ctx.fillRect(trackLeft,y,trackWidth,21);
+      let offset=0;
+      for(const segment of health.segments){const size=trackWidth*segment.fraction;ctx.fillStyle=segment.color;ctx.fillRect(trackLeft+offset,y,size,21);offset+=size;}
+      ctx.strokeStyle='#d3d9bd';ctx.strokeRect(trackLeft,y,trackWidth,21);
+      ctx.font="600 12px 'Segoe UI'";ctx.lineWidth=3;ctx.strokeStyle='#102019';ctx.fillStyle='#fffce9';
+      const total=health.current+' / '+health.max;ctx.strokeText(total,trackLeft+trackWidth/2,y+10.5);ctx.fillText(total,trackLeft+trackWidth/2,y+10.5);ctx.lineWidth=1;
       bars.forEach((bar,index)=>{
-        const top=y+index*21;
+        const top=y+29+index*23;
         ctx.fillStyle='#0f211bf2';ctx.fillRect(left,top,width,19);
-        const ratio=bar.max?Math.min(1,bar.current/bar.max):1;
+        const ratio=bar.max?Math.min(1,bar.current/bar.max):bar.current?1:0;
         ctx.fillStyle=index===0 && ratio<.3?'#a34e40':bar.color;
         ctx.globalAlpha=token.hidden ? .4 : .75;ctx.fillRect(left+1,top+1,(width-2)*ratio,17);
         ctx.globalAlpha=token.hidden ? .6 : 1;ctx.strokeStyle='#d3d9bd88';ctx.strokeRect(left,top,width,19);

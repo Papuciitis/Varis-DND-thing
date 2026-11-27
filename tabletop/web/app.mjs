@@ -1,11 +1,12 @@
 import {GameClient,apiAddress,randomKey,invitation} from './client.mjs';
 import {MapBoard} from './board.mjs';
 import {TokenTools} from './token-tools.mjs';
+import {Slates} from './slates.mjs';
 
 const $=id=>document.getElementById(id);
 const element=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
 const SESSION_KEY='vara.tabletop.sessions.v1';
-let tokenTools,tokenPlacement=null;
+let tokenTools,slates,tokenPlacement=null;
 let view=null,selected=null,online=[],connected=false,pending=0,serverMode='',loadedAsset='',mapUrl=null,toastTimer,inspectorToken=null;
 function read(key,fallback) {try{return JSON.parse(localStorage.getItem(key)) ?? fallback;}catch{return fallback;}}
 function write(key,value) {try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
@@ -32,6 +33,7 @@ function status(state) {
   for(const id of ['add-token','mobile-add-token','apply-grid','reveal-all','conceal-all','start-combat','next-turn','end-combat','delete-token'])$(id).disabled=!connected;
   $('token-fields').disabled=!connected || !(view?.self.role==='dm' || view?.scene.tokens.find(token=>token.id===selected)?.ownerId===view?.self.id);
   tokenTools?.setConnected(connected);
+  slates?.render(connected);
   if(view)renderCombat();
   saveStatus();
 }
@@ -47,6 +49,7 @@ tokenTools=new TokenTools({
   getView:()=>view,getSelected:()=>selected,getServer:()=>client.api,command,selectToken,board,notify,
   onAdd:point=>{tokenPlacement=point;$('add-dialog').showModal();}
 });
+slates=new Slates({getView:()=>view,command,tools:tokenTools,board,selectToken,notify});
 
 async function checkServer() {
   $('create-game').disabled=true;$('join-game').disabled=true;$('server-dot').className='status-dot';
@@ -79,13 +82,14 @@ function receive(next,presence) {
   if(document.activeElement!==$('grid-size'))$('grid-size').value=next.scene.gridSize;
   $('show-grid').checked=next.scene.showGrid;$('fog-enabled').checked=next.scene.fog.enabled;
   renderTokens();renderPlayers();renderInspector();renderCombat();renderLog();loadMap();tokenTools.render();
+  slates.render(connected);
   if(client.key)remember();
 }
 async function enter(next,key) {
   client.disconnect();client.id=next.id;client.key=key;view=null;selected=null;loadedAsset='';
   board.templatePreview=null;board.measure=null;board.measureAnchor=null;board.templateAnchor=null;tokenTools.menu.hidden=true;
   $('lobby').hidden=true;$('game').hidden=false;
-  for(const id of ['session-heading','game-settings','mobile-tools'])$(id).hidden=false;
+  for(const id of ['session-heading','game-settings','mobile-tools','mobile-campaign'])$(id).hidden=false;
   receive(next);board.resize();
   history.replaceState(null,'',location.pathname+location.search+'#'+new URLSearchParams({room:next.id,server:client.api}));
   $('session-storage-note').textContent=serverMode==='local'?'Local preview: games are saved on this computer. Keep the preview server running while testing.':'Game state saves on the game server. Guest access is remembered in this browser.';
@@ -99,7 +103,7 @@ async function command(action) {
   finally {pending--;saveStatus();}
 }
 function avatar(token) {const el=element('span','token-avatar '+token.kind,token.name.slice(0,1).toUpperCase());el.style.backgroundColor=token.color;return el;}
-function selectToken(id) {selected=id;board.selected=id;board.draw();renderTokens();renderInspector();tokenTools.render();}
+function selectToken(id) {selected=id;board.selected=id;board.draw();renderTokens();renderInspector();tokenTools.render();slates?.show('data','token');}
 function renderTokens() {
   for(const id of ['tokens-list','mobile-tokens']){
     const rows=view.scene.tokens.map(t=>{
@@ -197,6 +201,7 @@ function renderLog() {
   $('game-log').replaceChildren(...view.log.slice(-15).reverse().map(entry=>{
     const el=element('div','log-entry');
     if(entry.kind==='roll'){const heading=element('div','roll-heading');heading.append(element('strong','',entry.name+' · '+entry.formula),element('span','roll-total',entry.total));el.append(heading,element('div','roll-detail','['+entry.rolls.join(', ')+']'+(entry.modifier?' '+(entry.modifier>0?'+':'')+entry.modifier:'')));}
+    else if(entry.kind==='chat'){el.classList.add('chat-entry');el.append(element('strong','',entry.name),element('p','',entry.text));}
     else el.textContent=entry.text;return el;
   }));
 }
@@ -265,7 +270,7 @@ $('reveal-all').onclick=()=>command({type:'fog.all',reveal:true});$('conceal-all
 $('start-combat').onclick=()=>command({type:'combat.start'});$('next-turn').onclick=()=>command({type:'combat.next'});$('end-combat').onclick=()=>command({type:'combat.end'});
 $('dice-form').onsubmit=event=>{event.preventDefault();command({type:'dice.roll',formula:$('dice-formula').value});};
 for(const button of document.querySelectorAll('[data-dice]'))button.onclick=()=>{ $('dice-formula').value=button.dataset.dice;command({type:'dice.roll',formula:button.dataset.dice});};
-$('mobile-tools').onclick=()=>{document.body.classList.toggle('panels-open');$('mobile-tools').setAttribute('aria-expanded',String(document.body.classList.contains('panels-open')));};
+$('mobile-tools').onclick=()=>{document.body.classList.toggle('panels-open');document.body.classList.remove('campaign-open');$('mobile-tools').setAttribute('aria-expanded',String(document.body.classList.contains('panels-open')));};
 $('drawer-close').onclick=()=>document.body.classList.remove('panels-open');
 $('invite-open').onclick=()=>{$('invite-link').value=gameLink();$('invite-note').textContent=serverMode==='local'?'Local preview: use another browser window on this computer. Online invitations work after the game server is deployed.':'Players can reopen this invitation whenever your group meets.';$('invite-dialog').showModal();};
 $('copy-invite').onclick=()=>copyLink(gameLink(),$('invite-link'));
@@ -273,9 +278,9 @@ $('game-settings').onclick=()=>{$('rename-game').value=view.name;$('settings-dia
 $('copy-dm-link').onclick=()=>{let input=$('private-link');if(!input){input=element('input');input.id='private-link';input.readOnly=true;input.hidden=true;input.setAttribute('aria-label','Private DM access link');$('copy-dm-link').after(input);}copyLink(gameLink(true),input);};
 $('rename-form').onsubmit=async event=>{event.preventDefault();if(await command({type:'room.rename',name:$('rename-game').value}))notify('Game renamed.');};
 $('leave-game').onclick=()=>{
-  client.disconnect();client.id=null;client.key=null;view=null;selected=null;board.view=null;document.body.classList.remove('panels-open');
+  client.disconnect();client.id=null;client.key=null;view=null;selected=null;board.view=null;document.body.classList.remove('panels-open','campaign-open');
   for(const dialog of document.querySelectorAll('dialog[open]'))dialog.close();
-  $('game').hidden=true;$('lobby').hidden=false;for(const id of ['session-heading','game-settings','invite-open','mobile-tools'])$(id).hidden=true;
+  $('game').hidden=true;$('lobby').hidden=false;for(const id of ['session-heading','game-settings','invite-open','mobile-tools','mobile-campaign'])$(id).hidden=true;
   history.replaceState(null,'',location.pathname+location.search);setTab(false);$('lobby-error').hidden=true;savedTables();
   checkServer();
 };

@@ -107,6 +107,13 @@ export function templateFrom(raw,scene,ownerId) {
     size:numeric(raw.size,.01,1000,'Area size'),width:numeric(raw.width ?? 5,.01,1000,'Line width'),
     coneAngle:numeric(raw.coneAngle ?? 60,10,180,'Cone angle')};
 }
+function noteFrom(raw) {
+  if(!raw || typeof raw!=='object' || Array.isArray(raw))throw new RoomError('Invalid campaign note.');
+  if(typeof raw.text!=='string' || raw.text.length>8000)throw new RoomError('A note can contain up to 8,000 characters.');
+  return {id:typeof raw.id==='string' && /^[a-z0-9-]{6,64}$/i.test(raw.id)?raw.id:uid(),
+    title:label(raw.title,'Untitled note',80),text:raw.text.replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g,''),
+    shared:raw.shared===undefined?false:flag(raw.shared)};
+}
 export function tokenFrom(raw,scene) {
   if (!raw || typeof raw !== 'object') throw new RoomError('A token must be an object.');
   const color = raw.color ?? '#337c89';
@@ -134,7 +141,7 @@ export function tokenFrom(raw,scene) {
 export function initialScene() {
   const scene = {name:'The old watchtower',width:1600,height:1000,gridSize:50,showGrid:true,gridOpacity:.6,
     distancePerSquare:5,distanceUnit:'ft',mapAsset:'sample',
-    fog:{enabled:true,revealed:[]},tokens:[],templates:[],combat:{active:false,order:[],index:0,round:1}};
+    fog:{enabled:true,revealed:[]},tokens:[],templates:[],notes:[],combat:{active:false,order:[],index:0,round:1}};
   for (let y=7;y<18;y++) for (let x=0;x<14;x++) scene.fog.revealed.push(y*32+x);
   scene.tokens = [
     tokenFrom({name:'Wayfarer',x:325,y:525,color:'#c39b54',kind:'hero',maxHp:24},scene),
@@ -146,6 +153,7 @@ export function initialScene() {
 export function project(room,actor) {
   const scene = copy(room.scene);
   const dm = actor.role === 'dm';
+  scene.notes=(scene.notes || []).filter(note=>dm || note.shared);
   scene.templates=(scene.templates || []).filter(area=>dm || area.ownerId===actor.id || isRevealed(scene,area.x,area.y));
   scene.tokens = scene.tokens.filter(t => dm || (!t.hidden && (t.ownerId === actor.id || isRevealed(scene,t.x,t.y))));
   scene.tokens = scene.tokens.map(t => {
@@ -200,6 +208,12 @@ function roll(formula) {
 export function applyCommand(room,actor,command) {
   if (!command || typeof command !== 'object' || Array.isArray(command)) throw new RoomError('Invalid game action.');
   const scene=room.scene;
+  if(command.type==='chat.send'){
+    if(typeof command.text!=='string' || !command.text.trim() || command.text.length>1000)throw new RoomError('Enter a message of 1-1,000 characters.');
+    const text=command.text.replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g,'').trim();
+    if(!text)throw new RoomError('Enter a message.');
+    addLog(room,{kind:'chat',name:actor.name,actorId:actor.id,text});return;
+  }
   if (command.type === 'token.move') {
     const t=tokenById(room,command.id);
     if (actor.role !== 'dm' && t.ownerId !== actor.id) throw new RoomError('You can only move your own tokens.',403);
@@ -269,6 +283,19 @@ export function applyCommand(room,actor,command) {
   }
   requireDM(actor);
   switch (command.type) {
+    case 'note.save': {
+      scene.notes ??= [];
+      const index=command.id===undefined?-1:scene.notes.findIndex(note=>note.id===command.id);
+      if(command.id!==undefined && index<0)throw new RoomError('That note has already been removed.',404);
+      if(index<0 && scene.notes.length>=20)throw new RoomError('Use up to 20 campaign notes.');
+      const note=noteFrom(command);
+      if(index<0)scene.notes.push(note);else scene.notes[index]=note;
+      break;
+    }
+    case 'note.delete': {
+      if(!(scene.notes || []).some(note=>note.id===command.id))throw new RoomError('That note has already been removed.',404);
+      scene.notes=scene.notes.filter(note=>note.id!==command.id);break;
+    }
     case 'room.rename': room.name=label(command.name,'Untitled game'); scene.name=room.name; break;
     case 'player.remove': {
       const player=room.players.find(p=>p.id===command.id);
@@ -346,7 +373,7 @@ export function importedScene(raw) {
     showGrid:flag(raw.showGrid),gridOpacity:numeric(raw.gridOpacity ?? .6,.2,.9,'Grid contrast'),
     distancePerSquare:numeric(raw.distancePerSquare ?? 5,.01,10000,'Distance per square'),
     distanceUnit:raw.distanceUnit==='m'?'m':'ft',mapAsset:'sample',fog:{enabled:flag(raw.fog.enabled),revealed:[]},tokens:[],
-    templates:[],combat:{active:false,order:[],index:0,round:1}};
+    templates:[],notes:[],combat:{active:false,order:[],index:0,round:1}};
   if (cellCount(scene)>LIMITS.cells || raw.tokens.length>LIMITS.tokens || !Array.isArray(raw.fog.revealed) || raw.fog.revealed.length>LIMITS.cells) {
     throw new RoomError('The imported scene exceeds the prototype limits.');
   }
@@ -361,6 +388,11 @@ export function importedScene(raw) {
   if(raw.templates!==undefined){
     if(!Array.isArray(raw.templates) || raw.templates.length>32)throw new RoomError('The campaign has too many spell areas.');
     scene.templates=raw.templates.map(area=>templateFrom(area,scene,'dm'));
+  }
+  if(raw.notes!==undefined){
+    if(!Array.isArray(raw.notes) || raw.notes.length>20)throw new RoomError('Use up to 20 campaign notes.');
+    scene.notes=raw.notes.map(noteFrom);
+    if(new Set(scene.notes.map(note=>note.id)).size!==scene.notes.length)throw new RoomError('Duplicate campaign note IDs.');
   }
   return scene;
 }
