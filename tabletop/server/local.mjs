@@ -55,7 +55,7 @@ export async function createLocalServer({port=8787,host='127.0.0.1',dataDir=path
   async function serve(request) {
     const url=new URL(request.url);
     if (!allowedOrigin(request.headers.get('Origin'))) return json({error:'Use the local preview address.'},403);
-    if (url.pathname==='/api/health') return json({service:'vara-tabletop',version:1,mode:'local'});
+    if (url.pathname==='/api/health') return json({service:'vara-tabletop',version:1,mode:'local',build:process.env.VARA_TABLETOP_SERVER_VERSION || null});
     if (url.pathname==='/api/rooms' && request.method==='POST') {
       const input=await readJSON(request,4096),id=secret().slice(0,16);
       return json(await room(id).create(id,input.name,input.ownerName),201);

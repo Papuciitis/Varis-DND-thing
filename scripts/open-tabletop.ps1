@@ -21,20 +21,41 @@ if (Test-Path -LiteralPath $bundledWs) { $env:VARA_TABLETOP_WS_MODULE = $bundled
 $env:PORT = [string]$Port
 $dataFolder = Join-Path $projectRoot '.tabletop-data'
 New-Item -ItemType Directory -Path $dataFolder -Force | Out-Null
+$serverFile = Join-Path $projectRoot 'tabletop\server\local.mjs'
+$serverSources = @('tabletop\server\local.mjs', 'tabletop\server\room-service.mjs', 'tabletop\server\protocol.mjs', 'tabletop\shared\state.mjs')
+$sourceFingerprint = (($serverSources | ForEach-Object { (Get-FileHash -LiteralPath (Join-Path $projectRoot $_)).Hash }) -join ':')
+$env:VARA_TABLETOP_SERVER_VERSION = $sourceFingerprint
+$previewPidFile = Join-Path $dataFolder 'preview.pid'
 $url = "http://127.0.0.1:$Port/tabletop/"
 $existing = $false
 try { $health = Invoke-RestMethod -Uri "http://127.0.0.1:$Port/api/health" -TimeoutSec 2; $existing = $health.service -eq 'vara-tabletop' -and $health.mode -eq 'local' } catch {}
+if ($existing -and $health.build -ne $sourceFingerprint) {
+  $trackedServer = $null
+  if (Test-Path -LiteralPath $previewPidFile) {
+    $previousServerId = 0
+    if ([int]::TryParse((Get-Content -LiteralPath $previewPidFile -Raw).Trim(), [ref]$previousServerId)) {
+      $candidate = Get-Process -Id $previousServerId -ErrorAction SilentlyContinue
+      if ($candidate -and $candidate.Path -eq $nodePath -and [Math]::Abs(($candidate.StartTime - (Get-Item -LiteralPath $previewPidFile).LastWriteTime).TotalSeconds) -lt 60) {
+        $trackedServer = $candidate
+      }
+    }
+  }
+  if (!$trackedServer) { throw "An older preview is using port $Port. Close its server window, or run this script with -Port 8788." }
+  Write-Output 'Restarting the preview to load updated game tools. Saved games are retained.'
+  Stop-Process -Id $trackedServer.Id
+  $trackedServer.WaitForExit(5000) | Out-Null
+  $existing = $false
+}
 if (!$existing) {
-  $serverFile = Join-Path $projectRoot 'tabletop\server\local.mjs'
   $process = Start-Process -FilePath $nodePath -ArgumentList @(('"' + $serverFile + '"')) -WorkingDirectory $projectRoot -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $dataFolder 'preview.log') -RedirectStandardError (Join-Path $dataFolder 'preview-error.log')
-  Set-Content -LiteralPath (Join-Path $dataFolder 'preview.pid') -Value $process.Id
   $ready = $false
   for ($attempt = 0; $attempt -lt 20; $attempt++) {
     if ($process.HasExited) { throw (Get-Content -LiteralPath (Join-Path $dataFolder 'preview-error.log') -Raw) }
-    try { $health = Invoke-RestMethod -Uri "http://127.0.0.1:$Port/api/health" -TimeoutSec 1; if ($health.service -eq 'vara-tabletop') { $ready = $true; break } } catch {}
+    try { $health = Invoke-RestMethod -Uri "http://127.0.0.1:$Port/api/health" -TimeoutSec 1; if ($health.service -eq 'vara-tabletop' -and $health.build -eq $sourceFingerprint) { $ready = $true; break } } catch {}
     Start-Sleep -Milliseconds 250
   }
   if (!$ready) { throw "The preview could not be reached. Check $dataFolder\preview-error.log" }
+  Set-Content -LiteralPath $previewPidFile -Value $process.Id
 }
 Write-Output "Tabletop preview: $url"
 Write-Output 'Only this isolated prototype is running; the main website is unchanged.'

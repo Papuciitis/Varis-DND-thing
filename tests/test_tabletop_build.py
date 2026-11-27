@@ -13,6 +13,8 @@ class TabletopBuildTests(unittest.TestCase):
             self.assertTrue((output / "tabletop/index.html").is_file())
             self.assertTrue((output / "tabletop/app.mjs").is_file())
             self.assertTrue((output / "tabletop/watchtower.svg").is_file())
+            for name in ("magic-items.js", "character-state.js", "character-rules.js"):
+                self.assertTrue((output / "tabletop/sheet" / name).is_file())
             self.assertFalse((output / "tabletop/server").exists())
             self.assertFalse((output / "tabletop/wrangler.jsonc").exists())
             for name in ("index.html", "character.html"):

@@ -1,5 +1,5 @@
 import {VERSION,LIMITS,RoomError,copy,uid,secret,label,whole,hashKey,initialScene,
-  project,requireDM,applyCommand,validateImage,importedScene,addLog} from '../shared/state.mjs';
+  project,requireDM,applyCommand,validateImage,importedScene,addLog,tokenFrom} from '../shared/state.mjs';
 
 export class MemoryStore {
   constructor() { this.values=new Map(); }
@@ -20,6 +20,11 @@ export class RoomService {
   async read() {
     const room=await this.storage.get('room');
     if (!room) throw new RoomError('Game not found. Check the invitation link.',404);
+    room.scene.gridOpacity ??= .6;
+    room.scene.distancePerSquare ??= 5;
+    room.scene.distanceUnit ??= 'ft';
+    room.scene.templates ??= [];
+    room.scene.tokens=room.scene.tokens.map(token=>tokenFrom(token,room.scene));
     return room;
   }
   async actor(room,key) {
@@ -60,7 +65,7 @@ export class RoomService {
         room.players.push(copy(guest));
         const y=Math.min(room.scene.height-25,525+(room.players.length-1)%4*50);
         const x=Math.min(room.scene.width-25,225+Math.floor((room.players.length-1)/4)*50);
-        room.scene.tokens.push({id:uid(),name:guest.name,kind:'hero',color:'#33838d',x,y,size:1,hp:20,maxHp:20,hidden:false,ownerId:guest.id});
+        room.scene.tokens.push(tokenFrom({name:guest.name,kind:'hero',color:'#33838d',x,y,ownerId:guest.id},room.scene));
         addLog(room,{kind:'system',text:`${guest.name} joined the table.`});
         await this.save(room);
       }
@@ -90,6 +95,7 @@ export class RoomService {
       await this.storage.put(`asset:${assetId}`,input.dataUrl);
       room.scene.mapAsset=assetId;
       room.scene.width=width;room.scene.height=height;room.scene.fog.revealed=[];
+      room.scene.templates=[];
       if(Math.ceil(width/room.scene.gridSize)*Math.ceil(height/room.scene.gridSize)>LIMITS.cells)room.scene.gridSize=50;
       for (const t of room.scene.tokens) {t.x=Math.min(t.x,width-25);t.y=Math.min(t.y,height-25);}
       addLog(room,{kind:'system',text:'The DM changed the map. Areas are concealed until revealed.'});
@@ -111,7 +117,8 @@ export class RoomService {
     return this.run(async()=>{
       const room=await this.read();requireDM(await this.actor(room,key));
       const mapDataUrl=room.scene.mapAsset==='sample' ? null : await this.storage.get(`asset:${room.scene.mapAsset}`);
-      return {format:'vara-tabletop',version:VERSION,exportedAt:new Date().toISOString(),name:room.name,scene:copy(room.scene),mapDataUrl};
+      const scene=project(room,{id:'dm',role:'dm'}).scene;
+      return {format:'vara-tabletop',version:VERSION,exportedAt:new Date().toISOString(),name:room.name,scene,mapDataUrl};
     });
   }
   importCampaign(key,backup) {

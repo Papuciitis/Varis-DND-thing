@@ -1,9 +1,11 @@
 import {GameClient,apiAddress,randomKey,invitation} from './client.mjs';
 import {MapBoard} from './board.mjs';
+import {TokenTools} from './token-tools.mjs';
 
 const $=id=>document.getElementById(id);
 const element=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
 const SESSION_KEY='vara.tabletop.sessions.v1';
+let tokenTools,tokenPlacement=null;
 let view=null,selected=null,online=[],connected=false,pending=0,serverMode='',loadedAsset='',mapUrl=null,toastTimer,inspectorToken=null;
 function read(key,fallback) {try{return JSON.parse(localStorage.getItem(key)) ?? fallback;}catch{return fallback;}}
 function write(key,value) {try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
@@ -28,7 +30,8 @@ function status(state) {
   $('connection-overlay').hidden=connected;
   $('connection-overlay').textContent=state==='blocked'?'Access could not be verified. Return to your tables and rejoin.':state==='connecting'?'Connecting to the table…':'Connection lost. Reconnecting…';
   for(const id of ['add-token','mobile-add-token','apply-grid','reveal-all','conceal-all','start-combat','next-turn','end-combat','delete-token'])$(id).disabled=!connected;
-  $('token-fields').disabled=!connected || view?.self.role!=='dm';
+  $('token-fields').disabled=!connected || !(view?.self.role==='dm' || view?.scene.tokens.find(token=>token.id===selected)?.ownerId===view?.self.id);
+  tokenTools?.setConnected(connected);
   saveStatus();
 }
 const client=new GameClient({onState:receive,onStatus:status});
@@ -36,7 +39,12 @@ const board=new MapBoard($('map-canvas'),{
   onSelect:id=>selectToken(id),
   onMove:(id,x,y)=>command({type:'token.move',id,x,y}),
   onFog:(cells,reveal)=>command({type:'fog.paint',cells,reveal}),
-  onError:text=>notify(text,true)
+  onError:text=>notify(text,true),
+  onContext:context=>tokenTools?.showMenu(context)
+});
+tokenTools=new TokenTools({
+  getView:()=>view,getSelected:()=>selected,getServer:()=>client.api,command,selectToken,board,notify,
+  onAdd:point=>{tokenPlacement=point;$('add-dialog').showModal();}
 });
 
 async function checkServer() {
@@ -69,11 +77,12 @@ function receive(next,presence) {
   $('board-hint').textContent=next.self.role==='dm'?'Select · drag · discover':'Drag your character to explore';
   if(document.activeElement!==$('grid-size'))$('grid-size').value=next.scene.gridSize;
   $('show-grid').checked=next.scene.showGrid;$('fog-enabled').checked=next.scene.fog.enabled;
-  renderTokens();renderPlayers();renderInspector();renderCombat();renderLog();loadMap();
+  renderTokens();renderPlayers();renderInspector();renderCombat();renderLog();loadMap();tokenTools.render();
   if(client.key)remember();
 }
 async function enter(next,key) {
   client.disconnect();client.id=next.id;client.key=key;view=null;selected=null;loadedAsset='';
+  board.templatePreview=null;board.measure=null;board.measureAnchor=null;board.templateAnchor=null;tokenTools.menu.hidden=true;
   $('lobby').hidden=true;$('game').hidden=false;
   for(const id of ['session-heading','game-settings','mobile-tools'])$(id).hidden=false;
   receive(next);board.resize();
@@ -89,7 +98,7 @@ async function command(action) {
   finally {pending--;saveStatus();}
 }
 function avatar(token) {const el=element('span','token-avatar '+token.kind,token.name.slice(0,1).toUpperCase());el.style.backgroundColor=token.color;return el;}
-function selectToken(id) {selected=id;board.selected=id;board.draw();renderTokens();renderInspector();}
+function selectToken(id) {selected=id;board.selected=id;board.draw();renderTokens();renderInspector();tokenTools.render();}
 function renderTokens() {
   for(const id of ['tokens-list','mobile-tokens']){
     const rows=view.scene.tokens.map(t=>{
@@ -98,7 +107,7 @@ function renderTokens() {
       const text=element('span','token-info');text.append(element('strong','',t.name));
       const owner=view.players.find(p=>p.id===t.ownerId)?.name;
       text.append(element('small','',t.hidden?'Hidden from players':owner?'Controlled by '+owner:t.kind==='monster'?'Creature':'DM / unassigned'));
-      if(t.hp!==null){const bar=element('span','hp-mini'),fill=element('i');fill.style.width=100*t.hp/t.maxHp+'%';bar.append(fill);text.append(bar);}
+      if(t.canViewStats){text.append(element('span','token-hp-reading',t.hp+' / '+t.maxHp+' HP'));const bar=element('span','hp-mini'),fill=element('i');fill.style.width=100*t.hp/t.maxHp+'%';bar.append(fill);text.append(bar);}
       row.append(text);row.onclick=()=>selectToken(t.id);return row;
     });$(id).replaceChildren(...rows);
   }
@@ -121,7 +130,7 @@ function renderInspector() {
   $('selected-name').textContent=token?.name || 'Choose a token';
   $('selected-position').textContent=token?`Column ${Math.floor(token.x/view.scene.gridSize)+1} · Row ${Math.floor(token.y/view.scene.gridSize)+1}`:'Select one on the map or in the list.';
   $('selected-avatar').textContent=token?.name.slice(0,1).toUpperCase() || 'V';$('selected-avatar').style.backgroundColor=token?.color || '#355d48';
-  $('token-form').hidden=!token || !dm;
+  $('token-form').hidden=!token || !(dm || token.ownerId===view.self.id);
   $('player-token-note').hidden=dm || !token;
   $('player-token-note').textContent=token?(token.ownerId===view.self.id?`Your token · ${token.hp ?? '?'} / ${token.maxHp ?? '?'} HP. Drag it on the map, or focus the map and use arrow keys.`:'This token is controlled by the DM or another player.'):'';
   if(!token)return;
@@ -136,7 +145,8 @@ function renderInspector() {
     $('token-owner').dataset.players=signature;if(focusInside)$('token-owner').value=old;
   }
   if(!focusInside || inspectorToken!==token.id)$('token-owner').value=token.ownerId || '';
-  inspectorToken=token.id;$('token-fields').disabled=!connected || !dm;
+  $('player-token-note').hidden=true;
+  inspectorToken=token.id;$('token-fields').disabled=!connected || !(dm || token.ownerId===view.self.id);
 }
 function renderCombat() {
   const combat=view.scene.combat;
@@ -192,15 +202,21 @@ $('join-form').onsubmit=event=>{event.preventDefault();lobbyAction(async name=>{
   const next=link.key?await client.request(`/api/rooms/${link.id}/view`,{key}):await client.request(`/api/rooms/${link.id}/join`,{body:{key,name}});
   await enter(next,key);
 });};
-$('token-form').onsubmit=async event=>{event.preventDefault();await command({type:'token.update',id:selected,name:$('token-name').value,hp:Number($('token-hp').value),maxHp:Number($('token-max-hp').value),kind:$('token-kind').value,color:$('token-color').value,ownerId:$('token-owner').value || null,hidden:$('token-hidden').checked});};
+$('token-form').onsubmit=async event=>{
+  event.preventDefault();
+  const fields={name:$('token-name').value,color:$('token-color').value};
+  if(view.self.role==='dm')Object.assign(fields,{kind:$('token-kind').value,ownerId:$('token-owner').value || null,hidden:$('token-hidden').checked});
+  await command({type:'token.update',id:selected,...fields});
+};
 $('delete-token').onclick=async()=>{if(selected && confirm('Remove this token from the scene?'))await command({type:'token.delete',id:selected});};
-for(const id of ['add-token','mobile-add-token'])$(id).onclick=()=>$('add-dialog').showModal();
+for(const id of ['add-token','mobile-add-token'])$(id).onclick=()=>{tokenPlacement=null;$('add-dialog').showModal();};
 $('new-token-form').onsubmit=async event=>{event.preventDefault();const id=crypto.randomUUID(),kind=$('new-token-kind').value,hp=Number($('new-token-hp').value),s=view.scene;
   const token={id,name:$('new-token-name').value,kind,maxHp:hp,hp,color:kind==='monster'?'#a35450':'#337c89',x:Math.min(325,s.width-25),y:Math.min(525,s.height-25)};
+  if(tokenPlacement){token.x=Math.max(0,Math.min(s.width-1,(Math.floor(tokenPlacement.x/s.gridSize)+.5)*s.gridSize));token.y=Math.max(0,Math.min(s.height-1,(Math.floor(tokenPlacement.y/s.gridSize)+.5)*s.gridSize));}
   if(await command({type:'token.add',token})){$('add-dialog').close();selectToken(id);}
 };
 for(const button of document.querySelectorAll('[data-tool]'))button.onclick=()=>{
-  board.tool=button.dataset.tool;board.measure=null;
+  board.tool=button.dataset.tool;board.measure=null;board.measureAnchor=null;board.templateAnchor=null;tokenTools.onTool(board.tool);
   for(const el of document.querySelectorAll('[data-tool]')){el.classList.toggle('active',el===button);el.setAttribute('aria-pressed',String(el===button));}board.draw();
 };
 $('brush-size').onchange=()=>board.brush=Number($('brush-size').value);
@@ -258,7 +274,7 @@ $('import-campaign').onchange=async()=>{
 };
 document.addEventListener('keydown',event=>{
   if(/INPUT|TEXTAREA|SELECT/.test(event.target.tagName) || document.querySelector('dialog[open]'))return;
-  const tools={v:'select',h:'pan',m:'measure',r:'reveal',c:'conceal'},tool=tools[event.key.toLowerCase()];
+  const tools={v:'select',h:'pan',m:'measure',r:'reveal',c:'conceal',a:'template'},tool=tools[event.key.toLowerCase()];
   const button=tool && document.querySelector(`[data-tool="${tool}"]`);if(view && button && !button.hidden)button.click();
 });
 window.addEventListener('online',()=>{if(view && !client.ready)client.connect(view.id,client.key);});

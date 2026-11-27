@@ -2,22 +2,30 @@
 
 This is an experimental, separate tabletop for the Vara project. It lives on
 `codex/tabletop-prototype`; nothing is merged or deployed to the main site.
-The compendium and character sheet remain independent.
+The compendium remains separate. Players can optionally link saved character
+sheets to their tabletop tokens.
 
 ## First version
 
 - A DM creates a room, receives a private access key, and shares a player link.
 - Players join with a nickname. No registration or external accounts.
-- The DM uploads a map, creates and assigns tokens, changes HP and reveals fog.
+- The DM uploads a map, creates and assigns tokens, tracks their creatures and
+  reveals fog. Players edit the stats of their own characters and summons.
 - Players move their assigned tokens in revealed areas. Hidden tokens and DM
   credentials are excluded from player updates by the server.
 - Game changes save on the server; clients reconnect and request the latest state.
 - Campaign JSON exports provide a backup independent of the hosting provider.
+- Token HP and two optional resource bars appear beneath tokens and in a larger
+  panel at the bottom of the map. Bars and the token statblock use the same values.
+- Player stats are private by default. The player can share read-only access with
+  the DM and revoke it; other players do not receive those stats.
+- A high-contrast grid, feet/meters/squares ruler, right-click menus and shared
+  circle, cone, line and square spell areas support encounter planning.
 - The backend targets Cloudflare Workers with SQLite-backed Durable Objects on
   Workers Free. Dormant rooms load automatically when requested.
 
-Dynamic lighting, wall tracing, automated combat rules, full character-sheet
-integration, and public hosting at scale are later work. Manual fog conceals the
+Dynamic lighting, wall tracing, automated combat rules, a fully synchronized
+multi-device character library, and public hosting at scale are later work. Manual fog conceals the
 map on screen; it does not prevent a player from inspecting the underlying map
 image in browser tools. Hidden creature data is filtered separately on the server.
 
@@ -56,20 +64,74 @@ window. Enter a nickname to join. Both windows must be on this computer for the
 local preview; online sharing needs the Cloudflare deployment below.
 
 The DM can remove inactive guests from **At the table** to free their guest slots.
-Their tokens and HP remain on the map, ready to assign to a returning player.
+Their token positions remain on the map. Removing/reassigning a player clears
+their private stats, so another player or the DM cannot inherit that character's
+attributes. The returning player can relink their saved character.
 
 Every new guest receives a sample hero token. The DM can reassign any token in
-**Controlled by**, add creatures, edit HP, and toggle **Hidden from players**.
+**Controlled by**, add creatures, and toggle **Hidden from players**. The DM
+edits stats for unassigned tokens; players edit their assigned characters/summons.
 Use the eye brushes to reveal/conceal map cells. **Start turns** follows token-list
 order; this is a manual turn tracker, not automated initiative calculation.
-The ruler measures squares without assuming a unit conversion for the Vara rules.
+The ruler supports **Feet**, **Meters** and **Squares**. The default map scale
+is 5 ft per square; the DM can change it under **Map & visibility**. Meter/feet
+conversions use 1 ft = 0.3048 m, rather than treating 5 ft as exactly 1.5 m.
 Phones start zoomed into the party; **Fit map** shows the whole scene.
+
+### Token resources, statblocks and privacy
+
+Select a token to edit its HP in the larger panel below the map. In the inspector,
+expand **Optional bars**, enable either bar, choose a resource, and set its label
+and values. AC can be shown as a single number; custom values can use a maximum
+or a blank maximum. The two bars can track Temp HP, Arcane Health, AC, Block,
+Temp Block or custom resources. The token and statblock share these values.
+
+Choose **Statblock → Link a character or monster**. Character links read this
+browser's saved characters and use the existing character rule calculations for
+HP, AC and abilities. Edits to resource values sync in both directions with an
+open character-sheet tab on the same origin. The first two custom character
+resources can use Custom resource 1/2. Derived HP maximum, AC and attributes
+should be changed on the original sheet. A different browser/device needs its
+own character import and link; a character snapshot in a room is not a complete
+character-sheet backup.
+
+Monster links read the compendium and browser monster edits. HP, AC, abilities
+and actions populate an encounter statblock. Resource damage remains specific to
+each token; it does not damage every creature using that monster template.
+Changing the source template updates maxima while preserving encounter damage.
+
+Only the token's owning player can enable **Share this character / summon with
+the DM**. Shared stats are read-only for the DM. Private HP, resources, abilities,
+notes and rules are stripped out of DM/other-player responses and DM campaign
+exports by the server. Revoking sharing removes those fields from subsequent
+updates. These are application access controls, not encryption against the
+operator of the server.
+
+Right-click a token or its bars to inspect it, adjust your HP, configure bars,
+center the map or begin a measurement. DM menus also control visibility.
+Right-clicking empty map space offers placement, measurement and fog actions.
+Touch users can hold the map or use the token's **Actions** button.
+
+### Spell area rulers
+
+Press **A** or choose the spell-area tool beside the ruler. Choose **Circle**,
+**Cone**, **Line** or **Square**, a size and units. Circles use radius, squares
+use side length, cones use length plus angle, and lines use length plus width.
+Drag on the map to set the origin and direction. The translucent preview is local
+until **Place for table** saves it for everyone. These tools illustrate geometry;
+they do not roll damage, choose targets or adjudicate cover.
+
+Placed areas appear under **Spell areas** in the inspector. Players remove their
+own areas; the DM can remove any area. Fog hides areas whose origins are concealed
+from other players. Each scene permits 32 areas; changing the map clears them.
 
 Local saves live in `.tabletop-data/`, outside Git. Keep the private DM link from
 **Game → Private DM access** to recover control on another browser/device. Player
 invitations never contain that key. Campaign backups contain map pixels, tokens,
-HP and revealed areas, without authentication credentials. Restoring a backup
-clears token ownership so the DM can assign the current players.
+DM-accessible stats and revealed areas, without authentication credentials.
+Unshared player stats are omitted; keep personal character-sheet backups.
+Restoring a backup clears token ownership and sharing so the DM can assign the
+current players. Tokens whose stats were private restore with placeholder HP.
 
 The launcher needs Python 3.12+ with `requirements.txt` and Node 22+. On this
 machine it can reuse the existing project's Python environment and installed
@@ -85,6 +147,8 @@ npm start
 
 To stop a launcher-started local preview, inspect `.tabletop-data/preview.pid`
 and stop that specific process. Local games are retained after the process stops.
+Reopening the launcher detects backend source changes and restarts the tracked
+preview process when needed. A normal browser refresh loads updated map tools.
 
 ## Separate online preview on Cloudflare Free
 
@@ -139,7 +203,10 @@ node tabletop/qa/browser-qa.cjs
 
 Browser QA uses two separate browser contexts and the actual room service through
 in-process HTTP/WebSocket routes. It checks guest joining, ownership, fog filtering,
-shared dice, map upload, backups, restore, refresh, reconnect, and mobile width.
+private stats, read-only sharing/revocation, optional bars, character resource
+updates in both directions, monster links, right-click menus, ruler units, all
+four shared spell shapes, dice, map upload, backups, restore, refresh, reconnect
+and mobile width.
 It records screenshots and an explicit result for native browser downloads under
 `.qa/`. On Windows application sandboxes, loopback sockets and browser download
 writes can be blocked; those limitations are recorded rather than reported as

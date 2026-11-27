@@ -885,6 +885,25 @@
     printDetails = [];
   });
   window.addEventListener("pagehide", flushAndPersist);
+  window.addEventListener("storage", event => {
+    if(event.key!==storageKey || !event.newValue)return;
+    // Keep the existing conflict-copy protection when this tab has unsaved edits.
+    if(dirty || document.querySelector("dialog[open]")) {
+      notify("This character changed in another tab. Finish your current edits before switching characters.");
+      return;
+    }
+    try {
+      const saved=JSON.parse(event.newValue);
+      if(saved.version!==1 || !Array.isArray(saved.characters))return;
+      const latest=saved.characters.map(item=>State.normalizeCharacter(item));
+      const updated=latest.find(item=>item.id===character.id);if(!updated)return;
+      if(JSON.stringify(updated)===baselines.get(character.id))return;
+      library=latest;character=Rules.reconcile(updated);computed=null;
+      for(const item of latest)baselines.set(item.id,JSON.stringify(item));
+      render();
+      notify("Linked character resources updated.");
+    } catch { notify("A linked update could not be read. Your current sheet is still available."); }
+  });
   document.addEventListener("visibilitychange", () => { if (document.hidden) flushAndPersist(); });
   load();
   character = Rules.reconcile(character);

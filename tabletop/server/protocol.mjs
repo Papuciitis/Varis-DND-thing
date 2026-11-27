@@ -46,7 +46,7 @@ export async function roomRequest(service,request,action,onChange=()=>{}) {
     if (method==='GET' && /^assets\/[a-f0-9-]{36}$/.test(action)) return assetResponse(await service.mapAsset(key,action.slice(7)));
     if (method==='POST') {
       let view;
-      if (action==='command') view=await service.command(key,await readJSON(request));
+      if (action==='command') view=await service.command(key,await readJSON(request,LIMITS.command));
       else if (action==='map') view=await service.uploadMap(key,await readJSON(request,LIMITS.image+4096));
       else if (action==='import') view=await service.importCampaign(key,await readJSON(request,LIMITS.backup));
       else return json({error:'Game endpoint not found.'},404);

@@ -1,5 +1,5 @@
 export const VERSION = 1;
-export const LIMITS = Object.freeze({players:12, tokens:128, cells:10000, image:1500000, backup:2000000});
+export const LIMITS = Object.freeze({players:12, tokens:128, cells:10000, image:1500000, backup:2000000,command:70000});
 
 export class RoomError extends Error {
   constructor(message, status = 400) { super(message); this.status = status; }
@@ -44,12 +44,61 @@ export function isRevealed(scene,x,y) {
 export function requireDM(actor) {
   if (actor.role !== 'dm') throw new RoomError('Only the DM can change this.',403);
 }
+export const RESOURCE_KEYS = ['tempHP','arcaneHealth','armorClass','block','tempBlock','custom1','custom2'];
+export const defaultBars = () => [
+  {enabled:false,label:'Temp HP',resource:'tempHP'},
+  {enabled:false,label:'Arcane Health',resource:'arcaneHealth'}
+];
+export function resourcesFrom(raw = {}) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new RoomError('Resources must be an object.');
+  return Object.fromEntries(RESOURCE_KEYS.map(key => {
+    const pool=raw[key] ?? {},max=pool.max === null || key==='armorClass' ? null : whole(pool.max ?? 0,0,999999,'Resource maximum');
+    return [key,{current:whole(pool.current ?? 0,0,max ?? 999999,'Resource value'),max}];
+  }));
+}
+export function barsFrom(raw = defaultBars()) {
+  if (!Array.isArray(raw) || raw.length!==2) throw new RoomError('Use two optional resource bars.');
+  return raw.map(bar => {
+    if (!bar || !RESOURCE_KEYS.includes(bar.resource)) throw new RoomError('Choose a valid resource for each bar.');
+    return {enabled:flag(bar.enabled),label:label(bar.label,'Resource',24),resource:bar.resource,
+      valueOnly:bar.valueOnly===undefined?false:flag(bar.valueOnly)};
+  });
+}
+function statblockFrom(raw) {
+  if (raw == null) return null;
+  if (typeof raw!=='object' || Array.isArray(raw)) throw new RoomError('Invalid statblock.');
+  const abilities={};
+  for (const key of ['str','dex','con','int','wis','cha']) {
+    if (raw.abilities?.[key]!==undefined) abilities[key]=whole(raw.abilities[key],0,999,'Ability score');
+  }
+  const prose=(value,max)=>{
+    if(value!==undefined && typeof value!=='string')throw new RoomError('Statblock text must be text.');
+    return (value || '').replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g,'').slice(0,max);
+  };
+  return {type:['character','monster','custom'].includes(raw.type)?raw.type:'custom',
+    sourceId:label(raw.sourceId,'',512),abilities,
+    notes:prose(raw.notes,4000),rules:prose(raw.rules,12000)};
+}
+export const canEditStats = (token,actor) => token.ownerId ? token.ownerId===actor.id : actor.role==='dm';
+export const canViewStats = (token,actor) => canEditStats(token,actor) || (actor.role==='dm' && token.shareWithDM===true);
+export function clearPrivateStats(token) {
+  Object.assign(token,{hp:20,maxHp:20,resources:resourcesFrom(),bars:defaultBars(),statblock:null,shareWithDM:false});
+}
+export function templateFrom(raw,scene,ownerId) {
+  if(!raw || !['circle','cone','line','square'].includes(raw.shape))throw new RoomError('Choose a circle, cone, line or square.');
+  if(!['ft','m','squares'].includes(raw.unit))throw new RoomError('Choose a unit for the spell area.');
+  return {id:uid(),ownerId,name:label(raw.name,'Spell area',40),shape:raw.shape,unit:raw.unit,
+    x:numeric(raw.x,0,scene.width-1,'Area X'),y:numeric(raw.y,0,scene.height-1,'Area Y'),
+    angle:numeric(raw.angle ?? 0,-36000,36000,'Area direction')%360,
+    size:numeric(raw.size,.01,1000,'Area size'),width:numeric(raw.width ?? 5,.01,1000,'Line width'),
+    coneAngle:numeric(raw.coneAngle ?? 60,10,180,'Cone angle')};
+}
 export function tokenFrom(raw,scene) {
   if (!raw || typeof raw !== 'object') throw new RoomError('A token must be an object.');
   const color = raw.color ?? '#337c89';
   if (!/^#[a-f0-9]{6}$/i.test(color)) throw new RoomError('Choose a valid token color.');
   const maxHp = whole(raw.maxHp ?? 20,1,999999,'Maximum HP');
-  const kind = ['hero','monster','npc'].includes(raw.kind) ? raw.kind : 'hero';
+  const kind = ['hero','monster','npc','summon'].includes(raw.kind) ? raw.kind : 'hero';
   return {
     id: typeof raw.id === 'string' && /^[a-z0-9-]{6,64}$/i.test(raw.id) ? raw.id : uid(),
     name:label(raw.name,'New token',40), kind, color,
@@ -58,12 +107,15 @@ export function tokenFrom(raw,scene) {
     size:whole(raw.size ?? 1,1,4,'Token size'),
     hp:whole(raw.hp ?? maxHp,0,maxHp,'HP'), maxHp,
     hidden:raw.hidden === undefined ? false : flag(raw.hidden),
-    ownerId:typeof raw.ownerId === 'string' ? raw.ownerId : null
+    ownerId:typeof raw.ownerId === 'string' ? raw.ownerId : null,
+    resources:resourcesFrom(raw.resources),bars:barsFrom(raw.bars),statblock:statblockFrom(raw.statblock),
+    shareWithDM:raw.shareWithDM===undefined ? false : flag(raw.shareWithDM)
   };
 }
 export function initialScene() {
-  const scene = {name:'The old watchtower',width:1600,height:1000,gridSize:50,showGrid:true,mapAsset:'sample',
-    fog:{enabled:true,revealed:[]},tokens:[],combat:{active:false,order:[],index:0,round:1}};
+  const scene = {name:'The old watchtower',width:1600,height:1000,gridSize:50,showGrid:true,gridOpacity:.6,
+    distancePerSquare:5,distanceUnit:'ft',mapAsset:'sample',
+    fog:{enabled:true,revealed:[]},tokens:[],templates:[],combat:{active:false,order:[],index:0,round:1}};
   for (let y=7;y<18;y++) for (let x=0;x<14;x++) scene.fog.revealed.push(y*32+x);
   scene.tokens = [
     tokenFrom({name:'Wayfarer',x:325,y:525,color:'#c39b54',kind:'hero',maxHp:24},scene),
@@ -75,8 +127,13 @@ export function initialScene() {
 export function project(room,actor) {
   const scene = copy(room.scene);
   const dm = actor.role === 'dm';
+  scene.templates=(scene.templates || []).filter(area=>dm || area.ownerId===actor.id || isRevealed(scene,area.x,area.y));
   scene.tokens = scene.tokens.filter(t => dm || (!t.hidden && (t.ownerId === actor.id || isRevealed(scene,t.x,t.y))));
-  if (!dm) scene.tokens = scene.tokens.map(t => ({...t,hp:t.kind === 'monster' ? null : t.hp,maxHp:t.kind === 'monster' ? null : t.maxHp}));
+  scene.tokens = scene.tokens.map(t => {
+    const visible=canViewStats(t,actor),editable=canEditStats(t,actor);
+    if (!visible) Object.assign(t,{hp:null,maxHp:null,resources:{},bars:[],statblock:null,shareWithDM:false});
+    return {...t,canViewStats:visible,canEditStats:editable};
+  });
   const visibleIds = new Set(scene.tokens.map(t => t.id));
   const activeId = scene.combat.order[scene.combat.index] || null;
   scene.combat = {...scene.combat,order:scene.combat.order.filter(id => visibleIds.has(id)),
@@ -124,6 +181,44 @@ export function applyCommand(room,actor,command) {
     addLog(room,{kind:'roll',name:actor.name,...roll(command.formula)});
     return;
   }
+  if (command.type === 'token.share') {
+    const t=tokenById(room,command.id);
+    if (!t.ownerId || t.ownerId!==actor.id) throw new RoomError('Only the player who owns this token can share its stats.',403);
+    t.shareWithDM=flag(command.enabled);return;
+  }
+  if (command.type === 'template.add') {
+    if((scene.templates || []).length>=32)throw new RoomError('Remove a spell area before adding more (32 per scene).');
+    const area=templateFrom(command.template,scene,actor.id);
+    if(actor.role!=='dm' && !isRevealed(scene,area.x,area.y))throw new RoomError('Place spell areas inside the revealed map.',403);
+    scene.templates ??= [];scene.templates.push(area);return;
+  }
+  if (command.type === 'template.delete') {
+    const area=scene.templates?.find(area=>area.id===command.id);
+    if(!area)throw new RoomError('That spell area has already been removed.',404);
+    if(actor.role!=='dm' && area.ownerId!==actor.id)throw new RoomError('You can only remove your own spell areas.',403);
+    scene.templates=scene.templates.filter(area=>area.id!==command.id);return;
+  }
+  if (command.type === 'token.stats') {
+    const t=tokenById(room,command.id);
+    if (!canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
+    const fields={};
+    for (const key of ['hp','maxHp','resources','bars','statblock']) if (key in command) fields[key]=command[key];
+    Object.assign(t,tokenFrom({...t,...fields},scene));return;
+  }
+  if (command.type === 'token.update') {
+    const t=tokenById(room,command.id),dm=actor.role==='dm',fields={};
+    if (!dm && t.ownerId!==actor.id) throw new RoomError('You can only edit your own tokens.',403);
+    const structural=['kind','size','hidden','ownerId'];
+    if (!dm && structural.some(key => key in command)) throw new RoomError('Only the DM can change token ownership and visibility.',403);
+    const stats=['hp','maxHp','resources','bars','statblock'];
+    if (stats.some(key => key in command) && !canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
+    for (const key of ['name','color',...(dm?structural:[]),...stats]) if (key in command) fields[key]=command[key];
+    if (fields.ownerId && !room.players.some(p=>p.id===fields.ownerId)) throw new RoomError('Select a player who has joined the game.');
+    // Reassignment must never expose the previous player's private character.
+    const next={...t,...fields};
+    if (t.ownerId && 'ownerId' in fields && fields.ownerId!==t.ownerId) clearPrivateStats(next);
+    Object.assign(t,tokenFrom(next,scene));return;
+  }
   requireDM(actor);
   switch (command.type) {
     case 'room.rename': room.name=label(command.name,'Untitled game'); scene.name=room.name; break;
@@ -132,7 +227,8 @@ export function applyCommand(room,actor,command) {
       if(!player)throw new RoomError('That guest is no longer at this table.',404);
       room.players=room.players.filter(p=>p.id!==command.id);
       for(const [hash,guest] of Object.entries(room.auth.guests))if(guest.id===command.id)delete room.auth.guests[hash];
-      for(const token of scene.tokens)if(token.ownerId===command.id)token.ownerId=null;
+      for(const token of scene.tokens)if(token.ownerId===command.id){clearPrivateStats(token);token.ownerId=null;}
+      scene.templates=(scene.templates || []).filter(area=>area.ownerId!==command.id);
       addLog(room,{kind:'system',text:`${player.name} was removed from the guest list. Their tokens remain on the map.`});
       break;
     }
@@ -142,13 +238,6 @@ export function applyCommand(room,actor,command) {
       if (scene.tokens.some(existing=>existing.id === t.id)) t.id=uid();
       if (t.ownerId && !room.players.some(p=>p.id===t.ownerId)) throw new RoomError('Select a player who has joined the game.');
       scene.tokens.push(t); break;
-    }
-    case 'token.update': {
-      const t=tokenById(room,command.id), fields={};
-      for (const key of ['name','kind','color','size','hp','maxHp','hidden','ownerId']) if (key in command) fields[key]=command[key];
-      const changed=tokenFrom({...t,...fields},scene);
-      if (changed.ownerId && !room.players.some(p=>p.id===changed.ownerId)) throw new RoomError('Select a player who has joined the game.');
-      Object.assign(t,changed); break;
     }
     case 'token.delete': {
       tokenById(room,command.id);
@@ -172,6 +261,12 @@ export function applyCommand(room,actor,command) {
       if (Math.ceil(scene.width/grid)*Math.ceil(scene.height/grid)>LIMITS.cells) throw new RoomError('Choose a larger grid size.');
       if (grid!==scene.gridSize) {scene.gridSize=grid; scene.fog.revealed=[];}
       if (command.showGrid!==undefined) scene.showGrid=flag(command.showGrid);
+      if (command.gridOpacity!==undefined) scene.gridOpacity=numeric(command.gridOpacity,.2,.9,'Grid contrast');
+      if (command.distancePerSquare!==undefined) scene.distancePerSquare=numeric(command.distancePerSquare,.01,10000,'Distance per square');
+      if (command.distanceUnit!==undefined) {
+        if (!['ft','m'].includes(command.distanceUnit)) throw new RoomError('Choose feet or meters for the map scale.');
+        scene.distanceUnit=command.distanceUnit;
+      }
       break;
     }
     case 'combat.start': scene.combat={active:true,order:scene.tokens.filter(t=>!t.hidden).map(t=>t.id),index:0,round:1}; break;
@@ -196,13 +291,24 @@ export function importedScene(raw) {
   if (!raw || typeof raw !== 'object' || !raw.fog || !Array.isArray(raw.tokens)) throw new RoomError('The campaign has no valid scene.');
   const scene={name:label(raw.name,'Imported scene'),width:whole(raw.width,100,4096,'Map width'),
     height:whole(raw.height,100,4096,'Map height'),gridSize:whole(raw.gridSize,20,160,'Grid size'),
-    showGrid:flag(raw.showGrid),mapAsset:'sample',fog:{enabled:flag(raw.fog.enabled),revealed:[]},tokens:[],
-    combat:{active:false,order:[],index:0,round:1}};
+    showGrid:flag(raw.showGrid),gridOpacity:numeric(raw.gridOpacity ?? .6,.2,.9,'Grid contrast'),
+    distancePerSquare:numeric(raw.distancePerSquare ?? 5,.01,10000,'Distance per square'),
+    distanceUnit:raw.distanceUnit==='m'?'m':'ft',mapAsset:'sample',fog:{enabled:flag(raw.fog.enabled),revealed:[]},tokens:[],
+    templates:[],combat:{active:false,order:[],index:0,round:1}};
   if (cellCount(scene)>LIMITS.cells || raw.tokens.length>LIMITS.tokens || !Array.isArray(raw.fog.revealed) || raw.fog.revealed.length>LIMITS.cells) {
     throw new RoomError('The imported scene exceeds the prototype limits.');
   }
   scene.fog.revealed=[...new Set(raw.fog.revealed.map(c=>whole(c,0,cellCount(scene)-1,'Map cell')))];
-  scene.tokens=raw.tokens.map(t=>({...tokenFrom(t,scene),ownerId:null}));
+  scene.tokens=raw.tokens.map(t=>{
+    const source=t.hp===null && t.maxHp===null
+      ? {...t,hp:20,maxHp:20,bars:undefined,resources:undefined,statblock:null}
+      : t;
+    return {...tokenFrom(source,scene),ownerId:null,shareWithDM:false};
+  });
   if (new Set(scene.tokens.map(t=>t.id)).size!==scene.tokens.length) throw new RoomError('The campaign has duplicate token IDs.');
+  if(raw.templates!==undefined){
+    if(!Array.isArray(raw.templates) || raw.templates.length>32)throw new RoomError('The campaign has too many spell areas.');
+    scene.templates=raw.templates.map(area=>templateFrom(area,scene,'dm'));
+  }
   return scene;
 }

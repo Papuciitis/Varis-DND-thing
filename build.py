@@ -116,10 +116,16 @@ def build(output_dir):
         write_page(output_dir / page, normal)
         write_page(output_dir / "offline" / page, render_page(page, stylesheet, scripts, catalog_script))
     (output_dir / ".nojekyll").touch()
-    # The prototype has its own page and assets; existing reader/sheet output is unchanged.
+    # The prototype has its own page and assets; reader navigation stays separate.
     prototype = ROOT / "tabletop" / "web"
     if prototype.is_dir():
         shutil.copytree(prototype, output_dir / "tabletop", dirs_exist_ok=True)
+        helpers = output_dir / "tabletop" / "sheet"
+        helpers.mkdir(exist_ok=True)
+        for name in ("magic-categories.js", "item-views.js", "magic-items.js",
+                     "character-state.js", "character-effects.js", "character-equipment.js",
+                     "character-casting.js", "character-rules.js"):
+            shutil.copyfile(ROOT / "web" / name, helpers / name)
     print(f"Built {output_dir.name}/ with section data and offline/ portable copies")
     for section in sections:
         print(f"  {section['title']}: {len(section['entries'])}")
