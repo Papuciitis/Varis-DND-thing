@@ -1,6 +1,6 @@
 # Monsters and the statblock editor
 
-The monster manual includes all 92 creatures, NPCs and encounter objects from the four campaign sources, alongside the 20 existing workbook references, 13 completed Tarta wiki dragon statblocks, and 35 Homebrewery additions (160 entries total). Template examples are included: Adult Red Dragon is a playable entry, and the two differently described Ravager blocks remain separate creatures.
+The monster manual includes all 92 creatures, NPCs and encounter objects from the four campaign sources, alongside the 20 existing workbook references, 13 completed Tarta wiki dragon statblocks, 35 Homebrewery additions and 55 recovered chat profiles (215 entries total). Template examples are included: Adult Red Dragon is a playable entry, and the two differently described Ravager blocks remain separate creatures.
 
 | Campaign source | Entries | Editable collection |
 | --- | ---: | --- |
@@ -11,6 +11,10 @@ The monster manual includes all 92 creatures, NPCs and encounter objects from th
 | Tarta wiki dragons | 13 completed homebrew profiles | `data/monsters/tarta-wiki.yaml` |
 | Tarta Homebrewery elementals | 26 creatures | `data/monsters/tarta-elementals-low.yaml`, `data/monsters/tarta-elementals-high.yaml` |
 | Tarta Homebrewery summons | 6 full source blocks plus 3 completed templates | `data/monsters/tarta-summons.yaml` |
+| Recovered guardians and fauna | 12 | `data/monsters/recovered-fauna.yaml` |
+| Recovered warbands and armed enemies | 15 | `data/monsters/recovered-warriors.yaml` |
+| Recovered horrors and summons | 15 | `data/monsters/recovered-horrors.yaml` |
+| Completed creature concepts and companions | 13 | `data/monsters/recovered-lore.yaml` |
 
 ## Conversion conventions
 
@@ -21,6 +25,8 @@ The current compendium's conditions, class features and spells take priority ove
 Chronica records ability modifiers rather than exact scores. The playable blocks use published scores where a matching profile is available, compatible existing donor scores where identified, and reconstructed scores for the remaining campaign profiles. Reconstruction chooses a score that preserves the recorded modifier and is marked **Reconstructed scores**. Source panels retain the original modifiers and explain the method; a reconstructed score is not claimed as an original source value. Nine otherwise blank NPC records use documented existing NPC baselines. Source challenge values are encounter estimates rather than a balance certification; missing campaign CRs, including Jobafo, have explicit provisional Vara estimates documented in conversion notes.
 
 Original text, source locations, repairs and donor references remain available in collapsed source panels. The extracted documents and sanitized monster-only Chronica export are tracked under `data/monsters/source/`. Original unrelated campaign secrets are excluded.
+
+The 55 recovered profiles use historical chat-search extracts rather than complete transcripts. With the user's explicit authorization, missing scores and mechanics are completed from current rules and compatible monster templates. Personal names become reusable enemy archetypes; the original aliases, recovered numbers, reconstructed values and provisional CRs remain in source notes. The [recovered inventory](recovered-monsters.md) maps every new profile to its source. No new player spells or class grants accompany these entries.
 
 ## Add and edit on the webpage
 
@@ -58,7 +64,7 @@ The original numerical fields, combat abilities and source URLs are preserved in
 
 The 13 dragon profiles now include complete documented homebrew attack routines, breath recharge, legendary-action budgets and material-themed special abilities. Printed core stats remain fixed; original dice and omitted rules stay traceable in the source snapshot. Added rules are explicitly conversions, not claims about unrecorded source text. Aurumathar's teleport has an action cost and range; Neodrakite's breath has distance and successful-save outcomes; Ytriun's molten area has a duration. Rebuild the collection with `python scripts/import_tarta_monsters.py`; `--check` detects drift.
 
-Yudith Zephia's uncategorized article contains only partial NPC statistics and prose about Loki, Willow and Hands; it does not provide complete companion statblocks. These are recorded as a coverage gap, not fabricated creatures. Aramil, the other deity/avatar pages, places and lore-only pages likewise do not create combat entries.
+Yudith Zephia's uncategorized wiki article contains only partial NPC statistics and prose about Loki, Willow and Hands; it does not provide complete companion statblocks. The later chat recovery supplies additional companion statistics, completed in the separate recovered collections as Tentacle Clockwork Panther, Spellguard Clockwork Panther and Six-Handed Surgical Automaton. These completions do not claim that the wiki had full blocks. Aramil, the other deity/avatar wiki pages, places and lore-only wiki pages do not create entries in the wiki import.
 
 Tarta wiki material is attributed to its contributors and its source URLs. The source pages state CC-BY-SA unless otherwise noted; adaptations retain that attribution and license notice in their conversion notes. Images were not copied.
 

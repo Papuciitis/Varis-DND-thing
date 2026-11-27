@@ -1,0 +1,920 @@
+{
+  "recovered_on": "2026-11-27",
+  "authorization": "Add recovered monsters, replace personal NPC names with enemy archetypes, and complete missing fields using current Varis/Open DnD rules.",
+  "source_notice": "Historical chat-search extracts are partial summaries, not a verbatim chat export. Newly completed mechanics are recorded in each profile.",
+  "counts": {
+    "new_profiles": 55,
+    "previous_profiles": 160,
+    "total": 215
+  },
+  "collections": [
+    {
+      "file": "monsters/recovered-fauna.yaml",
+      "count": 12
+    },
+    {
+      "file": "monsters/recovered-warriors.yaml",
+      "count": 15
+    },
+    {
+      "file": "monsters/recovered-horrors.yaml",
+      "count": 15
+    },
+    {
+      "file": "monsters/recovered-lore.yaml",
+      "count": 13
+    }
+  ],
+  "entries": [
+    {
+      "name": "Forest Guardian",
+      "id": "recovered-forest-guardian",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Forest Guardian (Oak Leaf Elemental)",
+      "date": "2023-06-08",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "4",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Sea Guardian",
+      "id": "recovered-sea-guardian",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Sea Guardian (Turtle Shell Elemental)",
+      "date": "2023-06-08",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "4",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Sky Guardian",
+      "id": "recovered-sky-guardian",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Sky Guardian (Diatryma Feather Elemental)",
+      "date": "2023-06-08",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "3",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Earth Guardian",
+      "id": "recovered-earth-guardian",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Earth Guardian (Sequoia Bark Elemental)",
+      "date": "2023-06-08",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "5",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Underground Guardian",
+      "id": "recovered-underground-guardian",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Underground Guardian (Zygom Spore Elemental)",
+      "date": "2023-06-08",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "4",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Golden Sow",
+      "id": "recovered-golden-sow",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Golden Sow",
+      "date": "2023-06-15",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1/4",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "beast type and unaligned disposition",
+        "current Block and complete attack format"
+      ]
+    },
+    {
+      "name": "Ruby Dawn-Crier",
+      "id": "recovered-ruby-dawn-crier",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Ruby Dawn-Crier",
+      "date": "2023-06-15",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1/8",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "beast type and unaligned disposition",
+        "current Block and complete attack format"
+      ]
+    },
+    {
+      "name": "Emerald Twilight-Hen",
+      "id": "recovered-emerald-twilight-hen",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Emerald Twilight-Hen",
+      "date": "2023-06-16",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "0",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "beast type and unaligned disposition",
+        "current Block and complete attack format"
+      ]
+    },
+    {
+      "name": "Gelatinous Leafhopper",
+      "id": "recovered-gelatinous-leafhopper",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Gelatinous Leafhopper",
+      "date": "2023-07-29",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1/4",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Crocshark",
+      "id": "recovered-crocshark",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Crocshark",
+      "date": "2025-09-17",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Quirkbeak",
+      "id": "recovered-quirkbeak",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Quirkbeak",
+      "date": "2025-09-17",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1/8",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Scarabscorpion",
+      "id": "recovered-scarabscorpion",
+      "file": "monsters/recovered-fauna.yaml",
+      "original_name": "Scarabscorpion",
+      "date": "2025-09-17",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1/4",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Mountain Orc",
+      "id": "recovered-mountain-orc",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Mountain Orc",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1/2",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "High Forest Orc",
+      "id": "recovered-high-forest-orc",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "High Forest Orc",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Gray Orc",
+      "id": "recovered-gray-orc",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Gray Orc",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Ogrillion",
+      "id": "recovered-ogrillion",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Ogrillion / Ogrillon",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "3",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Orog",
+      "id": "recovered-orog",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Orog",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "3",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Orc War Chief",
+      "id": "recovered-orc-war-chief",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Orc War Chief",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "4",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Ogre",
+      "id": "recovered-ogre",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Ogre",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "3",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Ogre War Hulk",
+      "id": "recovered-ogre-war-hulk",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Ogre War Hulk",
+      "date": "2025-02-09",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "5",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Scorpionfolk Glaive Tyrant",
+      "id": "recovered-scorpionfolk-glaive-tyrant",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Omari",
+      "date": "2024-10-26",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "10",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Battlefist Rifle Engineer",
+      "id": "recovered-battlefist-rifle-engineer",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Yudith Zephia / Yudit Zephania",
+      "date": "2024-10-26",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Obsidian Crystal Duelist",
+      "id": "recovered-obsidian-crystal-duelist",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "The Unpredictable Challenger",
+      "date": "2023-07-26",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "7",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Illusion-Boot Arcanist",
+      "id": "recovered-illusion-boot-arcanist",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Cxviisele Neverontime",
+      "date": "2024-01-28",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "6",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Warblade Avatar",
+      "id": "recovered-warblade-avatar",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Aspect of Da'akhaste — Iden",
+      "date": "2024-10-25",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "18",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Boarding Rapier Skirmisher",
+      "id": "recovered-boarding-rapier-skirmisher",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Zephyr Swiftwind",
+      "date": "2023-07-29",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "4",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "AC,HP,speed and provisionalCR",
+        "current Rapier/Short bow and reload rules",
+        "explicit attack numbers and once-per-turn precision damage"
+      ]
+    },
+    {
+      "name": "Elven Hexblade Initiate",
+      "id": "recovered-elven-hexblade-initiate",
+      "file": "monsters/recovered-warriors.yaml",
+      "original_name": "Hecat",
+      "date": "2024-11-28",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "1",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Eidolon of the Many Eyes",
+      "id": "recovered-eidolon-of-the-many-eyes",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Eidolon of the Many Eyes",
+      "date": "2025-07-17",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "10",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "initial orb reserve and exact recharge/legendary reset",
+        "current Block, condition durations and action costs"
+      ]
+    },
+    {
+      "name": "Necropolar Bear",
+      "id": "recovered-necropolar-bear",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Necropolar Bear",
+      "date": "2025-09-07",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "9",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Smiling Mourner",
+      "id": "recovered-smiling-mourner",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "The Smiling Mourner / The Mourner",
+      "date": "2025-09-16",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "6",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Thousand-Eyed Ascetic",
+      "id": "recovered-thousand-eyed-ascetic",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "The Thousand-Eyed Ascetic",
+      "date": "2025-09-16",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "12",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Aberrant Juggernaut",
+      "id": "recovered-aberrant-juggernaut",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "The Aberrant Juggernaut",
+      "date": "2025-09-16",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "10",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Ashmaw Tramplefire",
+      "id": "recovered-ashmaw-tramplefire",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Ashmaw Tramplefire",
+      "date": "2025-06-01",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "11",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Birther of the Void",
+      "id": "recovered-birther-of-the-void",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Birther of the Void",
+      "date": "2025-07-18",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "13",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Whisperspawn Ascendant",
+      "id": "recovered-whisperspawn-ascendant",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Whisperspawn Ascendant",
+      "date": "2025-07-18",
+      "source_kind": "numerical profile",
+      "ability_scores": "sourced",
+      "cr": "10",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Frostbound Wraith",
+      "id": "recovered-frostbound-wraith",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Frostbound Wraith",
+      "date": "2024-12-25",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "3",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all six ability scores,size/type where absent and provisionalCR",
+        "save outcomes,area dimensions,escape/condition timing",
+        "finite wolf creation and normal initiative"
+      ]
+    },
+    {
+      "name": "Frostblade Sovereign",
+      "id": "recovered-frostblade-sovereign",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Frost King Vaelkris",
+      "date": "2024-12-25",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all six ability scores,size/type where absent and provisionalCR",
+        "save outcomes,area dimensions,escape/condition timing",
+        "finite wolf creation and normal initiative"
+      ]
+    },
+    {
+      "name": "Primordial Frost Warden",
+      "id": "recovered-primordial-frost-warden",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Primordial Frost Warden",
+      "date": "2024-12-25",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "8",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all six ability scores,size/type where absent and provisionalCR",
+        "save outcomes,area dimensions,escape/condition timing",
+        "finite wolf creation and normal initiative"
+      ]
+    },
+    {
+      "name": "Mud Servant",
+      "id": "recovered-mud-servant",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Mud Servant",
+      "date": "2024-03-31; 2024-04-17",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "1/2",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Voidling",
+      "id": "recovered-voidling",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Voidling",
+      "date": "2025-07-18",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "3",
+      "cr_status": "Recorded encounter estimate; not a Varis balance certification",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Parasite Swarm",
+      "id": "recovered-parasite-swarm",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Parasite Swarm",
+      "date": "2025-07-18",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "4",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Spectral Wolf",
+      "id": "recovered-spectral-wolf",
+      "file": "monsters/recovered-horrors.yaml",
+      "original_name": "Spectral Wolf / Frost Wolf",
+      "date": "2024-12-25",
+      "source_kind": "numerical profile",
+      "ability_scores": "reconstructed",
+      "cr": "1",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "proficiency, senses and language defaults",
+        "complete action timings, save outcomes and escape procedures",
+        "current Block, conditions and weapon conversion"
+      ]
+    },
+    {
+      "name": "Rhedottoia Reaper",
+      "id": "recovered-rhedottoia-reaper",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Rhedottoia Reaper",
+      "date": "2023-07-28",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "12",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Anchor Butcher",
+      "id": "recovered-anchor-butcher",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Nautilus, the Sea-Monster Butcher",
+      "date": "2023-07-26",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "10",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Miasmic Wraithshifter",
+      "id": "recovered-miasmic-wraithshifter",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Miasmic Wraithshifter",
+      "date": "2024-03-01",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Worldshell Great Turtle",
+      "id": "recovered-worldshell-great-turtle",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Eubur Colli, the Great Turtle",
+      "date": "2024-10-26",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "30",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Worldshell Ooze Guardian",
+      "id": "recovered-worldshell-ooze-guardian",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Eubur Colli monocyte defender",
+      "date": "2024-10-26",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "4",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Tentacle Clockwork Panther",
+      "id": "recovered-tentacle-clockwork-panther",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Loki",
+      "date": "2024-10-26",
+      "source_kind": "partial robotic-companion profile",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "six exact scores preserving original modifiers",
+        "trait timing,reach and damage-type completion",
+        "provisionalCR and initiative/control defaults"
+      ]
+    },
+    {
+      "name": "Spellguard Clockwork Panther",
+      "id": "recovered-spellguard-clockwork-panther",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Willow",
+      "date": "2024-10-26",
+      "source_kind": "partial robotic-companion profile",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "exact scores preserving original modifiers",
+        "bounded spell-turning/nondetection and summon ownership",
+        "provisionalCR"
+      ]
+    },
+    {
+      "name": "Six-Handed Surgical Automaton",
+      "id": "recovered-six-handed-surgical-automaton",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Hands",
+      "date": "2024-10-26",
+      "source_kind": "partial robotic-companion profile",
+      "ability_scores": "reconstructed",
+      "cr": "8",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "exact scores preserving modifiers",
+        "explicit hand articulation,repair uses and proficiency",
+        "provisionalCR"
+      ]
+    },
+    {
+      "name": "Venom-Hand Chirurgeon",
+      "id": "recovered-venom-hand-chirurgeon",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Aragmalaxis Jarzemassa, Poisoned Hand of Custead",
+      "date": "2025-09-24",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Fleshweaver Surgeon",
+      "id": "recovered-fleshweaver-surgeon",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Dr. Mathias Renkov, the Flesh Weaver",
+      "date": "2025-09-24",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Stitched Flesh Hulk",
+      "id": "recovered-stitched-flesh-hulk",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Renkov's stitched abomination",
+      "date": "2025-09-24",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "6",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Tempest Rhythm Djinn",
+      "id": "recovered-tempest-rhythm-djinn",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Djinn Beats",
+      "date": "2025-03-12",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "7",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    },
+    {
+      "name": "Reef Seahorsefolk",
+      "id": "recovered-reef-seahorsefolk",
+      "file": "monsters/recovered-lore.yaml",
+      "original_name": "Sea-horsewoman / sea-horse daddies",
+      "date": "2023-05-31",
+      "source_kind": "lore-only or fragmentary source",
+      "ability_scores": "reconstructed",
+      "cr": "1/2",
+      "cr_status": "Provisional Varis encounter estimate for the completed profile",
+      "completion_fields": [
+        "all absent core statistics and six ability scores",
+        "provisional challenge, attacks and encounter mechanics",
+        "current Block, conditions and explicit equipment/resource rules"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Sprig Nip",
+      "reason": "Rejected evil predecessor to the accepted Sprig Buddy; not revived."
+    },
+    {
+      "name": "Base Orc",
+      "reason": "Core profile already represented by the imported Gray Orc NPC; no duplicate."
+    },
+    {
+      "name": "Personal character-build sketches",
+      "reason": "Not part of the recovered creature/encounter collection."
+    }
+  ]
+}

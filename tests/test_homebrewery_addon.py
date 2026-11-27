@@ -14,7 +14,8 @@ class HomebreweryAddonTests(unittest.TestCase):
         cls.monsters = {e['name']: e for e in cls.catalog['monsters']['entries']}
 
     def test_all_printed_creatures_and_completed_templates_are_in_the_compiled_catalog(self):
-        self.assertEqual(len(self.monsters), 160)
+        original = [e for e in self.monsters.values() if not e['source'].startswith('monsters/recovered-')]
+        self.assertEqual(len(original), 160)
         self.assertEqual(sum(e['source'].startswith('monsters/tarta-elementals-') for e in self.monsters.values()), 26)
         summons = [e for e in self.monsters.values() if e['source'] == 'monsters/tarta-summons.yaml']
         self.assertEqual(len(summons), 9)

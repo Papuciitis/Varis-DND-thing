@@ -133,7 +133,8 @@ class GeomancyDecisionCatalogTests(unittest.TestCase):
 
     def test_conversions_are_review_only_and_do_not_change_character_metadata(self):
         self.assertEqual(len(self.catalog["spells"]["entries"]), 439)
-        self.assertEqual(len(self.catalog["monsters"]["entries"]), 160)
+        original = [e for e in self.catalog["monsters"]["entries"] if not e["source"].startswith("monsters/recovered-")]
+        self.assertEqual(len(original), 160)
         drafts = [entry for entry in self.entries if entry["details"]["review_status"] == "draft"]
         self.assertGreaterEqual(len(drafts), 20)
         self.assertTrue(all(entry["details"]["review_conversion"] for entry in drafts))

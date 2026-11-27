@@ -1,0 +1,1953 @@
+# Recovered horrors, constructs and independent summon creatures.
+section: "monsters"
+entries:
+  -
+    name: "Eidolon of the Many Eyes"
+    group: "Recovered aberrations and horrors"
+    id: "recovered-eidolon-of-the-many-eyes"
+    meta: "Large aberration, chaotic evil"
+    size: "Large"
+    type: "aberration"
+    alignment: "chaotic evil"
+    cr: "10"
+    ac: "17"
+    hp: "168 (16d10 + 80)"
+    speed: "40 ft., climb 30 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "20"
+      dex: "14"
+      con: "20"
+      int: "12"
+      wis: "14"
+      cha: "16"
+    proficiency_bonus: "+4"
+    senses: "darkvision 120 ft., passive Perception 16"
+    languages: "Deep Speech, telepathy 120 ft."
+    traits:
+      -
+        name: "Many-Eyed Awareness"
+        description: "Cannot be surprised; advantage on sight-based Wisdom (Perception) checks."
+      -
+        name: "Magic Resistance"
+        description: "Advantage on saves against spells and magical effects."
+      -
+        name: "Eldritch Orbs"
+        description: >-
+          Starts an encounter with 3 orbs; regains 1d4 at the start of each turn, maximum 6. Spent orbs are
+          removed immediately; never exceed 6.
+      -
+        name: "Legendary action budget"
+        description: >-
+          2 legendary actions, regained at the start of its turn. Spend one option at a time, at the end of
+          another creature's turn. Each listed cost is deducted from this shared budget.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make one Bite and two Claw attacks. Resolve each attack and Block separately."
+      -
+        name: "Bite"
+        description: "Melee attack: +9 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d10 + 5 piercing damage."
+      -
+        name: "Claw"
+        description: "Melee attack: +9 to hit, reach 10 ft., one target; Block DC 17. Unblocked strike: 2d8 + 5 slashing damage."
+      -
+        name: "Orb Blast (recharge 5-6)"
+        description: >-
+          Up to 3 visible creatures within 60 ft.; DC 16 Dexterity save. Failure: 6d8 force damage. Success:
+          half damage and no other effect. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Mind Shatter (2 orbs)"
+        description: >-
+          One visible creature within 60 ft.; DC 16 Intelligence save. Failure: 4d10 psychic damage; Stunned
+          until the end of its next turn. Success: half damage and no other effect. Saving-throw-only damage
+          cannot be Blocked.
+      -
+        name: "Twisting Step (1 orb)"
+        description: "Teleport up to 30 ft. to a visible unoccupied space; costs its action and 1 orb."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Eidolon of the Many Eyes"
+      date: "2025-07-17"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Eidolon of the Many Eyes"
+      date: "2025-07-17"
+      recorded_statistics:
+        ac: "17"
+        hp: "168"
+        scores:
+          - "20"
+          - "14"
+          - "20"
+          - "12"
+          - "14"
+          - "16"
+        orbs: "regain1d4/start, max6; initial unspecified"
+      recovered_summary: "Many-eyed orb-resource aberration, distinct from existing baseline eidolon."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-07-17 / Eidolon of the Many Eyes; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "initial orb reserve and exact recharge/legendary reset"
+        - "current Block, condition durations and action costs"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    saving_throws: "Con+9, Wis+6, Cha+7"
+    skills: "Perception +6, Intimidation +7"
+    damage_resistances: "cold, fire, lightning"
+    damage_immunities: "psychic"
+    condition_immunities: "Afraid, Terrified, Charmed"
+    legendary_actions:
+      -
+        name: "Glare (1 action)"
+        description: >-
+          One visible creature within 30 ft. makes a DC 16 Wisdom save; failure gives disadvantage on its next
+          attack before the end of its next turn.
+      -
+        name: "Tentacle Swipe (1 action)"
+        description: "Make one Claw attack."
+      -
+        name: "Siphon Orb (2 actions)"
+        description: "Regain 1 expended orb, to the maximum 6."
+  -
+    name: "Necropolar Bear"
+    group: "Recovered aberrations and horrors"
+    id: "recovered-necropolar-bear"
+    meta: "Huge undead, chaotic evil"
+    size: "Huge"
+    type: "undead"
+    alignment: "chaotic evil"
+    cr: "9"
+    ac: "16"
+    hp: "189 (18d12 + 72)"
+    speed: "40 ft., climb 30 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "23"
+      dex: "12"
+      con: "18"
+      int: "5"
+      wis: "12"
+      cha: "8"
+    proficiency_bonus: "+4"
+    senses: "darkvision 120 ft., passive Perception 15"
+    languages: "understands Common but cannot speak"
+    traits:
+      -
+        name: "Undead Fortitude"
+        description: >-
+          When reduced to 0 HP, make a Constitution save DC 5+damage taken; success leaves 1 HP. Cannot use
+          against radiant damage or a critical hit.
+      -
+        name: "Frost Aura"
+        description: "Other creatures starting their turn within 10 ft. take 1d10 cold damage. Automatic aura damage cannot be Blocked."
+      -
+        name: "Relentless Predator"
+        description: "Has advantage attacking a creature it hit with Bite on its previous turn."
+      -
+        name: "Legendary action budget"
+        description: >-
+          2 legendary actions, regained at the start of its turn. Spend one option at a time, at the end of
+          another creature's turn. Each listed cost is deducted from this shared budget.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make one Bite and one Claw attack. Resolve each attack and Block separately."
+      -
+        name: "Bite"
+        description: "Melee attack: +10 to hit, reach 5 ft., one target; Block DC 18. Unblocked strike: 4d10 + 6 piercing plus 2d8 necrotic damage."
+      -
+        name: "Claw"
+        description: "Melee attack: +10 to hit, reach 10 ft., one target; Block DC 18. Unblocked strike: 3d10 + 6 slashing damage."
+      -
+        name: "Horrid Roar (recharge 5-6)"
+        description: >-
+          Chosen creatures within 30 ft. that can see or hear it; DC 16 Wisdom save. Failure: no damage;
+          Afraid for 1 minute; repeat the save at the end of each affected turn, ending on success. Success:
+          no effect. Saving-throw-only damage cannot be Blocked.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Necropolar Bear"
+      date: "2025-09-07"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Necropolar Bear"
+      date: "2025-09-07"
+      recorded_statistics:
+        ac: "16"
+        hp: "189"
+        scores:
+          - "23"
+          - "12"
+          - "18"
+          - "5"
+          - "12"
+          - "8"
+      recovered_summary: "Undead polar-bear image design with frost aura, roar and optional legendary actions."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-09-07 / Necropolar Bear; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    saving_throws: "Str+10, Con+8"
+    skills: "Perception +5, Stealth +4"
+    damage_resistances: "cold, necrotic; bludgeoning, piercing, slashing from nonmagical attacks"
+    damage_immunities: "poison"
+    condition_immunities: "Poisoned, Exhausted"
+    legendary_actions:
+      -
+        name: "Move (1 action)"
+        description: "Move up to half its speed; normal opportunity attacks apply."
+      -
+        name: "Swipe (1 action)"
+        description: "Make one Claw attack."
+      -
+        name: "Chilling Gaze (2 actions)"
+        description: >-
+          One visible creature within 30 ft. makes a DC 16 Constitution save. Failure: 4d8 cold damage and
+          Paralyzed until the end of its next turn. Success: no damage or condition. This save-only effect
+          cannot be Blocked.
+  -
+    name: "Smiling Mourner"
+    group: "Recovered aberrations and horrors"
+    id: "recovered-smiling-mourner"
+    meta: "Medium undead, chaotic evil"
+    size: "Medium"
+    type: "undead"
+    alignment: "chaotic evil"
+    cr: "6"
+    ac: "13"
+    hp: "90 (12d8 + 36)"
+    speed: "30 ft."
+    block: "3 / +3 check"
+    abilities:
+      str: "14"
+      dex: "16"
+      con: "16"
+      int: "10"
+      wis: "14"
+      cha: "18"
+    proficiency_bonus: "+3"
+    senses: "darkvision 120 ft., passive Perception 15"
+    languages: "understands Common but never speaks"
+    traits:
+      -
+        name: "Aura of Unease"
+        description: >-
+          A hostile creature starting its turn within 20 ft. makes a DC 15 Wisdom save. Failure: disadvantage
+          on attacks until the start of its next turn. A creature makes this save only once per turn.
+      -
+        name: "Horrid Smile"
+        description: >-
+          A creature first seeing it within 60 ft. makes a DC 15 Wisdom save or becomes Afraid for 1 minute.
+          Repeat the save at each affected turn's end. A success grants 24-hour immunity to this Smile.
+      -
+        name: "Spiderlike Grace"
+        description: "Climbs difficult surfaces and ceilings without an ability check; climb speed equals its walking speed."
+      -
+        name: "Legendary action budget"
+        description: >-
+          2 legendary actions, regained at the start of its turn. Spend one option at a time, at the end of
+          another creature's turn. Each listed cost is deducted from this shared budget.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Claw attacks. Resolve each attack and Block separately."
+      -
+        name: "Claw"
+        description: "Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 2d8 + 3 slashing plus 2d6 necrotic damage."
+      -
+        name: "Grin of Madness (recharge 5-6)"
+        description: >-
+          One visible creature within 30 ft.; DC 15 Wisdom save. Failure: no damage; Madness for 1 minute;
+          repeat the save at the end of each affected turn, ending on success. Success: no effect.
+          Saving-throw-only damage cannot be Blocked.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "The Smiling Mourner / The Mourner"
+      date: "2025-09-16"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "The Smiling Mourner / The Mourner"
+      date: "2025-09-16"
+      recorded_statistics:
+        ac: "13"
+        hp: "90"
+        scores:
+          - "14"
+          - "16"
+          - "16"
+          - "10"
+          - "14"
+          - "18"
+      recovered_summary: "Undead horror with Aura of Unease, Horrid Smile, Grin of Madness and two legendary actions."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-09-16 / The Smiling Mourner / The Mourner; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +3. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Aura timing is completed at the target's turn start. Short-term madness uses current Madness
+        for1minute with end-turn saves, not an external table.
+      - >-
+        Renamed from The Smiling Mourner / The Mourner to a reusable enemy or species profile. Personal
+        names remain only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    saving_throws: "Wis+5, Cha+7"
+    skills: "Intimidation +7, Stealth +6, Perception +5"
+    damage_resistances: "necrotic, cold, psychic"
+    damage_immunities: "poison"
+    condition_immunities: "Charmed, Afraid, Terrified, Poisoned"
+    legendary_actions:
+      -
+        name: "Move (1 action)"
+        description: "Move half its speed, provoking opportunity attacks normally."
+      -
+        name: "Smile (1 action)"
+        description: "One creature within 10 ft. that sees it makes a DC 13 Wisdom save; failure: Afraid until the end of its next turn."
+      -
+        name: "Shadow Grasp (2 actions)"
+        description: "One creature within 15 ft. makes a DC 15 Strength save; failure: Snared until the end of its next turn."
+  -
+    name: "Thousand-Eyed Ascetic"
+    group: "Recovered aberrations and horrors"
+    id: "recovered-thousand-eyed-ascetic"
+    meta: "Large aberration, neutral evil"
+    size: "Large"
+    type: "aberration"
+    alignment: "neutral evil"
+    cr: "12"
+    ac: "16"
+    hp: "210 (20d10 + 100)"
+    speed: "40 ft., fly 40 ft.(hover)"
+    block: "2 / +2 check"
+    abilities:
+      str: "18"
+      dex: "14"
+      con: "20"
+      int: "16"
+      wis: "20"
+      cha: "18"
+    proficiency_bonus: "+4"
+    senses: "truesight 120 ft., blindsight 30 ft., passive Perception 23"
+    languages: "Deep Speech, Abyssal, Celestial, telepathy 120 ft."
+    traits:
+      -
+        name: "Eyes of Revelation"
+        description: "A hostile creature starting within 30 ft. makes a DC 17 Wisdom save or is Blinded until the start of its next turn."
+      -
+        name: "Alien Insight"
+        description: >-
+          Printed AC and saves already include its seated meditation. While Incapacitated or unable to
+          maintain that posture, reduce AC and saving-throw bonuses by 5; do not add Wisdom again.
+      -
+        name: "Cosmic Meditation"
+        description: "Advantage on checks to maintain concentration. It can maintain only one concentration effect at a time, using current rules."
+      -
+        name: "Legendary action budget"
+        description: >-
+          3 legendary actions, regained at the start of its turn. Spend one option at a time, at the end of
+          another creature's turn. Each listed cost is deducted from this shared budget.
+    actions:
+      -
+        name: "Multiattack"
+        description: >-
+          Make two Claw of the Prophet attacks; Eye Rays is a separate action and cannot be multiplied by
+          Multiattack. Resolve each attack and Block separately.
+      -
+        name: "Claw of the Prophet"
+        description: "Melee attack: +8 to hit, reach 10 ft., one target; Block DC 16. Unblocked strike: 2d10 + 4 slashing plus 3d6 psychic damage."
+      -
+        name: "Eye Rays (recharge 5-6)"
+        description: >-
+          Choose 3 rays, each targeting one visible creature within 60 ft.; a target can be selected more than
+          once. Flame: DC 17 Dexterity, 8d6 fire, half on success. Ruin: DC 17 Constitution, 6d8 necrotic,
+          half on success. Unraveling: DC 17 Wisdom or Confused until the end of its next turn. Prophetic
+          Light: DC 17 Wisdom or Charmed and Prone until the end of its next turn. These save-only rays cannot
+          be Blocked.
+      -
+        name: "Open All Eyes (recharge 6)"
+        description: >-
+          Chosen creatures within 60 ft.; DC 17 Wisdom save. Failure: 10d8 psychic damage; Blinded for 1
+          minute; repeat the save at the end of each affected turn, ending blindness on success. Success: half
+          damage and no other effect. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Blur (1/day)"
+        description: >-
+          Use current Blur on itself, with the printed 1d4-round duration. Use the current spell's casting
+          time, components, duration, concentration and any HP/Fatigue costs. These innate uses replace slot
+          expenditure; no optional upgrades are assumed.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "The Thousand-Eyed Ascetic"
+      date: "2025-09-16"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "The Thousand-Eyed Ascetic"
+      date: "2025-09-16"
+      recorded_statistics:
+        ac: "16"
+        hp: "210"
+        scores:
+          - "18"
+          - "14"
+          - "20"
+          - "16"
+          - "20"
+          - "18"
+        rays: "ambiguous two-ray Multiattack vs3ray recharge action; range and several save outcomes missing"
+      recovered_summary: "Meditating eye-covered aberration; type was originally aberration or fiend."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-09-16 / The Thousand-Eyed Ascetic; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Uses the aberration option. Printed defenses include meditation and do not add Wisdom twice. One
+        current concentration effect only. Eye Rays is one3-ray action; the legendary ray shares that
+        recharge and costs2actions to avoid an unbounded second routine.
+      - >-
+        Renamed from The Thousand-Eyed Ascetic to a reusable enemy or species profile. Personal names remain
+        only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Current spell"
+        description: "Current compendium / Arcane spells / Blur"
+    saving_throws: "Con+9, Wis+9, Cha+8"
+    skills: "Arcana +7, Religion +7, Perception +13, Insight +9"
+    damage_resistances: "fire, psychic, radiant"
+    condition_immunities: "Charmed, Afraid, Terrified, Stunned"
+    spell_references:
+      -
+        name: "Blur"
+        group: "Arcane spells"
+    legendary_actions:
+      -
+        name: "Shift Reality (1 action)"
+        description: "A 10-ft. cube of ground within 60 ft. becomes difficult terrain until the end of the ascetic's next turn."
+      -
+        name: "Eye Beam (2 actions)"
+        description: >-
+          If Eye Rays is charged, expend that recharge and resolve one of its rays against one visible
+          creature within 60 ft.; no additional ray is granted.
+      -
+        name: "Command Kneel (2 actions)"
+        description: "One visible creature within 30 ft. makes a DC 16 Wisdom save; failure: Prone and Snared until the start of its next turn."
+  -
+    name: "Aberrant Juggernaut"
+    group: "Recovered aberrations and horrors"
+    id: "recovered-aberrant-juggernaut"
+    meta: "Large aberration construct, chaotic evil"
+    size: "Large"
+    type: "aberration construct"
+    alignment: "chaotic evil"
+    cr: "10"
+    ac: "17"
+    hp: "178 (17d10 + 85)"
+    speed: "40 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "22"
+      dex: "12"
+      con: "20"
+      int: "6"
+      wis: "12"
+      cha: "6"
+    proficiency_bonus: "+4"
+    senses: "darkvision 120 ft., tremorsense 30 ft., passive Perception 11"
+    languages: "understands Deep Speech and its maker's language but cannot speak"
+    traits:
+      -
+        name: "Regenerating Flesh"
+        description: >-
+          Regain 10 HP at the start of its turn unless it took acid, fire or radiant damage since the end of
+          its previous turn. No regeneration at 0 HP.
+      -
+        name: "Fused Bio-Weapon"
+        description: "The cannon is part of its body; regrows over 1d4 hours if severed. This does not grant a second cannon or restore HP."
+      -
+        name: "Aberrant Physiology"
+        description: >-
+          When critically hit, roll 1d6: 1–3 normal; 4–5 after damage it may spend its reaction to make one
+          Tentacle Slam against the attacker if in reach; 6 halve the triggering damage as flesh shifts. No
+          retaliation can trigger another retaliation from this trait.
+      -
+        name: "Legendary action budget"
+        description: >-
+          2 legendary actions, regained at the start of its turn. Spend one option at a time, at the end of
+          another creature's turn. Each listed cost is deducted from this shared budget.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Tentacle Slams, or one Tentacle Slam and one charged Bio-Cannon. Resolve each attack and Block separately."
+      -
+        name: "Tentacle Slam"
+        description: >-
+          Melee attack: +10 to hit, reach 15 ft., one target; Block DC 18. Unblocked strike: 3d10 + 6
+          bludgeoning damage. DC 18 Strength save or Prone.
+      -
+        name: "Bio-Cannon (recharge 5-6)"
+        description: >-
+          A 90-ft. line 10 ft. wide; DC 17 Dexterity save. Failure: 5d8 force plus 5d8 necrotic damage.
+          Success: half damage and no other effect. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Flesh Quake (recharge 6)"
+        description: >-
+          Creatures on the ground within 20 ft.; DC 17 Strength save. Failure: no initial damage; Snared by
+          flesh for 1 minute; an action and DC 17 Strength (Athletics) or Dexterity (Acrobatics) check ends
+          it. Each affected creature takes 4d8 bludgeoning at its turn's start until freed. Success: no
+          effect. Saving-throw-only damage cannot be Blocked. The growth ends if the juggernaut is
+          Incapacitated or creates another Flesh Quake; automatic ongoing damage cannot be Blocked.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "The Aberrant Juggernaut"
+      date: "2025-09-16"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "The Aberrant Juggernaut"
+      date: "2025-09-16"
+      recorded_statistics:
+        ac: "17"
+        hp: "178"
+        scores:
+          - "22"
+          - "12"
+          - "20"
+          - "6"
+          - "12"
+          - "6"
+        bio_cannon: "10d8force+necrotic; split unspecified"
+        legendary: "budget,Swipe stats,Overcharge DC/type missing"
+      recovered_summary: "Techno-organic body with fused cannon, regeneration and tentacle limbs."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-09-16 / The Aberrant Juggernaut; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Bio-Cannon10d8 is completed as5d8force+5d8necrotic, not doubled. Legendary budget2; Swipe uses
+        Tentacle Slam, Overcharge DC17force. Flesh Quake restraining movement uses current Snared.
+      - >-
+        Renamed from The Aberrant Juggernaut to a reusable enemy or species profile. Personal names remain
+        only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    saving_throws: "Str+10, Con+9"
+    skills: "Intimidation +2"
+    damage_resistances: "bludgeoning, piercing, slashing from nonmagical attacks"
+    damage_immunities: "poison, psychic"
+    condition_immunities: "Charmed, Afraid, Terrified, Poisoned"
+    legendary_actions:
+      -
+        name: "Tentacle Swipe (1 action)"
+        description: "Make one Tentacle Slam against a creature within 10 ft."
+      -
+        name: "Move (1 action)"
+        description: "Move half its speed without opportunity attacks."
+      -
+        name: "Overcharge Blast (2 actions)"
+        description: "A 30-ft. cone; DC 17 Dexterity save, 4d8 force on failure, half on success. Cannot be Blocked."
+  -
+    name: "Ashmaw Tramplefire"
+    group: "Recovered monstrous beasts"
+    id: "recovered-ashmaw-tramplefire"
+    meta: "Huge monstrosity, unaligned"
+    size: "Huge"
+    type: "monstrosity"
+    alignment: "unaligned"
+    cr: "11"
+    ac: "17"
+    hp: "195 (17d12 + 85)"
+    speed: "50 ft."
+    block: "0 / +0 check"
+    abilities:
+      str: "25"
+      dex: "11"
+      con: "20"
+      int: "3"
+      wis: "12"
+      cha: "6"
+    proficiency_bonus: "+4"
+    senses: "darkvision 60 ft., passive Perception 15"
+    languages: "—"
+    traits:
+      -
+        name: "Trampling Charge"
+        description: >-
+          After moving 20 ft. straight toward a target and making an unblocked Trunk Slam, the target makes a
+          DC 17 Strength save or falls Prone. It may then spend its bonus action to Stomp that prone target.
+      -
+        name: "Molten Core (1/day)"
+        description: >-
+          After taking more than 40 total damage during one creature's turn, it may enter Molten Core as a
+          free action for 1 minute. At each of its turn starts Fire Breath fully recharges, and its melee
+          strikes add 1d6 fire.
+      -
+        name: "Heat Vision"
+        description: >-
+          Detects heat-emitting creatures through smoke, fog and nonmagical darkness within 60 ft.; solid
+          barriers and non-heat-emitting creatures defeat this sense.
+      -
+        name: "Charged Core"
+        description: "While Fire Breath is charged, it is immune to fire damage; otherwise its fire resistance applies."
+      -
+        name: "Legendary action budget"
+        description: >-
+          2 legendary actions, regained at the start of its turn. Spend one option at a time, at the end of
+          another creature's turn. Each listed cost is deducted from this shared budget.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make one Trunk Slam and one Bite attack. Resolve each attack and Block separately."
+      -
+        name: "Trunk Slam"
+        description: "Melee attack: +11 to hit, reach 15 ft., one target; Block DC 19. Unblocked strike: 3d8 + 7 bludgeoning damage."
+      -
+        name: "Bite"
+        description: >-
+          Melee attack: +11 to hit, reach 5 ft., one target; Block DC 19. Unblocked strike: 4d8 + 7 piercing
+          damage. A Large or smaller target makes a DC 15 Strength save or is Grappled (escape DC 17 using an
+          action and Athletics/Acrobatics). It can hold one target; release as a free action.
+      -
+        name: "Stomp"
+        description: >-
+          Melee attack: +11 to hit, reach 5 ft., one target; Block DC 19. Unblocked strike: 4d10 + 4
+          bludgeoning damage. Can target only a Prone creature; decide eligibility before making the attack.
+      -
+        name: "Fire Breath (recharge 5-6)"
+        description: >-
+          A 60-ft. line 10 ft. wide; DC 17 Dexterity save. Failure: 10d8 fire damage. Success: half damage and
+          no other effect. Saving-throw-only damage cannot be Blocked. The line becomes difficult terrain for
+          1 minute; it causes no additional damage unless another ability says so.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Ashmaw Tramplefire"
+      date: "2025-06-01"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Ashmaw Tramplefire"
+      date: "2025-06-01"
+      recorded_statistics:
+        ac: "17"
+        hp: "195"
+        scores:
+          - "25"
+          - "11"
+          - "20"
+          - "3"
+          - "12"
+          - "6"
+        breath: "10d8fire,line60x10,recharge5-6"
+        core: ">40damagein1turn,1day,1min"
+      recovered_summary: "Fire-breathing trampling monstrosity with conditional fire immunity and Molten Core."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-06-01 / Ashmaw Tramplefire; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +0. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        The unnamed Gore in Trampling Charge uses the source's actual Trunk Slam. Molten Core activation is
+        a free choice after taking the triggering damage; it never interrupts an unresolved attack.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    saving_throws: "Con+9, Wis+5"
+    skills: "Perception +5"
+    damage_resistances: "fire; bludgeoning from nonmagical attacks"
+    condition_immunities: "Afraid, Terrified"
+    legendary_actions:
+      -
+        name: "Stomp (1 action)"
+        description: "Make one Stomp against a Prone creature."
+      -
+        name: "Trumpet Roar (2 actions)"
+        description: "Creatures within 30 ft. that hear it make a DC 15 Wisdom save or become Afraid until the end of their next turn."
+  -
+    name: "Birther of the Void"
+    group: "Recovered aberrations and horrors"
+    id: "recovered-birther-of-the-void"
+    meta: "Huge aberration, chaotic evil"
+    size: "Huge"
+    type: "aberration"
+    alignment: "chaotic evil"
+    cr: "13"
+    ac: "18"
+    hp: "225 (18d12 + 108)"
+    speed: "40 ft., climb 30 ft."
+    block: "0 / +0 check"
+    abilities:
+      str: "22"
+      dex: "10"
+      con: "22"
+      int: "16"
+      wis: "14"
+      cha: "18"
+    proficiency_bonus: "+5"
+    senses: "truesight 60 ft., darkvision 120 ft., passive Perception 16"
+    languages: "Deep Speech, telepathy 120 ft."
+    traits:
+      -
+        name: "Eldritch Anatomy"
+        description: "May squeeze as though one size smaller; advantage on checks to escape grapples or restraints."
+      -
+        name: "Legendary action budget"
+        description: >-
+          3 legendary actions, regained at the start of its turn. Spend one option at a time, at the end of
+          another creature's turn. Each listed cost is deducted from this shared budget.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Tentacle attacks and one Birth Tendril. Resolve each attack and Block separately."
+      -
+        name: "Tentacle"
+        description: >-
+          Melee attack: +11 to hit, reach 15 ft., one target; Block DC 19. Unblocked strike: 3d8 + 6
+          bludgeoning damage. A Large or smaller target is Grappled (escape DC 17: spend an action to make a
+          Strength (Athletics) or Dexterity (Acrobatics) check). The grapple ends if the grappler is
+          Incapacitated or the target leaves its reach. It has two grappling tentacles; one target per
+          tentacle.
+      -
+        name: "Birth Tendril"
+        description: >-
+          Melee attack: +11 to hit, reach 10 ft., one target; Block DC 19. Unblocked strike: 4d6 + 6 necrotic
+          damage. DC 16 Constitution save or infested for 1 minute: 2d6 necrotic at the start of each turn.
+          Receiving magical HP healing or succeeding on an end-turn DC 16 Constitution save ends infestation.
+          Multiple infestations from this creature do not stack.
+      -
+        name: "Howl of Unbirthing (recharge 6)"
+        description: >-
+          Creatures within 60 ft. that hear it; DC 17 Wisdom save. Failure: 6d10 psychic damage; Stunned until
+          the end of its next turn. Success: half damage and no other effect. Saving-throw-only damage cannot
+          be Blocked.
+      -
+        name: "Birth of Horror (recharge 5-6)"
+        description: >-
+          Create one Voidling or Parasite Swarm in an unoccupied space within 10 ft.; maximum 2 living spawns
+          from this birther. A new Voidling spends its reaction for one Claw; a new swarm spends its reaction
+          and charged Parasite Burst for that burst. Its first normal turn is immediately after the birther's
+          next turn; subsequent turns follow the birther. Spawns obey it and vanish after 1 minute or its
+          death. At the cap, this action cannot create another spawn.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Birther of the Void"
+      date: "2025-07-18"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Birther of the Void"
+      date: "2025-07-18"
+      recorded_statistics:
+        ac: "18"
+        hp: "225"
+        scores:
+          - "22"
+          - "10"
+          - "22"
+          - "16"
+          - "14"
+          - "18"
+        birth: "VoidlingAC15HP45CR3orParasiteSwarm;1minuteorparentdeath;missing action/range/cap"
+      recovered_summary: "Tentacled brood-spawning aberration."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-07-18 / Birther of the Void; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +0. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Birth costs an action, places one spawn within10ft., cap2living spawns. Each spends its reaction for
+        the immediate source attack/burst, then first acts after the birther's next turn. Voidling and swarm
+        are completed standalone profiles. Legendary pool3 resets at turn start.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    saving_throws: "Con+10, Wis+6, Cha+8"
+    skills: "Arcana +7, Intimidation +8, Perception +6"
+    damage_resistances: "cold, fire, lightning; bludgeoning, piercing, slashing from nonmagical attacks"
+    damage_immunities: "psychic, poison"
+    condition_immunities: "Charmed, Afraid, Terrified, Paralyzed"
+    bonus_actions:
+      -
+        name: "Reality Warper (1/day)"
+        description: >-
+          For a 60-ft. radius until the end of its next turn, terrain is difficult and teleportation cannot
+          enter, leave or cross the area. A creature casting a spell in the area makes a DC 17 Intelligence
+          save; failure causes that casting to fail, expending its normal cost. A casting makes this save
+          once.
+    summons:
+      -
+        monster: "Voidling"
+        label: "Voidling"
+      -
+        monster: "Parasite Swarm"
+        label: "Parasite Swarm"
+    legendary_actions:
+      -
+        name: "Tendril Swipe (1 action)"
+        description: "Make one Tentacle or Birth Tendril attack."
+      -
+        name: "Warped Pulse (1 action)"
+        description: >-
+          Other creatures within 10 ft. make a DC 15 Dexterity save; failure: 2d10 force and pushed 10 ft.;
+          success: no effect. Cannot be Blocked.
+      -
+        name: "Call the Womb (2 actions)"
+        description: "Recharge Birth of Horror. This neither creates a spawn nor waives its action or living-spawn cap."
+  -
+    name: "Whisperspawn Ascendant"
+    group: "Recovered aberrations and horrors"
+    id: "recovered-whisperspawn-ascendant"
+    meta: "Medium aberration, chaotic evil"
+    size: "Medium"
+    type: "aberration"
+    alignment: "chaotic evil"
+    cr: "10"
+    ac: "17"
+    hp: "136 (16d8 + 64)"
+    speed: "30 ft., climb 20 ft."
+    block: "3 / +3 check"
+    abilities:
+      str: "14"
+      dex: "16"
+      con: "18"
+      int: "17"
+      wis: "12"
+      cha: "18"
+    proficiency_bonus: "+4"
+    senses: "darkvision 120 ft., passive Perception 11"
+    languages: "Deep Speech, telepathy 120 ft."
+    traits:
+      -
+        name: "Tentacles That See"
+        description: "Advantage on Perception checks; attackers gain no flanking benefit against it."
+      -
+        name: "Aura of Whispers"
+        description: >-
+          Hostile creatures starting within 10 ft. make a DC 15 Wisdom save; failure imposes disadvantage on
+          their next attack or saving throw before that turn ends.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Tentacle attacks. Resolve each attack and Block separately."
+      -
+        name: "Tentacle"
+        description: >-
+          Melee attack: +7 to hit, reach 10 ft., one target; Block DC 15. Unblocked strike: 2d8 + 4
+          bludgeoning damage. A Large or smaller target is Grappled (escape DC 15: spend an action to make a
+          Strength (Athletics) or Dexterity (Acrobatics) check). The grapple ends if the grappler is
+          Incapacitated or the target leaves its reach. It can hold at most two targets.
+      -
+        name: "Whispering Command (1/day)"
+        description: >-
+          One visible creature within 60 ft.; DC 15 Wisdom save. Failure: no damage; it must spend its
+          reaction, if available, to move up to its speed and make one weapon attack or cast a known cantrip
+          at a target chosen by the ascendant. Normal movement hazards, targeting and costs apply; no reaction
+          means no compelled action. Success: no effect. Saving-throw-only damage cannot be Blocked.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Whisperspawn Ascendant"
+      date: "2025-07-18"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Whisperspawn Ascendant"
+      date: "2025-07-18"
+      recorded_statistics:
+        ac: "17"
+        hp: "136"
+        scores:
+          - "14"
+          - "16"
+          - "18"
+          - "17"
+          - "12"
+          - "18"
+      recovered_summary: "Separate tentacled image concept, not a renamed Birther. Grapple, reactive Psychic Lash, Whispering Command, bonus blink."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-07-18 / Whisperspawn Ascendant; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +3. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Recorded AC, HP and six scores are retained where available. Equipment, incomplete powers and
+        missing fields use the documented current-rule completion.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    saving_throws: "Dex+6, Con+7, Cha+7"
+    skills: "Arcana +6, Deception +7, Insight +4"
+    damage_resistances: "cold, lightning, psychic; bludgeoning, piercing, slashing from nonmagical attacks"
+    condition_immunities: "Charmed, Afraid, Terrified"
+    reactions:
+      -
+        name: "Psychic Lash (recharge 5-6)"
+        description: >-
+          When a creature hits it in melee, that attacker makes a DC 15 Intelligence save. Failure: 4d8
+          psychic damage and Stunned until the end of the attacker's next turn. Success: no effect. This
+          save-only reaction cannot be Blocked.
+    bonus_actions:
+      -
+        name: "Slip Between"
+        description: "Teleport 30 ft. to a visible unoccupied space."
+  -
+    name: "Frostbound Wraith"
+    group: "Recovered frost encounters"
+    id: "recovered-frostbound-wraith"
+    meta: "Large undead construct, neutral evil"
+    size: "Large"
+    type: "undead construct"
+    alignment: "neutral evil"
+    cr: "3"
+    ac: "15"
+    hp: "45"
+    speed: "30 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "16"
+      dex: "14"
+      con: "14"
+      int: "6"
+      wis: "12"
+      cha: "10"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 11"
+    languages: "understands Primordial but cannot speak"
+    traits:
+      []
+    actions:
+      -
+        name: "Claw Strike"
+        description: "Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d8 slashing plus 1d6 cold damage."
+      -
+        name: "Frozen Gaze (recharge 5-6)"
+        description: >-
+          One visible creature within 30 ft.; DC 13 Constitution save. Failure: 3d6 cold damage; Snared until
+          the end of its next turn. Success: half damage and no other effect. Saving-throw-only damage cannot
+          be Blocked.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Frostbound Wraith"
+      date: "2024-12-25"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Frostbound Wraith"
+      date: "2024-12-25"
+      recorded_statistics:
+        ac: "15"
+        hp: "45"
+        speed: "30 ft."
+        attack:
+          - "Claw Strike"
+          - "5"
+          - "2d8 slashing plus1d6 cold damage"
+        power: "Frozen Gaze (recharge 5-6)"
+      recovered_summary: "Everlasting Freeze one-shot encounter card. Six scores/CR and parts of the action text were absent."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-12-25 / Frostbound Wraith; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "all six ability scores,size/type where absent and provisionalCR"
+        - "save outcomes,area dimensions,escape/condition timing"
+        - "finite wolf creation and normal initiative"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Source AC/HP/attack numbers and damage dice are preserved. New scores and provisionalCR complete the
+        encounter card; source-only restraints become current Snared.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 3 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    damage_resistances: "bludgeoning, piercing, slashing from nonmagical weapons"
+    damage_immunities: "cold"
+    damage_vulnerabilities: "fire"
+  -
+    name: "Frostblade Sovereign"
+    group: "Recovered frost encounters"
+    id: "recovered-frostblade-sovereign"
+    meta: "Medium undead, neutral evil"
+    size: "Medium"
+    type: "undead"
+    alignment: "neutral evil"
+    cr: "6"
+    ac: "18"
+    hp: "95"
+    speed: "40 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "18"
+      dex: "14"
+      con: "18"
+      int: "12"
+      wis: "14"
+      cha: "16"
+    proficiency_bonus: "+3"
+    senses: "darkvision 60 ft., passive Perception 12"
+    languages: "Common, Primordial"
+    traits:
+      []
+    actions:
+      -
+        name: "Frostblade Slash"
+        description: "Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 2d10 slashing plus 1d10 cold damage."
+      -
+        name: "Howling Storm (recharge 5-6)"
+        description: >-
+          A 15-ft.-radius sphere within 60 ft.; DC 15 Dexterity save. Failure: 3d8 cold damage; Chilled until
+          the end of its next turn. Success: half damage and no other effect. Saving-throw-only damage cannot
+          be Blocked.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Frost King Vaelkris"
+      date: "2024-12-25"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Frost King Vaelkris"
+      date: "2024-12-25"
+      recorded_statistics:
+        ac: "18"
+        hp: "95"
+        speed: "40 ft."
+        attack:
+          - "Frostblade Slash"
+          - "7"
+          - "2d10 slashing plus1d10 cold damage"
+        power: "Howling Storm (recharge 5-6)"
+      recovered_summary: "Everlasting Freeze one-shot encounter card. Six scores/CR and parts of the action text were absent."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-12-25 / Frost King Vaelkris; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "all six ability scores,size/type where absent and provisionalCR"
+        - "save outcomes,area dimensions,escape/condition timing"
+        - "finite wolf creation and normal initiative"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Source AC/HP/attack numbers and damage dice are preserved. New scores and provisionalCR complete the
+        encounter card; source-only restraints become current Snared.
+      - >-
+        Renamed from Frost King Vaelkris to a reusable enemy or species profile. Personal names remain only
+        in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 6 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    damage_resistances: "bludgeoning, piercing, slashing from nonmagical weapons"
+    damage_immunities: "cold"
+    damage_vulnerabilities: "fire"
+    bonus_actions:
+      -
+        name: "Summon Frost Wolves (1/day)"
+        description: >-
+          Create two Spectral Wolves in visible unoccupied spaces within 30 ft.; maximum 2 living wolves
+          created by this creature. They act immediately after it, obey its commands, and vanish after 1
+          minute or its death. At the cap, cannot create another pair.
+    summons:
+      -
+        monster: "Spectral Wolf"
+        label: "Spectral Wolf"
+  -
+    name: "Primordial Frost Warden"
+    group: "Recovered frost encounters"
+    id: "recovered-primordial-frost-warden"
+    meta: "Huge elemental, neutral evil"
+    size: "Huge"
+    type: "elemental"
+    alignment: "neutral evil"
+    cr: "8"
+    ac: "18"
+    hp: "150"
+    speed: "40 ft."
+    block: "0 / +0 check"
+    abilities:
+      str: "22"
+      dex: "10"
+      con: "20"
+      int: "8"
+      wis: "14"
+      cha: "12"
+    proficiency_bonus: "+3"
+    senses: "darkvision 60 ft., passive Perception 12"
+    languages: "understands Primordial but cannot speak"
+    traits:
+      []
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Icy Slam attacks. Resolve each attack and Block separately."
+      -
+        name: "Icy Slam"
+        description: "Melee attack: +8 to hit, reach 10 ft., one target; Block DC 16. Unblocked strike: 2d10 bludgeoning plus 1d10 cold damage."
+      -
+        name: "Frozen Wave (recharge 5-6)"
+        description: >-
+          A 30-ft. cone; DC 16 Dexterity save. Failure: 4d8 cold damage; Prone. Success: half damage and no
+          other effect. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Shatter Call (1/day)"
+        description: >-
+          Create two Spectral Wolves in visible unoccupied spaces within 30 ft.; maximum 2 living wolves
+          created by this creature. They act immediately after it, obey its commands, and vanish after 1
+          minute or its death. At the cap, cannot create another pair.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Primordial Frost Warden"
+      date: "2024-12-25"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Primordial Frost Warden"
+      date: "2024-12-25"
+      recorded_statistics:
+        ac: "18"
+        hp: "150"
+        speed: "40 ft."
+        attack:
+          - "Icy Slam"
+          - "8"
+          - "2d10 bludgeoning plus1d10 cold damage"
+        power: "Frozen Wave (recharge 5-6)"
+      recovered_summary: "Everlasting Freeze one-shot encounter card. Six scores/CR and parts of the action text were absent."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-12-25 / Primordial Frost Warden; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "all six ability scores,size/type where absent and provisionalCR"
+        - "save outcomes,area dimensions,escape/condition timing"
+        - "finite wolf creation and normal initiative"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +0. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Source AC/HP/attack numbers and damage dice are preserved. New scores and provisionalCR complete the
+        encounter card; source-only restraints become current Snared.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 8 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    damage_resistances: "bludgeoning, piercing, slashing from nonmagical weapons"
+    damage_immunities: "cold"
+    damage_vulnerabilities: "fire"
+    summons:
+      -
+        monster: "Spectral Wolf"
+        label: "Spectral Wolf"
+  -
+    name: "Mud Servant"
+    group: "Recovered summon creatures"
+    id: "recovered-mud-servant"
+    meta: "Small elemental construct, unaligned"
+    size: "Small"
+    type: "elemental construct"
+    alignment: "unaligned"
+    cr: "1/2"
+    ac: "12 (standalone casting bonus +3; see Caster Scaling)"
+    hp: "10 (3d4 + 3; see Caster Scaling)"
+    speed: "25 ft."
+    block: "1 / -1 check"
+    abilities:
+      str: "9"
+      dex: "9"
+      con: "9"
+      int: "9"
+      wis: "12"
+      cha: "8"
+    proficiency_bonus: "+1"
+    senses: "passive Perception 9"
+    languages: "understands its creator's languages; see Fired Voice"
+    traits:
+      -
+        name: "Fired Voice"
+        description: >-
+          Initially cannot speak. After taking at least 1 fire damage it can speak Common; understands
+          languages its creator speaks, subject to GM.
+      -
+        name: "Created Will"
+        description: >-
+          Only the existing Mud servant spell or another explicit effect grants control. While under that
+          spell, the caster may dismiss it as an action; it crumbles. If concentration ends, it gains
+          independent will and cannot be dismissed by that former controller.
+      -
+        name: "Caster Scaling"
+        description: >-
+          When created by the current Mud servant spell, replace the standalone defaults with its caster's
+          values: AC 9 + casting bonus; HP 3d4 + casting bonus; Block max(1, casting modifier − 2); Slam uses
+          the caster's spell attack bonus, damage 1d6 + casting bonus, Block DC 10 + casting bonus. Keep its
+          current ability scores, special saves/skills and languages. The creating spell is authoritative.
+    actions:
+      -
+        name: "Slam"
+        description: >-
+          Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d6 + 3 bludgeoning
+          damage. These are standalone defaults; Caster Scaling replaces them when an actual creating spell is
+          used.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Mud Servant"
+      date: "2024-03-31; 2024-04-17"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Mud Servant"
+      date: "2024-03-31; 2024-04-17"
+      recorded_statistics:
+        ac: "9+castingbonus"
+        hp: "3d4+castingbonus"
+        block: "castingmod−2(min1)"
+        slam: "spellattack,1d6+castingbonus,BlockDC10+castingbonus"
+      recovered_summary: "Current Mud servant summon template, distinct from fixed workbook mud golem."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-03-31; 2024-04-17 / Mud Servant; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Uses the current Mud servant spell's explicit Block pool max(1, casting modifier−2). The completed
+      DEX 9 supplies an ordinary −1 Block check, without armor training. Its special Strength/Constitution
+      save/check bonuses do not replace Dexterity Block checks. Use the creating effect's casting bonus
+      and spell attack bonus; standalone default casting bonus+3/spell attack+5.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        The current spell supplies all scaling core/combat rules; fixed mud-golem attributes provide the
+        previously unrecorded six scores. For standalone use default casting bonus+3 and spell attack+5
+        gives AC12,3d4+3HP,Block1 and Slam+5/1d6+3/BlockDC13. Explicit source attackDC overrides
+        normal8+attack because the spell says so.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 1/2 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+      - >-
+        The primary defenses and attack show complete standalone defaults so an unlinked tabletop token is
+        immediately usable; Caster Scaling preserves the spell's authoritative variable profile.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Current spell"
+        description: "Current compendium / Occult spells / Mud servant"
+      -
+        name: "Scaling profile"
+        description: "data/draft-spells/lvl-1-occult-spells.yaml / Mud servant; data/monsters.yaml / mud golem / six attributes only"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    saving_throws: "Str and Con: 1+casting bonus; all others−1"
+    skills: "Athletics and Insight: 2+casting bonus; all others−1"
+    damage_resistances: "cold, slashing, necrotic"
+    damage_immunities: "poison"
+    damage_vulnerabilities: "fire"
+    summoned_by:
+      -
+        name: "Mud servant"
+        section: "spells"
+        group: "Occult spells"
+  -
+    name: "Voidling"
+    group: "Recovered summon creatures"
+    id: "recovered-voidling"
+    meta: "Small aberration, chaotic evil"
+    size: "Small"
+    type: "aberration"
+    alignment: "chaotic evil"
+    cr: "3"
+    ac: "15"
+    hp: "45"
+    speed: "30 ft., climb 20 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "14"
+      dex: "14"
+      con: "14"
+      int: "6"
+      wis: "10"
+      cha: "8"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 10"
+    languages: "understands Deep Speech but cannot speak"
+    traits:
+      -
+        name: "Brood Spawn"
+        description: >-
+          Standalone specimens use normal turns. A creature created by Birth of Horror instead obeys that
+          feature's lifespan, initiative, control and immediate-attack limits.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Claw attacks. Resolve each attack and Block separately."
+      -
+        name: "Claw"
+        description: "Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d6 + 2 slashing plus 1d6 psychic damage."
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Voidling"
+      date: "2025-07-18"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Voidling"
+      date: "2025-07-18"
+      recorded_statistics:
+        ac: "15"
+        hp: "45"
+        cr: "3"
+        creation: "attacks immediately;vanishes1minuteorparentdeath"
+      recovered_summary: "Birther of the Void's embryonic spawn; all attacks and attributes were absent."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-07-18 / Voidling; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - "Completed as a small melee aberration using existing tentacled-monster/imp attack structure. Source AC15,HP45,CR3 remain."
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    damage_resistances: "psychic"
+    summoned_by:
+      -
+        name: "Birther of the Void"
+        section: "monsters"
+        group: "Recovered aberrations and horrors"
+  -
+    name: "Parasite Swarm"
+    group: "Recovered summon creatures"
+    id: "recovered-parasite-swarm"
+    meta: "Medium swarm of Tiny aberrations, chaotic evil"
+    size: "Medium"
+    type: "swarm of Tiny aberrations"
+    alignment: "chaotic evil"
+    cr: "4"
+    ac: "13"
+    hp: "55"
+    speed: "20 ft., climb 20 ft."
+    block: "3 / +3 check"
+    abilities:
+      str: "10"
+      dex: "16"
+      con: "14"
+      int: "2"
+      wis: "10"
+      cha: "4"
+    proficiency_bonus: "+2"
+    senses: "blindsight 30 ft., passive Perception 10"
+    languages: "—"
+    traits:
+      -
+        name: "Swarm"
+        description: >-
+          May enter another creature's space and squeeze through gaps usable by a Tiny creature. It cannot
+          regain HP or gain temporary HP.
+      -
+        name: "Brood Spawn"
+        description: >-
+          When created by Birth of Horror, obey that feature's lifespan, initiative and spawn cap. A
+          standalone swarm uses normal turns.
+    actions:
+      -
+        name: "Bites"
+        description: >-
+          Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 4d4 piercing damage
+          (2d4 while at half HP or less).
+      -
+        name: "Parasite Burst (recharge 6)"
+        description: >-
+          Other creatures within 20 ft.; DC 17 Constitution save. Failure: 4d10 necrotic damage; Blinded until
+          the end of its next turn. Success: half damage and no other effect. Saving-throw-only damage cannot
+          be Blocked.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Parasite Swarm"
+      date: "2025-07-18"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Parasite Swarm"
+      date: "2025-07-18"
+      recorded_statistics:
+        burst: "20ft.radius,DC17Con,4d10necrotic,Blinded1round"
+      recovered_summary: "Birther parasite option originally had an area effect but no standalone creature profile."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-07-18 / Parasite Swarm; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +3. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Standalone swarm core and melee attack are authorized completions. Source burst numbers remain, with
+        recharge6 and explicit success outcome. Birth's immediate burst spends its reaction and the same
+        recharge.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 4 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    damage_resistances: "bludgeoning, piercing, slashing"
+    condition_immunities: "Grappled, Snared, Pinned, Prone"
+    summoned_by:
+      -
+        name: "Birther of the Void"
+        section: "monsters"
+        group: "Recovered aberrations and horrors"
+  -
+    name: "Spectral Wolf"
+    group: "Recovered summon creatures"
+    id: "recovered-spectral-wolf"
+    meta: "Medium undead, neutral evil"
+    size: "Medium"
+    type: "undead"
+    alignment: "neutral evil"
+    cr: "1"
+    ac: "14"
+    hp: "20"
+    speed: "40 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "14"
+      dex: "14"
+      con: "12"
+      int: "3"
+      wis: "12"
+      cha: "6"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 13"
+    languages: "understands Primordial but cannot speak"
+    traits:
+      -
+        name: "Keen Hearing and Smell"
+        description: "Advantage on hearing- or smell-based Wisdom (Perception) checks."
+      -
+        name: "Pack Tactics"
+        description: "Advantage on an attack if a non-Incapacitated ally is within 5 ft. of the target."
+      -
+        name: "Frost Summon"
+        description: >-
+          Standalone wolves take normal turns. Wolves created by a Frostblade Sovereign or Primordial Frost
+          Warden obey that creator's stated summon limits and duration.
+    actions:
+      -
+        name: "Bite"
+        description: >-
+          Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 2d6 piercing
+          damage. DC 12 Strength save or Prone.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Spectral Wolf / Frost Wolf"
+      date: "2024-12-25"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Spectral Wolf / Frost Wolf"
+      date: "2024-12-25"
+      recorded_statistics:
+        ac: "14"
+        hp: "20"
+        attack: "+4,2d6piercing"
+      recovered_summary: "Shared spectral frost wolves from Vaelkris and Primordial Frost Warden."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-12-25 / Spectral Wolf / Frost Wolf; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Source AC/HP/attack/damage remain; wolf movement,attributes,senses,Pack Tactics and prone rider use
+        the existing wolf-like beast convention with explicit completion.
+      - >-
+        Renamed from Spectral Wolf / Frost Wolf to a reusable enemy or species profile. Personal names
+        remain only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 1 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    skills: "Perception +3, Stealth +4"
+    damage_immunities: "cold, poison"
+    condition_immunities: "Poisoned"
+    summoned_by:
+      -
+        name: "Frostblade Sovereign"
+        section: "monsters"
+        group: "Recovered frost encounters"
+      -
+        name: "Primordial Frost Warden"
+        section: "monsters"
+        group: "Recovered frost encounters"
+

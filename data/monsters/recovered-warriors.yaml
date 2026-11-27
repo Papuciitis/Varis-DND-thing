@@ -1,0 +1,2303 @@
+# Recovered warbands and reusable armed enemy archetypes.
+section: "monsters"
+entries:
+  -
+    name: "Mountain Orc"
+    group: "Recovered warbands"
+    id: "recovered-mountain-orc"
+    meta: "Medium humanoid (orc), chaotic evil"
+    size: "Medium"
+    type: "humanoid (orc)"
+    alignment: "chaotic evil"
+    cr: "1/2"
+    ac: "10"
+    hp: "13"
+    speed: "30 ft."
+    block: "0 / +0 check"
+    abilities:
+      str: "18"
+      dex: "10"
+      con: "14"
+      int: "8"
+      wis: "8"
+      cha: "8"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 9"
+    languages: "Common, Orc"
+    traits:
+      -
+        name: "Light Sensitivity"
+        description: "Attack rolls take a −1 penalty in bright sunlight or a daylight effect."
+      -
+        name: "Rest Dice"
+        description: "Two d12 rest dice, recovered after a long rest; used only for Overpower."
+      -
+        name: "Critical Takedown"
+        description: "An unblocked critical strike with its melee javelin applies Prone to a Large or smaller target."
+    actions:
+      -
+        name: "Greataxe"
+        description: >-
+          Melee attack: +6 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d12 + 4 slashing
+          damage. Attack with disadvantage if it moved since the start of its previous turn.
+      -
+        name: "Heavy Cleave"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. Make one Greataxe attack with disadvantage against two
+          adjacent creatures within its reach, using one attack roll against both ACs. Each target may Block
+          separately against DC 15; each unblocked strike deals that weapon's damage.
+      -
+        name: "javelin"
+        description: "Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d4 + 4 piercing damage."
+      -
+        name: "Overpower"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. Spend 1 rest die and make a Greataxe attack. On an
+          unblocked strike, add the d12 result to damage; do not multiply this extra maneuver damage on a
+          critical hit.
+      -
+        name: "Javelin Throw"
+        description: >-
+          Ranged attack: +5 to hit, range 30/60 ft., one target; Block DC 13. Unblocked strike: 1d4 + 4
+          piercing damage. Throw: no disadvantage merely for a target being in melee range.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Mountain Orc"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Mountain Orc"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "10"
+        hp: "13"
+        scores:
+          - "18"
+          - "10"
+          - "14"
+          - "8"
+          - "8"
+          - "8"
+        block: "0"
+        greataxe: "+6,1d12+4"
+      recovered_summary: "Later consolidated Mountain Orc; older AC12/HP24 and hide-derived Block are superseded."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / Mountain Orc; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +0. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Uses the later AC10/HP13 profile. Current Greataxe DC+ and Very Inaccurate, current javelin
+        dice/range and current maneuver costs replace legacy weapon labels.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Greataxe weapon conversion"
+        description: "data/weapons.yaml / Greataxe; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "javelin weapon conversion"
+        description: "data/weapons.yaml / javelin; historical monster-only dice overrides are identified in conversion notes."
+    bonus_actions:
+      -
+        name: "Aggressive"
+        description: >-
+          Move up to its speed toward a visible hostile creature. If it closes the distance, gain 1 temporary
+          Block until the start of its next turn; temporary Block does not stack.
+    equipment:
+      -
+        name: "Greataxe"
+        description: >-
+          two-handed; very inaccurate; DC+. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+      -
+        name: "javelin"
+        description: >-
+          balanced; throw 30/60. Current weapon properties and listed maneuvers apply; its trained loadout is
+          included in the fixed monster statistics.
+  -
+    name: "High Forest Orc"
+    group: "Recovered warbands"
+    id: "recovered-high-forest-orc"
+    meta: "Medium humanoid (orc), chaotic neutral"
+    size: "Medium"
+    type: "humanoid (orc)"
+    alignment: "chaotic neutral"
+    cr: "1"
+    ac: "13"
+    hp: "30 (4d8 + 12)"
+    speed: "30 ft."
+    block: "1 / +3 check"
+    abilities:
+      str: "18"
+      dex: "12"
+      con: "16"
+      int: "10"
+      wis: "12"
+      cha: "8"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 13"
+    languages: "Common, Orc"
+    traits:
+      -
+        name: "Forest Camouflage"
+        description: "Advantage on Dexterity (Stealth) checks to hide in forest terrain."
+      -
+        name: "Woodland Stalker"
+        description: >-
+          After moving at least 10 ft. before a melee attack, add +1 to its next Block check against that
+          target before the start of its next turn.
+    actions:
+      -
+        name: "Multiattack"
+        description: >-
+          Make two Raiders Axe attacks, or two Longbow shots if it can pay the intervening Reload I cost.
+          Resolve each attack and Block separately.
+      -
+        name: "Raiders Axe"
+        description: "Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 1d6 + 4 slashing damage."
+      -
+        name: "Longbow"
+        description: >-
+          Ranged attack: +3 to hit, range 180/340 ft., one target; Block DC 11. Unblocked strike: 1d10 + 4
+          piercing damage. Reload I: after each shot, spend one regular, bonus, or move action to reload;
+          Multiattack does not waive this.
+      -
+        name: "Chop"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. Make a Raiders Axe attack; the target has disadvantage on
+          its Block check (current Raiders axe Chop).
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "High Forest Orc"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "High Forest Orc"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "13"
+        hp: "30"
+        scores:
+          - "18"
+          - "12"
+          - "16"
+          - "10"
+          - "12"
+          - "8"
+        block: "Conflicting historical 0/2; hide bonus was rejected."
+      recovered_summary: "Forest raider with Raiders axe, Longbow, Woodland Stalker and Parry."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / High Forest Orc; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +3 with equipment proficiency. Temporary Block is spent first and does not stack;
+      keep the higher grant. A successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Legacy hide maps to current Leather armor without extra Block. Current pool is DEX+1 and trained
+        light-armor check +3. Current Longbow uses Strength for damage through Overdraw, range180/340 and
+        ReloadI.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Raiders Axe weapon conversion"
+        description: "data/weapons.yaml / Raiders axe; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "Longbow weapon conversion"
+        description: "data/weapons.yaml / Longbow; historical monster-only dice overrides are identified in conversion notes."
+    skills: "Perception +3, Stealth +3, Survival +5"
+    bonus_actions:
+      -
+        name: "Aggressive"
+        description: >-
+          Move up to its speed toward a visible hostile creature. If it closes the distance, gain 1 temporary
+          Block until the start of its next turn; temporary Block does not stack.
+    equipment:
+      -
+        name: "Leather armor"
+        description: "Trained light armor; no extra Block or Protection. Included in the fixed AC."
+      -
+        name: "Raiders axe"
+        description: >-
+          light; versatile 2d4. Current weapon properties and listed maneuvers apply; its trained loadout is
+          included in the fixed monster statistics.
+      -
+        name: "Longbow"
+        description: >-
+          range 180/340 ft.; reload I; two-handed; overdraw. Current weapon properties and listed maneuvers
+          apply; its trained loadout is included in the fixed monster statistics.
+    reactions:
+      -
+        name: "Parry"
+        description: >-
+          When a visible attacker hits it with a melee attack while it holds a melee weapon, add +2 to its
+          Block check against that attack; still spend one Block.
+  -
+    name: "Gray Orc"
+    group: "Recovered warbands"
+    id: "recovered-gray-orc"
+    meta: "Medium humanoid (orc), chaotic neutral"
+    size: "Medium"
+    type: "humanoid (orc)"
+    alignment: "chaotic neutral"
+    cr: "1"
+    ac: "13"
+    hp: "19 (3d8 + 6)"
+    speed: "30 ft."
+    block: "2 / +4 check"
+    abilities:
+      str: "18"
+      dex: "14"
+      con: "14"
+      int: "8"
+      wis: "10"
+      cha: "10"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 10"
+    languages: "Common, Orc"
+    traits:
+      -
+        name: "Savage Nomad"
+        description: "Ignores movement penalties from nonmagical difficult terrain."
+      -
+        name: "Iron Will (1/long rest)"
+        description: "Reroll one failed Wisdom save, using the new result."
+    actions:
+      -
+        name: "Greataxe"
+        description: >-
+          Melee attack: +6 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d12 + 4 slashing
+          damage. Attack with disadvantage if it moved since the start of its previous turn.
+      -
+        name: "Heavy Cleave"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. Make one Greataxe attack with disadvantage against two
+          adjacent creatures within its reach, using one attack roll against both ACs. Each target may Block
+          separately against DC 15; each unblocked strike deals that weapon's damage.
+      -
+        name: "Longbow"
+        description: >-
+          Ranged attack: +4 to hit, range 180/340 ft., one target; Block DC 12. Unblocked strike: 1d10 + 4
+          piercing damage. Reload I: after each shot, spend one regular, bonus, or move action to reload;
+          Multiattack does not waive this.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Gray Orc"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Gray Orc"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "13"
+        hp: "19"
+        speed: "30"
+        scores:
+          - "18"
+          - "14"
+          - "14"
+          - "8"
+          - "10"
+          - "10"
+        block: "2"
+        longbow: "The late consolidated +3 / 1d8+1 conflicts with DEX14/STR18 and current Overdraw."
+      recovered_summary: "Generic Gray Orc, distinct from Chronica's named Gray Orc NPC."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / Gray Orc; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +4 with equipment proficiency. Temporary Block is spent first and does not stack;
+      keep the higher grant. A successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        The printed speed30 already includes the old Fast Runner bonus; it is not added twice. Leather
+        grants proficiency but no extra Block. Current weapon properties replace obsolete Chop/Overdraw
+        wording.
+      - >-
+        The malformed legacy Longbow line is completed as DEX2+PB2=+4 to hit; current Overdraw uses STR4 for
+        1d10+4 damage, not the obsolete1d8+1.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Greataxe weapon conversion"
+        description: "data/weapons.yaml / Greataxe; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "Longbow weapon conversion"
+        description: "data/weapons.yaml / Longbow; historical monster-only dice overrides are identified in conversion notes."
+    saving_throws: "Str +6, Con +4"
+    skills: "Athletics +6, Intimidation +4, Survival +2"
+    bonus_actions:
+      -
+        name: "Aggressive"
+        description: >-
+          Move up to its speed toward a visible hostile creature. If it closes the distance, gain 1 temporary
+          Block until the start of its next turn; temporary Block does not stack.
+    equipment:
+      -
+        name: "Leather armor"
+        description: "Trained light armor, no added Block; included in fixed AC."
+      -
+        name: "Greataxe"
+        description: >-
+          two-handed; very inaccurate; DC+. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+      -
+        name: "Longbow"
+        description: >-
+          range 180/340 ft.; reload I; two-handed; overdraw. Current weapon properties and listed maneuvers
+          apply; its trained loadout is included in the fixed monster statistics.
+  -
+    name: "Ogrillion"
+    group: "Recovered warbands"
+    id: "recovered-ogrillion"
+    meta: "Large giant (orc, ogre), chaotic neutral"
+    size: "Large"
+    type: "giant (orc, ogre)"
+    alignment: "chaotic neutral"
+    cr: "3"
+    ac: "16"
+    hp: "45 (6d10 + 12)"
+    speed: "35 ft."
+    block: "1 / +1 check"
+    abilities:
+      str: "20"
+      dex: "12"
+      con: "14"
+      int: "8"
+      wis: "10"
+      cha: "8"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 12"
+    languages: "Common, Orc"
+    traits:
+      -
+        name: "Bony Protrusions"
+        description: "At combat start gain 1 temporary Block. The bony protection is already included in AC; it grants no armor training."
+      -
+        name: "Brutal Charge"
+        description: >-
+          After moving 20 ft. straight toward an enemy on its turn, gain 1 temporary Block until its next
+          turn; do not stack temporary grants.
+      -
+        name: "Relentless Fury"
+        description: "While at half HP or less, its first melee attack each turn has advantage."
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Greataxe or Fist attacks. Resolve each attack and Block separately."
+      -
+        name: "Greataxe"
+        description: >-
+          Melee attack: +7 to hit, reach 5 ft., one target; Block DC 16. Unblocked strike: 1d12 + 5 slashing
+          damage. Attack with disadvantage if it moved since the start of its previous turn.
+      -
+        name: "Fist"
+        description: "Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d8 + 5 bludgeoning damage."
+      -
+        name: "Heavy Cleave"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. Make one Greataxe attack with disadvantage against two
+          adjacent creatures within its reach, using one attack roll against both ACs. Each target may Block
+          separately against DC 16; each unblocked strike deals that weapon's damage.
+      -
+        name: "Pummeling Fist"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. Make a Fist attack for half damage (round down). On an
+          unblocked strike, apply Shocked until the end of the target's next turn.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Ogrillion / Ogrillon"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Ogrillion / Ogrillon"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "16"
+        hp: "45"
+        scores:
+          - "20"
+          - "12"
+          - "14"
+          - "8"
+          - "10"
+          - "8"
+        block: "2"
+      recovered_summary: "Consolidated generic Ogrillion; distinct from Raguch's imported profile."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / Ogrillion / Ogrillon; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Bony Protrusions grants a separate temporary Block feature rather than treating natural armor as
+        equipment. Fixed AC/HP remain; Greataxe uses current DC+/VeryInaccurate.
+      - >-
+        Renamed from Ogrillion / Ogrillon to a reusable enemy or species profile. Personal names remain only
+        in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Greataxe weapon conversion"
+        description: "data/weapons.yaml / Greataxe; historical monster-only dice overrides are identified in conversion notes."
+    saving_throws: "Str +7, Con +4"
+    skills: "Athletics +7, Intimidation +3, Perception +2"
+    equipment:
+      -
+        name: "Greataxe"
+        description: >-
+          two-handed; very inaccurate; DC+. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+  -
+    name: "Orog"
+    group: "Recovered warbands"
+    id: "recovered-orog"
+    meta: "Medium humanoid (orc), chaotic evil"
+    size: "Medium"
+    type: "humanoid (orc)"
+    alignment: "chaotic evil"
+    cr: "3"
+    ac: "16"
+    hp: "58 (7d8 + 21)"
+    speed: "30 ft."
+    block: "4 / +7 check; combat equipment floor 2"
+    abilities:
+      str: "18"
+      dex: "14"
+      con: "16"
+      int: "11"
+      wis: "12"
+      cha: "12"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 13"
+    languages: "Common, Orc"
+    traits:
+      -
+        name: "Two-handed Loadout"
+        description: >-
+          While wielding Greatsword two-handed, sling its shield: AC 15, Block 3, check +7; combat equipment
+          floor 1. With the shield raised, use War Axe and printed AC 16/Block 4/check +7. Switching loadout
+          costs its move action.
+    actions:
+      -
+        name: "Multiattack"
+        description: >-
+          Make two Greatsword attacks with the shield slung, or two War Axe attacks with it raised. Resolve
+          attacks and Blocks separately.
+      -
+        name: "Greatsword"
+        description: >-
+          Melee attack: +6 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d6 + 4 slashing
+          damage. A natural 2 is also a critical failure.
+      -
+        name: "War Axe"
+        description: "Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 1d6 + 4 slashing damage."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Orog"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Orog"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "16"
+        hp: "58"
+        scores:
+          - "18"
+          - "14"
+          - "16"
+          - "11"
+          - "12"
+          - "12"
+        block: "legacy3 with inconsistent components"
+      recovered_summary: "Shield-revised Orog with Greatsword, Block and Bash."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / Orog; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier) plus 2 from named equipment; at initiative raise
+      remaining equipment Block to at least 2, never add it repeatedly. Check +7 uses Strength with
+      equipment proficiency and Protection 1. Temporary Block is spent first and does not stack; keep the
+      higher grant. A successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Half plate maps to Plated leather breastplate; fixed shield-up AC16/speed30 remain. Current
+        Block4=DEX2+armor1+shield1; check+7=STR4+PB2+Protection1. Greatsword and shield cannot be used
+        together: the completed two-loadout rule preserves both source weapons without changing Versatile.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Greatsword weapon conversion"
+        description: "data/weapons.yaml / Greatsword; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "War Axe weapon conversion"
+        description: "data/weapons.yaml / Raiders axe; historical monster-only dice overrides are identified in conversion notes."
+    saving_throws: "Str +6, Con +5"
+    skills: "Athletics +6, Intimidation +3, Perception +3"
+    bonus_actions:
+      -
+        name: "Aggressive"
+        description: >-
+          Move up to its speed toward a visible hostile creature. If it closes the distance, gain 1 temporary
+          Block until the start of its next turn; temporary Block does not stack.
+      -
+        name: "Brace"
+        description: "Gain +1 to Block checks until the start of its next turn; costs its bonus action."
+    equipment:
+      -
+        name: "Plated leather breastplate"
+        description: "Block 1, Bulk 3, Slow 1, Protection 1. Already in fixed AC/speed."
+      -
+        name: "Arm-pauldron"
+        description: >-
+          Block 1, Versatile, Spar, Brace 1, Bash 1d4; +1 AC is included in shield-up AC. Versatile does not
+          permit a two-handed Greatsword beside this shield.
+      -
+        name: "Greatsword"
+        description: >-
+          two-handed; unwieldy; DC+++. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+      -
+        name: "Raiders axe"
+        description: >-
+          light; versatile 2d4. Current weapon properties and listed maneuvers apply; its trained loadout is
+          included in the fixed monster statistics.
+    reactions:
+      -
+        name: "Shield Bash"
+        description: >-
+          When a melee attack misses it or is successfully Blocked, and its Greatsword is not held two-handed,
+          make a melee shield attack: +6 to hit, reach 5 ft.; Block DC 14. Unblocked strike: 1d4 + 4
+          bludgeoning. An unblocked critical hit applies Stunned for 1 round.
+  -
+    name: "Orc War Chief"
+    group: "Recovered warbands"
+    id: "recovered-orc-war-chief"
+    meta: "Medium humanoid (orc), chaotic evil"
+    size: "Medium"
+    type: "humanoid (orc)"
+    alignment: "chaotic evil"
+    cr: "4"
+    ac: "18"
+    hp: "110"
+    speed: "30 ft."
+    block: "4 / +9 check; combat equipment floor 2"
+    abilities:
+      str: "20"
+      dex: "14"
+      con: "18"
+      int: "11"
+      wis: "12"
+      cha: "16"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 14"
+    languages: "Common, Orc"
+    traits:
+      -
+        name: "Two-handed Loadout"
+        description: >-
+          While using the Greataxe, lower AC by 3 and current/rested Block by 1 (minimum 0); armor combat
+          floor becomes 1. With the shield raised, use the one-handed War Axe and printed defenses. Switching
+          loadout costs its move action.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two War Axe attacks, or two Greataxe attacks in its two-handed loadout. Resolve each attack and Block separately."
+      -
+        name: "Greataxe"
+        description: >-
+          Melee attack: +7 to hit, reach 5 ft., one target; Block DC 16. Unblocked strike: 1d12 + 5 slashing
+          damage. Attack with disadvantage if it moved since the start of its previous turn.
+      -
+        name: "War Axe"
+        description: "Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d10 + 5 slashing damage."
+      -
+        name: "Battle Cry (1/day)"
+        description: >-
+          Allies within 30 ft. that hear it gain 1 temporary Block and advantage on their next attack before
+          the start of the chief's next turn.
+      -
+        name: "Bolster"
+        description: "While holding its shield, gain 2 temporary Block until the start of its next turn."
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Orc War Chief"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Orc War Chief"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "18"
+        hp: "110"
+        scores:
+          - "20"
+          - "14"
+          - "18"
+          - "11"
+          - "12"
+          - "16"
+        block: "4"
+      recovered_summary: "Later shield revision; source greataxe and heavy war shield."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / Orc War Chief; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier) plus 2 from named equipment; at initiative raise
+      remaining equipment Block to at least 2, never add it repeatedly. Check +9 uses Strength with
+      equipment proficiency and Protection 2. Temporary Block is spent first and does not stack; keep the
+      higher grant. A successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Heavy war shield maps to Tower shield, breastplate to Metal breastplate. A held shield and
+        two-handed Greataxe cannot be used simultaneously: stow/release one before using the other. The
+        sword-and-board fallback uses the current one-handed Battle axe with 1d10 source-sized war-chief
+        dice, documented below.
+      - >-
+        War Axe is an authorized one-handed fallback for the incompatible shield/Greataxe loadout; its
+        oversized1d10die is a monster-specific exception, not a new player weapon.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Greataxe weapon conversion"
+        description: "data/weapons.yaml / Greataxe; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "War Axe weapon conversion"
+        description: "data/weapons.yaml / Raiders axe; historical monster-only dice overrides are identified in conversion notes."
+    saving_throws: "Str +7, Con +6"
+    skills: "Athletics +7, Intimidation +5, Perception +4"
+    bonus_actions:
+      -
+        name: "Aggressive"
+        description: >-
+          Move up to its speed toward a visible hostile creature. If it closes the distance, gain 2 temporary
+          Block until the start of its next turn; temporary Block does not stack.
+      -
+        name: "Warlord's Command (recharge 5-6)"
+        description: "One ally within 30 ft. that hears it may spend its reaction to make one melee attack."
+    equipment:
+      -
+        name: "Metal breastplate"
+        description: "Block 1, Bulk 4, Slow 2, Protection 2. Included in fixed AC/speed."
+      -
+        name: "Tower shield"
+        description: "Block 1, Bolster 2, Bash 1d4; +3 AC already in fixed AC while raised. Cannot be used while wielding Greataxe two-handed."
+      -
+        name: "Greataxe"
+        description: >-
+          two-handed; very inaccurate; DC+. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+      -
+        name: "Raiders axe"
+        description: >-
+          light; versatile 2d4. Current weapon properties and listed maneuvers apply; its trained loadout is
+          included in the fixed monster statistics.
+    reactions:
+      -
+        name: "Shield Bash"
+        description: >-
+          After a melee attack misses it or is Blocked while its shield is held, make a melee attack: +7 to
+          hit, reach 5 ft.; Block DC 15. Unblocked strike: 1d4 + 5 bludgeoning. On an unblocked strike, a
+          Large or smaller target makes a DC 15 Strength save or is pushed 5 ft.
+  -
+    name: "Ogre"
+    group: "Recovered warbands"
+    id: "recovered-ogre"
+    meta: "Large giant, chaotic neutral"
+    size: "Large"
+    type: "giant"
+    alignment: "chaotic neutral"
+    cr: "3"
+    ac: "14"
+    hp: "85 (9d10 + 36)"
+    speed: "40 ft."
+    block: "0 / -1 check"
+    abilities:
+      str: "20"
+      dex: "8"
+      con: "18"
+      int: "5"
+      wis: "7"
+      cha: "7"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 8"
+    languages: "Common, Giant"
+    traits:
+      -
+        name: "Brutal Charge"
+        description: >-
+          After moving 10 ft. straight toward its target before a melee attack, gain 1 temporary Block until
+          its next turn and add 2 damage to that attack.
+      -
+        name: "Overextended Swings"
+        description: >-
+          At its turn's start it may take advantage on melee attacks until the turn ends. Attacks against it
+          have advantage until its next turn.
+    actions:
+      -
+        name: "Great-club"
+        description: >-
+          Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 4d3 + 5 bludgeoning
+          damage. Attack with disadvantage if it moved since the start of this turn. A natural 2 is also a
+          critical failure.
+      -
+        name: "Hefting Crush"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. Before the attack, the target may use its reaction to
+          move 5 ft. If it declines or cannot, attack with a d4 in place of each Great-club d3 and Breach (the
+          target spends one extra Block to attempt its check). Otherwise use normal dice and become
+          Off-balance until the start of the ogre's next turn.
+      -
+        name: "Dragged Slam"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. First make a DC 15 Strength save using its ordinary
+          Strength save bonus. On failure, the maneuver ends. On success, make a Great-club attack with Effort
+          and Ram: add CON 4 to damage/Block DC, then +1 damage/Block DC per 5 ft. moved since the turn's
+          start or last attack, whichever is shorter. On a miss become Off-balance until its next turn.
+          Current Great-club Inaccurate/Unwieldy still apply.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Ogre"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Ogre"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "14"
+        hp: "85"
+        scores:
+          - "20"
+          - "8"
+          - "18"
+          - "5"
+          - "7"
+          - "7"
+        block: "legacy2 from natural armor/size"
+      recovered_summary: "Revised Great-club Ogre. Legacy Block from natural armor/size is replaced by current DEX-based pool."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / Ogre; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check -1. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Natural armor/size does not grant Block. Current Great-club 4d3, Inaccurate and Unwieldy replace
+        old2d8; Brutal Charge grants only its stated temporary Block.
+      - >-
+        The source's incomplete Heft/Slam labels use current Great-club Crush and Dragged slam, not an
+        obsolete forced Block reroll. The missing self-save DC uses the unmodified current attack BlockDC15.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Great-club weapon conversion"
+        description: "data/weapons.yaml / Great-club; historical monster-only dice overrides are identified in conversion notes."
+    equipment:
+      -
+        name: "Great-club"
+        description: >-
+          unwieldy; inaccurate; two-handed. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+  -
+    name: "Ogre War Hulk"
+    group: "Recovered warbands"
+    id: "recovered-ogre-war-hulk"
+    meta: "Large giant, chaotic neutral"
+    size: "Large"
+    type: "giant"
+    alignment: "chaotic neutral"
+    cr: "5"
+    ac: "18"
+    hp: "135"
+    speed: "40 ft."
+    block: "1 / +9 check; combat equipment floor 1"
+    abilities:
+      str: "22"
+      dex: "8"
+      con: "20"
+      int: "6"
+      wis: "10"
+      cha: "8"
+    proficiency_bonus: "+3"
+    senses: "darkvision 60 ft., passive Perception 10"
+    languages: "Giant"
+    traits:
+      -
+        name: "Two-handed Loadout"
+        description: >-
+          With the War Maul held two-handed its shield is slung: AC 15, Block 0/check −1. With the shield
+          raised use Crushing Fist and the printed defenses. Switching costs its move action.
+      -
+        name: "Relentless Fury"
+        description: "While below half HP, melee attacks have advantage."
+    actions:
+      -
+        name: "Multiattack"
+        description: >-
+          Make two Crushing Fist attacks with shield, or one War Maul attack with shield slung. Resolve each
+          attack and Block separately.
+      -
+        name: "War Maul"
+        description: >-
+          Melee attack: +9 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d12 + 6
+          bludgeoning damage. Attack with disadvantage if it moved since the start of this turn. A natural 2
+          is also a critical failure.
+      -
+        name: "Crushing Fist"
+        description: "Melee attack: +9 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d6 + 6 bludgeoning damage."
+      -
+        name: "Shockwave Smash (recharge 5-6)"
+        description: >-
+          Other creatures within 10 ft.; DC 16 Strength save. Failure: no damage; Prone. Success: no effect.
+          Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Bolster"
+        description: "With the shield raised, gain 2 temporary Block until its next turn."
+      -
+        name: "Ram Maul"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. With shield slung, make a War Maul attack with Ram: +1
+          damage and Block DC per 5 ft. moved since the turn's start or its last attack, whichever is shorter.
+          Keep the weapon's Inaccurate and Unwieldy restrictions.
+      -
+        name: "Wild Swings"
+        description: >-
+          Spend its bonus action or move action while taking its Attack action (including its listed
+          Multiattack), replacing one weapon attack. With shield slung, replace one War Maul attack with two
+          War Maul attacks, each with disadvantage. These additional attacks cannot themselves start another
+          maneuver.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Ogre War Hulk"
+      date: "2025-02-09"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Ogre War Hulk"
+      date: "2025-02-09"
+      recorded_statistics:
+        ac: "18"
+        hp: "135"
+        scores:
+          - "22"
+          - "8"
+          - "20"
+          - "6"
+          - "10"
+          - "8"
+        block: "4"
+      recovered_summary: "Later giant-war-shield revision with Greatmaul, Ram and Wild Swings."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2025-02-09 / Ogre War Hulk; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier) plus 1 from named equipment; at initiative raise
+      remaining equipment Block to at least 1, never add it repeatedly. Check +9 uses Strength with
+      equipment proficiency. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        The giant war shield uses current Tower shield, not an invented Block3 shield. Natural hide adds no
+        Block. While using its two-handed War Maul, AC is15 and Block0/check−1; raised shield gives AC18 and
+        Block1/check+9.
+      - >-
+        Source Wild Swings uses the current Boarding axe Attack−/Attack− procedure as an explicit
+        monster-granted maneuver. Its printed two-handed2d12maul is an oversized monster variant of current
+        War Maul.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "War Maul weapon conversion"
+        description: "data/weapons.yaml / War Maul; historical monster-only dice overrides are identified in conversion notes."
+    equipment:
+      -
+        name: "Tower shield"
+        description: "Block 1, Bolster 2, Bash 1d4; +3 AC is in printed shield-up AC. Its size does not multiply Block."
+      -
+        name: "War Maul"
+        description: >-
+          two-handed; unwieldy; inaccurate. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+    reactions:
+      -
+        name: "Massive Shield Bash"
+        description: >-
+          After a melee attack misses it or is Blocked with its shield raised, attack +9, reach 5 ft.; Block
+          DC 17. Unblocked strike: 1d4 + 6 bludgeoning. The target has disadvantage on its next attack before
+          the end of its next turn.
+    bonus_actions:
+      -
+        name: "Bulwark Brace"
+        description: "With its shield raised, gain +2 to Block checks until the start of its next turn."
+  -
+    name: "Scorpionfolk Glaive Tyrant"
+    group: "Recovered enemy archetypes"
+    id: "recovered-scorpionfolk-glaive-tyrant"
+    meta: "Large monstrosity (scorpionfolk), neutral"
+    size: "Large"
+    type: "monstrosity (scorpionfolk)"
+    alignment: "neutral"
+    cr: "10"
+    ac: "16"
+    hp: "160"
+    speed: "40 ft."
+    block: "4 / +4 check"
+    abilities:
+      str: "22"
+      dex: "18"
+      con: "22"
+      int: "16"
+      wis: "18"
+      cha: "16"
+    proficiency_bonus: "+4"
+    senses: "darkvision 60 ft., passive Perception 18"
+    languages: "Common, Giant"
+    traits:
+      -
+        name: "Rest Dice"
+        description: >-
+          Three d12 rest dice, recovered after a long rest. These are the creature's explicit resource, not an
+          automatic player recovery rule.
+      -
+        name: "Rage (once per combat)"
+        description: >-
+          Spend 1 rest die as a free action on its turn or immediately after taking damage. Lasts 1d4 + 1
+          rounds; advantage on Strength checks/saves, +8 damage on Strength-based melee/thrown weapon strikes,
+          resistance to bludgeoning/piercing/slashing, and disadvantage on Block checks. A kill or incoming
+          critical hit extends it by 1d4 rounds; may end it as a free action.
+      -
+        name: "Reckless Combat"
+        description: "May forgo its reaction for the round instead of spending a bonus action for a listed weapon maneuver."
+    actions:
+      -
+        name: "Multiattack"
+        description: >-
+          Make two Glaive attacks and one Stinger. With no held targets it may use the two-handed Poisoned
+          Glaive; with one pincer holding a target use One-handed Poisoned Glaive or Pincer; with both pincers
+          holding targets use two Pincer attacks and Stinger. Resolve each strike and Block separately.
+      -
+        name: "Poisoned Glaive"
+        description: "Melee attack: +10 to hit, reach 10 ft., one target; Block DC 18. Unblocked strike: 2d4 + 6 slashing plus 1d6 poison damage."
+      -
+        name: "Pincer"
+        description: >-
+          Melee attack: +10 to hit, reach 5 ft., one target; Block DC 18. Unblocked strike: 2d6 + 6
+          bludgeoning damage. A Large or smaller target is Grappled (escape DC 18: spend an action to make a
+          Strength (Athletics) or Dexterity (Acrobatics) check). The grapple ends if the grappler is
+          Incapacitated or the target leaves its reach. Each of its two pincers can hold one target; it cannot
+          hold the glaive two-handed while either pincer is holding a creature.
+      -
+        name: "Stinger"
+        description: >-
+          Melee attack: +8 to hit, reach 10 ft., one target; Block DC 16. Unblocked strike: 1d6 + 4 piercing
+          damage. The target makes a DC 18 Constitution save, taking 4d10 poison on failure or half on
+          success. The poison requires an unblocked strike.
+      -
+        name: "Stinger Blast (recharge 5-6)"
+        description: >-
+          A 30-ft. line 5 ft. wide; DC 18 Dexterity save. Failure: 3d6 fire damage. Success: half damage and
+          no other effect. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "One-handed Poisoned Glaive"
+        description: "Melee attack: +10 to hit, reach 10 ft., one target; Block DC 18. Unblocked strike: 1d8 + 6 slashing plus 1d6 poison damage."
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Omari"
+      date: "2024-10-26"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Omari"
+      date: "2024-10-26"
+      recorded_statistics:
+        ac: "16"
+        hp: "160"
+        speed: "40"
+        ability_modifiers:
+          str: "6"
+          dex: "4"
+          con: "6"
+          int: "3"
+          wis: "4"
+          cha: "3"
+        glaive: "1d10+6+1d6 poison; Pincers; Stinger; Rage"
+      recovered_summary: "Girtablilu/Tlincalli barbarian leader,15ft. tall, with pincers, poisoned glaive and stinger."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-10-26 / Omari; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +4. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Exact scores reconstructed to preserve all six modifiers. Current Barbarian Rage replaces the old5e
+        version, including doubled-proficiency damage and disadvantage on Block. Current glaive uses2d4 when
+        two-handed.
+      - "Renamed from Omari to a reusable enemy or species profile. Personal names remain only in collapsed source notes."
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 10 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Poisoned Glaive weapon conversion"
+        description: "data/weapons.yaml / glaive; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "Current Rage and Reckless combat"
+        description: "data/draft-classes/barbarian.yaml / Barbarian / Rage; Barbarian traits"
+      -
+        name: "One-handed Poisoned Glaive weapon conversion"
+        description: "data/weapons.yaml / glaive; historical monster-only dice overrides are identified in conversion notes."
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+      modifiers:
+        str: "6"
+        dex: "4"
+        con: "6"
+        int: "3"
+        wis: "4"
+        cha: "3"
+    saving_throws: "Str+10, Con+10"
+    skills: "Athletics +10, Perception +8"
+    damage_resistances: "fire"
+    damage_immunities: "poison"
+    equipment:
+      -
+        name: "glaive"
+        description: >-
+          versatile 2d4; reach I. Current weapon properties and listed maneuvers apply; its trained loadout is
+          included in the fixed monster statistics.
+  -
+    name: "Battlefist Rifle Engineer"
+    group: "Recovered enemy archetypes"
+    id: "recovered-battlefist-rifle-engineer"
+    meta: "Medium humanoid, neutral"
+    size: "Medium"
+    type: "humanoid"
+    alignment: "neutral"
+    cr: "6"
+    ac: "19"
+    hp: "72"
+    speed: "30 ft."
+    block: "3 / +3 check"
+    abilities:
+      str: "8"
+      dex: "16"
+      con: "10"
+      int: "20"
+      wis: "12"
+      cha: "10"
+    proficiency_bonus: "+4"
+    senses: "passive Perception 11"
+    languages: "Common"
+    traits:
+      -
+        name: "Infused Defense"
+        description: "Its prostheses and wards provide the printed AC 19; they grant no armor-training Block bonus."
+      -
+        name: "Rifle Capacity"
+        description: >-
+          The rifle holds 3 shots. Reload II replaces the cartridge with one action, or a bonus plus move
+          action. Begin an encounter loaded.
+      -
+        name: "Construct Squad"
+        description: >-
+          May be encountered with Tentacle Clockwork Panther, Spellguard Clockwork Panther and Six-Handed
+          Surgical Automaton. Each uses its own normal turn and resources; this trait creates no constructs or
+          free attacks.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Battlefist attacks, or fire one Rifle shot. Resolve each attack and Block separately."
+      -
+        name: "Three-Shot Rifle"
+        description: >-
+          Ranged attack: +7 to hit, range 100/300 ft., one target; Block DC 15. Unblocked strike: 3d10 + 3
+          piercing damage. Consumes 1 shot; capacity 3, Reload II. Ranged attacks in melee follow current
+          weapon rules.
+      -
+        name: "Infused Battlefist"
+        description: "Melee attack: +9 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 1d10 + 5 bludgeoning damage."
+      -
+        name: "Heat Clamp (3/day)"
+        description: >-
+          One visible creature wearing or holding metal within 60 ft.; DC 17 Constitution save. Failure: 2d8
+          fire damage; Shaken until the start of the engineer's next turn. Success: half damage and no other
+          effect. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Telekinesis (4/day)"
+        description: >-
+          Intelligence, spell attacks+9 (Block DC 17), save DC 17. The projectile option deals the current 4d4
+          damage appropriate to its object, and requires an unblocked spell attack. Use the current spell's
+          casting time, components, duration, concentration and any HP/Fatigue costs. These innate uses
+          replace slot expenditure; no optional upgrades are assumed.
+      -
+        name: "Thunder Pulse"
+        description: >-
+          Other creatures within 5 ft.; DC 17 Constitution save. Failure: 2d6 sonic damage. Success: no
+          damage. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Repair (3/day)"
+        description: >-
+          Touch one construct or living ally; restore 2d8 + 5 HP. Requires its tools and an unused prepared
+          repair kit; each daily use consumes one kit.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Yudith Zephia / Yudit Zephania"
+      date: "2024-10-26"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Yudith Zephia / Yudit Zephania"
+      date: "2024-10-26"
+      recorded_statistics:
+        ac: "19"
+        hp: "72"
+        speed: "30"
+        ability_modifiers:
+          str: "-1"
+          dex: "3"
+          con: "0"
+          int: "5"
+          wis: "1"
+          cha: "0"
+        rifle: "+7,100/300ft.,3d10+3piercing"
+        spells: "HeatMetal3x Con17 2d8; Catapult4x Dex17 3d8; ThunderclapCon17 2d6; Fly2x"
+      recovered_summary: "Human Mastermaker artificer with Ron50 rifle, prosthetic battlefist, Flash of Genius and robotic companions."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-10-26 / Yudith Zephia / Yudit Zephania; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +3. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Reconstructed scores preserve recorded modifiers. Fixed AC19 is its infused defense, not inferred
+        armor proficiency. Catapult maps to current Telekinesis. Other absent legacy spells are bounded
+        device abilities, not new player spells.
+      - >-
+        Renamed from Yudith Zephia / Yudit Zephania to a reusable enemy or species profile. Personal names
+        remain only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 6 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+      - >-
+        Two original robotic cats and the stationary six-handed automaton now have their own generic,
+        modifier-preserving profiles. Construct Squad grants neither extra turns nor automatic creation.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Catapult replacement"
+        description: "Current compendium / Arcane spells / Telekinesis"
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+      modifiers:
+        str: "-1"
+        dex: "3"
+        con: "0"
+        int: "5"
+        wis: "1"
+        cha: "0"
+    saving_throws: "Con+4, Int+9"
+    skills: "Arcana +9, Medicine +5"
+    equipment:
+      -
+        name: "Ron-pattern Rifle"
+        description: "Capacity 3, Reload II, range 100/300 ft.; the complete source-specific weapon is defined in its attack."
+      -
+        name: "Infused battlefist"
+        description: "Integrated magical fist; the feature permits Intelligence for its attack and damage."
+    spell_references:
+      -
+        name: "Telekinesis"
+        group: "Arcane spells"
+        source_spell: "Catapult"
+    bonus_actions:
+      -
+        name: "Propulsion Harness (2/day)"
+        description: >-
+          Gain fly 40 ft. for 1 minute. At duration end descend safely 30 ft.; any remaining fall follows
+          normal falling rules. A single active harness effect does not stack.
+    reactions:
+      -
+        name: "Flash of Genius (5/day)"
+        description: >-
+          When it or a visible ally within 30 ft. makes a check or save, add 5 to that roll before the result
+          is resolved; one reaction per round.
+  -
+    name: "Obsidian Crystal Duelist"
+    group: "Recovered enemy archetypes"
+    id: "recovered-obsidian-crystal-duelist"
+    meta: "Medium humanoid, unaligned"
+    size: "Medium"
+    type: "humanoid"
+    alignment: "unaligned"
+    cr: "7"
+    ac: "16"
+    hp: "170"
+    speed: "40 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "14"
+      dex: "14"
+      con: "14"
+      int: "15"
+      wis: "12"
+      cha: "10"
+    proficiency_bonus: "+3"
+    senses: "passive Perception 11"
+    languages: "—"
+    traits:
+      -
+        name: "Crystal Guard"
+        description: >-
+          Once per round when an attack hits it, it may gain 1 temporary Block before choosing whether to
+          Block; temporary grants do not stack.
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two Obsidian Rapier attacks. Resolve each attack and Block separately."
+      -
+        name: "Obsidian Rapier"
+        description: "Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d6 + 4 piercing plus 1d6 force damage."
+      -
+        name: "Obsidian Bloom (recharge 5-6)"
+        description: >-
+          Creatures in a 10-ft.-radius sphere within 60 ft.; DC 14 Dexterity save. Failure: 6d6 force damage;
+          Off-balance until the end of its next turn. Success: half damage and no other effect.
+          Saving-throw-only damage cannot be Blocked.
+    ability_score_status: "reconstructed"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "The Unpredictable Challenger"
+      date: "2023-07-26"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "The Unpredictable Challenger"
+      date: "2023-07-26"
+      recorded_statistics:
+        hp: "170"
+        str: "14"
+        dex: "14"
+        con: "14"
+        int: "15"
+        cha: "10"
+        mana: "30"
+        known_powers: "Obsidian crystal summoning; heightened combat state; 20ft.DC14 disruptive ability"
+      recovered_summary: "Alternate-format challenger profile. Luck/Generativity/Rating and personal jokes were not current DnD mechanics."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2023-07-26 / The Unpredictable Challenger; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Missing Wisdom/AC/movement/attacks and encounter rating are authorized completions. The legacy mana,
+        Rating1500 and personal jokes are replaced by finite monster powers, not player resources.
+      - >-
+        Renamed from The Unpredictable Challenger to a reusable enemy or species profile. Personal names
+        remain only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 7 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Obsidian Rapier weapon conversion"
+        description: "data/weapons.yaml / Rapier; historical monster-only dice overrides are identified in conversion notes."
+    source_ability_scores:
+      method: "reconstructed"
+      note: >-
+        User-authorized reconstructed scores; either the recovered modifiers are preserved or a fitting
+        existing creature baseline supplies missing attributes.
+    skills: "Acrobatics +5, Arcana +5"
+    equipment:
+      -
+        name: "Rapier"
+        description: >-
+          agile; swift. Current weapon properties and listed maneuvers apply; its trained loadout is included
+          in the fixed monster statistics.
+      -
+        name: "Obsidian edge"
+        description: "The source-specific enchanted edge grants+2 to the Rapier's attack and damage; included in its printed numbers."
+    bonus_actions:
+      -
+        name: "Disruptive Challenge (2/day)"
+        description: >-
+          A creature within 20 ft. that can hear it makes a DC 14 Wisdom save. Failure: Distracted until the
+          end of its next turn. This completes the unclear 20 ft./DC 14 source effect without an automatic
+          death ability.
+  -
+    name: "Illusion-Boot Arcanist"
+    group: "Recovered enemy archetypes"
+    id: "recovered-illusion-boot-arcanist"
+    meta: "Small humanoid, chaotic neutral"
+    size: "Small"
+    type: "humanoid"
+    alignment: "chaotic neutral"
+    cr: "6"
+    ac: "12"
+    hp: "58"
+    speed: "25 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "8"
+      dex: "14"
+      con: "14"
+      int: "18"
+      wis: "12"
+      cha: "12"
+    proficiency_bonus: "+4"
+    senses: "passive Perception 15"
+    languages: "Common, Halfling, Elvish"
+    traits:
+      -
+        name: "Illusion Boots"
+        description: "Appears Medium and approximately 2 metres tall; actual size/reach remain Small."
+      -
+        name: "Rest Dice"
+        description: "Six d6 rest dice, recovered after a long rest; the creature's explicit counterspelling reserve."
+    actions:
+      -
+        name: "Focus Staff"
+        description: "Melee attack: +3 to hit, reach 5 ft., one target; Block DC 11. Unblocked strike: 1d3 + 2 bludgeoning damage."
+      -
+        name: "Minor invisibility (at will)"
+        description: >-
+          Cast on itself, using the current 2d4-round duration and movement/attack visibility restrictions.
+          Use the current spell's casting time, components, duration, concentration and any HP/Fatigue costs.
+          These innate uses replace slot expenditure; no optional upgrades are assumed.
+      -
+        name: "Telekinesis (3/day)"
+        description: >-
+          Intelligence; spell attack+8 (Block DC 16). Its projectile option uses current 4d4 object damage;
+          all other current options and concentration/backlash remain. Use the current spell's casting time,
+          components, duration, concentration and any HP/Fatigue costs. These innate uses replace slot
+          expenditure; no optional upgrades are assumed.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Cxviisele Neverontime"
+      date: "2024-01-28"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Cxviisele Neverontime"
+      date: "2024-01-28"
+      recorded_statistics:
+        ac: "12"
+        hp: "58"
+        speed: "25"
+        scores:
+          - "8"
+          - "14"
+          - "14"
+          - "18"
+          - "12"
+          - "12"
+        spells: "Counterspell at will; Invisibility at will; Teleport1/day; INTDC16,+8"
+      recovered_summary: "Half-halfling/half-human wizard with boots that create the appearance of being2metres tall."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-01-28 / Cxviisele Neverontime; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Invisibility uses current Minor invisibility; Teleport uses current True blink. Legacy unlimited
+        Counterspell follows the current Scholar's finite rest-die counterspelling instead of a new spell
+        grant.
+      - >-
+        Renamed from Cxviisele Neverontime to a reusable enemy or species profile. Personal names remain
+        only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Focus Staff weapon conversion"
+        description: "data/weapons.yaml / Quarterstaff; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "Invisibility replacement"
+        description: "Current compendium / Arcane spells / Minor invisibility"
+      -
+        name: "Teleport replacement"
+        description: "Current compendium / Arcane spells / True blink"
+      -
+        name: "Current spell"
+        description: "Current compendium / Arcane spells / Telekinesis"
+      -
+        name: "Counterspell procedure"
+        description: "data/draft-classes/wizard.yaml / Scholar / Minor counterspell"
+    skills: "Arcana +8, Perception +5"
+    equipment:
+      -
+        name: "Quarterstaff"
+        description: >-
+          two-handed; balanced. Current weapon properties and listed maneuvers apply; its trained loadout is
+          included in the fixed monster statistics.
+    spell_references:
+      -
+        name: "Minor invisibility"
+        group: "Arcane spells"
+        source_spell: "Invisibility"
+      -
+        name: "True blink"
+        group: "Arcane spells"
+        source_spell: "Teleport"
+      -
+        name: "Telekinesis"
+        group: "Arcane spells"
+    bonus_actions:
+      -
+        name: "True blink (1/day)"
+        description: >-
+          Use current True blink: somatic, visible destination with a clear line within 2000 ft.; no
+          opportunity attacks. Shares its one daily use with the reaction option.
+    reactions:
+      -
+        name: "True blink (1/day, shared)"
+        description: "Use the same current True blink effect and shared daily use as its bonus-action option."
+      -
+        name: "Minor Counterspell"
+        description: >-
+          Spend 2 rest dice when a visible spell/scroll/cantrip is cast within 50 ft. Make an Arcana check +8
+          against that effect's spell save DC (a scroll uses its printed DC). Success negates it; failure
+          leaves it unchanged. This follows current Scholar minor counterspell and costs its reaction.
+  -
+    name: "Warblade Avatar"
+    group: "Recovered enemy archetypes"
+    id: "recovered-warblade-avatar"
+    meta: "Large humanoid, neutral"
+    size: "Large"
+    type: "humanoid"
+    alignment: "neutral"
+    cr: "18"
+    ac: "20"
+    hp: "200"
+    speed: "40 ft., fly 80 ft."
+    block: "4 / +4 check"
+    abilities:
+      str: "24"
+      dex: "18"
+      con: "20"
+      int: "14"
+      wis: "16"
+      cha: "15"
+    proficiency_bonus: "+6"
+    senses: "darkvision 120 ft., passive Perception 19"
+    languages: "Auran, Celestial, Common, Sylvan"
+    traits:
+      -
+        name: "Execution (1/day)"
+        description: >-
+          After an unblocked Greatsword strike against a Large or smaller creature still below 10%of its
+          maximum HP, it may reduce that creature to 0 HP. No additional attack or save is granted.
+      -
+        name: "Unyielding Will (1/long rest)"
+        description: "When damage would reduce it to 0 HP, make a DC 15 Constitution save; success leaves 1 HP."
+    actions:
+      -
+        name: "Multiattack"
+        description: "Make two War God's Greatsword attacks. Resolve each attack and Block separately."
+      -
+        name: "War God's Greatsword"
+        description: >-
+          Melee attack: +13 to hit, reach 10 ft., one target; Block DC 24. Unblocked strike: 2d10 + 7 slashing
+          plus 2d10 necrotic damage. A natural 2 is also a critical failure.
+      -
+        name: "Blur (1/day)"
+        description: >-
+          Cast the current 1d4-round Blur on itself or an ally within 30 ft. Use the current spell's casting
+          time, components, duration, concentration and any HP/Fatigue costs. These innate uses replace slot
+          expenditure; no optional upgrades are assumed.
+      -
+        name: "Elemental Edge (1/day)"
+        description: "Ignite its greatsword as an action for 1 minute; its unblocked strikes add 1d6 fire damage. Ends if it drops the weapon."
+      -
+        name: "Celestial Surge (recharge 5-6)"
+        description: >-
+          Other creatures within 30 ft.; DC 18 Dexterity save. Failure: 10d8 radiant damage. Success: half
+          damage and no other effect. Saving-throw-only damage cannot be Blocked.
+      -
+        name: "Divine Retribution (recharge 5-6)"
+        description: >-
+          Melee attack: +13 to hit, reach 10 ft., one target; Block DC 21. Unblocked strike: 10d8 radiant
+          damage. If this unblocked strike reduces its target to 0 HP, regain HP equal to half the damage
+          actually dealt, rounded down.
+      -
+        name: "Apex Transformation (1/long rest)"
+        description: >-
+          For 1 minute become Huge (reach+5 ft.), Strength 28 and Constitution 24. Strength/Constitution
+          checks and saves increase by 2; Greatsword attack+15, Block DC 26, 2d10 + 9 slashing+2d10
+          necrotic+1d8 necrotic. Each kill restores 6 HP. Printed max HP remains 200; fixed saves use the
+          stated modifier increases. Ends early if Incapacitated.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Aspect of Da'akhaste — Iden"
+      date: "2024-10-25"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Aspect of Da'akhaste — Iden"
+      date: "2024-10-25"
+      recorded_statistics:
+        ac: "20"
+        hp: "200"
+        scores:
+          - "24"
+          - "18"
+          - "20"
+          - "14"
+          - "16"
+          - "15"
+        sword: "+13,2d10+7slashing+2d10necrotic"
+        execution: "Large or smaller below10%HP; use limit ambiguous"
+      recovered_summary: "War-god greatsword avatar with curse, transformation, radiant attacks and evasive reaction."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-10-25 / Aspect of Da'akhaste — Iden; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Recorded encounter estimate; not a Varis balance certification"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +4. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Greatsword retains source oversized2d10dice; current DC+++ gives BlockDC24. Ambiguous execution is
+        limited to1/day on an unblocked strike. Transformation kill-healing uses proficiency6 instead of an
+        undefined NPC character level.
+      - >-
+        Renamed from Aspect of Da'akhaste — Iden to a reusable enemy or species profile. Personal names
+        remain only in collapsed source notes.
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "War God's Greatsword weapon conversion"
+        description: "data/weapons.yaml / Greatsword; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "Current spell"
+        description: "Current compendium / Arcane spells / Blur"
+    saving_throws: "Dex+10, Cha+8"
+    skills: "Arcana +8, Athletics +13, Intimidation +14, Investigation +8, Perception +9, Performance +14, Stealth +10, Survival +15"
+    damage_resistances: "necrotic, radiant; bludgeoning, piercing and slashing from nonmagical attacks"
+    damage_immunities: "psychic"
+    condition_immunities: "Charmed, Afraid, Terrified"
+    equipment:
+      -
+        name: "Greatsword"
+        description: >-
+          two-handed; unwieldy; DC+++. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+    bonus_actions:
+      -
+        name: "Warblade Curse (1/short or long rest)"
+        description: >-
+          Curse one creature within 30 ft. for 1 minute. Against it, add 6 damage to strikes and critically
+          hit on 19–20. Recover 20 HP if it dies. Ends if the avatar dies or becomes Incapacitated.
+    spell_references:
+      -
+        name: "Blur"
+        group: "Arcane spells"
+    reactions:
+      -
+        name: "Phantom Retreat (1/short rest)"
+        description: >-
+          When hit, add+2 AC against that triggering attack; if it now misses it deals no damage. Then move 15
+          ft. without opportunity attacks.
+  -
+    name: "Boarding Rapier Skirmisher"
+    group: "Recovered enemy archetypes"
+    id: "recovered-boarding-rapier-skirmisher"
+    meta: "Medium humanoid, chaotic good"
+    size: "Medium"
+    type: "humanoid"
+    alignment: "chaotic good"
+    cr: "4"
+    ac: "16"
+    hp: "58"
+    speed: "30 ft., climb 20 ft."
+    block: "3 / +7 check"
+    abilities:
+      str: "12"
+      dex: "16"
+      con: "13"
+      int: "10"
+      wis: "14"
+      cha: "15"
+    proficiency_bonus: "+4"
+    senses: "passive Perception 16"
+    languages: "Common, Hadozee"
+    traits:
+      -
+        name: "Precision Strike"
+        description: >-
+          Once on its turn, an unblocked Rapier or Short Bow strike made with advantage adds 4d6 damage of the
+          weapon's type; no additional trigger is inferred.
+      -
+        name: "Fancy Footwork"
+        description: >-
+          After it makes a melee attack against a creature, that creature cannot make opportunity attacks
+          against it for the rest of the turn.
+      -
+        name: "Sea Legs"
+        description: "Advantage on Athletics and Acrobatics checks to keep balance aboard a vessel."
+    actions:
+      -
+        name: "Multiattack"
+        description: >-
+          Make two Rapier attacks, or fire two Short Bow shots if it pays the intervening Reload I cost.
+          Resolve each attack and Block separately.
+      -
+        name: "Rapier"
+        description: "Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d6 + 3 piercing damage."
+      -
+        name: "Short Bow"
+        description: >-
+          Ranged attack: +7 to hit, range 60/180 ft., one target; Block DC 15. Unblocked strike: 1d4 + 3
+          piercing damage. Reload I: after each shot, spend one regular, bonus, or move action to reload;
+          Multiattack does not waive this. This weapon critically hits on 19–20.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Zephyr Swiftwind"
+      date: "2023-07-29"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Zephyr Swiftwind"
+      date: "2023-07-29"
+      recorded_statistics:
+        scores:
+          - "12"
+          - "16"
+          - "13"
+          - "10"
+          - "14"
+          - "15"
+        class: "Swashbuckler8"
+        weapons: "Rapier, Shortbow"
+        sneak_attack: "4d6"
+      recovered_summary: "Half-hadozee/half-ondonti sailor, sea-monster-hunting crew member."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2023-07-29 / Zephyr Swiftwind; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "AC,HP,speed and provisionalCR"
+        - "current Rapier/Short bow and reload rules"
+        - "explicit attack numbers and once-per-turn precision damage"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +7 with equipment proficiency. Temporary Block is spent first and does not stack;
+      keep the higher grant. A successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Missing defenses/HP are authorized enemy-profile completions. Uses current Rapier1d6 and Short
+        bow1d4/ReloadI; source precision damage remains once per turn.
+      - "Renamed from Zephyr Swiftwind to a reusable enemy or species profile. Personal names remain only in collapsed source notes."
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 4 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Rapier weapon conversion"
+        description: "data/weapons.yaml / Rapier; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "Short Bow weapon conversion"
+        description: "data/weapons.yaml / Short bow; historical monster-only dice overrides are identified in conversion notes."
+    saving_throws: "Dex+7, Int+4"
+    skills: "Acrobatics +7, Athletics +5, Perception +6, Stealth +7, Sleight of Hand +7"
+    equipment:
+      -
+        name: "Leather armor"
+        description: "Current trained light armor; no equipment Block. Fixed AC 16 includes its agility."
+      -
+        name: "Rapier"
+        description: >-
+          agile; swift. Current weapon properties and listed maneuvers apply; its trained loadout is included
+          in the fixed monster statistics.
+      -
+        name: "Short bow"
+        description: >-
+          range 60/180 ft.; two-handed; reload I; crit range+. Current weapon properties and listed maneuvers
+          apply; its trained loadout is included in the fixed monster statistics.
+    bonus_actions:
+      -
+        name: "Cunning Action"
+        description: "Dash, Disengage, or Hide; shares its one bonus action with any Swift attack."
+    reactions:
+      -
+        name: "Uncanny Dodge"
+        description: >-
+          When hit by an attack from a creature it can see, halve that attack's damage. Still resolve any
+          Block separately before applying this reduction.
+  -
+    name: "Elven Hexblade Initiate"
+    group: "Recovered enemy archetypes"
+    id: "recovered-elven-hexblade-initiate"
+    meta: "Medium humanoid (elf), neutral evil"
+    size: "Medium"
+    type: "humanoid (elf)"
+    alignment: "neutral evil"
+    cr: "1"
+    ac: "12"
+    hp: "19"
+    speed: "35 ft."
+    block: "2 / +2 check"
+    abilities:
+      str: "8"
+      dex: "14"
+      con: "10"
+      int: "13"
+      wis: "14"
+      cha: "18"
+    proficiency_bonus: "+2"
+    senses: "darkvision 60 ft., passive Perception 14"
+    languages: "Common, Elvish"
+    traits:
+      -
+        name: "Rest Dice"
+        description: "Three d6 rest dice, recovered after a long rest."
+      -
+        name: "Flurry"
+        description: >-
+          Once per turn, before or after its Attack action, spend 1 rest die as a free action to make one
+          extra Hex Dagger attack. If the attack does not miss, refund the die.
+      -
+        name: "Occult Edge"
+        description: "Hex Dagger strikes count as magical; their listed 1 necrotic rider is included in the unblocked strike."
+    actions:
+      -
+        name: "Hex Dagger"
+        description: "Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d4 + 2 piercing plus 1 necrotic damage."
+      -
+        name: "Subjugate (1/day)"
+        description: >-
+          Charisma, spell save DC 14, casting bonus+4. Requires its current healing-potion material and an
+          eligible dying/recently dead creature; no alternate healthy-target domination is granted. Use the
+          current spell's casting time, components, duration, concentration and any HP/Fatigue costs. These
+          innate uses replace slot expenditure; no optional upgrades are assumed.
+      -
+        name: "Devitalize"
+        description: >-
+          Cast current Devitalize: verbal/somatic, 30 ft., up to 10-ft. sphere, 1d4 + 1 cold. DC 14
+          Constitution; failure Weakened for 1 turn, success half damage. No optional upgrades;
+          saving-throw-only effect cannot be Blocked.
+    ability_score_status: "sourced"
+    source_recovery:
+      kind: "numerical profile"
+      original_name: "Hecat"
+      date: "2024-11-28"
+      note: >-
+        Recovered chat-search summary, not a verbatim transcript. Missing and conflicting rules were
+        completed with explicit user authorization on 2026-11-27.
+    original_5e:
+      name: "Hecat"
+      date: "2024-11-28"
+      recorded_statistics:
+        ac: "12"
+        hp: "19"
+        scores:
+          - "8"
+          - "14"
+          - "10"
+          - "13"
+          - "14"
+          - "18"
+        block: "4"
+        features: "Occultist2/Monk1; Nullify2RD; Subjugate; free light-weapon attack"
+      recovered_summary: "Elven occultist/monk cult initiate."
+      format: "Recovered search extract/summary; not a verbatim transcript or claim of an official published statblock."
+    source_ref: "GPT discussion / 2024-11-28 / Hecat; recovered summaries in the 2026-11-27 monster conversation"
+    source_completion:
+      fields:
+        - "proficiency, senses and language defaults"
+        - "complete action timings, save outcomes and escape procedures"
+        - "current Block, conditions and weapon conversion"
+      basis: >-
+        Existing monster templates and current combat rules; new completion values are conversions rather
+        than recovered source claims.
+      cr_status: "Provisional Varis encounter estimate for the completed profile"
+    block_rules: >-
+      Rested Block is max(0, Dexterity modifier); natural armor grants no extra Block or equipment
+      training. Check +2. Temporary Block is spent first and does not stack; keep the higher grant. A
+      successful Block negates damage and attached strike effects.
+    conversion_notes:
+      - >-
+        Uses current Vara Block and conditions. Saving-throw-only and automatic damage cannot be Blocked;
+        attack damage and attached strike effects require an unblocked strike.
+      - >-
+        Daily uses recover after 24 hours. Short-rest and long-rest uses follow the current one-day and
+        one-week defaults. Recharge X-Y rolls 1d6 at the start of its turn while expended.
+      - >-
+        Legacy Block4 becomes the current unarmored Dexterity pool2. The obsolete free extra attack uses
+        current Monk Flurry's cost/refund; source Nullify keeps2rest dice and the20ft.target area, completed
+        with current Scholar's check against effectDC.
+      - "Renamed from Hecat to a reusable enemy or species profile. Personal names remain only in collapsed source notes."
+      - >-
+        Legacy frightened/restraint/confusion terminology is expressed through current
+        Afraid/Snared/Confused conditions where applicable; legacy thunder damage is sonic. New completion
+        values are not advertised as recovered source facts.
+      - "CR 1 is a provisional Varis encounter estimate; no original numerical CR was recovered."
+    replacement_sources:
+      -
+        name: "Current monster conversion guide"
+        description: "docs/monsters.md / Conversion conventions"
+      -
+        name: "Block and checks"
+        description: "data/draft-reference/combat.yaml / Block; Making a block check"
+      -
+        name: "Conditions and recovery"
+        description: "data/conditions.yaml; data/draft-reference/progression.yaml"
+      -
+        name: "Hex Dagger weapon conversion"
+        description: "data/weapons.yaml / Dagger; historical monster-only dice overrides are identified in conversion notes."
+      -
+        name: "Current spell"
+        description: "Current compendium / Occult spells / Subjugate"
+      -
+        name: "Current spell"
+        description: "Current compendium / Occult cantrips / Devitalize"
+      -
+        name: "Current Nullify/Flurry"
+        description: >-
+          data/class_occultist.yaml / Nullify; data/draft-classes/monk.yaml / Flurry;
+          data/draft-classes/wizard.yaml / Scholar / Minor counterspell
+    skills: "Arcana +3, Deception +6, Insight +4, Perception +4, Persuasion +6, Religion +3, Sleight of Hand +4"
+    equipment:
+      -
+        name: "Dagger"
+        description: >-
+          agile; light; throw 20/40; swift. Current weapon properties and listed maneuvers apply; its trained
+          loadout is included in the fixed monster statistics.
+    reactions:
+      -
+        name: "Nullify"
+        description: >-
+          Spend 2 rest dice when a visible caster casts a spell targeting the initiate or a point within 20
+          ft. of it. Make an Arcana check +3 against the effect's spell save DC (scrolls use their printed
+          DC). Success negates the spell; failure does not. Requires seeing the casting; cannot affect a spell
+          already resolved.
+    spell_references:
+      -
+        name: "Subjugate"
+        group: "Occult spells"
+      -
+        name: "Devitalize"
+        group: "Occult cantrips"
+

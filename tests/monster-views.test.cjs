@@ -69,6 +69,24 @@ test('monster names and literal mechanics remain text, including markup-looking 
   assert.match(block.textContent,/<Dragon & kin>/);assert.match(block.textContent,/<script>literal attack<\/script>/);assert.equal(block.all('script').length,0);
 });
 
+test('all recovered profiles render complete combat blocks with source aliases kept in collapsed notes',()=>{
+  const {views,helpers}=setup(),catalog=require('./helpers/catalog.cjs')();
+  const entries=catalog.find(section=>section.key==='monsters').entries.filter(entry=>entry.source.startsWith('monsters/recovered-'));
+  assert.equal(entries.length,55);
+  for(const source of entries){
+    const block=views.statblock(source,helpers),body=block.byClass('monster-stat-body')[0],notes=block.byClass('monster-stat-notes')[0];
+    assert.equal(block.byClass('monster-score').length,6,source.name);
+    assert.match(body.textContent,/Block DC/,source.name);
+    assert.match(notes.textContent,/Recovered search extract/,source.name);
+    assert.equal(notes.children.every(child=>child.tag==='details'&&!child.open),true,source.name);
+    assert.doesNotMatch(body.textContent,/Source recovery|Source completion|not a verbatim transcript/,source.name);
+    if(source.name==='Elven Hexblade Initiate'){
+      assert.doesNotMatch(body.textContent,/Hecat/);
+      assert.match(notes.textContent,/Hecat/);
+    }
+  }
+});
+
 test('encounter objects omit inapplicable abilities while creatures and scored objects retain them',()=>{
   const{views,helpers}=setup();
   const portal=entry({meta:'Object, unaligned',type:'Object',abilities:{}});
