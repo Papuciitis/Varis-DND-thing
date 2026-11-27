@@ -8,7 +8,7 @@
     document.getElementById("save-status").textContent = "Loading character rules…";
     try {
       globalThis.DND_CATALOG = await loader.ready;
-      const [metadata] = await Promise.all([loader.loadBuilder(), ...["classes", "races", "items"].map(key => loader.loadSection(key))]);
+      const [metadata] = await Promise.all([loader.loadBuilder(), ...["classes", "races", "items", "feats", "backgrounds"].map(key => loader.loadSection(key))]);
       globalThis.DND_CHARACTER_RULES = metadata;
       globalThis.DND_RULES_VERSION = loader.version;
     } catch (error) {
@@ -88,6 +88,8 @@
   let catalogLimit = 30;
   let spellSort = "level-asc";
   let spellFilter = "";
+  let catalogSpellAll = false;
+  const spellCastChoices = new Map();
   let featureSort = "level-asc";
   let gearQuery = "";
   const catalogPreferences = {spells:{sort:"level-asc",level:""},inventory:{sort:"name",level:""},features:{sort:"name",level:""}};
@@ -370,6 +372,28 @@
     return values().attacks.map(attack=>`<article class="list-card"><div class="attack-row"><div><h3 class="attack-name">${escape(attack.name)}</h3><p class="attack-damage">${escape(attack.damage)}</p></div>${button(signed(attack.bonus),"roll",`data-label="${escape(attack.name)} attack" data-bonus="${attack.bonus}" aria-label="Roll ${escape(attack.name)} attack"`)}</div><p class="list-card-meta">From equipped gear · ${escape(attack.ability?.toUpperCase() || '')} · ${attack.trained?'Proficient':'Untrained'} · Block DC ${attack.blockDC}</p><p>${escape(attack.properties)}</p>${attack.notes?`<p class="section-note">${escape(attack.notes)}</p>`:''}${attack.maneuvers?`<details class="detail-section"><summary>Weapon manoeuvres</summary>${ruleContent(attack.maneuvers)}</details>`:''}</article>`).join('');
   }
 
+  function spellUseControls(item, index) {
+    const casting=globalThis.CharacterCasting, entry=entries.get(item.entryId), d=values();
+    if(!entry) return '<p class="section-note">Custom spell: record its costs with your manual trackers.</p>';
+    const choices=casting.castOptions(character,d,entry,item),key=character.id+':'+item.id;
+    const selected=choices.find(choice=>choice.id===spellCastChoices.get(key)) || choices.find(choice=>choice.available) || choices[0];
+    const info=casting.spellInfo(entry,d.casting?.profile?.tradition);
+    const modifier=State.abilityModifier(d.abilities[d.castingAbility] ?? 10);
+    const attackBonus=character.combat.spellAttackOverride ?? proficiency()+modifier+character.combat.spellAttackBonus;
+    const saveDC=character.combat.spellSaveOverride ?? 8+proficiency()+(d.cls?.name==='Wizard'?Math.max(0,modifier):modifier)+character.combat.spellSaveBonus;
+    const spellCheck=info.simpleAttack?`<p class="list-card-meta">${/spell attack/i.test(entry.details.effect)?'Spell attack '+signed(attackBonus):/save/i.test(entry.details.effect)?'Spell save DC '+saveDC:''}</p>`:'';
+    const quick=item.onBar ?? info.simpleAttack;
+    const emptyReason=d.cls?.name==='Wizard' && !info.cantrip && !item.prepared?'Prepare this spell before casting.':info.hex && d.casting?.profile?.tradition!=='any'?'Apply this hex’s listed costs using its feature or manual trackers.':'No compatible casting resource is configured.';
+    return `<div class="spell-use" data-spell-card="${escape(item.id)}">${spellCheck}<div class="spell-cast-controls">${choices.length?`<label class="field"><span>Casting level / resource</span><select data-spell-option data-spell-id="${escape(item.id)}">${choices.map(choice=>`<option value="${escape(choice.id)}" ${choice.id===selected?.id?'selected':''} ${choice.available?'':'disabled'}>${escape(choice.label)}</option>`).join('')}</select></label>${button(info.cantrip?'Cast cantrip':'Cast spell','cast-known-spell',`data-spell-id="${escape(item.id)}" ${selected?.available?'':'disabled'}`,'button-primary')}`:`<p class="section-note">${escape(emptyReason)}</p>`}</div><label class="check-label spell-pin"><input type="checkbox" data-path="spells.${index}.onBar" ${quick?'checked':''}>Quick action on main sheet</label></div>`;
+  }
+
+  function renderQuickSpells() {
+    const casting=globalThis.CharacterCasting;
+    const rows=character.spells.map((item,index)=>({item,index,entry:entries.get(item.entryId)})).filter(({item,entry})=>entry && item.prepared && (item.onBar ?? casting.spellInfo(entry,values().casting?.profile?.tradition).simpleAttack) && (!item.classId || item.classId===values().cls?.id));
+    if(!rows.length)return '';
+    return panel('Spell actions',`<div class="quick-spells">${rows.map(({item,index,entry})=>`<article class="list-card quick-spell"><h3>${escape(item.name)}</h3><p class="list-card-meta">${escape([entryLevelLabel(entry),entry.details.casting,entry.details.range].filter(Boolean).join(' · '))}</p>${spellUseControls(item,index)}${button('Read spell rules','read-rule',`data-entry-id="${escape(item.entryId)}"`,'button-quiet button-small')}</article>`).join('')}</div><p class="section-note">Casting spends the selected resource. Full effects, higher-level rules and other spells are on the Spells page.</p>`);
+  }
+
   function renderAttacks() {
     if(values().attacks.length && !character.attacks.length)return `<p class="section-note">Equipped attacks update with your abilities and training.</p>${button('Add custom attack','add-attack')}`;
     return character.attacks.length ? `<div class="list">${character.attacks.map((attack, index) => `<article class="list-card"><div class="attack-row"><div><h3 class="attack-name">${escape(attack.name)}</h3><p class="attack-damage">${escape(attack.damage || "Set damage in Edit")}</p></div>${button(signed(attack.bonus), "roll", `data-label="${escape(attack.name)} attack" data-bonus="${attack.bonus}" aria-label="Roll ${escape(attack.name)} attack"`)}${button("Edit", "edit-attack", `data-index="${index}"`, "button-quiet")}</div>${attack.maneuver ? `<p class="preserve-lines"><strong>Manoeuvre</strong> · ${escape(attack.maneuver)}</p>` : ""}${attack.notes ? `<p class="preserve-lines">${escape(attack.notes)}</p>` : ""}</article>`).join("")}</div>` : empty("Ready your first attack", "Add the attack bonus and damage from your weapon, spell, or feature.", button("Add attack", "add-attack", "", "button-primary"));
@@ -397,7 +421,7 @@
     const deathSaves = `<div class="form-grid">${selectField("Successes", "deathSaves.successes", marks, "", true)}${selectField("Failures", "deathSaves.failures", marks, "", true)}</div>`;
     const conditionChips = character.conditions.length ? `<div class="condition-chips">${character.conditions.map((condition, index) => `<span class="pill">${escape(condition)}${button("×", "remove-condition", `data-index="${index}" aria-label="Remove ${escape(condition)}"`, "button-quiet button-small")}</span>`).join("")}</div>` : `<p class="section-note">No conditions recorded.</p>`;
     const defence = blocks + (d.enabled?`<p class="block-check">Block check <strong>${signed(d.blockCheck)}</strong><span>${escape(d.gear.blockCheckAbility?.toUpperCase())}</span></p><div class="entry-actions combat-actions">${button("Start combat","start-combat",'aria-label="Roll initiative and start combat"')}${button("End combat","end-combat")}</div>`:"") + `<details class="quiet-disclosure rules-hint" data-expanded="recovery" ${expanded.has("recovery")?'open':''}><summary>Rest & recovery</summary>${d.enabled?`<div class="entry-actions rest-actions">${button("Short rest","short-rest")}${button("Long rest","long-rest")}</div>`:''}<p class="section-note">Each Block attempt is spent even if its defence check fails. Temp Block is spent before regular Block; keep the higher grant and track its expiry. Adjust Arcane Health according to the effect's rules.</p>${d.enabled?`<p class="section-note">${escape(d.hpExplanation)}. Rests recover Block and Fatigue; apply other recovery from the relevant feature.</p>${numberField("Fatigue", "build.health.fatigue", {max:10})}`:""}</details>`;
-    const secondary = `<div class="overview-secondary"><details class="panel disclosure" data-expanded="death-saves" ${expanded.has("death-saves")?'open':''}><summary>Death saves</summary>${deathSaves}</details><details class="panel disclosure" data-expanded="rest-dice" ${expanded.has("rest-dice")?'open':''}><summary>Rest dice</summary>${rest}</details></div>`;
+    const secondary = renderQuickSpells() + `<div class="overview-secondary"><details class="panel disclosure" data-expanded="death-saves" ${expanded.has("death-saves")?'open':''}><summary>Death saves</summary>${deathSaves}</details><details class="panel disclosure" data-expanded="rest-dice" ${expanded.has("rest-dice")?'open':''}><summary>Rest dice</summary>${rest}</details></div>`;
     byId("pane-sheet").innerHTML = `<div class="sheet-layout"><div class="main-panel">${combatStrip}<div class="vital-layout">${panel("Health", resources + quickHealth + wards, "", "health-panel")}${panel("Block & defence", defence, button("Adjust", "combat", "", "button-quiet button-small"), "defence-panel")}</div>${panel("Attacks & actions", `<div class="list" id="derived-attacks">${derivedAttacks()}</div>` + renderAttacks() + `<details class="quiet-disclosure"><summary>Known manoeuvres</summary>${textArea("Known manoeuvres", "maneuvers")}</details>`, character.attacks.length ? button("Add attack", "add-attack", "", "button-small") : "", "attacks-panel")}${secondary}${panel("Class resources", renderCustomResources(), button("Add resource", "add-resource", "", "button-small"))}${panel("Conditions", conditionChips, button("Add condition", "condition", "", "button-small"))}</div>${abilityPanel()}</div>`;
   }
 
@@ -434,7 +458,7 @@
       if (list === "spells") toggle = `<label class="check-label"><input type="checkbox" data-path="spells.${index}.prepared" ${item.prepared ? "checked" : ""}>Readied / prepared</label>`;
       const details = rule?.details || {};
       const meta = [rule?.group, entryLevelLabel(rule), details.casting, details.range].filter(value => typeof value === "string" && value).join(" · ");
-      return `<article class="list-card"><header class="list-card-header"><div><h3 class="list-card-title">${escape(item.name)}</h3>${meta ? `<p class="list-card-meta">${escape(meta)}</p>` : ""}</div>${toggle}</header>${item.notes ? `<p class="preserve-lines">${escape(item.notes)}</p>` : ""}${referenceActions(item, list, index)}</article>`;
+      return `<article class="list-card"><header class="list-card-header"><div><h3 class="list-card-title">${escape(item.name)}</h3>${meta ? `<p class="list-card-meta">${escape(meta)}</p>` : ""}</div>${toggle}</header>${item.notes ? `<p class="preserve-lines">${escape(item.notes)}</p>` : ""}${list==='spells'?spellUseControls(item,index):''}${referenceActions(item, list, index)}</article>`;
     }).join("")}</div>` : empty("Your " + title.toLowerCase() + " starts here", description, actions);
     return panel(title, `<p class="section-note">${escape(description)}</p>${list==='spells'&&character.spells.length?spellViewTools():''}${body}`, character[list].length ? `<div class="entry-actions">${actions}</div>` : "");
   }
@@ -450,7 +474,7 @@
     const casting = `<div class="combat-strip"><div class="combat-stat"><span class="combat-value">${castingAbility ? castingAbility.toUpperCase() : "—"}</span><span class="combat-label">Casting ability</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellAttackOverride != null ? signed(spellAttack) : "—"}</span><span class="combat-label">Spell attack</span></div><div class="combat-stat"><span class="combat-value">${castingAbility || combat.spellSaveOverride != null ? spellSave : "—"}</span><span class="combat-label">Save DC</span></div></div>`;
     const slots = character.spellSlots.length ? `<div class="list">${character.spellSlots.map((slot,index)=>({slot,index})).sort((a,b)=>a.slot.level-b.slot.level).map(({slot,index}) => `<div class="slot-row" data-slot-index="${index}">${numberField("Level", `spellSlots.${index}.level`, {min: 0, max: 20})}${numberField("Available", `spellSlots.${index}.current`)}${numberField("Maximum", `spellSlots.${index}.max`)}${button("−1", "resource", `data-key="slot:${slot.level}" data-delta="-1" aria-label="Spend a level ${slot.level} slot"`)}${button("Remove", "remove", `data-list="spellSlots" data-index="${index}"`, "button-quiet button-small")}</div>`).join("")}</div>` : `<p class="section-note">Add slots by level where your class uses them. Use named Class resources for occult slots, individual partial slots, or other spell costs.</p>`;
     const manual = values().casting?.profile ? `<details class="panel disclosure manual-casting" ${character.spellSlots.length?'open':''}><summary>Manual spell slots</summary>${slots}<div class="entry-actions">${button("Add slot level", "add-slot", "", "button-small")}</div></details>` : panel("Spell slots", slots, button("Add slot level", "add-slot", "", "button-small"));
-    byId("pane-spells").innerHTML = panel("Spellcasting", casting, button("Edit spellcasting", "casting", "", "button-small")) + renderClassCasting() + manual + renderCollection("spells", "Spells", "Select spells from the rules. Record preparations and apply each spell's listed costs using your resource trackers.", "spells");
+    byId("pane-spells").innerHTML = panel("Spellcasting", casting, button("Edit spellcasting", "casting", "", "button-small")) + renderClassCasting() + manual + renderCollection("spells", "Spells", "Choose a casting level, then cast to spend its slot or rest dice. Check the spell's rules for components, additional costs and effects.", "spells");
   }
 
   function renderClassCasting() {
@@ -618,7 +642,8 @@
     const levels = [...new Set(catalog.filter(entry=>allowed.includes(entry.section)).map(Order.level).filter(level=>level!==null))].sort((a,b)=>a-b);
     const ordering = sortField("catalog-sort",preferences.sort,kind!=='inventory'&&levels.length>0) + (kind==='spells'?`<label class="field"><span>Spell level</span><select id="catalog-level"><option value="">All levels</option>${levels.map(level=>`<option value="${level}" ${String(level)===preferences.level?'selected':''}>${level===0?'Level 0 / cantrips':'Level '+level}</option>`).join('')}</select></label>`:'');
     const magicCategories = kind === "inventory" ? `<label class="field"><span>Magic category</span><select id="catalog-magic-category"><option value="">All equipment</option><option value="all-magic">All magic items</option>${(globalThis.MagicCategories?.categories || []).map(category => `<option value="${escape(category.key)}">${escape(category.title)}</option>`).join("")}</select></label>` : "";
-    openDialog("Add " + (kind === "inventory" ? "equipment" : kind), `<div class="catalog-search"><label class="field"><span>Search rules</span><input id="catalog-query" type="search" placeholder="Search by name or rule text" autocomplete="off"></label><label class="field"><span>Group</span><select id="catalog-group"><option value="">All groups</option>${groups.map(group => `<option>${escape(group)}</option>`).join("")}</select></label>${magicCategories}${ordering}</div><p class="section-note" id="catalog-count"></p><div class="catalog-results" id="catalog-results"></div>`, button("Close", "close-dialog"));
+    const spellScope=kind==='spells' && values().casting?.profile?`<label class="check-label"><input type="checkbox" id="catalog-spell-all" ${catalogSpellAll?'checked':''}>Show other spell lists and extra selections for feature-granted or manually learned spells</label><p class="section-note">Class selections follow ${escape(values().cls.name)}'s spell list, level and learning allowance. Use the extra selections option for specific feature grants or copied spellbook spells.</p>`:'';
+    openDialog("Add " + (kind === "inventory" ? "equipment" : kind), `<div class="catalog-search"><label class="field"><span>Search rules</span><input id="catalog-query" type="search" placeholder="Search by name or rule text" autocomplete="off"></label><label class="field"><span>Group</span><select id="catalog-group"><option value="">All groups</option>${groups.map(group => `<option>${escape(group)}</option>`).join("")}</select></label>${magicCategories}${ordering}</div>${spellScope}<p class="section-note" id="catalog-count"></p><div class="catalog-results" id="catalog-results"></div>`, button("Close", "close-dialog"));
     renderCatalogResults();
   }
 
@@ -631,6 +656,7 @@
     const preferences = catalogPreferences[catalogKind];
     const results = catalog.filter(entry => allowed.includes(entry.section) && entry.group !== "Magic rules" && (!group || entry.group === group)
       && (!magicCategory || entry.section === "magic-items" && (magicCategory === "all-magic" || entry.magicCategory === magicCategory))
+      && (catalogKind!=='spells' || catalogSpellAll || !values().casting?.profile || globalThis.CharacterCasting.spellAccess(character,values(),entry).allowed)
       && (catalogKind!=='spells'||!preferences.level||String(Order.level(entry))===preferences.level) && words.every(word => entry.searchText.includes(word))).sort((a, b) => Order.compare(a,b,preferences.sort));
     byId("catalog-count").textContent = `${results.length} matching ${results.length === 1 ? "rule" : "rules"}`;
     byId("catalog-results").innerHTML = results.slice(0, catalogLimit).map(entry => `<article class="catalog-result"><div><h3>${escape(entry.name)}</h3><p class="list-card-meta">${escape((entry.magicCategoryTitle ? entry.magicCategoryTitle + " · " : "") + (entry.group || entry.sectionTitle))}${Order.level(entry)!==null?' · '+entryLevelLabel(entry):''}</p></div><div class="entry-actions">${button("Read", "catalog-read", `data-entry-id="${escape(entry.entryId)}"`, "button-small")}${button("Add", "add-catalog", `data-entry-id="${escape(entry.entryId)}" aria-label="Add ${escape(entry.name)}"`, "button-primary button-small")}</div></article>`).join("") + (results.length > catalogLimit ? button("Show more", "catalog-more", "", "full-width") : "") + (!results.length ? `<p class="empty-state">No matching rules. Try another name or group.</p>` : "");
@@ -714,13 +740,25 @@
   }
 
   const actions = {
+    "cast-known-spell"(target){
+      try {
+        const optionId=target.closest('[data-spell-card]').querySelector('[data-spell-option]').value;
+        spellCastChoices.set(character.id+':'+target.dataset.spellId,optionId);
+        const result=globalThis.CharacterCasting.castSpell(character,values(),Rules.catalog,target.dataset.spellId,optionId);
+        character=result.character;commit();render();
+        const label=`${result.name}${result.level?' — level '+result.level:' — cantrip'}`;
+        const castingAbility=values().castingAbility;
+        if(globalThis.CharacterCasting.spellInfo(result.entry).simpleAttack && /\bspell attack\b/i.test(result.entry.details.effect || '')) roll(label+' attack; '+result.cost,character.combat.spellAttackOverride ?? proficiency()+State.abilityModifier(values().abilities[castingAbility] ?? 10)+character.combat.spellAttackBonus);
+        else notify(label+' cast. '+result.cost+'. Resolve its effects from the spell rules.');
+      }catch(error){notify(error.message);}
+    },
     "casting-configure"(){flushAndPersist();renderSpells();},
     "enable-casting"(){character=globalThis.CharacterCasting.activate(character,values().casting);commit();render();},
     "disable-casting"(){character.build.casting={...character.build.casting,enabled:false};commit();render();},
     "casting-spend"(target){try{const level=Number(target.closest('.casting-pool').querySelector('[data-cast-level]')?.value||0)||undefined;character=globalThis.CharacterCasting.spend(character,values().casting,target.dataset.poolId,{level});commit();render();}catch(error){notify(error.message);}},
     "casting-whole"(target){try{const level=Number(target.closest('.casting-pool').querySelector('[data-cast-level]')?.value||0)||undefined;character=globalThis.CharacterCasting.spend(character,values().casting,target.dataset.poolId,{level,whole:true});commit();render();}catch(error){notify(error.message);}},
     "casting-restore"(target){try{character=globalThis.CharacterCasting.change(character,values().casting,target.dataset.poolId,1);commit();render();}catch(error){notify(error.message);}},
-    builder() { if(Wizard)return withSections((globalThis.DND_CATALOG || []).filter(section=>section.key==="magic-items").map(section=>section.key),()=>Wizard.start(character,false),true); },
+    builder() { if(Wizard)return withSections(['spells',...(globalThis.DND_CATALOG || []).filter(section=>section.key==="magic-items").map(section=>section.key)],()=>Wizard.start(character,false),true); },
     identity() {if(character.build?.enabled && Wizard)return actions.builder();else identityDialog();},
     combat: combatDialog,
     casting: castingDialog,
@@ -729,7 +767,7 @@
     export: exportBackup,
     import() { byId("backup-input").click(); },
     print() { window.print(); },
-    new() { persist(); if(Wizard && Rules.metadata.classes?.length){return withSections((globalThis.DND_CATALOG || []).filter(section=>section.key==="magic-items").map(section=>section.key),()=>Wizard.start(State.createCharacter(),true),true);} character = State.createCharacter(); library.push(character); commit(); activeTab = "sheet"; render(); identityDialog(); },
+    new() { persist(); if(Wizard && Rules.metadata.classes?.length){return withSections(['spells',...(globalThis.DND_CATALOG || []).filter(section=>section.key==="magic-items").map(section=>section.key)],()=>Wizard.start(State.createCharacter(),true),true);} character = State.createCharacter(); library.push(character); commit(); activeTab = "sheet"; render(); identityDialog(); },
     resource(target) { changeResource(target.dataset.key, Number(target.dataset.delta)); },
     health(target) {
       const amount = Number(byId("health-amount").value);
@@ -771,7 +809,7 @@
     condition() { return withSections(["conditions"], () => openDialog("Add condition", `<label class="field"><span>Condition or temporary effect</span><input id="condition-name" type="text" list="condition-options" maxlength="120" placeholder="Choose or type a condition"></label><datalist id="condition-options">${catalog.filter(entry => entry.section === "conditions").map(entry => `<option value="${escape(entry.name)}"></option>`).join("")}</datalist>`, button("Add condition", "save-condition", "", "button-primary")), true); },
     "save-condition"() { const name = byId("condition-name").value.trim(); if (!name) return notify("Enter a condition name."); if (!character.conditions.includes(name)) character.conditions.push(name); closeDialog(); commit(); render(); },
     "remove-condition"(target) { character.conditions.splice(Number(target.dataset.index), 1); commit(); render(); },
-    catalog(target) { const kind = target.dataset.kind; return withSections(kind === "spells" ? ["spells"] : kind === "inventory" ? ["items", ...((globalThis.DND_CATALOG || []).some(section=>section.key==="magic-items")?["magic-items"]:[])] : ["classes", "feats", "races", "backgrounds"], () => openCatalog(kind), true); },
+    catalog(target) { const kind = target.dataset.kind;catalogSpellAll=false; return withSections(kind === "spells" ? ["spells"] : kind === "inventory" ? ["items", ...((globalThis.DND_CATALOG || []).some(section=>section.key==="magic-items")?["magic-items"]:[])] : ["classes", "feats", "races", "backgrounds"], () => openCatalog(kind), true); },
     "catalog-more"() { catalogLimit += 30; renderCatalogResults(); },
     "catalog-read"(target) { readRule(target.dataset.entryId, true); },
     "read-rule"(target) { readRule(target.dataset.entryId); },
@@ -782,7 +820,14 @@
       if (list !== "inventory" && character[list].some(item => item.entryId === entry.entryId)) return notify("This rule is already on your character sheet.");
       const item = {id: uid(), entryId: entry.entryId, name: entry.name, notes: ""};
       if (list === "inventory") Object.assign(item, {quantity: 1, equipped: false}, globalThis.MagicItems?.inventoryFields(entry) || {});
-      if (list === "spells") item.prepared = false;
+      if (list === "spells") {
+        item.prepared=true;
+        if(values().casting?.profile && !catalogSpellAll) {
+          const reason=globalThis.CharacterCasting.spellLearningError(character,values(),Rules.catalog,entry);
+          if(reason)return notify(reason+' Use Edit build to replace selections, or extra selections for a feature grant or copied spell.');
+          item.classId=values().cls.id;
+        }
+      }
       character[list].push(item);
       commit(); render();
       notify(entry.name + " added to your character.");
@@ -841,6 +886,8 @@
     const target = event.target;
     if(Wizard?.handleChange(target))return;
     if (target.id === "backup-input") { importBackup(target.files[0]); return; }
+    if(target.id==='catalog-spell-all') {catalogSpellAll=!!target.checked;catalogLimit=30;renderCatalogResults();return;}
+    if(target.dataset.spellOption!==undefined) {spellCastChoices.set(character.id+':'+target.dataset.spellId,target.value);return;}
     if (target.id === "catalog-group" || target.id === "catalog-magic-category") { catalogLimit = 30; renderCatalogResults(); return; }
     if (target.id === "catalog-sort" || target.id === "catalog-level") { catalogPreferences[catalogKind][target.id==='catalog-sort'?'sort':'level']=target.value; catalogLimit=30; renderCatalogResults(); return; }
     if (target.id === "spell-sort" || target.id === "spell-filter") { if(target.id==='spell-sort')spellSort=target.value;else spellFilter=target.value; renderSpells(); return; }
@@ -849,7 +896,7 @@
     if (target.id === "character-picker") { selectCharacter(target.value); return; }
     if (target.dataset.path) {
       applyInput(target, true);
-      if(target.dataset.path.startsWith('inventory.') || character.build?.enabled && target.dataset.path==='level') {persist();render();}
+      if(target.dataset.path.startsWith('inventory.') || /^spells\.\d+\.(?:prepared|onBar)$/.test(target.dataset.path) || character.build?.enabled && target.dataset.path==='level') {persist();render();}
     }
   });
   document.addEventListener("click", event => {

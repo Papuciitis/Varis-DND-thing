@@ -691,6 +691,13 @@ body:has(dialog[open]) { overflow: hidden; }
   .ability-panel .panel { padding: .8rem; }
   .combat-stat { min-height: 70px; }
 }
+.quick-spells { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,18rem),1fr)); gap: .75rem; }
+.spell-cast-controls { display: flex; flex-wrap: wrap; align-items: end; gap: .6rem; margin-block: .65rem; }
+.spell-cast-controls .field { flex: 1 1 13rem; min-width: 0; }
+.spell-cast-controls .button { min-height: 44px; }
+.spell-pin { font-size: .85rem; color: var(--quiet); margin-bottom: .55rem; }
+.builder-spells { border-top: 1px solid var(--line); padding-top: 1.2rem; margin-top: 1.2rem; }
+.builder-spells h2 { margin-bottom: .5rem; }
 @media print {
   .gear-search, #owned-gear-groups { display: none !important; }
   .inventory-print { display: block !important; }

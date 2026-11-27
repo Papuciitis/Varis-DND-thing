@@ -121,7 +121,7 @@ test('monster type and fractional CR filters combine with search and preserve di
     entry('Ash dragon','Dragons',{meta:'Large dragon, neutral',cr:'5',hp:'100'}),
     entry('Ash mystery','Wilderness',{meta:'Small beast',hp:'8'})
   ]});
-  await h.route('#section=monsters');
+  await h.route('#section=monsters&view=list');
   assert.equal(h.reader.querySelectorAll('.monster-disclosure').length,3);
   const beastChip = h.reader.querySelectorAll('.monster-type-chip').find(chip => chip.textContent === 'Beast');
   await h.route(beastChip.href); assert.deepEqual(names(h),['Ash wolf','Ash mystery']);
@@ -136,7 +136,7 @@ test('monster type and fractional CR filters combine with search and preserve di
 
 test('expandable monster rows render on first open, expand independently, and remember opened entries', async () => {
   const h=boot({monsters:[entry('Wolf','Beasts',{meta:'Medium beast',hp:'11',abilities:{str:'12'},actions:[{name:'Bite',description:'Bite rules'}]}),entry('Bear','Beasts',{meta:'Large beast',hp:'34',actions:[{name:'Claw',description:'Claw rules'}]})]});
-  await h.route('#section=monsters');assert.equal(h.reader.querySelectorAll('.monster-parchment').length,0);
+  await h.route('#section=monsters&view=list');assert.equal(h.reader.querySelectorAll('.monster-parchment').length,0);
   let rows=h.reader.querySelectorAll('.monster-disclosure');rows[0].open=true;rows[0].dispatch('toggle');
   assert.equal(h.reader.querySelectorAll('.monster-parchment').length,1);
   rows[1].open=true;rows[1].dispatch('toggle');assert.equal(h.reader.querySelectorAll('.monster-parchment').length,2);
@@ -210,12 +210,12 @@ test('monster authoring refreshes the catalog, persists, exports YAML, and leave
   await h.route(h.hash);
   assert.match(h.reader.textContent, /Lantern wisp/);
   assert.match(h.reader.textContent, /Hit Points\s*7/);
-  await h.route('#section=monsters');
+  await h.route('#section=monsters&view=list');
   assert.deepEqual(names(h), ['Lantern wisp', 'City guard']);
   h.reader.querySelectorAll('button').find(button => button.textContent === 'Export custom.yaml').click();
   assert.equal(h.downloads[0].name, 'custom.yaml');
   assert.match(await h.downloads[0].blob.text(), /name: "Lantern wisp"/);
-  const reloaded = boot({monsters:[original]}, '#section=monsters', {storage});
+  const reloaded = boot({monsters:[original]}, '#section=monsters&view=list', {storage});
   await settle();
   assert(names(reloaded).includes('Lantern wisp'));
   await h.route('#section=monsters&entry=Lantern+wisp&group=Custom+monsters');
@@ -401,10 +401,51 @@ test('editing search text retains explicit order and changing scope removes inco
 
 test('monster challenge ordering respects fractions and keeps unknown challenge last', async () => {
   const h = boot({monsters:[entry('A giant','Creatures',{cr:'3'}),entry('Z small','Creatures',{cr:'1/4'}),entry('B beast','Creatures',{cr:'1/2'}),entry('A unknown','Creatures',{hp:1})]});
-  await h.route('#section=monsters'); assert.deepEqual(names(h), ['Z small','B beast','A giant','A unknown']);
+  await h.route('#section=monsters&view=list'); assert.deepEqual(names(h), ['Z small','B beast','A giant','A unknown']);
   assert.equal(h.document.getElementById('entry-sort').value, 'challenge-asc');
   await h.change('entry-sort','challenge-desc'); assert.deepEqual(names(h), ['A giant','B beast','Z small','A unknown']);
   assert(h.reader.querySelectorAll('.monster-list-cr').some(node=>node.textContent.includes('CR 1/4')));
+});
+
+test('monster manual starts with encounter themes and combines theme, type, CR, text and display filters', async () => {
+  const h=boot({monsters:[
+    {...entry('Reef shark','Workbook',{meta:'Large beast',cr:'2',encounter_theme:'Seas & coasts'}),source:'monsters.yaml'},
+    {...entry('Sea guardian','Recovered fauna',{meta:'Large elemental',cr:'4',encounter_theme:'Seas & coasts'}),source:'monsters/recovered-fauna.yaml'},
+    {...entry('Frost wolf','Other import',{meta:'Medium beast',cr:'1',encounter_theme:'Frozen wastes'}),source:'monsters/frost.yaml'}
+  ]});
+  await h.route('#section=monsters');
+  assert.equal(h.document.getElementById('entry-view').value,'themes');
+  assert.equal(h.document.getElementById('group'),null);
+  assert.deepEqual(h.reader.querySelectorAll('.panel-name').map(n=>n.textContent),['Frozen wastes','Seas & coasts']);
+  assert.deepEqual(h.reader.querySelectorAll('.panel-count').map(n=>n.textContent),['1 monster','2 monsters']);
+  assert.equal(names(h).length,0);
+  const sea=h.reader.querySelectorAll('.monster-theme-card').find(n=>n.textContent.startsWith('Seas & coasts'));
+  await h.route(sea.href);assert.deepEqual(names(h),['Reef shark','Sea guardian']);
+  assert.equal(h.reader.querySelector('h1').textContent,'Seas & coasts');
+  assert.equal(h.document.getElementById('monster-theme').value,'Seas & coasts');
+  await h.change('monster-cr','2-5');
+  const beast=h.reader.querySelectorAll('.monster-type-chip').find(n=>n.textContent==='Beast');await h.route(beast.href);assert.deepEqual(names(h),['Reef shark']);
+  const input=h.document.getElementById('section-search');input.value='reef';input.dispatch('input');await settle();
+  await h.change('entry-view','pages');assert.deepEqual(names(h),['Reef shark']);
+  let state=new URLSearchParams(h.hash.slice(1));assert.equal(state.get('theme'),'Seas & coasts');assert.equal(state.get('cr'),'2-5');assert.equal(state.get('type'),'beast');assert.equal(state.get('filter'),'reef');
+  assert.match(h.reader.querySelector('.applied-filters').textContent,/Seas & coasts/);
+  await h.route(h.link('Clear all').href);state=new URLSearchParams(h.hash.slice(1));assert.equal(state.has('theme'),false);assert.equal(state.get('view'),'pages');assert.equal(names(h).length,3);
+  await h.change('entry-view','themes');assert.equal(h.reader.querySelectorAll('.monster-theme-card').length,2);
+  await h.route('#section=monsters&group=Workbook');assert.deepEqual(names(h),['Reef shark']);
+  await h.route('#q=Seas+%26+coasts&scope=monsters');assert.deepEqual(names(h),['Reef shark','Sea guardian']);assert.doesNotMatch(h.reader.querySelector('.result-meta').textContent,/Workbook|Recovered/);
+});
+
+test('monster breadcrumbs and previous-next navigation cross sources within the encounter theme', async () => {
+  const h=boot({monsters:[
+    entry('A coast guard','Source one',{cr:'1',encounter_theme:'Seas & coasts'}),
+    entry('B desert guard','Source one',{cr:'2',encounter_theme:'Deserts & canyons'}),
+    entry('C sea creature','Source two',{cr:'3',encounter_theme:'Seas & coasts'})
+  ]});
+  await h.route('#section=monsters&entry=A+coast+guard&group=Source+one');
+  const trail=h.document.getElementById('trail');assert.match(trail.textContent,/Seas & coasts/);assert.doesNotMatch(trail.textContent,/Source one/);
+  const themeLink=trail.querySelectorAll('a').find(n=>n.textContent==='Seas & coasts');assert.equal(new URLSearchParams(themeLink.href.slice(1)).get('theme'),'Seas & coasts');
+  const next=h.reader.querySelector('.entry-navigation').querySelector('a');assert.equal(next.getAttribute('aria-label'),'Next entry: C sea creature');assert.equal(new URLSearchParams(next.href.slice(1)).get('group'),'Source two');
+  await h.route(next.href);assert.match(h.reader.querySelector('.entry-navigation').textContent,/2 of 2/);
 });
 
 test('free-text feat requirements and class progression never become guessed directory levels', async () => {

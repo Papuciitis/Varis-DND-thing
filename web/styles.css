@@ -441,6 +441,11 @@ td p + p { margin-top: .4rem !important; }
 .monster-filters { gap: .65rem; align-items: end; margin-bottom: .35rem; }
 .monster-filters .local-search { flex: 1 1 14rem; }
 .monster-filters > .select-field { flex: 0 1 12rem; }
+.monster-filters > .monster-theme-filter { flex: 1 1 18rem; }
+.monster-themes { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: .75rem; }
+.monster-themes .monster-theme-card { min-height: 8.3rem; align-content: start; border-top: 3px solid #b39a77; }
+.monster-themes .panel-name { font-size: 1.05rem; }
+.monster-themes .panel-examples { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .advanced-filters { flex: 0 0 auto; }
 .advanced-filters[open] { flex-basis: 100%; }
 .advanced-filter-fields { display: flex; flex-wrap: wrap; gap: .75rem; padding: .65rem 0 .15rem; border-top: 1px solid var(--line); }
@@ -644,3 +649,5 @@ td p + p { margin-top: .4rem !important; }
   .geomancy-copy { font-size: .97rem; }
   .geomancy-questions { padding: .75rem; }
 }
+
+.site-records { padding-block: 1rem; font-size: .9rem; }

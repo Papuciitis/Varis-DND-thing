@@ -5,6 +5,7 @@ from pathlib import Path
 import yaml
 
 from geomancy_review import DECISIONS_PATH, SNAPSHOT_DIRECTORY, apply_geomancy_review
+from monster_themes import apply_monster_themes
 
 
 SECTIONS = {
@@ -249,6 +250,8 @@ def compile_data(data_dir: Path) -> list[dict]:
     summon_document = None
     has_summon_document = False
     monster_overrides = []
+    monster_theme_document = None
+    has_monster_themes = False
     geomancy_snapshots = []
     geomancy_decisions = None
     files = sorted(path for path in data_dir.rglob("*")
@@ -271,6 +274,10 @@ def compile_data(data_dir: Path) -> list[dict]:
                 summon_document = data
                 has_summon_document = True
                 continue
+            if path == "monster-themes.yaml":
+                monster_theme_document = data
+                has_monster_themes = True
+                continue
             for section, group, name, details in source_records(path, data):
                 if section not in sections:
                     raise ValueError(f"unknown section {section!r}")
@@ -290,6 +297,11 @@ def compile_data(data_dir: Path) -> list[dict]:
         except (KeyError, ValueError, TypeError, yaml.YAMLError) as exc:
             raise ValueError(f"{path}: {exc}") from exc
     apply_monster_overrides(monster_overrides, sections)
+    if has_monster_themes:
+        try:
+            apply_monster_themes(monster_theme_document, sections)
+        except (KeyError, ValueError, TypeError) as exc:
+            raise ValueError(f"monster-themes.yaml: {exc}") from exc
     sections["classes"]["entries"].sort(key=lambda entry: entry["group"] != "Base class")
     if has_summon_document:
         try:
