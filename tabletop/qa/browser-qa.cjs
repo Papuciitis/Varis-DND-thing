@@ -15,7 +15,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
   const {RoomService,MemoryStore}=await import('../server/room-service.mjs');
   const {roomRequest,json}=await import('../server/protocol.mjs');
   const rooms=new Map(),sockets=new Set(),errors=[];
-  let createdCount=0,lastBackup=null;
+  let createdCount=0,lastBackup=null,lobbyHealthHold=null;
   async function broadcast(id){
     const clients=[...sockets].filter(s=>s.id===id && s.key),online=[...new Set(clients.map(s=>s.actorId))];
     for(const client of clients){try{client.socket.send(JSON.stringify({type:'state',view:await rooms.get(id).view(client.key),online}));}catch{}}
@@ -26,7 +26,10 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       if(url.pathname.startsWith('/api/')){
         let response;
         try {
-          if(url.pathname==='/api/health')response=json({service:'vara-tabletop',version:1,mode:'local'});
+          if(url.pathname==='/api/health'){
+            if(lobbyHealthHold)await lobbyHealthHold;
+            response=json({service:'vara-tabletop',version:1,mode:'local'});
+          }
           else if(url.pathname==='/api/rooms'){
             const body=req.postDataJSON(),id=(++createdCount).toString(16).padStart(16,'0'),service=new RoomService(new MemoryStore());
             rooms.set(id,service);response=json(await service.create(id,body.name,body.ownerName),201);
@@ -521,8 +524,17 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.getByRole('button',{name:'Close game settings'}).click();
     await dm.reload();await dm.locator('#game-status').filter({hasText:'Local preview connected'}).waitFor();
     await dm.locator('#map-dimensions').filter({hasText:'16 × 12'}).waitFor();
+    // The lobby appears before its asynchronous health check finishes. Hold the
+    // response to exercise that pending state deterministically on fast machines.
+    let releaseLobbyHealth;lobbyHealthHold=new Promise(resolve=>{releaseLobbyHealth=resolve;});
+    const healthRequest=dm.waitForRequest(request=>new URL(request.url()).pathname==='/api/health');
     await dm.locator('#game-settings').click();await dm.locator('#leave-game').click();
-    await dm.getByRole('button',{name:'Create your table'}).waitFor();assert(await dm.getByRole('button',{name:'Create your table'}).isEnabled());
+    await healthRequest;
+    const createTable=dm.getByRole('button',{name:'Create your table'});await createTable.waitFor();
+    assert(await createTable.isDisabled());assert(await dm.locator('#join-game').isDisabled());
+    releaseLobbyHealth();lobbyHealthHold=null;
+    await dm.locator('#create-game:enabled').waitFor();
+    assert(await createTable.isEnabled());assert(await dm.locator('#join-game').isEnabled());
     assert.deepEqual(errors,[]);
     const result={roomsCreated:createdCount,independentBrowserContexts:2,guestJoin:true,ownedTokenMovement:true,hiddenTokenFiltering:true,fogBrush:true,sharedDice:true,
       privatePlayerStats:true,optionalBars:true,revocableReadOnlySharing:true,linkedCharacterRoundTrip:true,linkedMonsterStats:true,rightClickMenu:true,
