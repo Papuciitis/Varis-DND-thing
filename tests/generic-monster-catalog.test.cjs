@@ -15,7 +15,7 @@ function boot(saved){
 }
 
 test('built generic profiles remain editable and export all targeted renames without adding creatures',()=>{
-  const context=boot(),data=copy(section);context.MonsterEditor.apply(data);assert.equal(data.entries.length,215);
+  const context=boot(),data=copy(section);context.MonsterEditor.apply(data);assert.equal(data.entries.length,301);
   for(const record of records){
     const entry=data.entries.find(entry=>entry.name===record.to);assert(entry,record.to);
     assert.doesNotThrow(()=>context.MonsterEditor.validate(entry));assert.equal(entry.details.id,record.id);

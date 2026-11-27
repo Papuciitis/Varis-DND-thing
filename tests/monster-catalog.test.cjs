@@ -14,7 +14,9 @@ test('the built monster manual includes every supplied creature and the editor c
     ['monsters/tarta-wiki.yaml',13], ['monsters/tarta-elementals-low.yaml',13],
     ['monsters/tarta-elementals-high.yaml',13], ['monsters/tarta-summons.yaml',9],
     ['monsters/recovered-fauna.yaml',12], ['monsters/recovered-warriors.yaml',15],
-    ['monsters/recovered-horrors.yaml',15], ['monsters/recovered-lore.yaml',13]
+    ['monsters/recovered-horrors.yaml',15], ['monsters/recovered-lore.yaml',13],
+    ['monsters/legacy-creatures.yaml',16], ['monsters/legacy-spiders.yaml',12],
+    ['monsters/goblin-variants.yaml',7], ['monsters/midgard-converted.yaml',51]
   ]);
   const context = vm.createContext({localStorage:{getItem:()=>null}});
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../web/monster-editor.js'), 'utf8'), context);
@@ -29,8 +31,8 @@ test('the built monster manual includes every supplied creature and the editor c
       assert(entry.details.ac && entry.details.hp && entry.details.block, entry.name + ' lacks defenses');
     }
   }
-  assert.equal(section.entries.length, 215);
-  assert.equal(new Set(section.entries.map(entry => entry.name.toLowerCase())).size, 215);
+  assert.equal(section.entries.length, 301);
+  assert.equal(new Set(section.entries.map(entry => entry.name.toLowerCase())).size, 301);
 });
 
 test('built Chronica profiles expose six numeric ability scores with traceable reconstruction status', () => {

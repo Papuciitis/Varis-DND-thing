@@ -1,6 +1,6 @@
 # Monsters and the statblock editor
 
-The monster manual includes all 92 creatures, NPCs and encounter objects from the four campaign sources, alongside the 20 existing workbook references, 13 completed Tarta wiki dragon statblocks, 35 Homebrewery additions and 55 recovered chat profiles (215 entries total). Template examples are included: Adult Red Dragon is a playable entry, and the two differently described Ravager blocks remain separate creatures.
+The monster manual includes all 92 creatures, NPCs and encounter objects from the four campaign sources, alongside the 20 existing workbook references, 13 completed Tarta wiki dragon statblocks, 35 Homebrewery additions and 55 recovered chat profiles and 86 mixed-system conversions (301 entries total). Template examples are included: Adult Red Dragon is a playable entry, and the two differently described Ravager blocks remain separate creatures.
 
 | Campaign source | Entries | Editable collection |
 | --- | ---: | --- |
@@ -15,10 +15,14 @@ The monster manual includes all 92 creatures, NPCs and encounter objects from th
 | Recovered warbands and armed enemies | 15 | `data/monsters/recovered-warriors.yaml` |
 | Recovered horrors and summons | 15 | `data/monsters/recovered-horrors.yaml` |
 | Completed creature concepts and companions | 13 | `data/monsters/recovered-lore.yaml` |
+| Mixed-system screenshot creatures | 16 | `data/monsters/legacy-creatures.yaml` |
+| Monstrous spider ages | 12 | `data/monsters/legacy-spiders.yaml` |
+| Goblin encounter variants | 7 | `data/monsters/goblin-variants.yaml` |
+| Midgard AGE creatures | 51 | `data/monsters/midgard-converted.yaml` |
 
 ## Conversion conventions
 
-Printed creature AC, HP, speed, attacks and six abilities remain fixed monster statistics. Block follows the current combat rules; natural armor alone does not grant armor training or additional Block. Ordinary proficient attacks show Block DC equal to their attack bonus plus 8, subject to explicit weapon or feature exceptions. Damage and attached on-strike effects require an unblocked strike; effects resolved solely by saving throws cannot be Blocked.
+For compatible 5e imports, printed creature AC, HP, speed, attacks and six abilities remain fixed monster statistics. Other systems require explicit conversions: see [Mixed-system conversions](cross-system-monsters.md) for AGE ratings, Pathfinder level/BAB bonuses, equipment and legacy conditions. Block follows the current combat rules; natural armor alone does not grant armor training or additional Block. Ordinary proficient attacks show Block DC equal to their attack bonus plus 8, subject to explicit weapon or feature exceptions. Damage and attached on-strike effects require an unblocked strike; effects resolved solely by saving throws cannot be Blocked.
 
 The current compendium's conditions, class features and spells take priority over incompatible 5e wording. Existing fitting abilities and statblocks supply missing mechanics. Each substituted rule is identified in the entry's conversion notes and replacement sources. Daily uses stay daily; short and long rests follow the current one-day and one-week defaults. Printed recharge dice retain their own timing.
 
@@ -32,7 +36,7 @@ The remaining named campaign creatures also use generic encounter titles, withou
 
 ## Add and edit on the webpage
 
-The manual opens with 15 **Theme / setting** cards covering all 215 monsters, such as Seas & coasts, Frozen wastes, Orc & gnoll warbands and Eldritch nightmares. Choose a theme to open its expandable monster list, or use **Browse all** for the complete manual. Themes mix source collections by encounter use; source details remain in notes. The [theme inventory](monster-organization.md) lists the categories and explains editing their assignments.
+The manual opens with 15 **Theme / setting** cards covering all 301 monsters, such as Seas & coasts, Frozen wastes, Orc & gnoll warbands and Eldritch nightmares. Choose a theme to open its expandable monster list, or use **Browse all** for the complete manual. Themes mix source collections by encounter use; source details remain in notes. The [theme inventory](monster-organization.md) lists the categories and explains editing their assignments.
 
 Each creature row shows its name, challenge and creature type; open several rows to compare their compact parchment statblocks. Bodies load when first expanded. Search, **Theme / setting** and **Challenge rating** lead the filters; open **Creature type** for type chips and **More filters** for display and sort. Applied filters can be removed individually. Challenge choices include fractions, exact ratings, ranges and **Unrated / unknown**. Unknown challenge is separate from CR 0. **Display** offers Theme overview, Expandable list and linked Pages. Monster-page breadcrumbs and previous/next navigation follow encounter themes. Monster pages, expanded rows and the live editor preview share the same statblock presentation.
 

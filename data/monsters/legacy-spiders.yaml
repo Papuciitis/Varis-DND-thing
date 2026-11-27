@@ -1,0 +1,1377 @@
+# Reviewed conversions from multiple source systems; see docs/cross-system-monsters.md.
+section: monsters
+entries:
+- name: Monstrous Spiderling
+  group: Monstrous spider age variants
+  id: converted-monstrous-spiderling
+  meta: Tiny beast, neutral
+  size: Tiny
+  type: beast
+  alignment: neutral
+  cr: 1/4
+  ac: '13'
+  hp: '2'
+  speed: 15 ft., climb 15 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '3'
+    dex: '17'
+    con: '10'
+    int: '1'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 10
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d3 + 3
+      piercing damage. The target makes a DC 10 CON save. Failure: 1d2 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +5 to hit, range 30/60 ft., one Medium or smaller creature; Block DC 13. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 5, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Spiderling
+    printed_size: Tiny
+    printed_hp: 2
+    printed_scores:
+    - 3
+    - 17
+    - 10
+    - —
+    - 10
+    - 2
+    printed_cr: 1/4
+    printed_ac: not supplied
+    printed_attack: +5; 1d3
+    printed_poison: 1d2 STR damage; DC 10
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 13, walking/climbing speed 15 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      damage_modifier: 3
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR -4, DEX +3, CON +0, INT -5, WIS +0, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 3
+    - 17
+    - 10
+    - —
+    - 10
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Very Young Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-very-young-monstrous-spider
+  meta: Small beast, neutral
+  size: Small
+  type: beast
+  alignment: neutral
+  cr: 1/2
+  ac: '14'
+  hp: '4'
+  speed: 15 ft., climb 15 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '7'
+    dex: '17'
+    con: '10'
+    int: '1'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 10
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d4 + 3
+      piercing damage. The target makes a DC 10 CON save. Failure: 1d3 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +5 to hit, range 30/60 ft., one Medium or smaller creature; Block DC 13. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 7, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Very Young
+    printed_size: Small
+    printed_hp: 4
+    printed_scores:
+    - 7
+    - 17
+    - 10
+    - —
+    - 10
+    - 2
+    printed_cr: 1/2
+    printed_ac: not supplied
+    printed_attack: +4; 1d4
+    printed_poison: 1d3 STR damage; DC 10
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 14, walking/climbing speed 15 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      damage_modifier: 3
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR -2, DEX +3, CON +0, INT -5, WIS +0, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 7
+    - 17
+    - 10
+    - —
+    - 10
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Young Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-young-monstrous-spider
+  meta: Medium beast, neutral
+  size: Medium
+  type: beast
+  alignment: neutral
+  cr: '1'
+  ac: '14'
+  hp: '10'
+  speed: 25 ft., climb 25 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '11'
+    dex: '17'
+    con: '12'
+    int: '1'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 10
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d6 + 3
+      piercing damage. The target makes a DC 11 CON save. Failure: 1d4 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +5 to hit, range 30/60 ft., one Large or smaller creature; Block DC 13. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 9, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Young
+    printed_size: Medium
+    printed_hp: 10
+    printed_scores:
+    - 11
+    - 17
+    - 12
+    - —
+    - 10
+    - 2
+    printed_cr: 1
+    printed_ac: not supplied
+    printed_attack: +5; 1d6
+    printed_poison: 1d4 STR damage; DC 12
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 14, walking/climbing speed 25 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      damage_modifier: 3
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +0, DEX +3, CON +1, INT -5, WIS +0, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 11
+    - 17
+    - 12
+    - —
+    - 10
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Juvenile Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-juvenile-monstrous-spider
+  meta: Large beast, neutral
+  size: Large
+  type: beast
+  alignment: neutral
+  cr: '2'
+  ac: '15'
+  hp: '20'
+  speed: 25 ft., climb 25 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '15'
+    dex: '17'
+    con: '12'
+    int: '1'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 10
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d8 + 2
+      piercing damage. The target makes a DC 11 CON save. Failure: 1d6 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +5 to hit, range 30/60 ft., one Large or smaller creature; Block DC 13. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 11, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Juvenile
+    printed_size: Large
+    printed_hp: 20
+    printed_scores:
+    - 15
+    - 17
+    - 12
+    - —
+    - 10
+    - 2
+    printed_cr: 2
+    printed_ac: not supplied
+    printed_attack: +4; 1d8+3
+    printed_poison: 1d6 STR damage; DC 13
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 15, walking/climbing speed 25 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 2
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +2, DEX +3, CON +1, INT -5, WIS +0, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 15
+    - 17
+    - 12
+    - —
+    - 10
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Young Adult Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-young-adult-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '4'
+  ac: '16'
+  hp: '48'
+  speed: 40 ft., climb 40 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '19'
+    dex: '17'
+    con: '14'
+    int: '1'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 10
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes one Bite and may move up to 10 ft. using its remaining movement; this does not grant
+      another move action.
+  - name: Bite
+    description: 'Melee attack: +6 to hit, reach 10 ft., one target; Block DC 14. Unblocked strike: 2d6 + 4
+      piercing damage. The target makes a DC 12 CON save. Failure: 1d8 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +5 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 13. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 13, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Young Adult
+    printed_size: Huge
+    printed_hp: 48
+    printed_scores:
+    - 19
+    - 17
+    - 14
+    - —
+    - 10
+    - 2
+    printed_cr: 4
+    printed_ac: not supplied
+    printed_attack: +9; 2d6+6
+    printed_poison: 1d8 STR damage; DC 16
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 16, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 6
+      block_dc: 14
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +4, DEX +3, CON +2, INT -5, WIS +0, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 19
+    - 17
+    - 14
+    - —
+    - 10
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Adult Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-adult-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '6'
+  ac: '17'
+  hp: '96'
+  speed: 40 ft., climb 40 ft.
+  block: 3 / +3 check
+  abilities:
+    str: '19'
+    dex: '17'
+    con: '14'
+    int: '1'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+3'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 10
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes one Bite and may move up to 10 ft. using its remaining movement; this does not grant
+      another move action.
+  - name: Bite
+    description: 'Melee attack: +7 to hit, reach 10 ft., one target; Block DC 15. Unblocked strike: 2d6 + 4
+      piercing damage. The target makes a DC 13 CON save. Failure: 1d8 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +6 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 14. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 14 to break or slip the strands. The web can also be attacked (AC 10, HP 15, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Adult
+    printed_size: Huge
+    printed_hp: 96
+    printed_scores:
+    - 19
+    - 17
+    - 14
+    - —
+    - 10
+    - 2
+    printed_cr: 6
+    printed_ac: not supplied
+    printed_attack: +14; 2d6+6
+    printed_poison: 1d8 STR damage; DC 20
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 17, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 7
+      block_dc: 15
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 6
+      block_dc: 14
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +4, DEX +3, CON +2, INT -5, WIS +0, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 19
+    - 17
+    - 14
+    - —
+    - 10
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Mature Adult Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-mature-adult-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '8'
+  ac: '18'
+  hp: '140'
+  speed: 40 ft., climb 40 ft.
+  block: 5 / +5 check
+  abilities:
+    str: '22'
+    dex: '21'
+    con: '17'
+    int: '1'
+    wis: '12'
+    cha: '2'
+  proficiency_bonus: '+3'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 11
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes two Bite attacks. May target the same creature, but Weakened does not stack.
+  - name: Bite
+    description: 'Melee attack: +9 to hit, reach 10 ft., one target; Block DC 17. Unblocked strike: 3d8 + 6
+      piercing damage. The target makes a DC 14 CON save. Failure: 1d8 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +8 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 16. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 16 to break or slip the strands. The web can also be attacked (AC 10, HP 17, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Mature Adult
+    printed_size: Huge
+    printed_hp: 140
+    printed_scores:
+    - 22
+    - 21
+    - 17
+    - —
+    - 12
+    - 2
+    printed_cr: 8
+    printed_ac: not supplied
+    printed_attack: +20; 3d8+4
+    printed_poison: 1d8 STR damage; DC 23
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 18, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 9
+      block_dc: 17
+      dc_adjustment: 0
+      damage_modifier: 6
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 8
+      block_dc: 16
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +6, DEX +5, CON +3, INT -5, WIS +1, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 22
+    - 21
+    - 17
+    - —
+    - 12
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Old Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-old-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '10'
+  ac: '19'
+  hp: '216'
+  speed: 40 ft., climb 40 ft.
+  block: 7 / +7 check
+  abilities:
+    str: '26'
+    dex: '24'
+    con: '20'
+    int: '1'
+    wis: '12'
+    cha: '2'
+  proficiency_bonus: '+4'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 11
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes two Bite attacks. May target the same creature, but Weakened does not stack.
+  - name: Bite
+    description: 'Melee attack: +12 to hit, reach 10 ft., one target; Block DC 20. Unblocked strike: 3d8 +
+      8 piercing damage. The target makes a DC 17 CON save. Failure: 1d8 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +11 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 19. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 19 to break or slip the strands. The web can also be attacked (AC 10, HP 19, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Old
+    printed_size: Huge
+    printed_hp: 216
+    printed_scores:
+    - 26
+    - 24
+    - 20
+    - —
+    - 12
+    - 2
+    printed_cr: 10
+    printed_ac: not supplied
+    printed_attack: +22; 3d8+5
+    printed_poison: 1d8 STR damage; DC 27
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 19, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 12
+      block_dc: 20
+      dc_adjustment: 0
+      damage_modifier: 8
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 11
+      block_dc: 19
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +8, DEX +7, CON +5, INT -5, WIS +1, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 26
+    - 24
+    - 20
+    - —
+    - 12
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Very Old Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-very-old-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '12'
+  ac: '20'
+  hp: '280'
+  speed: 40 ft., climb 40 ft.
+  block: 8 / +8 check
+  abilities:
+    str: '28'
+    dex: '26'
+    con: '22'
+    int: '1'
+    wis: '12'
+    cha: '2'
+  proficiency_bonus: '+4'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 11
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes two Bite attacks. May target the same creature, but Weakened does not stack.
+  - name: Bite
+    description: 'Melee attack: +13 to hit, reach 10 ft., one target; Block DC 21. Unblocked strike: 3d6 +
+      9 piercing damage. The target makes a DC 18 CON save. Failure: 2d6 poison damage and Weakened for 1 minute;
+      success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +12 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 20. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 20 to break or slip the strands. The web can also be attacked (AC 10, HP 21, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Very Old
+    printed_size: Huge
+    printed_hp: 280
+    printed_scores:
+    - 28
+    - 26
+    - 22
+    - —
+    - 12
+    - 2
+    printed_cr: 12
+    printed_ac: not supplied
+    printed_attack: +26; 3d6+6
+    printed_poison: 2d6 STR damage; DC 30
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 20, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 13
+      block_dc: 21
+      dc_adjustment: 0
+      damage_modifier: 9
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 12
+      block_dc: 20
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +9, DEX +8, CON +6, INT -5, WIS +1, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 28
+    - 26
+    - 22
+    - —
+    - 12
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Elder Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-elder-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '14'
+  ac: '20'
+  hp: '352'
+  speed: 40 ft., climb 40 ft.
+  block: 9 / +9 check
+  abilities:
+    str: '30'
+    dex: '28'
+    con: '24'
+    int: '1'
+    wis: '12'
+    cha: '2'
+  proficiency_bonus: '+5'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 11
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes two Bite attacks. May target the same creature, but Weakened does not stack.
+  - name: Bite
+    description: 'Melee attack: +15 to hit, reach 10 ft., one target; Block DC 23. Unblocked strike: 3d6 +
+      10 piercing damage. The target makes a DC 20 CON save. Failure: 2d6 poison damage and Weakened for 1
+      minute; success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +14 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 22. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 22 to break or slip the strands. The web can also be attacked (AC 10, HP 23, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Elder
+    printed_size: Huge
+    printed_hp: 352
+    printed_scores:
+    - 30
+    - 28
+    - 24
+    - —
+    - 12
+    - 2
+    printed_cr: 14
+    printed_ac: not supplied
+    printed_attack: +34; 3d6+7
+    printed_poison: 2d6 STR damage; DC 33
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 20, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 15
+      block_dc: 23
+      dc_adjustment: 0
+      damage_modifier: 10
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 14
+      block_dc: 22
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +10, DEX +9, CON +7, INT -5, WIS +1, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 30
+    - 28
+    - 24
+    - —
+    - 12
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Ancient Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-ancient-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '16'
+  ac: '21'
+  hp: '432'
+  speed: 40 ft., climb 40 ft.
+  block: 10 / +10 check
+  abilities:
+    str: '32'
+    dex: '30'
+    con: '26'
+    int: '1'
+    wis: '12'
+    cha: '2'
+  proficiency_bonus: '+5'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 11
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes two Bite attacks. May target the same creature, but Weakened does not stack.
+  - name: Bite
+    description: 'Melee attack: +16 to hit, reach 10 ft., one target; Block DC 24. Unblocked strike: 3d6 +
+      11 piercing damage. The target makes a DC 21 CON save. Failure: 2d6 poison damage and Weakened for 1
+      minute; success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +15 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 23. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 23 to break or slip the strands. The web can also be attacked (AC 10, HP 25, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Ancient
+    printed_size: Huge
+    printed_hp: 432
+    printed_scores:
+    - 32
+    - 30
+    - 26
+    - —
+    - 12
+    - 2
+    printed_cr: 16
+    printed_ac: not supplied
+    printed_attack: +33; 3d6+8
+    printed_poison: 2d6 STR damage; DC 36
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 21, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 16
+      block_dc: 24
+      dc_adjustment: 0
+      damage_modifier: 11
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 15
+      block_dc: 23
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +11, DEX +10, CON +8, INT -5, WIS +1, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 32
+    - 30
+    - 26
+    - —
+    - 12
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+- name: Archaic Monstrous Spider
+  group: Monstrous spider age variants
+  id: converted-archaic-monstrous-spider
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '18'
+  ac: '22'
+  hp: '520'
+  speed: 40 ft., climb 40 ft.
+  block: 11 / +11 check
+  abilities:
+    str: '34'
+    dex: '32'
+    con: '28'
+    int: '1'
+    wis: '12'
+    cha: '2'
+  proficiency_bonus: '+6'
+  senses: darkvision 60 ft., scent 30 ft. (imprecise), passive Perception 11
+  languages: —
+  traits:
+  - name: Spider Climb
+    description: Can climb difficult surfaces, including ceilings, without an ability check.
+  - name: Web Sense and Walker
+    description: While touching a web, knows the location of any other creature touching that web. Ignores
+      movement restrictions caused by webbing.
+  actions:
+  - name: Multiattack
+    description: Makes two Bite attacks. May target the same creature, but Weakened does not stack.
+  - name: Bite
+    description: 'Melee attack: +18 to hit, reach 10 ft., one target; Block DC 26. Unblocked strike: 3d6 +
+      12 piercing damage. The target makes a DC 23 CON save. Failure: 2d8 poison damage and Weakened for 1
+      minute; success: half poison damage and no Weakened. Repeat the save at the end of each turn to end Weakened.
+      This toxin cannot reduce ability scores. '
+  - name: Web (Recharge 5–6)
+    description: 'Ranged attack: +17 to hit, range 30/60 ft., one Huge or smaller creature; Block DC 25. Unblocked
+      strike: Snared until freed. The target or an adjacent ally can spend an action to make a STR or DEX check
+      DC 25 to break or slip the strands. The web can also be attacked (AC 10, HP 27, fire vulnerability, poison/psychic
+      immunity); destroying it frees the target. No damage on the initial web strike.'
+  ability_score_status: reconstructed
+  source_system: D&D 3.5 homebrew / age progression table
+  source_ref: User-supplied Huge Monstrous Spider by Age screenshot
+  original_5e:
+    source_system: D&D 3.5 homebrew / age progression table
+    age: Archaic
+    printed_size: Huge
+    printed_hp: 520
+    printed_scores:
+    - 34
+    - 32
+    - 28
+    - —
+    - 12
+    - 2
+    printed_cr: 18
+    printed_ac: not supplied
+    printed_attack: +40; 3d6+9
+    printed_poison: 2d8 STR damage; DC 39
+    printed_frightful_presence: —
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing AC 22, walking/climbing speed 40 ft., web action and senses are current-template completions;
+      INT 1 represents a mindless body.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 18
+      block_dc: 26
+      dc_adjustment: 0
+      damage_modifier: 12
+      offset: 0
+    - name: Web
+      ability: dex
+      bonus: 17
+      block_dc: 25
+      dc_adjustment: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old size bonuses, BAB, Fort/Ref/Will and escalating poison DCs are replaced with current proficiency and
+    six saves. Legacy STR damage becomes HP poison damage plus Weakened with recovery. No frightful presence
+    is invented from the empty source column. Mature forms' extra attack routine is a documented completion.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +12, DEX +11, CON +9, INT -5, WIS +1, CHA -4
+  source_ability_scores:
+    method: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.
+    printed:
+    - 34
+    - 32
+    - 28
+    - —
+    - 12
+    - 2
+    note: Physical/WIS/CHA scores copied from the table; absent INT completed as 1 for a mindless spider.

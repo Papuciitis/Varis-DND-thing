@@ -23,7 +23,7 @@ class RecoveredMonsterTests(unittest.TestCase):
         return next(row['description'] for row in self.recovered[monster][field] if row['name'] == name)
 
     def test_inventory_has_no_missing_duplicate_or_rejected_profiles(self):
-        self.assertEqual(len(self.monsters), 215)
+        self.assertEqual(len(self.monsters), 301)
         self.assertEqual(len(self.recovered), 55)
         self.assertEqual({e['name'] for e in self.index['entries']}, set(self.recovered))
         self.assertEqual(len({e['id'] for e in self.index['entries']}), 55)

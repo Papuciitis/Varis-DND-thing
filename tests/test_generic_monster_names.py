@@ -34,8 +34,8 @@ class GenericMonsterNameTests(unittest.TestCase):
 
     def test_twenty_generic_titles_replace_records_without_removing_any_monster(self):
         self.assertEqual(len(self.records), 20)
-        self.assertEqual(len(self.monsters), 215)
-        self.assertEqual(len(self.catalog['monsters']['entries']), 215)
+        self.assertEqual(len(self.monsters), 301)
+        self.assertEqual(len(self.catalog['monsters']['entries']), 301)
         self.assertEqual(len(self.catalog['spells']['entries']), 439)
         self.assertEqual(len({entry['details']['encounter_theme'] for entry in self.monsters.values()}), 15)
         self.assertFalse(any(re.search(r'\b(?:male|female)\b', name, re.I) for name in self.monsters))

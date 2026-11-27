@@ -52,3 +52,15 @@ data/draft-spells/lvl-2-occult-spells.yaml - Draconic sacrifice ritual - Removed
 - Changes are isolated to monster overrides, naming documentation/index and a dedicated monster regression test. Character-sheet source, its tests, progression rules and build.py are left to the ongoing Fighter-leveling work. The shared report is append-only.
 
 - Monster editor naming migration also updates exact legacy NPC titles in saved browser overrides and YAML exports, preserving edited statistics and deliberately chosen custom names. Added dedicated compiled-catalog/editor regression tests. No character-sheet files are modified by this pass.
+
+
+28:11:2026 Mixed-system monster conversion batch
+
+- Added 86 editable profiles: 51 AGE/Midgard conversions (50 creature pages with two separate Mycolid variants), 16 other screenshot creatures, 12 monstrous-spider ages and 7 goblin profiles. The manual now contains 301 monsters; the existing 215 and all 439 current player spells are retained.
+- Added legacy-creatures.yaml, legacy-spiders.yaml, goblin-variants.yaml, midgard-converted.yaml and the source/cross-system-index.json inventory. Added all profiles to the existing 15 encounter themes. Source-system names, numerical statistics, score reconstruction, provisional CRs and gap completions are retained in source panels.
+- Reconstructed AGE scores from its eight ratings and PF2 scores from modifiers; replaced old BAB, size accuracy, PF2 level scaling and stunt/Mana economies with explicit current actions, proficiency and bounded resources. Kept natural protection separate from equipped armor/shield Block; converted equipment to current weapon dice, Bulk, Protection, Reload and Block DC properties.
+- Long legacy paralysis uses current Stunned so recovery CON saves remain legal; fixed one-turn Paralyzed effects expire automatically. Ability drain, save-or-die and unbounded possession/spawning have bounded damage, current conditions and explicit escape/recovery. Personal/geographic role titles become reusable species/equipment titles; original aliases remain in notes.
+- Natural Goblin Shark, Shark-Shifting Goblin and Sharkskin Goblin are distinct. The Dogmole Juggernaut sidebar has no full source block and stays an acknowledged variant hook, not a fabricated source statblock. No player spells, class features, review spells or magic-item grants are added.
+- Changes are limited to monster data/themes, monster documentation/tests and this append-only report. Character progression, sheet code and other active work remain untouched.
+
+- Validation: isolated site build produces 301 monsters and 439 spells; the 73-test monster Python suite passed, then all 7 final conversion checks passed. All 86 additions validate and round-trip through the monster editor; the 37 JavaScript monster checks pass. Final compiled-data comparison preserves every existing monster and player spell exactly.

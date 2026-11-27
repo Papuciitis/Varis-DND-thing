@@ -11,6 +11,16 @@ monster_themes:
       - "Monooze"
       - "Rocktor"
       - "Underground Guardian"
+      - "Gray Ooze"
+      - "Id Ooze"
+      - "Brain Mole"
+      - "Carrion Beetle"
+      - "Cavelight Moss"
+      - "Dogmole"
+      - "Deathcap Mycolid"
+      - "Psilocybe Mycolid"
+      - "Roachling"
+
   - name: "Cities, guards & outlaws"
     monsters:
       - "Bandit"
@@ -26,6 +36,12 @@ monster_themes:
       - "Spear Guard"
       - "Sword Guard"
       - "Thug"
+      - "Dwarf Axe Siegebreaker"
+      - "Veiled Poison Assassin"
+      - "Kobold Slyblade"
+      - "Centaur Lance Roughneck"
+      - "Shield-and-Spear Sellsword"
+
   - name: "Constructs & workshops"
     monsters:
       - "Aberrant Juggernaut"
@@ -43,6 +59,14 @@ monster_themes:
       - "Stone Servant"
       - "Tentacle Clockwork Panther"
       - "Venom-Hand Chirurgeon"
+      - "Clockwork Hound"
+      - "Clockwork Myrmidon"
+      - "Eye Golem"
+      - "Fellforged"
+      - "Steam Golem"
+      - "Weaving Spider"
+      - "Gearforged Legionnaire"
+
   - name: "Cults, mages & dark bargains"
     monsters:
       - "arcane imp"
@@ -52,6 +76,9 @@ monster_themes:
       - "Imp"
       - "Tiefling female sorcerer leader"
       - "Warblade Avatar"
+      - "Wasteland Magister"
+      - "Dragonkin Runestaff Envoy"
+
   - name: "Deserts & canyons"
     monsters:
       - "Camelfolk female sorcerer - Papaya"
@@ -66,6 +93,10 @@ monster_themes:
       - "Scorpion"
       - "Scorpionfolk Glaive Tyrant"
       - "Whirlwind Sand Elemental"
+      - "Cactus Goblin"
+      - "Dust Goblin Scavenger"
+      - "Gypsosphinx"
+
   - name: "Dragons & their lairs"
     monsters:
       - "Adult Aetherium Alloy dragon"
@@ -87,6 +118,8 @@ monster_themes:
       - "Dragazhar"
       - "Steel Dragon Wyrmling"
       - "Young Steel Dragon"
+      - "Young Cave Dragon"
+
   - name: "Earth & crystal realms"
     monsters:
       - "Awakened Earth"
@@ -118,6 +151,10 @@ monster_themes:
       - "Stone Sprite"
       - "Stone Strider"
       - "Voidstone Wanderer"
+      - "Crystal Abomination"
+      - "Galeb Duhr"
+      - "Crag Drake"
+
   - name: "Eldritch nightmares"
     monsters:
       - "Adjole"
@@ -141,6 +178,10 @@ monster_themes:
       - "Thousand-Eyed Ascetic"
       - "Voidling"
       - "Whisperspawn Ascendant"
+      - "Organ Goblin"
+      - "Derro Fetal Savant"
+      - "Mindrot Thrall"
+
   - name: "Fire, storms & sky"
     monsters:
       - "Ashmaw Tramplefire"
@@ -150,6 +191,11 @@ monster_themes:
       - "Sky Guardian"
       - "summoned arcane elemental"
       - "Tempest Rhythm Djinn"
+      - "Slag Worm"
+      - "Ala"
+      - "Firegeist"
+      - "Spark"
+
   - name: "Forests & wilds"
     monsters:
       - "Bark Lizard"
@@ -173,6 +219,30 @@ monster_themes:
       - "The Ondonti male druid/cleric"
       - "Thorn Spitter"
       - "Wild Man barbarian"
+      - "Froghemoth"
+      - "Borogon"
+      - "Gambol"
+      - "Catoblepas"
+      - "Red Sundew"
+      - "Monstrous Spiderling"
+      - "Very Young Monstrous Spider"
+      - "Young Monstrous Spider"
+      - "Juvenile Monstrous Spider"
+      - "Young Adult Monstrous Spider"
+      - "Adult Monstrous Spider"
+      - "Mature Adult Monstrous Spider"
+      - "Old Monstrous Spider"
+      - "Very Old Monstrous Spider"
+      - "Elder Monstrous Spider"
+      - "Ancient Monstrous Spider"
+      - "Archaic Monstrous Spider"
+      - "Alseid Hunter"
+      - "Feyblade Exile"
+      - "Death Butterfly Swarm"
+      - "Putrid Haunt"
+      - "Sap Demon"
+      - "Shadow Fey Courtier"
+
   - name: "Frozen wastes"
     monsters:
       - "Frostblade Sovereign"
@@ -181,6 +251,9 @@ monster_themes:
       - "Necropolar Bear"
       - "Primordial Frost Warden"
       - "Spectral Wolf"
+      - "Frost Salamander"
+      - "Grizzly Mastodon"
+
   - name: "Infernal invasions"
     monsters:
       - "Infernal Behemoth"
@@ -191,6 +264,9 @@ monster_themes:
       - "Infernal Reaver"
       - "Infernal Saboteur"
       - "Infernal Technomancer"
+      - "Gilded Devil"
+      - "Infernal Gnome Enchanter"
+
   - name: "Orc & gnoll warbands"
     monsters:
       - "Black Orc Mercs"
@@ -212,6 +288,11 @@ monster_themes:
       - "Raguch the Ogrillion"
       - "The Gray Orc male"
       - "The Half-Orc Female sorcerer leader"
+      - "Goblin"
+      - "Small Greataxe Goblin Brute"
+      - "Greatsword Goblin Brute"
+      - "Greatclub Goblin Brute"
+
   - name: "Seas & coasts"
     monsters:
       - "Anchor Butcher"
@@ -222,6 +303,18 @@ monster_themes:
       - "Sea Guardian"
       - "Worldshell Great Turtle"
       - "Worldshell Ooze Guardian"
+      - "Crystal Ooze"
+      - "Goblin Shark"
+      - "Great White Shark"
+      - "Sharkskin Goblin"
+      - "Bone Crab"
+      - "Eel Hound"
+      - "Shark-Shifting Goblin"
+      - "Minotaur Deckbreaker"
+      - "Lorelei"
+      - "Merrow"
+      - "Wharfling Swarm"
+
   - name: "Tombs & restless dead"
     monsters:
       - "animated skeleton"
@@ -246,4 +339,10 @@ monster_themes:
       - "Unwilling"
       - "Wraith"
       - "Zombie"
-
+      - "Bone Collective"
+      - "Bonepowder Ghoul"
+      - "Ghost Knight"
+      - "Imperial Ghast"
+      - "Iron Ghoul"
+      - "Lich Hound"
+      - "Necrophagus Ghoul"

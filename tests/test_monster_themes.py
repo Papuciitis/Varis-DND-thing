@@ -22,7 +22,7 @@ def fixture():
 class MonsterThemeTests(unittest.TestCase):
     def test_all_current_profiles_have_editorial_themes_across_their_source_collections(self):
         monsters = next(s for s in compile_data(ROOT / 'data') if s['key'] == 'monsters')['entries']
-        self.assertEqual(len(monsters), 215)
+        self.assertEqual(len(monsters), 301)
         self.assertEqual(len({e['details']['encounter_theme'] for e in monsters}), 15)
         by_name = {e['name']: e for e in monsters}
         for name in ('Skeleton', 'animated skeleton', 'Death Titan'):
