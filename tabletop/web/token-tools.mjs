@@ -1,4 +1,4 @@
-import {utilityReadings,healthSummary,RESOURCE_NAMES,ABILITIES} from './resources.mjs';
+import {utilityReadings,healthSummary,RESOURCE_NAMES,ABILITIES,monsterId} from './resources.mjs';
 import {LocalSources} from './sources.mjs';
 import {templateLabel} from './templates.mjs';
 import {QuickSheet} from './quick-sheet.mjs';
@@ -191,7 +191,8 @@ export class TokenTools {
     this.monsterSearch=field(monsterRow,'Search monster / summon statblocks',{id:'link-monster-search'});
     this.monsterSelect=selectField(monsterRow,'Matching statblock',[],'link-monster');
     this.monsterSourceRow=monsterRow;
-    monsterRow.append(button('Use this monster',()=>this.linkMonster()));sources.append(monsterRow);
+    this.monsterCount=el('p','field-note');this.monsterCount.id='link-monster-count';
+    monsterRow.append(this.monsterCount,button('Use this monster',()=>this.linkMonster()));sources.append(monsterRow);
     sources.append(el('p','field-note','Character resource edits sync with the character sheet in this browser. Monster links use a separate encounter instance; damage does not change the compendium template.'));
     this.linkState=el('p','field-note');this.unlinkButton=button('Unlink source',()=>{this.sources.unlink(this.sourceTokenId);this.render();});
     sources.append(this.linkState,this.unlinkButton);body.append(sources);
@@ -346,9 +347,11 @@ export class TokenTools {
     catch(error){this.notify(error.message,true);}
   }
   filterMonsters() {
-    const query=this.monsterSearch.value.toLowerCase();
-    this.monsterSelect.replaceChildren(...(this.monsters || []).filter(entry=>entry.name.toLowerCase().includes(query)).slice(0,60)
-      .map(entry=>new Option(entry.name,entry._monsterEditorKey || (entry.details?.id?'id:'+entry.details.id:JSON.stringify([entry.source || '',entry.group || '',entry.name])))));
+    const query=this.monsterSearch.value.trim().toLowerCase(),selected=this.monsterSelect.value,monsters=this.monsters || [];
+    const matches=monsters.filter(entry=>entry.name.toLowerCase().includes(query)).sort((a,b)=>a.name.localeCompare(b.name));
+    this.monsterSelect.replaceChildren(...matches.map(entry=>new Option(entry.name,monsterId(entry))));
+    if(matches.some(entry=>monsterId(entry)===selected))this.monsterSelect.value=selected;
+    this.monsterCount.textContent=matches.length+' of '+monsters.length+' statblocks'+(matches.length?'':': no matches.');
   }
   async linkCharacter() {
     if(!this.characterSelect.value)return this.notify('Create or import a character in the character sheet first.',true);
