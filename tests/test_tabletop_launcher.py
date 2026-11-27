@@ -30,6 +30,10 @@ class TabletopLauncherTests(unittest.TestCase):
             state = checkout / "tabletop/shared/state.mjs"
             state.parent.mkdir(parents=True)
             state.write_text("// startup fixture\n", encoding="ascii")
+            for name in ("tabletop/web/damage.mjs", "tabletop/web/grid.mjs", "web/character-conditions.js"):
+                target = checkout / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text("// startup fixture\n", encoding="ascii")
             data = checkout / ".tabletop-data"
             data.mkdir()
             (data / "preview.pid").write_text("9999\n", encoding="ascii")

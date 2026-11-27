@@ -65,6 +65,25 @@ Players retain manual editing of their own characters and summons.
 
 ## Implementation boundaries
 
+Conditions belong to the bottom utility tray and the token context menu. Use a
+single colored, wrapping badge per effect with a visible stack count. The standard
+picker uses the built 47-condition catalog and its original text. Custom effects
+remain separate: name, count, notes and an explicit movement-zero flag. A name such
+as Frozen never introduces a new standard rule.
+
+The GM may apply public conditions to any token without seeing private character
+attributes. Owners may edit their own sheet conditions. Synchronize these with an
+expected revision so an older sheet refresh cannot erase a newer GM effect. Store
+base speed separately from effective speed; never compound reductions on refresh.
+Enforce zero-speed player movement on the server and all client movement paths;
+retain GM repositioning for forced movement and exceptions.
+
+Stack counts are visible for all effects, but multiply mechanics only where the
+source explicitly permits it. Source-based roll restrictions and derived speed
+are automated. Timed damage, contextual targeting, duration, saves and ending
+triggers remain manual with visible source text and reminders until their timing
+and targets can be represented explicitly. Do not fill missing Fatigue 6/7 rules.
+
 Reuse the project's character calculations and YAML-built compendium. Keep
 authoritative permissions and state in the shared server model, including for
 drag-and-drop, notes and messages. Use plain text for user content.

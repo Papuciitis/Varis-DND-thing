@@ -1,5 +1,5 @@
 import {utilityReadings,healthSummary,RESOURCE_NAMES,ABILITIES,monsterId} from './resources.mjs';
-import {LocalSources} from './sources.mjs';
+import {LocalSources,loadReferences} from './sources.mjs';
 import {templateLabel} from './templates.mjs';
 import {QuickSheet} from './quick-sheet.mjs';
 import {damagePlan} from './damage.mjs';
@@ -28,8 +28,8 @@ function dialog(title,id) {
 export class TokenTools {
   constructor({getView,getSelected,getServer,command,selectToken,board,notify,onAdd}) {
     Object.assign(this,{getView,getSelected,command,selectToken,board,notify,onAdd});this.connected=false;
-    this.sources=new LocalSources({getView,getServer,notify,onChange:()=>this.refreshCharacterChoices(),onPull:(id,patch)=>command({type:'token.update',id,...patch})});
-    this.mountDock();this.mountInspector();this.mountStatblock();this.mountDamage();this.mountSidebar();this.mountRuler();this.mountTemplates();this.mountMenu();
+    this.sources=new LocalSources({getView,getServer,notify,onChange:()=>this.refreshCharacterChoices(),onPull:(id,patch)=>command({type:'token.update',id,...patch}),onConditions:(id,expectedRevision,conditions)=>command({type:'token.conditions.sync',id,expectedRevision,conditions})});
+    this.mountDock();this.mountInspector();this.mountStatblock();this.mountDamage();this.mountConditions();this.mountSidebar();this.mountRuler();this.mountTemplates();this.mountMenu();
     // Identity remains in the inspector; resources have one larger editor below the map.
     $('token-hp').closest('.field-row').hidden=true;
     for(const id of ['token-kind','token-owner','token-hidden'])$(id).closest('label').setAttribute('data-dm','');
@@ -202,7 +202,7 @@ export class TokenTools {
     this.statHP=el('div','field-row');
     this.statCurrent=field(this.statHP,'Current HP',{type:'number',id:'statblock-hp',min:0,max:999999});
     this.statMax=field(this.statHP,'Maximum HP',{type:'number',id:'statblock-max-hp',min:1,max:999999});
-    form.append(this.statHP);this.statResources=new Map();
+    form.append(this.statHP);this.statSpeed=field(form,'Movement speed (ft, blank = unknown)',{id:'statblock-speed',type:'number',min:0,max:999999});this.statResources=new Map();
     const resourceDetails=el('details');resourceDetails.append(el('summary','','Resource values'));form.append(resourceDetails);
     for(const [key,name] of Object.entries(RESOURCE_NAMES)){
       const row=el('div','field-row'),current=field(row,name,{type:'number',id:'stat-'+key,min:0,max:999999});
@@ -221,7 +221,7 @@ export class TokenTools {
       const resources={};
       for(const [key,row] of this.statResources)resources[key]={current:Number(row.current.value),max:key==='armorClass' || row.max.value===''?null:Number(row.max.value)};
       const abilities=Object.fromEntries([...this.statAbilities].filter(([,input])=>input.value!=='').map(([key,input])=>[key,Number(input.value)]));
-      const maximum=Number(this.statMax.value),patch={hp:Math.min(Number(this.statCurrent.value),maximum),maxHp:maximum,resources,
+      const maximum=Number(this.statMax.value),patch={hp:Math.min(Number(this.statCurrent.value),maximum),maxHp:maximum,speed:this.statSpeed.value===''?null:Number(this.statSpeed.value),resources,
         statblock:{...token.statblock,type:token.statblock?.type || 'custom',abilities,notes:this.statNotes.value,rules:this.statRules.value}};
       if(await this.saveStats(token.id,patch))this.notify(token.statblock?.type==='monster'?'Encounter statblock saved. The compendium is unchanged.':'Statblock saved.');
     };
@@ -272,6 +272,96 @@ export class TokenTools {
       }catch(error){this.notify(error.message,true);}
       finally{this.damageBusy=false;this.damageApply.disabled=!this.connected;}
     };
+  }
+  mountConditions() {
+    this.conditionTray=el('section','condition-tray');this.conditionTray.id='token-conditions';
+    this.conditionTray.setAttribute('aria-label','Selected token conditions');
+    const heading=el('div','condition-tray-heading');this.conditionMovement=el('span','condition-movement');
+    this.conditionButton=button('Conditions',()=>this.openConditions(this.getSelected()));
+    heading.append(this.conditionMovement,this.conditionButton);this.conditionBadges=el('div','condition-badges');this.conditionBadges.setAttribute('aria-live','polite');
+    this.conditionNotes=el('div','condition-notes');this.conditionDetails=el('details','condition-effect-details');this.conditionDetails.append(el('summary','','Effects & reminders'),this.conditionNotes);
+    this.conditionTray.append(heading,this.conditionBadges,this.conditionDetails);this.dock.append(this.conditionTray);
+    const {node,body}=dialog('Token conditions','conditions-dialog');this.conditionsDialog=node;
+    this.conditionsTitle=el('h3');body.append(this.conditionsTitle,el('p','field-note','Conditions are visible to the table. The GM can reposition a token even when its movement is blocked.'));
+    this.conditionSearch=field(body,'Find a condition',{type:'search',id:'condition-search'});this.conditionSearch.oninput=()=>this.renderConditionsDialog();
+    this.conditionList=el('div','condition-list');body.append(this.conditionList);
+    this.customCondition=el('details','custom-condition');this.customCondition.append(el('summary','','Custom effect'));
+    this.customName=field(this.customCondition,'Effect name',{id:'custom-condition-name'});this.customName.maxLength=80;
+    this.customStacks=field(this.customCondition,'Stacks',{id:'custom-condition-stacks',type:'number',min:1,max:99,value:1});
+    this.customBlocked=check(this.customCondition,'Movement becomes 0','custom-condition-blocked');
+    const label=el('label','field','Effect rules / notes');this.customNotes=el('textarea');this.customNotes.id='custom-condition-notes';this.customNotes.maxLength=600;this.customNotes.rows=3;label.append(this.customNotes);this.customCondition.append(label);
+    this.customAdd=button('Add custom effect',()=>{
+      const name=this.customName.value.trim(),rules=globalThis.CharacterConditions;
+      if(!name)return this.notify('Enter a custom effect name.',true);
+      if(rules.lookup(name))return this.notify('Choose this condition from the standard list to use its printed rules.',true);
+      if(!this.customStacks.reportValidity())return;
+      this.changeCondition({id:rules.customId(name),name,stacks:Number(this.customStacks.value),blocksMovement:this.customBlocked.checked,notes:this.customNotes.value},'add');
+    });
+    this.customCondition.append(this.customAdd,el('p','field-note','Custom effects use only the mechanics you explicitly set here. Other effects remain in their rules text.'));
+    this.clearConditions=button('Clear all conditions',()=>this.changeCondition(null,'clear-all'),'button quiet danger');body.append(this.customCondition,this.clearConditions);
+  }
+  async openConditions(id=this.getSelected()) {
+    const token=this.token(id);if(!token)return;
+    if(!Array.isArray(token.conditions))return this.notify('Reopen the tabletop launcher to enable conditions.',true);
+    this.conditionTarget=id;this.conditionSearch.value='';this.conditionsSignature='';
+    this.conditionsDialog.showModal();this.conditionList.replaceChildren(el('p','field-note','Loading condition rules.'));
+    try{
+      const {catalog}=await loadReferences();this.conditionCatalog=catalog.find(section=>section.key==='conditions')?.entries || [];
+      this.renderConditionsDialog();
+    }catch(error){this.conditionList.replaceChildren(el('p','field-note',error.message));}
+  }
+  async changeCondition(condition,action='add') {
+    const token=this.token(this.conditionTarget);
+    if(!token || this.getView()?.self.role!=='dm' || !this.connected || this.conditionBusy)return;
+    this.conditionBusy=true;this.renderConditionsDialog();
+    try{await this.command({type:'token.condition',id:token.id,condition,action});}
+    finally{this.conditionBusy=false;this.renderConditionsDialog();}
+  }
+  renderConditionsDialog() {
+    const token=this.token(this.conditionTarget),rules=globalThis.CharacterConditions;
+    if(!token){this.conditionsDialog.close();return;}if(!rules || !this.conditionCatalog)return;
+    const dm=this.getView()?.self.role==='dm',enabled=dm && this.connected && !this.conditionBusy,query=this.conditionSearch.value.trim().toLowerCase();
+    this.conditionsTitle.textContent=token.name;this.customCondition.hidden=this.clearConditions.hidden=!dm;
+    this.customAdd.disabled=!enabled;this.clearConditions.disabled=!enabled || !(token.conditions || []).length;
+    const signature=JSON.stringify([token.id,token.conditions,enabled,dm,query]);
+    if(signature===this.conditionsSignature)return;this.conditionsSignature=signature;
+    const active=new Map(token.conditions.map(row=>[row.id,row])),definitions=dm?[...rules.definitions,...token.conditions.filter(row=>row.id.startsWith('custom:'))]:token.conditions;
+    const catalog=new Map(this.conditionCatalog.map(entry=>[entry.name.toLowerCase(),entry]));
+    const rows=definitions.filter(row=>(row.name+' '+(row.sourceName || '')).toLowerCase().includes(query)).sort((a,b)=>Number(active.has(b.id))-Number(active.has(a.id)) || a.name.localeCompare(b.name));
+    this.conditionList.replaceChildren(...rows.map(definition=>{
+      const current=active.get(definition.id),row=el('article','condition-row'+(current?' condition-active':''));row.dataset.conditionId=definition.id;
+      const details=el('details','condition-rule'),summary=el('summary');summary.append(el('strong','',definition.name));
+      if(current)summary.append(el('span','condition-count','×'+current.stacks));details.append(summary);
+      const entry=catalog.get((definition.sourceName || definition.name).toLowerCase()),values=entry?.details || {};
+      const prose=[values.desc || values.description,values.special || values.spec,current?.notes].filter(Boolean).join('\n\n');
+      details.append(el('p','condition-rule-text',prose || (current?.blocksMovement?'Custom effect: movement is 0.':'Custom effect.')));
+      row.append(details);
+      if(dm){
+        const controls=el('div','condition-controls'),minus=button('−',()=>this.changeCondition({id:definition.id,name:definition.name},'remove'),'condition-step');
+        minus.setAttribute('aria-label','Remove one '+definition.name+' stack');minus.disabled=!enabled || !current;
+        const count=el('input');count.type='number';count.min=1;count.max=definition.maxStacks || 99;count.value=current?.stacks || 1;count.disabled=!enabled || !current;count.setAttribute('aria-label',definition.name+' stacks');
+        count.onchange=()=>{if(count.reportValidity())this.changeCondition({...current,stacks:Number(count.value)},'set');};
+        const plus=button('+',()=>this.changeCondition({id:definition.id,name:definition.name},'add'),'condition-step');plus.disabled=!enabled || (current?.stacks || 0)>=(definition.maxStacks || 99);plus.setAttribute('aria-label','Add one '+definition.name+' stack');
+        const clear=button('Remove',()=>this.changeCondition({id:definition.id,name:definition.name},'clear'),'text-button danger');clear.disabled=!enabled || !current;
+        controls.append(minus,count,plus,clear);row.append(controls);
+      }
+      return row;
+    }));
+    if(!rows.length)this.conditionList.append(el('p','field-note',query?'No matching conditions.':'No active conditions.'));
+  }
+  renderConditionTray(token) {
+    this.conditionTray.hidden=!token;if(!token)return;
+    const state=token.conditionState,dm=this.getView()?.self.role==='dm',rows=token.conditions || [];
+    this.conditionButton.hidden=!dm && !rows.length;this.conditionButton.textContent=dm?'Conditions':'Condition rules';
+    this.conditionButton.disabled=!Array.isArray(token.conditions);this.conditionButton.title=Array.isArray(token.conditions)?'':'Reopen the tabletop launcher to enable conditions.';
+    this.conditionMovement.textContent=state?.blocked?'Movement blocked: '+state.reason:token.canViewStats && typeof state?.speed==='number'?'Movement: '+state.speed+' ft':'Conditions';
+    this.conditionBadges.replaceChildren(...rows.map(row=>{
+      const badge=button(row.name+' ×'+row.stacks,()=>this.openConditions(token.id),'condition-badge condition-'+row.color);
+      badge.dataset.conditionId=row.id;badge.title=row.notes || 'Read '+row.name+' rules';return badge;
+    }));
+    this.conditionNotes.replaceChildren(...(state?.notes || []).map(note=>el('p','',note)));
+    this.conditionDetails.hidden=!(state?.notes || []).length;
+    if(this.conditionsDialog.open)this.renderConditionsDialog();
   }
   openDamage(id=this.getSelected()) {
     const token=this.token(id);if(this.getView()?.self.role!=='dm' || !token?.canEditStats || !this.connected)return;
@@ -379,7 +469,8 @@ export class TokenTools {
     const character=linkedCharacter?this.sources.characters().find(character=>character.id===link.id):null;
     this.linkState.textContent=link?'Linked to '+(link.kind==='character'?'a character saved in this browser.':'a monster statblock.'):token.statblock?.type==='character'?'Character snapshot. Link its sheet in this browser to keep syncing.':'No linked source.';
     this.unlinkButton.hidden=!link;
-    this.statCurrent.value=token.hp;this.statMax.value=token.maxHp;
+    this.statCurrent.value=token.hp;this.statMax.value=token.maxHp;this.statSpeed.value=token.speed ?? '';
+    this.statSpeed.disabled=!this.connected || !token.canEditStats || !!character?.build?.enabled;
     for(const [key,row] of this.statResources){
       row.current.value=token.resources[key]?.current ?? 0;row.max.value=token.resources[key]?.max ?? '';
       row.current.disabled=!this.connected || !token.canEditStats || (key==='armorClass' && !!character?.build?.enabled);
@@ -424,6 +515,7 @@ export class TokenTools {
         action('Link character',()=>this.openLinker('character',token.id));
         action('Link monster',()=>this.openLinker('monster',token.id));
       }
+      if(dm)action('Conditions',()=>this.openConditions(token.id));
       if(dm){
         action(token.hidden?'Show to players':'Hide from players',()=>this.command({type:'token.update',id:token.id,hidden:!token.hidden}));
         action('Remove token',()=>this.removeToken(token.id),true);
@@ -453,6 +545,8 @@ export class TokenTools {
   }
   render() {
     const view=this.getView(),token=this.token();this.dock.hidden=!token;
+    this.sources.observeConditions();
+    this.renderConditionTray(token);
     if(this.damageDialog?.open)this.renderDamage();
     this.sidebar.render(token,this.connected);this.tokenSettings.hidden=!token;
     this.tokenQuickActions.hidden=!token || view?.self.role!=='dm';

@@ -307,6 +307,33 @@ and [asset billing](https://developers.cloudflare.com/workers/static-assets/bill
 
 ## Checks and current limits
 
+Right-click a token and choose **Conditions**, or use its bottom utility tray.
+The GM can add, remove or set stacks of any published condition, even on a private
+player character. Conditions and their counts are public; HP and other private
+attributes stay protected. Click a badge to read its source rules. Badges wrap
+without overlapping, and repeated applications share one badge with a count.
+
+**Custom effect** provides a name, count, notes and an explicit **Movement becomes
+0** option. Custom names have no inferred mechanics. Conditions synchronize with
+linked characters in this browser and update their effective speed and supported
+sheet-roll restrictions. Version checks prevent stale sheet updates from removing
+newer table effects. Monster conditions remain encounter data rather than edits
+to the compendium template.
+
+Players cannot move a zero-speed token with dragging, arrow keys or compendium
+placement; the server also rejects such moves. The GM can reposition it for forced
+movement or a rules exception. Reduced-speed conditions do not enforce a per-turn
+movement budget. Hobbled still allows its printed standard-action movement, while
+Frostbite does not independently reduce speed.
+
+The main character sheet handles supported condition advantage/disadvantage,
+penalty dice, automatic save failures, casting restrictions, healing and damage
+adjustments. Free-form tabletop dice are still manual. Timed damage, durations,
+contextual targets, saving throws to remove or escalate conditions, and ending
+triggers remain manual. Their source text and reminders are available in the
+condition controls. Only explicitly stacked rules multiply; repeated Hobbled or
+Chilled does not repeatedly reduce speed. Fatigue 6 and 7 have no printed penalty.
+
 Build the site, then run the existing Python and JavaScript suites and:
 
 ```sh

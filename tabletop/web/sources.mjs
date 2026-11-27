@@ -10,7 +10,7 @@ const request=async path=>{
 let references;
 export function loadReferences() {
   if(!references)references=(async()=>{
-    for(const name of ['magic-categories','item-views','magic-items','character-state','character-effects','character-equipment','character-casting','character-rules']){
+    for(const name of ['magic-categories','item-views','magic-items','character-conditions','character-state','character-effects','character-equipment','character-casting','character-rules']){
       await new Promise((resolve,reject)=>{
         const script=document.createElement('script');script.src=new URL('./sheet/'+name+'.js',import.meta.url);
         script.onload=resolve;script.onerror=()=>reject(new Error('Character helpers could not load. Rebuild the preview.'));document.head.append(script);
@@ -25,8 +25,8 @@ export function loadReferences() {
 }
 
 export class LocalSources {
-  constructor({getView,getServer,onPull,notify,onChange}) {
-    Object.assign(this,{getView,getServer,onPull,notify,onChange});this.tail=Promise.resolve();
+  constructor({getView,getServer,onPull,onConditions,notify,onChange}) {
+    Object.assign(this,{getView,getServer,onPull,onConditions,notify,onChange});this.tail=Promise.resolve();
     window.addEventListener('storage',event=>{
       if(event.key==='vara.magic-items.v1')references=null;
       if([SHEETS_KEY,MONSTERS_KEY,'vara.magic-items.v1'].includes(event.key)){this.onChange?.();this.pull();}
@@ -62,6 +62,43 @@ export class LocalSources {
     const next=this.tail.then(()=>this.doPull());
     this.tail=next.catch(error=>this.notify(error.message,true));return next;
   }
+  observeConditions() {
+    const view=this.getView();if(!view)return;
+    const linked=view.scene.tokens.filter(token=>token.canEditStats && this.linkFor(token.id)?.kind==='character');
+    const signature=JSON.stringify([view.id,view.self.id,linked.map(token=>[token.id,token.conditionsRevision])]);
+    if(signature!==this.conditionSignature){this.conditionSignature=signature;if(linked.length)this.pull();}
+  }
+  async syncConditions(token,source) {
+    if(!Array.isArray(token.conditions) || !Number.isInteger(token.conditionsRevision))return source;
+    const conditions=globalThis.CharacterConditions,key=this.key(token.id),links=read(LINKS_KEY,{}),link=links[key];
+    if(!link || link.kind!=='character')return null;
+    const own=conditions.forCharacter(source),ownSignature=conditions.signature(own);
+    const initial=link.conditionsRevision===undefined && token.conditionsRevision===0 && !token.conditions.length;
+    const edited=link.conditionsRevision===token.conditionsRevision && ownSignature!==link.conditionsSignature;
+    let sent=false;
+    if((initial && own.length || edited) && this.onConditions){
+      const next=await this.onConditions(token.id,token.conditionsRevision,own);if(!next)return null;
+      token=next.scene.tokens.find(row=>row.id===token.id);if(!token)return null;sent=true;
+    }
+    const current=this.getView(),latestToken=current?.scene.tokens.find(row=>row.id===token.id);
+    if(!current || this.key(token.id)!==key || !latestToken?.canEditStats)return null;
+    if(latestToken.conditionsRevision>token.conditionsRevision)token=latestToken;
+    const saved=read(SHEETS_KEY,null),index=saved?.characters?.findIndex(row=>row.id===source.id);
+    const currentLinks=read(LINKS_KEY,{}),currentLink=currentLinks[key];
+    if(index===undefined || index<0 || currentLink?.kind!=='character' || currentLink.id!==source.id)return null;
+    let latest=saved.characters[index];
+    // A second local edit made during the request is sent on the queued pull.
+    if(!sent || conditions.signature(conditions.forCharacter(latest))===ownSignature){
+      const updated=conditions.applyToCharacter(latest,token.conditions);
+      if(JSON.stringify(updated)!==JSON.stringify(latest)){
+        updated.updatedAt=new Date().toISOString();saved.characters[index]=updated;
+        localStorage.setItem(SHEETS_KEY,JSON.stringify(saved));latest=updated;
+      }
+    }
+    currentLinks[key]={...currentLink,conditionsRevision:token.conditionsRevision,conditionsSignature:conditions.signature(token.conditions)};
+    localStorage.setItem(LINKS_KEY,JSON.stringify(currentLinks));
+    return latest;
+  }
   async doPull() {
     const initial=this.getView();if(!initial)return;
     const linked=initial.scene.tokens.filter(token=>token.canEditStats && this.linkFor(token.id));
@@ -74,8 +111,9 @@ export class LocalSources {
       if(!token?.canEditStats || !link)continue;
       let patch,name;
       if(link.kind==='character'){
-        const source=this.characters().find(character=>character.id===link.id);
+        let source=this.characters().find(character=>character.id===link.id);
         if(!source){this.notify('A linked character is missing from this browser. Relink it in the token statblock.',true);continue;}
+        source=await this.syncConditions(token,source);if(!source)continue;
         const normalized=rules.reconcile(source);
         patch=characterStats(normalized,rules.derive(normalized),catalog);name=source.name || token.name;
       }else{

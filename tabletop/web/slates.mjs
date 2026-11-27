@@ -172,6 +172,7 @@ export class Slates {
       if(source.kind==='token'){
         const token=scene.tokens.find(token=>token.id===source.id);
         if(!token)throw new Error('This token is no longer in the scene.');
+        if(view.self.role!=='dm' && token.conditionState?.blocked)throw new Error('Cannot move: '+token.conditionState.reason+'.');
         const {x,y}=snapToken(scene,token,position);
         if(await this.command({type:'token.move',id:source.id,x,y}))this.selectToken(source.id);return;
       }

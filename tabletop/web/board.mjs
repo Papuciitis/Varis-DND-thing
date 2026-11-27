@@ -19,8 +19,9 @@ export class MapBoard {
     canvas.addEventListener('keydown',e=>{
       const vectors={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]};
       const t=this.view?.scene.tokens.find(t=>t.id===this.selected);
-      if (!vectors[e.key] || !t || !this.canMove(t))return;
-      e.preventDefault();const [x,y]=vectors[e.key],s=this.view.scene,step=tokenGridStep(s,t);
+      if (!vectors[e.key] || !t)return;
+      e.preventDefault();if(!this.canMove(t)){if(t.ownerId===this.view.self.id && t.conditionState?.blocked)this.onError('Cannot move: '+t.conditionState.reason+'.');return;}
+      const [x,y]=vectors[e.key],s=this.view.scene,step=tokenGridStep(s,t);
       this.onMove(t.id,Math.max(0,Math.min(s.width-1,t.x+x*step)),Math.max(0,Math.min(s.height-1,t.y+y*step)));
     });
   }
@@ -72,7 +73,7 @@ export class MapBoard {
     const preview=!!this.templatePreview && templateContains(this.templatePreview,point,this.view.scene);
     this.onContext?.({tokenId:token?.id || null,templateIds,preview,x:e.clientX,y:e.clientY,point});this.draw();
   }
-  canMove(t) {return this.enabled && (this.view.self.role==='dm' || t.ownerId===this.view.self.id);}
+  canMove(t) {return this.enabled && (this.view.self.role==='dm' || t.ownerId===this.view.self.id && !t.conditionState?.blocked);}
   hit(p) {
     const tokens=[...this.view.scene.tokens].reverse();
     const body=tokens.find(token=>Math.hypot(token.x-p.x,token.y-p.y)<tokenRadius(this.view.scene,token)*1.3);
@@ -105,6 +106,7 @@ export class MapBoard {
     if(token) {
       this.selected=token.id;this.onSelect(token.id);
       if(this.canMove(token))this.drag={kind:'token',id:token.id,x:token.x,y:token.y,offsetX:p.x-token.x,offsetY:p.y-token.y};
+      else if(token.ownerId===this.view.self.id && token.conditionState?.blocked)this.onError('Cannot move: '+token.conditionState.reason+'.');
       this.draw();return;
     }
     this.drag={kind:'pan',x:e.clientX,y:e.clientY,cx:this.camera.x,cy:this.camera.y};

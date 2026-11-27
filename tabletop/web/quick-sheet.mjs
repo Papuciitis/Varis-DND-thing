@@ -36,7 +36,7 @@ export class QuickSheet {
     this.status.textContent=!visible?'Private character - the player can share access':
       link?(link.kind==='character'?'Character linked - updates from your saved sheet':'Monster linked - encounter stats'):
       token.statblock?'Saved statblock - link a source to keep it updated':'No sheet linked. Choose a character or monster.';
-    const signature=JSON.stringify([token.id,token.name,visible,token.hp,token.maxHp,token.resources,token.statblock,link]);
+    const signature=JSON.stringify([token.id,token.name,visible,token.hp,token.maxHp,token.resources,token.statblock,token.conditions,token.conditionState,link]);
     if(signature===this.signature)return;
     const changed=this.token?.id!==token.id;this.token=token;this.signature=signature;
     if(changed)this.search.value='';
@@ -51,10 +51,14 @@ export class QuickSheet {
       heading.append(el('strong','',attack.name),el('span','sheet-attack-bonus',(attack.bonus>=0?'+':'')+attack.bonus+' to hit'));
       const values=el('div','sheet-attack-values');values.append(el('span','',attack.damage || 'Damage not set'));
       if(attack.blockDC!==null && attack.blockDC!==undefined)values.append(el('span','sheet-attack-dc','Block DC '+attack.blockDC));
-      card.append(heading,values);if(attack.notes)card.append(el('p','sheet-attack-notes',attack.notes));return card;
+      card.append(heading,values);
+      if(token.conditionState?.flags.noActions)card.append(el('p','condition-warning','Cannot take attack actions.'));
+      else if(token.conditionState?.flags.attackDisadvantage)card.append(el('p','condition-warning','Attacks have disadvantage.'));
+      if(attack.notes)card.append(el('p','sheet-attack-notes',attack.notes));return card;
     }));
     if(!this.attackList.childElementCount)this.attackList.append(el('p','field-note','Add attacks or equip a weapon in your character sheet to see them here.'));
     const stats=[['HP',token.hp+' / '+token.maxHp],['AC',token.resources.armorClass?.current ?? '-'],['Block',token.resources.block?.current ?? 0]];
+    if(typeof token.conditionState?.speed==='number')stats.push(['Speed',token.conditionState.speed+' ft']);
     this.stats.replaceChildren(...stats.map(([label,value])=>{const item=el('div');item.append(el('span','',label),el('strong','',value));return item;}));
     this.abilities.replaceChildren(...abilities.map(key=>{
       const score=token.statblock?.abilities?.[key],item=el('div','sheet-ability'),modifier=score===undefined?null:Math.floor((score-10)/2);

@@ -312,6 +312,9 @@
     const row=character.spells.find(item=>item.id===rowId);
     if(!row) throw new Error('This spell is no longer on the character sheet.');
     const entry=catalog.filter(section=>section.key==='spells').flatMap(section=>section.entries || []).find(item=>spellId(item)===row.entryId);
+    const conditions=globalThis.CharacterConditions;
+    const restriction=conditions?.spellRestriction(conditions.forCharacter(character),entry?.details,derived?.abilities || character.abilities);
+    if(restriction) throw new Error(restriction);
     const option=castOptions(character,derived,entry,row).find(item=>item.id===optionId);
     if(!option || !option.available) throw new Error('This spell or casting level is unavailable. Check preparation and remaining slots.');
     let result=clone(character);

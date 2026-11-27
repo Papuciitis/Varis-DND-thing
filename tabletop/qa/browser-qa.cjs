@@ -236,6 +236,76 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.locator('#sheet-attacks').getByText('+9 to hit',{exact:true}).waitFor();
     await dm.locator('#selected-position').filter({hasText:'Tiny (0.5 squares)'}).waitFor();
     assert.equal((await service.read()).scene.tokens.find(t=>t.id===token.id).size,.5);
+    // The GM can apply public conditions without access to a player's private
+    // sheet. Stacks sync in both directions and movement is checked by the server.
+    await dm.locator('#token-conditions').getByRole('button',{name:'Conditions',exact:true}).click();
+    const conditionRow=id=>dm.locator('.condition-row[data-condition-id="'+id+'"]');
+    await dm.locator('#condition-search').fill('Snared');
+    await conditionRow('snared').getByRole('button',{name:'Add one Snared stack',exact:true}).click();
+    await player.locator('#token-conditions [data-condition-id="snared"]').waitFor();
+    await sheet.locator('.condition-chip').filter({hasText:'Snared'}).waitFor();
+    await sheet.locator('[data-combat-value="speed"]').filter({hasText:'0 ft'}).waitFor();
+    const snaredPosition=(await service.read()).scene.tokens.find(t=>t.id===token.id);
+    await player.locator('#map-canvas').focus();await player.locator('#map-canvas').press('ArrowRight');
+    await player.locator('#toast').filter({hasText:/Snared|movement.*blocked/i}).waitFor();
+    assert.equal((await service.read()).scene.tokens.find(t=>t.id===token.id).x,snaredPosition.x);
+    await dm.locator('#conditions-dialog .dialog-heading').getByRole('button',{name:'Close',exact:true}).click();
+    await dm.locator('#map-canvas').focus();await dm.locator('#map-canvas').press('ArrowRight');
+    await dm.locator('#save-status').filter({hasText:'All changes saved'}).waitFor();
+    assert.equal((await service.read()).scene.tokens.find(t=>t.id===token.id).x,snaredPosition.x+25);
+    await dm.locator('#token-conditions').getByRole('button',{name:'Conditions',exact:true}).click();
+    await dm.locator('#condition-search').fill('Bleeding');
+    const addBleeding=conditionRow('bleeding').getByRole('button',{name:'Add one Bleeding stack',exact:true});
+    await addBleeding.click();await conditionRow('bleeding').getByLabel('Bleeding stacks',{exact:true}).waitFor();
+    await dm.waitForFunction(()=>document.querySelector('.condition-row[data-condition-id="bleeding"] input')?.value==='1');
+    await addBleeding.click();
+    await player.locator('#token-conditions [data-condition-id="bleeding"]').filter({hasText:'×2'}).waitFor();
+    await sheet.locator('.condition-chip').filter({hasText:'Bleeding ×2'}).waitFor();
+    assert.equal(await player.locator('#token-conditions [data-condition-id="bleeding"]').count(),1);
+    const badgeRects=await player.locator('#token-conditions .condition-badge').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};}));
+    for(let i=0;i<badgeRects.length;i++)for(let j=i+1;j<badgeRects.length;j++){
+      const a=badgeRects[i],b=badgeRects[j];assert(a.x+a.w<=b.x || b.x+b.w<=a.x || a.y+a.h<=b.y || b.y+b.h<=a.y,'Condition badges must not overlap.');
+    }
+    await sheet.getByRole('button',{name:'Add one Bleeding stack',exact:true}).click();
+    await dm.waitForFunction(()=>document.querySelector('.condition-row[data-condition-id="bleeding"] input')?.value==='3');
+    await conditionRow('bleeding').getByRole('button',{name:'Remove one Bleeding stack',exact:true}).click();
+    await sheet.locator('.condition-chip').filter({hasText:'Bleeding ×2'}).waitFor();
+    await dm.locator('#condition-search').fill('Snared');
+    await conditionRow('snared').getByRole('button',{name:'Remove',exact:true}).click();
+    await sheet.locator('[data-combat-value="speed"]').filter({hasText:'30 ft'}).waitFor();
+    await player.locator('#token-conditions [data-condition-id="snared"]').waitFor({state:'hidden'});
+    await dm.locator('#condition-search').fill('Frostbite');
+    await conditionRow('frostbite').getByRole('button',{name:'Add one Frostbite stack',exact:true}).click();
+    await sheet.locator('.condition-chip').filter({hasText:'Frostbite'}).waitFor();
+    assert.equal((await service.view([...sockets].find(s=>s.actorId===token.ownerId).key)).scene.tokens.find(t=>t.id===token.id).conditionState.blocked,false);
+    await dm.locator('#condition-search').fill('Stunned');
+    await conditionRow('stunned').getByRole('button',{name:'Add one Stunned stack',exact:true}).click();
+    await sheet.locator('.condition-chip').filter({hasText:'Stunned'}).waitFor();
+    await sheet.getByText('Saving throws',{exact:true}).click();
+    await sheet.getByRole('button',{name:'Roll Strength saving throw',exact:true}).click();
+    await sheet.getByText('Strength saving throw automatically fails because of the active conditions.',{exact:true}).waitFor();
+    await dm.locator('.custom-condition > summary').click();
+    await dm.locator('#custom-condition-name').fill('Frozen');
+    await dm.locator('#custom-condition-blocked').check();
+    await dm.locator('#custom-condition-notes').fill('A custom effect for this test only.');
+    await dm.getByRole('button',{name:'Add custom effect',exact:true}).click();
+    await sheet.locator('.condition-chip').filter({hasText:'Frozen'}).waitFor();
+    await sheet.locator('[data-combat-value="speed"]').filter({hasText:'0 ft'}).waitFor();
+    await dm.screenshot({path:path.join(output,'tabletop-conditions.png')});
+    await player.setViewportSize({width:390,height:1000});
+    await player.getByRole('button',{name:'Close table controls',exact:true}).click();
+    await player.locator('#token-conditions').scrollIntoViewIfNeeded();
+    const mobileBadges=await player.locator('#token-conditions .condition-badge').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};}));
+    for(const rect of mobileBadges)assert(rect.x>=0 && rect.x+rect.w<=390,'Condition badges must fit a narrow screen.');
+    for(let i=0;i<mobileBadges.length;i++)for(let j=i+1;j<mobileBadges.length;j++){
+      const a=mobileBadges[i],b=mobileBadges[j];assert(a.x+a.w<=b.x || b.x+b.w<=a.x || a.y+a.h<=b.y || b.y+b.h<=a.y,'Wrapped condition badges must not overlap.');
+    }
+    await player.screenshot({path:path.join(output,'tabletop-conditions-mobile.png')});
+    await player.setViewportSize({width:1440,height:1000});
+    assert(!JSON.stringify(await service.view(dmAccess)).includes('PRIVATE CHARACTER NOTE'));
+    await dm.getByRole('button',{name:'Clear all conditions',exact:true}).click();
+    await sheet.waitForFunction(()=>document.querySelectorAll('.condition-chip').length===0 && document.querySelector('[data-combat-value="speed"]')?.textContent==='30 ft');
+    await dm.locator('#conditions-dialog .dialog-heading').getByRole('button',{name:'Close',exact:true}).click();
     await sheet.close();
 
     // Ruler unit options and spell shapes work in the actual Canvas interface.
@@ -544,9 +614,10 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       campaignTabs:true,dataSlateTabs:true,largerLeftLog:true,campaignChat:true,privateAndSharedNotes:true,
       diceAverageMonsterHP:true,editableMonsterInstances:true,zeroCapacityExtraHealth:true,gmAutomaticDamage:true,monsterOverridesSurviveRefresh:true,
       tinyQuarterPlacement:true,tinyKeyboardMovement:true,tinyBodySelection:true,
+      conditionStacks:true,conditionBadgeLayout:true,customEffects:true,liveConditionSheets:true,privateSheetConditionAccess:true,conditionSaveFailures:true,zeroSpeedPlayerLock:true,gmForcedMovement:true,
       visibleTokenRemoval:true,contextTokenRemoval:true,keyboardTokenRemoval:true,tokenRemovalKeepsSource:true,
       monsterCompendiumDrag:true,characterCompendiumDrag:true,independentMonsterInstances:true,playerCompendiumPrivacy:true,combinedHealth:true,utilityAbilityScores:true,
-      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:13,pageErrors:errors};
+      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:15,pageErrors:errors};
     await fsp.writeFile(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
   }catch(error){
     console.error(error);

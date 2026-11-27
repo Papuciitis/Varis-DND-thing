@@ -1,5 +1,15 @@
 # Patch notes
 
+## 2026-11-27 - Tabletop conditions and custom effects
+
+- The GM can open Conditions from a token's right-click menu or its bottom utility tray, including for private player characters. The picker contains all 47 published conditions with their full rules.
+- Conditions appear as wrapping, colored badges with one badge per condition and a visible stack count. Add, subtract, set or remove stacks, or clear all effects.
+- Custom effects have a separate name, notes, stack count and explicit movement-zero option. Names alone do not invent rule effects.
+- Linked player sheets synchronize conditions in both directions. Version checks protect newer GM changes from stale sheet updates; private attributes remain private.
+- Effective speed updates immediately. Players cannot drag, place or use arrow keys to move tokens whose speed is zero; the GM can still reposition them. Hobbled permits reduced movement and Frostbite does not independently stop movement.
+- Character-sheet rolls apply supported advantage, disadvantage, save failures and printed penalty dice. Madness removes proficiency, Diseased reduces healing, Soaked affects applicable fire damage, and Ethereal grants physical immunity. Casting restrictions are checked before spending a slot.
+- Only explicitly stackable mechanics scale with their count. Timed damage, saves, condition-ending triggers and contextual targeting remain manual, with rules and reminders visible beside the conditions. Missing Fatigue penalties at levels 6 and 7 still require a table ruling.
+
 ## 2026-11-27 — Character creation and spellcasting
 
 ### Character creation

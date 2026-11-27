@@ -375,13 +375,14 @@
   function spellUseControls(item, index) {
     const casting=globalThis.CharacterCasting, entry=entries.get(item.entryId), d=values();
     if(!entry) return '<p class="section-note">Custom spell: record its costs with your manual trackers.</p>';
-    const choices=casting.castOptions(character,d,entry,item),key=character.id+':'+item.id;
+    const restriction=globalThis.CharacterConditions?.spellRestriction(conditionRows(),entry.details,d.abilities) || "";
+    const choices=casting.castOptions(character,d,entry,item).map(choice=>({...choice,available:choice.available && !restriction})),key=character.id+':'+item.id;
     const selected=choices.find(choice=>choice.id===spellCastChoices.get(key)) || choices.find(choice=>choice.available) || choices[0];
     const info=casting.spellInfo(entry,d.casting?.profile?.tradition);
     const modifier=State.abilityModifier(d.abilities[d.castingAbility] ?? 10);
     const attackBonus=character.combat.spellAttackOverride ?? proficiency()+modifier+character.combat.spellAttackBonus;
     const saveDC=character.combat.spellSaveOverride ?? 8+proficiency()+(d.cls?.name==='Wizard'?Math.max(0,modifier):modifier)+character.combat.spellSaveBonus;
-    const spellCheck=info.simpleAttack?`<p class="list-card-meta">${/spell attack/i.test(entry.details.effect)?'Spell attack '+signed(attackBonus):/save/i.test(entry.details.effect)?'Spell save DC '+saveDC:''}</p>`:'';
+    const spellCheck=(restriction?'<p class="section-note condition-warning">'+escape(restriction)+'</p>':'')+(info.simpleAttack?`<p class="list-card-meta">${/spell attack/i.test(entry.details.effect)?'Spell attack '+signed(attackBonus):/save/i.test(entry.details.effect)?'Spell save DC '+saveDC:''}</p>`:'');
     const quick=item.onBar ?? info.simpleAttack;
     const emptyReason=d.cls?.name==='Wizard' && !info.cantrip && !item.prepared?'Prepare this spell before casting.':info.hex && d.casting?.profile?.tradition!=='any'?'Apply this hex’s listed costs using its feature or manual trackers.':'No compatible casting resource is configured.';
     return `<div class="spell-use" data-spell-card="${escape(item.id)}">${spellCheck}<div class="spell-cast-controls">${choices.length?`<label class="field"><span>Casting level / resource</span><select data-spell-option data-spell-id="${escape(item.id)}">${choices.map(choice=>`<option value="${escape(choice.id)}" ${choice.id===selected?.id?'selected':''} ${choice.available?'':'disabled'}>${escape(choice.label)}</option>`).join('')}</select></label>${button(info.cantrip?'Cast cantrip':'Cast spell','cast-known-spell',`data-spell-id="${escape(item.id)}" ${selected?.available?'':'disabled'}`,'button-primary')}`:`<p class="section-note">${escape(emptyReason)}</p>`}</div><label class="check-label spell-pin"><input type="checkbox" data-path="spells.${index}.onBar" ${quick?'checked':''}>Quick action on main sheet</label></div>`;
@@ -419,7 +420,7 @@
     const rest = `<div class="form-grid">${field("Rest die size", "restDice.die", "text", {placeholder: "d6"})}${numberField("Rest dice available", "restDice.current")}${d.enabled?numberField("Base rest dice maximum", "build.health.baseRestDice"):numberField("Rest dice maximum", "restDice.max")}</div><div class="entry-actions">${button("Spend 1 rest die", "resource", 'data-key="restDice" data-delta="-1"')}${button("Recover 1 rest die", "resource", 'data-key="restDice" data-delta="1"')}</div>`;
     const marks = Array.from({length:d.deathSaveSlots+1},(_,n)=>[n,String(n)]);
     const deathSaves = `<div class="form-grid">${selectField("Successes", "deathSaves.successes", marks, "", true)}${selectField("Failures", "deathSaves.failures", marks, "", true)}</div>`;
-    const conditionChips = character.conditions.length ? `<div class="condition-chips">${character.conditions.map((condition, index) => `<span class="pill">${escape(condition)}${button("×", "remove-condition", `data-index="${index}" aria-label="Remove ${escape(condition)}"`, "button-quiet button-small")}</span>`).join("")}</div>` : `<p class="section-note">No conditions recorded.</p>`;
+    const conditionChips = renderConditions();
     const defence = blocks + (d.enabled?`<p class="block-check">Block check <strong>${signed(d.blockCheck)}</strong><span>${escape(d.gear.blockCheckAbility?.toUpperCase())}</span></p><div class="entry-actions combat-actions">${button("Start combat","start-combat",'aria-label="Roll initiative and start combat"')}${button("End combat","end-combat")}</div>`:"") + `<details class="quiet-disclosure rules-hint" data-expanded="recovery" ${expanded.has("recovery")?'open':''}><summary>Rest & recovery</summary>${d.enabled?`<div class="entry-actions rest-actions">${button("Short rest","short-rest")}${button("Long rest","long-rest")}</div>`:''}<p class="section-note">Each Block attempt is spent even if its defence check fails. Temp Block is spent before regular Block; keep the higher grant and track its expiry. Adjust Arcane Health according to the effect's rules.</p>${d.enabled?`<p class="section-note">${escape(d.hpExplanation)}. Rests recover Block and Fatigue; apply other recovery from the relevant feature.</p>${numberField("Fatigue", "build.health.fatigue", {max:10})}`:""}</details>`;
     const secondary = renderQuickSpells() + `<div class="overview-secondary"><details class="panel disclosure" data-expanded="death-saves" ${expanded.has("death-saves")?'open':''}><summary>Death saves</summary>${deathSaves}</details><details class="panel disclosure" data-expanded="rest-dice" ${expanded.has("rest-dice")?'open':''}><summary>Rest dice</summary>${rest}</details></div>`;
     byId("pane-sheet").innerHTML = `<div class="sheet-layout"><div class="main-panel">${combatStrip}<div class="vital-layout">${panel("Health", resources + quickHealth + wards, "", "health-panel")}${panel("Block & defence", defence, button("Adjust", "combat", "", "button-quiet button-small"), "defence-panel")}</div>${panel("Attacks & actions", `<div class="list" id="derived-attacks">${derivedAttacks()}</div>` + renderAttacks() + `<details class="quiet-disclosure"><summary>Known manoeuvres</summary>${textArea("Known manoeuvres", "maneuvers")}</details>`, character.attacks.length ? button("Add attack", "add-attack", "", "button-small") : "", "attacks-panel")}${secondary}${panel("Class resources", renderCustomResources(), button("Add resource", "add-resource", "", "button-small"))}${panel("Conditions", conditionChips, button("Add condition", "condition", "", "button-small"))}</div>${abilityPanel()}</div>`;
@@ -718,7 +719,74 @@
     }
   }
 
+  function conditionRows() {
+    return globalThis.CharacterConditions?.forCharacter(character) || [];
+  }
+  function renderConditions() {
+    const rules=globalThis.CharacterConditions;
+    if(!rules)return character.conditions.map((name,index)=>'<span class="pill">'+escape(name)+button("x","remove-condition",'data-index="'+index+'"',"button-quiet button-small")+'</span>').join("");
+    const rows=conditionRows(),state=values().conditionState;
+    const badges=rows.map(row=>'<div class="condition-chip condition-'+row.color+'">'+button(row.name+' ×'+row.stacks,"condition-rules",'data-condition-id="'+escape(row.id)+'"',"condition-label")+
+      button("+","increase-condition",'data-condition-id="'+escape(row.id)+'" aria-label="Add one '+escape(row.name)+' stack"',"condition-step")+
+      button("−","decrease-condition",'data-condition-id="'+escape(row.id)+'" aria-label="Remove one '+escape(row.name)+' stack"',"condition-step")+
+      button("×","remove-condition-total",'data-condition-id="'+escape(row.id)+'" aria-label="Remove '+escape(row.name)+'"',"condition-step")+'</div>').join("");
+    const notes=(state?.notes || []).map(note=>'<p>'+escape(note)+'</p>').join("");
+    return '<div class="condition-badges">'+(badges || '<p class="section-note">No conditions recorded.</p>')+'</div><div class="condition-sheet-notes">'+notes+'</div>';
+  }
+  function conditionDialog() {
+    return withSections(["conditions"],()=>{
+      const options=catalog.filter(entry=>entry.section==="conditions").map(entry=>'<option value="'+escape(entry.name)+'"></option>').join("");
+      const fields='<label class="field"><span>Condition or custom effect</span><input id="condition-name" list="condition-options" maxlength="80" placeholder="Choose a condition or name a custom effect"></label><datalist id="condition-options">'+options+'</datalist>'+
+        '<label class="field"><span>Stacks</span><input id="condition-stacks" type="number" min="1" max="99" value="1"></label>'+
+        '<details id="condition-custom"><summary>Custom effect mechanics</summary><label class="check-label"><input id="condition-blocked" type="checkbox">Movement becomes 0</label><label class="field"><span>Custom effect rules</span><textarea id="condition-notes" maxlength="600" rows="3"></textarea></label></details>';
+      openDialog("Add condition",fields,button("Add condition","save-condition","","button-primary"));
+      byId("condition-name").oninput=()=>{byId("condition-custom").hidden=!!globalThis.CharacterConditions?.lookup(byId("condition-name").value);};
+    },true);
+  }
+  function saveCondition() {
+    const name=byId("condition-name").value.trim(),rules=globalThis.CharacterConditions;if(!name)return notify("Enter a condition name.");
+    try{
+      if(!rules){if(!character.conditions.includes(name))character.conditions.push(name);}
+      else {
+        const count=Number(byId("condition-stacks").value);if(!byId("condition-stacks").reportValidity())return;
+        const row=rules.normalize([name+(count>1?" ×"+count:"")],{strict:true})[0];
+        if(row.id.startsWith("custom:")){row.blocksMovement=byId("condition-blocked").checked;row.notes=byId("condition-notes").value;}
+        character=rules.applyToCharacter(character,rules.merge(conditionRows(),[row]));
+      }
+      closeDialog();commit();render();
+    }catch(error){notify(error.message);}
+  }
+  function changeCondition(id,delta,clear=false) {
+    const rules=globalThis.CharacterConditions,rows=conditionRows(),row=rows.find(row=>row.id===id);if(!row)return;
+    if(!clear && delta>0 && row.stacks>=(rules.lookup(id)?.maxStacks || 99))return notify("The printed maximum is reached. Resolve the condition's additional-application rule.");
+    row.stacks=clear?0:row.stacks+delta;character=rules.applyToCharacter(character,rows.filter(row=>row.stacks>0));commit();render();
+  }
+  function readCondition(id) {
+    const row=conditionRows().find(row=>row.id===id);if(!row)return;
+    return withSections(["conditions"],()=>{
+      const entry=catalog.find(entry=>entry.section==="conditions" && globalThis.CharacterConditions.lookup(entry.name)?.id===id),details=entry?.details || {};
+      const prose=[details.desc || details.description,details.special || details.spec,row.notes,row.blocksMovement?"Custom effect: movement becomes 0.":""].filter(Boolean).join("\n\n");
+      openDialog(row.name+' ×'+row.stacks,'<p class="preserve-lines">'+escape(prose || "Custom effect.")+'</p>',button("Done","done","","button-primary"));
+    },true);
+  }
   function roll(label, bonus) {
+    const rules=globalThis.CharacterConditions,abilityNames={str:"Strength",dex:"Dexterity",con:"Constitution",int:"Intelligence",wis:"Wisdom",cha:"Charisma"};
+    const skill=Object.keys(globalThis.CharacterRules.skillAbilities).find(name=>name.toLowerCase()===label.toLowerCase());
+    const ability=skill?globalThis.CharacterRules.skillAbilities[skill]:Object.keys(abilityNames).find(key=>label.toLowerCase().startsWith(abilityNames[key].toLowerCase()) || label.toLowerCase().startsWith(key+" "));
+    const kind=/attack/i.test(label)?"attack":/block/i.test(label)?"block":/sav(?:e|ing)/i.test(label)?"save":/^initiative$/i.test(label)?"initiative":skill?"skill":"check";
+    const plan=rules?.rollPolicy(conditionRows(),{kind,ability,skill},values().abilities);
+    if(plan?.blocked)return notify(plan.blocked);
+    if(plan?.automaticFailure)return notify(label+" automatically fails because of the active conditions.");
+    const die=sides=>{
+      const random=new Uint32Array(1),cutoff=Math.floor(4294967296/sides)*sides;
+      if(globalThis.crypto?.getRandomValues){do{crypto.getRandomValues(random);}while(random[0]>=cutoff);return random[0]%sides+1;}
+      return Math.floor(Math.random()*sides)+1;
+    };
+    if(plan){
+      const faces=plan.mode==="normal"?[die(20)]:[die(20),die(20)],face=plan.mode==="advantage"?Math.max(...faces):Math.min(...faces);
+      const penalties=plan.penalties.map(row=>({...row,amount:row.flat || die(row.sides)})),penalty=penalties.reduce((sum,row)=>sum+row.amount,0);
+      notify(label+" — d20 "+faces.join(", ")+(plan.mode==="normal"?"":" ("+plan.mode+")")+" "+(bonus<0?"− ":"+ ")+Math.abs(bonus)+penalties.map(row=>" − "+row.amount+" "+row.label).join("")+" = "+(face+bonus-penalty)+(plan.unresolvedFatigue?" · Fatigue level 6/7 requires a GM ruling.":""));return;
+    }
     const random = new Uint32Array(1);
     let face;
     if (globalThis.crypto?.getRandomValues) {
@@ -745,6 +813,7 @@
         const optionId=target.closest('[data-spell-card]').querySelector('[data-spell-option]').value;
         spellCastChoices.set(character.id+':'+target.dataset.spellId,optionId);
         const result=globalThis.CharacterCasting.castSpell(character,values(),Rules.catalog,target.dataset.spellId,optionId);
+        const restriction=globalThis.CharacterConditions?.spellRestriction(conditionRows(),result.entry.details,values().abilities);if(restriction)throw new Error(restriction);
         character=result.character;commit();render();
         const label=`${result.name}${result.level?' — level '+result.level:' — cantrip'}`;
         const castingAbility=values().castingAbility;
@@ -806,9 +875,13 @@
     "add-item"(target) { addItem(target.dataset.list); },
     "edit-item"(target) { itemEditor(target.dataset.list, Number(target.dataset.index)); },
     remove(target) { character[target.dataset.list].splice(Number(target.dataset.index), 1); if (target.dataset.close) closeDialog(); commit(); render(); },
-    condition() { return withSections(["conditions"], () => openDialog("Add condition", `<label class="field"><span>Condition or temporary effect</span><input id="condition-name" type="text" list="condition-options" maxlength="120" placeholder="Choose or type a condition"></label><datalist id="condition-options">${catalog.filter(entry => entry.section === "conditions").map(entry => `<option value="${escape(entry.name)}"></option>`).join("")}</datalist>`, button("Add condition", "save-condition", "", "button-primary")), true); },
-    "save-condition"() { const name = byId("condition-name").value.trim(); if (!name) return notify("Enter a condition name."); if (!character.conditions.includes(name)) character.conditions.push(name); closeDialog(); commit(); render(); },
+    condition() { return conditionDialog(); },
+    "save-condition"() { return saveCondition(); },
     "remove-condition"(target) { character.conditions.splice(Number(target.dataset.index), 1); commit(); render(); },
+    "condition-rules"(target) { return readCondition(target.dataset.conditionId); },
+    "increase-condition"(target) { changeCondition(target.dataset.conditionId,1); },
+    "decrease-condition"(target) { changeCondition(target.dataset.conditionId,-1); },
+    "remove-condition-total"(target) { changeCondition(target.dataset.conditionId,0,true); },
     catalog(target) { const kind = target.dataset.kind;catalogSpellAll=false; return withSections(kind === "spells" ? ["spells"] : kind === "inventory" ? ["items", ...((globalThis.DND_CATALOG || []).some(section=>section.key==="magic-items")?["magic-items"]:[])] : ["classes", "feats", "races", "backgrounds"], () => openCatalog(kind), true); },
     "catalog-more"() { catalogLimit += 30; renderCatalogResults(); },
     "catalog-read"(target) { readRule(target.dataset.entryId, true); },
@@ -863,6 +936,11 @@
     const previous = getPath(path);
     if (previous === value || (previous == null && value === 0 && path.startsWith("training.skillBonuses."))) return;
     setPath(path, value);
+    if(path==='build.health.fatigue' && globalThis.CharacterConditions){
+      const rules=globalThis.CharacterConditions,rows=rules.forCharacter(character).filter(row=>row.id!=='fatigue');
+      if(value>0)rows.push({id:'fatigue',stacks:value});
+      character=rules.applyToCharacter(character,rows);computed=null;
+    }
     if(character.build?.enabled && /^inventory\.\d+\.equipped$/.test(path))character=globalThis.CharacterEquipment.equip(character,Number(path.split('.')[1]),value,Rules.catalog);
     if(character.build?.enabled){character=Rules.reconcile(character);computed=null;}
     scheduleSave();
@@ -896,7 +974,7 @@
     if (target.id === "character-picker") { selectCharacter(target.value); return; }
     if (target.dataset.path) {
       applyInput(target, true);
-      if(target.dataset.path.startsWith('inventory.') || /^spells\.\d+\.(?:prepared|onBar)$/.test(target.dataset.path) || character.build?.enabled && target.dataset.path==='level') {persist();render();}
+      if(target.dataset.path.startsWith('inventory.') || /^spells\.\d+\.(?:prepared|onBar)$/.test(target.dataset.path) || target.dataset.path==='build.health.fatigue' || character.build?.enabled && target.dataset.path==='level') {persist();render();}
     }
   });
   document.addEventListener("click", event => {

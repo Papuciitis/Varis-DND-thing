@@ -1,5 +1,6 @@
 import {damagePlan} from '../web/damage.mjs';
 import {snapToken} from '../web/grid.mjs';
+import Conditions from '../../web/character-conditions.js';
 
 export const VERSION = 1;
 export const LIMITS = Object.freeze({players:12, tokens:128, cells:10000, image:1500000, backup:2000000,command:70000});
@@ -76,7 +77,10 @@ export function barsFrom(raw = defaultBars()) {
       valueOnly:bar.valueOnly===undefined?false:flag(bar.valueOnly)};
   });
 }
-const MONSTER_OVERRIDES=['maxHp','armorClass','blockMax','tempBlockMax','ability.str','ability.dex','ability.con','ability.int','ability.wis','ability.cha','initiativeBonus','notes','rules'];
+const MONSTER_OVERRIDES=['maxHp','speed','armorClass','blockMax','tempBlockMax','ability.str','ability.dex','ability.con','ability.int','ability.wis','ability.cha','initiativeBonus','notes','rules'];
+function conditionsFrom(raw=[]){
+  try{return Conditions.normalize(raw,{strict:true});}catch(error){throw new RoomError(error.message);}
+}
 function statblockFrom(raw) {
   if (raw == null) return null;
   if (typeof raw!=='object' || Array.isArray(raw)) throw new RoomError('Invalid statblock.');
@@ -109,6 +113,7 @@ function markMonsterEdits(before,next) {
   if(before.statblock?.type!=='monster' || !before.statblock.sourceId || next.statblock?.type!=='monster' || before.statblock.sourceId!==next.statblock.sourceId)return next;
   const overrides=new Set(before.statblock.encounterOverrides || []);
   if(before.maxHp!==next.maxHp)overrides.add('maxHp');
+  if(before.speed!==next.speed)overrides.add('speed');
   for(const key of ['str','dex','con','int','wis','cha'])if(before.statblock.abilities?.[key]!==next.statblock.abilities?.[key])overrides.add('ability.'+key);
   for(const key of ['initiativeBonus','notes','rules'])if(before.statblock[key]!==next.statblock[key])overrides.add(key);
   if(before.resources.armorClass.current!==next.resources?.armorClass?.current && next.resources?.armorClass)overrides.add('armorClass');
@@ -118,7 +123,7 @@ function markMonsterEdits(before,next) {
 export const canEditStats = (token,actor) => token.ownerId ? token.ownerId===actor.id : actor.role==='dm';
 export const canViewStats = (token,actor) => canEditStats(token,actor) || (actor.role==='dm' && token.shareWithDM===true);
 export function clearPrivateStats(token) {
-  Object.assign(token,{hp:20,maxHp:20,resources:resourcesFrom(),bars:defaultBars(token.kind),barsCustomized:false,statblock:null,shareWithDM:false});
+  Object.assign(token,{hp:20,maxHp:20,speed:null,resources:resourcesFrom(),bars:defaultBars(token.kind),barsCustomized:false,statblock:null,shareWithDM:false});
 }
 export function templateFrom(raw,scene,ownerId) {
   if(!raw || !['circle','cone','line','square'].includes(raw.shape))throw new RoomError('Choose a circle, cone, line or square.');
@@ -154,6 +159,8 @@ export function tokenFrom(raw,scene) {
     name:label(raw.name,'New token',40), kind, color,
     ...position,
     size,sizeCategory,initiative:raw.initiative==null?null:whole(raw.initiative,-999,999,'Initiative'),
+    speed:raw.speed==null?null:numeric(raw.speed,0,999999,'Speed'),
+    conditions:conditionsFrom(raw.conditions),conditionsRevision:whole(raw.conditionsRevision ?? 0,0,999999999,'Condition revision'),
     hp:whole(raw.hp ?? maxHp,0,maxHp,'HP'), maxHp,
     hidden:raw.hidden === undefined ? false : flag(raw.hidden),
     ownerId:typeof raw.ownerId === 'string' ? raw.ownerId : null,
@@ -181,7 +188,8 @@ export function project(room,actor) {
   scene.tokens = scene.tokens.filter(t => dm || (!t.hidden && (t.ownerId === actor.id || isRevealed(scene,t.x,t.y))));
   scene.tokens = scene.tokens.map(t => {
     const visible=canViewStats(t,actor),editable=canEditStats(t,actor);
-    if (!visible) Object.assign(t,{hp:null,maxHp:null,resources:{},bars:[],barsCustomized:false,statblock:null,shareWithDM:false});
+    t.conditionState=Conditions.status(t.conditions,{speed:t.speed,abilities:t.statblock?.abilities,size:t.sizeCategory});
+    if (!visible) {Object.assign(t,{hp:null,maxHp:null,speed:null,resources:{},bars:[],barsCustomized:false,statblock:null,shareWithDM:false});t.conditionState.speed=null;}
     return {...t,canViewStats:visible,canEditStats:editable};
   });
   const visibleIds = new Set(scene.tokens.map(t => t.id));
@@ -207,6 +215,8 @@ function orderCombat(scene) {
   const previous=new Map(combat.order.map((id,index)=>[id,index]));
   const tokens=scene.tokens.filter(token=>!token.hidden);
   tokens.sort((a,b)=>{
+    const clarity=Number(Conditions.has(b.conditions,'clarity'))-Number(Conditions.has(a.conditions,'clarity'));
+    if(clarity)return clarity;
     const score=(b.initiative ?? -Infinity)-(a.initiative ?? -Infinity);
     return score || (previous.get(a.id) ?? scene.tokens.indexOf(a)+scene.tokens.length)-
       (previous.get(b.id) ?? scene.tokens.indexOf(b)+scene.tokens.length);
@@ -240,6 +250,8 @@ export function applyCommand(room,actor,command) {
   if (command.type === 'token.move') {
     const t=tokenById(room,command.id);
     if (actor.role !== 'dm' && t.ownerId !== actor.id) throw new RoomError('You can only move your own tokens.',403);
+    const movement=Conditions.status(t.conditions,{speed:t.speed,abilities:t.statblock?.abilities,size:t.sizeCategory});
+    if(actor.role!=='dm' && movement.blocked)throw new RoomError('Cannot move: '+movement.reason+'. The GM can reposition this token.',403);
     const x=numeric(command.x,0,scene.width-1,'Token X'), y=numeric(command.y,0,scene.height-1,'Token Y');
     const {x:snappedX,y:snappedY}=snapToken(scene,t,{x,y});
     if (actor.role !== 'dm' && (t.hidden || !isRevealed(scene,snappedX,snappedY))) throw new RoomError('Move within the revealed map.',403);
@@ -283,7 +295,7 @@ export function applyCommand(room,actor,command) {
     const t=tokenById(room,command.id);
     if (!canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
     const fields={};
-    for (const key of ['hp','maxHp','resources','bars','barsCustomized','statblock','size','sizeCategory']) if (key in command) fields[key]=command[key];
+    for (const key of ['hp','maxHp','speed','resources','bars','barsCustomized','statblock','size','sizeCategory']) if (key in command) fields[key]=command[key];
     if('bars' in fields && !('barsCustomized' in fields))fields.barsCustomized=true;
     Object.assign(t,tokenFrom(markMonsterEdits(t,{...t,...fields}),scene));return;
   }
@@ -292,7 +304,7 @@ export function applyCommand(room,actor,command) {
     if (!dm && t.ownerId!==actor.id) throw new RoomError('You can only edit your own tokens.',403);
     const structural=['kind','hidden','ownerId'];
     if (!dm && structural.some(key => key in command)) throw new RoomError('Only the DM can change token ownership and visibility.',403);
-    const stats=['hp','maxHp','resources','bars','barsCustomized','statblock'];
+    const stats=['hp','maxHp','speed','resources','bars','barsCustomized','statblock'];
     if (stats.some(key => key in command) && !canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
     for (const key of ['name','color','size','sizeCategory',...(dm?structural:[]),...stats]) if (key in command) fields[key]=command[key];
     if('bars' in fields && !('barsCustomized' in fields))fields.barsCustomized=true;
@@ -303,8 +315,28 @@ export function applyCommand(room,actor,command) {
     if (t.ownerId && 'ownerId' in fields && fields.ownerId!==t.ownerId) clearPrivateStats(next);
     Object.assign(t,tokenFrom(next,scene));orderCombat(scene);return;
   }
+  if(command.type==='token.conditions.sync'){
+    const t=tokenById(room,command.id);
+    if(!canEditStats(t,actor))throw new RoomError('Only the token owner can sync character conditions.',403);
+    if(command.expectedRevision!==t.conditionsRevision)throw new RoomError('Conditions changed at the table. Apply the newer condition revision first.',409);
+    t.conditions=conditionsFrom(command.conditions);t.conditionsRevision++;orderCombat(scene);return;
+  }
   requireDM(actor);
   switch (command.type) {
+    case 'token.condition': {
+      const token=tokenById(room,command.id),action=command.action || 'add';
+      if(action==='clear-all'){token.conditions=[];token.conditionsRevision++;orderCombat(scene);break;}
+      if(!['add','remove','clear','set'].includes(action))throw new RoomError('Choose a condition action.');
+      const raw=command.condition;
+      if(!raw || typeof raw!=='object' || Array.isArray(raw))throw new RoomError('Choose a condition.');
+      const parsed=conditionsFrom([{...raw,stacks:action==='clear' || action==='remove'?1:raw.stacks ?? 1}])[0];
+      const rows=copy(token.conditions),index=rows.findIndex(row=>row.id===parsed.id),previous=index<0?null:rows[index];
+      if(action==='add' && ['charmed','hypnotized','enraged'].includes(parsed.id) && Conditions.has(rows,'clarity'))throw new RoomError('Clarity prevents becoming '+parsed.name+'.');
+      const stacks=action==='clear'?0:action==='remove'?(previous?.stacks || 0)-1:action==='set'?parsed.stacks:(previous?.stacks || 0)+parsed.stacks;
+      if(stacks<=0){if(index>=0)rows.splice(index,1);}
+      else {const next=conditionsFrom([{...previous,...parsed,blocksMovement:raw.blocksMovement ?? previous?.blocksMovement ?? parsed.blocksMovement,notes:raw.notes ?? previous?.notes ?? parsed.notes,stacks}])[0];if(index<0)rows.push(next);else rows[index]=next;}
+      token.conditions=conditionsFrom(rows);token.conditionsRevision++;orderCombat(scene);break;
+    }
     case 'token.damage': {
       const token=tokenById(room,command.id);
       if(!canEditStats(token,actor))throw new RoomError('Apply automatic damage to a GM-controlled token. Players adjust their own tokens.',403);

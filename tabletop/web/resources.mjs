@@ -67,6 +67,12 @@ export function sizeStats(value) {
 }
 export const tokenRadius=(scene,token)=>scene.gridSize*token.size*(token.sizeCategory==='Small'?.28:.35);
 const signed=(value,limit=999)=>Math.max(-limit,Math.min(limit,Math.round(Number(value)||0)));
+export function creatureSpeed(value) {
+  if(typeof value==='number')return Number.isFinite(value) && value>=0?Math.min(value,999999):null;
+  const source=String(value ?? '').trim(),matches=[...source.matchAll(/(\d+(?:\.\d+)?)\s*(?:ft\.?|feet|foot)\b/ig)];
+  if(matches.length)return Math.min(999999,Math.max(...matches.map(match=>Number(match[1]))));
+  return /^\d+(?:\.\d+)?$/.test(source)?Math.min(999999,Number(source)):null;
+}
 export function characterStats(character,derived={},catalog=[]) {
   const hp=character.resources?.hp || {current:20,max:20},resources={};
   for (const key of ['tempHP','arcaneHealth','block','tempBlock']) {
@@ -90,6 +96,7 @@ export function characterStats(character,derived={},catalog=[]) {
   }));
   const dex=derived.abilities?.dex ?? character.abilities?.dex ?? 10;
   return {hp:Math.min(count(hp.current),Math.max(1,count(hp.max))),maxHp:Math.max(1,count(hp.max)),resources,
+    speed:derived.conditionBase?.speed ?? derived.speed ?? character.combat?.speed ?? 30,
     ...sizeStats(character.size || character.combat?.size || derived.race?.size),
     statblock:{type:'character',sourceId:character.id || '',abilities:derived.abilities || character.abilities || {},
       attacks,initiativeBonus:signed(derived.initiative ?? Math.floor((dex-10)/2)+(Number(character.combat?.initiativeBonus)||0),99),
@@ -115,7 +122,7 @@ export function monsterStats(entry,token=null) {
   for(const [key,marker] of [['block','blockMax'],['tempBlock','tempBlockMax']])if(overrides.has(marker))resources[key]={...token.resources[key]};
   const rules=overrides.has('rules')?token.statblock.rules:['traits','actions','bonus_actions','reactions','legendary_actions','lair_actions']
     .flatMap(key=>(Array.isArray(details[key])?details[key]:[]).map(row=>row.name+': '+text(row.description).replace(/\n\s*\n/g,'\n'))).join('\n\n').slice(0,12000);
-  return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,resources,...sizeStats(details.size || details.meta),
+  return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,speed:overrides.has('speed')?token.speed:creatureSpeed(details.speed),resources,...sizeStats(details.size || details.meta),
     statblock:{type:'monster',sourceId,abilities,attacks:[],
       initiativeBonus:overrides.has('initiativeBonus')?token.statblock.initiativeBonus:signed(details.initiative ?? Math.floor(((abilities.dex ?? 10)-10)/2),99),
       notes:overrides.has('notes')?token.statblock.notes:text(details.description || details.desc || details.meta).slice(0,4000),rules,encounterOverrides:[...overrides]}};
@@ -141,6 +148,7 @@ export function updateCharacterResources(character,before,after) {
   if (!next.build?.enabled && before.resources?.armorClass?.current!==after.resources?.armorClass?.current) {
     next.combat={...next.combat,armorClass:after.resources.armorClass.current};
   }
+  if(!next.build?.enabled && before.speed!==after.speed && after.speed!==null)next.combat={...next.combat,speed:after.speed};
   for(let index=0;index<2;index++){
     const key='custom'+(index+1),resource=next.customResources?.[index];
     if(resource && JSON.stringify(before.resources?.[key])!==JSON.stringify(after.resources?.[key])) {

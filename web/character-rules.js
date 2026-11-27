@@ -21,7 +21,7 @@
       return State.normalizeCharacter(c);
     }
 
-    function derive(input) {
+    function deriveBase(input) {
       const c = State.normalizeCharacter(input), build = c.build || {}, enabled = !!build.enabled;
       const race = enabled ? races.find(r=>r.id===build.raceId) : null;
       const cls = enabled ? classes.find(r=>r.id===build.classId) : null;
@@ -243,9 +243,21 @@
       return {enabled,race,cls,background,eligibleArchetypes,abilities,abilityBonuses,saves,skillRanks,skillBonuses,saveBonuses,proficiencies,proficiency,armorClass,speed,blockMaximum,blockCheck,combatFloor:gear.armorBlock+gear.shieldBlock+numeric(combined.combatBlock),hpMaximum,hpExplanation,restMaximum,deathSaveSlots:Math.max(1,3+numeric(combined.deathSaveSlots)),castingAbility,casting,initiative:mod(abilities.dex)+c.combat.initiativeBonus+numeric(combined.initiative),features,choices,attacks,raceSkillCount,raceSkillOptions,reductions,resistances:unique([...gear.resistances,...combined.resistances]),immunities:combined.immunities,warnings:unique(warnings),gear,effects:combined};
     }
 
+    function derive(input) {
+      const c=State.normalizeCharacter(input),base=deriveBase(c),conditions=globalThis.CharacterConditions;
+      if(!conditions)return base;
+      const rows=conditions.forCharacter(c),state=conditions.status(rows,{speed:base.speed,abilities:base.abilities,size:c.size || base.race?.size});
+      const result={...base,conditionBase:base,conditionState:state,conditions:rows,speed:state.speed};
+      if(state.flags.noProficiency){
+        const without=deriveBase({...c,combat:{...c.combat,proficiencyOverride:0}});
+        for(const field of ['proficiency','skillBonuses','saveBonuses','attacks','blockCheck'])result[field]=without[field];
+      }
+      if(state.ids.includes('ethereal'))result.immunities=[...base.immunities,'physical'];
+      return result;
+    }
     function reconcile(input) {
       const c=State.normalizeCharacter(input);if(!c.build?.enabled)return c;
-      const d=derive(c),missingHP=c.resources.hp.max-c.resources.hp.current;
+      const d=deriveBase(c),missingHP=c.resources.hp.max-c.resources.hp.current;
       c.resources.hp.max=d.hpMaximum;c.resources.hp.current=Math.max(0,d.hpMaximum-missingHP);
       c.resources.block.max=Math.max(0,d.blockMaximum);c.resources.block.current=Math.min(c.resources.block.current,c.resources.block.max);
       c.restDice.max=d.restMaximum;c.restDice.current=Math.min(c.restDice.current,c.restDice.max);
@@ -263,9 +275,10 @@
       let remaining=amount;
       if(type && options.reduce!==false) {
         remaining=Math.max(0,remaining-Math.max(d.reductions.all || 0,d.reductions[type] || 0,physical?d.reductions.physical || 0:0));
-        if(d.immunities.includes(type)||d.immunities.includes('all'))remaining=0;
+        if(d.immunities.includes(type)||d.immunities.includes('all') || physical && d.immunities.includes('physical'))remaining=0;
       }
-      if(options.half)remaining=Math.floor(remaining/2);
+      const soakedResistance=type==='fire' && options.reduce!==false && remaining<=10 && d.conditionState?.ids.includes('soaked');
+      if(options.half || soakedResistance)remaining=Math.floor(remaining/2);
       const afterDefence=remaining,changes=[];
       const order=options.pool==='auto' ? c.build?.health.poolOrder || [] : [options.pool || 'hp'];
       if(!order.length)throw new Error('Choose the damage pool order first.');
@@ -280,13 +293,21 @@
     function heal(input,amount,pool='hp') {
       if(!Number.isSafeInteger(amount)||amount<0)throw new Error('Enter a nonnegative whole healing amount.');
       const c=reconcile(input);if(!['hp','tempHP','arcaneHealth'].includes(pool))throw new Error('Choose a health pool.');
-      const diseased=c.conditions.some(s=>/^diseased\b/i.test(s));
+      const diseased=globalThis.CharacterConditions?globalThis.CharacterConditions.has(globalThis.CharacterConditions.forCharacter(c),'diseased'):c.conditions.some(s=>/^diseased\b/i.test(s));
       return State.resourceDelta(c,pool,diseased?Math.floor(amount/2):amount);
     }
 
     function rest(input,kind) {
       const c=reconcile(input),d=derive(c);c.resources.block.current=c.resources.block.max;
-      if(c.build?.enabled)c.build.health.fatigue=kind==='long'?0:Math.max(0,c.build.health.fatigue-Math.max(1,mod(d.abilities.con)));
+      if(globalThis.CharacterConditions){
+        const conditions=globalThis.CharacterConditions,active=conditions.forCharacter(c);
+        const fatigue=active.find(row=>row.id==='fatigue')?.stacks || 0;
+        const remaining=kind==='long'?0:Math.max(0,fatigue-Math.max(1,mod(d.abilities.con)));
+        const rows=active.filter(row=>row.id!=='fatigue');
+        if(remaining)rows.push({id:'fatigue',stacks:remaining});
+        c.conditions=globalThis.CharacterConditions.serialise(rows);
+        if(c.build?.health)c.build.health.fatigue=remaining;
+      }else if(c.build?.enabled)c.build.health.fatigue=kind==='long'?0:Math.max(0,c.build.health.fatigue-Math.max(1,mod(d.abilities.con)));
       return d.casting ? globalThis.CharacterCasting.rest(c,d.casting,kind) : c;
     }
 
@@ -303,7 +324,7 @@
       c.build.combatActive=false;c.build.combatFloor=0;return c;
     }
     function fatiguePenalty(input,rollDie=sides=>Math.floor(Math.random()*sides)+1) {
-      const level=input.build?.health?.fatigue || 0,sides={2:2,3:3,4:4,5:6,8:8,9:10,10:12}[level];
+      const level=globalThis.CharacterConditions?globalThis.CharacterConditions.forCharacter(input).find(row=>row.id==='fatigue')?.stacks || 0:input.build?.health?.fatigue || 0,sides={2:2,3:3,4:4,5:6,8:8,9:10,10:12}[level];
       return {amount:level===1?1:sides?rollDie(sides):0,notation:level===1?'1':sides?'1d'+sides:'',unresolved:level===6||level===7};
     }
     return Object.freeze({metadata,catalog,derive,enable,reconcile,damage,heal,rest,startCombat,endCombat,fatiguePenalty});

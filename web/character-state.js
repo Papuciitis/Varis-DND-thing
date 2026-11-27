@@ -174,6 +174,15 @@
       source[key] = entries(source[key], key);
     }
     source.conditions = array(source.conditions, "Conditions").map((item, i) => text(item, "Condition " + (i + 1)));
+    if(source.conditionEffects!==undefined){
+      source.conditionEffects=record(source.conditionEffects,"Custom condition effects");
+      if(Object.keys(source.conditionEffects).length>64)throw new Error("Use at most 64 custom condition effects.");
+      for(const [key,effect] of Object.entries(source.conditionEffects)){
+        if(!key.startsWith("custom:"))throw new Error("Custom effects must be separate from standard conditions.");
+        record(effect,"Custom condition effect");effect.blocksMovement=boolean(effect.blocksMovement,"Movement restriction");
+        effect.notes=text(effect.notes,"Custom effect notes").slice(0,600);
+      }
+    }
     source.coins = record(source.coins, "Coins");
     for (const key of ["gold", "silver", "copper"]) source.coins[key] = integer(source.coins[key], key + " coins");
     if (source.build !== undefined) {
