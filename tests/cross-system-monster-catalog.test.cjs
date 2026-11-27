@@ -11,13 +11,13 @@ test('all cross-system profiles survive editor YAML export/import with original 
   const context=vm.createContext({localStorage:{getItem:()=>null,setItem:()=>{}}});
   vm.runInContext(fs.readFileSync(path.join(root,'web/monster-editor.js'),'utf8'),context);
   const editor=context.MonsterEditor;editor.apply(section);
-  const added=section.entries.filter(e=>names.has(e.name));assert.equal(added.length,86);
+  const added=section.entries.filter(e=>names.has(e.name));assert.equal(added.length,87);
   for(const entry of added)assert.doesNotThrow(()=>editor.validate(entry),entry.name);
   const payload=editor.sourceCollection({entries:added});
   const roundtrip=editor.parseYaml(editor.stringifyYaml(payload));
   assert.deepEqual(copy(roundtrip),copy(payload));
   editor.importCollection(roundtrip,section);
-  assert.equal(section.entries.length,301);
+  assert.equal(section.entries.length,302);
   for(const record of records){
     const entry=section.entries.find(e=>e.name===record.name);
     assert.equal(entry.details.id,record.id);
@@ -28,5 +28,5 @@ test('all cross-system profiles survive editor YAML export/import with original 
   edited.details.hp='87';editor.save(section,original,edited);
   assert.equal(section.entries.find(e=>e.name==='Goblin Shark').details.hp,'87');
   assert.equal(section.entries.find(e=>e.name==='Shark-Shifting Goblin').details.hp,'27');
-  assert.equal(section.entries.length,301);
+  assert.equal(section.entries.length,302);
 });

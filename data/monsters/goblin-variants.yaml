@@ -34,10 +34,10 @@ entries:
       + 2 piercing damage. Two-handed, Reload I (any action to reload), critical range +1; the shield must
       be set aside to fire.'
   ability_score_status: sourced
-  source_system: Pathfinder 1e
+  source_system: Legacy d20
   source_ref: User-supplied goblin or brute-goblin screenshot
   original_5e:
-    source_system: Pathfinder 1e
+    source_system: Legacy d20
     name: Goblin
     printed_scores:
     - 11
@@ -97,7 +97,7 @@ entries:
     1d6 at the start of its turn while expended.
   - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
     not missing published text.
-  - PF1 size-based damage/AC and feats are not imported as a class level. The wooden shield uses the current
+  - legacy d20 size-based damage/AC and feats are not imported as a class level. The wooden shield uses the current
     arm-pauldron shield profile; armor and weapon properties follow the item catalogue.
   replacement_sources:
   - name: Current monster template
@@ -164,10 +164,10 @@ entries:
       + 3 piercing damage. Two-handed, Reload I, critical range +1. Must be reloaded using any action before
       firing again.'
   ability_score_status: sourced
-  source_system: D&D 3.5 homebrew
+  source_system: Legacy d20 homebrew
   source_ref: User-supplied goblin or brute-goblin screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew
+    source_system: Legacy d20 homebrew
     name: Small Brute Goblin
     printed_scores:
     - 14
@@ -301,10 +301,10 @@ entries:
       piercing damage. Two-handed, Reload I, critical range +1. Must be reloaded using any action before firing
       again.'
   ability_score_status: sourced
-  source_system: D&D 3.5 homebrew
+  source_system: Legacy d20 homebrew
   source_ref: User-supplied goblin or brute-goblin screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew
+    source_system: Legacy d20 homebrew
     name: Medium Brute Goblin
     printed_scores:
     - 18
@@ -438,10 +438,10 @@ entries:
       8 bludgeoning damage. Two-handed, Unwieldy (natural 2 is also a critical failure), Inaccurate (disadvantage
       if it moved this turn).'
   ability_score_status: sourced
-  source_system: D&D 3.5 homebrew
+  source_system: Legacy d20 homebrew
   source_ref: User-supplied goblin or brute-goblin screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew
+    source_system: Legacy d20 homebrew
     name: Large Brute Goblin
     printed_scores:
     - 26
@@ -560,10 +560,10 @@ entries:
     description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 2d4 + 2
       piercing damage. A Small or smaller target makes a DC 11 STR save; failure: Prone; success: remains standing. '
   ability_score_status: sourced
-  source_system: D&D 5e homebrew
+  source_system: Six-score homebrew
   source_ref: https://www.scribd.com/document/698529612/Goblin-Variants-PDF-sp-check
   original_5e:
-    source_system: D&D 5e homebrew
+    source_system: Six-score homebrew
     name: Shark Goblin
     printed_scores:
     - 8
@@ -605,7 +605,7 @@ entries:
   - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
     not missing published text.
   - Retains the supplied 5e numerical profile; the DEX-based natural bite is explicit. This goblinoid is separate
-    from both the natural Goblin Shark and the AGE shark-shifter.
+    from both the natural Goblin Shark and the eight-attribute shark-shifter.
   replacement_sources:
   - name: Current monster template
     description: docs/monsters.md
@@ -659,10 +659,10 @@ entries:
       cannot exceed that new maximum. The reduction lasts until it completes a long rest (one week); success:
       no reduction. '
   ability_score_status: sourced
-  source_system: D&D 5e homebrew
+  source_system: Six-score homebrew
   source_ref: https://www.scribd.com/document/698529612/Goblin-Variants-PDF-sp-check
   original_5e:
-    source_system: D&D 5e homebrew
+    source_system: Six-score homebrew
     name: Organ Goblin
     printed_scores:
     - 6
@@ -762,10 +762,10 @@ entries:
       piercing damage. The target makes a DC 11 CON save; failure: Poisoned for 1 minute; success: unaffected.
       Repeat the save at the end of each turn, ending Poisoned on success. '
   ability_score_status: sourced
-  source_system: D&D 5e homebrew
+  source_system: Six-score homebrew
   source_ref: https://www.scribd.com/document/698529612/Goblin-Variants-PDF-sp-check
   original_5e:
-    source_system: D&D 5e homebrew
+    source_system: Six-score homebrew
     name: Cactus Goblin
     printed_scores:
     - 12

@@ -1,6 +1,7 @@
 """Keep the complete source spell review separate from current character rules."""
 import json
 from pathlib import Path
+from catalog_expectations import ORIGINAL_MONSTER_SOURCES
 import unittest
 
 from compiler import compile_data
@@ -53,7 +54,7 @@ class GeomancyReviewTests(unittest.TestCase):
 
     def test_source_high_levels_are_preserved_without_current_spell_grants(self):
         self.assertEqual(len(self.catalog['spells']['entries']), 439)
-        original = [e for e in self.catalog['monsters']['entries'] if not e['source'].startswith('monsters/recovered-')]
+        original = [e for e in self.catalog['monsters']['entries'] if e['source'] in ORIGINAL_MONSTER_SOURCES]
         self.assertEqual(len(original), 160)
         self.assertFalse(any(entry['source'].startswith('geomancy-review/') for entry in self.catalog['spells']['entries']))
         names = {entry['name']: entry['details'] for entry in self.entries}

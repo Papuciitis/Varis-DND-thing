@@ -264,7 +264,7 @@
       ]
     },
     {
-      "name": "Ogrillion",
+      "name": "Orc-Ogre Brute",
       "id": "recovered-ogrillion",
       "file": "monsters/recovered-warriors.yaml",
       "original_name": "Ogrillion / Ogrillon",
@@ -280,7 +280,7 @@
       ]
     },
     {
-      "name": "Orog",
+      "name": "Orc Veteran",
       "id": "recovered-orog",
       "file": "monsters/recovered-warriors.yaml",
       "original_name": "Orog",
@@ -695,7 +695,7 @@
       ]
     },
     {
-      "name": "Rhedottoia Reaper",
+      "name": "Deep Tentacle Reaper",
       "id": "recovered-rhedottoia-reaper",
       "file": "monsters/recovered-lore.yaml",
       "original_name": "Rhedottoia Reaper",

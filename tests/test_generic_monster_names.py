@@ -32,10 +32,10 @@ class GenericMonsterNameTests(unittest.TestCase):
         document = yaml.load((ROOT / 'data' / record['source']).read_text(encoding='utf-8'), Loader=RulesLoader)
         return next(entry for entry in document['entries'] if entry['name'] == record['from'])
 
-    def test_twenty_generic_titles_replace_records_without_removing_any_monster(self):
-        self.assertEqual(len(self.records), 20)
-        self.assertEqual(len(self.monsters), 301)
-        self.assertEqual(len(self.catalog['monsters']['entries']), 301)
+    def test_reviewed_generic_titles_replace_records_without_removing_any_monster(self):
+        self.assertEqual(len(self.records), 69)
+        self.assertEqual(len(self.monsters), 302)
+        self.assertEqual(len(self.catalog['monsters']['entries']), 302)
         self.assertEqual(len(self.catalog['spells']['entries']), 439)
         self.assertEqual(len({entry['details']['encounter_theme'] for entry in self.monsters.values()}), 15)
         self.assertFalse(any(re.search(r'\b(?:male|female)\b', name, re.I) for name in self.monsters))
@@ -44,8 +44,8 @@ class GenericMonsterNameTests(unittest.TestCase):
             self.assertNotIn(record['from'], self.monsters)
         self.assertIn('Gray Orc', self.monsters)
         self.assertIn('Gray Orc Raider', self.monsters)
-        self.assertIn('Ogrillion', self.monsters)
-        self.assertIn('Ogrillion Club Brute', self.monsters)
+        self.assertIn('Orc-Ogre Brute', self.monsters)
+        self.assertIn('Orc-Ogre Club Brute', self.monsters)
 
     def test_stable_ids_original_targets_and_theme_placements_survive_renaming(self):
         for record in self.records:
@@ -82,7 +82,7 @@ class GenericMonsterNameTests(unittest.TestCase):
             details = self.monsters[record['to']]['details']
             active = {key: value for key, value in details.items() if key != 'id' and not PROVENANCE.match(key)}
             self.assertIsNone(banned.search(json.dumps(active)), record['to'])
-        priest = self.monsters['Loxodon Warhammer Priest']['details']
+        priest = self.monsters['Elephantfolk Warhammer Priest']['details']
         self.assertTrue(any(trait['name'] == 'Channel Divinity: Battle Blessing (1x)' for trait in priest['traits']))
         dragon = self.monsters['Aetherium Alloy Dragon Sovereign']['details']
         self.assertEqual(dragon['size'], 'Colossal')

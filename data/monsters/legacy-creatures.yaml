@@ -1,4 +1,3 @@
-# Reviewed conversions from multiple source systems; see docs/cross-system-monsters.md.
 section: monsters
 entries:
 - name: Froghemoth
@@ -52,10 +51,10 @@ entries:
       and deposits it Prone within 5 ft. Teleporting out or incapacitating the froghemoth also releases it.
       There is no automatic death timer.'
   ability_score_status: sourced
-  source_system: 3.x homebrew / PFSRD-labelled screenshot
+  source_system: Legacy d20 homebrew
   source_ref: User-supplied statblock screenshot / Froghemoth
   original_5e:
-    source_system: 3.x homebrew / PFSRD-labelled screenshot
+    source_system: Legacy d20 homebrew
     name: Froghemoth
     printed_scores:
     - 24
@@ -185,10 +184,10 @@ entries:
     description: 'One creature already Grappled by this ooze makes a DC 13 STR save; failure: 1d6 + 1 bludgeoning
       and 1d6 acid damage; success: no damage. Requires an action and does not add a free Slam.'
   ability_score_status: reconstructed
-  source_system: Pathfinder 1e
+  source_system: Legacy d20
   source_ref: User-supplied statblock screenshot / Gray Ooze
   original_5e:
-    source_system: Pathfinder 1e
+    source_system: Legacy d20
     name: Gray Ooze
     printed_scores:
     - 16
@@ -301,10 +300,10 @@ entries:
       at the end of each turn, ending the stun on success. On initial success, no paralysis. A creature freed
       from paralysis is immune to this ooze''s stun for 24 hours. '
   ability_score_status: reconstructed
-  source_system: Pathfinder 1e
+  source_system: Legacy d20
   source_ref: User-supplied statblock screenshot / Crystal Ooze
   original_5e:
-    source_system: Pathfinder 1e
+    source_system: Legacy d20
     name: Crystal Ooze
     printed_scores:
     - 16
@@ -425,10 +424,10 @@ entries:
       end of its next turn; success: unaffected. This is a monster-specific CON-based psionic power, with no
       new player spell.'
   ability_score_status: reconstructed
-  source_system: Pathfinder 1e
+  source_system: Legacy d20
   source_ref: User-supplied statblock screenshot / Id Ooze
   original_5e:
-    source_system: Pathfinder 1e
+    source_system: Legacy d20
     name: Id Ooze
     printed_scores:
     - 16
@@ -538,10 +537,10 @@ entries:
     description: Spends its action and up to 10 ft. of its normal movement to swim straight, then makes one
       Jaws attack with reach 10 ft. It cannot use Multiattack in the same action.
   ability_score_status: reconstructed
-  source_system: Pathfinder 2e / Howl of the Wild
+  source_system: Level-based d20 / aquatic reference
   source_ref: User-supplied statblock screenshot / Goblin Shark
   original_5e:
-    source_system: Pathfinder 2e / Howl of the Wild
+    source_system: Level-based d20 / aquatic reference
     name: Goblin Shark
     printed_scores:
     - 22
@@ -575,8 +574,8 @@ entries:
   source_completion:
     fields:
     - current proficiency, saves, Block, action costs, durations and escape procedures
-    - Six scores reconstructed as 10 + 2 × PF2 modifier; AC = source AC minus level (16). Level 5 is only the
-      starting CR estimate.
+    - Six scores reconstructed as 10 + 2 × level-based d20 modifier; AC = source AC minus level (16). Level
+      5 is only the starting CR estimate.
     cr_status: Provisional Varis encounter estimate; not a balance certification
   source_conversion:
     theme: Seas & coasts
@@ -599,8 +598,8 @@ entries:
     1d6 at the start of its turn while expended.
   - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
     not missing published text.
-  - PF2 level-based attacks, saves, skills and MAP are removed. Jaws use STR + current proficiency; persistent
-    bleed becomes current Bleeding; two-action Lunging Bite becomes one action plus paid movement.
+  - level-based d20 level-based attacks, saves, skills and MAP are removed. Jaws use STR + current proficiency;
+    persistent bleed becomes current Bleeding; two-action Lunging Bite becomes one action plus paid movement.
   replacement_sources:
   - name: Current monster template
     description: docs/monsters.md
@@ -662,10 +661,10 @@ entries:
       dealing half its normal damage (round down), then swims up to half its speed. Total movement is at most
       its speed.'
   ability_score_status: reconstructed
-  source_system: Pathfinder 2e / Monster Core
+  source_system: Level-based d20 / creature reference
   source_ref: User-supplied statblock screenshot / Great White Shark
   original_5e:
-    source_system: Pathfinder 2e / Monster Core
+    source_system: Level-based d20 / creature reference
     name: Great White Shark
     printed_scores:
     - 22
@@ -698,7 +697,7 @@ entries:
   source_completion:
     fields:
     - current proficiency, saves, Block, action costs, durations and escape procedures
-    - Six scores reconstructed as 10 + 2 × PF2 modifier; AC = source AC minus level (17).
+    - Six scores reconstructed as 10 + 2 × level-based d20 modifier; AC = source AC minus level (17).
     - The printed +8 natural-weapon damage is a fixed creature exception, independent of STR +6.
     cr_status: Provisional Varis encounter estimate; not a balance certification
   source_conversion:
@@ -722,8 +721,8 @@ entries:
     1d6 at the start of its turn while expended.
   - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
     not missing published text.
-  - PF2 action counts, level bonuses and MAP are replaced with Varis actions and current proficiency; Savage
-    explicitly costs an action.
+  - level-based d20 action counts, level bonuses and MAP are replaced with Varis actions and current proficiency;
+    Savage explicitly costs an action.
   replacement_sources:
   - name: Current monster template
     description: docs/monsters.md
@@ -785,10 +784,10 @@ entries:
     description: Senses whether active magical or psionic effects are within 30 ft., without learning their
       school, owner or exact location. This is a creature sense, not a new player spell.
   ability_score_status: sourced
-  source_system: D&D 3e SRD
+  source_system: Legacy d20 reference
   source_ref: User-supplied statblock screenshot / Brain Mole
   original_5e:
-    source_system: D&D 3e SRD
+    source_system: Legacy d20 reference
     name: Brain Mole
     printed_scores:
     - 3
@@ -915,10 +914,10 @@ entries:
     description: May establish willing two-way telepathy with one creature within 60 ft. until either ends
       it or leaves range. It can speak or offer surrender through this link; the link grants no control.
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew
+  source_system: Legacy d20 homebrew
   source_ref: User-supplied statblock screenshot / Crystal Abomination
   original_5e:
-    source_system: D&D 3.5 homebrew
+    source_system: Legacy d20 homebrew
     name: Crystal Abomination
     printed_cr: 10
     printed_ac: 29
@@ -1056,10 +1055,10 @@ entries:
       stomach (AC 24); dealing 34 damage in one turn opens an exit. The worm is forced to regurgitate it within
       10 ft. when incapacitated; teleportation can also escape.'
   ability_score_status: sourced
-  source_system: Pathfinder 1e
+  source_system: Legacy d20
   source_ref: User-supplied statblock screenshot / Slag Worm
   original_5e:
-    source_system: Pathfinder 1e
+    source_system: Legacy d20
     name: Slag Worm
     printed_scores:
     - 41
@@ -1176,10 +1175,10 @@ entries:
       into a space within 5 ft.; dealing 25 damage in one turn to its stomach (AC 15), teleportation, or incapacitating
       it also releases the target.'
   ability_score_status: sourced
-  source_system: D&D 3.5 homebrew
+  source_system: Legacy d20 homebrew
   source_ref: User-supplied statblock screenshot / Borogon
   original_5e:
-    source_system: D&D 3.5 homebrew
+    source_system: Legacy d20 homebrew
     name: Borogon
     printed_scores:
     - 30
@@ -1296,10 +1295,10 @@ entries:
     description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d6 + 3
       piercing damage. '
   ability_score_status: sourced
-  source_system: D&D 3e / Monster Manual II
+  source_system: Legacy d20 / creature reference volume 2
   source_ref: User-supplied statblock screenshot / Frost Salamander
   original_5e:
-    source_system: D&D 3e / Monster Manual II
+    source_system: Legacy d20 / creature reference volume 2
     name: Frost Salamander
     printed_scores:
     - 16
@@ -1423,10 +1422,10 @@ entries:
       no reactions and cannot spawn or summon. They return to ordinary stone when the effect ends. Two active
       boulders maximum; this is a creature power, not a new player spell.
   ability_score_status: sourced
-  source_system: D&D 3e / Monster Manual II
+  source_system: Legacy d20 / creature reference volume 2
   source_ref: User-supplied statblock screenshot / Galeb Duhr
   original_5e:
-    source_system: D&D 3e / Monster Manual II
+    source_system: Legacy d20 / creature reference volume 2
     name: Galeb Duhr
     printed_scores:
     - 13
@@ -1538,10 +1537,10 @@ entries:
     description: 'Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d4 + 3
       slashing damage. '
   ability_score_status: sourced
-  source_system: D&D 3e / Monster Manual II
+  source_system: Legacy d20 / creature reference volume 2
   source_ref: User-supplied statblock screenshot / Gambol
   original_5e:
-    source_system: D&D 3e / Monster Manual II
+    source_system: Legacy d20 / creature reference volume 2
     name: Gambol
     printed_scores:
     - 23
@@ -1659,10 +1658,10 @@ entries:
       crossed creature once this turn makes a DC 25 DEX save: 4d8 + 18 bludgeoning on failure, half on success.
       Does not grant extra movement or free Stomp attacks; normal reactions still apply.'
   ability_score_status: sourced
-  source_system: D&D 3e / Monster Manual II
+  source_system: Legacy d20 / creature reference volume 2
   source_ref: User-supplied statblock screenshot / Grizzly Mastodon
   original_5e:
-    source_system: D&D 3e / Monster Manual II
+    source_system: Legacy d20 / creature reference volume 2
     name: Grizzly Mastodon
     printed_scores:
     - 35
@@ -1772,10 +1771,10 @@ entries:
       damage; success: half. No attack roll and no Block. After use, roll 1d4; count down at the start of its
       turns and reuse when the count reaches 0.'
   ability_score_status: sourced
-  source_system: D&D 3e / Monster Manual II
+  source_system: Legacy d20 / creature reference volume 2
   source_ref: User-supplied statblock screenshot / Catoblepas
   original_5e:
-    source_system: D&D 3e / Monster Manual II
+    source_system: Legacy d20 / creature reference volume 2
     name: Catoblepas
     printed_scores:
     - 26
@@ -1882,10 +1881,10 @@ entries:
       of its four tendrils holds at most one target and cannot strike another target while holding. The target
       also suffers Sticky Acid. '
   ability_score_status: sourced
-  source_system: D&D 3e / Monster Manual II
+  source_system: Legacy d20 / creature reference volume 2
   source_ref: User-supplied statblock screenshot / Red Sundew
   original_5e:
-    source_system: D&D 3e / Monster Manual II
+    source_system: Legacy d20 / creature reference volume 2
     name: Red Sundew
     printed_scores:
     - 29
@@ -1952,3 +1951,147 @@ entries:
       cha: '8'
     note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
       separately.
+- name: Burrow Hound Juggernaut
+  group: Cross-system creature conversions
+  id: converted-burrow-hound-juggernaut
+  meta: Large beast, neutral
+  size: Large
+  type: beast
+  alignment: neutral
+  cr: '6'
+  ac: '19'
+  hp: '85'
+  speed: 30 ft., burrow 10 ft., swim 10 ft.
+  block: 3 / +11 check
+  abilities:
+    str: '26'
+    dex: '14'
+    con: '20'
+    int: '2'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+3'
+  saving_throws: STR +8, DEX +5, CON +8, INT -4, WIS +0, CHA -4
+  skills: Athletics +11, Acrobatics +5, Perception +3, Survival +3
+  senses: blindsight 30 ft., scent 60 ft. (imprecise), passive Perception 13
+  languages: —
+  equipment: Patchwork mail barding (current Chain shirt profile)
+  block_rules: 'Trained Chain shirt barding adds 1 Block to DEX +2, for 3. Medium armor allows STR: +8 STR
+    +3 proficiency = +11 check. Natural hide grants no Block or armor training. Successful Block negates blockable
+    damage and attached strike riders. Saves and automatic damage cannot be Blocked. Temporary Block does not
+    stack.'
+  traits:
+  - name: Dense Hide and Barding
+    description: 'Natural hide adds +5 AC, already included. Current Chain shirt: base AC 13, Bulk 1, Block
+      1, Slow 1; with DEX +2 and STR +8 this gives AC 19. Without barding, AC is 17, Block 2 and check +2.
+      Natural hide grants no extra Block.'
+  - name: Soft-Earth Burrow
+    description: Burrows through soil and loose rubble, leaving a usable tunnel 10 ft. in diameter. Cannot
+      burrow through solid rock. Its movement is paid normally and does not damage creatures or collapse occupied
+      structures automatically.
+  - name: Powerful Build
+    description: Counts as Huge when checking size limits for carrying, pushing, shoving, grappling and resisting
+      those maneuvers. This grants no automatic success, extra reach, smaller squeezing space or AC bonus.
+  - name: Ferocity (1/day)
+    description: When reduced to 0 HP without being killed outright, remains at 1 HP instead and is Dazed until
+      the end of its next turn. Further damage resolves normally. This does not grant actions while Incapacitated
+      or extra death saves.
+  actions:
+  - name: Multiattack
+    description: Makes one Bite and two Claw attacks.
+  - name: Bite
+    description: 'Melee attack: +11 to hit, reach 10 ft., one target; Block DC 19. Unblocked strike: 1d8 +
+      8 piercing damage.'
+  - name: Claw
+    description: 'Melee attack: +11 to hit, reach 10 ft., one target; Block DC 19. Unblocked strike: 2d6 +
+      4 slashing damage. The fixed +4 claw damage is a secondary-natural-weapon exception.'
+  bonus_actions:
+  - name: Wormkiller Frenzy (1/day)
+    description: After it deals or takes HP damage in combat with an underground worm, insect, spider or other
+      invertebrate, enters a frenzy for 6 rounds. Gains 18 temporary HP (nonstacking, removed when the frenzy
+      ends), +2 on STR/CON checks and saves, +2 natural-weapon attack rolls, damage and Block DC, and +2 to
+      its trained STR Block check; AC decreases by 2. It cannot end the frenzy voluntarily while that triggering
+      enemy is alive and visible. Ends if Incapacitated or when its duration expires. These are explicit creature
+      bonuses, not a character class grant.
+  ability_score_status: sourced
+  source_ability_scores:
+    method: All six numerical scores are supplied in the provided image.
+    scores:
+    - 26
+    - 14
+    - 20
+    - 2
+    - 10
+    - 2
+  source_system: Legacy d20
+  source_ref: User-provided armored burrowing-beast statblock image
+  source_naming:
+    original_name: Dogmole Juggernaut
+    previous_names:
+    - Dogmole Juggernaut
+    note: Reusable creature title.
+  original_5e:
+    source_system: Legacy d20
+    name: Dogmole Juggernaut
+    cr: 6
+    xp: 2400
+    size: Large
+    type: animal
+    alignment: neutral
+    ac: 20; touch 11, flat-footed 18 (+4 armor, +2 DEX, +5 natural, -1 size)
+    hp: 85 (9d8+45)
+    speed: 30 ft., burrow 10 ft., swim 10 ft.
+    reach: 10 ft.
+    abilities:
+    - 26
+    - 14
+    - 20
+    - 2
+    - 10
+    - 2
+    saves: Fort +13, Ref +8, Will +3
+    attacks:
+    - bite +13 (1d8+8)
+    - two claws +10 (2d6+4)
+    burrow: soil/rubble, not rock; 10-ft.-diameter tunnel
+    ferocity: Fights while disabled or dying.
+    powerful_build: Counts one size larger for advantageous maneuvers, not squeezing or AC.
+    rage: +4 STR/CON, -2 AC for 1 + CON-modifier rounds when bloodied against underground invertebrates.
+  source_completion:
+    fields:
+    - Current Chain shirt barding, AC calculation, trained Block and six saves
+    - Current proficiency replaces old accuracy and size adjustments
+    - Ferocity uses a finite 1-HP survival trigger
+    - Frenzy uses explicit derived bonuses, finite uses and temporary HP instead of changing maximum HP
+    cr_status: Assigned CR 6 encounter estimate for the completed profile.
+  source_conversion:
+    theme: Caverns & lost ruins
+    batch: 2026-11-28-cross-system
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 11
+      block_dc: 19
+      dc_adjustment: 0
+      damage_modifier: 8
+      offset: 0
+    - name: Claw
+      ability: str
+      bonus: 11
+      block_dc: 19
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+  conversion_notes:
+  - Uses current Varis equipment, Block, action timing and conditions. Printed HP and six scores are retained.
+    Armor is converted rather than importing old size/armor arithmetic.
+  - The frenzy replaces legacy temporary ability-score changes with explicit current bonuses. Ferocity is bounded
+    to one survival trigger per day.
+  - Daily uses recover after 24 hours; short rests take one day and long rests one week. CR 6 is an encounter
+    estimate to refine in play.
+  replacement_sources:
+  - name: Current creature guide
+    description: docs/monsters.md
+  - name: Equipment, combat, conditions and recovery
+    description: data/draft-reference/armor-and-shields.yaml; data/draft-reference/combat.yaml; data/conditions.yaml;
+      data/draft-reference/progression.yaml

@@ -1,128 +1,137 @@
-# Mixed-system monster conversions
+# Creature conversion and completion
 
-86 new editable profiles bring the manual from 215 to **301 monsters** across the existing 15 encounter themes. The original 215 records remain unchanged. The current player spell catalogue remains 439; these additions grant no player spells, class features or magic items.
+87 added profiles bring the manual from 215 to **302 creatures** across 15 encounter themes. All 439 current player spells remain available. These entries grant no new player spells, class features or magic items.
 
-| Supplied material | Profiles | Playable file |
+| Creature collection | Profiles | Editable file |
 | --- | ---: | --- |
-| Mixed 3.x/PF1/PF2 screenshots | 16 | `data/monsters/legacy-creatures.yaml` |
-| Monstrous-spider age table | 12 | `data/monsters/legacy-spiders.yaml` |
-| PF1 goblin, three brute sizes and three linked goblin variants | 7 | `data/monsters/goblin-variants.yaml` |
-| Midgard Bestiary AGE, creature pages 2–51 | 51 | `data/monsters/midgard-converted.yaml` |
+| Beasts, oozes, aberrations and other creatures | 17 | `data/monsters/legacy-creatures.yaml` |
+| Monstrous-spider ages | 12 | `data/monsters/legacy-spiders.yaml` |
+| Goblin encounter variants | 7 | `data/monsters/goblin-variants.yaml` |
+| Setting creatures | 51 | `data/monsters/setting-creatures.yaml` |
 
-The AGE book has 50 creature pages; Deathcap Mycolid and Psilocybe Mycolid are separate blocks sharing one page. The Dogmole Juggernaut sidebar mentions an advancement template without a complete statblock; it is retained as a source hook in Dogmole rather than counted as a full published creature. The full linked goblin handout supplies Shark Goblin, Organ Goblin and Cactus Goblin.
+The setting collection covers 50 creature pages, including two separate fungal guardians on one page. The later armored-beast image supplies the complete **Burrow Hound Juggernaut**, a separate CR 6 creature with patchwork barding, powerful build, soft-earth tunnelling, ferocity and a bounded worm-hunting frenzy.
 
-The natural **Goblin Shark**, **Shark-Shifting Goblin** from AGE and **Sharkskin Goblin** from the goblin handout are three different creatures. Regional character roles use generic titles preserving their species and equipment, such as Dwarf Axe Siegebreaker, Minotaur Deckbreaker, Dragonkin Runestaff Envoy and Gearforged Legionnaire. Gender does not create extra variants.
+The natural Goblin Shark, Shark-Shifting Goblin and Sharkskin Goblin remain distinct. Creature titles use species, anatomy, role or equipment. Original identities and stable IDs support saved edits and traceable numerical fields.
 
-## Rules conversion
+## Conversion rules
 
-| Source | Treatment |
-| --- | --- |
-| AGE | Health becomes HP. Natural Defense is fixed AC; natural Armor Rating becomes explicit physical reduction. Worn armor is replaced with a current item and does not also grant its old Armor Rating. Scores use `10 + 2 × rating`: Strength/DEX/CON directly, Cunning→INT, maximum of Perception/Willpower→WIS, Communication→CHA. A caster's chosen mental score also includes Magic via the maximum rating. Yards become feet at ×3, rounded to the nearest 5 ft. Stunts become actions, bonus actions or reactions with finite uses/recharge; Mana and recursive extra attacks are not imported. |
-| D&D 3.x / PF1 | Numeric physical and mental scores, printed fixed HP, size and movement are retained where supplied. Absent mental scores are completed explicitly. BAB, CMB/CMD, size accuracy and Fortitude/Reflex/Will are replaced by current proficiency, ability-based attacks, six saves and current DCs. A printed natural-weapon damage modifier can remain an explicit creature exception. |
-| PF2 | Six scores reconstruct each modifier with `10 + 2 × modifier`. Level-based accuracy/saves and MAP are removed; attacks use current proficiency and ability. Shark AC is source AC minus creature level. Their HP remain printed. Source level only seeds a provisional CR estimate. Two-action movement/attack packages consume one Varis action plus normal movement rather than two Varis actions or free movement. |
-| 5e goblin handout | Most printed statistics remain. Missing poison duration and contradictory HP formulas are recorded and completed. Organ Goblin's drain has a maximum-HP floor of 1 and only counts actual HP damage from an unblocked strike. |
+All playable blocks use current Varis proficiency, attacks, saves, Block, equipment, conditions and action costs. Incompatible old accuracy bonuses, size adjustments and extra-action economies are replaced explicitly.
 
-All challenge ratings in this batch are **provisional Varis encounter estimates**, including retained source CRs. Reconstruction and fixed creature exceptions are identified in each source panel; inferred scores are not represented as printed six-score arrays. The legacy YAML key `original_5e` is required by the existing monster editor/import format; every new panel explicitly identifies its actual `source_system`, including AGE, PF1, PF2 and 3.x.
+Where a reference supplies eight ability ratings, six-score reconstruction uses `10 + 2 × rating`: Strength/DEX/CON directly, Cunning for INT, maximum Perception/Willpower for WIS and Communication for CHA. A caster's chosen mental ability also includes the higher Magic rating. Modifier-only arrays reconstruct with `10 + 2 × modifier`. These scores are marked as reconstructed, with the exact calculation in their numerical notes. Supplied six-score arrays stay intact.
 
-Rested Block is Dexterity-derived plus actual current armor/shield Block. Natural hide and Armor Rating do not grant equipment training or extra Block. Trained Block checks include current proficiency and Protection; permitted armor/shields allow STR. Weapon conversions use current dice, reach, Reload, Overdraw, Bulk, Slow and DC modifiers. Two-handed loadouts state which shield defenses are lost. Ordinary strike Block DC is attack bonus +8, with explicit Greataxe DC+ and Greatsword DC+++ adjustments.
+Printed HP and movement are retained where compatible. Yard distances convert at three feet per yard, rounded to five-foot increments; missing or adjusted distances are documented. Level-based defenses and accuracy are converted before choosing an encounter estimate. Natural protection does not grant equipment training or extra Block. Worn armor uses current Bulk, Slow, Protection, Reduction and Block; its old defensive rating is not added again.
 
-Attack riders require an unblocked strike; automatic and save-only effects cannot be Blocked. Source penetrating damage is not a universal Block bypass. Old thunder damage becomes sonic. Long legacy paralysis becomes current Stunned with repeat CON saves, because current Paralyzed forbids saves. Fixed one-turn paralysis ends automatically. Old STR drain becomes poison HP damage and Weakened; automatic death, permanent possession and unlimited spawning become bounded effects with recovery or escape procedures. No existing global condition is rewritten.
+Ordinary attacks show Block DC equal to attack bonus +8, with explicit weapon or creature adjustments. Current weapon dice, Reload, reach, Overdraw, Greataxe DC+ and Greatsword DC+++ apply. Two-handed loadouts identify shield defenses lost while using them. Attack riders require an unblocked strike. Save-only and automatic damage cannot be Blocked.
 
-Daily uses recover in 24 hours; short rests take one day and long rests one week. Recharge rolls occur at the start of the creature's turn. Multi-body creatures share a turn/action budget; summons have duration, concentration, command and population limits. A creature reference does not create an ally automatically.
+Long paralysis effects use Stunned with CON recovery saves; fixed one-turn Paralyzed effects end automatically because Paralyzed creatures cannot make saves. Ability drain becomes explicit damage and recoverable conditions. Old automatic death and unlimited possession become bounded effects with counterplay. Multi-body creatures share a turn budget. Summoned creatures have duration, concentration, command and population limits and reference independent monster profiles.
 
-## Provenance and editing
+Daily uses recover after 24 hours; short rests take one day and long rests one week. Recharge rolls occur at the start of the creature's turn. Temporary Block does not stack. Existing global rules are unchanged.
 
-Sources: [Midgard Bestiary AGE Volume 1](https://www.scribd.com/document/590183663/Midgard-Bestiary-AGE-Vol1), [Goblin Variants handout](https://www.scribd.com/document/698529612/Goblin-Variants-PDF-sp-check), and the user-supplied screenshots. These reference different publishers, editions and homebrew authors. Source attribution does not imply that their licenses are interchangeable or that their creatures are official Varis rules. The import stores mechanical facts and newly written conversions; it does not copy book artwork or bulk lore prose.
+## Completed challenge profiles
 
-Each block contains its source system/reference, original numerical facts, score status, completion fields and conversion decisions in the existing collapsed source panel. `data/monsters/source/cross-system-index.json` maps every new public name, source identity, page and theme. The four YAML collections are canonical editable content; normal website editing and targeted `custom.yaml` overrides work as for the existing monsters. Physical source collections are independent of the encounter themes used in browsing.
+| Creature | CR | Basis |
+| --- | ---: | --- |
+| Burrow Hound Juggernaut | 6 | HP 85, armored hide, three natural attacks, finite ferocity and frenzy. |
+| Infernal Portal | 12 | Encounter-hazard estimate for a three-round reference encounter using its existing arrival rules; longer operation changes difficulty. |
+| Stoneform Duplicate | 1 | Complete standard stone body using a Boulder Guardian model with half HP and shared finite resources. |
+| Stone illusion duplicate | 0 | Complete harmless one-HP decoy; cannot attack or cast spells. |
+
+Every current creature has a numeric CR. These are encounter estimates to refine in play. A duplicate configured from another model records that model and its own challenge; its default CR must not be applied to a stronger copied body. Optional modelling never creates a creature, grants control, duplicates resources or adds independent concentration.
+
+## Editing and numerical notes
+
+The four YAML collections and normal `custom.yaml` overrides remain editable. The historical `original_5e` field is retained for file compatibility and contains provided numerical facts; it is not a claim that every reference used the same rules. Completed fields, score reconstruction, current replacements and neutral reference categories appear in collapsed notes.
+
+The reference inventory is `data/monsters/source/cross-system-index.json`. [Reference material 1](https://www.scribd.com/document/590183663), [reference material 2](https://www.scribd.com/document/698529612), and the supplied images provide the numerical inputs. The compendium uses newly written descriptions and conversions; images and bulk descriptive prose are not imported.
 
 ## Profile inventory
 
-| Creature | Source | Primary theme |
+| Creature | Reference category | Primary theme |
 | --- | --- | --- |
-| Froghemoth | 3.x homebrew / PFSRD-labelled screenshot | Forests & wilds |
-| Gray Ooze | Pathfinder 1e | Caverns & lost ruins |
-| Crystal Ooze | Pathfinder 1e | Seas & coasts |
-| Id Ooze | Pathfinder 1e | Caverns & lost ruins |
-| Goblin Shark | Pathfinder 2e / Howl of the Wild | Seas & coasts |
-| Great White Shark | Pathfinder 2e / Monster Core | Seas & coasts |
-| Brain Mole | D&D 3e SRD | Caverns & lost ruins |
-| Crystal Abomination | D&D 3.5 homebrew | Earth & crystal realms |
-| Slag Worm | Pathfinder 1e | Fire, storms & sky |
-| Borogon | D&D 3.5 homebrew | Forests & wilds |
-| Frost Salamander | D&D 3e / Monster Manual II | Frozen wastes |
-| Galeb Duhr | D&D 3e / Monster Manual II | Earth & crystal realms |
-| Gambol | D&D 3e / Monster Manual II | Forests & wilds |
-| Grizzly Mastodon | D&D 3e / Monster Manual II | Frozen wastes |
-| Catoblepas | D&D 3e / Monster Manual II | Forests & wilds |
-| Red Sundew | D&D 3e / Monster Manual II | Forests & wilds |
-| Monstrous Spiderling | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Very Young Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Young Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Juvenile Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Young Adult Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Adult Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Mature Adult Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Old Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Very Old Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Elder Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Ancient Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Archaic Monstrous Spider | D&D 3.5 homebrew / age progression table | Forests & wilds |
-| Goblin | Pathfinder 1e | Orc & gnoll warbands |
-| Small Greataxe Goblin Brute | D&D 3.5 homebrew | Orc & gnoll warbands |
-| Greatsword Goblin Brute | D&D 3.5 homebrew | Orc & gnoll warbands |
-| Greatclub Goblin Brute | D&D 3.5 homebrew | Orc & gnoll warbands |
-| Sharkskin Goblin | D&D 5e homebrew | Seas & coasts |
-| Organ Goblin | D&D 5e homebrew | Eldritch nightmares |
-| Cactus Goblin | D&D 5e homebrew | Deserts & canyons |
-| Ala | AGE, p. 2; Ala | Fire, storms & sky |
-| Alseid Hunter | AGE, p. 3; Alseid Hunter | Forests & wilds |
-| Feyblade Exile | AGE, p. 4; Arbonesse Exile | Forests & wilds |
-| Wasteland Magister | AGE, p. 5; Bemmean Wizard | Cults, mages & dark bargains |
-| Bone Collective | AGE, p. 6; Bone Collective | Tombs & restless dead |
-| Bone Crab | AGE, p. 7; Bone Crab | Seas & coasts |
-| Bonepowder Ghoul | AGE, p. 8; Bonepowder Ghoul | Tombs & restless dead |
-| Carrion Beetle | AGE, p. 9; Carrion Beetle | Caverns & lost ruins |
-| Young Cave Dragon | AGE, p. 10; Cave Dragon, Young | Dragons & their lairs |
-| Cavelight Moss | AGE, p. 11; Cavelight Moss | Caverns & lost ruins |
-| Clockwork Hound | AGE, p. 12; Clockwork Hound | Constructs & workshops |
-| Clockwork Myrmidon | AGE, p. 13; Clockwork Myrmidon | Constructs & workshops |
-| Crag Drake | AGE, p. 14; Crag Drake | Earth & crystal realms |
-| Death Butterfly Swarm | AGE, p. 15; Death Butterfly Swarm | Forests & wilds |
-| Derro Fetal Savant | AGE, p. 16; Derro Fetal Savant | Eldritch nightmares |
-| Dogmole | AGE, p. 17; Dogmole | Caverns & lost ruins |
-| Dust Goblin Scavenger | AGE, p. 18; Dust Goblin Scavenger | Deserts & canyons |
-| Eel Hound | AGE, p. 19; Eel Hound | Seas & coasts |
-| Eye Golem | AGE, p. 20; Eye Golem | Constructs & workshops |
-| Fellforged | AGE, p. 21; Fellforged | Constructs & workshops |
-| Firegeist | AGE, p. 22; Firegeist | Fire, storms & sky |
-| Dwarf Axe Siegebreaker | AGE, p. 23; Free Canton Siegebreaker | Cities, guards & outlaws |
-| Ghost Knight | AGE, p. 24; Ghost Knight of Morgau | Tombs & restless dead |
-| Gilded Devil | AGE, p. 25; Gilded Devil | Infernal invasions |
-| Shark-Shifting Goblin | AGE, p. 26; Goblin Shark | Seas & coasts |
-| Gypsosphinx | AGE, p. 27; Gypsosphinx | Deserts & canyons |
-| Veiled Poison Assassin | AGE, p. 28; Harem Assassin | Cities, guards & outlaws |
-| Imperial Ghast | AGE, p. 29; Imperial Ghast | Tombs & restless dead |
-| Iron Ghoul | AGE, p. 30; Iron Ghoul | Tombs & restless dead |
-| Kobold Slyblade | AGE, p. 31; Kobold Slyblade | Cities, guards & outlaws |
-| Minotaur Deckbreaker | AGE, p. 32; Kyprion Deckclearer | Seas & coasts |
-| Lich Hound | AGE, p. 33; Lich Hound | Tombs & restless dead |
-| Lorelei | AGE, p. 34; Lorelei | Seas & coasts |
-| Merrow | AGE, p. 35; Merrow | Seas & coasts |
-| Dragonkin Runestaff Envoy | AGE, p. 36; Mharoti Emissary | Cults, mages & dark bargains |
-| Mindrot Thrall | AGE, p. 37; Mindrot Thrall | Eldritch nightmares |
-| Deathcap Mycolid | AGE, p. 38; Mycolid | Caverns & lost ruins |
-| Psilocybe Mycolid | AGE, p. 38; Mycolid | Caverns & lost ruins |
-| Necrophagus Ghoul | AGE, p. 39; Necrophagus Ghoul | Tombs & restless dead |
-| Infernal Gnome Enchanter | AGE, p. 40; Niemheim Enchanter | Infernal invasions |
-| Putrid Haunt | AGE, p. 41; Putrid Haunt | Forests & wilds |
-| Centaur Lance Roughneck | AGE, p. 42; Rhoetian Roughneck | Cities, guards & outlaws |
-| Roachling | AGE, p. 43; Roachling | Caverns & lost ruins |
-| Sap Demon | AGE, p. 44; Sap Demon | Forests & wilds |
-| Shield-and-Spear Sellsword | AGE, p. 45; Septime Sellsword | Cities, guards & outlaws |
-| Shadow Fey Courtier | AGE, p. 46; Shadow Fey Courtier | Forests & wilds |
-| Spark | AGE, p. 47; Spark | Fire, storms & sky |
-| Steam Golem | AGE, p. 48; Steam Golem | Constructs & workshops |
-| Weaving Spider | AGE, p. 49; Weaving Spider | Constructs & workshops |
-| Wharfling Swarm | AGE, p. 50; Wharfling Swarm | Seas & coasts |
-| Gearforged Legionnaire | AGE, p. 51; Zobeck Legionnaire | Constructs & workshops |
+| Adhesive Bog Colossus | Legacy d20 homebrew | Forests & wilds |
+| Gray Ooze | Legacy d20 | Caverns & lost ruins |
+| Crystal Ooze | Legacy d20 | Seas & coasts |
+| Id Ooze | Legacy d20 | Caverns & lost ruins |
+| Goblin Shark | Level-based d20 / aquatic reference | Seas & coasts |
+| Great White Shark | Level-based d20 / creature reference | Seas & coasts |
+| Mindleech Mole | Legacy d20 reference | Caverns & lost ruins |
+| Crystal Abomination | Legacy d20 homebrew | Earth & crystal realms |
+| Slag Worm | Legacy d20 | Fire, storms & sky |
+| Spineback Devourer | Legacy d20 homebrew | Forests & wilds |
+| Frost Salamander | Legacy d20 / creature reference volume 2 | Frozen wastes |
+| Boulder Hermit | Legacy d20 / creature reference volume 2 | Earth & crystal realms |
+| Bounding Jungle Predator | Legacy d20 / creature reference volume 2 | Forests & wilds |
+| Grizzly Mastodon | Legacy d20 / creature reference volume 2 | Frozen wastes |
+| Catoblepas | Legacy d20 / creature reference volume 2 | Forests & wilds |
+| Red Sundew | Legacy d20 / creature reference volume 2 | Forests & wilds |
+| Monstrous Spiderling | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Very Young Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Young Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Juvenile Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Young Adult Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Adult Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Mature Adult Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Old Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Very Old Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Elder Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Ancient Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Archaic Monstrous Spider | Legacy d20 homebrew / age progression table | Forests & wilds |
+| Goblin | Legacy d20 | Orc & gnoll warbands |
+| Small Greataxe Goblin Brute | Legacy d20 homebrew | Orc & gnoll warbands |
+| Greatsword Goblin Brute | Legacy d20 homebrew | Orc & gnoll warbands |
+| Greatclub Goblin Brute | Legacy d20 homebrew | Orc & gnoll warbands |
+| Sharkskin Goblin | Six-score homebrew | Seas & coasts |
+| Organ Goblin | Six-score homebrew | Eldritch nightmares |
+| Cactus Goblin | Six-score homebrew | Deserts & canyons |
+| Stormcloud Devourer | Creature reference, p. 2 | Fire, storms & sky |
+| Antlered Forest Hunter | Creature reference, p. 3 | Forests & wilds |
+| Feyblade Exile | Creature reference, p. 4 | Forests & wilds |
+| Wasteland Magister | Creature reference, p. 5 | Cults, mages & dark bargains |
+| Bone Swarm Exarch | Creature reference, p. 6 | Tombs & restless dead |
+| Bone Crab | Creature reference, p. 7 | Seas & coasts |
+| Grave Dust Ghoul | Creature reference, p. 8 | Tombs & restless dead |
+| Carrion Beetle | Creature reference, p. 9 | Caverns & lost ruins |
+| Young Cave Dragon | Creature reference, p. 10 | Dragons & their lairs |
+| Luminous Strangler Moss | Creature reference, p. 11 | Caverns & lost ruins |
+| Clockwork Hound | Creature reference, p. 12 | Constructs & workshops |
+| Flamejet Clockwork Sentinel | Creature reference, p. 13 | Constructs & workshops |
+| Crag Drake | Creature reference, p. 14 | Earth & crystal realms |
+| Death Butterfly Swarm | Creature reference, p. 15 | Forests & wilds |
+| Caged Mind Savant | Creature reference, p. 16 | Eldritch nightmares |
+| Burrow Hound | Creature reference, p. 17 | Caverns & lost ruins |
+| Dust Goblin Scavenger | Creature reference, p. 18 | Deserts & canyons |
+| Eel Hound | Creature reference, p. 19 | Seas & coasts |
+| Eye Golem | Creature reference, p. 20 | Constructs & workshops |
+| Wraithbound Automaton | Creature reference, p. 21 | Constructs & workshops |
+| Ember Wisp | Creature reference, p. 22 | Fire, storms & sky |
+| Dwarf Axe Siegebreaker | Creature reference, p. 23 | Cities, guards & outlaws |
+| Ghost Knight | Creature reference, p. 24 | Tombs & restless dead |
+| Gilded Devil | Creature reference, p. 25 | Infernal invasions |
+| Shark-Shifting Goblin | Creature reference, p. 26 | Seas & coasts |
+| Vulture Sphinx | Creature reference, p. 27 | Deserts & canyons |
+| Veiled Poison Assassin | Creature reference, p. 28 | Cities, guards & outlaws |
+| Frenzied Spear Ghast | Creature reference, p. 29 | Tombs & restless dead |
+| Plateclad Ghoul | Creature reference, p. 30 | Tombs & restless dead |
+| Kobold Ambusher | Creature reference, p. 31 | Cities, guards & outlaws |
+| Minotaur Deckbreaker | Creature reference, p. 32 | Seas & coasts |
+| Grave Hunting Hound | Creature reference, p. 33 | Tombs & restless dead |
+| River Lure Spirit | Creature reference, p. 34 | Seas & coasts |
+| River Troll | Creature reference, p. 35 | Seas & coasts |
+| Dragonkin Runestaff Envoy | Creature reference, p. 36 | Cults, mages & dark bargains |
+| Sporebound Thrall | Creature reference, p. 37 | Eldritch nightmares |
+| Deathcap Fungal Guardian | Creature reference, p. 38 | Caverns & lost ruins |
+| Hallucinogenic Fungal Guardian | Creature reference, p. 38 | Caverns & lost ruins |
+| Ghoul Necromancer | Creature reference, p. 39 | Tombs & restless dead |
+| Infernal Gnome Enchanter | Creature reference, p. 40 | Infernal invasions |
+| Putrid Haunt | Creature reference, p. 41 | Forests & wilds |
+| Centaur Lance Roughneck | Creature reference, p. 42 | Cities, guards & outlaws |
+| Cockroach Folk Scavenger | Creature reference, p. 43 | Caverns & lost ruins |
+| Sap Demon | Creature reference, p. 44 | Forests & wilds |
+| Shield-and-Spear Sellsword | Creature reference, p. 45 | Cities, guards & outlaws |
+| Shadow Fey Courtier | Creature reference, p. 46 | Forests & wilds |
+| Lightning Mote | Creature reference, p. 47 | Fire, storms & sky |
+| Steam Golem | Creature reference, p. 48 | Constructs & workshops |
+| Weaving Spider | Creature reference, p. 49 | Constructs & workshops |
+| Shore Scavenger Swarm | Creature reference, p. 50 | Seas & coasts |
+| Clockwork Legionnaire | Creature reference, p. 51 | Constructs & workshops |
+| Burrow Hound Juggernaut | Legacy d20 | Caverns & lost ruins |

@@ -20,8 +20,8 @@ class CrossSystemMonsterTests(unittest.TestCase):
         return '\n'.join(r['description'] for r in self.new[name].get(field, []))
 
     def test_complete_inventory_preserves_old_collections_and_all_current_spells(self):
-        self.assertEqual(len(self.records), 86)
-        self.assertEqual(len(self.all), 301)
+        self.assertEqual(len(self.records), 87)
+        self.assertEqual(len(self.all), 302)
         self.assertEqual(len(self.catalog['spells']['entries']), 439)
         self.assertEqual(sum(e['source'] not in {r['file'] for r in self.records} for e in self.all.values()), 215)
         self.assertEqual(len({e['details']['encounter_theme'] for e in self.all.values()}), 15)
@@ -34,21 +34,21 @@ class CrossSystemMonsterTests(unittest.TestCase):
             for key in ('str', 'dex', 'con', 'int', 'wis', 'cha'):
                 self.assertGreaterEqual(int(entry['details']['abilities'][key]), 1)
 
-    def test_all_fifty_age_pages_are_covered_and_two_mycolids_are_independent(self):
-        age = [d for d in self.new.values() if d['source_system'].startswith('AGE')]
+    def test_all_fifty_setting_pages_are_covered_and_two_mycolids_are_independent(self):
+        age = [d for d in self.new.values() if d['source_system'].lower().startswith('eight-attribute')]
         self.assertEqual(len(age), 51)
         self.assertEqual({int(d['original_5e']['page']) for d in age}, set(range(2, 52)))
         self.assertEqual(sum(int(d['original_5e']['page']) == 38 for d in age), 2)
-        self.assertIn('Paralytic Spores', str(self.new['Deathcap Mycolid']['actions']))
-        self.assertNotIn('Hallucinogenic Spores', str(self.new['Deathcap Mycolid']['actions']))
-        self.assertIn('Hallucinogenic Spores', str(self.new['Psilocybe Mycolid']['actions']))
-        self.assertNotIn('Paralytic Spores', str(self.new['Psilocybe Mycolid']['actions']))
+        self.assertIn('Paralytic Spores', str(self.new['Deathcap Fungal Guardian']['actions']))
+        self.assertNotIn('Hallucinogenic Spores', str(self.new['Deathcap Fungal Guardian']['actions']))
+        self.assertIn('Hallucinogenic Spores', str(self.new['Hallucinogenic Fungal Guardian']['actions']))
+        self.assertNotIn('Paralytic Spores', str(self.new['Hallucinogenic Fungal Guardian']['actions']))
         self.assertEqual(self.new['Wasteland Magister']['abilities']['int'], '26')
         self.assertEqual(int(self.new['Wasteland Magister']['original_5e']['abilities']['Magic']), 8)
-        self.assertEqual(self.new['Alseid Hunter']['hp'], '21')
+        self.assertEqual(self.new['Antlered Forest Hunter']['hp'], '21')
         self.assertEqual(self.new['Feyblade Exile']['speed'], '35 ft.')
 
-    def test_pf2_scores_reconstruct_modifiers_but_level_accuracy_is_removed(self):
+    def test_modifier_scores_reconstruct_modifiers_but_level_accuracy_is_removed(self):
         shark = self.new['Goblin Shark']
         self.assertEqual(shark['abilities'], dict(zip(('str','dex','con','int','wis','cha'), map(str, (22,18,20,2,16,4)))))
         self.assertEqual((shark['ac'], shark['hp']), ('16', '85'))
@@ -94,16 +94,16 @@ class CrossSystemMonsterTests(unittest.TestCase):
                 for row in d.get(field, []):
                     self.assertNotIn('Paralyzed for 1 minute', row['description'], name)
         self.assertIn('Stunned for 1 minute', self.text('Crystal Ooze'))
-        self.assertIn('Stunned by its Grave Bite', self.text('Necrophagus Ghoul'))
-        self.assertIn('CON save', self.text('Necrophagus Ghoul'))
+        self.assertIn('Stunned by its Grave Bite', self.text('Ghoul Necromancer'))
+        self.assertIn('CON save', self.text('Ghoul Necromancer'))
         self.assertIn('share one turn', self.text('Crystal Abomination'))
-        self.assertIn('Only the host acts', self.text('Spark'))
-        self.assertIn('There is no automatic death timer', self.text('Froghemoth'))
+        self.assertIn('Only the host acts', self.text('Lightning Mote'))
+        self.assertIn('There is no automatic death timer', self.text('Adhesive Bog Colossus'))
         self.assertIn('8d8 necrotic', self.text('Catoblepas'))
 
     def test_created_creatures_reference_independent_profiles_and_finite_control(self):
-        expected = {'Galeb Duhr': 'Boulder Guardian', 'Necrophagus Ghoul': 'Zombie',
-                    'Infernal Gnome Enchanter': 'Firegeist'}
+        expected = {'Boulder Hermit': 'Boulder Guardian', 'Ghoul Necromancer': 'Zombie',
+                    'Infernal Gnome Enchanter': 'Ember Wisp'}
         for name, summoned in expected.items():
             self.assertIn(summoned, self.all)
             self.assertIn(summoned, [r['monster'] for r in self.new[name]['summons']])

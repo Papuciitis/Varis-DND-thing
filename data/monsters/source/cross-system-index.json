@@ -1,12 +1,12 @@
 {
   "batch": "2026-11-28",
-  "count": 86,
+  "count": 87,
   "records": [
     {
-      "name": "Froghemoth",
+      "name": "Adhesive Bog Colossus",
       "id": "converted-froghemoth",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "3.x homebrew / PFSRD-labelled screenshot",
+      "source_system": "Legacy d20 homebrew",
       "original_name": "Froghemoth",
       "page": null,
       "theme": "Forests & wilds"
@@ -15,7 +15,7 @@
       "name": "Gray Ooze",
       "id": "converted-gray-ooze",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "Pathfinder 1e",
+      "source_system": "Legacy d20",
       "original_name": "Gray Ooze",
       "page": null,
       "theme": "Caverns & lost ruins"
@@ -24,7 +24,7 @@
       "name": "Crystal Ooze",
       "id": "converted-crystal-ooze",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "Pathfinder 1e",
+      "source_system": "Legacy d20",
       "original_name": "Crystal Ooze",
       "page": null,
       "theme": "Seas & coasts"
@@ -33,7 +33,7 @@
       "name": "Id Ooze",
       "id": "converted-id-ooze",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "Pathfinder 1e",
+      "source_system": "Legacy d20",
       "original_name": "Id Ooze",
       "page": null,
       "theme": "Caverns & lost ruins"
@@ -42,7 +42,7 @@
       "name": "Goblin Shark",
       "id": "converted-goblin-shark",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "Pathfinder 2e / Howl of the Wild",
+      "source_system": "Level-based d20 / aquatic reference",
       "original_name": "Goblin Shark",
       "page": null,
       "theme": "Seas & coasts"
@@ -51,16 +51,16 @@
       "name": "Great White Shark",
       "id": "converted-great-white-shark",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "Pathfinder 2e / Monster Core",
+      "source_system": "Level-based d20 / creature reference",
       "original_name": "Great White Shark",
       "page": null,
       "theme": "Seas & coasts"
     },
     {
-      "name": "Brain Mole",
+      "name": "Mindleech Mole",
       "id": "converted-brain-mole",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3e SRD",
+      "source_system": "Legacy d20 reference",
       "original_name": "Brain Mole",
       "page": null,
       "theme": "Caverns & lost ruins"
@@ -69,7 +69,7 @@
       "name": "Crystal Abomination",
       "id": "converted-crystal-abomination",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3.5 homebrew",
+      "source_system": "Legacy d20 homebrew",
       "original_name": "Crystal Abomination",
       "page": null,
       "theme": "Earth & crystal realms"
@@ -78,16 +78,16 @@
       "name": "Slag Worm",
       "id": "converted-slag-worm",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "Pathfinder 1e",
+      "source_system": "Legacy d20",
       "original_name": "Slag Worm",
       "page": null,
       "theme": "Fire, storms & sky"
     },
     {
-      "name": "Borogon",
+      "name": "Spineback Devourer",
       "id": "converted-borogon",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3.5 homebrew",
+      "source_system": "Legacy d20 homebrew",
       "original_name": "Borogon",
       "page": null,
       "theme": "Forests & wilds"
@@ -96,25 +96,25 @@
       "name": "Frost Salamander",
       "id": "converted-frost-salamander",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3e / Monster Manual II",
+      "source_system": "Legacy d20 / creature reference volume 2",
       "original_name": "Frost Salamander",
       "page": null,
       "theme": "Frozen wastes"
     },
     {
-      "name": "Galeb Duhr",
+      "name": "Boulder Hermit",
       "id": "converted-galeb-duhr",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3e / Monster Manual II",
+      "source_system": "Legacy d20 / creature reference volume 2",
       "original_name": "Galeb Duhr",
       "page": null,
       "theme": "Earth & crystal realms"
     },
     {
-      "name": "Gambol",
+      "name": "Bounding Jungle Predator",
       "id": "converted-gambol",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3e / Monster Manual II",
+      "source_system": "Legacy d20 / creature reference volume 2",
       "original_name": "Gambol",
       "page": null,
       "theme": "Forests & wilds"
@@ -123,7 +123,7 @@
       "name": "Grizzly Mastodon",
       "id": "converted-grizzly-mastodon",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3e / Monster Manual II",
+      "source_system": "Legacy d20 / creature reference volume 2",
       "original_name": "Grizzly Mastodon",
       "page": null,
       "theme": "Frozen wastes"
@@ -132,7 +132,7 @@
       "name": "Catoblepas",
       "id": "converted-catoblepas",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3e / Monster Manual II",
+      "source_system": "Legacy d20 / creature reference volume 2",
       "original_name": "Catoblepas",
       "page": null,
       "theme": "Forests & wilds"
@@ -141,7 +141,7 @@
       "name": "Red Sundew",
       "id": "converted-red-sundew",
       "file": "monsters/legacy-creatures.yaml",
-      "source_system": "D&D 3e / Monster Manual II",
+      "source_system": "Legacy d20 / creature reference volume 2",
       "original_name": "Red Sundew",
       "page": null,
       "theme": "Forests & wilds"
@@ -150,7 +150,7 @@
       "name": "Monstrous Spiderling",
       "id": "converted-monstrous-spiderling",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Monstrous Spiderling",
       "page": null,
       "theme": "Forests & wilds"
@@ -159,7 +159,7 @@
       "name": "Very Young Monstrous Spider",
       "id": "converted-very-young-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Very Young Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -168,7 +168,7 @@
       "name": "Young Monstrous Spider",
       "id": "converted-young-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Young Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -177,7 +177,7 @@
       "name": "Juvenile Monstrous Spider",
       "id": "converted-juvenile-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Juvenile Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -186,7 +186,7 @@
       "name": "Young Adult Monstrous Spider",
       "id": "converted-young-adult-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Young Adult Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -195,7 +195,7 @@
       "name": "Adult Monstrous Spider",
       "id": "converted-adult-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Adult Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -204,7 +204,7 @@
       "name": "Mature Adult Monstrous Spider",
       "id": "converted-mature-adult-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Mature Adult Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -213,7 +213,7 @@
       "name": "Old Monstrous Spider",
       "id": "converted-old-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Old Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -222,7 +222,7 @@
       "name": "Very Old Monstrous Spider",
       "id": "converted-very-old-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Very Old Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -231,7 +231,7 @@
       "name": "Elder Monstrous Spider",
       "id": "converted-elder-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Elder Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -240,7 +240,7 @@
       "name": "Ancient Monstrous Spider",
       "id": "converted-ancient-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Ancient Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -249,7 +249,7 @@
       "name": "Archaic Monstrous Spider",
       "id": "converted-archaic-monstrous-spider",
       "file": "monsters/legacy-spiders.yaml",
-      "source_system": "D&D 3.5 homebrew / age progression table",
+      "source_system": "Legacy d20 homebrew / age progression table",
       "original_name": "Archaic Monstrous Spider",
       "page": null,
       "theme": "Forests & wilds"
@@ -258,7 +258,7 @@
       "name": "Goblin",
       "id": "converted-goblin",
       "file": "monsters/goblin-variants.yaml",
-      "source_system": "Pathfinder 1e",
+      "source_system": "Legacy d20",
       "original_name": "Goblin",
       "page": null,
       "theme": "Orc & gnoll warbands"
@@ -267,7 +267,7 @@
       "name": "Small Greataxe Goblin Brute",
       "id": "converted-small-greataxe-goblin-brute",
       "file": "monsters/goblin-variants.yaml",
-      "source_system": "D&D 3.5 homebrew",
+      "source_system": "Legacy d20 homebrew",
       "original_name": "Small Brute Goblin",
       "page": null,
       "theme": "Orc & gnoll warbands"
@@ -276,7 +276,7 @@
       "name": "Greatsword Goblin Brute",
       "id": "converted-greatsword-goblin-brute",
       "file": "monsters/goblin-variants.yaml",
-      "source_system": "D&D 3.5 homebrew",
+      "source_system": "Legacy d20 homebrew",
       "original_name": "Medium Brute Goblin",
       "page": null,
       "theme": "Orc & gnoll warbands"
@@ -285,7 +285,7 @@
       "name": "Greatclub Goblin Brute",
       "id": "converted-greatclub-goblin-brute",
       "file": "monsters/goblin-variants.yaml",
-      "source_system": "D&D 3.5 homebrew",
+      "source_system": "Legacy d20 homebrew",
       "original_name": "Large Brute Goblin",
       "page": null,
       "theme": "Orc & gnoll warbands"
@@ -294,7 +294,7 @@
       "name": "Sharkskin Goblin",
       "id": "converted-sharkskin-goblin",
       "file": "monsters/goblin-variants.yaml",
-      "source_system": "D&D 5e homebrew",
+      "source_system": "Six-score homebrew",
       "original_name": "Shark Goblin",
       "page": null,
       "theme": "Seas & coasts"
@@ -303,7 +303,7 @@
       "name": "Organ Goblin",
       "id": "converted-organ-goblin",
       "file": "monsters/goblin-variants.yaml",
-      "source_system": "D&D 5e homebrew",
+      "source_system": "Six-score homebrew",
       "original_name": "Organ Goblin",
       "page": null,
       "theme": "Eldritch nightmares"
@@ -312,25 +312,25 @@
       "name": "Cactus Goblin",
       "id": "converted-cactus-goblin",
       "file": "monsters/goblin-variants.yaml",
-      "source_system": "D&D 5e homebrew",
+      "source_system": "Six-score homebrew",
       "original_name": "Cactus Goblin",
       "page": null,
       "theme": "Deserts & canyons"
     },
     {
-      "name": "Ala",
+      "name": "Stormcloud Devourer",
       "id": "converted-ala",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Ala",
       "page": 2,
       "theme": "Fire, storms & sky"
     },
     {
-      "name": "Alseid Hunter",
+      "name": "Antlered Forest Hunter",
       "id": "converted-alseid-hunter",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Alseid Hunter",
       "page": 3,
       "theme": "Forests & wilds"
@@ -338,8 +338,8 @@
     {
       "name": "Feyblade Exile",
       "id": "converted-feyblade-exile",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Arbonesse Exile",
       "page": 4,
       "theme": "Forests & wilds"
@@ -347,17 +347,17 @@
     {
       "name": "Wasteland Magister",
       "id": "converted-wasteland-magister",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Bemmean Wizard",
       "page": 5,
       "theme": "Cults, mages & dark bargains"
     },
     {
-      "name": "Bone Collective",
+      "name": "Bone Swarm Exarch",
       "id": "converted-bone-collective",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Bone Collective",
       "page": 6,
       "theme": "Tombs & restless dead"
@@ -365,17 +365,17 @@
     {
       "name": "Bone Crab",
       "id": "converted-bone-crab",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Bone Crab",
       "page": 7,
       "theme": "Seas & coasts"
     },
     {
-      "name": "Bonepowder Ghoul",
+      "name": "Grave Dust Ghoul",
       "id": "converted-bonepowder-ghoul",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Bonepowder Ghoul",
       "page": 8,
       "theme": "Tombs & restless dead"
@@ -383,8 +383,8 @@
     {
       "name": "Carrion Beetle",
       "id": "converted-carrion-beetle",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Carrion Beetle",
       "page": 9,
       "theme": "Caverns & lost ruins"
@@ -392,17 +392,17 @@
     {
       "name": "Young Cave Dragon",
       "id": "converted-young-cave-dragon",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Cave Dragon, Young",
       "page": 10,
       "theme": "Dragons & their lairs"
     },
     {
-      "name": "Cavelight Moss",
+      "name": "Luminous Strangler Moss",
       "id": "converted-cavelight-moss",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Cavelight Moss",
       "page": 11,
       "theme": "Caverns & lost ruins"
@@ -410,17 +410,17 @@
     {
       "name": "Clockwork Hound",
       "id": "converted-clockwork-hound",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Clockwork Hound",
       "page": 12,
       "theme": "Constructs & workshops"
     },
     {
-      "name": "Clockwork Myrmidon",
+      "name": "Flamejet Clockwork Sentinel",
       "id": "converted-clockwork-myrmidon",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Clockwork Myrmidon",
       "page": 13,
       "theme": "Constructs & workshops"
@@ -428,8 +428,8 @@
     {
       "name": "Crag Drake",
       "id": "converted-crag-drake",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Crag Drake",
       "page": 14,
       "theme": "Earth & crystal realms"
@@ -437,26 +437,26 @@
     {
       "name": "Death Butterfly Swarm",
       "id": "converted-death-butterfly-swarm",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Death Butterfly Swarm",
       "page": 15,
       "theme": "Forests & wilds"
     },
     {
-      "name": "Derro Fetal Savant",
+      "name": "Caged Mind Savant",
       "id": "converted-derro-fetal-savant",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Derro Fetal Savant",
       "page": 16,
       "theme": "Eldritch nightmares"
     },
     {
-      "name": "Dogmole",
+      "name": "Burrow Hound",
       "id": "converted-dogmole",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Dogmole",
       "page": 17,
       "theme": "Caverns & lost ruins"
@@ -464,8 +464,8 @@
     {
       "name": "Dust Goblin Scavenger",
       "id": "converted-dust-goblin-scavenger",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Dust Goblin Scavenger",
       "page": 18,
       "theme": "Deserts & canyons"
@@ -473,8 +473,8 @@
     {
       "name": "Eel Hound",
       "id": "converted-eel-hound",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Eel Hound",
       "page": 19,
       "theme": "Seas & coasts"
@@ -482,26 +482,26 @@
     {
       "name": "Eye Golem",
       "id": "converted-eye-golem",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Eye Golem",
       "page": 20,
       "theme": "Constructs & workshops"
     },
     {
-      "name": "Fellforged",
+      "name": "Wraithbound Automaton",
       "id": "converted-fellforged",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Fellforged",
       "page": 21,
       "theme": "Constructs & workshops"
     },
     {
-      "name": "Firegeist",
+      "name": "Ember Wisp",
       "id": "converted-firegeist",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Firegeist",
       "page": 22,
       "theme": "Fire, storms & sky"
@@ -509,8 +509,8 @@
     {
       "name": "Dwarf Axe Siegebreaker",
       "id": "converted-dwarf-axe-siegebreaker",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Free Canton Siegebreaker",
       "page": 23,
       "theme": "Cities, guards & outlaws"
@@ -518,8 +518,8 @@
     {
       "name": "Ghost Knight",
       "id": "converted-ghost-knight",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Ghost Knight of Morgau",
       "page": 24,
       "theme": "Tombs & restless dead"
@@ -527,8 +527,8 @@
     {
       "name": "Gilded Devil",
       "id": "converted-gilded-devil",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Gilded Devil",
       "page": 25,
       "theme": "Infernal invasions"
@@ -536,17 +536,17 @@
     {
       "name": "Shark-Shifting Goblin",
       "id": "converted-shark-shifting-goblin",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Goblin Shark",
       "page": 26,
       "theme": "Seas & coasts"
     },
     {
-      "name": "Gypsosphinx",
+      "name": "Vulture Sphinx",
       "id": "converted-gypsosphinx",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Gypsosphinx",
       "page": 27,
       "theme": "Deserts & canyons"
@@ -554,35 +554,35 @@
     {
       "name": "Veiled Poison Assassin",
       "id": "converted-veiled-poison-assassin",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Harem Assassin",
       "page": 28,
       "theme": "Cities, guards & outlaws"
     },
     {
-      "name": "Imperial Ghast",
+      "name": "Frenzied Spear Ghast",
       "id": "converted-imperial-ghast",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Imperial Ghast",
       "page": 29,
       "theme": "Tombs & restless dead"
     },
     {
-      "name": "Iron Ghoul",
+      "name": "Plateclad Ghoul",
       "id": "converted-iron-ghoul",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Iron Ghoul",
       "page": 30,
       "theme": "Tombs & restless dead"
     },
     {
-      "name": "Kobold Slyblade",
+      "name": "Kobold Ambusher",
       "id": "converted-kobold-slyblade",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Kobold Slyblade",
       "page": 31,
       "theme": "Cities, guards & outlaws"
@@ -590,35 +590,35 @@
     {
       "name": "Minotaur Deckbreaker",
       "id": "converted-minotaur-deckbreaker",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Kyprion Deckclearer",
       "page": 32,
       "theme": "Seas & coasts"
     },
     {
-      "name": "Lich Hound",
+      "name": "Grave Hunting Hound",
       "id": "converted-lich-hound",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Lich Hound",
       "page": 33,
       "theme": "Tombs & restless dead"
     },
     {
-      "name": "Lorelei",
+      "name": "River Lure Spirit",
       "id": "converted-lorelei",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Lorelei",
       "page": 34,
       "theme": "Seas & coasts"
     },
     {
-      "name": "Merrow",
+      "name": "River Troll",
       "id": "converted-merrow",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Merrow",
       "page": 35,
       "theme": "Seas & coasts"
@@ -626,44 +626,44 @@
     {
       "name": "Dragonkin Runestaff Envoy",
       "id": "converted-dragonkin-runestaff-envoy",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Mharoti Emissary",
       "page": 36,
       "theme": "Cults, mages & dark bargains"
     },
     {
-      "name": "Mindrot Thrall",
+      "name": "Sporebound Thrall",
       "id": "converted-mindrot-thrall",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Mindrot Thrall",
       "page": 37,
       "theme": "Eldritch nightmares"
     },
     {
-      "name": "Deathcap Mycolid",
+      "name": "Deathcap Fungal Guardian",
       "id": "converted-deathcap-mycolid",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Mycolid",
       "page": 38,
       "theme": "Caverns & lost ruins"
     },
     {
-      "name": "Psilocybe Mycolid",
+      "name": "Hallucinogenic Fungal Guardian",
       "id": "converted-psilocybe-mycolid",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Mycolid",
       "page": 38,
       "theme": "Caverns & lost ruins"
     },
     {
-      "name": "Necrophagus Ghoul",
+      "name": "Ghoul Necromancer",
       "id": "converted-necrophagus-ghoul",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Necrophagus Ghoul",
       "page": 39,
       "theme": "Tombs & restless dead"
@@ -671,8 +671,8 @@
     {
       "name": "Infernal Gnome Enchanter",
       "id": "converted-infernal-gnome-enchanter",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Niemheim Enchanter",
       "page": 40,
       "theme": "Infernal invasions"
@@ -680,8 +680,8 @@
     {
       "name": "Putrid Haunt",
       "id": "converted-putrid-haunt",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Putrid Haunt",
       "page": 41,
       "theme": "Forests & wilds"
@@ -689,17 +689,17 @@
     {
       "name": "Centaur Lance Roughneck",
       "id": "converted-centaur-lance-roughneck",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Rhoetian Roughneck",
       "page": 42,
       "theme": "Cities, guards & outlaws"
     },
     {
-      "name": "Roachling",
+      "name": "Cockroach Folk Scavenger",
       "id": "converted-roachling",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Roachling",
       "page": 43,
       "theme": "Caverns & lost ruins"
@@ -707,8 +707,8 @@
     {
       "name": "Sap Demon",
       "id": "converted-sap-demon",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Sap Demon",
       "page": 44,
       "theme": "Forests & wilds"
@@ -716,8 +716,8 @@
     {
       "name": "Shield-and-Spear Sellsword",
       "id": "converted-shield-and-spear-sellsword",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Septime Sellsword",
       "page": 45,
       "theme": "Cities, guards & outlaws"
@@ -725,17 +725,17 @@
     {
       "name": "Shadow Fey Courtier",
       "id": "converted-shadow-fey-courtier",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Shadow Fey Courtier",
       "page": 46,
       "theme": "Forests & wilds"
     },
     {
-      "name": "Spark",
+      "name": "Lightning Mote",
       "id": "converted-spark",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Spark",
       "page": 47,
       "theme": "Fire, storms & sky"
@@ -743,8 +743,8 @@
     {
       "name": "Steam Golem",
       "id": "converted-steam-golem",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Steam Golem",
       "page": 48,
       "theme": "Constructs & workshops"
@@ -752,29 +752,38 @@
     {
       "name": "Weaving Spider",
       "id": "converted-weaving-spider",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Weaving Spider",
       "page": 49,
       "theme": "Constructs & workshops"
     },
     {
-      "name": "Wharfling Swarm",
+      "name": "Shore Scavenger Swarm",
       "id": "converted-wharfling-swarm",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Wharfling Swarm",
       "page": 50,
       "theme": "Seas & coasts"
     },
     {
-      "name": "Gearforged Legionnaire",
+      "name": "Clockwork Legionnaire",
       "id": "converted-gearforged-legionnaire",
-      "file": "monsters/midgard-converted.yaml",
-      "source_system": "AGE System / Midgard Bestiary Volume 1",
+      "file": "monsters/setting-creatures.yaml",
+      "source_system": "Eight-attribute reference / Provided creature reference",
       "original_name": "Zobeck Legionnaire",
       "page": 51,
       "theme": "Constructs & workshops"
+    },
+    {
+      "name": "Burrow Hound Juggernaut",
+      "id": "converted-burrow-hound-juggernaut",
+      "file": "monsters/legacy-creatures.yaml",
+      "source_system": "Legacy d20",
+      "original_name": "Dogmole Juggernaut",
+      "page": null,
+      "theme": "Caverns & lost ruins"
     }
   ]
 }

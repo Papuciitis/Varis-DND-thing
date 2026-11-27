@@ -1,12 +1,12 @@
 # Monster themes and settings
 
-The Monster manual opens with 15 encounter themes covering all 301 profiles. Each card shows a count and example creatures. Choose a theme to browse its expandable statblocks, combine it with creature type, CR and text search, or use **Browse all** for the complete list. **Pages** remains available under More filters. Monster-page breadcrumbs and previous/next navigation follow the selected creature's encounter theme.
+The Monster manual opens with 15 encounter themes covering all 302 profiles. Each card shows a count and example creatures. Choose a theme to browse its expandable statblocks, combine it with creature type, CR and text search, or use **Browse all** for the complete list. **Pages** remains available under More filters. Monster-page breadcrumbs and previous/next navigation follow the selected creature's encounter theme.
 
 Themes are editorial encounter suggestions, not new habitat restrictions, allegiances or campaign canon. Each current monster has one primary theme. For example, dragons share one shelf across all imports; undead cross the campaign and workbook collections; the workshop shelf brings artificers, robotic companions and flesh constructs together.
 
 | Theme / setting | Monsters |
 | --- | ---: |
-| Caverns & lost ruins | 17 |
+| Caverns & lost ruins | 18 |
 | Cities, guards & outlaws | 18 |
 | Constructs & workshops | 22 |
 | Cults, mages & dark bargains | 9 |

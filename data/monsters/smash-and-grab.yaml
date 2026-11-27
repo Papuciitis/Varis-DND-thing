@@ -24,38 +24,39 @@ entries:
   languages: Common, Infernal, Abyssal
   traits:
   - name: Magic Resistance Shield
-    description: While using its shield, the Commando has advantage on saves against spells and other magical effects.
+    description: While using its shield, the Commando has advantage on saves against spells and other magical
+      effects.
   - name: Equipment Block
-    description: Base Dexterity Block 2 plus armor Block 2. At combat start raise remaining Block to at least 2.
-      It is trained with its printed armor and shield using the existing monster-equipment proficiency rule. Block
-      check uses Strength +4, proficiency +3 and Protection +3, total +10.
+    description: Base Dexterity Block 2 plus armor Block 2. At combat start raise remaining Block to at least
+      2. It is trained with its printed armor and shield using the existing monster-equipment proficiency rule.
+      Block check uses Strength +4, proficiency +3 and Protection +3, total +10.
   - name: Fiendish resilience (1/short rest)
-    description: On its turn, take one additional action. It does not grant another bonus action, move action or
-      reaction. This uses the existing 2014 Action Surge procedure to complete the source's missing activation timing;
-      it remains the source's monster power, not the Varis Fighter class feature.
+    description: On its turn, take one additional action. It does not grant another bonus action, move action
+      or reaction. This uses the existing 2014 Action Surge procedure to complete the source's missing activation
+      timing; it remains the source's monster power, not the Varis Fighter class feature.
   actions:
   - name: Multiattack
     description: Make two Hellfire Blade attacks; resolve and Block each separately.
   - name: Hellfire Blade
-    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal 10
-      (1d8 + 6) slashing damage plus 7 (2d6) fire damage. The fire rider belongs to the blockable strike.'
+    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal
+      10 (1d8 + 6) slashing damage plus 7 (2d6) fire damage. The fire rider belongs to the blockable strike.'
   - name: Darkness (1/day)
     description: Cast the current Darkness Occult cantrip without a spell slot, using its action, somatic component,
-      concentration and 30-foot sphere within 60 feet. It dims existing light and grants its printed passive effects;
-      it does not create the old 5e magical-darkness effect. No optional upgrade is assumed.
+      concentration and 30-foot sphere within 60 feet. It dims existing light and grants its printed passive
+      effects; it does not create the old 5e magical-darkness effect. No optional upgrade is assumed.
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
-  - The source plate/shield have been mapped to named current equipment and their Block/Protection/Reduction rules;
-    fixed monster AC 18 and speed 30 feet remain the source values, not the result of rebuilding it as a PC. The
-    unnamed shield is assigned the existing Round shield baseline.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
+  - The source plate/shield have been mapped to named current equipment and their Block/Protection/Reduction
+    rules; fixed monster AC 18 and speed 30 feet remain the source values, not the result of rebuilding it
+    as a PC. The unnamed shield is assigned the existing Round shield baseline.
   - The source explicitly offers120 max HP, although10d8 +30 has a mathematical dice maximum of110. Preserve120
     as its source tougher-HP variant, separate from the default75 HP; do not label it the rolled-dice maximum.
   replacement_sources:
@@ -83,26 +84,27 @@ entries:
   damage_resistances: fire; bludgeoning, piercing and slashing from nonmagical attacks
   equipment:
   - name: Plated armor suit
-    description: 'Current plate equivalent: Bulk 9, Block 2, Slow 4, physical Reduction 2, Protection 3. The armor
-      is included in the fixed AC and speed above; apply Reduction 2 to physical damage.'
+    description: 'Current plate equivalent: Bulk 9, Block 2, Slow 4, physical Reduction 2, Protection 3. The
+      armor is included in the fixed AC and speed above; apply Reduction 2 to physical damage.'
   - name: Round shield
-    description: 'Current shield baseline for the unnamed source shield: +2 AC (already in fixed AC), Bolster 1,
-      Brace 2, Bash 1d6. Bolster can grant 1 temporary Block by spending an action. The source Shield Parry is retained
-      below.'
+    description: 'Current shield baseline for the unnamed source shield: +2 AC (already in fixed AC), Bolster
+      1, Brace 2, Bash 1d6. Bolster can grant 1 temporary Block by spending an action. The source Shield Parry
+      is retained below.'
   bonus_actions:
   - name: Misty Step (1/long rest)
     description: Teleport up to 30 feet to an unoccupied space it can see. This is the complete source-specific
       bonus-action power and spends no spell slot.
   reactions:
   - name: Shield Parry
-    description: When hit by an attack while using its shield, spend its reaction to add +3 AC against that triggering
-      attack; if the attack no longer hits it deals no damage. This uses the existing Parry procedure to complete
-      the source duration.
+    description: When hit by an attack while using its shield, spend its reaction to add +3 AC against that
+      triggering attack; if the attack no longer hits it deals no damage. This uses the existing Parry procedure
+      to complete the source duration.
   - name: Hellish Rebuke (1/day)
-    description: After a creature it can see within 60 feet damages it, spend its reaction and use verbal and somatic
-      components. The triggering creature makes a DC 14 Dexterity save, taking 16 (3d10) fire damage on failure
-      or half on success. This self-contained second-level Hellish Rebuke effect cannot be Blocked and spends no
-      spell slot. The omitted DC is supplied by the existing Infernal Saboteur's same second-level Hellish Rebuke.
+    description: After a creature it can see within 60 feet damages it, spend its reaction and use verbal and
+      somatic components. The triggering creature makes a DC 14 Dexterity save, taking 16 (3d10) fire damage
+      on failure or half on success. This self-contained second-level Hellish Rebuke effect cannot be Blocked
+      and spends no spell slot. The omitted DC is supplied by the existing Infernal Saboteur's same second-level
+      Hellish Rebuke.
   id: smash-infernal-commando
   source_ref: Smash and grab.docx / Infernal Commando
   original_5e: 'Infernal Commando
@@ -183,23 +185,23 @@ entries:
   - name: Multiattack
     description: Make two Chain Whip attacks.
   - name: Chain Whip
-    description: 'Melee attack: +6 to hit; reach 10 ft.; one target; Block DC 14. On an unblocked strike, deal 10
-      (2d6 + 3) slashing damage. The unblocked strike pulls the target up to 10 feet closer to the Reaver; a successful
-      Block prevents the pull.'
+    description: 'Melee attack: +6 to hit; reach 10 ft.; one target; Block DC 14. On an unblocked strike, deal
+      10 (2d6 + 3) slashing damage. The unblocked strike pulls the target up to 10 feet closer to the Reaver;
+      a successful Block prevents the pull.'
   - name: Fiery Nova (1/encounter)
-    description: Each creature within 10 feet makes a DC 14 Dexterity save, taking 14 (4d6) fire damage on failure
-      or half on success. This saving-throw area cannot be Blocked. It is usable once in the combat encounter, rather
-      than once each turn.
+    description: Each creature within 10 feet makes a DC 14 Dexterity save, taking 14 (4d6) fire damage on
+      failure or half on success. This saving-throw area cannot be Blocked. It is usable once in the combat
+      encounter, rather than once each turn.
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
   - Chain Whip average corrected from source 9 to 10; dice remain 2d6 + 3.
   damage_resistances: fire
   id: smash-infernal-reaver
@@ -267,26 +269,27 @@ entries:
   languages: Common, Infernal
   actions:
   - name: Eldritch Blaster
-    description: 'Ranged attack: +6 to hit; range 120 ft.; one target; Block DC 14. On an unblocked strike, deal
-      16 (2d10 + 5) force damage. '
+    description: 'Ranged attack: +6 to hit; range 120 ft.; one target; Block DC 14. On an unblocked strike,
+      deal 16 (2d10 + 5) force damage. '
   - name: Mute (1/day; replaces Silence)
-    description: 'Cast the current level-1 Arcane Mute spell without a slot: action, somatic component, one creature
-      within 60 feet, DC 13 Wisdom save. On failure it is mute for 1d4 + 3 rounds and Shaken for 1 round; on success
-      halve the duration and do not apply Shaken. This is not the source''s obsolete 20-foot silence sphere.'
+    description: 'Cast the current level-1 Arcane Mute spell without a slot: action, somatic component, one
+      creature within 60 feet, DC 13 Wisdom save. On failure it is mute for 1d4 + 3 rounds and Shaken for 1
+      round; on success halve the duration and do not apply Shaken. This is not the source''s obsolete 20-foot
+      silence sphere.'
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
   - Eldritch Blaster average corrected from source10 to16; source dice 2d10 +5 retained. Mage armor is represented
     by fixed source AC15, not an undefined imported player spell.
-  - Mute uses the existing spell-save formula with Intelligence3 and CR4 proficiency2, giving DC13; the source fixed
-    Eldritch Blaster attack bonus+6 remains unchanged.
+  - Mute uses the existing spell-save formula with Intelligence3 and CR4 proficiency2, giving DC13; the source
+    fixed Eldritch Blaster attack bonus+6 remains unchanged.
   replacement_sources:
   - field: Silence
     alternative: 'Mute: current single-target silencing spell'
@@ -300,9 +303,9 @@ entries:
   damage_resistances: fire
   reactions:
   - name: Shield (1/day)
-    description: Cast the current level-1 Arcane Shield spell as a reaction to an incoming attack, gaining 1 temporary
-      Block for 1 turn. Spend that Block and make the normal Block check if using it against the attack. It does
-      not grant the old +5 AC bonus. No spell slot is spent; use verbal and somatic components.
+    description: Cast the current level-1 Arcane Shield spell as a reaction to an incoming attack, gaining
+      1 temporary Block for 1 turn. Spend that Block and make the normal Block check if using it against the
+      attack. It does not grant the old +5 AC bonus. No spell slot is spent; use verbal and somatic components.
   id: smash-infernal-technomancer
   source_ref: Smash and grab.docx / Infernal Technomancer
   original_5e: 'Infernal Technomancer
@@ -366,8 +369,9 @@ entries:
   languages: Common, Infernal
   traits:
   - name: Sneak Attack
-    description: An attack made with advantage deals an extra 4d6 damage of the attack's type on an unblocked strike.
-      The trigger is the current Rogue Sneak attack rule; it does not add the old 5e ally-adjacency trigger.
+    description: An attack made with advantage deals an extra 4d6 damage of the attack's type on an unblocked
+      strike. The trigger is the current Rogue Sneak attack rule; it does not add the old 5e ally-adjacency
+      trigger.
   - name: Stealthy
     description: Advantage on Dexterity (Stealth) checks.
   - name: Leather armor training
@@ -375,27 +379,27 @@ entries:
       armor. Block check: Dexterity 4 + proficiency 2 =+6; base pool 4.'
   actions:
   - name: Serrated Dagger
-    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal 6
-      (1d4 + 4) piercing damage. '
+    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal
+      6 (1d4 + 4) piercing damage. '
   - name: Cloaking Device
-    description: Become Invisible until the end of its next turn, or until it attacks, casts a spell or uses a device,
-      whichever happens first. Use the current Invisible condition.
+    description: Become Invisible until the end of its next turn, or until it attacks, casts a spell or uses
+      a device, whichever happens first. Use the current Invisible condition.
   - name: Explosive Charge (1/day)
-    description: Set the source explosive charge, which detonates at the start of the Saboteur's next turn. Creatures
-      within 10 feet of the charge make a DC 14 Dexterity save, taking 18 (4d8) fire damage on failure or half on
-      success. This saving-throw area cannot be Blocked.
+    description: Set the source explosive charge, which detonates at the start of the Saboteur's next turn.
+      Creatures within 10 feet of the charge make a DC 14 Dexterity save, taking 18 (4d8) fire damage on failure
+      or half on success. This saving-throw area cannot be Blocked.
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
-  - 'Optional damage averages corrected: Serrated Dagger7→6 for1d4+4, Hellish Rebuke14→16 for3d10. Source dice and
-    explicit Hellish Rebuke DC14 remain.'
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
+  - 'Optional damage averages corrected: Serrated Dagger7→6 for1d4+4, Hellish Rebuke14→16 for3d10. Source dice
+    and explicit Hellish Rebuke DC14 remain.'
   replacement_sources:
   - field: Sneak Attack missing trigger
     alternative: 'Current Rogue: Sneak attack (attack with advantage)'
@@ -409,13 +413,14 @@ entries:
   damage_resistances: fire
   equipment:
   - name: Leather armor
-    description: Current Leather armor baseline; no extra Block or Protection. Fixed source AC 14 and speed remain
-      unchanged.
+    description: Current Leather armor baseline; no extra Block or Protection. Fixed source AC 14 and speed
+      remain unchanged.
   reactions:
   - name: Hellish Rebuke (1/day)
-    description: After a creature it can see within 60 feet damages it, spend its reaction and use verbal and somatic
-      components. The creature makes the source DC 14 Dexterity save, taking 16 (3d10) fire damage on failure or
-      half on success. This self-contained second-level effect cannot be Blocked and spends no spell slot.
+    description: After a creature it can see within 60 feet damages it, spend its reaction and use verbal and
+      somatic components. The creature makes the source DC 14 Dexterity save, taking 16 (3d10) fire damage
+      on failure or half on success. This self-contained second-level effect cannot be Blocked and spends no
+      spell slot.
   id: smash-infernal-saboteur
   source_ref: Smash and grab.docx / Infernal Saboteur
   original_5e: 'Infernal Saboteur
@@ -495,9 +500,9 @@ entries:
   languages: Common, Infernal
   traits:
   - name: Menacing Presence
-    description: A creature that starts its turn within 30 feet and can see the Behemoth makes a DC 15 Wisdom save
-      or becomes Afraid until the end of that turn. Use the existing Afraid condition and its escalation rules,
-      replacing the undefined Frightened condition.
+    description: A creature that starts its turn within 30 feet and can see the Behemoth makes a DC 15 Wisdom
+      save or becomes Afraid until the end of that turn. Use the existing Afraid condition and its escalation
+      rules, replacing the undefined Frightened condition.
   - name: Fiendish Durability
     description: When damage would reduce it to 0 HP, it makes a Constitution save with DC 5 + the damage taken.
       On success it drops to 1 HP instead. This cannot prevent being reduced to 0 by radiant damage or a critical
@@ -506,23 +511,23 @@ entries:
   - name: Multiattack
     description: Make two Maul attacks.
   - name: Maul
-    description: 'Melee attack: +10 to hit; reach 10 ft.; one target; Block DC 18. On an unblocked strike, deal
-      19 (3d8 + 6) bludgeoning damage. '
+    description: 'Melee attack: +10 to hit; reach 10 ft.; one target; Block DC 18. On an unblocked strike,
+      deal 19 (3d8 + 6) bludgeoning damage. '
   - name: Ground Slam
-    description: Make a separate +10 melee attack roll against every other creature within 10 feet, using the source's
-      explicit 10-foot area rather than its conflicting reach 5 notation. Each hit can be Blocked separately against
-      DC 18. An unblocked strike deals 17 (2d10 +6) bludgeoning damage and forces that target to make a DC 16 Strength
-      save or fall Prone.
+    description: Make a separate +10 melee attack roll against every other creature within 10 feet, using the
+      source's explicit 10-foot area rather than its conflicting reach 5 notation. Each hit can be Blocked
+      separately against DC 18. An unblocked strike deals 17 (2d10 +6) bludgeoning damage and forces that target
+      to make a DC 16 Strength save or fall Prone.
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
   - Ground Slam source conflicts between reach5 and10-foot area. The explicit all-creatures10-foot area governs
     targeting; retained attack rolls and separate Blocks rather than inventing an auto-hit area save.
   replacement_sources:
@@ -533,8 +538,8 @@ entries:
   saving_throws: STR +10, CON +8
   reactions:
   - name: Retaliatory Strike
-    description: When a creature within its Maul reach damages it, make one Maul attack against that creature, with
-      the normal Block DC and unblocked-strike rules.
+    description: When a creature within its Maul reach damages it, make one Maul attack against that creature,
+      with the normal Block DC and unblocked-strike rules.
   id: smash-infernal-behemoth
   source_ref: Smash and grab.docx / Infernal Behemoth
   original_5e: 'Infernal Behemoth
@@ -626,31 +631,31 @@ entries:
   - name: Keen Hearing and Smell
     description: Advantage on Wisdom (Perception) checks based on hearing or smell.
   - name: Pack Tactics
-    description: Advantage on an attack roll if an ally of the hound is within 5 feet of the target and that ally
-      is not Incapacitated.
+    description: Advantage on an attack roll if an ally of the hound is within 5 feet of the target and that
+      ally is not Incapacitated.
   actions:
   - name: Bite
-    description: 'Melee attack: +5 to hit; reach 5 ft.; one target; Block DC 13. On an unblocked strike, deal 7
-      (1d8 +3) piercing damage. '
+    description: 'Melee attack: +5 to hit; reach 5 ft.; one target; Block DC 13. On an unblocked strike, deal
+      7 (1d8 +3) piercing damage. '
   - name: Fire Breath (Recharge 5-6)
     description: Exhale a 15-foot cone. Creatures in it make a DC 12 Dexterity save, taking 21 (6d6) fire damage
       on failure or half on success. This saving-throw area cannot be Blocked. After use, roll 1d6 at the start
       of each turn;5-6 restores the breath.
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
   damage_resistances: fire
   reactions:
   - name: Master's Best Friend
-    description: When an ally takes damage from a creature within the hound's 5-foot Bite reach, make one Bite attack
-      against that creature.
+    description: When an ally takes damage from a creature within the hound's 5-foot Bite reach, make one Bite
+      attack against that creature.
   id: smash-infernal-hound
   source_ref: Smash and grab.docx / Infernal Hound
   original_5e: 'Infernal Hound
@@ -739,41 +744,42 @@ entries:
   - name: Multiattack
     description: Make two Heavy Mace attacks.
   - name: Heavy Mace
-    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal 10
-      (2d6 +3) bludgeoning damage plus 5 (2d4) fire damage. The fire rider is part of the blockable strike.'
+    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal
+      10 (2d6 +3) bludgeoning damage plus 5 (2d4) fire damage. The fire rider is part of the blockable strike.'
   - name: Corrupting Touch
-    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal 13
-      (3d6 +3) necrotic damage. On the unblocked strike, the target makes a DC 15 Constitution save or becomes Poisoned
-      for 1 minute. It repeats the save at the end of each of its turns, ending Poisoned on success. Use current
-      Poisoned: disadvantage on saves and skill checks.'
+    description: 'Melee attack: +7 to hit; reach 5 ft.; one target; Block DC 15. On an unblocked strike, deal
+      13 (3d6 +3) necrotic damage. On the unblocked strike, the target makes a DC 15 Constitution save or becomes
+      Poisoned for 1 minute. It repeats the save at the end of each of its turns, ending Poisoned on success.
+      Use current Poisoned: disadvantage on saves and skill checks.'
   - name: Infernal Restoration (3/day)
-    description: Touch a creature and restore up to 30 HP, also curing poison and disease currently affecting it.
-      Apply current Diseased healing reduction while resolving a healing effect if that condition still applies.
+    description: Touch a creature and restore up to 30 HP, also curing poison and disease currently affecting
+      it. Apply current Diseased healing reduction while resolving a healing effect if that condition still
+      applies.
   - name: Fiendish Revival (1/day)
-    description: Revive a fiendish ally within 30 feet that died within the last minute. It returns with half its
-      maximum HP and may immediately take one action. This self-contained source power does not spend class spell
-      slots.
+    description: Revive a fiendish ally within 30 feet that died within the last minute. It returns with half
+      its maximum HP and may immediately take one action. This self-contained source power does not spend class
+      spell slots.
   - name: Plague of Despair (Recharge 6)
     description: 'Choose creatures within 30 feet. Each makes a DC 16 Constitution save, taking 36 (8d8) necrotic
       damage on failure or half on success; this saving-throw area cannot be Blocked. For the source''s undefined
-      healing multiplier, use the existing Mass Cure Wounds healing portion: choose up to six fiendish allies within
-      the 30-foot radius; each regains 3d8 +4 HP. It does not affect undead or constructs. Healing is independent
-      of how many enemies took damage; do not multiply it by the damage total. The complete action shares one recharge:
-      after use roll 1d6 at the start of each turn; a 6 restores it.'
+      healing multiplier, use the existing Mass Cure Wounds healing portion: choose up to six fiendish allies
+      within the 30-foot radius; each regains 3d8 +4 HP. It does not affect undead or constructs. Healing is
+      independent of how many enemies took damage; do not multiply it by the damage total. The complete action
+      shares one recharge: after use roll 1d6 at the start of each turn; a 6 restores it.'
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
-  - Corrupting Touch damage average corrected14→13; dice remain3d6+3. Plague of Despair's source healing does not
-    identify whether half damage means per target, total damage or rolled damage. Its healing rider is replaced
-    with the complete existing Mass Cure Wounds target-cap and healing formula, using Wisdom+4 and retaining the
-    source restriction to fiendish allies. The original ambiguous rider remains in Original5e.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
+  - Corrupting Touch damage average corrected14→13; dice remain3d6+3. Plague of Despair's source healing does
+    not identify whether half damage means per target, total damage or rolled damage. Its healing rider is
+    replaced with the complete existing Mass Cure Wounds target-cap and healing formula, using Wisdom+4 and
+    retaining the source restriction to fiendish allies. The original ambiguous rider remains in Original5e.
   replacement_sources:
   - field: Plague of Despair ambiguous healing rider
     alternative: 'Mass Cure Wounds healing: up to6 creatures in30-foot radius,3d8 +casting modifier'
@@ -786,8 +792,8 @@ entries:
       of damage by 1d10.
   legendary_actions:
   - name: Legendary action pool
-    description: 3 legendary actions per round; use one option at the end of another creature's turn and pay its
-      listed cost. Restore spent legendary actions at the start of the Healer's turn.
+    description: 3 legendary actions per round; use one option at the end of another creature's turn and pay
+      its listed cost. Restore spent legendary actions at the start of the Healer's turn.
   - name: Detect (1 action)
     description: Make a Wisdom (Perception) check.
   - name: Corrupting Touch (1 action)
@@ -904,12 +910,13 @@ entries:
   meta: Object, unaligned
   type: object
   alignment: unaligned
-  cr: '-'
+  cr: '12'
   ac: 17 (arcane protection)
   block: 0; object cannot make Block checks
   hp: '200'
   speed: 0 ft. (stationary object)
-  damage_immunities: poison, psychic, necrotic, thunder; bludgeoning, piercing and slashing from nonmagical attacks
+  damage_immunities: poison, psychic, necrotic, thunder; bludgeoning, piercing and slashing from nonmagical
+    attacks
   damage_vulnerabilities: force
   condition_immunities: Charmed, Fatigue, Shaken, Afraid, Terrified, Grappled, Incapacitated, Paralyzed, petrification,
     Poisoned, Prone
@@ -922,22 +929,23 @@ entries:
       for the round, and resolves Unstable if below 50 HP. The portal has no creature ability scores and cannot
       make Block checks.
   - name: Arcane Lock
-    description: 'The seal is a specific target for current Dispel magic: spend the spell''s action at its 20-foot
-      range and make an Arcana check against the portal''s specific DC 15. On success, its AC becomes 10 until the
-      end of the caster''s next turn. This is the portal''s printed special interaction and does not replace the
-      other procedures for closing it.'
+    description: 'The seal is a specific target for current Dispel magic: spend the spell''s action at its
+      20-foot range and make an Arcana check against the portal''s specific DC 15. On success, its AC becomes
+      10 until the end of the caster''s next turn. This is the portal''s printed special interaction and does
+      not replace the other procedures for closing it.'
   - name: Dimensional Anchor
-    description: A creature attempting to teleport within 60 feet makes a DC 15 Charisma save. On failure the attempted
-      teleport fails.
+    description: A creature attempting to teleport within 60 feet makes a DC 15 Charisma save. On failure the
+      attempted teleport fails.
   - name: Unstable
-    description: At the portal's initiative count 20, if it has fewer than 50 HP, roll 1d100 once and resolve the
-      Unstable table. This adopts the existing Steel Dragon lair round cadence to fill the source's missing timing.
-      Source-order precedence resolves duplicate endpoints, so every roll produces exactly one original outcome.
+    description: At the portal's initiative count 20, if it has fewer than 50 HP, roll 1d100 once and resolve
+      the Unstable table. This adopts the existing Steel Dragon lair round cadence to fill the source's missing
+      timing. Source-order precedence resolves duplicate endpoints, so every roll produces exactly one original
+      outcome.
   - name: Summoned arrivals
-    description: Summoned fiends appear in unoccupied spaces within 30 feet of the portal, using the existing Deck
-      of Many Things Knight arrival-distance procedure. Roll initiative for each arriving group, giving it its own
-      turns as in Conjure Animals. The GM runs these NPCs using their compendium statblocks; this does not grant
-      any player a summoning spell or control.
+    description: Summoned fiends appear in unoccupied spaces within 30 feet of the portal, using the existing
+      Deck of Many Things Knight arrival-distance procedure. Roll initiative for each arriving group, giving
+      it its own turns as in Conjure Animals. The GM runs these NPCs using their compendium statblocks; this
+      does not grant any player a summoning spell or control.
   unstable_table:
     columns:
     - d100
@@ -963,47 +971,50 @@ entries:
   actions:
   - name: Close Portal (character interaction)
     description: A character closes the portal by casting current Dispel magic using a 4th-level slot and succeeding
-      on the portal's specific DC 15 Arcana check, or by causing it to take at least 50 force damage from a single
-      attack. Use the spell's action and20-foot range; apply force vulnerability before testing the damage actually
-      taken. Destroying the portal at 0 HP also stops this object from functioning.
+      on the portal's specific DC 15 Arcana check, or by causing it to take at least 50 force damage from a
+      single attack. Use the spell's action and20-foot range; apply force vulnerability before testing the
+      damage actually taken. Destroying the portal at 0 HP also stops this object from functioning.
   legendary_actions:
   - name: Summon Hound (1 action)
-    description: At the end of another creature's turn, summon 2d4 Infernal Hounds. Only usable with more than 50
-      HP.
+    description: At the end of another creature's turn, summon 2d4 Infernal Hounds. Only usable with more than
+      50 HP.
   - name: Summon Infernal (2 actions)
-    description: At the end of another creature's turn, summon one Infernal Saboteur. Only usable with more than
-      100 HP.
+    description: At the end of another creature's turn, summon one Infernal Saboteur. Only usable with more
+      than 100 HP.
   - name: Summon Behemoth (3 actions)
-    description: At the end of another creature's turn, summon one Infernal Behemoth. Only usable with more than
-      150 HP.
+    description: At the end of another creature's turn, summon one Infernal Behemoth. Only usable with more
+      than 150 HP.
   reactions:
   - name: Portal Feedback
-    description: When it takes force damage, spend its reaction to burst with energy. Each creature within 10 feet
-      makes a DC 13 Dexterity save, taking 2d6 force damage on failure and none on success. This area cannot be
-      Blocked.
+    description: When it takes force damage, spend its reaction to burst with energy. Each creature within
+      10 feet makes a DC 13 Dexterity save, taking 2d6 force damage on failure and none on success. This area
+      cannot be Blocked.
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
-  - Portal is an object; no Strength, Dexterity or other creature ability scores have been fabricated. Its stationary
-    speed and inability to Block follow its object role.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
+  - Portal is an object; no Strength, Dexterity or other creature ability scores have been fabricated. Its
+    stationary speed and inability to Block follow its object role.
   - Exhaustion immunity maps to current Fatigue; Frightened immunity covers the current Shaken/Afraid/Terrified
     fear chain. Other source object immunities remain.
-  - The source does not specify an Unstable trigger cadence or own turn to refresh legendary actions. Both use the
-    already existing Steel Dragon lair initiative20 cadence, losing ties; this borrowed procedure is recorded rather
-    than described as printed portal content.
-  - Unstable source intervals overlap at50,60,70,80 and90. The first printed row containing an endpoint takes precedence.
-    Only duplicate endpoints are removed; no outcomes are added. The100-foot sphere is read as a radius, using the
-    existing Fireball sphere notation; the source does not explicitly label radius.
-  - The source does not provide arrival spaces or summoned-creature initiative. Borrow only the existing Deck of
-    Many Things Knight appearance procedure (an unoccupied space within30 feet of the summoning source) and Conjure
-    Animals group-initiative procedure. Summoned creatures remain GM-run NPCs with their own printed statistics;
-    these borrowed procedures do not turn them into beasts or grant a player spell or control.
-  - Source Dispel magic DC15 interactions use current Arcana checks rather than imported5e ability checks. The source
-    fourth-level slot requirement for fully closing it is retained.
+  - The source does not specify an Unstable trigger cadence or own turn to refresh legendary actions. Both
+    use the already existing Steel Dragon lair initiative20 cadence, losing ties; this borrowed procedure is
+    recorded rather than described as printed portal content.
+  - Unstable source intervals overlap at50,60,70,80 and90. The first printed row containing an endpoint takes
+    precedence. Only duplicate endpoints are removed; no outcomes are added. The100-foot sphere is read as
+    a radius, using the existing Fireball sphere notation; the source does not explicitly label radius.
+  - The source does not provide arrival spaces or summoned-creature initiative. Borrow only the existing Deck
+    of Many Things Knight appearance procedure (an unoccupied space within30 feet of the summoning source)
+    and Conjure Animals group-initiative procedure. Summoned creatures remain GM-run NPCs with their own printed
+    statistics; these borrowed procedures do not turn them into beasts or grant a player spell or control.
+  - Source Dispel magic DC15 interactions use current Arcana checks rather than imported5e ability checks.
+    The source fourth-level slot requirement for fully closing it is retained.
+  - CR 12 estimates a three-round portal encounter using its existing arrival rules. Count the arriving creatures
+    within that encounter estimate rather than awarding a second full encounter budget for the same waves.
+    Longer operation requires the GM to reassess the encounter. No arrival or combat mechanic is changed.
   replacement_sources:
   - field: Unstable/legendary reset cadence
     alternative: 'Steel Dragon lair actions: initiative20, losing ties'
@@ -1022,26 +1033,30 @@ entries:
     source: https://www.dndbeyond.com/sources/dnd/basic-rules-2014/spells#ConjureAnimals
   id: smash-infernal-portal
   source_ref: Smash and grab.docx / Infernal Portal
-  original_5e: "Infernal Portal\n\nObject, unaligned\nArmor Class: 17 (arcane protection)\nHit Points: 200\nDamage\
-    \ Immunities: poison, psychic, necrotic, thunder; bludgeoning, piercing, and slashing\nfrom nonmagical attacks\n\
-    Damage Vulnerabilities: force\nCondition Immunities: charmed, exhaustion, frightened, grappled, incapacitated,\
-    \ paralyzed,\npetrified, poisoned, prone\nSenses: -\nLanguages: -\nChallenge: -\nAbilities:\n\nArcane Lock:\
-    \ The portal is magically sealed. Casting dispel magic (DC 15) on the portal will\nlower its AC to 10 until\
-    \ the end of the caster’s next turn.\nDimensional Anchor: Any attempt to teleport within 60 feet of the portal\
-    \ must succeed on a\nDC 15 Charisma saving throw, or the teleport fails.\nUnstable: When the portal has less\
-    \ than 25 % its hit points, roll 1d100.\n    ● On 1, Portal is destroyed,\n    ● 2-50 - nothing happens\n  \
-    \  ● 50-60 - summon 3d4 Infernal Hounds\n    ● 60-70 - summon 1d4 Infernal Saboteur\n    ● 70-80 - summon 1d2\
-    \ Infernal Behemoth\n    ● 80-90 - portal regains 6d10+30 HP\n    ● 90-99 - portal deals in 100ft sphere 8d6\
-    \ force damage (DC 14 DEX save) or half\n        when succeeded\n    ● 100 - portal regains all hit points and\
-    \ summons one Infernal Hound, Infernal\n        Saboteur, Infernal Behemoth\nActions:\n\nClose Portal (Special):\
-    \ The portal can be closed if a character spends an action to cast\ndispel magic at 4th level (DC 15) on it\
-    \ or deals a total of 50 force damage to it in one attack.\nLegendary Actions (3 Actions):\n\nSummon Hound (Costs\
-    \ 1 Action): The portal summons 2d4 Infernal Hounds. Can only be\nused if the portal has more than 25 % its\
-    \ hit points.\nSummon Infernal (Costs 2 Actions): The portal summons one Infernal Saboteur. Can only be\nused\
-    \ if the portal has more than half its hit points.\nSummon Behemoth (Costs 3 actions): The portal summons one\
-    \ Infernal Behemoth. Can\nonly be used if the portal has more than 75 % its hit points.\n\nReactions:\n\nPortal\
-    \ Feedback: When the portal takes force damage, it releases a burst of energy. Each\ncreature within 10 feet\
-    \ of the portal must succeed on a DC 13 Dexterity saving throw or take\n2d6 force damage."
+  original_5e: "Infernal Portal\n\nObject, unaligned\nArmor Class: 17 (arcane protection)\nHit Points: 200\n\
+    Damage Immunities: poison, psychic, necrotic, thunder; bludgeoning, piercing, and slashing\nfrom nonmagical\
+    \ attacks\nDamage Vulnerabilities: force\nCondition Immunities: charmed, exhaustion, frightened, grappled,\
+    \ incapacitated, paralyzed,\npetrified, poisoned, prone\nSenses: -\nLanguages: -\nChallenge: -\nAbilities:\n\
+    \nArcane Lock: The portal is magically sealed. Casting dispel magic (DC 15) on the portal will\nlower its\
+    \ AC to 10 until the end of the caster’s next turn.\nDimensional Anchor: Any attempt to teleport within\
+    \ 60 feet of the portal must succeed on a\nDC 15 Charisma saving throw, or the teleport fails.\nUnstable:\
+    \ When the portal has less than 25 % its hit points, roll 1d100.\n    ● On 1, Portal is destroyed,\n  \
+    \  ● 2-50 - nothing happens\n    ● 50-60 - summon 3d4 Infernal Hounds\n    ● 60-70 - summon 1d4 Infernal\
+    \ Saboteur\n    ● 70-80 - summon 1d2 Infernal Behemoth\n    ● 80-90 - portal regains 6d10+30 HP\n    ●\
+    \ 90-99 - portal deals in 100ft sphere 8d6 force damage (DC 14 DEX save) or half\n        when succeeded\n\
+    \    ● 100 - portal regains all hit points and summons one Infernal Hound, Infernal\n        Saboteur,\
+    \ Infernal Behemoth\nActions:\n\nClose Portal (Special): The portal can be closed if a character spends\
+    \ an action to cast\ndispel magic at 4th level (DC 15) on it or deals a total of 50 force damage to it\
+    \ in one attack.\nLegendary Actions (3 Actions):\n\nSummon Hound (Costs 1 Action): The portal summons 2d4\
+    \ Infernal Hounds. Can only be\nused if the portal has more than 25 % its hit points.\nSummon Infernal\
+    \ (Costs 2 Actions): The portal summons one Infernal Saboteur. Can only be\nused if the portal has more\
+    \ than half its hit points.\nSummon Behemoth (Costs 3 actions): The portal summons one Infernal Behemoth.\
+    \ Can\nonly be used if the portal has more than 75 % its hit points.\n\nReactions:\n\nPortal Feedback:\
+    \ When the portal takes force damage, it releases a burst of energy. Each\ncreature within 10 feet of the\
+    \ portal must succeed on a DC 13 Dexterity saving throw or take\n2d6 force damage."
+  source_completion:
+    cr_status: Assigned CR 12 encounter-hazard estimate for a three-round reference encounter; extended arrival
+      waves change encounter difficulty.
 - name: Magical Guard
   group: Smash and grab
   meta: Medium humanoid (any race), any alignment
@@ -1068,48 +1083,48 @@ entries:
   - name: Magic Resistance
     description: Advantage on saves against spells and other magical effects.
   - name: Geomancy choice
-    description: The guard knows the existing Pillar resonance option of Geomancy. Its Intelligence modifier 3 allows
-      one known effect under that spell's current rule.
+    description: The guard knows the existing Pillar resonance option of Geomancy. Its Intelligence modifier
+      3 allows one known effect under that spell's current rule.
   - name: Counterspell Expert (replaced by Dispel magic; Recharge 5-6)
-    description: 'Use current Dispel magic without a spell slot: an action,20-foot range, Arcana+6 check and the
-      current spell''s target/DC and permanent-enchantment suppression rules. It ends or suppresses existing effects
-      rather than countering a cast as an old5e reaction. Once used, roll 1d6 at the start of each turn;5-6 restores
-      this free casting.'
+    description: 'Use current Dispel magic without a spell slot: an action,20-foot range, Arcana+6 check and
+      the current spell''s target/DC and permanent-enchantment suppression rules. It ends or suppresses existing
+      effects rather than countering a cast as an old5e reaction. Once used, roll 1d6 at the start of each
+      turn;5-6 restores this free casting.'
   actions:
   - name: Multiattack
     description: Make one Shortsword attack and perform one cantrip action, using that cantrip's actual sequence
-      and any existing prepared spark. This does not compress both conjuring and launching an arcane dart into one
-      cantrip action.
+      and any existing prepared lightning mote. This does not compress both conjuring and launching an arcane
+      dart into one cantrip action.
   - name: Shortsword
-    description: 'Melee attack: +4 to hit; reach 5 ft.; one target; Block DC 12. On an unblocked strike, deal 5
-      (1d6 +2) piercing damage. '
+    description: 'Melee attack: +4 to hit; reach 5 ft.; one target; Block DC 12. On an unblocked strike, deal
+      5 (1d6 +2) piercing damage. '
   - name: Wind Slash
-    description: 'Ranged attack: +6 to hit; range 60 ft.; one target; Block DC 14. On an unblocked strike, deal
-      12 (2d8 +3) slashing damage. This is the source''s self-contained ranged spell attack, not an additional named
-      Varis cantrip.'
+    description: 'Ranged attack: +6 to hit; range 60 ft.; one target; Block DC 14. On an unblocked strike,
+      deal 12 (2d8 +3) slashing damage. This is the source''s self-contained ranged spell attack, not an additional
+      named Varis cantrip.'
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
-  - Source6th-level wizard slots4/3/3 replaced by existing Varis Wizard6 table3/3/2. Mage armor is retained only
-    as fixed monster AC15; no unavailable spell definition was invented.
-  - Source Detect magic/Identify→arcane eye; Mage hand/Prestidigitation→prestidigitation; Lithoresonance→minor geomancy;
-    Magic missile→Arcane darts; Crystal cascade→Prismatic shards; Crystalize→Lock and chain (Crystallize itself
-    is level6 and this guard has no level6 slot); Mirror image→Illusory decoy; Boulder blast→Geomancy(Pillar resonance);
-    Actinide armor→Aegis; Counterspell→Dispel magic. These are existing alternatives, not assumed mechanically identical
-    spells.
-  - Current Shield grants temporary Block instead of+5 AC. Prismatic shards explicitly permits Block; Acid bolt
-    retains its printed acid rider even if blocked. Current spell text overrides the general conversion convention
-    for these cases. Counterspell Expert now uses the existing Dispel magic action instead of an invented instant
-    counterspell.
-  - Wind Slash is preserved as the fully specified source monster attack. Its presence does not grant a new spell
-    in the catalog.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
+  - Source6th-level wizard slots4/3/3 replaced by existing Varis Wizard6 table3/3/2. Mage armor is retained
+    only as fixed monster AC15; no unavailable spell definition was invented.
+  - Source Detect magic/Identify→arcane eye; Mage hand/Prestidigitation→prestidigitation; Lithoresonance→minor
+    geomancy; Magic missile→Arcane darts; Crystal cascade→Prismatic shards; Crystalize→Lock and chain (Crystallize
+    itself is level6 and this guard has no level6 slot); Mirror image→Illusory decoy; Boulder blast→Geomancy(Pillar
+    resonance); Actinide armor→Aegis; Counterspell→Dispel magic. These are existing alternatives, not assumed
+    mechanically identical spells.
+  - Current Shield grants temporary Block instead of+5 AC. Prismatic shards explicitly permits Block; Acid
+    bolt retains its printed acid rider even if blocked. Current spell text overrides the general conversion
+    convention for these cases. Counterspell Expert now uses the existing Dispel magic action instead of an
+    invented instant counterspell.
+  - Wind Slash is preserved as the fully specified source monster attack. Its presence does not grant a new
+    spell in the catalog.
   replacement_sources:
   - field: spell slot table
     alternative: Current Wizard level6 slots3/3/2
@@ -1132,9 +1147,9 @@ entries:
     name: Wizard-style spellcasting
     description: '6th-level Intelligence caster; spell save DC14, spell attack+6. Use current Varis spell entries
       with their actual levels, components, actions, ranges and costs. Slot pool: three1st-level, three2nd-level
-      and two3rd-level slots, from the current Wizard6 table. Cantrips are listed as source NPC capabilities rather
-      than a player-character build. Long rests permit preparing spells; use current Wizard Arcane recovery for
-      slot restoration, without assuming an unstated automatic long-rest reset.'
+      and two3rd-level slots, from the current Wizard6 table. Cantrips are listed as source NPC capabilities
+      rather than a player-character build. Long rests permit preparing spells; use current Wizard Arcane recovery
+      for slot restoration, without assuming an unstated automatic long-rest reset.'
   spell_references:
   - name: arcane eye
     group: Arcane cantrips
@@ -1194,21 +1209,21 @@ entries:
     '3': '2'
   id: smash-magical-guard
   source_ref: Smash and grab.docx / Magical Guard
-  original_5e: "Magical Guard\n\nMedium humanoid (any race), any alignment\n\nArmor Class: 15 (mage armor) Hit Points:\
-    \ 65 (10d8 + 20) (100 max HP) Speed: 30 ft.\n\nSTR 12 (+1) | DEX 14 (+2) | CON 14 (+2) | INT 16 (+3) | WIS 15\
-    \ (+2) | CHA 13 (+1)\n\nSaving Throws: Int +6, Wis +5 Skills: Arcana +6, Perception +5 Damage Resistances:\n\
-    damage from spells Senses: Passive Perception 15 Languages: Any two languages\nChallenge: 5 (1,800 XP)\n\nSpellcasting:\
-    \ The guard is a 6th-level spellcaster. Their spellcasting ability is Intelligence\n(spell save DC 14, +6 to\
-    \ hit with spell attacks). The guard has the following wizard spells\nprepared:\n\n   ●   Cantrips (at will):\
-    \ detect magic, mage hand, prestidigitation, lithoresonance\n   ●   1st level (4 slots): shield, magic missile,\
-    \ detect magic, identify, crystal cascade\n   ●   2nd level (3 slots): counterspell, mirror image, crystalize\n\
-    \   ●   3rd level (3 slots): dispel magic, boulder blast, actinide armor\n\nActions\n\n   ●   Multiattack: The\
-    \ guard makes two attacks: one with their melee weapon and one\n       with a cantrip.\n   ●   Shortsword: Melee\
-    \ Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2)\n       piercing damage.\n   ●   Wind\
-    \ Slash: Ranged Spell Attack: +6 to hit, reach 60 ft., one target. Hit (2d8+3)\n       slashing damage.\n  \
-    \ ●\n\nMagic Resistance: The guard has advantage on saving throws against spells and other\nmagical effects.\n\
-    \nCounterspell Expert: The guard can use counterspell as a reaction without expending a\nspell slot (recharge\
-    \ 5–6)."
+  original_5e: "Magical Guard\n\nMedium humanoid (any race), any alignment\n\nArmor Class: 15 (mage armor)\
+    \ Hit Points: 65 (10d8 + 20) (100 max HP) Speed: 30 ft.\n\nSTR 12 (+1) | DEX 14 (+2) | CON 14 (+2) | INT\
+    \ 16 (+3) | WIS 15 (+2) | CHA 13 (+1)\n\nSaving Throws: Int +6, Wis +5 Skills: Arcana +6, Perception +5\
+    \ Damage Resistances:\ndamage from spells Senses: Passive Perception 15 Languages: Any two languages\n\
+    Challenge: 5 (1,800 XP)\n\nSpellcasting: The guard is a 6th-level spellcaster. Their spellcasting ability\
+    \ is Intelligence\n(spell save DC 14, +6 to hit with spell attacks). The guard has the following wizard\
+    \ spells\nprepared:\n\n   ●   Cantrips (at will): detect magic, mage hand, prestidigitation, lithoresonance\n\
+    \   ●   1st level (4 slots): shield, magic missile, detect magic, identify, crystal cascade\n   ●   2nd\
+    \ level (3 slots): counterspell, mirror image, crystalize\n   ●   3rd level (3 slots): dispel magic, boulder\
+    \ blast, actinide armor\n\nActions\n\n   ●   Multiattack: The guard makes two attacks: one with their melee\
+    \ weapon and one\n       with a cantrip.\n   ●   Shortsword: Melee Weapon Attack: +4 to hit, reach 5 ft.,\
+    \ one target. Hit: 5 (1d6 + 2)\n       piercing damage.\n   ●   Wind Slash: Ranged Spell Attack: +6 to\
+    \ hit, reach 60 ft., one target. Hit (2d8+3)\n       slashing damage.\n   ●\n\nMagic Resistance: The guard\
+    \ has advantage on saving throws against spells and other\nmagical effects.\n\nCounterspell Expert: The\
+    \ guard can use counterspell as a reaction without expending a\nspell slot (recharge 5–6)."
   hp_max_variant: 100
 - name: Event Guard
   group: Smash and grab
@@ -1238,33 +1253,33 @@ entries:
   - name: Dutybound
     description: Protects the event and its attendees and will fight to the death to uphold that duty.
   - name: Armor and shield training
-    description: 'Using the existing monster-equipment proficiency rule, it is trained with its printed chain shirt
-      and shield. Dexterity supplies 1 Block and armor supplies 1: pool 2, combat floor 1. In medium armor use Strength
-      2 + proficiency 2 for Block checks, total+4.'
+    description: 'Using the existing monster-equipment proficiency rule, it is trained with its printed chain
+      shirt and shield. Dexterity supplies 1 Block and armor supplies 1: pool 2, combat floor 1. In medium
+      armor use Strength 2 + proficiency 2 for Block checks, total+4.'
   actions:
   - name: Multiattack
     description: Make two melee attacks.
   - name: Longsword
-    description: 'Melee attack: +4 to hit; reach 5 ft.; one target; Block DC 12. On an unblocked strike, deal 7
-      (1d8 +3) slashing damage, or 8 (1d10 +3) if wielded with two hands. Its Round shield must be put away to use
-      the two-handed damage; the listed one-handed AC includes the shield.'
+    description: 'Melee attack: +4 to hit; reach 5 ft.; one target; Block DC 12. On an unblocked strike, deal
+      7 (1d8 +3) slashing damage, or 8 (1d10 +3) if wielded with two hands. Its Round shield must be put away
+      to use the two-handed damage; the listed one-handed AC includes the shield.'
   - name: Heavy Crossbow
     description: 'Ranged attack: +3 to hit; range 100/400 ft.; one target; Block DC 11. On an unblocked strike,
       deal 5 (1d10) piercing damage. Use the current weapon handling and loading rules; it requires both hands,
       so its Round shield must be put away while firing.'
   conversion_notes:
   - Printed monster AC, speed, attack bonuses, saves and CR remain fixed source statistics, rather than recalculated
-    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional damage
-    averages are corrected and recorded. CR has not been recalculated for Varis balance.
-  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest one
-    day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also recovers
-    after a short or long rest.'
-  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached on-strike
-    effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits it. Natural
-    armor alone grants no extra Block or worn-armor proficiency.
-  - The unnamed shield uses the existing Round shield baseline. Fixed source AC16 is retained; removing the shield
-    loses its included+2 AC. Source attacks are monster-specific actions, using current handling rules rather than
-    replacing their source damage with a different PC weapon profile.
+    player-character equipment totals. Source dice expressions are retained; arithmetic errors in optional
+    damage averages are corrected and recorded. CR has not been recalculated for Varis balance.
+  - 'Uses per day refresh after 24 hours. Rest-based uses retain their stated rest type: default short rest
+    one day, long rest one week. Recharge X-Y is rolled on a d6 at the start of the creature''s turn and also
+    recovers after a short or long rest.'
+  - Weapon and spell attacks use the printed Block DC and require an unblocked strike for damage and attached
+    on-strike effects. Saving-throw-only areas cannot be Blocked unless the particular spell explicitly permits
+    it. Natural armor alone grants no extra Block or worn-armor proficiency.
+  - The unnamed shield uses the existing Round shield baseline. Fixed source AC16 is retained; removing the
+    shield loses its included+2 AC. Source attacks are monster-specific actions, using current handling rules
+    rather than replacing their source damage with a different PC weapon profile.
   replacement_sources:
   - field: chain shirt and unnamed shield
     alternative: Current Chain shirt and Round shield
@@ -1279,18 +1294,18 @@ entries:
   - name: Chain shirt
     description: 'Current Chain shirt: Bulk 1, Block 1, Slow 1. Already included in fixed AC 16/speed30.'
   - name: Round shield
-    description: 'Existing baseline for the unnamed source shield: +2 AC (included in fixed AC), Bolster 1, Brace
-      2 and Bash 1d6. Spend an action to gain 1 temporary Block via Bolster.'
+    description: 'Existing baseline for the unnamed source shield: +2 AC (included in fixed AC), Bolster 1,
+      Brace 2 and Bash 1d6. Spend an action to gain 1 temporary Block via Bolster.'
   id: smash-event-guard
   source_ref: Smash and grab.docx / Event Guard
   original_5e: "Event Guard\n\nMedium humanoid (any race), any alignment\n\nArmor Class: 16 (Chain Shirt, Shield)\
-    \ Hit Points: 58 (9d8 + 18) (90 max HP) Speed: 30 ft.\n\nSTR 14 (+2) | DEX 12 (+1) | CON 14 (+2) | INT 10 (+0)\
-    \ | WIS 11 (+0) | CHA 12 (+1)\n\nSkills: Perception +2, Athletics +4 Senses: Passive Perception 12 Languages:\
-    \ Any one\nlanguage (usually Common) Challenge: 2 (450 XP)\n\nActions\n   ●     Multiattack: The guard makes\
-    \ two melee attacks.\n   ●     Longsword: Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d8\
-    \ + 3)\n         slashing damage, or 8 (1d10 + 3) slashing damage if used with two hands.\n   ●     Heavy Crossbow:\
-    \ Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target.\n         Hit: 5 (1d10) piercing damage.\n\
-    \nTraits\n\n   ●     Brave: The guard has advantage on saving throws against being frightened.\n   ●     Dutybound:\
-    \ The guard has a sworn duty to protect the event and its attendees.\n         They will fight to the death\
-    \ to uphold their duty."
+    \ Hit Points: 58 (9d8 + 18) (90 max HP) Speed: 30 ft.\n\nSTR 14 (+2) | DEX 12 (+1) | CON 14 (+2) | INT\
+    \ 10 (+0) | WIS 11 (+0) | CHA 12 (+1)\n\nSkills: Perception +2, Athletics +4 Senses: Passive Perception\
+    \ 12 Languages: Any one\nlanguage (usually Common) Challenge: 2 (450 XP)\n\nActions\n   ●     Multiattack:\
+    \ The guard makes two melee attacks.\n   ●     Longsword: Melee Weapon Attack: +4 to hit, reach 5 ft.,\
+    \ one target. Hit: 7 (1d8 + 3)\n         slashing damage, or 8 (1d10 + 3) slashing damage if used with\
+    \ two hands.\n   ●     Heavy Crossbow: Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target.\n\
+    \         Hit: 5 (1d10) piercing damage.\n\nTraits\n\n   ●     Brave: The guard has advantage on saving\
+    \ throws against being frightened.\n   ●     Dutybound: The guard has a sworn duty to protect the event\
+    \ and its attendees.\n         They will fight to the death to uphold their duty."
   hp_max_variant: 90

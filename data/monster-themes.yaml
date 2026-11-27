@@ -1,348 +1,333 @@
-# Primary encounter themes for browsing. These are encounter suggestions, not habitat rules.
-# Source collections, routes, statblocks and import snapshots remain independent.
 monster_themes:
-  - name: "Caverns & lost ruins"
-    monsters:
-      - "Balckspawn Stalker"
-      - "corridor crawler"
-      - "Dread Rat"
-      - "Formicid male"
-      - "Grootslang"
-      - "Monooze"
-      - "Rocktor"
-      - "Underground Guardian"
-      - "Gray Ooze"
-      - "Id Ooze"
-      - "Brain Mole"
-      - "Carrion Beetle"
-      - "Cavelight Moss"
-      - "Dogmole"
-      - "Deathcap Mycolid"
-      - "Psilocybe Mycolid"
-      - "Roachling"
-
-  - name: "Cities, guards & outlaws"
-    monsters:
-      - "Bandit"
-      - "Custead Armored Forces"
-      - "Event Guard"
-      - "Ishilb male paladin"
-      - "Leonin male (rogue/assasin)"
-      - "Leonin male fighter leader - Drion Goldenseeker"
-      - "Loxodon male cleric - Chandruuv"
-      - "Magical Guard"
-      - "Obsidian Crystal Duelist"
-      - "Ranged Guard"
-      - "Spear Guard"
-      - "Sword Guard"
-      - "Thug"
-      - "Dwarf Axe Siegebreaker"
-      - "Veiled Poison Assassin"
-      - "Kobold Slyblade"
-      - "Centaur Lance Roughneck"
-      - "Shield-and-Spear Sellsword"
-
-  - name: "Constructs & workshops"
-    monsters:
-      - "Aberrant Juggernaut"
-      - "animated golem"
-      - "Battlefist Rifle Engineer"
-      - "Fleshweaver Surgeon"
-      - "mud golem"
-      - "Mud Servant"
-      - "Necrobotic Giant Scorpion"
-      - "Rockplica duplicate"
-      - "Six-Handed Surgical Automaton"
-      - "Spellguard Clockwork Panther"
-      - "Stitched Flesh Hulk"
-      - "Stone illusion duplicate"
-      - "Stone Servant"
-      - "Tentacle Clockwork Panther"
-      - "Venom-Hand Chirurgeon"
-      - "Clockwork Hound"
-      - "Clockwork Myrmidon"
-      - "Eye Golem"
-      - "Fellforged"
-      - "Steam Golem"
-      - "Weaving Spider"
-      - "Gearforged Legionnaire"
-
-  - name: "Cults, mages & dark bargains"
-    monsters:
-      - "arcane imp"
-      - "Elven Hexblade Initiate"
-      - "Fiend Follower"
-      - "Illusion-Boot Arcanist"
-      - "Imp"
-      - "Tiefling female sorcerer leader"
-      - "Warblade Avatar"
-      - "Wasteland Magister"
-      - "Dragonkin Runestaff Envoy"
-
-  - name: "Deserts & canyons"
-    monsters:
-      - "Camelfolk female sorcerer - Papaya"
-      - "Canyon Viper"
-      - "Colossal Sand Golem"
-      - "Giant Scorpion"
-      - "Girtablilu"
-      - "Marrashi"
-      - "Sand Shambler"
-      - "Sand shifter female"
-      - "Scarabscorpion"
-      - "Scorpion"
-      - "Scorpionfolk Glaive Tyrant"
-      - "Whirlwind Sand Elemental"
-      - "Cactus Goblin"
-      - "Dust Goblin Scavenger"
-      - "Gypsosphinx"
-
-  - name: "Dragons & their lairs"
-    monsters:
-      - "Adult Aetherium Alloy dragon"
-      - "Adult Cerithal Stone dragon"
-      - "Adult Dyspraxium Salt dragon"
-      - "Adult Erbion Essence dragon"
-      - "Adult Euralite Gem dragon"
-      - "Adult Holmara Rock dragon"
-      - "Adult Lanthara Crystal dragon"
-      - "Adult Neodrakite dragon"
-      - "Adult Red Dragon"
-      - "Adult Samarkium Ore dragon"
-      - "Adult Steel Dragon"
-      - "Adult Terbithal Resin dragon"
-      - "Adult Thulmara Dust dragon"
-      - "Adult Ytriun Metal dragon"
-      - "Ancient Steel Dragon"
-      - "Aurumathar"
-      - "Dragazhar"
-      - "Steel Dragon Wyrmling"
-      - "Young Steel Dragon"
-      - "Young Cave Dragon"
-
-  - name: "Earth & crystal realms"
-    monsters:
-      - "Awakened Earth"
-      - "Boulder Guardian"
-      - "Clay Imp"
-      - "Crystal Sprite"
-      - "Diamond Devastator"
-      - "Dirt Mite"
-      - "Earth Elemental Servant"
-      - "Earth Guardian"
-      - "Earthen Guardian"
-      - "Gemstone Goliath"
-      - "Geochemical Golem"
-      - "Granite Goliath"
-      - "Granite Striker"
-      - "Gravel Giggler"
-      - "Great Iron"
-      - "greater crystal elemental"
-      - "Magnetite Guardian"
-      - "Moonflyer"
-      - "Obsidian Monolith"
-      - "Obsidian Oaf"
-      - "Obsidian Obliterator"
-      - "Obsidian Shard"
-      - "Pebble Gnome"
-      - "Primordial Terra Titan"
-      - "Quartz Quasher"
-      - "Runic Sentinel"
-      - "Stone Sprite"
-      - "Stone Strider"
-      - "Voidstone Wanderer"
-      - "Crystal Abomination"
-      - "Galeb Duhr"
-      - "Crag Drake"
-
-  - name: "Eldritch nightmares"
-    monsters:
-      - "Adjole"
-      - "Antlered Witness"
-      - "baseline eidolon"
-      - "Birther of the Void"
-      - "Burdened Herald"
-      - "cosmic trigon"
-      - "Dongajni"
-      - "Eidolon of the Many Eyes"
-      - "Enderman"
-      - "False wisp"
-      - "Horned Skirmisher"
-      - "Jobafo"
-      - "manaworm"
-      - "Many-Limbed Ravager"
-      - "Miasmic Wraithshifter"
-      - "Parasite Swarm"
-      - "Smiling Mourner"
-      - "The False One"
-      - "Thousand-Eyed Ascetic"
-      - "Voidling"
-      - "Whisperspawn Ascendant"
-      - "Organ Goblin"
-      - "Derro Fetal Savant"
-      - "Mindrot Thrall"
-
-  - name: "Fire, storms & sky"
-    monsters:
-      - "Ashmaw Tramplefire"
-      - "greater fire elemental"
-      - "greater lightning elemental"
-      - "greater wind elemental"
-      - "Sky Guardian"
-      - "summoned arcane elemental"
-      - "Tempest Rhythm Djinn"
-      - "Slag Worm"
-      - "Ala"
-      - "Firegeist"
-      - "Spark"
-
-  - name: "Forests & wilds"
-    monsters:
-      - "Bark Lizard"
-      - "Blood Boar"
-      - "Boar"
-      - "Dire Boar"
-      - "Elftaur female druid"
-      - "Emerald Twilight-Hen"
-      - "Forest child female leader"
-      - "Forest Guardian"
-      - "Gelatinous Leafhopper"
-      - "Golden Sow"
-      - "Hyena"
-      - "Kongamato"
-      - "Quirkbeak"
-      - "Resilient Plant"
-      - "Rootbound Stalker"
-      - "Ruby Dawn-Crier"
-      - "Sirian Werebull"
-      - "Sprig Buddy"
-      - "The Ondonti male druid/cleric"
-      - "Thorn Spitter"
-      - "Wild Man barbarian"
-      - "Froghemoth"
-      - "Borogon"
-      - "Gambol"
-      - "Catoblepas"
-      - "Red Sundew"
-      - "Monstrous Spiderling"
-      - "Very Young Monstrous Spider"
-      - "Young Monstrous Spider"
-      - "Juvenile Monstrous Spider"
-      - "Young Adult Monstrous Spider"
-      - "Adult Monstrous Spider"
-      - "Mature Adult Monstrous Spider"
-      - "Old Monstrous Spider"
-      - "Very Old Monstrous Spider"
-      - "Elder Monstrous Spider"
-      - "Ancient Monstrous Spider"
-      - "Archaic Monstrous Spider"
-      - "Alseid Hunter"
-      - "Feyblade Exile"
-      - "Death Butterfly Swarm"
-      - "Putrid Haunt"
-      - "Sap Demon"
-      - "Shadow Fey Courtier"
-
-  - name: "Frozen wastes"
-    monsters:
-      - "Frostblade Sovereign"
-      - "Frostbound Wraith"
-      - "greater ice elemental"
-      - "Necropolar Bear"
-      - "Primordial Frost Warden"
-      - "Spectral Wolf"
-      - "Frost Salamander"
-      - "Grizzly Mastodon"
-
-  - name: "Infernal invasions"
-    monsters:
-      - "Infernal Behemoth"
-      - "Infernal Commando"
-      - "Infernal Healer"
-      - "Infernal Hound"
-      - "Infernal Portal"
-      - "Infernal Reaver"
-      - "Infernal Saboteur"
-      - "Infernal Technomancer"
-      - "Gilded Devil"
-      - "Infernal Gnome Enchanter"
-
-  - name: "Orc & gnoll warbands"
-    monsters:
-      - "Black Orc Mercs"
-      - "Dire Krenshar"
-      - "Gnoll Krenshar rider"
-      - "Gnoll Ranger"
-      - "Gnoll Spearmen"
-      - "Gray Orc"
-      - "High Forest Orc"
-      - "Krenshar"
-      - "Minotaur female barbarian - Miratrin 'Strongwalker'"
-      - "Mountain Orc"
-      - "Ogre"
-      - "Ogre War Hulk"
-      - "Ogrillion"
-      - "Orc Psycho"
-      - "Orc War Chief"
-      - "Orog"
-      - "Raguch the Ogrillion"
-      - "The Gray Orc male"
-      - "The Half-Orc Female sorcerer leader"
-      - "Goblin"
-      - "Small Greataxe Goblin Brute"
-      - "Greatsword Goblin Brute"
-      - "Greatclub Goblin Brute"
-
-  - name: "Seas & coasts"
-    monsters:
-      - "Anchor Butcher"
-      - "Boarding Rapier Skirmisher"
-      - "Crocshark"
-      - "Reef Seahorsefolk"
-      - "Rhedottoia Reaper"
-      - "Sea Guardian"
-      - "Worldshell Great Turtle"
-      - "Worldshell Ooze Guardian"
-      - "Crystal Ooze"
-      - "Goblin Shark"
-      - "Great White Shark"
-      - "Sharkskin Goblin"
-      - "Bone Crab"
-      - "Eel Hound"
-      - "Shark-Shifting Goblin"
-      - "Minotaur Deckbreaker"
-      - "Lorelei"
-      - "Merrow"
-      - "Wharfling Swarm"
-
-  - name: "Tombs & restless dead"
-    monsters:
-      - "animated skeleton"
-      - "animated skull"
-      - "Atropal"
-      - "Death Giant"
-      - "Death Titan"
-      - "Dread Specter"
-      - "Ettin Zombie"
-      - "Ghoul"
-      - "Kleer"
-      - "Nightcrawler"
-      - "Nightshade Zombie"
-      - "Ogre Ghoul"
-      - "raised undead"
-      - "Shadow"
-      - "shambling undead"
-      - "Skeleton"
-      - "skeleton servant"
-      - "Specter"
-      - "undead warrior"
-      - "Unwilling"
-      - "Wraith"
-      - "Zombie"
-      - "Bone Collective"
-      - "Bonepowder Ghoul"
-      - "Ghost Knight"
-      - "Imperial Ghast"
-      - "Iron Ghoul"
-      - "Lich Hound"
-      - "Necrophagus Ghoul"
+- name: Caverns & lost ruins
+  monsters:
+  - Balckspawn Stalker
+  - corridor crawler
+  - Dread Rat
+  - Formicid male
+  - Grootslang
+  - Monooze
+  - Rocktor
+  - Underground Guardian
+  - Gray Ooze
+  - Id Ooze
+  - Brain Mole
+  - Carrion Beetle
+  - Cavelight Moss
+  - Dogmole
+  - Deathcap Mycolid
+  - Psilocybe Mycolid
+  - Roachling
+  - Burrow Hound Juggernaut
+- name: Cities, guards & outlaws
+  monsters:
+  - Bandit
+  - Custead Armored Forces
+  - Event Guard
+  - Ishilb male paladin
+  - Leonin male (rogue/assasin)
+  - Leonin male fighter leader - Drion Goldenseeker
+  - Loxodon male cleric - Chandruuv
+  - Magical Guard
+  - Obsidian Crystal Duelist
+  - Ranged Guard
+  - Spear Guard
+  - Sword Guard
+  - Thug
+  - Dwarf Axe Siegebreaker
+  - Veiled Poison Assassin
+  - Kobold Slyblade
+  - Centaur Lance Roughneck
+  - Shield-and-Spear Sellsword
+- name: Constructs & workshops
+  monsters:
+  - Aberrant Juggernaut
+  - animated golem
+  - Battlefist Rifle Engineer
+  - Fleshweaver Surgeon
+  - mud golem
+  - Mud Servant
+  - Necrobotic Giant Scorpion
+  - Rockplica duplicate
+  - Six-Handed Surgical Automaton
+  - Spellguard Clockwork Panther
+  - Stitched Flesh Hulk
+  - Stone illusion duplicate
+  - Stone Servant
+  - Tentacle Clockwork Panther
+  - Venom-Hand Chirurgeon
+  - Clockwork Hound
+  - Clockwork Myrmidon
+  - Eye Golem
+  - Fellforged
+  - Steam Golem
+  - Weaving Spider
+  - Gearforged Legionnaire
+- name: Cults, mages & dark bargains
+  monsters:
+  - arcane imp
+  - Elven Hexblade Initiate
+  - Fiend Follower
+  - Illusion-Boot Arcanist
+  - Imp
+  - Tiefling female sorcerer leader
+  - Warblade Avatar
+  - Wasteland Magister
+  - Dragonkin Runestaff Envoy
+- name: Deserts & canyons
+  monsters:
+  - Camelfolk female sorcerer - Papaya
+  - Canyon Viper
+  - Colossal Sand Golem
+  - Giant Scorpion
+  - Girtablilu
+  - Marrashi
+  - Sand Shambler
+  - Sand shifter female
+  - Scarabscorpion
+  - Scorpion
+  - Scorpionfolk Glaive Tyrant
+  - Whirlwind Sand Elemental
+  - Cactus Goblin
+  - Dust Goblin Scavenger
+  - Gypsosphinx
+- name: Dragons & their lairs
+  monsters:
+  - Adult Aetherium Alloy dragon
+  - Adult Cerithal Stone dragon
+  - Adult Dyspraxium Salt dragon
+  - Adult Erbion Essence dragon
+  - Adult Euralite Gem dragon
+  - Adult Holmara Rock dragon
+  - Adult Lanthara Crystal dragon
+  - Adult Neodrakite dragon
+  - Adult Red Dragon
+  - Adult Samarkium Ore dragon
+  - Adult Steel Dragon
+  - Adult Terbithal Resin dragon
+  - Adult Thulmara Dust dragon
+  - Adult Ytriun Metal dragon
+  - Ancient Steel Dragon
+  - Aurumathar
+  - Dragazhar
+  - Steel Dragon Wyrmling
+  - Young Steel Dragon
+  - Young Cave Dragon
+- name: Earth & crystal realms
+  monsters:
+  - Awakened Earth
+  - Boulder Guardian
+  - Clay Imp
+  - Crystal Sprite
+  - Diamond Devastator
+  - Dirt Mite
+  - Earth Elemental Servant
+  - Earth Guardian
+  - Earthen Guardian
+  - Gemstone Goliath
+  - Geochemical Golem
+  - Granite Goliath
+  - Granite Striker
+  - Gravel Giggler
+  - Great Iron
+  - greater crystal elemental
+  - Magnetite Guardian
+  - Moonflyer
+  - Obsidian Monolith
+  - Obsidian Oaf
+  - Obsidian Obliterator
+  - Obsidian Shard
+  - Pebble Gnome
+  - Primordial Terra Titan
+  - Quartz Quasher
+  - Runic Sentinel
+  - Stone Sprite
+  - Stone Strider
+  - Voidstone Wanderer
+  - Crystal Abomination
+  - Galeb Duhr
+  - Crag Drake
+- name: Eldritch nightmares
+  monsters:
+  - Adjole
+  - Antlered Witness
+  - baseline eidolon
+  - Birther of the Void
+  - Burdened Herald
+  - cosmic trigon
+  - Dongajni
+  - Eidolon of the Many Eyes
+  - Enderman
+  - False wisp
+  - Horned Skirmisher
+  - Jobafo
+  - manaworm
+  - Many-Limbed Ravager
+  - Miasmic Wraithshifter
+  - Parasite Swarm
+  - Smiling Mourner
+  - The False One
+  - Thousand-Eyed Ascetic
+  - Voidling
+  - Whisperspawn Ascendant
+  - Organ Goblin
+  - Derro Fetal Savant
+  - Mindrot Thrall
+- name: Fire, storms & sky
+  monsters:
+  - Ashmaw Tramplefire
+  - greater fire elemental
+  - greater lightning elemental
+  - greater wind elemental
+  - Sky Guardian
+  - summoned arcane elemental
+  - Tempest Rhythm Djinn
+  - Slag Worm
+  - Ala
+  - Firegeist
+  - Spark
+- name: Forests & wilds
+  monsters:
+  - Bark Lizard
+  - Blood Boar
+  - Boar
+  - Dire Boar
+  - Elftaur female druid
+  - Emerald Twilight-Hen
+  - Forest child female leader
+  - Forest Guardian
+  - Gelatinous Leafhopper
+  - Golden Sow
+  - Hyena
+  - Kongamato
+  - Quirkbeak
+  - Resilient Plant
+  - Rootbound Stalker
+  - Ruby Dawn-Crier
+  - Sirian Werebull
+  - Sprig Buddy
+  - The Ondonti male druid/cleric
+  - Thorn Spitter
+  - Wild Man barbarian
+  - Froghemoth
+  - Borogon
+  - Gambol
+  - Catoblepas
+  - Red Sundew
+  - Monstrous Spiderling
+  - Very Young Monstrous Spider
+  - Young Monstrous Spider
+  - Juvenile Monstrous Spider
+  - Young Adult Monstrous Spider
+  - Adult Monstrous Spider
+  - Mature Adult Monstrous Spider
+  - Old Monstrous Spider
+  - Very Old Monstrous Spider
+  - Elder Monstrous Spider
+  - Ancient Monstrous Spider
+  - Archaic Monstrous Spider
+  - Alseid Hunter
+  - Feyblade Exile
+  - Death Butterfly Swarm
+  - Putrid Haunt
+  - Sap Demon
+  - Shadow Fey Courtier
+- name: Frozen wastes
+  monsters:
+  - Frostblade Sovereign
+  - Frostbound Wraith
+  - greater ice elemental
+  - Necropolar Bear
+  - Primordial Frost Warden
+  - Spectral Wolf
+  - Frost Salamander
+  - Grizzly Mastodon
+- name: Infernal invasions
+  monsters:
+  - Infernal Behemoth
+  - Infernal Commando
+  - Infernal Healer
+  - Infernal Hound
+  - Infernal Portal
+  - Infernal Reaver
+  - Infernal Saboteur
+  - Infernal Technomancer
+  - Gilded Devil
+  - Infernal Gnome Enchanter
+- name: Orc & gnoll warbands
+  monsters:
+  - Black Orc Mercs
+  - Dire Krenshar
+  - Gnoll Krenshar rider
+  - Gnoll Ranger
+  - Gnoll Spearmen
+  - Gray Orc
+  - High Forest Orc
+  - Krenshar
+  - Minotaur female barbarian - Miratrin 'Strongwalker'
+  - Mountain Orc
+  - Ogre
+  - Ogre War Hulk
+  - Ogrillion
+  - Orc Psycho
+  - Orc War Chief
+  - Orog
+  - Raguch the Ogrillion
+  - The Gray Orc male
+  - The Half-Orc Female sorcerer leader
+  - Goblin
+  - Small Greataxe Goblin Brute
+  - Greatsword Goblin Brute
+  - Greatclub Goblin Brute
+- name: Seas & coasts
+  monsters:
+  - Anchor Butcher
+  - Boarding Rapier Skirmisher
+  - Crocshark
+  - Reef Seahorsefolk
+  - Rhedottoia Reaper
+  - Sea Guardian
+  - Worldshell Great Turtle
+  - Worldshell Ooze Guardian
+  - Crystal Ooze
+  - Goblin Shark
+  - Great White Shark
+  - Sharkskin Goblin
+  - Bone Crab
+  - Eel Hound
+  - Shark-Shifting Goblin
+  - Minotaur Deckbreaker
+  - Lorelei
+  - Merrow
+  - Wharfling Swarm
+- name: Tombs & restless dead
+  monsters:
+  - animated skeleton
+  - animated skull
+  - Atropal
+  - Death Giant
+  - Death Titan
+  - Dread Specter
+  - Ettin Zombie
+  - Ghoul
+  - Kleer
+  - Nightcrawler
+  - Nightshade Zombie
+  - Ogre Ghoul
+  - raised undead
+  - Shadow
+  - shambling undead
+  - Skeleton
+  - skeleton servant
+  - Specter
+  - undead warrior
+  - Unwilling
+  - Wraith
+  - Zombie
+  - Bone Collective
+  - Bonepowder Ghoul
+  - Ghost Knight
+  - Imperial Ghast
+  - Iron Ghoul
+  - Lich Hound
+  - Necrophagus Ghoul

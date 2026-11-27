@@ -41,10 +41,10 @@ entries:
       DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 5, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Spiderling
     printed_size: Tiny
     printed_hp: 2
@@ -154,10 +154,10 @@ entries:
       DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 7, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Very Young
     printed_size: Small
     printed_hp: 4
@@ -267,10 +267,10 @@ entries:
       DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 9, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Young
     printed_size: Medium
     printed_hp: 10
@@ -380,10 +380,10 @@ entries:
       DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 11, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Juvenile
     printed_size: Large
     printed_hp: 20
@@ -496,10 +496,10 @@ entries:
       DC 13 to break or slip the strands. The web can also be attacked (AC 10, HP 13, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Young Adult
     printed_size: Huge
     printed_hp: 48
@@ -612,10 +612,10 @@ entries:
       DC 14 to break or slip the strands. The web can also be attacked (AC 10, HP 15, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Adult
     printed_size: Huge
     printed_hp: 96
@@ -727,10 +727,10 @@ entries:
       DC 16 to break or slip the strands. The web can also be attacked (AC 10, HP 17, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Mature Adult
     printed_size: Huge
     printed_hp: 140
@@ -842,10 +842,10 @@ entries:
       DC 19 to break or slip the strands. The web can also be attacked (AC 10, HP 19, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Old
     printed_size: Huge
     printed_hp: 216
@@ -957,10 +957,10 @@ entries:
       DC 20 to break or slip the strands. The web can also be attacked (AC 10, HP 21, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Very Old
     printed_size: Huge
     printed_hp: 280
@@ -1072,10 +1072,10 @@ entries:
       DC 22 to break or slip the strands. The web can also be attacked (AC 10, HP 23, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Elder
     printed_size: Huge
     printed_hp: 352
@@ -1187,10 +1187,10 @@ entries:
       DC 23 to break or slip the strands. The web can also be attacked (AC 10, HP 25, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Ancient
     printed_size: Huge
     printed_hp: 432
@@ -1302,10 +1302,10 @@ entries:
       DC 25 to break or slip the strands. The web can also be attacked (AC 10, HP 27, fire vulnerability, poison/psychic
       immunity); destroying it frees the target. No damage on the initial web strike.'
   ability_score_status: reconstructed
-  source_system: D&D 3.5 homebrew / age progression table
+  source_system: Legacy d20 homebrew / age progression table
   source_ref: User-supplied Huge Monstrous Spider by Age screenshot
   original_5e:
-    source_system: D&D 3.5 homebrew / age progression table
+    source_system: Legacy d20 homebrew / age progression table
     age: Archaic
     printed_size: Huge
     printed_hp: 520

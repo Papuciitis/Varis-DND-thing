@@ -16,7 +16,7 @@ Personal NPC names are replaced by reusable enemy archetypes with their distinct
 - Current Afraid, Snared, Confused, Madness and other conditions replace incompatible legacy wording. Daily and rest resources keep explicit timing; default short rest is one day and long rest one week.
 - Summoned creatures are independent manual entries. Only an explicit creating ability supplies control, duration and initiative; spawn limits and shared recharge/action costs prevent recursive creation.
 - Mud Servant shows immediately usable standalone defaults and the exact current spell scaling as an override. The existing fixed mud golem stays separate.
-- Orog, War Chief and War Hulk use explicit shield/two-handed loadouts. A Versatile shield never permits an otherwise incompatible Greatsword beside it.
+- Orc Veteran, War Chief and War Hulk use explicit shield/two-handed loadouts. A Versatile shield never permits an otherwise incompatible Greatsword beside it.
 
 ## Inventory
 
@@ -37,8 +37,8 @@ Personal NPC names are replaced by reusable enemy archetypes with their distinct
 | Mountain Orc | Mountain Orc | 2025-02-09 | 1/2 |
 | High Forest Orc | High Forest Orc | 2025-02-09 | 1 |
 | Gray Orc | Gray Orc | 2025-02-09 | 1 |
-| Ogrillion | Ogrillion / Ogrillon | 2025-02-09 | 3 |
-| Orog | Orog | 2025-02-09 | 3 |
+| Orc-Ogre Brute | Orc-Ogre Brute / Ogrillon | 2025-02-09 | 3 |
+| Orc Veteran | Orc Veteran | 2025-02-09 | 3 |
 | Orc War Chief | Orc War Chief | 2025-02-09 | 4 |
 | Ogre | Ogre | 2025-02-09 | 3 |
 | Ogre War Hulk | Ogre War Hulk | 2025-02-09 | 5 |
@@ -64,7 +64,7 @@ Personal NPC names are replaced by reusable enemy archetypes with their distinct
 | Voidling | Voidling | 2025-07-18 | 3 |
 | Parasite Swarm | Parasite Swarm | 2025-07-18 | 4 (estimate) |
 | Spectral Wolf | Spectral Wolf / Frost Wolf | 2024-12-25 | 1 (estimate) |
-| Rhedottoia Reaper | Rhedottoia Reaper | 2023-07-28 | 12 (estimate) |
+| Deep Tentacle Reaper | Deep Tentacle Reaper | 2023-07-28 | 12 (estimate) |
 | Anchor Butcher | Nautilus, the Sea-Monster Butcher | 2023-07-26 | 10 (estimate) |
 | Miasmic Wraithshifter | Miasmic Wraithshifter | 2024-03-01 | 6 (estimate) |
 | Worldshell Great Turtle | Eubur Colli, the Great Turtle | 2024-10-26 | 30 (estimate) |

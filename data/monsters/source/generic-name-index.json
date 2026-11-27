@@ -1,6 +1,6 @@
 {
   "changed_on": "2026-11-27",
-  "scope": "Generic, gender-neutral encounter titles; preserve every creature and its current combat mechanics.",
+  "scope": "Reusable creature titles, stable identities and current combat profiles.",
   "source_policy": "Original personal names and gendered source titles stay in collapsed provenance and immutable source snapshots. Playable titles and creature-specific rules use generic wording.",
   "records": [
     {
@@ -26,28 +26,28 @@
     },
     {
       "from": "Leonin male fighter leader - Drion Goldenseeker",
-      "to": "Leonin Greataxe Captain",
+      "to": "Lionfolk Greataxe Captain",
       "id": "chronica-15891",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #1 - The Shieldwrights"
     },
     {
       "from": "Loxodon male cleric - Chandruuv",
-      "to": "Loxodon Warhammer Priest",
+      "to": "Elephantfolk Warhammer Priest",
       "id": "chronica-15890",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #1 - The Shieldwrights"
     },
     {
       "from": "Raguch the Ogrillion",
-      "to": "Ogrillion Club Brute",
+      "to": "Orc-Ogre Club Brute",
       "id": "chronica-15886",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #2"
     },
     {
       "from": "The Ondonti male druid/cleric",
-      "to": "Ondonti Scythe Shaman",
+      "to": "Orc Scythe Shaman",
       "id": "chronica-15889",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #2"
@@ -75,21 +75,21 @@
     },
     {
       "from": "Elftaur female druid",
-      "to": "Elftaur Grove Druid",
+      "to": "Woodland Grove Druid",
       "id": "chronica-15901",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #4"
     },
     {
       "from": "Tiefling female sorcerer leader",
-      "to": "Tiefling Battle Mage",
+      "to": "Hellborn Battle Mage",
       "id": "chronica-15900",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #4"
     },
     {
       "from": "Leonin male (rogue/assasin)",
-      "to": "Leonin Shortsword Assassin",
+      "to": "Lionfolk Shortsword Assassin",
       "id": "chronica-15898",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #4"
@@ -131,7 +131,7 @@
     },
     {
       "from": "Ishilb male paladin",
-      "to": "Ishilb Greatsword Knight",
+      "to": "Armored Greatsword Knight",
       "id": "chronica-15897",
       "source": "monsters/chronica.yaml",
       "group": "Chronica · Mercenary group #3"
@@ -142,6 +142,350 @@
       "id": "tarta-aurumathar",
       "source": "monsters/tarta-wiki.yaml",
       "group": "Tarta wiki - Mythos dragons"
+    },
+    {
+      "from": "Marrashi",
+      "to": "Plaguebow Fiend",
+      "id": "chronica-16348",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Enemies/building"
+    },
+    {
+      "from": "Balckspawn Stalker",
+      "to": "Darkscale Cave Stalker",
+      "id": "chronica-15902",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Enemies/forest/night"
+    },
+    {
+      "from": "Ogrillion",
+      "to": "Orc-Ogre Brute",
+      "id": "recovered-ogrillion",
+      "source": "monsters/recovered-warriors.yaml",
+      "group": "Recovered warbands"
+    },
+    {
+      "from": "Orog",
+      "to": "Orc Veteran",
+      "id": "recovered-orog",
+      "source": "monsters/recovered-warriors.yaml",
+      "group": "Recovered warbands"
+    },
+    {
+      "from": "Krenshar",
+      "to": "Flayface Prowler",
+      "id": "chronica-15913",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Enemies/gnolls"
+    },
+    {
+      "from": "Dire Krenshar",
+      "to": "Dire Flayface Prowler",
+      "id": "chronica-15914",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Enemies/gnolls"
+    },
+    {
+      "from": "Gnoll Krenshar rider",
+      "to": "Gnoll Flayface Rider",
+      "id": "chronica-15915",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Enemies/gnolls"
+    },
+    {
+      "from": "Nightcrawler",
+      "to": "Graveworm Colossus",
+      "id": "chronica-25833",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · The Fuckening End"
+    },
+    {
+      "from": "Atropal",
+      "to": "Unborn Death Colossus",
+      "id": "chronica-25832",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · The Fuckening End"
+    },
+    {
+      "from": "Sirian Werebull",
+      "to": "Bull Shapeshifter",
+      "id": "chronica-26579",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Creatures/Desert"
+    },
+    {
+      "from": "Rocktor",
+      "to": "Armored Marsh Behemoth",
+      "id": "chronica-30150",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Creatures/Desert"
+    },
+    {
+      "from": "Kleer",
+      "to": "Chainball Skeleton",
+      "id": "chronica-26580",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Creatures/Desert"
+    },
+    {
+      "from": "Monooze",
+      "to": "Coalescent Ooze",
+      "id": "chronica-30713",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Creatures/Desert"
+    },
+    {
+      "from": "Enderman",
+      "to": "Blinking Void Stalker",
+      "id": "chronica-31254",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Portal"
+    },
+    {
+      "from": "Froghemoth",
+      "to": "Adhesive Bog Colossus",
+      "id": "converted-froghemoth",
+      "source": "monsters/legacy-creatures.yaml",
+      "group": "Cross-system creature conversions"
+    },
+    {
+      "from": "Brain Mole",
+      "to": "Mindleech Mole",
+      "id": "converted-brain-mole",
+      "source": "monsters/legacy-creatures.yaml",
+      "group": "Cross-system creature conversions"
+    },
+    {
+      "from": "Borogon",
+      "to": "Spineback Devourer",
+      "id": "converted-borogon",
+      "source": "monsters/legacy-creatures.yaml",
+      "group": "Cross-system creature conversions"
+    },
+    {
+      "from": "Galeb Duhr",
+      "to": "Boulder Hermit",
+      "id": "converted-galeb-duhr",
+      "source": "monsters/legacy-creatures.yaml",
+      "group": "Cross-system creature conversions"
+    },
+    {
+      "from": "Gambol",
+      "to": "Bounding Jungle Predator",
+      "id": "converted-gambol",
+      "source": "monsters/legacy-creatures.yaml",
+      "group": "Cross-system creature conversions"
+    },
+    {
+      "from": "Ala",
+      "to": "Stormcloud Devourer",
+      "id": "converted-ala",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Alseid Hunter",
+      "to": "Antlered Forest Hunter",
+      "id": "converted-alseid-hunter",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Bone Collective",
+      "to": "Bone Swarm Exarch",
+      "id": "converted-bone-collective",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Bonepowder Ghoul",
+      "to": "Grave Dust Ghoul",
+      "id": "converted-bonepowder-ghoul",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Cavelight Moss",
+      "to": "Luminous Strangler Moss",
+      "id": "converted-cavelight-moss",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Clockwork Myrmidon",
+      "to": "Flamejet Clockwork Sentinel",
+      "id": "converted-clockwork-myrmidon",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Derro Fetal Savant",
+      "to": "Caged Mind Savant",
+      "id": "converted-derro-fetal-savant",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Dogmole",
+      "to": "Burrow Hound",
+      "id": "converted-dogmole",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Fellforged",
+      "to": "Wraithbound Automaton",
+      "id": "converted-fellforged",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Firegeist",
+      "to": "Ember Wisp",
+      "id": "converted-firegeist",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Gypsosphinx",
+      "to": "Vulture Sphinx",
+      "id": "converted-gypsosphinx",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Imperial Ghast",
+      "to": "Frenzied Spear Ghast",
+      "id": "converted-imperial-ghast",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Iron Ghoul",
+      "to": "Plateclad Ghoul",
+      "id": "converted-iron-ghoul",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Kobold Slyblade",
+      "to": "Kobold Ambusher",
+      "id": "converted-kobold-slyblade",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Lich Hound",
+      "to": "Grave Hunting Hound",
+      "id": "converted-lich-hound",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Lorelei",
+      "to": "River Lure Spirit",
+      "id": "converted-lorelei",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Merrow",
+      "to": "River Troll",
+      "id": "converted-merrow",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Mindrot Thrall",
+      "to": "Sporebound Thrall",
+      "id": "converted-mindrot-thrall",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Deathcap Mycolid",
+      "to": "Deathcap Fungal Guardian",
+      "id": "converted-deathcap-mycolid",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Psilocybe Mycolid",
+      "to": "Hallucinogenic Fungal Guardian",
+      "id": "converted-psilocybe-mycolid",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Necrophagus Ghoul",
+      "to": "Ghoul Necromancer",
+      "id": "converted-necrophagus-ghoul",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Roachling",
+      "to": "Cockroach Folk Scavenger",
+      "id": "converted-roachling",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Spark",
+      "to": "Lightning Mote",
+      "id": "converted-spark",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Wharfling Swarm",
+      "to": "Shore Scavenger Swarm",
+      "id": "converted-wharfling-swarm",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Gearforged Legionnaire",
+      "to": "Clockwork Legionnaire",
+      "id": "converted-gearforged-legionnaire",
+      "source": "monsters/setting-creatures.yaml",
+      "group": "Setting creature conversions"
+    },
+    {
+      "from": "Rhedottoia Reaper",
+      "to": "Deep Tentacle Reaper",
+      "id": "recovered-rhedottoia-reaper",
+      "source": "monsters/recovered-lore.yaml",
+      "group": "Recovered creature concepts"
+    },
+    {
+      "from": "Adjole",
+      "to": "Adhesive Gripper",
+      "id": "template-adjole",
+      "source": "monsters/template.yaml",
+      "group": "Creature template monsters"
+    },
+    {
+      "from": "Dongajni",
+      "to": "Glassshell Stinger",
+      "id": "template-dongajni",
+      "source": "monsters/template.yaml",
+      "group": "Creature template monsters"
+    },
+    {
+      "from": "Jobafo",
+      "to": "Memory Devourer",
+      "id": "template-jobafo",
+      "source": "monsters/template.yaml",
+      "group": "Creature template monsters"
+    },
+    {
+      "from": "Rockplica duplicate",
+      "to": "Stoneform Duplicate",
+      "id": "homebrewery-rockplica-duplicate",
+      "source": "monsters/tarta-summons.yaml",
+      "group": "Tarta Homebrewery - Summons"
     }
-  ]
+  ],
+  "updated_on": "2026-11-28"
 }

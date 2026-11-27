@@ -6,6 +6,7 @@ import yaml
 
 from geomancy_review import DECISIONS_PATH, SNAPSHOT_DIRECTORY, apply_geomancy_review
 from monster_themes import apply_monster_themes
+from monster_names import apply_monster_reference_names
 
 
 SECTIONS = {
@@ -309,4 +310,5 @@ def compile_data(data_dir: Path) -> list[dict]:
         except (KeyError, ValueError, TypeError) as exc:
             raise ValueError(f"summon-links.yaml: {exc}") from exc
     apply_geomancy_review(geomancy_snapshots, geomancy_decisions, sections)
+    apply_monster_reference_names(sections)
     return list(sections.values())
