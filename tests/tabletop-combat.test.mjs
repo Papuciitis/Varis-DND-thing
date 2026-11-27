@@ -76,6 +76,29 @@ test('source creature sizes scale tokens and player links can update their own p
   assert.equal(dmView.scene.tokens.find(t=>t.id===own.id).size,3);
   assert.equal(dmView.scene.tokens.find(t=>t.id===own.id).statblock,null);
 });
+test('Colossal creature links resize existing tokens and survive player views, reloads and backups',async()=>{
+  const {service,storage,dm,key,other}=await fixture();
+  const entry={name:'Aurumathar',details:{hp:800,size:'Colossal',meta:'Colossal dragon, true neutral'}};
+  const stats=monsterStats(entry);
+  assert.equal(stats.size,6);assert.equal(stats.sizeCategory,'Colossal');
+  assert.equal(monsterStats({...entry,details:{hp:800,meta:'Colossal dragon, true neutral'}}).size,6);
+  assert.equal(characterStats({id:'titan',size:'colossal',resources:{hp:{current:10,max:10}}}).size,6);
+  const view=await service.command(dm.key,{type:'token.update',id:other.id,...stats});
+  const token=view.scene.tokens.find(t=>t.id===other.id);
+  assert.equal(token.size,6);assert.equal(token.sizeCategory,'Colossal');
+  assert(tokenRadius(view.scene,token)>tokenRadius(view.scene,{size:4,sizeCategory:'Gargantuan'}));
+  const playerToken=(await service.view(key)).scene.tokens.find(t=>t.id===other.id);
+  assert.equal(playerToken.size,6);assert.equal(playerToken.sizeCategory,'Colossal');assert.equal(playerToken.statblock,null);
+  const reopened=await new RoomService(storage).view(dm.key);
+  assert.equal(reopened.scene.tokens.find(t=>t.id===other.id).size,6);
+  const imported=await service.importCampaign(dm.key,await service.exportCampaign(dm.key));
+  assert.equal(imported.scene.tokens.find(t=>t.id===other.id).sizeCategory,'Colossal');
+  assert.equal(imported.scene.tokens.find(t=>t.id===other.id).size,6);
+  const before=await service.view(dm.key);
+  await assert.rejects(service.command(dm.key,{type:'token.update',id:other.id,size:6.1}),/Token size/);
+  assert.deepEqual(await service.view(dm.key),before);
+});
+
 test('attack details remain private until the player shares their statblock',async()=>{
   const {service,dm,key,own}=await fixture();
   await service.command(key,{type:'token.stats',id:own.id,statblock:{type:'character',attacks:[{name:'Private blade',bonus:8,damage:'2d6',notes:'Secret technique'}]}});

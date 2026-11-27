@@ -62,8 +62,8 @@ function prose(value,depth=0) {
   return '';
 }
 export function sizeStats(value) {
-  const name=String(value || '').match(/\b(tiny|small|medium|large|huge|gargantuan)\b/i)?.[1]?.toLowerCase() || 'medium';
-  return {sizeCategory:name[0].toUpperCase()+name.slice(1),size:{tiny:.5,small:1,medium:1,large:2,huge:3,gargantuan:4}[name]};
+  const name=String(value || '').match(/\b(tiny|small|medium|large|huge|gargantuan|colossal)\b/i)?.[1]?.toLowerCase() || 'medium';
+  return {sizeCategory:name[0].toUpperCase()+name.slice(1),size:{tiny:.5,small:1,medium:1,large:2,huge:3,gargantuan:4,colossal:6}[name]};
 }
 export const tokenRadius=(scene,token)=>scene.gridSize*token.size*(token.sizeCategory==='Small'?.28:.35);
 const signed=(value,limit=999)=>Math.max(-limit,Math.min(limit,Math.round(Number(value)||0)));

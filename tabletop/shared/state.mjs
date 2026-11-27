@@ -143,9 +143,9 @@ export function tokenFrom(raw,scene) {
   const kind = ['hero','monster','npc','summon'].includes(raw.kind) ? raw.kind : 'hero';
   const barsCustomized=raw.barsCustomized===undefined ? !!raw.bars && !legacyBars(raw.bars) : flag(raw.barsCustomized);
   const barKind=raw.statblock?.type==='character'?'hero':raw.statblock?.type==='monster'?'monster':kind;
-  const size=numeric(raw.size ?? 1,.25,4,'Token size');
-  const sizeCategory=['Tiny','Small','Medium','Large','Huge','Gargantuan'].includes(raw.sizeCategory)?raw.sizeCategory:
-    size<1?'Tiny':size<2?'Medium':size<3?'Large':size<4?'Huge':'Gargantuan';
+  const size=numeric(raw.size ?? 1,.25,6,'Token size');
+  const sizeCategory=['Tiny','Small','Medium','Large','Huge','Gargantuan','Colossal'].includes(raw.sizeCategory)?raw.sizeCategory:
+    size<1?'Tiny':size<2?'Medium':size<3?'Large':size<4?'Huge':size<6?'Gargantuan':'Colossal';
   return {
     id: typeof raw.id === 'string' && /^[a-z0-9-]{6,64}$/i.test(raw.id) ? raw.id : uid(),
     name:label(raw.name,'New token',40), kind, color,

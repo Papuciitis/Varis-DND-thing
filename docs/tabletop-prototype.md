@@ -158,7 +158,8 @@ the same private/shared access as the rest of the character.
 Linked sheets also set token size automatically. Character size uses an explicit
 sheet size when present, otherwise its ancestry. Monster size comes from its
 statblock. Tiny tokens use half a square; Small and Medium use one square;
-Large, Huge and Gargantuan use two, three and four squares respectively. Small
+Large, Huge, Gargantuan and Colossal use two, three, four and six squares across
+respectively. Colossal therefore defaults to a 6 by 6 square footprint. Small
 tokens draw slightly smaller than Medium within the same square. Size is public
 on the map; it does not grant access to the underlying private stats.
 
