@@ -103,6 +103,8 @@
         if(row.attuned !== undefined)row.attuned=boolean(row.attuned,label+" attuned");
       } else if (kind === "spells") {
         row.prepared = boolean(row.prepared, label + " prepared");
+        if(row.classId!==undefined) row.classId=text(row.classId,label+" casting class");
+        if(row.onBar!==undefined) row.onBar=boolean(row.onBar,label+" quick action");
       }
       return row;
     });
@@ -179,7 +181,7 @@
       build.enabled = boolean(build.enabled, "Builder enabled");
       build.combatActive = boolean(build.combatActive, "Combat active");
       build.combatFloor = integer(build.combatFloor, "Combat Block grant");
-      for (const key of ["raceId", "classId"]) build[key] = text(build[key], key);
+      for (const key of ["raceId", "classId", "backgroundId"]) build[key] = text(build[key], key);
       for (const key of ["archetypes", "skills", "raceSkills", "weaponGroups"]) {
         build[key] = array(build[key], key).map(value => text(value, key));
       }
@@ -200,6 +202,7 @@
         const casting = build.casting = record(build.casting, "Casting settings");
         if (casting.enabled !== undefined) casting.enabled = boolean(casting.enabled, "Automatic casting resources");
         if (casting.maxSlotLevel != null) casting.maxSlotLevel = integer(casting.maxSlotLevel, "Maximum full-slot level", 1, 1, 20);
+        if (casting.maxLearnLevel != null) casting.maxLearnLevel = integer(casting.maxLearnLevel, "Maximum learned spell level", 1, 0, 20);
         casting.spent = record(casting.spent, "Spent casting resources");
         for (const key of Object.keys(casting.spent)) casting.spent[key] = integer(casting.spent[key], "Spent casting resource");
         casting.exhausted = record(casting.exhausted, "Spent full slots");

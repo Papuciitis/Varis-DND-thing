@@ -649,3 +649,5 @@ td p + p { margin-top: .4rem !important; }
   .geomancy-copy { font-size: .97rem; }
   .geomancy-questions { padding: .75rem; }
 }
+
+.site-records { padding-block: 1rem; font-size: .9rem; }

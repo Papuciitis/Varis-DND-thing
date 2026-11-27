@@ -13,6 +13,7 @@ ABILITY_NAMES = dict(zip(ABILITIES, ("strength", "dexterity", "constitution", "i
 ABILITY_PATTERN = re.compile(r"\b(?:" + "|".join((*ABILITIES, *ABILITY_NAMES.values())) + r")\b", re.I)
 COUNTS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "a": 1, "an": 1}
 COUNT_PATTERN = r"(?:\d+|one|two|three|four|five|six|an?)"
+OPTION_SEPARATOR = r"\s+[-\u2013\u2014]\s+"
 SKILLS = ("Athletics", "Stamina", "Acrobatics", "Sleight of Hand", "Stealth", "Instinct", "Arcana", "History",
           "Investigation", "Nature", "Religion", "Mechanism", "Animal Handling", "Insight", "Medicine", "Perception",
           "Survival", "Deception", "Intimidation", "Performance", "Persuasion")
@@ -87,14 +88,18 @@ def _race_bonuses(entry_id, raw):
 
 def _choice_count(text):
     text = re.split(r"(?m)^\s*\*\s", text, maxsplit=1)[0]
-    match = re.search(r"\b(?:choose|pick)\s+(?:any\s+)?(" + COUNT_PATTERN + r")\b", text, re.I)
+    match = re.search(r"\b(?:choos(?:e|ing)|pick|gain)\s+(?:any\s+)?(" + COUNT_PATTERN + r")\s+(?:upgrades?\b|abilities\b|from\b)", text, re.I)
+    if not match:
+        match = re.search(r"\b(?:choose|pick)\s+(?:any\s+)?(" + COUNT_PATTERN + r")\b", text, re.I)
     if not match:
         match = re.search(r"\b(?:gain|learn)\s+(" + COUNT_PATTERN + r")\s+(?:upgrades?|abilities)\s+from\b", text, re.I)
+    if not match:
+        match = re.search(r"\bgain\s+(" + COUNT_PATTERN + r")\s+of the following\b", text, re.I)
     return _number(match.group(1)) if match else None
 
 
 def _option_name(text):
-    return re.split(r"\s+(?:-|—|–)\s+", text.strip(), maxsplit=1)[0].strip()
+    return re.split(OPTION_SEPARATOR, text.strip(), maxsplit=1)[0].strip()
 
 
 def _options(raw):
@@ -117,11 +122,17 @@ def _named_options(group_id, options):
     for name, value in options:
         occurrence = occurrences.get(name, 0)
         occurrences[name] = occurrence + 1
-        result.append({"id": _id(group_id, name, occurrence), "name": name, "details": value})
+        option = {"id": _id(group_id, name, occurrence), "name": name, "details": value}
+        intro = re.split(r"(?m)^\s*\*\s", _text(value), maxsplit=1)[0]
+        if re.search(r"can be taken (?:twice|an additional time|again)\b", intro, re.I):
+            option["repeatLimit"] = 2
+        elif re.search(r"can be taken multiple times\b", intro, re.I):
+            option["repeatLimit"] = 100
+        result.append(option)
     return result
 
 
-def _bullet_options(text):
+def _bullet_options(text, allow_plain=False):
     """Keep nested prerequisites in the parent's details instead of flattening."""
     lines = text.splitlines()
     bullets = [(index, len(match.group(1)), match.group(2)) for index, line in enumerate(lines)
@@ -133,7 +144,7 @@ def _bullet_options(text):
     # Some source circles use consecutive '* The Fox' heading bullets with
     # their named benefits at the same indentation. Preserve that grouping.
     headings = [item for item in top if re.fullmatch(r"The [^.!?:]+", item[2])
-                and not re.search(r"\s+(?:-|—|–)\s+", item[2])]
+                and not re.search(OPTION_SEPARATOR, item[2])]
     if headings and headings[0] == top[0]:
         return [(content.strip(), "\n".join(lines[index:(headings[offset + 1][0]
                  if offset + 1 < len(headings) else len(lines))]).rstrip())
@@ -141,15 +152,62 @@ def _bullet_options(text):
     result = []
     for offset, (index, _, content) in enumerate(top):
         # Plain effect bullet lists are prose, not named character options.
-        if not re.search(r"\s+(?:-|—|–)\s+", content):
+        if not allow_plain and not re.search(OPTION_SEPARATOR, content):
             continue
         end = top[offset + 1][0] if offset + 1 < len(top) else len(lines)
         details = "\n".join([content, *lines[index + 1:end]]).rstrip()
-        result.append((_option_name(content), details))
+        name = _option_name(content)
+        if allow_plain and name == content:
+            name = content.split(". ")[0].rstrip(".")
+        result.append((name, details))
     return result
 
 
-def _choices(feature_id, details):
+def _heading_options(text):
+    lines = text.splitlines()
+    headings = [(index, line) for index, line in enumerate(lines)
+                if re.match(r"^[\w][\w '\u2019()&/]{0,74}" + OPTION_SEPARATOR, line)]
+    return [(_option_name(line), "\n".join(lines[index:headings[offset + 1][0]
+                if offset + 1 < len(headings) else len(lines)]).rstrip())
+            for offset, (index, line) in enumerate(headings)]
+
+
+def _tree_options(group_id, text):
+    """Expose named tree nodes, retaining their parent as a prerequisite.
+
+    The source uses two-space tree indentation. One-space bullets inside
+    Fighter's Make do describe crafted items, rather than fighting skills.
+    """
+    lines = text.splitlines()
+    nodes = []
+    for index, line in enumerate(lines):
+        match = re.match(r"^(\s*)\*\s+(.*?" + OPTION_SEPARATOR + r".*)", line)
+        if match:
+            indent, content = len(match.group(1)), match.group(2)
+            if indent % 2:
+                continue
+        elif re.match(r"^[\w][^\n]+" + OPTION_SEPARATOR, line):
+            indent, content = 0, line
+        else:
+            continue
+        nodes.append((index, indent, content))
+    values = []
+    for offset, (index, indent, content) in enumerate(nodes):
+        end = next((other_index for other_index, other_indent, _ in nodes[offset + 1:]
+                    if other_indent <= indent), len(lines))
+        values.append((_option_name(content), "\n".join([content, *lines[index + 1:end]]).rstrip()))
+    options = _named_options(group_id, values)
+    parents = []
+    for (_, indent, _), option in zip(nodes, options):
+        while parents and parents[-1][0] >= indent:
+            parents.pop()
+        option["requires"] = [parents[-1][1]] if parents else []
+        option["depth"] = len(parents)
+        parents.append((indent, option["id"]))
+    return options
+
+
+def _choices(feature_id, details, allow_plain=False):
     intro = _text(details)
     count = _choice_count(intro)
     if count is None:
@@ -163,14 +221,15 @@ def _choices(feature_id, details):
             if options:
                 groups.append((name, options))
     elif isinstance(details, str):
-        options = _bullet_options(details)
+        options = _bullet_options(details, allow_plain) or _heading_options(details)
         if options:
             groups.append(("Choose features", options))
     result = []
     for label, options in groups:
         group_id = _id(feature_id, "choice", label)
+        tree = isinstance(details, str) and re.search(r"\btree\b", re.split(r"(?m)^\s*\*\s", details)[0], re.I)
         result.append({"id": group_id, "label": label, "count": count,
-                       "options": _named_options(group_id, options)})
+                       "options": _tree_options(group_id, details) if tree else _named_options(group_id, options)})
     return result
 
 
@@ -249,7 +308,8 @@ def _features(entry_id, details, progression=(), default_level=1):
         levels = explicit or table_levels or [default_level]
         for level in levels:
             feature_id = _id(entry_id, "feature", name, occurrence, level)
-            choices = _choices(feature_id, body)
+            allow_plain = name.lower() == "ability score improvement" or name == "Inspiration dice upgrade"
+            choices = _choices(feature_id, body, allow_plain)
             if name.lower() == "oath" and _choice_count(_text(body)):
                 oaths = []
                 for child_index in range(index + 1, len(sections)):
@@ -471,6 +531,21 @@ def _class(entry_id, entry):
     details = entry["details"]
     progression = _progression(details)
     features = _features(entry_id, details, progression)
+    # These are cumulative choices from a single list. Keep the original group
+    # and option identities so existing characters gain slots without a reset.
+    recurring = {"Fighter": "Fighting skills", "Alchemist": "Alchemy methods",
+                 "Bard": "Inspiration dice upgrade"}.get(entry["name"])
+    asi_levels = [feature["level"] for feature in features
+                  if feature["name"].lower() == "ability score improvement"]
+    for feature in features:
+        if feature["name"] != recurring:
+            continue
+        for group in feature["choices"]:
+            group["countByLevel"] = [
+                {"level": level, "count": group["count"]
+                 + (level - feature["level"] if entry["name"] == "Fighter" else 0)
+                 + sum(grant <= level for grant in asi_levels)}
+                for level in range(feature["level"], 13)]
     table_levels = [row["level"] for row in progression
                     if any("archetype" in str(value).lower() for key, value in row["values"].items() if key.lower() == "features")]
     prose_levels = sorted({feature["level"] for feature in features
@@ -542,5 +617,126 @@ def compile_character_rules(sections):
                                      "status": str(details.get("status", "")), "notes": notes,
                                      "description": details.get("description", ""),
                                      "warnings": [] if explicit else ["No explicit starting level; using the parent's earliest archetype level. Review source status."]})
+    _extra_choice_grants(result)
     _casting_modifiers(result)
     return result
+
+
+def _extra_choice_grants(result):
+    """Reviewed, unconditional grants which refer back to an earlier list."""
+    links = {
+        "Bard": [("Bardic traits", "Extra bardic trait")],
+        "Empath": [("Empath traits", "Extra empath trait")],
+        "Ki channeler": [("KI powers", "Ki powers II"), ("KI powers", "Ki powers III")],
+        "Sensei": [("Master of an art", "Master of 2 arts")],
+        "Seeker": [("Special training", "Extra special training")],
+        "Graymage": [("Graymage trait", "Extra graymage trait")],
+        "Wildmage": [("Wild traits", "Wild traits II")],
+        "Experimenter": [("Special interest", "Special interests II")],
+        "Mycologist": [("Fungal methods", "Extra fungal methods")],
+        "Soulstone alchemist": [("Soulgem use", "Soulgem use II"), ("Soulgem use", "Soulgem use III")],
+        "Warlord": [("Warlord traits", "Warlord traits II"), ("Warlord traits", "Warlord traits III")],
+        "Warg": [("Primal traits", "Primal traits II"), ("Primal traits", "Primal traits III")],
+        "Paladin": [("Paladin traits", "Paladin traits II"), ("Paladin traits", "Paladin traits III")],
+        "Seer": [("Seer traits", "Extra seer trait")],
+        "Slayer": [("Slayer traits", "Extra slayer trait")],
+        "Brawler": [("Brawler traits", "Extra brawler trait")],
+        "Hexer": [("Hexer traits", "Extra trait.")],
+        "Brigand": [("Brigand traits", "Brigand traits II")],
+        "Evoker": [("Evoker traits", "Evoker traits II"), ("Evoker traits", "Evoker traits III"),
+                   ("Evoker traits", "Evoker traits IV"), ("Powerful Arts", "Powerful arts II")],
+    }
+    owners = {owner["name"]: owner for owner in [*result["classes"], *result["archetypes"]]}
+    for owner in owners.values():
+        features = {feature["name"]: feature for feature in owner["features"]}
+        if owner["name"] == "Mycologist" and "Extra fungal methods" in features:
+            grant = features["Extra fungal methods"]
+            # The source writes 'At 6th alchemist method', missing 'level'.
+            # Retain its saved identity while honoring the explicit sixth grant.
+            if _text(grant["details"]).startswith("At 6th alchemist method,"):
+                grant["level"] = 6
+        for source_name, grant_name in links.get(owner["name"], []):
+            source, grant = features.get(source_name), features.get(grant_name)
+            if source and grant:
+                for group in source["choices"]:
+                    group.setdefault("additionalGrants", []).append({"featureId": grant["id"], "count": 1})
+        if owner["name"] == "Occultist":
+            source = features.get("Mark & reward")
+            for feature in owner["features"]:
+                if feature["name"].lower() != "ability score improvement" or not source:
+                    continue
+                for source_group in source["choices"]:
+                    group_id = _id(feature["id"], "choice", "Extra " + source_group["label"])
+                    feature["choices"].append({"id": group_id, "label": "Extra " + source_group["label"],
+                        "count": 1, "optionalSet": feature["id"], "effectFeature": source["name"],
+                        "options": _named_options(group_id, [(option["name"], option["details"])
+                                                            for option in source_group["options"]])})
+                    for option in feature["choices"][-1]["options"]:
+                        if option["details"] == "+2 max occult slots.":
+                            option["effects"] = {"occultSlots": 2}
+        if owner["name"] == "Ki channeler":
+            for group in features.get("KI powers", {}).get("choices", []):
+                group["asiAlternative"] = 2
+        if owner["name"] == "Barbarian":
+            for feature in owner["features"]:
+                if feature["name"].lower() == "ability score improvement":
+                    group_id = _id(feature["id"], "choice", "Physical ability bonus")
+                    feature["choices"].append({"id": group_id, "label": "Physical ability bonus", "count": 1,
+                        "options": [{"id": _id(group_id, name, 0), "name": "+1 " + name,
+                                     "details": "Increase this physical ability score by 1, up to 24.",
+                                     "effects": {"cappedAbilities": [{"ability": code, "amount": 1, "maximum": 24}]}}
+                                    for code, name in ABILITY_NAMES.items() if code in ("str", "dex", "con")]})
+        if owner["name"] == "Shadow mage":
+            for group in features.get("Shadow mage upgrade tree", {}).get("choices", []):
+                group["countByLevel"] = [{"level": level, "count": level - 7} for level in range(9, 13)]
+        if owner["name"] == "Wildshaper":
+            source, options = features.get("Wildshape traits"), features.get("Wildshape Trait list:")
+            if source and options:
+                group_id = _id(source["id"], "choice", "Wildshape traits")
+                source["choices"] = [{"id": group_id, "label": "Wildshape traits", "count": 1,
+                    "options": _named_options(group_id, _bullet_options(options["details"])),
+                    "countByLevel": [{"level": level, "count": min(4, level - 4)} for level in range(5, 13)],
+                    "bonusAlternative": "Druid"}]
+
+    # Archetypes can also extend the base class's list, sometimes at several levels.
+    for source_owner, source_name, grant_owner, grant_name, count, progression in (
+        ("Alchemist", "Alchemy methods", "Smuggler", "Skilled", 2, []),
+        ("Bard", "Inspiration dice upgrade", "Aspirant", "Upgraded inspiration", 1, []),
+        ("Fighter", "Fighting skills", "Weapon master", "Lifetime of training", 1, [(7, 1), (8, 2), (9, 3)]),
+        ("Fighter", "Fighting skills", "Champion", "Skills of a champion", 7, [(10, 7), (11, 8), (12, 9)]),
+        ("Ranger", "Ranger training", "Monster slayer", "Extra ranger training", 1, []),
+    ):
+        source = next((f for f in owners[source_owner]["features"] if f["name"] == source_name), None)
+        grant = next((f for f in owners[grant_owner]["features"] if f["name"] == grant_name), None)
+        if source and grant:
+            for group in source["choices"]:
+                addition = {"featureId": grant["id"], "count": count}
+                if progression:
+                    addition["countByLevel"] = [{"level": level, "count": amount} for level, amount in progression]
+                group.setdefault("additionalGrants", []).append(addition)
+
+    # Some later features offer a choice of which earlier list to extend.
+    for owner_name, grant_name, routes in (
+        ("Spellblade", "final spell-blade exploit", [("Spellblade", "spell-blade exploit", 1),
+                                                     ("Spellblade", "Greater spell-blade exploit", 1)]),
+        ("Adversary", "Delve further", [("Monk", "Pursuant of the ways", 1), ("Monk", "Monk training", 1)]),
+        ("Swashbuckler", "Extra trait", [("Swashbuckler", "Swashbuckler traits", 1), ("Rogue", "Cunning", 2)]),
+        ("Wildmage", "Wildmage traits III", [("Wildmage", "Wild traits", 1)]),
+        ("Soulstone alchemist", "Soulgem secrets II", [("Soulstone alchemist", "Soulgem secrets", 1)]),
+        ("Slayer", "Final slayer trait", [("Slayer", "Slayer traits", 1), ("Slayer", "Greater adrenaline surge", 1)]),
+    ):
+        owner = owners.get(owner_name)
+        grant = next((feature for feature in owner["features"] if feature["name"] == grant_name), None) if owner else None
+        if not grant:
+            continue
+        if not grant["choices"]:
+            grant["choices"] = [{"id": _id(grant["id"], "choice", "Upgrade list"),
+                                 "label": "Upgrade list", "count": 1, "options": []}]
+        group = grant["choices"][0]
+        for source_owner, source_name, count in routes:
+            source = next((feature for feature in owners[source_owner]["features"] if feature["name"] == source_name), None)
+            if source and source["choices"]:
+                name = f"{count} extra: {source_name}"
+                group["options"].append({"id": _id(group["id"], name, 0), "name": name,
+                    "details": f"Choose {count} more from {source_name}. { _text(grant['details'])}",
+                    "choiceGrants": [{"groupId": source["choices"][0]["id"], "count": count}]})

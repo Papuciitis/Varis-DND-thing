@@ -64,6 +64,32 @@ function boot(options={}){
  return {q,field,action,fire,set,flush,downloads,document,context,requests};
 }
 
+test('spell actions on the main sheet spend the selected upcast slot, persist and can be pinned or hidden',()=>{
+ storage.clear();const init=boot();
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8'));
+ const metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8'));
+ const State=init.context.CharacterState,Rules=init.context.CharacterRules.create(metadata,catalog),Casting=init.context.CharacterCasting;
+ const entry=catalog.find(section=>section.key==='spells').entries.find(entry=>Casting.spellInfo(entry).tradition==='arcane' && Casting.spellInfo(entry).level===1 && Casting.spellInfo(entry).simpleAttack);
+ assert.ok(entry,'the real catalog needs a simple level-one arcane attack');
+ let c=Rules.enable(State.normalizeCharacter({id:'spell-ui',level:3,spells:[{id:'known',entryId:Casting.spellId(entry),name:entry.name,prepared:true}]}));
+ c.build.classId=metadata.classes.find(cls=>cls.name==='Sorcerer').id;c=Rules.reconcile(c);
+ storage.set(key,JSON.stringify({version:1,activeId:c.id,characters:[c]}));const h=boot({metadata});
+ const options=Casting.castOptions(c,Rules.derive(c),entry,c.spells[0]),upcast=options.find(option=>option.level===2),first=Rules.derive(c).casting.pools.find(pool=>pool.level===1).current;
+ const card=h.q('#pane-sheet').querySelector('[data-spell-card]');assert.ok(card);
+ h.set(card.querySelector('[data-spell-option]'),upcast.id);card.querySelector('[data-action="cast-known-spell"]').click();
+ const savedCharacter=saved().characters[0],after=Rules.derive(savedCharacter);
+ assert.equal(after.casting.pools.find(pool=>pool.level===2).current,Rules.derive(c).casting.pools.find(pool=>pool.level===2).current-1);
+ assert.equal(after.casting.pools.find(pool=>pool.level===1).current,first);
+ const upperPool=after.casting.pools.find(pool=>pool.level===2);
+ for(let index=0;index<upperPool.current;index++)h.q('#pane-sheet').querySelector('[data-action="cast-known-spell"]').click();
+ assert.equal(h.q('#pane-sheet').querySelector('[data-action="cast-known-spell"]').getAttribute('disabled'),'','exhausting the selected level must not silently switch to a different slot level');
+ assert.equal(Rules.derive(saved().characters[0]).casting.pools.find(pool=>pool.level===1).current,first);
+ const pin=h.q('#pane-sheet').querySelector('[data-path="spells.0.onBar"]');h.set(pin,false);
+ assert.equal(h.q('#pane-sheet').querySelector('[data-spell-card]'),null);
+ const reloaded=boot({metadata});assert.equal(reloaded.q('#pane-sheet').querySelector('[data-spell-card]'),null);
+ reloaded.q('[data-tab="spells"]').click();assert.ok(reloaded.q('#pane-spells').querySelector('[data-action="cast-known-spell"]'));
+});
+
 test('spell views and slot rows sort by numeric level without changing saved edit targets',()=>{
  storage.clear();const base=boot();
  const all=catalog.find(s=>s.key==='spells').entries;
@@ -283,7 +309,7 @@ test('Cleric whole-slot casting respects the chosen spell level and features sor
 test('hosted character starts with core rules, lazily opens spells, and restores saved rule references',async()=>{
  storage.clear();
  const h=boot({lazy:true});await delay(0);
- assert.deepEqual(h.requests,['builder','classes','races','items']);
+ assert.deepEqual(h.requests,['builder','classes','races','items','feats','backgrounds']);
  assert.equal(h.q('.sheet-shell').inert,false);
  h.action('catalog','[data-kind="spells"]').click();await delay(0);
  assert.equal(h.requests.at(-1),'spells');assert.match(h.q('#catalog-count').textContent,/matching/);

@@ -17,6 +17,7 @@
 
   function create({rules, show, onFinish, onCancel = () => {}, renderRule = value => `<p>${escape(typeof value === "string" ? value : JSON.stringify(value))}</p>`}) {
     let draft = null, step = 0, open = false, isNew = false, itemToAdd = "", itemQuery = "", itemCategory = "";
+    let spellToAdd = '', spellQuery = '', spellLevel = '';
     const metadata = rules.metadata || {};
     const order = globalThis.EntryOrder;
     const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
@@ -29,14 +30,17 @@
     const textInput = (path, value, type = "text", extra = "") => `<input type="${type}" data-builder-path="${escape(path)}" value="${escape(value)}" ${extra}>`;
     const selectedClass = () => classes.find(item => item.id === draft.build.classId);
     const selectedRace = () => races.find(item => item.id === draft.build.raceId);
+    const backgroundEntries = () => (rules.catalog || []).filter(section=>section.key==='backgrounds').flatMap(section=>(section.entries || []).map(entry=>({...entry,id:JSON.stringify([section.key,entry.group,entry.name])}))).sort((a,b)=>a.name.localeCompare(b.name));
 
     function ancestry() {
-      const race = selectedRace();
+      const race = selectedRace(), backgrounds = backgroundEntries(), background = backgrounds.find(item=>item.id===draft.build.backgroundId);
       return `<p>Start with your character's identity and ancestry. You can return to any step before saving.</p>${grid(
         field("Character name",textInput("name",draft.name,'text','autocomplete="off"'))+
         field("Player",textInput("player",draft.player,'text','autocomplete="off"'))+
         field("Character level",textInput("level",draft.level,"number",'min="1" max="100" inputmode="numeric"'))+
-        field("Ancestry",select("build.raceId",races,draft.build.raceId,"Choose an ancestry"))
+        field("Ancestry",select("build.raceId",races,draft.build.raceId,"Choose an ancestry"))+
+        field("Background",select("build.backgroundId",backgrounds,draft.build.backgroundId,"Choose a background"))+
+        (background ? details(`${background.name}: background rules`,background.details) : draft.background ? `<p class="muted">Current background: ${escape(draft.background)}</p>` : '')
       )}${race ? `<div class="list-card"><h3>${escape(race.name)}</h3><p>${escape(race.size)} · ${escape(race.speed ?? "Unspecified")} ft speed</p>${details("About this ancestry",race.description)}${details("Ancestry training",race.proficiencies)}${race.notes ? `<p class="muted">${escape(race.notes)}</p>` : ""}</div>` : ""}`;
     }
 
@@ -92,12 +96,49 @@
       html += [...derived.features].sort((a,b)=>order.compare(a,b,'level-asc')).map(feature => {
         const groups = derived.choices.filter(group => group.featureId === feature.id || (feature.choices || []).some(own => own.id === group.id));
         return `<section class="list-card"><h3>${escape(feature.name)}</h3><p class="muted">${escape(feature.parent)} · Level ${escape(feature.requiredLevel ?? feature.level ?? 1)}</p>${details("Read feature rules",feature.details)}${groups.map(group => {
-          const selected = draft.build.choices[group.id] || [];
-          return `<fieldset><legend>${escape(group.label === "minitrait_list" ? "Traits" : group.label)} — choose ${group.count}</legend>${grid(Array.from({length:group.count},(_,index) => field(`Selection ${index+1}`,`<select data-builder-choice="${escape(group.id)}" data-builder-choice-index="${index}">${option("","Choose an option",!selected[index])}${group.options.map(item => option(item.id,item.name,item.id === selected[index],selected.some((id,other) => id === item.id && other !== index))).join("")}</select>`)).join(""))}${group.options.filter(item => selected.includes(item.id)).map(item => details(item.name,item.details)).join("")}</fieldset>`;
+          const selected = (draft.build.choices[group.id] || []).slice(0,group.count);
+          const tree = group.options.some(item=>item.requires?.length);
+          const pickers = Array.from({length:group.count},(_,index) => {
+            const values = group.options.map(item => {
+              const repeats = selected.filter((id,other)=>other!==index && id===item.id).length;
+              const label = item.name+(item.unavailableReason ? ` (${item.unavailableReason})` : '');
+              return option(item.id,label,item.id===selected[index],!!item.unavailableReason || repeats >= (item.repeatLimit || 1));
+            }).join('');
+            return field(group.kind==='feat' ? 'Choose a feat' : `Selection ${index+1}`,`<select data-builder-choice="${escape(group.id)}" data-builder-choice-index="${index}">${option("",group.kind==='feat' ? "Browse feats and choose one" : group.optional ? "Skip this optional choice" : "Choose an option",!selected[index])}${values}</select>`);
+          }).join('');
+          return `<fieldset><legend>${escape(group.label === "minitrait_list" ? "Traits" : group.label)} - choose ${group.count}</legend>${tree ? '<p class="muted">Choose a starting skill to unlock its upgrades. Each upgrade uses a selection and requires its parent skill.</p>' : ''}${grid(pickers)}${group.options.filter(item => selected.includes(item.id)).map(item => details(item.name,item.details)).join("")}</fieldset>`;
         }).join("")}</section>`;
       }).join("");
       if (!derived.features.length) html += `<p class="muted">Choose an ancestry and class to see their features here.</p>`;
-      return html;
+      return html + spellsStep(derived);
+    }
+
+    function spellResults(derived) {
+      const casting=globalThis.CharacterCasting, selection=casting.spellSelection(draft,derived,rules.catalog);
+      const words=spellQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      const matching=selection.eligible.filter(entry=>(spellLevel==='' || String(casting.spellInfo(entry,derived.casting.profile.tradition).level)===spellLevel) && words.every(word=>(entry.name+' '+JSON.stringify(entry.details)).toLowerCase().includes(word)));
+      matching.sort((a,b)=>casting.spellInfo(a,derived.casting.profile.tradition).level-casting.spellInfo(b,derived.casting.profile.tradition).level || a.name.localeCompare(b.name));
+      const picked=selection.eligible.find(entry=>casting.spellId(entry)===spellToAdd);
+      const info=picked?casting.spellInfo(picked,derived.casting.profile.tradition):null;
+      const already=picked && draft.spells.some(row=>row.entryId===spellToAdd);
+      const full=info && casting.spellLearningError(draft,derived,rules.catalog,picked);
+      return `<p class="muted">${matching.length} available spells match</p>${field('Available class spells',`<select data-builder-spell>${option('','Choose a spell to read its rules',!spellToAdd)}${picked && !matching.includes(picked)?option(spellToAdd,picked.name,true):''}${matching.map(entry=>option(casting.spellId(entry),`${entry.name} — ${casting.spellInfo(entry,derived.casting.profile.tradition).cantrip?'Cantrip':'Level '+casting.spellInfo(entry,derived.casting.profile.tradition).level}`,casting.spellId(entry)===spellToAdd)).join('')}</select>`)}${picked?`<section class="list-card"><h3>${escape(picked.name)}</h3>${details('Spell rules',picked.details)}<button type="button" data-action="builder-add-spell"${already || full?' disabled':''}>${already?'Already chosen':full?'Class selections full':'Learn spell'}</button>${full && !already?`<p class="muted">${escape(full)}</p>`:''}</section>`:''}`;
+    }
+
+    function spellsStep(derived) {
+      if(!derived.casting?.profile || !globalThis.CharacterCasting?.spellSelection) return '';
+      const casting=globalThis.CharacterCasting, selection=casting.spellSelection(draft,derived,rules.catalog);
+      let configuration='';
+      if(derived.casting.mode==='full') configuration=field('Maximum full-slot level',textInput('build.casting.maxSlotLevel',draft.build.casting?.maxSlotLevel ?? '', 'number','min="1" max="20"'),'Use the maximum spell level agreed at your table.');
+      if(derived.casting.profile.tradition==='any') configuration=field('Maximum spell level you can learn',textInput('build.casting.maxLearnLevel',draft.build.casting?.maxLearnLevel ?? '', 'number','min="0" max="20"'),'Bard learning is limited to half Bard level; its source leaves rounding unspecified.');
+      const levels=[...new Set(selection.eligible.map(entry=>casting.spellInfo(entry,derived.casting.profile.tradition).level))].sort((a,b)=>a-b);
+      return `<section class="builder-spells"><h2>Choose your spells</h2><p>${escape(derived.cls.name)} · ${escape(derived.casting.profile.tradition==='any'?'Any tradition, including hexes as level 1–3 spells':derived.casting.profile.tradition+' magic')} · ${selection.spells.length} / ${selection.spellLimit} ${derived.casting.spellbookCount!==null?'spellbook spells':'spells known'} · ${selection.cantrips.length} / ${selection.cantripLimit} cantrips</p>${configuration}<div class="form-grid">${field('Search spells','<input type="search" data-builder-spell-query value="'+escape(spellQuery)+'" autocomplete="off">')}${field('Spell level',`<select data-builder-spell-level>${option('','All available levels',spellLevel==='')}${levels.map(level=>option(level,level===0?'Cantrips':'Level '+level,String(level)===spellLevel)).join('')}</select>`)}</div><div id="builder-spell-results">${spellResults(derived)}</div><h3>Chosen spells</h3>${selection.chosen.length?selection.chosen.map(row=>{const entry=selection.eligible.find(entry=>casting.spellId(entry)===row.entryId);return `<article class="list-card"><h4>${escape(row.name)}</h4>${details('Read spell rules',entry.details)}<label class="check-label"><input type="checkbox" data-builder-spell-ready="${escape(row.id)}" ${row.prepared?'checked':''}>${derived.cls.name==='Wizard'?'Prepared':'Ready on the sheet'}</label><button type="button" data-action="builder-remove-spell" data-spell-id="${escape(row.id)}">Remove</button></article>`;}).join(''):'<p class="muted">Choose spells above to add them to this character.</p>'}${selection.warnings.map(warning=>`<p class="muted">${escape(warning)}</p>`).join('')}</section>`;
+    }
+
+    function refreshSpellPicker() {
+      const host=globalThis.document?.getElementById('builder-spell-results');
+      if(host) host.innerHTML=spellResults(rules.derive(draft));
+      else render();
     }
 
     function equipmentCategory(item) {
@@ -187,10 +228,14 @@
         field("Base rest dice pool",textInput("build.health.baseRestDice",health.baseRestDice,"number",'min="0"'),"Enter the pool granted by your table; selected bonuses are added."));
       if (health.hpMode === "rolled" && draft.level > 1) html += `<fieldset><legend>Recorded ${escape(derived.cls?.hitDie || "hit die")} rolls</legend><p class="muted">Enter the die result before Constitution. Missing rolls use the fixed average in this preview.</p>${grid(Array.from({length:draft.level-1},(_,index) => field(`Level ${index+2}`,textInput(`build.health.rolls.${index}`,health.rolls?.[index] ?? "","number",`min="1" max="${sides}" inputmode="numeric"`))).join(""))}</fieldset>`;
       html += castingPreview(derived);
+      const feats = derived.features.filter(feature=>feature.parent==='Feat');
+      if(feats.length) html += `<h3>Chosen feats</h3>${feats.map(feat=>details(feat.name,feat.details)).join('')}`;
+      const spellSelection=derived.casting?.profile && globalThis.CharacterCasting.spellSelection?.(draft,derived,rules.catalog);
+      if(spellSelection) html+=`<h3>Chosen spells</h3><p>${spellSelection.chosen.map(row=>escape(row.name)+(row.prepared?'':' (not prepared)')).join(', ') || 'No class spells chosen.'}</p>`;
       html += `<h3>Equipped attacks</h3>${derived.attacks.length ? derived.attacks.map(attack => `<div class="list-card"><strong>${escape(attack.name)}</strong><p>${escape(signed(attack.bonus))} to hit · ${escape(attack.damage)} · Block DC ${escape(attack.blockDC)}</p>${attack.notes ? `<p class="muted">${escape(attack.notes)}</p>` : ""}</div>`).join("") : '<p class="muted">No equipped weapon attacks yet.</p>'}`;
       const raceSkills = new Set((draft.build.raceSkills || []).filter(skill => (derived.raceSkillOptions || allSkills).includes(skill)));
       const warnings = [...new Set([!derived.race ? "Choose an ancestry." : "",!derived.cls ? "Choose a class." : "",
-        raceSkills.size < derived.raceSkillCount ? `${derived.race.name}: choose ${derived.raceSkillCount} ancestry skill${derived.raceSkillCount === 1 ? "" : "s"}.` : "",...derived.warnings].filter(Boolean))];
+        raceSkills.size < derived.raceSkillCount ? `${derived.race.name}: choose ${derived.raceSkillCount} ancestry skill${derived.raceSkillCount === 1 ? "" : "s"}.` : "",...derived.warnings,...spellSelection?.warnings || []].filter(Boolean))];
       html += `<section class="list-card builder-review-warnings"><h3>${warnings.length ? "Selections to review" : "Before saving"}</h3>${warnings.length ? `<ul>${warnings.map(warning => `<li>${escape(warning)}</li>`).join("")}</ul>` : '<p>No incomplete selections were detected for the currently supported choices.</p>'}<p class="muted">Conditional abilities, active powers, prerequisites and spell costs still follow their rule descriptions. Apply effects that require a manual ruling on the sheet.</p></section>`;
       return html;
     }
@@ -205,12 +250,18 @@
     }
 
     function setPath(path, target) {
-      const numeric = /^(?:level|abilities\.(?:str|dex|con|int|wis|cha)|build\.health\.(?:baseHP|baseRestDice|rolls\.\d+))$/;
-      if (!/^(?:name|player|level|abilities\.(?:str|dex|con|int|wis|cha)|build\.(?:raceId|classId|archetypes\.\d+|health\.(?:hpMode|baseHP|baseRestDice|rolls\.\d+)))$/.test(path)) return false;
+      const numeric = /^(?:level|abilities\.(?:str|dex|con|int|wis|cha)|build\.casting\.(?:maxSlotLevel|maxLearnLevel)|build\.health\.(?:baseHP|baseRestDice|rolls\.\d+))$/;
+      if (!/^(?:name|player|level|abilities\.(?:str|dex|con|int|wis|cha)|build\.(?:raceId|classId|backgroundId|archetypes\.\d+|casting\.(?:maxSlotLevel|maxLearnLevel)|health\.(?:hpMode|baseHP|baseRestDice|rolls\.\d+)))$/.test(path)) return false;
       let value = numeric.test(path) ? Number(target.value) : String(target.value ?? "");
+      if(path==='build.backgroundId') {
+        const background=backgroundEntries().find(item=>item.id===value);
+        if(value && !background)return true;
+        draft.background=background?.name || '';
+      }
       if (numeric.test(path) && (!Number.isInteger(value) || value < (path === "level" ? 1 : 0))) return true;
       if (/health\.rolls\./.test(path) && target.value === "") value = null;
       if (path === "level") value = Math.min(100,value);
+      if(/^build\.casting\./.test(path) && (value>20 || value<(path.endsWith('maxSlotLevel')?1:0))) return true;
       const parts = path.split("."); let parent = draft;
       for (let index=0;index<parts.length-1;index++) {
         const key = parts[index];
@@ -229,6 +280,10 @@
       if (!open || !target?.dataset) return false;
       const data = target.dataset, index = Number(data.builderChoiceIndex);
       if (data.builderPath !== undefined) return setPath(data.builderPath,target);
+      if(data.builderSpellQuery!==undefined) {spellQuery=String(target.value || '');return true;}
+      if(data.builderSpellLevel!==undefined) {spellLevel=String(target.value || '');return true;}
+      if(data.builderSpell!==undefined) {spellToAdd=String(target.value || '');return true;}
+      if(data.builderSpellReady!==undefined) {const row=draft.spells.find(row=>row.id===data.builderSpellReady);if(row)row.prepared=!!target.checked;return true;}
       if (data.builderItemQuery !== undefined) { itemQuery = String(target.value || ""); return true; }
       if (data.builderItemCategory !== undefined) { itemCategory = ["","weapons","armor","consumables","gear"].includes(target.value) ? target.value : ""; return true; }
       if (data.builderItem !== undefined) { itemToAdd = items.some(item => item.entryId === target.value) ? target.value : ""; return true; }
@@ -248,7 +303,10 @@
       if (data.builderChoice !== undefined) {
         const choice = rules.derive(draft).choices.find(item => item.id === data.builderChoice);
         if (choice && Number.isInteger(index) && index >= 0 && index < choice.count && (!target.value || choice.options.some(item => item.id === target.value))) {
-          const values = draft.build.choices[choice.id] ||= []; setSlot(values,index,target.value);
+          const candidate=copy(draft),values=candidate.build.choices[choice.id] ||= [];
+          setSlot(values,index,target.value);
+          const checked=rules.derive(candidate).choices.find(item=>item.id===choice.id);
+          if(!target.value || checked?.selectedSlots[index]===target.value) draft=candidate;
         }
         return true;
       }
@@ -273,6 +331,7 @@
     }
 
     function start(character, fresh = false) {
+      spellToAdd='';spellQuery='';spellLevel='';
       items=itemEntries();
       weaponGroups=[...new Set(items.flatMap(entry => {
         // Base weapon groups already come from ordinary equipment; magic collections group by rarity.
@@ -285,11 +344,13 @@
     function cancel() { if (!open) return false; open = false; draft = null; onCancel(); return true; }
     function handleInput(target) {
       const handled = update(target);
+      if(handled && target.dataset.builderSpellQuery!==undefined) refreshSpellPicker();
       if (handled && target.dataset.builderItemQuery !== undefined && globalThis.document?.getElementById("builder-equipment-options")) refreshEquipmentPicker();
       return handled;
     }
     function handleChange(target) {
       const handled = update(target);
+      if(handled && ['builderSpell','builderSpellQuery','builderSpellLevel'].some(key=>target.dataset[key]!==undefined)) {refreshSpellPicker();return true;}
       if (handled && ["builderItem", "builderItemQuery", "builderItemCategory"].some(key => target.dataset[key] !== undefined)) refreshEquipmentPicker();
       else if (handled) render();
       return handled;
@@ -304,6 +365,15 @@
       } else if (action === "builder-add-item") {
         const entry = items.find(item => item.entryId === itemToAdd);
         if (entry) draft.inventory.push({id:uid(),name:entry.name,entryId:entry.entryId,quantity:1,equipped:false,notes:"",...(globalThis.MagicItems?.inventoryFields(entry) || {})});
+      } else if(action==='builder-add-spell') {
+        const derived=rules.derive(draft),casting=globalThis.CharacterCasting;
+        const selection=casting.spellSelection(draft,derived,rules.catalog),entry=selection.eligible.find(entry=>casting.spellId(entry)===spellToAdd);
+        if(entry && !draft.spells.some(row=>row.entryId===spellToAdd)) {
+          const cantrip=casting.spellInfo(entry,derived.casting.profile.tradition).cantrip;
+          if(!casting.spellLearningError(draft,derived,rules.catalog,entry)) draft.spells.push({id:uid(),entryId:spellToAdd,name:entry.name,notes:'',prepared:true,classId:derived.cls.id});
+        }
+      } else if(action==='builder-remove-spell') {
+        draft.spells=draft.spells.filter(row=>row.id!==target?.dataset?.spellId);
       } else if (action === "builder-remove-item") {
         const index = Number(target?.dataset?.builderIndex); if (Number.isInteger(index) && index >= 0 && index < draft.inventory.length) draft.inventory.splice(index,1);
       } else if (action === "builder-finish") {

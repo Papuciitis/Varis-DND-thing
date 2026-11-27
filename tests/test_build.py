@@ -42,6 +42,17 @@ class BuildTests(unittest.TestCase):
         self.assertTrue((self.output / "character.html").is_file(),
                         "The build must include the character sheet, not just the compendium")
 
+    def test_patch_notes_are_generated_from_the_shared_history_and_linked_on_both_pages(self):
+        notes = (self.output / "patch-notes.html").read_text(encoding="utf-8")
+        self.assertIn("Character creation and spellcasting", notes)
+        self.assertIn("Cast spell", notes)
+        self.assertNotIn("PATCH_NOTES_CONTENT", notes)
+        for page in ("index.html", "character.html"):
+            self.assertIn("patch-notes.html", Assets((self.output / page).read_text(encoding="utf-8")).links)
+        portable = (self.output / "offline/patch-notes.html").read_text(encoding="utf-8")
+        self.assertEqual(Assets(portable).external, [])
+        self.assertIn("Character creation and spellcasting", portable)
+
     def test_normal_pages_use_small_relative_assets_and_no_embedded_rules(self):
         for page in ("index.html", "character.html"):
             html = (self.output / page).read_text(encoding="utf-8")

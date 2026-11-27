@@ -37,14 +37,14 @@ The main sheet groups health and Block separately, with prominent current/max HP
 
 Open **More**, then **New character**, to open the six-step builder:
 
-1. **Ancestry:** enter the character's details and level, then choose a race.
+1. **Ancestry:** enter the character's details and level, then choose a race and background. Backgrounds include their full rules preview and appear among the saved sheet's features.
 2. **Class:** choose a class and the archetypes available at that level.
 3. **Abilities:** enter base ability scores and allocate the race's ability bonuses.
-4. **Features:** read trait and feature rules, choose available options, and select skills.
+4. **Features:** read trait and feature rules, choose options, skills and class spells. Choosing **Take a feat** opens the feat catalog with requirements and rules. Spell selection shows the class's spell list, eligible levels, known-spell or spellbook allowance, and cantrip allowance, with search and rules previews.
 5. **Equipment:** search or filter the catalog, preview an item, then add armor, a shield and weapons.
 6. **Review:** check the resulting sheet, choose an HP method, review incomplete selections, and use **Save character**.
 
-The builder works on a separate draft. **Cancel** discards its changes; nothing is applied to the saved character before **Save character**. Reopen **Edit build** to change choices or raise the level and select newly available features. Existing manual characters remain manual until you open **Build character** and save its changes.
+The builder works on a separate draft. **Cancel** discards its changes; nothing is applied to the saved character before **Save character**. Reopen **Edit build** to change choices or raise the level and select newly available features. Existing manual characters remain manual until you open **Build character** and save its changes. Fighter's fighting skills include two starting picks, one per later level and the class improvement bonuses. Tree upgrades unlock after their prerequisite is selected. Other recurring class choices and supported extra archetype grants expand the earlier picker. Existing choices retain their saved identities; lowering a level temporarily deactivates later selections, and restoring it makes them available again.
 
 Use the character picker to keep multiple characters. Saved-sheet edits autosave in the current browser on the current device. Storage depends on the page location and browser profile: a hosted page, a local file, a moved file, or another device may have separate saves. There is no account or automatic cross-device sync. Clearing browser data can remove saves.
 
@@ -54,7 +54,11 @@ Builder-enabled characters automatically apply supported fixed passive modifiers
 
 The **Spells** tab initializes class casting resources from the Varis rules. Wizard, Sorcerer and Druid use their distinct printed slot tables; Occultist uses a shared pool whose slots have one casting level. Cleric tracks each full slot's remaining spell levels separately. Set **Maximum full-slot level** from your table's ruling before using Cleric slots: the imported source supplies slot counts but does not specify that maximum. Bard casting spends existing rest dice, and Sorcerer gains Metamagic points from level 4.
 
-Class capacities update with level and supported feature choices while preserving spent uses. Reviewed fixed bonuses, including the Occultist slot reward, Court mage, Oathspeaker and Wildmage slot increases, apply automatically. Separate archetype casting systems, such as Graymage, Evoker and arcane focus pools, still need manual trackers. Known-spell and cantrip counts are guidance for choosing spells; the sheet does not choose or prepare spells for you. Wizard's class-granted spellbook count is not a maximum on copied spells.
+Class capacities update with level and supported feature choices while preserving spent uses. Reviewed fixed bonuses, including the Occultist slot reward, Court mage, Oathspeaker and Wildmage slot increases, apply automatically. Separate archetype casting systems, such as Graymage, Evoker and arcane focus pools, still need manual trackers. The builder limits base class spell selections to its list, learning level and allowance. Set Bard's learning-level limit from your table because its source omits rounding. Wizard's class-granted spellbook count is not a maximum on copied spells; use extra selections on the Spells page for copied or feature-granted spells. Wizard preparation is selectable, with its missing numeric preparation count left for an author ruling.
+
+On the main sheet, **Spell actions** shows simple readied attack spells. **Quick action on main sheet** pins or hides other known spells. Choose **Casting level / resource**, then **Cast spell** to spend that resource. Standard slots spend one slot of the selected level; Occultist casts at its shared pool level; Cleric reduces the selected full slot by the chosen level; Bard spends that many rest dice. Cantrips use no slot. Simple spell attacks roll an attack check; resolve damage, saves, components, extra costs, cooldowns and scaling using the full spell rules. The Spells page provides the same casting controls for utility and complex spells. Manual slots and custom spells remain available.
+
+See [Patch notes](PATCH_NOTES.md) for the change history. The build publishes the same notes at `patch-notes.html`, linked from both pages. Add new dated entries to the top of that file as changes are made, and append unresolved source-rule questions to `ai_data_design_points_of_interest.md`.
 
 Existing characters with manual spell slots or custom resources keep those trackers until you choose **Use class slots**. Activation carries over spending from unambiguous matching slot rows and retains the manual trackers separately. Cleric's aggregate rows and unmatched custom resources require a manual review of spent uses. **Use manual trackers** switches automatic class tracking off without deleting its spending history.
 

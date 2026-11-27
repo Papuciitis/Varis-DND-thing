@@ -91,15 +91,49 @@ class CharacterRulesTests(unittest.TestCase):
         self.assertNotIn("Health and proficiencies", [feature["name"] for feature in fighter["features"]])
         self.assertNotIn("Equipment", [feature["name"] for feature in fighter["features"]])
 
-    def test_fighter_nested_prerequisites_are_not_independent_choices(self):
+    def test_fighter_tree_exposes_upgrades_with_prerequisites_and_stable_root_ids(self):
         fighting = next(item for item in self.entry("classes", "Fighter")["features"]
                         if item["name"] == "Fighting skills")
         choice = fighting["choices"][0]
         self.assertEqual(choice["count"], 2)
         self.assertIn("Armor training", [item["name"] for item in choice["options"]])
-        self.assertNotIn("Heavy armor training", [item["name"] for item in choice["options"]])
         armor = next(item for item in choice["options"] if item["name"] == "Armor training")
+        heavy = next(item for item in choice["options"] if item["name"] == "Heavy armor training")
+        weight = next(item for item in choice["options"] if item["name"] == "Weight shifting")
+        self.assertEqual(heavy["requires"], [armor["id"]])
+        self.assertEqual(weight["requires"], [heavy["id"]])
+        self.assertEqual(json.loads(armor["id"]), [choice["id"], "Armor training", 0])
+        self.assertEqual([item["name"] for item in choice["options"] if not item["requires"]],
+                         ["Armor training", "Weapon expertise", "Battle engineering", "Survival training", "Tactical training"])
+        self.assertNotIn("Alchemists kit", [item["name"] for item in choice["options"]])
+        self.assertIn("Armor heft", [item["name"] for item in choice["options"]])
+        self.assertIn("Brutal tactics", [item["name"] for item in choice["options"]])
         self.assertIn("Heavy armor training", armor["details"])
+
+    def test_cumulative_choice_counts_include_every_level_and_class_improvement(self):
+        for owner, name, counts in (
+            ("Fighter", "Fighting skills", [2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17]),
+            ("Alchemist", "Alchemy methods", [2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6]),
+            ("Bard", "Inspiration dice upgrade", [1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4]),
+        ):
+            with self.subTest(owner=owner):
+                feature = next(item for item in self.entry("classes", owner)["features"] if item["name"] == name)
+                self.assertEqual([row["count"] for row in feature["choices"][0]["countByLevel"]], counts)
+
+    def test_plain_bonus_lists_and_referenced_later_grants_remain_selectable(self):
+        for owner, count in (("Druid", 8), ("Ranger", 6)):
+            feature = next(item for item in self.entry("classes", owner)["features"]
+                           if item["name"].lower() == "ability score improvement")
+            self.assertEqual(len(feature["choices"][0]["options"]), count)
+        for kind, owner, source_name, grant_names in (
+            ("classes", "Bard", "Bardic traits", ["Extra bardic trait"]),
+            ("archetypes", "Ki channeler", "KI powers", ["Ki powers II", "Ki powers III"]),
+            ("archetypes", "Graymage", "Graymage trait", ["Extra graymage trait"]),
+        ):
+            with self.subTest(owner=owner):
+                features = {item["name"]: item for item in self.entry(kind, owner)["features"]}
+                self.assertEqual(features[source_name]["choices"][0]["additionalGrants"],
+                                 [{"featureId": features[grant_name]["id"], "count": 1} for grant_name in grant_names])
 
     def test_occultist_mark_reward_and_dark_arts_are_separate_choices(self):
         occultist = self.entry("classes", "Occultist")

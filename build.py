@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+from html import escape
 import json
 import os
 from pathlib import Path
@@ -64,6 +65,29 @@ def hashed_file(output_dir, folder, stem, suffix, content):
     return relative
 
 
+def patch_notes_html():
+    """Render the project's headings, paragraphs and flat release-note lists."""
+    result, in_list = [], False
+    for line in (ROOT / "PATCH_NOTES.md").read_text(encoding="utf-8").splitlines():
+        if not line.startswith("- ") and in_list:
+            result.append("</ul>")
+            in_list = False
+        heading = re.match(r"^(#{1,3}) (.*)$", line)
+        if heading:
+            level = len(heading.group(1))
+            result.append(f"<h{level}>{escape(heading.group(2))}</h{level}>")
+        elif line.startswith("- "):
+            if not in_list:
+                result.append("<ul>")
+                in_list = True
+            result.append(f"<li>{escape(line[2:])}</li>")
+        elif line.strip():
+            result.append(f"<p>{escape(line)}</p>")
+    if in_list:
+        result.append("</ul>")
+    return "\n".join(result)
+
+
 def build(output_dir):
     sections = compile_data(ROOT / "data")
     metadata = compile_character_rules(sections)
@@ -114,6 +138,10 @@ def build(output_dir):
             normal = normal.replace(f'"{name}"', f'"{assets[name]}"')
         write_page(output_dir / page, normal)
         write_page(output_dir / "offline" / page, render_page(page, stylesheet, scripts, catalog_script))
+    notes = (ROOT / "web/patch-notes.html").read_text(encoding="utf-8").replace("<!-- PATCH_NOTES_CONTENT -->", patch_notes_html())
+    write_page(output_dir / "patch-notes.html", notes.replace('"styles.css"', f'"{assets["styles.css"]}"'))
+    write_page(output_dir / "offline/patch-notes.html", notes.replace('<link rel="stylesheet" href="styles.css">',
+               "<style>" + (ROOT / "web/styles.css").read_text(encoding="utf-8") + "</style>"))
     (output_dir / ".nojekyll").touch()
     print(f"Built {output_dir.name}/ with section data and offline/ portable copies")
     for section in sections:
