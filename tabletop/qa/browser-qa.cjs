@@ -277,7 +277,8 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     assert(await player.getByRole('button',{name:'Place for table',exact:true}).isDisabled());
     assert.equal((await service.read()).scene.templates.length,3);
     await player.getByRole('button',{name:'Select and move',exact:true}).click();
-    const tokenPoint=await mapPoint(player,275,525);
+    const linkedTiny=(await service.read()).scene.tokens.find(t=>t.id===token.id);
+    const tokenPoint=await mapPoint(player,linkedTiny.x,linkedTiny.y);
     await player.mouse.click(tokenPoint.x,tokenPoint.y,{button:'right'});
     await player.getByRole('menuitem',{name:'Adjust HP',exact:true}).waitFor();
     assert.equal(await player.getByRole('menuitem',{name:'Apply damage',exact:true}).count(),0);
@@ -374,6 +375,32 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     assert.equal((await service.read()).scene.tokens.find(t=>t.id===skeleton.id).maxHp,30);
     assert.equal((await service.read()).scene.tokens.find(t=>t.id===skeleton.id).statblock.abilities.str,18);
     assert.equal(monsterCatalog.entries.find(e=>e.name==='Skeleton').details.hp,'2d8+4(13)');
+    // Tiny compendium drops keep four separate positions in a normal cell.
+    await dm.locator('#data-tab-compendium').click();await dm.locator('#compendium-kind').selectOption('monster');
+    await dm.locator('#compendium-search').fill('Scorpion');
+    const tinyGrid=(await service.read()).scene.gridSize,tinyTokens=[];
+    const tinyPoints=[{x:22.25*tinyGrid,y:14.25*tinyGrid},{x:22.75*tinyGrid,y:14.25*tinyGrid},
+      {x:22.25*tinyGrid,y:14.75*tinyGrid},{x:22.75*tinyGrid,y:14.75*tinyGrid}];
+    for(const point of tinyPoints){
+      await dm.locator('#data-tab-compendium').click();
+      const before=(await service.read()).scene.tokens,ids=new Set(before.map(t=>t.id));
+      const target=await mapPoint(dm,point.x,point.y),rect=await dm.locator('#map-canvas').boundingBox();
+      const card=dm.locator('.compendium-card').filter({has:dm.getByText('Scorpion',{exact:true})});
+      await card.dragTo(dm.locator('#map-canvas'),{targetPosition:{x:target.x-rect.x,y:target.y-rect.y}});
+      await dm.waitForFunction(count=>Number(document.querySelector('#token-count').textContent)===count,before.length+1);
+      await dm.locator('#save-status').filter({hasText:'All changes saved'}).waitFor();
+      const placed=(await service.read()).scene.tokens.find(t=>!ids.has(t.id));
+      assert(placed);assert.equal(placed.size,.5);assert.equal(placed.x,point.x);assert.equal(placed.y,point.y);tinyTokens.push(placed);
+    }
+    for(const token of tinyTokens){
+      const point=await mapPoint(dm,token.x,token.y);await dm.mouse.click(point.x,point.y);
+      assert.equal(await dm.locator('#tokens-list [data-token-id="'+token.id+'"]').getAttribute('aria-pressed'),'true');
+    }
+    const keyboardTiny=tinyTokens.at(-1);
+    await dm.locator('#map-canvas').press('ArrowLeft');await dm.locator('#save-status').filter({hasText:'All changes saved'}).waitFor();
+    assert.equal((await service.read()).scene.tokens.find(t=>t.id===keyboardTiny.id).x,keyboardTiny.x-tinyGrid/2);
+    await dm.locator('#map-canvas').press('ArrowRight');await dm.locator('#save-status').filter({hasText:'All changes saved'}).waitFor();
+    assert.equal((await service.read()).scene.tokens.find(t=>t.id===keyboardTiny.id).x,keyboardTiny.x);
     await player.locator('#data-tab-compendium').click();
     assert.equal(await player.locator('.compendium-card').count(),1);
     assert(!(await player.locator('#compendium-list').textContent()).includes('GM ranger'));
@@ -504,6 +531,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       visibleAttackCards:true,attackSourceRefresh:true,attackPrivacy:true,linkedTokenSizes:true,manualInitiative:true,explicitInitiativeRoll:true,initiativeTurnPreservation:true,
       campaignTabs:true,dataSlateTabs:true,largerLeftLog:true,campaignChat:true,privateAndSharedNotes:true,
       diceAverageMonsterHP:true,editableMonsterInstances:true,zeroCapacityExtraHealth:true,gmAutomaticDamage:true,monsterOverridesSurviveRefresh:true,
+      tinyQuarterPlacement:true,tinyKeyboardMovement:true,tinyBodySelection:true,
       visibleTokenRemoval:true,contextTokenRemoval:true,keyboardTokenRemoval:true,tokenRemovalKeepsSource:true,
       monsterCompendiumDrag:true,characterCompendiumDrag:true,independentMonsterInstances:true,playerCompendiumPrivacy:true,combinedHealth:true,utilityAbilityScores:true,
       spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:13,pageErrors:errors};

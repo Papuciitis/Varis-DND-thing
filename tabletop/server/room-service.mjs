@@ -98,7 +98,10 @@ export class RoomService {
       room.scene.width=width;room.scene.height=height;room.scene.fog.revealed=[];
       room.scene.templates=[];
       if(Math.ceil(width/room.scene.gridSize)*Math.ceil(height/room.scene.gridSize)>LIMITS.cells)room.scene.gridSize=50;
-      for (const t of room.scene.tokens) {t.x=Math.min(t.x,width-25);t.y=Math.min(t.y,height-25);}
+      for (const t of room.scene.tokens) {
+        t.x=Math.min(t.x,width-25);t.y=Math.min(t.y,height-25);
+        if(t.size<1)Object.assign(t,tokenFrom(t,room.scene));
+      }
       addLog(room,{kind:'system',text:'The DM changed the map. Areas are concealed until revealed.'});
       await this.save(room);
       if (oldAsset!=='sample') await this.storage.delete(`asset:${oldAsset}`);

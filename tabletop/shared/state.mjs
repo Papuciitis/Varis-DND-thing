@@ -1,4 +1,5 @@
 import {damagePlan} from '../web/damage.mjs';
+import {snapToken} from '../web/grid.mjs';
 
 export const VERSION = 1;
 export const LIMITS = Object.freeze({players:12, tokens:128, cells:10000, image:1500000, backup:2000000,command:70000});
@@ -146,11 +147,12 @@ export function tokenFrom(raw,scene) {
   const size=numeric(raw.size ?? 1,.25,6,'Token size');
   const sizeCategory=['Tiny','Small','Medium','Large','Huge','Gargantuan','Colossal'].includes(raw.sizeCategory)?raw.sizeCategory:
     size<1?'Tiny':size<2?'Medium':size<3?'Large':size<4?'Huge':size<6?'Gargantuan':'Colossal';
+  const position={x:numeric(raw.x ?? 325,0,scene.width-1,'Token X'),y:numeric(raw.y ?? 525,0,scene.height-1,'Token Y')};
+  if(size<1)Object.assign(position,snapToken(scene,{size},position));
   return {
     id: typeof raw.id === 'string' && /^[a-z0-9-]{6,64}$/i.test(raw.id) ? raw.id : uid(),
     name:label(raw.name,'New token',40), kind, color,
-    x:numeric(raw.x ?? 325,0,scene.width-1,'Token X'),
-    y:numeric(raw.y ?? 525,0,scene.height-1,'Token Y'),
+    ...position,
     size,sizeCategory,initiative:raw.initiative==null?null:whole(raw.initiative,-999,999,'Initiative'),
     hp:whole(raw.hp ?? maxHp,0,maxHp,'HP'), maxHp,
     hidden:raw.hidden === undefined ? false : flag(raw.hidden),
@@ -239,8 +241,7 @@ export function applyCommand(room,actor,command) {
     const t=tokenById(room,command.id);
     if (actor.role !== 'dm' && t.ownerId !== actor.id) throw new RoomError('You can only move your own tokens.',403);
     const x=numeric(command.x,0,scene.width-1,'Token X'), y=numeric(command.y,0,scene.height-1,'Token Y');
-    const snappedX=Math.min(scene.width-1,(Math.floor(x/scene.gridSize)+.5)*scene.gridSize);
-    const snappedY=Math.min(scene.height-1,(Math.floor(y/scene.gridSize)+.5)*scene.gridSize);
+    const {x:snappedX,y:snappedY}=snapToken(scene,t,{x,y});
     if (actor.role !== 'dm' && (t.hidden || !isRevealed(scene,snappedX,snappedY))) throw new RoomError('Move within the revealed map.',403);
     t.x=snappedX; t.y=snappedY;
     return;
@@ -364,7 +365,10 @@ export function applyCommand(room,actor,command) {
     case 'scene.grid': {
       const grid=whole(command.gridSize ?? scene.gridSize,20,160,'Grid size');
       if (Math.ceil(scene.width/grid)*Math.ceil(scene.height/grid)>LIMITS.cells) throw new RoomError('Choose a larger grid size.');
-      if (grid!==scene.gridSize) {scene.gridSize=grid; scene.fog.revealed=[];}
+      if (grid!==scene.gridSize) {
+        scene.gridSize=grid; scene.fog.revealed=[];
+        for(const token of scene.tokens)if(token.size<1)Object.assign(token,snapToken(scene,token,token));
+      }
       if (command.showGrid!==undefined) scene.showGrid=flag(command.showGrid);
       if (command.gridOpacity!==undefined) scene.gridOpacity=numeric(command.gridOpacity,.2,.9,'Grid contrast');
       if (command.distancePerSquare!==undefined) scene.distancePerSquare=numeric(command.distancePerSquare,.01,10000,'Distance per square');

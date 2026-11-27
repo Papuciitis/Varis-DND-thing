@@ -1,5 +1,6 @@
 import {auxiliaryReadings,healthSummary,tokenBarsVisible,distanceLabel,tokenRadius} from './resources.mjs';
 import {templateGeometry,templateLabel,templateContains} from './templates.mjs';
+import {snapToken,tokenGridStep} from './grid.mjs';
 
 export class MapBoard {
   constructor(canvas,{onSelect,onMove,onFog,onError,onContext}) {
@@ -19,8 +20,8 @@ export class MapBoard {
       const vectors={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]};
       const t=this.view?.scene.tokens.find(t=>t.id===this.selected);
       if (!vectors[e.key] || !t || !this.canMove(t))return;
-      e.preventDefault();const [x,y]=vectors[e.key],s=this.view.scene;
-      this.onMove(t.id,Math.max(0,Math.min(s.width-1,t.x+x*s.gridSize)),Math.max(0,Math.min(s.height-1,t.y+y*s.gridSize)));
+      e.preventDefault();const [x,y]=vectors[e.key],s=this.view.scene,step=tokenGridStep(s,t);
+      this.onMove(t.id,Math.max(0,Math.min(s.width-1,t.x+x*step)),Math.max(0,Math.min(s.height-1,t.y+y*step)));
     });
   }
   setView(view) {
@@ -73,9 +74,11 @@ export class MapBoard {
   }
   canMove(t) {return this.enabled && (this.view.self.role==='dm' || t.ownerId===this.view.self.id);}
   hit(p) {
-    return [...this.view.scene.tokens].reverse().find(token=>{
+    const tokens=[...this.view.scene.tokens].reverse();
+    const body=tokens.find(token=>Math.hypot(token.x-p.x,token.y-p.y)<tokenRadius(this.view.scene,token)*1.3);
+    if(body)return body;
+    return tokens.find(token=>{
       const r=tokenRadius(this.view.scene,token);
-      if(Math.hypot(token.x-p.x,token.y-p.y)<r*1.3)return true;
       const bars=tokenBarsVisible(token,this.selected,this.hovered)?1+auxiliaryReadings(token).length:0,z=this.camera.z;
       const halfWidth=(token.id===this.selected?78:72)/z,top=token.y+r+6/z;
       return bars && Math.abs(p.x-token.x)<=halfWidth && p.y>=top && p.y<=top+bars*26/z;
@@ -118,7 +121,11 @@ export class MapBoard {
       const p=this.point(e),area=this.templatePreview;
       area.angle=Math.atan2(p.y-area.y,p.x-area.x)*180/Math.PI;
     }
-    else {const p=this.point(e),s=this.view.scene;this.drag.x=Math.max(0,Math.min(s.width-1,p.x-this.drag.offsetX));this.drag.y=Math.max(0,Math.min(s.height-1,p.y-this.drag.offsetY));}
+    else {
+      const p=this.point(e),s=this.view.scene,token=s.tokens.find(token=>token.id===this.drag.id);
+      const position={x:Math.max(0,Math.min(s.width-1,p.x-this.drag.offsetX)),y:Math.max(0,Math.min(s.height-1,p.y-this.drag.offsetY))};
+      Object.assign(this.drag,token?.size<1?snapToken(s,token,position):position);
+    }
     this.draw();
   }
   up(e) {

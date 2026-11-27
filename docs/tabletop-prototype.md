@@ -157,11 +157,19 @@ the same private/shared access as the rest of the character.
 
 Linked sheets also set token size automatically. Character size uses an explicit
 sheet size when present, otherwise its ancestry. Monster size comes from its
-statblock. Tiny tokens use half a square; Small and Medium use one square;
+statblock. Tiny tokens use half a square in each dimension (one quarter of its
+area); Small and Medium use one square;
 Large, Huge, Gargantuan and Colossal use two, three, four and six squares across
 respectively. Colossal therefore defaults to a 6 by 6 square footprint. Small
 tokens draw slightly smaller than Medium within the same square. Size is public
 on the map; it does not grant access to the underlying private stats.
+
+Tiny tokens snap to the four quarter-cell centres, so four can occupy one normal
+grid square. This applies to compendium placement, dragging and player token
+drops. Arrow keys move Tiny tokens half a square. Existing Tiny tokens realign
+inside their current cell when loaded or linked; map and grid changes preserve
+alignment. Fog still uses the normal grid, and player ownership still controls
+movement. Clicks on a token take priority over nearby resource bars.
 
 The sidebar's **Abilities & actions** panel shows searchable expandable
 rules/actions and notes. Ability scores are in the bottom utility. Click its heading

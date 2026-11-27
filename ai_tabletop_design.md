@@ -29,6 +29,10 @@ right-click action. Removing an encounter token must preserve its source sheet.
 Player compendium views list their controllable campaign characters and summons;
 they must not expose another player's private sheet or hidden GM creatures.
 
+Tiny tokens occupy half a cell per axis and snap to quarter-cell centres, with
+half-square arrow-key movement. Share snapping between placement and the server;
+keep fog on the normal grid. Token bodies take click priority over nearby bars.
+
 ## Health and map overlays
 
 Map overlays appear on token selection or hover; they do not remain over every

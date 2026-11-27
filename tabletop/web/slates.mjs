@@ -1,5 +1,6 @@
 import {loadReferences} from './sources.mjs';
 import {characterStats,monsterStats,monsterId,monsterHP,SHEETS_KEY,MONSTERS_KEY} from './resources.mjs';
+import {snapToken} from './grid.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
@@ -168,9 +169,10 @@ export class Slates {
     if(!this.connected)return;
     try{
       const view=this.getView(),scene=view.scene,position=point || {x:(this.board.width/2-this.board.camera.x)/this.board.camera.z,y:(this.board.height/2-this.board.camera.y)/this.board.camera.z};
-      const x=Math.max(0,Math.min(scene.width-1,(Math.floor(position.x/scene.gridSize)+.5)*scene.gridSize));
-      const y=Math.max(0,Math.min(scene.height-1,(Math.floor(position.y/scene.gridSize)+.5)*scene.gridSize));
       if(source.kind==='token'){
+        const token=scene.tokens.find(token=>token.id===source.id);
+        if(!token)throw new Error('This token is no longer in the scene.');
+        const {x,y}=snapToken(scene,token,position);
         if(await this.command({type:'token.move',id:source.id,x,y}))this.selectToken(source.id);return;
       }
       if(view.self.role!=='dm')throw new Error('The GM places compendium templates.');
@@ -192,6 +194,7 @@ export class Slates {
         const normalized=references.rules.reconcile(entry);stats=characterStats(normalized,references.rules.derive(normalized),references.catalog);name=entry.name;
       }else throw new Error('Choose a character or monster from the compendium.');
       if(this.getView()?.id!==view.id || this.getView()?.self.id!==view.self.id)return;
+      const {x,y}=snapToken(scene,stats,position);
       const id=crypto.randomUUID(),next=await this.command({type:'token.add',token:{...stats,id,name,x,y,kind:source.kind==='monster'?'monster':'hero',color:source.kind==='monster'?'#a35450':'#337c89'}});
       if(!next)return;this.selectToken(id);await this.tools.sources.link(id,source.kind,source.id);
       this.tools.render();this.notify(name+' placed and linked.');
