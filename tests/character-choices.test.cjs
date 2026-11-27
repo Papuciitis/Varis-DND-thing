@@ -12,7 +12,7 @@ const plain = value => JSON.parse(JSON.stringify(value));
 
 function setup(className='Fighter',level=1) {
   const context=vm.createContext({crypto:require('node:crypto').webcrypto});
-  for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-rules','character-builder']) {
+  for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-rules','character-builder']) {
     vm.runInContext(fs.readFileSync(path.join(root,'web',name+'.js'),'utf8'),context);
   }
   const State=context.CharacterState,rules=context.CharacterRules.create(metadata,catalog);
@@ -101,11 +101,12 @@ test('archetype grants expand the earlier list only while the relevant feature i
 });
 
 test('specific feats are selected, displayed, saved and gated by their ASI choice and level',()=>{
-  const {character,rules,State}=setup('Fighter',2);
+  const {character,rules,State}=setup('Fighter',2);character.abilities.str=12;
   const asi=rules.derive(character).choices.find(group=>group.label==='Ability score improvement');
   character.build.choices[asi.id]=[asi.featureId+':feat'];
   let d=rules.derive(character),feats=d.choices.find(group=>group.kind==='feat');
-  assert.ok(feats.options.length>=150);
+  assert.ok(feats.options.length>0 && feats.options.length<150);
+  assert.ok(!feats.options.some(option=>option.name==='Dwarven veteran'));
   assert.ok(d.warnings.some(warning=>warning.includes('for Feat')));
   const feat=feats.options.find(option=>option.name==='Armor proficiency');
   character.build.choices[feats.id]=[feat.id];
@@ -186,7 +187,7 @@ test('existing background names migrate to catalog references and remain visible
 
 test('existing characters can choose background and feat in the builder, cancel or save and reopen',()=>{
   const {context,State,rules,character}=setup('Fighter',2),shows=[],finished=[];
-  character.name='Existing fighter';character.notes='Existing notes';
+  character.name='Existing fighter';character.notes='Existing notes';character.abilities.str=12;
   const original=plain(character);
   const builder=context.CharacterBuilder.create({rules,show:(...args)=>shows.push(args),onFinish:result=>finished.push(result)});
   const step=value=>builder.handleAction('builder-step',{dataset:{builderStep:String(value)}});
@@ -195,14 +196,14 @@ test('existing characters can choose background and feat in the builder, cancel 
   assert.match(shows.at(-1)[1],/Choose a background/);
   const background=catalog.find(section=>section.key==='backgrounds').entries.find(entry=>entry.name==='Abandoned wanderer');
   builder.handleChange({dataset:{builderPath:'build.backgroundId'},value:JSON.stringify(['backgrounds',background.group,background.name])});
-  step(3);
+  step('Feats');
   const asi=rules.derive(character).choices.find(group=>group.label==='Ability score improvement');
   set(asi.id,asi.featureId+':feat');
-  assert.match(shows.at(-1)[1],/Browse feats and choose one/);
+  assert.match(shows.at(-1)[1],/Only feats whose prerequisites/);
   assert.match(shows.at(-1)[1],/Armor proficiency/);
   const feat=catalog.find(section=>section.key==='feats').entries.find(entry=>entry.name==='Armor proficiency');
   set(asi.featureId+':feat-choice',JSON.stringify(['feats',feat.group,feat.name]));
-  step(5);
+  step('Review');
   assert.match(shows.at(-1)[1],/Chosen feats/);
   builder.handleAction('builder-finish',{});
   assert.deepEqual(plain(character),original,'the existing sheet changes only when the finished draft is applied');
@@ -213,7 +214,7 @@ test('existing characters can choose background and feat in the builder, cancel 
   assert.ok(rules.derive(saved).features.some(feature=>feature.parent==='Feat' && feature.name===feat.name));
   builder.start(State.normalizeCharacter(plain(saved)));
   assert.match(shows.at(-1)[1],/Abandoned wanderer/);
-  step(3);
+  step('Feats');
   assert.match(shows.at(-1)[1],/Armor proficiency/);
   builder.cancel();
 });

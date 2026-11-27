@@ -1,7 +1,6 @@
 "use strict";
 
 (() => {
-  const steps = ["Ancestry", "Class", "Abilities", "Features", "Equipment", "Review"];
   const names = {str:"Strength",dex:"Dexterity",con:"Constitution",int:"Intelligence",wis:"Wisdom",cha:"Charisma"};
   const escape = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
   const copy = value => JSON.parse(JSON.stringify(value));
@@ -16,8 +15,9 @@
   };
 
   function create({rules, show, onFinish, onCancel = () => {}, renderRule = value => `<p>${escape(typeof value === "string" ? value : JSON.stringify(value))}</p>`}) {
-    let draft = null, step = 0, open = false, isNew = false, itemToAdd = "", itemQuery = "", itemCategory = "";
-    let spellToAdd = '', spellQuery = '', spellLevel = '';
+    let draft = null, stage = "Ancestry", open = false, isNew = false, itemToAdd = "", itemQuery = "", itemCategory = "";
+    let spellToAdd = '', spellQuery = '', spellLevel = '', spellKind = 'spells', spellLimit = 48;
+    let focusedTask = '', focusedOption = '', featureQuery = '', showLocked = false, optionLimit = 36;
     const metadata = rules.metadata || {};
     const order = globalThis.EntryOrder;
     const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
@@ -84,61 +84,77 @@
       return grid(Array.from({length:count},(_,index) => field(`${key === "skills" ? "Class" : "Ancestry"} skill ${index+1}`,`<select data-builder-skills="${key}" data-builder-choice-index="${index}">${option("","Choose a skill",!values[index])}${options.map(name => option(name,name,name === values[index],values.some((value,other) => name === value && other !== index))).join("")}</select>`)).join(""));
     }
 
-    function featuresStep(derived) {
-      let html = `<p>Choose the skills and feature options granted by your current ancestry, class and archetypes. Expand each rule to read its costs, conditions and prerequisites.</p>`;
-      if (derived.cls?.skillChoice) html += `<fieldset><legend>Class skills</legend>${skillChoices("skills",derived.cls.skillChoice.count,derived.cls.skillChoice.options)}</fieldset>`;
-      if (derived.raceSkillCount) {
-        const raw = (derived.race?.proficiencies || []).find(text => /skills?\b.*\bfrom\b/i.test(text));
-        const restricted = raw ? allSkills.filter(skill => raw.toLowerCase().includes(skill.toLowerCase()) || (skill === "Animal Handling" && /handle[- ]animal/i.test(raw))) : [];
-        const options = derived.raceSkillOptions || (restricted.length ? restricted : allSkills);
-        html += `<fieldset><legend>Ancestry skills</legend>${skillChoices("raceSkills",derived.raceSkillCount,options)}</fieldset>`;
-      }
-      html += [...derived.features].sort((a,b)=>order.compare(a,b,'level-asc')).map(feature => {
-        const groups = derived.choices.filter(group => group.featureId === feature.id || (feature.choices || []).some(own => own.id === group.id));
-        return `<section class="list-card"><h3>${escape(feature.name)}</h3><p class="muted">${escape(feature.parent)} · Level ${escape(feature.requiredLevel ?? feature.level ?? 1)}</p>${details("Read feature rules",feature.details)}${groups.map(group => {
-          const selected = (draft.build.choices[group.id] || []).slice(0,group.count);
-          const tree = group.options.some(item=>item.requires?.length);
-          const pickers = Array.from({length:group.count},(_,index) => {
-            const values = group.options.map(item => {
-              const repeats = selected.filter((id,other)=>other!==index && id===item.id).length;
-              const label = item.name+(item.unavailableReason ? ` (${item.unavailableReason})` : '');
-              return option(item.id,label,item.id===selected[index],!!item.unavailableReason || repeats >= (item.repeatLimit || 1));
-            }).join('');
-            return field(group.kind==='feat' ? 'Choose a feat' : `Selection ${index+1}`,`<select data-builder-choice="${escape(group.id)}" data-builder-choice-index="${index}">${option("",group.kind==='feat' ? "Browse feats and choose one" : group.optional ? "Skip this optional choice" : "Choose an option",!selected[index])}${values}</select>`);
-          }).join('');
-          return `<fieldset><legend>${escape(group.label === "minitrait_list" ? "Traits" : group.label)} - choose ${group.count}</legend>${tree ? '<p class="muted">Choose a starting skill to unlock its upgrades. Each upgrade uses a selection and requires its parent skill.</p>' : ''}${grid(pickers)}${group.options.filter(item => selected.includes(item.id)).map(item => details(item.name,item.details)).join("")}</fieldset>`;
-        }).join("")}</section>`;
-      }).join("");
-      if (!derived.features.length) html += `<p class="muted">Choose an ancestry and class to see their features here.</p>`;
-      return html + spellsStep(derived);
+    const optionRules = item => item.ownDetails ?? (item.eligibility?item.details?.description || item.details:item.details);
+    const featGroup = group => group.kind==='feat' || /ability.score.improvement/i.test(group.featureName);
+    function featBenefits(option,task) {
+      if(task.kind!=='feat' || !task.selected.includes(option.id))return '';
+      const specification=globalThis.CharacterEffects.benefitOptions(option);if(!specification)return '';
+      const selected=draft.build.featBenefits[option.id] || [];
+      return `<fieldset class="builder-feat-benefits"><legend>Feat benefits${specification.count===2?' · choose two':''}</legend>${specification.note?`<p class="muted">${escape(specification.note)}</p>`:''}${specification.options.map(([key,label])=>`<label class="check-label"><input type="checkbox" data-builder-feat-benefit="${key}" data-feat-id="${escape(option.id)}" ${selected.includes(key)?'checked':''} ${!selected.includes(key)&&selected.length>=specification.count?'disabled':''}>${escape(label)}</label>`).join('')}</fieldset>`;
     }
+    function tasks(derived, feats=false) {
+      const result=[];
+      if(!feats && derived.cls?.skillChoice) result.push({id:'class-skills',label:'Class skills',count:derived.cls.skillChoice.count,selected:[...new Set(draft.build.skills)].filter(skill=>derived.cls.skillChoice.options.includes(skill)),skills:'skills',options:derived.cls.skillChoice.options});
+      if(!feats && derived.raceSkillCount) result.push({id:'race-skills',label:'Ancestry skills',count:derived.raceSkillCount,selected:[...new Set(draft.build.raceSkills)].filter(skill=>(derived.raceSkillOptions || allSkills).includes(skill)),skills:'raceSkills',options:derived.raceSkillOptions || allSkills});
+      for(const group of derived.choices.filter(group=>featGroup(group)===feats)) result.push({...group,label:group.kind==='feat'?`${group.parent}: ${group.label}`:group.featureName+(group.label==='Choose features'?'':` · ${group.label}`)});
+      return result;
+    }
+    function stages(derived) {
+      return ['Ancestry','Class','Abilities','Features',...(derived.casting?.profile?['Spells']:[]),...(derived.choices.some(featGroup)?['Feats']:[]),'Equipment','Review'];
+    }
+    function taskPane(derived,feats=false) {
+      const groups=tasks(derived,feats);
+      let task=groups.find(group=>group.id===focusedTask) || groups.find(group=>!group.optional && group.selected.length<group.count) || groups[0];
+      if(task) focusedTask=task.id;
+      const remaining=groups.reduce((total,group)=>total+(group.optional?0:Math.max(0,group.count-group.selected.length)),0);
+      const nav=`<nav class="builder-task-nav" aria-label="${feats?'Feat and ability':'Feature'} choices">${groups.map(group=>`<button type="button" data-action="builder-task" data-task-id="${escape(group.id)}" ${group.id===task?.id?'aria-current="true"':''}><span>${escape(group.label)}</span><small>${group.optional?'Optional':`${group.selected.length} / ${group.count}`}${group.level?` · Level ${group.level}`:''}</small>${group.kind==='feat'&&group.selected.length?`<small>${group.options.filter(option=>group.selected.includes(option.id)).map(option=>escape(option.name)).join(', ')}</small>`:''}</button>`).join('')}</nav>`;
+      let body='<p class="muted">No choices are required here at this level.</p>';
+      if(task?.skills) body=`<section class="builder-task-content"><h2>${escape(task.label)}</h2><p>Choose ${task.count} proficiencies.</p>${skillChoices(task.skills,task.count,task.options)}</section>`;
+      else if(task) {
+        const selected=task.selectedSlots || [],available=task.options.filter(item=>{
+          const used=task.selected.filter(id=>id===item.id).length;
+          return (showLocked || !item.unavailableReason) && used<(item.repeatLimit || 1) && (!featureQuery || (item.name+' '+JSON.stringify(optionRules(item))).toLowerCase().includes(featureQuery.toLowerCase()));
+        });
+        const preview=task.options.find(item=>item.id===focusedOption) || task.options.find(item=>task.selected.includes(item.id)) || available[0];
+        const previewUsed=preview?task.selected.filter(id=>id===preview.id).length:0;
+        const canAdd=preview && !preview.unavailableReason && previewUsed<(preview.repeatLimit || 1) && task.selected.length<task.count;
+        const chosen=selected.map((id,index)=>({id,index,option:task.options.find(item=>item.id===id)})).filter(row=>row.option);
+        body=`<section class="builder-task-content"><div class="builder-task-heading"><div><h2>${escape(task.featureName || task.label)}</h2><p>${escape(task.parent)}${task.level?` · Level ${task.level}`:''} · ${task.selected.length} / ${task.count} chosen</p></div><button type="button" data-action="builder-next-choice">Next unfinished choice</button></div><div class="builder-chosen" aria-label="Selected options">${chosen.map(({option,index})=>`<span class="builder-chip"><button type="button" data-action="builder-preview-option" data-option-id="${escape(option.id)}">${escape(option.name)}</button><button type="button" data-action="builder-remove-choice" data-choice-id="${escape(task.id)}" data-choice-slot="${index}" aria-label="Remove ${escape(option.name)}">×</button></span>`).join('') || '<p class="muted">Choose an option below.</p>'}</div>${task.unavailableSelected?.length?`<p class="builder-notice">${task.unavailableSelected.map(item=>escape(item.name)).join(', ')} no longer meets its prerequisites. Choose a replacement.</p>`:''}${field(task.kind==='feat'?'Search eligible feats':'Search options',`<input type="search" data-builder-feature-query value="${escape(featureQuery)}" autocomplete="off">`)}${task.options.some(item=>item.requires?.length)?`<label class="check-label"><input type="checkbox" data-builder-locked ${showLocked?'checked':''}>Show locked upgrades</label>`:''}<div class="builder-library"><div class="builder-option-list" aria-label="Available options">${available.slice(0,optionLimit).map(item=>`<button type="button" class="builder-option-card" data-action="builder-preview-option" data-option-id="${escape(item.id)}" ${item.id===preview?.id?'aria-pressed="true"':''}><strong>${escape(item.name)}</strong>${item.unavailableReason?`<small>${escape(item.unavailableReason)}</small>`:''}</button>`).join('') || '<p class="muted">No eligible options match. Adjust your search or review earlier choices.</p>'}${available.length>optionLimit?'<button type="button" data-action="builder-more-options">Show more options</button>':''}</div><aside class="builder-option-preview" aria-label="Option details">${preview?`<h3>${escape(preview.name)}</h3>${preview.eligibility?.requirements?.length?`<p class="muted">Requires: ${escape(preview.eligibility.requirements.join('; '))}</p>`:''}<div class="rule-body">${renderRule(optionRules(preview))}</div>${featBenefits(preview,task)}${preview.unavailableReason?`<p class="builder-notice">${escape(preview.unavailableReason)}</p>`:''}<button type="button" class="primary" data-action="builder-choose-option" data-choice-id="${escape(task.id)}" data-option-id="${escape(preview.id)}" ${canAdd?'':'disabled'}>${previewUsed>=(preview.repeatLimit || 1)?'Already selected':task.selected.length>=task.count?'Remove a selection to replace it':'Choose '+escape(preview.name)}</button>`:'<p>Select an option to read its rules.</p>'}</aside></div></section>`;
+      }
+      const intro=feats?'<p>Only feats whose prerequisites you meet are offered here. Each grant is checked at its own level. <a href="index.html#section=feats" target="_blank" rel="noopener">Browse every feat in the compendium</a>.</p>':'<p>Work through one choice at a time. Selected options stay in the summary above their list.</p>';
+      const qualifications=feats?`<details class="builder-qualification"><summary>Story qualifications</summary><p class="muted">Record these only when they are true for your character.</p>${[['has-died','This character has died'],['righteous-slaying','Has slain a murderous vampire, fae, or sentient aberration or undead'],['rest-crafting','Can create or procure items during rest']].map(([key,label])=>`<label class="check-label"><input type="checkbox" data-builder-qualification="${key}" ${draft.build.qualifications.includes(key)?'checked':''}>${label}</label>`).join('')}</details>`:'';
+      return `${intro}<p class="builder-progress-note">${remaining?`${remaining} selection${remaining===1?'':'s'} remaining`:'Required selections complete'}</p><div id="builder-choice-workspace" class="builder-choice-workspace">${nav}${body}</div>${qualifications}`;
+    }
+    function featuresStep(derived) {
+      const given=derived.features.filter(feature=>feature.parent!=='Feat' && !derived.choices.some(group=>group.featureId===feature.id)).sort((a,b)=>order.compare(a,b,'level-asc'));
+      return taskPane(derived)+`<details class="builder-granted"><summary>Automatically granted features (${given.length})</summary>${given.map(feature=>`<details class="builder-rule"><summary>${escape(feature.name)} <small>${escape(feature.parent)} · Level ${feature.requiredLevel ?? feature.level ?? 1}</small></summary>${renderRule(feature.details)}</details>`).join('')}</details>`;
+    }
+    const featsStep=derived=>taskPane(derived,true);
 
     function spellResults(derived) {
-      const casting=globalThis.CharacterCasting, selection=casting.spellSelection(draft,derived,rules.catalog);
+      const casting=globalThis.CharacterCasting,selection=casting.spellSelection(draft,derived,rules.catalog);
       const words=spellQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
-      const matching=selection.eligible.filter(entry=>(spellLevel==='' || String(casting.spellInfo(entry,derived.casting.profile.tradition).level)===spellLevel) && words.every(word=>(entry.name+' '+JSON.stringify(entry.details)).toLowerCase().includes(word)));
-      matching.sort((a,b)=>casting.spellInfo(a,derived.casting.profile.tradition).level-casting.spellInfo(b,derived.casting.profile.tradition).level || a.name.localeCompare(b.name));
-      const picked=selection.eligible.find(entry=>casting.spellId(entry)===spellToAdd);
-      const info=picked?casting.spellInfo(picked,derived.casting.profile.tradition):null;
-      const already=picked && draft.spells.some(row=>row.entryId===spellToAdd);
-      const full=info && casting.spellLearningError(draft,derived,rules.catalog,picked);
-      return `<p class="muted">${matching.length} available spells match</p>${field('Available class spells',`<select data-builder-spell>${option('','Choose a spell to read its rules',!spellToAdd)}${picked && !matching.includes(picked)?option(spellToAdd,picked.name,true):''}${matching.map(entry=>option(casting.spellId(entry),`${entry.name} — ${casting.spellInfo(entry,derived.casting.profile.tradition).cantrip?'Cantrip':'Level '+casting.spellInfo(entry,derived.casting.profile.tradition).level}`,casting.spellId(entry)===spellToAdd)).join('')}</select>`)}${picked?`<section class="list-card"><h3>${escape(picked.name)}</h3>${details('Spell rules',picked.details)}<button type="button" data-action="builder-add-spell"${already || full?' disabled':''}>${already?'Already chosen':full?'Class selections full':'Learn spell'}</button>${full && !already?`<p class="muted">${escape(full)}</p>`:''}</section>`:''}`;
+      const matching=selection.eligible.filter(entry=>{
+        const info=casting.spellInfo(entry,derived.casting.profile.tradition);
+        return (spellKind==='cantrips'?info.cantrip:!info.cantrip) && (spellLevel==='' || String(info.level)===spellLevel) && words.every(word=>(entry.name+' '+JSON.stringify(entry.details)).toLowerCase().includes(word));
+      }).sort((a,b)=>casting.spellInfo(a,derived.casting.profile.tradition).level-casting.spellInfo(b,derived.casting.profile.tradition).level || a.name.localeCompare(b.name));
+      const picked=selection.eligible.find(entry=>casting.spellId(entry)===spellToAdd) || matching[0];
+      const pickedId=picked?casting.spellId(picked):'',already=draft.spells.some(row=>row.entryId===pickedId);
+      const reason=picked&&!already?casting.spellLearningError(draft,derived,rules.catalog,picked):'';
+      return `<p class="muted">${matching.length} eligible ${spellKind==='cantrips'?'cantrips':'spells'} match</p><div class="builder-library"><div class="builder-option-list" aria-label="Eligible spells">${matching.slice(0,spellLimit).map(entry=>{const id=casting.spellId(entry),info=casting.spellInfo(entry,derived.casting.profile.tradition);return `<button type="button" class="builder-option-card" data-action="builder-preview-spell" data-entry-id="${escape(id)}" ${id===pickedId?'aria-pressed="true"':''}><strong>${escape(entry.name)}</strong><small>${info.cantrip?'Cantrip':'Level '+info.level}${entry.details.casting?' · '+escape(entry.details.casting):''}${entry.details.range?' · '+escape(entry.details.range):''}</small>${draft.spells.some(row=>row.entryId===id)?'<span class="builder-picked-badge">Chosen</span>':''}</button>`;}).join('') || '<p class="muted">No spells match these filters. Review the level filter or your class settings.</p>'}${matching.length>spellLimit?'<button type="button" data-action="builder-more-spells">Show more spells</button>':''}</div><aside class="builder-option-preview" aria-label="Spell details">${picked?`<h3>${escape(picked.name)}</h3><div class="rule-body">${renderRule(picked.details)}</div><button type="button" class="primary" data-action="builder-learn-spell" data-entry-id="${escape(pickedId)}" ${already||reason?'disabled':''}>${already?'Already chosen':'Learn '+escape(picked.name)}</button>${reason?`<p class="builder-notice">${escape(reason)}</p>`:''}`:'<p>Choose a spell to read its rules before learning it.</p>'}</aside></div>`;
     }
-
     function spellsStep(derived) {
-      if(!derived.casting?.profile || !globalThis.CharacterCasting?.spellSelection) return '';
-      const casting=globalThis.CharacterCasting, selection=casting.spellSelection(draft,derived,rules.catalog);
+      if(!derived.casting?.profile)return '<p>This class has no base spell selections.</p>';
+      const casting=globalThis.CharacterCasting,selection=casting.spellSelection(draft,derived,rules.catalog);
       let configuration='';
-      if(derived.casting.mode==='full') configuration=field('Maximum full-slot level',textInput('build.casting.maxSlotLevel',draft.build.casting?.maxSlotLevel ?? '', 'number','min="1" max="20"'),'Use the maximum spell level agreed at your table.');
-      if(derived.casting.profile.tradition==='any') configuration=field('Maximum spell level you can learn',textInput('build.casting.maxLearnLevel',draft.build.casting?.maxLearnLevel ?? '', 'number','min="0" max="20"'),'Bard learning is limited to half Bard level; its source leaves rounding unspecified.');
-      const levels=[...new Set(selection.eligible.map(entry=>casting.spellInfo(entry,derived.casting.profile.tradition).level))].sort((a,b)=>a-b);
-      return `<section class="builder-spells"><h2>Choose your spells</h2><p>${escape(derived.cls.name)} · ${escape(derived.casting.profile.tradition==='any'?'Any tradition, including hexes as level 1–3 spells':derived.casting.profile.tradition+' magic')} · ${selection.spells.length} / ${selection.spellLimit} ${derived.casting.spellbookCount!==null?'spellbook spells':'spells known'} · ${selection.cantrips.length} / ${selection.cantripLimit} cantrips</p>${configuration}<div class="form-grid">${field('Search spells','<input type="search" data-builder-spell-query value="'+escape(spellQuery)+'" autocomplete="off">')}${field('Spell level',`<select data-builder-spell-level>${option('','All available levels',spellLevel==='')}${levels.map(level=>option(level,level===0?'Cantrips':'Level '+level,String(level)===spellLevel)).join('')}</select>`)}</div><div id="builder-spell-results">${spellResults(derived)}</div><h3>Chosen spells</h3>${selection.chosen.length?selection.chosen.map(row=>{const entry=selection.eligible.find(entry=>casting.spellId(entry)===row.entryId);return `<article class="list-card"><h4>${escape(row.name)}</h4>${details('Read spell rules',entry.details)}<label class="check-label"><input type="checkbox" data-builder-spell-ready="${escape(row.id)}" ${row.prepared?'checked':''}>${derived.cls.name==='Wizard'?'Prepared':'Ready on the sheet'}</label><button type="button" data-action="builder-remove-spell" data-spell-id="${escape(row.id)}">Remove</button></article>`;}).join(''):'<p class="muted">Choose spells above to add them to this character.</p>'}${selection.warnings.map(warning=>`<p class="muted">${escape(warning)}</p>`).join('')}</section>`;
+      if(derived.casting.mode==='full')configuration=field('Maximum full-slot level',textInput('build.casting.maxSlotLevel',draft.build.casting?.maxSlotLevel ?? '','number','min="1" max="20"'),'Use the maximum spell level agreed at your table.');
+      if(derived.casting.profile.tradition==='any')configuration=field('Maximum spell level you can learn',textInput('build.casting.maxLearnLevel',draft.build.casting?.maxLearnLevel ?? '','number','min="0" max="20"'),'The source limits learning to half Bard level without specifying rounding.');
+      const levels=[...new Set(selection.eligible.filter(entry=>!casting.spellInfo(entry,derived.casting.profile.tradition).cantrip).map(entry=>casting.spellInfo(entry,derived.casting.profile.tradition).level))].sort((a,b)=>a-b);
+      return `<section class="builder-spells"><h2>Choose your spells</h2><p>${escape(derived.cls.name)} · ${escape(derived.casting.profile.tradition==='any'?'Any tradition, including hexes as level 1–3 spells':derived.casting.profile.tradition+' magic')}</p><div class="builder-spell-tabs" role="group" aria-label="Spell selections">${selection.cantripLimit?`<button type="button" data-action="builder-spell-kind" data-spell-kind="cantrips" aria-pressed="${spellKind==='cantrips'}">Cantrips <strong>${selection.cantrips.length} / ${selection.cantripLimit}</strong></button>`:''}<button type="button" data-action="builder-spell-kind" data-spell-kind="spells" aria-pressed="${spellKind==='spells'}">${derived.casting.spellbookCount!==null?'Spellbook':'Spells'} <strong>${selection.spells.length} / ${selection.spellLimit}</strong></button></div>${configuration?`<details class="builder-table-settings" ${selection.eligible.filter(entry=>!casting.spellInfo(entry,derived.casting.profile.tradition).cantrip).length?'':'open'}><summary>Table casting settings</summary>${configuration}</details>`:''}<div class="builder-chosen" aria-label="Chosen spells">${selection.chosen.map(row=>`<span class="builder-chip"><button type="button" data-action="builder-preview-spell" data-entry-id="${escape(row.entryId)}">${escape(row.name)}</button><button type="button" data-action="builder-remove-spell" data-spell-id="${escape(row.id)}" aria-label="Remove ${escape(row.name)}">×</button></span>`).join('') || '<p class="muted">Your chosen spells will appear here.</p>'}</div><div class="builder-search-row">${field('Search spells',`<input type="search" data-builder-spell-query value="${escape(spellQuery)}" autocomplete="off">`)}${spellKind==='spells'?field('Spell level',`<select data-builder-spell-level>${option('','All eligible levels',spellLevel==='')}${levels.map(level=>option(level,'Level '+level,String(level)===spellLevel)).join('')}</select>`):''}</div><div id="builder-spell-results">${spellResults(derived)}</div>${selection.chosen.length?`<details class="builder-readied"><summary>${derived.cls.name==='Wizard'?'Preparation':'Ready spells'} (${selection.chosen.filter(row=>row.prepared).length})</summary>${selection.chosen.map(row=>`<label class="check-label"><input type="checkbox" data-builder-spell-ready="${escape(row.id)}" ${row.prepared?'checked':''}>${escape(row.name)}</label>`).join('')}</details>`:''}${selection.warnings.map(warning=>`<p class="muted">${escape(warning)}</p>`).join('')}</section>`;
     }
-
     function refreshSpellPicker() {
       const host=globalThis.document?.getElementById('builder-spell-results');
-      if(host) host.innerHTML=spellResults(rules.derive(draft));
-      else render();
+      if(host)host.innerHTML=spellResults(rules.derive(draft));else render();
     }
 
     function equipmentCategory(item) {
@@ -225,7 +241,7 @@
       ].map(([label,value]) => `<div class="list-card"><span class="muted">${escape(label)}</span><p><strong>${escape(value)}</strong></p></div>`).join(""))}</div><p>${escape(derived.hpExplanation)}</p>`;
       html += grid(field("HP after level 1",`<select data-builder-path="build.health.hpMode">${option("average","Fixed average",health.hpMode === "average")}${option("rolled","Recorded hit-die rolls",health.hpMode === "rolled")}${option("manual","Manual base HP",health.hpMode === "manual")}</select>`)+
         (health.hpMode === "manual" ? field("Base maximum HP",textInput("build.health.baseHP",health.baseHP,"number",'min="1"'),"Ancestry and feature HP bonuses are added to this base.") : "")+
-        field("Base rest dice pool",textInput("build.health.baseRestDice",health.baseRestDice,"number",'min="0"'),"Enter the pool granted by your table; selected bonuses are added."));
+        field("Rest dice maximum",`<output>${derived.restMaximum}</output>`,"Character level plus the selected bonuses.")+field("Rest dice table adjustment",textInput("build.health.restAdjustment",health.restAdjustment,"number",'min="-1000000" max="1000000"')));
       if (health.hpMode === "rolled" && draft.level > 1) html += `<fieldset><legend>Recorded ${escape(derived.cls?.hitDie || "hit die")} rolls</legend><p class="muted">Enter the die result before Constitution. Missing rolls use the fixed average in this preview.</p>${grid(Array.from({length:draft.level-1},(_,index) => field(`Level ${index+2}`,textInput(`build.health.rolls.${index}`,health.rolls?.[index] ?? "","number",`min="1" max="${sides}" inputmode="numeric"`))).join(""))}</fieldset>`;
       html += castingPreview(derived);
       const feats = derived.features.filter(feature=>feature.parent==='Feat');
@@ -241,24 +257,25 @@
     }
 
     function render() {
-      if (!open) return;
-      const derived = rules.derive(draft);
-      const body = [ancestry,classStep,abilitiesStep,featuresStep,equipmentStep,review][step](derived);
-      const nav = `<nav class="builder-steps row" aria-label="Character creation steps">${steps.map((name,index) => `<button type="button" data-action="builder-step" data-builder-step="${index}"${index === step ? ' aria-current="step"' : ""}>${index+1}. ${escape(name)}</button>`).join("")}</nav>`;
-      show(`${step+1} of ${steps.length} · ${steps[step]}`,`<div class="builder-flow" style="display:grid;gap:1rem">${nav}<progress value="${step+1}" max="6" aria-label="Character creation progress" style="width:100%">${step+1} of 6</progress>${body}<p class="muted">Varis house rules · Source descriptions retain draft and unresolved mechanics.</p></div>`,
-        `<button type="button" data-action="builder-cancel">Cancel</button><button type="button" data-action="builder-back"${step === 0 ? " disabled" : ""}>Back</button>${step < steps.length-1 ? '<button type="button" class="primary" data-action="builder-next">Next</button>' : '<button type="button" class="primary" data-action="builder-finish">Save character</button>'}`);
+      if(!open)return;
+      const derived=rules.derive(draft),flow=stages(derived);
+      if(!flow.includes(stage))stage='Features';
+      const step=flow.indexOf(stage),views={Ancestry:ancestry,Class:classStep,Abilities:abilitiesStep,Features:featuresStep,Spells:spellsStep,Feats:featsStep,Equipment:equipmentStep,Review:review};
+      const nav=`<nav class="builder-steps row" aria-label="Character creation steps">${flow.map((name,index)=>`<button type="button" data-action="builder-step" data-builder-step="${name}"${name===stage?' aria-current="step"':''}>${index+1}. ${name}</button>`).join('')}</nav>`;
+      show(`${step+1} of ${flow.length} · ${stage}`,`<div class="builder-flow">${nav}<progress value="${step+1}" max="${flow.length}" aria-label="Character creation progress">${step+1} of ${flow.length}</progress>${views[stage](derived)}</div>`,
+        `<button type="button" data-action="builder-cancel">Cancel</button><button type="button" data-action="builder-back"${step===0?' disabled':''}>Back</button>${step<flow.length-1?'<button type="button" class="primary" data-action="builder-next">Next</button>':'<button type="button" class="primary" data-action="builder-finish">Save character</button>'}`);
     }
 
     function setPath(path, target) {
-      const numeric = /^(?:level|abilities\.(?:str|dex|con|int|wis|cha)|build\.casting\.(?:maxSlotLevel|maxLearnLevel)|build\.health\.(?:baseHP|baseRestDice|rolls\.\d+))$/;
-      if (!/^(?:name|player|level|abilities\.(?:str|dex|con|int|wis|cha)|build\.(?:raceId|classId|backgroundId|archetypes\.\d+|casting\.(?:maxSlotLevel|maxLearnLevel)|health\.(?:hpMode|baseHP|baseRestDice|rolls\.\d+)))$/.test(path)) return false;
+      const numeric = /^(?:level|abilities\.(?:str|dex|con|int|wis|cha)|build\.casting\.(?:maxSlotLevel|maxLearnLevel)|build\.health\.(?:baseHP|baseRestDice|restAdjustment|rolls\.\d+))$/;
+      if (!/^(?:name|player|level|abilities\.(?:str|dex|con|int|wis|cha)|build\.(?:raceId|classId|backgroundId|archetypes\.\d+|casting\.(?:maxSlotLevel|maxLearnLevel)|health\.(?:hpMode|restMode|baseHP|baseRestDice|restAdjustment|rolls\.\d+)))$/.test(path)) return false;
       let value = numeric.test(path) ? Number(target.value) : String(target.value ?? "");
       if(path==='build.backgroundId') {
         const background=backgroundEntries().find(item=>item.id===value);
         if(value && !background)return true;
         draft.background=background?.name || '';
       }
-      if (numeric.test(path) && (!Number.isInteger(value) || value < (path === "level" ? 1 : 0))) return true;
+      if (numeric.test(path) && (!Number.isInteger(value) || value < (path.endsWith("restAdjustment") ? -1000000 : path === "level" ? 1 : 0))) return true;
       if (/health\.rolls\./.test(path) && target.value === "") value = null;
       if (path === "level") value = Math.min(100,value);
       if(/^build\.casting\./.test(path) && (value>20 || value<(path.endsWith('maxSlotLevel')?1:0))) return true;
@@ -280,6 +297,16 @@
       if (!open || !target?.dataset) return false;
       const data = target.dataset, index = Number(data.builderChoiceIndex);
       if (data.builderPath !== undefined) return setPath(data.builderPath,target);
+      if(data.builderFeatureQuery!==undefined) {featureQuery=String(target.value || '');optionLimit=36;return true;}
+      if(data.builderLocked!==undefined) {showLocked=!!target.checked;return true;}
+      if(data.builderQualification!==undefined) {const key=data.builderQualification;if(['has-died','righteous-slaying','rest-crafting'].includes(key))draft.build.qualifications=[...draft.build.qualifications.filter(value=>value!==key),...(target.checked?[key]:[])];return true;}
+      if(data.builderFeatBenefit!==undefined) {
+        const feature=rules.derive(draft).features.find(feature=>feature.parent==='Feat' && feature.entryId===data.featId),specification=feature && globalThis.CharacterEffects.benefitOptions(feature);
+        if(specification?.options.some(([key])=>key===data.builderFeatBenefit)) {
+          const previous=draft.build.featBenefits[data.featId] || [],values=previous.filter(value=>value!==data.builderFeatBenefit);
+          if(!target.checked || values.length<specification.count)draft.build.featBenefits[data.featId]=[...values,...(target.checked?[data.builderFeatBenefit]:[])];
+        }return true;
+      }
       if(data.builderSpellQuery!==undefined) {spellQuery=String(target.value || '');return true;}
       if(data.builderSpellLevel!==undefined) {spellLevel=String(target.value || '');return true;}
       if(data.builderSpell!==undefined) {spellToAdd=String(target.value || '');return true;}
@@ -306,7 +333,10 @@
           const candidate=copy(draft),values=candidate.build.choices[choice.id] ||= [];
           setSlot(values,index,target.value);
           const checked=rules.derive(candidate).choices.find(item=>item.id===choice.id);
-          if(!target.value || checked?.selectedSlots[index]===target.value) draft=candidate;
+          if(!target.value || checked?.selectedSlots[index]===target.value) {
+            draft=candidate;
+            if(target.value===choice.featureId+':feat'){focusedTask=choice.featureId+':feat-choice';focusedOption='';featureQuery='';}
+          }
         }
         return true;
       }
@@ -331,7 +361,7 @@
     }
 
     function start(character, fresh = false) {
-      spellToAdd='';spellQuery='';spellLevel='';
+      spellToAdd='';spellQuery='';spellLevel='';spellKind='spells';spellLimit=48;focusedTask='';focusedOption='';featureQuery='';optionLimit=36;showLocked=false;
       items=itemEntries();
       weaponGroups=[...new Set(items.flatMap(entry => {
         // Base weapon groups already come from ordinary equipment; magic collections group by rarity.
@@ -339,11 +369,17 @@
         const profile=globalThis.MagicItems?.equipment(entry,rules.catalog) || entry;
         return group && profile.details?.damage && profile.details?.type ? [group] : [];
       }))].sort();
-      draft = rules.enable(copy(character)); step = 0; open = true; isNew = !!fresh; itemToAdd = ""; itemQuery = ""; itemCategory = ""; render(); return true;
+      draft = rules.enable(copy(character)); stage = "Ancestry"; open = true; isNew = !!fresh; itemToAdd = ""; itemQuery = ""; itemCategory = ""; render(); return true;
     }
     function cancel() { if (!open) return false; open = false; draft = null; onCancel(); return true; }
     function handleInput(target) {
       const handled = update(target);
+      if(handled && target.dataset.builderFeatureQuery!==undefined) {
+        const dialog=globalThis.document?.getElementById('editor-dialog'),scroll=dialog?.scrollTop || 0,position=target.selectionStart;
+        render();
+        const replacement=globalThis.document?.querySelector('[data-builder-feature-query]');replacement?.focus();replacement?.setSelectionRange?.(position,position);
+        if(dialog)dialog.scrollTop=scroll;
+      }
       if(handled && target.dataset.builderSpellQuery!==undefined) refreshSpellPicker();
       if (handled && target.dataset.builderItemQuery !== undefined && globalThis.document?.getElementById("builder-equipment-options")) refreshEquipmentPicker();
       return handled;
@@ -358,18 +394,42 @@
     function handleAction(action, target) {
       if (!open || !action?.startsWith("builder-")) return false;
       if (action === "builder-cancel") return cancel();
-      if (action === "builder-next") step = Math.min(steps.length-1,step+1);
-      else if (action === "builder-back") step = Math.max(0,step-1);
+      const flow=stages(rules.derive(draft)),step=flow.indexOf(stage);
+      if(action==='builder-task') {focusedTask=target.dataset.taskId;focusedOption='';featureQuery='';optionLimit=36;}
+      else if(action==='builder-preview-option')focusedOption=target.dataset.optionId;
+      else if(action==='builder-more-options')optionLimit+=36;
+      else if(action==='builder-more-spells')spellLimit+=48;
+      else if(action==='builder-next-choice') {
+        const groups=tasks(rules.derive(draft),stage==='Feats'),index=groups.findIndex(group=>group.id===focusedTask),ordered=[...groups.slice(index+1),...groups.slice(0,index+1)];
+        focusedTask=(ordered.find(group=>!group.optional && group.selected.length<group.count) || ordered[0])?.id || '';focusedOption='';featureQuery='';
+      }
+      else if(action==='builder-choose-option') {
+        const group=rules.derive(draft).choices.find(group=>group.id===target.dataset.choiceId);
+        if(group){const slot=Array.from({length:group.count},(_,index)=>index).find(index=>!group.selectedSlots[index]);if(slot!==undefined)update({dataset:{builderChoice:group.id,builderChoiceIndex:String(slot)},value:target.dataset.optionId});}
+      }
+      else if(action==='builder-remove-choice') {
+        const group=rules.derive(draft).choices.find(group=>group.id===target.dataset.choiceId),slot=Number(target.dataset.choiceSlot);
+        if(group && Number.isInteger(slot) && slot>=0 && slot<group.count && draft.build.choices[group.id])draft.build.choices[group.id][slot]='';
+      }
+      else if(action==='builder-spell-kind') {spellKind=target.dataset.spellKind==='cantrips'?'cantrips':'spells';spellLevel='';spellToAdd='';spellLimit=48;}
+      else if(action==='builder-preview-spell') {
+        spellToAdd=target.dataset.entryId;const entry=globalThis.CharacterCasting.spellSelection(draft,rules.derive(draft),rules.catalog).eligible.find(entry=>globalThis.CharacterCasting.spellId(entry)===spellToAdd);
+        if(entry)spellKind=globalThis.CharacterCasting.spellInfo(entry).cantrip?'cantrips':'spells';
+      }
+      else if (action === "builder-next") stage=flow[Math.min(flow.length-1,step+1)];
+      else if (action === "builder-back") stage=flow[Math.max(0,step-1)];
       else if (action === "builder-step") {
-        const value = Number(target?.dataset?.builderStep); if (Number.isInteger(value) && value >= 0 && value < steps.length) step = value;
+        const value=target?.dataset?.builderStep;
+        if(flow.includes(value))stage=value;
+        else if(Number.isInteger(Number(value)) && Number(value)>=0 && Number(value)<flow.length)stage=flow[Number(value)];
       } else if (action === "builder-add-item") {
         const entry = items.find(item => item.entryId === itemToAdd);
         if (entry) draft.inventory.push({id:uid(),name:entry.name,entryId:entry.entryId,quantity:1,equipped:false,notes:"",...(globalThis.MagicItems?.inventoryFields(entry) || {})});
-      } else if(action==='builder-add-spell') {
+      } else if(action==='builder-add-spell' || action==='builder-learn-spell') {
+        if(action==='builder-learn-spell')spellToAdd=target.dataset.entryId;
         const derived=rules.derive(draft),casting=globalThis.CharacterCasting;
         const selection=casting.spellSelection(draft,derived,rules.catalog),entry=selection.eligible.find(entry=>casting.spellId(entry)===spellToAdd);
         if(entry && !draft.spells.some(row=>row.entryId===spellToAdd)) {
-          const cantrip=casting.spellInfo(entry,derived.casting.profile.tradition).cantrip;
           if(!casting.spellLearningError(draft,derived,rules.catalog,entry)) draft.spells.push({id:uid(),entryId:spellToAdd,name:entry.name,notes:'',prepared:true,classId:derived.cls.id});
         }
       } else if(action==='builder-remove-spell') {
@@ -377,8 +437,8 @@
       } else if (action === "builder-remove-item") {
         const index = Number(target?.dataset?.builderIndex); if (Number.isInteger(index) && index >= 0 && index < draft.inventory.length) draft.inventory.splice(index,1);
       } else if (action === "builder-finish") {
-        if (step !== steps.length-1) return true;
-        const result = rules.reconcile(copy(draft)); open = false; draft = null; onFinish(result,isNew); return true;
+        if(stage!=='Review')return true;
+        const result = rules.reconcile(copy(draft)); if(isNew)result.restDice.current=result.restDice.max;open = false; draft = null; onFinish(result,isNew); return true;
       } else return false;
       render(); return true;
     }

@@ -204,6 +204,9 @@ def _tree_options(group_id, text):
         option["requires"] = [parents[-1][1]] if parents else []
         option["depth"] = len(parents)
         parents.append((indent, option["id"]))
+    for offset, ((index, _, content), option) in enumerate(zip(nodes, options)):
+        end = nodes[offset + 1][0] if offset + 1 < len(nodes) else len(lines)
+        option["ownDetails"] = "\n".join([content, *lines[index + 1:end]]).rstrip()
     return options
 
 
@@ -617,6 +620,16 @@ def compile_character_rules(sections):
                                      "status": str(details.get("status", "")), "notes": notes,
                                      "description": details.get("description", ""),
                                      "warnings": [] if explicit else ["No explicit starting level; using the parent's earliest archetype level. Review source status."]})
+    for race in result["races"]:
+        if race["name"] == "Human":
+            for trait in race["traits"]:
+                if trait["name"] == "Extra Feat":
+                    trait["grantsFeat"] = 1
+        for trait in race["traits"]:
+            for group in trait["choices"]:
+                for option in group["options"]:
+                    if (race["name"], option["name"]) in (("Ginasi", "Distant descendant"), ("Shadowling", "Shadowling descendant")):
+                        option["grantsFeat"] = 1
     _extra_choice_grants(result)
     _casting_modifiers(result)
     return result

@@ -11,7 +11,7 @@ function setup(extraSections = []) {
   const file = path.join(root, 'web/character-builder.js');
   assert.ok(fs.existsSync(file), 'The character creator must provide a six-step draft wizard');
   const context = vm.createContext({crypto:require('node:crypto').webcrypto});
-  for (const name of ['entry-order.js','item-views.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js']) {
+  for (const name of ['entry-order.js','item-views.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-prerequisites.js','character-rules.js','character-builder.js']) {
     vm.runInContext(fs.readFileSync(path.join(root,'web',name),'utf8'),context);
   }
   const metadata = {
@@ -232,11 +232,11 @@ test('feature step presents engine-generated ability score improvement selection
   const {builder,rules,State,shows,finished}=setup();
   rules.metadata.classes[0].features.push({id:'asi2',name:'Ability score improvement',level:2,details:'Increase one score by 2, or two by 1. Alternatively gain a feat.',choices:[]});
   const c=rules.enable(State.createCharacter());c.level=2;c.build.classId='fighter';
-  builder.start(c);builder.handleAction('builder-step',{dataset:{builderStep:'3'}});
+  builder.start(c);builder.handleAction('builder-step',{dataset:{builderStep:'Feats'}});
   assert.match(shows.at(-1)[1],/\+2 Strength/);
   const choice=rules.derive(c).choices.find(group=>group.featureName==='Ability score improvement');
   const strength=choice.options.find(item=>item.name==='+2 Strength');
   builder.handleChange({dataset:{builderChoice:choice.id,builderChoiceIndex:'0'},value:strength.id});
-  builder.handleAction('builder-step',{dataset:{builderStep:'5'}});builder.handleAction('builder-finish',{});
+  builder.handleAction('builder-step',{dataset:{builderStep:'Review'}});builder.handleAction('builder-finish',{});
   assert.equal(rules.derive(finished[0][0]).abilities.str,12);
 });

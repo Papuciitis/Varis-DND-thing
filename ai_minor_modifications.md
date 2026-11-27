@@ -12,3 +12,9 @@ These fixes were retained from the earlier recovery task. No additional unrelate
 - Created PATCH_NOTES.md and a generated patch-notes.html page, linked from the compendium and sheet. Notes are generated from the Markdown file so the published page and source history stay in sync.
 - Added regression checks for class eligibility, spell costs and upcasting, UI casting controls, recurring and alternative class grants, optional mark/reward pairs, backups and build outputs.
 - Appended unresolved source rules to ai_data_design_points_of_interest.md. No source game rules in data/ were changed.
+
+27:11:2026 focused character creator and resource controls
+
+- Replaced the growing feature wall with focused choice navigation and one rules preview; separated spell and feat selection into relevant stages.
+- Added literal feat-prerequisite checks, real racial bonus-feat pickers, own-node skill descriptions, rest-dice calculations and clickable death-save dots.
+- Added the requested patch-notes entry and appended the source/reference conflicts to points of interest. The only data change is the author-confirmed base rest-dice formula.

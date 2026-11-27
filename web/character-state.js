@@ -186,6 +186,13 @@
         build[key] = array(build[key], key).map(value => text(value, key));
       }
       build.choices = record(build.choices, "Feature choices");
+      build.qualifications = array(build.qualifications, "Story qualifications").map(value=>{
+        if(!['has-died','righteous-slaying','rest-crafting'].includes(value)) throw new Error('Unknown story qualification.');
+        return value;
+      });
+      build.featBenefits=record(build.featBenefits,'Feat benefits');
+      const benefitKeys=['spell','occult-slot','death-bonus','rest-die','learning-sacrifice','cantrip-sacrifice','defensive-rest','spell-sacrifice'];
+      for(const id of Object.keys(build.featBenefits))build.featBenefits[id]=array(build.featBenefits[id],'Feat benefit choices').map(value=>{if(!benefitKeys.includes(value))throw new Error('Unknown feat benefit.');return value;});
       for (const key of Object.keys(build.choices)) build.choices[key] = array(build.choices[key], key).map(value => text(value, key));
       build.abilityChoices = record(build.abilityChoices, "Ability choices");
       for (const key of Object.keys(build.abilityChoices)) {
@@ -213,6 +220,9 @@
       const health = build.health;
       health.baseHP = integer(health.baseHP, "Base maximum HP", source.resources.hp.max);
       health.baseRestDice = integer(health.baseRestDice, "Base rest dice maximum", source.restDice.max);
+      health.restMode=text(health.restMode,'Rest dice mode','level');
+      if(!['level','manual'].includes(health.restMode))throw new Error('Unknown rest dice mode.');
+      health.restAdjustment=integer(health.restAdjustment,'Rest dice adjustment',0,-limit);
       health.progression = boolean(health.progression, "Configured HP progression");
       health.hpMode = text(health.hpMode, "HP mode", "average");
       if (!["average", "rolled", "manual"].includes(health.hpMode)) throw new Error("Invalid HP mode.");

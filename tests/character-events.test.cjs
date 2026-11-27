@@ -56,7 +56,7 @@ function boot(options={}){
    async loadBuilder(){requests.push('builder');return {};},
    async loadSection(key){requests.push(key);if(options.delay)await options.delay(key);const section=sections.find(item=>item.key===key);section.entries=catalog.find(item=>item.key===key).entries;loaded.add(key);return section;}};
  }
- const g=vm.createContext(context);for(const name of ['entry-order.js','magic-categories.js','item-views.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
+ const g=vm.createContext(context);for(const name of ['entry-order.js','magic-categories.js','item-views.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-prerequisites.js','character-rules.js','character-builder.js','character.js'])vm.runInContext(fs.readFileSync(path.join(web,name),'utf8'),g,{filename:name});
  const q=(selector)=>{const n=document.querySelector(selector);assert(n,'missing control '+selector);return n;};
  const field=p=>q('[data-path="'+p+'"]');const action=(act,extra='')=>q('[data-action="'+act+'"]'+extra);
  function set(n,v,change=true){if(n.type==='checkbox')n.checked=v;else n.value=v;fire(n,'input');if(change)fire(n,'change');}
@@ -88,6 +88,33 @@ test('spell actions on the main sheet spend the selected upcast slot, persist an
  assert.equal(h.q('#pane-sheet').querySelector('[data-spell-card]'),null);
  const reloaded=boot({metadata});assert.equal(reloaded.q('#pane-sheet').querySelector('[data-spell-card]'),null);
  reloaded.q('[data-tab="spells"]').click();assert.ok(reloaded.q('#pane-spells').querySelector('[data-action="cast-known-spell"]'));
+});
+
+test('death saves use independent, accessible clickable dots and persist through reload',()=>{
+ storage.clear();const h=boot();
+ const success=()=>h.q('#pane-sheet').querySelectorAll('[data-save-kind="successes"]');
+ const failure=()=>h.q('#pane-sheet').querySelectorAll('[data-save-kind="failures"]');
+ assert.equal(success().length,3);assert.equal(failure().length,3);
+ assert.equal(h.document.querySelector('[data-path="deathSaves.successes"]'),null,'there is no death-save dropdown');
+ success()[1].click();assert.equal(saved().characters[0].deathSaves.successes,2);
+ assert.equal(success().filter(dot=>dot.getAttribute('aria-pressed')==='true').length,2);
+ success()[1].click();assert.equal(saved().characters[0].deathSaves.successes,1);
+ failure()[2].click();assert.equal(saved().characters[0].deathSaves.failures,3);assert.equal(saved().characters[0].deathSaves.successes,1);
+ const reloaded=boot();assert.equal(reloaded.q('#pane-sheet').querySelectorAll('[data-save-kind="failures"]').filter(dot=>dot.getAttribute('aria-pressed')==='true').length,3);
+});
+
+test('automatic rest-dice maximum is readonly, follows level and exposes its source breakdown',()=>{
+ storage.clear();const init=boot(),manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8'));
+ const metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8'));
+ const State=init.context.CharacterState,Rules=init.context.CharacterRules.create(metadata,catalog);
+ let c=Rules.enable(State.normalizeCharacter({id:'rest-ui',level:3,restDice:{current:1,max:3}}));
+ c.build.classId=metadata.classes.find(cls=>cls.name==='Fighter').id;c=Rules.reconcile(c);
+ storage.set(key,JSON.stringify({version:1,activeId:c.id,characters:[c]}));const h=boot({metadata});
+ assert.equal(h.field('restDice.max').getAttribute('readonly'),'readonly');
+ assert.match(h.q('#pane-sheet').textContent,/Character level: \+3/);
+ h.action('builder').click();h.set(h.q('[data-builder-path="level"]'),4);
+ h.q('[data-builder-step="Review"]').click();h.action('builder-finish').click();
+ assert.equal(saved().characters[0].restDice.max,4);assert.equal(saved().characters[0].restDice.current,1);
 });
 
 test('spell views and slot rows sort by numeric level without changing saved edit targets',()=>{

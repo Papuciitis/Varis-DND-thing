@@ -15,6 +15,7 @@
       enabled: build.enabled, classId: build.classId, raceId: build.raceId,
       archetypes: build.archetypes, choices: build.choices, abilityChoices: build.abilityChoices,
       adjustments: build.adjustments, baseRestDice: build.health?.baseRestDice,
+      backgroundId:build.backgroundId,featBenefits:build.featBenefits,qualifications:build.qualifications,restMode:build.health?.restMode,restAdjustment:build.health?.restAdjustment,
       spells: character.spells,
       casting: {enabled: ledger.enabled ?? !(character.spellSlots?.length || character.customResources?.length), maxSlotLevel: ledger.maxSlotLevel, maxLearnLevel:ledger.maxLearnLevel},
       proficiency: character.combat?.proficiencyOverride, restMaximum: character.restDice?.max});
