@@ -81,12 +81,25 @@ Phones start zoomed into the party; **Fit map** shows the whole scene.
 ### Token resources, statblocks and privacy
 
 Select a token to edit its HP in the larger panel below the map. In the inspector,
-expand **Optional bars**, enable either bar, choose a resource, and set its label
+expand **Token settings → Optional bars**, enable either bar, choose a resource, and set its label
 and values. AC can be shown as a single number; custom values can use a maximum
 or a blank maximum. The two bars can track Temp HP, Arcane Health, AC, Block,
 Temp Block or custom resources. The token and statblock share these values.
 
-Choose **Statblock → Link a character or monster**. Character links read this
+The initial bar presets are:
+
+| Token / linked sheet | Bar 2 | Bar 3 |
+| --- | --- | --- |
+| Playable character | Block | Temp HP |
+| Monster, summon or NPC | Block | AC |
+
+Linking fills the resource values from the sheet. Manually saving a different
+bar configuration preserves that choice across relinking. Older untouched
+default bars migrate to these presets; older customized bars stay intact.
+
+Choose **Link character** or **Link monster** directly beneath the selected
+token's heading in the right sidebar, then **Use this character/monster**.
+Character links read this
 browser's saved characters and use the existing character rule calculations for
 HP, AC and abilities. Edits to resource values sync in both directions with an
 open character-sheet tab on the same origin. The first two custom character
@@ -94,6 +107,18 @@ resources can use Custom resource 1/2. Derived HP maximum, AC and attributes
 should be changed on the original sheet. A different browser/device needs its
 own character import and link; a character snapshot in a room is not a complete
 character-sheet backup.
+
+If no characters appear, use **Create / open character sheet** in the picker.
+Create or import a character on that page, then return to the map; the saved
+character list refreshes automatically. Saves on another website or in a private
+browser window need to be imported into this browser's tabletop copy first.
+
+The sidebar's **Abilities & actions** panel shows a compact resource strip,
+ability scores, searchable expandable rules/actions and notes. Click its heading
+to minimize it without losing the selected token or hiding the map. **Open
+character sheet** opens the exact linked character on the full sheet page.
+**Edit statblock** opens the larger editor. Token appearance, ownership, resource
+configuration and sharing are under the separate **Token settings** disclosure.
 
 Monster links read the compendium and browser monster edits. HP, AC, abilities
 and actions populate an encounter statblock. Resource damage remains specific to
@@ -124,6 +149,10 @@ they do not roll damage, choose targets or adjudicate cover.
 Placed areas appear under **Spell areas** in the inspector. Players remove their
 own areas; the DM can remove any area. Fog hides areas whose origins are concealed
 from other players. Each scene permits 32 areas; changing the map clears them.
+Right-click inside a placed area and choose **Remove spell area**. Overlapping
+areas are listed separately by their shape/dimensions. Players get removal
+actions for their own areas, and DMs can remove any visible area. Right-click
+inside a local preview and choose **Clear spell preview** to dismiss it.
 
 Local saves live in `.tabletop-data/`, outside Git. Keep the private DM link from
 **Game → Private DM access** to recover control on another browser/device. Player

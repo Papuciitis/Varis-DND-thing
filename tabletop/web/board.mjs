@@ -1,5 +1,5 @@
 import {readings,distanceLabel} from './resources.mjs';
-import {templateGeometry,templateLabel} from './templates.mjs';
+import {templateGeometry,templateLabel,templateContains} from './templates.mjs';
 
 export class MapBoard {
   constructor(canvas,{onSelect,onMove,onFog,onError,onContext}) {
@@ -66,7 +66,9 @@ export class MapBoard {
     clearTimeout(this.longPress);this.drag=null;this.stroke=null;
     const point=this.point(e),token=this.hit(point);
     if(token){this.selected=token.id;this.onSelect(token.id);}
-    this.onContext?.({tokenId:token?.id || null,x:e.clientX,y:e.clientY,point});this.draw();
+    const templateIds=[...(this.view.scene.templates || [])].reverse().filter(area=>templateContains(area,point,this.view.scene)).map(area=>area.id);
+    const preview=!!this.templatePreview && templateContains(this.templatePreview,point,this.view.scene);
+    this.onContext?.({tokenId:token?.id || null,templateIds,preview,x:e.clientX,y:e.clientY,point});this.draw();
   }
   canMove(t) {return this.enabled && (this.view.self.role==='dm' || t.ownerId===this.view.self.id);}
   hit(p) {

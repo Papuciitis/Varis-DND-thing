@@ -1,6 +1,7 @@
 import {readings,RESOURCE_NAMES,ABILITIES} from './resources.mjs';
 import {LocalSources} from './sources.mjs';
 import {templateLabel} from './templates.mjs';
+import {QuickSheet} from './quick-sheet.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
@@ -26,8 +27,8 @@ function dialog(title,id) {
 export class TokenTools {
   constructor({getView,getSelected,getServer,command,selectToken,board,notify,onAdd}) {
     Object.assign(this,{getView,getSelected,command,selectToken,board,notify,onAdd});this.connected=false;
-    this.sources=new LocalSources({getView,getServer,notify,onPull:(id,patch)=>command({type:'token.update',id,...patch})});
-    this.mountDock();this.mountInspector();this.mountStatblock();this.mountRuler();this.mountTemplates();this.mountMenu();
+    this.sources=new LocalSources({getView,getServer,notify,onChange:()=>this.refreshCharacterChoices(),onPull:(id,patch)=>command({type:'token.update',id,...patch})});
+    this.mountDock();this.mountInspector();this.mountStatblock();this.mountSidebar();this.mountRuler();this.mountTemplates();this.mountMenu();
     // Identity remains in the inspector; resources have one larger editor below the map.
     $('token-hp').closest('.field-row').hidden=true;
     for(const id of ['token-kind','token-owner','token-hidden'])$(id).closest('label').setAttribute('data-dm','');
@@ -144,14 +145,19 @@ export class TokenTools {
     const sources=el('details','source-controls');sources.append(el('summary','','Link a character or monster'));this.sourceControls=sources;
     const sheetRow=el('div','source-row');
     this.characterSelect=selectField(sheetRow,'Character saved in this browser',[],'link-character');
-    sheetRow.append(button('Link character',()=>this.linkCharacter()));
+    this.characterSourceRow=sheetRow;
+    sheetRow.append(button('Use this character',()=>this.linkCharacter()));
+    this.characterEmpty=el('p','field-note');sheetRow.append(this.characterEmpty);
+    const openCharacter=el('a','button secondary','Create / open character sheet');
+    openCharacter.href='../character.html';openCharacter.target='_blank';openCharacter.rel='noopener';sheetRow.append(openCharacter);
     sources.append(sheetRow);
     const monsterRow=el('div','source-row');
     this.monsterSearch=field(monsterRow,'Search monster / summon statblocks',{id:'link-monster-search'});
     this.monsterSelect=selectField(monsterRow,'Matching statblock',[],'link-monster');
-    monsterRow.append(button('Link monster',()=>this.linkMonster()));sources.append(monsterRow);
+    this.monsterSourceRow=monsterRow;
+    monsterRow.append(button('Use this monster',()=>this.linkMonster()));sources.append(monsterRow);
     sources.append(el('p','field-note','Character resource edits sync with the character sheet in this browser. Monster links use a separate encounter instance; damage does not change the compendium template.'));
-    this.linkState=el('p','field-note');this.unlinkButton=button('Unlink source',()=>{this.sources.unlink(this.dialogToken);this.renderDialog(true);});
+    this.linkState=el('p','field-note');this.unlinkButton=button('Unlink source',()=>{this.sources.unlink(this.sourceTokenId);this.render();});
     sources.append(this.linkState,this.unlinkButton);body.append(sources);
     sources.addEventListener('toggle',()=>{if(sources.open)this.loadSources();});
     this.monsterSearch.oninput=()=>this.filterMonsters();
@@ -194,6 +200,30 @@ export class TokenTools {
       await this.saveStats(token.id,{hp});this.adjustDialog.close();
     };
   }
+  mountSidebar() {
+    this.sidebar=new QuickSheet({getLink:id=>this.sources.linkFor(id),onLink:kind=>this.openLinker(kind),onEdit:()=>this.openStatblock()});
+    document.querySelector('.selected-heading').after(this.sidebar.element);
+    this.sidebar.linkerHost.append(this.sourceControls);
+    this.sourceControls.open=false;
+    this.tokenSettings=el('details','token-settings');this.tokenSettings.id='token-settings';
+    this.tokenSettings.append(el('summary','','Token settings'),$('token-form'),this.resourceSection);
+    this.sidebar.element.after(this.tokenSettings);
+  }
+  openLinker(kind,id=this.getSelected()) {
+    if(!this.token(id)?.canEditStats)return;
+    this.sourceTokenId=id;this.characterSourceRow.hidden=kind!=='character';this.monsterSourceRow.hidden=kind!=='monster';
+    this.sourceControls.hidden=false;this.sourceControls.open=true;this.sidebar.reading.open=true;
+    document.body.classList.add('panels-open');
+    this.loadSources();this.sourceControls.scrollIntoView({block:'nearest'});
+  }
+  refreshCharacterChoices() {
+    if(!this.characterSelect)return;
+    const characters=this.sources.characters(),previous=this.characterSelect.value;
+    this.characterSelect.replaceChildren(...characters.map(character=>new Option(character.name || 'Unnamed character',character.id)));
+    if(characters.some(character=>character.id===previous))this.characterSelect.value=previous;
+    this.characterEmpty.textContent=characters.length?'Choose a saved character, then use it for this token.':'No characters saved here yet. Create or import one using the character-sheet page below, then return here to link it.';
+    this.sidebar?.render(this.token(),this.connected);
+  }
   mountTemplates() {
     const tool=el('button','tool');tool.type='button';tool.dataset.tool='template';tool.title='Spell area (A)';
     tool.setAttribute('aria-label','Spell area');tool.setAttribute('aria-pressed','false');
@@ -234,9 +264,9 @@ export class TokenTools {
     this.placeArea.disabled=!this.connected || !this.board.templatePreview;
   }
   async loadSources() {
-    const token=this.token(this.dialogToken);if(!token?.canEditStats)return;
-    this.characterSelect.replaceChildren(...this.sources.characters().map(character=>new Option(character.name || 'Unnamed character',character.id)));
-    try{this.monsters=await this.sources.monsters();this.filterMonsters();}
+    const token=this.token(this.sourceTokenId || this.getSelected());if(!token?.canEditStats)return;
+    const id=token.id;this.refreshCharacterChoices();
+    try{const monsters=await this.sources.monsters();if(this.sourceTokenId!==id)return;this.monsters=monsters;this.filterMonsters();}
     catch(error){this.notify(error.message,true);}
   }
   filterMonsters() {
@@ -246,12 +276,12 @@ export class TokenTools {
   }
   async linkCharacter() {
     if(!this.characterSelect.value)return this.notify('Create or import a character in the character sheet first.',true);
-    try{await this.sources.link(this.dialogToken,'character',this.characterSelect.value);this.sourceControls.open=false;this.renderDialog(true);this.notify('Character linked. Its resource values now sync in this browser.');}
+    try{await this.sources.link(this.sourceTokenId,'character',this.characterSelect.value);this.sourceControls.open=false;this.sidebar.reading.open=true;this.render();this.notify('Character linked. Its resource values now sync in this browser.');}
     catch(error){this.notify(error.message,true);}
   }
   async linkMonster() {
     if(!this.monsterSelect.value)return;
-    try{await this.sources.link(this.dialogToken,'monster',this.monsterSelect.value);this.sourceControls.open=false;this.renderDialog(true);this.notify('Monster statblock linked to this encounter token.');}
+    try{await this.sources.link(this.sourceTokenId,'monster',this.monsterSelect.value);this.sourceControls.open=false;this.sidebar.reading.open=true;this.render();this.notify('Monster statblock linked to this encounter token.');}
     catch(error){this.notify(error.message,true);}
   }
   openStatblock(id=this.getSelected()) {
@@ -262,7 +292,7 @@ export class TokenTools {
     const token=this.token(this.dialogToken);if(!token){if(this.dialog.open)this.dialog.close();return;}
     this.sheetTitle.textContent=token.name;
     this.sheetAccess.textContent=!token.canViewStats?'Private character stats. The owning player can choose to share with the DM.':token.canEditStats?'Your changes update this token and its bars.':'Shared with you for reading. The player controls edits.';
-    this.statForm.hidden=!token.canViewStats;this.sourceControls.hidden=!token.canEditStats;
+    this.statForm.hidden=!token.canViewStats;
     if(!token.canViewStats){this.statForm.reset();return;}
     if(!force && token.canEditStats && this.statForm.contains(document.activeElement))return;
     const link=this.sources.linkFor(token.id),linkedCharacter=link?.kind==='character';
@@ -295,16 +325,23 @@ export class TokenTools {
       }
     });
   }
-  showMenu({tokenId,x,y,point}) {
+  showMenu({tokenId,templateIds=[],preview=false,x,y,point}) {
     const view=this.getView();if(!view)return;
     const token=this.token(tokenId),items=[],dm=view.self.role==='dm';
     const action=(text,callback)=>{const node=button(text,()=>{this.menu.hidden=true;callback();},'menu-action');node.setAttribute('role','menuitem');items.push(node);};
+    if(preview)action('Clear spell preview',()=>{this.board.templatePreview=null;this.board.draw();this.updateTemplateControls();});
+    const areas=templateIds.map(id=>view.scene.templates.find(area=>area.id===id)).filter(Boolean);
+    for(const area of areas){
+      if(dm || area.ownerId===view.self.id)action(areas.length===1?'Remove spell area':'Remove '+area.name,()=>this.command({type:'template.delete',id:area.id}));
+    }
     if(token){
       this.selectToken(token.id);
       action(token.canViewStats?'Open statblock':'Character privacy',()=>this.openStatblock(token.id));
       if(token.canEditStats){
         action('Adjust HP',()=>{this.adjustToken=token.id;this.adjustDialog.showModal();this.adjustAmount.focus();this.adjustAmount.select();});
-        action('Configure resource bars',()=>{this.barDetails.open=true;document.body.classList.add('panels-open');this.resourceSection.scrollIntoView({block:'nearest'});});
+        action('Configure resource bars',()=>{this.tokenSettings.open=true;this.barDetails.open=true;document.body.classList.add('panels-open');this.resourceSection.scrollIntoView({block:'nearest'});});
+        action('Link character',()=>this.openLinker('character',token.id));
+        action('Link monster',()=>this.openLinker('monster',token.id));
       }
       if(dm)action(token.hidden?'Show to players':'Hide from players',()=>this.command({type:'token.update',id:token.id,hidden:!token.hidden}));
       action('Center on token',()=>this.board.center(token));
@@ -332,6 +369,14 @@ export class TokenTools {
   }
   render() {
     const view=this.getView(),token=this.token();this.dock.hidden=!token;
+    this.sidebar.render(token,this.connected);this.tokenSettings.hidden=!token;
+    if(token){
+      if(this.sourceTokenId!==token.id){this.sourceTokenId=token.id;this.sourceControls.open=false;}
+      this.sourceControls.hidden=!token.canEditStats;
+      const link=this.sources.linkFor(token.id);
+      this.linkState.textContent=link?'This token is linked to '+(link.kind==='character'?'your saved character.':'a monster statblock.'):'Linking fills this token’s stats and keeps its bars up to date.';
+      this.unlinkButton.hidden=!link;
+    }
     if(!view)return;
     this.scaleLabel.textContent='1 square = '+view.scene.distancePerSquare+' '+view.scene.distanceUnit;
     this.updateTemplateControls();

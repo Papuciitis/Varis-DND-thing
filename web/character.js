@@ -906,6 +906,9 @@
   });
   document.addEventListener("visibilitychange", () => { if (document.hidden) flushAndPersist(); });
   load();
+  const requestedCharacter = new URLSearchParams(globalThis.location?.search || '').get('character');
+  const linkedCharacter = library.find(item=>item.id===requestedCharacter);
+  if(linkedCharacter)character=linkedCharacter;
   character = Rules.reconcile(character);
   if (loader) await withSections(referenceSections(library), () => {});
   if(character.build?.enabled)healthAdjustment.pool='auto';

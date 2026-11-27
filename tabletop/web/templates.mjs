@@ -8,6 +8,14 @@ export function templateGeometry(template,scene) {
     length:worldDistance(template.size,template.unit,scene),
     width:worldDistance(template.width,template.unit,scene),halfAngle:template.coneAngle*Math.PI/360};
 }
+export function templateContains(template,point,scene) {
+  const g=templateGeometry(template,scene),dx=point.x-g.x,dy=point.y-g.y;
+  if(template.shape==='circle')return Math.hypot(dx,dy)<=g.length;
+  if(template.shape==='square')return Math.abs(dx)<=g.length/2 && Math.abs(dy)<=g.length/2;
+  const x=dx*Math.cos(g.angle)+dy*Math.sin(g.angle),y=-dx*Math.sin(g.angle)+dy*Math.cos(g.angle);
+  if(template.shape==='line')return x>=0 && x<=g.length && Math.abs(y)<=g.width/2;
+  return Math.hypot(x,y)<=g.length && Math.abs(Math.atan2(y,x))<=g.halfAngle;
+}
 export function templateLabel(template) {
   const unit=template.unit==='squares'?'sq':template.unit;
   return template.shape==='circle'?template.size+' '+unit+' radius':

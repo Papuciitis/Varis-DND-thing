@@ -45,15 +45,22 @@ export function requireDM(actor) {
   if (actor.role !== 'dm') throw new RoomError('Only the DM can change this.',403);
 }
 export const RESOURCE_KEYS = ['tempHP','arcaneHealth','armorClass','block','tempBlock','custom1','custom2'];
-export const defaultBars = () => [
-  {enabled:false,label:'Temp HP',resource:'tempHP'},
-  {enabled:false,label:'Arcane Health',resource:'arcaneHealth'}
+export const defaultBars = (kind='hero') => kind==='hero' ? [
+  {enabled:true,label:'Block',resource:'block',valueOnly:false},
+  {enabled:true,label:'Temp HP',resource:'tempHP',valueOnly:true}
+] : [
+  {enabled:true,label:'Block',resource:'block',valueOnly:false},
+  {enabled:true,label:'AC',resource:'armorClass',valueOnly:true}
 ];
+const legacyBars = bars => Array.isArray(bars) && bars.length===2 &&
+  bars.every(bar=>bar && typeof bar==='object') &&
+  !bars[0].enabled && bars[0].resource==='tempHP' && bars[0].label==='Temp HP' &&
+  !bars[1].enabled && bars[1].resource==='arcaneHealth' && bars[1].label==='Arcane Health';
 export function resourcesFrom(raw = {}) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new RoomError('Resources must be an object.');
   return Object.fromEntries(RESOURCE_KEYS.map(key => {
     const pool=raw[key] ?? {},max=pool.max === null || key==='armorClass' ? null : whole(pool.max ?? 0,0,999999,'Resource maximum');
-    return [key,{current:whole(pool.current ?? 0,0,max ?? 999999,'Resource value'),max}];
+    return [key,{current:whole(pool.current ?? (key==='armorClass'?10:0),0,max ?? 999999,'Resource value'),max}];
   }));
 }
 export function barsFrom(raw = defaultBars()) {
@@ -82,7 +89,7 @@ function statblockFrom(raw) {
 export const canEditStats = (token,actor) => token.ownerId ? token.ownerId===actor.id : actor.role==='dm';
 export const canViewStats = (token,actor) => canEditStats(token,actor) || (actor.role==='dm' && token.shareWithDM===true);
 export function clearPrivateStats(token) {
-  Object.assign(token,{hp:20,maxHp:20,resources:resourcesFrom(),bars:defaultBars(),statblock:null,shareWithDM:false});
+  Object.assign(token,{hp:20,maxHp:20,resources:resourcesFrom(),bars:defaultBars(token.kind),barsCustomized:false,statblock:null,shareWithDM:false});
 }
 export function templateFrom(raw,scene,ownerId) {
   if(!raw || !['circle','cone','line','square'].includes(raw.shape))throw new RoomError('Choose a circle, cone, line or square.');
@@ -99,6 +106,8 @@ export function tokenFrom(raw,scene) {
   if (!/^#[a-f0-9]{6}$/i.test(color)) throw new RoomError('Choose a valid token color.');
   const maxHp = whole(raw.maxHp ?? 20,1,999999,'Maximum HP');
   const kind = ['hero','monster','npc','summon'].includes(raw.kind) ? raw.kind : 'hero';
+  const barsCustomized=raw.barsCustomized===undefined ? !!raw.bars && !legacyBars(raw.bars) : flag(raw.barsCustomized);
+  const barKind=raw.statblock?.type==='character'?'hero':raw.statblock?.type==='monster'?'monster':kind;
   return {
     id: typeof raw.id === 'string' && /^[a-z0-9-]{6,64}$/i.test(raw.id) ? raw.id : uid(),
     name:label(raw.name,'New token',40), kind, color,
@@ -108,7 +117,7 @@ export function tokenFrom(raw,scene) {
     hp:whole(raw.hp ?? maxHp,0,maxHp,'HP'), maxHp,
     hidden:raw.hidden === undefined ? false : flag(raw.hidden),
     ownerId:typeof raw.ownerId === 'string' ? raw.ownerId : null,
-    resources:resourcesFrom(raw.resources),bars:barsFrom(raw.bars),statblock:statblockFrom(raw.statblock),
+    resources:resourcesFrom(raw.resources),bars:barsFrom(barsCustomized?raw.bars:defaultBars(barKind)),barsCustomized,statblock:statblockFrom(raw.statblock),
     shareWithDM:raw.shareWithDM===undefined ? false : flag(raw.shareWithDM)
   };
 }
@@ -131,7 +140,7 @@ export function project(room,actor) {
   scene.tokens = scene.tokens.filter(t => dm || (!t.hidden && (t.ownerId === actor.id || isRevealed(scene,t.x,t.y))));
   scene.tokens = scene.tokens.map(t => {
     const visible=canViewStats(t,actor),editable=canEditStats(t,actor);
-    if (!visible) Object.assign(t,{hp:null,maxHp:null,resources:{},bars:[],statblock:null,shareWithDM:false});
+    if (!visible) Object.assign(t,{hp:null,maxHp:null,resources:{},bars:[],barsCustomized:false,statblock:null,shareWithDM:false});
     return {...t,canViewStats:visible,canEditStats:editable};
   });
   const visibleIds = new Set(scene.tokens.map(t => t.id));
@@ -202,7 +211,8 @@ export function applyCommand(room,actor,command) {
     const t=tokenById(room,command.id);
     if (!canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
     const fields={};
-    for (const key of ['hp','maxHp','resources','bars','statblock']) if (key in command) fields[key]=command[key];
+    for (const key of ['hp','maxHp','resources','bars','barsCustomized','statblock']) if (key in command) fields[key]=command[key];
+    if('bars' in fields && !('barsCustomized' in fields))fields.barsCustomized=true;
     Object.assign(t,tokenFrom({...t,...fields},scene));return;
   }
   if (command.type === 'token.update') {
@@ -210,9 +220,10 @@ export function applyCommand(room,actor,command) {
     if (!dm && t.ownerId!==actor.id) throw new RoomError('You can only edit your own tokens.',403);
     const structural=['kind','size','hidden','ownerId'];
     if (!dm && structural.some(key => key in command)) throw new RoomError('Only the DM can change token ownership and visibility.',403);
-    const stats=['hp','maxHp','resources','bars','statblock'];
+    const stats=['hp','maxHp','resources','bars','barsCustomized','statblock'];
     if (stats.some(key => key in command) && !canEditStats(t,actor)) throw new RoomError('Only the token owner can edit these private stats.',403);
     for (const key of ['name','color',...(dm?structural:[]),...stats]) if (key in command) fields[key]=command[key];
+    if('bars' in fields && !('barsCustomized' in fields))fields.barsCustomized=true;
     if (fields.ownerId && !room.players.some(p=>p.id===fields.ownerId)) throw new RoomError('Select a player who has joined the game.');
     // Reassignment must never expose the previous player's private character.
     const next={...t,...fields};
@@ -301,7 +312,7 @@ export function importedScene(raw) {
   scene.fog.revealed=[...new Set(raw.fog.revealed.map(c=>whole(c,0,cellCount(scene)-1,'Map cell')))];
   scene.tokens=raw.tokens.map(t=>{
     const source=t.hp===null && t.maxHp===null
-      ? {...t,hp:20,maxHp:20,bars:undefined,resources:undefined,statblock:null}
+      ? {...t,hp:20,maxHp:20,bars:undefined,barsCustomized:false,resources:undefined,statblock:null}
       : t;
     return {...tokenFrom(source,scene),ownerId:null,shareWithDM:false};
   });

@@ -96,9 +96,11 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.locator('[data-dice="1d20"]').click();
     await dm.locator('#game-log').getByText('Daniels · 1d20',{exact:true}).waitFor();
     // Player resources are private, editable by the owner, and shared read-only.
+    assert.equal(await player.locator('#sidebar-link-character').count(),1,'Character linking must be visible in the existing sidebar.');
     assert.equal(await dm.locator('#dock-current-0').isVisible(),false);
     await player.locator('#dock-current-0').fill('11');await player.locator('#dock-current-0').blur();
     await player.locator('#tokens-list .token-hp-reading').filter({hasText:'11 / 20 HP'}).waitFor();
+    await player.locator('#token-settings > summary').click();
     await player.locator('.resource-settings summary').click();
     await player.locator('#bar-enabled-0').check();
     await player.locator('#bar-label-0').fill('Arcane Health');
@@ -120,23 +122,48 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.locator('#statblock-dialog .dialog-heading').getByRole('button',{name:'Close',exact:true}).click();
     await dm.screenshot({path:path.join(output,'tabletop-private-dm.png')});
 
-    // Link an existing character and exercise real cross-tab resource updates.
-    await player.evaluate(()=>localStorage.setItem('vara.character-sheets.v1',JSON.stringify({
-      version:1,activeId:'linked-scout',characters:[{id:'linked-scout',name:'Linked Scout',notes:'PRIVATE CHARACTER NOTE',
-        abilities:{str:12,dex:16,con:14,int:10,wis:10,cha:10},combat:{armorClass:15},
-        resources:{hp:{current:17,max:30},tempHP:{current:5,max:10},arcaneHealth:{current:9,max:18}}}]
-    })));
-    await player.locator('#token-dock').getByRole('button',{name:'Statblock',exact:true}).click();
-    await player.locator('.source-controls summary').click();
-    await player.locator('#link-character').selectOption('linked-scout');
-    await player.getByRole('button',{name:'Link character',exact:true}).click();
+    // Discover a newly created character without a map refresh or context menu.
+    await player.locator('#sidebar-link-character').click();
+    assert.equal(await player.locator('#link-character option').count(),0);
+    await player.locator('.source-controls').getByText(/No characters saved here yet/).waitFor();
+    const sheet=await playerContext.newPage();await sheet.goto('http://127.0.0.1:8787/character.html');
+    await sheet.locator('[data-path="resources.hp.current"]').waitFor();
+    const characterId=await sheet.evaluate(()=>{
+      const saved=JSON.parse(localStorage.getItem('vara.character-sheets.v1')),character=saved.characters.find(c=>c.id===saved.activeId);
+      Object.assign(character,{name:'Linked Scout',notes:'PRIVATE CHARACTER NOTE',abilities:{str:12,dex:16,con:14,int:10,wis:10,cha:10},
+        combat:{armorClass:15},features:[{id:'guardian-stance',name:'Guardian stance',notes:'Protect an ally standing beside you.'}],
+        resources:{hp:{current:17,max:30},tempHP:{current:5,max:10},arcaneHealth:{current:9,max:18}}});
+      localStorage.setItem('vara.character-sheets.v1',JSON.stringify(saved));return character.id;
+    });
+    await player.locator('#link-character option').filter({hasText:'Linked Scout'}).waitFor({state:'attached'});
+    await player.locator('#link-character').selectOption(characterId);
+    await player.getByRole('button',{name:'Use this character',exact:true}).click();
     await player.locator('#toast').filter({hasText:'Character linked'}).waitFor();
+    await player.locator('#sheet-link-status').filter({hasText:'Character linked'}).waitFor();
+    await player.locator('#sheet-rules summary').filter({hasText:'Guardian stance'}).click();
+    await player.locator('#sheet-rules').getByText('Protect an ally standing beside you.',{exact:true}).waitFor();
+    await player.locator('#quick-sheet > summary').click();
+    assert.equal(await player.locator('.quick-sheet-body').isVisible(),false);
+    await player.locator('#quick-sheet > summary').click();
+    assert(await player.locator('.quick-sheet-body').isVisible());
+    await player.screenshot({path:path.join(output,'tabletop-quick-sheet.png')});
+    await player.locator('#token-dock').getByRole('button',{name:'Statblock',exact:true}).click();
     assert.equal(await player.locator('#statblock-hp').inputValue(),'17');
     assert.equal(await player.locator('#stat-str').inputValue(),'12');
     await player.screenshot({path:path.join(output,'tabletop-statblock.png')});
     await player.locator('#statblock-dialog .dialog-heading').getByRole('button',{name:'Close',exact:true}).click();
-    const sheet=await playerContext.newPage();await sheet.goto('http://127.0.0.1:8787/character.html');
+    await sheet.reload();
     await sheet.locator('[data-path="resources.hp.current"]').waitFor();
+    // Opening the linked sheet selects its character even if another is active.
+    await sheet.evaluate(()=>{
+      const saved=JSON.parse(localStorage.getItem('vara.character-sheets.v1')),other=CharacterState.createCharacter();
+      other.name='Other adventurer';saved.characters.push(other);saved.activeId=other.id;
+      localStorage.setItem('vara.character-sheets.v1',JSON.stringify(saved));
+    });
+    const fullPromise=playerContext.waitForEvent('page');await player.locator('#open-linked-character').click();
+    const full=await fullPromise;await full.locator('[data-path="resources.hp.current"]').waitFor();
+    await full.waitForFunction(()=>document.querySelector('#character-name')?.value==='Linked Scout');
+    assert(new URL(full.url()).searchParams.get('character')===characterId);await full.close();
     await player.locator('#dock-current-0').fill('12');await player.locator('#dock-current-0').blur();
     await sheet.waitForFunction(()=>document.querySelector('[data-path="resources.hp.current"]')?.value==='12');
     await sheet.locator('[data-path="resources.hp.current"]').fill('9');
@@ -144,6 +171,10 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.waitForFunction(()=>document.querySelector('#dock-current-0').value==='9');
     const dmAccess=[...sockets].find(socket=>socket.actorId==='dm').key;
     assert(!JSON.stringify(await service.view(dmAccess)).includes('PRIVATE CHARACTER NOTE'));
+    await player.locator('#share-token-stats').check();
+    await dm.locator('#sheet-rules summary').filter({hasText:'Guardian stance'}).waitFor();
+    await player.locator('#share-token-stats').uncheck();
+    await dm.waitForFunction(()=>!document.querySelector('#sheet-rules').textContent.includes('Guardian stance'));
     await sheet.close();
 
     // Ruler unit options and spell shapes work in the actual Canvas interface.
@@ -173,11 +204,19 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     assert.equal((await service.read()).scene.templates.length,4);
     await dm.locator('.placed-areas summary').click();
     await dm.locator('.placed-area').filter({hasText:'cone'}).waitFor();
+    const removePoint=await mapPoint(player,625,725);
+    await player.mouse.click(removePoint.x,removePoint.y,{button:'right'});
+    await player.getByRole('menuitem',{name:/^Remove .*cone/}).click();
+    await dm.locator('.placed-area').filter({hasText:'cone'}).waitFor({state:'hidden'});
+    assert.equal((await service.read()).scene.templates.length,3);
     await player.locator('#spell-shape').selectOption('cone');
     const origin=await mapPoint(player,525,725),end=await mapPoint(player,725,725);
     await player.mouse.move(origin.x,origin.y);await player.mouse.down();await player.mouse.move(end.x,end.y);await player.mouse.up();
     await player.screenshot({path:path.join(output,'tabletop-spell-areas.png')});
-    await player.getByRole('button',{name:'Clear preview',exact:true}).click();
+    await player.mouse.click(removePoint.x,removePoint.y,{button:'right'});
+    await player.getByRole('menuitem',{name:'Clear spell preview',exact:true}).click();
+    assert(await player.getByRole('button',{name:'Place for table',exact:true}).isDisabled());
+    assert.equal((await service.read()).scene.templates.length,3);
     await player.getByRole('button',{name:'Select and move',exact:true}).click();
     const tokenPoint=await mapPoint(player,275,525);
     await player.mouse.click(tokenPoint.x,tokenPoint.y,{button:'right'});
@@ -186,6 +225,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.keyboard.press('Escape');
     const guardian=stored.scene.tokens.find(t=>t.hidden);
     await dm.locator(`#tokens-list [data-token-id="${guardian.id}"]`).click();
+    await dm.locator('#token-settings > summary').click();
     await dm.getByLabel('Hidden from players').uncheck();
     await dm.getByRole('button',{name:'Update token',exact:true}).click();
     assert.equal(await player.locator('#tokens-list').getByText('Watchtower guardian',{exact:true}).count(),0);
@@ -200,13 +240,14 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     const manifest=JSON.parse(await fsp.readFile(path.join(site,'data/catalog-manifest.json'),'utf8'));
     const monsterCatalog=JSON.parse(await fsp.readFile(path.join(site,manifest.sections.find(s=>s.key==='monsters').url),'utf8'));
     const sampleMonster=monsterCatalog.entries.find(entry=>/^\s*[1-9]\d*/.test(String(entry.details.hp)));
-    await dm.locator('#token-dock').getByRole('button',{name:'Statblock',exact:true}).click();
-    await dm.locator('.source-controls summary').click();
+    await dm.locator('#sidebar-link-monster').click();
     await dm.locator('#link-monster-search').fill(sampleMonster.name);
     await dm.locator('#link-monster option').first().waitFor({state:'attached'});
-    await dm.getByRole('button',{name:'Link monster',exact:true}).click();
+    await dm.getByRole('button',{name:'Use this monster',exact:true}).click();
     await dm.locator('#toast').filter({hasText:'Monster statblock linked'}).waitFor();
-    assert.equal(Number(await dm.locator('#statblock-max-hp').inputValue()),Number(String(sampleMonster.details.hp).match(/\d+/)[0]));
+    assert.equal(Number(await dm.locator('#dock-current-0').inputValue()),Number(String(sampleMonster.details.hp).match(/\d+/)[0]));
+    assert.deepEqual((await service.read()).scene.tokens.find(t=>t.id===guardian.id).bars.map(b=>b.resource),['block','armorClass']);
+    await dm.locator('#quick-edit-statblock').click();
     await dm.locator('#statblock-dialog .dialog-heading').getByRole('button',{name:'Close',exact:true}).click();
     await dm.getByRole('button',{name:'Select and move',exact:true}).click();
     await dm.locator('#start-combat').click();await dm.locator('#round-label').filter({hasText:'Round 1'}).waitFor();
@@ -265,7 +306,8 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     const result={roomsCreated:createdCount,independentBrowserContexts:2,guestJoin:true,ownedTokenMovement:true,hiddenTokenFiltering:true,fogBrush:true,sharedDice:true,
       privatePlayerStats:true,optionalBars:true,revocableReadOnlySharing:true,linkedCharacterRoundTrip:true,linkedMonsterStats:true,rightClickMenu:true,
       rulerUnits:['ft','m','squares'],sharedSpellAreas:['circle','cone','line','square'],mapUpload:true,campaignBackup:true,downloadStatus,campaignRestore:true,
-      refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:8,pageErrors:errors};
+      sidebarLinking:true,savedCharacterDiscovery:true,exactCharacterLink:true,compactSheet:true,compactSheetPrivacy:true,
+      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:9,pageErrors:errors};
     await fsp.writeFile(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
   }catch(error){
     for(const [i,page] of browser.contexts().flatMap(c=>c.pages()).entries()){

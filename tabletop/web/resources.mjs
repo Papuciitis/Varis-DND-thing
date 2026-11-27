@@ -8,7 +8,7 @@ export function readings(token) {
   return [{key:'hp',label:'HP',current:token.hp,max:token.maxHp,color:'#729c65'},
     ...(token.bars || []).filter(bar=>bar.enabled).map((bar,index)=>({
       key:bar.resource,label:bar.label,...token.resources[bar.resource],
-      max:bar.valueOnly?null:token.resources[bar.resource].max,color:index?'#8f89bf':'#5f9cba'
+      max:bar.valueOnly || !token.resources[bar.resource].max?null:token.resources[bar.resource].max,color:index?'#8f89bf':'#5f9cba'
     }))];
 }
 export function distanceLabel(scene,start,end,unit='ft') {
@@ -24,7 +24,15 @@ const leadingNumber=value=>{
   return match?count(match[1]):null;
 };
 const text=value=>typeof value==='string'?value:'';
-export function characterStats(character,derived={}) {
+function prose(value,depth=0) {
+  if(depth>5 || value==null)return '';
+  if(typeof value==='string' || typeof value==='number')return String(value);
+  if(Array.isArray(value))return value.map(item=>prose(item,depth+1)).filter(Boolean).join('\n');
+  if(typeof value==='object')return Object.entries(value).filter(([key])=>!/^(source_|original_)/.test(key))
+    .map(([key,item])=>key+': '+prose(item,depth+1)).join('\n');
+  return '';
+}
+export function characterStats(character,derived={},catalog=[]) {
   const hp=character.resources?.hp || {current:20,max:20},resources={};
   for (const key of ['tempHP','arcaneHealth','block','tempBlock']) {
     const pool=character.resources?.[key] || {current:0,max:0};
@@ -35,8 +43,12 @@ export function characterStats(character,derived={}) {
     const resource=character.customResources?.[index];
     if(resource)resources['custom'+(index+1)]={current:count(resource.current),max:count(resource.max)};
   }
+  const references=new Map(catalog.flatMap(section=>(section.entries || []).map(entry=>[JSON.stringify([section.key,entry.group || '',entry.name]),entry])));
   const rules=[...(derived.features || []),...(character.features || []),...(character.spells || [])]
-    .map(row=>[row.name,row.description || row.details || row.notes].filter(value=>typeof value==='string').join(': ')).join('\n\n').slice(0,12000);
+    .map(row=>{
+      const body=prose(row.description || row.details) || prose(references.get(row.entryId)?.details);
+      return row.name+': '+[body,text(row.notes)].filter(Boolean).join('\n').replace(/\n\s*\n/g,'\n');
+    }).join('\n\n').slice(0,12000);
   return {hp:Math.min(count(hp.current),Math.max(1,count(hp.max))),maxHp:Math.max(1,count(hp.max)),resources,
     statblock:{type:'character',sourceId:character.id || '',abilities:derived.abilities || character.abilities || {},notes:text(character.notes).slice(0,4000),rules}};
 }
@@ -45,12 +57,13 @@ export function monsterStats(entry,token=null) {
   if (!max) throw new Error('This monster has no numeric HP. Set its HP in the statblock first.');
   const resources={
     armorClass:{current:leadingNumber(details.ac) ?? 10,max:null},
-    block:{current:leadingNumber(details.block) ?? 0,max:leadingNumber(details.block) ?? 0}
+    block:{current:leadingNumber(details.block) ?? 0,max:leadingNumber(details.block) ?? 0},
+    tempBlock:{current:leadingNumber(details.temp_block ?? details.tempBlock) ?? 0,max:leadingNumber(details.temp_block ?? details.tempBlock) ?? 0}
   };
   const abilities={};
   for (const key of ABILITIES) {const value=leadingNumber(details.abilities?.[key]);if(value!==null)abilities[key]=value;}
   const rules=['traits','actions','bonus_actions','reactions','legendary_actions','lair_actions']
-    .flatMap(key=>(Array.isArray(details[key])?details[key]:[]).map(row=>row.name+': '+text(row.description))).join('\n\n').slice(0,12000);
+    .flatMap(key=>(Array.isArray(details[key])?details[key]:[]).map(row=>row.name+': '+text(row.description).replace(/\n\s*\n/g,'\n'))).join('\n\n').slice(0,12000);
   return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,resources,
     statblock:{type:'monster',sourceId:monsterId(entry),abilities,notes:text(details.description || details.desc || details.meta).slice(0,4000),rules}};
 }

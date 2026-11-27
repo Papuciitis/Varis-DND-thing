@@ -19,31 +19,35 @@ export function loadReferences() {
     const manifest=await request('data/catalog-manifest.json');
     const [metadata,...sections]=await Promise.all([request(manifest.builder),...manifest.sections.map(section=>request(section.url))]);
     for(const section of sections)globalThis.MagicItems.apply(section);
-    return {rules:globalThis.CharacterRules.create(metadata,sections),monsters:sections.find(section=>section.key==='monsters')?.entries || []};
+    return {rules:globalThis.CharacterRules.create(metadata,sections),catalog:sections,monsters:sections.find(section=>section.key==='monsters')?.entries || []};
   })().catch(error=>{references=null;throw error;});
   return references;
 }
 
 export class LocalSources {
-  constructor({getView,getServer,onPull,notify}) {
-    Object.assign(this,{getView,getServer,onPull,notify});this.tail=Promise.resolve();
+  constructor({getView,getServer,onPull,notify,onChange}) {
+    Object.assign(this,{getView,getServer,onPull,notify,onChange});this.tail=Promise.resolve();
     window.addEventListener('storage',event=>{
       if(event.key==='vara.magic-items.v1')references=null;
-      if([SHEETS_KEY,MONSTERS_KEY,'vara.magic-items.v1'].includes(event.key))this.pull();
+      if([SHEETS_KEY,MONSTERS_KEY,'vara.magic-items.v1'].includes(event.key)){this.onChange?.();this.pull();}
     });
-    window.addEventListener('focus',()=>this.pull());
+    window.addEventListener('focus',()=>{this.onChange?.();this.pull();});
   }
   key(id) {const view=this.getView();return this.getServer()+'|'+view.id+'|'+view.self.id+'|'+id;}
   linkFor(id) {return this.getView()?read(LINKS_KEY,{})[this.key(id)]:null;}
-  characters() {return read(SHEETS_KEY,{}).characters || [];}
+  characters() {const list=read(SHEETS_KEY,{}).characters;return Array.isArray(list)?list.filter(character=>character && typeof character.id==='string'):[];}
   async monsters() {
     const base=(await loadReferences()).monsters,entries=new Map(base.map(entry=>[monsterId(entry),entry]));
     for(const change of read(MONSTERS_KEY,{}).changes || [])if(change.entry)entries.set(change.key,{...change.entry,_monsterEditorKey:change.key});
     return [...entries.values()];
   }
   async link(id,kind,sourceId) {
+    const session=this.getView(),token=session?.scene.tokens.find(token=>token.id===id);
+    if(!token?.canEditStats)throw new Error('Only the token owner can link a sheet.');
+    const targetKey=this.key(id);
     await loadReferences();
-    const links=read(LINKS_KEY,{});links[this.key(id)]={kind,id:sourceId};
+    if(this.getView()?.id!==session.id || this.getView()?.self.id!==session.self.id)throw new Error('Your table changed. Link the sheet again.');
+    const links=read(LINKS_KEY,{});links[targetKey]={kind,id:sourceId};
     try{localStorage.setItem(LINKS_KEY,JSON.stringify(links));}
     catch{throw new Error('This browser cannot remember the link. Enable local storage first.');}
     await this.pull();
@@ -52,16 +56,17 @@ export class LocalSources {
     const links=read(LINKS_KEY,{});delete links[this.key(id)];
     try{localStorage.setItem(LINKS_KEY,JSON.stringify(links));}
     catch{this.notify('This browser could not remove the local link.',true);}
+    this.onChange?.();
   }
   pull() {
     const next=this.tail.then(()=>this.doPull());
-    this.tail=next.catch(error=>this.notify(error.message,true));return this.tail;
+    this.tail=next.catch(error=>this.notify(error.message,true));return next;
   }
   async doPull() {
     const initial=this.getView();if(!initial)return;
     const linked=initial.scene.tokens.filter(token=>token.canEditStats && this.linkFor(token.id));
     if(!linked.length)return;
-    const {rules}=await loadReferences();
+    const {rules,catalog}=await loadReferences();
     for(const original of linked){
       const current=this.getView();
       if(!current || current.id!==initial.id || current.self.id!==initial.self.id)return;
@@ -72,7 +77,7 @@ export class LocalSources {
         const source=this.characters().find(character=>character.id===link.id);
         if(!source){this.notify('A linked character is missing from this browser. Relink it in the token statblock.',true);continue;}
         const normalized=rules.reconcile(source);
-        patch=characterStats(normalized,rules.derive(normalized));name=source.name || token.name;
+        patch=characterStats(normalized,rules.derive(normalized),catalog);name=source.name || token.name;
       }else{
         const source=(await this.monsters()).find(entry=>monsterId(entry)===link.id);
         if(!source){this.notify('A linked monster is missing. Relink it in the token statblock.',true);continue;}
@@ -85,7 +90,10 @@ export class LocalSources {
         }
       }
       patch.resources={...token.resources,...patch.resources};
-      if(Object.entries({...patch,name}).some(([key,value])=>JSON.stringify(token[key])!==JSON.stringify(value)))await this.onPull(token.id,{...patch,name});
+      if(Object.entries({...patch,name}).some(([key,value])=>JSON.stringify(token[key])!==JSON.stringify(value))){
+        const updated=await this.onPull(token.id,{...patch,name});
+        if(!updated)throw new Error('The sheet could not update its token. Check the connection and try again.');
+      }
     }
   }
   async push(before,after) {
