@@ -37,6 +37,7 @@
   function cleanEntry(entry){const result=clone(entry);delete result._monsterEditorKey;return result;}
   function keepProvenance(entry,original){
     const result=clone(entry);if(!original)return result;
+    if(original.details?.source_naming?.original_name===result.name)result.name=original.name;
     if(!Object.hasOwn(result.details,"encounter_theme")&&original.details.encounter_theme)result.details.encounter_theme=original.details.encounter_theme;
     for(const key of Object.keys(result.details))if(provenance(key))delete result.details[key];
     for(const[key,value]of Object.entries(original.details||{}))if(provenance(key))result.details[key]=clone(value);
@@ -46,7 +47,7 @@
     if(section?.key!=="monsters")return section;
     for(const entry of section.entries){const key=id(entry);if(!originals.has(key)&&!entry._monsterEditorKey)originals.set(key,cleanEntry(entry));}
     const result=[];
-    for(const [key,original]of originals){const row=changes.get(key),value=clone(row?.entry||original);if(row?.mode==="override"){value.source=original.source;value.monster_target=clone(row.target);if(!Object.hasOwn(value.details,"encounter_theme")&&original.details.encounter_theme)value.details.encounter_theme=original.details.encounter_theme;for(const field of Object.keys(value.details))if(provenance(field))delete value.details[field];for(const [field,item]of Object.entries(original.details))if(provenance(field))value.details[field]=clone(item);}value._monsterEditorKey=key;result.push(value);}
+    for(const [key,original]of originals){const row=changes.get(key),value=clone(row?.entry||original);if(row?.mode==="override"){value.source=original.source;value.monster_target=clone(row.target);if(original.details?.source_naming?.original_name===value.name)value.name=original.name;if(!Object.hasOwn(value.details,"encounter_theme")&&original.details.encounter_theme)value.details.encounter_theme=original.details.encounter_theme;for(const field of Object.keys(value.details))if(provenance(field))delete value.details[field];for(const [field,item]of Object.entries(original.details))if(provenance(field))value.details[field]=clone(item);}value._monsterEditorKey=key;result.push(value);}
     for(const [key,row]of changes)if(row.mode==="addition"&&!originals.has(key))result.push({...clone(row.entry),_monsterEditorKey:key});
     section.entries=result;return section;
   }

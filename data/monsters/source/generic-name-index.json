@@ -1,0 +1,147 @@
+{
+  "changed_on": "2026-11-27",
+  "scope": "Generic, gender-neutral encounter titles; preserve every creature and its current combat mechanics.",
+  "source_policy": "Original personal names and gendered source titles stay in collapsed provenance and immutable source snapshots. Playable titles and creature-specific rules use generic wording.",
+  "records": [
+    {
+      "from": "Dragazhar",
+      "to": "Blade-Tailed Drake",
+      "id": "chronica-15903",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Enemies/forest/night"
+    },
+    {
+      "from": "Minotaur female barbarian - Miratrin 'Strongwalker'",
+      "to": "Minotaur Halberd Berserker",
+      "id": "chronica-15892",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #1 - The Shieldwrights"
+    },
+    {
+      "from": "Camelfolk female sorcerer - Papaya",
+      "to": "Camelfolk Pyromancer",
+      "id": "chronica-15893",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #1 - The Shieldwrights"
+    },
+    {
+      "from": "Leonin male fighter leader - Drion Goldenseeker",
+      "to": "Leonin Greataxe Captain",
+      "id": "chronica-15891",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #1 - The Shieldwrights"
+    },
+    {
+      "from": "Loxodon male cleric - Chandruuv",
+      "to": "Loxodon Warhammer Priest",
+      "id": "chronica-15890",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #1 - The Shieldwrights"
+    },
+    {
+      "from": "Raguch the Ogrillion",
+      "to": "Ogrillion Club Brute",
+      "id": "chronica-15886",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #2"
+    },
+    {
+      "from": "The Ondonti male druid/cleric",
+      "to": "Ondonti Scythe Shaman",
+      "id": "chronica-15889",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #2"
+    },
+    {
+      "from": "The Half-Orc Female sorcerer leader",
+      "to": "Half-Orc Spellbinder",
+      "id": "chronica-15887",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #2"
+    },
+    {
+      "from": "The Gray Orc male",
+      "to": "Gray Orc Raider",
+      "id": "chronica-15888",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #2"
+    },
+    {
+      "from": "Wild Man barbarian",
+      "to": "Wilderness Berserker",
+      "id": "chronica-15899",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #4"
+    },
+    {
+      "from": "Elftaur female druid",
+      "to": "Elftaur Grove Druid",
+      "id": "chronica-15901",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #4"
+    },
+    {
+      "from": "Tiefling female sorcerer leader",
+      "to": "Tiefling Battle Mage",
+      "id": "chronica-15900",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #4"
+    },
+    {
+      "from": "Leonin male (rogue/assasin)",
+      "to": "Leonin Shortsword Assassin",
+      "id": "chronica-15898",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #4"
+    },
+    {
+      "from": "Custead Armored Forces",
+      "to": "Armored Lancer",
+      "id": "chronica-15908",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Dastow city guards"
+    },
+    {
+      "from": "Gnoll Spearmen",
+      "to": "Gnoll Spear Raider",
+      "id": "chronica-15910",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Enemies/gnolls"
+    },
+    {
+      "from": "Sand shifter female",
+      "to": "Sand Shifter Scout",
+      "id": "chronica-15895",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #3"
+    },
+    {
+      "from": "Forest child female leader",
+      "to": "Forest Child Shaman",
+      "id": "chronica-15894",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #3"
+    },
+    {
+      "from": "Formicid male",
+      "to": "Formicid Spear Guard",
+      "id": "chronica-15896",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #3"
+    },
+    {
+      "from": "Ishilb male paladin",
+      "to": "Ishilb Greatsword Knight",
+      "id": "chronica-15897",
+      "source": "monsters/chronica.yaml",
+      "group": "Chronica · Mercenary group #3"
+    },
+    {
+      "from": "Aurumathar",
+      "to": "Aetherium Alloy Dragon Sovereign",
+      "id": "tarta-aurumathar",
+      "source": "monsters/tarta-wiki.yaml",
+      "group": "Tarta wiki - Mythos dragons"
+    }
+  ]
+}

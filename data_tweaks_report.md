@@ -38,3 +38,17 @@ data/draft-spells/lvl-2-occult-spells.yaml - Draconic sacrifice ritual - Removed
 - Replaced the source-group browsing control with a primary Theme / setting filter and a default theme-card overview. Counts and examples mix creatures across imports. Creature type, CR, search, expandable statblocks and Pages still combine with the selected theme; monster breadcrumbs, previous/next navigation and search-result labels now follow it.
 - Added an editable Theme / setting field with existing-name suggestions. Older browser overrides inherit their compiled theme; unassigned custom monsters use Other encounters. Theme placements are encounter suggestions, not new habitat rules or campaign canon.
 - Updated the in-compendium conversion guide's browsing instructions, the monster documentation, and assignment/filter/editor regression coverage.
+
+27:11:2026 author-confirmed rest-dice base
+
+- data/draft-reference/progression.yaml, Rest, long rest, and rest dice: added the author's explicit rule that the base maximum is one rest die per character level, plus ancestry/background/feat/feature modifiers. Preserved the existing rest durations and recovery reference. No class slot progressions were changed.
+
+
+27:11:2026 Generic, gender-neutral monster identities
+
+- Replaced 20 remaining named, gender-labelled or faction-specific encounter titles through targeted overrides in data/monsters/custom.yaml. All 215 creatures remain distinct, including Gray Orc Raider alongside Gray Orc and Ogrillion Club Brute alongside Ogrillion.
+- Examples: Miratrin becomes Minotaur Halberd Berserker; Papaya becomes Camelfolk Pyromancer; Drion becomes Leonin Greataxe Captain; Chandruuv becomes Loxodon Warhammer Priest; Aurumathar becomes Aetherium Alloy Dragon Sovereign. Male/female labels are removed from public encounter titles. The full correspondence is in data/monsters/source/generic-name-index.json and docs/generic-monster-names.md.
+- Neutralized creature-specific personal references and pronouns in playable text, including the priest's Battle Blessing label. Kept ability scores, defenses, weapons, action mechanics, spell references, CRs and all 15 encounter themes. Stable IDs, original source targets, importer output and source provenance are retained.
+- Changes are isolated to monster overrides, naming documentation/index and a dedicated monster regression test. Character-sheet source, its tests, progression rules and build.py are left to the ongoing Fighter-leveling work. The shared report is append-only.
+
+- Monster editor naming migration also updates exact legacy NPC titles in saved browser overrides and YAML exports, preserving edited statistics and deliberately chosen custom names. Added dedicated compiled-catalog/editor regression tests. No character-sheet files are modified by this pass.

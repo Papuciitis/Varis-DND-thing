@@ -28,6 +28,8 @@ Original text, source locations, repairs and donor references remain available i
 
 The 55 recovered profiles use historical chat-search extracts rather than complete transcripts. With the user's explicit authorization, missing scores and mechanics are completed from current rules and compatible monster templates. Personal names become reusable enemy archetypes; the original aliases, recovered numbers, reconstructed values and provisional CRs remain in source notes. The [recovered inventory](recovered-monsters.md) maps every new profile to its source. No new player spells or class grants accompany these entries.
 
+The remaining named campaign creatures also use generic encounter titles, without male/female labels. Their 20 naming-only overrides live in `data/monsters/custom.yaml`; original source identities and all combat mechanics remain intact. The [name mapping](generic-monster-names.md) lists every change. Future entries should use species, role, distinctive anatomy or equipment as the public title, keeping personal aliases in source notes.
+
 ## Add and edit on the webpage
 
 The manual opens with 15 **Theme / setting** cards covering all 215 monsters, such as Seas & coasts, Frozen wastes, Orc & gnoll warbands and Eldritch nightmares. Choose a theme to open its expandable monster list, or use **Browse all** for the complete manual. Themes mix source collections by encounter use; source details remain in notes. The [theme inventory](monster-organization.md) lists the categories and explains editing their assignments.
