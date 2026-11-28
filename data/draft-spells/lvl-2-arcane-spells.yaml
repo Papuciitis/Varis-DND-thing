@@ -22,6 +22,8 @@ entries:
   higher_levels: 'If cast using a 3rd level spell slot, the familiar gains the following effect: +2 intelligence
     instead, the caster can now communicate telepathically, and the caster can recall the familiar to
     a point next to them as a bonus action.'
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Arcane boost
   group: Arcane spells
   lvl: '2'
@@ -105,6 +107,8 @@ entries:
     * Rip energy - Cause creatures in a cone to make a wisdom save. Creatures that fail the save take 2d6 cold damage and 2d6 necrotic damage, and have the ongoing durations of their spells or spell effects reduced by 1 unit (rounds, turns, minutes, etc) for 1 minute.
   higher_levels: Per level above 2nd, increase damage dealt by 1d6, durations by 1 instance (rounds or
     minutes,) and range increased by 10 ft.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Pyromancy
   group: Arcane spells
   lvl: '2'
@@ -159,6 +163,8 @@ entries:
     Per level above 2nd, increase hardness allowed by 1 category.
 
     At 7th character level, learn an extra effect that you can invoke.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Ethermancy
   group: Arcane spells
   lvl: '2'

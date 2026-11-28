@@ -6,6 +6,8 @@ import unittest
 
 import yaml
 
+from catalog_expectations import original_spell_entries
+
 from compiler import compile_data, RulesLoader
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,7 +38,7 @@ class GenericMonsterNameTests(unittest.TestCase):
         self.assertEqual(len(self.records), 69)
         self.assertEqual(len(self.monsters), 302)
         self.assertEqual(len(self.catalog['monsters']['entries']), 302)
-        self.assertEqual(len(self.catalog['spells']['entries']), 439)
+        self.assertEqual(len(original_spell_entries(self.catalog['spells']['entries'])), 439)
         self.assertEqual(len({entry['details']['encounter_theme'] for entry in self.monsters.values()}), 15)
         self.assertFalse(any(re.search(r'\b(?:male|female)\b', name, re.I) for name in self.monsters))
         for record in self.records:

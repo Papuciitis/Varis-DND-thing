@@ -36,6 +36,8 @@ entries:
   effect: As a bonus action, chant, granting all allies within 30 feet a +1 bonus to AC until the start
     of your next turn. Multiple chant bonuses cannot stack.
   upgrades: At 7th level, also provide allies with damage reduction 1.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Cleanse
   group: Oath cantrips
   lvl: '0'

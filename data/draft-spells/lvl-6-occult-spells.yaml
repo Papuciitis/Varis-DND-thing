@@ -86,6 +86,8 @@ entries:
     * Fiendish fangs - Gain an unarmed proficient bite attack that scales with constitution and gains a +3 bonus. It deals for 3d12 necrotic damage and heals for 2d10 for each upgrade of fiendish fangs. If it kills a medium or larger creature, you can consume one of its feats, granting it for yourself. The feat is lost when the spell ends, and you cannot have more than one.
 
     The mutation lasts 10 minutes, at the end of which you must roll a 1d10, resetting the duration on a 6 or below. Once the effect ends, take 1d3 points of fatigue damage for each 10 minutes spent transformed.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: 'Power word: Nightmare'
   group: Occult spells
   lvl: '6'

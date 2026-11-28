@@ -42,6 +42,8 @@ entries:
     * You can enchant two daggers, allowing two commands instead of just one, and allowing the caster to use the daggers as steps to traverse walls when foregoing any commands.
     * The caster can apply poison to all enchanted daggers as a bonus action.
     * Enchanted daggers use the casters intelligence modifier.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Corrode
   group: Occult cantrips
   lvl: '0'

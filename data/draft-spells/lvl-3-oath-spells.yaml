@@ -109,6 +109,8 @@ entries:
     * The Horned One - Choose up to 2 spells that you can cast directly or from a scroll and that restrict how you cast them (such as not allowing to cast during the day, or requiring only a piercing weapon instead of a bludgeoning weapon) and choose said limitation. For the duration, you may ignore such limitations, allowing you to push them by one iteration (subject to the GM).
   draft_note: The casting line specifies bonus action, but the effect specifies full round action. The
     action cost needs an author ruling.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Ritual of healing
   group: Oath spells
   lvl: '3'
@@ -201,3 +203,5 @@ entries:
     If placed on a valid object, the rune provides a +1 bonus to AC and all saves to all creatures that are friendly or aligned with the caster, including the caster, within a range of 100 ft of the rune.
 
     The rune can be dismissed as an action.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.

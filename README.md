@@ -104,7 +104,7 @@ The workbook review adds 20 creature reference drafts and links 11 existing spel
 
 See [the coverage comparison](COVERAGE.md) for counts and source reconciliation, [rules review decisions](docs/rules-review.md) for unresolved mechanics and balance topics, and [the workbook source review](docs/workbook-source-review.md) for import provenance and variant differences. The original sources are [varisvconsulting/open-dnd at 6a4053a](https://github.com/varisvconsulting/open-dnd/tree/6a4053a7c6bbff82cce60334cab715f8b092682f/data) and the [D&D 5e+ draft](https://sites.google.com/view/dnd5plus/home).
 
-The separate **Geomancy spell review** includes all 156 original source entries, V.'s 140 comments, and 30 proposed Varis rewrites. Browse rewritten drafts first, or filter all entries by review status, proposed class of magic, source level and text. Each draft keeps its original spell, reviewer comments, balance notes and author questions available for comparison. These proposals await V.'s approval and remain outside the current spell lists and character sheet. See [Geomancy review and editing](docs/geomancy-spell-review.md).
+The **Pending spell reviews** section now contains only 49 unresolved entries, including nine proposed rewrites. V.'s 24 approved spells have joined the ordinary class spell lists and character spell picker; 81 rejected entries and two resolved duplicates have left the review queue. Pending drafts retain their original spell, reviewer comments, latest `final-answer`, design notes and author questions. The complete earlier material is preserved in an archive outside the active catalog. See [spell review and editing](docs/geomancy-spell-review.md).
 
 ## Edit and rebuild
 

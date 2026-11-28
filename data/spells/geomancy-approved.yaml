@@ -1,0 +1,524 @@
+section: spells
+entries:
+- name: Votive Gem
+  group: Oath cantrips
+  lvl: '0'
+  types: oath
+  casting: 1 action
+  components: Verbal, somatic, material (a gemstone, which is not consumed)
+  range: Touch
+  duration: 1 hour
+  effect: 'Bless a gemstone you touch. It sheds bright light in a 20-foot radius and dim light for a further
+    20 feet, in a colour you choose. Covering the gemstone with an opaque object covers its light.
+
+
+    A creature holding the blessed gemstone can use an action to touch it to a surface and trace a luminous
+    sign no larger than a handspan: a simple arrow, warning symbol, or up to five written words. The sign glows
+    visibly in darkness but does not illuminate its surroundings. Up to three signs made by this casting can
+    exist at once; making another erases the oldest. They last until the spell ends and confer no automatic
+    understanding, protection, check bonus or other magical effect.
+
+    A gemstone with this enchantment can function as an spellcasting focus akin to a crystal ball while held,
+    and does not require attunement.
+
+    Only one gem can be enchanted in this manner by you at a time. Casting the cantrip again ends your previous
+    casting and its signs. You can also end your casting as a bonus action while touching its gemstone.'
+  upgrades: At 5th and 9th character level, increase both the bright-light radius and the additional dim-light
+    distance by 10 feet, and increase the number of simultaneous signs by one.
+- name: Compass
+  group: Mystic spells
+  lvl: '1'
+  types: mystic, concentration
+  casting: 1 minute
+  components: Verbal, somatic, material (a small iron needle, which is not consumed)
+  range: Self; destination within 100 miles
+  duration: Concentration, up to 10 minutes
+  effect: 'While touching the ground, name one stationary place on your current plane that you have personally
+    visited or directly observed well enough to distinguish it from other places. A name, rumour, or imagined
+    description alone is insufficient. Spend a spell slot and attune the needle to that one destination.
+
+
+    If the destination lies within 100 miles, the needle points along the direct horizontal bearing from you
+    to it. It updates as you travel for the duration, but gives no distance, elevation, safe route, information
+    about obstacles, or information about what is at the destination. It does not point to a person, creature,
+    portable object, or a place defined by the presence of one.
+
+
+    If the destination is invalid, outside the spell''s sensing range, on another plane, or protected from
+    this divination, the needle gives no bearing. These failures are indistinguishable. The destination cannot
+    be changed during the casting; choosing another place requires another casting and another slot. The spell
+    ends if the destination moves or you cease touching the ground.'
+  higher_levels: With a spell slot of 3rd level or higher, the sensing range is 1,000 miles. With a spell slot
+    of 5th level or higher, it is 5,000 miles. The casting time, duration and one-destination limit remain
+    unchanged.
+- name: Lithoresonance
+  group: Mystic spells
+  lvl: '1'
+  types: mystic, ritual
+  casting: 10 minutes (ritual)
+  components: Verbal, somatic, material (a natural stone or crystal suitable for the chosen mode, which is
+    not consumed)
+  range: Touch; sound ranges vary by mode
+  duration: 1 hour, or until discharged
+  effect: 'Spend a spell slot and attune one stone or crystal by touching it throughout the ritual. Choose
+    one mode permitted by the slot used. Only one object can carry your Lithoresonance at a time; completing
+    another casting ends your previous one. An object whose mode requires it to remain in place loses its enchantment
+    if moved.
+
+
+    * Whisper pebble. Place a pebble on a solid surface. The first Small or larger creature to move across
+    the same connected surface within 10 feet of it causes the pebble to ring for one round, audible within
+    60 feet, then become inert. Creatures that touched the pebble during the ritual do not trigger it. It detects
+    movement through the surface, not thoughts, identities, flight, or creatures standing still.
+
+    * Noise stone. Record one sound or spoken message of up to twenty-five words during the ritual. A creature
+    touching the stone can use an action to tap it thrice, makeing it sound out the recorded sound. It comes
+    out as crackling, deep, and with an earthy tembre (Subject to GM.)
+
+    * Thunder rock. Prepare one pebble or piece of stone ammunition. The first time it strikes a creature or
+    solid surface after being thrown or launched, it gives off a crack audible within 300 feet and becomes
+    inert. Creatures within 5 feet of the impact must make a Constitution save against your spell DC, becoming
+    deafened until the start of your next turn on a failure. Resolve any weapon attack and its damage normally;
+    this mode grants no extra impact damage.
+
+
+    All sounds are audible warnings or signals, not mental messages. Sound-blocking effects prevent a sound
+    from crossing their boundary. The spell cannot force a creature to notice or interpret a sound when it
+    could not normally hear it.'
+  higher_levels: 'Higher slots retain all lower-level choices and add the following modes:
+
+
+    * 2nd level: Stone gong. Enchant a stationary boulder at least 3 feet across. Set up to three distinct
+    tones during the ritual. A creature touching it can use an action to sound one tone, audible in the open
+    air within 1 mile. It transmits no words or private information.
+
+    * 3rd level: Crystal resonance. Enchant a stationary natural crystal formation at least 2 feet across.
+    Structures the crystal is part of or attached to gain a +1 bonus to saves and resistance to damage.
+
+    * 4th level: Mountain saga. Enchant a stationary natural stone outcrop at least 10 feet across. While touching
+    it, you can use an action to make it sound a signal or repeat up to twenty-five words you speak aloud.
+    The sound can be heard in the open air within 5 miles. A 5th-level slot increases this distance to 20 miles;
+    a 6th-level slot increases it to 100 miles. Ordinary enclosed spaces and magical sound barriers can still
+    prevent a creature from hearing the broadcast.'
+- name: Wind Slash
+  group: Mystic cantrips
+  lvl: '0'
+  types: mystic
+  casting: 1 action
+  components: Verbal, somatic, material (a slashing weapon, staff or wand held in one hand)
+  range: 60 feet
+  duration: Instantaneous
+  effect: 'Sweep your held slashing weapon or focus through the air and make one ranged spell attack against
+    a creature or object you can see within range. On a hit, the cutting gust deals 1d8 + your casting bonus
+    slashing damage. Resolve blocking as for a normal ranged spell attack.
+
+
+    This is a spell attack, not a weapon attack. It does not add the held weapon''s damage, weapon attack bonus,
+    or weapon maneuvers. The gust does not remain after the attack and cannot be used as a persistent cutting
+    tool.'
+  upgrades: 'At 2nd, 6th and 10th character level, choose one upgrade:
+
+
+    * Increase the damage by 1d8. This upgrade can be chosen twice.
+
+    * Increase the range by 30 feet. This upgrade can be chosen twice.
+
+    * The target is pushed back 5 feet if the attack hits and is not blocked.'
+- name: Rebuke thy Name
+  group: Oath spells
+  lvl: '1'
+  types: oath
+  casting: 1 action
+  components: Verbal
+  range: 30 feet
+  duration: Until the start of your next turn; add 1d3 rounds if the target rolls 5 or lower
+  effect: 'Speak an oath of arrest in a ringing voice, addressing one creature within range by its actual name
+    or by the name of its kind. The addressed creature does not need to be in your line of sight and may be
+    behind you. It must be able to hear you. It makes a Wisdom save against your spell DC; if you address it
+    by its actual name, increase the DC by 2. On a failure, it is stunned until the start of your next turn.
+    If the target rolls 5 or lower on its saving throw, add 1d3 rounds to the stun''s duration. On a successful
+    save, it is unaffected. A creature that cannot hear you is unaffected.
+
+
+    The spell deals no damage. It has no effect on a creature already stunned by Rebuke thy Name, so repeated
+    castings cannot extend that creature''s current stun.'
+  higher_levels: Each spell-slot level above 1st increases the range by 5 feet. Each spell-slot level above
+    2nd allows you to target one additional creature. When addressing multiple creatures, you must address
+    them by the name of their kind (such as elves, bandits, witches, gnolls or King Hadvard's sons); creatures
+    that are not of that kind are ignored. The +2 DC bonus for an actual name does not apply when targeting
+    multiple creatures.
+- name: Gemstone Keenness
+  group: Oath spells
+  lvl: '1'
+  types: oath, concentration
+  casting: 1 action
+  components: Verbal, somatic, material (a gemstone worth at least 5 gold, which is consumed)
+  range: Touch
+  duration: Concentration, up to 1 minute
+  effect: 'Crush the gemstone against one weapon you are wielding that deals slashing or piercing damage. For
+    the duration, attacks made with that weapon gain a +1 bonus to their attack rolls and damage rolls.
+
+
+    This is a separate sharpening blessing and adds to the weapon''s existing magical attack and damage bonus.
+    Multiple castings of Gemstone Keenness on the same weapon do not stack. The spell ends if you cease wielding
+    the weapon or cast Gemstone Keenness again.'
+  higher_levels: A 2nd-level slot increases the maximum duration to 10 minutes. A slot of 3rd level or higher
+    increases it to 1 hour and removes the concentration requirement. Higher slots do not increase the +1 bonus.
+- name: Geomantic Awareness
+  group: Mystic spells
+  lvl: '1'
+  types: mystic, ritual
+  casting: 10 minutes (ritual)
+  components: Verbal, somatic, material (a fragment of a map, which is not consumed)
+  range: Self; 1-mile sensing radius
+  duration: Instantaneous
+  effect: 'Spend a spell slot while touching natural ground. Sense the broad natural geography in a 1-mile
+    radius around your position: dominant terrain, major rivers and lakes, coastlines, mountain ranges, and
+    the relative directions of these features. The GM describes a rough mental overview appropriate to the
+    scale of the area.
+
+
+    This is an overview of the land, not a detailed survey. It does not reveal creatures, ownership, buildings,
+    traps, hidden rooms, valuable mineral deposits, individual underground passages, or a safe route. Larger
+    sensing areas give a broader overview rather than proportionally finer detail. The information concerns
+    the land as it is when the ritual finishes and does not update afterwards.'
+  higher_levels: The sensing radius is 10 miles with a 2nd-level slot, 100 miles with a 3rd-level slot, 500
+    miles with a 4th-level slot, 1,000 miles with a 5th-level slot, and 5,000 miles with a 6th-level slot.
+- name: Granite Gaze
+  group: Mystic spells
+  lvl: '1'
+  types: mystic, concentration
+  casting: 1 action
+  components: Verbal, somatic
+  range: Touch
+  duration: Concentration, up to 10 minutes
+  effect: 'Touch a nonliving natural or worked stone surface no more than 2 feet thick. While you maintain
+    contact with that surface and concentration, you can see through that thickness of stone as though it were
+    transparent. Only your vision is affected; other creatures do not gain the benefit.
+
+
+    This grants no light source, darkvision, greater viewing distance, hearing through the stone, or vision
+    through additional materials behind it. The stone remains physically solid and continues to block movement,
+    attacks and other spell effects normally. The spell ends when you cease touching the chosen surface.'
+  higher_levels: Each spell-slot level above 1st adds 10 minutes to the maximum duration. The maximum stone
+    thickness remains 2 feet.
+- name: Barkskin
+  group: Mystic spells
+  lvl: '1'
+  types: mystic
+  casting: 1 action
+  components: Verbal, somatic, material (an oak leaf, which is not consumed)
+  range: Touch
+  duration: 1 hour
+  effect: 'Touch a willing creature and bless its skin with the resilience of bark. It gains a +1 bonus to
+    AC for the duration. The blessing provides no benefit while the creature wears heavy armor; removing the
+    heavy armor restores the benefit if the duration has not expired.
+
+
+    This spell grants no additional Block or temporary health. Multiple castings of Barkskin on the same creature
+    do not stack.'
+  higher_levels: Each spell-slot level above 1st lets you bless one additional willing creature that you touch
+    as part of the same casting.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
+- name: Bestow Comfort
+  group: Oath spells
+  lvl: '1'
+  types: oath
+  casting: 1 bonus action
+  components: Verbal, somatic
+  range: 20 feet
+  duration: 10 minutes
+  effect: Grant 1d3 + casting bonus temporary health to allies within 20 feet. The number of allies affected
+    cannot exceed your casting bonus + 1 (minimum 2). These temporary health points last for 10 minutes.
+  higher_levels: When you cast this spell using a spell slot 2nd level or higher, the temporary hit points
+    double for each slot level above 1st.
+- name: Thornmantle
+  group: Occult spells
+  lvl: '1'
+  types: occult, concentration
+  casting: 1 action
+  components: Verbal, somatic, material (petals and thorns worth 15 gold, not consumed)
+  range: Self
+  duration: Concentration, up to 1 minute
+  effect: 'Wrap yourself in a mantle of spectral thorns. For the duration, gain a +2 bonus to AC.
+
+    Whenever a creature within 5 feet deals damage to you with a melee attack, the mantle deals 1d6 piercing
+    damage to that creature. This retaliation requires no action and is resolved after the attack''s damage.
+
+
+    Casting this spell again ends your previous Thornmantle.'
+  higher_levels: 'When cast with a 3rd-level or higher slot, retaliation damage becomes 2d6. With a 5th-level
+    or higher slot, it becomes 3d6. The AC bonus remains +2.
+
+    At 2nd spell level, duration becomes 10 minutes. At 4th spell level, the spell no longer requires concentration.'
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
+- name: Crystal Blight
+  group: Occult spells
+  lvl: '2'
+  types: occult
+  casting: 1 action
+  components: Verbal, somatic
+  range: 60 feet
+  duration: Up to 1 minute
+  effect: 'Cause brittle crystals to spread over a creature you can see within range. The creature makes a
+    Constitution save against your spell DC. On a failure, it takes 2d8 + casting bonus piercing damage and
+    becomes Hobbled for up to 1 minute. On a success, it takes half damage and is not Hobbled.
+
+
+    At the end of each of its turns, an affected creature repeats the Constitution save, ending the Hobbled
+    effect on a success. Ending or removing Hobbled also causes the crystals to crumble. They have no value
+    and cannot be harvested.
+
+
+    This spell does not petrify a creature or permanently injure its limbs.'
+  higher_levels: Each slot level above 2nd adds 1d8 initial damage. Duration and the Hobbled condition do not
+    increase.
+- name: Earthen Bonds
+  group: Oath spells
+  lvl: '1'
+  types: oath, concentration
+  casting: 1 action
+  components: Verbal, somatic, material (a fistful of dirt, not consumed)
+  range: 60 feet
+  duration: Concentration, up to 1 minute
+  effect: 'Choose a 10-foot square of earth or stone you can see within range. Earth rises around the feet
+    of each creature touching that surface in the square. Each such creature makes a Strength save against
+    your spell DC. On a failure, it is Snared for the duration.
+
+
+    A Snared creature can spend an action to make a Strength check against your spell DC, freeing itself on
+    a success. Teleporting or being moved out of the chosen square by another effect also frees it. Creatures
+    that enter the square after the casting are not bound.
+
+
+    When the spell ends, the bindings fall apart and all creatures bound by this casting are freed.'
+  higher_levels: 'Each slot level above 1st increases the square''s side length by 5 feet. The save DC and
+    duration do not change.
+
+    At 3rd slot level or higher, this spell no longer requires concentration.'
+- name: Landmemory
+  group: Mystic spells
+  lvl: '2'
+  types: mystic, ritual
+  casting: 10 minutes (ritual; spends a spell slot)
+  components: Verbal, somatic, material (a naturally occurring piece of the chosen feature, not consumed)
+  range: Touch
+  duration: Instantaneous
+  effect: 'Complete the ritual and spend a spell slot of 2nd level or higher. Touch a natural geographical
+    feature, or a naturally fallen fragment of it, and contemplate its history. Choose one connected feature
+    no more than 1 mile across, such as a stretch of river, a grove, a cliff or part of a mountain.
+
+
+    Receive up to three broad impressions of significant natural changes that affected that feature within
+    the past century. Examples include a river changing course, a major fire, a landslide or a forest dying
+    back. The GM describes impressions and their approximate order, rather than exact dates.
+
+
+    The spell does not reveal the identities, conversations or individual actions of people who visited the
+    feature, expose hidden creatures or treasure, or answer arbitrary questions about nearby events. Recasting
+    it on the same feature within a day repeats the same impressions.'
+  higher_levels: If cast using a 3rd level spell slot, the duration one can look back is increased to 300 years.
+    If cast using a 4th level spell slot, the duration one can look back is increased to 500 years. If cast
+    using a 5th level spell slot, the duration one can look back is increased to 1000 years. If cast using
+    a 6th level spell slot, the duration one can look back is increased by 10000 years.
+- name: Binding Smite
+  group: Oath spells
+  lvl: '2'
+  types: oath
+  casting: 1 bonus action
+  components: Verbal, somatic
+  range: Self; next melee weapon attack
+  duration: Until the end of your next turn; binding up to 1 minute
+  effect: 'Enchant a melee weapon you wield. The next unblocked hit you land with that weapon before the end
+    of your next turn deals an extra 1d8 radiant damage. The struck creature also makes a Strength save against
+    your spell DC. On a failure, oath-forged bands bind it and it becomes Snared for up to 1 minute.
+
+
+    A bound creature can spend an action to make a Strength check against your spell DC, ending the binding
+    on a success. Teleporting also ends its binding. This spell requires no concentration, but you can maintain
+    only one binding from it at a time: casting Binding Smite again releases a creature bound by your previous
+    casting and replaces any unused charge.
+
+
+    If the charged weapon leaves your hand before the hit, the unused charge ends.'
+  higher_levels: Each slot level above 2nd adds 1d8 extra damage, and the duration increases by 1 minute.
+- name: Stoneshell
+  group: Oath spells
+  lvl: '2'
+  types: oath
+  casting: 1 action
+  components: Verbal, somatic, material (at least 50 pounds of loose nonmagical stone within reach)
+  range: Self; touch the stone
+  duration: Up to 1 minute, while its temporary health remains
+  effect: 'Touch loose stone and bind it around your body as a protective shell. Gain 3d6 + casting bonus temporary
+    health (min 3d8 + 1.) While any temporary health from this casting remains, gain a +2 bonus to AC and block
+    checks.
+
+
+    If its temporary health is replenished by another spell(you gain a larger amount than you currently have)
+    it is treated as healing and restoring the stoneshell.
+
+
+    When the spell ends, the material falls harmlessly at your body as ordinary loose stone bits. It is moved
+    by the spell, not created.'
+  higher_levels: Each slot level above 2nd adds 1d8 temporary health. The AC and block-check bonuses remain
+    +2.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
+- name: Earthwalk
+  group: Mystic spells
+  lvl: '3'
+  types: mystic, concentration
+  casting: 1 action
+  components: Verbal, somatic
+  range: Self
+  duration: Concentration, up to 1 minute
+  effect: 'Move through nonmagical, unworked earth and stone at your normal walking speed without disturbing
+    the material. Worked masonry, metal, magical stone and other materials remain barriers. Your worn and carried
+    equipment travels with you, but you cannot take another creature through solid terrain with this spell.
+
+
+    While touching connected earth or stone, sense the location of creatures moving in contact with that material
+    within 30 feet. This sense does not let you see through solids, read, detect airborne creatures or hear
+    conversations. The spell does not supply air while you are submerged in terrain.
+
+
+    You can end a turn inside permitted terrain. If the spell ends while you occupy solid material, you and
+    your equipment are forced along the shortest route through permitted material to the nearest unoccupied
+    space that can hold you. Apply fall damage as though you had fallen twice the distance you were forced
+    to travel. If equally near spaces exist, return toward the space where you entered the terrain.'
+  higher_levels: Each slot level above 3rd extends the maximum duration by 1 minute. It does not permit passage
+    through additional materials or increase the sensing range.
+- name: Siege Stone
+  group: Oath spells
+  lvl: '3'
+  types: oath
+  casting: 1 action
+  components: Verbal, somatic, material (one loose nonmagical boulder between 100 and 1,000 pounds, within
+    reach)
+  range: Touch the boulder; launch up to 120 feet
+  duration: Instantaneous
+  effect: 'Touch a loose boulder and launch it toward a point you can see within 120 feet. It follows a direct
+    path and strikes the first substantial obstruction in that path; it cannot travel through a solid barrier
+    to reach your chosen point.
+
+
+    At impact, the stone shatters. Each creature within 10 feet of the impact makes a Dexterity save against
+    your spell DC, taking 5d6 + casting bonus bludgeoning damage on a failure or half on a success. A creature
+    may instead attempt a block check against your spell DC, taking half damage on a successful block. It chooses
+    one defense and cannot attempt both.
+
+
+    The impact deals double damage to unattended structures in the area. The stone remains as ordinary debris;
+    the spell creates no additional stone.'
+  higher_levels: Each slot level above 3rd adds 1d6 impact damage. The impact radius and maximum boulder weight
+    remain unchanged.
+- name: One with the land
+  group: Mystic spells
+  lvl: '3'
+  types: mystic, concentration, ritual
+  casting: 10 minutes (ritual; spends a spell slot)
+  components: Verbal, somatic, material (a handful of local earth or stone, not consumed)
+  range: Self; sensing radius 500 feet
+  duration: Concentration, up to 1 hour
+  effect: 'Complete the ritual and spend a spell slot of 3rd level or higher. Attune your senses to movement
+    carried through earth and stone. While you remain in contact with a connected mass of either material,
+    you can sense the location of creatures moving in contact with that same mass within 500 feet.
+
+    For the duration of the casting, you must willingly become blinded and close your other senses off from
+    the world.
+
+    Airborne creatures, creatures separated from the connected material, and completely motionless creatures
+    produce no location for this sense. It does not provide sight, reveal a creature''s identity, translate
+    conversations, read writing or engravings, but it can give you an accurate idea of maps and caverns within
+    it, as well as solid blobs and pockets of other material.
+
+    Losing contact with the ground suspends the sense until contact is restored; it does not by itself end
+    concentration. Ending concentration ends the sense.'
+  higher_levels: The sensing radius is 750 feet with a 4th-level slot, 1000 feet with a 5th-level slot, and
+    5000 feet with a 6th-level slot. The maximum duration remains 1 hour.
+- name: Grasping Green
+  group: Mystic spells
+  lvl: '2'
+  types: mystic, concentration
+  casting: 1 action
+  components: Verbal, somatic
+  range: 90 feet
+  duration: Concentration, up to 10 minutes
+  effect: 'Choose a point you can see within range where living roots, vines, grass or similar vegetation already
+    grows. Animate that vegetation within a 20-foot radius. Planted ground in the chosen area becomes difficult
+    terrain for the duration; the spell does not create vegetation on bare surfaces.
+
+
+    Each grounded creature standing in that vegetation when you cast makes a Strength save against your spell
+    DC. On a failure, it becomes Snared. An affected creature can spend an action to make a Strength check
+    against your spell DC, freeing itself on a success. A creature within 5 feet of it can instead spend an
+    action with a slashing weapon or suitable cutting tool to cut it free.
+
+
+    Creatures entering later encounter the difficult terrain but are not automatically Snared. Teleporting
+    or being moved out of the animated vegetation frees a bound creature. When concentration ends, the plants
+    return to their ordinary state and all bindings end.'
+  higher_levels: Each slot level above 2nd increases the area's radius by 5 feet. The maximum duration remains
+    10 minutes.
+- name: Crystal Shard
+  group: Mystic spells
+  lvl: '3'
+  types: mystic, concentration
+  casting: 1 action
+  components: Verbal, somatic
+  range: 60 feet
+  duration: Concentration, up to 1 minute
+  effect: You conjure a large crystal shard at a point you can see within range. The shard has an AC of 15
+    and 10 hit points. When the shard is hit by a spell of 1st level or higher that targets only a single creature,
+    the spell instead targets all creatures in a 15-foot cone originating from the shard in the direction of
+    the spell's origin. The spell's effect is halved for these new targets.
+  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the length of the cone
+    increases by 5 feet, AC increases by 1 and hit points increases by 5 for each slot level above 4th.
+- name: Quake Hammer
+  group: Oath spells
+  lvl: '2'
+  types: oath
+  casting: 1 action
+  components: Verbal, Somatic, Material (a melee weapon held by the caster)
+  range: Self (10-foot radius)
+  duration: Instantaneous
+  effect: 'Strike the ground with the held weapon. Each other creature touching the same continuous ground
+    within 10 feet makes a Dexterity save against your spell DC. On a failure, it takes 3d6 + casting bonus
+    bludgeoning damage and is knocked prone. On a success, it takes half damage and is not knocked prone. Creatures
+    not touching the ground are unaffected. This casting replaces a weapon attack; it does not also deal the
+    weapon''s damage.
+
+    If done on loose ground, sand, or dust, it also fills the area with dust for 1 round which obscures vision
+    past 5ft. Deals double damage to the structure underneath the caster.'
+  higher_levels: Each spell slot level above 2nd adds 1d6 damage. At 3rd level or higher, you may increase
+    the radius to 15 feet; at 5th level or higher, you may increase it to 20 feet.
+- name: Seal of protection
+  group: Oath spells
+  lvl: '5'
+  types: oath, concentration
+  casting: 1 action
+  components: Verbal, Somatic, Material (a piece of unworked stone touched to the target)
+  range: Touch
+  duration: Concentration, up to 1 hour
+  effect: Touch one willing creature and attune its flesh to the steadiness of stone. It is granted 3 temporary
+    block, and for the duration, it gains a fixed +3 bonus to AC. If another spell grants it a numerical bonus
+    to AC, it uses the largest of those spell bonuses rather than adding them together. Its ordinary armor,
+    shield and class AC rules still apply.
+- name: Stoneskin
+  group: Mystic spells
+  lvl: '3'
+  types: mystic, concentration
+  casting: 1 action
+  components: Verbal, Somatic, Material (A gestone or higher metal dust worth 100gp, which is consumed.)
+  range: Touch
+  duration: Concentration, up to 1 minute
+  effect: Touch one willing creature, covering it in a heavy stone shell. For the duration, it is immune to
+    bludgeoning, piercing and slashing damage from nonmagical attacks. Magical attacks and other damage types
+    affect it normally. The shell halves its movement speed, and it cannot fly or jump while the shell remains.
+    The shell grants no bonus to AC, but does grant a +3 bonus to block checks. The creature may shed it as
+    an action, ending the spell on itself.
+  higher_levels: When cast using a 6th-level spell slot, you may affect two willing creatures touched as part
+    of the same casting. Concentration maintains both shells, and either creature may end only its own shell.

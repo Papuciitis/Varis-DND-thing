@@ -2,7 +2,7 @@ section: geomancy-review
 entries:
 - name: Sandgrip
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 action
   range: 500 feet
@@ -20,7 +20,7 @@ entries:
   source_ref: draft2.pdf / PDF page 74
 - name: Seismic Echo
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 action
   range: 150 feet
@@ -36,81 +36,9 @@ entries:
     on your turn to cause a secondary tremor, forcing creatures in the area to make the saving throw again.'
   higher_levels: When cast at 9th level, the radius, damage, and echo range increase by 50%.
   source_ref: draft2.pdf / PDF page 74
-- name: Stoneform Titan
-  group: 8th level
-  level: 8
-  school: geomorphy
-  casting: 1 action
-  range: Self
-  duration: Concentration, up to 1 minute
-  components: V, S, M (a shard of ancient stone or a relic from a titan's remains)
-  classes: Druid, Sorcerer, Wizard
-  description: 'You call upon the ancient and primordial power of the Tartas Titans, transforming yourself into
-    a massive stone titan. For the duration, you gain the following benefits:
-
-
-    Size and Strength. Your size triples, and your weight multiplies by twenty. Your Strength score increases by
-    6, and your Constitution increases by 4. Your attacks with melee weapons deal an additional 2d6 bludgeoning
-    damage.
-
-
-    Titan''s Resilience. You gain resistance to non-magical bludgeoning, piercing, and slashing damage, and immunity
-    to poison and petrification.
-
-
-    Earth Mastery. You can move through earth and stone as if it were air. You can also cause the ground to shake
-    within a 30-foot radius, forcing creatures to make a Strength saving throw or be knocked prone.
-
-
-    Wind Control. As a bonus action, you can summon a gust of wind, pushing creatures within a 15-foot cone away
-    from you. A successful Strength saving throw negates this effect.
-
-
-    Primordial Roar. As an action, you can unleash a mighty roar that terrifies enemies. Creatures within a 60-foot
-    radius must make a Wisdom saving throw or become frightened for 1 minute.
-
-
-    Titan''s Grasp. Your reach increases by 10 feet, and you gain advantage on grapple checks.
-
-
-    Legendary Presence. Your appearance becomes awe-inspiring. You have advantage on Charisma checks and saving
-    throws.'
-  higher_levels: When you cast this spell using a spell slot of 9th level, the duration increases to 10 minutes,
-    and you gain temporary hit points equal to your spellcasting ability modifier times your level.
-  source_ref: draft2.pdf / PDF page 74
-- name: Summitsmash
-  group: 8th level
-  level: 8
-  school: geomophy
-  casting: 1 action
-  range: 500 feet
-  duration: Instantaneous
-  components: V, S
-  classes: Druid, Sorcerer, Wizard
-  description: You cause the ground in a 40-foot-radius, 20-foot-high cylinder centered on a point you can see within
-    range to explode. Each creature in the area must make a Dexterity saving throw. A creature takes 12d6 bludgeoning
-    damage on a failed save, or half as much damage on a successful one. In addition, nonmagical structures in the
-    area take the same damage and are destroyed.
-  higher_levels: When you cast this spell using a spell slot of 9th level, the radius of the cylinder increases
-    by 10 feet, and the damage increases by 2d6.
-  source_ref: draft2.pdf / PDF page 75
-  source_notes: The printed spell type is "geomophy" rather than "geomorphy".
-- name: Treetimber
-  group: 8th level
-  level: 8
-  school: geomorphy
-  casting: 1 bonus action
-  range: 60 feet
-  duration: Instantaneous
-  components: V, S
-  classes: Cleric, Druid, Ranger, Warlock
-  description: You summon a massive tree that smashes down on a creature you can see within range, dealing 5d10
-    bludgeoning damage.
-  higher_levels: When you cast this spell using a spell slot of 9th level, the damage increases by 1d10.
-  source_ref: draft2.pdf / PDF page 75
 - name: Geomantic Ascendancy
   group: 9th level
-  level: 9
+  level: '9'
   school: geomorphy
   casting: 10 minutes (Ritual)
   range: Self
@@ -121,103 +49,9 @@ entries:
     damage, can move through earth and stone, sense creatures in contact with the ground within 60 feet. You can
     also communicate with earth elementals and know Terran.
   source_ref: draft2.pdf / PDF page 76
-- name: Geoshape
-  group: 9th level
-  level: 9
-  school: geomorphy
-  casting: 1 hour (Ritual)
-  range: Touch
-  duration: Permanent
-  components: V, S, M (a diamond worth at least 5,000 gp, which the spell consumes)
-  classes: Druid, Sorcerer, Wizard
-  description: 'You touch a piece of earth or stone and infuse it with a surge of geomantic energy. The targeted
-    area, which can be no larger than a 100-foot cube, is permanently altered in one of the following ways at your
-    discretion:
-
-
-    Diamond Hardness. The area becomes as hard as diamond, increasing its AC to 25.
-
-
-    Malleable Earth. The area becomes incredibly soft, almost like clay, and can be easily shaped or molded by hand.
-
-
-    Vibrating Resonance. The area vibrates with a constant, low-frequency hum that can be felt but not heard. Any
-    creature in contact with the area can''t be surprised and has advantage on initiative rolls.
-
-
-    Levitating Terrain. The area levitates 10 feet off the ground and can hold up to 10,000 pounds of weight. More
-    weight causes the area to slowly descend to the ground until the excess weight is removed.
-
-
-    Radiant Light. The area emits a bright light in a 120-foot radius and dim light for an additional 120 feet.
-    The light is sunlight.
-
-
-    Absorbing Darkness. The area absorbs all light, creating a 60-foot radius of magical darkness. Darkvision can''t
-    penetrate this darkness, and no natural light can illuminate it. Only the area within 5 feet of a creature with
-    this spell''s effect can be illuminated by magical light.
-
-
-    Magic Magnet. Any spell of 5th level or lower cast within 100 feet of the area is automatically absorbed by
-    it, causing the spell to fail and have no effect. If a spell of 6th level or higher is cast within 100 feet
-    of the area, the caster must make a spellcasting ability check against your spell save DC. On a failed check,
-    the spell is absorbed. On a successful check, the spell is cast as normal. The area can absorb a number of spell
-    levels equal to twice your spellcasting level before the spell ends. Absorbing a spell doesn''t remove it from
-    the caster''s mind; it merely wastes the spell slot expended.
-
-
-    Source of Life. Nonmagical plants in a 100-foot radius of the area become enriched and grow at four times their
-    normal rate. Any food crops in the area yield four times the normal amount of food when harvested.
-
-
-    Titan''s Fortress. The area forms into a fortress of your design, complete with walls, towers, and rooms. The
-    fortress is permanent and can''t be dispelled, but it can be destroyed by normal means.'
-  source_ref: draft2.pdf / PDF page 76
-- name: Nature's Avatar
-  group: 9th level
-  level: 9
-  school: geomorphy
-  casting: 1 action, 1 bonus action, and movement
-  range: Self
-  duration: Concentration, up to 1 hour
-  components: V, S, M (a handful of soil and a diamond worth at least 5,000 gp, which the spell consumes)
-  classes: Cleric, Druid, Ranger, Warlock
-  description: 'You become an avatar of nature, embodying the raw power of the earth. Your size becomes Huge, your
-    Strength and Constitution scores become 30, and you gain immunity to all non-magical damage. You also gain resistance
-    to all magical damage except psychic. Your AC becomes 22 due to a thick layer of bark-like skin.
-
-
-    You can make two slam attacks as an action, each dealing 4d10 bludgeoning damage plus your Strength modifier.
-    As a bonus action, you can cause thorny vines to erupt from the ground in a 20-foot radius centered on a point
-    you can see within 120 feet. Each creature in that area must make a Strength saving throw or be restrained by
-    the vines until the spell ends. A creature restrained by the vines, or one that can touch the creature, can
-    use its action to make a Strength check against your spell save DC. On a success, the target is freed.
-
-
-    As a movement action, you can merge with the earth and move up to your speed to a location you can see, then
-    emerge from the earth at that point.
-
-
-    While transformed, you have the ability to cast the following spells without expending spell slots: Entangle,
-    Barkskin, Stoneskin, Wall of Thorns, and Earthquake. You can cast one of these spells as a bonus action on each
-    of your turns.'
-  source_ref: draft2.pdf / PDF page 76
-- name: Nature's Blessing
-  group: 9th level
-  level: 9
-  school: geomorphy
-  casting: 1 bonus action
-  range: 60 feet
-  duration: Instantaneous
-  components: V, S, M (a diamond worth at least 5,000 gp, which the spell consumes)
-  classes: Cleric, Druid, Ranger, Warlock
-  description: You channel nature's ultimate power to heal and invigorate up to twelve creatures you can see within
-    range. Each target is fully healed, cured of all diseases and conditions, and gains benefits of Greater Restoration
-    and Heroes' Feast. They also gain resistance to all damage, +10 feet speed, and +2 to AC for one hour.
-  source_ref: draft2.pdf / PDF page 77
 - name: Petroforce Ascendancy
   group: 9th level
-  level: 9
+  level: '9'
   school: geomorphy
   casting: 1 bonus action
   range: Self
@@ -227,28 +61,9 @@ entries:
   description: You gain a bonus to your Strength score equal to twice your spellcasting ability modifier for the
     duration.
   source_ref: draft2.pdf / PDF page 77
-- name: Promethium Portal
-  group: 9th level
-  level: 9
-  school: geomorphy
-  casting: 1 action
-  range: 60 feet
-  duration: 10 minutes
-  components: V, S, M (a promethium-infused lodestone worth at least 5,000 gp, which the spell consumes)
-  classes: Cleric, Druid, Ranger, Warlock
-  description: 'You touch a large piece of stone within range and create a magical portal within it. Stepping through
-    the portal transports you to another large piece of stone that you are familiar with, regardless of the distance
-    separating the two. The destination stone must be on the same plane of existence as you, and it must be large
-    enough to contain the portal (at least 5 feet in diameter).
-
-
-    The portal is two-dimensional and circular, with a diameter of up to 20 feet. You can orient the portal in any
-    direction you choose. The portal remains open for the duration, and you can pass through it freely. Other creatures
-    can also pass through the portal, but only if you give them permission.'
-  source_ref: draft2.pdf / PDF page 77
 - name: Sandsoverign
   group: 9th level
-  level: 9
+  level: '9'
   school: geomorphy
   casting: 1 action
   range: Self
@@ -275,7 +90,7 @@ entries:
   - monster: Colossal Sand Golem
 - name: Worldshaper's Command
   group: 10th level
-  level: 10
+  level: '10'
   school: geomorphy
   casting: 1 minute
   range: 1 mile
@@ -287,7 +102,7 @@ entries:
   source_ref: draft2.pdf / PDF page 79
 - name: Genesis
   group: 11th level
-  level: 11
+  level: '11'
   school: geomorphy
   casting: 24 hours
   range: 10 feet

@@ -19,6 +19,8 @@ entries:
     * You gain a +1 bonus to AC and block checks.
     * You start combat with 1 temporary block, or gain 1 temporary block if casting this during combat.
     * You can spend a bonus action to touch a surface and cover it in web, or link two places together with a touch. This allows you to create a 5 ft square surface of web, or a 10 ft rope of silk. You can do so to also weave simple clothing, but doing so is subject to the GM.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Bestow affliction
   group: Occult spells
   lvl: '3'
@@ -198,6 +200,8 @@ entries:
     * Ritual, less than pseudo-dragon: The scales also grant resistance to fire damage.
     * Ritual, pseudo-dragon: The scales grant resistance to fire damage and a damage type of the dragons color.
     * Ritual, true dragon: The scales grant damage resistance to the dragons color, physical damage, and fire damage. If it was a pure fire dragon, the scales grant immunity to fire damage.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: 'Dragon aspect: Wings'
   group: Occult spells
   lvl: '3'

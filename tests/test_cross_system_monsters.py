@@ -3,6 +3,8 @@ import json
 from pathlib import Path
 import unittest
 
+from catalog_expectations import original_spell_entries
+
 from compiler import compile_data
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,7 +24,7 @@ class CrossSystemMonsterTests(unittest.TestCase):
     def test_complete_inventory_preserves_old_collections_and_all_current_spells(self):
         self.assertEqual(len(self.records), 87)
         self.assertEqual(len(self.all), 302)
-        self.assertEqual(len(self.catalog['spells']['entries']), 439)
+        self.assertEqual(len(original_spell_entries(self.catalog['spells']['entries'])), 439)
         self.assertEqual(sum(e['source'] not in {r['file'] for r in self.records} for e in self.all.values()), 215)
         self.assertEqual(len({e['details']['encounter_theme'] for e in self.all.values()}), 15)
         for record in self.records:

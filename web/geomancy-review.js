@@ -18,9 +18,7 @@
   const isReview = entry => Object.hasOwn(entry.details || {}, "review_status");
   const levelText = value => String(value) === "0" ? "Cantrip" : "Level " + value;
   function selectedStatus(entries, params) {
-    if (params.review === "all" || statuses.some(([key]) => key === params.review)) return params.review;
-    if (params.group || params.level || params.filter || params.proposed) return "all";
-    return entries.some(entry => conversion(entry)) ? "draft" : "all";
+    return entries.some(entry => status(entry) === params.review) ? params.review : "all";
   }
   function matches(entry, params) {
     return (params.review === "all" || !params.review || status(entry) === params.review)
@@ -58,6 +56,14 @@
     else if (status(entry) === "unreviewed") decision.append(el("p", "geomancy-copy", "No author review has been recorded for this spell yet."));
     if (status(entry) === "source-missing" && data.draft_note) appendCopy(decision, data.draft_note, el);
     wrap.append(decision);
+
+    if (data.review_author_response) {
+      const response = el("aside", "geomancy-author-response");
+      response.setAttribute("aria-label", "V.'s latest follow-up");
+      response.append(el("h3", "geomancy-rule-heading", "V.'s latest follow-up"));
+      appendCopy(response, data.review_author_response, el);
+      wrap.append(response);
+    }
 
     const draft = conversion(entry);
     if (draft) {

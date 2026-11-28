@@ -12,6 +12,13 @@ entries:
     might steal health or power, or gain a defense that also increases the danger.
   Mystic: Cosmic magic from the first age, now fading from the world. Mystic spells create opportunities
     to lessen or confront danger.
+  spell_AC_bonuses: Whenever two or more active spells grant numerical bonuses to a creature's AC, use only the
+    largest applicable spell bonus rather than adding them together. All other effects of those spells still apply.
+    Ordinary armor, shields, class features, ability-score changes and base-AC formulas retain their own rules,
+    as do the printed AC values in summoned or created creature statblocks and bonuses inherent to magic items.
+    A temporary spell enchantment that adds an AC bonus to an existing creature, or to a wearer through an item,
+    remains a spell bonus. Only a spell that explicitly states otherwise can stack its numerical AC bonus with another
+    spell.
 - name: Casting from scrolls
   group: Magic rules
   description: A scroll contains a spell. Casting it requires an Arcana check and rest dice. The scroll

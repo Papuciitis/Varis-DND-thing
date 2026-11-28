@@ -1,22 +1,8 @@
 section: geomancy-review
 entries:
-- name: Bastion of Bedrock
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 minute (Ritual)
-  range: 30 feet
-  components: V, S, M (a piece of stone, worth at least 100 gp)
-  duration: 8 hours
-  classes: Artificer, Ranger, Wizard
-  description: You create a small fortress of stone that can provide cover and protection. The fortress can be up
-    to 20 feet on each side and has a number of hit points equal to your level plus your spell modifier times ten.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the fortress gains an additional
-    10 hit points for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 55
 - name: Boulder Roll
   group: 4th level
-  level: 4
+  level: '4'
   school: geomorphy
   casting: 1 action
   range: 60 feet
@@ -29,25 +15,9 @@ entries:
   higher_levels: When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d10
     for each slot level above 4th.
   source_ref: draft2.pdf / PDF page 55
-- name: Crystal Shard
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: 60 feet
-  components: V, S
-  duration: Concentration, up to 1 minute
-  classes: Sorcerer, Wizard
-  description: You conjure a large crystal shard at a point you can see within range. The shard has an AC of 15
-    and 10 hit points. When the shard is hit by a spell of 1st level or higher that targets only a single creature,
-    the spell instead targets all creatures in a 15-foot cone originating from the shard in the direction of the
-    spell's origin. The spell's effect is halved for these new targets.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the length of the cone increases
-    by 5 feet, AC increases by 1 and hit points increases by 5 for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 55
 - name: Earthbound Echo
   group: 4th level
-  level: 4
+  level: '4'
   school: geomorphy
   casting: 1 reaction, which you take when you are hit by an attack
   range: 30 feet
@@ -59,162 +29,9 @@ entries:
   higher_levels: When you cast this spell using a spell slot of 5th level or higher, the speed is reduced by another
     half for each slot level above 4th.
   source_ref: draft2.pdf / PDF page 55
-- name: Floral Flare
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: 80 feet
-  components: V, S, M (a petal from radiant flower, worth at least 50 gp)
-  duration: Concentration, up to 1 minute
-  description: You cause flowers to bloom in a 30-foot radius. These flowers emit a radiant light that provides
-    bright light in the area and deals 2d8 radiant damage to creatures at the start of each of your turns, to undead
-    creatures it deals double radiant damage.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8
-    for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 55
-  source_notes: No class list is printed for this spell.
-- name: Granitgag
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 reaction, which you take when you hear sound
-  range: 60 feet
-  components: V, S
-  duration: 1 minute
-  classes: Warlock, Wizard
-  description: You silence a creature you can see within range. The creature must make a Constitution saving throw.
-    On a failed save, the creature is silenced for the duration.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the duration increases by 1
-    minute for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 55
-- name: Gemstone Guardian
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: 30 feet
-  components: V, S, M (a gemstone worth at least 50 gp, which the spell consumes)
-  duration: Concentration, up to 1 minute
-  classes: Cleric, Druid, Paladin, Sorcerer, Wizard
-  description: 'You summon a shimmering shield of crystal that provides resistance to all damage types for the duration.
-
-
-    If the creature leaves, the range, the shield dissapears.'
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the range of the spell increases
-    by 10 feet for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 56
-- name: Geomantic Beacon
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: Self (60-foot line)
-  components: V, S, M (a small crystal)
-  duration: 8 hours
-  classes: Cleric, Druid, Wizard
-  description: You touch a crystal and imbue it with geomantic energy. For the duration, you know the exact location
-    of the crystal and can sense the presence of any creature within 30 feet of it. You can have as much shards
-    active, as your spell modifier.
-  higher_levels: 'When you cast this spell using a spell slot of 5th level, the duration is 1 day.
-
-
-    When you cast this spell using a 6th-level spell slot, the duration is 10 days.
-
-
-    When you cast this spell using a 7th-level spell slot, the duration is 30 days.
-
-
-    When you cast this spell using an 8th-level spell slot, the duration is 6 months.
-
-
-    When you cast this spell using a 9th-level spell slot, the duration is a year and a day.'
-  source_ref: draft2.pdf / PDF page 56
-- name: Geomorph's Insight
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 10 minutes (Ritual)
-  range: Self
-  components: V, S, M (a small piece of map)
-  duration: 1 hour
-  classes: Cleric, Druid, Ranger, Wizard
-  description: You gain the ability to predict natural disasters such as earthquakes, floods, and volcanic eruptions
-    within a specific geographical area.
-  higher_levels: 'When you cast this spell using a spell slot of 5th level, the duration is 1 day.
-
-
-    When you cast this spell using a 6th-level spell slot, the duration is 10 days.
-
-
-    When you cast this spell using a 7th-level spell slot, the duration is 30 days.
-
-
-    When you cast this spell using an 8th-level spell slot, the duration is 6 months.
-
-
-    When you cast this spell using a 9th-level spell slot, the duration is a year and a day.'
-  source_ref: draft2.pdf / PDF page 56
-- name: Nature's Grasp
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 bonus action
-  range: 60 feet
-  components: V, S
-  duration: Concentration, up to 1 minute
-  classes: Cleric, Druid, Ranger, Warlock
-  description: You summon a tree spirit that grapples a creature you can see within range. The creature must succeed
-    on a Strength saving throw or be restrained.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, you can grapple one additional
-    creature for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 56
-- name: Quake Hammer
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: Self (15-foot radius)
-  components: V, S, M (a weapon)
-  duration: Instantaneous
-  classes: Paladin
-  description: You slam your weapon into the ground, causing a localized earthquake. Each creature other than you
-    in a 15-foot radius must make a Dexterity saving throw. On a failed save, a creature takes 2d8 bludgeoning damage
-    and is knocked prone. On a successful save, the creature takes half as much damage and isn't knocked prone.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8
-    for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 56
-- name: Rampart of the Rugged
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 bonus action
-  range: Touch
-  components: V, S
-  duration: Concentration, up to 1 hour
-  classes: Druid, Paladin
-  description: You touch a willing creature and imbue it with the durability of the earth. For the duration, the
-    target has resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, you can target one additional
-    creature for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 57
-- name: Rock Barrier
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 reaction, which you take when you are hit by an attack
-  range: Self
-  components: V, S
-  duration: Until the start of your next turn
-  classes: Druid, Ranger, Sorcerer, Wizard
-  description: When you are hit by an attack, you can use your reaction to create a barrier of rocks, reducing the
-    damage by an amount equal to your spellcasting ability modifier.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the damage is reduced by extra
-    5 hit points for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 57
 - name: Rockplica
   group: 4th level
-  level: 4
+  level: '4'
   school: geomorphy
   casting: 1 action
   range: Self
@@ -230,67 +47,9 @@ entries:
   summon_label: Related monster option (converted)
   summons:
   - monster: Rockplica duplicate
-- name: Rockslide
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: 120 feet
-  components: V, S
-  duration: Instantaneous
-  classes: Druid, Sorcerer, Wizard
-  description: You cause a cascade of rocks to fall from a point you can see within range. Each creature in a 10-foot-radius,
-    40-foot-high cylinder centered on that point must make a Dexterity saving throw. A creature takes 6d10 bludgeoning
-    damage on a failed save, or half as much damage on a successful one.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the damage is increased by
-    1d10 for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 57
-- name: Rocky Resilience
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: Touch
-  components: V, S
-  duration: Concentration, up to 1 hour
-  classes: Druid, Ranger, Wizard
-  description: You touch a creature and give it a bonus to its AC equal to your spellcasting ability modifier for
-    the duration.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, you can target one additional
-    creature for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 57
-- name: Sand's Mirage
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: 60 feet
-  components: V, S
-  duration: Concentration, up to 10 minutes
-  classes: Bard, Druid, Sorcerer, Wizard
-  description: You create an illusion of a desert landscape in a 20-foot radius. Each creature in the area must
-    make a Wisdom saving throw or believe the illusion to be real. A creature that fails its saving throw behaves
-    as if it is lost in a desert.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, the radius increases by 10
-    feet for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 57
-- name: Stone's Immunity
-  group: 4th level
-  level: 4
-  school: geomorphy
-  casting: 1 action
-  range: Touch
-  components: V, S, M (fine stone dust 100 GP worth)
-  duration: Concentration, up to 1 minute
-  classes: Cleric, Druid
-  description: You touch a willing creature and imbue them with the immunity of stone, giving them immunity to bludgeoning,
-    piercing, and slashing damage from nonmagical attacks for the duration.
-  higher_levels: When you cast this spell using a spell slot of 5th level or higher, you can target one additional
-    creature for each slot level above 4th.
-  source_ref: draft2.pdf / PDF page 58
 - name: Temblor
   group: 4th level
-  level: 4
+  level: '4'
   school: geomorphy
   casting: 1 action
   range: 60 feet
@@ -302,26 +61,9 @@ entries:
   higher_levels: When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d6
     for each slot level above 4th.
   source_ref: draft2.pdf / PDF page 58
-- name: Alpine Authority
-  group: 5th level
-  level: 5
-  school: geomorphy
-  casting: 1 action
-  range: 30 feet
-  components: V, S, M (a miniature mountain carved from stone)
-  duration: 1 minute
-  classes: Bard, Paladin
-  description: You channel the awe-inspiring majesty of a mountain, compelling creatures of your choice that you
-    can see within range to make a Wisdom saving throw. On a failed save, a creature is charmed by you for the duration.
-    While charmed in this way, the creature idolizes you; it speaks glowingly of you to anyone who talks to it and
-    hinders anyone who opposes you, although it avoids violence unless it was already inclined to fight on your
-    behalf. This spell has no effect on creatures that can't be charmed.
-  higher_levels: When you cast this spell using a spell slot of 6th level or higher, the duration increases by 10
-    minutes for each slot level above 5th.
-  source_ref: draft2.pdf / PDF page 59
 - name: Bloomguard
   group: 5th level
-  level: 5
+  level: '5'
   school: geomorphy
   casting: 1 action
   range: Touch
@@ -346,7 +88,7 @@ entries:
   - monster: Resilient Plant
 - name: Boulder's Dominion
   group: 5th level
-  level: 5
+  level: '5'
   school: geomorphy
   casting: 1 action
   range: 150 feet
@@ -361,7 +103,7 @@ entries:
   source_ref: draft2.pdf / PDF page 60
 - name: Dunedash
   group: 5th level
-  level: 5
+  level: '5'
   school: geomorphy
   casting: 1 bonus action
   range: Self
@@ -376,7 +118,7 @@ entries:
   source_ref: draft2.pdf / PDF page 60
 - name: Earth's Awakening
   group: 5th level
-  level: 5
+  level: '5'
   school: geomorphy
   casting: 1 action
   range: 150 feet

@@ -28,6 +28,8 @@ entries:
     As an action, enchant a cloak, causing it to emanate light in a 30 ft radius, and granting a +1 bonus to AC to the wielder. The wielder of the cloak bestows disadvantage on melee attacks of opportunity made against the wielder.
 
     Upcast: When cast using a 3rd level spell slot, if the caster is the wearer of the cloak, they can leap up to 60 feet by spending a rest die as an action.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Cloak of mist
   group: Oath spells
   lvl: '2'

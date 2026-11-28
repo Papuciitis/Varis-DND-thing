@@ -3,6 +3,8 @@ from pathlib import Path
 from catalog_expectations import ORIGINAL_MONSTER_SOURCES
 import unittest
 
+from catalog_expectations import original_spell_entries
+
 from compiler import compile_data
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,7 +62,7 @@ class HomebreweryAddonTests(unittest.TestCase):
 
     def test_no_new_geomorphy_spells_or_player_feature_modules_are_published(self):
         spells = self.catalog['spells']['entries']
-        self.assertEqual(len(spells), 439)
+        self.assertEqual(len(original_spell_entries(spells)), 439)
         self.assertFalse(any(e['group'] in ['Geomorphy spells', 'Geomancy spells'] for e in spells))
         self.assertFalse(any(e['source'] == 'draft-spells/tarta-homebrewery-summons.yaml' for e in spells))
         self.assertFalse(any(e['source'] == 'draft-reference/tarta-summoning-features.yaml' for e in self.catalog['rules']['entries']))

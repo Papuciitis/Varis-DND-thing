@@ -15,6 +15,8 @@ entries:
     If the target is a creature, it has their movement speed increased by 10 ft, a +1 bonus to AC and block checks, and an extra attack.
 
     If the target is an object, it has its reload property reduced by 2, an extra attack, double the range if it has range, and a +1 bonus to hit and damage for the duration.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Animate item
   group: Arcane spells
   lvl: '4'
@@ -62,6 +64,8 @@ entries:
     * You can spend a rest die to detect magic in a 15 ft cone, highlighting schools of magic used. This cone can be moved and lasts up to 1 minute.
     * You gain a +2 bonus to strength while wielding it.
   higher_levels: Per slot level used above 4th, grant an extra upgrade.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Arcfire
   group: Arcane spells
   lvl: '4'

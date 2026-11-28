@@ -615,6 +615,9 @@ td p + p { margin-top: .4rem !important; }
 .geomancy-status-source-missing { background: #f1e8e4; border-color: #d9c5ba; color: #77564b; }
 .geomancy-decision { margin: .3rem 0 1rem; }
 .geomancy-decision > .geomancy-copy { color: var(--muted); font-size: .92rem; margin: .45rem 0; }
+.geomancy-author-response { margin: 0 0 1rem; padding: .65rem 1rem; border-left: 3px solid var(--green); background: #e8eddf; }
+.geomancy-author-response .geomancy-rule-heading { margin: 0 0 .35rem; color: var(--green); }
+.geomancy-author-response .geomancy-copy { margin: .4rem 0; font-size: .94rem; }
 .geomancy-conversion { background: #fffdf6; border: 1px solid #d9cfb8; border-top: 3px solid var(--gold); border-radius: 4px; padding: clamp(.9rem, 2.2vw, 1.4rem); margin: 0 0 1rem; }
 .geomancy-eyebrow { margin: 0 0 .35rem; color: #7a602f; font: 650 .75rem/1.4 var(--sans); letter-spacing: .035em; text-transform: uppercase; }
 .geomancy-conversion-name { font: 650 clamp(1.4rem, 2.5vw, 1.85rem)/1.2 var(--serif); color: var(--green); margin: .1rem 0 .35rem; }

@@ -18,6 +18,8 @@ entries:
     * 9 lives - Gain a +2 bonus to a death save. Can be cast while dying and unconscious ( special )
 
     When casting this spell, roll a 1d6 chance dice. The spell slot is not expended on a 3 or higher.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Aspect of the hawk
   group: Mystic spells
   lvl: '2'
@@ -276,6 +278,8 @@ entries:
     * Necromancy - Gain 1d4 arcane health per spell level. Grant +1 level to the next necromancy spell cast for the duration.
     * Conjuration - Gain 1 free blink per two levels of the spell, allowing you to spend a bonus action to blink 50 ft as a bonus action. Gain 2 shadow walk per spell level, allowing you to move between two points within 60 feet as a move action. The movement still provokes AOOs.
     * Transmutation - Gain one ability of choice: Scent, darkvision, extra reaction, +1d4 bonus to unarmed, light blade, and fist weapon attacks.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Void touch
   group: Mystic spells
   lvl: '2'

@@ -7,7 +7,7 @@ The starting point was the 400-entry reader at commit `2dc5d2f`. The comparison 
 | Section | Before | Now | What the comparison found |
 | --- | ---: | ---: | --- |
 | Classes | 2 | 92 | Twelve base classes, 77 named archetypes, a class overview and two sets of extra options. Two archetypes have no published features. |
-| Spells | 13 | 439 | 435 spells and hexes, plus four magic reference entries. The additions comprise 391 spells and 31 hexes. |
+| Spells | 13 | 463 | 459 spells and hexes, plus four magic reference entries. The additions comprise 415 spells and 31 hexes, including 24 author-approved review spells. |
 | Backgrounds | 0 | 116 | Background proficiencies and features, through Zealot. |
 | Monster manual | 0 | 20 | Workbook creature reference drafts with source ranges and status notes. Current spell rules and embedded creature statistics retain priority. |
 | Items | 133 | 271 | The Git weapons plus equipment, materials, consumables, magic items, 22 armor entries and eight shields. |

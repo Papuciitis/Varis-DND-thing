@@ -1,4 +1,4 @@
-"""Attach author annotations and proposed conversions without granting spells."""
+"""Attach pending author annotations and drafts; approved spells live in normal data."""
 
 from copy import deepcopy
 
@@ -66,7 +66,7 @@ def apply_geomancy_review(snapshots, decisions, sections):
         spells = {(entry["group"], entry["name"]) for entry in sections["spells"]["entries"]}
         for record in records:
             if not isinstance(record, dict) or record.keys() - {
-                "name", "status", "decision", "conversion", "related_spells", "questions"
+                "name", "status", "decision", "conversion", "related_spells", "questions", "author_response", "final-answer"
             }:
                 raise ValueError("invalid decision fields")
             name, status = record.get("name"), record.get("status")
@@ -103,17 +103,37 @@ def apply_geomancy_review(snapshots, decisions, sections):
             questions = record.get("questions", [])
             if not isinstance(questions, list) or any(not isinstance(item, str) or not item.strip() for item in questions):
                 raise ValueError("questions must be a list of nonempty text")
+            response = latest_author_response(record, conversion)
             details.update(review_status=status, review_decision=record["decision"])
-            for key in ("conversion", "related_spells", "questions"):
+            for key in ("related_spells", "questions"):
                 if key in record:
                     details["review_" + key] = deepcopy(record[key])
+            if conversion is not None:
+                details["review_conversion"] = deepcopy({key: value for key, value in conversion.items()
+                                                         if key != "final-answer"})
+            if response is not None:
+                details["review_author_response"] = response
     except (KeyError, ValueError, TypeError) as exc:
         raise ValueError(f"{DECISIONS_PATH}: {exc}") from exc
 
 
+def latest_author_response(record, conversion):
+    responses = []
+    for mapping, key in ((record, "author_response"), (record, "final-answer"),
+                         (conversion or {}, "final-answer")):
+        if key in mapping:
+            value = mapping[key]
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"{key} must be nonempty text")
+            responses.append(value)
+    if len(set(responses)) > 1:
+        raise ValueError("conflicting author responses; keep one latest final-answer")
+    return responses[0] if responses else None
+
+
 def validate_conversion(conversion, source_name):
     required = {"name", "magic_class", "level", "casting", "components", "range", "duration", "effect"}
-    optional = {"higher_levels", "upgrades", "design_notes"}
+    optional = {"higher_levels", "upgrades", "design_notes", "final-answer"}
     if not isinstance(conversion, dict) or required - conversion.keys() or conversion.keys() - required - optional:
         raise ValueError(f"incomplete or unknown proposed spell fields for {source_name!r}")
     for key, value in conversion.items():

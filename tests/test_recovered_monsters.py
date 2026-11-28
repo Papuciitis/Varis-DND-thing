@@ -4,6 +4,8 @@ from pathlib import Path
 import re
 import unittest
 
+from catalog_expectations import original_spell_entries
+
 from compiler import compile_data
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +33,7 @@ class RecoveredMonsterTests(unittest.TestCase):
             self.assertEqual(sum(e['source'] == collection['file'] for e in self.monsters.values()), collection['count'])
         for name in ('Sprig Nip', 'Base Orc', 'Hecat', 'Omari', 'Loki', 'Willow', 'Hands'):
             self.assertNotIn(name, self.recovered)
-        self.assertEqual(len(self.catalog['spells']['entries']), 439)
+        self.assertEqual(len(original_spell_entries(self.catalog['spells']['entries'])), 439)
 
     def test_completed_values_and_source_status_are_present_and_separate(self):
         for name, details in self.recovered.items():

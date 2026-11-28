@@ -1,0 +1,2074 @@
+# Author follow-up snapshot; not yet incorporated into the active catalog.
+# Repository: Papuciitis/Varis-DND-thing
+# Commit: 5aaa2bc0f8d0b0ea79435d7cba76c2e4485a468a
+# Source: data/geomancy-review/decisions.yaml
+# Git blob: 1b49ae891459ef2dbcbaeee673828fb6eb68a944
+geomancy_decisions:
+- name: Breeze Whisper
+  status: draft
+  decision: Keep the short-message concept as a Mystic cantrip. Define delivery and failure without turning
+    it into a creature-location oracle.
+  conversion:
+    name: Breeze Whisper
+    magic_class: Mystic
+    level: '0'
+    casting: 1 action
+    components: Verbal, somatic
+    range: 120 feet
+    duration: Instantaneous
+    effect: 'Whisper a message of up to twenty-five words to a creature whose voice you know. The creature
+      must be within range, but you do not need to see it. A faint current of air carries your words around
+      corners and through openings to the recipient, which hears them as a whisper. It can immediately whisper
+      one reply of up to twenty-five words along the same route. The spell does not translate either message.
+
+
+      An open route through air must connect you and the recipient. The current cannot pass through a solid
+      barrier or an area that prevents sound. A creature that cannot hear receives no message. If the recipient
+      is absent, out of range, unreachable, or chooses not to reply, you receive no reply and learn no reason
+      for the silence.'
+    design_notes: The Mystic category follows the review. The air route, audible delivery, language limit and
+      indistinguishable failure are proposed clarifications; the original uses mental delivery. Range and word
+      limits are preserved. No combat bonus or automatic location information is granted.
+  questions:
+  - Should delivery remain mental as in the source, or use the proposed audible wind-whisper?
+- name: Gemstone's Glee
+  status: draft
+  decision: Draft an Oath light cantrip with a utility guiding-mark option. Distinguish it from the existing
+    gemstone recovery cantrip and separate Light hex.
+  conversion:
+    name: Votive Gem
+    magic_class: Oath
+    level: '0'
+    casting: 1 action
+    components: Verbal, somatic, material (a gemstone, which is not consumed)
+    range: Touch
+    duration: 1 hour
+    effect: 'Bless a gemstone you touch. It sheds bright light in a 20-foot radius and dim light for a further
+      20 feet, in a colour you choose. Covering the gemstone with an opaque object covers its light.
+
+
+      A creature holding the blessed gemstone can use an action to touch it to a surface and trace a luminous
+      sign no larger than a handspan: a simple arrow, warning symbol, or up to five written words. The sign
+      glows visibly in darkness but does not illuminate its surroundings. Up to three signs made by this casting
+      can exist at once; making another erases the oldest. They last until the spell ends and confer no automatic
+      understanding, protection, check bonus or other magical effect.
+
+      A gemstone with this enchantment can function as an spellcasting focus akin to a crystal ball while held,
+      and does not require attunement.
+
+      Only one gem can be enchanted in this manner by you at a time. Casting the cantrip again ends your previous
+      casting and its signs. You can also end your casting as a bonus action while touching its gemstone.'
+    upgrades: At 5th and 9th character level, increase both the bright-light radius and the additional dim-light
+      distance by 10 feet, and increase the number of simultaneous signs by one.
+    design_notes: The guiding signs, their limits, the one-active-gem limit, proposed name and character-level
+      upgrades are utility proposals to complete the review's request for a secondary option. They add no reaction
+      or combat bonus. Innervate consumes a gemstone worth at least 50 gold to recover health and a rest die;
+      it does not create light. The existing Light minor hex also enhances projectiles, which this proposal
+      does not do.
+  related_spells:
+  - name: Innervate
+    group: Mystic cantrips
+    notes: The review's likely gemstone reference; this is recovery magic rather than a light effect.
+  - name: Light
+    group: Minor hexes
+    notes: Existing illumination and projectile enchantment, useful for comparing the new cantrip's niche.
+  - name: Rune of light
+    group: Oath spells
+    notes: Existing level-1 protection resource, distinct from the utility-only proposal.
+  - name: Illumination
+    group: Mystic spells
+    notes: Existing Mystic lighting with distinct utility.
+  questions:
+  - Is leaving simple guiding signs an appropriate secondary option for this light cantrip?
+  - Keep the proposed Votive Gem name, or retain Gemstone's Glee?
+  final-answer: I eddited the description with a focus use part. otherwise approved, name is good. secondary
+    effects are good too. upgrades should be as is.
+- name: Geomorpher's Compass
+  status: draft
+  decision: Rename to Compass and move to Mystic 1. Spend a slot for one fixed destination, with finite sensing
+    range and no distance or route information.
+  conversion:
+    name: Compass
+    magic_class: Mystic
+    level: '1'
+    casting: 1 minute
+    components: Verbal, somatic, material (a small iron needle, which is not consumed)
+    range: Self; destination within 10 miles
+    duration: Concentration, up to 10 minutes
+    effect: 'While touching the ground, name one stationary place on your current plane that you have personally
+      visited or directly observed well enough to distinguish it from other places. A name, rumour, or imagined
+      description alone is insufficient. Spend a spell slot and attune the needle to that one destination.
+
+
+      If the destination lies within 10 miles, the needle points along the direct horizontal bearing from you
+      to it. It updates as you travel for the duration, but gives no distance, elevation, safe route, information
+      about obstacles, or information about what is at the destination. It does not point to a person, creature,
+      portable object, or a place defined by the presence of one.
+
+
+      If the destination is invalid, outside the spell''s sensing range, on another plane, or protected from
+      this divination, the needle gives no bearing. These failures are indistinguishable. The destination cannot
+      be changed during the casting; choosing another place requires another casting and another slot. The
+      spell ends if the destination moves or you cease touching the ground.'
+    higher_levels: Each spell-slot level above 1st adds 10 miles to the sensing range. The casting time, duration
+      and one-destination limit remain unchanged.
+    design_notes: The review explicitly requests Mystic 1, a simpler name and meaningful range. The 10-mile
+      base range, one-minute casting, known-place requirement, concentration duration and indistinguishable
+      failures are proposed safeguards against repeated free location queries. The spell still deliberately
+      provides true directional information about an eligible known destination.
+  questions:
+  - Is 10 miles a useful level-1 sensing range, with a further 10 miles per higher slot?
+  - Must the caster have personally visited the destination, or is the proposed direct-observation alternative
+    acceptable?
+  final-answer: A lvl 1 find spell is interesting. I think the range should be 100 miles, and should jump unevenly.
+    A 3rd spell slot should give 1000 miles, while a 5th slot should give 5000 miles.
+- name: Lithoresonance
+  status: draft
+  decision: Move to Mystic 1 as a ritual with three base effects. Replace vague intimidation and communication
+    claims with defined sound effects, then add distinct upcast modes.
+  conversion:
+    name: Lithoresonance
+    magic_class: Mystic
+    level: '1'
+    casting: 10 minutes (ritual)
+    components: Verbal, somatic, material (a natural stone or crystal suitable for the chosen mode, which is
+      not consumed)
+    range: Touch; sound ranges vary by mode
+    duration: 1 hour, or until discharged
+    effect: 'Spend a spell slot and attune one stone or crystal by touching it throughout the ritual. Choose
+      one mode permitted by the slot used. Only one object can carry your Lithoresonance at a time; completing
+      another casting ends your previous one. An object whose mode requires it to remain in place loses its
+      enchantment if moved.
+
+
+      * Whisper pebble. Place a pebble on a solid surface. The first Small or larger creature to move across
+      the same connected surface within 10 feet of it causes the pebble to ring for one round, audible within
+      60 feet, then become inert. Creatures that touched the pebble during the ritual do not trigger it. It
+      detects movement through the surface, not thoughts, identities, flight, or creatures standing still.
+
+      * Noise stone. Record one sound or spoken message of up to twenty-five words during the ritual. A creature
+      touching the stone can use an action to tap it thrice, makeing it sound out the recorded sound. It comes
+      out as crackling, deep, and with an earthy tembre (Subject to GM.)
+
+      * Thunder rock. Prepare one pebble or piece of stone ammunition. The first time it strikes a creature
+      or solid surface after being thrown or launched, it gives off a crack audible within 300 feet and becomes
+      inert. Creatures within 5 feet of the impact must make a Constitution save against your spell DC, becoming
+      deafened until the start of your next turn on a failure. Resolve any weapon attack and its damage normally;
+      this mode grants no extra impact damage.
+
+
+      All sounds are audible warnings or signals, not mental messages. Sound-blocking effects prevent a sound
+      from crossing their boundary. The spell cannot force a creature to notice or interpret a sound when it
+      could not normally hear it.'
+    higher_levels: 'Higher slots retain all lower-level choices and add the following modes:
+
+
+      * 2nd level: Stone gong. Enchant a stationary boulder at least 3 feet across. Set up to three distinct
+      tones during the ritual. A creature touching it can use an action to sound one tone, audible in the open
+      air within 1 mile. It transmits no words or private information.
+
+      * 3rd level: Crystal resonance. Enchant a stationary natural crystal formation at least 2 feet across.
+      It hums audibly within 30 feet. Creatures you designated by touching them during the ritual gain a +1
+      bonus to block checks and saves made to resist being shoved, dragged, or knocked prone while they can
+      hear the hum, are within 30 feet of the crystal, and stand on the same connected solid surface. Leaving
+      that area suspends the benefit. Multiple Crystal resonance effects do not stack.
+
+      * 4th level: Mountain saga. Enchant a stationary natural stone outcrop at least 10 feet across. While
+      touching it, you can use an action to make it sound a signal or repeat up to twenty-five words you speak
+      aloud. The sound can be heard in the open air within 5 miles. A 5th-level slot increases this distance
+      to 20 miles; a 6th-level slot increases it to 100 miles. Ordinary enclosed spaces and magical sound barriers
+      can still prevent a creature from hearing the broadcast.'
+    design_notes: Mode names and the first four slot tiers follow the review's outline. Trigger sizes, active-object
+      limit, ritual slot expenditure, sound distances, Thunder rock's brief deafening, Crystal resonance's
+      defensive aura and Mountain saga's 4th-6th level effect are proposed completions. No mode grants an automatic
+      social-check success or psychic alarm. The level-3 aura should be compared with Geomancy's existing Crystal
+      resonance option before acceptance.
+    final-answer: Approved with minor changes to noise stone. Crystal resonance should actually have a different
+      effect. I think it should instead grant structures it is part of or attached to a +1 bonus to saves and
+      resistance to damage.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Its Crystal resonance option already creates a defensive crystal aura; the proposed Mystic ritual
+      uses a large natural formation and a different bonus.
+  - name: Lightning crystal
+    group: Mystic spells
+    notes: Existing offensive prepared crystal, useful for checking that Thunder rock remains a minor utility
+      mode.
+  questions:
+  - Confirm whether this ritual spends a spell slot as drafted, or should use another cost under V.'s ritual
+    conventions.
+  - Should Thunder rock have the proposed one-round deafening, or only create a loud report?
+  - Approve or replace the proposed Crystal resonance aura and Mountain saga broadcast ranges.
+- name: Magma's Ire
+  status: rejected
+  decision: Reject the fire-bolt reskin and unrestricted creation of magma at cantrip level; do not carry its
+    imported damage scaling into current rules.
+- name: Mud Mire
+  status: merge
+  decision: Consolidate small terrain-softening effects within existing geomancy instead of adding a one-round
+    mud cantrip.
+  related_spells:
+  - name: minor geomancy
+    group: Arcane cantrips
+    notes: Existing earth movement and erosion family.
+- name: Pebble Pelt
+  status: rejected
+  decision: Reject the standalone magical rock-throw cantrip; it does not establish a distinct spell function.
+- name: Sand Veil
+  status: rejected
+  decision: Reject the desert-only stationary stealth spell as too narrow; preserve the review's conclusion
+    without inventing new benefits.
+- name: Stone Whisper
+  status: needs-design
+  decision: Preserve the stone-memory concept for a costed information spell, but resolve repeated-query limits
+    and GM information burden before drafting.
+  questions:
+  - How many events or questions can one paid casting reveal, and can repeated castings extract more from the
+    same stone?
+  - What event, proximity, and detail limits avoid asking the GM to narrate a full day?
+  final-answer: I would say reject for now.
+- name: Stone's Serenade
+  status: merge
+  decision: Fold audible stone music and signaling into the Lithoresonance proposal instead of maintaining
+    a second stone-sound spell.
+- name: Wind Slash
+  status: draft
+  decision: Draft the tentative Mystic cantrip with the requested weapon or focus requirement and character-level
+    upgrades suited to the 12-level system.
+  conversion:
+    name: Wind Slash
+    magic_class: Mystic
+    level: '0'
+    casting: 1 action
+    components: Verbal, somatic, material (a slashing weapon or a carved wooden casting focus held in one hand)
+    range: 60 feet
+    duration: Instantaneous
+    effect: 'Sweep your held slashing weapon or focus through the air and make one ranged spell attack against
+      a creature or object you can see within range. On a hit, the cutting gust deals 1d8 + your casting bonus
+      slashing damage. Resolve blocking as for a normal ranged spell attack.
+
+
+      This is a spell attack, not a weapon attack. It does not add the held weapon''s damage, weapon attack
+      bonus, or weapon maneuvers. The gust does not remain after the attack and cannot be used as a persistent
+      cutting tool.'
+    upgrades: 'At 5th and 9th character level, choose one upgrade:
+
+
+      * Increase the damage by 1d8. This upgrade can be chosen twice.
+
+      * Increase the range by 30 feet. This upgrade can be chosen twice.'
+    design_notes: The review's class assignment is tentative. The weapon-or-focus requirement follows it; adding
+      casting bonus and offering upgrades at character levels 5 and 9 are proposed adaptations to current Varis
+      cantrip conventions, replacing the source's 5th/11th/17th automatic scaling. The precise eligible focus
+      and damage still require V.'s approval.
+  questions:
+  - Is Mystic the intended magic class, and is an ordinary carved wooden focus sufficiently specific?
+  - Approve 1d8 + casting bonus with two selectable character-level upgrades, or retain the source's unmodified
+    1d8 base damage?
+  final-answer: "Approved with following alterations: \n* Change upgrade levels to 2,6, and 10.  * Add the\
+    \ following upgrade option:\n  * The target is pushed back 5 ft if the attack hits and is not blocked.\n\
+    * The damage is good, the focus perhaps should be limited to a staff or wand, as a crystal ball would not\
+    \ make sense. "
+- name: Blossom Burst
+  status: merge
+  decision: Explore a nature-focus burst as an optional mode of a broader druidic staff spell; do not retain
+    a separate reskinned blast.
+  related_spells:
+  - name: Druidic staff
+    group: Mystic spells
+    notes: Existing multi-mode Mystic staff enchantment; no new mode is granted.
+- name: Boulder Pugilist
+  status: merge
+  decision: Fold stone fists into a broader stone-armor transformation and check extra unarmed attacks before
+    setting damage or scaling.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Stonemail and Cragblade already support stone armor and fist or weapon enhancement.
+- name: Crystal Cascade
+  status: rejected
+  decision: Reject the early-level conjured crystal cylinder; its unusual shape alone does not justify another
+    area-damage spell.
+- name: Desert Mirage
+  status: rejected
+  decision: Reject the narrow desert-oasis illusion. Broader illusion rules should support appropriate scenery
+    without another themed spell.
+- name: Drumbeat of the Ancients
+  status: draft
+  decision: Re-theme the close-range stun as an Oath rebuke, with clear hearing, area, duration and friendly-fire
+    rules. Flag the strength of level-1 area stun explicitly.
+  conversion:
+    name: Resounding Rebuke
+    magic_class: Oath
+    level: '1'
+    casting: 1 action
+    components: Verbal
+    range: Self; 10-foot radius
+    duration: Until the start of your next turn
+    effect: 'Speak an oath of arrest in a ringing voice. Every other creature within 10 feet that can hear
+      you, including allies, must make a Wisdom save against your spell DC. On a failure, it is stunned until
+      the start of your next turn. On a success, it is unaffected. A creature that cannot hear you is unaffected.
+
+
+      The spell deals no damage. It has no effect on a creature already stunned by Resounding Rebuke, so repeated
+      castings cannot extend that creature''s current stun.'
+    higher_levels: Each spell-slot level above 1st increases the radius by 5 feet. The stun's duration does
+      not increase.
+    design_notes: Oath 1 and removing the stone theme follow the review. The proposed name, 10-foot base radius,
+      start-of-caster-turn end point and non-extension clause are deliberate draft safeguards around Varis's
+      strong Stunned condition. The source instead has a 15-foot radius and lasts until the end of each affected
+      creature's next turn. Allies remain affected; the caster is excluded explicitly.
+  related_spells:
+  - name: Toll the bell
+    group: Oath spells
+    notes: Existing level-2 sustained Oath control. Resounding Rebuke is brief, nearby, indiscriminate control
+      rather than a replacement.
+  - name: Withstand
+    group: Oath spells
+    notes: Existing level-1 close-range crowd control, for comparison with the stun draft.
+  questions:
+  - Is any area stun appropriate at Oath 1 under the current Stunned condition, or should this effect use a
+    higher slot or a weaker condition?
+  - Approve the reduced radius and duration instead of the stronger source values?
+  final-answer: 'Approved but with the following changes: * Change its range to be 30ft, but allow it to target
+    creatures the target is familiar with. Since it is a word spell, it should be word based, allowing you
+    to target creatures behind you and so on as long as you know they are there. Arguably the knowing shouldnt
+    even be required. * The spell should target a single creature, but the  caster must know the name of the
+    creatures kind or its actual name. * If the caster knows the creatures actual name, there should be a DC
+    bonus of +2.(advantage is too high.) * Increase range by 5ft per slot level. * Allow targeting an extra
+    creature per slot lvl above 2nd level, but only allowing you to address their kinds name(elves, bandits,
+    witches, gnolls, King Hadvards sons, etc.) and ignoring those that are not of that kind.  * Change name
+    to something like Rebuke thy Name. * Add 1d3 rounds to duration if the target rolls 5 or lower.
+
+    special designer note: The purpose should be to emphasise the logos and contract-like nature of Oath magic.
+    A basic aoe stun is a bit more of a blast spell, even if it has no damage.'
+- name: Earth's Embrace
+  status: merge
+  decision: Consolidate this small difficult-terrain effect within existing earth shaping instead of charging
+    a separate known spell and slot.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Geomantic shaping already includes difficult terrain.
+- name: Flora's Blessing
+  status: needs-design
+  decision: Resolve whether the intended Oath blessing affects Wisdom checks, saving throws, or fear specifically;
+    the source grants checks while the review discusses saves and courage.
+  questions:
+  - Should the Oath effect protect Wisdom saves, improve Wisdom checks, or resist fear? Source and review describe
+    different benefits.
+  - Which current blessing is the alleged duplicate? Avoid Clarity as a new name.
+  final-answer: I think all the advantage to save spells variants need to be ignored for now.
+- name: Gemstone Keenness
+  status: draft
+  decision: Replace casting-modifier and slot-based bonus growth with the review's fixed, stacking +1. Consume
+    a gemstone and use upcasting only to extend duration.
+  conversion:
+    name: Gemstone Keenness
+    magic_class: Oath
+    level: '1'
+    casting: 1 action
+    components: Verbal, somatic, material (a gemstone worth at least 5 gold, which is consumed)
+    range: Touch
+    duration: Concentration, up to 1 minute
+    effect: 'Crush the gemstone against one weapon you are wielding that deals slashing or piercing damage.
+      For the duration, attacks made with that weapon gain a +1 bonus to their attack rolls and damage rolls.
+
+
+      This is a separate sharpening blessing and adds to the weapon''s existing magical attack and damage bonus.
+      Multiple castings of Gemstone Keenness on the same weapon do not stack. The spell ends if you cease wielding
+      the weapon or cast Gemstone Keenness again.'
+    higher_levels: A 2nd-level slot increases the maximum duration to 10 minutes. A slot of 3rd level or higher
+      increases it to 1 hour. Higher slots do not increase the +1 bonus.
+    design_notes: Oath, a consumed gemstone, a fixed +1 that can accompany an already enchanted weapon, and
+      duration-only 2nd/3rd-level upcasting follow the review. Concentration and ending on release are retained
+      from the source. The minimum gemstone value of 5 gold is a proposed cost, not an author-established price.
+      This is distinct from Lesser weapon enchantment's longer-lasting bonus, which cannot affect already enchanted
+      weapons.
+    final-answer: 5 gold is fine. A 3rd level slot or higher should also remove concentration requirement,
+      but still dispell it if re-cast on another target.
+  related_spells:
+  - name: Lesser weapon enchantment
+    group: Arcane spells
+    notes: Existing level-2 eight-hour +1 enchantment, limited to weapons that are not already enchanted.
+  - name: Enchanted edge
+    group: Arcane spells
+    notes: Existing level-1 attack-and-maneuver effect; this draft gives a temporary numerical sharpening blessing
+      instead.
+  questions:
+  - What minimum gemstone value should the consumed component require? This proposal uses 5 gold.
+  - Keep the source's concentration and ends-on-release restrictions, including for thrown weapons?
+- name: Geomantic Guidance
+  status: rejected
+  decision: Reject the standalone perfect-path-memory spell as a weak known-spell investment that substitutes
+    for ordinary navigation play.
+- name: Geomantic Pulse
+  status: draft
+  decision: Keep as a Mystic 1 geography ritual and replace the nine-slot progression with the review's explicit
+    six-slot distances.
+  conversion:
+    name: Geomantic Pulse
+    magic_class: Mystic
+    level: '1'
+    casting: 10 minutes (ritual)
+    components: Verbal, somatic, material (a fragment of a map, which is not consumed)
+    range: Self; 1-mile sensing radius
+    duration: Instantaneous
+    effect: 'Spend a spell slot while touching natural ground. Sense the broad natural geography in a 1-mile
+      radius around your position: dominant terrain, major rivers and lakes, coastlines, mountain ranges, and
+      the relative directions of these features. The GM describes a rough mental overview appropriate to the
+      scale of the area.
+
+
+      This is an overview of the land, not a detailed survey. It does not reveal creatures, ownership, buildings,
+      traps, hidden rooms, valuable mineral deposits, individual underground passages, or a safe route. Larger
+      sensing areas give a broader overview rather than proportionally finer detail. The information concerns
+      the land as it is when the ritual finishes and does not update afterwards.'
+    higher_levels: The sensing radius is 10 miles with a 2nd-level slot, 100 miles with a 3rd-level slot, 500
+      miles with a 4th-level slot, 1,000 miles with a 5th-level slot, and 5,000 miles with a 6th-level slot.
+    design_notes: Mystic 1 and all six sensing distances follow the review. Explicit slot expenditure, a natural-ground
+      requirement and broad-geography limits are proposed definitions of what the otherwise vague information
+      effect supplies. The original spell and its higher-level wording remain preserved separately.
+  related_spells:
+  - name: Commune with nature
+    group: Mystic spells
+    notes: Existing Mystic spell communicates and bargains with a creature; despite its name, it does not provide
+      a geographical survey.
+  questions:
+  - Confirm the proposed overview detail and exclusions, especially for underground geography.
+  - Confirm whether ritual casting spends the chosen slot as drafted or uses another ritual cost.
+  final-answer: This is fine as is. The casting should consume the spell slot. Rename to Geomantic Awareness
+- name: Granite Gaze
+  status: draft
+  decision: Keep the positively reviewed Mystic 1 stone-sight concept. Preserve thickness and duration scaling
+    while stating that transparent vision does not remove the physical barrier.
+  conversion:
+    name: Granite Gaze
+    magic_class: Mystic
+    level: '1'
+    casting: 1 action
+    components: Verbal, somatic
+    range: Touch
+    duration: Concentration, up to 10 minutes
+    effect: 'Touch a nonliving natural or worked stone surface no more than 2 feet thick. While you maintain
+      contact with that surface and concentration, you can see through that thickness of stone as though it
+      were transparent. Only your vision is affected; other creatures do not gain the benefit.
+
+
+      This grants no light source, darkvision, greater viewing distance, hearing through the stone, or vision
+      through additional materials behind it. The stone remains physically solid and continues to block movement,
+      attacks and other spell effects normally. The spell ends when you cease touching the chosen surface.'
+    higher_levels: Each spell-slot level above 1st adds 10 minutes to the maximum duration. The maximum stone
+      thickness remains 2 feet.
+    design_notes: Mystic 1 follows the unqualified positive review. Source thickness, base duration and duration-only
+      upcasting are preserved. Continuous contact, nonliving stone and physical-barrier wording are proposed
+      clarifications, rather than changes to the original source entry.
+  questions:
+  - Is continuous contact intended, or should one touch allow the vision effect to remain while the caster
+    moves away?
+  final-answer: this is approved. Yes the continuous touch is intended as you have to touch it to see through
+    it.
+- name: Lanthanide Luminescence
+  status: rejected
+  decision: Reject a slot-consuming colored torch as insufficiently distinct from existing illumination.
+  related_spells:
+  - name: Light
+    group: Minor hexes
+    notes: Existing light effect for comparison.
+- name: Leaf Armor
+  status: draft
+  decision: Draft the simple +1 AC blessing as Oath 1 and apply the review's heavy-armor restriction without
+    adding another defensive pool.
+  conversion:
+    name: Barkskin
+    magic_class: Mystic
+    level: '1'
+    casting: 1 action
+    components: Verbal, somatic, material (an oak leaf, which is not consumed)
+    range: Touch
+    duration: 1 hour
+    effect: 'Touch a willing creature and bless its skin with the resilience of bark. It gains a +1 bonus to
+      AC for the duration. The blessing provides no benefit while the creature wears heavy armor; removing
+      the heavy armor restores the benefit if the duration has not expired.
+
+
+      This spell grants no additional Block or temporary health. Multiple castings of Barkskin on the same
+      creature do not stack.'
+    higher_levels: Each spell-slot level above 1st lets you bless one additional willing creature that you
+      touch as part of the same casting.
+    design_notes: Oath classification, a simple +1 AC bonus and excluding heavy armor follow the review. The
+      source's one-hour duration, reusable leaf and additional-target upcasting are preserved. Barkskin is
+      a proposed name; no current spell with that exact name exists in the catalog. Suspending rather than
+      ending the blessing while heavy armor is worn is a proposed timing clarification.
+    final-answer: I changed it to mystic. Oath is not exactly nature themed. Otherwise its approved and should
+      be incorporated.
+  related_spells:
+  - name: Chant
+    group: Oath cantrips
+    notes: Existing short-lived +1 AC aura. This draft instead spends a slot for a one-hour blessing with a
+      heavy-armor restriction.
+  - name: Rune of protection
+    group: Mystic cantrips
+    notes: Existing protective-rune effect; compare numerical stacking across traditions before approving another
+      +1 defense.
+  questions:
+  - Keep the proposed Barkskin name or retain Leaf Armor?
+  - Should wearing heavy armor suspend the bonus as drafted, or end the spell immediately?
+- name: Monolith's Mercy
+  status: needs-design
+  decision: Keep the idea of an area temporary-health Oath blessing for design review; strip the incidental
+    earth theme and compare current single-target and area protections first.
+  related_spells:
+  - name: Temperance
+    group: Oath spells
+    notes: Existing single-target temporary-health blessing; no exact area equivalent asserted.
+  - name: Bestow might
+    group: Oath spells
+    notes: Existing temporary health plus physical support.
+  questions:
+  - What area, temporary-health amount, duration, and slot distinguish it from current blessings?
+  final-answer: Alright then, set it to 1d3 + casting bonus to all allies within 20ft, change it to Bestow
+    Comfort as a name and the duration to 10 minutes. Ally amount cannot exceed casting bonus + 1(min 2.)
+- name: Petrified Pirrouette
+  status: rejected
+  decision: Reject the standalone dance-based spell; reserve dance casting for a Bard archetype or a specific
+    feature if pursued.
+- name: Sandstorm Scourge
+  status: merge
+  decision: Consolidate the sandstorm into a broader atmospheric spell or terrain-dependent storm option; the
+    current standalone low-level Mystic blast is rejected.
+  related_spells:
+  - name: Ethermancy
+    group: Arcane spells
+    notes: Existing controlled gust and atmospheric modes.
+  - name: Storm
+    group: Mystic spells
+    notes: Existing broader weather-dependent storm spell.
+- name: Sand's Shift
+  status: rejected
+  decision: Reject the sand-themed automatic miss and teleport package. Retain the reaction-mobility goal for
+    comparison with existing reaction movement rather than assume that function is absent.
+  related_spells:
+  - name: Ethermancy
+    group: Arcane spells
+    notes: Draft-jump already allows reaction movement without automatic miss or teleport.
+  - name: Aspect of the hawk
+    group: Mystic spells
+    notes: Soaring leap already permits reaction movement.
+  - name: Shadowwarp
+    group: Occult spells
+    notes: Conditional reaction teleportation while unobserved; does not cancel an incoming hit.
+- name: Stone's Resilience
+  status: merge
+  decision: Consolidate simple temporary-health protection with existing spells rather than create another
+    weak stone-themed grant.
+  related_spells:
+  - name: Temperance
+    group: Oath spells
+    notes: Existing temporary-health blessing.
+  - name: Life shroud
+    group: Mystic spells
+    notes: Existing self temporary-health spell.
+- name: Stoneform Surge
+  status: merge
+  decision: Consolidate this self-only temporary-health effect with the same protection family as Stone's Resilience.
+  related_spells:
+  - name: Life shroud
+    group: Mystic spells
+    notes: Existing self temporary-health protection.
+- name: Wind's Guidance
+  status: needs-design
+  decision: Resolve the ability-enhancement family together. The original grants Dexterity checks, not saving
+    throws, so the trap-avoidance concern needs separate examination.
+  questions:
+  - Is the objection to Dexterity checks, or to saves the original does not grant?
+  - Should the attribute-boost family become one spell, options within a spell, or remain distinct existing
+    effects?
+  final-answer: reject for now. ill decide that later myself.
+- name: Zephyr's Shield
+  status: rejected
+  decision: Reject another concentration AC bonus differentiated mainly by a distance limit; preserve the author's
+    pass verdict.
+- name: Blossom Shield
+  status: draft
+  decision: Recast the protective retaliation effect as an Occult 1 spell; keep concentration and give it a
+    distinct identity from a stone armor spell.
+  conversion:
+    name: Thornmantle
+    magic_class: Occult
+    level: '1'
+    casting: 1 action
+    components: Verbal, somatic, material (petals and thorns worth 15 gold, not consumed)
+    range: Self
+    duration: Concentration, up to 1 minute
+    effect: 'Wrap yourself in a mantle of spectral thorns. For the duration, gain a +2 bonus to AC.
+
+      Whenever a creature within 5 feet deals damage to you with a melee attack, the mantle deals 1d6 piercing
+      damage to that creature. This retaliation requires no action and is resolved after the attack''s damage.
+
+
+      Casting this spell again ends your previous Thornmantle.'
+    higher_levels: 'When cast with a 3rd-level or higher slot, retaliation damage becomes 2d6. With a 5th-level
+      or higher slot, it becomes 3d6. The AC bonus remains +2.
+
+      At 2nd spell level, duration becomes 10 minutes. At 4th spell level, the spell no longer requires concentration.'
+    design_notes: The reviewer proposed Occult 1 and retained concentration. The damage-on-injury trigger,
+      5-foot limit, nonconsumed component and damage increases at slots 3 and 5 are proposed balancing details,
+      rather than author-approved rules. Retaliation adds no automatic damage to a successful block that prevents
+      all damage.
+  final-answer: Approved with some slight changes already implemented in the proposed conversion.
+  related_spells:
+  - name: Shield of pain
+    group: Occult spells
+    notes: Existing reactive damage aura for comparison; Thornmantle offers personal AC and only punishes nearby
+      damaging melee attacks.
+  questions:
+  - Is +2 AC plus this retaliation appropriate at Occult 1, or should the AC bonus be +1?
+  - Should the material be consumed instead of functioning as a reusable focus?
+- name: Boulder Burst
+  status: rejected
+  decision: Reject the repeated rock-cylinder blast and undefined ongoing concentration behavior instead of
+    promoting another area-damage reskin.
+- name: Crystalize
+  status: draft
+  decision: Keep a lesser crystallization concept as Occult 2, rename it to avoid the existing Arcane Crystallize,
+    and use the actual Hobbled condition instead of importing a new restrained condition.
+  conversion:
+    name: Crystal Blight
+    magic_class: Occult
+    level: '2'
+    casting: 1 action
+    components: Verbal, somatic
+    range: 60 feet
+    duration: Up to 1 minute
+    effect: 'Cause brittle crystals to spread over a creature you can see within range. The creature makes
+      a Constitution save against your spell DC. On a failure, it takes 2d8 + casting bonus piercing damage
+      and becomes Hobbled for up to 1 minute. On a success, it takes half damage and is not Hobbled.
+
+
+      At the end of each of its turns, an affected creature repeats the Constitution save, ending the Hobbled
+      effect on a success. Ending or removing Hobbled also causes the crystals to crumble. They have no value
+      and cannot be harvested.
+
+
+      This spell does not petrify a creature or permanently injure its limbs.'
+    higher_levels: Each slot level above 2nd adds 1d8 initial damage. Duration and the Hobbled condition do
+      not increase.
+    design_notes: Occult 2 was one of the reviewer's alternatives. Hobbled uses the existing Varis condition,
+      which is stronger than merely halving speed. The repeat save, one-minute limit and casting bonus are
+      proposed balancing choices. The reviewer's permanent-injury idea would be a separate higher-level decision,
+      not an automatic addition to this draft.
+  related_spells:
+  - name: Crystallize
+    group: Arcane spells
+    notes: Existing Arcane 6 spell; its damage and possible permanent petrification are not replaced by this
+      lesser Occult proposal.
+  questions:
+  - Does V. prefer this temporary Occult 2 version or a separately designed Occult 3 injury that requires restoration?
+  final-answer: This is approved.
+- name: Desert's Wrath
+  status: merge
+  decision: Consolidate sandstorm damage into the atmospheric/storm family instead of duplicating Sandstorm
+    Scourge at another level.
+  related_spells:
+  - name: Ethermancy
+    group: Arcane spells
+    notes: Existing atmospheric control family.
+  - name: Storm
+    group: Mystic spells
+    notes: Existing storm family.
+- name: Earth's Grasp
+  status: draft
+  decision: Implement the reviewer's Oath 1 placement with a grounded binding effect and the system's Snared
+    condition.
+  conversion:
+    name: Earthen Bonds
+    magic_class: Oath
+    level: '1'
+    casting: 1 action
+    components: Verbal, somatic, material (a fistful of dirt, not consumed)
+    range: 60 feet
+    duration: Concentration, up to 1 minute
+    effect: 'Choose a 10-foot square of earth or stone you can see within range. Earth rises around the feet
+      of each creature touching that surface in the square. Each such creature makes a Strength save against
+      your spell DC. On a failure, it is Snared for the duration.
+
+
+      A Snared creature can spend an action to make a Strength check against your spell DC, freeing itself
+      on a success. Teleporting or being moved out of the chosen square by another effect also frees it. Creatures
+      that enter the square after the casting are not bound.
+
+
+      When concentration ends, the bindings fall apart and all creatures bound by this casting are freed.'
+    higher_levels: 'Each slot level above 1st increases the square''s side length by 5 feet. The save DC and
+      duration do not change.
+
+      At 3rd slot level or higher, this spell no longer requires concentration.'
+    design_notes: Oath 1 follows the review. Snared replaces imported restrained terminology without adding
+      a new condition. Requiring earth or stone, limiting the trigger to the initial casting and changing area
+      growth to 5 feet per slot are proposed implementation details.
+  related_spells:
+  - name: minor geomancy
+    group: Arcane cantrips
+    notes: Its Earthbind upgrade already provides a single-target binding option; compare the proposed slot
+      cost and area before accepting another spell.
+  - name: Binding
+    group: Oath spells
+    notes: 'Comparison only: Binding compels a supernatural creature after a killing blow; it is not ordinary
+      terrain restraint.'
+  questions:
+  - Is an area binding sufficiently distinct from minor geomancy's Earthbind upgrade to warrant a separate
+    Oath spell?
+  final-answer: The spell is approved. I altered it to lose concentration requirement at slot lvl 3.
+- name: Flora's Wisdom
+  status: merge
+  decision: Consolidate with the proposed Flora's Blessing family, while explicitly resolving the added Wisdom
+    saving-throw benefit that the lower-level source lacks.
+  questions:
+  - Should its added saving-throw benefit survive consolidation? Flora's Blessing grants checks only.
+- name: Frightful Monolith
+  status: needs-design
+  decision: Preserve the reactive fear idea for redesign with a clearer trigger, stronger distinct purpose,
+    and a justified magic category; remove incidental stone theming.
+  questions:
+  - Which trigger and additional effect justify the reaction?
+  - What category and level fit the rethemed reaction-fear effect?
+  final-answer: reject this one for now. it requires a bigger rework ill do myself eventually.
+- name: Gemstone's Grace
+  status: rejected
+  decision: Reject the current gemstone-paid healing spell as insufficiently distinct from existing healing
+    and gemstone-consumption effects.
+  related_spells:
+  - name: Innervate
+    group: Mystic cantrips
+    notes: Already exchanges gemstones for healing and rest-die recovery.
+  - name: Heal
+    group: Oath spells
+    notes: Existing healing baseline.
+- name: Geode's Gentle Grasp
+  status: merge
+  decision: Consolidate earth restraint into existing minor geomancy and its Earthbind option instead of granting
+    another known spell.
+  related_spells:
+  - name: minor geomancy
+    group: Arcane cantrips
+    notes: Its Earthbind upgrade already applies earth restraint.
+- name: Geomorph's Vision
+  status: draft
+  decision: Turn the broadly approved Mystic 1 concept into a limited ritual about a natural feature's history,
+    without making it a general investigation shortcut.
+  conversion:
+    name: Landmemory
+    magic_class: Mystic
+    level: '2'
+    casting: 10 minutes (ritual; spends a spell slot)
+    components: Verbal, somatic, material (a naturally occurring piece of the chosen feature, not consumed)
+    range: Touch
+    duration: Instantaneous
+    effect: 'Complete the ritual and spend a spell slot of 1st level or higher. Touch a natural geographical
+      feature, or a naturally fallen fragment of it, and contemplate its history. Choose one connected feature
+      no more than 1 mile across, such as a stretch of river, a grove, a cliff or part of a mountain.
+
+
+      Receive up to three broad impressions of significant natural changes that affected that feature within
+      the past century. Examples include a river changing course, a major fire, a landslide or a forest dying
+      back. The GM describes impressions and their approximate order, rather than exact dates.
+
+
+      The spell does not reveal the identities, conversations or individual actions of people who visited the
+      feature, expose hidden creatures or treasure, or answer arbitrary questions about nearby events. Recasting
+      it on the same feature within a day repeats the same impressions.'
+    higher_levels: If cast using a 3rd level spell slot, the duration one can look back is increased to 300
+      years. If cast using a 4th level spell slot, the duration one can look back is increased to 500 years.
+      If cast using a 5th level spell slot, the duration one can look back is increased to 1000 years. If cast
+      using a 6th level spell slot, the duration one can look back is increased by 10000 years.
+    design_notes: Mystic 1 follows the review. The one-mile feature size, century of history, three impressions
+      and repeated-casting restriction are newly proposed limits for the source's otherwise undefined historical
+      reading. They require V.'s approval. Spending a spell slot despite the ritual casting time is a provisional
+      cost for this draft, not a ruling about Varis rituals generally.
+  related_spells:
+  - name: Commune with nature
+    group: Mystic spells
+    notes: Current Mystic 2 Commune with nature communicates and bargains with a creature; it does not survey
+      terrain or read a landscape's history. Landmemory therefore proposes a distinct information effect rather
+      than replacing that spell.
+  questions:
+  - Are one century and three broad impressions the right information budget for a Mystic 1 ritual?
+  - Should this ritual spend a spell slot as drafted, or should V. define a different ritual cost?
+  final-answer: made changes to the proposed version, altering durations and levels, and changing the level
+    to 2. approved otherwise.
+- name: Lithoecho Resonance
+  status: rejected
+  decision: Reject the weak standalone message-stone spell; keep enchanted message ammunition only as a possible
+    mode of Lithoresonance.
+- name: Lithospheric Leap
+  status: rejected
+  decision: Reject the standalone earth-themed leap according to the author's verdict.
+- name: Microlith Breath
+  status: rejected
+  decision: Reject the breath-of-stones concept according to the author's verdict; do not infer a replacement
+    effect.
+- name: Petrified Smite
+  status: draft
+  decision: Remove the earth reskin and draft the proposed Oath 2 binding smite, with a short charging window
+    and a clear escape procedure.
+  conversion:
+    name: Binding Smite
+    magic_class: Oath
+    level: '2'
+    casting: 1 bonus action
+    components: Verbal, somatic
+    range: Self; next melee weapon attack
+    duration: Until the end of your next turn; binding up to 1 minute
+    effect: 'Enchant a melee weapon you wield. The next unblocked hit you land with that weapon before the
+      end of your next turn deals an extra 1d8 radiant damage. The struck creature also makes a Strength save
+      against your spell DC. On a failure, oath-forged bands bind it and it becomes Snared for up to 1 minute.
+
+
+      A bound creature can spend an action to make a Strength check against your spell DC, ending the binding
+      on a success. Teleporting also ends its binding. This spell requires no concentration, but you can maintain
+      only one binding from it at a time: casting Binding Smite again releases a creature bound by your previous
+      casting and replaces any unused charge.
+
+
+      If the charged weapon leaves your hand before the hit, the unused charge ends.'
+    higher_levels: Each slot level above 2nd adds 1d8 extra damage, and the duration increases by 1 minute.
+    design_notes: Oath 2 and removal of the earth theme follow the review. The no-concentration version answers
+      the reviewer's melee concern as a proposed design choice. The short charge window is based on current
+      Smite; requiring an unblocked hit, changing the extra damage to radiant and limiting the caster to one
+      maintained binding are new proposal details.
+  related_spells:
+  - name: Smite
+    group: Oath spells
+    notes: Existing bonus-action smite for damage and charging-window comparison.
+  - name: Binding
+    group: Oath spells
+    notes: Existing Oath 3 Binding concerns a defeated creature's will; this proposal only prevents movement
+      and does not grant control over a creature.
+  questions:
+  - Should the binding retain concentration, or is the single-maintained-binding limit sufficient?
+  final-answer: made a change to the scaling. Its approved.
+- name: Rampart of Rubble
+  status: draft
+  decision: Replace retaliation with the reviewer's temporary-health-linked +2 AC and block-check defense,
+    using an actual stone suit at Oath 2.
+  conversion:
+    name: Stoneshell
+    magic_class: Oath
+    level: '2'
+    casting: 1 action
+    components: Verbal, somatic, material (at least 50 pounds of loose nonmagical stone within reach)
+    range: Self; touch the stone
+    duration: Up to 1 minute, while its temporary health remains
+    effect: 'Touch loose stone and bind it around your body as a protective shell. Gain 3d6 + casting bonus
+      temporary health (min 3d8 + 1.) While any temporary health from this casting remains, gain a +2 bonus
+      to AC and block checks.
+
+
+      If its temporary health is replenished by another spell(you gain a larger amount than you currently have)
+      it is treated as healing and restoring the stoneshell.
+
+
+      When the spell ends, the material falls harmlessly at your body as ordinary loose stone bits. It is moved
+      by the spell, not created.'
+    higher_levels: Each slot level above 2nd adds 1d8 temporary health. The AC and block-check bonuses remain
+      +2.
+    design_notes: The review explicitly suggested temporary health with +2 AC and block checks at Oath 2. The
+      2d8 + casting bonus pool, one-minute maximum, absence of concentration and replacement rule are proposed
+      implementation details. The replacement rule prevents unrelated temporary-health grants from indefinitely
+      sustaining the shell.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Its existing Stonemail option also provides a temporary-health stone suit; compare roles instead
+      of replacing that option.
+  questions:
+  - Should Stoneshell require concentration as well as its temporary-health and duration limits?
+  - Is this distinct enough from Arcane Geomancy's Stonemail to remain a separate Oath spell?
+  final-answer: made changes to temp-hp interaction from other spells to make it something you want to play
+    a game to maintain. Is approved now.
+- name: Rock Throw
+  status: rejected
+  decision: Reject a standalone magical thrown-rock spell; improvements to throwing should use appropriate
+    strength or weapon support.
+- name: Rockbound Resilience
+  status: merge
+  decision: Consider together with the other ability-enhancement proposals; do not print separate element-themed
+    advantage spells for each attribute.
+  related_spells:
+  - name: Aspect of the ox
+    group: Mystic spells
+    notes: Existing short-lived physical support, not hour-long blanket advantage.
+- name: Root Shield
+  status: needs-design
+  decision: Preserve the proposed self-or-ally Oath defensive reaction for redesign; the review has not settled
+    its theme, protection amount, or final acceptance.
+  questions:
+  - What protection amount and type distinguish the self-or-ally reaction from existing defenses?
+  final-answer: lets just reject it instead.
+- name: Silt Snare
+  status: merge
+  decision: Fold this restraint effect into broader geomancy instead of keeping a standalone silt-themed spell.
+  related_spells:
+  - name: Greater geomancy
+    group: Arcane spells
+    notes: Existing large-area earth restraint.
+- name: Sinkhole
+  status: rejected
+  decision: Reject early-level unrestricted ground excavation because of its structural and location-destruction
+    consequences; an extradimensional pit would be a separate design decision.
+- name: Stone's Endurance
+  status: rejected
+  decision: Reject another standalone +1 AC spell rather than multiplying nearly identical protections.
+- name: Terran Traverse
+  status: draft
+  decision: Rename to Earthwalk, place at Mystic 3, and supply explicit sensing, carried-creature and safe-ending
+    rules.
+  conversion:
+    name: Earthwalk
+    magic_class: Mystic
+    level: '3'
+    casting: 1 action
+    components: Verbal, somatic
+    range: Self
+    duration: Concentration, up to 1 minute
+    effect: 'Move through nonmagical, unworked earth and stone at your normal walking speed without disturbing
+      the material. Worked masonry, metal, magical stone and other materials remain barriers. Your worn and
+      carried equipment travels with you, but you cannot take another creature through solid terrain with this
+      spell.
+
+
+      While touching connected earth or stone, sense the location of creatures moving in contact with that
+      material within 30 feet. This sense does not let you see through solids, read, detect airborne creatures
+      or hear conversations. The spell does not supply air while you are submerged in terrain.
+
+
+      You can end a turn inside permitted terrain. If the spell ends while you occupy solid material, you and
+      your equipment are forced along the shortest route through permitted material to the nearest unoccupied
+      space that can hold you. Apply fall damage as though you had fallen twice the distance you were forced
+      to travel. If equally near spaces exist, return toward the space where you entered the terrain.'
+    higher_levels: Each slot level above 3rd extends the maximum duration by 1 minute. It does not permit passage
+      through additional materials or increase the sensing range.
+    design_notes: Mystic 3, the Earthwalk name and explicit submerged-ending rules follow the review. Concentration,
+      the equipment/creature limits and limited sensing interpretation are proposed safeguards. Ejection borrows
+      the existing Varis Ethereal condition's twice-distance fall-damage rule instead of inventing a new damage
+      scale.
+  related_spells:
+  - name: minor geomancy
+    group: Arcane cantrips
+    notes: Existing slow tunneling alters terrain; Earthwalk proposes temporary personal passage without excavating
+      a tunnel.
+  questions:
+  - Should Earthwalk retain concentration, or should its short duration be the main restriction?
+  - Should magical dispelling always eject toward the entry route, rather than using the nearest-space rule
+    shared with Ethereal?
+  final-answer: approved. It should retain concentration. earth movement is a weirdly powerful ability. A minute
+    can get you far.
+- name: Wind's Swiftness
+  status: merge
+  decision: Consolidate Dexterity enhancement and movement benefits with the ability-enhancement family instead
+    of retaining another wind reskin.
+  related_spells:
+  - name: Aspect of the hawk
+    group: Mystic spells
+    notes: Existing mobility comparison, not an exact advantage duplicate.
+- name: Actinide Armor
+  status: rejected
+  decision: Reject the broad elemental-resistance reskin. The author's claimed existing equivalent still needs
+    an exact rules match before any canonical resistance spell is changed.
+  questions:
+  - Which current spell provides the alleged equivalent multi-element resistance?
+- name: Blossom Barrier
+  status: rejected
+  decision: Reject another standalone AC-enhancement spell according to the author's verdict.
+- name: Boulder Blast
+  status: draft
+  decision: Develop the reviewer's Oath siege-projectile idea at level 3, requiring an existing boulder rather
+    than creating a themed area blast from nothing.
+  conversion:
+    name: Siege Stone
+    magic_class: Oath
+    level: '3'
+    casting: 1 action
+    components: Verbal, somatic, material (one loose nonmagical boulder between 100 and 1,000 pounds, within
+      reach)
+    range: Touch the boulder; launch up to 120 feet
+    duration: Instantaneous
+    effect: 'Touch a loose boulder and launch it toward a point you can see within 120 feet. It follows a direct
+      path and strikes the first substantial obstruction in that path; it cannot travel through a solid barrier
+      to reach your chosen point.
+
+
+      At impact, the stone shatters. Each creature within 10 feet of the impact makes a Dexterity save against
+      your spell DC, taking 5d6 + casting bonus bludgeoning damage on a failure or half on a success. A creature
+      may instead attempt a block check against your spell DC, taking half damage on a successful block. It
+      chooses one defense and cannot attempt both.
+
+
+      The impact deals double damage to unattended structures in the area. The stone remains as ordinary debris;
+      the spell creates no additional stone.'
+    higher_levels: Each slot level above 3rd adds 1d6 impact damage. The impact radius and maximum boulder
+      weight remain unchanged.
+    design_notes: The reviewer suggested Oath 3 or 4 for a catapult-like spell; this draft selects 3 provisionally.
+      Requiring a real boulder and a clear trajectory supplies its environmental cost. The weight band, casting
+      bonus, block option and structural damage are new proposal details informed by the current Geomancy pillar
+      attack.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Pillar resonance already launches stone and doubles structural damage; compare the required material,
+      action economy and area.
+  questions:
+  - Does the material and trajectory constraint justify Oath 3, or should V. choose Oath 4?
+  - Should a successfully blocked impact reduce damage to zero instead of half under the table's preferred
+    spell-block convention?
+  final-answer: I approve. block shouldnt reduce to zero, as its a catapult boulder. Nobodys that tough.
+- name: Earth's Echo
+  status: draft
+  decision: Consolidate the Earth's Echo and Earth's Eyes sensing concepts into one concentration-based Mystic
+    3 ritual, with higher-slot range instead of separate spells.
+  conversion:
+    name: One with the land
+    magic_class: Mystic
+    level: '3'
+    casting: 10 minutes (ritual; spends a spell slot)
+    components: Verbal, somatic, material (a handful of local earth or stone, not consumed)
+    range: Self; sensing radius 500 feet
+    duration: Concentration, up to 1 hour
+    effect: 'Complete the ritual and spend a spell slot of 3rd level or higher. Attune your senses to movement
+      carried through earth and stone. While you remain in contact with a connected mass of either material,
+      you can sense the location of creatures moving in contact with that same mass within 500 feet.
+
+      For the duration of the casting, you must willingly become blinded and close your other senses off from
+      the world.
+
+      Airborne creatures, creatures separated from the connected material, and completely motionless creatures
+      produce no location for this sense. It does not provide sight, reveal a creature''s identity, translate
+      conversations, read writing or engravings, but it can give you an accurate idea of maps and caverns within
+      it, as well as solid blobs and pockets of other material.
+
+      Losing contact with the ground suspends the sense until contact is restored; it does not by itself end
+      concentration. Ending concentration ends the sense.'
+    higher_levels: The sensing radius is 750 feet with a 4th-level slot, 1000 feet with a 5th-level slot, and
+      5000 feet with a 6th-level slot. The maximum duration remains 1 hour.
+    design_notes: Mystic 3, concentration and an approximately 1,000-foot radius at slot 6 follow the review.
+      The source's 500-foot base radius is retained. The one-hour maximum, intermediate radii and movement-only
+      sensing limitations are proposed implementation details. Earth's Eyes should reference this same candidate
+      rather than creating another tremorsense spell. Spending a spell slot despite the ritual casting time
+      is a provisional cost for this draft, not a ruling about Varis rituals generally.
+  questions:
+  - Is a 500-foot base radius appropriate with these limitations, or should its initial range be reduced?
+  - Should concentration last the source's 8 hours instead of the proposed 1 hour?
+  - Should this ritual spend a spell slot as drafted, or should V. define a different ritual cost?
+  final-answer: made changes and now its approved.
+- name: Earth's Eyes
+  status: merge
+  decision: Consolidate with the Earth's Echo sensing proposal instead of retaining two overlapping earth-awareness
+    spells.
+- name: Earthen Endurance
+  status: merge
+  decision: Consolidate this duplicate Strength-check-and-save advantage effect with Rockbound Resilience and
+    the broader ability-enhancement discussion.
+  related_spells:
+  - name: Aspect of the ox
+    group: Mystic spells
+    notes: Existing physical support family.
+- name: Gale Barrier
+  status: needs-design
+  decision: Compare the proposed outdoors-only wind wall with existing wind barriers; its cover, movement-stopping
+    condition, and magic category remain unsettled.
+  related_spells:
+  - name: Greater windbinding
+    group: Arcane spells
+    notes: Wind wall already repels projectile attacks.
+  - name: Ethermancy
+    group: Arcane spells
+    notes: Whirlburst prevents attacks through its area.
+  questions:
+  - Does the existing Wind wall mode already cover this function?
+  - If retained, what category, slot, cover, outdoor condition, and movement rules apply?
+  final-answer: rejected.
+- name: Geomantic Resonance
+  status: rejected
+  decision: Reject the direct information effect because the review considers it a replacement for ordinary
+    skill use.
+- name: Geospheric Bastion
+  status: merge
+  decision: Consolidate stone fortification into greater geomancy or existing construction magic instead of
+    a separate narrow bastion spell.
+  related_spells:
+  - name: Greater geomancy
+    group: Arcane spells
+    notes: Existing rough-structure creation.
+  - name: Structure
+    group: Arcane spells
+    notes: Existing fortification and mechanism alteration.
+- name: Greenery's Grasp
+  status: draft
+  decision: Implement the review's Mystic 2 placement with ten-minute concentration, living-plant dependence
+    and a clear distinction from single-target Command nature.
+  conversion:
+    name: Grasping Green
+    magic_class: Mystic
+    level: '2'
+    casting: 1 action
+    components: Verbal, somatic
+    range: 90 feet
+    duration: Concentration, up to 10 minutes
+    effect: 'Choose a point you can see within range where living roots, vines, grass or similar vegetation
+      already grows. Animate that vegetation within a 20-foot radius. Planted ground in the chosen area becomes
+      difficult terrain for the duration; the spell does not create vegetation on bare surfaces.
+
+
+      Each grounded creature standing in that vegetation when you cast makes a Strength save against your spell
+      DC. On a failure, it becomes Snared. An affected creature can spend an action to make a Strength check
+      against your spell DC, freeing itself on a success. A creature within 5 feet of it can instead spend
+      an action with a slashing weapon or suitable cutting tool to cut it free.
+
+
+      Creatures entering later encounter the difficult terrain but are not automatically Snared. Teleporting
+      or being moved out of the animated vegetation frees a bound creature. When concentration ends, the plants
+      return to their ordinary state and all bindings end.'
+    higher_levels: Each slot level above 2nd increases the area's radius by 5 feet. The maximum duration remains
+      10 minutes.
+    design_notes: Mystic 2 and a longer five- or ten-minute duration follow the review; this draft chooses
+      10 minutes. The living-plant restriction makes the spell depend on the environment. Snared uses the current
+      Varis condition. The initial-casting-only binding and automatic cutting action are proposed counterplay
+      details.
+  related_spells:
+  - name: Command nature
+    group: Mystic spells
+    notes: Existing Mystic 1 spell already grows plants and snares a target. This draft's proposed distinction
+      is sustained area control using existing vegetation.
+  questions:
+  - Is sustained area control enough to distinguish this candidate from upcast Command nature, or should it
+    become an additional option of that spell instead?
+  final-answer: approved.
+- name: Highland's Howl
+  status: rejected
+  decision: Reject the narrow sonic effect as insufficiently useful despite a potentially workable general
+    concept.
+- name: Honed Stones
+  status: merge
+  decision: Fold the hazardous stone-ground effect into broader geomancy, with an explicit save and damage
+    trigger required for any proposed mode.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Geomantic shaping already supports damaging difficult terrain.
+- name: Lithic Lore
+  status: rejected
+  decision: Reject the prospecting information spell because of its economic power and overlap; do not add
+    automatic mineral surveying to Mystic access.
+- name: Rock's Resolve
+  status: merge
+  decision: Consolidate Strength advantage and attack bonuses with the ability-enhancement family, rather than
+    retain another stone-themed version.
+  related_spells:
+  - name: Aspect of the ox
+    group: Mystic spells
+    notes: Existing physical check and combat support baseline.
+- name: Rolling Stones
+  status: merge
+  decision: Consolidate moving stone hazards into broader geomancy rather than a separate known spell.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Pillar resonance already launches stone hazards.
+- name: Sanctuary of Slate
+  status: rejected
+  decision: Reject another narrow ally-protecting reaction; avoid a separate spell for each possible presentation
+    of defensive assistance.
+- name: Stone's Step
+  status: merge
+  decision: Consolidate stone climbing with existing wall-walking magic, which already works beyond stone-specific
+    surfaces.
+  related_spells:
+  - name: Lesser gift of the spider queen
+    group: Mystic spells
+    notes: Already grants wall walking.
+  - name: Aspect of the weaver
+    group: Occult spells
+    notes: Already grants wall-crawler ability.
+- name: Tectonic Transmutation
+  status: rejected
+  decision: Reject unrestricted mass/material alteration because of its disruptive world-scale consequences.
+- name: Tectonic Trap
+  status: needs-design
+  decision: Preserve the unusual Dexterity-to-complete-attacks concept for a curse or disorienting hex redesign;
+    reject the current shifting-ground implementation.
+  questions:
+  - Should the retained attack-disorientation mechanic become an Occult curse or hex?
+  - When is the Dexterity save attempted, and what changes on success or failure?
+  final-answer: nah just reject the thing. I will revisit it myself later.
+- name: Telluric Truths
+  status: rejected
+  decision: Reject the low-level vague true-information effect; any future equivalent needs substantially higher
+    cost and precise questions or limits.
+- name: Thorn Burst
+  status: needs-design
+  decision: Retain only the possible Occult parry/riposte cantrip concept for redesign; the original level
+    3 spell is rejected.
+  questions:
+  - Can a reactive Occult cantrip justify its action-economy and damage without replacing ordinary parry or
+    riposte?
+  final-answer: I guess not, so lets reject it for now.
+- name: Wind's Gust
+  status: merge
+  decision: Fold the gust effect into existing atmospheric magic rather than create a separate air-bending
+    spell.
+  related_spells:
+  - name: Ethermancy
+    group: Arcane spells
+    notes: Existing atmospheric manipulation.
+  - name: Greater windbinding
+    group: Arcane spells
+    notes: Existing broad wind control.
+- name: Bastion of Bedrock
+  status: merge
+  decision: Consolidate small fortress creation with construction and greater geomancy; resolve durability
+    there instead of adding another fort spell.
+  related_spells:
+  - name: Structure
+    group: Arcane spells
+    notes: Existing construction family.
+  - name: Greater geomancy
+    group: Arcane spells
+    notes: Existing stone-shaping family.
+- name: Boulder Roll
+  status: merge
+  decision: Preserve the moving-hazard idea as a possible broader geomancy mode; it needs a distinct extra
+    function before a standalone draft is justified.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Potential design home; no new mode granted.
+- name: Crystal Shard
+  status: needs-design
+  decision: Verify the author's suspected duplicate against actual spell-redirection mechanics. Prismatic shards
+    is a damaging cone and is not this spell's redirection pylon.
+  related_spells:
+  - name: Prismatic shards
+    group: Arcane spells
+    notes: A damaging cone, not a spell-redirection pylon; not an exact duplicate.
+  - name: Rune of reflection
+    group: Arcane spells
+    notes: Compare actual redirection before deciding overlap.
+  questions:
+  - Which current spell redirects a single-target spell into an area, and how are attack rolls, saves, healing,
+    concentration, and targeting handled?
+  final-answer: Oh I guess not. Well, in that case, approved as a lvl 3 mystic spell.
+- name: Earthbound Echo
+  status: merge
+  decision: Consolidate reaction restraint/slow concepts with the earth-binding family rather than keep a fourth-level
+    half-speed reskin.
+  related_spells:
+  - name: minor geomancy
+    group: Arcane cantrips
+    notes: Existing Earthbind restraint; action and save model differ.
+- name: Floral Flare
+  status: rejected
+  decision: Reject the broad flower-themed radiant blast; the review considers its scope and radiant presentation
+    inappropriate.
+- name: Granitgag
+  status: merge
+  decision: Use the existing muting/silencing family rather than a stone-themed joke variant; existing Mute
+    is a comparison, not an identical area Silence spell.
+  related_spells:
+  - name: Mute
+    group: Arcane spells
+    notes: Existing targeted muting; not a general silence area.
+- name: Gemstone Guardian
+  status: needs-design
+  decision: Preserve the proposed destructible resistance-pylon concept, but defer a complete spell until V.
+    chooses Oath or Mystic and settles its overlap with existing geomantic support effects.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Crystal resonance already provides an aura of defensive and other bonuses.
+  - name: Geomancer's totem
+    group: Arcane spells
+    notes: Existing totem magic should be compared before adding another earth-support pylon.
+  - name: Warding rune
+    group: Oath spells
+    notes: Existing protective object aura; not identical damage resistance.
+  questions:
+  - Is the resistance pylon Oath 3 or Mystic 3?
+  - Which damage types does it resist, what are the pylon's AC and HP, and does it need concentration?
+  - Is resistance distinct enough from existing totem and warding auras?
+  - If retained, is it Oath 3 or Mystic 3, with which pylon AC, HP, and destruction rules?
+  final-answer: This as it stands, is not the pylon. I initially thought id have N read this, so just reject
+    this for now. Ill make another version later.
+- name: Geomantic Beacon
+  status: needs-design
+  decision: Verify the alleged existing equivalent before discarding the exact-location and creature-sensing
+    crystal. The review names no canonical match.
+  questions:
+  - Which current spell matches exact crystal tracking plus local creature sensing?
+  final-answer: pretty sure arcane rune lets you do this equivalently, so its rejected.
+- name: Geomorph's Insight
+  status: rejected
+  decision: Reject the swingy information effect as likely either excessive or ineffective; no balanced replacement
+    has been specified.
+- name: Nature's Grasp
+  status: merge
+  decision: Consolidate plant restraint with Greenery's Grasp and existing Command nature rather than introduce
+    another tree-spirit reskin.
+  related_spells:
+  - name: Command nature
+    group: Mystic spells
+    notes: Existing vegetation control and restraint.
+- name: Quake Hammer
+  status: draft
+  decision: Rework the source as an Oath 1 ground-strike spell and restart its upcasting from first level.
+    Keep the more destructive Earthshatter as the existing higher-level option.
+  conversion:
+    name: Quake Hammer
+    magic_class: Oath
+    level: '2'
+    casting: 1 action
+    components: Verbal, Somatic, Material (a melee weapon held by the caster)
+    range: Self (10-foot radius)
+    duration: Instantaneous
+    effect: 'Strike the ground with the held weapon. Each other creature touching the same continuous ground
+      within 10 feet makes a Dexterity save against your spell DC. On a failure, it takes 3d6 + casting bonus
+      bludgeoning damage and is knocked prone. On a success, it takes half damage and is not knocked prone.
+      Creatures not touching the ground are unaffected. This casting replaces a weapon attack; it does not
+      also deal the weapon''s damage.
+
+      If done on loose ground, sand, or dust, it also fills the area with dust for 1 round which obscures vision
+      past 5ft. Deals double damage to the structure underneath the caster.'
+    higher_levels: Each spell slot level above 1st adds 1d6 damage. At 3rd level or higher, you may increase
+      the radius to 15 feet; at 5th level or higher, you may increase it to 20 feet.
+    design_notes: The review specifies Oath 1 and revised upcasting. The 10-foot base radius, 2d6 + casting
+      bonus damage, grounded targeting and larger-radius thresholds are proposed balance choices for V.; they
+      are not existing rules.
+  related_spells:
+  - name: Earthshatter
+    group: Oath spells
+    notes: Existing Oath 5 spell with a larger cone, forced movement, difficult terrain and extra damage to
+      structures.
+  - name: Withstand
+    group: Oath spells
+    notes: Existing Oath 1 area knockdown and push; Quake Hammer exchanges the push and self recovery for damage.
+  questions:
+  - Does Oath need both Withstand and a damaging ground-strike option at level 1, or should this become an
+    upcast option of Withstand?
+  final-answer: made changes, its lvl 2 now. Approved now.
+- name: Rampart of the Rugged
+  status: needs-design
+  decision: Compare the nonmagical physical-damage resistance with the stone-skin family; the reviewer suspects
+    overlap but identifies no exact canonical duplicate.
+  questions:
+  - Which physical-resistance effect is the intended duplicate, and should useful parts join Stone's Immunity?
+  final-answer: just reject this.
+- name: Rock Barrier
+  status: rejected
+  decision: Reject this narrow flat-damage-reduction reaction at its original level according to the author's
+    verdict.
+- name: Rockplica
+  status: needs-design
+  decision: Compare the mimic-tear concept with existing Arcane copy; any distinct version needs a real statblock,
+    action and resource restrictions, and duration limits.
+  related_spells:
+  - name: Arcane copy
+    group: Arcane spells
+    notes: Already creates a solid copy sharing stats and resources, without item duplication.
+  questions:
+  - What role differs from Arcane copy?
+  - What actions, resources, gear, spells, and independent turns may the duplicate use?
+  final-answer: 'It doesnt differ and arcane is the only real place where this could be useful. I do propose
+    this be reworked for occult in the following ways: The spell is not limited to a range, but it has 1/3
+    your HP rounded up(for funsies) and can do your actions, but cannot cast spells beyond 3rd level and has  1/2
+    of your  class resources (spell slots, rest dice, etc.) but instead it has a +2 bonus to an attribute of
+    choice and a +1 bonus to another. This kind of power would fit a lvl 4 occult spell. Something like clay
+    simulacra. It should have an HP cost and the duration should be 1 day but the casting time should be 1
+    hour and require something significant. higher levels can increase the duration. And there should be a
+    "subject to GM" clause in there about having more than one clay simulacra because they are known to conspire,
+    or something, with like no further explanation as both flavor and a gm clause source for the GM to intervene
+    if it gets abused. After all, its essentially spell replication. This is like the one spell so far in the
+    list that I dont either reject or approve, and actually would like an iteration for. the rest are either
+    approved, or rejected if input was requested.'
+- name: Rockslide
+  status: rejected
+  decision: Reject the conjured-rock avalanche. Preserve a lower-power meteor-shower concept separately, without
+    granting arbitrary portals or terrain creation.
+  questions:
+  - Would a smaller Arcane meteor shower add a distinct role without implying unrestricted portals?
+- name: Rocky Resilience
+  status: draft
+  decision: Provide a conservative Mystic 6 defensive draft rather than importing the original repeated ability-modifier
+    scaling. Its acceptance and exact protection remain an author decision.
+  conversion:
+    name: Seal of protection
+    magic_class: Oath 5
+    level: '6'
+    casting: 1 action
+    components: Verbal, Somatic, Material (a piece of unworked stone touched to the target)
+    range: Touch
+    duration: Concentration, up to 1 hour
+    effect: Touch one willing creature and attune its flesh to the steadiness of stone. It is granted 3 temporary
+      block, and for the duration, it gains a fixed +3 bonus to AC. If another spell grants it a numerical
+      bonus to AC, it uses the largest of those spell bonuses rather than adding them together. Its ordinary
+      armor, shield and class AC rules still apply.
+    design_notes: The author floated Mystic 6 after rejecting unrestricted Wisdom stacking at lower levels.
+      A fixed +3, one target, no spell-bonus stacking and no additional block benefit are proposed safeguards;
+      the source instead added the caster's modifier and allowed extra upcast targets. This draft is deliberately
+      awaiting an assessment of whether AC alone merits a level 6 slot.
+  related_spells:
+  - name: Aegis
+    group: Arcane spells
+    notes: Existing defensive spell rewards retaining temporary Block rather than adding AC.
+  - name: Mage knight armor
+    group: Arcane spells
+    notes: Existing Arcane 5 armor enhancement provides several benefits and is a useful high-level defense
+      comparison.
+  questions:
+  - Is a fixed +3 to AC enough for Mystic 6, or should the concept be rejected or incorporated into the proposed
+    high-level stone form instead?
+  final-answer: I actually want to specifically commend the wording for the spell AC stacking. this should
+    be incorporated for most spells that just give you AC straight up, with very few exceptions(but probably
+    some.) I would say this would be more of a lvl 5 mystic spell. I changed the name. I also changed it to
+    grant 3 block. Reworked it to Seal of protection and switched it to oath.
+- name: Sand's Mirage
+  status: rejected
+  decision: Reject another desert-limited hallucination; a broader illusion or delirium design should justify
+    its scope directly.
+- name: Stone's Immunity
+  status: draft
+  decision: Draft the suggested stoneskin at the conservative Mystic 5 level and give its strong physical protection
+    a visible mobility cost.
+  conversion:
+    name: Stoneskin
+    magic_class: Mystic
+    level: '3'
+    casting: 1 action
+    components: Verbal, Somatic, Material (A gestone or higher metal dust worth 100gp, which is consumed.)
+    range: Touch
+    duration: Concentration, up to 1 minute
+    effect: Touch one willing creature, covering it in a heavy stone shell. For the duration, it is immune
+      to bludgeoning, piercing and slashing damage from nonmagical attacks. Magical attacks and other damage
+      types affect it normally. The shell halves its movement speed, and it cannot fly or jump while the shell
+      remains. The shell grants no bonus to AC, but does grant a +3 bonus to block checks. The creature may
+      shed it as an action, ending the spell on itself.
+    higher_levels: When cast using a 6th-level spell slot, you may affect two willing creatures touched as
+      part of the same casting. Concentration maintains both shells, and either creature may end only its own
+      shell.
+    design_notes: The review suggests Mystic 4 or 5 with extra bulk or another cost. Level 5, consumed dust,
+      halved speed, no flying or jumping and action-based shedding are proposed interpretations. The narrow
+      immunity remains limited to nonmagical attacks, as in the source; it is not general immunity to falls,
+      hazards or spells.
+  questions:
+  - Should this use immunity with these drawbacks at Mystic 5, or resistance with a lower slot level?
+  final-answer: Actually this is true it should be a lvl 3 spell. I incorporated that in. Also changed it to
+    grant a +3 bonus to block checks.
+- name: Temblor
+  status: rejected
+  decision: Reject another large area-damage spell whose fiction does not justify its lethal numbers.
+- name: Alpine Authority
+  status: rejected
+  decision: Reject the current terrain-themed mass charm. Preserve only the broad high-power charm concept
+    for a separately justified design.
+  questions:
+  - If high-power charm is revisited, what constraint replaces incidental terrain and prevents unlimited mass
+    compulsion?
+- name: Bloomguard
+  status: needs-design
+  decision: Clarify the vague protection and replace nearly-impossible language with actual rules before assigning
+    a conversion category and level.
+  questions:
+  - What does nearly impossible mean mechanically, who is protected, and what ends or bypasses protection?
+  final-answer: "try this. I had a conversation with N about it and he described it as follows:\n  You would\
+    \ cause a plant to sprout in a valid tile, growing up to some size, with basically a ton of HP, DR, and\
+    \ regeneration, so that mechanically you can take it down\n  in simple terms, but its a tunnel blocker\
+    \ or a bridge or a pillar/support to use in addition to being hard to break.\n\nMy idea is this:\n  As\
+    \ an action, using a staff, wand, polearm, or stick, tap a piece of dirt, soil, or mud, forcing a fungal\
+    \ or floral strain or microbe to mutate into a rapidly growing large organism. Its growth, size, and direction\
+    \ can be directed by the caster so long as they maintain the focus tool(staff, wand, polearm, or stick)\
+    \ used for this spell.\n  The plant grows up to 3d4 rounds. \n  Each round plant grows, the caster can\
+    \ use an action to direct the new plant, allowing it to grow up to a 5ft cube worth of mass in an area\
+    \ of the casters choice.\n  The caster may attempt a bonus action to also do it but that should be a DC\
+    \ 17 arcana or nature check.\n  The caster may sacrifice a rest dice to force a 5ft area of the plant into\
+    \ a shape or function.\n  If the caster is preoccupied and does not direct the plants growth, the GM decides\
+    \ (Subject to GM.)\n  The plant has 200HP, AC 0, cannot block, fails all saves, but has resistance to all\
+    \ non-magical damage, regeneration 20, and if a a segment of it is destroyed, it will attempt to regrow\
+    \ and reconnect with itself within 1d3+1 rounds.\n  The plant lasts up to 8 hours, after which it begins\
+    \ to suffer the adverse effects of its accelerated growth, becoming frail and rapidly mutating.\n  Technically,\
+    \ due to its magically altered nature, it is closer to an algae or lychen, though its exact appearance\
+    \ and shape will adapt to the macroscopic world, resembling a weird tree, mushroom, or sponge-like structure.\n\
+    \nPlease attempt to reincorporate this into a spell."
+- name: Boulder's Dominion
+  status: merge
+  decision: Consolidate permanent stone shaping with greater geomancy and construction magic; compare permanence
+    and volume rather than assume exact equivalence.
+  related_spells:
+  - name: Greater geomancy
+    group: Arcane spells
+    notes: Existing stone restructuring; permanence and volume need comparison.
+  - name: Structure
+    group: Arcane spells
+    notes: Existing structure alteration with concentration duration.
+- name: Dunedash
+  status: needs-design
+  decision: Rework with the Occult transformation family; the review leaves level 4, 5, or 6 open and has not
+    established its distinction from Vermin-form.
+  related_spells:
+  - name: Vermin-form
+    group: Occult spells
+    notes: Existing dispersal-transformation comparison; a sand reskin is not automatically distinct.
+  questions:
+  - What distinguishes sand dispersal from Vermin-form, and should its slot be 4, 5, or 6?
+  final-answer: It should be level 4, and make you immune to all other damage except lightning fire and radiant,
+    and grant you 2d8 temp HP. Once the temp HP is lost, you are thrown out of the form and overdamage is dealt
+    to you. You can exit it yourself if you want to at will. This effectively gives a flight speed. The damage
+    to creatures you occupy can stay 3d10, but with the limitation that besides perhaps speaking in a strange
+    windy raspy tone, you are barred from all other actions and casting.
+- name: Earth's Awakening
+  status: needs-design
+  decision: Keep in the design queue because the author requests work without specifying acceptable mechanics,
+    category, or level.
+  questions:
+  - Which source functions survive, with what category, slot, and control limits?
+  final-answer: Honestly i want to reject this for now. we have to still decide on summoning, the proper way
+    to depict the monster stat block and how to evaluate difficulty. Lets reject this for now.
+- name: Geochemical Golem
+  status: needs-design
+  decision: Preserve the material-infusion system as a candidate, but redesign summoning and scaling for twelve
+    character levels and consolidate elemental options first.
+  questions:
+  - Can material-infused creatures remain monster options under a consolidated summon?
+  - Which template, commands, costs, and scaling fit character levels 1-12?
+  answer: "I think the unique summon system for this monster is quite impressive and should be preserved. This\
+    \ should be a spell since the technology exists. Its quite amazing. I want it reconstructed as an arcane\
+    \ spell which is essentially a make-a-golem spell. Geochemical is not a good name for it though. \nAlternatively,\
+    \ this system and mechanics could be really good for a wizard archetype that specializes for golems.\n\
+    So this answer isnt final, keep this one for reevaluation, but as for the 12 lvl system, the game is compressed\
+    \ to 12 levels. 12 divides with 2,3,4,6. You can do lots of interesting archetypes. You know that what\
+    \ is at lvl 3/4 at a class has to harmonize with whats at lvl 7/8 for another class for the sake of making\
+    \ multiclassing equivalent, and you know that proficiency goes up to +5.  besides that, I would like you\
+    \ to reconstruct Golemancy as a lvl 4 arcane spell which has this original spells infusion mechanic, but\
+    \ uses the materials or exotic stuff actually listed in the items the compendium has at the moment. This\
+    \ is primarily to check how it works.  And the scaling should permit for extra infusions at lvl 5(extra\
+    \ options, and +1), and a mini infusion list of 3 ult-like abilities(not in terms of moba-style damage\
+    \ ults but perhaps very weird or unique game alterations that the \"golem\" can now have, since its blurrin\
+    \ the line between golem and the relic player race now.)"
+- name: Geomantic Harmony
+  status: rejected
+  decision: Reject this spell according to the author's explicit verdict.
+- name: Geomorpher's Stone Servant
+  status: merge
+  decision: Consolidate elemental and construct servants with existing summon options rather than add many
+    separate earth-elemental spells.
+  related_spells:
+  - name: Summon elemental
+    group: Arcane spells
+    notes: Existing multi-element summon with an earth option.
+  - name: Mud servant
+    group: Occult spells
+    notes: Existing material-based construct servant.
+- name: Lithic Luminary
+  status: needs-design
+  decision: Keep an Oath 5 anti-magic sanctuary as a design candidate, with the review's request for a broader
+    consecration identity and a comparison against current Consecrate before assigning new benefits.
+  related_spells:
+  - name: Consecrate
+    group: Oath spells
+    notes: Existing Oath 6 consecrates an area with protection and restoration benefits; a narrower Oath 5
+      ward needs a clear distinction.
+  - name: Warding rune
+    group: Oath spells
+    notes: Existing warding aura baseline.
+  questions:
+  - What protection beyond advantage against spells should justify this Oath 5 ward?
+  - Should the existing hour-long duration require concentration, and is the gemstone consumed or reusable?
+  - What benefit, cost, and vulnerability distinguish it from Warding rune and Consecrate?
+  final-answer: Then make it a lvl 4 oath spell, and change name to hallowed earth. Add a limitation that it
+    cannot be cast in cemetaries and places where mass death has occured within the memories of the living
+    races. Make it so that if a small or larger creature is slain within the effect the effect ends. Advantage
+    on all saves vs spells. Grant it a lvl 5 upcasting effect that the area is increased to 60ft. And at lvl
+    6, grant it an upcasting effect that if two other clerics cast hallowed ground on already hallowed ground
+    within the span of 1 hour, all three spells are combined, affecting the entire structure up to 1 mile out,
+    and forbidding non-corporeal creatures, spirits, and aberrations that oppose any of the clerics oaths to
+    enter it without dire consequence(Subject to GM. May not incur more burn per turn than 2d6 radiant damage.)
+- name: Rockrise
+  status: draft
+  decision: Keep the interesting extension of existing stone as a Mystic 3 utility spell, with an explicit
+    size, lifetime and durability formula.
+  conversion:
+    name: Rockrise
+    magic_class: Mystic
+    level: '3'
+    casting: 1 action
+    components: Verbal, Somatic, Material (an existing stone object or stone surface that is touched)
+    range: Touch
+    duration: 1 hour
+    effect: Touch a nonmagical stone object or continuous stone surface. Grow one attached extension fitting
+      inside a 5-foot cube, such as a step, support, simple barrier, bridge segment or blunt tool. The extension
+      must remain attached to the touched stone when formed, must fit in unoccupied space and cannot grow inside
+      a creature or object. It cannot create machinery, writing, precious minerals or a magically enhanced
+      weapon. Its AC is 10 + your casting bonus and its HP is 10 times the sum of your character level and
+      casting bonus, with a minimum of 10 HP. Damage affects the extension rather than the original stone unless
+      an effect also reaches that stone. When the spell ends, the added stone crumbles into ordinary dust;
+      the original stone remains. Detached fragments also crumble and cannot be used to produce permanent material.
+    higher_levels: Each spell slot level above 3rd adds one adjacent 5-foot cube to the maximum extension and
+      increases the extension's total HP by 10. The entire extension must be one connected simple shape.
+    design_notes: The review specifies Mystic 3 and favors extending stone structures. Attachment, temporary
+      material, unoccupied space and simple shapes are proposed limits. The source HP formula lacked parentheses;
+      this proposed version explicitly chooses 10 times (character level + casting bonus), without changing
+      the preserved original.
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Existing Arcane 2 shaping alters available ground and has a different collection of combat options.
+  - name: Greater geomancy
+    group: Arcane spells
+    notes: Existing Arcane 5 shaping works across a larger segment of stone and may be repeated.
+  questions:
+  - Is temporary magical growth distinct enough from the existing Geomancy options to warrant its own Mystic
+    spell?
+  final-answer: no it shouldnt be temporary, imo. If it is high enough level, it no longer matters that with
+    magic you have a caster with a mini mason crew ability. its still hard to get to. It should be permanent.
+    Otherwise, nice.
+- name: Petal's Fountain
+  status: rejected
+  decision: Reject the current plant-and-money-limited heal; retain the nature-dependent healing idea for comparison
+    with existing Mystic healing.
+  related_spells:
+  - name: Heal nature
+    group: Mystic spells
+    notes: Existing nature-linked healing.
+  - name: Healing wish
+    group: Mystic spells
+    notes: Existing Mystic healing.
+  - name: Regeneration
+    group: Mystic spells
+    notes: Existing stronger restoration.
+  questions:
+  - Does nature-dependent healing need a new spell or an option within current Mystic healing?
+- name: Sand's Whirlwind
+  status: merge
+  decision: Consolidate with broader wind and storm magic rather than another standalone sandstorm.
+  related_spells:
+  - name: Ethermancy
+    group: Arcane spells
+    notes: Existing atmospheric manipulation.
+  - name: Greater windbinding
+    group: Arcane spells
+    notes: Existing wind-control family.
+  - name: Storm
+    group: Mystic spells
+    notes: Existing broader storm.
+- name: Sounds of Stone
+  status: rejected
+  decision: Reject the rock-themed confusion effect according to the author's verdict.
+- name: Stone's Invulnerability
+  status: rejected
+  decision: Reject this spell according to the author's explicit verdict.
+- name: Tectonic Erosion
+  status: merge
+  decision: Consolidate corrosion with existing Rust and decay effects; do not add an earth-themed duplicate
+    or silently reclassify current spells.
+  related_spells:
+  - name: minor geomancy
+    group: Arcane cantrips
+    notes: Its Rust upgrade already corrodes metal.
+  - name: 'Power word: Rust'
+    group: Mystic spells
+    notes: Existing high-level corrosion.
+- name: Wind's Embrace
+  status: merge
+  decision: Compare missile protection with existing greater windbinding; consolidate any useful mode rather
+    than grant another narrow projectile-denial spell.
+  related_spells:
+  - name: Greater windbinding
+    group: Arcane spells
+    notes: Wind wall already rejects projectiles.
+- name: Bloomheal
+  status: draft
+  decision: Draft Mystic 4 as a single-target restorative treatment with delayed limb regrowth. Keep it distinct
+    from immediate Oath healing and the existing lower-level Regeneration.
+  conversion:
+    name: Bloomheal
+    magic_class: Mystic
+    level: '4'
+    casting: 1 action
+    components: Verbal, Somatic, Material (an emerald worth at least 500 gold, held against the target)
+    range: Touch
+    duration: Concentration, up to 2 minutes
+    effect: Touch a willing living creature and stimulate its natural healing. It immediately regains 4d8 +
+      casting bonus HP, then regains 1 HP at the start of each of its turns while the spell continues. If you
+      maintain concentration for the full 2 minutes, the target regrows any limbs, digits or other ordinary
+      body parts lost before the casting. A severed part held against its matching wound instead reattaches
+      when the spell is cast. The spell cannot revive a dead creature, replace a missing soul, or remove a
+      disease or curse. It restores HP rather than Arcane Health or temporary HP.
+    higher_levels: Each spell slot level above 4th adds 1d8 + 5 to the initial healing. A higher-level casting
+      does not reduce the time needed to regrow a missing part.
+    design_notes: The review specifies Mystic 4. This proposal replaces the source's flat +15 with casting
+      bonus and its hour of ongoing healing with a 2-minute treatment; regrowing a full limb remains delayed.
+      The original emerald is retained as a reusable material because the source does not consume it. These
+      balance choices require V.'s approval.
+  related_spells:
+  - name: Regeneration
+    group: Mystic spells
+    notes: Existing Mystic 3 grants regeneration 1d6 for a minute and regrows digits and eyes; Bloomheal's
+      proposed distinguishing benefit is larger missing parts after a longer treatment.
+  - name: Greater heal
+    group: Oath spells
+    notes: Existing Oath 4 supplies immediate healing and limited revival.
+  - name: 'Power word: Heal'
+    group: Oath spells
+    notes: Existing Oath 6 restores missing limbs immediately and has broader restorative effects.
+  questions:
+  - Should delayed full-limb regrowth remain a distinct Mystic 4 spell, or become a higher-slot option of Regeneration?
+  final-answer: this is quite good. I approve. The concentration is also good here because while the heal is
+    big, guaranteed regeneration is a bit much. This way it is useful but not combat-safe.
+- name: Crystal Prison
+  status: draft
+  decision: Draft the requested Arcane 5 prison with defined escape rules instead of importing an indefinite
+    restraint with no exit procedure.
+  conversion:
+    name: Crystal Prison
+    magic_class: Arcane
+    level: '5'
+    casting: 1 action
+    components: Verbal, Somatic
+    range: 60 feet
+    duration: Concentration, up to 1 minute
+    effect: 'Choose one Large or smaller creature you can see within range. It makes a Dexterity save against
+      your spell DC. On a failure, a cage of sharp crystal forms around it: it is Snared, and takes 4d6 piercing
+      damage at the start of each of its turns. It can use an action to attempt a Strength check against your
+      spell DC, breaking the cage and ending the spell on a success. The cage can also be attacked; it has
+      AC 15 and 40 HP. Destroying it ends the spell without dealing extra damage to the prisoner. The cage
+      permits air and sight and does not block spells or attacks that otherwise have a clear path through its
+      gaps. A creature that teleports out of the cage escapes and ends the spell. On a successful initial save,
+      no cage forms and the creature takes no damage.'
+    higher_levels: When cast using a 6th-level spell slot, the ongoing damage increases to 5d6 piercing damage
+      and the cage has 60 HP.
+    design_notes: The review specifies Arcane 5. Snared uses the current movement condition rather than assuming
+      a 5e Restrained condition. Large-or-smaller targeting, an action-based Strength escape, cage AC/HP and
+      teleport escape are proposed completions of missing source procedures. Reaching 0 cage HP never causes
+      an additional burst.
+  related_spells:
+  - name: Crystallize
+    group: Arcane spells
+    notes: Existing Arcane 6 is a damaging transformation with several conditions and possible permanent petrification;
+      this proposal creates an external breakable cage instead.
+  questions:
+  - Should the breakable cage target larger creatures when upcast, instead of increasing its damage?
+  final-answer: I think the size increase should be added to it at higher levels, but the damage effect can
+    stay. Its very Glintstone-y so it works.
+- name: Highland's Rise
+  status: draft
+  decision: Recast the source as Mystic 5 earthworking rather than calling a 100-foot landform a mountain,
+    with a specific sixth-level expansion.
+  conversion:
+    name: Raise Highland
+    magic_class: Mystic
+    level: '5'
+    casting: 1 minute
+    components: Verbal, Somatic, Material (a piece of mountain rock worth at least 500 gold)
+    range: 500 feet
+    duration: Instantaneous; the resulting landform is permanent
+    effect: 'Choose a continuous area of natural earth or stone you can see within range, up to 100 feet across.
+      Reshape its upper surface into one broad hill, ridge, terrace or plateau up to 100 feet higher than its
+      original surface. The new surface must remain attached to and supported by the surrounding ground. Creatures
+      on it are carried with the surface into unoccupied space without falling or taking damage from the reshaping
+      itself; if no such arrangement is possible, that part of the ground is unchanged. The spell cannot be
+      centered inside a constructed building, move manufactured structures, crush buried creatures, or grow
+      through an existing solid barrier. It creates no ore, gems, finished masonry or machinery. Once formed,
+      the landform is ordinary terrain: dispelling does not remove it, and excavation, erosion or later magic
+      can alter it normally.'
+    higher_levels: When cast using a 6th-level spell slot, the chosen area may be up to 200 feet across and
+      its surface may rise up to 200 feet above its original height.
+    design_notes: The review specifies Mystic 5 terraforming and a sixth-level upgrade. The source's 100-foot
+      base and 200-foot first upgrade are retained at the new slot levels. Natural-ground-only, stable support,
+      safe displacement and constructed-structure limits are proposed safeguards. This is terrain reshaping,
+      not an instantaneous damaging eruption.
+  related_spells:
+  - name: Greater geomancy
+    group: Arcane spells
+    notes: Existing Arcane 5 manipulates a smaller stone segment with several repeatable effects.
+  - name: Structure
+    group: Arcane spells
+    notes: Existing Arcane 6 handles manufactured materials, mechanisms and fortifications; this draft deliberately
+      leaves those uses to that spell.
+  questions:
+  - Should Mystic 5 be permitted to reshape land supporting existing buildings, with GM-resolved structural
+    consequences, or should the natural-site restriction remain?
+  final-answer: Hmm... I think its fine for now. I approve it as it is currently. Perhaps land that is not
+    natural(that contains worked or owned structures) should require an arcana or wisdom check to push successfully,
+    implying this somehow translates to feeling weight for the caster. Hell idk, it probably oes considering
+    things like the shadowfell and ethereal plane mimic structures in the mundane world, at least in the old
+    setting.
+- name: Geomorph's Foresight
+  status: rejected
+  decision: Reject according to the author's duplicate verdict, while leaving its alleged canonical equivalent
+    unasserted; landscape prediction is not the same as Foretell's roll prediction.
+  related_spells:
+  - name: Foretell
+    group: Arcane spells
+    notes: Predicts dice outcomes, not century-scale terrain changes; not an exact duplicate.
+  - name: Greater divination
+    group: Arcane spells
+    notes: Heightened senses and warnings, not explicit century-scale landscape prediction.
+  questions:
+  - Which canonical spell predicts future natural landscape changes, rather than rolls or heightened perception?
+  final-answer: It should be its own thing, reject this for now. I will decide on that myself.
+- name: Geomorph's Transendance
+  status: needs-design
+  decision: Consolidate the kaiju-transformation concepts before choosing an Occult 5-6 draft and defining
+    its full stat and action package.
+  questions:
+  - Should giant-form ideas be one Occult transformation or a distinct Mystic Gianthood, and which effects
+    survive?
+- name: Litholife Burst
+  status: rejected
+  decision: Reject the bland high-level reaction heal; a broader Oath healing reaction can be considered separately
+    with an appropriate level.
+- name: Peakforce
+  status: needs-design
+  decision: Evaluate a level 6 Mystic Gianthood concept alongside existing Primordial strength and other giant-form
+    proposals before drafting.
+  related_spells:
+  - name: Primordial strength
+    group: Mystic spells
+    notes: Existing high-level physical enhancement with death-save costs.
+  questions:
+  - How does Gianthood differ from Primordial strength and the proposed Occult kaiju transformation?
+  final-answer: it doesnt really stand up to it properly. lets reject this. expansion and growth effects should
+    not be overused so as to not make it weird(the internet people made it weird.)
+- name: Petalguard
+  status: rejected
+  decision: Reject the narrow, excessive defensive duplicate according to the author's verdict.
+- name: Stone Sentinel
+  status: rejected
+  decision: Reject the low-utility long-duration stone sentinel; any giant-chess-piece summon should join the
+    consolidated summon family and needs a distinct role.
+- name: Stone's Simphony
+  status: draft
+  decision: Retheme the suggested Oath 4 group inspiration as a spoken invocation and retain its brief burst
+    of advantage.
+  conversion:
+    name: Brethren unite
+    magic_class: Oath
+    level: '4'
+    casting: 1 action
+    components: Verbal, Somatic
+    range: Self (30-foot radius)
+    duration: Until the end of your next turn
+    effect: Speak an invocation that draws nearby companions into common purpose. Choose yourself and up to
+      five other willing creatures within 30 feet that can hear you. Each chosen creature gains advantage on
+      attack rolls, saving throws and ability checks until the end of your next turn. A creature retains the
+      benefit after leaving the radius. Additional castings overlap in duration but grant no further advantage
+      to the same roll.
+    higher_levels: Each spell slot level above 4th increases the initial selection radius by 10 feet and allows
+      two additional creatures to be chosen. At 6th spell slot level, increases duration to 2 rounds.
+    design_notes: The reviewer tentatively suggests Oath 4 with new theming. A spoken invocation, hearing requirement,
+      six-creature base limit and 5th/6th-slot scaling are proposed interpretations. The source's brief advantage
+      window is retained. This remains a candidate, not an author-approved addition.
+  related_spells:
+  - name: Major blessing
+    group: Oath spells
+    notes: Existing Oath 4 gives one creature a longer numerical bonus and a chance to remove an ongoing effect;
+      this candidate trades duration for a group burst.
+  questions:
+  - Is a one-round group burst of advantage a useful alternative to Major blessing, or should this become its
+    upcast option?
+  final-answer: I renamed it but this should be approved.
+- name: Unstoppable Force
+  status: merge
+  decision: Consolidate the duplicate kaiju-mode concept with Geomorph's Transendance and Gianthood discussions
+    rather than add another transformation spell.
+  related_spells:
+  - name: Primordial strength
+    group: Mystic spells
+    notes: Compare existing physical enhancement before another giant-form ultimate.
+- name: Wind's Gale
+  status: merge
+  decision: Fold the large wind wall into broader windbinding rather than retain another narrow high-level
+    wall spell.
+  related_spells:
+  - name: Greater windbinding
+    group: Arcane spells
+    notes: Existing high-level Wind wall.
+- name: Crystal Mirror
+  status: draft
+  decision: Draft the tentative Occult 5 reflection as an active held mirror with a reaction cost and slot
+    ceiling, preserving the stronger existing Arcane reflection rune.
+  conversion:
+    name: Malefic Mirror
+    magic_class: Occult
+    level: '5'
+    casting: 1 action
+    components: Verbal, Somatic, Material (a hand-held polished mirror)
+    range: Self
+    duration: Concentration, up to 1 minute
+    effect: 'Enchant a mirror held in one of your hands. While holding it, you may spend your reaction when
+      a creature you can see casts a spell of 4th level or lower that directly targets only you. Turn the mirror
+      toward the caster: you cease to be the target, and the original caster becomes the target instead if
+      it is a legal target within that spell''s range measured from you. Resolve the spell using its original
+      caster''s spell DC and other casting values. If the caster is not a legal target, the effect against
+      you is negated. This reflection cannot affect an area spell, a spell with multiple targets, a continuing
+      effect already on you, or a spell that has already been reflected. The enchantment ends if you stop holding
+      the mirror, the mirror is destroyed, or you cast this spell again.'
+    higher_levels: When cast using a 6th-level spell slot, the mirror may reflect a spell of 5th level or lower.
+    design_notes: Occult 5 is a tentative review suggestion. The held focus, reaction cost, single-target trigger
+      and exclusion of already reflected effects are proposed limits that replace the source's undefined facing
+      and automatic reflection. Original casting values are reused; this is not a new casting by the mirror's
+      wielder.
+  related_spells:
+  - name: Rune of reflection
+    group: Arcane spells
+    notes: Existing Arcane 6 reflects direct-target spells without this proposal's fourth-level ceiling and
+      reaction limit, and lasts longer.
+  questions:
+  - Does Occult need this narrower reflection spell, or should it remain solely within Arcane Rune of reflection?
+  final-answer: No no this is good for occult. it should be approved. I think it should be a level 5 occult
+    spell, but it should also work if the caster is being targeted by a single creature effect. So like a single
+    spell shoots 3 bolts, one of them hits me, I mirror that bolt, so it hits the caster. You dont want to
+    recast the entire spell. Im uncertain on the wording but id like to see that version first.
+- name: Dunesurge
+  status: merge
+  decision: Consolidate with the storm family instead of a fifth or sixth standalone sandstorm.
+  related_spells:
+  - name: Storm
+    group: Mystic spells
+    notes: Existing broader storm family.
+- name: Lithic Echoes
+  status: rejected
+  decision: Reject the hard-object-dependent fear spell as an unjustified restriction on a generic fear effect.
+- name: Sandgrip
+  status: merge
+  decision: Consolidate the sandstorm restraint/damage concept with the storm family; its damage and repeated-trigger
+    model still need author review.
+  related_spells:
+  - name: Storm
+    group: Mystic spells
+    notes: Potential terrain-dependent storm mode, pending design.
+- name: Seismic Echo
+  status: needs-design
+  decision: Preserve the combo mechanic for design review, but define a worthwhile role, setup, range, and
+    payout before choosing category or level.
+  questions:
+  - What setup, trigger, range, and payoff make the combo worthwhile?
+- name: Stoneform Titan
+  status: rejected
+  decision: Reject this transformation according to the author's explicit verdict; do not infer approval from
+    other giant-form comments.
+- name: Summitsmash
+  status: merge
+  decision: Compare its structural destruction with existing Earthshatter; there is no current spell named
+    Shatter, so preserve the author's overlap concern without claiming an exact match.
+  related_spells:
+  - name: Earthshatter
+    group: Oath spells
+    notes: Existing damaging terrain destruction; radius, damage, and structural effects differ.
+- name: Treetimber
+  status: rejected
+  decision: Reject the falling-tree spell according to the author's verdict despite the humorous concept.
+- name: Geomantic Ascendancy
+  status: draft
+  decision: Draft the suggested Mystic 6 earth attunement as one readable paragraph, with explicit damage types
+    and safe earth passage instead of broad undefined immunity.
+  conversion:
+    name: Geomantic Ascendancy
+    magic_class: Mystic
+    level: '6'
+    casting: 10 minutes
+    components: Verbal, Somatic, Material (an earth-encrusted diamond worth at least 5,000 gold, which is consumed)
+    range: Self
+    duration: Concentration, up to 1 hour
+    effect: 'Attune your body to the earth. For the duration, while touching natural earth or stone, you have
+      resistance to bludgeoning, piercing, slashing, acid, cold, fire and lightning damage; you can move through
+      nonmagical natural earth and stone at a speed of 20 feet without leaving a tunnel; you sense the location
+      of moving creatures touching the same continuous ground within 60 feet, although this sense does not
+      let attacks or spells pass through barriers; and you can speak with and understand earth elementals.
+      While traveling through earth, you must hold your breath, as though you were unable to breathe. You cannot
+      pass through solid metal, worked masonry or magical barriers.
+
+
+      While under the effect of this spell, you are considered an elemental in addition to your other types.'
+    design_notes: 'The reviewer suggests Mystic 6 with clearer numbers and likes the single-paragraph form.
+      Concentration, resistance instead of immunity, the enumerated damage types, natural-material limits and
+      20-foot speed are proposed balance and clarity decisions. Forced exit follows the existing Varis Ethereal
+      condition convention, matching the Earthwalk draft: nearest unoccupied space by the shortest permitted
+      route, with falling damage based on twice the forced distance. Unlike Earthwalk, this draft still requires
+      ending each turn outside solid material. The costly consumed diamond is retained. No free ritual casting
+      is granted because current slot-free ritual rules for this new draft have not been confirmed.'
+  related_spells:
+  - name: Geomancy
+    group: Arcane spells
+    notes: Existing earth manipulation and stonemail are separate effects; this draft is personal attunement,
+      not a package granting those spell options.
+  questions:
+  - Should the form grant resistance, limited immunity, or a temporary HP shell at Mystic 6?
+  final-answer: nah I modified it a bit. it should be approved now.
+- name: Geoshape
+  status: merge
+  decision: Consolidate the fortification and terrain-shaping family with existing construction magic instead
+    of another overloaded geomancy ultimate.
+  related_spells:
+  - name: Structure
+    group: Arcane spells
+    notes: Existing fortification family.
+  - name: Subdomain
+    group: Arcane spells
+    notes: Existing domain terrain-reforming modes.
+  final-answer: Reject this, but I have a request. I want an .md named "world_and_terrain_effects.md" where
+    I want these worts of things to be listed. I deliberately want you to compile 100 things that can be utilized
+    for terrain or world or structure enchanting things. This is either by subdomain, spell, or anything. And
+    different saves or skills are considered duplicates, even if slightly varies, so that a "advantage on dex
+    saves and +1 to attacks cus its like the bloodgrounds" is not gonna cut it. I want to be a scientist about
+    the possibility space with this document, so it should list the possibility space itself. Please also write
+    an analysis of terrain and structure enchantment game design space. Thank you.
+- name: Nature's Avatar
+  status: rejected
+  decision: Reject the avatar spell as outside the review's intended theme.
+- name: Nature's Blessing
+  status: rejected
+  decision: Reject the mass full-heal; avoid translating a total restoration into a multi-character spell by
+    default.
+- name: Promethium Portal
+  status: rejected
+  decision: Reject the rock-themed portal because the review considers it cosmologically unjustified and excessively
+    broad.
+- name: Sandsoverign
+  status: needs-design
+  decision: Reconsider only after separating its enormous storm, golem, and battlefield-control functions;
+    the reviewer has not approved a sand-themed ultimate.
+  questions:
+  - Which storm, golem, or terrain-control role is essential, and can other parts stay separate options?
+  final-answer: I would like to reject the sand option for now in favor of clearing out the list and working
+    on other ideas once this is done. For now, the sand, while thematic in the avatar series, is too niche
+    in flavor and theme for general content.
+- name: Worldshaper's Command
+  status: merge
+  decision: Compare landscape alteration with existing greater geomancy, Structure, and Subdomain; consolidate
+    scope thoughtfully rather than importing a one-mile level 10 effect.
+  related_spells:
+  - name: Greater geomancy
+    group: Arcane spells
+    notes: Far smaller existing stone manipulation.
+  - name: Structure
+    group: Arcane spells
+    notes: Existing construction, not a one-mile natural landscape rewrite.
+  - name: Subdomain
+    group: Arcane spells
+    notes: Temporary terrain-reforming options.
+- name: Genesis
+  status: needs-design
+  decision: Verify the suspected duplicate before making a design decision. Existing Subdomain is a temporary
+    local overlay, not a persistent independent demiplane like this source.
+  related_spells:
+  - name: Subdomain
+    group: Arcane spells
+    notes: Temporary local overlay, not a persistent independent demiplane.
+  questions:
+  - Is a persistent demiplane deliberately excluded, or should it become a distinct high-level ritual? Subdomain
+    is temporary and local.
+  final-answer: Yes, it is actually deliberately excluded. Same reason why most things are bounded. Magic should
+    not vaporize the setting. Creating extra dimensions is reserved for a lvl12+campaign or to demonstrate
+    the strength of higher or other powers in the campaign. So in essence, this should be rejected. It doesnt
+    mean "no" extra planes  can exist. It doesnt mean you cant step into a side pocket for a bit or whatever
+    in some other spell, but this one is rejected.

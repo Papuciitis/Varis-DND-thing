@@ -34,6 +34,8 @@ entries:
     * You gain vulnerability to sonic damage, but gain advantage on checks that utilize hearing, such as perception or investigation, as well as checks involving smell.
     * Gain a +2 bonus to AC while under the effect of this spell.
     * You must make concentration checks when casting spells with verbal components.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Bestow insight
   group: Occult spells
   lvl: '2'

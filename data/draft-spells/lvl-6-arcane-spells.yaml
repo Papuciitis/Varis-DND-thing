@@ -13,6 +13,8 @@ entries:
     As an action, cause yourself or a target creature to gain a semi-real afterimage which repeats their actions after them. For the duration of the effect, the target has +20 movement speed, +2 AC, +3 to dexterity saves, and any action, attack, ability, or trick they perform is done twice.
 
     After the spell ends, the target must make a constitution save. On a failure, they are exhausted for 1d3 turns.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Arcane copy
   group: Arcane spells
   lvl: '6'

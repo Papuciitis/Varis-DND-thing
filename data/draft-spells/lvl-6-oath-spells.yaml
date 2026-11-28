@@ -13,6 +13,8 @@ entries:
     As an action, manifest a halo of the runes of your oaths pinnacle forces for 3d4 rounds. For the duration, you gain a +3 bonus to all d20 rolls, have true sight, ethereal sight, and aura detection, +3 AC, and you can levitate with a float speed of 30 ft.
 
     For the duration, you have advantage on concentration checks, all your spell ranges are doubles, and you heal 1d10 health at the start of your turn.
+  AC_bonus_stacking: If another spell grants the affected creature a numerical bonus to AC, use the largest of those
+    spell bonuses rather than adding them together. The spells' other effects still apply.
 - name: Consecrate
   group: Oath spells
   lvl: '6'

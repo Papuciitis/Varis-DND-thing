@@ -1,43 +1,8 @@
 section: geomancy-review
 entries:
-- name: Unstoppable Force
-  group: 6th level
-  level: 6
-  school: geomorphy
-  casting: 1 action, 1 bonus action, and movement
-  range: 60 feet
-  components: V, S
-  duration: Instantaneous
-  classes: Druid, Ranger, Sorcerer, Wizard
-  description: You transform into a living mountain and charge at a creature you can see within range. The creature
-    must make a Strength saving throw, taking 5d10 bludgeoning damage and being knocked prone on a failed save,
-    or half as much damage and not being knocked prone on a successful one.
-  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d10
-    for each slot level above 6th.
-  source_ref: draft2.pdf / PDF page 68
-- name: Wind's Gale
-  group: 6th level
-  level: 6
-  school: geomorphy
-  casting: 1 action
-  range: 120 feet
-  components: V, S
-  duration: Instantaneous
-  classes: Cleric, Druid, Sorcerer, Warlock, Wizard
-  description: A line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose. Each
-    creature that starts its turn in the line must succeed on a Strength saving throw against your spellcasting
-    DC or be pushed 15 feet away from you in a direction following the line. Any creature in the line must spend
-    2 feet of movement for every 1 foot it moves when moving closer to you. The gust disperses gas or vapor, and
-    it extinguishes candles, torches, and similar unprotected flames in the area. It causes protected flames, such
-    as those of lanterns, to dance wildly and has a 50 percent chance to extinguish them.
-  higher_levels: When you cast this spell using a spell slot of 7th level or higher, the length of the line increases
-    by 10 feet, and the width of the line increases by 5 feet for each slot level above 6th.
-  source_ref: draft2.pdf / PDF page 68
-  source_notes: The printed duration is Instantaneous, although the rules also refer to creatures starting turns
-    in the line. Preserved for review without choosing a duration.
 - name: Crystal Mirror
   group: 7th level
-  level: 7
+  level: '7'
   school: geomorphy
   casting: 1 action
   range: Self
@@ -50,42 +15,9 @@ entries:
   higher_levels: When you cast this spell using a spell slot of 8th level or higher, the spell level, which can
     be reflected, increases by 1 for each slot level above 7th.
   source_ref: draft2.pdf / PDF page 69
-- name: Dunesurge
-  group: 7th level
-  level: 7
-  school: geomorphy
-  casting: 1 action
-  range: 120 feet
-  components: V, S
-  duration: Instantaneous
-  classes: Cleric, Druid, Sorcerer, Warlock, Wizard
-  description: You create a swirling vortex of sand at a point you can see within range. Each creature in a 20-foot-radius
-    sphere centered on that point must make a Constitution saving throw. A creature takes 10d6 slashing damage on
-    a failed save, or half as much damage on a successful one. The vortex lasts for the duration, and any creature
-    that ends its turn in the vortex takes 4d6 slashing damage.
-  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the radius of the sphere increases
-    by 5 feet, and the damage increases by 2d6 for each slot level above 7th.
-  source_ref: draft2.pdf / PDF page 69
-  source_notes: The printed duration is Instantaneous, but the vortex also lasts for the duration and deals end-of-turn
-    damage. The source conflict is not resolved here.
-- name: Lithic Echoes
-  group: 7th level
-  level: 7
-  school: geomorphy
-  casting: 1 action
-  range: Self (30-foot radius)
-  components: V, S, M (a small stone flute)
-  duration: Instantaneous
-  classes: Bard, Druid, Sorcerer, Wizard
-  description: Inspired by the echoes that resonate within stone structures, you cause the ground and walls around
-    you to echo with a haunting melody. Each creature within a 30-foot radius must make a Wisdom saving throw or
-    be frightened until the end of its next turn.
-  higher_levels: When you cast this spell using a spell slot of 8th level or higher, the range increases by 5 feet
-    for each slot level above 7th.
-  source_ref: draft2.pdf / PDF page 69
 - name: Geosync
   group: 7th level
-  level: 7
+  level: '7'
   school: geomorphy
   casting: 1 bonus action
   range: Self
@@ -100,7 +32,7 @@ entries:
   source_ref: draft2.pdf / PDF page 69
 - name: Geomantic Unity
   group: 7th level
-  level: 7
+  level: '7'
   school: geomorphy
   casting: 10 minutes (Ritual)
   range: Self
@@ -138,7 +70,7 @@ entries:
   source_ref: draft2.pdf / PDF page 70
 - name: Neodrakite Net
   group: 7th level
-  level: 7
+  level: '7'
   school: geomorphy
   casting: 1 action
   range: 60 feet
@@ -168,7 +100,7 @@ entries:
   listed_as: Neodymium Net
 - name: Petalrage
   group: 7th level
-  level: 7
+  level: '7'
   school: geomorphy
   casting: 1 action
   range: 60 feet
@@ -184,7 +116,7 @@ entries:
   source_ref: draft2.pdf / PDF page 70
 - name: Stone's Aegis
   group: 7th level
-  level: 7
+  level: '7'
   school: geomorphy
   casting: 1 action
   range: Self
@@ -201,7 +133,7 @@ entries:
   source_ref: draft2.pdf / PDF page 71
 - name: Thorn Spitter
   group: 7th level
-  level: 7
+  level: '7'
   school: geomorphy
   casting: 1 bonus action
   range: 20 feet
@@ -220,7 +152,7 @@ entries:
   - monster: Thorn Spitter
 - name: Elemental Surge
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 action
   range: 30 feet
@@ -235,7 +167,7 @@ entries:
   source_ref: draft2.pdf / PDF page 72
 - name: Geomorph's Wisdom
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 10 minutes (Ritual)
   range: Touch
@@ -252,7 +184,7 @@ entries:
   source_ref: draft2.pdf / PDF page 72
 - name: Geomorph's Stone Sentence
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 action
   range: 60 feet
@@ -280,7 +212,7 @@ entries:
   listed_as: Geomorpher's Stone Sentence
 - name: Petrified Resilience
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 action
   range: 60 feet
@@ -306,7 +238,7 @@ entries:
   source_ref: draft2.pdf / PDF page 73
 - name: Prism Break's Gem Eruption
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 action
   range: 120 feet
@@ -328,7 +260,7 @@ entries:
   source_ref: draft2.pdf / PDF page 73
 - name: Rock Tomb
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 reaction, which you take when you are hit by an attack
   range: 60 feet
@@ -345,7 +277,7 @@ entries:
   source_ref: draft2.pdf / PDF page 73
 - name: Rockpause
   group: 8th level
-  level: 8
+  level: '8'
   school: geomorphy
   casting: 1 hour (Ritual)
   range: Touch

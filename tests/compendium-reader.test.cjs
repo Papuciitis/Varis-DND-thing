@@ -101,7 +101,7 @@ test('Geomancy source review stays separate and supports numeric source levels a
   const sourceSpells = [entry('Genesis','11th level',{level:11,description:'Original demiplane rules.'}),entry('Breeze Whisper','Cantrips',{level:0,description:'Original cantrip rules.'}),entry('Worldshaper','10th level',{level:10,description:'Original world rules.'}),entry('Thorn Spitter','7th level',{level:7,description:'Original plant rules.'})];
   const h = boot({spells:[entry('Current spell','Arcane spells',{lvl:1})],'geomancy-review':sourceSpells});
   await h.route('#section=geomancy-review');
-  assert.match(h.reader.querySelector('.geomancy-review-note').textContent,/Source draft.*awaiting adaptation/);
+  assert.match(h.reader.querySelector('.geomancy-review-note').textContent,/Pending spell reviews/);
   assert(h.reader.querySelector('.comparison-list'));
   assert.deepEqual(names(h),['Breeze Whisper','Thorn Spitter','Worldshaper','Genesis']);
   assert.deepEqual(h.document.getElementById('spell-level').children.map(n=>n.value),['','0','7','10','11']);
@@ -112,7 +112,7 @@ test('Geomancy source review stays separate and supports numeric source levels a
   assert.match(h.reader.textContent,/Original demiplane rules/);
   await h.route('#section=spells');
   assert.deepEqual(names(h),['Current spell']);
-  assert.equal(h.link('Geomancy spell review').href,'#section=geomancy-review');
+  assert.equal(h.link('Pending spell reviews').href,'#section=geomancy-review');
 });
 
 test('monster type and fractional CR filters combine with search and preserve display settings', async () => {
@@ -718,23 +718,31 @@ const geomancyFixture = () => [
   entry('Stone mail', '2nd level', {level:'2',description:'Original mail.',
     review_status:'merge',review:'Merge into Geomancy.',review_decision:'Use the existing defensive option.',
     review_related_spells:[{name:'Geomancy',group:'Arcane spells',notes:'Compare Stonemail.'}]}),
-  entry('Magma pebble', 'Cantrips', {level:'0',description:'Original magma.',
-    review_status:'rejected',review:'No to this one.',review_decision:'Rejected by the author.'}),
+  entry('Bloomguard', '5th level', {level:'5',description:'Original bloom rules.',
+    review_status:'needs-design',review:'Needs a defensive direction.',
+    review_author_response:'Have the vines protect an ally, but the rest of this response is unfinished.',
+    review_decision:'The latest author response is incomplete; the design still needs a decision.'}),
+  entry("Earth's Guidance", 'Cantrips', {level:'0',review_status:'source-missing',draft_note:'Original description missing from the supplied PDF.'}),
   entry('Unfinished prism', '8th level', {level:'8',description:'Original prism.',review_status:'unreviewed'})
 ];
 
-test('Geomancy rewritten drafts lead while all source identities and status counts remain accessible', async () => {
+test('Geomancy opens with all pending reviews while drafts remain outside the active spell lists', async () => {
   const h=boot({'geomancy-review':geomancyFixture(),spells:[entry('Geomancy','Arcane spells',{lvl:'2',effect:'Current rules.'})]});
   await h.route('#section=geomancy-review');
-  assert.equal(h.document.getElementById('review-status').value,'draft');
+  assert.equal(h.document.getElementById('review-status').value,'all');
   assert(h.document.getElementById('entry-sort').children.some(option=>option.textContent==='Source level: low to high'));
-  assert.deepEqual(names(h),['Geomorpher compass','Stone light']);
+  assert.deepEqual(names(h),["Earth's Guidance",'Geomorpher compass','Stone light','Stone mail','Bloomguard','Unfinished prism']);
   const progress=h.reader.querySelector('.geomancy-review-statuses');
-  assert.match(progress.textContent,/All source spells \(5\)/);
+  assert.match(progress.textContent,/All pending reviews \(6\)/);
   assert.match(progress.textContent,/Rewritten drafts \(2\)/);
-  const all=progress.querySelectorAll('a').find(link=>link.textContent==='All source spells (5)');
+  assert.deepEqual(h.document.getElementById('review-status').children.map(option=>option.value),['all','draft','needs-design','merge','unreviewed','source-missing']);
+  assert.doesNotMatch(progress.textContent,/Rejected/);
+  const all=progress.querySelectorAll('a').find(link=>link.textContent==='All pending reviews (6)');
+  assert.equal(all.getAttribute('aria-current'),'true');
+  await h.change('review-status','draft');
+  assert.deepEqual(names(h),['Geomorpher compass','Stone light']);
   await h.route(all.href);
-  assert.equal(names(h).length,5);
+  assert.equal(names(h).length,6);
   await h.change('review-status','merge');
   assert.deepEqual(names(h),['Stone mail']);
   const related=h.reader.querySelector('.geomancy-related-spells').querySelector('a');
@@ -743,11 +751,15 @@ test('Geomancy rewritten drafts lead while all source identities and status coun
   await h.route('#section=spells');
   assert.deepEqual(names(h),['Geomancy']);
   assert.equal(h.reader.querySelectorAll('.geomancy-conversion').length,0);
+  assert.deepEqual(h.document.getElementById('group').children.map(option=>option.value),['','Arcane','Oath','Occult','Mystic']);
+  await h.route('#q=compass&scope=spells');
+  assert.deepEqual(names(h),[]);
 });
 
 test('Geomancy proposed class, source level, text and display filters combine and persist in the route', async () => {
   const h=boot({'geomancy-review':geomancyFixture()});
   await h.route('#section=geomancy-review');
+  assert.deepEqual(h.document.getElementById('review-magic-class').children.map(option=>option.value),['','Arcane','Oath','Occult','Mystic']);
   await h.change('review-magic-class','Mystic');
   assert.deepEqual(names(h),['Geomorpher compass']);
   await h.change('spell-level','0');
@@ -755,14 +767,53 @@ test('Geomancy proposed class, source level, text and display filters combine an
   const search=h.document.getElementById('section-search');search.value='Compass';search.dispatch('input');await settle();
   assert.deepEqual(names(h),['Geomorpher compass']);
   const route=new URLSearchParams(h.hash.slice(1));
-  assert.equal(route.get('review'),'draft');assert.equal(route.get('proposed'),'Mystic');
+  assert.equal(route.get('review'),'all');assert.equal(route.get('proposed'),'Mystic');
   assert.equal(route.get('level'),'0');assert.equal(route.get('view'),'pages');
   assert.equal(route.get('filter'),'Compass');
   assert.match(h.reader.textContent,/Compass · Mystic · Level 1/);
-  await h.change('review-status','rejected');
+  await h.change('review-status','needs-design');
   assert.equal(new URLSearchParams(h.hash.slice(1)).get('proposed'),null);
   await h.route('#section=geomancy-review&review=all&filter=Gemlight');
   assert.deepEqual(names(h),['Stone light']);
+  await h.route('#section=geomancy-review&review=merge');
+  await h.change('review-magic-class','Mystic');
+  assert.equal(new URLSearchParams(h.hash.slice(1)).get('review'),'all');
+  assert.deepEqual(names(h),['Geomorpher compass']);
+});
+
+test('Geomancy stale status routes show the pending queue and older rejected routes remain supported when present', async () => {
+  const h=boot({'geomancy-review':geomancyFixture()});
+  await h.route('#section=geomancy-review&review=rejected');
+  assert.equal(h.document.getElementById('review-status').value,'all');
+  assert.equal(names(h).length,6);
+  assert(!h.document.getElementById('review-status').children.some(option=>option.value==='rejected'));
+  const legacy=boot({'geomancy-review':[entry('Magma pebble','Cantrips',{level:'0',review_status:'rejected',review:'No to this one.'})]});
+  await legacy.route('#section=geomancy-review&review=rejected');
+  assert.equal(legacy.document.getElementById('review-status').value,'rejected');
+  assert.deepEqual(names(legacy),['Magma pebble']);
+});
+
+test('Geomancy latest incomplete author follow-up is separate from the original review and keeps markup literal', async () => {
+  const records=geomancyFixture(),bloom=records.find(record=>record.name==='Bloomguard');
+  bloom.details.review_author_response+=' Keep <img src=x onerror=alert(1)> and <strong>literal</strong>.\n\nDo not complete <placeholder>.';
+  const before=JSON.stringify(records),h=boot({'geomancy-review':records});
+  for(const route of ['#section=geomancy-review','#section=geomancy-review&entry=Bloomguard&group=5th+level']){
+    await h.route(route);
+    const response=h.reader.querySelector('.geomancy-author-response');
+    assert(response);assert.equal(response.localName,'aside');
+    assert.equal(response.querySelector('h3').textContent,"V.'s latest follow-up");
+    assert.match(response.textContent,/the rest of this response is unfinished/);
+    assert.match(response.textContent,/<img src=x onerror=alert\(1\)>/);
+    assert.match(response.textContent,/<strong>literal<\/strong>/);
+    assert.equal(response.querySelectorAll('p').length,2);
+    assert.equal(response.querySelectorAll('img,script,strong,placeholder').length,0);
+    const wrap=response.parentNode,original=wrap.querySelector('.geomancy-author-review');
+    assert(!original.open);assert.equal(original.querySelector('p').textContent,bloom.details.review);
+    assert(wrap.children.indexOf(response)<wrap.children.indexOf(original));
+    assert.match(wrap.querySelector('.geomancy-decision').textContent,/still needs a decision/);
+    assert.doesNotMatch(wrap.querySelector('.geomancy-source').textContent,/Needs a defensive direction|Do not complete/);
+  }
+  assert.equal(JSON.stringify(records),before,'Rendering must not alter the review record');
 });
 
 test('Geomancy page and list share the proposed rules, collapsed source and literal author comments', async () => {
@@ -774,11 +825,11 @@ test('Geomancy page and list share the proposed rules, collapsed source and lite
   let draft=h.reader.querySelector('.geomancy-conversion');
   assert.equal(draft.querySelector('.geomancy-conversion-name').textContent,'Compass');
   assert.match(draft.textContent,/Mystic · Level 1/);
-  let original=h.reader.querySelector('.geomancy-source');
+  let original=draft.parentNode.querySelector('.geomancy-source');
   assert(!original.open);assert.match(original.textContent,/Original unrestricted compass/);
-  let review=h.reader.querySelector('.geomancy-author-review');
+  let review=draft.parentNode.querySelector('.geomancy-author-review');
   assert(!review.open);assert.equal(review.querySelector('p').textContent,source.details.review);
-  assert.equal(h.reader.querySelectorAll('img,script,strong').length,1,'Only the existing notice strong should be present');
+  assert.equal(draft.parentNode.querySelectorAll('img,script,strong').length,0,'Author comments and questions must stay literal text');
   assert.match(h.reader.querySelector('.geomancy-questions').textContent,/<script>literal<\/script>/);
   await h.route('#section=geomancy-review&entry=Geomorpher+compass&group=Cantrips');
   draft=h.reader.querySelector('.geomancy-conversion');

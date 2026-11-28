@@ -2,7 +2,7 @@ section: geomancy-review
 entries:
 - name: Earth's Guidance
   group: Cantrips
-  level: 0
+  level: '0'
   draft_note: Listed in the source index; spell description missing from the supplied PDF.
   description: The page-40 Geomorphy spell list includes Earth's Guidance, but the spell-body pages do not provide
     a description under this name. Casting time, range, components, duration and effects need author text before
@@ -12,7 +12,7 @@ entries:
     with Earth's Guidance is assumed.
 - name: Stone's Embrace
   group: 1st level
-  level: 1
+  level: '1'
   draft_note: Listed in the source index; spell description missing from the supplied PDF.
   description: The page-40 Geomorphy spell list includes Stone's Embrace, but the spell-body pages do not provide
     a description under this name. Casting time, range, components, duration and effects need author text before
