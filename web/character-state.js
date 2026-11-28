@@ -122,6 +122,10 @@
     source.inspiration = boolean(source.inspiration, "Inspiration");
     source.restDice = pool(source.restDice, "Rest dice");
     source.restDice.die = text(source.restDice.die, "Rest die size", "d6");
+    source.restDice.pools=unique(array(source.restDice.pools,'Rest dice pools').map((raw,index)=>{const row=pool(raw,'Rest dice pool '+index);row.id=text(row.id,'Rest dice pool ID');if(!row.id)throw new Error('Rest dice pools need an ID.');row.label=text(row.label,'Rest dice pool label');row.die=text(row.die,'Rest dice pool die','d6');return row;}),'id','Rest dice pools');
+    source.restDice.spent=record(source.restDice.spent,'Spent rest dice');for(const id of Object.keys(source.restDice.spent))source.restDice.spent[id]=integer(source.restDice.spent[id],'Spent rest dice');
+    source.restDice.unfilled=record(source.restDice.unfilled,'Unrecovered rest dice capacity');for(const id of Object.keys(source.restDice.unfilled))source.restDice.unfilled[id]=integer(source.restDice.unfilled[id],'Unrecovered rest dice capacity');
+    source.restDice.selectedPool=text(source.restDice.selectedPool,'Selected rest dice pool');
     source.deathSaves = record(source.deathSaves, "Death saves");
     source.deathSaves.successes = integer(source.deathSaves.successes, "Successful death saves", 0, 0, source.build?.enabled ? 100 : 3);
     source.deathSaves.failures = integer(source.deathSaves.failures, "Failed death saves", 0, 0, source.build?.enabled ? 100 : 3);
@@ -185,6 +189,10 @@
       for (const key of ["archetypes", "skills", "raceSkills", "weaponGroups"]) {
         build[key] = array(build[key], key).map(value => text(value, key));
       }
+      build.classTools=record(build.classTools,'Class instrument choices');for(const id of Object.keys(build.classTools))build.classTools[id]=text(build.classTools[id],'Class musical instrument');
+      build.classOrder=array(build.classOrder,'Class level history').map(value=>text(value,'Class at this level'));
+      if(build.classOrder.length>100 || build.classOrder.some(value=>!value) || build.classOrder.length && build.classOrder[0]!==build.classId)throw new Error('Class level history must start with the starting class and contain at most 100 named levels.');
+      for(const key of ['classArchetypes','classSkills']){build[key]=record(build[key],key);for(const id of Object.keys(build[key]))build[key][id]=array(build[key][id],key).map(value=>text(value,key));}
       build.choices = record(build.choices, "Feature choices");
       build.qualifications = array(build.qualifications, "Story qualifications").map(value=>{
         if(!['has-died','righteous-slaying','rest-crafting'].includes(value)) throw new Error('Unknown story qualification.');
@@ -212,6 +220,7 @@
         const casting = build.casting = record(build.casting, "Casting settings");
         if (casting.enabled !== undefined) casting.enabled = boolean(casting.enabled, "Automatic casting resources");
         if (casting.maxSlotLevel != null) casting.maxSlotLevel = integer(casting.maxSlotLevel, "Maximum full-slot level", 1, 1, 20);
+        if(casting.classId!==undefined)casting.classId=text(casting.classId,'Selected spellcasting class');
         if (casting.maxLearnLevel != null) casting.maxLearnLevel = integer(casting.maxLearnLevel, "Maximum learned spell level", 1, 0, 20);
         casting.spent = record(casting.spent, "Spent casting resources");
         for (const key of Object.keys(casting.spent)) casting.spent[key] = integer(casting.spent[key], "Spent casting resource");
@@ -284,6 +293,39 @@
     return 2 + Math.floor((integer(level, "Character level", 1, 1, 100) - 1) / 3);
   }
 
+  function classHistory(character) {
+    const first=character.build?.classId || '',history=(character.build?.classOrder || []).slice(0,character.level);
+    while(history.length<character.level)history.push(first);
+    return history;
+  }
+  function classLevels(character,atLevel=character.level) {
+    const rows=new Map();
+    for(const [index,id] of classHistory(character).slice(0,atLevel).entries())if(id){const row=rows.get(id) || {id,level:0,levels:[]};row.level++;row.levels.push(index+1);rows.set(id,row);}
+    return [...rows.values()];
+  }
+
+  function syncRestDice(character,definitions) {
+    const rest=character.restDice,old=rest.pools || [],spent=rest.spent ||= {},unfilled=rest.unfilled ||= {},priority=rows=>[...rows].sort((a,b)=>(b.id===rest.selectedPool)-(a.id===rest.selectedPool));
+    if(old.length){
+      for(const row of old){spent[row.id] ??= row.max-row.current;unfilled[row.id] ??= 0;}
+      let delta=rest.current-old.reduce((total,row)=>total+row.current,0);
+      for(const row of priority(old)){
+        if(delta<0){const amount=Math.min(-delta,Math.max(0,row.max-spent[row.id]-(unfilled[row.id] || 0)));spent[row.id]+=amount;delta+=amount;}
+        else if(delta>0){const capacity=Math.min(delta,unfilled[row.id] || 0);unfilled[row.id]-=capacity;delta-=capacity;const amount=Math.min(delta,spent[row.id]);spent[row.id]-=amount;delta-=amount;}
+      }
+      for(const row of definitions){const previous=old.find(item=>item.id===row.id);if(spent[row.id]===undefined){spent[row.id]=0;unfilled[row.id]=row.max;}else if(previous){unfilled[row.id]=Math.max(0,(unfilled[row.id] || 0)+row.max-previous.max);}}
+    }else{
+      for(const row of definitions){spent[row.id] ??= 0;unfilled[row.id] ??= 0;}
+      let missing=Math.max(0,definitions.reduce((total,row)=>total+row.max,0)-rest.current);
+      for(const row of priority(definitions)){const amount=Math.min(missing,row.max);spent[row.id]=amount;missing-=amount;}
+    }
+    rest.pools=definitions.map(row=>({...row,current:Math.max(0,row.max-(spent[row.id] || 0)-(unfilled[row.id] || 0))}));
+    rest.max=rest.pools.reduce((total,row)=>total+row.max,0);rest.current=rest.pools.reduce((total,row)=>total+row.current,0);
+    if(!rest.pools.some(row=>row.id===rest.selectedPool))rest.selectedPool=rest.pools[0]?.id || '';
+    rest.die=rest.pools.find(row=>row.id===rest.selectedPool)?.die || rest.die;
+    return character;
+  }
+
   function resourceDelta(input, key, delta) {
     const character = normalizeCharacter(input);
     let amount = integer(delta, "Resource change", 0, -limit);
@@ -296,6 +338,9 @@
         temporary.current -= used;
         amount += used;
       }
+    } else if (typeof key==='string' && key.startsWith('rest-pool:')) {
+      const row=character.restDice.pools.find(row=>row.id===key.slice('rest-pool:'.length));if(!row)throw new Error('That rest dice pool is unavailable.');
+      const next=Math.max(0,Math.min(row.max,row.current+amount)),change=next-row.current;if(change<0)character.restDice.spent[row.id]=(character.restDice.spent[row.id] || 0)-change;else{const capacity=Math.min(change,character.restDice.unfilled[row.id] || 0);character.restDice.unfilled[row.id]=(character.restDice.unfilled[row.id] || 0)-capacity;character.restDice.spent[row.id]=Math.max(0,(character.restDice.spent[row.id] || 0)-(change-capacity));}row.current=next;character.restDice.current=character.restDice.pools.reduce((total,item)=>total+item.current,0);character.updatedAt=new Date().toISOString();return character;
     } else if (key === "restDice") {
       target = character.restDice;
     } else if (typeof key === "string" && key.startsWith("custom:")) {
@@ -305,12 +350,13 @@
     }
     if (!target) throw new Error("That resource is no longer on this character.");
     target.current = Math.max(0, Math.min(target.max, target.current + amount));
+    if(key==='restDice' && character.restDice.pools.length)syncRestDice(character,character.restDice.pools);
     character.updatedAt = new Date().toISOString();
     return character;
   }
 
   globalThis.CharacterState = Object.freeze({
     version, createCharacter, normalizeCharacter, importCharacter, exportCharacter,
-    abilityModifier, proficiencyBonus, resourceDelta
+    abilityModifier, proficiencyBonus, resourceDelta, classHistory, classLevels, syncRestDice
   });
 })();

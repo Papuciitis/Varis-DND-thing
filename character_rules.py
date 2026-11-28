@@ -411,7 +411,7 @@ def _casting_metadata(name, details, progression, features):
     sections = _sections(details)
     bodies = {heading: body for heading, body, _ in sections}
     result = {"tradition": tradition, "mode": mode, "progression": [], "slotLevelRule": None,
-              "maxCastLevelRule": None, "startingSpellbook": None, "recovery": [],
+              "maxCastLevelRule": None, "maxLearnLevelRule": None, "startingSpellbook": None, "recovery": [],
               "pointResources": [], "modifiers": [], "warnings": [],
               "sourceHeadings": ["Class progression"] if progression else []}
     primary = {row["level"]: row["values"] for row in progression}
@@ -490,12 +490,14 @@ def _casting_metadata(name, details, progression, features):
             result["startingSpellbook"] = {"base": int(book.group(1)), "ability": "int", "spellLevel": int(book.group(2)),
                                            "perAdditionalClassLevel": 1}
         result["warnings"].append("The Wizard source references a prepared-spell count but supplies no prepared-count column.")
+    elif name == "Occultist":
+        result["maxLearnLevelRule"] = {"basis": "classLevel", "divisor": 2, "rounding": "up"}
     elif name == "Cleric":
         result["warnings"].append("Cleric full-slot counts are specified, but their numeric maximum slot level is not; set it manually from your table's ruling.")
     elif name == "Bard":
         result["sourceHeadings"].append("Magical talent")
         result["maxCastLevelRule"] = {"basis": "characterLevel", "divisor": 2, "rounding": "up"}
-        result["warnings"].append("Bard spell learning is capped at half Bard level without a stated rounding rule; its casting cap explicitly rounds up.")
+        result["maxLearnLevelRule"] = {"basis": "classLevel", "divisor": 2, "rounding": "up"}
     elif name == "Sorcerer":
         result["sourceHeadings"].extend(["Cantrips", "Ability score improvement", "Metamagic"])
         text = _text(bodies.get("Metamagic", ""))
@@ -503,6 +505,8 @@ def _casting_metadata(name, details, progression, features):
             result["pointResources"].append({"id": "metamagic", "name": "Metamagic points", "minLevel": min(_explicit_levels("Metamagic", text)),
                                               "capacity": {"ability": "cha", "proficiency": True},
                                               "recovery": [{"name": "Metamagic", "details": bodies["Metamagic"]}]})
+    if name == "Druid":
+        result["maxLearnLevelRule"] = {"basis": "classLevel", "divisor": 2, "rounding": "up"}
     unmodeled = {"Wizard": "Other archetype pools, including arcane focus points and arcane essence dice, require separate tracking.",
                  "Sorcerer": "Separate archetype and innate-magic reserves, including Graymage, Evoker and dream spell slots, require manual tracking; only listed base-slot modifiers are included.",
                  "Druid": "Additional circle and archetype casting pools are not included in the base slot table.",

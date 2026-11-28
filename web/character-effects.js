@@ -338,7 +338,7 @@
     let minimum=0,deathSaveDelta=0,hpDelta=0,occultExtra=0,deathSaveBonus=0;
     const warnings=[];
     const text=value=>typeof value==='string'?value:Array.isArray(value)?value.map(text).join('\n'):value?.description || value?.desc || '';
-    function addRule(label,raw,fallback=0,allowOath=false,includeLists=false) {
+    function addRule(label,raw,fallback=0,allowOath=false,includeLists=false,sourceLevel=character.level) {
       const own=includeLists?text(raw):text(raw).split(/\n\s*\*/)[0];
       const subject='(?:rest dice maximum|(?:maximum|max) (?:number of )?rest dice)(?: count)?';
       const patterns=[new RegExp('\\b(?:your )?'+subject+'(?: is| are)? (?:further )?(increased|increase|increases|reduced|decreased) by (\\d+)','gi'),new RegExp('\\b(increase|reduce|decrease) (?:your )?'+subject+' by (\\d+)','gi'),new RegExp('([+-]\\d+) (?:bonus to (?:your )?)?'+subject,'gi'),new RegExp('\\b(?:you )?(?:gain|have) (\\d+) (less|fewer|more) '+subject,'gi'),/\b(?:you )?gain an? extra rest die\b/gi];
@@ -346,7 +346,7 @@
       for(let index=0;index<patterns.length;index++)for(const match of own.matchAll(patterns[index])) {
         const sentence=own.slice(0,match.index).split(/[.!?]\s+|\n/).at(-1);
         if(/\b(?:if|unless|may|choose|instead|when|while|during|until)\b|on a success/i.test(sentence) || !allowOath && /so long as/i.test(sentence))continue;
-        const level=sentence.match(/(?:at|reaching) (\d+)(?:st|nd|rd|th)? level/i);if(level && character.level<Number(level[1]))continue;
+        const level=sentence.match(/(?:at|reaching) (\d+)(?:st|nd|rd|th)? level/i);if(level && sourceLevel<Number(level[1]))continue;
         amount+=index<2?(/^reduc|^decreas/i.test(match[1])?-1:1)*Number(match[2]):index===2?Number(match[1]):index===3?(/less|fewer/i.test(match[2])?-1:1)*Number(match[1]):1;found=true;
       }
       if(!found)amount=fallback;
@@ -369,12 +369,12 @@
       if(feature.parent==='Background') {
         for(const [name,value] of Object.entries(feature.details || {}))if(name!=='proficiencies')addRule(feature.name+': '+name,value);
       } else if(feature.parent==='Paladin' && feature.name==='Divine power') {
-        breakdown.push({label:'Paladin: Divine power',amount:character.level>=11?3:character.level>=9?2:1});
+        breakdown.push({label:'Paladin: Divine power',amount:(feature.classLevel ?? character.level)>=11?3:(feature.classLevel ?? character.level)>=9?2:1});
       } else if(feature.parent==='Shaman' && feature.name==='Spirit journey') {
         if(derived.skillRanks.Religion>=2)breakdown.push({label:'Shaman: Spirit journey (already expert in Religion)',amount:1});
       } else if(feature.parent==='Ascended sorcerer' && feature.name==='Maturated sorcerer traits') {
         if(!derived.choices.some(group=>group.featureId===feature.id && group.automatic) && derived.choices.some(group=>group.parent==='Sorcerer' && group.featureName==='Innate magic' && group.options.some(option=>option.name==='Elder blood' && group.selected.includes(option.id))))breakdown.push({label:'Ascended sorcerer: Maturated Elder blood',amount:1});
-      } else addRule(feature.parent+': '+feature.name,feature.details,registry.get(key(feature.parent,feature.name))?.restDice || 0);
+      } else addRule(feature.parent+': '+feature.name,feature.details,registry.get(key(feature.parent,feature.name))?.restDice || 0,false,false,feature.classLevel ?? character.level);
     }
     for(const group of derived.choices.filter(group=>group.kind!=='feat')) {
       const siblings=group.optionalSet?derived.choices.filter(other=>other.optionalSet===group.optionalSet):[];
@@ -392,10 +392,11 @@
           breakdown.push({label,amount:2});occultExtra+=2;
         } else if(group.parent==='Ascendant' && option.name==='Ascended form') {
           warnings.push('Ascended form changes maximum rest dice while its agreed routine is maintained. Record its -1 adjustment while applicable; Perfected form removes the penalty.');
-        } else addRule(label,option.ownDetails ?? option.details,registry.get(key(group.parent,group.effectFeature || group.featureName,option.name))?.restDice || 0,false,true);
+        } else addRule(label,option.ownDetails ?? option.details,registry.get(key(group.parent,group.effectFeature || group.featureName,option.name))?.restDice || 0,false,true,group.classLevel ?? character.level);
       }
     }
     if(health.restAdjustment)breakdown.push({label:'Table adjustment',amount:health.restAdjustment});
+    for(const item of breakdown){const feature=derived.features.find(feature=>feature.classId && item.label.startsWith(feature.parent+':'));const group=derived.choices.find(group=>group.classId && item.label.startsWith(group.parent+':'));if(feature || group)item.classId=(feature || group).classId;}
     return {maximum:Math.max(minimum,0,breakdown.reduce((total,item)=>total+item.amount,0)),breakdown,deathSaveDelta,hpDelta,occultExtra,deathSaveBonus,warnings};
   }
 

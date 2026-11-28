@@ -75,3 +75,8 @@ data/draft-spells/lvl-2-occult-spells.yaml - Draconic sacrifice ritual - Removed
 - Fixed three historical collection checks to select the original nine source files explicitly, preserving their 160-creature assertion as later collections are added. Full portable-build and browser checks are being run for this pass.
 
 - Final validation: all 164 Python tests pass, the complete JavaScript/browser test suite passes, and the standard site build produces 302 creatures and 439 player spells. Numerical comparison retains the previous 301 creature profiles except the three documented challenge/default completions; the player spell records are identical. All current creatures have numeric CRs, and compiled creature records use neutral reference labels. Character progression and class files are unchanged.
+
+
+28:11:2026 confirmed Druid learning basis
+
+data/draft-classes/druid.yaml - Druid / Spellcasting and cantrips - At the user's explicit direction, changed the maximum learned spell's level from half total character level to half Druid class level, rounded up. The character metadata and multiclass spell picker use the same corrected rule.

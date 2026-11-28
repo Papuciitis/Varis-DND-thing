@@ -128,7 +128,7 @@
       const counts=new Map();
       for(const [selectedSlot,id] of (group.selectedSlots || group.selected).entries()) {
         if(!id)continue;const slot=group.sourceSlots?.[selectedSlot] ?? selectedSlot,item=group.options.find(item=>item.id===id),occurrence=counts.get(id) || 0;counts.set(id,occurrence+1);
-        if(item)found.push({id:group.id+':'+id+((item.repeatLimit || 1)>1 && slot?':slot:'+slot:occurrence?':occurrence:'+occurrence:''),entryId:id,name:item.name,parent:'Feature',owner:group.parent,choiceModel:item.choiceModel,groupId:group.id,optionId:id,occurrence,slot,occultChoice:group.parent==='Occultist' && /^(?:Extra )?(?:Mark|Reward)$/.test(group.label),level:group.level,details:item.ownDetails ?? item.details});
+        if(item)found.push({id:group.id+':'+id+((item.repeatLimit || 1)>1 && slot?':slot:'+slot:occurrence?':occurrence:'+occurrence:''),entryId:id,name:item.name,parent:'Feature',owner:group.parent,classId:group.classId,classLevel:group.classLevel,choiceModel:item.choiceModel,groupId:group.id,optionId:id,occurrence,slot,occultChoice:group.parent==='Occultist' && /^(?:Extra )?(?:Mark|Reward)$/.test(group.label),level:group.level,details:item.ownDetails ?? item.details});
       }
     }
     return found;
@@ -138,7 +138,7 @@
     for(const group of ctx.d.choices) {
       if(group.kind==='feat' || group.automatic || group.spellEntryId || group.id===source.groupId || /ability.score.improvement|mark.*reward/i.test(group.featureName))continue;
       if(source.choiceModel==='new-tricks' && !(group.parent==='Ranger' && group.featureName==='Ranger training' || ctx.d.eligibleArchetypes.some(owner=>owner.name===group.parent && owner.minLevel<(ctx.d.eligibleArchetypes.find(item=>item.name==='Seeker')?.minLevel || 8))))continue;
-      if(source.choiceModel==='bard:Deep past' && group.parent===ctx.d.cls?.name)continue;
+      if(source.choiceModel==='bard:Deep past' && group.parent==='Bard')continue;
       const allowed=group.options.filter(item=>!item.choiceGrants?.some(grant=>grant.groupId===source.groupId) && !['bard:Deep past','new-tricks'].includes(item.choiceModel)).map(item=>item.id);
       if(allowed.length)targets.push({...option('group:'+group.id,group.parent+': '+group.featureName),groupId:group.id,allowed});
     }
@@ -149,7 +149,7 @@
     const spells=catalog.filter(section=>section.key==='spells').flatMap(section=>section.entries || []);
     const weapons=catalog.filter(section=>section.key==='items').flatMap(section=>section.entries || []).filter(entry=>entry.details?.damage);
     const weaponGroups=[...new Set(weapons.map(entry=>entry.group))].sort();
-    const selectedSources=choiceSources(d),activeSource=id=>d.features.some(feature=>feature.id===id) || selectedSources.some(source=>source.id===id);const knownSpellRows=[...new Map([...c.spells,...(d.featPlan?.spells || [])].map(row=>[row.id,row])).values()].filter(row=>(!row.classId || row.classId===d.cls?.id) && (!row.featSource || activeSource(row.featSource) && (!d.featPlan?.spells || d.featPlan.spells.some(grant=>grant.id===row.id))));
+    const selectedSources=choiceSources(d),activeSource=id=>d.features.some(feature=>feature.id===id) || selectedSources.some(source=>source.id===id);const knownSpellRows=[...new Map([...c.spells,...(d.featPlan?.spells || [])].map(row=>[row.id,row])).values()].filter(row=>(!row.classId || (d.classProgressions?d.classProgressions.some(owner=>owner.id===row.classId):row.classId===d.cls?.id)) && (!row.featSource || activeSource(row.featSource) && (!d.featPlan?.spells || d.featPlan.spells.some(grant=>grant.id===row.id))));
     return {c,d,catalog,metadata,spells,weapons,weaponGroups,knownSpellRows,selectedSources};
   }
   function trainedWeapons(ctx) {
@@ -227,7 +227,7 @@
     if(feat.name==='Mana-refusal'){add('sacrificed-cantrip','Permanently sacrificed cantrip',knownSpells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && ['arcane','occult'].includes(info.tradition);}).map(entry=>option(idOf(entry),entry.name)));add('sacrificed-upgrades','Upgrades the cantrip had when sacrificed',Array.from({length:21},(_,n)=>option(String(n),String(n))));const allowance=Math.min(4,Number(get('sacrificed-upgrades') || 0)+1);add('mana-upgrades','Mana-refusal upgrades',[option('ally-save','Save in place of an ally (once per long rest)'),option('defensive-rest','-2 maximum HP, +1 death-save slot, +1 rest die'),option('saves','+1 to saves against spells'),option('spell-sacrifice','Sacrifice a level-1 spell for +2 rest dice')],allowance);if(picks('mana-upgrades').includes('spell-sacrifice'))add('sacrificed-spell','Permanently sacrificed level-1 spell',knownSpells.filter(entry=>globalThis.CharacterCasting.spellInfo(entry).level===1).map(entry=>option(idOf(entry),entry.name)));notes.push('Record the historical upgrade count at sacrifice; this allowance does not grow when you later level up. The sacrificed spells stay recorded and cannot be cast.');}
     if(feat.name==='Occultist knowledge')add('occult-benefit','Additional benefit',[option('slot','+1 maximum occult slot'),...['int','cha'].map(code=>option(code,'+1 '+abilityNames[code]))]);
     if(feat.name==='Occult gnosis' && (ctx.c.build.featBenefits?.[feat.entryId] || []).includes('spell'))pickSpell('learn-gnosis','Granted 1st-level spell',1,['oath','arcane']);
-    const max=ctx.d.casting?.maxCastLevel || 1;
+    const max=Math.max(1,...(ctx.d.castings || [ctx.d.casting]).map(item=>item?.maxCastLevel || 0));
     if(['Innate magic','Invoke dark powers'].includes(feat.name))pickSpell('learn-cantrip','Granted cantrip',0);
     if(feat.name==='Innate magic')add('casting-ability','Cantrip casting ability',[...mental,'con'].map(code=>option(code,abilityNames[code])));
     if(feat.name==='Arcane insight') {pickSpell('learn-cantrip','Arcane cantrip',0,['arcane']);pickSpell('learn-first','1st-level arcane spell',1,['arcane']);upgradeSpell('spell','learn-second','2nd-level arcane spell',2,['arcane']);}
@@ -285,7 +285,7 @@
     if(model==='experience:3')text('tool','Tool proficiency and +1 to its checks');
     if(model==='experience:4'){const counts=['arcane','mystic','oath','occult'].map(kind=>[kind,ctx.knownSpellRows.filter(row=>{const grant=ctx.selectedSources.find(item=>item.id===row.featSource);if(row.featSource===source.id || grant?.groupId===source.groupId && grant.slot>=source.slot)return false;const entry=ctx.spells.find(entry=>idOf(entry)===row.entryId),info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && info.tradition===kind;}).length]),minimum=Math.min(...counts.map(row=>row[1])),traditions=counts.filter(row=>row[1]===minimum).map(row=>row[0]);add('learning','Learn', [option('cantrip','Cantrip from a least-known tradition'),...(traditions.length===4?[option('hex','Major hex')]:[])]);if(get('learning')==='cantrip')pick('learn-cantrip','Cantrip',0,traditions);if(get('learning')==='hex')add('learn-hex','Major hex',ctx.spells.filter(entry=>entry.group==='Major hexes').map(entry=>option(idOf(entry),entry.name)));}
     if(model==='bard:Magical aptitude')pick('learn-cantrip','Granted cantrip',0);
-    if(model==='sorcerer:Arcane intuition')add('learn-cantrip','Extra arcane cantrip',ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && info.tradition==='arcane';}).map(entry=>option(idOf(entry),entry.name)),ctx.c.level>=6?2:1);
+    if(model==='sorcerer:Arcane intuition')add('learn-cantrip','Extra arcane cantrip',ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && info.tradition==='arcane';}).map(entry=>option(idOf(entry),entry.name)),(source.classLevel ?? ctx.c.level)>=6?2:1);
     if(model==='bard:Persona insight' && ctx.d.skillRanks.Insight>=2)pick('learn-cantrip','Mystic cantrip',0,['mystic']);
     if(model==='cantrip-mastery')add('cantrip','Owned arcane cantrip',ctx.spells.filter(entry=>ctx.knownSpellRows.some(row=>row.entryId===idOf(entry)) && globalThis.CharacterCasting.spellInfo(entry).cantrip && globalThis.CharacterCasting.spellInfo(entry).tradition==='arcane').map(entry=>option(idOf(entry),entry.name)));
     if(model==='parody'){
@@ -318,7 +318,7 @@
   function plan(c,d,catalog,metadata) {
     const ctx=context(c,d,catalog,metadata),effects=[],grants=[],proficiencies={armor:[],weapons:[],tools:[],languages:[]},weaponGroups=[],removedSkills=[],notes={},spells=[],specs={},sacrificedSpells=[],training=[];
     const feats=(d.features || []).filter(feature=>feature.parent==='Feat'),sources=[...feats];
-    sources.push(...d.features.filter(feature=>feature.choiceModel).map(feature=>({...feature,parent:'Feature'})));
+    sources.push(...d.features.filter(feature=>feature.choiceModel).map(feature=>({...feature,parent:'Feature',level:feature.requiredLevel ?? feature.level})));
     sources.push(...choiceSources(d).filter(source=>source.choiceModel || featureNames.has(source.name)));
     const extraLists=[...feats.filter(feat=>feat.name==='More upgrades').flatMap(feat=>(specification(feat,ctx).values.targets || []).map(target=>({target,source:feat.id,sourceName:feat.name}))),...sources.filter(source=>['bard:Deep past','new-tricks'].includes(source.choiceModel)).flatMap(source=>(featureSpecification(source,ctx).values.targets || []).map(target=>({target,source:source.id,sourceName:source.name})))];
     const listSlots=new Map();for(const grant of extraLists){grant.slot=1+(listSlots.get(grant.target) || 0);listSlots.set(grant.target,grant.slot);}
@@ -343,8 +343,8 @@
       if(feat.name==='Rhetoric')addSkills(['Deception','Persuasion','Intimidation'],2);
       if(feat.name==='Scavenger')addSkills(['Survival']);
       if(feat.name==='Hermeticism')addSkills(['Investigation']);
-      if(feat.name==='Extra talent spell') {effect.knownSpells=1;addSkills(['Arcana']);}
-      if(feat.name==='Occultist knowledge') {effect.knownSpells=1;if(value('occult-benefit')==='slot')effect.occultSlots=1;else if(value('occult-benefit'))addAbility(value('occult-benefit'),1);}
+      if(feat.name==='Extra talent spell') {effect.knownSpells=1;effect.castingTradition='any';addSkills(['Arcana']);}
+      if(feat.name==='Occultist knowledge') {effect.knownSpells=1;effect.castingTradition='occult';if(value('occult-benefit')==='slot')effect.occultSlots=1;else if(value('occult-benefit'))addAbility(value('occult-benefit'),1);}
       if(feat.name==='Extra occult casting' && d.cls?.name==='Occultist')effect.occultSlots=1;
       if(feat.name==='Expanded metamagic')effect.metamagicMaximum=1;
       if(feat.name==='Combat experience')effect.damage=1+(d.cls?1:0)+(d.eligibleArchetypes?.length || 0);
@@ -401,7 +401,7 @@
         const entry=ctx.spells.find(entry=>idOf(entry)===entryId);if(entry)spells.push({id:(feat.name==='cryptic cyphers'?c.spells.find(row=>row.entryId===entryId && !row.classId && (!row.featSource || row.featSource===feat.id))?.id:'') || 'feat-spell:'+feat.id+':'+field.key+':'+entryId,entryId,name:entry.name,prepared:true,classId:'',featSource:feat.id,progressionMode:feat.name==='cryptic cyphers'?'cypher':'level',manualUpgrades:feat.name==='cryptic cyphers'?Math.min(5,Math.max(0,Math.floor((Number(value('insights'))-3)/3))):0,castingAbility:value('casting-ability') || (/^(?:bard|sorcerer):/.test(feat.choiceModel || '')?'cha':feat.name==='cryptic cyphers'?(ctx.d.castingAbility || 'int'):['Invoke dark powers','Occult birth'].includes(feat.name)?'con':feat.name==='Noble-line'?'cha':feat.name==='Arcane intuition'?mental.reduce((best,key)=>ctx.d.abilities[key]>ctx.d.abilities[best]?key:best,'int'):feat.name==='Arcane insight'?'int':feat.name==='Infernal magic'?Object.keys(ctx.d.abilities).reduce((best,key)=>ctx.d.abilities[key]>ctx.d.abilities[best]?key:best,'int'):'wis'),notes:'Granted by '+feat.name+'. Use the granting rule’s costs, casting ability and limits.'});
       }
       training.push({source:feat.id,level:feat.level || 1,proficiencies:Object.fromEntries(Object.entries(proficiencies).map(([key,values])=>[key,values.slice(before.profs[key])])),weaponGroups:weaponGroups.slice(before.groups),removedSkills:removedSkills.slice(before.removed)});
-      effects.push({effect,level:feat.level || 1,sourceFeat:feat.id});
+      effects.push({effect,level:feat.level || 1,sourceFeat:feat.id,classId:feat.classId});
     }
     const result={effects,grants,proficiencies,weaponGroups,removedSkills,notes,spells,specs,moreTargets,extraLists,sources,sacrificedSpells,training};result.signature=JSON.stringify({effects,grants,proficiencies,weaponGroups,removedSkills,notes,spells,sacrificedSpells});return result;
   }

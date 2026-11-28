@@ -210,6 +210,21 @@ test('Bard derives rest-dice costs and casting spends existing rest dice rather 
   assert.throws(() => casting().spend(c, d, d.pools[0].id, {level: 3}), /level/i);
 });
 
+test('Bard learning rounds up from Bard level and casting uses total character level', () => {
+  const cls=plain(bard);cls.casting.maxLearnLevelRule={basis:'classLevel',divisor:2,rounding:'up'};
+  for(let level=1;level<=12;level++){
+    const c=character(level);c.build.casting={maxLearnLevel:20};
+    const d=derive(c,cls);
+    assert.equal(d.maxLearnLevel,Math.ceil(level/2));
+    assert.equal(d.maxCastLevel,Math.ceil(level/2));
+    const entry={name:'Learning boundary',group:'Arcane spells',details:{lvl:Math.ceil(level/2)+1}};
+    assert.equal(casting().spellAccess(c,{cls,casting:d},entry).allowed,false,'a saved manual limit must not bypass the class learning rule');
+  }
+  const c=character(12),d=derive(c,cls,{classLevel:3});
+  assert.equal(d.maxLearnLevel,2,'learning uses Bard level');
+  assert.equal(d.maxCastLevel,6,'casting uses total character level');
+});
+
 test('Bard draft capacity uses the derived rest maximum without filling available rest dice', () => {
   const c = character(4, {restDice: {current: 2, max: 3, die: 'd6'}});
   const d = derive(c, bard, {restMaximum: 7});

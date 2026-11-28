@@ -1,5 +1,19 @@
 # Patch notes
 
+## 2026-11-28 - Confirmed multiclass training and Druid learning
+
+- Druid spell learning now uses half Druid class level rounded up. Updated both the displayed class rule and automatic spell eligibility so levels in other classes do not unlock higher-level Druid spells.
+- Alchemist now uses Artificer's reduced multiclass proficiencies: light and medium armor, shields, thieves' tools and tinker's tools. Occultist uses Warlock's light armor and simple weapons. These grants do not add starting saving throws or extra skill picks; class-feature grants still apply.
+
+## 2026-11-28 - Bard learning, multiclass characters and rest dice
+
+- Bard spell learning now follows half Bard level rounded up: levels 1–2 learn level-1 spells, levels 3–4 learn level-2 spells, and Bard 11 unlocks level-6 spells. The learning limit is automatic, including for older saves with a manual limit. Its separately stated casting limit still uses half total character level rounded up.
+- Added class level allocation and an editable level order. Each class unlocks its own features, upgrade counts, improvement choices and archetype slots from its class levels. Class prerequisites use the levels already taken when a feat was granted.
+- Multiclass HP uses the hit die of the class taken at each level. The first character level receives the maximum die; later levels use the recorded roll or fixed average. Proficiency still follows total Varis character level.
+- Added reduced multiclass training for the standard matching classes. Additional classes do not repeat starting saving throws or full starting skill selections. Feature-granted training remains active.
+- Each spellcasting class has its own learning choices and printed casting pools. A class selector is available in creation and on the spell sheet. Spells retain their casting class and ability; casting spends that class's selected resource.
+- Added rest-dice pools by class, with the class's own die size. Class and archetype bonuses use their owning class's pool; each pool can be spent or restored separately. Rest-dice costs use the selected pool first. Saved spending and inactive class choices survive removing and restoring class levels.
+
 ## 2026-11-28 - Removing upgrade grants and dependent choices
 
 - Fixed Deep past and More upgrades leaving dependent feat choices and granted spells active after their extra upgrade was removed. Follow-ups now use the currently available upgrade picks.

@@ -131,7 +131,7 @@
     };
     return (rules || []).filter(rule => applies[rule.when]).map(rule => {
       const effects = {...rule.effects};
-      for (const upgrade of rule.upgrades || []) if (number(character.level, 1) >= upgrade.level) {
+      for (const upgrade of rule.upgrades || []) if (number(rule.classLevel ?? character.level, 1) >= upgrade.level) {
         for (const [key, value] of Object.entries(upgrade.effects)) effects[key] = number(effects[key]) + value;
       }
       return {source: rule.source, effects};

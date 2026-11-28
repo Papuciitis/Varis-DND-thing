@@ -56,19 +56,31 @@
       const c = State.normalizeCharacter(input), build = c.build || {}, enabled = !!build.enabled;
       const race = enabled ? races.find(r=>r.id===build.raceId) : null;
       const cls = enabled ? classes.find(r=>r.id===build.classId) : null;
+      const classProgressions=enabled?State.classLevels(c).map(row=>({...row,cls:classes.find(item=>item.id===row.id)})).filter(row=>row.cls):[];
+      const secondaryTraining={
+        Alchemist:{armor:'light armor, medium armor, shields',tools:"thieves' tools, tinker's tools"},Occultist:{armor:'light armor',weapons:'simple weapons'},
+        Barbarian:{armor:'shields',weapons:'simple weapons, martial weapons'},Bard:{armor:'light armor',skills:1,instrument:true},
+        Cleric:{armor:'light armor, medium armor, shields'},Druid:{armor:'light armor, medium armor, shields'},
+        Fighter:{armor:'light armor, medium armor, shields',weapons:'simple weapons, martial weapons'},Monk:{weapons:'simple weapons, shortswords'},
+        Ranger:{armor:'light armor, medium armor, shields',weapons:'simple weapons, martial weapons',skills:1},Rogue:{armor:'light armor',tools:"thieves' tools",skills:1},Sorcerer:{},Wizard:{}
+      };
+      for(const owner of classProgressions){const base=secondaryTraining[owner.cls.name];owner.training=owner.id===cls?.id?{proficiencies:owner.cls.proficiencies,skillChoice:owner.cls.skillChoice}:base?{proficiencies:{armor:base.armor || '',weapons:base.weapons || '',tools:[base.tools,base.instrument?build.classTools?.[owner.id]:''].filter(Boolean).join('; ')},skillChoice:base.skills?{count:base.skills,options:base.instrument?Object.keys(skillAbilities):owner.cls.skillChoice?.options || []}:null,instrument:!!base.instrument}:null;}
+      const trainingClasses=classProgressions.filter(row=>row.training);
       const background = enabled ? catalogOptions('backgrounds').find(item=>item.id===build.backgroundId) : null;
       const abilities = {...c.abilities}, abilityBonuses = Object.fromEntries(codes.map(k=>[k,0]));
       const saves = {...c.training.saves}, skillRanks = {...c.training.skills};
       const warnings = [], features = [], choices = [], effects = [], timedEffects = [];
-      const recordEffect=(effect,level=1,sourceFeat='')=>{effects.push(effect);timedEffects.push({effect,level,sourceFeat});};
+      const recordEffect=(effect,level=1,sourceFeat='',classId='')=>{if(effect?.equipmentRules && classId)effect={...effect,equipmentRules:effect.equipmentRules.map(rule=>({...rule,classLevel:classProgressions.find(owner=>owner.id===classId)?.level}))};effects.push(effect);timedEffects.push({effect,level,sourceFeat,classId});};
       const adjustments = build.adjustments || {};
       const proficiency = c.combat.proficiencyOverride ?? State.proficiencyBonus(c.level);
-      const addFeature = (feature,parent,archetypeMinLevel = null) => {
-        if ((feature.level || 1)>c.level) return;
-        const derivedFeature = {...feature,parent};
-        if (archetypeMinLevel !== null) derivedFeature.requiredLevel = Math.max(feature.level || 1,archetypeMinLevel);
+      const addFeature = (feature,parent,archetypeMinLevel = null,owner = null) => {
+        const required=Math.max(feature.level || 1,archetypeMinLevel || 1);
+        if(required>(owner?.level ?? c.level))return;
+        const derivedFeature={...feature,parent};
+        if(owner){derivedFeature.classId=owner.id;derivedFeature.classLevel=owner.level;derivedFeature.classRequiredLevel=required;derivedFeature.requiredLevel=owner.levels[required-1];}
+        else if(archetypeMinLevel!==null)derivedFeature.requiredLevel=required;
         features.push(derivedFeature);
-        recordEffect(globalThis.CharacterEffects.lookup(parent,feature.name),derivedFeature.requiredLevel ?? feature.level ?? 1);
+        recordEffect(globalThis.CharacterEffects.lookup(parent,feature.name),derivedFeature.requiredLevel ?? feature.level ?? 1,'',owner?.id || feature.classId || '');
       };
       if (race) {
         for (const key of codes) abilityBonuses[key] += numeric(race.abilityBonuses?.[key]);
@@ -86,43 +98,44 @@
       const eligibleArchetypes = [];
       if(background) addFeature({...background,entryId:background.id,level:1,choices:[]},'Background');
       else if(build.backgroundId) warnings.push('The selected background is missing from this rules snapshot.');
-      if (cls) {
-        for (const key of cls.saves || []) saves[key]=true;
-        const validSkills = unique(build.skills || []).filter(k=>cls.skillChoice?.options.includes(k)).slice(0,cls.skillChoice?.count || 0);
-        for (const key of validSkills) skillRanks[key] = Math.max(1,skillRanks[key] || 0);
-        if (cls.skillChoice && validSkills.length<cls.skillChoice.count) warnings.push(`${cls.name}: choose ${cls.skillChoice.count} class skills.`);
-        for (const f of cls.features || []) addFeature(f,cls.name);
-        const slots = (cls.archetypeLevels || []).filter(level=>level<=c.level);
-        const seen = new Set();
-        for (let i=0;i<slots.length;i++) {
-          const selected = archetypes.find(a=>a.id===build.archetypes?.[i]);
-          if (!selected) { warnings.push(`Choose an archetype for level ${slots[i]}.`); continue; }
-          if (selected.className.toLowerCase()!==cls.name.toLowerCase() || selected.minLevel>slots[i] || seen.has(selected.id)) {
-            warnings.push(`${selected.name} is not eligible for the level ${slots[i]} archetype slot.`); continue;
-          }
-          seen.add(selected.id); eligibleArchetypes.push(selected);
-          for (const f of selected.features || []) addFeature(f,selected.name,selected.minLevel);
-          if (selected.status) warnings.push(`${selected.name}: ${selected.status}`);
+      for(const owner of classProgressions) {
+        const current=owner.cls,starting=trainingClasses.includes(owner),skills=owner.id===build.classId?build.skills:build.classSkills[owner.id] || [];
+        if(starting){
+          if(owner.id===cls?.id)for(const key of current.saves || [])saves[key]=true;
+          const validSkills=unique(skills || []).filter(key=>owner.training.skillChoice?.options.includes(key)).slice(0,owner.training.skillChoice?.count || 0);
+          for(const key of validSkills)skillRanks[key]=Math.max(1,skillRanks[key] || 0);
+          if(owner.training.skillChoice && validSkills.length<owner.training.skillChoice.count)warnings.push(`${current.name}: choose ${owner.training.skillChoice.count} class skills.`);
+          if(owner.training.instrument && !build.classTools?.[owner.id]?.trim())warnings.push(`${current.name}: choose one musical instrument for multiclass training.`);
+        }
+        for(const feature of current.features || [])addFeature(feature,current.name,null,owner);
+        const slots=(current.archetypeLevels || []).filter(level=>level<=owner.level),saved=owner.id===build.classId?build.archetypes:build.classArchetypes[owner.id] || [],seen=new Set();
+        for(let index=0;index<slots.length;index++){
+          const selected=archetypes.find(item=>item.id===saved[index]);
+          if(!selected){warnings.push(`${current.name}: choose an archetype for class level ${slots[index]}.`);continue;}
+          if(selected.className.toLowerCase()!==current.name.toLowerCase() || selected.minLevel>slots[index] || seen.has(selected.id)){warnings.push(`${selected.name} is not eligible for the ${current.name} level ${slots[index]} archetype slot.`);continue;}
+          seen.add(selected.id);eligibleArchetypes.push({...selected,classId:owner.id,classLevel:owner.level,grantedAt:owner.levels[slots[index]-1]});
+          for(const feature of selected.features || [])addFeature(feature,selected.name,slots[index],owner);
+          if(selected.status)warnings.push(`${selected.name}: ${selected.status}`);
         }
       }
       const known=[...new Map([...c.spells.filter(row=>!row.featSource || (featPlan.spells || []).some(item=>item.id===row.id)),...(featPlan.spells || [])].map(row=>[row.id,row])).values()];
-      const profiles=(metadata.spellProgressions || []).filter(profile=>!featPlan.sacrificedSpells?.includes(profile.entryId) && known.some(row=>row.entryId===profile.entryId && (!row.classId || row.classId===cls?.id)));
+      const profiles=(metadata.spellProgressions || []).filter(profile=>!featPlan.sacrificedSpells?.includes(profile.entryId) && known.some(row=>row.entryId===profile.entryId && (!row.classId || classProgressions.some(owner=>owner.id===row.classId))));
       const upgradeSources=[];
       for(const feature of [...features]) {
-        upgradeSources.push({id:feature.id,name:feature.name,parent:feature.parent,level:feature.requiredLevel ?? feature.level ?? 1,text:feature.spellUpgradeText ?? (typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:'')});
+        upgradeSources.push({id:feature.id,name:feature.name,parent:feature.parent,classId:feature.classId,classLevel:feature.classLevel,classRequiredLevel:feature.classRequiredLevel,level:feature.requiredLevel ?? feature.level ?? 1,text:feature.spellUpgradeText ?? (typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:'')});
         for(const group of feature.choices || []) {const occurrences=new Map();for(const [index,id] of (group.automatic?group.options.map(option=>option.id):build.choices[group.id] || []).entries()) {
-          const occurrence=occurrences.get(id) || 0;occurrences.set(id,occurrence+1);const item=group.options.find(option=>option.id===id);if(item)upgradeSources.push({id:group.id+':'+index+':'+id,groupId:group.id,optionId:id,repeatable:(item.repeatLimit || 1)>1,name:item.name,parent:feature.parent,level:feature.requiredLevel ?? feature.level ?? 1,text:item.ownDetails ?? item.details,gate:{groupId:group.id,optionId:id,occurrence}});
+          const occurrence=occurrences.get(id) || 0;occurrences.set(id,occurrence+1);const item=group.options.find(option=>option.id===id);if(item)upgradeSources.push({id:group.id+':'+index+':'+id,groupId:group.id,optionId:id,repeatable:(item.repeatLimit || 1)>1,name:item.name,parent:feature.parent,classId:feature.classId,classLevel:feature.classLevel,classRequiredLevel:feature.classRequiredLevel,level:feature.requiredLevel ?? feature.level ?? 1,text:item.ownDetails ?? item.details,gate:{groupId:group.id,optionId:id,occurrence}});
         }}
       }
       const universal=[];
       for(const source of upgradeSources)for(const [index,grant] of permanentSpellUpgrades(source.text).entries()) {
         const eligible=profiles.filter(profile=>profile.options.length && (grant.kind==='both' || grant.kind===profile.kind));
-        const amount=grant.levels?.length?grant.levels.filter(level=>level<=c.level).length:grant.count || 1;if(!amount || !eligible.length)continue;
+        const amount=grant.levels?.length?grant.levels.filter(level=>level<=(source.classLevel ?? c.level)).length:grant.count || 1;if(!amount || !eligible.length)continue;
         const previous=!source.repeatable && source.groupId && Object.keys(build.choices).find(key=>key.startsWith(source.groupId+':') && key.endsWith(':'+source.optionId+':spell-upgrade:'+index+':target'));
         const id=previous?previous.slice(0,-':target'.length):source.id+':spell-upgrade:'+index;
         if(grant.all){for(const profile of eligible)universal.push({entryId:profile.entryId,featureId:source.id,requiresChoice:source.gate,count:grant.amount});continue;}
         const groups=grant.all?[]:[{id:id+':target',label:'Choose '+grant.kind+' to upgrade',count:amount,optional:!!grant.optional,requiresChoice:source.gate,options:eligible.map(profile=>({id:profile.entryId,name:profile.name,repeatLimit:grant.repeat?amount:1,details:'Grants '+grant.amount+' upgrade choice'+(grant.amount===1?'':'s')+' from this spell’s list. Choose the upgrades on the Spells step.',choiceGrants:[{groupId:profile.id,count:grant.amount}]}))}];
-        addFeature({id,name:source.name+' — spell upgrades',level:source.level,details:source.text,choices:groups,requiresSource:source.gate},source.parent);
+        addFeature({id,name:source.name+' — spell upgrades',classId:source.classId,classLevel:source.classLevel,level:source.level,details:source.text,choices:groups,requiresSource:source.gate},source.parent);
       }
       for(const profile of profiles) {
         const rows=known.filter(row=>row.entryId===profile.entryId),normal=rows.some(row=>row.progressionMode!=='cypher'),levels=normal?profile.levels.filter(level=>level<=c.level):[],manual=normal?0:Math.max(0,...rows.map(row=>row.manualUpgrades || 0)),group={id:profile.id,label:profile.kind==='hex'?'Hex upgrades':'Cantrip upgrades',spellEntryId:profile.entryId,count:levels.length+manual,maxCount:normal?undefined:5,additionalGrants:universal.filter(grant=>grant.entryId===profile.entryId),options:profile.options.map(option=>({...option,effects:profile.name.toLowerCase()==='ward' && /bonus to death saves/i.test(option.details)?{deathSaveBonus:c.level>=9?2:1}:undefined}))};
@@ -133,7 +146,7 @@
       const ancestryBonuses = {...abilityBonuses};
       const definitions = [];
       const asiAlternatives = features.flatMap(feature=>(feature.choices || []).filter(group=>group.asiAlternative).map(group=>({feature,group})));
-      const bonusAlternatives = features.flatMap(feature=>(feature.choices || []).filter(group=>group.bonusAlternative===cls?.name).map(group=>({feature,group})));
+      const bonusAlternatives = features.flatMap(feature=>(feature.choices || []).filter(group=>classProgressions.some(owner=>group.bonusAlternative===owner.cls.name)).map(group=>({feature,group})));
       for (const feature of [...features]) {
         const parent = feature.parent;
         let groups=[...(feature.choices || [])];
@@ -144,7 +157,7 @@
           const options=codes.map(key=>({id:feature.id+':'+key,name:'+2 '+names[key],details:'Increase the base score through this feature.',effects:{abilities:{[key]:2}}}));
           for(let i=0;i<codes.length;i++)for(let j=i+1;j<codes.length;j++)options.push({id:feature.id+':'+codes[i]+':'+codes[j],name:'+1 '+names[codes[i]]+' / +1 '+names[codes[j]],details:'Increase two different scores.',effects:{abilities:{[codes[i]]:1,[codes[j]]:1}}});
           options.push({id:feature.id+':feat',name:'Take a feat',details:'Choose a feat from the list below. Read its requirements and rules before saving.'});
-          for(const alternative of asiAlternatives) if(alternative.feature.level<=feature.level) {
+          for(const alternative of asiAlternatives) if((!alternative.feature.classId || alternative.feature.classId===feature.classId) && (alternative.feature.requiredLevel ?? alternative.feature.level)<=(feature.requiredLevel ?? feature.level)) {
             options.push({id:feature.id+':instead:'+alternative.group.id,name:`Take ${alternative.group.asiAlternative} ${alternative.feature.name} upgrades`,details:alternative.feature.details,
               choiceGrants:[{groupId:alternative.group.id,count:alternative.group.asiAlternative}]});
           }
@@ -153,7 +166,7 @@
         const optionalSets = unique(groups.map(group=>group.optionalSet).filter(Boolean));
         if(/ability.score.improvement/i.test(feature.name)) groups=groups.map(group=>{
           if(group.id===feature.id+':asi' || group.optionalSet) return group;
-          const alternatives=bonusAlternatives.filter(item=>item.feature.level<=feature.level);
+          const alternatives=bonusAlternatives.filter(item=>(!item.feature.classId || item.feature.classId===feature.classId) && (item.feature.requiredLevel ?? item.feature.level)<=(feature.requiredLevel ?? feature.level));
           return {...group,options:[...group.options,...alternatives.map(item=>({id:group.id+':instead:'+item.group.id,name:'Take an extra '+item.feature.name+' upgrade',details:item.feature.details,choiceGrants:[{groupId:item.group.id,count:1}]}))]};
         });
         for(const set of optionalSets) {
@@ -166,7 +179,7 @@
           requiresChoice:{groupId:feature.id+':asi',optionId:feature.id+':feat'}});
         if(parent==='Occultist'){for(const group of groups)if(/^(?:Extra )?(?:Mark|Reward)$/.test(group.label))group.pairedSet=group.optionalSet || feature.id+':mark-reward-pair';for(const group of groups)if(group.kind==='feat'){const source=groups.find(item=>item.id===group.requiresChoice?.groupId);if(source?.pairedSet)group.requiresPairedSet=source.pairedSet;}}
         for (const sourceGroup of groups) {
-          definitions.push({...sourceGroup,parent,featureId:feature.id,featureName:feature.name,level:feature.requiredLevel ?? feature.level});
+          definitions.push({...sourceGroup,parent,featureId:feature.id,featureName:feature.name,classId:feature.classId,classLevel:feature.classLevel,classRequiredLevel:feature.classRequiredLevel,level:feature.requiredLevel ?? feature.level});
         }
       }
       let resolved = new Map(), grants = new Map(), signature = '';
@@ -179,13 +192,13 @@
           if(requirement && (resolved.get(requirement.groupId)?.selected.filter(id=>id===requirement.optionId).length || 0)<=(requirement.occurrence || 0)) continue;
           if(requirement?.onlyChoice && resolved.get(requirement.groupId)?.selected.some(id=>id!==requirement.optionId))continue;
           if(sourceGroup.requiresPairedSet){const pair=[...resolved.values()].filter(group=>group.pairedSet===sourceGroup.requiresPairedSet);if(pair.length<2 || pair.some(group=>group.selected.length<group.count))continue;}
-          const baseCount = (sourceGroup.countByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? sourceGroup.count)
-            + (sourceGroup.additionalGrants || []).filter(grant=>grant.requiresChoice?(resolved.get(grant.requiresChoice.groupId)?.selected.filter(id=>id===grant.requiresChoice.optionId).length || 0)>(grant.requiresChoice.occurrence || 0):activeFeatures.has(grant.featureId)).reduce((total,grant)=>total+(grant.countByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? grant.count),0)
+          const baseCount = (sourceGroup.countByLevel?.filter(row=>row.level<=(sourceGroup.classLevel ?? c.level)).at(-1)?.count ?? sourceGroup.count)
+            + (sourceGroup.additionalGrants || []).filter(grant=>grant.requiresChoice?(resolved.get(grant.requiresChoice.groupId)?.selected.filter(id=>id===grant.requiresChoice.optionId).length || 0)>(grant.requiresChoice.occurrence || 0):activeFeatures.has(grant.featureId)).reduce((total,grant)=>total+(grant.countByLevel?.filter(row=>row.level<=(sourceGroup.classLevel ?? c.level)).at(-1)?.count ?? grant.count),0)
             + (grants.get(sourceGroup.id) || 0);
           const extra=(featPlan.grants || []).filter(grant=>grant.groupId===sourceGroup.id),limits=extra.flatMap(grant=>Array.from({length:grant.count},()=>grant));
           const gated=sourceGroup.requiresChoice && resolved.get(sourceGroup.requiresChoice.groupId),gateIndex=gated?.selectedSlots.indexOf(sourceGroup.requiresChoice.optionId),gateSource=gateIndex>=gated?.baseCount?gated.bonusSlots[gateIndex-gated.baseCount]?.source:'',gateLevel=(featPlan.effects || []).find(item=>item.sourceFeat===gateSource)?.level || 1;
           const automatic=sourceGroup.automatic?sourceGroup.options.filter(option=>!option.requiresChoice || resolved.get(option.requiresChoice.groupId)?.selected.includes(option.requiresChoice.optionId)).map(option=>option.id):null;
-          const count=automatic?.length ?? Math.min(sourceGroup.maxCount ?? Infinity,baseCount+limits.length),group={...sourceGroup,level:Math.max(sourceGroup.level || 1,gateLevel),count,bonusSlots:limits,baseCount,options:sourceGroup.options.map(option=>({...option,repeatLimit:option.repeatLimitByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? option.repeatLimit}))};
+          const count=automatic?.length ?? Math.min(sourceGroup.maxCount ?? Infinity,baseCount+limits.length),group={...sourceGroup,level:Math.max(sourceGroup.level || 1,gateLevel),count,bonusSlots:limits,baseCount,options:sourceGroup.options.map(option=>({...option,repeatLimit:option.repeatLimitByLevel?.filter(row=>row.level<=(sourceGroup.classLevel ?? c.level)).at(-1)?.count ?? option.repeatLimit}))};
           const saved=automatic || build.choices?.[group.id] || [],stored=saved.slice(0,count),counts=new Map();
           let selectedSlots = stored.map((id,index)=>{
             const option=group.options.find(item=>item.id===id), used=counts.get(id) || 0;
@@ -241,7 +254,7 @@
         signature=nextSignature;
         grants=new Map();
         for(const group of resolved.values()) for(const id of group.selected) {
-          for(const grant of group.options.find(option=>option.id===id).choiceGrants || []) grants.set(grant.groupId,(grants.get(grant.groupId) || 0)+(grant.countByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? grant.count));
+          for(const grant of group.options.find(option=>option.id===id).choiceGrants || []) grants.set(grant.groupId,(grants.get(grant.groupId) || 0)+(grant.countByLevel?.filter(row=>row.level<=(group.classLevel ?? c.level)).at(-1)?.count ?? grant.count));
         }
       }
       for(const group of resolved.values())if(group.pairedSet)group.pairComplete=[...resolved.values()].filter(other=>other.pairedSet===group.pairedSet).every(other=>other.selected.length>=other.count);
@@ -255,16 +268,16 @@
             if(!id)continue;const source=slot>=group.baseCount?group.bonusSlots[slot-group.baseCount]?.source:'',level=Math.max(group.level || 1,(featPlan.effects || []).find(item=>item.sourceFeat===source)?.level || 1);
             const option = group.options.find(o=>o.id===id);
             if(group.kind!=='feat') {
-              recordEffect(globalThis.CharacterEffects.lookup(group.parent,group.effectFeature || group.featureName,option.name),level,source);
-              if(option.effects)recordEffect(option.effects,level,source);
+              recordEffect(globalThis.CharacterEffects.lookup(group.parent,group.effectFeature || group.featureName,option.name),level,source,group.classId);
+              if(option.effects)recordEffect(option.effects,level,source,group.classId);
             }
           }
       }
       for(let index=features.length-1;index>=0;index--){const gate=features[index].requiresSource;if(gate && (resolved.get(gate.groupId)?.selected.filter(id=>id===gate.optionId).length || 0)<=(gate.occurrence || 0))features.splice(index,1);}
-      const mpBonus=raw=>{if(typeof raw!=='string')return 0;let amount=0;for(const match of raw.matchAll(/\b(?:your )?(?:MP maximum|maximum MP)(?: and maximum rest dice)?(?: is| are)?(?: further)? increased by (\d+)/gi)){const prefix=raw.slice(0,match.index).split(/[.!?]\s+|\n/).at(-1),level=prefix.match(/at (\d+)(?:st|nd|rd|th)? level/i);if(/\b(?:if|while|unless|may)\b/i.test(prefix) || level && c.level<Number(level[1]))continue;amount+=Number(match[1]);}return amount;};
-      for(const feature of features){const amount=mpBonus(typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:'');if(amount)recordEffect({metamagicMaximum:amount},feature.level || 1);}
-      for(const group of choices.filter(group=>group.kind!=='feat'))for(const option of group.options.filter(option=>group.selected.includes(option.id))){const amount=mpBonus(option.ownDetails ?? option.details);if(amount)recordEffect({metamagicMaximum:amount},group.level);}
-      for(const item of featPlan.effects || [])recordEffect(item.effect,item.level,item.sourceFeat);
+      const mpBonus=(raw,sourceLevel=c.level)=>{if(typeof raw!=='string')return 0;let amount=0;for(const match of raw.matchAll(/\b(?:your )?(?:MP maximum|maximum MP)(?: and maximum rest dice)?(?: is| are)?(?: further)? increased by (\d+)/gi)){const prefix=raw.slice(0,match.index).split(/[.!?]\s+|\n/).at(-1),level=prefix.match(/at (\d+)(?:st|nd|rd|th)? level/i);if(/\b(?:if|while|unless|may)\b/i.test(prefix) || level && sourceLevel<Number(level[1]))continue;amount+=Number(match[1]);}return amount;};
+      for(const feature of features){const amount=mpBonus(typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:'',feature.classLevel ?? c.level);if(amount)recordEffect({metamagicMaximum:amount},feature.requiredLevel ?? feature.level ?? 1,'',feature.classId);}
+      for(const group of choices.filter(group=>group.kind!=='feat'))for(const option of group.options.filter(option=>group.selected.includes(option.id))){const amount=mpBonus(option.ownDetails ?? option.details,group.classLevel ?? c.level);if(amount)recordEffect({metamagicMaximum:amount},group.level,'',group.classId);}
+      for(const item of featPlan.effects || [])recordEffect(item.effect,item.level,item.sourceFeat,item.classId);
       const combined = {abilities:{},skillBonuses:{},saveBonuses:{},skills:{},saves:{},reductions:{},abilitySkillBonuses:{},resistances:[],immunities:[],languages:[]};
       for (const effect of effects) {
         for (const [key,value] of Object.entries(effect || {})) {
@@ -300,12 +313,15 @@
       const raceSkillRank=/\bexpertise\b/i.test(skillText)?2:1;
       for (const skill of unique(build.raceSkills || []).filter(k=>raceSkillOptions.includes(k)).slice(0,raceSkillCount)) skillRanks[skill]=Math.max(raceSkillRank,skillRanks[skill] || 0);
       for(const skill of featPlan.removedSkills || [])skillRanks[skill]=0;
-      const proficiencies = {...c.proficiencies};
-      for (const key of ['weapons','armor','tools']) {
-        const racial=(race?.proficiencies || []).filter(text=>key==='armor'?/\barmor|\barmour|\bshield/i.test(text):key==='weapons'?/\bweapons?\b/i.test(text):/\btools?\b|\binstrument/i.test(text));
-        proficiencies[key]=[cls?.proficiencies?.[key],...racial,c.proficiencies[key]].filter(Boolean).join('; ');
-      }
-      proficiencies.languages=[c.proficiencies.languages,...combined.languages].filter(Boolean).join('; ');
+      const startingProficienciesAt=at=>{
+        const result={...c.proficiencies};
+        for(const key of ['armor','weapons','tools']){
+          const racial=(race?.proficiencies || []).filter(text=>key==='armor'?/\barmor|\barmour|\bshield/i.test(text):key==='weapons'?/\bweapons?\b/i.test(text):/\btools?\b|\binstrument/i.test(text));
+          result[key]=[...trainingClasses.filter(owner=>owner.levels[0]<=at).map(owner=>owner.training.proficiencies?.[key]),...racial,c.proficiencies[key]].filter(Boolean).join('; ');
+        }
+        result.languages=[c.proficiencies.languages,...combined.languages].filter(Boolean).join('; ');return result;
+      };
+      const proficiencies=startingProficienciesAt(c.level);
       const baseProficiencies={...proficiencies};
       for(const [key,values] of Object.entries(featPlan.proficiencies || {}))if(values.length)proficiencies[key]=[proficiencies[key],...values].filter(Boolean).join('; ');
       const weaponGroups=unique([...(build.weaponGroups || []),...(featPlan.weaponGroups || [])]);
@@ -318,18 +334,15 @@
       const health = build.health || {};
       let hpBase=health.baseHP ?? c.resources.hp.max, hpExplanation='Manual base HP';
       if (enabled && cls && health.hpMode!=='manual') {
-        const sides=Number(cls.hitDie?.match(/d(\d+)/i)?.[1]);
-        if (sides) {
-          for (let level=2;level<=c.level;level++) {
-            const roll=health.rolls?.[level-2];
-            if (health.hpMode==='rolled' && !(roll>=1 && roll<=sides)) warnings.push(`Record the level ${level} HP roll; its fixed average is shown until then.`);
+        const history=State.classHistory(c).map(id=>classes.find(owner=>owner.id===id) || cls),firstSides=Number(history[0]?.hitDie?.match(/d(\d+)/i)?.[1]);
+        if(firstSides){
+          hpBase=Math.max(1,firstSides+mod(abilities.con)+numeric(combined.hpPerLevel));
+          for(let index=1;index<history.length;index++){
+            const sides=Number(history[index].hitDie?.match(/d(\d+)/i)?.[1]) || firstSides,saved=health.rolls?.[index-1],valid=saved>=1 && saved<=sides;
+            if(health.hpMode==='rolled' && !valid)warnings.push(`Record the level ${index+1} HP roll (${history[index].name} ${history[index].hitDie}); its fixed average is shown until then.`);
+            hpBase+=Math.max(1,(health.hpMode==='rolled' && valid?saved:sides/2+1)+mod(abilities.con)+numeric(combined.hpPerLevel));
           }
-          hpBase=Math.max(1,sides+mod(abilities.con)+numeric(combined.hpPerLevel));
-          for(let level=2;level<=c.level;level++) {
-            const roll=health.hpMode==='rolled' && health.rolls?.[level-2]>=1 && health.rolls[level-2]<=sides ? health.rolls[level-2] : sides/2+1;
-            hpBase+=Math.max(1,roll+mod(abilities.con)+numeric(combined.hpPerLevel));
-          }
-          hpExplanation=`${cls.hitDie} maximum at level 1; ${health.hpMode==='rolled'?'recorded rolls':'fixed average'} + CON at later levels`;
+          hpExplanation=classProgressions.length>1?`${cls.hitDie} maximum at level 1; each later level uses that class’s hit die, ${health.hpMode==='rolled'?'recorded rolls':'fixed average'} + CON`:`${cls.hitDie} maximum at level 1; ${health.hpMode==='rolled'?'recorded rolls':'fixed average'} + CON at later levels`;
         }
       } else if (enabled && health.progression) {
         hpBase=health.firstLevelHP+health.perLevelHP*(c.level-1)+(health.conPerLevel?mod(abilities.con)*c.level:0);
@@ -353,12 +366,31 @@
       const castingAbility=c.combat.spellAbility || cls?.castingAbilities?.[0] || '';
       const reductions={...gear.reductions};for(const [key,value] of Object.entries(combined.reductions)) reductions[key]=Math.max(reductions[key] || 0,value);
       warnings.push(...gear.warnings,...race?.warnings || [],...cls?.warnings || []);
-      const casting = globalThis.CharacterCasting?.derive(c,enabled ? cls : null,{abilities,effects:combined,choices,features,proficiency,restMaximum}) || null;
+      const deriveCastings=(effects,maximum,occultExtra=0)=>{
+        const castings=classProgressions.filter(owner=>owner.cls.casting).map(owner=>{
+          const scoped={...effects,slots:{},knownSpells:0,occultSlots:0,fullSlots:0,eachSlotLevel:0,metamagicMaximum:0};
+          for(const item of timedEffects)if((!item.classId || item.classId===owner.id) && (!item.effect?.castingTradition || item.effect.castingTradition===owner.cls.casting.tradition)){
+            for(const key of ['knownSpells','occultSlots','fullSlots','eachSlotLevel','metamagicMaximum'])scoped[key]+=numeric(item.effect?.[key]);
+            for(const [level,amount] of Object.entries(item.effect?.slots || {}))scoped.slots[level]=numeric(scoped.slots[level])+numeric(amount);
+          }
+          scoped.occultSlots+=occultExtra;
+          return globalThis.CharacterCasting.derive(c,owner.cls,{abilities,effects:scoped,choices,features,proficiency,restMaximum:maximum,classLevel:owner.level});
+        });
+        const casting=castings.find(item=>item.classId===build.casting?.classId) || castings.find(item=>item.classId===cls?.id) || castings[0] || globalThis.CharacterCasting?.derive(c,enabled?cls:null,{abilities,effects,choices,features,proficiency,restMaximum:maximum});
+        return {casting,castings};
+      };
+      const {casting,castings}=deriveCastings(combined,restMaximum);
       if (casting) warnings.push(...casting.warnings);
       if(c.level>12 && enabled) warnings.push('The current Varis progression ends at level 12.');
-      const result={enabled,race,cls,background,eligibleArchetypes,abilities,abilityBonuses,saves,skillRanks,skillBonuses,saveBonuses,proficiencies,proficiency,armorClass,speed,blockMaximum,blockCheck,combatFloor:gear.armorBlock+gear.shieldBlock+numeric(combined.combatBlock)+numeric(gear.combatBlockBonus),hpMaximum,hpExplanation,restMaximum,deathSaveSlots:Math.max(1,3+numeric(combined.deathSaveSlots)),castingAbility,casting,initiative:mod(abilities.dex)+c.combat.initiativeBonus+numeric(combined.initiative),features,choices,attacks,raceSkillCount,raceSkillOptions,reductions,resistances:unique([...gear.resistances,...combined.resistances]),immunities:combined.immunities,warnings:unique(warnings),gear,effects:combined};
+      const result={enabled,race,cls,classProgressions,trainingClasses,background,eligibleArchetypes,abilities,abilityBonuses,saves,skillRanks,skillBonuses,saveBonuses,proficiencies,proficiency,armorClass,speed,blockMaximum,blockCheck,combatFloor:gear.armorBlock+gear.shieldBlock+numeric(combined.combatBlock)+numeric(gear.combatBlockBonus),hpMaximum,hpExplanation,restMaximum,deathSaveSlots:Math.max(1,3+numeric(combined.deathSaveSlots)),castingAbility,castingAbilityOverride:c.combat.spellAbility,casting,castings,initiative:mod(abilities.dex)+c.combat.initiativeBonus+numeric(combined.initiative),features,choices,attacks,raceSkillCount,raceSkillOptions,reductions,resistances:unique([...gear.resistances,...combined.resistances]),immunities:combined.immunities,warnings:unique(warnings),gear,effects:combined};
       result.baseProficiencies=baseProficiencies;result.weaponGroups=weaponGroups;result.featPlan=featPlan;
-      const trainingSkills={...c.training.skills};for(const skill of (build.skills || []).filter(skill=>cls?.skillChoice?.options.includes(skill)).slice(0,cls?.skillChoice?.count || 0))trainingSkills[skill]=Math.max(trainingSkills[skill] || 0,1);for(const skill of (build.raceSkills || []).filter(skill=>raceSkillOptions.includes(skill)).slice(0,raceSkillCount))trainingSkills[skill]=Math.max(trainingSkills[skill] || 0,raceSkillRank);result.trainingBase={skills:trainingSkills,effects:timedEffects};
+      const trainingSkillsAt=at=>{
+        const skills={...c.training.skills};
+        for(const owner of trainingClasses.filter(owner=>owner.levels[0]<=at))for(const skill of (owner.id===build.classId?build.skills:build.classSkills[owner.id] || []).filter(skill=>owner.training.skillChoice?.options.includes(skill)).slice(0,owner.training.skillChoice?.count || 0))skills[skill]=Math.max(skills[skill] || 0,1);
+        for(const skill of (build.raceSkills || []).filter(skill=>raceSkillOptions.includes(skill)).slice(0,raceSkillCount))skills[skill]=Math.max(skills[skill] || 0,raceSkillRank);
+        return skills;
+      };
+      const trainingSkills=trainingSkillsAt(c.level);result.trainingBase={skills:trainingSkills,effects:timedEffects};
       const taken=new Map();
       for(const group of choices.filter(group=>group.kind==='feat').sort((a,b)=>a.level-b.level)) {
         const scores=Object.fromEntries(codes.map(code=>[code,c.abilities[code]+ancestryBonuses[code]]));
@@ -366,7 +398,7 @@
           for(const code of codes)scores[code]+=numeric(effect?.abilities?.[code]);
           for(const grant of effect?.cappedAbilities || [])scores[grant.ability]+=Math.max(0,Math.min(grant.amount,grant.maximum-scores[grant.ability]));
         }
-        const scopedSkills={...trainingSkills},scopedProficiencies={...baseProficiencies},scopedGroups=[...(build.weaponGroups || [])];
+        const scopedSkills=trainingSkillsAt(group.level),scopedProficiencies=startingProficienciesAt(group.level),scopedGroups=[...(build.weaponGroups || [])];
         for(const item of timedEffects)if(item.level<=group.level && !item.sourceFeat?.startsWith(group.id+':'))for(const [skill,rank] of Object.entries(item.effect.skills || {}))scopedSkills[skill]=Math.max(scopedSkills[skill] || 0,rank);
         for(const item of (featPlan.training || []).filter(item=>item.level<=group.level && !item.source.startsWith(group.id+':'))){for(const [key,values] of Object.entries(item.proficiencies))if(values.length)scopedProficiencies[key]=[scopedProficiencies[key],...values].filter(Boolean).join('; ');scopedGroups.push(...item.weaponGroups);for(const skill of item.removedSkills)scopedSkills[skill]=0;}
         const facts=globalThis.CharacterPrerequisites?.context(c,{...result,skillRanks:scopedSkills,proficiencies:scopedProficiencies,weaponGroups:scopedGroups},catalog,Math.min(c.level,group.level),scores);
@@ -383,15 +415,22 @@
       }
       const rest=globalThis.CharacterEffects.restDice(c,result);
       result.restMaximum=rest.maximum;result.restBreakdown=rest.breakdown;
+      const restPools=classProgressions.map(owner=>({id:'class:'+owner.id,classId:owner.id,label:owner.cls.name,die:owner.cls.hitDie || c.restDice.die,max:owner.level}));
+      if(build.health?.restMode==='manual'){restPools.splice(0,restPools.length,{id:'manual',label:'Manual rest dice',die:c.restDice.die,max:rest.maximum});}
+      else{
+        for(const item of rest.breakdown.slice(1)){let amount=item.amount;const first=restPools.find(row=>row.classId===item.classId) || restPools[0];if(!first)continue;if(amount>=0)first.max+=amount;else for(const row of [first,...restPools.filter(row=>row!==first)]){const remove=Math.min(row.max,-amount);row.max-=remove;amount+=remove;if(!amount)break;}}
+        const difference=rest.maximum-restPools.reduce((sum,row)=>sum+row.max,0);if(difference && restPools[0])restPools[0].max+=difference;
+      }
+      result.restPools=restPools;
       result.restWarnings=rest.warnings || [];result.warnings.push(...result.restWarnings);
       result.deathSaveSlots=Math.max(1,result.deathSaveSlots+rest.deathSaveDelta);result.deathSaveBonus=numeric(combined.deathSaveBonus)+rest.deathSaveBonus;
       result.hpMaximum=Math.max(1,result.hpMaximum+rest.hpDelta);
       result.effects.occultSlots=numeric(result.effects.occultSlots)+rest.occultExtra;
-      result.casting=globalThis.CharacterCasting?.derive(c,enabled?cls:null,{abilities,effects:result.effects,choices,features,proficiency,restMaximum:result.restMaximum}) || null;
+      Object.assign(result,deriveCastings(result.effects,result.restMaximum,rest.occultExtra));
       result.spellProgressions=(metadata.spellProgressions || []).filter(profile=>features.some(feature=>feature.spellEntryId===profile.entryId)).map(profile=>({...profile,automatic:known.some(row=>row.entryId===profile.entryId && row.progressionMode!=='cypher')?profile.automatic:[],count:choices.find(group=>group.spellEntryId===profile.entryId)?.count || 0,selected:choices.find(group=>group.spellEntryId===profile.entryId)?.selected || [],active:(known.some(row=>row.entryId===profile.entryId && row.progressionMode!=='cypher')?profile.automatic:[]).map(rule=>({...rule,activeLevels:rule.levels.filter(level=>level<=c.level)})).filter(rule=>rule.activeLevels.length)}));
       result.progressionNotes=[];
-      for(const feature of features)for(const note of feature.levelNotes || [])if(note.levels.some(level=>level<=c.level))result.progressionNotes.push({name:feature.parent+': '+feature.name,...note});
-      for(const group of choices.filter(group=>group.kind!=='feat'))for(const option of group.options.filter(option=>group.selected.includes(option.id)))for(const note of option.levelNotes || [])if(note.levels.some(level=>level<=c.level))result.progressionNotes.push({name:group.parent+': '+option.name,...note});
+      for(const feature of features)for(const note of feature.levelNotes || [])if(note.levels.some(level=>level<=(feature.classLevel ?? c.level)))result.progressionNotes.push({name:feature.parent+': '+feature.name,...note});
+      for(const group of choices.filter(group=>group.kind!=='feat'))for(const option of group.options.filter(option=>group.selected.includes(option.id)))for(const note of option.levelNotes || [])if(note.levels.some(level=>level<=(group.classLevel ?? c.level)))result.progressionNotes.push({name:group.parent+': '+option.name,...note});
       return result;
     }
 
@@ -408,15 +447,15 @@
       globalThis.CharacterFeats?.recordUpgradeSources?.(c,d);
       c.resources.hp.max=d.hpMaximum;c.resources.hp.current=Math.max(0,d.hpMaximum-missingHP);
       c.resources.block.max=Math.max(0,d.blockMaximum);c.resources.block.current=Math.min(c.resources.block.current,c.resources.block.max);
-      c.restDice.max=d.restMaximum;c.restDice.current=Math.min(c.restDice.current,c.restDice.max);
+      if(d.restPools.length)State.syncRestDice(c,d.restPools);else{c.restDice.max=d.restMaximum;c.restDice.current=Math.min(c.restDice.current,c.restDice.max);}
       c.deathSaves.successes=Math.min(c.deathSaves.successes,d.deathSaveSlots);c.deathSaves.failures=Math.min(c.deathSaves.failures,d.deathSaveSlots);
-      c.ancestry=d.race?.name || c.ancestry;c.className=d.cls?.name || c.className;
+      c.ancestry=d.race?.name || c.ancestry;c.className=d.classProgressions.length>1?d.classProgressions.map(owner=>owner.cls.name+' '+owner.level).join(' / '):d.cls?.name || c.className;
       if(d.background)c.background=d.background.name;
       c.subclass=d.eligibleArchetypes.map(a=>a.name).join(', ');
       const granted=d.featPlan?.spells || [];c.spells=c.spells.filter(row=>!row.featSource || granted.some(item=>item.id===row.id));
       for(const row of granted){const existing=c.spells.find(item=>item.id===row.id);if(existing)Object.assign(existing,{entryId:row.entryId,featSource:row.featSource,castingAbility:row.castingAbility,progressionMode:row.progressionMode,manualUpgrades:row.manualUpgrades});else if(!c.spells.some(item=>item.entryId===row.entryId))c.spells.push({...row});}
-      if(d.cls?.hitDie)c.restDice.die=d.cls.hitDie;
-      return d.casting ? globalThis.CharacterCasting.reconcile(c,d.casting) : c;
+      if(!d.restPools.length && d.cls?.hitDie)c.restDice.die=d.cls.hitDie;
+      return (d.castings?.length?d.castings:d.casting?[d.casting]:[]).reduce((saved,casting)=>globalThis.CharacterCasting.reconcile(saved,casting),c);
     }
 
     function damage(input,amount,options={}) {
@@ -449,7 +488,7 @@
     function rest(input,kind) {
       const c=reconcile(input),d=derive(c);c.resources.block.current=c.resources.block.max;
       if(c.build?.enabled)c.build.health.fatigue=kind==='long'?0:Math.max(0,c.build.health.fatigue-Math.max(1,mod(d.abilities.con)));
-      return d.casting ? globalThis.CharacterCasting.rest(c,d.casting,kind) : c;
+      return (d.castings?.length?d.castings:d.casting?[d.casting]:[]).reduce((saved,casting)=>globalThis.CharacterCasting.rest(saved,casting,kind),c);
     }
 
     function startCombat(input) {

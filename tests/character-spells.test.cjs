@@ -32,12 +32,24 @@ test('class creation uses each actual spell tradition, level cap, known count an
   assert.equal(fighter.Casting.spellSelection(fighter.c,fighter.rules.derive(fighter.c),catalog).eligible.length,0);
 });
 
-test('unknown Cleric and Bard source limits require table settings rather than invented learning levels',()=>{
-  for(const name of ['Cleric','Bard']) {
+test('unknown Cleric source limits require table settings rather than invented learning levels',()=>{
+  for(const name of ['Cleric']) {
     const {c,rules,Casting}=setup(name,4);
     const selection=Casting.spellSelection(c,rules.derive(c),catalog);
     assert.ok(selection.eligible.every(entry=>Casting.spellInfo(entry).cantrip),name);
     assert.ok(selection.warnings.some(warning=>/Set the/.test(warning)),name);
+  }
+});
+
+test('Bard automatically learns spell levels 1, 1, 2, 2 through 6 at Bard level 11',()=>{
+  for(let level=1;level<=12;level++){
+    const {c,rules,Casting,spell}=setup('Bard',level);c.build.casting.maxLearnLevel=20;
+    const d=rules.derive(c),selection=Casting.spellSelection(c,d,catalog),maximum=Math.ceil(level/2);
+    assert.equal(d.casting.maxLearnLevel,maximum);assert.equal(d.casting.maxCastLevel,maximum);
+    assert.ok(selection.eligible.some(entry=>Casting.spellInfo(entry,'any').level===maximum));
+    assert.ok(selection.eligible.every(entry=>Casting.spellInfo(entry,'any').level<=maximum));
+    assert.ok(!selection.warnings.some(message=>/Set the Bard/.test(message)));
+    if(maximum<6)assert.match(Casting.spellLearningError(c,d,catalog,spell('arcane',maximum+1)),/maximum spell level/);
   }
 });
 
@@ -49,7 +61,7 @@ test('higher-level Wizard creation preserves the level-one starting spellbook al
 });
 
 test('Bard can learn any tradition and the three hex tiers at their explicit equivalent spell levels',()=>{
-  const {c,rules,Casting}=setup('Bard',6);c.build.casting.maxLearnLevel=3;
+  const {c,rules,Casting}=setup('Bard',6);
   const selection=Casting.spellSelection(c,rules.derive(c),catalog);
   for(const tradition of ['arcane','mystic','oath','occult'])assert.ok(selection.eligible.some(entry=>Casting.spellInfo(entry).tradition===tradition));
   for(const [group,level] of [['Minor hexes',1],['Major hexes',2],['Greater hexes',3]]) {
