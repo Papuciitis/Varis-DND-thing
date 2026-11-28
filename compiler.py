@@ -255,6 +255,7 @@ def compile_data(data_dir: Path) -> list[dict]:
     has_monster_themes = False
     geomancy_snapshots = []
     geomancy_decisions = None
+    automation_document = None
     files = sorted(path for path in data_dir.rglob("*")
                    if path.is_file() and path.suffix.lower() in (".yml", ".yaml"))
     if not files:
@@ -263,6 +264,11 @@ def compile_data(data_dir: Path) -> list[dict]:
         path = file.relative_to(data_dir).as_posix()
         try:
             data = yaml.load(file.read_text(encoding="utf-8-sig"), Loader=RulesLoader)
+            if path == "character-automation.yaml":
+                if data is None:
+                    raise ValueError("character automation must not be empty")
+                automation_document = data
+                continue
             if path.startswith(SNAPSHOT_DIRECTORY):
                 geomancy_snapshots.append((path, data))
                 continue
@@ -311,4 +317,6 @@ def compile_data(data_dir: Path) -> list[dict]:
             raise ValueError(f"summon-links.yaml: {exc}") from exc
     apply_geomancy_review(geomancy_snapshots, geomancy_decisions, sections)
     apply_monster_reference_names(sections)
+    from character_automation import attach
+    attach(sections, automation_document)
     return list(sections.values())

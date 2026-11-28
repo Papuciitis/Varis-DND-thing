@@ -75,3 +75,17 @@ data/draft-spells/lvl-2-occult-spells.yaml - Draconic sacrifice ritual - Removed
 - Fixed three historical collection checks to select the original nine source files explicitly, preserving their 160-creature assertion as later collections are added. Full portable-build and browser checks are being run for this pass.
 
 - Final validation: all 164 Python tests pass, the complete JavaScript/browser test suite passes, and the standard site build produces 302 creatures and 439 player spells. Numerical comparison retains the previous 301 creature profiles except the three documented challenge/default completions; the player spell records are identical. All current creatures have numeric CRs, and compiled creature records use neutral reference labels. Character progression and class files are unchanged.
+
+
+28:11:2026 confirmed Druid learning basis
+
+data/draft-classes/druid.yaml - Druid / Spellcasting and cantrips - At the user's explicit direction, changed the maximum learned spell's level from half total character level to half Druid class level, rounded up. The character metadata and multiclass spell picker use the same corrected rule.
+
+
+28:11:2026 declarative character automation migration
+
+- Added data/character-automation.yaml with 38 declarations: eight explicit feat upgrade lists, More upgrades, Deep past, New tricks and 27 later-feature links to earlier choice lists. Moved the existing definitions and supported effects without rewriting their player-facing rule prose.
+- Retained the existing upgrade option IDs, choice keys, source ownership compatibility mode and granted-spell IDs. Class list extensions resolve to their original compiled groups and feature-level gates.
+- The compiler accepts inline automation on new feat/background/class/archetype/ancestry entries and sidecar attachments to existing features/options. Unsupported declared operations and broken references fail validation. No new feats, backgrounds, spells or archetypes were added to the player catalog.
+
+- Final validation: the standard site build succeeds; all 182 Python checks and all 441 JavaScript checks pass. The new fixtures exercise content without registered names, repeated upgrade follow-ups, separate repeated-feat records, prerequisite tiers, nested feat grants beyond eight levels, source removal, spell casting and backup round-trips. Runtime/data source hashes remained unchanged throughout the final runs.

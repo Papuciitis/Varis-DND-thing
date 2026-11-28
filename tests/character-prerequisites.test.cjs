@@ -7,7 +7,7 @@ const metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder
 const plain=value=>JSON.parse(JSON.stringify(value));
 function setup(className='Fighter',raceName='Human',level=1) {
  const context=vm.createContext({crypto:require('node:crypto').webcrypto});
- for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-feats','character-rules','character-builder'])vm.runInContext(fs.readFileSync(path.join(root,'web',name+'.js'),'utf8'),context);
+ for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-automation', 'character-feats','character-rules','character-builder'])vm.runInContext(fs.readFileSync(path.join(root,'web',name+'.js'),'utf8'),context);
  const State=context.CharacterState,rules=context.CharacterRules.create(metadata,catalog);
  const c=rules.enable(State.normalizeCharacter({level}));c.build.classId=metadata.classes.find(item=>item.name===className).id;
  c.build.raceId=metadata.races.find(item=>item.name.toLowerCase()===raceName.toLowerCase()).id;

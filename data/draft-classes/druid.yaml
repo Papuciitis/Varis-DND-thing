@@ -73,7 +73,7 @@ entries:
 
       Casting attribute - The casting attribute used is wisdom.
 
-      Spells known - You have a limited number of spells known that increases as you level up. When you learn new non-cantrip spells as a druid, you can learn any spell from the mystic magic spell list, picking spells that are up to a level equal to 1/2 your total level (rounded up.)
+      Spells known - You have a limited number of spells known that increases as you level up. When you learn new non-cantrip spells as a druid, you can learn any spell from the mystic magic spell list, picking spells that are up to a level equal to 1/2 your druid level (rounded up.)
 
       Slot mechanics - You also have a limited number of mystic spell slots, split by spell level, as indicated in the chart below. You may spend a mystic spell slot to cast a mystic spell at the level of the slot used. A spell requires a slot that is at least equal to the level of that spell.
 

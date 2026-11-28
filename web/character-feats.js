@@ -11,12 +11,14 @@
   const idOf=entry=>entry.entryId || JSON.stringify(['spells',entry.group,entry.name]);
   function fieldSelection(field,saved,locks={}) {
     if(!field)return {slots:[],values:[],inactive:[]};
-    const raw=field.locked?[locks[field.key] || '']:saved[field.key] || [],seen=new Set();
+    const raw=field.locked?[locks[field.key] || '']:saved[field.key] || [],seen=new Map();
     const active=new Map(),slots=Array.from({length:field.count},(_,index)=>{
       const storage=field.storageSlots?.[index] ?? index,value=raw[storage] || '';
-      if(!value || (field.type==='text'?!value.trim():!field.options.some(item=>item.id===value)) || !field.repeat && seen.has(value))return '';
-      seen.add(value);active.set(storage,value);return value;
+      const item=field.options?.find(item=>item.id===value),limit=item?.repeatLimit ?? (field.repeat?100:1);
+      if(!value || (field.type==='text'?!value.trim():!item) || (seen.get(value) || 0)>=limit)return '';
+      seen.set(value,(seen.get(value) || 0)+1);active.set(storage,value);return value;
     });
+    let changed;do{changed=false;for(const [index,value] of slots.entries())if(value && !(field.options?.find(item=>item.id===value)?.requires || []).every(required=>slots.includes(required))){active.delete(field.storageSlots?.[index] ?? index);slots[index]='';changed=true;}}while(changed);
     return {slots,values:slots.filter(Boolean),inactive:raw.filter((value,index)=>value && active.get(index)!==value)};
   }
   function fieldSelections(fields,saved,locks={}) {
@@ -24,8 +26,8 @@
     for(const field of fields){const selection=fieldSelection(field,saved,locks);for(const key of Object.keys(result))result[key][field.key]=selection[key];}
     return result;
   }
-  function upgradeStorage(saved,slotSources) {
-    const owners=saved['upgrade-sources'] || [],raw=saved.upgrade || [],used=new Set();
+  function upgradeStorage(saved,slotSources,key='upgrade') {
+    const owners=saved[key+'-sources'] || [],raw=saved[key] || [],used=new Set();
     if(!owners.some(Boolean))return slotSources.map((_,index)=>index);
     return slotSources.map(source=>{
       let index=owners.findIndex((owner,index)=>owner===source && !used.has(index));
@@ -35,26 +37,18 @@
   }
   function recordUpgradeSources(character,derived) {
     for(const [sourceId,spec] of Object.entries(derived.featPlan?.specs || {})){
-      const field=spec.fields.find(field=>field.key==='upgrade' && field.slotSources),saved=character.build.featChoices[sourceId];
-      if(!field || !saved?.upgrade?.some(Boolean))continue;
-      const owners=saved['upgrade-sources'] ||= [];
-      for(const [index,id] of (spec.slots?.upgrade || []).entries())if(id){const storage=field.storageSlots[index];while(owners.length<=storage)owners.push('');owners[storage] ||= field.slotSources[index];}
+      const saved=character.build.featChoices[sourceId];
+      for(const field of spec.fields.filter(field=>field.slotSources)){
+        if(!saved?.[field.key]?.some(Boolean))continue;
+        const owners=saved[field.key+'-sources'] ||= [];
+        for(const [index,id] of (spec.slots?.[field.key] || []).entries())if(id){const storage=field.storageSlots[index];while(owners.length<=storage)owners.push('');owners[storage] ||= field.slotSources[index];}
+      }
     }
   }
-  const lists={
-    'Dual wielding':[['trained','Trained hand'],['quick','Quick strikes'],['defense','Agile defense'],['reaction','Hasty reactions'],['swift','Swift combat']],
-    'Mutant kobold':[['troglodyte','Troglodyte'],['drakeling','Drakeling'],['cavebold','Cavebold'],['rokold','Rokold'],['goldling','Goldling'],['kobolid','Kobolid'],['kobolisk','Kobolisk']],
-    'Rite magic':[['spell','Rite spell'],['slot','Rite slot'],['cantrips','Minor rites'],['die','Rite dice']],
-    'Herbology':[['healing','Herbal healing potion'],['endurance','Herbal endurance potion'],['antidote','Herbal antidote potion'],['vigor','Herbal vigor potion']],
-    'Power source':[['engine','Arcane engine'],['give','Give power'],['polarity','Polarity']],
-    'Sworn':[['third','Learn a level 3 oath spell'],['cantrip','Learn an oath cantrip'],['fourth','Forfeit the level 2 spell for a level 4 oath spell']],
-    'Grimness':[['social','+1 Deception, Intimidation and Disguise'],['stealth','+2 Stealth'],['charisma','+1 Charisma saves']],
-    'Arcane insight':[['cost','Reduce psychic damage to d6'],['spell','Learn a level 2 arcane spell'],['int','+1 Intelligence'],['arcana','+3 Arcana']]
-  };
   const abilityChoices={
     'Extra combat art':codes,'Extra fighting skills':codes,'Extra insight':codes,'Extra occult casting':codes,'Extra Ranger training':codes,'Extra tricks of the trade':codes,
     'Extreme training':codes,'Hex casting':codes,'Lunge':physical,'Meta-break: Longer':codes,'Meta-break: More uses':codes,'Meta-break: Greater chance':codes,
-    'Oathbound':codes,'Offensive magic':mental,'Second wind +':codes,'Seize the day':codes,'Wand training':['int','dex'],'Dual wielding':['dex','str'],
+    'Oathbound':codes,'Offensive magic':mental,'Second wind +':codes,'Seize the day':codes,'Wand training':['int','dex'],
     'Elven power':mental,'Extra cantrip upgrade':codes,'Great determination':codes,'Hand to hand combat':physical,'Heavy wielding':['str','con'],
     'Innate magic':mental,'Mixed elemental descendant':codes,'High metabolism':['str','cha','con'],'Skilled':codes,'weapon proficiency':physical
   };
@@ -63,19 +57,22 @@
     'Swift':{dex:1},'Twitch reflexes':{dex:1},'Rhetoric':{cha:1},'Battle scars':{con:1},'Odd bloodtype':{con:1},'Power attack':{str:1},'Brute force':{str:1},'Small infiltrator':{dex:1},'Farsight':{wis:1}
   };
   function grantsAbility(entry) {
+    if(entry.automation){const rule=entry.automation,positive=changes=>Object.values(changes || {}).some(amount=>amount>0);return rule.abilityIncrease ?? (!!rule.effects?.some(effect=>effect.target==='abilities' && (effect.amount ?? 1)>0 || positive(effect.add?.abilities)) || !!rule.choices?.some(field=>field.options?.some(option=>positive(option.effects?.abilities))));}
     if(entry.name==='Bowmanship')return false;
-    if(abilityChoices[entry.name] || fixedAbilities[entry.name] || ['Symbiosis','Retrain','Mutant kobold'].includes(entry.name))return true;
+    if(abilityChoices[entry.name] || fixedAbilities[entry.name] || ['Symbiosis','Retrain'].includes(entry.name))return true;
     const raw=entry.details?.description || '';
     return /(?:increase|gain)[^.\n]*(?:ability score|attribute)[^.\n]*(?:by 1|\+1)|\+\d+ (?:to |bonus to )?(?:strength|dexterity|constitution|intelligence|wisdom|charisma)(?! checks?| saves?| rolls?)\b/i.test(raw);
   }
   function repeatLimit(entry) {
-    if(['Dual wielding','Bowmanship'].includes(entry.name))return 3;
+    if(entry.automation?.repeatLimit)return entry.automation.repeatLimit;
+    if(entry.name==='Bowmanship')return 3;
     if(['Eviscerate','Improved sneak attack'].includes(entry.name))return 2;
     return /can be taken multiple times/i.test(prose(entry.details))?100:1;
   }
   function tierRequirements(entry,taken,derived) {
+    if(entry.automation?.repeatRequirements?.length)return entry.automation.repeatRequirements[Math.min(taken,entry.automation.repeatRequirements.length-1)];
     if(entry.name==='Armor proficiency'){const raw=derived?.baseProficiencies?.armor || derived?.proficiencies?.armor || '',rank=/all armou?r|heavy armou?r/i.test(raw)?3:/medium armou?r/i.test(raw)?2:/light armou?r/i.test(raw)?1:0,target=Math.min(3,rank+taken);return 'Strength '+(target===3?12:12+target);}
-    const thresholds={'Dual wielding':[13,15,17],'Bowmanship':[14,18,22],'Eviscerate':[16,18]};
+    const thresholds={'Bowmanship':[14,18,22],'Eviscerate':[16,18]};
     return thresholds[entry.name]?'Dexterity '+thresholds[entry.name][Math.min(taken,thresholds[entry.name].length-1)]:'';
   }
   function sources(ctx,exclude='') {
@@ -119,7 +116,7 @@
       const entry=ctx.spells.find(entry=>idOf(entry)===row.entryId);
       if(globalThis.CharacterCasting.spellInfo(entry).cantrip && ctx.metadata.spellProgressions?.some(profile=>profile.entryId===row.entryId && profile.options.length))targets.push({...option('spell:'+row.entryId,'Cantrip: '+entry.name),spell:entry});
     }
-    for(const feat of (ctx.d.features || []).filter(feat=>feat.parent==='Feat' && feat.id!==exclude && lists[feat.name]))targets.push({...option('feat:'+feat.id,'Feat: '+feat.name),featId:feat.id});
+    targets.push(...declaredTargets(ctx,exclude));
     return targets;
   }
   function choiceSources(d) {
@@ -128,28 +125,42 @@
       const counts=new Map();
       for(const [selectedSlot,id] of (group.selectedSlots || group.selected).entries()) {
         if(!id)continue;const slot=group.sourceSlots?.[selectedSlot] ?? selectedSlot,item=group.options.find(item=>item.id===id),occurrence=counts.get(id) || 0;counts.set(id,occurrence+1);
-        if(item)found.push({id:group.id+':'+id+((item.repeatLimit || 1)>1 && slot?':slot:'+slot:occurrence?':occurrence:'+occurrence:''),entryId:id,name:item.name,parent:'Feature',owner:group.parent,choiceModel:item.choiceModel,groupId:group.id,optionId:id,occurrence,slot,occultChoice:group.parent==='Occultist' && /^(?:Extra )?(?:Mark|Reward)$/.test(group.label),level:group.level,details:item.ownDetails ?? item.details});
+        if(item)found.push({id:group.id+':'+id+((item.repeatLimit || 1)>1 && slot?':slot:'+slot:occurrence?':occurrence:'+occurrence:''),entryId:id,automationId:item.automationId,name:item.name,parent:'Feature',owner:group.parent,classId:group.classId,classLevel:group.classLevel,choiceModel:item.choiceModel,groupId:group.id,optionId:id,occurrence,slot,occultChoice:group.parent==='Occultist' && /^(?:Extra )?(?:Mark|Reward)$/.test(group.label),level:group.level,details:item.ownDetails ?? item.details});
       }
     }
     return found;
   }
-  function abilityTargets(ctx,source) {
+  function declaredTargets(ctx,exclude='') {
+    const targets=[];
+    for(const source of ctx.ownedSources || [...ctx.d.features,...ctx.selectedSources]){
+      if(source.id===exclude)continue;
+      const definition=globalThis.CharacterAutomation?.ruleFor(source,ctx);if(!definition)continue;
+      for(const field of definition.choices || [])if(field.upgradeable && globalThis.CharacterAutomation.condition(field.when,source,ctx,ctx.c.build.featChoices[source.id] || {})){
+        const id=source.parent==='Feat' && field.key==='upgrade'?'feat:'+source.id:'source:'+source.id+':'+field.key;
+        targets.push({...option(id,(source.parent==='Feat'?'Feat: ':'')+source.name+(field.key==='upgrade'?'':' — '+field.label)),featId:source.parent==='Feat'?source.id:undefined,targetSource:source.id,targetChoice:field.key});
+      }
+    }
+    return targets;
+  }
+  function abilityTargets(ctx,source,mode=source.choiceModel==='new-tricks'?'earlier-archetype':'ancestry-or-feat',baseFeature='Ranger training') {
     const targets=[];
     for(const group of ctx.d.choices) {
       if(group.kind==='feat' || group.automatic || group.spellEntryId || group.id===source.groupId || /ability.score.improvement|mark.*reward/i.test(group.featureName))continue;
-      if(source.choiceModel==='new-tricks' && !(group.parent==='Ranger' && group.featureName==='Ranger training' || ctx.d.eligibleArchetypes.some(owner=>owner.name===group.parent && owner.minLevel<(ctx.d.eligibleArchetypes.find(item=>item.name==='Seeker')?.minLevel || 8))))continue;
-      if(source.choiceModel==='bard:Deep past' && group.parent===ctx.d.cls?.name)continue;
+      const sourceOwner=ctx.d.eligibleArchetypes.find(owner=>owner.name===source.owner),sourceClass=ctx.metadata.classes.find(owner=>owner.id===source.classId);
+      if(mode==='earlier-archetype' && !(group.parent===sourceClass?.name && group.featureName===baseFeature || ctx.d.eligibleArchetypes.some(owner=>owner.name===group.parent && owner.minLevel<(sourceOwner?.minLevel || source.level))))continue;
+      if(mode==='ancestry-or-feat' && group.parent===sourceClass?.name)continue;
       const allowed=group.options.filter(item=>!item.choiceGrants?.some(grant=>grant.groupId===source.groupId) && !['bard:Deep past','new-tricks'].includes(item.choiceModel)).map(item=>item.id);
       if(allowed.length)targets.push({...option('group:'+group.id,group.parent+': '+group.featureName),groupId:group.id,allowed});
     }
-    if(source.choiceModel==='bard:Deep past')for(const feat of ctx.d.features.filter(feat=>feat.parent==='Feat' && lists[feat.name]))targets.push({...option('feat:'+feat.id,'Feat: '+feat.name),featId:feat.id});
+    if(mode==='ancestry-or-feat')targets.push(...declaredTargets(ctx,source.id).filter(target=>target.featId));
     return targets;
   }
+  const automationHelpers={selection:fieldSelection,storage:upgradeStorage,sources:ctx=>ctx.ownedSources || [],targets:(ctx,source,mode,field)=>mode==='upgrades'?upgradeTargets(ctx,source.id):abilityTargets(ctx,source,mode,field?.baseFeature)};
   function context(c,d,catalog,metadata) {
     const spells=catalog.filter(section=>section.key==='spells').flatMap(section=>section.entries || []);
     const weapons=catalog.filter(section=>section.key==='items').flatMap(section=>section.entries || []).filter(entry=>entry.details?.damage);
     const weaponGroups=[...new Set(weapons.map(entry=>entry.group))].sort();
-    const selectedSources=choiceSources(d),activeSource=id=>d.features.some(feature=>feature.id===id) || selectedSources.some(source=>source.id===id);const knownSpellRows=[...new Map([...c.spells,...(d.featPlan?.spells || [])].map(row=>[row.id,row])).values()].filter(row=>(!row.classId || row.classId===d.cls?.id) && (!row.featSource || activeSource(row.featSource) && (!d.featPlan?.spells || d.featPlan.spells.some(grant=>grant.id===row.id))));
+    const selectedSources=choiceSources(d),activeSource=id=>d.features.some(feature=>feature.id===id) || selectedSources.some(source=>source.id===id);const knownSpellRows=[...new Map([...c.spells,...(d.featPlan?.spells || [])].map(row=>[row.id,row])).values()].filter(row=>(!row.classId || (d.classProgressions?d.classProgressions.some(owner=>owner.id===row.classId):row.classId===d.cls?.id)) && (!row.featSource || activeSource(row.featSource) && (!d.featPlan?.spells || d.featPlan.spells.some(grant=>grant.id===row.id))));
     return {c,d,catalog,metadata,spells,weapons,weaponGroups,knownSpellRows,selectedSources};
   }
   function trainedWeapons(ctx) {
@@ -160,6 +171,7 @@
     });return ctx.trainedWeapons;
   }
   function specification(feat,ctx) {
+    const declared=globalThis.CharacterAutomation?.specification(feat,ctx,automationHelpers);if(declared)return declared;
     const saved=ctx.c.build.featChoices?.[feat.id] || {},fields=[],notes=[];
     const picks=key=>fieldSelection(fields.find(field=>field.key===key),saved).values,get=key=>picks(key)[0] || '';
     const add=(key,label,options,count=1,type='select')=>fields.push({key,label,options,count,type});
@@ -167,11 +179,6 @@
     const pickSpell=(key,label,level,traditions=['arcane','mystic','oath','occult'],count=1,extra=()=>true)=>add(key,label,ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.level===level && traditions.includes(info.tradition) && extra(entry);}).map(entry=>option(idOf(entry),entry.name,prose(entry.details))).sort((a,b)=>a.name.localeCompare(b.name)),count);
     const knownSpells=ctx.spells.filter(entry=>ctx.knownSpellRows.some(row=>row.entryId===idOf(entry)));
     const ownSources=sources(ctx,feat.id);
-    if(lists[feat.name]){
-      const extras=(ctx.extraLists || []).filter(grant=>grant.target==='feat:'+feat.id);add('upgrade','Choose an upgrade',lists[feat.name].map(([key,name])=>option(key,name)),1+(ctx.moreTargets || []).filter(id=>id==='feat:'+feat.id).length);
-      const field=fields.at(-1);field.slotLabels=['Base upgrade',...extras.map(grant=>'Extra from '+grant.sourceName)];field.slotSources=['base',...Array.from({length:field.count-1},(_,index)=>extras[index]?.source || 'extra:'+index)];field.storageSlots=upgradeStorage(saved,field.slotSources);
-    }
-    const upgradeSpell=(upgrade,...args)=>{if(picks('upgrade').includes(upgrade)){pickSpell(...args);fields.at(-1).requiresUpgrade=upgrade;}};
     if(feat.name==='Hex casting') {
       const info=knownSpells.filter(entry=>!ctx.knownSpellRows.some(row=>row.entryId===idOf(entry) && row.featSource===feat.id)).map(entry=>entry.group),minor=info.filter(group=>group==='Minor hexes').length,major=info.filter(group=>group==='Major hexes').length,greater=info.filter(group=>group==='Greater hexes').length;
       const bundles=[['minor2','Two minor hexes'],['minor-ability','One minor hex and +1 ability']];
@@ -187,11 +194,6 @@
       add('target','Affected ability or spell',targets);
       if(feat.name.endsWith('Greater chance'))add('chance-mode','Chance improvement',[option('size','Change chance die by one size'),option('success','Improve success threshold by one')]);
       notes.push('The recorded modifier applies only to the chosen target. Resolve duration dice, chance thresholds and limited uses from its rules; failure chance must remain above zero.');
-    }
-    if(feat.name==='More upgrades') {
-      const targets=upgradeTargets(ctx,feat.id);add('targets','Two different upgrade lists',targets,2);
-
-      notes.push('Only upgrade lists qualify. Extra feature slots are restricted to the chosen list; this feat cannot grant another feat.');
     }
     if(['Extra cantrip upgrade','Infernal magic'].includes(feat.name)) {
       const options=knownSpells.filter(entry=>ctx.metadata.spellProgressions?.some(profile=>profile.entryId===idOf(entry) && profile.options.length) && globalThis.CharacterCasting.spellInfo(entry).cantrip).map(entry=>option(idOf(entry),entry.name));
@@ -227,17 +229,14 @@
     if(feat.name==='Mana-refusal'){add('sacrificed-cantrip','Permanently sacrificed cantrip',knownSpells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && ['arcane','occult'].includes(info.tradition);}).map(entry=>option(idOf(entry),entry.name)));add('sacrificed-upgrades','Upgrades the cantrip had when sacrificed',Array.from({length:21},(_,n)=>option(String(n),String(n))));const allowance=Math.min(4,Number(get('sacrificed-upgrades') || 0)+1);add('mana-upgrades','Mana-refusal upgrades',[option('ally-save','Save in place of an ally (once per long rest)'),option('defensive-rest','-2 maximum HP, +1 death-save slot, +1 rest die'),option('saves','+1 to saves against spells'),option('spell-sacrifice','Sacrifice a level-1 spell for +2 rest dice')],allowance);if(picks('mana-upgrades').includes('spell-sacrifice'))add('sacrificed-spell','Permanently sacrificed level-1 spell',knownSpells.filter(entry=>globalThis.CharacterCasting.spellInfo(entry).level===1).map(entry=>option(idOf(entry),entry.name)));notes.push('Record the historical upgrade count at sacrifice; this allowance does not grow when you later level up. The sacrificed spells stay recorded and cannot be cast.');}
     if(feat.name==='Occultist knowledge')add('occult-benefit','Additional benefit',[option('slot','+1 maximum occult slot'),...['int','cha'].map(code=>option(code,'+1 '+abilityNames[code]))]);
     if(feat.name==='Occult gnosis' && (ctx.c.build.featBenefits?.[feat.entryId] || []).includes('spell'))pickSpell('learn-gnosis','Granted 1st-level spell',1,['oath','arcane']);
-    const max=ctx.d.casting?.maxCastLevel || 1;
+    const max=Math.max(1,...(ctx.d.castings || [ctx.d.casting]).map(item=>item?.maxCastLevel || 0));
     if(['Innate magic','Invoke dark powers'].includes(feat.name))pickSpell('learn-cantrip','Granted cantrip',0);
     if(feat.name==='Innate magic')add('casting-ability','Cantrip casting ability',[...mental,'con'].map(code=>option(code,abilityNames[code])));
-    if(feat.name==='Arcane insight') {pickSpell('learn-cantrip','Arcane cantrip',0,['arcane']);pickSpell('learn-first','1st-level arcane spell',1,['arcane']);upgradeSpell('spell','learn-second','2nd-level arcane spell',2,['arcane']);}
     if(feat.name==='Veil-magic') {pickSpell('learn-cantrip','Cantrip',0,['oath','mystic','arcane']);pickSpell('learn-first','1st-level spells',1,['oath','mystic','arcane'],2);pickSpell('learn-third','3rd-level spell',3,['oath','mystic','arcane']);}
     if(feat.name==='Infernal magic')for(const level of [1,2,3])pickSpell('learn-'+level,'Occult spell, level '+level,level,['occult']);
     if(feat.name==='Waeld-soul')pickSpell('learn-second','2nd-level mystic or oath spells',2,['mystic','oath'],2);
     if(feat.name==='Firbolg spiritsong') {add('song-mode','Spiritsong grant',[option('cantrip','Cantrip'),option('spell','1st-level spell')]);add('song-casting','Casting skill',[option('Performance','Performance'),option('Insight','Insight')]);if(get('song-mode'))pickSpell('learn-song','Spiritsong spell',get('song-mode')==='cantrip'?0:1,['oath','mystic','occult'],1,entry=>!/necromancy|damage/i.test(prose(entry.details)));}
     if(feat.name==='Forbidden magic')add('learn-forbidden','Occult spell',ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.tradition==='occult' && info.level>0 && info.level<=max;}).map(entry=>option(idOf(entry),entry.name)));
-    if(feat.name==='Rite magic') {upgradeSpell('spell','learn-rite','2nd-level oath spell',2,['oath']);upgradeSpell('cantrips','learn-rites','Cantrips (cannot be upgraded)',0,['oath','mystic'],2);}
-    if(feat.name==='Sworn') {pickSpell('learn-first','1st-level oath spell',1,['oath']);if(!picks('upgrade').includes('fourth'))pickSpell('learn-second','2nd-level oath spell',2,['oath']);upgradeSpell('third','learn-third','3rd-level oath spell',3,['oath']);upgradeSpell('cantrip','learn-cantrip','Oath cantrip',0,['oath']);upgradeSpell('fourth','learn-fourth','4th-level oath spell',4,['oath']);}
     if(feat.name==='Latent power') {pickSpell('learn-cantrip','Mystic cantrip',0,['mystic']);add('learn-latent','Granted spell',ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return ['mystic','occult','arcane'].includes(info.tradition) && info.level>0 && info.level<=max;}).map(entry=>option(idOf(entry),entry.name)));add('casting-method','Casting method',[option('rest','One rest die per spell level'),option('fatigue','Fatigue per half spell level, rounded up'),option('psychic','d4 psychic damage per spell level (non-healing spell)')]);}
     if(/^More (?:oath|occult|mystic) spells known$/.test(feat.name)) {
       const tradition=feat.name.split(' ')[1],n=ctx.d.proficiency/2;
@@ -270,12 +269,12 @@
   }
   const featureNames=new Set(['Arcane intuition','Tiefling','Outcast house descendant','Magical gift','Occult birth','Saved by order','Noble-line','Enchanted birth','cryptic cyphers','Resistance to two types of damage of choice.','All your damage-dealing effects and attacks deal an extra 1d4 of a damage type of your choice. The type chosen cannot be changed.','Expertise with a skill that you are proficient with.','-1 to social skill checks (Subject to GM.)','-1 to physical skill checks (Subject to GM.)','-1 to mental skill checks (Subject to GM.)']);
   function featureSpecification(source,ctx) {
+    const declared=globalThis.CharacterAutomation?.specification(source,ctx,automationHelpers);if(declared)return declared;
     const saved=ctx.c.build.featChoices?.[source.id] || {},fields=[],missing=[],locks=ctx.c.build.choiceLocks?.[source.id] || {},get=key=>fieldSelection(fields.find(field=>field.key===key),saved,locks).values[0] || '';
     const add=(key,label,options,count=1,repeat=false)=>fields.push({key,label,options,count,type:'select',repeat});
     const pick=(key,label,level,traditions=['arcane','mystic','oath','occult'],extra=()=>true)=>add(key,label,ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.level===level && traditions.includes(info.tradition) && extra(entry);}).map(entry=>option(idOf(entry),entry.name)));
     const name=source.name,model=source.choiceModel,allSkills=Object.keys(globalThis.CharacterRules.skillAbilities),damageTypes=['bludgeoning','piercing','slashing','fire','cold','acid','lightning','sonic','poison','necrotic','radiant','psychic','force'];
     const text=(key,label,count=1)=>fields.push({key,label,options:[],count,type:'text'});
-    if(model==='bard:Deep past' || model==='new-tricks')add('targets','Owned list to extend',abilityTargets(ctx,source));
     if(model==='bard:Jack of all trades')add('ability','Ability score +1',codes.map(code=>option(code,abilityNames[code])));
     if(model==='bard:Expertise'){add('expertise','Skill already proficient at this grant',Object.keys(ctx.d.skillRanks).filter(name=>ctx.d.skillRanks[name]>=1).map(name=>option(name,name)));fields.at(-1).optional=true;text('expert-tool','Or a proficient instrument, game set or tool');fields.at(-1).optional=true;}
     if(model==='bard:Extra proficiencies')for(let n=0;n<2;n++){add('training-kind-'+n,'Proficiency type '+(n+1),['skill','language','instrument','tool'].map(name=>option(name,name)));if(get('training-kind-'+n)==='skill')add('training-'+n,'Skill '+(n+1),allSkills.filter(name=>!ctx.d.skillRanks[name]).map(name=>option(name,name)));else if(get('training-kind-'+n))text('training-'+n,'New proficiency '+(n+1));}
@@ -285,7 +284,7 @@
     if(model==='experience:3')text('tool','Tool proficiency and +1 to its checks');
     if(model==='experience:4'){const counts=['arcane','mystic','oath','occult'].map(kind=>[kind,ctx.knownSpellRows.filter(row=>{const grant=ctx.selectedSources.find(item=>item.id===row.featSource);if(row.featSource===source.id || grant?.groupId===source.groupId && grant.slot>=source.slot)return false;const entry=ctx.spells.find(entry=>idOf(entry)===row.entryId),info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && info.tradition===kind;}).length]),minimum=Math.min(...counts.map(row=>row[1])),traditions=counts.filter(row=>row[1]===minimum).map(row=>row[0]);add('learning','Learn', [option('cantrip','Cantrip from a least-known tradition'),...(traditions.length===4?[option('hex','Major hex')]:[])]);if(get('learning')==='cantrip')pick('learn-cantrip','Cantrip',0,traditions);if(get('learning')==='hex')add('learn-hex','Major hex',ctx.spells.filter(entry=>entry.group==='Major hexes').map(entry=>option(idOf(entry),entry.name)));}
     if(model==='bard:Magical aptitude')pick('learn-cantrip','Granted cantrip',0);
-    if(model==='sorcerer:Arcane intuition')add('learn-cantrip','Extra arcane cantrip',ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && info.tradition==='arcane';}).map(entry=>option(idOf(entry),entry.name)),ctx.c.level>=6?2:1);
+    if(model==='sorcerer:Arcane intuition')add('learn-cantrip','Extra arcane cantrip',ctx.spells.filter(entry=>{const info=globalThis.CharacterCasting.spellInfo(entry);return info.cantrip && info.tradition==='arcane';}).map(entry=>option(idOf(entry),entry.name)),(source.classLevel ?? ctx.c.level)>=6?2:1);
     if(model==='bard:Persona insight' && ctx.d.skillRanks.Insight>=2)pick('learn-cantrip','Mystic cantrip',0,['mystic']);
     if(model==='cantrip-mastery')add('cantrip','Owned arcane cantrip',ctx.spells.filter(entry=>ctx.knownSpellRows.some(row=>row.entryId===idOf(entry)) && globalThis.CharacterCasting.spellInfo(entry).cantrip && globalThis.CharacterCasting.spellInfo(entry).tradition==='arcane').map(entry=>option(idOf(entry),entry.name)));
     if(model==='parody'){
@@ -316,13 +315,27 @@
     return {fields,...selection,missing,notes:['These choices belong to this feature. Its spell costs and conditions remain governed by the source text.']};
   }
   function plan(c,d,catalog,metadata) {
-    const ctx=context(c,d,catalog,metadata),effects=[],grants=[],proficiencies={armor:[],weapons:[],tools:[],languages:[]},weaponGroups=[],removedSkills=[],notes={},spells=[],specs={},sacrificedSpells=[],training=[];
+    const ctx=context(c,d,catalog,metadata),effects=[],grants=[],proficiencies={armor:[],weapons:[],tools:[],languages:[]},weaponGroups=[],removedSkills=[],notes={},spells=[],specs={},sacrificedSpells=[],training=[],features=[];
     const feats=(d.features || []).filter(feature=>feature.parent==='Feat'),sources=[...feats];
-    sources.push(...d.features.filter(feature=>feature.choiceModel).map(feature=>({...feature,parent:'Feature'})));
-    sources.push(...choiceSources(d).filter(source=>source.choiceModel || featureNames.has(source.name)));
-    const extraLists=[...feats.filter(feat=>feat.name==='More upgrades').flatMap(feat=>(specification(feat,ctx).values.targets || []).map(target=>({target,source:feat.id,sourceName:feat.name}))),...sources.filter(source=>['bard:Deep past','new-tricks'].includes(source.choiceModel)).flatMap(source=>(featureSpecification(source,ctx).values.targets || []).map(target=>({target,source:source.id,sourceName:source.name})))];
-    const listSlots=new Map();for(const grant of extraLists){grant.slot=1+(listSlots.get(grant.target) || 0);listSlots.set(grant.target,grant.slot);}
-    const moreTargets=extraLists.map(grant=>grant.target);ctx.moreTargets=moreTargets;ctx.extraLists=extraLists;
+    sources.push(...d.features.filter(feature=>feature.parent!=='Feat' && (feature.choiceModel || globalThis.CharacterAutomation?.ruleFor(feature,ctx))).map(feature=>({...feature,owner:feature.parent,parent:feature.parent==='Background'?'Background':'Feature',level:feature.requiredLevel ?? feature.level})));
+    sources.push(...choiceSources(d).filter(source=>source.choiceModel || featureNames.has(source.name) || globalThis.CharacterAutomation?.ruleFor(source,ctx)));
+    ctx.ownedSources=sources;ctx.extraLists=d.featPlan?.extraLists || [];
+    const preliminary=sources.filter(source=>globalThis.CharacterAutomation?.ruleFor(source,ctx)).map(source=>globalThis.CharacterAutomation.project(source,globalThis.CharacterAutomation.specification(source,ctx,automationHelpers),ctx,automationHelpers));
+    const proposedLists=preliminary.flatMap(item=>item.extraLists),proposedGrants=preliminary.flatMap(item=>item.grants);
+    let safe=globalThis.CharacterAutomation?.safeGrants(proposedLists,proposedGrants,sources) || {extraLists:[],warnings:[],blocked:[]};
+    const blocked=new Set(),grantKey=grant=>JSON.stringify([grant.source,grant.targetSource || grant.groupId,grant.targetChoice || '']);
+    const grantWarnings=new Set(safe.warnings);
+    for(let pass=0;pass<=sources.length;pass++){
+      for(const grant of safe.blocked || [])blocked.add(grantKey(grant));
+      ctx.extraLists=safe.extraLists;
+      const projected=sources.filter(source=>globalThis.CharacterAutomation?.ruleFor(source,ctx)).map(source=>globalThis.CharacterAutomation.project(source,globalThis.CharacterAutomation.specification(source,ctx,automationHelpers),ctx,automationHelpers));
+      const next=globalThis.CharacterAutomation?.safeGrants(projected.flatMap(item=>item.extraLists).filter(grant=>!blocked.has(grantKey(grant))),projected.flatMap(item=>item.grants).filter(grant=>!blocked.has(grantKey(grant))),sources) || safe;
+      for(const warning of next.warnings)grantWarnings.add(warning);
+      const stable=JSON.stringify(next.extraLists)===JSON.stringify(safe.extraLists);safe=next;if(stable)break;
+    }
+    const extraLists=safe.extraLists,moreTargets=extraLists.map(grant=>grant.target);ctx.moreTargets=moreTargets;ctx.extraLists=extraLists;
+    const listSlots=new Map();for(const grant of extraLists){const target=sources.find(source=>source.id===grant.targetSource),definition=target && globalThis.CharacterAutomation.ruleFor(target,ctx),field=definition?.choices.find(field=>field.key===grant.targetChoice),base=field?.countByLevel?.filter(row=>row.level<=(target.classLevel ?? c.level)).at(-1)?.count ?? field?.count ?? 1;grant.slot=base+(listSlots.get(grant.target) || 0);listSlots.set(grant.target,(listSlots.get(grant.target) || 0)+1);}
+    const finalLists=[];
     const armorText=d.baseProficiencies?.armor || d.proficiencies.armor || '';let armorRank=/all armou?r|heavy armou?r/i.test(armorText)?3:/medium armou?r/i.test(armorText)?2:/light armou?r/i.test(armorText)?1:0,shieldRank=/all.*shield|heavy shield/i.test(armorText)?2:/light shield|shield/i.test(armorText)?1:0;
     for(const feat of sources) {
       const scopedSkills={...(d.trainingBase?.skills || d.skillRanks)},scopedProficiencies={...(d.baseProficiencies || d.proficiencies)},scopedGroups=[...(c.build.weaponGroups || [])];
@@ -331,10 +344,18 @@
       const specCtx={...ctx,d:{...d,skillRanks:scopedSkills,proficiencies:scopedProficiencies,weaponGroups:scopedGroups}},before={groups:weaponGroups.length,removed:removedSkills.length,profs:Object.fromEntries(Object.entries(proficiencies).map(([key,values])=>[key,values.length]))};
       const spec=feat.parent==='Feat'?specification(feat,specCtx):featureSpecification(feat,specCtx),value=key=>spec.values[key]?.[0] || '',effect=clone(fixedAbilities[feat.name]?{abilities:fixedAbilities[feat.name]}:{});
       specs[feat.id]=spec;notes[feat.id]=spec.fields.flatMap(field=>(spec.values[field.key] || []).map(id=>field.label+': '+(field.options.find(item=>item.id===id)?.name || id)));
+      if(spec.automation){
+        const projected=globalThis.CharacterAutomation.project(feat,spec,specCtx,automationHelpers);
+        for(const [key,values] of Object.entries(projected.proficiencies))proficiencies[key].push(...values);
+        grants.push(...projected.grants);finalLists.push(...projected.extraLists);spells.push(...projected.spells);features.push(...projected.features);
+        effects.push({effect:projected.effect,level:feat.level || 1,sourceFeat:feat.id,sourceName:feat.name,classId:feat.classId,automation:true});
+        training.push({source:feat.id,level:feat.level || 1,proficiencies:projected.proficiencies,weaponGroups:[],removedSkills:[]});
+        continue;
+      }
       if(value('ability'))effect.abilities={...effect.abilities,[value('ability')]:(effect.abilities?.[value('ability')] || 0)+1};
       const addSkills=(names,n=1)=>{effect.skillBonuses ||= {};for(const name of names)effect.skillBonuses[name]=(effect.skillBonuses[name] || 0)+n;};
       const addAbility=(key,n)=>{effect.abilities ||= {};effect.abilities[key]=(effect.abilities[key] || 0)+n;};
-      const hp={'Grit':4,'Guts of steel':6,'Lifeforce':7,'Tough':8,'Invoke dark powers':-3,'Rite magic':-1,'Moon-blood':-1};if(hp[feat.name])effect.hpFlat=hp[feat.name];
+      const hp={'Grit':4,'Guts of steel':6,'Lifeforce':7,'Tough':8,'Invoke dark powers':-3,'Moon-blood':-1};if(hp[feat.name])effect.hpFlat=hp[feat.name];
       if(feat.name==='Battle scars')effect.hpFlat=Number(value('scars')) || 0;
       if(feat.name==='Grit') {effect.deathSaveSlots=1;effect.deathSaveBonus=2;}
       if(feat.name==='Lifeforce')effect.deathSaveSlots=1;
@@ -343,8 +364,8 @@
       if(feat.name==='Rhetoric')addSkills(['Deception','Persuasion','Intimidation'],2);
       if(feat.name==='Scavenger')addSkills(['Survival']);
       if(feat.name==='Hermeticism')addSkills(['Investigation']);
-      if(feat.name==='Extra talent spell') {effect.knownSpells=1;addSkills(['Arcana']);}
-      if(feat.name==='Occultist knowledge') {effect.knownSpells=1;if(value('occult-benefit')==='slot')effect.occultSlots=1;else if(value('occult-benefit'))addAbility(value('occult-benefit'),1);}
+      if(feat.name==='Extra talent spell') {effect.knownSpells=1;effect.castingTradition='any';addSkills(['Arcana']);}
+      if(feat.name==='Occultist knowledge') {effect.knownSpells=1;effect.castingTradition='occult';if(value('occult-benefit')==='slot')effect.occultSlots=1;else if(value('occult-benefit'))addAbility(value('occult-benefit'),1);}
       if(feat.name==='Extra occult casting' && d.cls?.name==='Occultist')effect.occultSlots=1;
       if(feat.name==='Expanded metamagic')effect.metamagicMaximum=1;
       if(feat.name==='Combat experience')effect.damage=1+(d.cls?1:0)+(d.eligibleArchetypes?.length || 0);
@@ -376,15 +397,8 @@
       if(feat.name==='Retrain' && value('from') && value('to')) {addAbility(value('from'),-1);addAbility(value('to'),1);if(value('bonus'))addAbility(value('bonus'),1);}
       if(feat.name==='Warpath' && value('warpath-mode')==='strength')addAbility('str',1);
       if(feat.name==='Symbiosis' && (spec.values.adaptations || []).includes(value('active')))addAbility(value('active'),1);
-      if(feat.name==='Arcane insight') {if((spec.values.upgrade || []).includes('int'))addAbility('int',1);if((spec.values.upgrade || []).includes('arcana'))addSkills(['Arcana'],3);}
-      if(feat.name==='Grimness') {if((spec.values.upgrade || []).includes('social'))addSkills(['Deception','Intimidation','Disguise']);if((spec.values.upgrade || []).includes('stealth'))addSkills(['Stealth'],2);if((spec.values.upgrade || []).includes('charisma'))effect.saveBonuses={cha:1};}
-      if(feat.name==='Dual wielding' && (spec.values.upgrade || []).includes('trained'))effect.offHandAbilityDamage=true;
       if(feat.occultChoice){if(spec.values.resistances?.length)effect.resistances=spec.values.resistances;if(value('expertise'))effect.skills={[value('expertise')]:2};if(value('damage-type'))effect.extraDamage=[{dice:'1d4',type:value('damage-type')}];if(value('skill-scope')){const category=/social/.test(feat.name)?['cha']:/physical/.test(feat.name)?physical:mental,affected=value('skill-scope')==='standard'?Object.keys(globalThis.CharacterRules.skillAbilities).filter(skill=>category.includes(globalThis.CharacterRules.skillAbilities[skill])):value('mark-skills').split(',').map(name=>Object.keys(globalThis.CharacterRules.skillAbilities).find(skill=>skill.toLowerCase()===name.trim().toLowerCase())).filter(Boolean);addSkills(affected,-1);}}
       if(feat.name==='Mana-refusal' && value('sacrificed-cantrip') && value('sacrificed-upgrades')!==''){sacrificedSpells.push(value('sacrificed-cantrip'));if((spec.values['mana-upgrades'] || []).includes('spell-sacrifice') && value('sacrificed-spell'))sacrificedSpells.push(value('sacrificed-spell'));}
-      if(feat.name==='Mutant kobold') {
-        const changes={troglodyte:{abilities:{int:-2}},drakeling:{abilities:{wis:-2}},cavebold:{abilities:{cha:-2},resistances:['cold','fire']},rokold:{abilities:{con:-2}},goldling:{abilities:{int:3},deathSaveBonus:-2,ac:-1},kobolisk:{speed:-5,resistances:['acid','slashing']}};
-        for(const id of spec.values.upgrade || [])for(const [key,change] of Object.entries(changes[id] || {})){if(Array.isArray(change))effect[key]=[...new Set([...(effect[key] || []),...change])];else if(typeof change==='object'){effect[key] ||= {};for(const [stat,amount] of Object.entries(change))effect[key][stat]=(effect[key][stat] || 0)+amount;}else effect[key]=(effect[key] || 0)+change;}
-      }
       const extra={'Extra fighting skills':['Fighter','Fighting skills',2],'Extra Ranger training':['Ranger','Ranger training',2]};
       if(extra[feat.name]) {const [parent,feature,count]=extra[feat.name],group=d.choices.find(group=>group.parent===parent && group.featureName===feature);if(group)grants.push({groupId:group.id,count,source:feat.id});}
       if(feat.name==='Expanded alchemy')for(const [key,name] of [['alchemy-tool','Tool of choice'],['alchemy-method','Alchemy methods']]){const group=d.choices.find(group=>group.parent==='Alchemist' && group.featureName===name),selected=value(key);if(group && selected)grants.push({groupId:group.id,count:1,allowed:[selected],autoSelect:selected,source:feat.id,choiceKey:key});}
@@ -396,14 +410,16 @@
         if(profile?.options.length && count)grants.push({groupId:profile.id,count,source:feat.id});
       }
       if(feat.parent==='Feature'){const entryId=value('learn-cantrip') || value('learn-hex'),profile=metadata.spellProgressions.find(profile=>profile.entryId===entryId),count=(spec.values['racial-upgrades'] || []).filter(key=>key==='own').length+(feat.name==='Outcast house descendant' && c.level>=2?1:0);if(profile && count)grants.push({groupId:profile.id,count,source:feat.id});}
-      if(feat.name==='More upgrades' || ['bard:Deep past','new-tricks'].includes(feat.choiceModel))for(const target of (feat.parent==='Feat'?upgradeTargets(ctx,feat.id):abilityTargets(ctx,feat)).filter(target=>(spec.values.targets || []).includes(target.id))){if(target.groupId)grants.push({groupId:target.groupId,count:1,allowed:target.allowed,source:feat.id});if(target.spell){const profile=metadata.spellProgressions.find(profile=>profile.entryId===idOf(target.spell));if(profile)grants.push({groupId:profile.id,count:1,source:feat.id});}}
       for(const field of spec.fields.filter(field=>field.key.startsWith('learn-') || field.key.startsWith('hex-')))for(const entryId of spec.values[field.key] || []) {
-        const entry=ctx.spells.find(entry=>idOf(entry)===entryId);if(entry)spells.push({id:(feat.name==='cryptic cyphers'?c.spells.find(row=>row.entryId===entryId && !row.classId && (!row.featSource || row.featSource===feat.id))?.id:'') || 'feat-spell:'+feat.id+':'+field.key+':'+entryId,entryId,name:entry.name,prepared:true,classId:'',featSource:feat.id,progressionMode:feat.name==='cryptic cyphers'?'cypher':'level',manualUpgrades:feat.name==='cryptic cyphers'?Math.min(5,Math.max(0,Math.floor((Number(value('insights'))-3)/3))):0,castingAbility:value('casting-ability') || (/^(?:bard|sorcerer):/.test(feat.choiceModel || '')?'cha':feat.name==='cryptic cyphers'?(ctx.d.castingAbility || 'int'):['Invoke dark powers','Occult birth'].includes(feat.name)?'con':feat.name==='Noble-line'?'cha':feat.name==='Arcane intuition'?mental.reduce((best,key)=>ctx.d.abilities[key]>ctx.d.abilities[best]?key:best,'int'):feat.name==='Arcane insight'?'int':feat.name==='Infernal magic'?Object.keys(ctx.d.abilities).reduce((best,key)=>ctx.d.abilities[key]>ctx.d.abilities[best]?key:best,'int'):'wis'),notes:'Granted by '+feat.name+'. Use the granting rule’s costs, casting ability and limits.'});
+        const entry=ctx.spells.find(entry=>idOf(entry)===entryId);if(entry)spells.push({id:(feat.name==='cryptic cyphers'?c.spells.find(row=>row.entryId===entryId && !row.classId && (!row.featSource || row.featSource===feat.id))?.id:'') || 'feat-spell:'+feat.id+':'+field.key+':'+entryId,entryId,name:entry.name,prepared:true,classId:'',featSource:feat.id,progressionMode:feat.name==='cryptic cyphers'?'cypher':'level',manualUpgrades:feat.name==='cryptic cyphers'?Math.min(5,Math.max(0,Math.floor((Number(value('insights'))-3)/3))):0,castingAbility:value('casting-ability') || (/^(?:bard|sorcerer):/.test(feat.choiceModel || '')?'cha':feat.name==='cryptic cyphers'?(ctx.d.castingAbility || 'int'):['Invoke dark powers','Occult birth'].includes(feat.name)?'con':feat.name==='Noble-line'?'cha':feat.name==='Arcane intuition'?mental.reduce((best,key)=>ctx.d.abilities[key]>ctx.d.abilities[best]?key:best,'int'):feat.name==='Infernal magic'?Object.keys(ctx.d.abilities).reduce((best,key)=>ctx.d.abilities[key]>ctx.d.abilities[best]?key:best,'int'):'wis'),notes:'Granted by '+feat.name+'. Use the granting rule’s costs, casting ability and limits.'});
       }
       training.push({source:feat.id,level:feat.level || 1,proficiencies:Object.fromEntries(Object.entries(proficiencies).map(([key,values])=>[key,values.slice(before.profs[key])])),weaponGroups:weaponGroups.slice(before.groups),removedSkills:removedSkills.slice(before.removed)});
-      effects.push({effect,level:feat.level || 1,sourceFeat:feat.id});
+      effects.push({effect,level:feat.level || 1,sourceFeat:feat.id,classId:feat.classId});
     }
-    const result={effects,grants,proficiencies,weaponGroups,removedSkills,notes,spells,specs,moreTargets,extraLists,sources,sacrificedSpells,training};result.signature=JSON.stringify({effects,grants,proficiencies,weaponGroups,removedSkills,notes,spells,sacrificedSpells});return result;
+    const finalSafe=globalThis.CharacterAutomation?.safeGrants(finalLists.filter(grant=>!blocked.has(grantKey(grant))),grants.filter(grant=>!blocked.has(grantKey(grant))),sources) || {extraLists,grants,warnings:[]};
+    const finalSlots=new Map();for(const grant of finalSafe.extraLists){grant.slot=(specs[grant.targetSource]?.fields.find(field=>field.key===grant.targetChoice)?.baseCount ?? 1)+(finalSlots.get(grant.target) || 0);finalSlots.set(grant.target,(finalSlots.get(grant.target) || 0)+1);}
+    const result={effects,grants:finalSafe.grants,proficiencies,weaponGroups,removedSkills,notes,spells,specs,moreTargets,extraLists:finalSafe.extraLists,sources,sacrificedSpells,training,features,warnings:[...new Set([...grantWarnings,...finalSafe.warnings])]};
+    result.signature=JSON.stringify({effects,grants:result.grants,proficiencies,weaponGroups,removedSkills,notes,spells,sacrificedSpells,extraLists:result.extraLists,features,warnings:result.warnings});return result;
   }
   function spellModifiers(c,d,entry) {
     const entryId=idOf(entry),result={attack:0,save:0,notes:[]};

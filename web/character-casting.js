@@ -13,11 +13,11 @@
     const build = character.build || {}, ledger = build.casting || {};
     return JSON.stringify({level: character.level, abilities: character.abilities,
       enabled: build.enabled, classId: build.classId, raceId: build.raceId,
-      archetypes: build.archetypes, choices: build.choices, abilityChoices: build.abilityChoices,
+      archetypes: build.archetypes, classOrder:build.classOrder,classArchetypes:build.classArchetypes,classSkills:build.classSkills,classTools:build.classTools, choices: build.choices, abilityChoices: build.abilityChoices,
       adjustments: build.adjustments, baseRestDice: build.health?.baseRestDice,
       backgroundId:build.backgroundId,featBenefits:build.featBenefits,featChoices:build.featChoices,qualifications:build.qualifications,restMode:build.health?.restMode,restAdjustment:build.health?.restAdjustment,
       spells: character.spells,
-      casting: {enabled: ledger.enabled ?? !(character.spellSlots?.length || character.customResources?.length), maxSlotLevel: ledger.maxSlotLevel, maxLearnLevel:ledger.maxLearnLevel},
+      casting: {enabled: ledger.enabled ?? !(character.spellSlots?.length || character.customResources?.length), maxSlotLevel: ledger.maxSlotLevel, maxLearnLevel:ledger.maxLearnLevel,classId:ledger.classId},
       proficiency: character.combat?.proficiencyOverride, restMaximum: character.restDice?.max});
   }
   function requireFresh(character, derived) {
@@ -35,7 +35,7 @@
     if (!rule) return null;
     const level = Math.min(12, rule.basis === "classLevel" ? classLevel : character.level);
     const quotient = level / (rule.divisor || 1);
-    return rule.rounding === "down" ? Math.floor(quotient) : Math.ceil(quotient);
+    return Math.max(rule.minimum ?? 0, rule.rounding === "down" ? Math.floor(quotient) : Math.ceil(quotient));
   }
 
   function derive(character, cls, context = {}) {
@@ -48,7 +48,7 @@
     const result = {
       profile: profile ? clone(profile) : null, classId: cls?.id || "", className: cls?.name || "",
       enabled, needsMigration, mode: supported ? profile.mode : null, tradition: profile?.tradition || "",
-      pools: [], maxCastLevel: null, knownSpells: null, cantrips: null, spellbookCount: null,
+      pools: [], maxCastLevel: null, maxLearnLevel: null, knownSpells: null, cantrips: null, spellbookCount: null,
       costs: [], recovery: clone(profile?.recovery || []), warnings: [...(profile?.warnings || []), ...(stored.migrationWarnings || [])],
       sourceSignature: sourceSignature(character)
     };
@@ -108,6 +108,8 @@
       addPool({id: prefix + ":rest-dice", label: "Talent casting · rest dice", kind: "rest-dice", level: result.maxCastLevel,
         max: context.restMaximum ?? character.restDice?.max ?? 0, current: character.restDice?.current || 0, recoverOn: null});
     }
+    result.maxLearnLevel = profile.maxLearnLevelRule ? levelBy(profile.maxLearnLevelRule, character, classLevel)
+      : profile.tradition === 'any' ? stored.maxLearnLevel ?? null : result.maxCastLevel;
     const book = profile.startingSpellbook;
     if (book) result.spellbookCount = Math.max(0, book.base + abilityModifier(scores[book.ability]) + finite(book.perAdditionalClassLevel) * Math.max(0, Math.min(classLevel, progression.at(-1).level) - 1));
     for (const resource of profile.pointResources || []) {
@@ -188,7 +190,7 @@
     const result = reconcile(character, derived);
     if (!delta) return result;
     const current = Math.max(0, Math.min(pool.max, pool.current + delta));
-    if (pool.kind === "rest-dice") result.restDice.current = current;
+    if (pool.kind === "rest-dice") {result.restDice.current = current;if(result.restDice.pools?.length)globalThis.CharacterState.syncRestDice(result,result.restDice.pools);}
     else {
       const ledger = result.build.casting;
       ledger.spent[poolId] = delta < 0 ? spentAt(character, poolId) - delta
@@ -251,7 +253,7 @@
     if(info.level===null) return {allowed:false,reason:info.hex?'Hexes need a feature that grants them.':'This entry has no spell level.',info};
     if(profile.tradition!=='any' && info.tradition!==profile.tradition) return {allowed:false,reason:`Your class uses the ${profile.tradition} spell list.`,info};
     if(info.cantrip) return {allowed:!!casting.cantrips,reason:casting.cantrips?'':'This class grants no cantrips in its base progression.',info};
-    const maximum=profile.tradition==='any' ? character.build?.casting?.maxLearnLevel ?? null : casting.maxCastLevel;
+    const maximum=casting.maxLearnLevel ?? (profile.tradition==='any' ? character.build?.casting?.maxLearnLevel ?? null : casting.maxCastLevel);
     if(maximum===null) return {allowed:false,reason:profile.mode==='full'?'Set the full-slot level from your table.':'Set the Bard spell-learning level from your table.',info};
     return {allowed:info.level<=maximum,reason:info.level>maximum?`The maximum spell level you can learn is ${maximum}.`:'',info};
   }
@@ -260,7 +262,7 @@
     const casting=derived?.casting, profile=casting?.profile;
     const entries=catalog.filter(section=>section.key==='spells').flatMap(section=>section.entries || []).filter(entry=>entry.group!=='Magic rules');
     const eligible=entries.filter(entry=>spellAccess(character,derived,entry).allowed);
-    const chosen=character.spells.filter(row=>!row.featSource && (!row.classId || row.classId===derived.cls?.id) && eligible.some(entry=>spellId(entry)===row.entryId));
+    const chosen=character.spells.filter(row=>!row.featSource && (!row.classId || row.classId===casting?.classId) && eligible.some(entry=>spellId(entry)===row.entryId));
     const cantrips=chosen.filter(row=>spellInfo(eligible.find(entry=>spellId(entry)===row.entryId),profile?.tradition).cantrip);
     const spells=chosen.filter(row=>!cantrips.includes(row));
     const limit=casting?.spellbookCount ?? casting?.knownSpells ?? 0;
@@ -269,7 +271,7 @@
       if(spells.length<limit) warnings.push(`Choose ${limit-spells.length} more ${casting.spellbookCount!==null?'spellbook spells':'spells'}.`);
       if(cantrips.length<(casting.cantrips || 0)) warnings.push(`Choose ${casting.cantrips-cantrips.length} more cantrips.`);
       if(spells.length>limit && !casting.spellbookCount) warnings.push('More spells are recorded than the base class grants. Check feature-granted spells.');
-      if(profile.tradition==='any' && character.build?.casting?.maxLearnLevel==null) warnings.push('Set the Bard spell-learning level; the source does not say how to round half Bard level.');
+      if(profile.tradition==='any' && casting.maxLearnLevel==null && character.build?.casting?.maxLearnLevel==null) warnings.push('Set the Bard spell-learning level; the source does not say how to round half Bard level.');
       if(profile.mode==='full' && casting.maxCastLevel===null) warnings.push('Set the full-slot level from your table before choosing levelled spells.');
     }
     return {eligible,chosen,spells,cantrips,spellLimit:limit,cantripLimit:casting?.cantrips || 0,warnings};
@@ -283,22 +285,38 @@
     if(access.info.cantrip?selection.cantrips.length>=selection.cantripLimit:selection.spells.length>=selection.spellLimit)return 'The base class selection allowance is full.';
     if(derived.casting.spellbookCount!==null && access.info.level>1) {
       const laterSpells=selection.spells.filter(row=>spellInfo(selection.eligible.find(entry=>spellId(entry)===row.entryId)).level>1).length;
-      if(laterSpells>=Math.min(12,character.level)-1)return 'The starting Wizard spellbook choices must be level 1; later class levels grant one additional spell each.';
+      if(laterSpells>=Math.min(12,derived.casting.classLevel ?? character.level)-1)return 'The starting Wizard spellbook choices must be level 1; later class levels grant one additional spell each.';
     }
     return '';
   }
 
+  function classView(derived,classId) {
+    if(!classId)return derived;
+    const casting=derived.castings?.find(item=>item.classId===classId) || (derived.casting?.classId===classId?derived.casting:null);
+    return {...derived,casting,castingClass:derived.classProgressions?.find(owner=>owner.id===classId)?.cls || (derived.cls?.id===classId?derived.cls:null)};
+  }
+  function spellAbility(derived,row) {
+    const view=classView(derived,row?.classId || derived.casting?.classId);
+    return row?.castingAbility || derived.castingAbilityOverride || view.castingClass?.castingAbilities?.[0] || derived.castingAbility;
+  }
+
   function castOptions(character, derived, entry, row) {
     if(!entry || derived.featPlan?.sacrificedSpells?.includes(spellId(entry))) return [];
+    derived=classView(derived,row?.classId);
     const casting=derived?.casting, info=spellInfo(entry,casting?.profile?.tradition);
     if(row?.featSource){
       const granted=derived.featPlan?.spells?.find(item=>item.id===row.id);if(!granted)return [];
       const feat=derived.featPlan.sources.find(item=>item.id===row.featSource),manual={id:'feat:manual',poolId:'feat:manual',level:info.level || 0,available:true,label:feat.name+' — resolve its listed cost'};
+      if(granted.ruleCasting){
+        if(info.cantrip || granted.ruleCasting.resource==='free')return [{id:'free',poolId:'free',level:info.level || 0,available:true,label:info.cantrip?'Granted cantrip - no slot':'Granted spell - no slot'}];
+        if(granted.ruleCasting.resource==='restDice')return [{id:'feat:rest',poolId:'feat:rest',level:info.level,available:character.restDice.current>=info.level,label:info.level+' rest dice - '+feat.name},manual];
+        return [manual];
+      }
       if(info.cantrip)return feat.name==='Invoke dark powers'?[manual]:[{id:'free',poolId:'free',level:0,available:true,label:'Granted cantrip — no slot'}];
       if(!['Occult gnosis'].includes(feat.name)){const options=[manual];if(['Forbidden magic','Infernal magic','Waeld-soul','Arcane insight'].includes(feat.name))options.unshift({id:'feat:rest',poolId:'feat:rest',level:info.level,available:character.restDice.current>=info.level,label:info.level+' rest dice — '+feat.name});return options;}
     }
-    if(row?.classId && (row.classId!==derived.cls?.id || !spellAccess(character,derived,entry).allowed)) return [];
-    if(derived.cls?.name==='Wizard' && !info.cantrip && !row?.prepared) return [];
+    if(row?.classId && (row.classId!==casting?.classId || !spellAccess(character,derived,entry).allowed)) return [];
+    if(casting?.className==='Wizard' && !info.cantrip && !row?.prepared) return [];
     if(info.cantrip && !entry.details?.cost) return [{id:'free',poolId:'free',level:0,available:true,label:'Cantrip — no slot'}];
     if(info.level===null || info.level===0) return [];
     const options=[];
@@ -318,6 +336,7 @@
     if(derived?.casting) requireFresh(character,derived.casting);
     const row=character.spells.find(item=>item.id===rowId);
     if(!row) throw new Error('This spell is no longer on the character sheet.');
+    derived=classView(derived,row.classId);
     const entry=catalog.filter(section=>section.key==='spells').flatMap(section=>section.entries || []).find(item=>spellId(item)===row.entryId);
     const option=castOptions(character,derived,entry,row).find(item=>item.id===optionId);
     if(!option || !option.available) throw new Error('This spell or casting level is unavailable. Check preparation and remaining slots.');
@@ -327,10 +346,11 @@
       slot.current--;
     } else if(option.poolId==='feat:rest')result.restDice.current-=option.level;
     else if(option.poolId!=='free' && option.poolId!=='feat:manual') result=spend(character,derived.casting,option.poolId,{level:option.level});
+    if(result.restDice.pools?.length)globalThis.CharacterState.syncRestDice(result,result.restDice.pools);
     const pool=derived?.casting?.pools.find(pool=>pool.id===option.poolId);
     const cost=option.poolId==='feat:manual'?'Resolve the granting rule’s costs and limits':option.poolId==='feat:rest'?'Spent '+option.level+' rest dice; apply any additional feat costs':option.poolId==='free'?'No spell slot spent':pool?.kind==='rest-dice'?`Spent ${option.level} rest ${option.level===1?'die':'dice'}`:pool?.kind==='full'?`Spent ${option.level} levels from ${pool.label}`:`Spent one level ${option.level} ${option.poolId.startsWith('manual:')?'manual ':pool?.kind==='occult'?'occult ':''}slot`;
     return {character:result,name:entry.name,level:option.level,cost,entry};
   }
 
-  globalThis.CharacterCasting = Object.freeze({derive, reconcile, activate, change, spend, rest, spellId, spellInfo, spellAccess, spellSelection, spellLearningError, castOptions, castSpell});
+  globalThis.CharacterCasting = Object.freeze({derive, reconcile, activate, change, spend, rest, spellId, spellInfo, spellAccess, spellSelection, spellLearningError, castOptions, castSpell, classView, spellAbility});
 })();

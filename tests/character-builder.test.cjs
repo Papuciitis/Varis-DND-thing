@@ -11,7 +11,7 @@ function setup(extraSections = []) {
   const file = path.join(root, 'web/character-builder.js');
   assert.ok(fs.existsSync(file), 'The character creator must provide a six-step draft wizard');
   const context = vm.createContext({crypto:require('node:crypto').webcrypto});
-  for (const name of ['entry-order.js','item-views.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-prerequisites.js','character-feats.js','character-rules.js','character-builder.js']) {
+  for (const name of ['entry-order.js','item-views.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-prerequisites.js','character-automation.js', 'character-feats.js','character-rules.js','character-builder.js']) {
     vm.runInContext(fs.readFileSync(path.join(root,'web',name),'utf8'),context);
   }
   const metadata = {

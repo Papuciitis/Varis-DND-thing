@@ -2,6 +2,8 @@
 
 A rules reference and editable character sheet for the Varis DnD table. One YAML catalog builds both a hosted website that loads rules by section and portable pages that work directly from disk.
 
+New character choices, upgrade trees, prerequisites, follow-ups, grants and supported effects can be authored in YAML. See [Authoring character automation](docs/character-automation.md) for the schema, save identifiers, validation and remaining manual mechanics.
+
 ## Open locally on Windows
 
 Double-click **Open-Vara-DnD.cmd** in the repository folder. It builds the site and opens `site/character.html` in your default browser, preserving the existing local page location and its saves. Use **Rules compendium** in the sheet to read the rules, or open `site/index.html` directly. Keep the generated folders together. Run the launcher again after editing source files, then refresh any other open tabs.
@@ -38,7 +40,7 @@ The main sheet groups health and Block separately, with prominent current/max HP
 Open **More**, then **New character**, to create a separate draft. The flow shows the stages relevant to that character:
 
 1. **Ancestry:** identity, level, ancestry and background.
-2. **Class:** class and available archetypes.
+2. **Class:** starting class, multiclass levels, level order and each class's available archetypes.
 3. **Abilities:** base scores and ancestry allocations.
 4. **Features:** a compact list of required choices, one selection panel and one rule preview. Passive rules are in a folded reference section.
 5. **Spells:** eligible class spells and cantrips, searchable cards, level filters, a rules preview, selected-spell chips and preparation controls.
@@ -64,7 +66,9 @@ Builder-enabled characters automatically apply supported fixed passive modifiers
 
 The **Spells** tab initializes class casting resources from the Varis rules. Wizard, Sorcerer and Druid use their distinct printed slot tables; Occultist uses a shared pool whose slots have one casting level. Cleric tracks each full slot's remaining spell levels separately. Set **Maximum full-slot level** from your table's ruling before using Cleric slots: the imported source supplies slot counts but does not specify that maximum. Bard casting spends existing rest dice, and Sorcerer gains Metamagic points from level 4.
 
-Class capacities update with level and supported feature choices while preserving spent uses. Reviewed fixed bonuses, including the Occultist slot reward, Court mage, Oathspeaker and Wildmage slot increases, apply automatically. Separate archetype casting systems, such as Graymage, Evoker and arcane focus pools, still need manual trackers. The builder limits base class spell selections to its list, learning level and allowance. Set Bard's learning-level limit from your table because its source omits rounding. Wizard's class-granted spellbook count is not a maximum on copied spells; use extra selections on the Spells page for copied or feature-granted spells. Wizard preparation is selectable, with its missing numeric preparation count left for an author ruling.
+Class capacities update with level and supported feature choices while preserving spent uses. Reviewed fixed bonuses, including the Occultist slot reward, Court mage, Oathspeaker and Wildmage slot increases, apply automatically. Separate archetype casting systems, such as Graymage, Evoker and arcane focus pools, still need manual trackers. The builder limits base class spell selections to its list, learning level and allowance. Bard's learning cap is half Bard level rounded up; its casting cap is half total character level rounded up. Wizard's class-granted spellbook count is not a maximum on copied spells; use extra selections on the Spells page for copied or feature-granted spells. Wizard preparation is selectable, with its missing numeric preparation count left for an author ruling.
+
+Multiclass builds record the class taken at each character level. Features, archetypes and spell learning use that class's levels; HP uses its hit die. Standard secondary classes grant reduced starting proficiencies and no new saving throws. Rest dice retain separate class die sizes and counters, including bonuses from the selected features. See [multiclass rules and current boundaries](docs/character-multiclass.md).
 
 On the main sheet, **Spell actions** shows simple readied attack spells. **Quick action on main sheet** pins or hides other known spells. Choose **Casting level / resource**, then **Cast spell** to spend that resource. Standard slots spend one slot of the selected level; Occultist casts at its shared pool level; Cleric reduces the selected full slot by the chosen level; Bard spends that many rest dice. Cantrips use no slot. Simple spell attacks roll an attack check; resolve damage, saves, components, extra costs, cooldowns and scaling using the full spell rules. The Spells page provides the same casting controls for utility and complex spells. Manual slots and custom spells remain available.
 

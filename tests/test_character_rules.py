@@ -345,6 +345,7 @@ class CharacterRulesTests(unittest.TestCase):
         self.assertEqual((third["slots"], third["knownSpells"], third["cantrips"]),
                          ([{"level": 1, "max": 2}, {"level": 2, "max": 1}], 7, 2))
         self.assertEqual(len(casting["progression"]), 12)
+        self.assertEqual(casting["maxLearnLevelRule"], {"basis": "classLevel", "divisor": 2, "rounding": "up"})
         self.assertIn("combined spell level equal to 1/2 your druid level", casting["recovery"][0]["details"])
 
     def test_occultist_separates_class_slot_count_from_character_slot_level(self):
@@ -377,7 +378,7 @@ class CharacterRulesTests(unittest.TestCase):
         self.assertTrue(all(row["slots"] == [] and row["slotCount"] is None for row in casting["progression"]))
         self.assertEqual((casting["progression"][0]["knownSpells"], casting["progression"][-1]["knownSpells"]), (2, 8))
         self.assertEqual(casting["maxCastLevelRule"], {"basis": "characterLevel", "divisor": 2, "rounding": "up"})
-        self.assertTrue(any("rounding" in warning.lower() for warning in casting["warnings"]))
+        self.assertEqual(casting["maxLearnLevelRule"], {"basis": "classLevel", "divisor": 2, "rounding": "up"})
 
     def test_unconditional_archetype_slot_modifiers_reference_real_feature_ids(self):
         catalog = self.catalog()

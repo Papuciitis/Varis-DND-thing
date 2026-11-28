@@ -1,0 +1,804 @@
+# Character mechanics, separate from player-facing rules. See docs/character-automation.md.
+# Choice keys and option IDs are persistent save identifiers; do not rename them.
+version: 1
+rules:
+- entry:
+  - feats
+  - ''
+  - Dual wielding
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: trained
+        name: Trained hand
+      - id: quick
+        name: Quick strikes
+      - id: defense
+        name: Agile defense
+      - id: reaction
+        name: Hasty reactions
+      - id: swift
+        name: Swift combat
+    - key: ability
+      label: Ability score +1
+      type: ability
+      abilities:
+      - dex
+      - str
+    effects:
+    - target: abilities
+      choice: ability
+      amount: 1
+    - add:
+        offHandAbilityDamage: true
+      when:
+        choice: upgrade
+        includes: trained
+    repeatLimit: 3
+    repeatRequirements:
+    - Dexterity 13
+    - Dexterity 15
+    - Dexterity 17
+    abilityIncrease: true
+- entry:
+  - feats
+  - ''
+  - Mutant kobold
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: troglodyte
+        name: Troglodyte
+      - id: drakeling
+        name: Drakeling
+      - id: cavebold
+        name: Cavebold
+      - id: rokold
+        name: Rokold
+      - id: goldling
+        name: Goldling
+      - id: kobolid
+        name: Kobolid
+      - id: kobolisk
+        name: Kobolisk
+    effects:
+    - add:
+        abilities:
+          int: -2
+      when:
+        choice: upgrade
+        includes: troglodyte
+    - add:
+        abilities:
+          wis: -2
+      when:
+        choice: upgrade
+        includes: drakeling
+    - add:
+        abilities:
+          cha: -2
+        resistances:
+        - cold
+        - fire
+      when:
+        choice: upgrade
+        includes: cavebold
+    - add:
+        abilities:
+          con: -2
+      when:
+        choice: upgrade
+        includes: rokold
+    - add:
+        abilities:
+          int: 3
+        deathSaveBonus: -2
+        ac: -1
+      when:
+        choice: upgrade
+        includes: goldling
+    - add:
+        speed: -5
+        resistances:
+        - acid
+        - slashing
+      when:
+        choice: upgrade
+        includes: kobolisk
+    abilityIncrease: true
+- entry:
+  - feats
+  - ''
+  - Rite magic
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: spell
+        name: Rite spell
+      - id: slot
+        name: Rite slot
+      - id: cantrips
+        name: Minor rites
+      - id: die
+        name: Rite dice
+    - key: learn-rite
+      label: 2nd-level oath spell
+      type: spell
+      count: 1
+      level: 2
+      traditions:
+      - oath
+      grantSpell:
+        ability: wis
+        resource: manual
+      when:
+        choice: upgrade
+        includes: spell
+    - key: learn-rites
+      label: Cantrips (cannot be upgraded)
+      type: spell
+      count: 2
+      level: 0
+      traditions:
+      - oath
+      - mystic
+      grantSpell:
+        ability: wis
+        resource: free
+      when:
+        choice: upgrade
+        includes: cantrips
+    effects:
+    - add:
+        hpFlat: -1
+- entry:
+  - feats
+  - ''
+  - Herbology
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: healing
+        name: Herbal healing potion
+      - id: endurance
+        name: Herbal endurance potion
+      - id: antidote
+        name: Herbal antidote potion
+      - id: vigor
+        name: Herbal vigor potion
+    effects: []
+- entry:
+  - feats
+  - ''
+  - Power source
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: engine
+        name: Arcane engine
+      - id: give
+        name: Give power
+      - id: polarity
+        name: Polarity
+    effects: []
+- entry:
+  - feats
+  - ''
+  - Sworn
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: third
+        name: Learn a level 3 oath spell
+      - id: cantrip
+        name: Learn an oath cantrip
+      - id: fourth
+        name: Forfeit the level 2 spell for a level 4 oath spell
+    - key: learn-first
+      label: 1st-level oath spell
+      type: spell
+      count: 1
+      level: 1
+      traditions:
+      - oath
+      grantSpell:
+        ability: wis
+        resource: manual
+    - key: learn-second
+      label: 2nd-level oath spell
+      type: spell
+      count: 1
+      level: 2
+      traditions:
+      - oath
+      grantSpell:
+        ability: wis
+        resource: manual
+      when:
+        not:
+          choice: upgrade
+          includes: fourth
+    - key: learn-third
+      label: 3rd-level oath spell
+      type: spell
+      count: 1
+      level: 3
+      traditions:
+      - oath
+      grantSpell:
+        ability: wis
+        resource: manual
+      when:
+        choice: upgrade
+        includes: third
+    - key: learn-cantrip
+      label: Oath cantrip
+      type: spell
+      count: 1
+      level: 0
+      traditions:
+      - oath
+      grantSpell:
+        ability: wis
+        resource: free
+      when:
+        choice: upgrade
+        includes: cantrip
+    - key: learn-fourth
+      label: 4th-level oath spell
+      type: spell
+      count: 1
+      level: 4
+      traditions:
+      - oath
+      grantSpell:
+        ability: wis
+        resource: manual
+      when:
+        choice: upgrade
+        includes: fourth
+    effects: []
+- entry:
+  - feats
+  - ''
+  - Grimness
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: social
+        name: +1 Deception, Intimidation and Disguise
+      - id: stealth
+        name: +2 Stealth
+      - id: charisma
+        name: +1 Charisma saves
+    effects:
+    - add:
+        skillBonuses:
+          Deception: 1
+          Intimidation: 1
+          Disguise: 1
+      when:
+        choice: upgrade
+        includes: social
+    - add:
+        skillBonuses:
+          Stealth: 2
+      when:
+        choice: upgrade
+        includes: stealth
+    - add:
+        saveBonuses:
+          cha: 1
+      when:
+        choice: upgrade
+        includes: charisma
+- entry:
+  - feats
+  - ''
+  - Arcane insight
+  mechanics:
+    choices:
+    - key: upgrade
+      label: Choose an upgrade
+      type: select
+      count: 1
+      upgradeable: true
+      options:
+      - id: cost
+        name: Reduce psychic damage to d6
+      - id: spell
+        name: Learn a level 2 arcane spell
+      - id: int
+        name: +1 Intelligence
+      - id: arcana
+        name: +3 Arcana
+    - key: learn-cantrip
+      label: Arcane cantrip
+      type: spell
+      count: 1
+      level: 0
+      traditions:
+      - arcane
+      grantSpell:
+        ability: int
+        resource: free
+    - key: learn-first
+      label: 1st-level arcane spell
+      type: spell
+      count: 1
+      level: 1
+      traditions:
+      - arcane
+      grantSpell:
+        ability: int
+        resource: restDice
+    - key: learn-second
+      label: 2nd-level arcane spell
+      type: spell
+      count: 1
+      level: 2
+      traditions:
+      - arcane
+      grantSpell:
+        ability: int
+        resource: restDice
+      when:
+        choice: upgrade
+        includes: spell
+    effects:
+    - add:
+        abilities:
+          int: 1
+      when:
+        choice: upgrade
+        includes: int
+    - add:
+        skillBonuses:
+          Arcana: 3
+      when:
+        choice: upgrade
+        includes: arcana
+- entry:
+  - feats
+  - ''
+  - More upgrades
+  mechanics:
+    choices:
+    - key: targets
+      label: Two different upgrade lists
+      type: upgrade-target
+      targetMode: upgrades
+      count: 2
+    effects: []
+    grants:
+    - from: targets
+      count: 1
+      ownerKey: source
+    notes:
+    - Only upgrade lists qualify. Extra feature slots are restricted to the chosen list; this feat cannot grant
+      another feat.
+- entry:
+  - classes
+  - Base class
+  - Bard
+  feature: Bardic traits
+  level: 2
+  group: Choose features
+  option: Deep past
+  mechanics:
+    choices:
+    - key: targets
+      label: Owned list to extend
+      type: upgrade-target
+      count: 1
+      targetMode: ancestry-or-feat
+    grants:
+    - from: targets
+      count: 1
+      ownerKey: source
+- entry:
+  - classes
+  - Ranger archetypes
+  - Seeker
+  feature: Special training
+  level: 8
+  group: Choose features
+  option: New tricks
+  mechanics:
+    choices:
+    - key: targets
+      label: Owned list to extend
+      type: upgrade-target
+      count: 1
+      targetMode: earlier-archetype
+      baseFeature: Ranger training
+    grants:
+    - from: targets
+      count: 1
+      ownerKey: source
+- entry:
+  - classes
+  - Base class
+  - Bard
+  feature: Extra bardic trait
+  level: 3
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Bardic traits
+        level: 2
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Alchemist archetypes
+  - Experimenter
+  feature: Special interests II
+  level: 5
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Special interest
+        level: 4
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Alchemist archetypes
+  - Mycologist
+  feature: Extra fungal methods
+  level: 6
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Fungal methods
+        level: 5
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Alchemist archetypes
+  - Soulstone alchemist
+  feature: Soulgem use II
+  level: 5
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Soulgem use
+        level: 4
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Alchemist archetypes
+  - Soulstone alchemist
+  feature: Soulgem use III
+  level: 6
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Soulgem use
+        level: 4
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Barbarian archetypes
+  - Warlord
+  feature: Warlord traits II
+  level: 11
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Warlord traits
+        level: 10
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Barbarian archetypes
+  - Warlord
+  feature: Warlord traits III
+  level: 12
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Warlord traits
+        level: 10
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Barbarian archetypes
+  - Warg
+  feature: Primal traits II
+  level: 11
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Primal traits
+        level: 10
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Barbarian archetypes
+  - Warg
+  feature: Primal traits III
+  level: 12
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Primal traits
+        level: 10
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Bard archetypes
+  - Empath
+  feature: Extra empath trait
+  level: 9
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Empath traits
+        level: 4
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Cleric archetypes
+  - Paladin
+  feature: Paladin traits II
+  level: 10
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Paladin traits
+        level: 8
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Cleric archetypes
+  - Paladin
+  feature: Paladin traits III
+  level: 11
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Paladin traits
+        level: 8
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Druid archetypes
+  - Seer
+  feature: Extra seer trait
+  level: 8
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Seer traits
+        level: 6
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Fighter archetypes
+  - Slayer
+  feature: Extra slayer trait
+  level: 11
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Slayer traits
+        level: 10
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Monk archetypes
+  - Brawler
+  feature: Extra brawler trait
+  level: 6
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Brawler traits
+        level: 5
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Monk archetypes
+  - Ki channeler
+  feature: Ki powers II
+  level: 5
+  mechanics:
+    baseGrants:
+    - target:
+        feature: KI powers
+        level: 4
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Monk archetypes
+  - Ki channeler
+  feature: Ki powers III
+  level: 6
+  mechanics:
+    baseGrants:
+    - target:
+        feature: KI powers
+        level: 4
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Monk archetypes
+  - Sensei
+  feature: Master of 2 arts
+  level: 9
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Master of an art
+        level: 7
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Ranger archetypes
+  - Seeker
+  feature: Extra special training
+  level: 9
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Special training
+        level: 8
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Rogue archetypes
+  - Hexer
+  feature: Extra trait.
+  level: 9
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Hexer traits
+        level: 8
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Rogue archetypes
+  - Brigand
+  feature: Brigand traits II
+  level: 9
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Brigand traits
+        level: 7
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Sorcerer archetypes
+  - Graymage
+  feature: Extra graymage trait
+  level: 8
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Graymage trait
+        level: 6
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Sorcerer archetypes
+  - Wildmage
+  feature: Wild traits II
+  level: 6
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Wild traits
+        level: 5
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Sorcerer archetypes
+  - Evoker
+  feature: Evoker traits II
+  level: 10
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Evoker traits
+        level: 9
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Sorcerer archetypes
+  - Evoker
+  feature: Evoker traits III
+  level: 11
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Evoker traits
+        level: 9
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Sorcerer archetypes
+  - Evoker
+  feature: Evoker traits IV
+  level: 12
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Evoker traits
+        level: 9
+        group: Choose features
+      count: 1
+- entry:
+  - classes
+  - Sorcerer archetypes
+  - Evoker
+  feature: Powerful arts II
+  level: 11
+  mechanics:
+    baseGrants:
+    - target:
+        feature: Powerful Arts
+        level: 10
+        group: Choose features
+      count: 1

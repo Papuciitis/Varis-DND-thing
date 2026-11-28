@@ -10,7 +10,7 @@ const enginePath = path.join(root, 'web/character-rules.js');
 function setup() {
   assert.ok(fs.existsSync(enginePath), 'A rules engine must derive choices without permanently stacking bonuses');
   const context = vm.createContext({crypto: require('node:crypto').webcrypto});
-  for (const name of ['character-state.js', 'character-effects.js', 'character-equipment.js', 'character-casting.js', 'character-prerequisites.js','character-feats.js','character-rules.js']) {
+  for (const name of ['character-state.js', 'character-effects.js', 'character-equipment.js', 'character-casting.js', 'character-prerequisites.js','character-automation.js', 'character-feats.js','character-rules.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, 'web', name), 'utf8'), context);
   }
   const catalog = require('./helpers/catalog.cjs')();

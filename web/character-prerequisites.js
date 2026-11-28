@@ -17,8 +17,11 @@
     const features=derived.features.filter(feature=>(feature.requiredLevel ?? feature.level ?? 1)<=level);
     const options=derived.choices.filter(group=>group.kind!=='feat' && group.level<=level).flatMap(group=>group.options.filter(option=>group.selected.includes(option.id)));
     const all=catalog.flatMap(section=>(section.entries || []).map(entry=>({...entry,section:section.key})));
-    const casting=derived.casting?.profile;
-    const row=casting?.progression.filter(row=>row.level<=level).at(-1);
+    const levels=new Map((globalThis.CharacterState.classLevels?.(character,level) || []).map(owner=>[owner.id,owner.level]));
+    const classLevels=new Map((derived.classProgressions || [{id:derived.cls?.id,cls:derived.cls}]).filter(owner=>owner.cls).map(owner=>[normalize(owner.cls.name),levels.get(owner.id) || (character.build?.classOrder?.length?0:level)]));
+    const castings=(derived.castings || [derived.casting]).filter(item=>item?.profile && (levels.get(item.classId) || !character.build?.classOrder?.length)).map(item=>({profile:item.profile,row:item.profile.progression.filter(row=>row.level<=(levels.get(item.classId) || level)).at(-1)}));
+    const casting=castings[0]?.profile;
+    const row=castings[0]?.row;
     const maxSpell=casting?.mode==='leveled'?Math.max(0,...(row?.slots || []).map(slot=>slot.level)):casting?.mode==='full'?character.build?.casting?.maxSlotLevel ?? 0:Math.ceil(level/2);
     const projected=derived.featPlan?.spells,spellRows=[...new Map([...character.spells,...(projected || [])].map(row=>[row.id,row])).values()];
     const spells=spellRows.filter(saved=>!saved.featSource || (!projected || projected.some(row=>row.id===saved.id)) && (features.some(feature=>feature.id===saved.featSource) || derived.choices.some(group=>group.level<=level && group.kind!=='feat' && group.selected.some(id=>group.id+':'+id===saved.featSource)) || derived.featPlan?.sources?.some(source=>source.id===saved.featSource && source.parent==='Feature' && source.level<=level && derived.choices.some(group=>group.id===source.groupId && group.selected.includes(source.optionId))))).map(saved=>all.find(entry=>entry.section==='spells' && JSON.stringify(['spells',entry.group,entry.name])===saved.entryId)).filter(entry=>entry && (!entry.details?.lvl || Number(entry.details.lvl)<=maxSpell));
@@ -28,7 +31,7 @@
       const text=feature.details?.description || '';
       return derived.featPlan?.specs?.[feature.id]?.fields.some(field=>field.key==='upgrade')?text.split(/\n\s*\*/)[0]:text;
     };
-    return {character,derived,catalog,level,abilities,features,options,spells,casting,row,
+    return {character,derived,catalog,level,abilities,features,options,spells,casting,row,castings,classLevels,
       race:normalize(derived.race?.name || character.ancestry),className:normalize(derived.cls?.name || character.className),
       background:normalize(derived.background?.name || character.background),
       facts:new Set(character.build?.qualifications || []),
@@ -40,8 +43,8 @@
   const unknown=()=>({met:false,known:false});
   const combine=(values,any=false)=>({met:any?values.some(result=>result.met):values.every(result=>result.met),known:any?values.some(result=>result.met)||values.every(result=>result.known):values.every(result=>result.known)});
   function hasSpell(facts,{traditions=[],cantrips=false,spells=false,pattern=null}={}) {
-    if(!pattern && facts.casting && (!traditions.length || facts.casting.tradition==='any' || traditions.includes(facts.casting.tradition))) {
-      if(cantrips && facts.row?.cantrips>0 || spells && (facts.row?.knownSpells>0 || facts.casting.startingSpellbook))return true;
+    if(!pattern)for(const {profile,row} of facts.castings || (facts.casting?[{profile:facts.casting,row:facts.row}]:[]))if(!traditions.length || profile.tradition==='any' || traditions.includes(profile.tradition)){
+      if(cantrips && row?.cantrips>0 || spells && (row?.knownSpells>0 || profile.startingSpellbook))return true;
     }
     if(!pattern && (!traditions.length || traditions.some(name=>new RegExp('(?:learn|know|gain)[^.]*\\b'+name+'\\b[^.]*\\b'+(cantrips?'cantrip':'spell'),'i').test(facts.ruleText))) && new RegExp('(?:learn|know|gain)[^.]*\\b'+(cantrips?'cantrip':'spell'),'i').test(facts.ruleText))return true;
     return facts.spells.some(entry=>{
@@ -94,11 +97,11 @@
     match=text.match(/^(?:lvl|level) (\d+)$/);
     if(match)return known(facts.level>=Number(match[1]));
     match=text.match(/^(?:at least )?(\d+) levels? in (.+)$/);
-    if(match)return known(facts.className===normalize(match[2]) && facts.level>=Number(match[1]));
+    if(match)return known((facts.classLevels.get(normalize(match[2])) || 0)>=Number(match[1]));
     match=text.match(/^(.+?)\s*\((\w+)\s*(?:level )?(\d+)(?: feature)?\)$/);
-    if(match)return known(facts.className===match[2] && facts.level>=Number(match[3]) && facts.featureNames.has(words(match[1])));
+    if(match)return known((facts.classLevels.get(match[2]) || 0)>=Number(match[3]) && facts.featureNames.has(words(match[1])));
     match=text.match(/^(.+?) (\d+)$/);
-    if(match && /^(?:alchemist|barbarian|bard|cleric|druid|fighter|monk|occultist|ranger|rogue|sorcerer|wizard)$/.test(match[1]))return known(facts.className===match[1] && facts.level>=Number(match[2]));
+    if(match && /^(?:alchemist|barbarian|bard|cleric|druid|fighter|monk|occultist|ranger|rogue|sorcerer|wizard)$/.test(match[1]))return known((facts.classLevels.get(match[1]) || 0)>=Number(match[2]));
     if(/^proficiency with | proficiency$/.test(text)) {
       const value=text.replace(/^proficiency with /,'').replace(/ proficiency$/,'');
       const shields=value.match(/^(light|heavy) or (light|heavy) shields?$/);
@@ -128,11 +131,11 @@
     if(/slain a murderous vampire/.test(text))return known(facts.facts.has('righteous-slaying'));
     if(/any .?apprentice.? background/.test(text))return known(/apprentice/.test(facts.background));
     if(text==='with tiefling elven trait')return known(facts.options.some(option=>normalize(option.name)==='tiefling'));
-    if(text==='cleric class')return known(facts.className==='cleric');
+    if(text==='cleric class')return known(facts.classLevels.has('cleric') && facts.classLevels.get('cleric')>0);
     const archetype=text.match(/^(.+?) archetype(?: \((.+)\))?$/);
-    if(archetype)return known(facts.derived.eligibleArchetypes.some(item=>normalize(item.name)===archetype[1] && item.minLevel<=facts.level));
-    if(/ranger focus ability/.test(text))return known(facts.className==='ranger' && facts.featureNames.has('focus'));
-    if(text==='alchemy points (alchemist)')return known(facts.className==='alchemist');
+    if(archetype)return known(facts.derived.eligibleArchetypes.some(item=>normalize(item.name)===archetype[1] && (item.grantedAt ?? item.minLevel)<=facts.level));
+    if(/ranger focus ability/.test(text))return known(facts.classLevels.has('ranger') && facts.classLevels.get('ranger')>0 && facts.featureNames.has('focus'));
+    if(text==='alchemy points (alchemist)')return known(facts.classLevels.has('alchemist') && facts.classLevels.get('alchemist')>0);
     if(/templar \(cleric\) might ability/.test(text))return known(facts.featureNames.has('templars might')||facts.featureNames.has('might'));
     // A list of race/class/background identities is an OR clause. Match only
     // catalog identities, so misspelled or obsolete names cannot silently pass.
@@ -140,7 +143,7 @@
     const items=identity.split(/,\s*|\s+or\s+/).map(value=>normalize(value)).filter(Boolean);
     const identities=new Set(facts.catalog.filter(section=>['classes','races','backgrounds'].includes(section.key)).flatMap(section=>(section.entries || []).map(entry=>normalize(entry.name))));
     ['alchemist','barbarian','bard','cleric','druid','fighter','monk','occultist','ranger','rogue','sorcerer','wizard'].forEach(name=>identities.add(name));
-    if(items.length && items.some(item=>[facts.race,facts.className,facts.background].includes(item)))return known(true);
+    if(items.length && items.some(item=>[facts.race,facts.background,...[...facts.classLevels].filter(([,level])=>level>0).map(([name])=>name)].includes(item)))return known(true);
     if(items.length && items.every(item=>identities.has(item)))return known(false);
     if(/\s+or\s+/.test(text))return combine(text.split(/\s+or\s+/).map(part=>evaluateClause(part,facts)),true);
     if(/,/.test(text))return combine(text.split(/,\s*/).map(part=>evaluateClause(part,facts)));
