@@ -108,7 +108,7 @@ def build(output_dir):
     mechanics = json.dumps(metadata, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
     mechanics = mechanics.replace("<", r"\u003c").replace("\u2028", r"\u2028").replace("\u2029", r"\u2029")
     effects = "".join((ROOT / "web" / name).read_text(encoding="utf-8") for name in
-                      ("character-conditions.js", "character-effects.js", "character-equipment.js", "character-casting.js", "character-rules.js"))
+                      ("character-conditions.js", "character-effects.js", "character-equipment.js", "character-casting.js", "character-prerequisites.js", "character-feats.js", "character-rules.js"))
     rules_version = "catalog-" + hashlib.sha256((payload + mechanics + effects).encode("utf-8")).hexdigest()[:12]
     catalog_script = (
         f"<script>globalThis.DND_CATALOG={payload};\n"
@@ -127,7 +127,7 @@ def build(output_dir):
     write_page(output_dir / "data/catalog-manifest.json", json_text(manifest))
     pages = (("index.html", "styles.css", ("entry-order.js", "magic-categories.js", "item-views.js", "browse-views.js", "magic-items.js", "rule-presentation.js", "monster-editor.js", "monster-views.js", "geomancy-review.js", "app.js")),
              ("character.html", "character.css", ("entry-order.js", "magic-categories.js", "item-views.js", "magic-items.js", "character-conditions.js", "character-state.js", "character-effects.js",
-              "character-equipment.js", "character-casting.js", "character-rules.js", "character-builder.js", "character.js")))
+              "character-equipment.js", "character-casting.js", "character-prerequisites.js", "character-feats.js", "character-rules.js", "character-builder.js", "character.js")))
     assets = {}
     for page, stylesheet, scripts in pages:
         normal = (ROOT / "web" / page).read_text(encoding="utf-8")
@@ -152,7 +152,7 @@ def build(output_dir):
         helpers.mkdir(exist_ok=True)
         for name in ("magic-categories.js", "item-views.js", "magic-items.js",
                      "character-conditions.js", "character-state.js", "character-effects.js", "character-equipment.js",
-                     "character-casting.js", "character-rules.js"):
+                     "character-casting.js", "character-prerequisites.js", "character-feats.js", "character-rules.js"):
             shutil.copyfile(ROOT / "web" / name, helpers / name)
     print(f"Built {output_dir.name}/ with section data and offline/ portable copies")
     for section in sections:

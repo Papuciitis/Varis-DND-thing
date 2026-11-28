@@ -23,7 +23,7 @@ class RecoveredMonsterTests(unittest.TestCase):
         return next(row['description'] for row in self.recovered[monster][field] if row['name'] == name)
 
     def test_inventory_has_no_missing_duplicate_or_rejected_profiles(self):
-        self.assertEqual(len(self.monsters), 215)
+        self.assertEqual(len(self.monsters), 302)
         self.assertEqual(len(self.recovered), 55)
         self.assertEqual({e['name'] for e in self.index['entries']}, set(self.recovered))
         self.assertEqual(len({e['id'] for e in self.index['entries']}), 55)
@@ -54,7 +54,7 @@ class RecoveredMonsterTests(unittest.TestCase):
                     self.assertEqual([int(details['abilities'][key]) for key in ABILITIES], [int(s) for s in scores])
 
     def test_natural_armor_cannot_create_equipment_block(self):
-        equipment = {'Orog': 2, 'Orc War Chief': 2, 'Ogre War Hulk': 1}
+        equipment = {'Orc Veteran': 2, 'Orc War Chief': 2, 'Ogre War Hulk': 1}
         for name, details in self.recovered.items():
             if name == 'Mud Servant':  # the creating spell explicitly overrides the ordinary pool
                 continue
@@ -62,7 +62,7 @@ class RecoveredMonsterTests(unittest.TestCase):
             self.assertEqual(int(details['block'].split(' / ')[0]), max(0, dex) + equipment.get(name, 0), name)
         self.assertEqual(self.recovered['Elven Hexblade Initiate']['block'], '2 / +2 check')
         self.assertEqual(self.recovered['Battlefist Rifle Engineer']['block'], '3 / +3 check')
-        for name, expected in [('Orog', '+7'), ('Orc War Chief', '+9'), ('Ogre War Hulk', '+9')]:
+        for name, expected in [('Orc Veteran', '+7'), ('Orc War Chief', '+9'), ('Ogre War Hulk', '+9')]:
             self.assertIn(expected + ' check', self.recovered[name]['block'])
             self.assertRegex(self.row(name, 'traits', 'Two-handed Loadout'), r'sling|slung|lower AC by 3')
 

@@ -2,6 +2,7 @@
 
 from copy import deepcopy
 from pathlib import Path
+from catalog_expectations import ORIGINAL_MONSTER_SOURCES
 import tempfile
 import unittest
 
@@ -121,7 +122,8 @@ class GeomancyDecisionCatalogTests(unittest.TestCase):
                 details = entries[record["name"]]["details"]
                 for key, value in record.items():
                     if key not in {"name", "group"}:
-                        self.assertEqual(details[key], value, (record["name"], key))
+                        actual = details.get('source_summons', details[key]) if key == 'summons' else details[key]
+                        self.assertEqual(actual, value, (record["name"], key))
 
     def test_reviewed_entries_have_dispositions_and_gaps_remain_explicit(self):
         self.assertEqual(len(self.entries), 156)
@@ -133,7 +135,7 @@ class GeomancyDecisionCatalogTests(unittest.TestCase):
 
     def test_conversions_are_review_only_and_do_not_change_character_metadata(self):
         self.assertEqual(len(self.catalog["spells"]["entries"]), 439)
-        original = [e for e in self.catalog["monsters"]["entries"] if not e["source"].startswith("monsters/recovered-")]
+        original = [e for e in self.catalog["monsters"]["entries"] if e["source"] in ORIGINAL_MONSTER_SOURCES]
         self.assertEqual(len(original), 160)
         drafts = [entry for entry in self.entries if entry["details"]["review_status"] == "draft"]
         self.assertGreaterEqual(len(drafts), 20)

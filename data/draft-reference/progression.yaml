@@ -8,6 +8,8 @@ entries:
       and a later one can have different strengths.
   - name: Rest, long rest, and rest dice
     group: Rest and recovery
-    description: By default, a short rest takes one day and a long rest takes one week. The GM can adjust these
+    description: Your base maximum number of rest dice equals your character level (one rest die per level).
+      Add the bonuses and penalties granted by your ancestry, background, feats, and features.
+      By default, a short rest takes one day and a long rest takes one week. The GM can adjust these
       durations. Each class has its own ways to spend rest dice during an adventure, in combat, or during a
       rest. Use the current Fatigue condition for rest-based recovery.

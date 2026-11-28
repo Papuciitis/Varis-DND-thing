@@ -1,6 +1,6 @@
 # Monsters and the statblock editor
 
-The monster manual includes all 92 creatures, NPCs and encounter objects from the four campaign sources, alongside the 20 existing workbook references, 13 completed Tarta wiki dragon statblocks, 35 Homebrewery additions and 55 recovered chat profiles (215 entries total). Template examples are included: Adult Red Dragon is a playable entry, and the two differently described Ravager blocks remain separate creatures.
+The monster manual includes all 92 creatures, NPCs and encounter objects from the four campaign sources, alongside the 20 existing workbook references, 13 completed Tarta wiki dragon statblocks, 35 Homebrewery additions and 55 recovered chat profiles and 87 completed creature conversions (302 entries total). Template examples are included: Adult Red Dragon is a playable entry, and the two differently described Ravager blocks remain separate creatures.
 
 | Campaign source | Entries | Editable collection |
 | --- | ---: | --- |
@@ -15,22 +15,28 @@ The monster manual includes all 92 creatures, NPCs and encounter objects from th
 | Recovered warbands and armed enemies | 15 | `data/monsters/recovered-warriors.yaml` |
 | Recovered horrors and summons | 15 | `data/monsters/recovered-horrors.yaml` |
 | Completed creature concepts and companions | 13 | `data/monsters/recovered-lore.yaml` |
+| Completed creature profiles | 17 | `data/monsters/legacy-creatures.yaml` |
+| Monstrous spider ages | 12 | `data/monsters/legacy-spiders.yaml` |
+| Goblin encounter variants | 7 | `data/monsters/goblin-variants.yaml` |
+| Setting creatures | 51 | `data/monsters/setting-creatures.yaml` |
 
 ## Conversion conventions
 
-Printed creature AC, HP, speed, attacks and six abilities remain fixed monster statistics. Block follows the current combat rules; natural armor alone does not grant armor training or additional Block. Ordinary proficient attacks show Block DC equal to their attack bonus plus 8, subject to explicit weapon or feature exceptions. Damage and attached on-strike effects require an unblocked strike; effects resolved solely by saving throws cannot be Blocked.
+For compatible 5e imports, printed creature AC, HP, speed, attacks and six abilities remain fixed monster statistics. Other systems require explicit conversions: see [Mixed-system conversions](cross-system-monsters.md) for eight-attribute ratings, legacy d20 level/BAB bonuses, equipment and legacy conditions. Block follows the current combat rules; natural armor alone does not grant armor training or additional Block. Ordinary proficient attacks show Block DC equal to their attack bonus plus 8, subject to explicit weapon or feature exceptions. Damage and attached on-strike effects require an unblocked strike; effects resolved solely by saving throws cannot be Blocked.
 
 The current compendium's conditions, class features and spells take priority over incompatible 5e wording. Existing fitting abilities and statblocks supply missing mechanics. Each substituted rule is identified in the entry's conversion notes and replacement sources. Daily uses stay daily; short and long rests follow the current one-day and one-week defaults. Printed recharge dice retain their own timing.
 
-Chronica records ability modifiers rather than exact scores. The playable blocks use published scores where a matching profile is available, compatible existing donor scores where identified, and reconstructed scores for the remaining campaign profiles. Reconstruction chooses a score that preserves the recorded modifier and is marked **Reconstructed scores**. Source panels retain the original modifiers and explain the method; a reconstructed score is not claimed as an original source value. Nine otherwise blank NPC records use documented existing NPC baselines. Source challenge values are encounter estimates rather than a balance certification; missing campaign CRs, including Jobafo, have explicit provisional Vara estimates documented in conversion notes.
+Chronica records ability modifiers rather than exact scores. The playable blocks use published scores where a matching profile is available, compatible existing donor scores where identified, and reconstructed scores for the remaining campaign profiles. Reconstruction chooses a score that preserves the recorded modifier and is marked **Reconstructed scores**. Source panels retain the original modifiers and explain the method; a reconstructed score is not claimed as an original source value. Nine otherwise blank NPC records use documented existing NPC baselines. Source challenge values are encounter estimates rather than a balance certification; missing campaign CRs, including Memory Devourer, have explicit provisional Vara estimates documented in conversion notes.
 
 Original text, source locations, repairs and donor references remain available in collapsed source panels. The extracted documents and sanitized monster-only Chronica export are tracked under `data/monsters/source/`. Original unrelated campaign secrets are excluded.
 
 The 55 recovered profiles use historical chat-search extracts rather than complete transcripts. With the user's explicit authorization, missing scores and mechanics are completed from current rules and compatible monster templates. Personal names become reusable enemy archetypes; the original aliases, recovered numbers, reconstructed values and provisional CRs remain in source notes. The [recovered inventory](recovered-monsters.md) maps every new profile to its source. No new player spells or class grants accompany these entries.
 
+The remaining named campaign creatures also use generic encounter titles, without male/female labels. Their 69 reviewed title overrides live in `data/monsters/custom.yaml`; original source identities and all combat mechanics remain intact. The [name mapping](generic-monster-names.md) lists every change. Future entries should use species, role, distinctive anatomy or equipment as the public title, keeping personal aliases in source notes.
+
 ## Add and edit on the webpage
 
-The manual opens with 15 **Theme / setting** cards covering all 215 monsters, such as Seas & coasts, Frozen wastes, Orc & gnoll warbands and Eldritch nightmares. Choose a theme to open its expandable monster list, or use **Browse all** for the complete manual. Themes mix source collections by encounter use; source details remain in notes. The [theme inventory](monster-organization.md) lists the categories and explains editing their assignments.
+The manual opens with 15 **Theme / setting** cards covering all 302 monsters, such as Seas & coasts, Frozen wastes, Orc & gnoll warbands and Eldritch nightmares. Choose a theme to open its expandable monster list, or use **Browse all** for the complete manual. Themes mix source collections by encounter use; source details remain in notes. The [theme inventory](monster-organization.md) lists the categories and explains editing their assignments.
 
 Each creature row shows its name, challenge and creature type; open several rows to compare their compact parchment statblocks. Bodies load when first expanded. Search, **Theme / setting** and **Challenge rating** lead the filters; open **Creature type** for type chips and **More filters** for display and sort. Applied filters can be removed individually. Challenge choices include fractions, exact ratings, ranges and **Unrated / unknown**. Unknown challenge is separate from CR 0. **Display** offers Theme overview, Expandable list and linked Pages. Monster-page breadcrumbs and previous/next navigation follow encounter themes. Monster pages, expanded rows and the live editor preview share the same statblock presentation.
 
@@ -74,7 +80,7 @@ Tarta wiki material is attributed to its contributors and its source URLs. The s
 
 ## Tarta Homebrewery conversion add-on
 
-All 32 printed source statblocks are converted, along with three completed partial summon templates: **Thorn Spitter**, **Rockplica duplicate**, and **Stone illusion duplicate**. The two duplicates take their profiles from a selected model creature, including an NPC, and have CR **Varies**, not invented fixed ability scores or XP. Using a model's statistics does not itself grant control. The detailed source inventory is in `docs/tarta-homebrewery-summon-audit.md`; reviewed conversion choices are in `docs/tarta-conversion-decisions.md`.
+All 32 printed source statblocks are converted, along with three completed partial summon templates: **Thorn Spitter**, **Stoneform Duplicate**, and **Stone illusion duplicate**. The two duplicates include complete default bodies with CR 1 and CR 0. The GM may configure another model, including an NPC, and must record that variant's statistics and challenge. Using a model's statistics does not itself grant control. The detailed source inventory is in `docs/tarta-homebrewery-summon-audit.md`; reviewed conversion choices are in `docs/tarta-conversion-decisions.md`.
 
 These additions are standalone monster options. **Tarta creature options**, in `data/draft-reference/tarta-creature-options.yaml`, groups the 35 Homebrewery creatures and templates for browsing and comparison. They also remain searchable and editable in the Monster manual. The separate **Geomancy spell review** section contains the PDF's complete original Geomorphy spell inventory for V. to evaluate, with source levels 0-11 preserved and no automatic conversion. Its 156 review entries are separate from the 439 current spells and character-builder choices. See [Geomancy spell review](geomancy-spell-review.md) for source coverage and gaps. Source class features remain provenance rather than new character grants.
 

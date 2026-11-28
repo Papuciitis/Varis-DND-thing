@@ -149,7 +149,20 @@ test('theme filters intersect type and CR while overview remains separate from e
 
 test('every built monster appears in exactly one of fifteen encounter themes',()=>{
  const {views}=setup(),entries=require('./helpers/catalog.cjs')().find(section=>section.key==='monsters').entries,groups=views.themesFor(entries);
- assert.equal(groups.length,15);assert.equal(groups.reduce((total,group)=>total+group.count,0),215);assert.equal(groups.some(group=>group.title==='Other encounters'),false);
- assert.equal(groups.find(group=>group.title==='Dragons & their lairs').count,19);
+ assert.equal(groups.length,15);assert.equal(groups.reduce((total,group)=>total+group.count,0),302);assert.equal(groups.some(group=>group.title==='Other encounters'),false);
+ assert.equal(groups.find(group=>group.title==='Dragons & their lairs').count,20);
  assert.equal(new Set(groups.find(group=>group.title==='Tombs & restless dead').entries.map(entry=>entry.source)).size>1,true);
+});
+
+test('all mixed-system profiles render six scores and keep system facts in closed source notes',()=>{
+ const {views,helpers}=setup(),catalog=require('./helpers/catalog.cjs')();
+ const names=new Set(JSON.parse(fs.readFileSync(path.join(__dirname,'../data/monsters/source/cross-system-index.json'),'utf8')).records.map(r=>r.name));
+ const entries=catalog.find(s=>s.key==='monsters').entries.filter(e=>names.has(e.name));assert.equal(entries.length,87);
+ for(const entry of entries){
+   const block=views.statblock(entry,helpers),notes=block.byClass('monster-source-notes');
+   assert.equal(block.byClass('monster-score').length,6,entry.name);
+   assert.equal(notes.length,1,entry.name);assert.equal(notes[0].open,false,entry.name);
+   assert(notes[0].textContent.includes(entry.details.source_system),entry.name);
+   assert.equal(block.byClass('monster-additional-rule').some(n=>/Source system|Source conversion|Original 5e/.test(n.textContent)),false,entry.name);
+ }
 });

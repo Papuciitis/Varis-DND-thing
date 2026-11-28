@@ -1,5 +1,6 @@
 """Cross-collection integrity for the Tarta Homebrewery add-on."""
 from pathlib import Path
+from catalog_expectations import ORIGINAL_MONSTER_SOURCES
 import unittest
 
 from compiler import compile_data
@@ -14,12 +15,12 @@ class HomebreweryAddonTests(unittest.TestCase):
         cls.monsters = {e['name']: e for e in cls.catalog['monsters']['entries']}
 
     def test_all_printed_creatures_and_completed_templates_are_in_the_compiled_catalog(self):
-        original = [e for e in self.monsters.values() if not e['source'].startswith('monsters/recovered-')]
+        original = [e for e in self.monsters.values() if e['source'] in ORIGINAL_MONSTER_SOURCES]
         self.assertEqual(len(original), 160)
         self.assertEqual(sum(e['source'].startswith('monsters/tarta-elementals-') for e in self.monsters.values()), 26)
         summons = [e for e in self.monsters.values() if e['source'] == 'monsters/tarta-summons.yaml']
         self.assertEqual(len(summons), 9)
-        self.assertEqual({e['name'] for e in summons if e['details']['cr'] == 'Varies'}, {'Rockplica duplicate', 'Stone illusion duplicate'})
+        self.assertEqual({e['name']: e['details']['cr'] for e in summons if e['name'] in {'Stoneform Duplicate', 'Stone illusion duplicate'}}, {'Stoneform Duplicate': '1', 'Stone illusion duplicate': '0'})
         for e in self.monsters.values():
             if e['source'].startswith('monsters/tarta-'):
                 self.assertTrue(e['details']['original_5e'], e['name'])
@@ -76,12 +77,12 @@ class HomebreweryAddonTests(unittest.TestCase):
             self.assertNotIn('summoned_by', self.monsters[name]['details'])
 
     def test_duplicate_resources_and_independent_concentration_are_bounded(self):
-        duplicate = self.monsters['Rockplica duplicate']['details']
+        duplicate = self.monsters['Stoneform Duplicate']['details']
         text = ' '.join(row['description'] for row in duplicate['traits'])
         self.assertIn('concentration', text)
         self.assertIn('Block points are shared', text)
         self.assertIn('verbal components', duplicate['languages'])
-        self.assertIn('movement speeds', duplicate['speed'])
+        self.assertIn('movement speeds', duplicate['source_template']['speed'])
         self.assertNotIn('free command', text)
 
     def test_animated_earth_can_attempt_to_break_control_without_a_command(self):

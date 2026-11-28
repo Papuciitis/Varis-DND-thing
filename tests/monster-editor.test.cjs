@@ -6,7 +6,7 @@ function boot(storage=new Map(),throws=false){const context=vm.createContext({lo
 
 test('new statblocks persist across reloads, enter the catalog once, and can be removed',()=>{
   const storage=new Map(),editor=boot(storage),section={key:'monsters',entries:[creature()]};editor.apply(section);
-  const added=editor.save(section,null,{name:'Custom wisp',group:'Custom monsters',details:{hp:'8',block:'0 / +2',actions:[{name:'Spark',description:'2 lightning damage.'}]}});
+  const added=editor.save(section,null,{name:'Custom wisp',group:'Custom monsters',details:{hp:'8',block:'0 / +2',actions:[{name:'Lightning Mote',description:'2 lightning damage.'}]}});
   assert.equal(section.entries.length,2);assert.match(added.details.id,/^custom-/);editor.apply(section);assert.equal(section.entries.length,2);
   const second=boot(storage),fresh={key:'monsters',entries:[creature()]};second.apply(fresh);assert.equal(fresh.entries.length,2);second.reset(fresh,fresh.entries.find(row=>row.name==='Custom wisp'));assert.equal(fresh.entries.length,1);
 });

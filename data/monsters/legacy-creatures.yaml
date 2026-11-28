@@ -1,0 +1,2097 @@
+section: monsters
+entries:
+- name: Froghemoth
+  group: Cross-system creature conversions
+  id: converted-froghemoth
+  meta: Huge monstrosity, neutral
+  size: Huge
+  type: monstrosity
+  alignment: neutral
+  cr: '15'
+  ac: '25'
+  hp: '287'
+  speed: 30 ft., swim 80 ft.
+  block: 1 / +1 check
+  abilities:
+    str: '24'
+    dex: '13'
+    con: '21'
+    int: '1'
+    wis: '6'
+    cha: '1'
+  proficiency_bonus: '+5'
+  senses: darkvision 30 ft., passive Perception 8
+  languages: —
+  traits:
+  - name: Adhesive Skin
+    description: A Medium or smaller creature that touches its skin or makes an unarmed/natural melee strike
+      against it must pass a DC 18 DEX save or become Grappled (escape action STR or DEX DC 20). A weapon alone
+      can stick without grappling its wielder; a bonus action releases the weapon. A target cannot be stuck
+      through a successfully Blocked froghemoth strike.
+  actions:
+  - name: Multiattack
+    description: Makes two Slam attacks and two Stomp attacks, or one Tongue attack and one Slam attack. Swallow
+      is a separate action.
+  - name: Slam
+    description: 'Melee attack: +12 to hit, reach 10 ft., one target; Block DC 20. Unblocked strike: 2d8 +
+      6 bludgeoning damage. '
+  - name: Stomp
+    description: 'Melee attack: +12 to hit, reach 10 ft., one target; Block DC 20. Unblocked strike: 2d10 +
+      8 bludgeoning damage. '
+  - name: Tongue
+    description: 'Melee attack: +12 to hit, reach 30 ft., one target; Block DC 20. Unblocked strike: 1d8 +
+      4 bludgeoning damage. A Medium or smaller target is Grappled (escape action: STR or DEX check DC 20).
+      Only one creature can be held with this limb. The hold ends if the grappler is incapacitated or the target
+      leaves its reach. The tongue can hold only one target; a held target is pulled up to 20 ft. closer. '
+  - name: Swallow
+    description: 'One Medium or smaller creature Grappled by the tongue within 5 ft. makes a DC 20 STR save.
+      Failure: it is swallowed, ending the tongue''s hold. Success: it remains Grappled outside. One creature
+      can be swallowed. Inside it is Blinded, has no line of effect outside, and takes 4d6 acid damage at the
+      start of the froghemoth''s turn. It can attack the stomach (AC 15); 25 damage in one turn opens an escape
+      and deposits it Prone within 5 ft. Teleporting out or incapacitating the froghemoth also releases it.
+      There is no automatic death timer.'
+  ability_score_status: sourced
+  source_system: Legacy d20 homebrew
+  source_ref: User-supplied statblock screenshot / Froghemoth
+  original_5e:
+    source_system: Legacy d20 homebrew
+    name: Froghemoth
+    printed_scores:
+    - 24
+    - 13
+    - 21
+    - 1
+    - 6
+    - 1
+    printed_cr: not supplied
+    printed_ac: -4 size, +1 DEX, +18 natural; touch 10, flat-footed 15 (inconsistent)
+    printed_hp: 25d10 + 150, no fixed total
+    printed_speed: 30 ft., swim 80 ft.
+    printed_attacks:
+    - two slams +18 (2d8+6)
+    - two stomps +18 (2d10+8)
+    - tongue +22 (1d8+4)
+    - swallow +30 (4d12+10)
+    legacy_saves: Fort +25, Ref +13, Will +4
+    legacy_adhesive_dc: 33
+    legacy_swallow: Automatic death after three rounds unless immune to acid.
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - AC 25 from 10 - 4 + 1 + 18; HP 287 from the supplied hit dice; CR 15 estimate; tongue reach 30 ft.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 12
+      block_dc: 20
+      dc_adjustment: 0
+      damage_modifier: 6
+      offset: 0
+    - name: Stomp
+      ability: str
+      bonus: 12
+      block_dc: 20
+      dc_adjustment: 0
+      damage_modifier: 8
+      offset: 0
+    - name: Tongue
+      ability: str
+      bonus: 12
+      block_dc: 20
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Source +24/+13/etc are treated as ability scores, not enormous modifiers. The contradictory touch/flat-footed
+    ACs, BAB and Reflex DC are archived. Instant-death digestion becomes damage with a defined rescue.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +7, DEX +1, CON +5, INT -5, WIS -2, CHA -5
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '24'
+      dex: '13'
+      con: '21'
+      int: '1'
+      wis: '6'
+      cha: '1'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Gray Ooze
+  group: Cross-system creature conversions
+  id: converted-gray-ooze
+  meta: Medium ooze, neutral
+  size: Medium
+  type: ooze
+  alignment: neutral
+  cr: '4'
+  ac: '5'
+  hp: '50'
+  speed: 10 ft.
+  block: 0 / -5 check
+  abilities:
+    str: '16'
+    dex: '1'
+    con: '26'
+    int: '1'
+    wis: '1'
+    cha: '1'
+  proficiency_bonus: '+2'
+  senses: blindsight 60 ft. (blind beyond this radius), passive Perception 5
+  languages: —
+  traits:
+  - name: Amorphous and Mindless
+    description: Can pass through a 1-inch gap without squeezing. It needs no sleep and cannot speak. It is
+      immune to effects that require understanding language.
+  - name: Transparent
+    description: While still, spotting it requires a DC 15 WIS (Perception) check. Moving into its occupied
+      space reveals it and lets it make one Slam as a reaction; resolve the attack and Block normally.
+  - name: Corrosive Contact
+    description: Each Slam deals an additional 1d6 acid damage on an unblocked strike. On an unblocked strike,
+      choose one nonmagical metal/wood weapon or worn armor touching the creature; its wielder/wearer makes
+      a CON save against the listed DC. On failure, that item's attack rolls (weapon) or AC (armor) take a
+      -1 penalty, to a maximum -2 from this creature's corrosion. One hour with suitable tools and a DC 12
+      smithing or woodworking check repairs 1 penalty. This does not destroy items or lower Block, and magical
+      items are unaffected. Corrosion save DC 18. A nonmagical wood or metal object held continuously against
+      it for a whole round takes 12 acid damage; stone is unaffected.
+  actions:
+  - name: Slam
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d6 + 4
+      bludgeoning damage. A Medium or smaller target is Grappled (escape action: STR or DEX check DC 13). Only
+      one creature can be held with this limb. The hold ends if the grappler is incapacitated or the target
+      leaves its reach. '
+  - name: Constrict
+    description: 'One creature already Grappled by this ooze makes a DC 13 STR save; failure: 1d6 + 1 bludgeoning
+      and 1d6 acid damage; success: no damage. Requires an action and does not add a free Slam.'
+  ability_score_status: reconstructed
+  source_system: Legacy d20
+  source_ref: User-supplied statblock screenshot / Gray Ooze
+  original_5e:
+    source_system: Legacy d20
+    name: Gray Ooze
+    printed_scores:
+    - 16
+    - 1
+    - 26
+    - —
+    - 1
+    - 1
+    printed_cr: 4
+    printed_ac: 5
+    printed_hp: 50 (4d8+32)
+    printed_speed: 10 ft.
+    legacy_attack: +6 slam, 1d6+4 plus 1d6 acid and grab
+    legacy_constrict: 1d6+1 plus 1d6 acid
+    legacy_saves: Fort +9, Ref -4, Will -4
+    legacy_acid_dc: 20
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Absent INT is filled with 1 for a mindless body; numeric values are not a claim of cognition.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Caverns & lost ruins
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +3, DEX -5, CON +8, INT -5, WIS -5, CHA -5
+  damage_immunities: cold, fire
+  condition_immunities: Blinded, Charmed, Deafened, Prone, Afraid
+  source_ability_scores:
+    method: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+    scores:
+      str: '16'
+      dex: '1'
+      con: '26'
+      int: '1'
+      wis: '1'
+      cha: '1'
+    note: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+- name: Crystal Ooze
+  group: Cross-system creature conversions
+  id: converted-crystal-ooze
+  meta: Medium ooze, neutral
+  size: Medium
+  type: ooze
+  alignment: neutral
+  cr: '4'
+  ac: '5'
+  hp: '50'
+  speed: 10 ft., swim 30 ft.
+  block: 0 / -5 check
+  abilities:
+    str: '16'
+    dex: '1'
+    con: '26'
+    int: '1'
+    wis: '1'
+    cha: '1'
+  proficiency_bonus: '+2'
+  senses: blindsight 60 ft. (blind beyond this radius), passive Perception 5
+  languages: —
+  traits:
+  - name: Amorphous and Mindless
+    description: Can pass through a 1-inch gap without squeezing. It needs no sleep and cannot speak. It is
+      immune to effects that require understanding language.
+  - name: Transparent
+    description: While still, spotting it requires a DC 15 WIS (Perception) check. Moving into its occupied
+      space reveals it and lets it make one Slam as a reaction; resolve the attack and Block normally.
+  - name: Corrosive Contact
+    description: Each Slam deals an additional 1d6 acid damage on an unblocked strike. On an unblocked strike,
+      choose one nonmagical metal/wood weapon or worn armor touching the creature; its wielder/wearer makes
+      a CON save against the listed DC. On failure, that item's attack rolls (weapon) or AC (armor) take a
+      -1 penalty, to a maximum -2 from this creature's corrosion. One hour with suitable tools and a DC 12
+      smithing or woodworking check repairs 1 penalty. This does not destroy items or lower Block, and magical
+      items are unaffected. Corrosion save DC 18. A nonmagical wood or metal object held continuously against
+      it for a whole round takes 12 acid damage; stone is unaffected.
+  - name: Aquatic
+    description: Breathes water, not air; outside water it uses the current suffocation rules.
+  actions:
+  - name: Slam
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d6 + 4
+      bludgeoning damage. A Medium or smaller target is Grappled (escape action: STR or DEX check DC 13). Only
+      one creature can be held with this limb. The hold ends if the grappler is incapacitated or the target
+      leaves its reach. The target also makes a DC 18 CON save; failure: Stunned for 1 minute. Repeat the save
+      at the end of each turn, ending the stun on success. On initial success, no paralysis. A creature freed
+      from paralysis is immune to this ooze''s stun for 24 hours. '
+  ability_score_status: reconstructed
+  source_system: Legacy d20
+  source_ref: User-supplied statblock screenshot / Crystal Ooze
+  original_5e:
+    source_system: Legacy d20
+    name: Crystal Ooze
+    printed_scores:
+    - 16
+    - 1
+    - 26
+    - —
+    - 1
+    - 1
+    printed_cr: 4
+    printed_ac: 5
+    printed_hp: 50 (4d8+32)
+    printed_speed: 10 ft.
+    legacy_attack: +6 slam, 1d6+4 plus 1d6 acid and grab
+    legacy_constrict: 1d6+1 plus 1d6 acid
+    legacy_saves: Fort +9, Ref -4, Will -4
+    legacy_acid_dc: 20
+    variant_changes: Aquatic, swim 30 ft., removes constrict; toxin paralyzes for 3d6 rounds on a failed CON-based
+      save.
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Absent INT is filled with 1 for a mindless body; numeric values are not a claim of cognition.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Seas & coasts
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - The paralysis duration becomes one minute with repeat saves and immunity after recovery. No Constrict action.
+  - Sustained legacy paralysis becomes current Stunned, allowing the listed repeat CON recovery saves. Current
+    Paralyzed forbids saves; fixed one-turn paralysis elsewhere ends automatically instead.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +3, DEX -5, CON +8, INT -5, WIS -5, CHA -5
+  damage_immunities: cold, fire
+  condition_immunities: Blinded, Charmed, Deafened, Prone, Afraid
+  source_ability_scores:
+    method: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+    scores:
+      str: '16'
+      dex: '1'
+      con: '26'
+      int: '1'
+      wis: '1'
+      cha: '1'
+    note: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+- name: Id Ooze
+  group: Cross-system creature conversions
+  id: converted-id-ooze
+  meta: Medium ooze, neutral
+  size: Medium
+  type: ooze
+  alignment: neutral
+  cr: '6'
+  ac: '9'
+  hp: '58'
+  speed: 10 ft.
+  block: 0 / -3 check
+  abilities:
+    str: '20'
+    dex: '5'
+    con: '30'
+    int: '2'
+    wis: '5'
+    cha: '5'
+  proficiency_bonus: '+3'
+  senses: blindsight 60 ft. (blind beyond this radius), passive Perception 7
+  languages: empathic telepathy 100 ft. with other id oozes
+  traits:
+  - name: Amorphous and Mindless
+    description: Can pass through a 1-inch gap without squeezing. It needs no sleep and cannot speak. It is
+      immune to effects that require understanding language.
+  - name: Transparent
+    description: While still, spotting it requires a DC 15 WIS (Perception) check. Moving into its occupied
+      space reveals it and lets it make one Slam as a reaction; resolve the attack and Block normally.
+  - name: Corrosive Contact
+    description: Each Slam deals an additional 1d6 acid damage on an unblocked strike. On an unblocked strike,
+      choose one nonmagical metal/wood weapon or worn armor touching the creature; its wielder/wearer makes
+      a CON save against the listed DC. On failure, that item's attack rolls (weapon) or AC (armor) take a
+      -1 penalty, to a maximum -2 from this creature's corrosion. One hour with suitable tools and a DC 12
+      smithing or woodworking check repairs 1 penalty. This does not destroy items or lower Block, and magical
+      items are unaffected. Corrosion save DC 21. A nonmagical wood or metal object held continuously against
+      it for a whole round takes 12 acid damage; stone is unaffected.
+  actions:
+  - name: Slam
+    description: 'Melee attack: +8 to hit, reach 5 ft., one target; Block DC 16. Unblocked strike: 1d6 + 5
+      bludgeoning damage. A Medium or smaller target is Grappled (escape action: STR or DEX check DC 16). Only
+      one creature can be held with this limb. The hold ends if the grappler is incapacitated or the target
+      leaves its reach. '
+  - name: Constrict
+    description: 'One Grappled target makes a DC 16 STR save. Failure: 1d6 + 1 bludgeoning and 1d6 acid; success:
+      none.'
+  - name: Mental Pulse (Recharge 5–6)
+    description: 'One creature with a mind within 30 ft. makes a DC 21 WIS save. Failure: Confused until the
+      end of its next turn; success: unaffected. This is a monster-specific CON-based psionic power, with no
+      new player spell.'
+  ability_score_status: reconstructed
+  source_system: Legacy d20
+  source_ref: User-supplied statblock screenshot / Id Ooze
+  original_5e:
+    source_system: Legacy d20
+    name: Id Ooze
+    printed_scores:
+    - 16
+    - 1
+    - 26
+    - —
+    - 1
+    - 1
+    printed_cr: 6
+    printed_ac: 5
+    printed_hp: 50 (4d8+32)
+    printed_speed: 10 ft.
+    legacy_attack: +6 slam, 1d6+4 plus 1d6 acid and grab
+    legacy_constrict: 1d6+1 plus 1d6 acid
+    legacy_saves: Fort +9, Ref -4, Will -4
+    legacy_acid_dc: 20
+    variant_changes: Advanced gray ooze; INT 2, empathic telepathy 100 ft. with other id oozes, at-will lesser
+      confusion.
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Absent INT is filled with 1 for a mindless body; numeric values are not a claim of cognition.
+    - 'Advanced template: +4 physical/WIS/CHA, +2 natural AC; INT explicitly 2. HP +8, AC +4; CON fuels completed
+      psionics.'
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Caverns & lost ruins
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 8
+      block_dc: 16
+      dc_adjustment: 0
+      damage_modifier: 5
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +5, DEX -3, CON +10, INT -4, WIS -3, CHA -3
+  damage_immunities: cold, fire
+  condition_immunities: Blinded, Charmed, Deafened, Prone, Afraid
+  source_ability_scores:
+    method: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+    scores:
+      str: '20'
+      dex: '5'
+      con: '30'
+      int: '2'
+      wis: '5'
+      cha: '5'
+    note: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+- name: Goblin Shark
+  group: Cross-system creature conversions
+  id: converted-goblin-shark
+  meta: Large beast, unaligned
+  size: Large
+  type: beast
+  alignment: unaligned
+  cr: '5'
+  ac: '16'
+  hp: '85'
+  speed: swim 20 ft.
+  block: 4 / +4 check
+  abilities:
+    str: '22'
+    dex: '18'
+    con: '20'
+    int: '2'
+    wis: '16'
+    cha: '4'
+  proficiency_bonus: '+3'
+  senses: electrolocation 20 ft. (precise for living creatures underwater), scent 100 ft. (imprecise), blood
+    scent 1 mile underwater, passive Perception 13
+  languages: —
+  traits:
+  - name: Aquatic
+    description: Breathes water, not air; outside water it uses the current suffocation rules.
+  - name: Underwater Camouflage
+    description: May attempt to Hide underwater without cover; it still must be unseen when the check succeeds.
+  - name: Grasping Jaws
+    description: A creature that escapes the jaws receives one stack of current Bleeding. The escape itself
+      does not deal a second bite's damage. Use current Bleeding timing and removal.
+  actions:
+  - name: Jaws
+    description: 'Melee attack: +9 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d8 + 6
+      piercing damage. A Medium or smaller target is Grappled (escape action: STR or DEX check DC 17). Only
+      one creature can be held with this limb. The hold ends if the grappler is incapacitated or the target
+      leaves its reach. '
+  - name: Lunging Bite
+    description: Spends its action and up to 10 ft. of its normal movement to swim straight, then makes one
+      Jaws attack with reach 10 ft. It cannot use Multiattack in the same action.
+  ability_score_status: reconstructed
+  source_system: Level-based d20 / aquatic reference
+  source_ref: User-supplied statblock screenshot / Goblin Shark
+  original_5e:
+    source_system: Level-based d20 / aquatic reference
+    name: Goblin Shark
+    printed_scores:
+    - 22
+    - 18
+    - 20
+    - 2
+    - 16
+    - 4
+    printed_cr: not supplied; source uses creature level
+    printed_ac: 21
+    printed_hp: 85
+    printed_speed: swim 20 ft.
+    creature_level: 5
+    printed_modifiers:
+    - 6
+    - 4
+    - 5
+    - -4
+    - 3
+    - -3
+    printed_saves:
+      fort: 16
+      ref: 11
+      will: 10
+    printed_attack: +13 jaws [MAP +8/+3], 2d8+6 piercing and Grab
+    printed_grasping_jaws: 1d6 persistent bleed when a held creature escapes
+    printed_skills:
+      athletics: 13
+      stealth: 15
+      survival: 10
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Six scores reconstructed as 10 + 2 × level-based d20 modifier; AC = source AC minus level (16). Level
+      5 is only the starting CR estimate.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Seas & coasts
+    attack_profiles:
+    - name: Jaws
+      ability: str
+      bonus: 9
+      block_dc: 17
+      dc_adjustment: 0
+      damage_modifier: 6
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - level-based d20 level-based attacks, saves, skills and MAP are removed. Jaws use STR + current proficiency;
+    persistent bleed becomes current Bleeding; two-action Lunging Bite becomes one action plus paid movement.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +6, DEX +4, CON +5, INT -4, WIS +3, CHA -3
+  source_ability_scores:
+    method: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+    scores:
+      str: '22'
+      dex: '18'
+      con: '20'
+      int: '2'
+      wis: '16'
+      cha: '4'
+    note: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+- name: Great White Shark
+  group: Cross-system creature conversions
+  id: converted-great-white-shark
+  meta: Large beast, unaligned
+  size: Large
+  type: beast
+  alignment: unaligned
+  cr: '4'
+  ac: '17'
+  hp: '60'
+  speed: swim 40 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '22'
+    dex: '14'
+    con: '18'
+    int: '2'
+    wis: '12'
+    cha: '2'
+  proficiency_bonus: '+2'
+  senses: scent 100 ft. (imprecise), blood scent 1 mile underwater, passive Perception 11
+  languages: —
+  traits:
+  - name: Aquatic
+    description: Breathes water, not air; outside water it uses the current suffocation rules.
+  actions:
+  - name: Jaws
+    description: 'Melee attack: +8 to hit, reach 5 ft., one target; Block DC 16. Unblocked strike: 1d12 + 8
+      piercing damage. '
+  - name: Breach
+    description: Spends its action and normal movement to swim up to its speed and leap up to 25 ft. vertically
+      out of the water. Makes one Jaws attack against a creature along the jump within 30 ft. of the surface,
+      then falls back into water. The leap grants no second move or attack.
+  - name: Savage
+    description: 'Only if it dealt damage with Jaws earlier this turn and the target remains within reach:
+      deals 1d12 slashing damage to that target. Costs its action, so it requires a separately granted earlier
+      attack; it is not a free rider and does not grant another action.'
+  - name: Strafing Chomp
+    description: 'Spends its action and normal movement: swims up to half its speed, makes one Jaws attack
+      dealing half its normal damage (round down), then swims up to half its speed. Total movement is at most
+      its speed.'
+  ability_score_status: reconstructed
+  source_system: Level-based d20 / creature reference
+  source_ref: User-supplied statblock screenshot / Great White Shark
+  original_5e:
+    source_system: Level-based d20 / creature reference
+    name: Great White Shark
+    printed_scores:
+    - 22
+    - 14
+    - 18
+    - 2
+    - 12
+    - 2
+    printed_cr: not supplied; source uses creature level
+    printed_ac: 21
+    printed_hp: 60
+    printed_speed: swim 40 ft.
+    creature_level: 4
+    printed_modifiers:
+    - 6
+    - 2
+    - 4
+    - -4
+    - 1
+    - -4
+    printed_attack: +14 jaws [MAP +9/+4], 1d12+8 piercing
+    printed_saves:
+      fort: 12
+      ref: 10
+      will: 9
+    printed_skills:
+      athletics: 14
+      stealth: 12
+      survival: 9
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Six scores reconstructed as 10 + 2 × level-based d20 modifier; AC = source AC minus level (17).
+    - The printed +8 natural-weapon damage is a fixed creature exception, independent of STR +6.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Seas & coasts
+    attack_profiles:
+    - name: Jaws
+      ability: str
+      bonus: 8
+      block_dc: 16
+      dc_adjustment: 0
+      damage_modifier: 8
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - level-based d20 action counts, level bonuses and MAP are replaced with Varis actions and current proficiency;
+    Savage explicitly costs an action.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +6, DEX +2, CON +4, INT -4, WIS +1, CHA -4
+  source_ability_scores:
+    method: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+    scores:
+      str: '22'
+      dex: '14'
+      con: '18'
+      int: '2'
+      wis: '12'
+      cha: '2'
+    note: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+- name: Brain Mole
+  group: Cross-system creature conversions
+  id: converted-brain-mole
+  meta: Tiny beast, neutral
+  size: Tiny
+  type: beast
+  alignment: neutral
+  cr: 1/3
+  ac: '16'
+  hp: '1'
+  speed: 10 ft., burrow 5 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '3'
+    dex: '15'
+    con: '10'
+    int: '2'
+    wis: '14'
+    cha: '4'
+  proficiency_bonus: '+2'
+  senses: tremorsense 10 ft. (ground contact), passive Perception 12
+  languages: —
+  traits:
+  - name: Burrow Cover
+    description: While entirely inside a burrow, gains +10 to DEX (Stealth) checks. It cannot attack through
+      solid earth.
+  - name: Cascade Flu
+    description: 'After an unblocked Bite, the target makes a DC 13 CON save. Failure: Diseased after 24 hours.
+      Once each day while diseased, its first spell/power use requires a DC 13 CON save after resolution; failure
+      adds 1 Fatigue (maximum 3 from this infection). A daily successful save ends the disease. Normal Diseased
+      recovery also applies; removing it does not itself remove Fatigue.'
+  actions:
+  - name: Bite
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1 piercing
+      damage. '
+  - name: Mind Thrust (Recharge 5–6)
+    description: 'One creature with a mind within 30 ft. makes a DC 12 WIS save. Failure: 1d6 psychic damage
+      and Distracted until the end of its next turn; success: no effect.'
+  - name: Detect Active Magic
+    description: Senses whether active magical or psionic effects are within 30 ft., without learning their
+      school, owner or exact location. This is a creature sense, not a new player spell.
+  ability_score_status: sourced
+  source_system: Legacy d20 reference
+  source_ref: User-supplied statblock screenshot / Brain Mole
+  original_5e:
+    source_system: Legacy d20 reference
+    name: Brain Mole
+    printed_scores:
+    - 3
+    - 15
+    - 10
+    - 2
+    - 14
+    - 4
+    printed_cr: 1/3
+    printed_ac: 16
+    printed_hp: 1/4 d8 (no total)
+    printed_speed: 10 ft., burrow 5 ft.
+    printed_size: Diminutive
+    printed_attack: Bite +0; 1d2-4 (ambiguous screenshot)
+    printed_psionics: at will burst, detect psionics, distract (as 10th-level psion); mind thrust/empty mind
+    printed_disease: 'Cascade flu: Fort DC 13, incubation one day; Concentration DC 16 when manifesting'
+    legacy_saves: Fort +2, Ref +4, Will +2
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Tiny is the nearest supported size; HP 1, burrow 5 ft. and minimum bite damage 1 complete the partial
+      profile.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Caverns & lost ruins
+    attack_profiles:
+    - name: Bite
+      ability: dex
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 0
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Legacy psion levels, attack/defense modes and psionic cascade are replaced by the explicit bounded creature
+    powers above. Bite deals 1 rather than a negative result.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR -4, DEX +2, CON +0, INT -4, WIS +2, CHA -3
+  casting_ability: WIS
+  spell_attack: '+4'
+  spell_save_dc: '12'
+  bonus_actions:
+  - name: Psionic Burst (1/day)
+    description: Moves up to 10 ft. using its normal movement rules. Grants no additional attack.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '3'
+      dex: '15'
+      con: '10'
+      int: '2'
+      wis: '14'
+      cha: '4'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Crystal Abomination
+  group: Cross-system creature conversions
+  id: converted-crystal-abomination
+  meta: Medium aberration, neutral
+  size: Medium
+  type: aberration
+  alignment: neutral
+  cr: '10'
+  ac: '29'
+  hp: '51'
+  speed: 30 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '18'
+    dex: '14'
+    con: '18'
+    int: '20'
+    wis: '16'
+    cha: '14'
+  proficiency_bonus: '+4'
+  senses: passive Perception 13
+  languages: —
+  traits:
+  - name: Physical Reduction
+    description: Reduce bludgeoning, piercing and slashing damage from each source by 10 (minimum 0). This
+      is natural body protection; it grants no equipment Block.
+  - name: Crystal Controller
+    description: An attached crystal can be targeted separately (AC 22, HP 120, physical reduction 10). These
+      HP do not add to the body's 51 HP. While the crystal lives, mental effects target its INT/WIS/CHA; physical
+      effects target the body. A mental effect is rolled once against the composite creature. Destroying the
+      crystal incapacitates the body. Destroying the body leaves the crystal immobile with its remaining HP
+      and one action per turn. Without the body, the crystal has AC 22, speed 0 and no Block; it can use only
+      Psychic Blast, Telekinetic Thrust and Mind Link, with the same remaining shared charges. It cannot Slam,
+      Multiattack or use Deep Crystal Charge.
+  - name: Crystal Charges
+    description: Has 5 charges, restored after a long rest. All charged powers share this pool; no original
+      power-point or psion class system is granted.
+  actions:
+  - name: Multiattack
+    description: Makes two Slam attacks. The crystal and body share one turn, action, bonus action and reaction;
+      they do not each get Multiattack.
+  - name: Slam
+    description: 'Melee attack: +8 to hit, reach 10 ft., one target; Block DC 16. Unblocked strike: 2d6 + 4
+      bludgeoning damage. '
+  - name: Psychic Blast (1 charge)
+    description: 'Creatures of its choice within a 15-ft. cone make a DC 17 WIS save. Failure: 3d8 psychic
+      damage and Dazed until the end of their next turn; success: half damage and no Dazed.'
+  - name: Telekinetic Thrust (1 charge)
+    description: 'One Large or smaller creature within 60 ft. makes a DC 17 STR save. Failure: 3d6 force damage,
+      pushed up to 15 ft., and Prone; success: half damage, no push or Prone.'
+  - name: Mind Link
+    description: May establish willing two-way telepathy with one creature within 60 ft. until either ends
+      it or leaves range. It can speak or offer surrender through this link; the link grants no control.
+  ability_score_status: reconstructed
+  source_system: Legacy d20 homebrew
+  source_ref: User-supplied statblock screenshot / Crystal Abomination
+  original_5e:
+    source_system: Legacy d20 homebrew
+    name: Crystal Abomination
+    printed_cr: 10
+    printed_ac: 29
+    printed_hp: 51
+    printed_speed: 30 ft.
+    printed_body_scores:
+    - 18
+    - 14
+    - 18
+    - —
+    - —
+    - —
+    printed_crystal_scores:
+      int: 20
+      wis: 16
+      cha: 14
+    printed_crystal:
+      ac: 22
+      hp: 120
+      hardness: 10
+      power_points: 50
+      manifester_level: 6
+    printed_body: AC 29 (natural +9, armor +4, shield +4, DEX +2); HP 51; two slams +9 (2d6+4); reach 10 ft.;
+      hardness 10
+    printed_psionic_charge: 2 power points adds 2d6 to slams for one round
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Six-score profile combines the physical body and its attached controlling crystal; the body's absent
+      mental stats remain archived.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Earth & crystal realms
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 8
+      block_dc: 16
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - The source crystal's many psionic powers are represented by the bounded psychic/force package above, not
+    imported as new player spells. Charging uses a bonus action and the shared charge pool. Body AC remains
+    a fixed natural/crystal defense, not fictitious worn armor or shield training.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +4, DEX +2, CON +4, INT +5, WIS +3, CHA +2
+  bonus_actions:
+  - name: Deep Crystal Charge (1 charge)
+    description: Until the end of this turn, each unblocked Slam deals 2d6 extra force damage. One activation
+      per turn; no free activation after an attack.
+  casting_ability: INT
+  spell_attack: '+9'
+  spell_save_dc: '17'
+  source_ability_scores:
+    method: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+    scores:
+      str: '18'
+      dex: '14'
+      con: '18'
+      int: '20'
+      wis: '16'
+      cha: '14'
+    note: The entry's source/completion panel identifies every inferred score, absent mental score or modifier
+      reconstruction.
+- name: Slag Worm
+  group: Cross-system creature conversions
+  id: converted-slag-worm
+  meta: Gargantuan elemental, neutral
+  size: Gargantuan
+  type: elemental
+  alignment: neutral
+  cr: '20'
+  ac: '36'
+  hp: '348'
+  speed: 90 ft., burrow 30 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '41'
+    dex: '14'
+    con: '26'
+    int: '18'
+    wis: '19'
+    cha: '10'
+  proficiency_bonus: '+6'
+  senses: darkvision 60 ft., tremorsense 60 ft., passive Perception 14
+  languages: Ignan, Terran
+  traits:
+  - name: Physical Reduction
+    description: Reduce bludgeoning, piercing and slashing damage from each source by 15 (minimum 0). Damage
+      from adamantine weapons bypasses this reduction. Natural body protection grants no equipment Block.
+  - name: Intense Heat
+    description: A creature that starts its turn within 10 ft. makes a DC 22 CON save, taking 4d6 fire damage
+      on failure or half on success. An unarmed/natural melee strike touching the worm deals 4d6 fire damage
+      to the attacker once per turn, after its attack. A blocked worm Bite does not cause this contact damage.
+      The worm's own heat never heals it.
+  - name: Fire Absorption
+    description: When another source would deal fire damage, determine the amount after its successful save
+      or Block, before fire immunity. It heals floor(amount / 3) HP. Any excess becomes temporary HP (keep
+      the higher grant; does not stack; lasts 1 hour). Its own attacks and aura do not trigger absorption.
+  - name: Heat-Warped Metal
+    description: 'After a metal melee weapon touches the worm, its wielder makes a DC 22 CON save. Failure:
+      the nonmagical weapon takes a nonstacking -1 attack penalty until cooled in water or for 1 minute. Magic
+      weapons are unaffected. This bounded penalty replaces automatic weapon destruction.'
+  - name: Susceptible to Rust
+    description: An effect specifically causing magical rust deals an extra 2d6 damage to the worm once per
+      effect; ordinary contact with water does not count.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +21 to hit, reach 15 ft., one target; Block DC 29. Unblocked strike: 6d10 +
+      22 piercing damage. A Huge or smaller target is Grappled (escape action: STR or DEX check DC 29). Only
+      one creature can be held with this limb. The hold ends if the grappler is incapacitated or the target
+      leaves its reach. Critical range 19–20 is a fixed natural-weapon feature. '
+  - name: Swallow Whole
+    description: 'One Huge or smaller creature already Grappled by its Bite makes a DC 29 STR save. Failure:
+      swallowed; success: remains Grappled outside. Capacity one. Inside it is Blinded, cannot affect targets
+      outside, and takes 4d6 bludgeoning plus 4d6 fire at the start of the worm''s turn. It can attack the
+      stomach (AC 24); dealing 34 damage in one turn opens an exit. The worm is forced to regurgitate it within
+      10 ft. when incapacitated; teleportation can also escape.'
+  ability_score_status: sourced
+  source_system: Legacy d20
+  source_ref: User-supplied statblock screenshot / Slag Worm
+  original_5e:
+    source_system: Legacy d20
+    name: Slag Worm
+    printed_scores:
+    - 41
+    - 14
+    - 26
+    - 18
+    - 19
+    - 10
+    printed_cr: 20
+    printed_ac: 36
+    printed_hp: 348
+    printed_speed: 90 ft., burrow 30 ft.
+    printed_attack: +36 bite, 6d10+22, 19–20, grab
+    printed_swallow: 4d6 bludgeoning + 4d6 fire; stomach AC 24, HP 34
+    printed_heat: 10 ft., DC 30, 4d6 fire; metal weapons melt on failed Fort DC 30
+    printed_roar: after half-speed movement, 50 ft., Fort DC 30, deafened 2d4 rounds
+    printed_DR: 15/adamantine
+    printed_absorption: heal 1 per 3 incoming fire; excess temporary HP
+    legacy_saves: Fort +18, Ref +18, Will +20
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Fire, storms & sky
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 21
+      block_dc: 29
+      dc_adjustment: 0
+      damage_modifier: 22
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - BAB, CMB/CMD, size-based accuracy and Fortitude/Reflex/Will are replaced by current attacks and six saves.
+    Heat/roar DC uses CON + current proficiency; the printed +22 bite damage remains a fixed monster exception.
+    Armor melting becomes a bounded recoverable weapon penalty.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +15, DEX +2, CON +8, INT +4, WIS +4, CHA +0
+  damage_immunities: fire, poison
+  damage_vulnerabilities: cold
+  condition_immunities: Poisoned, Prone
+  bonus_actions:
+  - name: Grinding Roar (Recharge 5–6)
+    description: 'Requires moving at least 45 ft. this turn. Each other creature that can hear it within 50
+      ft. makes a DC 22 CON save. Failure: Deafened for 1 minute; repeat the save at the end of each turn.
+      Success: unaffected.'
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '41'
+      dex: '14'
+      con: '26'
+      int: '18'
+      wis: '19'
+      cha: '10'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Borogon
+  group: Cross-system creature conversions
+  id: converted-borogon
+  meta: Huge monstrosity, chaotic neutral
+  size: Huge
+  type: monstrosity
+  alignment: chaotic neutral
+  cr: '10'
+  ac: '17'
+  hp: '180'
+  speed: 80 ft.
+  block: 0 / +0 check
+  abilities:
+    str: '30'
+    dex: '10'
+    con: '10'
+    int: '8'
+    wis: '1'
+    cha: '1'
+  proficiency_bonus: '+4'
+  senses: low-light vision 30 ft., scent 60 ft. (imprecise), passive Perception 5
+  languages: Draconic
+  traits: []
+  actions:
+  - name: Multiattack
+    description: Makes one Bite attack and two Claw attacks.
+  - name: Bite
+    description: 'Melee attack: +14 to hit, reach 10 ft., one target; Block DC 22. Unblocked strike: 3d10 +
+      10 piercing damage. A Medium or smaller target is Grappled (escape action: STR or DEX check DC 22). Only
+      one creature can be held with this limb. The hold ends if the grappler is incapacitated or the target
+      leaves its reach. '
+  - name: Claw
+    description: 'Melee attack: +14 to hit, reach 10 ft., one target; Block DC 22. Unblocked strike: 2d8 +
+      10 slashing damage. '
+  - name: Swallow
+    description: 'One Medium or smaller target already Grappled by Bite within 5 ft. makes a DC 22 STR save;
+      failure: swallowed, capacity one; success: stays outside. Inside it is Blinded, has no line of effect
+      outside, and takes 3d6 acid at the start of the borogon''s turn. An action STR or DEX check DC 22 escapes
+      into a space within 5 ft.; dealing 25 damage in one turn to its stomach (AC 15), teleportation, or incapacitating
+      it also releases the target.'
+  ability_score_status: sourced
+  source_system: Legacy d20 homebrew
+  source_ref: User-supplied statblock screenshot / Borogon
+  original_5e:
+    source_system: Legacy d20 homebrew
+    name: Borogon
+    printed_scores:
+    - 30
+    - 10
+    - 10
+    - 8
+    - 1
+    - 1
+    printed_cr: 10
+    printed_ac: 17
+    printed_hp: 180 (18d8+98; inconsistent)
+    printed_speed: 80 ft.
+    printed_attack: +14; full attack 20 (routine and damage absent)
+    printed_feats: Awesome Blow, Power Attack, Improved Bull Rush, Snatch, Swallow Whole, Track
+    printed_mutation: morphs into dire form when hit by negative energy
+    alignment: chaotic neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing bite/claw damage, attack routine, swallowing limits and dire-form statistics completed below;
+      printed HP 180 is retained despite the formula.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 14
+      block_dc: 22
+      dc_adjustment: 0
+      damage_modifier: 10
+      offset: 0
+    - name: Claw
+      ability: str
+      bonus: 14
+      block_dc: 22
+      dc_adjustment: 0
+      damage_modifier: 10
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Undefined attacks and dire mutation are documented completions. Source touch/flat-footed AC and inconsistent
+    hit-dice formula do not override its printed fixed AC/HP.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +10, DEX +0, CON +0, INT -1, WIS -5, CHA -5
+  reactions:
+  - name: Dire Mutation (1/day)
+    description: After taking necrotic damage, becomes Gargantuan for 1 minute. Gains 20 temporary HP (nonstacking),
+      +5-ft. melee reach and +2 natural-weapon damage. It retains the same current/max HP and ability scores;
+      there is no second health bar. It then reverts. This completes the source's unspecified dire form.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '30'
+      dex: '10'
+      con: '10'
+      int: '8'
+      wis: '1'
+      cha: '1'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Frost Salamander
+  group: Cross-system creature conversions
+  id: converted-frost-salamander
+  meta: Medium monstrosity, chaotic evil
+  size: Medium
+  type: monstrosity
+  alignment: chaotic evil
+  cr: '7'
+  ac: '17'
+  hp: '78'
+  speed: 30 ft., climb 30 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '16'
+    dex: '15'
+    con: '12'
+    int: '6'
+    wis: '12'
+    cha: '7'
+  proficiency_bonus: '+3'
+  senses: darkvision 60 ft., low-light vision, passive Perception 11
+  languages: —
+  traits:
+  - name: Physical Reduction
+    description: Reduce bludgeoning, piercing and slashing damage from each source by 15 (minimum 0). Damage
+      from magical weapons bypasses this reduction. Natural body protection grants no equipment Block.
+  - name: Cold Aura
+    description: A creature that starts its turn within 20 ft. takes 1d8 cold damage, once per turn. There
+      is no saving throw and it cannot be Blocked. Current cold resistance/immunity applies.
+  actions:
+  - name: Multiattack
+    description: Makes four Claw attacks and one Bite attack. These are natural weapons; the bite retains the
+      source's -2 secondary-attack difference after recalculation.
+  - name: Claw
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 14. Unblocked strike: 1d6 + 3
+      slashing damage. Critical range 19–20. '
+  - name: Bite
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d6 + 3
+      piercing damage. '
+  ability_score_status: sourced
+  source_system: Legacy d20 / creature reference volume 2
+  source_ref: User-supplied statblock screenshot / Frost Salamander
+  original_5e:
+    source_system: Legacy d20 / creature reference volume 2
+    name: Frost Salamander
+    printed_scores:
+    - 16
+    - 15
+    - 12
+    - 6
+    - 12
+    - 7
+    printed_cr: 7
+    printed_ac: 17
+    printed_hp: 78
+    printed_speed: 30 ft., climb 30 ft.
+    printed_attacks: four claws +12 (1d6, 19–20); bite +10 (1d6)
+    printed_aura: 20 ft.; 1d8 cold per round, no save
+    printed_DR: 15/+1
+    legacy_saves: Fort +9, Ref +10, Will +5
+    alignment: chaotic evil
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Frozen wastes
+    attack_profiles:
+    - name: Claw
+      ability: str
+      bonus: 6
+      block_dc: 14
+      dc_adjustment: 0
+      damage_modifier: 3
+      offset: 0
+    - name: Bite
+      ability: str
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 3
+      offset: -2
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old +1 weapon-based damage reduction is expressed as physical reduction bypassed by magical weapons. Accuracy
+    uses current proficiency; the unlisted damage modifier is completed with STR +3.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +3, DEX +2, CON +1, INT -2, WIS +1, CHA -2
+  damage_immunities: cold
+  damage_vulnerabilities: fire
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '16'
+      dex: '15'
+      con: '12'
+      int: '6'
+      wis: '12'
+      cha: '7'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Galeb Duhr
+  group: Cross-system creature conversions
+  id: converted-galeb-duhr
+  meta: Medium elemental, neutral
+  size: Medium
+  type: elemental
+  alignment: neutral
+  cr: '9'
+  ac: '22'
+  hp: '76'
+  speed: 0 ft., burrow 10 ft.
+  block: 0 / -3 check
+  abilities:
+    str: '13'
+    dex: '5'
+    con: '20'
+    int: '11'
+    wis: '16'
+    cha: '12'
+  proficiency_bonus: '+4'
+  senses: darkvision 60 ft., tremorsense 300 ft. while touching ground, passive Perception 13
+  languages: —
+  traits:
+  - name: Physical Reduction
+    description: Reduce bludgeoning, piercing and slashing damage from each source by 15 (minimum 0). Damage
+      from magical weapons bypasses this reduction. Natural body protection grants no equipment Block.
+  - name: Boulder Stillness
+    description: While motionless, resembles a boulder; a DC 30 WIS (Perception) check reveals its living form.
+      Acting reveals it normally.
+  actions:
+  - name: Multiattack
+    description: Makes two Slam attacks.
+  - name: Slam
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d6 + 1
+      bludgeoning damage. '
+  - name: Stone Shaping
+    description: Touches nonmagical, unworked earth or stone within 10 ft., reshaping up to a 5-ft. cube. Cannot
+      move creatures, create treasure, crush an occupied space or compromise an occupied structure. A stone
+      passage opens only if enough material is moved; this is not teleportation.
+  - name: Stone Wall (1/day)
+    description: Raises up to three contiguous 5-ft. stone panels within 30 ft., each AC 17 and HP 20, for
+      1 minute. Requires concentration; only one wall can be active. The wall cannot form through creatures,
+      and creatures in its path choose either side. Alternatively makes a 10-ft. square of stone muddy difficult
+      terrain for the duration. This is a monster power, not a new Geomancy spell.
+  - name: Animate Boulders (1/day)
+    description: Animates up to two adjacent boulders using the existing Boulder Guardian monster profile for
+      1 minute, requiring concentration. They act after the galeb duhr and take only a move plus Dodge unless
+      it spends a bonus action commanding one shared target; then each may use its normal action. They have
+      no reactions and cannot spawn or summon. They return to ordinary stone when the effect ends. Two active
+      boulders maximum; this is a creature power, not a new player spell.
+  ability_score_status: sourced
+  source_system: Legacy d20 / creature reference volume 2
+  source_ref: User-supplied statblock screenshot / Galeb Duhr
+  original_5e:
+    source_system: Legacy d20 / creature reference volume 2
+    name: Galeb Duhr
+    printed_scores:
+    - 13
+    - 5
+    - 20
+    - 11
+    - 16
+    - 12
+    printed_cr: 9
+    printed_ac: 22
+    printed_hp: 76
+    printed_speed: 0 ft., burrow 10 ft.
+    printed_attacks: two slams +7 (1d6+1)
+    printed_DR: 15/+1
+    printed_magic: at will animate objects (stone), stone shape, stone wall, move earth, transmute rock to
+      mud, caster level 20
+    legacy_saves: Fort +11, Ref -1, Will +5
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Stone-only Animate Objects uses the existing standalone Boulder Guardian as its donor, with concentration,
+      a one-minute duration, command cost and a two-creature limit.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Earth & crystal realms
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      damage_modifier: 1
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Unbounded 20th-level at-will world-shaping magic is converted to explicit volume limits, concentration
+    and daily powers. No player spell or class permission is added; controlled boulders have a complete bounded
+    subordinate profile.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +1, DEX -3, CON +5, INT +0, WIS +3, CHA +1
+  condition_immunities: Poisoned, Paralyzed, Stunned
+  damage_immunities: poison
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '13'
+      dex: '5'
+      con: '20'
+      int: '11'
+      wis: '16'
+      cha: '12'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+  summons:
+  - monster: Boulder Guardian
+    label: Animated boulder (Boulder Guardian profile)
+- name: Gambol
+  group: Cross-system creature conversions
+  id: converted-gambol
+  meta: Large monstrosity, chaotic neutral
+  size: Large
+  type: monstrosity
+  alignment: chaotic neutral
+  cr: '5'
+  ac: '18'
+  hp: '60'
+  speed: 30 ft., climb 15 ft.
+  block: 4 / +4 check
+  abilities:
+    str: '23'
+    dex: '18'
+    con: '15'
+    int: '2'
+    wis: '12'
+    cha: '9'
+  proficiency_bonus: '+3'
+  senses: darkvision 60 ft., low-light vision, passive Perception 11
+  languages: —
+  traits:
+  - name: Evasion
+    description: When a DEX save would halve damage, takes none on success and half on failure; cannot use
+      this while Incapacitated.
+  - name: Great Leap
+    description: Its long jump reaches 30 ft. without a running start, using movement normally; this grants
+      no extra move action.
+  actions:
+  - name: Multiattack
+    description: Makes one Bite and two Claw attacks.
+  - name: Bite
+    description: 'Melee attack: +9 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d8 + 6
+      piercing damage. '
+  - name: Claw
+    description: 'Melee attack: +7 to hit, reach 5 ft., one target; Block DC 15. Unblocked strike: 1d4 + 3
+      slashing damage. '
+  ability_score_status: sourced
+  source_system: Legacy d20 / creature reference volume 2
+  source_ref: User-supplied statblock screenshot / Gambol
+  original_5e:
+    source_system: Legacy d20 / creature reference volume 2
+    name: Gambol
+    printed_scores:
+    - 23
+    - 18
+    - 15
+    - 2
+    - 12
+    - 9
+    printed_cr: 5
+    printed_ac: 18
+    printed_hp: 60
+    printed_speed: 30 ft., climb 15 ft.
+    printed_attacks: bite +13 (2d8), two claws +11 (1d4)
+    printed_features: Evasion, Haste, Great Leap, Masterful Dodge
+    legacy_saves: Fort +8, Ref +12, Will +3
+    alignment: chaotic neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Source Haste and Masterful Dodge lack text in the supplied crop; their bounded effects above are completed,
+      not quoted. Bite adds STR, secondary claws add half STR.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 9
+      block_dc: 17
+      dc_adjustment: 0
+      damage_modifier: 6
+      offset: 0
+    - name: Claw
+      ability: str
+      bonus: 7
+      block_dc: 15
+      dc_adjustment: 0
+      damage_modifier: 3
+      offset: -2
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +6, DEX +4, CON +2, INT -4, WIS +1, CHA -1
+  bonus_actions:
+  - name: Burst of Haste (1/day)
+    description: For 3 rounds, speed increases by 15 ft. and gains +2 AC. It gains no additional actions, bonus
+      actions or attacks. Repeated grants do not stack.
+  reactions:
+  - name: Masterful Dodge
+    description: When a visible attack targets it and it can move, gives that attack disadvantage. It may move
+      5 ft. using remaining movement after the attack; this does not cancel a hit already resolved.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '23'
+      dex: '18'
+      con: '15'
+      int: '2'
+      wis: '12'
+      cha: '9'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Grizzly Mastodon
+  group: Cross-system creature conversions
+  id: converted-grizzly-mastodon
+  meta: Huge beast, neutral
+  size: Huge
+  type: beast
+  alignment: neutral
+  cr: '13'
+  ac: '16'
+  hp: '172'
+  speed: 40 ft.
+  block: 0 / +0 check
+  abilities:
+    str: '35'
+    dex: '10'
+    con: '23'
+    int: '2'
+    wis: '15'
+    cha: '7'
+  proficiency_bonus: '+5'
+  senses: darkvision 60 ft., low-light vision, scent 60 ft. (imprecise), passive Perception 12
+  languages: —
+  traits: []
+  actions:
+  - name: Multiattack
+    description: Makes one Slam and two Stomp attacks, or one Gore attack. Trample replaces this entire action.
+  - name: Slam
+    description: 'Melee attack: +17 to hit, reach 5 ft., one target; Block DC 25. Unblocked strike: 2d6 + 12
+      bludgeoning damage. '
+  - name: Stomp
+    description: 'Melee attack: +12 to hit, reach 5 ft., one target; Block DC 20. Unblocked strike: 2d6 + 6
+      bludgeoning damage. '
+  - name: Gore
+    description: 'Melee attack: +17 to hit, reach 5 ft., one target; Block DC 25. Unblocked strike: 4d8 + 12
+      piercing damage. '
+  - name: Trample
+    description: 'Spends its action and normal movement to cross spaces of Large or smaller creatures. Each
+      crossed creature once this turn makes a DC 25 DEX save: 4d8 + 18 bludgeoning on failure, half on success.
+      Does not grant extra movement or free Stomp attacks; normal reactions still apply.'
+  ability_score_status: sourced
+  source_system: Legacy d20 / creature reference volume 2
+  source_ref: User-supplied statblock screenshot / Grizzly Mastodon
+  original_5e:
+    source_system: Legacy d20 / creature reference volume 2
+    name: Grizzly Mastodon
+    printed_scores:
+    - 35
+    - 10
+    - 23
+    - 2
+    - 15
+    - 7
+    printed_cr: 13
+    printed_ac: 16
+    printed_hp: 172
+    printed_speed: 40 ft.
+    printed_attacks: slam +21 (2d6+12), two stomps +16 (2d6+6), or gore +21 (4d8+12)
+    printed_trample: 4d8+18, Reflex DC 29 half; optional attack of opportunity at -4
+    legacy_saves: Fort +15, Ref +9, Will +7
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Frozen wastes
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 17
+      block_dc: 25
+      dc_adjustment: 0
+      damage_modifier: 12
+      offset: 0
+    - name: Stomp
+      ability: str
+      bonus: 12
+      block_dc: 20
+      dc_adjustment: 0
+      damage_modifier: 6
+      offset: -5
+    - name: Gore
+      ability: str
+      bonus: 17
+      block_dc: 25
+      dc_adjustment: 0
+      damage_modifier: 12
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Legacy trample Reflex DC 29 and the special -4 attack option become one current DEX save and normal reactions.
+    The source's +18 trample damage remains a fixed creature exception.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +12, DEX +0, CON +6, INT -4, WIS +2, CHA -2
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '35'
+      dex: '10'
+      con: '23'
+      int: '2'
+      wis: '15'
+      cha: '7'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Catoblepas
+  group: Cross-system creature conversions
+  id: converted-catoblepas
+  meta: Huge aberration, neutral
+  size: Huge
+  type: aberration
+  alignment: neutral
+  cr: '6'
+  ac: '19'
+  hp: '57'
+  speed: 30 ft.
+  block: 1 / +1 check
+  abilities:
+    str: '26'
+    dex: '12'
+    con: '21'
+    int: '2'
+    wis: '13'
+    cha: '8'
+  proficiency_bonus: '+3'
+  senses: darkvision 60 ft., scent 60 ft. (imprecise), passive Perception 11
+  languages: —
+  traits: []
+  actions:
+  - name: Tail Slam
+    description: 'Melee attack: +11 to hit, reach 10 ft., one target; Block DC 19. Unblocked strike: 1d6 +
+      12 bludgeoning damage. The target makes a DC 16 CON save; failure: Stunned until the end of its next
+      turn, success: no stun. '
+  - name: Death Ray (Cooldown 1d4 rounds)
+    description: 'One living creature it can see within 160 ft. makes a DC 16 CON save. Failure: 8d8 necrotic
+      damage; success: half. No attack roll and no Block. After use, roll 1d4; count down at the start of its
+      turns and reuse when the count reaches 0.'
+  ability_score_status: sourced
+  source_system: Legacy d20 / creature reference volume 2
+  source_ref: User-supplied statblock screenshot / Catoblepas
+  original_5e:
+    source_system: Legacy d20 / creature reference volume 2
+    name: Catoblepas
+    printed_scores:
+    - 26
+    - 12
+    - 21
+    - 2
+    - 13
+    - 8
+    printed_cr: 6
+    printed_ac: 19
+    printed_hp: 57
+    printed_speed: 30 ft.
+    printed_attacks: tail +10 (1d6+12), death ray ranged touch +3
+    printed_ray: range 160 ft.; Fort DC 18 or die, success 5d6 damage; wait 1d4 rounds
+    printed_stun: Fort DC 18, one round
+    legacy_saves: Fort +7, Ref +3, Will +6
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Tail Slam
+      ability: str
+      bonus: 11
+      block_dc: 19
+      dc_adjustment: 0
+      damage_modifier: 12
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - The source's save-or-die ray becomes bounded necrotic damage with a successful-save outcome. Old ranged
+    touch accuracy and Fortitude DC are replaced by one current CON save; the 1d4-round cooldown is retained.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +8, DEX +1, CON +5, INT -4, WIS +1, CHA -1
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '26'
+      dex: '12'
+      con: '21'
+      int: '2'
+      wis: '13'
+      cha: '8'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Red Sundew
+  group: Cross-system creature conversions
+  id: converted-red-sundew
+  meta: Huge plant, neutral
+  size: Huge
+  type: plant
+  alignment: neutral
+  cr: '13'
+  ac: '11'
+  hp: '142'
+  speed: 20 ft.
+  block: 0 / -1 check
+  abilities:
+    str: '29'
+    dex: '8'
+    con: '21'
+    int: '2'
+    wis: '13'
+    cha: '8'
+  proficiency_bonus: '+5'
+  senses: woodsense 60 ft. (creatures/objects touching connected vegetation), low-light vision, passive Perception
+    11
+  languages: —
+  traits:
+  - name: Sticky Acid
+    description: 'An unblocked Slam coats the target in acid: 6 acid damage immediately and at the start of
+      each of its turns for 1d4 + 1 rounds. Repeated coating refreshes duration without stacking. Any creature
+      can spend an action and 1 gallon of water within reach to wash it off. Merely Blocked slams do not coat.
+      Contacting its body directly applies the same coating once; a weapon touching it can be withdrawn without
+      coating its wielder.'
+  - name: Acid and Objects
+    description: A nonmagical wood or metal object continuously coated takes 6 acid damage each round. Washing
+      it ends this. Use the current object's AC/HP; this does not introduce a new permanent armor-rating or
+      Block penalty.
+  actions:
+  - name: Multiattack
+    description: Makes four Slam attacks, distributing them among free tendrils and their held targets.
+  - name: Slam
+    description: 'Melee attack: +14 to hit, reach 15 ft., one target; Block DC 22. Unblocked strike: 2d6 +
+      9 bludgeoning damage. A Large or smaller target may be Grappled (escape action STR or DEX DC 22). Each
+      of its four tendrils holds at most one target and cannot strike another target while holding. The target
+      also suffers Sticky Acid. '
+  ability_score_status: sourced
+  source_system: Legacy d20 / creature reference volume 2
+  source_ref: User-supplied statblock screenshot / Red Sundew
+  original_5e:
+    source_system: Legacy d20 / creature reference volume 2
+    name: Red Sundew
+    printed_scores:
+    - 29
+    - 8
+    - 21
+    - 2
+    - 13
+    - 8
+    printed_cr: 13
+    printed_ac: 11
+    printed_hp: 142
+    printed_speed: 20 ft.
+    printed_attacks: four slams +18 (2d6+9 plus acid)
+    printed_acid: 6 acid damage each round for 1d4+1 rounds; wash with one gallon and full-round action
+    printed_senses: low-light vision, woodsense 60 ft.
+    legacy_saves: Fort +14, Ref +4, Will +6
+    alignment: neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Forests & wilds
+    attack_profiles:
+    - name: Slam
+      ability: str
+      bonus: 14
+      block_dc: 22
+      dc_adjustment: 0
+      damage_modifier: 9
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Old plant immunity to all mind-affecting effects, critical hits and flanking does not import an undefined
+    immunity umbrella. Specific current conditions are listed; equipment uses object damage, and four grappling
+    limbs have explicit capacity.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +9, DEX -1, CON +5, INT -4, WIS +1, CHA -1
+  damage_immunities: fire, acid, poison
+  condition_immunities: Poisoned, Paralyzed, Stunned, Charmed, Afraid
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '29'
+      dex: '8'
+      con: '21'
+      int: '2'
+      wis: '13'
+      cha: '8'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Burrow Hound Juggernaut
+  group: Cross-system creature conversions
+  id: converted-burrow-hound-juggernaut
+  meta: Large beast, neutral
+  size: Large
+  type: beast
+  alignment: neutral
+  cr: '6'
+  ac: '19'
+  hp: '85'
+  speed: 30 ft., burrow 10 ft., swim 10 ft.
+  block: 3 / +11 check
+  abilities:
+    str: '26'
+    dex: '14'
+    con: '20'
+    int: '2'
+    wis: '10'
+    cha: '2'
+  proficiency_bonus: '+3'
+  saving_throws: STR +8, DEX +5, CON +8, INT -4, WIS +0, CHA -4
+  skills: Athletics +11, Acrobatics +5, Perception +3, Survival +3
+  senses: blindsight 30 ft., scent 60 ft. (imprecise), passive Perception 13
+  languages: —
+  equipment: Patchwork mail barding (current Chain shirt profile)
+  block_rules: 'Trained Chain shirt barding adds 1 Block to DEX +2, for 3. Medium armor allows STR: +8 STR
+    +3 proficiency = +11 check. Natural hide grants no Block or armor training. Successful Block negates blockable
+    damage and attached strike riders. Saves and automatic damage cannot be Blocked. Temporary Block does not
+    stack.'
+  traits:
+  - name: Dense Hide and Barding
+    description: 'Natural hide adds +5 AC, already included. Current Chain shirt: base AC 13, Bulk 1, Block
+      1, Slow 1; with DEX +2 and STR +8 this gives AC 19. Without barding, AC is 17, Block 2 and check +2.
+      Natural hide grants no extra Block.'
+  - name: Soft-Earth Burrow
+    description: Burrows through soil and loose rubble, leaving a usable tunnel 10 ft. in diameter. Cannot
+      burrow through solid rock. Its movement is paid normally and does not damage creatures or collapse occupied
+      structures automatically.
+  - name: Powerful Build
+    description: Counts as Huge when checking size limits for carrying, pushing, shoving, grappling and resisting
+      those maneuvers. This grants no automatic success, extra reach, smaller squeezing space or AC bonus.
+  - name: Ferocity (1/day)
+    description: When reduced to 0 HP without being killed outright, remains at 1 HP instead and is Dazed until
+      the end of its next turn. Further damage resolves normally. This does not grant actions while Incapacitated
+      or extra death saves.
+  actions:
+  - name: Multiattack
+    description: Makes one Bite and two Claw attacks.
+  - name: Bite
+    description: 'Melee attack: +11 to hit, reach 10 ft., one target; Block DC 19. Unblocked strike: 1d8 +
+      8 piercing damage.'
+  - name: Claw
+    description: 'Melee attack: +11 to hit, reach 10 ft., one target; Block DC 19. Unblocked strike: 2d6 +
+      4 slashing damage. The fixed +4 claw damage is a secondary-natural-weapon exception.'
+  bonus_actions:
+  - name: Wormkiller Frenzy (1/day)
+    description: After it deals or takes HP damage in combat with an underground worm, insect, spider or other
+      invertebrate, enters a frenzy for 6 rounds. Gains 18 temporary HP (nonstacking, removed when the frenzy
+      ends), +2 on STR/CON checks and saves, +2 natural-weapon attack rolls, damage and Block DC, and +2 to
+      its trained STR Block check; AC decreases by 2. It cannot end the frenzy voluntarily while that triggering
+      enemy is alive and visible. Ends if Incapacitated or when its duration expires. These are explicit creature
+      bonuses, not a character class grant.
+  ability_score_status: sourced
+  source_ability_scores:
+    method: All six numerical scores are supplied in the provided image.
+    scores:
+    - 26
+    - 14
+    - 20
+    - 2
+    - 10
+    - 2
+  source_system: Legacy d20
+  source_ref: User-provided armored burrowing-beast statblock image
+  source_naming:
+    original_name: Dogmole Juggernaut
+    previous_names:
+    - Dogmole Juggernaut
+    note: Reusable creature title.
+  original_5e:
+    source_system: Legacy d20
+    name: Dogmole Juggernaut
+    cr: 6
+    xp: 2400
+    size: Large
+    type: animal
+    alignment: neutral
+    ac: 20; touch 11, flat-footed 18 (+4 armor, +2 DEX, +5 natural, -1 size)
+    hp: 85 (9d8+45)
+    speed: 30 ft., burrow 10 ft., swim 10 ft.
+    reach: 10 ft.
+    abilities:
+    - 26
+    - 14
+    - 20
+    - 2
+    - 10
+    - 2
+    saves: Fort +13, Ref +8, Will +3
+    attacks:
+    - bite +13 (1d8+8)
+    - two claws +10 (2d6+4)
+    burrow: soil/rubble, not rock; 10-ft.-diameter tunnel
+    ferocity: Fights while disabled or dying.
+    powerful_build: Counts one size larger for advantageous maneuvers, not squeezing or AC.
+    rage: +4 STR/CON, -2 AC for 1 + CON-modifier rounds when bloodied against underground invertebrates.
+  source_completion:
+    fields:
+    - Current Chain shirt barding, AC calculation, trained Block and six saves
+    - Current proficiency replaces old accuracy and size adjustments
+    - Ferocity uses a finite 1-HP survival trigger
+    - Frenzy uses explicit derived bonuses, finite uses and temporary HP instead of changing maximum HP
+    cr_status: Assigned CR 6 encounter estimate for the completed profile.
+  source_conversion:
+    theme: Caverns & lost ruins
+    batch: 2026-11-28-cross-system
+    attack_profiles:
+    - name: Bite
+      ability: str
+      bonus: 11
+      block_dc: 19
+      dc_adjustment: 0
+      damage_modifier: 8
+      offset: 0
+    - name: Claw
+      ability: str
+      bonus: 11
+      block_dc: 19
+      dc_adjustment: 0
+      damage_modifier: 4
+      offset: 0
+  conversion_notes:
+  - Uses current Varis equipment, Block, action timing and conditions. Printed HP and six scores are retained.
+    Armor is converted rather than importing old size/armor arithmetic.
+  - The frenzy replaces legacy temporary ability-score changes with explicit current bonuses. Ferocity is bounded
+    to one survival trigger per day.
+  - Daily uses recover after 24 hours; short rests take one day and long rests one week. CR 6 is an encounter
+    estimate to refine in play.
+  replacement_sources:
+  - name: Current creature guide
+    description: docs/monsters.md
+  - name: Equipment, combat, conditions and recovery
+    description: data/draft-reference/armor-and-shields.yaml; data/draft-reference/combat.yaml; data/conditions.yaml;
+      data/draft-reference/progression.yaml

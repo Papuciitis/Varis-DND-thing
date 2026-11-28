@@ -25,6 +25,64 @@ class CharacterRulesTests(unittest.TestCase):
     def entry(self, kind, name):
         return next(item for item in self.catalog()[kind] if item["name"] == name)
 
+    def test_cantrip_progressions_separate_automatic_rules_and_upgrade_choices(self):
+        profiles = {profile["name"]: profile for profile in self.catalog()["spellProgressions"]}
+        self.assertEqual(profiles["Soulfire"]["levels"], [4, 7, 10])
+        self.assertEqual(len(profiles["Soulfire"]["options"]), 4)
+        self.assertEqual(profiles["Condemn"]["levels"], [5, 9])
+        self.assertEqual(profiles["Condemn"]["automatic"][0]["levels"], [4, 7, 10])
+        self.assertEqual(profiles["Bolster"]["options"], [])
+        self.assertEqual([rule["levels"] for rule in profiles["Bolster"]["automatic"]], [[5], [9]])
+        self.assertFalse(any(option["name"].startswith("At ") for profile in profiles.values() for option in profile["options"]))
+
+    def test_repeatable_upgrade_permissions_include_finite_caps_and_whole_lists(self):
+        catalog = self.catalog()
+        profiles = {profile["name"]: profile for profile in catalog["spellProgressions"]}
+        self.assertEqual(next(option for option in profiles["lesser ethurgy"]["options"]
+                              if "up to 3 times" in option["details"])["repeatLimit"], 3)
+        self.assertEqual(profiles["Shielding rune"]["options"][0]["repeatLimit"], 2)
+        self.assertEqual(profiles["Hex of Wotan"]["options"][0]["repeatLimit"], 5)
+        scribe = next(owner for owner in catalog["archetypes"] if owner["name"] == "Scribe")
+        improved = next(option for feature in scribe["features"] for group in feature["choices"]
+                        for option in group["options"] if option["name"] == "Improved arcana")
+        self.assertEqual(improved["repeatLimit"], 3)
+        hunter = next(owner for owner in catalog["archetypes"] if owner["name"] == "Bounty hunter")
+        experience = next(feature for feature in hunter["features"] if feature["name"] == "Experience")
+        self.assertEqual(experience["choices"][0]["count"], 3)
+        self.assertEqual([option["repeatLimit"] for option in experience["choices"][0]["options"]], [100] * 5)
+
+    def test_permanent_trait_grants_link_to_real_lists(self):
+        catalog = self.catalog()
+        owners = {owner["name"]: owner for owner in catalog["classes"] + catalog["archetypes"]}
+        def feature(owner, name):
+            return next(feature for feature in owners[owner]["features"] if feature["name"] == name)
+        for owner, name, option_name, target_owner, target_name, count in (
+            ("Bard", "Bardic traits", "Truly Inspiring", "Bard", "Inspiration dice upgrade", 1),
+            ("Poet", "Forms of poetry", "Arcane display", "Bard", "Inspiration dice upgrade", 1),
+            ("Assassin", "Assassin skills", "Versatility", "Rogue", "Cunning", 2),
+        ):
+            option = next(option for group in feature(owner, name)["choices"] for option in group["options"] if option["name"] == option_name)
+            self.assertEqual(option["choiceGrants"], [{"groupId": feature(target_owner, target_name)["choices"][0]["id"], "count": count}])
+
+    def test_owned_ability_upgrades_are_gated_instead_of_unlocking_every_branch(self):
+        catalog = self.catalog()
+        owners = {owner["name"]: owner for owner in catalog["archetypes"]}
+        for owner, name, count in (("Stormblade", "Greater invocations", 18),
+                                   ("Warmage", "Improved warmage method", 15),
+                                   ("Ascendant", "Finished path", 6),
+                                   ("Ascended sorcerer", "Maturated sorcerer traits", 10)):
+            feature = next(feature for feature in owners[owner]["features"] if feature["name"] == name)
+            options = feature["choices"][0]["options"]
+            self.assertEqual(len(options), count, (owner, name))
+            self.assertTrue(all(option.get("requiresChoice") for option in options))
+            self.assertEqual(bool(feature["choices"][0].get("automatic")), owner != "Stormblade")
+        fool = next(feature for feature in owners["Fool"]["features"] if feature["name"] == "Attributes of the fool")
+        self.assertEqual([len(group["options"]) for group in fool["choices"]], [3, 3, 3, 3])
+        self.assertTrue(all(group["requiresChoice"]["onlyChoice"] for group in fool["choices"][1:]))
+        elite = next(feature for feature in owners["Ascended sorcerer"]["features"] if feature["name"] == "Elite sorcerer traits")
+        self.assertEqual(elite["choices"][1]["count"], 2)
+        self.assertEqual(elite["choices"][1]["options"][-1]["repeatLimit"], 100)
+
     def test_catalog_keeps_all_source_identities_and_parent_associations(self):
         catalog = self.catalog()
         expected = {"races": [], "classes": [], "archetypes": []}

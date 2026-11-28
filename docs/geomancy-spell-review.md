@@ -1,6 +1,6 @@
 # Geomancy spell review
 
-The site's **Geomancy spell review** section (`geomancy-review`) gives V. the complete original Geomorphy spell inventory, his written reviews, and proposed Varis conversions. The source levels 0-11, spell slots, components, durations, class lists and mechanics remain intact. Rewritten drafts use the four Varis magic categories and spell levels 0-6, awaiting V.'s approval. These references are separate from the 439 current spells and character-builder choices; the Monster manual contains 215 entries after the separate recovered-monster import. No review entry grants a spell, summoning power or class feature.
+The site's **Geomancy spell review** section (`geomancy-review`) gives V. the complete original Geomorphy spell inventory, his written reviews, and proposed Varis conversions. The source levels 0-11, spell slots, components, durations, class lists and mechanics remain intact. Rewritten drafts use the four Varis magic categories and spell levels 0-6, awaiting V.'s approval. These references are separate from the 439 current spells and character-builder choices; the Monster manual contains 302 entries after the recovered and mixed-system monster imports. No review entry grants a spell, summoning power or class feature.
 
 Source: the user-provided `draft2.pdf`, metadata title **The Tarta Guide - The Homebrewery**, author `nerak`, 79 physical PDF pages. The spell index is on page 40 and the bodies occupy pages 41-79. Page 39 introduces **Unique Geomorphy Spells**. Page references in each entry use physical PDF pages.
 

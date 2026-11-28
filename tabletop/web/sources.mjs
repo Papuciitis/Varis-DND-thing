@@ -10,7 +10,7 @@ const request=async path=>{
 let references;
 export function loadReferences() {
   if(!references)references=(async()=>{
-    for(const name of ['magic-categories','item-views','magic-items','character-conditions','character-state','character-effects','character-equipment','character-casting','character-rules']){
+    for(const name of ['magic-categories','item-views','magic-items','character-conditions','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-feats','character-rules']){
       await new Promise((resolve,reject)=>{
         const script=document.createElement('script');script.src=new URL('./sheet/'+name+'.js',import.meta.url);
         script.onload=resolve;script.onerror=()=>reject(new Error('Character helpers could not load. Rebuild the preview.'));document.head.append(script);

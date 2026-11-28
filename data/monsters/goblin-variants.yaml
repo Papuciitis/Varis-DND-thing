@@ -1,0 +1,831 @@
+# Reviewed conversions from multiple source systems; see docs/cross-system-monsters.md.
+section: monsters
+entries:
+- name: Goblin
+  group: Goblin encounter variants
+  id: converted-goblin
+  meta: Small humanoid, neutral evil
+  size: Small
+  type: humanoid
+  alignment: neutral evil
+  cr: 1/3
+  ac: '16'
+  hp: '6'
+  speed: 30 ft.
+  block: 3 / +4 check
+  abilities:
+    str: '11'
+    dex: '15'
+    con: '12'
+    int: '10'
+    wis: '9'
+    cha: '6'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., passive Perception 9
+  languages: Goblin
+  traits: []
+  actions:
+  - name: Short Sword
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d6 + 2
+      piercing damage. Balanced, Light, Swift, Versatile 1d8 in two hands; cannot use the shield while using
+      two hands.'
+  - name: Short Bow
+    description: 'Ranged attack: +4 to hit, range 60/180 ft., one target; Block DC 12. Unblocked strike: 1d4
+      + 2 piercing damage. Two-handed, Reload I (any action to reload), critical range +1; the shield must
+      be set aside to fire.'
+  ability_score_status: sourced
+  source_system: Legacy d20
+  source_ref: User-supplied goblin or brute-goblin screenshot
+  original_5e:
+    source_system: Legacy d20
+    name: Goblin
+    printed_scores:
+    - 11
+    - 15
+    - 12
+    - 10
+    - 9
+    - 6
+    printed_cr: 1/3
+    printed_ac: 16
+    printed_hp: 6
+    printed_armor: leather armor, light wooden shield
+    printed_attacks: short sword +2 (1d4,19–20); short bow +4 (1d4,×3)
+    legacy_saves: Fort +3, Ref +2, Will -1
+    alignment: neutral evil
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Orc & gnoll warbands
+    attack_profiles:
+    - name: Short Sword
+      ability: dex
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 2
+      offset: 0
+    - name: Short Bow
+      ability: dex
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 2
+      offset: 0
+    equipment:
+      name: Leather
+      baseAC: 13
+      bulk: 0
+      block: 0
+      protection: 0
+      shield:
+        name: Arm pauldron (wooden shield equivalent)
+        ac: 1
+        block: 1
+        heavy: false
+    batch: 2026-11-28-cross-system
+  block_rules: Trained Leather and Arm pauldron (wooden shield equivalent). Rested Block = max(0, DEX modifier)
+    + 0 armor Block + 1 shield Block. Check +4 includes proficiency +2 and Protection 0; uses DEX. Natural
+    hide grants no extra equipment Block. Successful Block negates blockable damage and strike riders; saves
+    and automatic damage cannot be Blocked. Temporary Block does not stack.
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - legacy d20 size-based damage/AC and feats are not imported as a class level. The wooden shield uses the current
+    arm-pauldron shield profile; armor and weapon properties follow the item catalogue.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +0, DEX +2, CON +1, INT +0, WIS -1, CHA -2
+  equipment: Leather; Arm pauldron (wooden shield equivalent); Short sword; Short bow
+  bonus_actions:
+  - name: Swift Short Sword
+    description: Makes one Short Sword attack while holding it in one hand or two hands, following its Swift
+      property. Normal one-bonus-action limit applies.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '11'
+      dex: '15'
+      con: '12'
+      int: '10'
+      wis: '9'
+      cha: '6'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Small Greataxe Goblin Brute
+  group: Goblin encounter variants
+  id: converted-small-greataxe-goblin-brute
+  meta: Small humanoid, unaligned
+  size: Small
+  type: humanoid
+  alignment: unaligned
+  cr: '1'
+  ac: '13'
+  hp: '6'
+  speed: 20 ft.
+  block: 4 / +6 check
+  abilities:
+    str: '14'
+    dex: '16'
+    con: '15'
+    int: '10'
+    wis: '13'
+    cha: '6'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Goblin
+  traits:
+  - name: Physical Reduction
+    description: Reduce bludgeoning, piercing and slashing damage from each source by 2 (minimum 0). This is
+      natural body protection; it grants no equipment Block.
+  - name: Optional Goblin Folklore
+    description: 'Before an encounter, the GM may select one weakness: cannot enter consecrated holy ground;
+      hearing consecrated church bells makes it Afraid until the sound ends (WIS save DC 13 at the end of each
+      turn ends this); or an intact mistletoe sprig prevents passage through its single warded doorway/window.
+      Announce the selected weakness. Other source qualities are not active in this default block.'
+  actions:
+  - name: Greataxe
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d12 + 2
+      slashing damage. Two-handed, Very Inaccurate (disadvantage if it moved since the start of its previous
+      turn), DC+ (already included).'
+  - name: Short Bow
+    description: 'Ranged attack: +5 to hit, range 60/180 ft., one target; Block DC 13. Unblocked strike: 1d4
+      + 3 piercing damage. Two-handed, Reload I, critical range +1. Must be reloaded using any action before
+      firing again.'
+  ability_score_status: sourced
+  source_system: Legacy d20 homebrew
+  source_ref: User-supplied goblin or brute-goblin screenshot
+  original_5e:
+    source_system: Legacy d20 homebrew
+    name: Small Brute Goblin
+    printed_scores:
+    - 14
+    - 16
+    - 15
+    - 10
+    - 13
+    - 6
+    printed_cr: 1
+    printed_ac: 14
+    printed_hp: 6
+    printed_armor: chain shirt + natural DR (total DR 6)
+    printed_attacks: +3 greataxe (1d10+2) or +3 shortbow (1d6)
+    optional_source_qualities:
+    - berserker
+    - DR 5/10/15 cold iron
+    - STR +6
+    - enlarge 1–2 sizes
+    - glutton bite
+    - horns
+    - powerful build
+    - regeneration 3/6/9 cold iron
+    optional_source_weaknesses:
+    - holy ground aversion
+    - consecrated church bells
+    - mistletoe ward
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Equipment converts to current named armor/weapon profiles. Natural reduction is kept separately from
+      armor Block; optional source powers are not all stacked.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Orc & gnoll warbands
+    attack_profiles:
+    - name: Greataxe
+      ability: str
+      bonus: 4
+      block_dc: 13
+      dc_adjustment: 1
+      damage_modifier: 2
+      offset: 0
+    - name: Short Bow
+      ability: dex
+      bonus: 5
+      block_dc: 13
+      dc_adjustment: 0
+      damage_modifier: 3
+      offset: 0
+    equipment:
+      name: Plated leather breastplate
+      baseAC: 14
+      bulk: 3
+      block: 1
+      protection: 1
+      shield: null
+    batch: 2026-11-28-cross-system
+  block_rules: Trained Plated leather breastplate. Rested Block = max(0, DEX modifier) + 1 armor Block. Check
+    +6 includes proficiency +2 and Protection 1; may use STR. Natural hide grants no extra equipment Block.
+    Successful Block negates blockable damage and strike riders; saves and automatic damage cannot be Blocked.
+    Temporary Block does not stack.
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +2, DEX +3, CON +2, INT +0, WIS +1, CHA -2
+  equipment: Plated leather breastplate; Greataxe; Short bow
+  bonus_actions:
+  - name: Brute Frenzy (1/day)
+    description: For 1 minute, +2 melee damage and -2 AC. Ends early if Incapacitated or no enemy has been
+      attacked or damaged it since the start of its previous turn. This is a bounded creature trait, not a
+      Barbarian class grant.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '14'
+      dex: '16'
+      con: '15'
+      int: '10'
+      wis: '13'
+      cha: '6'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Greatsword Goblin Brute
+  group: Goblin encounter variants
+  id: converted-greatsword-goblin-brute
+  meta: Medium humanoid, unaligned
+  size: Medium
+  type: humanoid
+  alignment: unaligned
+  cr: '2'
+  ac: '15'
+  hp: '21'
+  speed: 30 ft.
+  block: 1 / +8 check
+  abilities:
+    str: '18'
+    dex: '11'
+    con: '16'
+    int: '10'
+    wis: '13'
+    cha: '6'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Goblin
+  traits:
+  - name: Physical Reduction
+    description: Reduce bludgeoning, piercing and slashing damage from each source by 4 (minimum 0). This is
+      natural body protection; it grants no equipment Block.
+  - name: Optional Goblin Folklore
+    description: 'Before an encounter, the GM may select one weakness: cannot enter consecrated holy ground;
+      hearing consecrated church bells makes it Afraid until the sound ends (WIS save DC 13 at the end of each
+      turn ends this); or an intact mistletoe sprig prevents passage through its single warded doorway/window.
+      Announce the selected weakness. Other source qualities are not active in this default block.'
+  actions:
+  - name: Greatsword
+    description: 'Melee attack: +6 to hit, reach 5 ft., one target; Block DC 17. Unblocked strike: 2d6 + 4
+      slashing damage. Two-handed, Unwieldy (natural 2 is also a critical failure), DC+++ (already included).'
+  - name: Short Bow
+    description: 'Ranged attack: +2 to hit, range 60/180 ft., one target; Block DC 10. Unblocked strike: 1d4
+      piercing damage. Two-handed, Reload I, critical range +1. Must be reloaded using any action before firing
+      again.'
+  ability_score_status: sourced
+  source_system: Legacy d20 homebrew
+  source_ref: User-supplied goblin or brute-goblin screenshot
+  original_5e:
+    source_system: Legacy d20 homebrew
+    name: Medium Brute Goblin
+    printed_scores:
+    - 18
+    - 11
+    - 16
+    - 10
+    - 13
+    - 6
+    printed_cr: 2
+    printed_ac: 12
+    printed_hp: 21
+    printed_armor: breastplate + natural DR (total DR 9)
+    printed_attacks: +6 greatsword (2d6+6) or +2 shortbow (1d6)
+    optional_source_qualities:
+    - berserker
+    - DR 5/10/15 cold iron
+    - STR +6
+    - enlarge 1–2 sizes
+    - glutton bite
+    - horns
+    - powerful build
+    - regeneration 3/6/9 cold iron
+    optional_source_weaknesses:
+    - holy ground aversion
+    - consecrated church bells
+    - mistletoe ward
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Equipment converts to current named armor/weapon profiles. Natural reduction is kept separately from
+      armor Block; optional source powers are not all stacked.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Orc & gnoll warbands
+    attack_profiles:
+    - name: Greatsword
+      ability: str
+      bonus: 6
+      block_dc: 17
+      dc_adjustment: 3
+      damage_modifier: 4
+      offset: 0
+    - name: Short Bow
+      ability: dex
+      bonus: 2
+      block_dc: 10
+      dc_adjustment: 0
+      damage_modifier: 0
+      offset: 0
+    equipment:
+      name: Metal breastplate
+      baseAC: 15
+      bulk: 4
+      block: 1
+      protection: 2
+      shield: null
+    batch: 2026-11-28-cross-system
+  block_rules: Trained Metal breastplate. Rested Block = max(0, DEX modifier) + 1 armor Block. Check +8 includes
+    proficiency +2 and Protection 2; may use STR. Natural hide grants no extra equipment Block. Successful
+    Block negates blockable damage and strike riders; saves and automatic damage cannot be Blocked. Temporary
+    Block does not stack.
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +4, DEX +0, CON +3, INT +0, WIS +1, CHA -2
+  equipment: Metal breastplate; Greatsword; Short bow
+  bonus_actions:
+  - name: Brute Frenzy (1/day)
+    description: For 1 minute, +2 melee damage and -2 AC. Ends early if Incapacitated or no enemy has been
+      attacked or damaged it since the start of its previous turn. This is a bounded creature trait, not a
+      Barbarian class grant.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '18'
+      dex: '11'
+      con: '16'
+      int: '10'
+      wis: '13'
+      cha: '6'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Greatclub Goblin Brute
+  group: Goblin encounter variants
+  id: converted-greatclub-goblin-brute
+  meta: Large humanoid, unaligned
+  size: Large
+  type: humanoid
+  alignment: unaligned
+  cr: '5'
+  ac: '13'
+  hp: '72'
+  speed: 40 ft.
+  block: 0 / +5 check
+  abilities:
+    str: '26'
+    dex: '10'
+    con: '20'
+    int: '6'
+    wis: '13'
+    cha: '6'
+  proficiency_bonus: '+3'
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Goblin
+  traits:
+  - name: Physical Reduction
+    description: Reduce bludgeoning, piercing and slashing damage from each source by 6 (minimum 0). This is
+      natural body protection; it grants no equipment Block.
+  - name: Optional Goblin Folklore
+    description: 'Before an encounter, the GM may select one weakness: cannot enter consecrated holy ground;
+      hearing consecrated church bells makes it Afraid until the sound ends (WIS save DC 13 at the end of each
+      turn ends this); or an intact mistletoe sprig prevents passage through its single warded doorway/window.
+      Announce the selected weakness. Other source qualities are not active in this default block.'
+  actions:
+  - name: Multiattack
+    description: Makes two Great-club attacks. Each uses the current weapon profile and Inaccurate; no legacy
+      +14/+9 BAB sequence is used.
+  - name: Great-club
+    description: 'Melee attack: +11 to hit, reach 10 ft., one target; Block DC 19. Unblocked strike: 4d3 +
+      8 bludgeoning damage. Two-handed, Unwieldy (natural 2 is also a critical failure), Inaccurate (disadvantage
+      if it moved this turn).'
+  ability_score_status: sourced
+  source_system: Legacy d20 homebrew
+  source_ref: User-supplied goblin or brute-goblin screenshot
+  original_5e:
+    source_system: Legacy d20 homebrew
+    name: Large Brute Goblin
+    printed_scores:
+    - 26
+    - 10
+    - 20
+    - 6
+    - 13
+    - 6
+    printed_cr: 5
+    printed_ac: 15
+    printed_hp: 72
+    printed_armor: studded leather + natural DR (total DR 9)
+    printed_attacks: +14/+9 greatclub (1d10+12) or +4 shortbow (1d6)
+    optional_source_qualities:
+    - berserker
+    - DR 5/10/15 cold iron
+    - STR +6
+    - enlarge 1–2 sizes
+    - glutton bite
+    - horns
+    - powerful build
+    - regeneration 3/6/9 cold iron
+    optional_source_weaknesses:
+    - holy ground aversion
+    - consecrated church bells
+    - mistletoe ward
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Equipment converts to current named armor/weapon profiles. Natural reduction is kept separately from
+      armor Block; optional source powers are not all stacked.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Orc & gnoll warbands
+    attack_profiles:
+    - name: Great-club
+      ability: str
+      bonus: 11
+      block_dc: 19
+      dc_adjustment: 0
+      damage_modifier: 8
+      offset: 0
+    equipment:
+      name: Studded leather
+      baseAC: 13
+      bulk: 1
+      block: 0
+      protection: 2
+      shield: null
+    batch: 2026-11-28-cross-system
+  block_rules: Trained Studded leather. Rested Block = max(0, DEX modifier) + 0 armor Block. Check +5 includes
+    proficiency +3 and Protection 2; uses DEX. Natural hide grants no extra equipment Block. Successful Block
+    negates blockable damage and strike riders; saves and automatic damage cannot be Blocked. Temporary Block
+    does not stack.
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +8, DEX +0, CON +5, INT -2, WIS +1, CHA -2
+  equipment: Studded leather; Great-club
+  bonus_actions:
+  - name: Brute Frenzy (1/day)
+    description: For 1 minute, +2 melee damage and -2 AC. Ends early if Incapacitated or no enemy has been
+      attacked or damaged it since the start of its previous turn. This is a bounded creature trait, not a
+      Barbarian class grant.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '26'
+      dex: '10'
+      con: '20'
+      int: '6'
+      wis: '13'
+      cha: '6'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Sharkskin Goblin
+  group: Goblin encounter variants
+  id: converted-sharkskin-goblin
+  meta: Small humanoid, neutral evil
+  size: Small
+  type: humanoid
+  alignment: neutral evil
+  cr: 1/2
+  ac: '14'
+  hp: '9'
+  speed: 30 ft., swim 30 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '8'
+    dex: '14'
+    con: '12'
+    int: '8'
+    wis: '10'
+    cha: '6'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., blindsight 30 ft. underwater, passive Perception 10
+  languages: Common, Goblin
+  traits:
+  - name: Amphibious
+    description: Breathes air and water.
+  - name: Blood Frenzy
+    description: Has advantage on melee attacks against a creature below its maximum HP.
+  actions:
+  - name: Bite
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 2d4 + 2
+      piercing damage. A Small or smaller target makes a DC 11 STR save; failure: Prone; success: remains standing. '
+  ability_score_status: sourced
+  source_system: Six-score homebrew
+  source_ref: https://www.scribd.com/document/698529612/Goblin-Variants-PDF-sp-check
+  original_5e:
+    source_system: Six-score homebrew
+    name: Shark Goblin
+    printed_scores:
+    - 8
+    - 14
+    - 12
+    - 8
+    - 10
+    - 6
+    printed_cr: 1/2
+    printed_ac: 14
+    printed_hp: 9
+    original_name: Shark Goblin
+    printed_attack: +4 bite, 2d4+2, DC 11 STR or knock Small/smaller Prone
+    printed_traits: Blood Frenzy, Amphibious, Nimble Escape, underwater blindsight 30 ft.
+    alignment: neutral evil
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Seas & coasts
+    attack_profiles:
+    - name: Bite
+      ability: dex
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 2
+      offset: 0
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Retains the supplied 5e numerical profile; the DEX-based natural bite is explicit. This goblinoid is separate
+    from both the natural Goblin Shark and the eight-attribute shark-shifter.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR -1, DEX +2, CON +1, INT -1, WIS +0, CHA -2
+  bonus_actions:
+  - name: Nimble Escape
+    description: Takes Hide or Disengage as a bonus action.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '8'
+      dex: '14'
+      con: '12'
+      int: '8'
+      wis: '10'
+      cha: '6'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Organ Goblin
+  group: Goblin encounter variants
+  id: converted-organ-goblin
+  meta: Small humanoid, chaotic neutral
+  size: Small
+  type: humanoid
+  alignment: chaotic neutral
+  cr: 1/2
+  ac: '15'
+  hp: '5'
+  speed: 30 ft.
+  block: 2 / +2 check
+  abilities:
+    str: '6'
+    dex: '14'
+    con: '8'
+    int: '12'
+    wis: '12'
+    cha: '6'
+  proficiency_bonus: '+2'
+  senses: darkvision 60 ft., passive Perception 11
+  languages: Common, Goblin; empathic telepathy 50 ft.
+  traits: []
+  actions:
+  - name: Life Drain
+    description: 'Melee attack: +4 to hit, reach 30 ft., one target; Block DC 12. Unblocked strike: 1d4 + 2
+      necrotic damage. If it deals damage to a living creature, that target makes a DC 13 CON save; failure:
+      its maximum HP decreases by the actual necrotic HP damage dealt, minimum maximum HP 1. Its current HP
+      cannot exceed that new maximum. The reduction lasts until it completes a long rest (one week); success:
+      no reduction. '
+  ability_score_status: sourced
+  source_system: Six-score homebrew
+  source_ref: https://www.scribd.com/document/698529612/Goblin-Variants-PDF-sp-check
+  original_5e:
+    source_system: Six-score homebrew
+    name: Organ Goblin
+    printed_scores:
+    - 6
+    - 14
+    - 8
+    - 12
+    - 12
+    - 6
+    printed_cr: 1/2
+    printed_ac: 15
+    printed_hp: 5
+    printed_attack: +4 life drain, melee spell attack reach 30 ft., 1d4+2 necrotic; CON DC 13 max-HP reduction
+      until long rest; death at max HP 0
+    printed_telepathy: 50
+    alignment: chaotic neutral
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - The source's fixed +4 spell attack is preserved as INT + proficiency +1; +2 damage and DC 13 are fixed
+      creature exceptions.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Eldritch nightmares
+    attack_profiles:
+    - name: Life Drain
+      ability: int
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 2
+      offset: 1
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  - Source death at maximum HP 0 is replaced by a floor of 1. Drain is attached to an unblocked strike and
+    actual HP lost; blocked damage or temporary HP loss cannot reduce max HP. Empathic telepathy conveys concepts
+    rather than fluent speech.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: DEX +4, STR -2, CON -1, INT +1, WIS +1, CHA -2
+  skills: Stealth +6
+  bonus_actions:
+  - name: Nimble Escape
+    description: Takes Hide or Disengage as a bonus action.
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '6'
+      dex: '14'
+      con: '8'
+      int: '12'
+      wis: '12'
+      cha: '6'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+- name: Cactus Goblin
+  group: Goblin encounter variants
+  id: converted-cactus-goblin
+  meta: Small humanoid, neutral evil
+  size: Small
+  type: humanoid
+  alignment: neutral evil
+  cr: 1/2
+  ac: '12'
+  hp: '12'
+  speed: 30 ft.
+  block: 0 / -1 check
+  abilities:
+    str: '12'
+    dex: '8'
+    con: '12'
+    int: '8'
+    wis: '10'
+    cha: '8'
+  proficiency_bonus: '+2'
+  senses: tremorsense 60 ft. while touching ground, passive Perception 10
+  languages: Common, Goblin
+  traits:
+  - name: False Appearance
+    description: While motionless, indistinguishable from an ordinary cactus.
+  actions:
+  - name: Spike Slam
+    description: 'Melee attack: +4 to hit, reach 5 ft., one target; Block DC 12. Unblocked strike: 1d8 + 2
+      piercing damage. The target makes a DC 11 CON save; failure: Poisoned for 1 minute; success: unaffected.
+      Repeat the save at the end of each turn, ending Poisoned on success. '
+  ability_score_status: sourced
+  source_system: Six-score homebrew
+  source_ref: https://www.scribd.com/document/698529612/Goblin-Variants-PDF-sp-check
+  original_5e:
+    source_system: Six-score homebrew
+    name: Cactus Goblin
+    printed_scores:
+    - 12
+    - 8
+    - 12
+    - 8
+    - 10
+    - 8
+    printed_cr: 1/2
+    printed_ac: 12
+    printed_hp: 12 (3d6+2; inconsistent with CON +1)
+    printed_attack: +4 spike slam, 1d8+2 piercing, CON DC 11 Poisoned (no duration)
+    printed_traits: poison resistance, Blinded immunity, tremorsense 60 ft., false appearance
+    alignment: neutral evil
+  source_completion:
+    fields:
+    - current proficiency, saves, Block, action costs, durations and escape procedures
+    - Missing poison duration becomes one minute with end-turn saves. Printed HP 12 is kept; fixed +4 attack,
+      +2 damage and DC 11 are explicit source exceptions.
+    cr_status: Provisional Varis encounter estimate; not a balance certification
+  source_conversion:
+    theme: Deserts & canyons
+    attack_profiles:
+    - name: Spike Slam
+      ability: str
+      bonus: 4
+      block_dc: 12
+      dc_adjustment: 0
+      damage_modifier: 2
+      offset: 1
+    batch: 2026-11-28-cross-system
+  block_rules: 'Rested Block is max(0, DEX modifier); natural armor grants neither equipment Block nor armor
+    training. Temporary Block does not stack: keep the higher grant. A successful Block negates blockable damage
+    and attached strike riders. Saving-throw-only and automatic damage cannot be Blocked.'
+  conversion_notes:
+  - Adapted to current Varis rules. Source-system bonuses and action economies are not interchangeable; original
+    statistics remain in the source panel.
+  - Daily uses recover after 24 hours; a short rest is one day and a long rest is one week. Recharge rolls
+    1d6 at the start of its turn while expended.
+  - CR is a provisional encounter estimate. Powers with completed timings, limits or escape methods are conversions,
+    not missing published text.
+  replacement_sources:
+  - name: Current monster template
+    description: docs/monsters.md
+  - name: Block, equipment, conditions and rests
+    description: data/draft-reference/combat.yaml; data/draft-reference/armor-and-shields.yaml; data/weapons.yaml;
+      data/conditions.yaml; data/draft-reference/progression.yaml
+  saving_throws: STR +1, DEX -1, CON +1, INT -1, WIS +0, CHA -1
+  damage_resistances: poison
+  condition_immunities: Blinded
+  skills: Nature +3, Stealth +3
+  source_ability_scores:
+    method: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.
+    scores:
+      str: '12'
+      dex: '8'
+      con: '12'
+      int: '8'
+      wis: '10'
+      cha: '8'
+    note: Six numeric scores copied from the supplied statblock; incompatible derived bonuses are converted
+      separately.

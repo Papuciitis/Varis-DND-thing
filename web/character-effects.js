@@ -225,6 +225,7 @@
   const occultMarks = {
     "-5 ft movement speed": {speed: -5},
     "-1 to weapon attack rolls": {weaponAttack: -1},
+    "-1 to spell attack rolls": {spellAttack: -1},
     "-1 to AC": {ac: -1},
     "-1 to physical saves": {saveBonuses: physical(-1)},
     "-1 to mental saves": {saveBonuses: mental(-1)},
@@ -301,7 +302,83 @@
   always("Brigand", "Notoriety", {skillBonuses: {Deception: -1, Intimidation: 1, "Sleight of Hand": 1, Athletics: 1, Stealth: 1}});
   always("Warmage", "Power training", {restDice: 1});
 
+  function benefitOptions(entry) {
+    if(entry.name==='Occult gnosis')return {count:2,options:[['spell','Learn a 1st-level oath or arcane spell'],['occult-slot','One extra maximum occult slot'],['death-bonus','+2 to death saving throws'],['rest-die','One extra maximum rest die']]};
+    if(entry.name==='Madness magick')return {count:1,note:'Confirm this after the next new spell or cantrip has been lost as the feat requires.',options:[['learning-sacrifice','Next spell/cantrip learning sacrificed (+2 maximum rest dice)']]};
+    if(entry.name==='Mana-refusal')return {count:3,note:'Record these after resolving the cantrip sacrifice and the feat’s upgrade allowance. The defensive option also costs 2 maximum HP.',options:[['cantrip-sacrifice','Required arcane/occult cantrip permanently sacrificed'],['defensive-rest','Defensive upgrade: −2 HP, extra death-save slot, +1 rest die'],['spell-sacrifice','Level-1 spell permanently sacrificed for +2 rest dice']]};
+    return null;
+  }
+
+  function restDice(character,derived) {
+    if(!derived.enabled)return {maximum:character.restDice.max,breakdown:[{label:'Manual maximum',amount:character.restDice.max}],deathSaveDelta:0,hpDelta:0,occultExtra:0,deathSaveBonus:0};
+    const health=character.build.health,base=health.restMode==='manual'?health.baseRestDice:character.level;
+    const breakdown=[{label:health.restMode==='manual'?'Manual base':'Character level',amount:base}];
+    let minimum=0,deathSaveDelta=0,hpDelta=0,occultExtra=0,deathSaveBonus=0;
+    const warnings=[];
+    const text=value=>typeof value==='string'?value:Array.isArray(value)?value.map(text).join('\n'):value?.description || value?.desc || '';
+    function addRule(label,raw,fallback=0,allowOath=false,includeLists=false) {
+      const own=includeLists?text(raw):text(raw).split(/\n\s*\*/)[0];
+      const subject='(?:rest dice maximum|(?:maximum|max) (?:number of )?rest dice)(?: count)?';
+      const patterns=[new RegExp('\\b(?:your )?'+subject+'(?: is| are)? (?:further )?(increased|increase|increases|reduced|decreased) by (\\d+)','gi'),new RegExp('\\b(increase|reduce|decrease) (?:your )?'+subject+' by (\\d+)','gi'),new RegExp('([+-]\\d+) (?:bonus to (?:your )?)?'+subject,'gi'),new RegExp('\\b(?:you )?(?:gain|have) (\\d+) (less|fewer|more) '+subject,'gi'),/\b(?:you )?gain an? extra rest die\b/gi];
+      let amount=0,found=false;
+      for(let index=0;index<patterns.length;index++)for(const match of own.matchAll(patterns[index])) {
+        const sentence=own.slice(0,match.index).split(/[.!?]\s+|\n/).at(-1);
+        if(/\b(?:if|unless|may|choose|instead|when|while|during|until)\b|on a success/i.test(sentence) || !allowOath && /so long as/i.test(sentence))continue;
+        const level=sentence.match(/(?:at|reaching) (\d+)(?:st|nd|rd|th)? level/i);if(level && character.level<Number(level[1]))continue;
+        amount+=index<2?(/^reduc|^decreas/i.test(match[1])?-1:1)*Number(match[2]):index===2?Number(match[1]):index===3?(/less|fewer/i.test(match[2])?-1:1)*Number(match[1]):1;found=true;
+      }
+      if(!found)amount=fallback;
+      if(amount)breakdown.push({label,amount});
+      if(/cannot reduce.*below 1/i.test(own))minimum=1;
+    }
+    for(const feature of derived.features) {
+      if(feature.parent==='Feat') {
+        const specification=benefitOptions(feature),benefits=new Set((character.build.featBenefits?.[feature.entryId] || []).filter(key=>specification?.options.some(([value])=>value===key)).slice(0,specification?.count || 0));
+        if(feature.name==='Occult gnosis') {deathSaveDelta--;if(benefits.has('rest-die'))breakdown.push({label:'Feat: Occult gnosis',amount:1});if(benefits.has('occult-slot'))occultExtra++;if(benefits.has('death-bonus'))deathSaveBonus+=2;continue;}
+        if(feature.name==='Madness magick') {if(benefits.has('learning-sacrifice'))breakdown.push({label:'Feat: Madness magick sacrifice',amount:2});continue;}
+        if(feature.name==='Mana-refusal') {const spec=derived.featPlan?.specs?.[feature.id],values=spec?.values,upgrades=values?.['mana-upgrades'] || [];if(values?.['sacrificed-cantrip']?.length && values?.['sacrificed-upgrades']?.length){if(upgrades.includes('defensive-rest')){breakdown.push({label:'Feat: Mana-refusal defensive upgrade',amount:1});deathSaveDelta++;hpDelta-=2;}if(upgrades.includes('spell-sacrifice') && values['sacrificed-spell']?.length)breakdown.push({label:'Feat: Mana-refusal spell sacrifice',amount:2});}continue;}
+        if(feature.name==='Oaths of might') {
+          const oath=derived.choices.find(group=>group.featureName==='Oath');
+          if(oath?.selected.length && !character.conditions.some(condition=>/broken.*oath|oath.*broken/i.test(condition)))addRule('Feat: '+feature.name,feature.details,0,true);
+          continue;
+        }
+        addRule('Feat: '+feature.name,feature.details);continue;
+      }
+      if(feature.parent==='Background') {
+        for(const [name,value] of Object.entries(feature.details || {}))if(name!=='proficiencies')addRule(feature.name+': '+name,value);
+      } else if(feature.parent==='Paladin' && feature.name==='Divine power') {
+        breakdown.push({label:'Paladin: Divine power',amount:character.level>=11?3:character.level>=9?2:1});
+      } else if(feature.parent==='Shaman' && feature.name==='Spirit journey') {
+        if(derived.skillRanks.Religion>=2)breakdown.push({label:'Shaman: Spirit journey (already expert in Religion)',amount:1});
+      } else if(feature.parent==='Ascended sorcerer' && feature.name==='Maturated sorcerer traits') {
+        if(!derived.choices.some(group=>group.featureId===feature.id && group.automatic) && derived.choices.some(group=>group.parent==='Sorcerer' && group.featureName==='Innate magic' && group.options.some(option=>option.name==='Elder blood' && group.selected.includes(option.id))))breakdown.push({label:'Ascended sorcerer: Maturated Elder blood',amount:1});
+      } else addRule(feature.parent+': '+feature.name,feature.details,registry.get(key(feature.parent,feature.name))?.restDice || 0);
+    }
+    for(const group of derived.choices.filter(group=>group.kind!=='feat')) {
+      const siblings=group.optionalSet?derived.choices.filter(other=>other.optionalSet===group.optionalSet):[];
+      if(group.pairComplete===false)continue;
+      if(siblings.some(other=>other.selected.length<other.count))continue;
+      for(const id of group.selected) {
+        const option=group.options.find(option=>option.id===id);
+        const label=group.parent+': '+option.name;
+        if(group.parent==='Cleric' && option.name==='Oath of vigilance') {
+          const amount=Math.max(1,globalThis.CharacterState.abilityModifier(derived.abilities.wis)/2-1);
+          if(Number.isInteger(amount))breakdown.push({label,amount});else warnings.push('Oath of vigilance gives a fractional rest-dice bonus without a rounding rule. Record the agreed whole-number bonus under Table adjustments.');
+        } else if(group.parent==='Ranger' && option.name==='Keen will') {
+          if(derived.skillRanks.Insight>=2)breakdown.push({label:label+' (already expert in Insight)',amount:1});
+        } else if(group.parent==='Devotee' && option.name==='Enlightened one') {
+          breakdown.push({label,amount:2});occultExtra+=2;
+        } else if(group.parent==='Ascendant' && option.name==='Ascended form') {
+          warnings.push('Ascended form changes maximum rest dice while its agreed routine is maintained. Record its -1 adjustment while applicable; Perfected form removes the penalty.');
+        } else addRule(label,option.ownDetails ?? option.details,registry.get(key(group.parent,group.effectFeature || group.featureName,option.name))?.restDice || 0,false,true);
+      }
+    }
+    if(health.restAdjustment)breakdown.push({label:'Table adjustment',amount:health.restAdjustment});
+    return {maximum:Math.max(minimum,0,breakdown.reduce((total,item)=>total+item.amount,0)),breakdown,deathSaveDelta,hpDelta,occultExtra,deathSaveBonus,warnings};
+  }
+
   globalThis.CharacterEffects = Object.freeze({
+    restDice,benefitOptions,
     lookup(parentName, featureName, optionName = "") {
       const result = registry.get(key(parentName, featureName, optionName));
       return result ? JSON.parse(JSON.stringify(result)) : {};

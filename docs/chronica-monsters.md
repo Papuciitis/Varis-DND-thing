@@ -1,6 +1,6 @@
 # Chronica creature import
 
-All 66 entities in the campaign export's 14 enemy, creature, guard and mercenary folders are included in `data/monsters/chronica.yaml`. Blank named NPC records are included with identified existing statblocks. Folder names and campaign names remain searchable. The source misspelling **Balckspawn Stalker** is retained.
+All 66 entities in the campaign export's 14 enemy, creature, guard and mercenary folders are included in `data/monsters/chronica.yaml`. Blank named NPC records are included with identified existing statblocks. Folder names and campaign names remain searchable. The source misspelling **Darkscale Cave Stalker** is retained.
 
 The sanitized source snapshot is `data/monsters/source/chronica-monsters.json`. It contains creature descriptions, notes and original stat fields, with unrelated campaign metadata omitted. The full original JSON remains the user's source file.
 
@@ -27,7 +27,7 @@ Run from the repository root:
 | Formicid male | SRD Guard | Missing combat block |
 | Ishilb male paladin | SRD Knight | Missing combat block; a martial stand-in |
 | Imp | SRD Imp | Missing AC, HP and speed; campaign abilities and attacks retained |
-| Raguch the Ogrillion | SRD Ogre | Missing attacks; campaign defenses and modifiers retained |
+| Raguch the Orc-Ogre Brute | SRD Ogre | Missing attacks; campaign defenses and modifiers retained |
 
 These substitutions identify complete published alternatives. They do not invent racial mechanics for named campaign ancestries. Other omitted trait details use existing supplied creature abilities or identified published rules, recorded on the individual monster.
 
@@ -53,7 +53,7 @@ Source CRs are encounter references. Substitution and conversion change encounte
 
 Published fallback blocks and standard monster abilities were checked against the official [2014 Basic Rules monster chapter](https://www.dndbeyond.com/sources/dnd/basic-rules-2014/monsters) and its alphabetic creature sections. The reusable material is also in [SRD 5.1](https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf). Individual source URLs appear in the fallback and review manifests.
 
-The Atropal's incomplete Summon Nightcrawler uses the existing [SpiralWorlds Atropal](https://spiralworlds.com/bestiary/undead/atropal/) summoning alternative: one Nightcrawler under its command for up to one hour. The campaign's range and Recharge 6 remain. This is an identified third-party alternative.
+The Unborn Death Colossus's incomplete Summon Graveworm Colossus uses the existing [SpiralWorlds Unborn Death Colossus](https://spiralworlds.com/bestiary/undead/atropal/) summoning alternative: one Graveworm Colossus under its command for up to one hour. The campaign's range and Recharge 6 remain. This is an identified third-party alternative.
 
 Current rules and spell alternatives are taken from the existing repository YAML. Original campaign material is retained as supplied.
 

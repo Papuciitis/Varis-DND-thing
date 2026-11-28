@@ -15,6 +15,7 @@
       enabled: build.enabled, classId: build.classId, raceId: build.raceId,
       archetypes: build.archetypes, choices: build.choices, abilityChoices: build.abilityChoices,
       adjustments: build.adjustments, baseRestDice: build.health?.baseRestDice,
+      backgroundId:build.backgroundId,featBenefits:build.featBenefits,featChoices:build.featChoices,qualifications:build.qualifications,restMode:build.health?.restMode,restAdjustment:build.health?.restAdjustment,
       spells: character.spells,
       casting: {enabled: ledger.enabled ?? !(character.spellSlots?.length || character.customResources?.length), maxSlotLevel: ledger.maxSlotLevel, maxLearnLevel:ledger.maxLearnLevel},
       proficiency: character.combat?.proficiencyOverride, restMaximum: character.restDice?.max});
@@ -63,12 +64,12 @@
     }
     if (classLevel > progression.at(-1).level) result.warnings.push("Casting progression is supplied only through level " + progression.at(-1).level + "; the last supported capacity is shown.");
     if (character.level > 12 && (profile.slotLevelRule || profile.maxCastLevelRule)) result.warnings.push("Varis casting-level rules are supported only through character level 12.");
-    result.knownSpells = row.knownSpells ?? null;
+    result.knownSpells = row.knownSpells==null?null:row.knownSpells+finite(context.effects?.knownSpells);
     result.cantrips = row.cantrips ?? null;
     const scores = context.abilities || character.abilities || {};
     const effects = context.effects || {};
     const additions = {occultSlots: finite(effects.occultSlots), fullSlots: finite(effects.fullSlots), eachSlotLevel: finite(effects.eachSlotLevel), slots: {...effects.slots}};
-    const selected = new Set([...(context.selectedOptionIds || []), ...(context.choices || []).flatMap(choice => choice.selected || [])]);
+    const selected = new Set([...(context.selectedOptionIds || []), ...(context.choices || []).filter(choice=>choice.pairComplete!==false).flatMap(choice => choice.selected || [])]);
     const features = new Set((context.features || []).map(feature => typeof feature === "string" ? feature : feature.id));
     for (const modifier of profile.modifiers || []) {
       if (modifier.optionId && !selected.has(modifier.optionId)) continue;
@@ -113,7 +114,7 @@
       if (classLevel < (resource.minLevel || 1)) continue;
       const capacity = resource.capacity || {};
       const max = Math.max(0, finite(capacity.base) + (capacity.ability ? abilityModifier(scores[capacity.ability]) : 0)
-        + (capacity.proficiency ? context.proficiency ?? 2 + Math.floor((character.level - 1) / 3) : 0));
+        + (resource.id==='metamagic'?finite(effects.metamagicMaximum):0) + (capacity.proficiency ? context.proficiency ?? 2 + Math.floor((character.level - 1) / 3) : 0));
       addPool({id: prefix + ":points:" + resource.id, label: resource.name, kind: "points", level: null, max,
         recoverOn: resource.restoreOn || (cls.name === "Sorcerer" && resource.id === "metamagic" ? "long" : null)});
       result.recovery.push(...clone(resource.recovery || []));
@@ -259,7 +260,7 @@
     const casting=derived?.casting, profile=casting?.profile;
     const entries=catalog.filter(section=>section.key==='spells').flatMap(section=>section.entries || []).filter(entry=>entry.group!=='Magic rules');
     const eligible=entries.filter(entry=>spellAccess(character,derived,entry).allowed);
-    const chosen=character.spells.filter(row=>(!row.classId || row.classId===derived.cls?.id) && eligible.some(entry=>spellId(entry)===row.entryId));
+    const chosen=character.spells.filter(row=>!row.featSource && (!row.classId || row.classId===derived.cls?.id) && eligible.some(entry=>spellId(entry)===row.entryId));
     const cantrips=chosen.filter(row=>spellInfo(eligible.find(entry=>spellId(entry)===row.entryId),profile?.tradition).cantrip);
     const spells=chosen.filter(row=>!cantrips.includes(row));
     const limit=casting?.spellbookCount ?? casting?.knownSpells ?? 0;
@@ -288,8 +289,14 @@
   }
 
   function castOptions(character, derived, entry, row) {
-    if(!entry) return [];
+    if(!entry || derived.featPlan?.sacrificedSpells?.includes(spellId(entry))) return [];
     const casting=derived?.casting, info=spellInfo(entry,casting?.profile?.tradition);
+    if(row?.featSource){
+      const granted=derived.featPlan?.spells?.find(item=>item.id===row.id);if(!granted)return [];
+      const feat=derived.featPlan.sources.find(item=>item.id===row.featSource),manual={id:'feat:manual',poolId:'feat:manual',level:info.level || 0,available:true,label:feat.name+' — resolve its listed cost'};
+      if(info.cantrip)return feat.name==='Invoke dark powers'?[manual]:[{id:'free',poolId:'free',level:0,available:true,label:'Granted cantrip — no slot'}];
+      if(!['Occult gnosis'].includes(feat.name)){const options=[manual];if(['Forbidden magic','Infernal magic','Waeld-soul','Arcane insight'].includes(feat.name))options.unshift({id:'feat:rest',poolId:'feat:rest',level:info.level,available:character.restDice.current>=info.level,label:info.level+' rest dice — '+feat.name});return options;}
+    }
     if(row?.classId && (row.classId!==derived.cls?.id || !spellAccess(character,derived,entry).allowed)) return [];
     if(derived.cls?.name==='Wizard' && !info.cantrip && !row?.prepared) return [];
     if(info.cantrip && !entry.details?.cost) return [{id:'free',poolId:'free',level:0,available:true,label:'Cantrip — no slot'}];
@@ -321,9 +328,10 @@
     if(option.poolId.startsWith('manual:')) {
       const slot=result.spellSlots.find(slot=>slot.level===option.level);
       slot.current--;
-    } else if(option.poolId!=='free') result=spend(character,derived.casting,option.poolId,{level:option.level});
+    } else if(option.poolId==='feat:rest')result.restDice.current-=option.level;
+    else if(option.poolId!=='free' && option.poolId!=='feat:manual') result=spend(character,derived.casting,option.poolId,{level:option.level});
     const pool=derived?.casting?.pools.find(pool=>pool.id===option.poolId);
-    const cost=option.poolId==='free'?'No spell slot spent':pool?.kind==='rest-dice'?`Spent ${option.level} rest ${option.level===1?'die':'dice'}`:pool?.kind==='full'?`Spent ${option.level} levels from ${pool.label}`:`Spent one level ${option.level} ${option.poolId.startsWith('manual:')?'manual ':pool?.kind==='occult'?'occult ':''}slot`;
+    const cost=option.poolId==='feat:manual'?'Resolve the granting rule’s costs and limits':option.poolId==='feat:rest'?'Spent '+option.level+' rest dice; apply any additional feat costs':option.poolId==='free'?'No spell slot spent':pool?.kind==='rest-dice'?`Spent ${option.level} rest ${option.level===1?'die':'dice'}`:pool?.kind==='full'?`Spent ${option.level} levels from ${pool.label}`:`Spent one level ${option.level} ${option.poolId.startsWith('manual:')?'manual ':pool?.kind==='occult'?'occult ':''}slot`;
     return {character:result,name:entry.name,level:option.level,cost,entry};
   }
 

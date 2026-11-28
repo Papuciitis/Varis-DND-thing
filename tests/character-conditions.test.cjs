@@ -2,7 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..');
 function setup(){
   const context={console,structuredClone};context.globalThis=context;vm.createContext(context);
-  for(const file of ['character-conditions','character-state','character-effects','character-equipment','character-casting','character-rules']){
+  for(const file of ['character-conditions','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-feats','character-rules']){
     vm.runInContext(fs.readFileSync(path.join(root,'web',file+'.js'),'utf8'),context);
   }
   return {c:context.CharacterConditions,state:context.CharacterState,rules:context.CharacterRules.create({},[]),casting:context.CharacterCasting};

@@ -10,6 +10,8 @@
   const targetKey=target=>JSON.stringify([target.source||"",target.group||"",target.name]);
   const id=entry=>entry._monsterEditorKey||(entry.details?.id?"id:"+entry.details.id:targetKey(targetOf(entry)));
   const provenance=key=>/^(?:source_|original_|conversion_|replacement_sources$|fallback_reference$)/.test(key);
+  const legacyNames=entry=>[entry.details?.source_naming?.original_name,...(entry.details?.source_naming?.previous_names||[])].filter(Boolean);
+  const legacyTitle=(entry,name)=>legacyNames(entry).includes(name);
   function validTarget(target){return object(target)&&["source","group","name"].every(key=>typeof target[key]==="string")&&target.name.trim();}
   function validate(entry){
     if(!object(entry)||typeof entry.name!=="string"||!entry.name.trim()||entry.name.length>300||typeof entry.group!=="string"||!entry.group.trim()||!object(entry.details))throw new Error("A monster needs a name, a collection, and statblock fields.");
@@ -27,6 +29,7 @@
     for(const [key,entry]of originals)add(key,next.get(key)?.entry||entry);
     for(const [key,row]of next)if(!originals.has(key))add(key,row.entry);
     for(const [key,entry]of originals)addName(key,targetOf(entry).name);
+    for(const [key,entry]of originals)for(const name of legacyNames(entry))addName(key,name);
     for(const [key,row]of next)if(row.target)addName(key,row.target.name);
   }
   function persist(next){changes=next;try{if(!globalThis.localStorage)throw new Error("Storage unavailable");globalThis.localStorage.setItem(storageKey,JSON.stringify({version:1,changes:[...next].map(([key,row])=>({key,...row}))}));storageError="";}catch(_){storageError="This browser could not save your changes. Export custom.yaml before closing the page.";}return !storageError;}
@@ -37,6 +40,7 @@
   function cleanEntry(entry){const result=clone(entry);delete result._monsterEditorKey;return result;}
   function keepProvenance(entry,original){
     const result=clone(entry);if(!original)return result;
+    if(legacyTitle(original,result.name))result.name=original.name;
     if(!Object.hasOwn(result.details,"encounter_theme")&&original.details.encounter_theme)result.details.encounter_theme=original.details.encounter_theme;
     for(const key of Object.keys(result.details))if(provenance(key))delete result.details[key];
     for(const[key,value]of Object.entries(original.details||{}))if(provenance(key))result.details[key]=clone(value);
@@ -46,13 +50,13 @@
     if(section?.key!=="monsters")return section;
     for(const entry of section.entries){const key=id(entry);if(!originals.has(key)&&!entry._monsterEditorKey)originals.set(key,cleanEntry(entry));}
     const result=[];
-    for(const [key,original]of originals){const row=changes.get(key),value=clone(row?.entry||original);if(row?.mode==="override"){value.source=original.source;value.monster_target=clone(row.target);if(!Object.hasOwn(value.details,"encounter_theme")&&original.details.encounter_theme)value.details.encounter_theme=original.details.encounter_theme;for(const field of Object.keys(value.details))if(provenance(field))delete value.details[field];for(const [field,item]of Object.entries(original.details))if(provenance(field))value.details[field]=clone(item);}value._monsterEditorKey=key;result.push(value);}
+      for(const [key,original]of originals){const row=changes.get(key),value=clone(row?.entry||original);if(row?.mode==="override"){value.source=original.source;value.monster_target=targetOf(original);if(legacyTitle(original,value.name))value.name=original.name;if(value.group===row.target.group)value.group=original.group;if(!Object.hasOwn(value.details,"encounter_theme")&&original.details.encounter_theme)value.details.encounter_theme=original.details.encounter_theme;for(const field of Object.keys(value.details))if(provenance(field))delete value.details[field];for(const [field,item]of Object.entries(original.details))if(provenance(field))value.details[field]=clone(item);}value._monsterEditorKey=key;result.push(value);}
     for(const [key,row]of changes)if(row.mode==="addition"&&!originals.has(key))result.push({...clone(row.entry),_monsterEditorKey:key});
     section.entries=result;return section;
   }
   function save(section,original,edited,duplicate=false){
     const entry=validate(edited),next=new Map(changes);let savedKey;
-    if(original&&!duplicate){const key=id(original),previous=changes.get(key),target=previous?.target||targetOf(originals.get(key)||original),mode=previous?.mode||(original.source==="monsters/custom.yaml"&&!original.monster_target?"addition":"override");if(original.details?.id&&entry.details.id!==original.details.id)throw new Error("A monster's ID cannot change.");next.set(key,{mode,...(mode==="addition"?{}:{target}),entry:cleanEntry(keepProvenance({...entry,source:original.source},originals.get(key)||original))});savedKey=key;}
+      if(original&&!duplicate){const key=id(original),previous=changes.get(key),target=targetOf(originals.get(key)||original),mode=previous?.mode||(original.source==="monsters/custom.yaml"&&!original.monster_target?"addition":"override");if(original.details?.id&&entry.details.id!==original.details.id)throw new Error("A monster's ID cannot change.");next.set(key,{mode,...(mode==="addition"?{}:{target}),entry:cleanEntry(keepProvenance({...entry,source:original.source},originals.get(key)||original))});savedKey=key;}
     else{entry.details.id="custom-"+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2));entry.source="monsters/custom.yaml";delete entry.monster_target;delete entry._monsterEditorKey;const key=id(entry);next.set(key,{mode:"addition",entry:cleanEntry(entry)});savedKey=key;}
     validateIdentities(next);persist(next);apply(section);return section.entries.find(value=>id(value)===savedKey);
   }
@@ -61,7 +65,7 @@
   function customCollection(){
     const records=new Map();
     for(const [key,entry]of originals){if(entry.monster_target)records.set(key,{mode:"override",target:targetOf(entry),entry});else if(entry.source==="monsters/custom.yaml")records.set(key,{mode:"addition",entry});}
-    for(const [key,row]of changes)records.set(key,{...row,entry:keepProvenance(row.entry,originals.get(key))});
+    for(const [key,row]of changes){const original=originals.get(key),entry=keepProvenance(row.entry,original);if(row.mode==="override"&&original&&entry.group===row.target.group)entry.group=original.group;records.set(key,{...row,...(row.mode==="override"&&original?{target:targetOf(original)}:{}),entry});}
     const result={section:"monsters",entries:[],monster_overrides:[]};for(const row of records.values()){if(row.mode==="addition")result.entries.push(flatten(row.entry));else result.monster_overrides.push({target:clone(row.target),entry:flatten(row.entry)});}return result;
   }
   function sourceCollection(section){return{section:"monsters",entries:section.entries.map(flatten)};}
@@ -69,7 +73,7 @@
     if(!object(value)||value.section!=="monsters"||!Array.isArray(value.entries)||(value.monster_overrides!=null&&!Array.isArray(value.monster_overrides)))throw new Error("Choose a monster YAML collection exported from this editor.");
     const next=new Map(changes),seen=new Set(),unpack=raw=>{if(!object(raw))throw new Error("Every monster must be a mapping.");const{name,group,...details}=clone(raw);return validate({name,group:group||"Custom monsters",source:"monsters/custom.yaml",details});};
     for(const raw of value.entries){const entry=unpack(raw);if(!entry.details.id)entry.details.id="custom-import-"+JSON.stringify([entry.group,entry.name]);const key=id(entry);if(seen.has(key))throw new Error("The file repeats a monster ID.");seen.add(key);const original=originals.get(key)||[...originals.values()].find(item=>item.name===entry.name&&item.group===entry.group),actualKey=original?id(original):key;if(original&&original.source!=="monsters/custom.yaml")next.set(actualKey,{mode:"override",target:targetOf(original),entry:{...entry,source:original.source,details:{...entry.details,...(original.details.id?{id:original.details.id}:{})}}});else next.set(actualKey,{mode:"addition",entry});}
-    for(const row of value.monster_overrides||[]){if(!object(row)||!validTarget(row.target))throw new Error("An override needs its original source, collection and name.");const original=[...originals.values()].find(item=>targetKey(targetOf(item))===targetKey(row.target));if(!original)throw new Error("The overridden monster is missing from this catalog: "+row.target.name);const key=id(original);if(seen.has(key))throw new Error("The file repeats an overridden monster.");seen.add(key);const entry=unpack(row.entry);if(original.details.id&&entry.details.id!==original.details.id)throw new Error("A monster's ID cannot change.");next.set(key,{mode:"override",target:clone(row.target),entry:{...entry,source:original.source}});}
+      for(const row of value.monster_overrides||[]){if(!object(row)||!validTarget(row.target))throw new Error("An override needs its original source, collection and name.");const original=[...originals.values()].find(item=>targetKey(targetOf(item))===targetKey(row.target))||[...originals.values()].find(item=>item.source==='monsters/setting-creatures.yaml'&&item.details.id&&item.details.id===row.entry?.id&&[item.name,targetOf(item).name,...legacyNames(item)].includes(row.target.name));if(!original)throw new Error("The overridden monster is missing from this catalog: "+row.target.name);const key=id(original);if(seen.has(key))throw new Error("The file repeats an overridden monster.");seen.add(key);const entry=unpack(row.entry);if(original.details.id&&entry.details.id!==original.details.id)throw new Error("A monster's ID cannot change.");if(entry.group===row.target.group)entry.group=original.group;next.set(key,{mode:"override",target:targetOf(original),entry:{...entry,source:original.source}});}
     validateIdentities(next);persist(next);apply(section);return!storageError;
   }
   // Quoted scalars keep dice, dates, colons and multiline descriptions intact.

@@ -20,15 +20,15 @@ entries:
     cha: '5'
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: Earth Glide
-    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
-      not disturb the material it moves through.
+    description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it
+      does not disturb the material it moves through.
   - name: Siege Monster
     description: The elemental deals double damage to objects and structures.
   actions:
@@ -39,10 +39,10 @@ entries:
       damage.'
   - name: Unstoppable Force (Recharge 5-6)
     description: Move up to 30 feet in a straight line, passing through creatures without ending in an occupied
-      space. Each creature in the path makes a DC 16 Dexterity save, taking 28 (8d6) bludgeoning damage and falling
-      Prone on a failure, or half damage without falling Prone on a success. Then make one Slam against a Prone
-      creature within reach. The area save cannot be Blocked; the follow-up Slam can be Blocked normally. After
-      use, roll a d6 at the start of each of its turns, recharging on 5-6.
+      space. Each creature in the path makes a DC 16 Dexterity save, taking 28 (8d6) bludgeoning damage and
+      falling Prone on a failure, or half damage without falling Prone on a success. Then make one Slam against
+      a Prone creature within reach. The area save cannot be Blocked; the follow-up Slam can be Blocked normally.
+      After use, roll a d6 at the start of each of its turns, recharging on 5-6.
   source_ref: draft2.pdf / PDF page 8
   original_5e:
     name: Earth Elemental Servant
@@ -68,24 +68,25 @@ entries:
     xp: 5,900
     traits:
     - name: Earth Glide
-      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it does
-        not disturb the material it moves through.
+      description: The elemental can burrow through nonmagical, unworked earth and stone. While doing so, it
+        does not disturb the material it moves through.
     - name: Siege Monster
       description: The elemental deals double damage to objects and structures.
     actions:
     - name: Multiattack
       description: The elemental makes two slam attacks.
     - name: Slam
-      description: 'Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 14 (2d8 + 5) bludgeoning damage.'
+      description: 'Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 14 (2d8 + 5) bludgeoning
+        damage.'
     - name: Unstoppable Force (Recharge 5-6)
-      description: The elemental charges up to 30 feet in a straight line and can move through creatures in its
-        path. Each creature in the elemental's path must make a DC 16 Dexterity saving throw. On a failed save,
-        a creature takes 28 (8d6) bludgeoning damage and is knocked prone. On a successful save, a creature takes
-        half as much damage and is not knocked prone. The elemental can then make one slam attack against a prone
-        creature.
-    parent_feature: 'Master of the Land, Artificer Geomorphy Specialist level 15: action, expend a spell slot of
-      level 3 or higher, summon within 60 ft.; friendly and obeys commands; remains 1 hour, until 0 HP or dismissed
-      as an action; once per long rest.'
+      description: The elemental charges up to 30 feet in a straight line and can move through creatures in
+        its path. Each creature in the elemental's path must make a DC 16 Dexterity saving throw. On a failed
+        save, a creature takes 28 (8d6) bludgeoning damage and is knocked prone. On a successful save, a creature
+        takes half as much damage and is not knocked prone. The elemental can then make one slam attack against
+        a prone creature.
+    parent_feature: 'Master of the Land, Artificer Geomorphy Specialist level 15: action, expend a spell slot
+      of level 3 or higher, summon within 60 ft.; friendly and obeys commands; remains 1 hour, until 0 HP or
+      dismissed as an action; once per long rest.'
   conversion_notes:
   - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
     below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless
@@ -94,12 +95,12 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
-  - The final Slam of Unstoppable Force must still be within reach. Recharge 5-6 means a d6 at the start of each
-    turn while expended. Source exhaustion immunity is presented as current Fatigue immunity. Source CR 10 is
-    retained rather than recalculated.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
+  - The final Slam of Unstoppable Force must still be within reach. Recharge 5-6 means a d6 at the start of
+    each turn while expended. Source exhaustion immunity is presented as current Fatigue immunity. Source CR
+    10 is retained rather than recalculated.
   block: 0 pool / -1 check
   damage_vulnerabilities: thunder
   damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
@@ -128,12 +129,12 @@ entries:
     cha: '1'
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: False Appearance
     description: While the resilient plant remains motionless, it is indistinguishable from an ordinary, inanimate
       plant.
@@ -145,8 +146,8 @@ entries:
       according to its occupied space; it makes no attacks. It still has a turn for Regeneration.
   - name: Controller-linked vitality (optional)
     description: If an existing effect or the GM uses the source controller-linked variant, add its assigned
-      controller's spellcasting ability modifier to maximum and initial HP (minimum total 1). Otherwise use the
-      printed 200 HP.
+      controller's spellcasting ability modifier to maximum and initial HP (minimum total 1). Otherwise use
+      the printed 200 HP.
   actions:
   - name: None
     description: Cannot take actions. This is a stationary created plant, not a combat attacker.
@@ -174,10 +175,11 @@ entries:
     xp: '10'
     traits:
     - name: False Appearance
-      description: While the resilient plant remains motionless, it is indistinguishable from an ordinary, inanimate
-        plant.
+      description: While the resilient plant remains motionless, it is indistinguishable from an ordinary,
+        inanimate plant.
     - name: Regeneration
-      description: The resilient plant regains 10 hit points at the start of its turn if it has at least 1 hit point.
+      description: The resilient plant regains 10 hit points at the start of its turn if it has at least 1
+        hit point.
     actions:
     - name: None
       description: The resilient plant cannot take actions or move. It serves purely as a barrier or cover.
@@ -191,16 +193,17 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
-  - The source printed 200 HP and also added an undefined spellcasting modifier in its dice expression. Use 200
-    HP independently; the optional controller-linked variant adds an assigned controller's spellcasting modifier
-    once (minimum total 1). The inconsistent original dice expression is archived, not used to reroll HP.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
+  - The source printed 200 HP and also added an undefined spellcasting modifier in its dice expression. Use
+    200 HP independently; the optional controller-linked variant adds an assigned controller's spellcasting
+    modifier once (minimum total 1). The inconsistent original dice expression is archived, not used to reroll
+    HP.
   - The stationary/actionless restriction takes precedence over optional companion command timing. Cover and
     passage blocking are fixed by placement; commanding it does not allow movement.
-  - Any duration is set by an existing effect or the GM. Source CR 0 and XP are preserved even though this is
-    exceptionally resilient stationary cover.
+  - Any duration is set by an existing effect or the GM. Source CR 0 and XP are preserved even though this
+    is exceptionally resilient stationary cover.
   block: 0 pool / -5 check
   damage_resistances: bludgeoning, piercing and slashing from magical attacks
   damage_immunities: poison, psychic; bludgeoning, piercing and slashing from nonmagical attacks
@@ -229,23 +232,23 @@ entries:
     cha: '1'
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: False Appearance
     description: While the awakened earth remains motionless, it is indistinguishable from an ordinary, inanimate
       area of ground.
   - name: Anchored ground
-    description: Occupies a 50-foot-radius area chosen by the GM when placed. It cannot leave or translate that
-      area. Burrowing manipulates ground inside this same boundary; it does not move the entire area or grant
-      reach beyond it.
+    description: Occupies a 50-foot-radius area chosen by the GM when placed. It cannot leave or translate
+      that area. Burrowing manipulates ground inside this same boundary; it does not move the entire area or
+      grant reach beyond it.
   - name: Controller-linked vitality (optional)
     description: If an existing effect or the GM uses the source controller-linked variant, add its assigned
-      controller's spellcasting ability modifier to maximum and initial HP (minimum total 1). Otherwise use the
-      printed 75 HP.
+      controller's spellcasting ability modifier to maximum and initial HP (minimum total 1). Otherwise use
+      the printed 75 HP.
   actions:
   - name: Multi-Assault
     description: Once as its action, make one Slam attack against each chosen creature standing on its anchored
@@ -259,8 +262,8 @@ entries:
       DC assigned by the GM if the controller has none. On a success, end the controller's control; the animated
       area remains anchored for any duration already set by an existing effect or the GM. It may choose this
       action independently instead of following an order or Dodging; the controller cannot prevent the attempt
-      with a command. The GM decides whether the elemental attempts it. This action is unavailable when it is
-      already independent.
+      with a command. The GM decides whether the elemental attempts it. This action is unavailable when it
+      is already independent.
   source_ref: draft2.pdf / PDF page 60
   original_5e:
     name: Awakened Earth
@@ -288,13 +291,14 @@ entries:
       description: While the awakened earth remains motionless, it is indistinguishable from an ordinary, inanimate
         area of ground.
     - name: Multi-Assault
-      description: Once per turn, creature can attack all creatures who is standing on Awakened Earth with Slam
-        attack.
+      description: Once per turn, creature can attack all creatures who is standing on Awakened Earth with
+        Slam attack.
     actions:
     - name: Slam
       description: 'Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 4d10 bludgeoning damage.'
-    notes: The awakened earth is stationary and cannot move from the spot it was summoned. It can, however, burrow
-      and manipulate the ground within its reach. It follows the commands of the spellcaster who awakened it.
+    notes: The awakened earth is stationary and cannot move from the spot it was summoned. It can, however,
+      burrow and manipulate the ground within its reach. It follows the commands of the spellcaster who awakened
+      it.
   conversion_notes:
   - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
     below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless
@@ -303,17 +307,17 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
-  - 'Source stationary language wins over unrestricted travel: burrow 30 ft. works only inside the original anchored
-    50-foot-radius footprint.'
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
+  - 'Source stationary language wins over unrestricted travel: burrow 30 ft. works only inside the original
+    anchored 50-foot-radius footprint.'
   - Use the printed 75 HP independently. The optional controller-linked variant adds an assigned controller's
     spellcasting ability modifier once (minimum total 1); the source dice expression is archived. Multi-Assault
     uses one action and one separate attack per selected target standing on the area.
   - The source creation text permits a Strength check to break control. Retained as an action only when a controller
-    is assigned, using its spell save DC or an explicit GM-assigned control DC. This grants no extra attack and
-    sets no duration.
+    is assigned, using its spell save DC or an explicit GM-assigned control DC. This grants no extra attack
+    and sets no duration.
   block: 0 pool / -1 check
   damage_resistances: bludgeoning, piercing and slashing from nonmagical attacks
   damage_immunities: poison
@@ -341,12 +345,12 @@ entries:
     cha: '5'
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: Elemental Infusion
     description: The golem can be configured with specific elemental properties, granting additional abilities
       such as leaving a trail of difficult terrain, emitting a noxious cloud, or radiating intense heat. Apply
@@ -359,9 +363,9 @@ entries:
     description: 'Melee attack +7; reach 5 ft.; one target; Block DC 15. Unblocked strike: 2d8 + 4 bludgeoning
       damage, plus only the damage increases granted by its selected materials.'
   - name: Geochemical Blast
-    description: 'Ranged spell attack +6; range 60 ft.; one target; Block DC 14. Unblocked strike: 3d6 acid or
-      fire damage (choose when attacking), plus any selected-material rider. Material riders attached to this
-      attack require an unblocked strike.'
+    description: 'Ranged spell attack +6; range 60 ft.; one target; Block DC 14. Unblocked strike: 3d6 acid
+      or fire damage (choose when attacking), plus any selected-material rider. Material riders attached to
+      this attack require an unblocked strike.'
   source_ref: draft2.pdf / PDF page 61
   original_5e:
     name: Geochemical Golem
@@ -386,12 +390,12 @@ entries:
     xp: 1,800
     traits:
     - name: Elemental Infusion
-      description: The golem can be imbued with specific elemental properties, granting additional abilities such
-        as leaving a trail of difficult terrain, emitting a noxious cloud, or radiating intense heat. The specific
-        abilities are determined by the rare earth elements used in the casting.
+      description: The golem can be imbued with specific elemental properties, granting additional abilities
+        such as leaving a trail of difficult terrain, emitting a noxious cloud, or radiating intense heat.
+        The specific abilities are determined by the rare earth elements used in the casting.
     - name: Earth Glide
-      description: The golem can burrow through nonmagical, unworked earth and stone without disturbing the material
-        it moves through.
+      description: The golem can burrow through nonmagical, unworked earth and stone without disturbing the
+        material it moves through.
     actions:
     - name: Slam
       description: 'Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 2d8 + 4 bludgeoning damage.'
@@ -405,13 +409,13 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
   - Earth Glide is given burrow 30 ft. to match its printed walking speed; the source omitted a burrow number.
   - Apply only the materials chosen for this optional monster configuration. Its twelve material options retain
-    source prices and combination limits as a component estimate, not a published player spell or automatic crafting
-    rule. Infusions modify this one base creature; they do not create additional creatures or actions.
+    source prices and combination limits as a component estimate, not a published player spell or automatic
+    crafting rule. Infusions modify this one base creature; they do not create additional creatures or actions.
   - Natural Block remains the base Dexterity value even when a material raises AC. Material increases to melee
     attack bonus also raise that attack's Block DC by the same amount.
   block: 0 pool / +0 check
@@ -425,59 +429,61 @@ entries:
   - name: Neodrakite
     group: Tarta Homebrewery - Materials
     cost_gp: 300
-    effect: As an action, the golem creates a magnetic pulse affecting metallic objects within 10 feet. It may move
-      unattended metal objects up to 10 feet toward or away from itself. A creature holding a targeted metal item
-      makes a DC 14 Strength save; on failure, it drops one such item in its space. The pulse does not move or damage
-      the creature. This saving-throw-only effect cannot be Blocked. Only loose handheld objects weighing at most
-      50 pounds each may be moved; anchored objects, structures and worn armor are unaffected. A held weapon uses
-      the printed disarm save.
+    effect: As an action, the golem creates a magnetic pulse affecting metallic objects within 10 feet. It
+      may move unattended metal objects up to 10 feet toward or away from itself. A creature holding a targeted
+      metal item makes a DC 14 Strength save; on failure, it drops one such item in its space. The pulse does
+      not move or damage the creature. This saving-throw-only effect cannot be Blocked. Only loose handheld
+      objects weighing at most 50 pounds each may be moved; anchored objects, structures and worn armor are
+      unaffected. A held weapon uses the printed disarm save.
   - name: Cerithal Stone
     group: Tarta Homebrewery - Materials
     cost_gp: 200
-    effect: Each ground space the golem leaves while moving becomes difficult terrain until the start of its next
-      turn. The trail occupies the spaces the golem occupied; overlapping trail spaces do not multiply movement
-      costs. It affects creatures on the ground, not flying creatures.
+    effect: Each ground space the golem leaves while moving becomes difficult terrain until the start of its
+      next turn. The trail occupies the spaces the golem occupied; overlapping trail spaces do not multiply
+      movement costs. It affects creatures on the ground, not flying creatures.
   - name: Lanthara Crystal
     group: Tarta Homebrewery - Materials
     cost_gp: 400
-    effect: Increase the golem's Armor Class by 2 while this infusion is present. The ordinary Geochemical Golem
-      AC 16 becomes AC 18. This does not add Block, armor training or damage reduction.
+    effect: Increase the golem's Armor Class by 2 while this infusion is present. The ordinary Geochemical
+      Golem AC 16 becomes AC 18. This does not add Block, armor training or damage reduction.
   - name: Samarkium Ore
     group: Tarta Homebrewery - Materials
     cost_gp: 250
-    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 poison damage. This automatic
-      cloud affects allies as well as enemies, permits no save, does not itself apply Poisoned, and cannot be Blocked.
+    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 poison damage. This
+      automatic cloud affects allies as well as enemies, permits no save, does not itself apply Poisoned, and
+      cannot be Blocked.
   - name: Euralite Gem
     group: Tarta Homebrewery - Materials
     cost_gp: 150
-    effect: The golem sheds bright light in a 20-foot radius and dim light for another 20 feet. It causes no damage.
+    effect: The golem sheds bright light in a 20-foot radius and dim light for another 20 feet. It causes no
+      damage.
   - name: Gadolix Shard
     group: Tarta Homebrewery - Materials
     cost_gp: 350
-    effect: Each unblocked Slam strike by the golem deals an additional 1d8 fire damage. The fire is part of the
-      blockable attack, so a successful Block negates this rider with the Slam.
+    effect: Each unblocked Slam strike by the golem deals an additional 1d8 fire damage. The fire is part of
+      the blockable attack, so a successful Block negates this rider with the Slam.
   - name: Ytriun Metal
     group: Tarta Homebrewery - Materials
     cost_gp: 300
-    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 fire damage. This automatic
-      heat affects allies and enemies, permits no save, and cannot be Blocked.
+    effect: At the start of the golem's turn, each other creature within 5 feet takes 1d6 fire damage. This
+      automatic heat affects allies and enemies, permits no save, and cannot be Blocked.
   - name: Erbion Essence
     group: Tarta Homebrewery - Materials
     cost_gp: 450
-    effect: As an action once on its turn, the golem touches itself or an ally and restores 1d8 HP to that creature,
-      up to its maximum HP. It cannot use this action more than once during the same turn.
+    effect: As an action once on its turn, the golem touches itself or an ally and restores 1d8 HP to that
+      creature, up to its maximum HP. It cannot use this action more than once during the same turn.
   - name: Thulmara Dust
     group: Tarta Homebrewery - Materials
     cost_gp: 200
-    effect: At the start of the golem's turn, enemies within 10 feet have their movement speeds reduced by 10 feet,
-      to a minimum of 0, until the start of the golem's next turn. This speed reduction does not stack with itself.
-      It is not the old slow spell and does not grant a saving throw or a separate condition.
+    effect: At the start of the golem's turn, enemies within 10 feet have their movement speeds reduced by
+      10 feet, to a minimum of 0, until the start of the golem's next turn. This speed reduction does not stack
+      with itself. It is not the old slow spell and does not grant a saving throw or a separate condition.
   - name: Holmara Rock
     group: Tarta Homebrewery - Materials
     cost_gp: 400
-    effect: Add +2 to the golem's melee attack rolls and melee damage rolls. Its ordinary Slam becomes +9 to hit,
-      Block DC 17, and 2d8 + 6 bludgeoning damage. This does not improve ranged attacks, saving-throw DCs, Armor
-      Class or Block checks.
+    effect: Add +2 to the golem's melee attack rolls and melee damage rolls. Its ordinary Slam becomes +9 to
+      hit, Block DC 17, and 2d8 + 6 bludgeoning damage. This does not improve ranged attacks, saving-throw
+      DCs, Armor Class or Block checks.
   - name: Dyspraxium Salt
     group: Tarta Homebrewery - Materials
     cost_gp: 350
@@ -492,12 +498,12 @@ entries:
     effect: After an unblocked Geochemical Blast strike, its target makes a DC 14 Constitution save. On failure,
       the target is Blinded until the end of its next turn; on success, it is not Blinded. The Blast's ordinary
       damage is unchanged. A successful Block against the Blast prevents both its damage and this rider.
-  material_rules: Base statistics below have no infusions. When configuring or creating a golem, choose one to
-    four distinct materials. The optional source component estimate is at least 1,000 gp or the material subtotal,
-    whichever is greater, plus 400 gp for a third material and a further 2,000 gp for a fourth. This estimate
-    grants no crafting or spellcasting ability; an existing effect or the GM determines how a golem can be obtained.
-    Only selected effects apply; the same material never stacks with itself. The configuration panel previews
-    these optional changes.
+  material_rules: Base statistics below have no infusions. When configuring or creating a golem, choose one
+    to four distinct materials. The optional source component estimate is at least 1,000 gp or the material
+    subtotal, whichever is greater, plus 400 gp for a third material and a further 2,000 gp for a fourth. This
+    estimate grants no crafting or spellcasting ability; an existing effect or the GM determines how a golem
+    can be obtained. Only selected effects apply; the same material never stacks with itself. The configuration
+    panel previews these optional changes.
 - name: Stone Servant
   group: Tarta Homebrewery - Summons
   id: homebrewery-stone-servant
@@ -518,12 +524,12 @@ entries:
     cha: '1'
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: Immutable Form
     description: The golem is immune to any spell or effect that would alter its form.
   - name: Magic Resistance
@@ -531,12 +537,12 @@ entries:
   - name: Noncombat servant
     description: Cannot make attacks, opportunity attacks, cast spells or activate offensive magic items. It
       can carry, clean, mend, build, break unattended objects, dig or defend without attacking. When used as
-      a controlled companion, it stops and does nothing beyond 60 feet from its controller until within 60 feet
-      again. An independent servant has no controller-distance restriction.
+      a controlled companion, it stops and does nothing beyond 60 feet from its controller until within 60
+      feet again. An independent servant has no controller-distance restriction.
   actions:
   - name: Work or Help
-    description: Perform one mundane task or take the current Help action on a nonattack task within reach. Work
-      obeys normal ability checks, object durability and tool requirements; it grants no automatic success.
+    description: Perform one mundane task or take the current Help action on a nonattack task within reach.
+      Work obeys normal ability checks, object durability and tool requirements; it grants no automatic success.
   - name: Guard
     description: Take Dodge, or position its body as cover for another creature using normal cover rules. Guard
       does not make an attack or automatically redirect damage.
@@ -555,8 +561,8 @@ entries:
       int: '3'
       wis: '13'
       cha: '1'
-    damage_immunities: Poison, Psychic; Bludgeoning, Piercing and Slashing from Nonmagical Attacks That Are Not
-      Adamantine
+    damage_immunities: Poison, Psychic; Bludgeoning, Piercing and Slashing from Nonmagical Attacks That Are
+      Not Adamantine
     condition_immunities: Charmed, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned
     senses: Darkvision 120 ft., passive Perception 11
     languages: Understands the languages of its creator but cannot speak
@@ -582,16 +588,17 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
   - The original creation text explicitly says the servant cannot attack. That restriction defines this utility
-    option despite the contradictory source Slam/Magic Weapons block. Offensive Slam and Magic Weapons are archived.
-    Work/Help/Guard complete its utility role without offensive actions.
-  - Source CR 4 is retained for provenance, not a promise of combat threat; this is a nonattacking utility servant.
-    No equipment or spell slots are copied or created.
+    option despite the contradictory source Slam/Magic Weapons block. Offensive Slam and Magic Weapons are
+    archived. Work/Help/Guard complete its utility role without offensive actions.
+  - Source CR 4 is retained for provenance, not a promise of combat threat; this is a nonattacking utility
+    servant. No equipment or spell slots are copied or created.
   block: 1 pool / +1 check
-  damage_immunities: Poison, Psychic; Bludgeoning, Piercing and Slashing from Nonmagical Attacks That Are Not Adamantine
+  damage_immunities: Poison, Psychic; Bludgeoning, Piercing and Slashing from Nonmagical Attacks That Are Not
+    Adamantine
   senses: Darkvision 120 ft., passive Perception 11
   languages: Understands the languages of its creator but cannot speak
   xp: 1,100
@@ -616,25 +623,25 @@ entries:
     cha: '5'
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: Sand Form
     description: Can move through a 1-inch-wide space without squeezing. A creature that touches it or lands
       an unblocked melee strike against it while within 5 feet takes 14 (4d6) slashing damage; this automatic
       contact damage cannot be Blocked.
   - name: Engulf
-    description: It can enter and stop in a hostile creature's space. The first time it enters a creature's space
-      on a turn, that creature makes a DC 18 Dexterity save. On a failure it takes 14 (4d6) slashing damage;
-      if Large or smaller and no other creature is engulfed, it is also engulfed. On a success it takes no damage
-      and is moved to an adjacent unoccupied space of its choice. An engulfed creature cannot breathe, is Pinned,
-      moves with the golem, and takes 56 (16d6) slashing damage at the start of each golem turn. It can use an
-      action for a DC 18 Strength check, escaping into an adjacent unoccupied space on a success. An adjacent
-      ally can use its action for the same check to pull it free. Engulf ends immediately if the golem reaches
-      0 HP or is dismissed. Saving-throw-only and ongoing automatic damage cannot be Blocked.
+    description: It can enter and stop in a hostile creature's space. The first time it enters a creature's
+      space on a turn, that creature makes a DC 18 Dexterity save. On a failure it takes 14 (4d6) slashing
+      damage; if Large or smaller and no other creature is engulfed, it is also engulfed. On a success it takes
+      no damage and is moved to an adjacent unoccupied space of its choice. An engulfed creature cannot breathe,
+      is Pinned, moves with the golem, and takes 56 (16d6) slashing damage at the start of each golem turn.
+      It can use an action for a DC 18 Strength check, escaping into an adjacent unoccupied space on a success.
+      An adjacent ally can use its action for the same check to pull it free. Engulf ends immediately if the
+      golem reaches 0 HP or is dismissed. Saving-throw-only and ongoing automatic damage cannot be Blocked.
   actions:
   - name: Multiattack
     description: Make two Slam attacks, resolving each attack roll and Block separately.
@@ -670,23 +677,24 @@ entries:
     xp: 15,000
     traits:
     - name: Sand Form
-      description: The golem can move through a space as narrow as 1 inch wide without squeezing. A creature that
-        touches the golem or hits it with a melee attack while within 5 feet of it takes 14 (4d6) slashing damage.
-        In addition, the golem can enter a hostile creature's space and stop there. The first time it enters a creature's
-        space on a turn, that creature takes 14 (4d6) slashing damage and is engulfed by the golem. The engulfed
-        creature cannot breathe, is restrained, and takes 56 (16d6) slashing damage at the start of each of the
-        golem's turns. When the golem moves, the engulfed creature moves with it. The golem can only have one creature
-        engulfed at a time.
+      description: The golem can move through a space as narrow as 1 inch wide without squeezing. A creature
+        that touches the golem or hits it with a melee attack while within 5 feet of it takes 14 (4d6) slashing
+        damage. In addition, the golem can enter a hostile creature's space and stop there. The first time
+        it enters a creature's space on a turn, that creature takes 14 (4d6) slashing damage and is engulfed
+        by the golem. The engulfed creature cannot breathe, is restrained, and takes 56 (16d6) slashing damage
+        at the start of each of the golem's turns. When the golem moves, the engulfed creature moves with it.
+        The golem can only have one creature engulfed at a time.
     actions:
     - name: Multiattack
       description: The golem makes two slam attacks.
     - name: Slam
-      description: 'Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 19 (3d8 + 7) bludgeoning damage.'
+      description: 'Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 19 (3d8 + 7) bludgeoning
+        damage.'
     - name: Sandstorm (Recharge 5-6)
-      description: The golem magically creates a swirling sandstorm in a 60-foot radius centered on itself. Each
-        creature in that area must make a DC 18 Constitution saving throw, taking 22 (4d10) bludgeoning damage on
-        a failed save, or half as much damage on a successful one. The sandstorm lasts until the start of the golem's
-        next turn. The area within the sandstorm is heavily obscured.
+      description: The golem magically creates a swirling sandstorm in a 60-foot radius centered on itself.
+        Each creature in that area must make a DC 18 Constitution saving throw, taking 22 (4d10) bludgeoning
+        damage on a failed save, or half as much damage on a successful one. The sandstorm lasts until the
+        start of the golem's next turn. The area within the sandstorm is heavily obscured.
   conversion_notes:
   - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
     below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless
@@ -695,17 +703,18 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
   - Source name Colossal Sand Golem retains the actual printed size Huge. Source Slam's printed 19 and 3d8+7
     are preserved despite their different mathematical average.
-  - The source engulf had no save, size bound or escape procedure. Completed with DC 18 Dexterity to avoid, Large-or-smaller
-    engulf, one occupant, and an action DC 18 Strength escape/rescue. Current Pinned replaces restrained. Successful
-    avoidance moves the creature outside the occupied space; dismissal/0 HP releases the occupant.
-  - The passive contact trait remains triggered by touching or a melee hit as printed. Sandstorm explicitly excludes
-    the golem itself; other creatures use the printed save and damage. An existing effect or the GM sets any
-    companion lifetime or active limit.
+  - The source engulf had no save, size bound or escape procedure. Completed with DC 18 Dexterity to avoid,
+    Large-or-smaller engulf, one occupant, and an action DC 18 Strength escape/rescue. Current Pinned replaces
+    restrained. Successful avoidance moves the creature outside the occupied space; dismissal/0 HP releases
+    the occupant.
+  - The passive contact trait remains triggered by touching or a melee hit as printed. Sandstorm explicitly
+    excludes the golem itself; other creatures use the printed save and damage. An existing effect or the GM
+    sets any companion lifetime or active limit.
   - Use printed Slam dice 3d8 + 7 without the inconsistent printed average 19; original text remains archived.
     Sand Form retaliation requires an unblocked melee strike or direct contact.
   block: 0 pool / -1 check
@@ -735,12 +744,12 @@ entries:
     cha: '7'
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: Rooted plant
     description: Cannot move from the space where it is placed. It can still take actions and reactions, but
       has only the attacks listed here.
@@ -759,10 +768,10 @@ entries:
     components: V, S
     duration: Concentration, up to 1 minute
     classes: Cleric, Druid, Ranger, Warlock
-    effect: You summon a plant that spits thorns at a creature within 60 feet radius of the plant, dealing 4d10
-      piercing damage.
-    higher_levels: When cast with an 8th-level slot or higher, damage increases by 1d10 for each slot level above
-      7th.
+    effect: You summon a plant that spits thorns at a creature within 60 feet radius of the plant, dealing
+      4d10 piercing damage.
+    higher_levels: When cast with an 8th-level slot or higher, damage increases by 1d10 for each slot level
+      above 7th.
   conversion_notes:
   - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
     below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless
@@ -771,15 +780,15 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
   - The source supplies a persistent plant and damage but no defenses, ability scores, hit resolution or attack
-    frequency. Use the existing Rootbound Stalker chassis as an explicitly selected completion, with speed 0
-    and only Thorn Spit. CR 2 is provisional; source does not print a creature CR.
-  - The independent creature uses ranged spell attack +4 and Block DC 12. An existing effect or the GM may instead
-    assign a controller's spell attack bonus; do not add the plant's Dexterity or proficiency again, and set
-    Block DC to that attack bonus plus 8. No spell-level or resource scaling is granted.
+    frequency. Use the existing Rootbound Stalker chassis as an explicitly selected completion, with speed
+    0 and only Thorn Spit. CR 2 is provisional; source does not print a creature CR.
+  - The independent creature uses ranged spell attack +4 and Block DC 12. An existing effect or the GM may
+    instead assign a controller's spell attack bonus; do not add the plant's Dexterity or proficiency again,
+    and set Block DC to that attack bonus plus 8. No spell-level or resource scaling is granted.
   block: 2 pool / +2 check
   senses: darkvision 60 ft., passive Perception 13
   languages: understands its controller's languages but cannot speak
@@ -788,8 +797,8 @@ entries:
   condition_immunities: Charmed; Shaken, Afraid and Terrified
   source_completion:
     baseline: Rootbound Stalker / data/monsters/template.yaml
-    fields: AC 12, HP 27 (5d8+5), six scores 15/14/13/6/12/7, defensive traits and senses from the existing plant;
-      speed set to 0 for a rooted spitter.
+    fields: AC 12, HP 27 (5d8+5), six scores 15/14/13/6/12/7, defensive traits and senses from the existing
+      plant; speed set to 0 for a rooted spitter.
     attack: Source 4d10 damage retained. Missing resolution completed as one ranged spell attack per action,
       range 60 ft., +4 to hit and Block DC 12 independently; an explicitly assigned controller's casting bonus
       can replace +4.
@@ -798,58 +807,72 @@ entries:
 - name: Rockplica duplicate
   group: Tarta Homebrewery - Summons
   id: homebrewery-rockplica-duplicate
-  meta: Controller-sized construct, unaligned
-  size: Same as controller
+  meta: Medium construct, unaligned
+  size: Medium
   type: construct
   alignment: unaligned
-  cr: Varies
-  ac: Controller's AC when created
-  hp: Half the controller's maximum HP when created (round down; minimum 1)
-  block: Shares the controller's remaining Block points and Block check; no second pool
-  speed: Controller's movement speeds when created
+  cr: '1'
+  ac: '15'
+  hp: '17'
+  block: 0 / +0 check
+  speed: 30 ft., climb 20 ft., burrow 20 ft.
   abilities:
-    str: Controller STR when created
-    dex: Controller DEX when created
-    con: Controller CON when created
-    int: Controller INT when created
-    wis: Controller WIS when created
-    cha: Controller CHA when created
-  senses: Controller's ordinary senses when created; no independently created magic items or ongoing spell effects
+    str: '16'
+    dex: '10'
+    con: '18'
+    int: '2'
+    wis: '12'
+    cha: '6'
+  senses: darkvision 60 ft., passive Perception 13
   languages: Controller's spoken languages when created; can provide verbal components
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: Template setup
-    description: Before using this option, the GM chooses a model creature for every Controller field and records
-      its statistics. The model may be an NPC. Using its profile does not itself place this creature under the
-      model's control or grant any creation ability. If an existing effect or the GM assigns a different controller,
-      the model still supplies the template statistics and shared resources.
+    description: 'Default profile: Boulder Guardian model, with half its HP (17), otherwise its printed base
+      scores and actions; no second Block or resource pool. The GM may instead choose a model creature, including
+      an NPC, before the encounter and replace the template fields using the archived setup. Record the model
+      statistics and its CR on that variant. Merely selecting a model neither creates a creature nor grants
+      control. The model supplies statistics and shared resources even if a different controller is assigned.'
   - name: Shared finite resources
     description: Copies the model creature's available action options when configured, subject to their ordinary
       requirements. Any spell slot, MP, HP cost, item charge, ammunition or limited-use resource is spent from
-      the model creature's existing supply, recorded as the Controller profile. It creates
-      no extra items, ammunition, slots, charges or class-feature uses. Costs cannot be paid if that shared resource
-      is unavailable. Its spell actions use that creature's current spell attack and save DC. Concentration belongs
-      to that same creature; the duplicate gains no independent concentration capacity. If that creature is already
+      the model creature's existing supply, recorded as the Controller profile. It creates no extra items,
+      ammunition, slots, charges or class-feature uses. Costs cannot be paid if that shared resource is unavailable.
+      Its spell actions use that creature's current spell attack and save DC. Concentration belongs to that
+      same creature; the duplicate gains no independent concentration capacity. If that creature is already
       maintaining concentration, the duplicate cannot cast a spell that requires concentration without ending
       it normally. Block points are shared with that creature, not copied into a second pool.
   - name: Bound duplicate
     description: Cannot move farther than 30 feet from its assigned controller, or its model creature if independent;
-      if forced beyond that distance, it disappears. It ends at 0 HP, at the end of any duration set by an existing
-      effect or the GM, or when its controller dismisses it as an action. Use one duplicate per model creature
-      by default; a replacement ends the previous duplicate. It cannot create another duplicate or summon through
-      a copied action.
+      if forced beyond that distance, it disappears. It ends at 0 HP, at the end of any duration set by an
+      existing effect or the GM, or when its controller dismisses it as an action. Use one duplicate per model
+      creature by default; a replacement ends the previous duplicate. It cannot create another duplicate or
+      summon through a copied action.
+  - name: Challenge and chosen models
+    description: The listed CR applies to the default body. If a different model is selected, use that model's
+      CR as the provisional encounter estimate and record it for the configured variant; never treat a copied
+      powerful creature as the low-CR default. A harmless decoy that retains no attacks remains CR 0.
   actions:
+  - name: Multiattack
+    description: In the default stone body, makes one Slam and one Swipe attack. This replaces, rather than
+      adds to, a copied action.
+  - name: Slam
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 1d4 bludgeoning
+      damage.'
+  - name: Swipe
+    description: 'Melee attack: +5 to hit, reach 5 ft., one target; Block DC 13. Unblocked strike: 2d6 + 4
+      slashing damage.'
   - name: Copied action
     description: Take one action available to the model creature when configured, using that action's printed
       attack bonus, Block DC, damage and save DC. Attacks and their riders require an unblocked strike; saving-throw-only
-      effects cannot be Blocked. Pay all costs from the recorded shared finite resources. No extra action, bonus
-      action or reaction is gained.
+      effects cannot be Blocked. Pay all costs from the recorded shared finite resources. No extra action,
+      bonus action or reaction is gained.
   source_ref: draft2.pdf / PDF page 57
   original_5e:
     spell_name: Rockplica
@@ -859,11 +882,11 @@ entries:
     components: V, S
     duration: Concentration, up to 1 minute
     classes: Artificer, Sorcerer, Wizard
-    effect: You create a stone duplicate of yourself. The duplicate has half your hit points and can perform any
-      action you can, but it cannot move more than 30 feet from you. The duplicate disappears when it reaches 0
-      hit points or when the spell ends.
-    higher_levels: When cast with a 5th-level slot or higher, the duplicate gains 10 hit points for each slot level
-      above 4th.
+    effect: You create a stone duplicate of yourself. The duplicate has half your hit points and can perform
+      any action you can, but it cannot move more than 30 feet from you. The duplicate disappears when it reaches
+      0 hit points or when the spell ends.
+    higher_levels: When cast with a 5th-level slot or higher, the duplicate gains 10 hit points for each slot
+      level above 4th.
   conversion_notes:
   - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
     below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless
@@ -872,66 +895,101 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
   - This is a variable creature-profile template. Choose an actual model creature, including an NPC, and replace
-    each Controller field with its recorded value before use. No independent six-score profile or XP reward is
-    invented, and no spell is required by this statblock.
+    each Controller field with its recorded value before use. No independent six-score profile or XP reward
+    is invented, and no spell is required by this statblock.
   - For missing template defenses, use a snapshot of the model creature's AC, size, movement speeds, ordinary
-    senses, six ability scores and base Block pool/check. Ongoing spell effects and equipment inventory are not
-    copied. It has its own HP but shares remaining Block with the recorded resource provider; it grants no extra
-    copy of finite resources.
+    senses, six ability scores and base Block pool/check. Ongoing spell effects and equipment inventory are
+    not copied. It has its own HP but shares remaining Block with the recorded resource provider; it grants
+    no extra copy of finite resources.
   - The source half-your-HP wording is completed as half the model creature's maximum HP when configured, rounded
     down to minimum 1. This template grants no spell-level HP scaling.
   - Copied actions share the controller's finite resources and cannot recursively create duplicates/summons.
     These are explicit limits completing the source's otherwise unlimited action-copy wording.
-  - The duplicate may provide verbal components but uses the recorded resource provider's concentration. If that
-    creature already maintains concentration, casting another concentration spell follows the ordinary replacement
-    rule; the duplicate has no independent concentration capacity. Remaining Block is one shared pool, and configuring
-    this option does not refill it.
+  - The duplicate may provide verbal components but uses the recorded resource provider's concentration. If
+    that creature already maintains concentration, casting another concentration spell follows the ordinary
+    replacement rule; the duplicate has no independent concentration capacity. Remaining Block is one shared
+    pool, and configuring this option does not refill it.
+  - Completed the standard body with numeric defenses, six ability scores and a default challenge. Optional
+    model configuration and all existing shared-resource/control restrictions remain available.
+  source_completion:
+    default_model: Boulder Guardian
+    fields:
+    - Complete default body and numeric challenge; optional model substitution remains available.
+    cr_status: Assigned default encounter CR; configured variants record their chosen model and challenge.
+  source_template:
+    meta: Controller-sized construct, unaligned
+    size: Same as controller
+    cr: Varies
+    ac: Controller's AC when created
+    hp: Half the controller's maximum HP when created (round down; minimum 1)
+    block: Shares the controller's remaining Block points and Block check; no second pool
+    speed: Controller's movement speeds when created
+    abilities:
+      str: Controller STR when created
+      dex: Controller DEX when created
+      con: Controller CON when created
+      int: Controller INT when created
+      wis: Controller WIS when created
+      cha: Controller CHA when created
+    senses: Controller's ordinary senses when created; no independently created magic items or ongoing spell
+      effects
+    languages: Controller's spoken languages when created; can provide verbal components
+  ability_score_status: reconstructed
+  source_ability_scores:
+    method: Documented complete default body; the optional model fields are retained separately under source_template.
+    note: Default-body scores are completed values, not previously supplied fixed template statistics.
 - name: Stone illusion duplicate
   group: Tarta Homebrewery - Summons
   id: homebrewery-stone-illusion-duplicate
-  meta: Controller-sized construct, unaligned
-  size: Same as controller
+  meta: Medium construct, unaligned
+  size: Medium
   type: construct
   alignment: unaligned
-  cr: Varies
-  ac: Controller's AC when created
+  cr: '0'
+  ac: '10'
   hp: '1'
-  block: Controller's base Block pool and check when created; separate remaining pool
-  speed: Controller's walking speed when created
+  block: 0 / +0 check
+  speed: 30 ft.
   abilities:
-    str: Controller STR when created
-    dex: Controller DEX when created
-    con: Controller CON when created
-    int: Controller INT when created
-    wis: Controller WIS when created
-    cha: Controller CHA when created
-  senses: Controller's ordinary senses when created; no independently created magic items or ongoing spell effects
+    str: '10'
+    dex: '10'
+    con: '10'
+    int: '10'
+    wis: '10'
+    cha: '10'
+  senses: passive Perception 10
   languages: understands its controller's languages but cannot speak
   traits:
   - name: Optional controlled companion
-    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its duration,
-      active limit and command rules. If command timing is not supplied, it shares the controller's initiative,
-      acts immediately afterward and receives a free verbal command on the controller's turn. Without a command
-      it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts independently on its own turn. Its
-      listed restrictions still apply. Instructions grant no extra action, bonus action or reaction. This statblock
-      grants no ability to create or summon it.
+    description: When an existing effect or the GM assigns it a controller, that effect or the GM sets its
+      duration, active limit and command rules. If command timing is not supplied, it shares the controller's
+      initiative, acts immediately afterward and receives a free verbal command on the controller's turn. Without
+      a command it takes Dodge if able and avoids obvious hazards. Without an assigned controller, it acts
+      independently on its own turn. Its listed restrictions still apply. Instructions grant no extra action,
+      bonus action or reaction. This statblock grants no ability to create or summon it.
   - name: Template setup
-    description: Before using this option, the GM chooses a model creature for every Controller field and records
-      its statistics. The model may be an NPC. Using its profile does not itself place this creature under the
-      model's control or grant any creation ability. If an existing effect or the GM assigns a different controller,
-      the model still supplies the template statistics and shared resources.
+    description: 'Default profile: Medium unarmored humanoid-shaped decoy: AC 10, HP 1, Block 0, walking speed
+      30 ft., six scores 10; no damaging actions or spellcasting. The GM may instead choose a model creature,
+      including an NPC, before the encounter and replace the template fields using the archived setup. Record
+      the model statistics and its CR on that variant. Merely selecting a model neither creates a creature
+      nor grants control. The model supplies statistics and shared resources even if a different controller
+      is assigned.'
   - name: Noncombat illusion
-    description: Cannot attack, make opportunity attacks, cast spells or activate offensive magic items. It can
-      move, distract, take Dodge or Help on a nonattack task.
+    description: Cannot attack, make opportunity attacks, cast spells or activate offensive magic items. It
+      can move, distract, take Dodge or Help on a nonattack task.
   - name: Bound duplicate
-    description: Place within 30 feet of its assigned controller, or its model creature if independent. It crumbles
-      if more than 60 feet away, reduced to 0 HP or dismissed by its controller as an action. An existing effect
-      or the GM sets its duration and active limit; if none are specified, use 1 minute and one duplicate per
-      model creature, with a replacement ending the previous one.
+    description: Place within 30 feet of its assigned controller, or its model creature if independent. It
+      crumbles if more than 60 feet away, reduced to 0 HP or dismissed by its controller as an action. An existing
+      effect or the GM sets its duration and active limit; if none are specified, use 1 minute and one duplicate
+      per model creature, with a replacement ending the previous one.
+  - name: Challenge and chosen models
+    description: The listed CR applies to the default body. If a different model is selected, use that model's
+      CR as the provisional encounter estimate and record it for the configured variant; never treat a copied
+      powerful creature as the low-CR default. A harmless decoy that retains no attacks remains CR 0.
   actions:
   - name: Distract or Help
     description: Perform a harmless visible distraction or use Help for a nonattack ability check within reach,
@@ -940,10 +998,10 @@ entries:
   original_5e:
     feature: Stone's Illusion
     class: Earthbound Illusionist rogue, level 13
-    text: At 13th level, you can use your action to create an illusory duplicate of yourself made of stone. The
-      duplicate appears in an unoccupied space you can see within 30 feet of you. The duplicate can move and act
-      as you direct, but it cannot attack or cast spells. If the duplicate is more than 60 feet away from you, it
-      crumbles to dust.
+    text: At 13th level, you can use your action to create an illusory duplicate of yourself made of stone.
+      The duplicate appears in an unoccupied space you can see within 30 feet of you. The duplicate can move
+      and act as you direct, but it cannot attack or cast spells. If the duplicate is more than 60 feet away
+      from you, it crumbles to dust.
   conversion_notes:
   - Converted from the user's Homebrewery export draft2.pdf. Original stat fields and ability text are preserved
     below. Numerical source HP, AC, attack bonuses and damage expressions remain fixed monster values unless
@@ -952,15 +1010,43 @@ entries:
     Block. Ordinary attack Block DC is attack bonus plus 8. Damage and on-strike riders require an unblocked
     strike; saving-throw-only and automatic effects cannot be Blocked.
   - Published as a separate optional monster, not a new spell or class feature. Original creation text is archived
-    only as source context. When used as a controlled companion, an existing effect or the GM supplies its duration,
-    active limit and control rules; this statblock grants no casting or creation ability. Independent creatures
-    act normally.
+    only as source context. When used as a controlled companion, an existing effect or the GM supplies its
+    duration, active limit and control rules; this statblock grants no casting or creation ability. Independent
+    creatures act normally.
   - This is a variable noncombat creature-profile template. Choose an actual model creature, including an NPC,
-    and replace each Controller field with its recorded value before use. No independent six-score profile or
-    XP reward is invented, and this statblock grants no creation ability.
-  - For missing template defenses, use a snapshot of the model creature's AC, size, walking speed, ordinary senses,
-    six ability scores and base Block pool/check. Ongoing spell effects and equipment inventory are not copied.
-    It has its own 1 HP and remaining Block; it grants no extra copy of finite action resources.
-  - The source gives no duration, HP or instance cap. Completed as 1 HP; when an existing effect or the GM supplies
-    no duration or limit, use 1 minute and one instance per model creature. Voluntary controller dismissal takes
-    an action. The source no-attack/no-spell restriction and 60-foot separation limit are retained.
+    and replace each Controller field with its recorded value before use. No independent six-score profile
+    or XP reward is invented, and this statblock grants no creation ability.
+  - For missing template defenses, use a snapshot of the model creature's AC, size, walking speed, ordinary
+    senses, six ability scores and base Block pool/check. Ongoing spell effects and equipment inventory are
+    not copied. It has its own 1 HP and remaining Block; it grants no extra copy of finite action resources.
+  - The source gives no duration, HP or instance cap. Completed as 1 HP; when an existing effect or the GM
+    supplies no duration or limit, use 1 minute and one instance per model creature. Voluntary controller dismissal
+    takes an action. The source no-attack/no-spell restriction and 60-foot separation limit are retained.
+  - Completed the standard body with numeric defenses, six ability scores and a default challenge. Optional
+    model configuration and all existing shared-resource/control restrictions remain available.
+  source_completion:
+    fields:
+    - Complete default body and numeric challenge; optional model substitution remains available.
+    cr_status: Assigned default encounter CR; configured variants record their chosen model and challenge.
+  source_template:
+    meta: Controller-sized construct, unaligned
+    size: Same as controller
+    cr: Varies
+    ac: Controller's AC when created
+    hp: '1'
+    block: Controller's base Block pool and check when created; separate remaining pool
+    speed: Controller's walking speed when created
+    abilities:
+      str: Controller STR when created
+      dex: Controller DEX when created
+      con: Controller CON when created
+      int: Controller INT when created
+      wis: Controller WIS when created
+      cha: Controller CHA when created
+    senses: Controller's ordinary senses when created; no independently created magic items or ongoing spell
+      effects
+    languages: understands its controller's languages but cannot speak
+  ability_score_status: reconstructed
+  source_ability_scores:
+    method: Documented complete default body; the optional model fields are retained separately under source_template.
+    note: Default-body scores are completed values, not previously supplied fixed template statistics.

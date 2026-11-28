@@ -79,17 +79,18 @@ class HomebrewerySummonsTests(unittest.TestCase):
         self.assertIn("controller's spell attack bonus instead of +4", thorn_attack)
         self.assertIn('Block DC 8 + that spell attack bonus', thorn_attack)
 
-    def test_duplicate_templates_do_not_invent_ability_profiles_or_free_resources(self):
+    def test_duplicate_defaults_are_complete_and_keep_optional_templates_and_shared_resources(self):
         for name in ['Rockplica duplicate', 'Stone illusion duplicate']:
             entry = self.by_name[name]
             self.assertEqual(entry['type'], 'construct')
-            self.assertEqual(entry['cr'], 'Varies')
-            self.assertTrue(all(str(score).startswith('Controller ') for score in entry['abilities'].values()))
+            self.assertEqual(entry['cr'], '1' if name == 'Rockplica duplicate' else '0')
+            self.assertTrue(all(str(score).isdigit() for score in entry['abilities'].values()))
+            self.assertTrue(all(str(score).startswith('Controller ') for score in entry['source_template']['abilities'].values()))
             self.assertNotIn('xp', entry)
             setup = next(row['description'] for row in entry['traits'] if row['name'] == 'Template setup')
             self.assertIn('model creature', setup)
-            self.assertIn('may be an NPC', setup)
-            self.assertIn('does not itself place this creature', setup)
+            self.assertIn('including an NPC', setup)
+            self.assertIn('neither creates a creature nor grants control', setup)
         rock = ' '.join(row['description'] for row in self.by_name['Rockplica duplicate']['traits'])
         self.assertIn("model creature's existing supply", rock)
         self.assertIn('cannot create another duplicate or summon', rock)

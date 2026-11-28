@@ -39,14 +39,22 @@ Both outputs use the same rule definitions. The JSON and HTML are generated view
 
 The main sheet groups health and Block separately, with prominent current/max HP and compact secondary pools. Desktop puts ability scores in a side column; phones place attacks after health and defence and keep bottom tabs in reach. Base scores, training, pool maximums and recovery controls expand when needed. Gear is grouped into compact equipment rows; search your pack and expand an item to adjust quantity, equipment or attunement.
 
-Open **More**, then **New character**, to open the six-step builder:
+Open **More**, then **New character**, to create a separate draft. The flow shows the stages relevant to that character:
 
-1. **Ancestry:** enter the character's details and level, then choose a race and background. Backgrounds include their full rules preview and appear among the saved sheet's features.
-2. **Class:** choose a class and the archetypes available at that level.
-3. **Abilities:** enter base ability scores and allocate the race's ability bonuses.
-4. **Features:** read trait and feature rules, choose options, skills and class spells. Choosing **Take a feat** opens the feat catalog with requirements and rules. Spell selection shows the class's spell list, eligible levels, known-spell or spellbook allowance, and cantrip allowance, with search and rules previews.
-5. **Equipment:** search or filter the catalog, preview an item, then add armor, a shield and weapons.
-6. **Review:** check the resulting sheet, choose an HP method, review incomplete selections, and use **Save character**.
+1. **Ancestry:** identity, level, ancestry and background.
+2. **Class:** class and available archetypes.
+3. **Abilities:** base scores and ancestry allocations.
+4. **Features:** a compact list of required choices, one selection panel and one rule preview. Passive rules are in a folded reference section.
+5. **Spells:** eligible class spells and cantrips, searchable cards, level filters, a rules preview, selected-spell chips and preparation controls.
+6. **Feats:** eligible feat and ability-improvement choices, including Human's level-one bonus feat. Full feat browsing remains in the compendium.
+7. **Equipment:** find, preview and equip gear.
+8. **Review:** check the resulting character and save. Spell and feat stages are omitted when there are no relevant grants.
+
+Feats and some ancestry traits open **Finish this feat** / **Feature choices** after selection. Choose their actual targets, ability bonuses, training and spell grants. Unfinished follow-ups appear on Review. Extra feature picks return to the relevant feature list; extra spell-list upgrades appear under **Spells → Cantrip & hex upgrades**. Level grants and extra grants share the same upgrade pool and repeat limits. The sheet shows selected and automatic improvements beside the spell, and keeps named spell grants separate from the class learning allowance. See [the complete feat and progression audit](docs/character-feat-support.md) for supported effects and manual rule handling.
+
+Occultist **Mark & Reward** is a paired choice. Select both, then complete the reward's resistance, damage-type, expertise or restricted-feat choices. A saved damage type is permanent. GM-dependent skill marks have explicit classification controls; the unresolved healing-mark wording remains a table rule.
+
+The Equipment stage has **Catalog** and **Your equipment** views, each with a compact list and one detail pane. Search and category filters keep the catalog manageable. Select an owned row to change equipment, attunement, quantity, grip or training without expanding every item.
 
 The builder works on a separate draft. **Cancel** discards its changes; nothing is applied to the saved character before **Save character**. Reopen **Edit build** to change choices or raise the level and select newly available features. Existing manual characters remain manual until you open **Build character** and save its changes. Fighter's fighting skills include two starting picks, one per later level and the class improvement bonuses. Tree upgrades unlock after their prerequisite is selected. Other recurring class choices and supported extra archetype grants expand the earlier picker. Existing choices retain their saved identities; lowering a level temporarily deactivates later selections, and restoring it makes them available again.
 
@@ -67,6 +75,10 @@ See [Patch notes](PATCH_NOTES.md) for the change history. The build publishes th
 Existing characters with manual spell slots or custom resources keep those trackers until you choose **Use class slots**. Activation carries over spending from unambiguous matching slot rows and retains the manual trackers separately. Cleric's aggregate rows and unmatched custom resources require a manual review of spent uses. **Use manual trackers** switches automatic class tracking off without deleting its spending history.
 
 Recovery follows each source. A long rest restores Occultist slots, Cleric full slots and Sorcerer Metamagic points. The imported Wizard, Sorcerer and Druid rules do not state a general long-rest slot reset, so their slot recovery remains manual. Use **Restore 1** only when the relevant recovery rule allows it; distributed Druid recovery, Wizard Arcane recovery and rolled Metamagic recovery still need the player to resolve the rule shown under **Spell recovery rules**.
+
+Rest-dice maximum defaults to one die per character level plus active ancestry, background, class, feature and feat modifiers. The sheet shows each contribution. Changing a maximum keeps remaining dice; creating a new character fills its starting pool. Table adjustments and a manual base override are available under Rest dice. Source-defined sacrifice or benefit choices are recorded in the selected feat's details. Oaths of might checks the chosen oath and a Broken oath condition; temporary night-only dice remain separate from the permanent maximum.
+
+Death saves use clickable success and failure dots. Clicking a dot sets that track to its count; clicking the highest filled dot again removes one mark. The number of dots follows active death-save-slot modifiers.
 
 Automatic HP starts with the maximum class hit die plus the Constitution modifier and other applicable modifiers at level 1. Later levels add a recorded hit-die roll or the fixed average, plus the Constitution modifier and applicable modifiers. Missing recorded rolls use the average with a warning. **Manual HP** remains available. Changes to maximum health preserve existing wounds rather than healing the character.
 

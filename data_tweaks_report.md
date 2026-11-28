@@ -38,3 +38,40 @@ data/draft-spells/lvl-2-occult-spells.yaml - Draconic sacrifice ritual - Removed
 - Replaced the source-group browsing control with a primary Theme / setting filter and a default theme-card overview. Counts and examples mix creatures across imports. Creature type, CR, search, expandable statblocks and Pages still combine with the selected theme; monster breadcrumbs, previous/next navigation and search-result labels now follow it.
 - Added an editable Theme / setting field with existing-name suggestions. Older browser overrides inherit their compiled theme; unassigned custom monsters use Other encounters. Theme placements are encounter suggestions, not new habitat rules or campaign canon.
 - Updated the in-compendium conversion guide's browsing instructions, the monster documentation, and assignment/filter/editor regression coverage.
+
+27:11:2026 author-confirmed rest-dice base
+
+- data/draft-reference/progression.yaml, Rest, long rest, and rest dice: added the author's explicit rule that the base maximum is one rest die per character level, plus ancestry/background/feat/feature modifiers. Preserved the existing rest durations and recovery reference. No class slot progressions were changed.
+
+
+27:11:2026 Generic, gender-neutral monster identities
+
+- Replaced 20 remaining named, gender-labelled or faction-specific encounter titles through targeted overrides in data/monsters/custom.yaml. All 215 creatures remain distinct, including Gray Orc Raider alongside Gray Orc and Ogrillion Club Brute alongside Ogrillion.
+- Examples: Miratrin becomes Minotaur Halberd Berserker; Papaya becomes Camelfolk Pyromancer; Drion becomes Leonin Greataxe Captain; Chandruuv becomes Loxodon Warhammer Priest; Aurumathar becomes Aetherium Alloy Dragon Sovereign. Male/female labels are removed from public encounter titles. The full correspondence is in data/monsters/source/generic-name-index.json and docs/generic-monster-names.md.
+- Neutralized creature-specific personal references and pronouns in playable text, including the priest's Battle Blessing label. Kept ability scores, defenses, weapons, action mechanics, spell references, CRs and all 15 encounter themes. Stable IDs, original source targets, importer output and source provenance are retained.
+- Changes are isolated to monster overrides, naming documentation/index and a dedicated monster regression test. Character-sheet source, its tests, progression rules and build.py are left to the ongoing Fighter-leveling work. The shared report is append-only.
+
+- Monster editor naming migration also updates exact legacy NPC titles in saved browser overrides and YAML exports, preserving edited statistics and deliberately chosen custom names. Added dedicated compiled-catalog/editor regression tests. No character-sheet files are modified by this pass.
+
+
+28:11:2026 Mixed-system monster conversion batch
+
+- Added 86 editable profiles: 51 Eight-attribute conversions (50 creature pages with two separate Mycolid variants), 16 other screenshot creatures, 12 monstrous-spider ages and 7 goblin profiles. The manual now contains 301 monsters; the existing 215 and all 439 current player spells are retained.
+- Added legacy-creatures.yaml, legacy-spiders.yaml, goblin-variants.yaml, setting-creatures.yaml and the source/cross-system-index.json inventory. Added all profiles to the existing 15 encounter themes. Source-system names, numerical statistics, score reconstruction, provisional CRs and gap completions are retained in source panels.
+- Reconstructed eight-attribute scores from its eight ratings and level-based d20 scores from modifiers; replaced old BAB, size accuracy, level-based d20 level scaling and stunt/Mana economies with explicit current actions, proficiency and bounded resources. Kept natural protection separate from equipped armor/shield Block; converted equipment to current weapon dice, Bulk, Protection, Reload and Block DC properties.
+- Long legacy paralysis uses current Stunned so recovery CON saves remain legal; fixed one-turn Paralyzed effects expire automatically. Ability drain, save-or-die and unbounded possession/spawning have bounded damage, current conditions and explicit escape/recovery. Personal/geographic role titles become reusable species/equipment titles; original aliases remain in notes.
+- Natural Goblin Shark, Shark-Shifting Goblin and Sharkskin Goblin are distinct. The Dogmole Juggernaut sidebar has no full source block and stays an acknowledged variant hook, not a fabricated source statblock. No player spells, class features, review spells or magic-item grants are added.
+- Changes are limited to monster data/themes, monster documentation/tests and this append-only report. Character progression, sheet code and other active work remain untouched.
+
+- Validation: isolated site build produces 301 monsters and 439 spells; the 73-test monster Python suite passed, then all 7 final conversion checks passed. All 86 additions validate and round-trip through the monster editor; the 37 JavaScript monster checks pass. Final compiled-data comparison preserves every existing monster and player spell exactly.
+
+
+28:11:2026 Creature completeness and naming pass
+
+- Added Burrow Hound Juggernaut as a separate CR 6 beast with current barding, Block, burrowing, powerful build, natural attacks, ferocity and finite frenzy. The manual now contains 302 creatures; the player spell list remains 439.
+- Assigned the portal CR 12 and completed the duplicate templates with usable default bodies and CR 1/0, retaining optional model configuration and all shared-resource/control limits.
+- Standardized 57 additional public titles; the 69 reviewed title overrides retain stable IDs, equipment and combat profiles. Creature references follow current titles, and old browser edits migrate default names and collection targets while preserving edited values.
+- Neutralized reference labels in monster data and documentation. Renamed the setting-creature collection and updated its references.
+- Fixed three historical collection checks to select the original nine source files explicitly, preserving their 160-creature assertion as later collections are added. Full portable-build and browser checks are being run for this pass.
+
+- Final validation: all 164 Python tests pass, the complete JavaScript/browser test suite passes, and the standard site build produces 302 creatures and 439 player spells. Numerical comparison retains the previous 301 creature profiles except the three documented challenge/default completions; the player spell records are identical. All current creatures have numeric CRs, and compiled creature records use neutral reference labels. Character progression and class files are unchanged.

@@ -1,26 +1,26 @@
 # Monster themes and settings
 
-The Monster manual opens with 15 encounter themes covering all 215 profiles. Each card shows a count and example creatures. Choose a theme to browse its expandable statblocks, combine it with creature type, CR and text search, or use **Browse all** for the complete list. **Pages** remains available under More filters. Monster-page breadcrumbs and previous/next navigation follow the selected creature's encounter theme.
+The Monster manual opens with 15 encounter themes covering all 302 profiles. Each card shows a count and example creatures. Choose a theme to browse its expandable statblocks, combine it with creature type, CR and text search, or use **Browse all** for the complete list. **Pages** remains available under More filters. Monster-page breadcrumbs and previous/next navigation follow the selected creature's encounter theme.
 
 Themes are editorial encounter suggestions, not new habitat restrictions, allegiances or campaign canon. Each current monster has one primary theme. For example, dragons share one shelf across all imports; undead cross the campaign and workbook collections; the workshop shelf brings artificers, robotic companions and flesh constructs together.
 
 | Theme / setting | Monsters |
 | --- | ---: |
-| Caverns & lost ruins | 8 |
-| Cities, guards & outlaws | 13 |
-| Constructs & workshops | 15 |
-| Cults, mages & dark bargains | 7 |
-| Deserts & canyons | 12 |
-| Dragons & their lairs | 19 |
-| Earth & crystal realms | 29 |
-| Eldritch nightmares | 21 |
-| Fire, storms & sky | 7 |
-| Forests & wilds | 21 |
-| Frozen wastes | 6 |
-| Infernal invasions | 8 |
-| Orc & gnoll warbands | 19 |
-| Seas & coasts | 8 |
-| Tombs & restless dead | 22 |
+| Caverns & lost ruins | 18 |
+| Cities, guards & outlaws | 18 |
+| Constructs & workshops | 22 |
+| Cults, mages & dark bargains | 9 |
+| Deserts & canyons | 15 |
+| Dragons & their lairs | 20 |
+| Earth & crystal realms | 32 |
+| Eldritch nightmares | 24 |
+| Fire, storms & sky | 11 |
+| Forests & wilds | 44 |
+| Frozen wastes | 8 |
+| Infernal invasions | 10 |
+| Orc & gnoll warbands | 23 |
+| Seas & coasts | 19 |
+| Tombs & restless dead | 29 |
 
 Source filenames, original collection identities, source notes, spell/summon links and saved-edit targets stay intact. Historical source-group URLs still work. Theme names appear in search results and are searchable along with names and rule text.
 

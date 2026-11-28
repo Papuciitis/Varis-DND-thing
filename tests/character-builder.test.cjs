@@ -11,7 +11,7 @@ function setup(extraSections = []) {
   const file = path.join(root, 'web/character-builder.js');
   assert.ok(fs.existsSync(file), 'The character creator must provide a six-step draft wizard');
   const context = vm.createContext({crypto:require('node:crypto').webcrypto});
-  for (const name of ['entry-order.js','item-views.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-rules.js','character-builder.js']) {
+  for (const name of ['entry-order.js','item-views.js','magic-categories.js','magic-items.js','character-state.js','character-effects.js','character-equipment.js','character-casting.js','character-prerequisites.js','character-feats.js','character-rules.js','character-builder.js']) {
     vm.runInContext(fs.readFileSync(path.join(root,'web',name),'utf8'),context);
   }
   const metadata = {
@@ -104,7 +104,7 @@ test('equipment search combines with categories and previews the selected item w
   const {builder,State,shows,finished}=setup([extras]);
   builder.start(State.createCharacter());builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
   const html=()=>shows.at(-1)[1];
-  const options=()=>html().match(/<select id="builder-equipment-options"[^>]*>(.*?)<\/select>/s)[1];
+  const options=()=>html().match(/id="builder-equipment-options"[^>]*>(.*?)<aside/s)[1];
   assert.match(html(),/5 matching items/);
   builder.handleChange({dataset:{builderItemCategory:''},value:'weapons'});
   assert.match(html(),/2 matching items/);assert.match(options(),/Dagger/);assert.match(options(),/Moon knife/);assert.doesNotMatch(options(),/Oak shield/);
@@ -112,9 +112,9 @@ test('equipment search combines with categories and previews the selected item w
   assert.match(html(),/1 matching item</);assert.match(options(),/Moon knife/);assert.doesNotMatch(options(),/>Dagger/);
   const id=JSON.stringify(['magic-items','','moon-knife']);
   builder.handleChange({dataset:{builderItem:''},value:id});
-  assert.match(html(),/id="builder-equipment-preview"><h3>Moon knife<\/h3>/);assert.match(html(),/1d4 force/);
+  assert.match(html(),/id="builder-equipment-preview"[^>]*><h3>Moon knife<\/h3>/);assert.match(html(),/1d4 force/);
   builder.handleChange({dataset:{builderItemCategory:''},value:'armor'});
-  assert.match(html(),/0 matching items/);assert.match(options(),/Moon knife · selected/);
+  assert.match(html(),/0 matching items/);assert.doesNotMatch(options(),/Moon knife/);builder.handleChange({dataset:{builderItemCategory:''},value:'weapons'});builder.handleChange({dataset:{builderItem:''},value:id});
   builder.handleAction('builder-add-item',{});
   builder.handleAction('builder-step',{dataset:{builderStep:'5'}});builder.handleAction('builder-finish',{});
   assert.equal(finished[0][0].inventory[0].entryId,id);
@@ -146,7 +146,7 @@ test('equipment filters reuse compendium shelves for ordinary consumables and ex
   ]};
   const {builder,State,shows}=setup([ordinary,magic]);builder.start(State.createCharacter());
   builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
-  const options=()=>shows.at(-1)[1].match(/<select id="builder-equipment-options"[^>]*>(.*?)<\/select>/s)[1];
+  const options=()=>shows.at(-1)[1].match(/id="builder-equipment-options"[^>]*>(.*?)<aside/s)[1];
   builder.handleChange({dataset:{builderItemCategory:''},value:'consumables'});
   assert.match(options(),/Vial of mosa/i);assert.match(options(),/Component pouch charge/);assert.match(options(),/Protective scroll/);
   assert.doesNotMatch(options(),/Wearable blade|Test ammunition/);
@@ -158,18 +158,18 @@ test('live equipment search refreshes only picker results and leaves typing focu
   const {builder,State,shows,context}=setup();builder.start(State.createCharacter());
   builder.handleAction('builder-step',{dataset:{builderStep:'4'}});
   const query={dataset:{builderItemQuery:''},value:'dag'};
-  const nodes=Object.fromEntries(['builder-equipment-options','builder-equipment-count','builder-equipment-preview','builder-add-equipment'].map(id=>[id,{}]));
+  const nodes={'builder-equipment-results':{}};
   context.document={activeElement:query,getElementById:id=>nodes[id]};
   const count=shows.length;
   assert.equal(builder.handleInput(query),true);
   assert.equal(shows.length,count,'Search must not replace the dialog while typing');
   assert.equal(context.document.activeElement,query);
-  assert.match(nodes['builder-equipment-options'].innerHTML,/Dagger/);
-  assert.equal(nodes['builder-equipment-count'].textContent,'1 matching item');
+  assert.match(nodes['builder-equipment-results'].innerHTML,/Dagger/);
+  assert.match(nodes['builder-equipment-results'].innerHTML,/1 matching item/);
   query.value='no such equipment';builder.handleInput(query);
-  assert.equal(shows.length,count);assert.equal(nodes['builder-equipment-count'].textContent,'0 matching items');
-  assert.match(nodes['builder-equipment-options'].innerHTML,/No matching equipment/);
-  assert.equal(nodes['builder-add-equipment'].disabled,true);
+  assert.equal(shows.length,count);assert.match(nodes['builder-equipment-results'].innerHTML,/0 matching items/);
+  assert.match(nodes['builder-equipment-results'].innerHTML,/No matching equipment/);
+  assert.doesNotMatch(nodes['builder-equipment-results'].innerHTML,/id="builder-add-equipment"/);
 });
 
 test('weapon proficiency groups use equipment families for embedded and later-loaded magic catalogs',()=>{
@@ -232,11 +232,11 @@ test('feature step presents engine-generated ability score improvement selection
   const {builder,rules,State,shows,finished}=setup();
   rules.metadata.classes[0].features.push({id:'asi2',name:'Ability score improvement',level:2,details:'Increase one score by 2, or two by 1. Alternatively gain a feat.',choices:[]});
   const c=rules.enable(State.createCharacter());c.level=2;c.build.classId='fighter';
-  builder.start(c);builder.handleAction('builder-step',{dataset:{builderStep:'3'}});
+  builder.start(c);builder.handleAction('builder-step',{dataset:{builderStep:'Feats'}});
   assert.match(shows.at(-1)[1],/\+2 Strength/);
   const choice=rules.derive(c).choices.find(group=>group.featureName==='Ability score improvement');
   const strength=choice.options.find(item=>item.name==='+2 Strength');
   builder.handleChange({dataset:{builderChoice:choice.id,builderChoiceIndex:'0'},value:strength.id});
-  builder.handleAction('builder-step',{dataset:{builderStep:'5'}});builder.handleAction('builder-finish',{});
+  builder.handleAction('builder-step',{dataset:{builderStep:'Review'}});builder.handleAction('builder-finish',{});
   assert.equal(rules.derive(finished[0][0]).abilities.str,12);
 });
