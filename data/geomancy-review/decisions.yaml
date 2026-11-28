@@ -1443,7 +1443,17 @@ geomancy_decisions:
       in simple terms, but its a tunnel blocker or a bridge or a pillar/support to use in addition to being hard to break.
 
     My idea is this:
-      As an action, using a staff, po
+      As an action, using a staff, wand, polearm, or stick, tap a piece of dirt, soil, or mud, forcing a fungal or floral strain or microbe to mutate into a rapidly growing large organism. Its growth, size, and direction can be directed by the caster so long as they maintain the focus tool(staff, wand, polearm, or stick) used for this spell.
+      The plant grows up to 3d4 rounds. 
+      Each round plant grows, the caster can use an action to direct the new plant, allowing it to grow up to a 5ft cube worth of mass in an area of the casters choice.
+      The caster may attempt a bonus action to also do it but that should be a DC 17 arcana or nature check.
+      The caster may sacrifice a rest dice to force a 5ft area of the plant into a shape or function.
+      If the caster is preoccupied and does not direct the plants growth, the GM decides (Subject to GM.)
+      The plant has 200HP, AC 0, cannot block, fails all saves, but has resistance to all non-magical damage, regeneration 20, and if a a segment of it is destroyed, it will attempt to regrow and reconnect with itself within 1d3+1 rounds.
+      The plant lasts up to 8 hours, after which it begins to suffer the adverse effects of its accelerated growth, becoming frail and rapidly mutating.
+      Technically, due to its magically altered nature, it is closer to an algae or lychen, though its exact appearance and shape will adapt to the macroscopic world, resembling a weird tree, mushroom, or sponge-like structure.
+
+    Please attempt to reincorporate this into a spell.
 
 - name: Boulder's Dominion
   status: merge
@@ -1466,12 +1476,16 @@ geomancy_decisions:
     notes: Existing dispersal-transformation comparison; a sand reskin is not automatically distinct.
   questions:
   - What distinguishes sand dispersal from Vermin-form, and should its slot be 4, 5, or 6?
+  final-answer: It should be level 4, and make you immune to all other damage except lightning fire and radiant, and grant you 2d8 temp HP.
+    Once the temp HP is lost, you are thrown out of the form and overdamage is dealt to you. You can exit it yourself if you want to at will. This effectively gives a flight speed.
+    The damage to creatures you occupy can stay 3d10, but with the limitation that besides perhaps speaking in a strange windy raspy tone, you are barred from all other actions and casting. 
 - name: Earth's Awakening
   status: needs-design
   decision: Keep in the design queue because the author requests work without specifying acceptable mechanics, category,
     or level.
   questions:
   - Which source functions survive, with what category, slot, and control limits?
+  final-answer: Honestly i want to reject this for now. we have to still decide on summoning, the proper way to depict the monster stat block and how to evaluate difficulty. Lets reject this for now.
 - name: Geochemical Golem
   status: needs-design
   decision: Preserve the material-infusion system as a candidate, but redesign summoning and scaling for twelve
@@ -1479,6 +1493,16 @@ geomancy_decisions:
   questions:
   - Can material-infused creatures remain monster options under a consolidated summon?
   - Which template, commands, costs, and scaling fit character levels 1-12?
+  answer: >- 
+    I think the unique summon system for this monster is quite impressive and should be preserved. This should be a spell since the technology exists. Its quite amazing.
+    I want it reconstructed as an arcane spell which is essentially a make-a-golem spell. Geochemical is not a good name for it though. 
+    
+    Alternatively, this system and mechanics could be really good for a wizard archetype that specializes for golems.
+
+    So this answer isnt final, keep this one for reevaluation, but as for the 12 lvl system, the game is compressed to 12 levels. 12 divides with 2,3,4,6. You can do lots of interesting archetypes. You know that what is at lvl 3/4 at a class has to harmonize with whats at lvl 7/8 for another class for the sake of making multiclassing equivalent, and you know that proficiency goes up to +5. 
+    besides that, I would like you to reconstruct Golemancy as a lvl 4 arcane spell which has this original spells infusion mechanic, but uses the materials or exotic stuff actually listed in the items the compendium has at the moment. This is primarily to check how it works. 
+    And the scaling should permit for extra infusions at lvl 5(extra options, and +1), and a mini infusion list of 3 ult-like abilities(not in terms of moba-style damage ults but perhaps very weird or unique game alterations that the "golem" can now have, since its blurrin the line between golem and the relic player race now.)
+
 - name: Geomantic Harmony
   status: rejected
   decision: Reject this spell according to the author's explicit verdict.
@@ -1509,6 +1533,10 @@ geomancy_decisions:
   - What protection beyond advantage against spells should justify this Oath 5 ward?
   - Should the existing hour-long duration require concentration, and is the gemstone consumed or reusable?
   - What benefit, cost, and vulnerability distinguish it from Warding rune and Consecrate?
+  final-answer: Then make it a lvl 4 oath spell, and change name to hallowed earth. Add a limitation that it cannot be cast in cemetaries and places where mass death has occured within the memories of the living races. Make it so that if a small or larger creature is slain within the effect the effect ends.
+    Advantage on all saves vs spells.
+    Grant it a lvl 5 upcasting effect that the area is increased to 60ft.
+    And at lvl 6, grant it an upcasting effect that if two other clerics cast hallowed ground on already hallowed ground within the span of 1 hour, all three spells are combined, affecting the entire structure up to 1 mile out, and forbidding non-corporeal creatures, spirits, and aberrations that oppose any of the clerics oaths to enter it without dire consequence(Subject to GM. May not incur more burn per turn than 2d6 radiant damage.)
 - name: Rockrise
   status: draft
   decision: Keep the interesting extension of existing stone as a Mystic 3 utility spell, with an explicit size,
@@ -1543,6 +1571,8 @@ geomancy_decisions:
     notes: Existing Arcane 5 shaping works across a larger segment of stone and may be repeated.
   questions:
   - Is temporary magical growth distinct enough from the existing Geomancy options to warrant its own Mystic spell?
+  final-answer: no it shouldnt be temporary, imo. If it is high enough level, it no longer matters that with magic you have a caster with a mini mason crew ability. its still hard to get to.
+    It should be permanent. Otherwise, nice. 
 - name: Petal's Fountain
   status: rejected
   decision: Reject the current plant-and-money-limited heal; retain the nature-dependent healing idea for comparison
@@ -1634,6 +1664,7 @@ geomancy_decisions:
     notes: Existing Oath 6 restores missing limbs immediately and has broader restorative effects.
   questions:
   - Should delayed full-limb regrowth remain a distinct Mystic 4 spell, or become a higher-slot option of Regeneration?
+  final-answer: this is quite good. I approve. The concentration is also good here because while the heal is big, guaranteed regeneration is a bit much. This way it is useful but not combat-safe.
 - name: Crystal Prison
   status: draft
   decision: Draft the requested Arcane 5 prison with defined escape rules instead of importing an indefinite restraint
@@ -1667,6 +1698,7 @@ geomancy_decisions:
       this proposal creates an external breakable cage instead.
   questions:
   - Should the breakable cage target larger creatures when upcast, instead of increasing its damage?
+  final-answer: I think the size increase should be added to it at higher levels, but the damage effect can stay. Its very Glintstone-y so it works.
 - name: Highland's Rise
   status: draft
   decision: Recast the source as Mystic 5 earthworking rather than calling a 100-foot landform a mountain, with
@@ -1704,6 +1736,7 @@ geomancy_decisions:
   questions:
   - Should Mystic 5 be permitted to reshape land supporting existing buildings, with GM-resolved structural consequences,
     or should the natural-site restriction remain?
+  final-answer: Hmm... I think its fine for now. I approve it as it is currently. Perhaps land that is not natural(that contains worked or owned structures) should require an arcana or wisdom check to push successfully, implying this somehow translates to feeling weight for the caster. Hell idk, it probably oes considering things like the shadowfell and ethereal plane mimic structures in the mundane world, at least in the old setting. 
 - name: Geomorph's Foresight
   status: rejected
   decision: Reject according to the author's duplicate verdict, while leaving its alleged canonical equivalent unasserted;
@@ -1717,6 +1750,7 @@ geomancy_decisions:
     notes: Heightened senses and warnings, not explicit century-scale landscape prediction.
   questions:
   - Which canonical spell predicts future natural landscape changes, rather than rolls or heightened perception?
+  final-answer: It should be its own thing, reject this for now. I will decide on that myself. 
 - name: Geomorph's Transendance
   status: needs-design
   decision: Consolidate the kaiju-transformation concepts before choosing an Occult 5-6 draft and defining its full
@@ -1737,6 +1771,7 @@ geomancy_decisions:
     notes: Existing high-level physical enhancement with death-save costs.
   questions:
   - How does Gianthood differ from Primordial strength and the proposed Occult kaiju transformation?
+  final-answer: it doesnt really stand up to it properly. lets reject this. expansion and growth effects should not be overused so as to not make it weird(the internet people made it weird.)
 - name: Petalguard
   status: rejected
   decision: Reject the narrow, excessive defensive duplicate according to the author's verdict.
@@ -1749,7 +1784,7 @@ geomancy_decisions:
   decision: Retheme the suggested Oath 4 group inspiration as a spoken invocation and retain its brief burst of
     advantage.
   conversion:
-    name: Invocation of Concord
+    name: Brethren unite
     magic_class: Oath
     level: '4'
     casting: 1 action
@@ -1761,7 +1796,7 @@ geomancy_decisions:
       saving throws and ability checks until the end of your next turn. A creature retains the benefit after leaving
       the radius. Additional castings overlap in duration but grant no further advantage to the same roll.
     higher_levels: Each spell slot level above 4th increases the initial selection radius by 10 feet and allows
-      two additional creatures to be chosen.
+      two additional creatures to be chosen. At 6th spell slot level, increases duration to 2 rounds.
     design_notes: The reviewer tentatively suggests Oath 4 with new theming. A spoken invocation, hearing requirement,
       six-creature base limit and 5th/6th-slot scaling are proposed interpretations. The source's brief advantage
       window is retained. This remains a candidate, not an author-approved addition.
@@ -1773,6 +1808,7 @@ geomancy_decisions:
   questions:
   - Is a one-round group burst of advantage a useful alternative to Major blessing, or should this become its upcast
     option?
+  final-answer: I renamed it but this should be approved. 
 - name: Unstoppable Force
   status: merge
   decision: Consolidate the duplicate kaiju-mode concept with Geomorph's Transendance and Gianthood discussions
@@ -1820,6 +1856,7 @@ geomancy_decisions:
       limit, and lasts longer.
   questions:
   - Does Occult need this narrower reflection spell, or should it remain solely within Arcane Rune of reflection?
+  final-answer: No no this is good for occult. it should be approved. I think it should be a level 5 occult spell, but it should also work if the caster is being targeted by a single creature effect. So like a single spell shoots 3 bolts, one of them hits me, I mirror that bolt, so it hits the caster. You dont want to recast the entire spell. Im uncertain on the wording but id like to see that version first.
 - name: Dunesurge
   status: merge
   decision: Consolidate with the storm family instead of a fifth or sixth standalone sandstorm.
@@ -1875,12 +1912,11 @@ geomancy_decisions:
       to bludgeoning, piercing, slashing, acid, cold, fire and lightning damage; you can move through nonmagical
       natural earth and stone at a speed of 20 feet without leaving a tunnel; you sense the location of moving creatures
       touching the same continuous ground within 60 feet, although this sense does not let attacks or spells pass
-      through barriers; and you can speak with and understand earth elementals. You must finish each turn in an
-      unoccupied space outside solid material. If the spell ends while you are inside solid material, you are forced
-      along the shortest route through material this spell permits you to enter to the nearest unoccupied space
-      outside it; resolve equally short routes toward your entry route. Take falling damage as though you had fallen
-      twice the distance you were forced to move. You do not become an elemental, gain immunity to damage, or pass
-      through metal, worked masonry or magical barriers.
+      through barriers; and you can speak with and understand earth elementals. While traveling through earth, you must hold your breath,
+      as though you were unable to breathe. You cannot pass through solid metal, worked masonry or magical barriers.
+
+      
+      While under the effect of this spell, you are considered an elemental in addition to your other types.
     design_notes: 'The reviewer suggests Mystic 6 with clearer numbers and likes the single-paragraph form. Concentration,
       resistance instead of immunity, the enumerated damage types, natural-material limits and 20-foot speed are
       proposed balance and clarity decisions. Forced exit follows the existing Varis Ethereal condition convention,
@@ -1895,6 +1931,7 @@ geomancy_decisions:
       a package granting those spell options.
   questions:
   - Should the form grant resistance, limited immunity, or a temporary HP shell at Mystic 6?
+  final-answer: nah I modified it a bit. it should be approved now.
 - name: Geoshape
   status: merge
   decision: Consolidate the fortification and terrain-shaping family with existing construction magic instead of
@@ -1906,6 +1943,7 @@ geomancy_decisions:
   - name: Subdomain
     group: Arcane spells
     notes: Existing domain terrain-reforming modes.
+  final-answer: Reject this, but I have a request. I want an .md named "world_and_terrain_effects.md" where I want these worts of things to be listed. I deliberately want you to compile 100 things that can be utilized for terrain or world or structure enchanting things. This is either by subdomain, spell, or anything. And different saves or skills are considered duplicates, even if slightly varies, so that a "advantage on dex saves and +1 to attacks cus its like the bloodgrounds" is not gonna cut it. I want to be a scientist about the possibility space with this document, so it should list the possibility space itself. Please also write an analysis of terrain and structure enchantment game design space. Thank you.
 - name: Nature's Avatar
   status: rejected
   decision: Reject the avatar spell as outside the review's intended theme.
@@ -1922,6 +1960,7 @@ geomancy_decisions:
     has not approved a sand-themed ultimate.
   questions:
   - Which storm, golem, or terrain-control role is essential, and can other parts stay separate options?
+  final-answer: I would like to reject the sand option for now in favor of clearing out the list and working on other ideas once this is done. For now, the sand, while thematic in the avatar series, is too niche in flavor and theme for general content. 
 - name: Worldshaper's Command
   status: merge
   decision: Compare landscape alteration with existing greater geomancy, Structure, and Subdomain; consolidate scope
@@ -1947,3 +1986,4 @@ geomancy_decisions:
   questions:
   - Is a persistent demiplane deliberately excluded, or should it become a distinct high-level ritual? Subdomain
     is temporary and local.
+  final-answer: Yes, it is actually deliberately excluded. Same reason why most things are bounded. Magic should not vaporize the setting. Creating extra dimensions is reserved for a lvl12+campaign or to demonstrate the strength of higher or other powers in the campaign. So in essence, this should be rejected. It doesnt mean "no" extra planes  can exist. It doesnt mean you cant step into a side pocket for a bit or whatever in some other spell, but this one is rejected.
