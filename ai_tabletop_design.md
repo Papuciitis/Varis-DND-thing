@@ -133,3 +133,19 @@ slot spending from a name. Do not infer walls, terrain, water or climbable surfa
 from map artwork. An expired airborne grant creates a visible review event; a
 source-dependent fall is not invented. See docs/tabletop-events.md for timing and
 permission details. Shared pings are transient and never reveal concealed map points.
+
+## Optional initiative movement rules, 28 November 2026
+
+Nauris and V requested table-configurable enforcement. Game → Movement rules
+holds two independent GM settings: only move on the token's initiative turn, and
+enforce the distance allowance. The first defaults off and the second preserves
+the existing on default. These are campaign preferences, not edits to source rules.
+Respect the turn setting in every player movement path, including height/depth,
+without locking character editing or saving throws. The GM can move out of turn
+and use reposition for forced movement and other exceptions. Travel remains
+counted when its cap is disabled. Traps and zero-speed conditions still apply.
+
+Trap condition selection must display the complete searchable standard list on
+first use, independently of other dialogs. Keep custom effects explicit and
+preserve an existing selected effect when editing. Event cards use readable
+stacked/wrapping action buttons rather than shrinking words down to letters.

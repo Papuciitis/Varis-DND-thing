@@ -17,7 +17,8 @@ export function movementStatus(token,scene,mode=token.mobility?.mode || 'walk'){
   const condition=Conditions.status(token.conditions,{speed:base ?? null,abilities:token.statblock?.abilities,size:token.sizeCategory});
   const spent=token.mobility?.spent || 0,extra=token.mobility?.extra || 0,capacity=condition.speed===null?null:Math.min(999999,condition.speed*(token.mobility?.dashed?2:1)+extra);
   const pending=!!token.pendingMove || (scene.events || []).some(event=>event.status==='pending' && event.tokenId===token.id && event.blockMovement);
-  return {...condition,mode,z:token.mobility?.z || 0,capable,multiplier,spent,capacity,
+  const activeId=scene.combat?.activeId ?? scene.combat?.order?.[scene.combat.index ?? 0],turnLocked=!!scene.combat?.active && scene.adventure?.ownTurnOnly===true && activeId!==token.id;
+  return {...condition,mode,z:token.mobility?.z || 0,capable,multiplier,spent,capacity,turnLocked,
     remaining:capacity===null?null:Math.max(0,capacity-spent),paused:pending,blocked:condition.blocked || !capable || pending,
     reason:pending?'Resolve the pending event first':!capable?'No '+mode+' speed is granted':condition.reason};
 }
@@ -93,6 +94,7 @@ export function createAdventure(api){
   }
   function sceneDefaults(scene){
     scene.traps ??= [];scene.effects ??= [];scene.events ??= [];scene.pings ??= [];scene.adventure ??= {enabled:true,autoConditions:true,metric:'straight'};
+    scene.adventure.ownTurnOnly ??= false;scene.adventure.limitDistance ??= true;
     scene.combat.turnSerial ??= 0;scene.combat.phase ??= 'active';
     return scene;
   }
@@ -183,6 +185,7 @@ export function createAdventure(api){
     if(!force && mode==='burrow' && token.mobility.z>0)fail('Land at ground level before burrowing.');
     if(!force && ['fly','hover'].includes(mode) && token.mobility.z<0)fail('Return to ground level before taking flight.');
     const pathMode=mode==='walk' && token.mobility.z!==0?token.mobility.mode:mode,status=movementStatus(token,scene,pathMode);
+    if(actor.role!=='dm' && status.turnLocked)fail('Movement is limited to this token’s initiative turn. The GM can move it for an exception.',403);
     if(status.paused && !force && !continuing)fail('Cannot move: '+status.reason+'.',409);
     if(actor.role!=='dm' && (status.blocked && !continuing || !status.capable))fail('Cannot move: '+status.reason+'.',403);
     const target={x:n(command.x,0,scene.width-1,'Token X'),y:n(command.y,0,scene.height-1,'Token Y')},sameXY=target.x===token.x && target.y===token.y;
@@ -190,7 +193,7 @@ export function createAdventure(api){
     const from={x:token.x,y:token.y,z:token.mobility.z};
     if(actor.role!=='dm' && (token.hidden || scene.fog.enabled && routeCells(from,destination,scene).some(cell=>!scene.fog.revealed.includes(cell))))fail('Keep the whole route within the revealed map.',403);
     const distance=routeDistance(from,destination,scene,scene.adventure.metric),cost=distance*status.multiplier;
-    let fraction=scene.adventure.enabled && scene.combat.active && !force && status.remaining!==null && cost>0?Math.min(1,status.remaining/cost):1;
+    let fraction=scene.adventure.limitDistance && scene.combat.active && !force && status.remaining!==null && cost>0?Math.min(1,status.remaining/cost):1;
     if(fraction<=1e-8 && cost>0 && !force)fail('No movement remains for this turn.',409);
     let hit=null;const ignored=[...(command.ignored || [])];
     if(scene.adventure.enabled && !force)for(const trap of scene.traps){
@@ -287,7 +290,7 @@ export function createAdventure(api){
       const followup=room.scene.events.find(row=>row.tokenId===token.id && row.status==='pending' && row.blockMovement);
       if(followup){pending.eventId=followup.id;pending.resume=pending.resume && command.continue!==false;}
       else{token.pendingMove=null;const status=movementStatus(token,room.scene,pending.mode),fogBlocks=token.ownerId && room.scene.fog.enabled && routeCells(token,pending.destination,room.scene).some(cell=>!room.scene.fog.revealed.includes(cell));
-        if(pending.resume && command.continue!==false && !status.blocked && !fogBlocks && (!room.scene.combat.active || status.remaining===null || status.remaining>1e-8))move(room,token.ownerId?{id:token.ownerId,role:'player'}:{id:'dm',role:'dm'},{id:token.id,...pending.destination,mode:pending.mode,ignored:pending.ignored},true);
+        if(pending.resume && command.continue!==false && !status.blocked && !(token.ownerId && status.turnLocked) && !fogBlocks && (!room.scene.adventure.limitDistance || !room.scene.combat.active || status.remaining===null || status.remaining>1e-8))move(room,token.ownerId?{id:token.ownerId,role:'player'}:{id:'dm',role:'dm'},{id:token.id,...pending.destination,mode:pending.mode,ignored:pending.ignored},true);
       }
     }
     if(room.scene.combat.active && room.scene.combat.phase==='ending' && !pendingFor(room,room.scene.combat.order[room.scene.combat.index]))nextTurn(room);
@@ -308,6 +311,7 @@ export function createAdventure(api){
     }
     if(type==='movement.reset' || type==='movement.dash' || type==='movement.extra'){
       const token=tokenById(room,command.id);checkEdit(token,actor);
+      if(type==='movement.dash' && actor.role!=='dm' && movementStatus(token,scene).turnLocked)fail('Use Dash during this token’s initiative turn.',403);
       if(type==='movement.reset'){if(actor.role!=='dm' && scene.combat.active)fail('Movement resets at the start of your turn.',403);token.mobility.spent=0;token.mobility.dashed=false;token.mobility.extra=0;}
       if(type==='movement.dash'){if(token.mobility.dashed)fail('Dash is already included. Ask the GM for any additional movement.');token.mobility.dashed=true;publicLog(room,token,token.name+' uses Dash.');}
       if(type==='movement.extra'){if(actor.role!=='dm')fail('The GM grants additional movement.',403);token.mobility.extra=w(command.amount,0,999999,'Additional movement');}
@@ -347,14 +351,14 @@ export function createAdventure(api){
     if(type==='event.cancel-route'){const token=tokenById(room,command.id);checkEdit(token,actor);if(token.pendingMove)token.pendingMove.resume=false;return true;}
     if(type==='scene.adventure'){
       if(actor.role!=='dm')fail('Only the GM changes encounter automation.',403);
-      for(const key of ['enabled','autoConditions'])if(command[key]!==undefined)scene.adventure[key]=flag(command[key]);
+      for(const key of ['enabled','autoConditions','ownTurnOnly','limitDistance'])if(command[key]!==undefined)scene.adventure[key]=flag(command[key]);
       if(command.metric!==undefined){if(!['straight','grid'].includes(command.metric))fail('Choose straight-line or grid movement.');scene.adventure.metric=command.metric;}return true;
     }
     return false;
   }
   function projectToken(token,actor,visible,scene){
     const status=movementStatus(token,scene);token.travelState=status;
-    if(!visible){token.movementProfile=null;token.movementOverrides=null;token.mobilityGrantTimer=null;token.travelState={mode:status.mode,z:status.z,paused:status.paused,blocked:status.blocked,reason:status.reason,spent:status.spent,remaining:null,capacity:null,speed:null};}
+    if(!visible){token.movementProfile=null;token.movementOverrides=null;token.mobilityGrantTimer=null;token.travelState={mode:status.mode,z:status.z,paused:status.paused,blocked:status.blocked,reason:status.reason,turnLocked:status.turnLocked,spent:status.spent,remaining:null,capacity:null,speed:null};}
     if(actor.role!=='dm' && token.ownerId!==actor.id){if(token.pendingMove)token.pendingMove={eventId:token.pendingMove.eventId,paused:true};
       if(token.motion && scene.fog.enabled && routeCells(token.motion.from,token.motion.to,scene).some(cell=>!scene.fog.revealed.includes(cell)))token.motion=null;
     }
@@ -402,7 +406,7 @@ export function createAdventure(api){
       scene.events.push({id:text(original.id,80),kind:original.kind,tokenId:original.tokenId,trapId:text(original.trapId,80),label:label(original.label,'Encounter event',80),sourceName:text(original.sourceName,100),status:'pending',blockMovement:original.blockMovement!==false,
         save,removeOnSuccess:text(original.removeOnSuccess,80),action:original.action?actionFrom(original.action):null,chain:(original.chain || []).slice(0,64).map(id=>text(id,80)),at:text(original.at,80)});
     }
-    scene.adventure={enabled:raw.adventure?.enabled!==false,autoConditions:raw.adventure?.autoConditions!==false,metric:raw.adventure?.metric==='grid'?'grid':'straight'};
+    scene.adventure={enabled:raw.adventure?.enabled!==false,autoConditions:raw.adventure?.autoConditions!==false,metric:raw.adventure?.metric==='grid'?'grid':'straight',ownTurnOnly:raw.adventure?.ownTurnOnly===true,limitDistance:raw.adventure?.limitDistance!==false};
     if(raw.combat){
       obj(raw.combat,'Initiative');const order=raw.combat.order || [];
       if(!Array.isArray(order) || order.some(id=>!scene.tokens.some(token=>token.id===id)) || new Set(order).size!==order.length)fail('Invalid initiative order.');

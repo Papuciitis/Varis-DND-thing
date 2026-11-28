@@ -17,7 +17,9 @@
 .encounter-event-list,.automatic-effect-list,.placed-trigger-list{display:grid;gap:10px;margin-top:12px}
 .encounter-event,.automatic-effect-row{border:1px solid #c9d2bd;background:#fffdf6;padding:12px;border-radius:6px;min-width:0;overflow-wrap:anywhere}
 .encounter-event{border-left:3px solid #bd8a40}.encounter-event h4{font:600 15px var(--sans);margin:0 0 6px}.encounter-event p{font-size:12px;line-height:1.6;margin:4px 0 8px}
-.encounter-event .field{font-size:12px;margin-top:10px}.encounter-event .button-row{gap:6px;margin-top:10px;flex-wrap:wrap}
+.encounter-event .field{font-size:12px;margin-top:10px}.encounter-event .button-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:6px;margin-top:10px;align-items:stretch}
+.encounter-event .button-row>button{flex:none;min-width:0;width:100%;white-space:normal;word-break:normal;overflow-wrap:normal;line-height:1.4}
+.encounter-event .event-effect{background:#edf2e7;border:1px solid #d5ddc9;border-radius:4px;padding:7px 8px;margin-top:10px}
 .encounter-event .button,.automatic-effect-row .button{font-size:12px;padding:7px 10px;min-height:32px}.encounter-event .text-button{font-size:12px}
 .encounter-event .check-field{font-size:12px;line-height:1.5;margin:10px 0}
 .automatic-effect-row p{font-size:12px;margin:7px 0}.automatic-effect-row .text-button{margin-right:10px}
@@ -26,6 +28,7 @@
 .adventure-dialog .field{font-size:13px;margin-bottom:13px}.adventure-dialog input,.adventure-dialog select{font-size:14px}
 .adventure-dialog .check-field{font-size:13px;margin:10px 0;line-height:1.5}.adventure-dialog .field-note{font-size:12px}.adventure-dialog h3{font:21px var(--serif)}
 .automatic-action-fields{padding:14px;border:1px solid #d1d8c5;border-radius:5px;background:#f3f5ed;margin:16px 0}
+.condition-picker select{height:auto;min-height:156px;background-image:none;padding:3px;appearance:auto}.condition-picker option{padding:5px 8px}.condition-picker-count{margin-top:-4px}
 .trigger-mode-filters{display:flex;gap:6px 18px;flex-wrap:wrap;border:1px solid #d1d8c5;padding:10px 12px;margin:15px 0;border-radius:5px}.trigger-mode-filters legend{font-size:12px;font-weight:600}.trigger-mode-filters .check-field{margin:3px 0}
 .encounter-settings{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}.encounter-settings>.check-field{font-size:12px;line-height:1.5;margin:10px 0}
 .encounter-settings>.field{font-size:12px;margin-top:14px}.condition-controls .text-button{font-size:11px}

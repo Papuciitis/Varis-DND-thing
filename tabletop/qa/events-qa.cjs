@@ -83,7 +83,7 @@ module.exports=async function eventsQA({dm,player,service,dmKey,playerKey,tokenI
   await sheet.waitForFunction(hp=>document.querySelector('[data-path="resources.hp.current"]').value===String(hp),afterHeal-4);
 
   await draw(player,'line',725,725,10);await player.locator('#trap-name').fill('QA player snare');await player.locator('#trap-source-name').fill('Inventory snare');
-  await player.locator('#trap-action').selectOption('condition');await player.locator('#trap-condition').fill('Snared');await player.locator('#trap-turns').fill('1');
+  await player.locator('#trap-action').selectOption('condition');await player.locator('#trap-condition').selectOption({label:'Snared'});await player.locator('#trap-turns').fill('1');
   await player.getByRole('button',{name:'Submit trigger',exact:true}).click();await player.locator('#trap-dialog').waitFor({state:'hidden'});
   let proposal=(await service.read()).scene.traps.find(t=>t.name==='QA player snare');assert(proposal?.pending);assert.equal(proposal.armed,false);
   await dm.locator('#campaign-tab-events').click();await dm.getByRole('button',{name:'Approve trigger',exact:true}).click();
@@ -95,6 +95,29 @@ module.exports=async function eventsQA({dm,player,service,dmKey,playerKey,tokenI
   await sheet.close();
   for(const item of (await service.read()).scene.traps)await gm({type:'trap.remove',id:item.id});
   for(const item of (await service.read()).scene.effects)await gm({type:'effect.remove',id:item.id});
+  // Turn ownership and distance are separate, persisted GM game rules.
+  await dm.locator('#game-settings').click();await dm.locator('#movement-own-turn-only').check();await dm.locator('#movement-limit-distance').uncheck();
+  await dm.getByRole('button',{name:'Close game settings'}).click();
+  const npc=(await service.read()).scene.tokens.find(t=>!t.ownerId && !t.hidden);
+  await gm({type:'combat.set',id:npc.id,value:999});await gm({type:'combat.set',id:tokenId,value:0});await gm({type:'combat.start'});
+  await travel(player);
+  await player.locator('.travel-content .field-note').filter({hasText:'Waiting for this token'}).waitFor();assert(await player.locator('#apply-travel').isDisabled());
+  const waiting=await own();await player.locator('#map-canvas').press('ArrowRight');assert.equal((await own()).x,waiting.x);
+  await player.locator('#data-tab-compendium').click();
+  const card=player.locator('.compendium-card'),dropPoint=await mapPoint(player,812.5,512.5),canvasRect=await player.locator('#map-canvas').boundingBox();
+  await card.dragTo(player.locator('#map-canvas'),{targetPosition:{x:dropPoint.x-canvasRect.x,y:dropPoint.y-canvasRect.y}});assert.equal((await own()).x,waiting.x);
+  await gm({type:'token.move',id:tokenId,x:662.5,y:512.5});assert.equal((await own()).x,662.5);
+  for(let i=0;i<(await service.read()).scene.tokens.length && (await service.view(dmKey)).scene.combat.activeId!==tokenId;i++)await gm({type:'combat.next'});
+  assert.equal((await service.view(dmKey)).scene.combat.activeId,tokenId);
+  await player.locator('#apply-travel:enabled').waitFor();await player.locator('#travel-mode').selectOption('fly');await player.locator('#travel-height').fill('50');await player.locator('#apply-travel').click();
+  await player.locator('.map-travel-marker[data-token-id="'+tokenId+'"]').filter({hasText:/50 ft/}).waitFor();assert.equal((await own()).mobility.spent,50);
+  await gm({type:'combat.next'});await dm.locator('#game-settings').click();await dm.locator('#movement-own-turn-only').uncheck();await dm.getByRole('button',{name:'Close game settings'}).click();
+  await player.locator('#apply-travel:enabled').waitFor();await player.locator('#travel-height').fill('55');await player.locator('#apply-travel').click();
+  await player.locator('.map-travel-marker[data-token-id="'+tokenId+'"]').filter({hasText:/55 ft/}).waitFor();
+  await dm.locator('#game-settings').click();await dm.locator('#movement-limit-distance').check();await dm.getByRole('button',{name:'Close game settings'}).click();
+  await player.locator('#travel-height').fill('60');await player.locator('#apply-travel').click();await player.locator('#toast').filter({hasText:'No movement remains'}).waitFor();assert.equal((await own()).mobility.z,55);
+  await gm({type:'combat.end'});await player.locator('#travel-mode').selectOption('walk');await player.locator('#travel-height').fill('0');await player.locator('#apply-travel').click();
+  await player.locator('#save-status').filter({hasText:'All changes saved'}).waitFor();
   return {automaticEffectBuilder:true,finiteRegeneration:true,turnBasedConditionExpiry:true,automaticPrivateSheetSync:true,
-    flightAndDepthControls:true,visibleTravelBadges:true,trapBuilder:true,routeInterruption:true,routeContinuation:true,hiddenTrapPrivacy:true,playerTrapApproval:true,sharedPings:true};
+    flightAndDepthControls:true,visibleTravelBadges:true,trapBuilder:true,routeInterruption:true,routeContinuation:true,hiddenTrapPrivacy:true,playerTrapApproval:true,sharedPings:true,optionalTurnMovement:true,independentDistanceLimit:true};
 };

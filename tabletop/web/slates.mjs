@@ -180,6 +180,7 @@ export class Slates {
       if(source.kind==='token'){
         const token=scene.tokens.find(token=>token.id===source.id);
         if(!token)throw new Error('This token is no longer in the scene.');
+        if(view.self.role!=='dm' && token.travelState?.turnLocked)throw new Error('Wait for this token’s initiative turn.');
         if(view.self.role!=='dm' && token.conditionState?.blocked)throw new Error('Cannot move: '+token.conditionState.reason+'.');
         const {x,y}=snapToken(scene,token,position);
         if(await this.command({type:'token.move',id:source.id,x,y,...(this.board?.forceMovement && view.self.role==='dm'?{force:true}:{})}))this.selectToken(source.id);return;

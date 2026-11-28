@@ -28,6 +28,55 @@ test('a long drag stops at each crossed trap, persists its exact stop, and resum
   await f.service.command(f.dm.key,{type:'event.resolve',id:token.pendingMove.eventId,resolution:'apply'});
   token=await f.read();assert.equal(token.x,625);assert.equal(token.pendingMove,null);assert.equal(token.mobility.spent,40);
 });
+
+test('optional initiative locking applies to a player token and vertical travel, with GM exceptions',async()=>{
+  const f=await fixture();assert.equal((await f.service.read()).scene.adventure.ownTurnOnly,false);
+  await f.service.command(f.dm.key,{type:'scene.adventure',ownTurnOnly:true});await f.start();
+  await f.service.command(f.key,{type:'token.move',id:f.own.id,x:275,y:525});await f.service.command(f.dm.key,{type:'combat.next'});
+  const before=await f.read();assert((await f.service.view(f.key)).scene.tokens.find(t=>t.id===f.own.id).travelState.turnLocked);
+  for(const command of [
+    {type:'token.move',id:f.own.id,x:325,y:525},
+    {type:'token.travel',id:f.own.id,mode:'fly',z:5},
+    {type:'movement.dash',id:f.own.id},
+    {type:'token.move',id:f.own.id,x:325,y:525,force:true}
+  ])await assert.rejects(f.service.command(f.key,command),error=>error.status===403);
+  assert.deepEqual(await f.read(),before);
+  await f.service.command(f.dm.key,{type:'token.move',id:f.own.id,x:325,y:525});assert.equal((await f.read()).x,325);
+  await f.service.command(f.dm.key,{type:'token.move',id:f.own.id,x:1025,y:525,force:true});assert.equal((await f.read()).x,1025);
+  for(let i=0;i<2;i++)await f.service.command(f.dm.key,{type:'combat.next'});
+  assert(!(await f.service.view(f.key)).scene.tokens.find(t=>t.id===f.own.id).travelState.turnLocked);
+  await f.service.command(f.key,{type:'token.move',id:f.own.id,x:1075,y:525});assert.equal((await f.read()).x,1075);
+  await f.service.command(f.dm.key,{type:'combat.end'});await f.service.command(f.key,{type:'token.move',id:f.own.id,x:1125,y:525});
+});
+
+test('distance limits toggle independently of turn locking, traps and zero-speed conditions',async()=>{
+  const f=await fixture();await f.service.command(f.dm.key,{type:'scene.adventure',limitDistance:false,ownTurnOnly:false});await f.start();
+  await f.service.command(f.key,{type:'token.move',id:f.own.id,x:625,y:525});assert.equal((await f.read()).mobility.spent,40);
+  await f.service.command(f.dm.key,{type:'scene.adventure',limitDistance:true});await assert.rejects(f.service.command(f.key,{type:'token.move',id:f.own.id,x:675,y:525}),/No movement remains/);
+  await f.service.command(f.dm.key,{type:'scene.adventure',limitDistance:false});await f.trap(725);
+  await f.service.command(f.key,{type:'token.move',id:f.own.id,x:825,y:525});let token=await f.read();assert.equal(token.x,675);assert(token.pendingMove);
+  await f.service.command(f.dm.key,{type:'event.resolve',id:token.pendingMove.eventId,resolution:'apply'});assert.equal((await f.read()).x,825);
+  await f.service.command(f.dm.key,{type:'combat.next'});await f.service.command(f.key,{type:'token.move',id:f.own.id,x:875,y:525});
+  await f.service.command(f.dm.key,{type:'scene.adventure',ownTurnOnly:true});await assert.rejects(f.service.command(f.key,{type:'token.move',id:f.own.id,x:925,y:525}),/initiative turn/);
+  await f.service.command(f.dm.key,{type:'scene.adventure',ownTurnOnly:false});await f.service.command(f.dm.key,{type:'token.condition',id:f.own.id,condition:{id:'snared'}});
+  await assert.rejects(f.service.command(f.key,{type:'token.move',id:f.own.id,x:925,y:525}),/Snared/);
+});
+
+test('game movement settings persist across fresh storage and backup and cannot be changed by a player',async()=>{
+  const f=await fixture();await f.service.command(f.dm.key,{type:'scene.adventure',ownTurnOnly:true,limitDistance:false,enabled:false});
+  const before=await f.service.read();await assert.rejects(f.service.command(f.key,{type:'scene.adventure',ownTurnOnly:false}),error=>error.status===403);assert.deepEqual(await f.service.read(),before);
+  for(const scene of [(await new RoomService(f.storage).view(f.key)).scene,(await f.service.importCampaign(f.dm.key,await f.service.exportCampaign(f.dm.key))).scene]){
+    assert.equal(scene.adventure.ownTurnOnly,true);assert.equal(scene.adventure.limitDistance,false);assert.equal(scene.adventure.enabled,false);
+  }
+});
+
+test('a pending trap can resolve outside the token turn without resuming its route',async()=>{
+  const f=await fixture();await f.trap(375);await f.service.command(f.key,{type:'token.move',id:f.own.id,x:625,y:525});
+  const token=await f.read(),npc=(await f.service.read()).scene.tokens.find(t=>!t.ownerId && !t.hidden);
+  await f.service.command(f.dm.key,{type:'scene.adventure',ownTurnOnly:true});await f.service.command(f.dm.key,{type:'combat.set',id:npc.id,value:99});await f.service.command(f.dm.key,{type:'combat.start'});
+  await f.service.command(f.dm.key,{type:'event.resolve',id:token.pendingMove.eventId,resolution:'apply'});
+  assert.equal((await f.read()).x,token.x);assert.equal((await f.read()).pendingMove,null);assert((await f.service.read()).scene.events.every(event=>event.status!=='pending'));
+});
 test('height, travel mode and vertical distance filter traps and share the turn movement allowance',async()=>{
   const f=await fixture();await f.trap(375);await f.start();
   await f.service.command(f.key,{type:'token.travel',id:f.own.id,mode:'fly',z:20});

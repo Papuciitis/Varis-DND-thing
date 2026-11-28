@@ -1,5 +1,12 @@
 # Patch notes
 
+## 2026-11-28 - Readable trap events and optional initiative movement rules
+
+- Trap and automatic-effect builders now show a searchable list of all 47 standard conditions on first opening. Custom effects have a separate explicit choice and name field; reopening an existing trigger preserves its condition.
+- Event actions stack into readable buttons in narrow campaign panels. Conditional traps show which condition and duration a failed save would apply.
+- Added two independent GM toggles under Game → Movement rules: only move on a token's initiative turn, and enforce movement distance during initiative. The turn restriction starts off; the existing distance limit starts on. Both settings persist with the campaign and its backups.
+- Turn restrictions apply to player drags, keyboard/compendium moves and height changes, while the GM can move tokens for exceptions. Disabling the distance cap still counts movement and checks traps and movement-blocking conditions. Exploration does not use initiative turn restrictions.
+
 ## 2026-11-28 - Tabletop events, movement and automatic effects
 
 - Added an automatic-effect builder: start/end turn, start round, movement, damage, healing, reaching zero HP and condition changes can apply damage, healing, resource changes, conditions or messages. Effects can expire after a set number of applications; bounded chains prevent recursive loops.

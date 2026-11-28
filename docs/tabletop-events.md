@@ -61,7 +61,10 @@ Choose the map's **Spell area** tool, draw a circle, square, cone or line, then
 choose **Make trigger**. Set its name, source, affected modes, height range,
 entry/start-turn/end-turn timing, visibility and one-use/reusable behavior.
 Configure a save, damage, condition, resource change or message using the actual
-source rule. Centre-only or round-footprint contact is selectable.
+source rule. Apply/remove-condition actions show all 47 standard conditions in a
+visible list with a search field. Select Custom effect for a separate name rather
+than typing a standard name from memory. Centre-only or round-footprint contact
+is selectable.
 
 Players can propose areas from their character's items/spells/features or a
 manual table-approved source. The area remains inactive until the GM approves
@@ -94,8 +97,18 @@ its own permission. A temporary bundle can expire after a number of that token's
 turns. Expired unsupported flight creates a review event without invented falling
 damage.
 
-Horizontal and vertical distance share the movement already spent. During
-initiative, movement stops at the current allowance. **Dash** adds one speed;
+The GM can open **Game → Movement rules** for two independent campaign toggles:
+**Only move on your token's initiative turn** and **Enforce movement distance
+during initiative**. Own-turn-only starts off; distance enforcement starts on.
+These choices persist through reopening and campaign backups. Own-turn-only
+applies to player map/keyboard/compendium moves and height changes. The GM can
+move tokens out of turn for reactions, forced movement and other exceptions.
+Players can still edit sheets and resolve saves outside a turn.
+
+Horizontal and vertical distance share the movement already spent. When distance
+enforcement is on, initiative movement stops at the current allowance. When it is
+off, movement is still counted and traps/zero-speed conditions still apply.
+**Dash** adds one speed;
 the GM can grant further allowance for source-specific exceptions. Exploration
 counts distance without imposing a turn cap and permits **Reset movement**.
 The GM's **GM reposition** control explicitly bypasses trigger/cost checks for

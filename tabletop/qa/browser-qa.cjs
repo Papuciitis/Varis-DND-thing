@@ -79,6 +79,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.getByLabel('Your nickname').fill('Nauris');
     await dm.getByRole('button',{name:'Create your table'}).click();
     await dm.locator('#game-status').filter({hasText:'Local preview connected'}).waitFor();
+    await require('./encounter-ui-qa.cjs')({dm,service:[...rooms.values()][0],broadcast,output});
     // All desktop panels collapse independently. A dragged/keyboard-adjusted
     // reference width and collapsed choices survive reloading this browser.
     const viewportSize=()=>dm.locator('#map-canvas').evaluate(node=>({width:node.clientWidth,height:node.clientHeight}));
@@ -667,7 +668,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       tokenConditionMarkers:true,collapsibleConditions:true,collapsiblePanels:true,referenceBorderResize:true,persistentPanelLayout:true,
       visibleTokenRemoval:true,contextTokenRemoval:true,keyboardTokenRemoval:true,tokenRemovalKeepsSource:true,
       monsterCompendiumDrag:true,characterCompendiumDrag:true,independentMonsterInstances:true,playerCompendiumPrivacy:true,combinedHealth:true,utilityAbilityScores:true,
-      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:18,pageErrors:errors};
+      firstUseConditionPicker:true,conditionEventLayout:true,spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:20,pageErrors:errors};
     await fsp.writeFile(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
   }catch(error){
     console.error(error);

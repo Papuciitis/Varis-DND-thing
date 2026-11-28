@@ -27,7 +27,7 @@ export class MapBoard {
       const vectors={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]};
       const t=this.view?.scene.tokens.find(t=>t.id===this.selected);
       if (!vectors[e.key] || !t)return;
-      e.preventDefault();if(!this.canMove(t)){if(t.ownerId===this.view.self.id && t.conditionState?.blocked)this.onError('Cannot move: '+t.conditionState.reason+'.');return;}
+      e.preventDefault();if(!this.canMove(t)){if(t.ownerId===this.view.self.id && (t.conditionState?.blocked || t.travelState?.turnLocked))this.onError(t.travelState?.turnLocked?'Wait for this token’s initiative turn.':'Cannot move: '+t.conditionState.reason+'.');return;}
       const [x,y]=vectors[e.key],s=this.view.scene,step=tokenGridStep(s,t);
       this.onMove(t.id,Math.max(0,Math.min(s.width-1,t.x+x*step)),Math.max(0,Math.min(s.height-1,t.y+y*step)));
     });
@@ -97,7 +97,7 @@ export class MapBoard {
     const preview=!!this.templatePreview && templateContains(this.templatePreview,point,this.view.scene);
     this.onContext?.({tokenId:token?.id || null,templateIds,trapIds,preview,x:e.clientX,y:e.clientY,point});this.draw();
   }
-  canMove(t) {return this.enabled && (!t.travelState?.paused || this.forceMovement && this.view.self.role==='dm') && (this.view.self.role==='dm' || t.ownerId===this.view.self.id && !t.conditionState?.blocked);}
+  canMove(t) {return this.enabled && (!t.travelState?.paused || this.forceMovement && this.view.self.role==='dm') && (this.view.self.role==='dm' || t.ownerId===this.view.self.id && !t.conditionState?.blocked && !t.travelState?.turnLocked);}
   bodyAt(p) {return [...this.view.scene.tokens].reverse().find(token=>{const point=this.displayToken(token);return Math.hypot(point.x-p.x,point.y-p.y)<tokenRadius(this.view.scene,token)*1.3;});}
   hit(p) {
     const tokens=[...this.view.scene.tokens].reverse();
@@ -133,7 +133,7 @@ export class MapBoard {
     if(token) {
       this.selected=token.id;this.onSelect(token.id);
       if(this.canMove(token)){const displayed=this.displayToken(token);this.drag={kind:'token',id:token.id,x:token.x,y:token.y,offsetX:p.x-displayed.x,offsetY:p.y-displayed.y};}
-      else if(token.ownerId===this.view.self.id && token.conditionState?.blocked)this.onError('Cannot move: '+token.conditionState.reason+'.');
+      else if(token.ownerId===this.view.self.id && (token.conditionState?.blocked || token.travelState?.turnLocked))this.onError(token.travelState?.turnLocked?'Wait for this token’s initiative turn.':'Cannot move: '+token.conditionState.reason+'.');
       this.draw();return;
     }
     this.drag={kind:'pan',x:e.clientX,y:e.clientY,cx:this.camera.x,cy:this.camera.y};
@@ -219,7 +219,7 @@ export class MapBoard {
     if(this.drag?.kind==='token'){
       const token=s.tokens.find(token=>token.id===this.drag.id),target=this.drag;
       if(token){const state=token.travelState || {},pixels=s.gridSize/(s.distancePerSquare ?? 5)/(s.distanceUnit==='m'?1/.3048:1),dx=Math.abs(target.x-token.x)/pixels,dy=Math.abs(target.y-token.y)/pixels;
-        const cost=(s.adventure?.metric==='grid'?Math.max(dx,dy):Math.hypot(dx,dy))*(state.multiplier || 1),limited=s.combat.active && state.remaining!=null && cost>state.remaining && !this.forceMovement;
+        const cost=(s.adventure?.metric==='grid'?Math.max(dx,dy):Math.hypot(dx,dy))*(state.multiplier || 1),limited=s.combat.active && s.adventure?.limitDistance!==false && state.remaining!=null && cost>state.remaining && !this.forceMovement;
         ctx.save();ctx.strokeStyle=limited?'#f2a16f':'#a4dcdf';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=2/c.z;ctx.setLineDash([5/c.z,5/c.z]);ctx.beginPath();ctx.moveTo(token.x,token.y);ctx.lineTo(target.x,target.y);ctx.stroke();ctx.beginPath();ctx.arc(target.x,target.y,tokenRadius(s,token),0,Math.PI*2);ctx.stroke();
         ctx.font='600 '+12/c.z+'px Segoe UI';ctx.textAlign='center';ctx.fillText((Math.round(cost*10)/10)+' ft'+(limited?' · exceeds remaining movement':''),target.x,target.y-tokenRadius(s,token)-12/c.z);ctx.restore();}
     }

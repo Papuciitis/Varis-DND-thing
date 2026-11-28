@@ -1,5 +1,6 @@
 import {TRAVEL_MODES,TRAVEL_NAMES,feet,travelLabel} from './travel.mjs';
 import {loadReferences} from './sources.mjs';
+import {ConditionPicker} from './condition-picker.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
@@ -71,21 +72,22 @@ export class AdventureTools {
     const resource=select(box,'Resource',prefix+'-resource',[['tempHP','Temp HP'],['arcaneHealth','Arcane health'],['block','Block'],['tempBlock','Temp Block'],['custom1','Custom resource 1'],['custom2','Custom resource 2']]);
     const operation=select(box,'Resource change',prefix+'-operation',[['add','Add / restore'],['set','Set to this amount'],['subtract','Spend / remove']]);
     const damageType=select(box,'Damage type',prefix+'-damage-type',[['','Untyped / already adjusted'],...['bludgeoning','piercing','slashing','fire','cold','acid','lightning','sonic','poison','necrotic','radiant','psychic','force','bleeding'].map(type=>[type,type])]);
-    const condition=field(box,'Condition or custom effect',prefix+'-condition');condition.setAttribute('list','adventure-condition-options');
+    const picker=new ConditionPicker(box,prefix),condition=picker.select;
     const stacks=field(box,'Condition stacks',prefix+'-stacks',{type:'number',min:1,max:99,value:1}),turns=field(box,'Condition duration in turns (blank = no timer)',prefix+'-turns',{type:'number',min:1,max:1000});
     const notes=field(box,'Message / effect rules',prefix+'-text');notes.maxLength=600;
     const save=select(box,'Saving throw before applying',prefix+'-save',[['','No saving throw'],...['str','dex','con','int','wis','cha'].map(key=>[key,key.toUpperCase()])]);
     const dc=field(box,'Save DC',prefix+'-dc',{type:'number',min:1,max:99,value:15}),half=check(box,'Half damage on a successful save',prefix+'-half');
     const update=()=>{amount.closest('label').hidden=!['damage','heal','resource'].includes(type.value);amount.required=['damage','heal','resource'].includes(type.value);
       for(const input of [resource,operation])input.closest('label').hidden=type.value!=='resource';
-      damageType.closest('label').hidden=type.value!=='damage';for(const input of [condition,stacks,turns])input.closest('label').hidden=!['condition','remove-condition'].includes(type.value);
-      condition.required=['condition','remove-condition'].includes(type.value);dc.closest('label').hidden=half.closest('label').hidden=!save.value;
+      damageType.closest('label').hidden=type.value!=='damage';for(const input of [stacks,turns])input.closest('label').hidden=!['condition','remove-condition'].includes(type.value);
+      picker.setEnabled(['condition','remove-condition'].includes(type.value));dc.closest('label').hidden=half.closest('label').hidden=!save.value;
       dc.disabled=!save.value;half.disabled=!save.value || type.value!=='damage';};
+    picker.onChange=()=>{stacks.max=globalThis.CharacterConditions?.lookup(condition.value)?.maxStacks || 99;stacks.value=Math.min(Number(stacks.value) || 1,Number(stacks.max));};
     type.onchange=save.onchange=update;parent.append(box);update();
     return {type,amount,damageType,condition,stacks,turns,notes,save,dc,half,update,
-      value:()=>{let row=null;if(['condition','remove-condition'].includes(type.value))row=globalThis.CharacterConditions.normalize([condition.value+(Number(stacks.value)>1?' ×'+stacks.value:'')],{strict:true})[0];
+      value:()=>{let row=null;if(['condition','remove-condition'].includes(type.value))row=picker.value(Number(stacks.value));
         return {type:type.value,amount:amount.value || 0,damageType:damageType.value,resource:resource.value,operation:operation.value,condition:row,turns:turns.value?Number(turns.value):null,text:notes.value,save:save.value?{ability:save.value,dc:Number(dc.value),half:half.checked}:null};},
-      load:action=>{type.value=action?.type || 'message';amount.value=action?.amount ?? '';resource.value=action?.resource || 'tempHP';operation.value=action?.operation || 'add';damageType.value=action?.damageType || '';condition.value=action?.condition?.name || '';stacks.value=action?.condition?.stacks || 1;turns.value=action?.turns || '';notes.value=action?.text || '';save.value=action?.save?.ability || '';dc.value=action?.save?.dc || 15;half.checked=!!action?.save?.half;update();}};
+      load:action=>{type.value=action?.type || 'message';amount.value=action?.amount ?? '';resource.value=action?.resource || 'tempHP';operation.value=action?.operation || 'add';damageType.value=action?.damageType || '';picker.load(action?.condition);stacks.max=globalThis.CharacterConditions?.lookup(action?.condition?.id)?.maxStacks || 99;stacks.value=action?.condition?.stacks || 1;turns.value=action?.turns || '';notes.value=action?.text || '';save.value=action?.save?.ability || '';dc.value=action?.save?.dc || 15;half.checked=!!action?.save?.half;update();}};
   }
   fillTargets(input,empty=false){const view=this.getView(),current=input.value;input.replaceChildren(...(empty?[new Option('Scene / GM source','')]:[]),...view.scene.tokens.filter(token=>view.self.role==='dm' || token.canEditStats).map(token=>new Option(token.name,token.id)));
     if([...input.options].some(option=>option.value===current))input.value=current;else if(this.token() && [...input.options].some(option=>option.value===this.token().id))input.value=this.token().id;
@@ -100,10 +102,9 @@ export class AdventureTools {
     form.onsubmit=async event=>{event.preventDefault();try{const filter=this.effectFilter.value.trim(),definition=globalThis.CharacterConditions?.lookup(filter);
       if(await this.send({type:'effect.save',effect:{tokenId:this.effectTarget.value,name:this.effectName.value,sourceName:this.effectSource.value,trigger:this.effectTrigger.value,conditionId:definition?.id || filter,uses:this.effectUses.value?Number(this.effectUses.value):null,action:this.effectAction.value()}})){this.effectName.value='';this.effectAction.load({type:'message'});this.renderEffects();}
     }catch(error){this.notify(error.message,true);}};
-    if(!$('adventure-condition-options')){const list=el('datalist');list.id='adventure-condition-options';body.append(list);}
   }
   async openEffects(){try{await loadReferences();}catch(error){this.notify(error.message,true);return;}this.fillTargets(this.effectTarget);this.effectName.value='';this.effectAction.load({type:'message'});this.renderEffects();
-    const list=$('adventure-condition-options');list.replaceChildren(...(globalThis.CharacterConditions?.definitions || []).map(row=>new Option(row.name)));this.effectsDialog.showModal();}
+    this.effectsDialog.showModal();}
   renderEffects(){const view=this.getView();if(!view)return;this.effectRows.replaceChildren(...(view.scene.effects || []).map(effect=>{
     const row=el('article','automatic-effect-row');row.append(el('strong','',effect.name),el('p','',effect.trigger+' · '+effect.action.type+(effect.uses!==null?' · '+effect.uses+' applications left':'')),button('Remove',()=>this.send({type:'effect.remove',id:effect.id}),'text-button danger'));return row;
   }));if(!this.effectRows.children.length)this.effectRows.append(el('p','field-note','No automatic effects configured.'));
@@ -150,10 +151,17 @@ export class AdventureTools {
     const timer=token.conditionTimers?.[conditionId];this.durationTurns.value=timer?.remaining || '';this.durationTiming.value=timer?.timing || 'turn-end';this.durationAnchor.replaceChildren(...this.getView().scene.tokens.map(t=>new Option(t.name,t.id)));this.durationAnchor.value=timer?.anchorId || id;this.durationDialog.showModal();
   }
   mountScene(){const host=$('show-grid').closest('details'),section=el('section','encounter-settings');section.setAttribute('data-dm','');section.append(el('h3','','Events & triggered areas'));
-    this.enable=check(section,'Enable movement and event automation','enable-events',true);this.printed=check(section,'Automate printed turn-based conditions','automate-conditions',true);
+    this.enable=check(section,'Enable encounter triggers and turn effects','enable-events',true);this.printed=check(section,'Automate printed turn-based conditions','automate-conditions',true);
     this.metric=select(section,'Movement distance','movement-metric',[['straight','Straight-line distance'],['grid','Grid: diagonals cost one square']]);
     for(const input of [this.enable,this.printed,this.metric])input.onchange=()=>this.send({type:'scene.adventure',enabled:this.enable.checked,autoConditions:this.printed.checked,metric:this.metric.value});
     section.append(button('Automatic effect builder',()=>this.openEffects()),el('p','field-note','Draw a spell area and choose Make trigger to place a trap, persistent spell or other triggered zone.'));section.append(this.trapRows);host.append(section);
+    const rules=el('section','settings-block movement-rules');rules.id='movement-rules';rules.setAttribute('data-dm','');rules.append(el('h3','','Movement rules'));
+    this.turnOnly=check(rules,'Only move on your token’s initiative turn','movement-own-turn-only');
+    this.distanceLimit=check(rules,'Enforce movement distance during initiative','movement-limit-distance',true);
+    rules.append(el('p','field-note','These rules are independent. The GM can move tokens outside their turns and use GM reposition for forced movement or other exceptions. Exploration is unrestricted by initiative.'));
+    for(const input of [this.turnOnly,this.distanceLimit])input.onchange=()=>this.send({type:'scene.adventure',ownTurnOnly:this.turnOnly.checked,limitDistance:this.distanceLimit.checked});
+    $('settings-dialog').querySelector('.dialog-body').prepend(rules);
+    section.append(button('Movement rules',()=>{$('game-settings').click();rules.scrollIntoView({block:'nearest'});}));
   }
   renderEvents(){const view=this.getView(),pending=(view.scene.events || []).filter(event=>event.status==='pending'),signature=JSON.stringify([pending,view.self.id,this.connected]);
     if(signature===this.eventsSignature)return;this.eventsSignature=signature;
@@ -161,6 +169,7 @@ export class AdventureTools {
     this.eventsList.replaceChildren(...pending.map(event=>{
       const token=view.scene.tokens.find(token=>token.id===event.tokenId),row=el('article','encounter-event');row.dataset.eventId=event.id;
       row.append(el('h4','',event.label),el('p','',token?.name || 'Encounter'),button('View token',()=>{if(token){this.selectToken(token.id);this.board.center(token);}}));
+      if(['condition','remove-condition'].includes(event.action?.type))row.append(el('p','event-effect',(event.save?'On a failed save: ':event.action.type==='remove-condition'?'Ends: ':'Applies: ')+event.action.condition.name+(event.action.condition.stacks>1?' ×'+event.action.condition.stacks:'')+(event.action.turns?' · '+event.action.turns+' turns':'')));
       const gm=view.self.role==='dm',owner=token?.ownerId===view.self.id,actions=el('div','button-row');
       const send=(resolution,extra={})=>this.send({type:'event.resolve',id:event.id,resolution,...extra});
       if(event.kind==='approval'){if(gm)actions.append(button('Approve trigger',()=>send('apply')),button('Decline',()=>send('dismiss')));else row.append(el('p','field-note','Waiting for GM approval.'));}
@@ -184,17 +193,18 @@ export class AdventureTools {
   render(connected){this.connected=connected;const view=this.getView();if(!view)return;
     const identity=view.id+'|'+view.self.id;if(identity!==this.identity){this.identity=identity;this.force.checked=false;this.board.forceMovement=false;this.previousPending=null;}
     const token=this.token(),gm=view.self.role==='dm';this.travel.hidden=!token;
-    if(token){const state=token.travelState || {},edit=token.canEditStats || gm;
-      this.travelSummary.textContent=' · '+travelLabel(token)+(state.remaining!==null && state.remaining!==undefined?' · '+feet(view.scene.combat.active?state.remaining:state.spent)+(view.scene.combat.active?' left':' moved'):'')+(state.paused?' · Paused':'');
+    if(token){const state=token.travelState || {},edit=token.canEditStats || gm,turnLocked=!gm && state.turnLocked,distanceLimited=view.scene.combat.active && view.scene.adventure?.limitDistance!==false;
+      this.travelSummary.textContent=' · '+travelLabel(token)+(state.remaining!==null && state.remaining!==undefined?' · '+feet(distanceLimited?state.remaining:state.spent)+(distanceLimited?' left':' moved'):'')+(state.paused?' · Paused':turnLocked?' · Waiting for turn':'');
       if(document.activeElement!==this.mode)this.mode.value=token.mobility?.mode || 'walk';if(document.activeElement!==this.height)this.height.value=token.mobility?.z || 0;
       const speeds={...token.movementProfile?.speeds,...token.movementOverrides?.speeds};for(const option of this.mode.options)option.disabled=!gm && ['fly','hover','burrow'].includes(option.value) && !(speeds[option.value==='hover'?'fly':option.value]>0 && (option.value!=='hover' || (token.movementOverrides?.hover ?? token.movementProfile?.hover)));
-      this.travelApply.disabled=!connected || !edit || state.paused;this.mode.disabled=this.height.disabled=!edit;
-      this.movementReading.textContent=state.capacity==null?'Movement speed not shared or not set.':feet(state.spent)+' used / '+feet(state.capacity)+' available · '+feet(state.remaining)+' remaining';
-      this.travelNote.textContent=state.paused?'Movement is paused until the event is resolved.':!view.scene.combat.active?'Exploration: movement is counted; the turn limit applies during initiative.':state.multiplier===2?'This movement costs 2 feet per foot because no dedicated speed is granted.':'Vertical movement uses the same movement allowance.';
-      this.dash.disabled=!connected || !edit || !!token.mobility?.dashed || state.paused;this.resetMovement.disabled=!connected || !edit || !gm && view.scene.combat.active;this.grants.hidden=!token.canEditStats;this.force.closest('label').hidden=!gm;
+      this.travelApply.disabled=!connected || !edit || state.paused || turnLocked;this.mode.disabled=this.height.disabled=!edit || turnLocked;
+      this.movementReading.textContent=state.capacity==null?'Movement speed not shared or not set.':view.scene.combat.active && !distanceLimited?feet(state.spent)+' moved · distance limit disabled':feet(state.spent)+' used / '+feet(state.capacity)+' available · '+feet(state.remaining)+' remaining';
+      this.travelNote.textContent=state.paused?'Movement is paused until the event is resolved.':turnLocked?'Waiting for this token’s initiative turn. The GM can move it for an exception.':!view.scene.combat.active?'Exploration: movement is counted; initiative rules do not apply.':!distanceLimited?'Movement distance is counted without imposing a cap.':state.multiplier===2?'This movement costs 2 feet per foot because no dedicated speed is granted.':'Vertical movement uses the same movement allowance.';
+      this.dash.disabled=!connected || !edit || !!token.mobility?.dashed || state.paused || turnLocked;this.resetMovement.disabled=!connected || !edit || !gm && view.scene.combat.active;this.grants.hidden=!token.canEditStats;this.force.closest('label').hidden=!gm;
       this.extraRow.hidden=!gm;if(document.activeElement!==this.extra)this.extra.value=token.mobility?.extra || 0;
     }
     this.enable.checked=view.scene.adventure?.enabled!==false;this.printed.checked=view.scene.adventure?.autoConditions!==false;this.metric.value=view.scene.adventure?.metric || 'straight';
+    this.turnOnly.checked=view.scene.adventure?.ownTurnOnly===true;this.distanceLimit.checked=view.scene.adventure?.limitDistance!==false;
     this.renderEvents();if(this.effectsDialog.open)this.renderEffects();
     const trapSignature=JSON.stringify([view.scene.traps,view.self.id,connected]);if(trapSignature!==this.trapSignature){this.trapSignature=trapSignature;this.trapRows.replaceChildren(...(view.scene.traps || []).map(trap=>{
       const row=el('article','automatic-effect-row');row.append(el('strong','',trap.name),el('p','',trap.pending?'Pending approval':trap.armed?'Armed':'Disarmed'));
