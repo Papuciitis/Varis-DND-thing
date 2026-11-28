@@ -20,14 +20,21 @@
     const casting=derived.casting?.profile;
     const row=casting?.progression.filter(row=>row.level<=level).at(-1);
     const maxSpell=casting?.mode==='leveled'?Math.max(0,...(row?.slots || []).map(slot=>slot.level)):casting?.mode==='full'?character.build?.casting?.maxSlotLevel ?? 0:Math.ceil(level/2);
-    const spells=character.spells.filter(saved=>!saved.featSource || features.some(feature=>feature.id===saved.featSource) || derived.choices.some(group=>group.level<=level && group.kind!=='feat' && group.selected.some(id=>group.id+':'+id===saved.featSource))).map(saved=>all.find(entry=>entry.section==='spells' && JSON.stringify(['spells',entry.group,entry.name])===saved.entryId)).filter(entry=>entry && (!entry.details?.lvl || Number(entry.details.lvl)<=maxSpell));
+    const projected=derived.featPlan?.spells,spellRows=[...new Map([...character.spells,...(projected || [])].map(row=>[row.id,row])).values()];
+    const spells=spellRows.filter(saved=>!saved.featSource || (!projected || projected.some(row=>row.id===saved.id)) && (features.some(feature=>feature.id===saved.featSource) || derived.choices.some(group=>group.level<=level && group.kind!=='feat' && group.selected.some(id=>group.id+':'+id===saved.featSource)) || derived.featPlan?.sources?.some(source=>source.id===saved.featSource && source.parent==='Feature' && source.level<=level && derived.choices.some(group=>group.id===source.groupId && group.selected.includes(source.optionId))))).map(saved=>all.find(entry=>entry.section==='spells' && JSON.stringify(['spells',entry.group,entry.name])===saved.entryId)).filter(entry=>entry && (!entry.details?.lvl || Number(entry.details.lvl)<=maxSpell));
+    const featureText=feature=>{
+      if(typeof feature.details==='string')return feature.details.split(/\n\s*\*/)[0];
+      if(feature.parent==='Background')return Object.entries(feature.details || {}).filter(([key])=>key!=='proficiencies').map(([,value])=>typeof value==='string'?value:'').join('\n');
+      const text=feature.details?.description || '';
+      return derived.featPlan?.specs?.[feature.id]?.fields.some(field=>field.key==='upgrade')?text.split(/\n\s*\*/)[0]:text;
+    };
     return {character,derived,catalog,level,abilities,features,options,spells,casting,row,
       race:normalize(derived.race?.name || character.ancestry),className:normalize(derived.cls?.name || character.className),
       background:normalize(derived.background?.name || character.background),
       facts:new Set(character.build?.qualifications || []),
       featureNames:new Set([...features,...options].map(feature=>words(feature.name))),
       weaponResults:new Map(),
-      ruleText:[...features.map(feature=>typeof feature.details==='string'?feature.details.split(/\n\s*\*/)[0]:feature.parent==='Background'?Object.entries(feature.details || {}).filter(([key])=>key!=='proficiencies').map(([,value])=>typeof value==='string'?value:'').join('\n'):feature.details?.description || ''),...options.map(option=>String(option.ownDetails || option.details || ''))].join('\n')};
+      ruleText:[...features.map(featureText),...options.map(option=>String(option.ownDetails || option.details || ''))].join('\n')};
   }
   const known=(met)=>({met:!!met,known:true});
   const unknown=()=>({met:false,known:false});

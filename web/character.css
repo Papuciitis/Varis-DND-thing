@@ -804,3 +804,26 @@ body:has(dialog[open]) { overflow: hidden; }
 .spell-progression > summary { cursor: pointer; color: var(--green); }
 .spell-progression p { margin-block: .5rem; }
 .feat-decisions { border-left: 2px solid var(--green); padding-left: 1.2rem; }
+
+.equipment-defence { border: 1px solid var(--strong-line); border-radius: 8px; padding: .8rem 1rem; margin-block: .8rem 1rem; background: var(--sheet); }
+.equipment-defence-values { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .75rem; }
+.equipment-defence-values > div { display: flex; flex-direction: column; gap: .25rem; }
+.equipment-defence-values span { color: var(--quiet); font-size: .8rem; }
+.equipment-defence-values strong { font-size: 1.35rem; }
+.equipment-defence > p { margin-block: .6rem .3rem; font-size: .86rem; }
+.equipped-defence { margin-block: 0 .5rem; font-size: .86rem; color: var(--quiet); }
+.armor-calculation, .equipment-comparison { font-size: .84rem; line-height: 1.5; }
+.armor-calculation { margin-block: .4rem; }
+.equipment-comparison { border-block: 1px solid var(--line); padding-block: .4rem; margin-block: .5rem; }
+.equipment-comparison p { margin-block: .4rem; }
+.armor-penalty { padding: .6rem .75rem; border-left: 3px solid var(--gold); background: var(--paper-shade); font-size: .86rem; line-height: 1.5; }
+.defence-breakdown { font-size: .86rem; overflow-wrap: anywhere; }
+.defence-breakdown > summary { cursor: pointer; color: var(--green); }
+.defence-breakdown dl { margin: .7rem 0; }
+.defence-breakdown dl > div { display: flex; justify-content: space-between; gap: 1rem; padding-block: .2rem; }
+.defence-breakdown dd { margin: 0; font-variant-numeric: tabular-nums; }
+.defence-breakdown .defence-total { border-top: 1px solid var(--strong-line); font-weight: 700; margin-top: .3rem; padding-top: .4rem; }
+.defence-breakdown p { margin-block: .65rem; }
+@media (max-width: 560px) {
+ .equipment-defence-values { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}

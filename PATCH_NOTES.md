@@ -1,5 +1,25 @@
 # Patch notes
 
+## 2026-11-28 - Removing upgrade grants and dependent choices
+
+- Fixed Deep past and More upgrades leaving dependent feat choices and granted spells active after their extra upgrade was removed. Follow-ups now use the currently available upgrade picks.
+- Extra feat picks are labeled with their granting source. Deep past and More upgrades show the chosen feat's bonus upgrade and its relevant follow-ups directly beside the grant.
+- Kept base and bonus choices separate when a field is partly empty. Clearing a base choice no longer pulls a removed bonus pick into its place. Multiple feat-list grants retain their own upgrade choices when one source is removed or restored.
+- Removed upgrade spells immediately leave spell-target selectors and feat prerequisite checks. Saved inactive answers remain available for restoring the corresponding grant.
+- Fixed reselecting self-extending class features when their saved dependent picks reactivate. Checked Guardian Security, Martial artist Wind-walker, Brewer Dilute product and Schemer Underling master.
+- Removing an Expanded alchemy or Mixed elemental descendant bonus pick clears its corresponding feat choice, preventing it from immediately returning. Removing an earlier grant also retains legal saved choices still supported by a remaining bonus allowance.
+- Clarified the class allowance beside feature picks. Bard still receives two Bardic traits at level 2 and one extra at level 3; its trait allowance is separate from Deep past's extra feat upgrade.
+
+## 2026-11-28 - Armor, shields and live defence values
+
+- Equipment now shows current AC, speed, maximum Block and Block checks while building a character. Add and equip applies a new armor or shield immediately; Add to pack keeps it carried.
+- Every armor and shield catalog preview compares its resulting AC with your current AC before adding it. All armor calculations use that item's own Base AC and properties with the character's actual abilities and active features.
+- Added an AC breakdown in Equipment and the saved sheet's Block & defence panel, including Dexterity, Bulk, Strength penalties, enchantments, shields and active bonuses. Bulk penalties remain visible with the full breakdown closed. Armor properties, reductions, resistances and shield actions are visible beside the calculation.
+- Fixed Shield-brother and advanced Shield proficiency failing with light shields that provide no extra Block. Hand to hand combat checks held weapons and shields directly.
+- Connected fixed armor-dependent bonuses for Fighter armor training and its Block, Bulk, Slow and shield-defence upgrades; Dwarf Ironbeard, Heavy hauling and Dwarven sturdiness; Barbarian king; Bard Martial skill; Monk Shifting step discipline; and Shield bearer Bulwark. Dwarven veteran reduces armor Bulk. Conditions follow the worn equipment, remaining rest dice and printed level milestones.
+- Equip changes preserve spent Block and existing wounds. Armor Block is granted by Start combat or recovery under the existing rules. Active shield actions, conditional resistances and item enchantment procedures retain their printed costs and durations.
+- Versatile shields retain their AC while sharing a permitted two-handed weapon grip, but no longer generate an unavailable Bash attack. Displayed Block checks and their chosen ability update immediately after ability-score changes.
+
 ## 2026-11-28 - Upgrade lists and repeated picks
 
 - Fixed More upgrades invalidating its own selection after an upgrade was chosen. Bonus picks remain usable between normal level milestones and share the original list's prerequisites and repeat limits.

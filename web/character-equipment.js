@@ -105,11 +105,37 @@
     });
   }
 
-  function armorAC(gear, mods) {
+  function armorCalculation(gear, mods, effects = {}) {
     const props = properties(gear.entry);
-    const bulk = rating(props, "bulk");
-    return Math.max(8, number(gear.entry.details["Base AC"], 10)
-      + Math.max(0, mods.dex - bulk) - (has(props, "bulk") ? Math.max(0, bulk - mods.str) : 0)) + number(gear.row.magicBonus);
+    const bulk = Math.max(0, rating(props, "bulk") - number(effects.armorBulkReduction));
+    const base = number(gear.entry.details["Base AC"], 10);
+    const dexterity = Math.max(0, mods.dex - bulk);
+    const strengthPenalty = bulk > 0 ? Math.max(0, bulk - mods.str) : 0;
+    const floor = Math.max(0, 8 - (base + dexterity - strengthPenalty));
+    const magic = number(gear.row.magicBonus);
+    return {base, bulk, dexterity, strengthModifier: mods.str, dexterityModifier: mods.dex,
+      strengthPenalty, floor, magic, total: base + dexterity - strengthPenalty + floor + magic};
+  }
+
+  const armorAC = (gear, mods, effects) => armorCalculation(gear, mods, effects).total;
+
+  function equipmentBonuses(rules, armor, shield, armed, character) {
+    const group = lower(armor?.entry.group);
+    const applies = {
+      armor: !!armor, "no-armor": !armor,
+      "light-or-no-armor": !armor || group === "light armor",
+      "medium-or-heavy-armor": /^(medium|heavy) armor$/.test(group),
+      "heavy-armor": group === "heavy armor", shield: !!shield,
+      "no-weapons-or-shield": !armed && !shield, "weapons-or-shield": armed || !!shield,
+      "armor-and-rest-dice": !!armor && number(character.restDice?.current) > 0
+    };
+    return (rules || []).filter(rule => applies[rule.when]).map(rule => {
+      const effects = {...rule.effects};
+      for (const upgrade of rule.upgrades || []) if (number(character.level, 1) >= upgrade.level) {
+        for (const [key, value] of Object.entries(upgrade.effects)) effects[key] = number(effects[key]) + value;
+      }
+      return {source: rule.source, effects};
+    });
   }
 
   function best(items, score) {
@@ -235,12 +261,27 @@
     }
     const armors = active.filter(gear => category(gear.entry) === "armor");
     const shields = active.filter(gear => category(gear.entry) === "shield");
-    const armor = best(armors, gear => armorAC(gear, mods));
+    const effects = context.effects || {};
+    const armor = best(armors, gear => armorAC(gear, mods, effects));
     const shield = best(shields, gear => number(gear.entry.details["AC bonus"]) + number(gear.row.magicBonus));
     if (armors.length > 1) warn("Multiple armor items are equipped. Only the armor giving the highest AC applies; equip one armor to resolve the conflict.");
     if (shields.length > 1) warn("Multiple shields are equipped. Shield stacking is unresolved; only the highest shield AC bonus and that shield's properties apply.");
     const armorProps = armor ? properties(armor.entry) : "";
     const shieldProps = shield ? properties(shield.entry) : "";
+    const armed = active.some(gear => category(gear.entry) === "weapon");
+    const conditionalBonuses = equipmentBonuses(effects.equipmentRules, armor, shield, armed, character);
+    const bonus = key => conditionalBonuses.reduce((sum, rule) => sum + number(rule.effects[key]), 0);
+    const calculation = armor ? armorCalculation(armor, mods, effects) : null;
+    const slow = Math.max(0, rating(armorProps, "slow") - number(effects.armorSlowReduction));
+    const speedPenalty = !effects.ignoreArmorSlow && slow > 0 ? 5 * Math.max(0, slow - mods.str) : 0;
+    const shieldAC = shield ? number(shield.entry.details["AC bonus"]) + number(shield.row.magicBonus) : 0;
+    const acBreakdown = [{label: armor?.entry.name || "Unarmored base", amount: calculation?.base ?? 10},
+      {label: calculation?.bulk ? "Dexterity after Bulk " + calculation.bulk : "Dexterity", amount: calculation?.dexterity ?? Math.max(0, mods.dex)}];
+    if (calculation?.strengthPenalty) acBreakdown.push({label: "Bulk exceeds Strength modifier", amount: -calculation.strengthPenalty});
+    if (calculation?.floor) acBreakdown.push({label: "Minimum armor AC 8", amount: calculation.floor});
+    if (calculation?.magic) acBreakdown.push({label: "Armor magic bonus", amount: calculation.magic});
+    if (shield) acBreakdown.push({label: shield.entry.name, amount: shieldAC});
+    for (const rule of conditionalBonuses) if (rule.effects.ac) acBreakdown.push({label: rule.source, amount: rule.effects.ac});
     const reductions = {};
     const resistances = [];
     for (const props of [armorProps, shieldProps]) {
@@ -257,16 +298,22 @@
       || (shield && /^heavy shields?$/i.test(shield.entry.group));
     const attacks = active.filter(gear => category(gear.entry) === "weapon" && !gear.manualAttack)
       .flatMap(gear => weaponAttacks(gear, context, mods, warn));
+    const shieldBashUnavailable = has(shieldProps, "versatile") && active.some(gear => category(gear.entry) === "weapon"
+      && gear.row.twoHanded && /\b(?:versatile|light)\b/i.test(properties(gear.entry)));
     if (shield) {
       const bash = shieldAttack(shield, context, mods);
-      if (bash) attacks.push(bash);
+      if (bash && !shieldBashUnavailable) attacks.push(bash);
+      if (shieldBashUnavailable) warn(shield.entry.name + ": cannot Bash while sharing a two-handed grip with a Light or Versatile weapon.");
       if (/\b(?:brace|repel)\b/i.test(shieldProps)) warn(shield.entry.name + ": Brace or Repel has no defined rule in this compendium.");
     }
     return {
-      armorClass: (armor ? armorAC(armor, mods) : 10 + Math.max(0, mods.dex))
-        + (shield ? number(shield.entry.details["AC bonus"]) + number(shield.row.magicBonus) : 0),
-      speedPenalty: has(armorProps, "slow") ? 5 * Math.max(0, rating(armorProps, "slow") - mods.str) : 0,
-      armorBlock: rating(armorProps, "block"), shieldBlock: rating(shieldProps, "block"),
+      armorClass: (calculation?.total ?? 10 + Math.max(0, mods.dex)) + shieldAC + bonus("ac"),
+      speedPenalty, speedBonus: bonus("speed"), blockCheckBonus: bonus("blockCheck"),
+      saveBonuses: {str: bonus("strSave"), dex: bonus("dexSave")},
+      combatBlockBonus: bonus("combatBlock"), conditionalBonuses, acBreakdown, armorCalculation: calculation, armed,
+      bulk: calculation?.bulk || 0, slow, bolster: rating(shieldProps, "bolster"),
+      armorProperties: armorProps, shieldProperties: shieldProps,
+      armorBlock: rating(armorProps, "block") + bonus("armorBlock"), shieldBlock: rating(shieldProps, "block"),
       protection: rating(armorProps, "protection") + rating(shieldProps, "protection"),
       blockCheckAbility: strengthPermitted && mods.str > mods.dex ? "str" : "dex",
       blockProficient: Boolean(defenseTrained(armor?.entry, context) || defenseTrained(shield?.entry, context)),
@@ -275,5 +322,46 @@
     };
   }
 
-  globalThis.CharacterEquipment = {derive, equip};
+  function defenseSummary(derived) {
+    const gear = derived.gear;
+    if (!derived.enabled) return {equipment: "Manual defence values", calculation: "", penalty: "", ac: [], notes: ["Use Build character to calculate armor and shield effects automatically."], warnings: []};
+    const ac = (gear.acBreakdown || []).map(part => ({...part}));
+    const other = derived.armorClass - ac.reduce((sum, part) => sum + part.amount, 0);
+    if (other) ac.push({label: "Other character and table bonuses", amount: other});
+    const notes = [], calculation = gear.armorCalculation;
+    const equation = calculation ? "Armor AC: " + calculation.base + " base + " + calculation.dexterity + " Dexterity"
+      + (calculation.strengthPenalty ? " - " + calculation.strengthPenalty + " Bulk" : "")
+      + (calculation.floor ? " + " + calculation.floor + " (minimum AC 8)" : "")
+      + (calculation.magic ? (calculation.magic > 0 ? " + " : " - ") + Math.abs(calculation.magic) + " magic" : "")
+      + " = " + calculation.total + " before shields and character bonuses." : "Unarmored AC: 10 + Dexterity (minimum 0), before shields and character bonuses.";
+    let penalty = "";
+    if (calculation?.bulk) {
+      const lostDexterity = Math.max(0, calculation.dexterityModifier) - calculation.dexterity;
+      const sign = value => value >= 0 ? "+" + value : String(value);
+      if (lostDexterity || calculation.strengthPenalty) penalty = "Bulk " + calculation.bulk + ": "
+        + (lostDexterity ? "removes " + lostDexterity + " Dexterity AC" : "Dexterity adds " + sign(calculation.dexterity) + " AC")
+        + (calculation.strengthPenalty ? "; Strength modifier " + sign(calculation.strengthModifier) + " leaves a further -" + calculation.strengthPenalty + " AC penalty" : "; Strength covers the Bulk penalty")
+        + (calculation.floor ? ". The minimum armor AC of 8 applies" : "") + ".";
+    }
+    if (gear.armor) {
+      notes.push("Armor properties: " + (gear.armorProperties || "No special properties."));
+      if (has(gear.armorProperties, "bulk")) notes.push("Effective Bulk " + gear.bulk + ". Bulk reduces the Dexterity contribution and also penalizes AC when it exceeds your Strength modifier.");
+      if (has(gear.armorProperties, "slow")) notes.push("Armor movement penalty: " + gear.speedPenalty + " ft after Strength and active features.");
+    }
+    if (gear.shield) {
+      notes.push("Shield properties: " + (gear.shieldProperties || "No special properties."));
+      if (gear.bolster) notes.push("Bolster: spend an action to gain " + gear.bolster + " Temp Block until the start of your next turn. Use Grant Temp Block and track that expiry.");
+      if (has(gear.shieldProperties, "spar")) notes.push("Spar: spend a bonus action to use your Athletics or Acrobatics bonus for Block checks until the start of your next turn.");
+      if (has(gear.shieldProperties, "versatile")) notes.push("Versatile shield: permits the listed two-handed weapon grips, but you cannot Bash while using that grip.");
+    }
+    notes.push("Armor Block " + gear.armorBlock + "; shield Block " + gear.shieldBlock + ". Start combat raises remaining Block to " + derived.combatFloor + " if lower. Equipping gear does not refill spent Block.");
+    notes.push("Block checks use " + gear.blockCheckAbility.toUpperCase() + (gear.blockProficient ? " + proficiency" : " (untrained)") + "; Protection adds " + gear.protection + ".");
+    const reductions = Object.entries(derived.reductions).filter(([, value]) => value > 0);
+    if (reductions.length) notes.push("Damage reduction: " + reductions.map(([type, amount]) => type + " " + amount).join(", ") + ". Select the damage type when applying damage.");
+    if (derived.resistances.length) notes.push("Resistance: " + derived.resistances.join(", ") + ". Use Apply half damage when it applies.");
+    for (const rule of gear.conditionalBonuses || []) notes.push(rule.source + ": " + Object.entries(rule.effects).map(([key, amount]) => ({ac:"AC",blockCheck:"Block check",speed:"speed (ft)",combatBlock:"combat Block",armorBlock:"armor Block",strSave:"Strength saves",dexSave:"Dexterity saves"}[key] || key) + " +" + amount).join(", ") + ".");
+    return {equipment: [gear.armor?.name || "No armor", gear.shield?.name || "No shield"].join(" / "), calculation: equation, penalty, ac, notes, warnings: gear.warnings};
+  }
+
+  globalThis.CharacterEquipment = {derive, equip, defenseSummary};
 })();

@@ -11,6 +11,9 @@
     registry.set(id, {...registry.get(id), ...effects});
   }
   const always = (parent, feature, effects) => add(parent, feature, "", effects);
+  const equipped = (parent, feature, option, when, effects, upgrades = []) => add(parent, feature, option, {
+    equipmentRules: [{source: option || feature, when, effects, upgrades}]
+  });
   const physical = amount => ({str: amount, dex: amount, con: amount});
   const mental = amount => ({int: amount, wis: amount, cha: amount});
 
@@ -234,8 +237,8 @@
   };
   for (const [name, effect] of Object.entries(occultMarks)) add("Occultist", "Mark & reward", name, effect);
 
-  // data/draft-classes. Conditional AC, rolled health increases, staged
-  // proficiency improvements and later-level upgrades remain in the source text.
+  // data/draft-classes. Equipment conditions use explicit rules below; active
+  // powers, rolled increases and unreviewed conditions remain in the source text.
   always("Alchemist", "Extra rest dice", {restDice: 2});
   always("Barbarian", "Endurance", {hpPerLevel: 1});
   add("Barbarian", "Barbarian traits", "Stamina", {restDice: 1});
@@ -253,7 +256,26 @@
   add("Fighter", "Fighting skills", "Charge tactics", {speed: 10});
   add("Fighter", "Fighting skills", "Sigil training", {skillBonuses: {Arcana: 1}});
   add("Fighter", "Fighting skills", "Tactical preparation", {restDice: 1});
-  add("Fighter", "Fighting skills", "Armor training", {notes: "+1 AC applies only while wearing armor."});
+  equipped("Fighter", "Fighting skills", "Armor training", "armor", {ac: 1});
+  equipped("Fighter", "Fighting skills", "Heavy armor training", "medium-or-heavy-armor", {armorBlock: 1});
+  add("Fighter", "Fighting skills", "Weight shifting", {armorBulkReduction: 1});
+  add("Fighter", "Fighting skills", "Pack mule", {armorBulkReduction: 1});
+  add("Fighter", "Fighting skills", "Armored sprint", {armorSlowReduction: 1});
+  equipped("Fighter", "Fighting skills", "Defensive training", "shield", {blockCheck: 2});
+  add("Fighter", "Fighting skills", "Self defense training", {equipmentRules: [
+    {source: "Self defense training", when: "no-weapons-or-shield", effects: {ac: 1, blockCheck: 1}},
+    {source: "Self defense training", when: "weapons-or-shield", effects: {combatBlock: 1}}
+  ]});
+  equipped("Dwarf", "Dwarven traits", "Ironbeard", "armor", {ac: 1, blockCheck: 1});
+  equipped("Dwarf", "Dwarven traits", "Dwarven sturdiness", "armor-and-rest-dice", {armorBlock: 1});
+  add("Dwarf", "Dwarven traits", "Heavy hauling", {armorBulkReduction: 1, ignoreArmorSlow: 1});
+  equipped("Barbarian", "Barbarian traits", "Barbarian king", "light-or-no-armor", {ac: 1}, [
+    {level: 5, effects: {ac: 1}}, {level: 9, effects: {ac: 1}}
+  ]);
+  equipped("Bard", "Bardic traits", "Martial skill", "light-or-no-armor", {combatBlock: 1});
+  equipped("Monk", "Monk training", "Shifting step discipline", "no-armor", {ac: 1, speed: 10});
+  always("Shield bearer", "Bulwark", {combatBlock: 1});
+  equipped("Shield bearer", "Bulwark", "", "shield", {ac: 1, strSave: 1, dexSave: 1});
   add("Fighter", "Fighting skills", "Blood infusion", {notes: "Roll 1d10 once for the maximum HP increase; no fixed amount is specified."});
   always("Monk", "Extra rest dice", {restDice: 1});
   add("Monk", "Pursuant of the ways", "Dark teachings", {reductions: {psychic: 1, necrotic: 1}});

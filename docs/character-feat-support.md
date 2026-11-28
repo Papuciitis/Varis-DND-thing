@@ -22,6 +22,12 @@ Spell level and character level are distinct. Call order's explicit spell-level 
 
 Upgrade eligibility comes from the owned list, not the set of unused options. Selecting an upgrade cannot revoke the bonus slot which selected it. Feat and class grants work between the list's normal level milestones; all picks use the same prerequisite and repeat checks.
 
+Base and bonus feat upgrades retain their own positions and granting sources. Removing Deep past or More upgrades deactivates the corresponding pick, its follow-up fields, and its spell grants immediately. Empty base fields do not inherit a bonus selection. Inactive answers remain stored for restoring the same source; another active source keeps its own pick.
+
+Deep past and More upgrades display a linked feat's bonus upgrade directly in their details, including spell choices opened by that upgrade. The Feats stage still shows the complete current feat choices. Bard's normal trait counter remains separate: from level 3 its three trait picks are the two starting traits plus Extra bardic trait.
+
+Removing an automatically provided Expanded alchemy or Mixed elemental descendant pick clears the feat's corresponding selection. Ordinary picks remain selected. If removing another grant shifts a surviving constrained bonus slot, legal saved picks can move into its current allowance; prerequisites and repeat limits still apply.
+
 | Source | Selection behavior |
 | --- | --- |
 | Bard inspiration | Starting and improvement-level picks, Truly Inspiring, Poet and Aspirant grants share one list. Die-size picks honor the current d12 ceiling. |

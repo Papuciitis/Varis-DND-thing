@@ -186,8 +186,7 @@
           const gated=sourceGroup.requiresChoice && resolved.get(sourceGroup.requiresChoice.groupId),gateIndex=gated?.selectedSlots.indexOf(sourceGroup.requiresChoice.optionId),gateSource=gateIndex>=gated?.baseCount?gated.bonusSlots[gateIndex-gated.baseCount]?.source:'',gateLevel=(featPlan.effects || []).find(item=>item.sourceFeat===gateSource)?.level || 1;
           const automatic=sourceGroup.automatic?sourceGroup.options.filter(option=>!option.requiresChoice || resolved.get(option.requiresChoice.groupId)?.selected.includes(option.requiresChoice.optionId)).map(option=>option.id):null;
           const count=automatic?.length ?? Math.min(sourceGroup.maxCount ?? Infinity,baseCount+limits.length),group={...sourceGroup,level:Math.max(sourceGroup.level || 1,gateLevel),count,bonusSlots:limits,baseCount,options:sourceGroup.options.map(option=>({...option,repeatLimit:option.repeatLimitByLevel?.filter(row=>row.level<=c.level).at(-1)?.count ?? option.repeatLimit}))};
-          const stored = automatic || (build.choices?.[group.id] || []).slice(0,count), counts = new Map();
-          for(const [index,limit] of limits.entries())if(limit.autoSelect && baseCount+index<count && !stored[baseCount+index]){while(stored.length<=baseCount+index)stored.push('');stored[baseCount+index]=limit.autoSelect;}
+          const saved=automatic || build.choices?.[group.id] || [],stored=saved.slice(0,count),counts=new Map();
           let selectedSlots = stored.map((id,index)=>{
             const option=group.options.find(item=>item.id===id), used=counts.get(id) || 0;
             if(!option || used>=(option.repeatLimit || 1)) return '';
@@ -196,7 +195,20 @@
           });
           const misplaced=[];
           selectedSlots=selectedSlots.map((id,index)=>{if(id && index>=baseCount && limits[index-baseCount]?.allowed && !limits[index-baseCount].allowed.includes(id)){misplaced.push(id);return '';}return id;});
-          for(const id of misplaced){const placed=placeChoice({...group,selectedSlots},id);if(placed)selectedSlots=placed;}
+          const reserved=new Set();
+          for(const [index,limit] of limits.entries())if(limit.autoSelect && baseCount+index<count){
+            const slot=baseCount+index,option=group.options.find(option=>option.id===limit.autoSelect);if(!option)continue;
+            while(selectedSlots.length<=slot)selectedSlots.push('');
+            if(selectedSlots[slot]===option.id){reserved.add(slot);continue;}
+            const used=selectedSlots.filter(id=>id===option.id).length;
+            if(used>=(option.repeatLimit || 1)){
+              const existing=selectedSlots.findIndex((id,index)=>id===option.id && !reserved.has(index));if(existing<0)continue;
+              selectedSlots[existing]='';
+            }
+            if(selectedSlots[slot])misplaced.push(selectedSlots[slot]);
+            selectedSlots[slot]=option.id;reserved.add(slot);
+          }
+          for(const id of misplaced){const option=group.options.find(option=>option.id===id);if(selectedSlots.filter(value=>value===id).length>=(option.repeatLimit || 1))continue;const placed=placeChoice({...group,selectedSlots},id);if(placed)selectedSlots=placed;}
           // A tree can be chosen in either slot order, but every selected node
           // must retain its entire prerequisite chain. Imported saves use this
           // same validation, without deleting choices which are now inactive.
@@ -205,8 +217,20 @@
             previous=selectedSlots.join('\n');
             selectedSlots=selectedSlots.map(id=>id && (group.options.find(option=>option.id===id).requires || []).every(required=>selectedSlots.includes(required)) ? id : '');
           } while(previous!==selectedSlots.join('\n'));
+          // A removed grant can shift a surviving bonus slot. Recover its saved
+          // legal pick from the tail without reviving ordinary level-only picks.
+          const hasBonusGap=()=>Array.from({length:Math.max(0,count-baseCount)},(_,index)=>baseCount+index).some(index=>!selectedSlots[index]);
+          let restored;
+          do {
+            restored=false;if(!limits.length || !hasBonusGap())break;
+            for(const id of saved.slice(count)){
+              const option=group.options.find(option=>option.id===id),used=selectedSlots.filter(value=>value===id).length;
+              if(!option || used>=Math.min(option.repeatLimit || 1,saved.filter(value=>value===id).length) || !(option.requires || []).every(id=>selectedSlots.includes(id)) || option.requiresChoice && !resolved.get(option.requiresChoice.groupId)?.selected.includes(option.requiresChoice.optionId))continue;
+              const placed=placeChoice({...group,selectedSlots},id);if(placed){selectedSlots=placed;restored=true;}if(!hasBonusGap())break;
+            }
+          } while(restored);
           const selected = selectedSlots.filter(Boolean);
-          const origins=new Map();for(const [index,id] of stored.entries()){const indices=origins.get(id) || [];indices.push(index);origins.set(id,indices);}
+          const origins=new Map();for(const [index,id] of saved.entries()){const indices=origins.get(id) || [];indices.push(index);origins.set(id,indices);}
           const sourceSlots=selectedSlots.map(id=>id?origins.get(id)?.shift() ?? -1:-1);
           const options=group.options.map(option=>({...option,unavailableReason:[...(option.requires || []).filter(id=>!selected.includes(id)).map(id=>'Requires '+(group.options.find(item=>item.id===id)?.name || 'an earlier choice')),...(option.requiresChoice && !resolved.get(option.requiresChoice.groupId)?.selected.includes(option.requiresChoice.optionId)?['Requires '+(definitions.find(group=>group.id===option.requiresChoice.groupId)?.options.find(item=>item.id===option.requiresChoice.optionId)?.name || 'an earlier choice')]:[]),...(!group.automatic && limits.some(limit=>limit.allowed) && selected.length<count && !placeChoice({...group,selectedSlots},option.id)?['This extra selection must be an upgrade from its chosen list.']:[])].join('; ')}));
           next.set(group.id,{...group,options,selected,selectedSlots,sourceSlots,invalid:stored.some((id,index)=>id && !sourceSlots.includes(index))});
@@ -286,11 +310,11 @@
       for(const [key,values] of Object.entries(featPlan.proficiencies || {}))if(values.length)proficiencies[key]=[proficiencies[key],...values].filter(Boolean).join('; ');
       const weaponGroups=unique([...(build.weaponGroups || []),...(featPlan.weaponGroups || [])]);
       let gear = {armorClass:c.combat.armorClass,speedPenalty:0,armorBlock:0,shieldBlock:0,protection:0,blockCheckAbility:'dex',blockProficient:false,attacks:[],reductions:{},resistances:[],warnings:[]};
-      if (enabled) gear=globalThis.CharacterEquipment.derive(c,catalog,{abilities,proficiency,proficiencies,weaponGroups,raceSize:race?.size || 'medium',speed:race?.speed ?? c.combat.speed,offHandAbilityDamage:!!combined.offHandAbilityDamage});
+      if (enabled) gear=globalThis.CharacterEquipment.derive(c,catalog,{abilities,proficiency,proficiencies,weaponGroups,raceSize:race?.size || 'medium',speed:race?.speed ?? c.combat.speed,offHandAbilityDamage:!!combined.offHandAbilityDamage,effects:combined});
       const armorClass=enabled ? gear.armorClass+numeric(combined.ac)+numeric(adjustments.ac) : c.combat.armorClass;
-      const speed=enabled ? Math.max(0,(race?.speed ?? c.combat.speed)+numeric(combined.speed)+numeric(adjustments.speed)-gear.speedPenalty) : c.combat.speed;
-      const blockMaximum=enabled ? Math.max(0,mod(abilities.dex)+numeric(combined.dexBlock))+numeric(combined.block)+numeric(combined.combatBlock)+gear.armorBlock+gear.shieldBlock+numeric(adjustments.block) : c.resources.block.max;
-      const blockCheck=mod(abilities[gear.blockCheckAbility])+(gear.blockProficient?proficiency:0)+gear.protection+numeric(combined.blockCheck)+numeric(adjustments.blockCheck);
+      const speed=enabled ? Math.max(0,(race?.speed ?? c.combat.speed)+numeric(combined.speed)+numeric(adjustments.speed)+numeric(gear.speedBonus)-gear.speedPenalty) : c.combat.speed;
+      const blockMaximum=enabled ? Math.max(0,mod(abilities.dex)+numeric(combined.dexBlock))+numeric(combined.block)+numeric(combined.combatBlock)+numeric(gear.combatBlockBonus)+gear.armorBlock+gear.shieldBlock+numeric(adjustments.block) : c.resources.block.max;
+      const blockCheck=mod(abilities[gear.blockCheckAbility])+(gear.blockProficient?proficiency:0)+gear.protection+numeric(gear.blockCheckBonus)+numeric(combined.blockCheck)+numeric(adjustments.blockCheck);
       const health = build.health || {};
       let hpBase=health.baseHP ?? c.resources.hp.max, hpExplanation='Manual base HP';
       if (enabled && cls && health.hpMode!=='manual') {
@@ -325,14 +349,14 @@
 
       const skillBonuses={...c.training.skillBonuses},saveBonuses={...c.training.saveBonuses};
       for(const skill of Object.keys(skillAbilities)) skillBonuses[skill]=numeric(skillBonuses[skill])+numeric(combined.skillBonuses[skill])+numeric(combined.abilitySkillBonuses[skillAbilities[skill]]);
-      for(const key of codes) saveBonuses[key]=numeric(saveBonuses[key])+numeric(combined.saveBonuses[key]);
+      for(const key of codes) saveBonuses[key]=numeric(saveBonuses[key])+numeric(combined.saveBonuses[key])+numeric(gear.saveBonuses?.[key]);
       const castingAbility=c.combat.spellAbility || cls?.castingAbilities?.[0] || '';
       const reductions={...gear.reductions};for(const [key,value] of Object.entries(combined.reductions)) reductions[key]=Math.max(reductions[key] || 0,value);
       warnings.push(...gear.warnings,...race?.warnings || [],...cls?.warnings || []);
       const casting = globalThis.CharacterCasting?.derive(c,enabled ? cls : null,{abilities,effects:combined,choices,features,proficiency,restMaximum}) || null;
       if (casting) warnings.push(...casting.warnings);
       if(c.level>12 && enabled) warnings.push('The current Varis progression ends at level 12.');
-      const result={enabled,race,cls,background,eligibleArchetypes,abilities,abilityBonuses,saves,skillRanks,skillBonuses,saveBonuses,proficiencies,proficiency,armorClass,speed,blockMaximum,blockCheck,combatFloor:gear.armorBlock+gear.shieldBlock+numeric(combined.combatBlock),hpMaximum,hpExplanation,restMaximum,deathSaveSlots:Math.max(1,3+numeric(combined.deathSaveSlots)),castingAbility,casting,initiative:mod(abilities.dex)+c.combat.initiativeBonus+numeric(combined.initiative),features,choices,attacks,raceSkillCount,raceSkillOptions,reductions,resistances:unique([...gear.resistances,...combined.resistances]),immunities:combined.immunities,warnings:unique(warnings),gear,effects:combined};
+      const result={enabled,race,cls,background,eligibleArchetypes,abilities,abilityBonuses,saves,skillRanks,skillBonuses,saveBonuses,proficiencies,proficiency,armorClass,speed,blockMaximum,blockCheck,combatFloor:gear.armorBlock+gear.shieldBlock+numeric(combined.combatBlock)+numeric(gear.combatBlockBonus),hpMaximum,hpExplanation,restMaximum,deathSaveSlots:Math.max(1,3+numeric(combined.deathSaveSlots)),castingAbility,casting,initiative:mod(abilities.dex)+c.combat.initiativeBonus+numeric(combined.initiative),features,choices,attacks,raceSkillCount,raceSkillOptions,reductions,resistances:unique([...gear.resistances,...combined.resistances]),immunities:combined.immunities,warnings:unique(warnings),gear,effects:combined};
       result.baseProficiencies=baseProficiencies;result.weaponGroups=weaponGroups;result.featPlan=featPlan;
       const trainingSkills={...c.training.skills};for(const skill of (build.skills || []).filter(skill=>cls?.skillChoice?.options.includes(skill)).slice(0,cls?.skillChoice?.count || 0))trainingSkills[skill]=Math.max(trainingSkills[skill] || 0,1);for(const skill of (build.raceSkills || []).filter(skill=>raceSkillOptions.includes(skill)).slice(0,raceSkillCount))trainingSkills[skill]=Math.max(trainingSkills[skill] || 0,raceSkillRank);result.trainingBase={skills:trainingSkills,effects:timedEffects};
       const taken=new Map();
@@ -381,6 +405,7 @@
     function reconcile(input) {
       const c=State.normalizeCharacter(input);if(!c.build?.enabled)return c;
       const d=derive(c),missingHP=c.resources.hp.max-c.resources.hp.current;
+      globalThis.CharacterFeats?.recordUpgradeSources?.(c,d);
       c.resources.hp.max=d.hpMaximum;c.resources.hp.current=Math.max(0,d.hpMaximum-missingHP);
       c.resources.block.max=Math.max(0,d.blockMaximum);c.resources.block.current=Math.min(c.resources.block.current,c.resources.block.max);
       c.restDice.max=d.restMaximum;c.restDice.current=Math.min(c.restDice.current,c.restDice.max);
