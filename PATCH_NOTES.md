@@ -1,5 +1,14 @@
 # Patch notes
 
+## 2026-11-28 - Character mechanics defined in YAML
+
+- Added shared declarations for character choices, prerequisite trees, repeat limits, level scaling, conditional follow-ups, supported sheet effects, proficiencies, spell grants and extra feat/upgrade picks. New content using these operations no longer needs its name added to the character code.
+- Moved eight feat upgrade lists, More upgrades, Deep past, New tricks and 27 later-feature list extensions into the character automation data. Existing choice keys, upgrade IDs and granted-spell IDs are retained for saved characters.
+- Repeated upgrades can grant separate follow-ups. Each base or extra pick keeps its own stored answers; removing one source deactivates its dependent choices, spells and effects while preserving another source's answers. Nested feat grants and longer upgrade chains use the same dependency handling.
+- Repeatable feats selected more than once within a single grant now have separate answer records and check each copy's tier requirements. Ability increases inside declared upgrade options also participate in feat restrictions.
+- Added feature tasks for background and other automatically granted choices. Extra choices can be completed beside their granting source, and repeat/prerequisite limits apply in those controls too.
+- Added build-time validation for unsupported mechanics, malformed values, duplicate IDs, missing targets and circular choice dependencies. Runtime upgrade cycles are ignored with an explanation. Added an authoring guide and declaration coverage inventory; older bespoke active powers retain their existing implementation/manual rules.
+
 ## 2026-11-28 - Confirmed multiclass training and Druid learning
 
 - Druid spell learning now uses half Druid class level rounded up. Updated both the displayed class rule and automatic spell eligibility so levels in other classes do not unlock higher-level Druid spells.

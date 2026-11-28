@@ -3,7 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),catalog=require('./helpers/catalog.cjs')(),manifest=JSON.parse(fs.readFileSync(path.join(root,'site/data/catalog-manifest.json'),'utf8')),metadata=JSON.parse(fs.readFileSync(path.join(root,'site',manifest.builder),'utf8'));
 const plain=value=>JSON.parse(JSON.stringify(value));
 function setup(pairs){
- const context=vm.createContext({crypto:require('node:crypto').webcrypto});for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-feats','character-rules','character-builder'])vm.runInContext(fs.readFileSync(path.join(root,'web',name+'.js'),'utf8'),context);
+ const context=vm.createContext({crypto:require('node:crypto').webcrypto});for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-automation', 'character-feats','character-rules','character-builder'])vm.runInContext(fs.readFileSync(path.join(root,'web',name+'.js'),'utf8'),context);
  const State=context.CharacterState,Casting=context.CharacterCasting,rules=context.CharacterRules.create(metadata,catalog),cls=name=>metadata.classes.find(item=>item.name===name),history=pairs.flatMap(([name,level])=>Array(level).fill(cls(name).id));
  let c=rules.enable(State.normalizeCharacter({level:history.length,restDice:{current:history.length,max:history.length,die:cls(pairs[0][0]).hitDie}}));c.build.classId=history[0];c.build.classOrder=history;c=rules.reconcile(c);return {context,State,Casting,rules,c,cls};
 }

@@ -354,6 +354,7 @@
       if(/cannot reduce.*below 1/i.test(own))minimum=1;
     }
     for(const feature of derived.features) {
+      if(feature.automation || feature.automationId || derived.featPlan?.specs?.[feature.id]?.automation)continue;
       if(feature.parent==='Feat') {
         const specification=benefitOptions(feature),benefits=new Set((character.build.featBenefits?.[feature.entryId] || []).filter(key=>specification?.options.some(([value])=>value===key)).slice(0,specification?.count || 0));
         if(feature.name==='Occult gnosis') {deathSaveDelta--;if(benefits.has('rest-die'))breakdown.push({label:'Feat: Occult gnosis',amount:1});if(benefits.has('occult-slot'))occultExtra++;if(benefits.has('death-bonus'))deathSaveBonus+=2;continue;}
@@ -382,6 +383,7 @@
       if(siblings.some(other=>other.selected.length<other.count))continue;
       for(const id of group.selected) {
         const option=group.options.find(option=>option.id===id);
+        if(option.automationId)continue;
         const label=group.parent+': '+option.name;
         if(group.parent==='Cleric' && option.name==='Oath of vigilance') {
           const amount=Math.max(1,globalThis.CharacterState.abilityModifier(derived.abilities.wis)/2-1);
@@ -395,6 +397,7 @@
         } else addRule(label,option.ownDetails ?? option.details,registry.get(key(group.parent,group.effectFeature || group.featureName,option.name))?.restDice || 0,false,true,group.classLevel ?? character.level);
       }
     }
+    for(const item of derived.featPlan?.effects || [])if(item.automation && item.effect.restDice)breakdown.push({label:item.sourceName,amount:item.effect.restDice,classId:item.classId});
     if(health.restAdjustment)breakdown.push({label:'Table adjustment',amount:health.restAdjustment});
     for(const item of breakdown){const feature=derived.features.find(feature=>feature.classId && item.label.startsWith(feature.parent+':'));const group=derived.choices.find(group=>group.classId && item.label.startsWith(group.parent+':'));if(feature || group)item.classId=(feature || group).classId;}
     return {maximum:Math.max(minimum,0,breakdown.reduce((total,item)=>total+item.amount,0)),breakdown,deathSaveDelta,hpDelta,occultExtra,deathSaveBonus,warnings};

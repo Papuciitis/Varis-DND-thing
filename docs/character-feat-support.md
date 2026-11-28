@@ -1,5 +1,7 @@
 # Character feat and progression support
 
+New content can use [declarative character automation](character-automation.md) for shared choices, prerequisites, repeated upgrades, follow-ups, grants and supported effects. Eight existing feat upgrade lists and More upgrades now use those declarations. Deep past, New tricks and 27 later-feature list extensions were migrated too. The remaining audit below includes older compatibility adapters and manual active powers; the migration does not claim to simulate every printed rule.
+
 Reviewed all 156 current feats against the compiled Git rules. This is the implementation audit for the character creator; full rules remain in the compendium. Conditional controls appear after their parent choice, so the table lists the initial controls.
 
 ## Applied changes

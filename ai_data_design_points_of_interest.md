@@ -121,3 +121,10 @@ Entries still requiring a complete design decision:
 
 - Resolved the preceding Druid learning question: the user explicitly confirmed Druid class level, not total character level. Updated the source wording and exported learning rule to half Druid level rounded up. The slot table remains based on Druid level.
 - Resolved the preceding custom-class training question: after discussing standard 5e's reduced proficiency grants, the user identified Alchemist with Artificer and Occultist with Warlock and requested those mappings. Alchemist gains light/medium armor, shields, thieves' tools and tinker's tools when added as a secondary class. Occultist gains light armor and simple weapons. Neither gains another starting save package or skill allowance. Earlier unresolved entries are retained as history and superseded by this confirmation.
+
+
+28:11:2026 declarative character mechanics and remaining scope
+
+- New rules need explicit automation declarations for supported choices/effects; prose alone is not a reliable declaration of new mechanics. The metadata coverage inventory distinguishes declared/manual sources from legacy feat/background entries. Existing bespoke action costs, transformations, rituals, temporary states and special resource pools still need their own interpreter support before new variants can be automated.
+- The first migration preserves existing rule behavior and stored identifiers rather than rebalancing it. Rite magic still explicitly says its Minor rites cantrips cannot be upgraded, while the older progression model combines upgrade allowances by spell identity. A future per-grant restriction must distinguish a cantrip known only through that rule from the same cantrip independently learned through another source; that overlap is not resolved by this migration. The printed rule is unchanged.
+- Conditional spell costs such as psychic/HP damage and once-per-rest limits remain governed by their source text unless a supported explicit resource path is declared. Selecting an upgrade does not imply that its combat trigger, potion effect or temporary condition has occurred.

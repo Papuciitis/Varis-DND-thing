@@ -738,6 +738,8 @@ def compile_character_rules(sections):
                             option['grantsFeat'] = 1
                             option['featRestriction'] = 'no-ability-increase'
     _casting_modifiers(result)
+    from character_automation import apply
+    apply(result, sections)
     return result
 
 
@@ -914,28 +916,6 @@ def _upgrade_choice_links(result):
 
 def _extra_choice_grants(result):
     """Reviewed, unconditional grants which refer back to an earlier list."""
-    links = {
-        "Bard": [("Bardic traits", "Extra bardic trait")],
-        "Empath": [("Empath traits", "Extra empath trait")],
-        "Ki channeler": [("KI powers", "Ki powers II"), ("KI powers", "Ki powers III")],
-        "Sensei": [("Master of an art", "Master of 2 arts")],
-        "Seeker": [("Special training", "Extra special training")],
-        "Graymage": [("Graymage trait", "Extra graymage trait")],
-        "Wildmage": [("Wild traits", "Wild traits II")],
-        "Experimenter": [("Special interest", "Special interests II")],
-        "Mycologist": [("Fungal methods", "Extra fungal methods")],
-        "Soulstone alchemist": [("Soulgem use", "Soulgem use II"), ("Soulgem use", "Soulgem use III")],
-        "Warlord": [("Warlord traits", "Warlord traits II"), ("Warlord traits", "Warlord traits III")],
-        "Warg": [("Primal traits", "Primal traits II"), ("Primal traits", "Primal traits III")],
-        "Paladin": [("Paladin traits", "Paladin traits II"), ("Paladin traits", "Paladin traits III")],
-        "Seer": [("Seer traits", "Extra seer trait")],
-        "Slayer": [("Slayer traits", "Extra slayer trait")],
-        "Brawler": [("Brawler traits", "Extra brawler trait")],
-        "Hexer": [("Hexer traits", "Extra trait.")],
-        "Brigand": [("Brigand traits", "Brigand traits II")],
-        "Evoker": [("Evoker traits", "Evoker traits II"), ("Evoker traits", "Evoker traits III"),
-                   ("Evoker traits", "Evoker traits IV"), ("Powerful Arts", "Powerful arts II")],
-    }
     owners = {owner["name"]: owner for owner in [*result["classes"], *result["archetypes"]]}
     for owner in owners.values():
         features = {feature["name"]: feature for feature in owner["features"]}
@@ -945,11 +925,6 @@ def _extra_choice_grants(result):
             # Retain its saved identity while honoring the explicit sixth grant.
             if _text(grant["details"]).startswith("At 6th alchemist method,"):
                 grant["level"] = 6
-        for source_name, grant_name in links.get(owner["name"], []):
-            source, grant = features.get(source_name), features.get(grant_name)
-            if source and grant:
-                for group in source["choices"]:
-                    group.setdefault("additionalGrants", []).append({"featureId": grant["id"], "count": 1})
         if owner["name"] == "Occultist":
             source = features.get("Mark & reward")
             for feature in owner["features"]:

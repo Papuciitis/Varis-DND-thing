@@ -8,7 +8,7 @@ const spells=catalog.find(section=>section.key==='spells').entries;
 const plain=value=>JSON.parse(JSON.stringify(value));
 function setup(name='Sorcerer',level=3) {
   const context=vm.createContext({crypto:require('node:crypto').webcrypto});
-  for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-feats','character-rules','character-builder']) vm.runInContext(fs.readFileSync(path.join(root,'web',name+'.js'),'utf8'),context);
+  for(const name of ['entry-order','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-automation', 'character-feats','character-rules','character-builder']) vm.runInContext(fs.readFileSync(path.join(root,'web',name+'.js'),'utf8'),context);
   const State=context.CharacterState,Casting=context.CharacterCasting,rules=context.CharacterRules.create(metadata,catalog);
   let c=rules.enable(State.normalizeCharacter({level,abilities:{int:16,cha:16},restDice:{current:8,max:8}}));
   c.build.classId=metadata.classes.find(cls=>cls.name===name).id;

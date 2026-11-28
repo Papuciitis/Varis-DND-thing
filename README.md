@@ -2,6 +2,8 @@
 
 A rules reference and editable character sheet for the Varis DnD table. One YAML catalog builds both a hosted website that loads rules by section and portable pages that work directly from disk.
 
+New character choices, upgrade trees, prerequisites, follow-ups, grants and supported effects can be authored in YAML. See [Authoring character automation](docs/character-automation.md) for the schema, save identifiers, validation and remaining manual mechanics.
+
 ## Open locally on Windows
 
 Double-click **Open-Vara-DnD.cmd** in the repository folder. It builds the site and opens `site/character.html` in your default browser, preserving the existing local page location and its saves. Use **Rules compendium** in the sheet to read the rules, or open `site/index.html` directly. Keep the generated folders together. Run the launcher again after editing source files, then refresh any other open tabs.

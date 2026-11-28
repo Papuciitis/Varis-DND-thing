@@ -307,6 +307,11 @@
     if(row?.featSource){
       const granted=derived.featPlan?.spells?.find(item=>item.id===row.id);if(!granted)return [];
       const feat=derived.featPlan.sources.find(item=>item.id===row.featSource),manual={id:'feat:manual',poolId:'feat:manual',level:info.level || 0,available:true,label:feat.name+' — resolve its listed cost'};
+      if(granted.ruleCasting){
+        if(info.cantrip || granted.ruleCasting.resource==='free')return [{id:'free',poolId:'free',level:info.level || 0,available:true,label:info.cantrip?'Granted cantrip - no slot':'Granted spell - no slot'}];
+        if(granted.ruleCasting.resource==='restDice')return [{id:'feat:rest',poolId:'feat:rest',level:info.level,available:character.restDice.current>=info.level,label:info.level+' rest dice - '+feat.name},manual];
+        return [manual];
+      }
       if(info.cantrip)return feat.name==='Invoke dark powers'?[manual]:[{id:'free',poolId:'free',level:0,available:true,label:'Granted cantrip — no slot'}];
       if(!['Occult gnosis'].includes(feat.name)){const options=[manual];if(['Forbidden magic','Infernal magic','Waeld-soul','Arcane insight'].includes(feat.name))options.unshift({id:'feat:rest',poolId:'feat:rest',level:info.level,available:character.restDice.current>=info.level,label:info.level+' rest dice — '+feat.name});return options;}
     }

@@ -41,7 +41,8 @@
 
   function create(metadata = {}, catalog = []) {
     const races = metadata.races || [], classes = metadata.classes || [], archetypes = metadata.archetypes || [];
-    const catalogOptions = key => catalog.filter(section=>section.key===key).flatMap(section=>(section.entries || []).map(entry=>({id:JSON.stringify([section.key,entry.group,entry.name]),name:entry.name,details:entry.details})));
+    const catalogOptions = key => catalog.filter(section=>section.key===key).flatMap(section=>(section.entries || []).map(entry=>({id:JSON.stringify([section.key,entry.group,entry.name]),name:entry.name,details:entry.details,automation:entry.automation})));
+    const automated=source=>!!globalThis.CharacterAutomation?.ruleFor(source,{metadata,catalog});
     function enable(input) {
       const c = State.normalizeCharacter(input);
       c.build = {...c.build,enabled:true,raceId:c.build?.raceId || "",classId:c.build?.classId || "",
@@ -80,7 +81,7 @@
         if(owner){derivedFeature.classId=owner.id;derivedFeature.classLevel=owner.level;derivedFeature.classRequiredLevel=required;derivedFeature.requiredLevel=owner.levels[required-1];}
         else if(archetypeMinLevel!==null)derivedFeature.requiredLevel=required;
         features.push(derivedFeature);
-        recordEffect(globalThis.CharacterEffects.lookup(parent,feature.name),derivedFeature.requiredLevel ?? feature.level ?? 1,'',owner?.id || feature.classId || '');
+        if(!automated(feature))recordEffect(globalThis.CharacterEffects.lookup(parent,feature.name),derivedFeature.requiredLevel ?? feature.level ?? 1,'',owner?.id || feature.classId || '');
       };
       if (race) {
         for (const key of codes) abilityBonuses[key] += numeric(race.abilityBonuses?.[key]);
@@ -118,6 +119,7 @@
           if(selected.status)warnings.push(`${selected.name}: ${selected.status}`);
         }
       }
+      for(const feature of featPlan.features || [])addFeature(feature,feature.parent);
       const known=[...new Map([...c.spells.filter(row=>!row.featSource || (featPlan.spells || []).some(item=>item.id===row.id)),...(featPlan.spells || [])].map(row=>[row.id,row])).values()];
       const profiles=(metadata.spellProgressions || []).filter(profile=>!featPlan.sacrificedSpells?.includes(profile.entryId) && known.some(row=>row.entryId===profile.entryId && (!row.classId || classProgressions.some(owner=>owner.id===row.classId))));
       const upgradeSources=[];
@@ -267,7 +269,7 @@
           for (const [slot,id] of group.selectedSlots.entries()) {
             if(!id)continue;const source=slot>=group.baseCount?group.bonusSlots[slot-group.baseCount]?.source:'',level=Math.max(group.level || 1,(featPlan.effects || []).find(item=>item.sourceFeat===source)?.level || 1);
             const option = group.options.find(o=>o.id===id);
-            if(group.kind!=='feat') {
+            if(group.kind!=='feat' && !automated(option)) {
               recordEffect(globalThis.CharacterEffects.lookup(group.parent,group.effectFeature || group.featureName,option.name),level,source,group.classId);
               if(option.effects)recordEffect(option.effects,level,source,group.classId);
             }
@@ -402,16 +404,22 @@
         for(const item of timedEffects)if(item.level<=group.level && !item.sourceFeat?.startsWith(group.id+':'))for(const [skill,rank] of Object.entries(item.effect.skills || {}))scopedSkills[skill]=Math.max(scopedSkills[skill] || 0,rank);
         for(const item of (featPlan.training || []).filter(item=>item.level<=group.level && !item.source.startsWith(group.id+':'))){for(const [key,values] of Object.entries(item.proficiencies))if(values.length)scopedProficiencies[key]=[scopedProficiencies[key],...values].filter(Boolean).join('; ');scopedGroups.push(...item.weaponGroups);for(const skill of item.removedSkills)scopedSkills[skill]=0;}
         const facts=globalThis.CharacterPrerequisites?.context(c,{...result,skillRanks:scopedSkills,proficiencies:scopedProficiencies,weaponGroups:scopedGroups},catalog,Math.min(c.level,group.level),scores);
-        const evaluated=group.options.map(option=>{const tier=globalThis.CharacterFeats?.tierRequirements(option,taken.get(option.id) || 0,result),entry=tier?{...option,details:{...option.details,requirements:[...globalThis.CharacterPrerequisites.requirements(option),tier]}}:option;return {...option,eligibility:facts?globalThis.CharacterPrerequisites.evaluate(entry,facts):{eligible:false,unmet:['Prerequisite rules are unavailable.']}};});
+        const evaluated=group.options.map(option=>{const tier=globalThis.CharacterFeats?.tierRequirements(option,taken.get(option.id) || 0,result),entry=tier?{...option,details:{...option.details,requirements:[...globalThis.CharacterPrerequisites.requirements(option),tier]}}:option;return {...option,eligibility:facts?(()=>{const legacy=globalThis.CharacterPrerequisites.evaluate(entry,facts),declared=globalThis.CharacterAutomation?.prerequisites(entry,facts);return declared?{eligible:legacy.eligible && declared.eligible,requirements:[...legacy.requirements,...declared.requirements],unmet:[...legacy.unmet,...declared.unmet],unresolved:legacy.unresolved}:legacy;})():{eligible:false,unmet:['Prerequisite rules are unavailable.']}};});
         group.options=evaluated.filter(option=>option.eligibility.eligible && (taken.get(option.id) || 0)<(option.repeatLimit || 1)).sort((a,b)=>a.name.localeCompare(b.name));
         group.unavailableSelected=(build.choices[group.id] || []).filter(id=>id && !group.options.some(option=>option.id===id)).map(id=>evaluated.find(option=>option.id===id)).filter(Boolean);
         group.selectedSlots=group.selectedSlots.map(id=>group.options.some(option=>option.id===id)?id:'');group.selected=group.selectedSlots.filter(Boolean);
         if(group.selected.length<group.count && !result.warnings.includes(`${group.parent}: choose ${group.count} for ${group.label}.`))result.warnings.push(`${group.parent}: choose ${group.count} for ${group.label}.`);
         for(const option of group.unavailableSelected)result.warnings.push(`${option.name}: prerequisites are not met; choose another feat.`);
-        for(const id of group.selected) {
-          const option=group.options.find(option=>option.id===id);taken.set(id,(taken.get(id) || 0)+1);
-          features.push({id:group.id+':'+id,entryId:id,name:option.name,level:group.level,parent:'Feat',details:option.details,choices:[]});
+        for(const [slot,id] of group.selectedSlots.entries()) {
+          if(!id)continue;
+          const option=group.options.find(option=>option.id===id),tier=globalThis.CharacterFeats?.tierRequirements(option,taken.get(id) || 0,result);
+          if(tier && !globalThis.CharacterPrerequisites.evaluate({...option,details:{...option.details,requirements:[tier]}},facts).eligible){group.selectedSlots[slot]='';result.warnings.push(option.name+': this repeated feat does not meet its next-tier requirements.');continue;}
+          taken.set(id,(taken.get(id) || 0)+1);
+          const sourceSlot=group.sourceSlots?.[slot] ?? slot,sourceId=group.id+':'+id+((option.repeatLimit || 1)>1 && sourceSlot>0?':slot:'+sourceSlot:'');
+          features.push({id:sourceId,entryId:id,name:option.name,level:group.level,parent:'Feat',groupId:group.id,slot:sourceSlot,occurrence:group.selectedSlots.slice(0,slot).filter(value=>value===id).length,classId:group.classId,classLevel:group.classLevel,details:option.details,automation:option.automation,choices:[]});
         }
+        group.selected=group.selectedSlots.filter(Boolean);
+        group.options=group.options.map(option=>{if(!group.selected.includes(option.id))return option;const tier=globalThis.CharacterFeats?.tierRequirements(option,taken.get(option.id) || 0,result);if(!tier)return option;const eligibility=globalThis.CharacterPrerequisites.evaluate({...option,details:{...option.details,requirements:[tier]}},facts);return {...option,unavailableReason:eligibility.eligible?option.unavailableReason:eligibility.unmet.join('; ')};});
       }
       const rest=globalThis.CharacterEffects.restDice(c,result);
       result.restMaximum=rest.maximum;result.restBreakdown=rest.breakdown;
@@ -437,7 +445,10 @@
     function derive(input) {
       input=State.normalizeCharacter(input);let result=deriveCore(input),signature='';
       if(!result.enabled || !globalThis.CharacterFeats)return result;
-      for(let pass=0;pass<8;pass++){const plan=globalThis.CharacterFeats.plan(input,result,catalog,metadata);if(plan.signature===signature || !plan.sources.length){result.featPlan=plan;for(const feat of plan.sources){const spec=plan.specs[feat.id];if(spec?.missing.length)result.warnings.push(feat.name+': finish '+spec.missing.join(', ')+'.');}return result;}signature=plan.signature;result=deriveCore(input,plan);}
+      const declared=[...Object.values(metadata.automation?.sources || {}),...catalog.flatMap(section=>(section.entries || []).map(entry=>entry.automation).filter(Boolean))];
+      const limit=Math.min(256,Math.max(8,declared.filter(rule=>rule.featGrants?.length).length+2));
+      const seen=new Set();
+      for(let pass=0;pass<limit;pass++){const plan=globalThis.CharacterFeats.plan(input,result,catalog,metadata);if(plan.signature===signature || !plan.sources.length){result.featPlan=plan;result.warnings.push(...(plan.warnings || []));for(const feat of plan.sources){const spec=plan.specs[feat.id];if(spec?.missing.length)result.warnings.push(feat.name+': finish '+spec.missing.join(', ')+'.');}return result;}if(seen.has(plan.signature))break;seen.add(plan.signature);signature=plan.signature;result=deriveCore(input,plan);}
       result.warnings.push('Review feat dependencies: the selected effects did not reach a stable result.');return result;
     }
 

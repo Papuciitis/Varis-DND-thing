@@ -99,12 +99,20 @@
         return Array.from({length:choice.count},(_,index)=>{
           if(!filter(choice,index))return '';
           const label=choice.label+(choice.count>1?' '+(index+1)+' / '+choice.count:'')+(choice.slotLabels?.[index]?' · '+choice.slotLabels[index]:'');
-          const input=choice.type==='text'?`<input type="text" data-builder-feat-choice data-feat-id="${escape(source.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" value="${escape(draft.build.featChoices[source.id]?.[choice.key]?.[index] || '')}">`:`<select data-builder-feat-choice data-feat-id="${escape(source.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" ${choice.locked?'disabled':''}>${optionTag('',choice.optional?'Optional':'Choose…',!slots[index])}${choice.options.map(item=>optionTag(item.id,item.name,slots[index]===item.id,!choice.repeat && slots.some((id,other)=>id===item.id && other!==index))).join('')}</select>`;
-          return field(label,input);
+          const input=choice.type==='text'?`<input type="text" data-builder-feat-choice data-feat-id="${escape(source.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" value="${escape(slots[index] || '')}">`:`<select data-builder-feat-choice data-feat-id="${escape(source.id)}" data-choice-key="${escape(choice.key)}" data-choice-slot="${index}" ${choice.locked?'disabled':''}>${optionTag('',choice.optional?'Optional':'Choose…',!slots[index])}${choice.options.map(item=>optionTag(item.id,item.name+(item.unavailableReason?' — '+item.unavailableReason:''),slots[index]===item.id,!!item.unavailableReason || slots.filter((id,other)=>id===item.id && other!==index).length>=(item.repeatLimit ?? (choice.repeat?100:1)))).join('')}</select>`;
+          return field(label,input)+(choice.options || []).filter(item=>slots[index]===item.id && item.details).map(item=>'<div class="rule-body">'+renderRule(item.details)+'</div>').join('');
         }).join('');
       }).join('');
       if(!controls)return '';
-      return `<fieldset class="builder-feat-choices"><legend>${escape(legend)}</legend>${controls}${showStatus?spec.notes.map(note=>`<p class="muted">${escape(note)}</p>`).join(''):''}${showStatus && spec.inactive?.upgrade?.length?'<p class="builder-notice">Saved upgrade choices that are no longer granted stay inactive.</p>':''}${showStatus && spec.missing.length?`<p class="builder-notice">${spec.missing.length} follow-up choice${spec.missing.length===1?'':'s'} remaining.</p>`:''}</fieldset>`;
+      return `<fieldset class="builder-feat-choices"><legend>${escape(legend)}</legend>${controls}${showStatus?spec.notes.map(note=>`<p class="muted">${escape(note)}</p>`).join(''):''}${showStatus && Object.values(spec.inactive || {}).some(values=>values.length)?'<p class="builder-notice">Saved upgrade choices that are no longer granted stay inactive.</p>':''}${showStatus && spec.missing.length?`<p class="builder-notice">${spec.missing.length} follow-up choice${spec.missing.length===1?'':'s'} remaining.</p>`:''}</fieldset>`;
+    }
+    function linkedControls(source,derived,seen=new Set()) {
+      if(seen.has(source.id))return '';seen.add(source.id);let html='';
+      for(const grant of derived.featPlan.extraLists || [])if(grant.source===source.id && (grant.targetSource || grant.target.startsWith('feat:'))){
+        const targetId=grant.targetSource || grant.target.slice(5),key=grant.targetChoice || 'upgrade',target=derived.featPlan.sources.find(source=>source.id===targetId),spec=derived.featPlan.specs[targetId];
+        if(target && spec){const value=spec.slots?.[key]?.[grant.slot];html+=sourceControls(target,spec,'Extra upgrade · '+target.name,(choice,index)=>choice.key===key?index===grant.slot:choice.parentKey===key?choice.parentSlots[index]===grant.slot:choice.conditionChoices?.some(item=>item.choice===key && item.includes===value) || key==='upgrade' && !!choice.requiresUpgrade && choice.requiresUpgrade===value,false);html+=linkedControls(target,derived,seen);}
+      }
+      return html;
     }
     function featBenefits(option,task,derived) {
       if(!task.selected.includes(option.id) && !derived.featPlan?.sources.some(source=>source.id===task.featureId))return '';
@@ -113,10 +121,7 @@
       const sources=(derived.featPlan?.sources || []).filter(source=>task.kind==='feat'?source.parent==='Feat' && source.entryId===option.id && source.id.startsWith(task.id+':'):source.groupId===task.id && source.optionId===option.id || source.id===task.featureId);
       for(const feat of sources){const spec=derived.featPlan.specs[feat.id];
         html+=sourceControls(feat,spec,(task.kind==='feat'?'Finish this feat':'Feature choices')+(sources.length>1?' · Pick '+((feat.occurrence || 0)+1):''));
-        for(const grant of derived.featPlan.extraLists || [])if(grant.source===feat.id && grant.target.startsWith('feat:')){
-          const targetId=grant.target.slice('feat:'.length),target=derived.featPlan.sources.find(source=>source.id===targetId),targetSpec=derived.featPlan.specs[targetId];
-          if(target && targetSpec){const upgrade=(targetSpec.slots?.upgrade || [])[grant.slot];html+=sourceControls(target,targetSpec,'Extra upgrade · '+target.name,(choice,index)=>choice.key==='upgrade'?index===grant.slot:!!choice.requiresUpgrade && choice.requiresUpgrade===upgrade,false);}
-        }
+        html+=linkedControls(feat,derived);
       }
       return html;
     }
@@ -125,6 +130,12 @@
       if(!feats && !upgrades)for(const owner of derived.trainingClasses || [])if(owner.training.skillChoice){const values=owner.id===draft.build.classId?draft.build.skills:draft.build.classSkills[owner.id] || [];result.push({id:owner.id===draft.build.classId?'class-skills':'class-skills:'+owner.id,label:owner.cls.name+' skills',classId:owner.id===draft.build.classId?'':owner.id,count:owner.training.skillChoice.count,selected:[...new Set(values)].filter(skill=>owner.training.skillChoice.options.includes(skill)),skills:'skills',options:owner.training.skillChoice.options});}
       if(!feats && !upgrades && derived.raceSkillCount) result.push({id:'race-skills',label:'Ancestry skills',count:derived.raceSkillCount,selected:[...new Set(draft.build.raceSkills)].filter(skill=>(derived.raceSkillOptions || allSkills).includes(skill)),skills:'raceSkills',options:derived.raceSkillOptions || allSkills});
       for(const group of derived.choices.filter(group=>group.count>0 && !group.automatic && featGroup(group)===feats && !!group.spellEntryId===upgrades)) result.push({...group,label:group.kind==='feat'?`${group.parent}: ${group.label}`:group.featureName+(group.label==='Choose features'?'':` · ${group.label}`)});
+      if(!feats && !upgrades)for(const source of derived.featPlan?.sources || []){
+        const spec=derived.featPlan.specs[source.id];
+        if(source.parent==='Feat' || source.groupId || !spec?.fields.length || derived.choices.some(group=>group.featureId===source.id))continue;
+        const required=spec.fields.filter(field=>!field.optional);
+        result.push({id:'source:'+source.id,sourceId:source.id,label:source.name,parent:source.owner || source.parent,level:source.level,count:required.reduce((sum,field)=>sum+field.count,0),selected:required.flatMap(field=>spec.values[field.key] || []),options:[]});
+      }
       return result;
     }
     function stages(derived) {
@@ -136,10 +147,11 @@
       let task=groups.find(group=>group.id===focusedTask) || groups.find(group=>!group.optional && group.selected.length<group.count) || groups[0];
       if(task) focusedTask=task.id;
       const followUps=!upgrades?(derived.featPlan?.sources || []).filter(source=>(source.parent==='Feat')===feats).reduce((sum,source)=>sum+(derived.featPlan.specs[source.id]?.missing.length || 0),0):0;
-      const remaining=followUps+groups.reduce((total,group)=>total+(group.optional?0:Math.max(0,group.count-group.selected.length)),0);
+      const remaining=followUps+groups.reduce((total,group)=>total+(group.optional || group.sourceId?0:Math.max(0,group.count-group.selected.length)),0);
       const nav=`<nav class="builder-task-nav" aria-label="${feats?'Feat and ability':'Feature'} choices">${groups.map(group=>`<button type="button" data-action="builder-task" data-task-id="${escape(group.id)}" ${group.id===task?.id?'aria-current="true"':''}><span>${escape(group.label)}</span><small>${group.optional?'Optional':`${group.selected.length} / ${group.count}`}${group.level?` · ${escape(choiceLevel(group,derived))}`:''}</small>${group.kind==='feat'&&group.selected.length?`<small>${group.options.filter(option=>group.selected.includes(option.id)).map(option=>escape(option.name)).join(', ')}</small>`:''}</button>`).join('')}</nav>`;
       let body='<p class="muted">No choices are required here at this level.</p>';
       if(task?.skills) body=`<section class="builder-task-content"><h2>${escape(task.label)}</h2><p>Choose ${task.count} proficiencies.</p>${skillChoices(task.skills,task.count,task.options,task.classId)}</section>`;
+      else if(task?.sourceId){const source=derived.featPlan.sources.find(source=>source.id===task.sourceId),spec=derived.featPlan.specs[task.sourceId];body=`<section class="builder-task-content"><h2>${escape(source.name)}</h2>${sourceControls(source,spec,'Feature choices')}${linkedControls(source,derived)}<details class="builder-rule"><summary>Read feature rules</summary>${renderRule(source.details)}</details></section>`;}
       else if(task) {
         const selected=task.selectedSlots || [],available=task.options.filter(item=>{
           const used=task.selected.filter(id=>id===item.id).length;
@@ -365,7 +377,7 @@
       if(data.builderFeatureQuery!==undefined) {featureQuery=String(target.value || '');optionLimit=36;return true;}
       if(data.builderLocked!==undefined) {showLocked=!!target.checked;return true;}
       if(data.builderQualification!==undefined) {const key=data.builderQualification;if(['has-died','righteous-slaying','rest-crafting'].includes(key))draft.build.qualifications=[...draft.build.qualifications.filter(value=>value!==key),...(target.checked?[key]:[])];return true;}
-      if(data.builderFeatChoice!==undefined){const d=rules.derive(draft),spec=d.featPlan?.specs[data.featId],choice=spec?.fields.find(field=>field.key===data.choiceKey),slot=Number(data.choiceSlot);if(choice && !choice.locked && Number.isInteger(slot) && slot>=0 && slot<choice.count && (choice.type==='text' || !target.value || choice.options.some(item=>item.id===target.value))){globalThis.CharacterFeats?.recordUpgradeSources?.(draft,d);const decisions=draft.build.featChoices[data.featId] ||= {},storage=choice.storageSlots?.[slot] ?? slot;setSlot(decisions[data.choiceKey] ||= [],storage,String(target.value || ''));if(choice.slotSources)setSlot(decisions['upgrade-sources'] ||= [],storage,choice.slotSources[slot]);}return true;}
+      if(data.builderFeatChoice!==undefined){const d=rules.derive(draft),spec=d.featPlan?.specs[data.featId],choice=spec?.fields.find(field=>field.key===data.choiceKey),slot=Number(data.choiceSlot);if(choice && !choice.locked && Number.isInteger(slot) && slot>=0 && slot<choice.count && (choice.type==='text' || !target.value || choice.options.some(item=>item.id===target.value))){globalThis.CharacterFeats?.recordUpgradeSources?.(draft,d);const decisions=draft.build.featChoices[data.featId] ||= {},storage=choice.storageSlots?.[slot] ?? slot;setSlot(decisions[data.choiceKey] ||= [],storage,String(target.value || ''));if(choice.slotSources)setSlot(decisions[data.choiceKey+'-sources'] ||= [],storage,choice.slotSources[slot]);}return true;}
       if(data.builderFeatBenefit!==undefined) {
         const feature=rules.derive(draft).features.find(feature=>feature.parent==='Feat' && feature.entryId===data.featId),specification=feature && globalThis.CharacterEffects.benefitOptions(feature);
         if(specification?.options.some(([key])=>key===data.builderFeatBenefit)) {
