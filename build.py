@@ -150,7 +150,7 @@ def build(output_dir):
         shutil.copytree(prototype, output_dir / "tabletop", dirs_exist_ok=True)
         helpers = output_dir / "tabletop" / "sheet"
         helpers.mkdir(exist_ok=True)
-        for name in ("magic-categories.js", "item-views.js", "magic-items.js",
+        for name in ("magic-categories.js", "item-views.js", "magic-items.js", "monster-editor.js",
                      "character-conditions.js", "character-state.js", "character-effects.js", "character-equipment.js",
                      "character-casting.js", "character-prerequisites.js", "character-feats.js", "character-rules.js"):
             shutil.copyfile(ROOT / "web" / name, helpers / name)

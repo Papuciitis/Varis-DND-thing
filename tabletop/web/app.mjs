@@ -40,7 +40,7 @@ function status(state) {
 const client=new GameClient({onState:receive,onStatus:status});
 const board=new MapBoard($('map-canvas'),{
   onSelect:id=>selectToken(id),
-  onMove:(id,x,y)=>command({type:'token.move',id,x,y}),
+  onMove:(id,x,y)=>command({type:'token.move',id,x,y,...(board.forceMovement && view?.self.role==='dm'?{force:true}:{})}),
   onFog:(cells,reveal)=>command({type:'fog.paint',cells,reveal}),
   onError:text=>notify(text,true),
   onContext:context=>tokenTools?.showMenu(context)
@@ -202,7 +202,8 @@ function renderLog() {
     const el=element('div','log-entry');
     if(entry.kind==='roll'){const heading=element('div','roll-heading');heading.append(element('strong','',entry.name+' · '+entry.formula),element('span','roll-total',entry.total));el.append(heading,element('div','roll-detail','['+entry.rolls.join(', ')+']'+(entry.modifier?' '+(entry.modifier>0?'+':'')+entry.modifier:'')));}
     else if(entry.kind==='chat'){el.classList.add('chat-entry');el.append(element('strong','',entry.name),element('p','',entry.text));}
-    else el.textContent=entry.text;return el;
+    else el.textContent=entry.text;
+    if(entry.eventId){const open=element('button','text-button','Open event');open.type='button';open.dataset.eventId=entry.eventId;el.append(open);}return el;
   }));
 }
 async function loadMap() {

@@ -24,3 +24,10 @@ These fixes were retained from the earlier recovery task. No additional unrelate
 - Replaced the growing feature wall with focused choice navigation and one rules preview; separated spell and feat selection into relevant stages.
 - Added literal feat-prerequisite checks, real racial bonus-feat pickers, own-node skill descriptions, rest-dice calculations and clickable death-save dots.
 - Added the requested patch-notes entry and appended the source/reference conflicts to points of interest. The only data change is the author-confirmed base rest-dice formula.
+
+28:11:2026 tabletop events and main integration
+
+- Merged main through 51c9f2d into the isolated tabletop branch, preserving condition support and connecting main's new character helper modules. Source game rules were not rewritten by the event implementation.
+- Added the requested trigger/effect builder, movement interruption, travel modes and condition/resource timers, with campaign event resolution and linked-sheet updates.
+- Added shared, temporary map pings under the user's request for a useful complementary tabletop feature. Shift-click and a context-menu action share a revealed map point without creating a permanent annotation.
+- Updated launcher fingerprints for the new backend dependencies, documentation and regression/browser checks.

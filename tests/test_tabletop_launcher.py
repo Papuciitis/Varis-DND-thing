@@ -30,7 +30,8 @@ class TabletopLauncherTests(unittest.TestCase):
             state = checkout / "tabletop/shared/state.mjs"
             state.parent.mkdir(parents=True)
             state.write_text("// startup fixture\n", encoding="ascii")
-            for name in ("tabletop/web/damage.mjs", "tabletop/web/grid.mjs", "web/character-conditions.js"):
+            for name in ("tabletop/web/damage.mjs", "tabletop/web/grid.mjs", "web/character-conditions.js",
+                         "tabletop/shared/adventure.mjs", "tabletop/shared/route-geometry.mjs", "tabletop/web/templates.mjs"):
                 target = checkout / name
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text("// startup fixture\n", encoding="ascii")

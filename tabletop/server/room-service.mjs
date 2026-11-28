@@ -1,5 +1,5 @@
 import {VERSION,LIMITS,RoomError,copy,uid,secret,label,whole,hashKey,initialScene,
-  project,requireDM,applyCommand,validateImage,importedScene,addLog,tokenFrom} from '../shared/state.mjs';
+  project,requireDM,applyCommand,validateImage,importedScene,addLog,tokenFrom,Adventure} from '../shared/state.mjs';
 
 export class MemoryStore {
   constructor() { this.values=new Map(); }
@@ -25,6 +25,7 @@ export class RoomService {
     room.scene.distanceUnit ??= 'ft';
     room.scene.templates ??= [];
     room.scene.notes ??= [];
+    Adventure.sceneDefaults(room.scene);
     room.scene.tokens=room.scene.tokens.map(token=>tokenFrom(token,room.scene));
     return room;
   }
@@ -46,7 +47,7 @@ export class RoomService {
       const key=secret();
       const room={version:VERSION,id,name:label(name,'Untitled game'),revision:0,savedAt:new Date().toISOString(),
         auth:{ownerHash:await hashKey(id,key),ownerName:label(ownerName,'DM',32),guests:{}},
-        players:[],scene:initialScene(),log:[],recent:[]};
+        players:[],scene:Adventure.sceneDefaults(initialScene()),log:[],recent:[]};
       room.scene.name=room.name;
       addLog(room,{kind:'system',text:'The table is ready. Invite your party.'});
       await this.storage.put('room',room);
@@ -97,6 +98,8 @@ export class RoomService {
       room.scene.mapAsset=assetId;
       room.scene.width=width;room.scene.height=height;room.scene.fog.revealed=[];
       room.scene.templates=[];
+      room.scene.traps=[];room.scene.pings=[];room.scene.events=room.scene.events.filter(event=>event.status!=='pending');
+      for(const token of room.scene.tokens){token.pendingMove=null;token.motion=null;token.positionFree=false;}
       if(Math.ceil(width/room.scene.gridSize)*Math.ceil(height/room.scene.gridSize)>LIMITS.cells)room.scene.gridSize=50;
       for (const t of room.scene.tokens) {
         t.x=Math.min(t.x,width-25);t.y=Math.min(t.y,height-25);

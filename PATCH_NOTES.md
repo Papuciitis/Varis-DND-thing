@@ -1,5 +1,17 @@
 # Patch notes
 
+## 2026-11-28 - Tabletop events, movement and automatic effects
+
+- Added an automatic-effect builder: start/end turn, start round, movement, damage, healing, reaching zero HP and condition changes can apply damage, healing, resource changes, conditions or messages. Effects can expire after a set number of applications; bounded chains prevent recursive loops.
+- Condition timers can use the start or end of a chosen token's turn. Timed conditions expire on tokens and linked character sheets together. Regeneration and supported printed turn-based condition rules now run through initiative; browser or physical saving throws resolve through Events.
+- Draw a circle, line, square or cone spell area and choose Make trigger to create a trap or persistent zone. Set entry/turn timing, affected travel modes, height range, visibility, a source rule and one-use/reusable behavior. Player placements become proposals for GM approval.
+- Movement follows the direct route and checks hazards along its whole length. Tokens stop at the first trigger; resolving its event can continue the remaining route, checking later hazards and remaining movement again. Overlapping traps, secondary saves and interrupted routes are saved with the campaign.
+- Added walking, flying, hovering, swimming, climbing and burrowing controls with public height/depth badges. Vertical motion and changes of mode share the movement allowance. Known creature speeds populate the controls; temporary granted speeds can have turn durations. Dash, exploration reset and GM reposition controls are explicit.
+- Added a campaign Events tab and event links in the chat log. Automatic health/resource changes synchronize back to linked local sheets, with revision protection against restoring stale HP. Player attributes retain their existing sharing settings.
+- Added shared map pings through Shift-click or the map context menu. Pings disappear after a few seconds and respect concealed map areas.
+- Updated the prototype with main's latest character progression, feat and spell-choice work and the 302-monster compendium. Updated launcher restart detection for the new server modules.
+- Source-dependent saves, unusual creature-size damage, falling, terrain, item/spell costs and minute/hour effects still require their actual rules or a GM decision. Review details and remaining source questions are recorded in the prototype documentation and points of interest.
+
 ## 2026-11-27 - Token condition markers and adjustable panels
 
 - Conditions now appear directly on affected tokens as a segmented colored ring and compact markers underneath. Stack counts update live; hover for names, or click to expand the selected token's condition details. Crowded lists use a more-effects marker, and HP bars stay beneath the condition markers.

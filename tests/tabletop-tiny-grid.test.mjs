@@ -50,6 +50,7 @@ test('Tiny quarter movement still enforces player ownership and full-cell fog',a
   await assert.rejects(service.command(key,{type:'token.move',id:dm.view.scene.tokens[0].id,x:312.5,y:512.5}),/own/);
   await assert.rejects(service.command(key,{type:'token.move',id:own.id,x:1201,y:101}),/revealed/);
   await service.command(dm.key,{type:'fog.paint',cells:[88],reveal:true});
+  await service.command(dm.key,{type:'token.move',id:own.id,x:1212.5,y:112.5});
   for(const point of [{x:1212.5,y:112.5},{x:1237.5,y:137.5}]){
     const view=await service.command(key,{type:'token.move',id:own.id,...point});
     const token=view.scene.tokens.find(t=>t.id===own.id);

@@ -93,12 +93,43 @@ retain GM repositioning for forced movement and exceptions.
 
 Stack counts are visible for all effects, but multiply mechanics only where the
 source explicitly permits it. Source-based roll restrictions and derived speed
-are automated. Timed damage, contextual targeting, duration, saves and ending
-triggers remain manual with visible source text and reminders until their timing
-and targets can be represented explicitly. Do not fill missing Fatigue 6/7 rules.
+are automated. The event engine now represents explicit turn/round timing,
+condition durations, saves and simple ending triggers. Keep contextual targeting
+and unrepresented timing manual, with visible source text and reminders. Do not
+fill missing Fatigue 6/7 rules.
 
 Reuse the project's character calculations and YAML-built compendium. Keep
 authoritative permissions and state in the shared server model, including for
 drag-and-drop, notes and messages. Use plain text for user content.
 Keep prototype commits on codex/tabletop-prototype until a merge is explicitly requested.
 Player accounts and paid services are not prerequisites.
+
+## Encounter events and movement, 28 November 2026
+
+Keep campaign event resolution in the left Events tab and notifications in Log.
+Keep reference configuration and placed-trigger lists in the right Scene view.
+Travel controls belong in a compact bottom utility disclosure, alongside resources
+and conditions. Mode/height/depth and paused status stay visible above each token
+independently of its private HP. These are travel states, not additional canonical
+conditions. Avoid making the map's default state taller with expanded controls.
+
+Authoritative moves check the complete direct route, intervening fog cells,
+continuous shape intersections and altitude. A drag previews a destination and
+route; clients animate actual tokens only to server-approved stopping points.
+Stop at the earliest trigger, keep the remaining destination and recheck it after
+resolution. Do not silently teleport through later traps, changed fog or a
+condition that now prevents movement. Preserve Tiny-token exact interruption
+coordinates without snapping an altitude-only move sideways.
+
+Turn advancement is a two-phase operation. Apply end-turn rules once, retain
+pending saves, and enter the next turn only after blockers resolve. Preserve the
+turn phase, finite applications and interrupted routes in storage/backups.
+Condition timers apply to the whole current condition, including its stacks;
+timers created during a phase do not tick retroactively in that same phase.
+
+Use explicit source speeds or controller-entered grants. Player traps require a
+declared item/spell/feature or table source and GM approval. Do not infer item or
+slot spending from a name. Do not infer walls, terrain, water or climbable surfaces
+from map artwork. An expired airborne grant creates a visible review event; a
+source-dependent fall is not invented. See docs/tabletop-events.md for timing and
+permission details. Shared pings are transient and never reveal concealed map points.

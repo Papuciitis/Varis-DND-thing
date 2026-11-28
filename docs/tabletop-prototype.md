@@ -25,7 +25,11 @@ sheets to their tabletop tokens.
 - The backend targets Cloudflare Workers with SQLite-backed Durable Objects on
   Workers Free. Dormant rooms load automatically when requested.
 
-Dynamic lighting, wall tracing, automated combat rules, a fully synchronized
+The event and trigger controls are described in [Tabletop events](tabletop-events.md).
+Turn-based automatic effects, condition expiry, travel modes and interrupted
+movement are now supported. The source compendium includes main through 51c9f2d.
+
+Dynamic lighting, wall tracing, full combat adjudication, a fully synchronized
 multi-device character library, and public hosting at scale are later work. Manual fog conceals the
 map on screen; it does not prevent a player from inspecting the underlying map
 image in browser tools. Hidden creature data is filtered separately on the server.
@@ -33,7 +37,7 @@ image in browser tools. Hidden creature data is filtered separately on the serve
 ## Layout and isolation
 
 The desktop layout follows [ai_tabletop_design.md](../ai_tabletop_design.md):
-the left lobby slate holds **Table**, **Log**, **Notes** and **Turns** tabs; the
+the left lobby slate holds **Table**, **Log**, **Notes**, **Turns** and **Events** tabs; the
 right data slate holds **Token**, **Compendium** and GM **Scene** tabs; the bottom
 utility panel holds health, AC, resources and ability scores. The map stays central.
 Smaller screens use separate Campaign and Tools drawers for the two slates.

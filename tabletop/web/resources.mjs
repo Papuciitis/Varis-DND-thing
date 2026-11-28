@@ -73,6 +73,35 @@ export function creatureSpeed(value) {
   if(matches.length)return Math.min(999999,Math.max(...matches.map(match=>Number(match[1]))));
   return /^\d+(?:\.\d+)?$/.test(source)?Math.min(999999,Number(source)):null;
 }
+export function creatureMovement(value){
+  const result={},source=String(value ?? '');
+  if(typeof value==='number')result.walk=creatureSpeed(value);
+  const walk=source.match(/^\s*(\d+(?:\.\d+)?)\s*(?:ft\.?|feet)/i);if(walk)result.walk=Number(walk[1]);
+  for(const mode of ['fly','swim','climb','burrow']){
+    const match=source.match(new RegExp('\\b'+mode+(mode==='swim'?'(?:ming)?':'(?:ing)?')+'\\s+(\\d+(?:\\.\\d+)?)\\s*(?:ft\\.?|feet)?','i'));if(match)result[mode]=Number(match[1]);
+  }
+  return {speeds:result,hover:/\bhover\b/i.test(source)};
+}
+const defenseTypes=value=>{
+  const rows=Array.isArray(value)?value:typeof value==='string'?value.split(/[,;]/):[];
+  return rows.map(row=>String(row).toLowerCase().replace(/\s+damage$/,'').trim()).filter(row=>/^(?:fire|cold|acid|lightning|sonic|poison|necrotic|radiant|psychic|force|slashing|piercing|bludgeoning|physical|all)$/.test(row));
+};
+function characterMovement(character,derived){
+  const base=derived.conditionBase || derived,speeds={walk:base.speed ?? character.combat?.speed ?? 30};
+  for(const mode of ['fly','swim','climb','burrow']){
+    const speed=base.effects?.[mode+'Speed'] ?? character.combat?.movementSpeeds?.[mode];if(typeof speed==='number' && Number.isFinite(speed) && speed>=0)speeds[mode]=speed;
+  }
+  const saveBonuses={},saveProficiencies={};for(const key of ABILITIES){
+    const contribution=base.saves?.[key]?(base.proficiency || 0):0;saveProficiencies[key]=contribution;
+    saveBonuses[key]=Math.floor(((base.abilities?.[key] ?? character.abilities?.[key] ?? 10)-10)/2)+contribution+(base.saveBonuses?.[key] || 0);
+  }
+  const candidates=[...(character.inventory || []).filter(item=>(item.quantity ?? 1)>0).map(item=>({...item,kind:'item'})),
+    ...(character.spells || []).filter(item=>!item.classId || item.classId===base.cls?.id).map(item=>({...item,kind:'spell'})),
+    ...(base.features || []),...(character.features || [])];
+  const sources=[...new Map(candidates.filter(row=>row.name).map(row=>{const kind=row.kind || 'feature',id=(kind+':'+(row.id || row.entryId || row.name)).slice(0,160);return [id,{id,name:row.name.slice(0,100),kind}];})).values()].slice(0,48);
+  return {speeds,hover:base.effects?.hover===true || character.combat?.hover===true,sources,
+    traits:{saveBonuses,saveProficiencies,reductions:base.reductions || {},resistances:defenseTypes(base.resistances),immunities:defenseTypes(base.immunities),creatureType:character.creatureType || base.race?.creatureType || ''}};
+}
 export function characterStats(character,derived={},catalog=[]) {
   const hp=character.resources?.hp || {current:20,max:20},resources={};
   for (const key of ['tempHP','arcaneHealth','block','tempBlock']) {
@@ -96,7 +125,7 @@ export function characterStats(character,derived={},catalog=[]) {
   }));
   const dex=derived.abilities?.dex ?? character.abilities?.dex ?? 10;
   return {hp:Math.min(count(hp.current),Math.max(1,count(hp.max))),maxHp:Math.max(1,count(hp.max)),resources,
-    speed:derived.conditionBase?.speed ?? derived.speed ?? character.combat?.speed ?? 30,
+    speed:derived.conditionBase?.speed ?? derived.speed ?? character.combat?.speed ?? 30,movementProfile:characterMovement(character,derived),
     ...sizeStats(character.size || character.combat?.size || derived.race?.size),
     statblock:{type:'character',sourceId:character.id || '',abilities:derived.abilities || character.abilities || {},
       attacks,initiativeBonus:signed(derived.initiative ?? Math.floor((dex-10)/2)+(Number(character.combat?.initiativeBonus)||0),99),
@@ -122,7 +151,11 @@ export function monsterStats(entry,token=null) {
   for(const [key,marker] of [['block','blockMax'],['tempBlock','tempBlockMax']])if(overrides.has(marker))resources[key]={...token.resources[key]};
   const rules=overrides.has('rules')?token.statblock.rules:['traits','actions','bonus_actions','reactions','legendary_actions','lair_actions']
     .flatMap(key=>(Array.isArray(details[key])?details[key]:[]).map(row=>row.name+': '+text(row.description).replace(/\n\s*\n/g,'\n'))).join('\n\n').slice(0,12000);
+  const movement=creatureMovement(details.speed),saveBonuses={};
+  if(overrides.has('speed'))movement.speeds.walk=token.speed;
+  for(const key of ABILITIES){const explicit=String(details.saves || details.saving_throws || '').match(new RegExp('\\b'+key+'\\s*([+-]\\d+)','i'));saveBonuses[key]=explicit?Number(explicit[1]):Math.floor(((abilities[key] ?? 10)-10)/2);}
   return {hp:token && token.hp!==token.maxHp?Math.min(token.hp,max):max,maxHp:max,speed:overrides.has('speed')?token.speed:creatureSpeed(details.speed),resources,...sizeStats(details.size || details.meta),
+    movementProfile:{...movement,sources:[],traits:{saveBonuses,saveProficiencies:{},reductions:{},resistances:defenseTypes(details.resistances || details.damage_resistances),immunities:defenseTypes(details.immunities || details.damage_immunities),creatureType:text(details.type || details.meta).slice(0,80)}},
     statblock:{type:'monster',sourceId,abilities,attacks:[],
       initiativeBonus:overrides.has('initiativeBonus')?token.statblock.initiativeBonus:signed(details.initiative ?? Math.floor(((abilities.dex ?? 10)-10)/2),99),
       notes:overrides.has('notes')?token.statblock.notes:text(details.description || details.desc || details.meta).slice(0,4000),rules,encounterOverrides:[...overrides]}};

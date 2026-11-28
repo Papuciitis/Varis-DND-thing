@@ -7,10 +7,14 @@ const request=async path=>{
   if(!response.ok)throw new Error('The rules could not be loaded. Rebuild the preview and try again.');
   return response.json();
 };
+const sameValue=(a,b)=>{
+  if(a===b)return true;if(!a || !b || typeof a!=='object' || typeof b!=='object' || Array.isArray(a)!==Array.isArray(b))return false;
+  const keys=Object.keys(a);return keys.length===Object.keys(b).length && keys.every(key=>Object.hasOwn(b,key) && sameValue(a[key],b[key]));
+};
 let references;
 export function loadReferences() {
   if(!references)references=(async()=>{
-    for(const name of ['magic-categories','item-views','magic-items','character-conditions','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-feats','character-rules']){
+    for(const name of ['magic-categories','item-views','magic-items','monster-editor','character-conditions','character-state','character-effects','character-equipment','character-casting','character-prerequisites','character-feats','character-rules']){
       await new Promise((resolve,reject)=>{
         const script=document.createElement('script');script.src=new URL('./sheet/'+name+'.js',import.meta.url);
         script.onload=resolve;script.onerror=()=>reject(new Error('Character helpers could not load. Rebuild the preview.'));document.head.append(script);
@@ -28,7 +32,7 @@ export class LocalSources {
   constructor({getView,getServer,onPull,onConditions,notify,onChange}) {
     Object.assign(this,{getView,getServer,onPull,onConditions,notify,onChange});this.tail=Promise.resolve();
     window.addEventListener('storage',event=>{
-      if(event.key==='vara.magic-items.v1')references=null;
+      if([MONSTERS_KEY,'vara.magic-items.v1'].includes(event.key))references=null;
       if([SHEETS_KEY,MONSTERS_KEY,'vara.magic-items.v1'].includes(event.key)){this.onChange?.();this.pull();}
     });
     window.addEventListener('focus',()=>{this.onChange?.();this.pull();});
@@ -37,7 +41,9 @@ export class LocalSources {
   linkFor(id) {return this.getView()?read(LINKS_KEY,{})[this.key(id)]:null;}
   characters() {const list=read(SHEETS_KEY,{}).characters;return Array.isArray(list)?list.filter(character=>character && typeof character.id==='string'):[];}
   async monsters() {
-    const base=(await loadReferences()).monsters,entries=new Map(base.map(entry=>[monsterId(entry),entry]));
+    const base=(await loadReferences()).monsters;
+    if(globalThis.MonsterEditor)return globalThis.MonsterEditor.apply({key:'monsters',entries:base}).entries;
+    const entries=new Map(base.map(entry=>[monsterId(entry),entry]));
     for(const change of read(MONSTERS_KEY,{}).changes || [])if(change.entry)entries.set(change.key,{...change.entry,_monsterEditorKey:change.key});
     return [...entries.values()];
   }
@@ -65,7 +71,7 @@ export class LocalSources {
   observeConditions() {
     const view=this.getView();if(!view)return;
     const linked=view.scene.tokens.filter(token=>token.canEditStats && this.linkFor(token.id)?.kind==='character');
-    const signature=JSON.stringify([view.id,view.self.id,linked.map(token=>[token.id,token.conditionsRevision])]);
+    const signature=JSON.stringify([view.id,view.self.id,linked.map(token=>[token.id,token.conditionsRevision,token.resourceRevision])]);
     if(signature!==this.conditionSignature){this.conditionSignature=signature;if(linked.length)this.pull();}
   }
   async syncConditions(token,source) {
@@ -114,6 +120,7 @@ export class LocalSources {
         let source=this.characters().find(character=>character.id===link.id);
         if(!source){this.notify('A linked character is missing from this browser. Relink it in the token statblock.',true);continue;}
         source=await this.syncConditions(token,source);if(!source)continue;
+        source=this.syncServerResources(token,source,rules,catalog);if(!source)continue;
         const normalized=rules.reconcile(source);
         patch=characterStats(normalized,rules.derive(normalized),catalog);name=source.name || token.name;
       }else{
@@ -128,11 +135,23 @@ export class LocalSources {
         }
       }
       patch.resources={...token.resources,...patch.resources};
-      if(Object.entries({...patch,name}).some(([key,value])=>JSON.stringify(token[key])!==JSON.stringify(value))){
-        const updated=await this.onPull(token.id,{...patch,name});
+      if(Object.entries({...patch,name}).some(([key,value])=>!sameValue(token[key],value))){
+        const updated=await this.onPull(token.id,{...patch,name,expectedResourceRevision:token.resourceRevision ?? 0});
         if(!updated)throw new Error('The sheet could not update its token. Check the connection and try again.');
       }
     }
+  }
+  syncServerResources(token,source,rules,catalog){
+    if(!Number.isInteger(token.resourceRevision))return source;
+    const links=read(LINKS_KEY,{}),key=this.key(token.id),link=links[key];if(!link || link.id!==source.id)return null;
+    const previous=link.resourceRevision ?? 0;
+    if(token.resourceRevision>previous && token.statblock?.type==='character' && token.statblock.sourceId===source.id){
+      const saved=read(SHEETS_KEY,null),index=saved?.characters?.findIndex(character=>character.id===source.id);if(index===undefined || index<0)return null;
+      const latest=saved.characters[index],before=characterStats(latest,rules.derive(latest),catalog);
+      const updated=rules.reconcile(updateCharacterResources(latest,before,token));saved.characters[index]=updated;
+      localStorage.setItem(SHEETS_KEY,JSON.stringify(saved));source=updated;
+    }
+    links[key]={...link,resourceRevision:token.resourceRevision};localStorage.setItem(LINKS_KEY,JSON.stringify(links));return source;
   }
   async push(before,after) {
     const link=this.linkFor(after.id);if(link?.kind!=='character')return;

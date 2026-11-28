@@ -48,6 +48,10 @@ test('players cannot enter concealed cells; DM reveal allows the move', async ()
   const own = guest.scene.tokens.find(token => token.ownerId === guest.self.id);
   await assert.rejects(service.command(guestKey, {type:'token.move', id:own.id, x:1225, y:125}), /revealed/i);
   await service.command(created.key, {type:'fog.paint', cells:[88], reveal:true});
+  await assert.rejects(service.command(guestKey, {type:'token.move', id:own.id, x:1225, y:125}), /route|revealed/i);
+  const {routeCells}=await import('../tabletop/shared/route-geometry.mjs');
+  const scene=(await service.read()).scene;
+  await service.command(created.key,{type:'fog.paint',cells:routeCells(own,{x:1225,y:125},scene),reveal:true});
   await service.command(guestKey, {type:'token.move', id:own.id, x:1225, y:125});
   assert.equal((await service.view(guestKey)).scene.tokens.find(token => token.id === own.id).x, 1225);
 });

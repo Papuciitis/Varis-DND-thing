@@ -51,7 +51,7 @@ export class TokenTools {
   }
   async saveStats(id,patch) {
     const before=this.token(id);if(!before?.canEditStats)return;
-    const next=await this.command({type:'token.stats',id,...patch});
+    const next=await this.command({type:'token.stats',id,...patch,expectedResourceRevision:before.resourceRevision ?? 0});
     const after=next?.scene.tokens.find(token=>token.id===id);
     if(after){try{await this.sources.push(before,after);}catch(error){this.notify(error.message,true);}}
     return after || null;
@@ -330,7 +330,7 @@ export class TokenTools {
     const dm=this.getView()?.self.role==='dm',enabled=dm && this.connected && !this.conditionBusy,query=this.conditionSearch.value.trim().toLowerCase();
     this.conditionsTitle.textContent=token.name;this.customCondition.hidden=this.clearConditions.hidden=!dm;
     this.customAdd.disabled=!enabled;this.clearConditions.disabled=!enabled || !(token.conditions || []).length;
-    const signature=JSON.stringify([token.id,token.conditions,enabled,dm,query]);
+    const signature=JSON.stringify([token.id,token.conditions,token.conditionTimers,enabled,dm,query]);
     if(signature===this.conditionsSignature)return;this.conditionsSignature=signature;
     const active=new Map(token.conditions.map(row=>[row.id,row])),definitions=dm?[...rules.definitions,...token.conditions.filter(row=>row.id.startsWith('custom:'))]:token.conditions;
     const catalog=new Map(this.conditionCatalog.map(entry=>[entry.name.toLowerCase(),entry]));
@@ -350,7 +350,8 @@ export class TokenTools {
         count.onchange=()=>{if(count.reportValidity())this.changeCondition({...current,stacks:Number(count.value)},'set');};
         const plus=button('+',()=>this.changeCondition({id:definition.id,name:definition.name},'add'),'condition-step');plus.disabled=!enabled || (current?.stacks || 0)>=(definition.maxStacks || 99);plus.setAttribute('aria-label','Add one '+definition.name+' stack');
         const clear=button('Remove',()=>this.changeCondition({id:definition.id,name:definition.name},'clear'),'text-button danger');clear.disabled=!enabled || !current;
-        controls.append(minus,count,plus,clear);row.append(controls);
+        const duration=button('Duration',()=>this.onConditionDuration?.(token.id,definition.id),'text-button');duration.disabled=!enabled || !current;
+        controls.append(minus,count,plus,clear,duration);row.append(controls);
       }
       return row;
     }));
@@ -366,12 +367,12 @@ export class TokenTools {
     this.conditionButton.disabled=!Array.isArray(token.conditions);this.conditionButton.title=Array.isArray(token.conditions)?'':'Reopen the tabletop launcher to enable conditions.';
     this.conditionMovement.textContent=state?.blocked?'Movement blocked: '+state.reason:token.canViewStats && typeof state?.speed==='number'?'Movement: '+state.speed+' ft':'Conditions';
     this.conditionBadges.replaceChildren(...rows.map(row=>{
-      const badge=button(row.name+' ×'+row.stacks,()=>this.openConditions(token.id),'condition-badge condition-'+row.color);
+      const badge=button(row.name+' ×'+row.stacks+(token.conditionTimers?.[row.id]?' · '+token.conditionTimers[row.id].remaining+' turns':''),()=>this.openConditions(token.id),'condition-badge condition-'+row.color);
       badge.dataset.conditionId=row.id;badge.title=row.notes || 'Read '+row.name+' rules';return badge;
     }));
     this.conditionNotes.replaceChildren(...(state?.notes || []).map(note=>el('p','',note)));
     this.conditionDetails.hidden=!(state?.notes || []).length;
-    const signature=JSON.stringify([token.id,rows,!!this.conditionCatalog]);
+    const signature=JSON.stringify([token.id,rows,token.conditionTimers,!!this.conditionCatalog,token.canEditStats,dm]);
     if(signature!==this.conditionSourceSignature){
       this.conditionSourceSignature=signature;const entries=new Map((this.conditionCatalog || []).map(entry=>[entry.name.toLowerCase(),entry]));
       const opened=new Set([...this.conditionSources.querySelectorAll('details[open]')].map(node=>node.dataset.conditionId));
@@ -380,7 +381,9 @@ export class TokenTools {
         details.append(el('summary','',row.name+' ×'+row.stacks+' — rules'));
         const source=entries.get((globalThis.CharacterConditions?.lookup(row.id)?.sourceName || row.name).toLowerCase())?.details;
         const text=[source?.desc || source?.description,source?.special || source?.spec,row.notes].filter(Boolean).join('\n\n');
-        details.append(el('p','condition-rule-text',text || (row.blocksMovement?'Custom effect: movement becomes 0.':row.id.startsWith('custom:')?'Custom effect.':this.conditionCatalog?'Read the condition rules in the picker.':'Loading rules.')));return details;
+        details.append(el('p','condition-rule-text',text || (row.blocksMovement?'Custom effect: movement becomes 0.':row.id.startsWith('custom:')?'Custom effect.':this.conditionCatalog?'Read the condition rules in the picker.':'Loading rules.')));
+        const timer=token.conditionTimers?.[row.id];if(timer)details.append(el('p','field-note',timer.remaining+' turns left; ticks at '+timer.timing.replace('-',' ')+' for '+(this.getView().scene.tokens.find(t=>t.id===timer.anchorId)?.name || 'the anchor')+'.'));
+        if(dm || token.canEditStats)details.append(button(timer?'Change duration':'Set turn duration',()=>this.onConditionDuration?.(token.id,row.id),'text-button'));return details;
       }));
     }
     if(this.conditionsDialog.open)this.renderConditionsDialog();
@@ -434,7 +437,9 @@ export class TokenTools {
     },'button primary');
     actions.append(this.placeArea,button('Clear preview',()=>{this.board.templatePreview=null;this.board.draw();this.updateTemplateControls();}));
     this.areaHint=el('p','field-note','Drag on the map to aim. Preview is only visible to you.');
-    panel.append(fields,extra,actions,this.areaHint);this.viewport.append(panel);this.spellPanel=panel;
+    const heading=el('div','spell-panel-heading');this.spellOptionsToggle=button('Collapse area options',()=>this.collapseSpellOptions(!fields.hidden),'text-button');this.spellOptionsToggle.id='toggle-spell-options';
+    this.spellFields=fields;this.spellExtra=extra;heading.append(el('strong','','Spell area'),this.spellOptionsToggle);
+    panel.append(heading,fields,extra,actions,this.areaHint);this.viewport.append(panel);this.spellPanel=panel;
     for(const input of [this.areaShape,this.areaSize,this.areaUnit,this.areaWidth,this.areaAngle])input.onchange=()=>{
       if(!this.areaSize.reportValidity() || !this.areaWidth.reportValidity())return;
       this.board.templateConfig={shape:this.areaShape.value,size:Number(this.areaSize.value),unit:this.areaUnit.value,width:Number(this.areaWidth.value),coneAngle:Number(this.areaAngle.value)};
@@ -445,12 +450,14 @@ export class TokenTools {
     const placed=el('details','inspector-section placed-areas');placed.append(el('summary','','Spell areas'));
     this.placedAreas=el('div');placed.append(this.placedAreas);$('inspector').append(placed);this.updateTemplateControls();
   }
-  onTool(tool) {this.spellPanel.hidden=tool!=='template';this.updateTemplateControls();}
+  collapseSpellOptions(closed){this.spellFields.hidden=this.spellExtra.hidden=this.areaHint.hidden=closed;this.spellOptionsToggle.textContent=closed?'Expand area options':'Collapse area options';this.spellOptionsToggle.setAttribute('aria-expanded',String(!closed));}
+  onTool(tool) {this.spellPanel.hidden=tool!=='template';if(tool==='template')this.collapseSpellOptions(false);this.updateTemplateControls();}
   updateTemplateControls() {
     const shape=this.areaShape.value;
     this.areaSize.closest('label').firstChild.textContent=shape==='circle'?'Radius':shape==='square'?'Side length':'Length';
     this.areaWidth.closest('label').hidden=shape!=='line';this.areaAngle.closest('label').hidden=shape!=='cone';
     this.placeArea.disabled=!this.connected || !this.board.templatePreview;
+    if(this.triggerAreaButton)this.triggerAreaButton.disabled=!this.connected || !this.board.templatePreview;
   }
   async loadSources() {
     const token=this.token(this.sourceTokenId || this.getSelected());if(!token?.canEditStats)return;
@@ -518,18 +525,23 @@ export class TokenTools {
       }
     });
   }
-  showMenu({tokenId,templateIds=[],preview=false,x,y,point}) {
+  showMenu({tokenId,templateIds=[],trapIds=[],preview=false,x,y,point}) {
     const view=this.getView();if(!view)return;
     const token=this.token(tokenId),items=[],dm=view.self.role==='dm';
     const action=(text,callback,danger=false)=>{const node=button(text,()=>{this.menu.hidden=true;callback();},'menu-action');if(danger)node.classList.add('danger');node.setAttribute('role','menuitem');items.push(node);};
+    if(this.connected)action('Ping map here (Shift + click)',()=>this.onPing?.(point));
     if(preview)action('Clear spell preview',()=>{this.board.templatePreview=null;this.board.draw();this.updateTemplateControls();});
     const areas=templateIds.map(id=>view.scene.templates.find(area=>area.id===id)).filter(Boolean);
+    for(const trap of trapIds.map(id=>(view.scene.traps || []).find(row=>row.id===id)).filter(Boolean)){
+      if(dm || trap.ownerId===view.self.id){action('Edit trigger: '+trap.name,()=>this.onEditTrap?.(trap.id));action('Remove trigger: '+trap.name,()=>this.command({type:'trap.remove',id:trap.id}),true);}
+    }
     for(const area of areas){
       if(dm || area.ownerId===view.self.id)action(areas.length===1?'Remove spell area':'Remove '+area.name,()=>this.command({type:'template.delete',id:area.id}));
     }
     if(token){
       this.selectToken(token.id);
       action(token.canViewStats?'Open statblock':'Character privacy',()=>this.openStatblock(token.id));
+      if(dm || token.canEditStats){action('Travel & height',()=>this.onTravel?.());action('Automatic effects',()=>this.onAutomaticEffects?.());}
       if(token.canEditStats){
         if(dm)action('Apply damage',()=>this.openDamage(token.id));
         action('Adjust HP',()=>{this.adjustToken=token.id;this.adjustDialog.showModal();this.adjustAmount.focus();this.adjustAmount.select();});

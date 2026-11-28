@@ -372,8 +372,10 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.locator('#ruler-units').selectOption('ft');
     await player.getByRole('button',{name:'Spell area',exact:true}).click();
     for(const shape of ['circle','cone','line','square']){
+      if(!await player.locator('#spell-shape').isVisible())await player.getByRole('button',{name:'Expand area options',exact:true}).click();
       await player.locator('#spell-shape').selectOption(shape);
       await player.locator('#spell-size').fill('15');await player.locator('#spell-size').blur();
+      await player.getByRole('button',{name:'Collapse area options',exact:true}).click();
       const origin=await mapPoint(player,525,725),end=await mapPoint(player,675,725);
       await player.mouse.move(origin.x,origin.y);await player.mouse.down();await player.mouse.move(end.x,end.y);await player.mouse.up();
       await player.getByRole('button',{name:'Place for table',exact:true}).click();
@@ -387,7 +389,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await player.getByRole('menuitem',{name:/^Remove .*cone/}).click();
     await dm.locator('.placed-area').filter({hasText:'cone'}).waitFor({state:'hidden'});
     assert.equal((await service.read()).scene.templates.length,3);
-    await player.locator('#spell-shape').selectOption('cone');
+    await player.getByRole('button',{name:'Expand area options',exact:true}).click();await player.locator('#spell-shape').selectOption('cone');await player.getByRole('button',{name:'Collapse area options',exact:true}).click();
     const origin=await mapPoint(player,525,725),end=await mapPoint(player,725,725);
     await player.mouse.move(origin.x,origin.y);await player.mouse.down();await player.mouse.move(end.x,end.y);await player.mouse.up();
     await player.screenshot({path:path.join(output,'tabletop-spell-areas.png')});
@@ -557,7 +559,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dmInitiative.locator('input').first().fill('12');await dmInitiative.locator('input').first().blur();
     const logsBeforeStart=(await service.read()).log.length;
     await dm.locator('#start-combat').click();await dm.locator('#round-label').filter({hasText:'Round 1'}).waitFor();
-    assert.equal((await service.read()).log.length,logsBeforeStart);
+    const startEvents=(await service.read()).log.slice(logsBeforeStart);assert.equal(startEvents.length,2);assert(startEvents.every(entry=>entry.kind==='event'));
     assert.equal((await service.view(dmAccess)).scene.combat.activeId,token.id);
     await playerInitiative.getByLabel('Initiative total for Linked Scout',{exact:true}).fill('7');
     await playerInitiative.getByLabel('Initiative total for Linked Scout',{exact:true}).blur();
@@ -586,6 +588,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.locator('#campaign-tab-turns').click();
     await dm.locator('.initiative-section').evaluate(el=>el.scrollIntoView({block:'start'}));
     await dm.screenshot({path:path.join(output,'tabletop-initiative.png')});
+    const eventChecks=await require('./events-qa.cjs')({dm,player,service,dmKey:dmAccess,playerKey,tokenId:token.id,broadcast,output,mapPoint});
     await dm.locator('#data-token').evaluate(el=>el.scrollTop=0);
     await dm.screenshot({path:path.join(output,'tabletop-dm.png')});
     await player.screenshot({path:path.join(output,'tabletop-player.png')});
@@ -652,7 +655,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
     await dm.locator('#create-game:enabled').waitFor();
     assert(await createTable.isEnabled());assert(await dm.locator('#join-game').isEnabled());
     assert.deepEqual(errors,[]);
-    const result={roomsCreated:createdCount,independentBrowserContexts:2,guestJoin:true,ownedTokenMovement:true,hiddenTokenFiltering:true,fogBrush:true,sharedDice:true,
+    const result={...eventChecks,roomsCreated:createdCount,independentBrowserContexts:2,guestJoin:true,ownedTokenMovement:true,hiddenTokenFiltering:true,fogBrush:true,sharedDice:true,
       privatePlayerStats:true,optionalBars:true,revocableReadOnlySharing:true,linkedCharacterRoundTrip:true,linkedMonsterStats:true,rightClickMenu:true,
       rulerUnits:['ft','m','squares'],sharedSpellAreas:['circle','cone','line','square'],mapUpload:true,campaignBackup:true,downloadStatus,campaignRestore:true,
       sidebarLinking:true,savedCharacterDiscovery:true,exactCharacterLink:true,compactSheet:true,compactSheetPrivacy:true,
@@ -664,7 +667,7 @@ const root=path.resolve(__dirname,'../..'),site=path.join(root,'site'),output=pa
       tokenConditionMarkers:true,collapsibleConditions:true,collapsiblePanels:true,referenceBorderResize:true,persistentPanelLayout:true,
       visibleTokenRemoval:true,contextTokenRemoval:true,keyboardTokenRemoval:true,tokenRemovalKeepsSource:true,
       monsterCompendiumDrag:true,characterCompendiumDrag:true,independentMonsterInstances:true,playerCompendiumPrivacy:true,combinedHealth:true,utilityAbilityScores:true,
-      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:16,pageErrors:errors};
+      spellContextRemoval:true,previewContextClear:true,refresh:true,reconnect:true,returnToLobby:true,mobile,screenshots:18,pageErrors:errors};
     await fsp.writeFile(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
   }catch(error){
     console.error(error);

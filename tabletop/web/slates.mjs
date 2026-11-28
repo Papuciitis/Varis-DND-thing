@@ -2,6 +2,7 @@ import {loadReferences} from './sources.mjs';
 import {characterStats,monsterStats,monsterId,monsterHP,SHEETS_KEY,MONSTERS_KEY} from './resources.mjs';
 import {snapToken} from './grid.mjs';
 import {PanelLayout} from './panel-layout.mjs';
+import {AdventureTools} from './adventure-tools.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
@@ -15,7 +16,8 @@ export class Slates {
     const log=document.querySelector('.dice-section'),turns=document.querySelector('.initiative-section');
     const areas=document.querySelector('.placed-areas');if(areas)turns.append(areas);
     const notes=this.mountNotes();
-    this.tabs('campaign','Campaign',party,[['table','Table',table],['log','Log',log],['notes','Notes',notes],['turns','Turns',turns]],'table');
+    this.adventure=new AdventureTools({tools,getView,getSelected:tools.getSelected,command,selectToken,board,notify,showEvents:()=>this.showEvents()});
+    this.tabs('campaign','Campaign',party,[['table','Table',table],['log','Log',log],['notes','Notes',notes],['turns','Turns',turns],['events','Events',this.adventure.eventsPane]],'table');
     this.mountChat(log);
     const inspector=$('inspector'),token=inspector.querySelector('.inspector-section'),scene=$('show-grid').closest('details');
     inspector.querySelector('.mobile-party').hidden=true;
@@ -66,6 +68,10 @@ export class Slates {
     const group=this.groups.get(id);if(!group?.panels.has(key))return;group.active=key;
     for(const [name,node] of group.buttons){node.setAttribute('aria-selected',String(name===key));node.tabIndex=name===key?0:-1;group.panels.get(name).hidden=name!==key;}
     if(id==='data' && key==='compendium')this.loadCompendium();
+  }
+  showEvents(){
+    this.layout?.setCollapsed('left',false);this.show('campaign','events');
+    if(window.innerWidth<=900){document.body.classList.add('campaign-open');document.body.classList.remove('panels-open');this.campaignTrigger?.setAttribute('aria-expanded','true');}
   }
   mountChat(log) {
     const form=el('form','chat-form'),label=el('label','field','Message the table'),input=el('textarea');
@@ -176,7 +182,7 @@ export class Slates {
         if(!token)throw new Error('This token is no longer in the scene.');
         if(view.self.role!=='dm' && token.conditionState?.blocked)throw new Error('Cannot move: '+token.conditionState.reason+'.');
         const {x,y}=snapToken(scene,token,position);
-        if(await this.command({type:'token.move',id:source.id,x,y}))this.selectToken(source.id);return;
+        if(await this.command({type:'token.move',id:source.id,x,y,...(this.board?.forceMovement && view.self.role==='dm'?{force:true}:{})}))this.selectToken(source.id);return;
       }
       if(view.self.role!=='dm')throw new Error('The GM places compendium templates.');
       const references=await loadReferences();let stats,name;
@@ -224,5 +230,6 @@ export class Slates {
     }
     if(!dm && this.groups.get('data').active==='scene')this.show('data','token');
     if(this.groups.get('data').active==='compendium')this.loadCompendium();
+    this.adventure.render(connected);
   }
 }

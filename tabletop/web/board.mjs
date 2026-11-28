@@ -2,6 +2,7 @@ import {auxiliaryReadings,healthSummary,tokenBarsVisible,distanceLabel,tokenRadi
 import {templateGeometry,templateLabel,templateContains} from './templates.mjs';
 import {snapToken,tokenGridStep} from './grid.mjs';
 import {conditionMarkerLayout,conditionColor,conditionAbbreviation} from './condition-markers.mjs';
+import {travelLabel} from './travel.mjs';
 
 export class MapBoard {
   constructor(canvas,{onSelect,onMove,onFog,onError,onContext}) {
@@ -9,7 +10,7 @@ export class MapBoard {
     this.measureUnit='ft';
     this.templateConfig={shape:'circle',size:20,width:5,coneAngle:60,unit:'ft'};
     this.tool='select';this.brush=1;this.enabled=false;this.camera=null;this.selected=null;
-    this.conditionNodes=new Map();
+    this.conditionNodes=new Map();this.travelNodes=new Map();this.pingNodes=new Map();this.animations=new Map();
     if(canvas.parentElement && canvas.ownerDocument){
       this.conditionHost=canvas.ownerDocument.createElement('div');this.conditionHost.className='map-conditions';
       this.conditionHost.setAttribute('aria-label','Token conditions');canvas.parentElement.append(this.conditionHost);
@@ -33,9 +34,25 @@ export class MapBoard {
   }
   setView(view) {
     const old=this.view?.scene;
+    if(this.view?.id!==view.id)this.animations.clear();
+    else for(const token of view.scene.tokens){
+      const previous=old.tokens.find(row=>row.id===token.id);
+      if(previous && token.motion?.id!==previous.motion?.id){
+        if(token.motion?.duration>0){const from=this.displayToken(previous);this.animations.set(token.id,{from:{x:from.x,y:from.y,z:from.mobility?.z || 0},to:{x:token.x,y:token.y,z:token.mobility?.z || 0},start:performance.now(),duration:token.motion.duration});}
+        else this.animations.delete(token.id);
+      }
+    }
+    for(const id of this.animations.keys())if(!view.scene.tokens.some(token=>token.id===id))this.animations.delete(id);
     this.view=view;
     if(!this.camera || old?.width!==view.scene.width || old?.height!==view.scene.height)this.initialPosition();
     this.draw();
+  }
+  displayToken(token){
+    const animation=this.animations?.get(token.id);if(!animation)return token;
+    const fraction=Math.min(1,Math.max(0,(performance.now()-animation.start)/animation.duration));
+    if(fraction>=1){this.animations.delete(token.id);return token;}
+    const point={};for(const key of ['x','y','z'])point[key]=animation.from[key]+(animation.to[key]-animation.from[key])*fraction;
+    return {...token,x:point.x,y:point.y,mobility:{...token.mobility,z:point.z}};
   }
   setImage(url) {
     const image=new Image();this.image=image;
@@ -76,16 +93,17 @@ export class MapBoard {
     const point=this.point(e),token=this.hit(point);
     if(token){this.selected=token.id;this.onSelect(token.id);}
     const templateIds=[...(this.view.scene.templates || [])].reverse().filter(area=>templateContains(area,point,this.view.scene)).map(area=>area.id);
+    const trapIds=[...(this.view.scene.traps || [])].reverse().filter(area=>templateContains(area,point,this.view.scene)).map(area=>area.id);
     const preview=!!this.templatePreview && templateContains(this.templatePreview,point,this.view.scene);
-    this.onContext?.({tokenId:token?.id || null,templateIds,preview,x:e.clientX,y:e.clientY,point});this.draw();
+    this.onContext?.({tokenId:token?.id || null,templateIds,trapIds,preview,x:e.clientX,y:e.clientY,point});this.draw();
   }
-  canMove(t) {return this.enabled && (this.view.self.role==='dm' || t.ownerId===this.view.self.id && !t.conditionState?.blocked);}
-  bodyAt(p) {return [...this.view.scene.tokens].reverse().find(token=>Math.hypot(token.x-p.x,token.y-p.y)<tokenRadius(this.view.scene,token)*1.3);}
+  canMove(t) {return this.enabled && (!t.travelState?.paused || this.forceMovement && this.view.self.role==='dm') && (this.view.self.role==='dm' || t.ownerId===this.view.self.id && !t.conditionState?.blocked);}
+  bodyAt(p) {return [...this.view.scene.tokens].reverse().find(token=>{const point=this.displayToken(token);return Math.hypot(point.x-p.x,point.y-p.y)<tokenRadius(this.view.scene,token)*1.3;});}
   hit(p) {
     const tokens=[...this.view.scene.tokens].reverse();
     const body=this.bodyAt(p);
     if(body)return body;
-    return tokens.find(token=>{
+    return tokens.find(original=>{const token=this.displayToken(original);
       const r=tokenRadius(this.view.scene,token);
       const bars=tokenBarsVisible(token,this.selected,this.hovered)?1+auxiliaryReadings(token).length:0,z=this.camera.z;
       const offset=conditionMarkerLayout(this.view.scene,token,this.camera)?.offset || 0;
@@ -97,6 +115,7 @@ export class MapBoard {
     if(!this.view || !this.camera || e.button>1)return;
     this.canvas.focus({preventScroll:true});this.canvas.setPointerCapture(e.pointerId);
     const p=this.point(e);
+    if(e.shiftKey && e.button===0 && this.enabled){this.onPing?.(p);return;}
     if(e.pointerType==='touch'){
       this.touchStart={x:e.clientX,y:e.clientY};this.longPressed=false;
       this.longPress=setTimeout(()=>{this.longPressed=true;this.context(e);},550);
@@ -113,7 +132,7 @@ export class MapBoard {
     const token=this.tool==='select' && e.button===0 ? this.hit(p) : null;
     if(token) {
       this.selected=token.id;this.onSelect(token.id);
-      if(this.canMove(token))this.drag={kind:'token',id:token.id,x:token.x,y:token.y,offsetX:p.x-token.x,offsetY:p.y-token.y};
+      if(this.canMove(token)){const displayed=this.displayToken(token);this.drag={kind:'token',id:token.id,x:token.x,y:token.y,offsetX:p.x-displayed.x,offsetY:p.y-displayed.y};}
       else if(token.ownerId===this.view.self.id && token.conditionState?.blocked)this.onError('Cannot move: '+token.conditionState.reason+'.');
       this.draw();return;
     }
@@ -168,6 +187,7 @@ export class MapBoard {
       for(let y=0;y<=s.height;y+=s.gridSize){ctx.moveTo(0,y);ctx.lineTo(s.width,y);}ctx.stroke();
       ctx.lineWidth=1/c.z;ctx.strokeStyle='rgba(248,246,221,'+(s.gridOpacity ?? .6)+')';ctx.stroke();}
     for(const template of s.templates || [])this.drawTemplate(template,false);
+    for(const trap of s.traps || [])this.drawTemplate(trap,false,true);
     if(this.templatePreview)this.drawTemplate(this.templatePreview,true);
     const revealed=new Set(s.fog.revealed);
     if(this.stroke)for(const cell of this.stroke.cells)this.stroke.reveal?revealed.add(cell):revealed.delete(cell);
@@ -176,7 +196,7 @@ export class MapBoard {
       for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)if(!revealed.has(y*cols+x))ctx.fillRect(x*s.gridSize,y*s.gridSize,s.gridSize+.5,s.gridSize+.5);ctx.restore();}
     ctx.strokeStyle='#8e977450';ctx.lineWidth=2/c.z;ctx.strokeRect(0,0,s.width,s.height);
     for(const token of s.tokens) {
-      const t=this.drag?.kind==='token' && this.drag.id===token.id ? {...token,x:this.drag.x,y:this.drag.y}:token;
+      const t=this.displayToken(token);
       const r=tokenRadius(s,t);
       ctx.save();ctx.globalAlpha=t.hidden ? .55 : 1;
       if(t.id===s.combat.activeId || t.id===this.selected){ctx.beginPath();ctx.arc(t.x,t.y,r+7/c.z,0,Math.PI*2);ctx.strokeStyle=t.id===this.selected?'#e1c47e':'#9abf8c';ctx.lineWidth=2/c.z;ctx.stroke();}
@@ -196,19 +216,29 @@ export class MapBoard {
       }
       ctx.restore();
     }
+    if(this.drag?.kind==='token'){
+      const token=s.tokens.find(token=>token.id===this.drag.id),target=this.drag;
+      if(token){const state=token.travelState || {},pixels=s.gridSize/(s.distancePerSquare ?? 5)/(s.distanceUnit==='m'?1/.3048:1),dx=Math.abs(target.x-token.x)/pixels,dy=Math.abs(target.y-token.y)/pixels;
+        const cost=(s.adventure?.metric==='grid'?Math.max(dx,dy):Math.hypot(dx,dy))*(state.multiplier || 1),limited=s.combat.active && state.remaining!=null && cost>state.remaining && !this.forceMovement;
+        ctx.save();ctx.strokeStyle=limited?'#f2a16f':'#a4dcdf';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=2/c.z;ctx.setLineDash([5/c.z,5/c.z]);ctx.beginPath();ctx.moveTo(token.x,token.y);ctx.lineTo(target.x,target.y);ctx.stroke();ctx.beginPath();ctx.arc(target.x,target.y,tokenRadius(s,token),0,Math.PI*2);ctx.stroke();
+        ctx.font='600 '+12/c.z+'px Segoe UI';ctx.textAlign='center';ctx.fillText((Math.round(cost*10)/10)+' ft'+(limited?' · exceeds remaining movement':''),target.x,target.y-tokenRadius(s,token)-12/c.z);ctx.restore();}
+    }
     if(this.measure){const {start,end}=this.measure;ctx.strokeStyle='#e8d194';ctx.lineWidth=2/c.z;ctx.setLineDash([5/c.z,4/c.z]);ctx.beginPath();ctx.moveTo(start.x,start.y);ctx.lineTo(end.x,end.y);ctx.stroke();ctx.setLineDash([]);
       const text=distanceLabel(s,start,end,this.measureUnit);ctx.font=`bold ${12/c.z}px 'Segoe UI'`;ctx.textAlign='center';ctx.fillStyle='#f0dfae';ctx.fillText(text,(start.x+end.x)/2,(start.y+end.y)/2-10/c.z);}
     ctx.restore();
     this.drawConditionMarkers();
+    this.drawTravelMarkers();
+    this.drawPings();
     this.drawResources();
     this.onMeasure?.(this.measure?distanceLabel(s,this.measure.start,this.measure.end,this.measureUnit):'');
     this.canvas.style.cursor=this.tool==='pan'?'grab':['reveal','conceal','measure'].includes(this.tool)?'crosshair':'default';
+    if(this.animations.size && !this.frame)this.frame=requestAnimationFrame(()=>{this.frame=null;this.draw();});
   }
   drawConditionMarkers(){
     if(!this.conditionHost)return;
     const scene=this.view.scene,active=new Set();
     for(const original of scene.tokens){
-      const token=this.drag?.kind==='token' && this.drag.id===original.id?{...original,x:this.drag.x,y:this.drag.y}:original;
+      const token=this.displayToken(original);
       const layout=conditionMarkerLayout(scene,token,this.camera);if(!layout)continue;active.add(token.id);
       let entry=this.conditionNodes.get(token.id);
       if(!entry){const node=this.canvas.ownerDocument.createElement('div');node.className='map-token-conditions';node.dataset.tokenId=token.id;this.conditionHost.append(node);entry={node};this.conditionNodes.set(token.id,entry);}
@@ -236,10 +266,29 @@ export class MapBoard {
     }
     for(const [id,entry] of this.conditionNodes)if(!active.has(id)){entry.node.remove();this.conditionNodes.delete(id);}
   }
+  drawTravelMarkers(){
+    if(!this.conditionHost)return;const scene=this.view.scene,active=new Set();
+    for(const original of scene.tokens){const token=this.displayToken(original),mode=token.mobility?.mode || 'walk',paused=token.travelState?.paused;
+      if(mode==='walk' && !token.mobility?.z && !paused)continue;active.add(token.id);
+      let node=this.travelNodes.get(token.id);if(!node){node=this.canvas.ownerDocument.createElement('button');node.type='button';node.dataset.tokenId=token.id;this.conditionHost.append(node);this.travelNodes.set(token.id,node);
+        node.onclick=()=>{this.selected=token.id;this.onSelect(token.id);this.onTravel?.(token.id);};}
+      node.className='map-travel-marker travel-'+mode+(paused?' travel-paused':'');node.textContent=(paused?'Paused · ':'')+travelLabel(token);
+      node.title=token.name+': '+node.textContent;node.style.left=(this.camera.x+token.x*this.camera.z)+'px';node.style.top=(this.camera.y+token.y*this.camera.z-tokenRadius(scene,token)*this.camera.z-53)+'px';node.style.opacity=token.hidden?'.6':'1';
+    }
+    for(const [id,node] of this.travelNodes)if(!active.has(id)){node.remove();this.travelNodes.delete(id);}
+  }
+  drawPings(){
+    if(!this.conditionHost)return;clearTimeout(this.pingTimeout);const active=new Set(),now=Date.now();let next=Infinity;
+    for(const ping of this.view.scene.pings || []){if(ping.expires<=now)continue;active.add(ping.id);next=Math.min(next,ping.expires-now);
+      let node=this.pingNodes.get(ping.id);if(!node){node=this.canvas.ownerDocument.createElement('span');node.className='map-ping-marker';node.dataset.pingId=ping.id;node.textContent=ping.name;node.setAttribute('role','status');this.conditionHost.append(node);this.pingNodes.set(ping.id,node);}
+      node.style.left=(this.camera.x+ping.x*this.camera.z)+'px';node.style.top=(this.camera.y+ping.y*this.camera.z)+'px';}
+    for(const [id,node] of this.pingNodes)if(!active.has(id)){node.remove();this.pingNodes.delete(id);}
+    if(next<Infinity)this.pingTimeout=setTimeout(()=>this.draw(),next+20);
+  }
   drawResources() {
     const ctx=this.ctx,c=this.camera,s=this.view.scene;
     for(const original of s.tokens){
-      const token=this.drag?.kind==='token' && this.drag.id===original.id?{...original,x:this.drag.x,y:this.drag.y}:original;
+      const token=this.displayToken(original);
       if(!tokenBarsVisible(token,this.selected,this.hovered))continue;
       const health=healthSummary(token),bars=auxiliaryReadings(token);
       const conditionOffset=conditionMarkerLayout(s,token,c)?.offset || 0;
@@ -274,7 +323,7 @@ export class MapBoard {
       ctx.restore();
     }
   }
-  drawTemplate(template,preview) {
+  drawTemplate(template,preview,trap=false) {
     const ctx=this.ctx,c=this.camera,geometry=templateGeometry(template,this.view.scene);
     ctx.save();ctx.translate(geometry.x,geometry.y);
     if(template.shape!=='circle' && template.shape!=='square')ctx.rotate(geometry.angle);
@@ -283,11 +332,12 @@ export class MapBoard {
     else if(template.shape==='square')ctx.rect(-geometry.length/2,-geometry.length/2,geometry.length,geometry.length);
     else if(template.shape==='line')ctx.rect(0,-geometry.width/2,geometry.length,geometry.width);
     else {ctx.moveTo(0,0);ctx.arc(0,0,geometry.length,-geometry.halfAngle,geometry.halfAngle);ctx.closePath();}
-    ctx.fillStyle=preview?'#ecc76b38':'#b08bc344';ctx.strokeStyle=preview?'#ffe09a':'#d0a5e4';
-    ctx.lineWidth=2/c.z;if(preview)ctx.setLineDash([6/c.z,4/c.z]);ctx.fill();ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=preview?'#ecc76b38':trap?'#c2873c33':'#b08bc344';ctx.strokeStyle=preview?'#ffe09a':trap?'#f3b96e':'#d0a5e4';
+    if(trap && !template.armed)ctx.globalAlpha=.5;
+    ctx.lineWidth=2/c.z;if(preview || trap && (template.hidden || !template.armed))ctx.setLineDash([6/c.z,4/c.z]);ctx.fill();ctx.stroke();ctx.setLineDash([]);
     ctx.restore();ctx.save();
     ctx.font='600 '+13/c.z+"px 'Segoe UI',sans-serif";ctx.textAlign='center';ctx.textBaseline='middle';
-    const text=templateLabel(template),width=ctx.measureText(text).width+14/c.z;
+    const text=trap?template.name+(template.pending?' · proposed':!template.armed?' · disarmed':''):templateLabel(template),width=ctx.measureText(text).width+14/c.z;
     const y=template.y-(template.shape==='circle'?geometry.length:0)-16/c.z;
     ctx.fillStyle='#13251bed';ctx.fillRect(template.x-width/2,y-11/c.z,width,22/c.z);
     ctx.fillStyle=preview?'#ffe09a':'#e6c4f4';ctx.fillText(text,template.x,y);ctx.restore();
